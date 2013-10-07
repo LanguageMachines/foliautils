@@ -1,3 +1,4 @@
+#include <getopt.h>
 #include <string>
 #include <map>
 #include <vector>
@@ -16,7 +17,7 @@ using namespace	std;
 using namespace	folia;
 
 
-void create_idf_list( const map<string, unsigned int>& wc, 
+void create_idf_list( const map<string, unsigned int>& wc,
 		      const string& filename, int clip ){
   ofstream os( filename.c_str() );
   if ( !os ){
@@ -70,7 +71,7 @@ size_t inventory( const Document *doc, const string& docName,
 #pragma omp critical
     {
       ++wc[*it];
-    }    
+    }
     ++it;
   }
   return ws.size();
@@ -138,7 +139,7 @@ int main( int argc, char *argv[] ){
   if ( numThreads != 1 )
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
-  
+
   string name = argv[optind];
   vector<string> fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
   size_t toDo = fileNames.size();
@@ -159,7 +160,7 @@ int main( int argc, char *argv[] ){
 
   map<string,unsigned int> wc;
   unsigned int wordTotal =0;
-  
+
 #pragma omp parallel for shared(fileNames,wordTotal,wc )
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
@@ -186,7 +187,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( toDo > 1 ){
-    cout << "done processsing directory '" << name << "' in total " 
+    cout << "done processsing directory '" << name << "' in total "
 	 << wordTotal << " unique words were found." << endl;
   }
   cout << "start calculating the results" << endl;

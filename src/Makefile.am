@@ -1,8 +1,8 @@
 # $Id$
 # $URL$
 
-bin_PROGRAMS = tel collect idf
+bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf
 
-tel_SOURCES = tel.cxx
-collect_SOURCES = collect.cxx
-idf_SOURCES = idf.cxx
+FoLiA_stats_SOURCES = FoLiA-stats.cxx
+FoLiA_collect_SOURCES = FoLiA-collect.cxx
+FoLiA_idf_SOURCES = FoLiA-idf.cxx

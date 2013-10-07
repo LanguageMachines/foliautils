@@ -1,4 +1,4 @@
-//#include <sys/types.h>
+#include <getopt.h>
 #include <cstdlib>
 #include <string>
 #include <stdexcept>
@@ -18,7 +18,7 @@
 using namespace	std;
 
 
-void create_wf_list( const map<string, unsigned int>& wc, 
+void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int total ){
   ofstream os( filename.c_str() );
   if ( !os ){
@@ -37,7 +37,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
     set<string>::const_iterator sit = wit->second.begin();
     while ( sit != wit->second.end() ){
       sum += wit->first;
-      os << *sit << "\t" << wit->first << "\t" << sum << "\t" 
+      os << *sit << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100 * double(sum)/total << endl;
       ++sit;
     }
@@ -50,7 +50,7 @@ struct rec {
   map<string,unsigned int> pc;
 };
 
-void create_lf_list( const map<string, unsigned int>& lc, 
+void create_lf_list( const map<string, unsigned int>& lc,
 		     const string& filename, unsigned int total ){
   ofstream os( filename.c_str() );
   if ( !os ){
@@ -90,7 +90,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   while( cit != lpc.end()  ){
     map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
     while ( pit != cit->second.pc.end() ){
-      lpf.insert( make_pair( pit->second, 
+      lpf.insert( make_pair( pit->second,
 			     make_pair( cit->first, pit->first ) ) );
       ++pit;
     }
@@ -100,13 +100,13 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
   while ( wit != lpf.rend() ){
     sum += wit->first;
-    os << wit->second.first << " " << wit->second.second << "\t" 
+    os << wit->second.first << " " << wit->second.second << "\t"
        << wit->first << "\t" << sum << "\t" << 100 * double(sum)/total << endl;
     ++wit;
   }
 }
 
-size_t split_at( const string& src, vector<string>& results, 
+size_t split_at( const string& src, vector<string>& results,
 		 const string& sep ){
   // split a string into substrings, using sep as seperator
   // silently skip empty entries (e.g. when two or more seperators co-incide)
@@ -129,7 +129,7 @@ size_t split_at( const string& src, vector<string>& results,
   return results.size();
 }
 
-unsigned int fillWF( const string& fName, 
+unsigned int fillWF( const string& fName,
 		     map<string,unsigned int>& wf,
 		     bool keepSingles ){
   unsigned int total = 0;
@@ -151,7 +151,7 @@ unsigned int fillWF( const string& fName,
   return total;
 }
 
-unsigned int fillLF( const string& fName, 
+unsigned int fillLF( const string& fName,
 		     map<string,unsigned int>& lf,
 		     bool keepSingles ){
   unsigned int total = 0;
@@ -173,7 +173,7 @@ unsigned int fillLF( const string& fName,
   return total;
 }
 
-unsigned int fillLPF( const string& fName, int ng, 
+unsigned int fillLPF( const string& fName, int ng,
 		      multimap<string, rec>& lpc,
 		      bool keepSingles ){
   unsigned int total = 0;

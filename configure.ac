@@ -4,8 +4,8 @@
 # $URL $
 
 AC_PREREQ(2.61)
-AC_INIT([tel],[0.1],[ko.vandersloot@uvt.nl])
-AM_INIT_AUTOMAKE	
+AC_INIT([foliatools],[0.1],[ko.vandersloot@uvt.nl])
+AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([.])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADER([config.h])
@@ -56,7 +56,7 @@ AX_ICU_CHECK( [3.6],
  or the like is installed" )] )
 
 AC_ARG_WITH(ticcutils,
-       [  --with-ticcutils=DIR       use ticcutils installed in <DIR>; 
+       [  --with-ticcutils=DIR       use ticcutils installed in <DIR>;
                note that you can install ticcutils in a non-default directory wi
 th
                ./configure --prefix=<DIR> in the ticcutils installation director
@@ -69,7 +69,7 @@ CXXFLAGS="$ticcutils_CFLAGS $CXXFLAGS"
 LIBS="$ticcutils_LIBS $LIBS"
 
 AC_ARG_WITH(folia,
-       [  --with-folia=DIR       use libfolia installed in <DIR>; 
+       [  --with-folia=DIR       use libfolia installed in <DIR>;
                note that you can install folia in a non-default directory with
                ./configure --prefix=<DIR> in the folia installation directory],
        [PKG_CONFIG_PATH="$withval/lib/pkgconfig:$PKG_CONFIG_PATH"],
