@@ -1,0 +1,71 @@
+.TH tel 1 "2013 may 30"
+
+.SH NAME
+tel - Folia word counter and more
+.SH SYNOPSYS
+tel [options] DIR
+
+or
+
+tel [options] FILE
+
+.SH DESCRIPTION
+tel counts interesting numbers in FoLiA documents.
+
+.SH OPTIONS
+.B -c
+number
+.RS
+clipping factor. When an entry occurs 'number' times or less, it will be ignored.
+.RE
+
+.B -l
+.RS
+Lowercase all words.
+.RE
+
+.B -n
+number
+.RS
+Number of concurrent threads
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -e
+expr
+.RS
+when searching for files, 
+.B
+tel
+will only considers files that match with the expression 'expr' which may contain wildcards. The 'expr' is only matched against the file part. Not against paths.
+.RE
+
+When a DIR is provided, 
+.B tel 
+will process all folia.xml files in DIR and store its results in the currect 
+directory in files called DIR.wordfreqlist.tsv, DIR.lemmafreqlist.tsv etc.
+
+When a FILE is provided,
+.B tel
+will process that file and store its results in the directory where FILE is 
+found.
+
+.B -R
+.RS
+when a DIR is provided, 
+.B tel
+will recurse through this DIR and its subdirs to find files.
+.RE
+
+.SH BUGS
+possibly
+
+.SH AUTHORS
+Ko van der Sloot Timbl@uvt.nl
+
+.SH SEE ALSO
+

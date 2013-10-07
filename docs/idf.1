@@ -1,0 +1,61 @@
+.TH idf 1 "2013 may 30"
+
+.SH NAME
+ird - Folia IDF word counter
+.SH SYNOPSYS
+idf [options] DIR
+
+.SH DESCRIPTION
+.B idf
+counts the interdocument frequency of the words in FoLiA documents.
+It will process all folia XML files in DIR and store its results in the currect 
+directory in a file called DIR.idf.tsv
+
+.SH OPTIONS
+.B -c
+number
+.RS
+clipping factor. When an idf is lower then 'number', it will not be stored.
+.RE
+
+.B -l
+.RS
+Lowercase all words.
+.RE
+
+.B -n
+number
+.RS
+Number of concurrent threads
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -e
+expr
+.RS
+when searching for files, 
+.B
+idf
+will only considers files that match with the expression 'expr' which may contain wildcards. The 'expr' is only matched against the file part. Not against paths.
+.RE
+
+.B -R
+.RS
+when a DIR is provided, 
+.B idf
+will recurse through this DIR and its subdirs to find files.
+.RE
+
+.SH BUGS
+possibly
+
+.SH AUTHORS
+Ko van der Sloot Timbl@uvt.nl
+
+.SH SEE ALSO
+
+.B tel
