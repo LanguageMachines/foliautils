@@ -15,12 +15,15 @@
 
 using namespace	std;
 
-enum S_Class { UNK, PUNCT, CLEAN };
+enum S_Class { UNK, PUNCT, IGNORE, CLEAN };
 
 ostream& operator<<( ostream& os, const S_Class& cl ){
   switch ( cl ){
   case CLEAN:
     os << "Clean";
+    break;
+  case IGNORE:
+    os << "Ignore";
     break;
   case UNK:
     os << "Unknown";
@@ -37,20 +40,37 @@ ostream& operator<<( ostream& os, const S_Class& cl ){
 bool fillAlpha( istream& is, set<UChar>& alphabet ){
   string line;
   while ( getline( is, line ) ){
-    UnicodeString us = folia::UTF8ToUnicode( line );
+    vector<string> v;
+    int n = TiCC::split_at( line, v, "#" );
+    if ( n != 3 ){
+      cerr << "unsupported format for alphabet file" << endl;
+      exit(EXIT_FAILURE);
+    }
+    UnicodeString us = folia::UTF8ToUnicode( v[0] );
     us.toLower();
-    for ( int i=0; i < us.length(); ++i ){
-      alphabet.insert( us[i] );
-    }
+    alphabet.insert( us[0] );
     us.toUpper();
-    for ( int i=0; i < us.length(); ++i ){
-      alphabet.insert( us[i] );
-    }
+    alphabet.insert( us[0] );
+    // for now, we don't use the other fields
   }
   return true;
 }
 
-static UChar punctList[] = { '<', '>', '[', ']', '{', '}' };
+bool fillSimpleAlpha( istream& is, set<UChar>& alphabet ){
+  string line;
+  while ( getline( is, line ) ){
+    UnicodeString us = folia::UTF8ToUnicode( line );
+    us.toLower();
+    for( int i=0; i < us.length(); ++i )
+      alphabet.insert( us[i] );
+    us.toUpper();
+    for( int i=0; i < us.length(); ++i )
+      alphabet.insert( us[i] );
+  }
+  return true;
+}
+
+static UChar punctList[] = { '<', '>', '[', ']', '{', '}', 0x0192 };
 static set<UChar> mypuncts( punctList,
 			    punctList + sizeof( punctList )/sizeof( UChar ) );
 
@@ -66,8 +86,6 @@ bool isPunct( UChar k  ){
 
 bool depunct( const UnicodeString& us, UnicodeString& result ){
   result.remove();
-  if ( us.length() < 2 )
-    return false;
   int i = 0;
   for ( i; i < us.length(); ++i ){
     // skip leading punctuation
@@ -87,7 +105,7 @@ bool depunct( const UnicodeString& us, UnicodeString& result ){
     for ( int k = i; k <= j; ++k ){
       result += us[k];
     }
-    //    cerr << "depunct '" << us << "' ==> '" << result << "'" << endl;
+    cerr << "depunct '" << us << "' ==> '" << result << "'" << endl;
     return true;
   }
 }
@@ -96,32 +114,47 @@ S_Class classify( const UnicodeString& word,
 		  set<UChar>& alphabet ){
   int is_digit = 0;
   int is_in = 0;
-  int word_len = word.length();
-  int is_punct = 0; //embedded
   int is_out = 0;
-  if ( word_len == 1 )
-    return CLEAN;
-
+  int word_len = word.length();
   for ( int i=0; i < word_len; ++i ){
     UChar uchar = word[i];
-    if ( isPunct( uchar ) ){
-      ++is_punct;
+    if ( alphabet.empty() ||
+	 ( alphabet.find( word[i] ) != alphabet.end() ) ){
+      ++is_in;
     }
     else if ( u_isdigit( uchar ) ){
       ++is_digit;
-    }
-    else if ( alphabet.empty() ||
-	      ( alphabet.find( word[i] ) != alphabet.end() ) ){
-      ++is_in;
     }
     else {
       ++is_out;
     }
   }
-  if ( double(is_in + is_digit + is_punct)/word_len > 0.8 ){
+  cerr << "Classify: " << word << " IN=" << is_in << " OUT= " << is_out << " DIG=" << is_digit << endl;
+  if ( is_digit == word_len ){
+    // Filter A: gewone getallen. Worden ongemoeid gelaten, worden dus niet
+    // ge-unkt of ge-ticcled, worden ook niet geteld of opgenomen in de
+    // frequentielijst
+    return IGNORE;
+  }
+  else if ( is_digit >= is_in + is_out ){
+    // Filter B: dingen als datums, floats, of combinatie getal + een of andere
+    // geldaanduiding : zelfde als getallen
+    // <martin> Komt erop neer dat indien meer cijfers dan iets anders.
+    return IGNORE;
+  }
+  else if ( word_len >= 4 && double(is_in + is_digit)/word_len >= 0.75 ){
     return CLEAN;
   }
-  if ( double(is_digit + is_punct)/word_len > 0.8 ){
+  else if (word_len == 3 && double(is_in + is_digit)/word_len >= 0.66 ){
+    return CLEAN;
+  }
+  else if (word_len < 3 && (is_out+is_digit) <1 ){
+    return CLEAN;
+  }
+  else if ( word_len >= 4 && double( is_in )/word_len >= 0.75 ){
+    return CLEAN;
+  }
+  else if ( word_len == 3 && double( is_in )/word_len >= 0.66 ){
     return CLEAN;
   }
   else {
@@ -137,17 +170,22 @@ S_Class classify( const string& word, set<UChar>& alphabet,
   UnicodeString ps;
   if ( depunct( us, ps  ) ){
     if ( ps.length() == 0 ){
-      // only punctuation
-      result = UNK;
+      // Filter C: strings met alleen maar punctuatie > UNK
+      if ( us.length() < 3 )
+	result = IGNORE;
+      else
+	result = UNK;
     }
     else {
       result = classify( ps, alphabet );
-      if ( result == CLEAN ){
-	punct = folia::UnicodeToUTF8( ps );
-	result = PUNCT;
+      if ( result != IGNORE ){
+	if ( result == CLEAN ){
+	  punct = folia::UnicodeToUTF8( ps );
+	  result = PUNCT;
+	}
+	else
+	  result = UNK;
       }
-      else
-	result = UNK;
     }
   }
   else {
@@ -165,13 +203,17 @@ int main( int argc, char *argv[] ){
   int opt;
   int clip = 10;
   string alphafile;
-  while ((opt = getopt(argc, argv, "c:a:")) != -1) {
+  string simplealphafile;
+  while ((opt = getopt(argc, argv, "c:a:A:")) != -1) {
     switch (opt) {
     case 'c':
       clip = atoi(optarg);
       break;
     case 'a':
       alphafile = optarg;
+      break;
+    case 'A':
+      simplealphafile = optarg;
       break;
     case 'V':
       cerr << "UNK" << endl;
@@ -210,6 +252,17 @@ int main( int argc, char *argv[] ){
     }
     if ( !fillAlpha( as, alphabet ) ){
       cerr << "serious problems reading alphabet file: " << alphafile << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  else if ( !simplealphafile.empty() ){
+    ifstream as( simplealphafile.c_str() );
+    if ( !as ){
+      cerr << "unable to open alphabet file: " << simplealphafile << endl;
+      exit(EXIT_FAILURE);
+    }
+    if ( !fillSimpleAlpha( as, alphabet ) ){
+      cerr << "serious problems reading alphabet file: " << simplealphafile << endl;
       exit(EXIT_FAILURE);
     }
   }
@@ -252,6 +305,8 @@ int main( int argc, char *argv[] ){
       string pun;
       S_Class cl = classify( v[0], alphabet, pun );
       switch ( cl ){
+      case IGNORE:
+	break;
       case CLEAN:
 	clean_words[v[0]] += freq;
 	break;
