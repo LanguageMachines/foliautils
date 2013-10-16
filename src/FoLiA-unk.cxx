@@ -105,7 +105,9 @@ bool depunct( const UnicodeString& us, UnicodeString& result ){
     for ( int k = i; k <= j; ++k ){
       result += us[k];
     }
+#ifdef DEBUG
     cerr << "depunct '" << us << "' ==> '" << result << "'" << endl;
+#endif
     return true;
   }
 }
@@ -129,35 +131,61 @@ S_Class classify( const UnicodeString& word,
       ++is_out;
     }
   }
+#ifdef DEBUG
   cerr << "Classify: " << word << " IN=" << is_in << " OUT= " << is_out << " DIG=" << is_digit << endl;
+#endif
   if ( is_digit == word_len ){
     // Filter A: gewone getallen. Worden ongemoeid gelaten, worden dus niet
     // ge-unkt of ge-ticcled, worden ook niet geteld of opgenomen in de
     // frequentielijst
+#ifdef DEBUG
+    cerr << "UITGANG 1: Ignore" << endl;
+#endif
     return IGNORE;
   }
   else if ( is_digit >= is_in + is_out ){
     // Filter B: dingen als datums, floats, of combinatie getal + een of andere
     // geldaanduiding : zelfde als getallen
     // <martin> Komt erop neer dat indien meer cijfers dan iets anders.
+#ifdef DEBUG
+    cerr << "UITGANG 2: Ignore" << endl;
+#endif
     return IGNORE;
   }
   else if ( word_len >= 4 && double(is_in + is_digit)/word_len >= 0.75 ){
+#ifdef DEBUG
+    cerr << "UITGANG 3: Clean" << endl;
+#endif
     return CLEAN;
   }
   else if (word_len == 3 && double(is_in + is_digit)/word_len >= 0.66 ){
+#ifdef DEBUG
+    cerr << "UITGANG 4: Clean" << endl;
+#endif
     return CLEAN;
   }
   else if (word_len < 3 && (is_out+is_digit) <1 ){
+#ifdef DEBUG
+    cerr << "UITGANG 5: Clean" << endl;
+#endif
     return CLEAN;
   }
   else if ( word_len >= 4 && double( is_in )/word_len >= 0.75 ){
+#ifdef DEBUG
+    cerr << "UITGANG 6: Clean" << endl;
+#endif
     return CLEAN;
   }
   else if ( word_len == 3 && double( is_in )/word_len >= 0.66 ){
+#ifdef DEBUG
+    cerr << "UITGANG 7: Clean" << endl;
+#endif
     return CLEAN;
   }
   else {
+#ifdef DEBUG
+    cerr << "UITGANG 8: UNK" << endl;
+#endif
     return UNK;
   }
 }
@@ -191,24 +219,22 @@ S_Class classify( const string& word, set<UChar>& alphabet,
   else {
     result = classify( us, alphabet );
   }
+#ifdef DEBUG
   cerr << "classify(" << word << ") ==> " << result << endl;
+#endif
   return result;
 }
 
 int main( int argc, char *argv[] ){
   if ( argc < 2	){
-    cerr << "Usage: [-a alphabet] [-c clip] dir/filename " << endl;
+    cerr << "Usage: [-a alphabet] dir/filename " << endl;
     exit(EXIT_FAILURE);
   }
   int opt;
-  int clip = 10;
   string alphafile;
   string simplealphafile;
-  while ((opt = getopt(argc, argv, "c:a:A:")) != -1) {
+  while ((opt = getopt(argc, argv, "a:A:")) != -1) {
     switch (opt) {
-    case 'c':
-      clip = atoi(optarg);
-      break;
     case 'a':
       alphafile = optarg;
       break;
@@ -221,7 +247,6 @@ int main( int argc, char *argv[] ){
       break;
     case 'h':
       cerr << "Usage: [options] freqencyfile" << endl;
-      cerr << "\t-c\t clipping factor. " << endl;
       cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
       cerr << "\t-a\t name of the alphabet file" << endl;
       cerr << "\t-h\t this messages " << endl;
@@ -295,29 +320,26 @@ int main( int argc, char *argv[] ){
     int n = TiCC::split_at( line, v, "\t" );
     if ( n != 4 ){
       cerr << "frequency file in wrong format!" << endl;
+      cerr << "offending line: " << line << endl;
       exit(EXIT_FAILURE);
     }
     unsigned int freq = TiCC::stringTo<unsigned int>(v[1]);
-    if ( freq > clip ){
+
+    string pun;
+    S_Class cl = classify( v[0], alphabet, pun );
+    switch ( cl ){
+    case IGNORE:
+      break;
+    case CLEAN:
       clean_words[v[0]] += freq;
-    }
-    else {
-      string pun;
-      S_Class cl = classify( v[0], alphabet, pun );
-      switch ( cl ){
-      case IGNORE:
-	break;
-      case CLEAN:
-	clean_words[v[0]] += freq;
-	break;
-      case UNK:
-	unk_words[v[0]] += freq;
-	break;
-      case PUNCT:
-	punct_words[v[0]] = pun;
-	clean_words[pun] += freq;
-	break;
-      }
+      break;
+    case UNK:
+      unk_words[v[0]] += freq;
+      break;
+    case PUNCT:
+      punct_words[v[0]] = pun;
+      clean_words[pun] += freq;
+      break;
     }
   }
   cout << "generating output files" << endl;
