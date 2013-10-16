@@ -55,6 +55,18 @@ AX_ICU_CHECK( [3.6],
 	      [AC_MSG_FAILURE( "No ICU development environment found. Please check if libicu-dev
  or the like is installed" )] )
 
+AC_ARG_WITH(textcat,
+       [  --with-textcat=DIR       use textcat installed in <DIR>],
+       [CXXFLAGS="$CXXFLAGS -I$withval/include"
+        LIBS="-L$withval/lib -lexttextcat $LIBS"],
+       [CXXFLAGS="$CXXFLAGS -I$prefix/include"
+        LIBS="-L$prefix/lib -lexttextcat $LIBS"]
+)
+
+AC_CHECK_HEADERS([libexttextcat/textcat.h],
+		[],
+		[AC_MSG_ERROR([Desperatly seeking libtextextcat-dev, it is needed])] )
+
 AC_ARG_WITH(ticcutils,
        [  --with-ticcutils=DIR       use ticcutils installed in <DIR>;
                note that you can install ticcutils in a non-default directory wi
