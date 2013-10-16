@@ -57,15 +57,12 @@ AX_ICU_CHECK( [3.6],
 
 AC_CHECK_HEADERS([libexttextcat/textcat.h],
  	         [CXXFLAGS="$CXXFLAGS -I$prefix/include"
-                  LIBS="-L$prefix/lib -lexttextcat $LIBS"
-		  AC_DEFINE(TEXTCAT_VERSION,3, Which textcat version)],
+                  LIBS="-L$prefix/lib -lexttextcat $LIBS"],
 	         [AC_CHECK_HEADERS([libtextcat/textcat.h],
                                    [CXXFLAGS="$CXXFLAGS -I$prefix/include"
-                                    LIBS="-L$prefix/lib -ltextcat $LIBS"
-				    AC_DEFINE(TEXTCAT_VERSION,2, Which textcat version)],
+                                    LIBS="-L$prefix/lib -ltextcat $LIBS"],
 		                   [AC_CHECK_HEADERS([textcat.h],
-                                                      [LIBS="-L$prefix/lib -ltextcat $LIBS"
-						      AC_DEFINE(TEXTCAT_VERSION,1,Which textcat version)],
+                                                      [LIBS="-L$prefix/lib -ltextcat $LIBS"],
 		                                      [AC_MSG_ERROR([Desperatly seeking libtextextcat-dev, it is needed])])])])
 
 AC_ARG_WITH(ticcutils,
