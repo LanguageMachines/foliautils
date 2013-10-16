@@ -13,7 +13,7 @@
 #include "libfolia/document.h"
 #include "config.h"
 
-#ifdef OLD_TEXTCAT
+#if TEXTCAT_VERSION == 1
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -23,11 +23,16 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
 #else
+#if TEXTCAT_VERSION == 2
+#include "libtextcat/textcat.h"
+#else
+#if TEXTCAT_VERSION == 3
 #include "libexttextcat/textcat.h"
 #endif
-
-#include "config.h"
+#endif
+#endif
 
 using namespace	std;
 using namespace	folia;
