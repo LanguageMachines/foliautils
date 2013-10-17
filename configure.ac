@@ -36,7 +36,7 @@ LT_INIT
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
-AC_CHECK_HEADER_STDBOOL
+AC_HEADER_STDBOOL
 
 # Checks for library functions.
 AC_CHECK_FUNCS([mkdir])
