@@ -28,15 +28,18 @@ AC_LANG([C++])
 
 # use libtool
 AC_PROG_LIBTOOL
-AC_SUBST([LIBTOOL_DEPS])
+LT_INIT
 
 #checks for libraries.
 
 # Checks for header files.
 
 # Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
+AC_CHECK_HEADER_STDBOOL
 
 # Checks for library functions.
+AC_CHECK_FUNCS([mkdir])
 
 # ugly hack when PKG_CONFIG_PATH isn't defined.
 # couldn't get it to work otherwise
