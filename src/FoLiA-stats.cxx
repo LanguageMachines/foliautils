@@ -19,7 +19,7 @@ using namespace	folia;
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int total,
-		     int clip ){
+		     unsigned int clip ){
   ofstream os( filename.c_str() );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
@@ -61,7 +61,7 @@ struct rec {
 
 void create_lf_list( const map<string, unsigned int>& lc,
 		     const string& filename, unsigned int total,
-		     int clip ){
+		     unsigned int clip ){
   ofstream os( filename.c_str() );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
@@ -99,7 +99,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
 
 void create_lpf_list( const multimap<string, rec>& lpc,
 		      const string& filename, unsigned int total,
-		      int clip ){
+		      unsigned int clip ){
   ofstream os( filename.c_str() );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;

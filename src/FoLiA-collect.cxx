@@ -173,7 +173,7 @@ unsigned int fillLF( const string& fName,
   return total;
 }
 
-unsigned int fillLPF( const string& fName, int ng,
+unsigned int fillLPF( const string& fName, unsigned int ng,
 		      multimap<string, rec>& lpc,
 		      bool keepSingles ){
   unsigned int total = 0;
@@ -182,7 +182,7 @@ unsigned int fillLPF( const string& fName, int ng,
     string line;
     getline( is, line );
     vector<string> parts;
-    int num = split_at( line, parts, "\t" );
+    unsigned int num = split_at( line, parts, "\t" );
     if ( num == 4 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
