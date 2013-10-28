@@ -333,6 +333,7 @@ string replaceColon( const string& f ){
 }
 
 void processArticle( const string& f,
+		     const string& subject,
 		     const list<xmlNode*>& parts,
 		     const docCache& cache,
 		     const string& outDir,
@@ -341,7 +342,7 @@ void processArticle( const string& f,
   if ( verbose ){
 #pragma omp critical
     {
-      cout << "start handling " << f << endl;
+      cout << "start handling " << f << " (" << subject << ")" << endl;
     }
   }
   string docid = replaceColon(f);
@@ -362,7 +363,12 @@ void processArticle( const string& f,
     processBlocks( text, blocks, cache );
     ++it;
   }
-  string outName = outDir + docid + ".folia.xml";
+  string outName = outDir;
+  if ( subject == "artikel" )
+    outName += "artikel/";
+  else
+    outName += "overige/";
+  outName += docid + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
     type = outputType;
@@ -391,6 +397,7 @@ void processArticle( const string& f,
 }
 
 void processZone( const string& id,
+		  const string& subject,
 		  xmlNode *zone,
 		  const docCache& cache,
 		  const string& outDir,
@@ -398,7 +405,7 @@ void processZone( const string& id,
 		  const zipType outputType ){
   list<xmlNode *> parts =  TiCC::FindNodes( zone, "dcx:article-part" );
   if ( parts.size() >= 1 ){
-    processArticle( id, parts, cache, outDir, inputType, outputType );
+    processArticle( id, subject, parts, cache, outDir, inputType, outputType );
   }
 }
 
@@ -574,7 +581,6 @@ void solveAlto( const string& altoDir,
   xmlDoc *xmldoc = getXml( file, inputType );
   if ( xmldoc ){
     xmlNode *root = xmlDocGetRootElement( xmldoc );
-    xmlNode *pnt = root;
     xmlNode *metadata = getNode( root, "metadata" );
     if ( metadata ){
       xmlNode *didl = getNode( metadata, "DIDL" );
@@ -605,11 +611,34 @@ void solveAlto( const string& altoDir,
 	    }
 	    set<string>::const_iterator art_it = article_names.begin();
 	    while ( art_it != article_names.end() ){
+	      string subject;
+	      list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":metadata']" );
+	      if ( meta.size() == 1 ){
+		list<xmlNode*> subs = TiCC::FindNodes( meta.front(), "didl:Resource//srw_dc:dcx/dc:subject" );
+		if ( subs.size() == 1 ){
+		  subject = TiCC::XmlContent(subs.front());
+		}
+		else {
+#pragma omp critical
+		  {
+		    cerr << "problems with dc:subject in " << TiCC::getAttribute( subs.front(), "identifier" ) << endl;
+		  }
+		  succes = false;
+		}
+	      }
+	      else {
+#pragma omp critical
+		{
+		  cerr << "problems with metadata in " << *art_it << endl;
+		}
+		succes = false;
+	      }
+
 	      list<xmlNode*> comps = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":zoning']" );
 	      if ( comps.size() == 1 ){
 		list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
 		if ( zones.size() == 1 ){
-		  processZone( *art_it, zones.front(), cache, outDir,
+		  processZone( *art_it, subject, zones.front(), cache, outDir,
 			       inputType, outputType );
 		}
 		else {
@@ -682,7 +711,6 @@ size_t predictAlto( const string& altoDir, const string& file ){
   xmlDoc *xmldoc = getXml( file, inputType );
   if ( xmldoc ){
     xmlNode *root = xmlDocGetRootElement( xmldoc );
-    xmlNode *pnt = root;
     xmlNode *metadata = getNode( root, "metadata" );
     if ( metadata ){
       xmlNode *didl = getNode( metadata, "DIDL" );
@@ -800,10 +828,52 @@ int main( int argc, char *argv[] ){
   vector<string> fileNames;
   string dirName;
   if ( !outputDir.empty() ){
-    if ( !TiCC::isDir(outputDir) ){
-      cerr << "outputdir '" << outputDir << "' doesn't seem to an existing directory"
-	   << endl;
-      exit(EXIT_FAILURE);
+    string name = outputDir;
+    if ( !TiCC::isDir(name) ){
+      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+      if ( res < 0 ){
+	cerr << "outputdir '" << name
+	     << "' doesn't existing and can't be created" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
+    name = outputDir + "artikel/";
+    if ( !TiCC::isDir(name) ){
+      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+      if ( res < 0 ){
+	cerr << "outputdir '" << name
+	     << "' doesn't existing and can't be created" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
+    name = outputDir + "overige/";
+    if ( !TiCC::isDir(name) ){
+      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+      if ( res < 0 ){
+	cerr << "outputdir '" << name
+	     << "' doesn't existing and can't be created" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
+  }
+  else {
+    string name = "artikel/";
+    if ( !TiCC::isDir(name) ){
+      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+      if ( res < 0 ){
+	cerr << "outputdir '" << name
+	     << "' doesn't existing and can't be created" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
+    name = "overige/";
+    if ( !TiCC::isDir(name) ){
+      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+      if ( res < 0 ){
+	cerr << "outputdir '" << name
+	     << "' doesn't existing and can't be created" << endl;
+	exit(EXIT_FAILURE);
+      }
     }
   }
   if ( !argv[optind] ){
