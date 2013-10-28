@@ -347,7 +347,8 @@ void processArticle( const string& f,
   }
   string docid = replaceColon(f);
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, "alto", "annotator='alto'" );
+  doc.declare( folia::AnnotationType::STRING, "alto",
+	       "annotator='alto', datetime='now()'" );
   doc.set_metadata( "genre", subject );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
