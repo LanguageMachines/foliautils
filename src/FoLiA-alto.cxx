@@ -411,7 +411,9 @@ void processZone( const string& id,
   }
 }
 
-bool download( const string& altoDir, const list<xmlNode*>& resources, set<string>& downloaded ){
+bool download( const string& altoDir,
+	       const list<xmlNode*>& resources,
+	       set<string>& downloaded ){
   downloaded.clear();
   struct stat sbuf;
   int d_cnt = 0;
@@ -433,20 +435,22 @@ bool download( const string& altoDir, const list<xmlNode*>& resources, set<strin
   while ( it != resources.end() ){
     string ref = TiCC::getAttribute( *it, "ref" );
     string fn = TiCC::getAttribute( *it, "filename" );
-    fn = altoDir + fn;
-    if ( ref.find( ":alto" ) != string::npos ){
-      ifstream is( fn.c_str() );
-      if ( !is ){
-	// not yet downloaded
-	ref_file_map[ref] = fn;
-      }
-      else {
-	++c_cnt;
-	downloaded.insert( fn );
-	if ( verbose ){
+    if ( !fn.empty() ){
+      fn = altoDir + fn;
+      if ( ref.find( ":alto" ) != string::npos ){
+	ifstream is( fn.c_str() );
+	if ( !is ){
+	  // not yet downloaded
+	  ref_file_map[ref] = fn;
+	}
+	else {
+	  ++c_cnt;
+	  downloaded.insert( fn );
+	  if ( verbose ){
 #pragma omp critical
-	  {
-	    cout << "file " << fn << " already exists" << endl;
+	    {
+	      cout << "file " << fn << " already exists" << endl;
+	    }
 	  }
 	}
       }
@@ -588,81 +592,109 @@ void solveAlto( const string& altoDir,
       xmlNode *didl = getNode( metadata, "DIDL" );
       if ( didl ){
 	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
-	set<string> downloaded_files;
-	if ( download( altoDir, resources, downloaded_files ) ){
-	  list<xmlNode*> blocks = TiCC::FindNodes( didl, "//dcx:blocks" );
-	  docCache cache; // each thread it own cache...
-	  cache.fill( altoDir, blocks );
-	  list<xmlNode*> items = TiCC::FindNodes( didl, "didl:Item/didl:Item/didl:Item" );
-	  set<string> article_names;
-	  if ( items.size() > 0 ){
-	    list<xmlNode*>::const_iterator it = items.begin();
-	    while ( it != items.end() ){
-	      string art_id = TiCC::getAttribute( *it, "article_id" );
-	      if ( art_id.empty() ){
+	if ( resources.size() == 0 ){
 #pragma omp critical
-		{
-		  cerr << "no article ID in " << TiCC::getAttribute( *it, "identifier" )  << endl;
-		}
-		succes = false;
+	  {
+	    cout << "Unable to find usable text/xml resources in the DIDL: "
+		 << file << endl;
+	    succes = false;
+	  }
+	}
+	else {
+	  set<string> downloaded_files;
+	  if ( download( altoDir, resources, downloaded_files ) ){
+	    if ( downloaded_files.size() == 0 ){
+#pragma omp critical
+	      {
+		cerr << "unable to find downloadable files " <<  file << endl;
 	      }
-	      else {
-		article_names.insert( art_id );
-	      }
-	      ++it;
+	      succes = false;
 	    }
-	    set<string>::const_iterator art_it = article_names.begin();
-	    while ( art_it != article_names.end() ){
-	      string subject;
-	      list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":metadata']" );
-	      if ( meta.size() == 1 ){
-		list<xmlNode*> subs = TiCC::FindNodes( meta.front(), "didl:Resource//srw_dc:dcx/dc:subject" );
-		if ( subs.size() == 1 ){
-		  subject = TiCC::XmlContent(subs.front());
-		}
-		else {
+	    else {
+	      cout << "Downloaded files " << endl;
+	      list<xmlNode*> blocks = TiCC::FindNodes( didl, "//dcx:blocks" );
+	      docCache cache; // each thread it own cache...
+	      cache.fill( altoDir, blocks );
+	      list<xmlNode*> items = TiCC::FindNodes( didl, "didl:Item/didl:Item/didl:Item" );
+	      set<string> article_names;
+	      if ( items.size() == 0 ){
 #pragma omp critical
-		  {
-		    cerr << "problems with dc:subject in " << TiCC::getAttribute( subs.front(), "identifier" ) << endl;
-		  }
+		{
+		  cout << "Unable to find usable Items in the DIDL: "
+		       << file << endl;
 		  succes = false;
 		}
 	      }
 	      else {
+		list<xmlNode*>::const_iterator it = items.begin();
+		while ( it != items.end() ){
+		  string art_id = TiCC::getAttribute( *it, "article_id" );
+		  if ( art_id.empty() ){
 #pragma omp critical
-		{
-		  cerr << "problems with metadata in " << *art_it << endl;
+		    {
+		      cerr << "no article ID in " << TiCC::getAttribute( *it, "identifier" )  << endl;
+		    }
+		    succes = false;
+		  }
+		  else {
+		    article_names.insert( art_id );
+		  }
+		  ++it;
 		}
-		succes = false;
-	      }
+		set<string>::const_iterator art_it = article_names.begin();
+		while ( art_it != article_names.end() ){
+		  string subject;
+		  list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":metadata']" );
+		  if ( meta.size() == 1 ){
+		    list<xmlNode*> subs = TiCC::FindNodes( meta.front(), "didl:Resource//srw_dc:dcx/dc:subject" );
+		    if ( subs.size() == 1 ){
+		      subject = TiCC::XmlContent(subs.front());
+		    }
+		    else {
+#pragma omp critical
+		      {
+			cerr << "problems with dc:subject in " << TiCC::getAttribute( subs.front(), "identifier" ) << endl;
+		      }
+		      succes = false;
+		    }
+		  }
+		  else {
+#pragma omp critical
+		    {
+		      cerr << "problems with metadata in " << *art_it << endl;
+		    }
+		    succes = false;
+		  }
 
-	      list<xmlNode*> comps = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":zoning']" );
-	      if ( comps.size() == 1 ){
-		list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
-		if ( zones.size() == 1 ){
-		  processZone( *art_it, subject, zones.front(), cache, outDir,
-			       inputType, outputType );
-		}
-		else {
+		  list<xmlNode*> comps = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":zoning']" );
+		  if ( comps.size() == 1 ){
+		    list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
+		    if ( zones.size() == 1 ){
+		      processZone( *art_it, subject, zones.front(), cache, outDir,
+				   inputType, outputType );
+		    }
+		    else {
 #pragma omp critical
-		  {
-		    cerr << "problems with zones in " << TiCC::getAttribute( comps.front(), "identifier" ) << endl;
+		      {
+			cerr << "problems with zones in " << TiCC::getAttribute( comps.front(), "identifier" ) << endl;
+		      }
+		      succes = false;
+		    }
 		  }
-		  succes = false;
-		}
-	      }
-	      else {
+		  else {
 #pragma omp critical
-		{
-		  cerr << "problems with Components in " << *art_it << endl;
+		    {
+		      cerr << "problems with Components in " << *art_it << endl;
+		    }
+		    succes = false;
+		  }
+		  ++art_it;
 		}
-		succes = false;
 	      }
-	      ++art_it;
+	      if ( clearCachedFiles )
+		clear_files( downloaded_files );
 	    }
 	  }
-	  if ( clearCachedFiles )
-	    clear_files( downloaded_files );
 	}
       }
       else {
