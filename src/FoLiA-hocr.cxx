@@ -136,7 +136,6 @@ void processDiv( xmlNode *div, folia::FoliaElement *out, const string& file ){
     folia::Paragraph *par
       = new folia::Paragraph( out->doc(),
 			      "id='" + out->id() + "." + p_id + "'");
-    out->append( par );
     xmlNode *pnt = pars[i]->children;
     string txt;
     while ( pnt ){
@@ -151,6 +150,7 @@ void processDiv( xmlNode *div, folia::FoliaElement *out, const string& file ){
 	      if ( cls == "ocrx_word" ){
 		string w_id = TiCC::getAttribute( words[j], "id" );
 		string content = extractContent( words[j] );
+		content = TiCC::trim( content );
 		if ( !content.empty() ){
 		  folia::String *str = new folia::String( out->doc(),
 							  "id='" + par->id()
@@ -179,8 +179,12 @@ void processDiv( xmlNode *div, folia::FoliaElement *out, const string& file ){
       }
       pnt = pnt->next;
     }
-    if ( txt.size() > 1 )
+    if ( txt.size() > 1 ){
+      out->append( par );
       par->settext( txt.substr(1), "OCR" );
+    }
+    else
+      delete par;
   }
 }
 
@@ -245,6 +249,7 @@ void convert_hocr( const string& fileName,
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
   process( root, text, docid );
+  xmlFreeDoc( xdoc );
 
   string outName = outputDir;
   outName += docid + ".folia.xml";
