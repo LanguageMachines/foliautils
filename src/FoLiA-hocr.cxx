@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include "libfolia/document.h"
+#include "libxml/HTMLparser.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
@@ -88,8 +89,18 @@ xmlDoc *getXml( const string& file, zipType& type ){
     return 0;
   }
   if ( isHtml ){
-    cerr << "HTML files not supported yet" << endl;
-    exit( EXIT_FAILURE );
+    if ( type == NORMAL ){
+      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+    }
+    string buffer;
+    if ( type == GZ ){
+      buffer = TiCC::gzReadFile( file );
+    }
+    else if ( type == BZ2 ){
+      buffer = TiCC::bz2ReadFile( file );
+    }
+    return htmlReadMemory( buffer.c_str(), buffer.length(),
+			   0, 0, XML_PARSE_NOBLANKS );
   }
   else {
     if ( type == NORMAL ){
@@ -107,188 +118,134 @@ xmlDoc *getXml( const string& file, zipType& type ){
   }
 }
 
-string strip_ext( const string& name ){
-  string::size_type pos = name.rfind( "." );
-  if ( pos != string::npos ){
-    return name.substr(0,pos);
-  }
-  cerr << "problem removing extension (.gz or .bz2)" << endl;
-  exit(EXIT_FAILURE);
-}
-
-void handleSpan( xmlNode *span, folia::FoliaElement *par ){
-  string cls = TiCC::getAttribute( span, "class" );
-  if ( cls != "ocr_line" ){
-    cerr << "unhandle span class: " << cls << endl;
-  }
-  else {
-    string content  = TiCC::XmlContent(span);
-    if ( content.empty() ){
-      return;
-    }
-    folia::Sentence *s = new folia::Sentence( par->doc(),
-					      "generate_id='" + par->id() + "'");
-    par->append( s );
-    folia::KWargs args;
-    args["value"] = TiCC::XmlContent(span);
-    folia::TextContent *t = new folia::TextContent( args );
-    s->append( t );
-  }
-}
-
-void handlePar( xmlNode *par, folia::FoliaElement *out ){
-  xmlNode *pnt = par->children;
-  string text;
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE ){
-      if ( TiCC::Name(pnt) == "span" ){
-	string content = TiCC::XmlContent(pnt);
-	text += content + " ";
-      }
-      else if ( TiCC::Name(pnt) == "br" ){
-	// ignore
-      }
-      else {
-	cerr << "unhandled tag " << TiCC::Name(pnt) << endl;
-      }
-    }
-    pnt = pnt->next;
-  }
-  if ( !text.empty() ){
-    folia::KWargs args;
-    args["value"] = text;
-    folia::TextContent *t = new folia::TextContent( args );
-    out->append( t );
-  }
-}
-
-string filterMeuck( const string& f ){
-  string result = f;
-  for( size_t i=0; i < result.length(); ++i ){
-    if ( result[i] == ':' )
-      result[i] = '.';
-    else if ( result[i] == '/' )
-      result[i] = '.';
+string extractContent( xmlNode* pnt ) {
+  string result;
+  if ( pnt ){
+    result = TiCC::XmlContent(pnt);
+    if ( result == "" )
+      return extractContent( pnt->children );
   }
   return result;
 }
 
-string extractName( const string& title, const string& fallback ){
-  vector<string> vec;
-  string result;
-  TiCC::split_at( title, vec, ";" );
-  for ( size_t i=0; i < vec.size(); ++i ){
-    vector<string> parts;
-    TiCC::split_at( vec[i], parts, " " );
-    if ( parts.size() > 1 ){
-      if ( parts[0] == "image" ){
-	result = TiCC::trim(parts[1]);
-	break;
-      }
-      else if ( parts[0] == "file" ){
-	result = TiCC::trim(parts[1]);
-	break;
-      }
-    }
-  }
-  if ( result.empty() )
-    result = fallback;
-  else if ( !isalpha( result[0] ) )
-    result = "file-" + result;
-  return filterMeuck( result );
-}
 
-void processDiv( xmlNode *div, folia::FoliaElement *out ){
-  string title = TiCC::getAttribute( div, "title" );
-  string nodeId;
-  if ( !title.empty() ){
-    nodeId = extractName( title, out->id() );
-  }
-  folia::Division *division =
-    new folia::Division( out->doc(), "id='" + nodeId + "'");
-  out->append( division );
-  xmlNode *pnt = div->children;
-  folia::Paragraph *par = 0;
-  int parcount = 0;
-  string text;
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE ){
-      if ( TiCC::Name(pnt) == "p" ){
-	parcount++;
-	if ( !text.empty() ){
-	  folia::KWargs args;
-	  args["value"] = text;
-	  folia::TextContent *t = new folia::TextContent( args );
-	  par->append( t );
+void processDiv( xmlNode *div, folia::FoliaElement *out, const string& file ){
+  vector<xmlNode*> pars = getNodes( div->children, "p" );
+  for ( size_t i = 0; i < pars.size(); ++i ){
+    string p_id = TiCC::getAttribute( pars[i], "id" );
+    folia::Paragraph *par
+      = new folia::Paragraph( out->doc(),
+			      "id='" + out->id() + "." + p_id + "'");
+    out->append( par );
+    xmlNode *pnt = pars[i]->children;
+    string txt;
+    while ( pnt ){
+      if ( pnt->type == XML_ELEMENT_NODE ){
+	if ( TiCC::Name(pnt) == "span" ){
+	  string cls = TiCC::getAttribute( pnt, "class" );
+	  if ( cls == "ocr_line" ){
+	    string l_id = TiCC::getAttribute( pnt, "id" );
+	    vector<xmlNode*> words = getNodes( pnt->children, "span" );
+	    for ( size_t j = 0; j < words.size(); ++j ){
+	      string cls = TiCC::getAttribute( words[j], "class" );
+	      if ( cls == "ocrx_word" ){
+		string w_id = TiCC::getAttribute( words[j], "id" );
+		string content = extractContent( words[j] );
+		if ( !content.empty() ){
+		  folia::String *str = new folia::String( out->doc(),
+							  "id='" + par->id()
+							  + "." + w_id + "'" );
+		  par->append( str );
+		  str->settext( content, txt.length(), "OCR" );
+		  txt += " " + content;
+		  folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
+		  str->append( h );
+		  folia::AlignReference *a =
+		    new folia::AlignReference( "id='" + w_id + "', type='str'" );
+		  h->append( a );
+		}
+	      }
+	      else {
+		cerr << "expected class='ocrx_word', got: " << cls << endl;
+		return;
+	      }
+	    }
+	  }
+	  else {
+	    cerr << "expected class='ocr_line', got: " << cls << endl;
+	    return;
+	  }
 	}
-	par = 0;
-	text.clear();
-	folia::Paragraph *tmp
-	  = new folia::Paragraph( division->doc(),
-				  "id='" + division->id() + ".p." +
-				  TiCC::toString(parcount) + "'");
-	cerr << "PAR created paragraph: " << tmp->id() << endl;
-	division->append( tmp );
-	handlePar( pnt, tmp );
       }
-      else if ( TiCC::Name(pnt) == "span" ){
-	string content = TiCC::XmlContent(pnt);
-	text += content + " ";
-	if ( par == 0 ){
-	  parcount++;
-	  par = new folia::Paragraph( division->doc(),
-				      "id='" + division->id() + ".p." +
-				      TiCC::toString(parcount) + "'");
-	  cerr << "SPAN created paragraph: " << par->id() << endl;
-	  division->append( par );
-	}
-
-      }
-      else if ( TiCC::Name(pnt) == "br" ){
-	// ignore
-      }
-      else {
-	cerr << "unhandled tag " << TiCC::Name(pnt) << endl;
-      }
+      pnt = pnt->next;
     }
-    pnt = pnt->next;
-  }
-  if ( !text.empty() ){
-    folia::KWargs args;
-    args["value"] = text;
-    folia::TextContent *t = new folia::TextContent( args );
-    par->append( t );
+    if ( txt.size() > 1 )
+      par->settext( txt.substr(1), "OCR" );
   }
 }
 
-void process( xmlDoc* in, folia::FoliaElement *out ){
-  xmlNode *root = xmlDocGetRootElement( in );
+void process( xmlNode *root, folia::FoliaElement *out, const string& file ){
   vector<xmlNode*> divs = getNodes( root, "div" );
   for ( size_t i=0; i < divs.size(); ++i ){
     string cls = TiCC::getAttribute( divs[i], "class" );
-    if ( cls != "ocr_page" ){
-      cerr << "unhandled <div> with class='" << cls << "'" << endl;
-    }
-    else {
-      processDiv( divs[i], out );
+    if ( cls == "ocr_page" ){
+      processDiv( divs[i], out, file );
     }
   }
+}
+
+string getFile( const string& title ){
+  string result;
+  vector<string> vec;
+  TiCC::split_at( title, vec, ";" );
+  for ( size_t i=0; i < vec.size(); ++i ){
+    vector<string> v1;
+    size_t num = TiCC::split( vec[i], v1 );
+    if ( num == 2 ){
+      if ( TiCC::trim( v1[0] ) == "image" )
+	result = v1[1];
+    }
+  }
+  result = TiCC::trim( result, " \t\"" );
+  return result;
 }
 
 void convert_hocr( const string& fileName,
 		   const string& outputDir,
 		   const zipType outputType ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cout << "start handling " << fileName << endl;
+    }
+  }
   zipType inputType;
   xmlDoc *xdoc = getXml( fileName, inputType );
-  string docid = fileName;
-  if ( inputType != NORMAL )
-    docid = strip_ext( docid );
+  xmlNode *root = xmlDocGetRootElement( xdoc );
+  vector<xmlNode*> divs = getNodes( root, "div" );
+  string title;
+  for ( size_t i=0; i < divs.size(); ++i ){
+    string cls = TiCC::getAttribute( divs[i], "class" );
+    if ( cls == "ocr_page" ){
+      if ( !title.empty() ){
+	cerr << "multiple 'ocr_page' <div> nodes not supported: " << fileName << endl;
+	exit(EXIT_FAILURE);
+      }
+      title = TiCC::getAttribute( divs[i], "title" );
+    }
+  }
+  if ( title.empty() ){
+    cerr << "No 'ocr_page' <div> node found: " << fileName << endl;
+    exit(EXIT_FAILURE);
+  }
+  string docid = getFile( title );
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, "hocr",
+  doc.declare( folia::AnnotationType::STRING, "OCR",
 	       "annotator='folia-hocr', datetime='now()'" );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
-  process( xdoc, text );
+  process( root, text, docid );
+
   string outName = outputDir;
   outName += docid + ".folia.xml";
   zipType type = inputType;
@@ -298,7 +255,24 @@ void convert_hocr( const string& fileName,
     outName += ".bz2";
   else if ( type == GZ )
     outName += ".gz";
-  doc.save( outName );
+  vector<folia::Paragraph*> pv = doc.paragraphs();
+  if ( pv.size() == 0 ||
+       ( pv.size() == 1 && pv[0]->size() == 0 ) ){
+    // no paragraphs, or just 1 without data
+#pragma omp critical
+    {
+      cerr << "skipped empty result : " << outName << endl;
+    }
+  }
+  else {
+    doc.save( outName );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "created " << outName << endl;
+      }
+    }
+  }
 }
 
 int main( int argc, char *argv[] ){
@@ -385,9 +359,13 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    fileNames = TiCC::searchFilesMatch( name, "*.xhtml" );
+    fileNames = TiCC::searchFilesMatch( name, "*html" );
   }
   size_t toDo = fileNames.size();
+  if ( toDo == 0 ){
+    cerr << "no matching files found." << endl;
+    exit(EXIT_FAILURE);
+  }
   if ( toDo > 1 )
     cout << "start processing of " << toDo << " files " << endl;
   if ( numThreads >= 1 ){
