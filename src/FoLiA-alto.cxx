@@ -21,7 +21,6 @@
 using namespace	std;
 
 bool verbose = false;
-bool predict = false;
 bool clearCachedFiles = false;
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
@@ -466,10 +465,8 @@ bool download( const string& altoDir,
     string ref = TiCC::getAttribute( *it, "ref" );
     if ( ref.find( ":alto" ) != string::npos ){
       string id;
-      cerr << "FOUND REF: " << ref << endl;
       string fn = generateName( ref, id );
       urns[id] = ref;
-      cerr << "FOUND URN: " << urns[id] << endl;
       if ( !fn.empty() ){
 	fn = altoDir + fn;
 	ifstream is( fn.c_str() );
@@ -1089,8 +1086,6 @@ void solveBookAlto( const string& altoDir,
 		if ( !id.empty() ){
 		  map<string,string>::const_iterator it = downloaded_files.find( id );
 		  if ( it != downloaded_files.end() ){
-		    cerr << "found a file for id = " << id << endl;
-		    cerr << "found a file for URN = " << urns[id] << endl;
 		    solveBook( it->second, id, urns[id], outDir, outputType );
 		  }
 		}
@@ -1138,70 +1133,6 @@ void solveBookAlto( const string& altoDir,
   }
 }
 
-size_t predictAlto( const string& altoDir, const string& file ){
-  size_t article_count = 0;
-#pragma omp critical
-  {
-    cout << "resolving " << file << endl;
-  }
-  zipType inputType;
-  xmlDoc *xmldoc = getXml( file, inputType );
-  if ( xmldoc ){
-    xmlNode *root = xmlDocGetRootElement( xmldoc );
-    xmlNode *metadata = getNode( root, "metadata" );
-    if ( metadata ){
-      xmlNode *didl = getNode( metadata, "DIDL" );
-      if ( didl ){
-	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
-	set<string> downloaded_files;
-	if ( download( altoDir, resources, downloaded_files ) ){
-	  list<xmlNode*> blocks = TiCC::FindNodes( didl, "//dcx:blocks" );
-	  docCache cache; // each thread it own cache...
-	  cache.fill( altoDir, blocks );
-	  list<xmlNode*> items = TiCC::FindNodes( didl, "didl:Item/didl:Item/didl:Item" );
-	  if ( items.size() > 0 ){
-	    list<xmlNode*>::const_iterator it = items.begin();
-	    while ( it != items.end() ){
-	      string art_id = TiCC::getAttribute( *it, "article_id" );
-	      if ( art_id.empty() ){
-#pragma omp critical
-		{
-		  cerr << "no article ID in " << TiCC::getAttribute( *it, "identifier" )  << endl;
-		}
-	      }
-	      else {
-		++article_count;
-	      }
-	      ++it;
-	    }
-	  }
-	  if ( clearCachedFiles )
-	    clear_files( downloaded_files );
-	}
-      }
-      else {
-#pragma omp critical
-	{
-	  cerr << "no didl" << endl;
-	}
-      }
-    }
-    else {
-#pragma omp critical
-      {
-	cerr << "no metadata" << endl;
-      }
-    }
-    xmlFreeDoc( xmldoc );
-  }
-  else {
-#pragma omp critical
-    {
-      cerr << "XML failed: " << file << endl;
-    }
-  }
-  return article_count;
-}
 
 int main( int argc, char *argv[] ){
   if ( argc < 2	){
@@ -1214,7 +1145,7 @@ int main( int argc, char *argv[] ){
   string outputDir;
   string kind = "krant";
   zipType outputType = NORMAL;
-  while ((opt = getopt(argc, argv, "a:bcghK:t:vVo:p")) != -1) {
+  while ((opt = getopt(argc, argv, "a:bcghK:t:vVo:")) != -1) {
     switch (opt) {
     case 'b':
       outputType = BZ2;
@@ -1238,9 +1169,6 @@ int main( int argc, char *argv[] ){
     case 'v':
       verbose = true;
       break;
-    case 'p':
-      predict = true;
-      break;
     case 'V':
       cerr << PACKAGE_STRING << endl;
       exit(EXIT_SUCCESS);
@@ -1251,7 +1179,6 @@ int main( int argc, char *argv[] ){
       cerr << "\t-c\t clear cached Alto files" << endl;
       cerr << "\t-t\t number_of_threads" << endl;
       cerr << "\t-h\t this messages " << endl;
-      cerr << "\t-p\t prediction mode. only tell how many articles would be generated " << endl;
       cerr << "\t-o\t output directory " << endl;
       cerr << "\t-b\t create bzip2 files (.bz2)" << endl;
       cerr << "\t-g\t create gzip files (.gz)" << endl;
@@ -1362,22 +1289,12 @@ int main( int argc, char *argv[] ){
     omp_set_num_threads( numThreads );
   }
 
-  if ( predict ) {
-    size_t total = 0;
-#pragma omp parallel for shared(fileNames, total )
-    for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-      total += predictAlto( altoDir, fileNames[fn] );
-    }
-    cout << total << " FoLiA files will be generated from " << name << endl;
-  }
-  else {
 #pragma omp parallel for shared(fileNames)
-    for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-      if ( kind == "krant" )
-	solveArtAlto( altoDir, fileNames[fn], outputDir, outputType );
-      else
-	solveBookAlto( altoDir, fileNames[fn], outputDir, outputType );
-    }
+  for ( size_t fn=0; fn < fileNames.size(); ++fn ){
+    if ( kind == "krant" )
+      solveArtAlto( altoDir, fileNames[fn], outputDir, outputType );
+    else
+      solveBookAlto( altoDir, fileNames[fn], outputDir, outputType );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
