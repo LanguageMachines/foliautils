@@ -41,6 +41,22 @@ xmlNode *getNode( xmlNode *pnt, const string& tag ){
   return 0;
 }
 
+void getNodes( xmlNode *pnt, const string& tag, list<xmlNode*>& res ){
+  while ( pnt ){
+    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
+      res.push_back( pnt );
+    }
+    getNodes( pnt->children, tag, res );
+    pnt = pnt->next;
+  }
+}
+
+list<xmlNode*> getNodes( xmlNode *pnt, const string& tag ){
+  list<xmlNode*> res;
+  getNodes( pnt, tag, res );
+  return res;
+}
+
 class docCache {
 public:
   ~docCache() { clear(); };
@@ -323,11 +339,11 @@ void processBlocks( folia::FoliaElement *text,
   }
 }
 
-string replaceColon( const string& f ){
+string replaceColon( const string& f, char r ){
   string result = f;
   for( size_t i=0; i < result.length(); ++i ){
     if ( result[i] == ':' )
-      result[i] = '.';
+      result[i] = r;
   }
   return result;
 }
@@ -345,7 +361,7 @@ void processArticle( const string& f,
       cout << "start handling " << f << " (" << subject << ")" << endl;
     }
   }
-  string docid = replaceColon(f);
+  string docid = replaceColon(f,'.');
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, "alto",
 	       "annotator='alto', datetime='now()'" );
@@ -411,6 +427,127 @@ void processZone( const string& id,
   }
 }
 
+string generateName( const string& ref, string& id ){
+  string res;
+  string::size_type pos = ref.find( "urn=" );
+  res = ref.substr(pos+4);
+  id = res;
+  pos = res.find( ":mpeg21" );
+  res = res.substr(0,pos) + res.substr(pos+7);
+  res = replaceColon(res,'_');
+  res += ".xml";
+  return res;
+}
+
+bool download( const string& altoDir,
+	       const list<xmlNode*>& resources,
+	       map<string,string>& urns,
+	       map<string,string>& downloaded ) {
+  urns.clear();
+  downloaded.clear();
+  struct stat sbuf;
+  int d_cnt = 0;
+  int c_cnt = 0;
+  int res = stat( altoDir.c_str(), &sbuf );
+  if ( res == -1 || !S_ISDIR(sbuf.st_mode) ){
+    res = mkdir( altoDir.c_str(), S_IRWXU|S_IRWXG );
+    if ( res ){
+#pragma omp critical
+      {
+	cerr << "problem finding or creating alto dir '" << altoDir
+	     << "' : " << res << endl;
+      }
+      return false;
+    }
+  }
+  list<xmlNode*>::const_iterator it = resources.begin();
+  map<string,string> ref_file_map;
+  while ( it != resources.end() ){
+    string ref = TiCC::getAttribute( *it, "ref" );
+    if ( ref.find( ":alto" ) != string::npos ){
+      string id;
+      cerr << "FOUND REF: " << ref << endl;
+      string fn = generateName( ref, id );
+      urns[id] = ref;
+      cerr << "FOUND URN: " << urns[id] << endl;
+      if ( !fn.empty() ){
+	fn = altoDir + fn;
+	ifstream is( fn.c_str() );
+	if ( !is ){
+	  // not yet downloaded
+	  ref_file_map[ref] = fn;
+	  downloaded[id] = fn;
+	}
+	else {
+	  ++c_cnt;
+	  downloaded[id] = fn;
+	  if ( verbose ){
+#pragma omp critical
+	    {
+	      cout << "file " << fn << " already exists" << endl;
+	    }
+	  }
+	}
+      }
+    }
+    ++it;
+  }
+
+  int retry = 3;
+  while ( retry-- > 0 ){
+    map<string,string>::iterator it = ref_file_map.begin();
+    while ( it != ref_file_map.end() ){
+      string cmd = "wget " + it->first + " -q -O " + it->second;
+      int res = system( cmd.c_str() );
+      if ( res ){
+	if ( retry == 0 ){
+#pragma omp critical
+	  {
+	    cerr << "repeatedly failed to execute: '" << cmd << "'" << endl;
+	  }
+	  downloaded[it->second] = "FAIL";
+	}
+	++it;
+      }
+      else {
+	++d_cnt;
+	ref_file_map.erase( it++ );
+      }
+    }
+  }
+  if ( !ref_file_map.empty() ){
+#pragma omp critical
+    {
+      cerr << "unable to retrieve some alto files:" << endl;
+    }
+    map<string,string>::const_iterator it = ref_file_map.begin();
+#pragma omp critical
+    {
+      while ( it != ref_file_map.end() ){
+	cerr << "reference:" << it->first
+	     << " filename: " << it->second << endl;
+	++it;
+      }
+    }
+    if ( (d_cnt + c_cnt) == 0 ){
+#pragma omp critical
+      {
+	cerr << "NO alto files retrieved, no use to continue." << endl;
+      }
+      return false;
+    }
+
+  }
+  if ( verbose ){
+#pragma omp critical
+    {
+      cout << "retrieved " << d_cnt + c_cnt << " alto files. ("
+	   << c_cnt << " from cache)" << endl;
+    }
+  }
+  return true;
+}
+
 bool download( const string& altoDir,
 	       const list<xmlNode*>& resources,
 	       set<string>& downloaded ){
@@ -435,9 +572,9 @@ bool download( const string& altoDir,
   while ( it != resources.end() ){
     string ref = TiCC::getAttribute( *it, "ref" );
     string fn = TiCC::getAttribute( *it, "filename" );
-    if ( !fn.empty() ){
-      fn = altoDir + fn;
-      if ( ref.find( ":alto" ) != string::npos ){
+    if ( ref.find( ":alto" ) != string::npos ){
+      if ( !fn.empty() ){
+	fn = altoDir + fn;
 	ifstream is( fn.c_str() );
 	if ( !is ){
 	  // not yet downloaded
@@ -547,13 +684,13 @@ void clear_files( const set<string>& files ){
 
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
-  if ( TiCC::match_back( file, ":mpeg21.xml" ) ){
+  if ( TiCC::match_back( file, ".xml" ) ){
     type = NORMAL;
   }
-  else if ( TiCC::match_back( file, ":mpeg21.xml.gz" ) ){
+  else if ( TiCC::match_back( file, ".xml.gz" ) ){
     type = GZ;
   }
-  else if ( TiCC::match_back( file, ":mpeg21.xml.bz2" ) ){
+  else if ( TiCC::match_back( file, ".xml.bz2" ) ){
     type = BZ2;
   }
   if ( type == UNKNOWN ){
@@ -574,14 +711,14 @@ xmlDoc *getXml( const string& file, zipType& type ){
 			0, 0, XML_PARSE_NOBLANKS );
 }
 
-void solveAlto( const string& altoDir,
-		const string& file,
-		const string& outDir,
-		zipType outputType ){
+void solveArtAlto( const string& altoDir,
+		   const string& file,
+		   const string& outDir,
+		   zipType outputType ){
   bool succes = true;
 #pragma omp critical
   {
-    cout << "resolving " << file << endl;
+    cout << "resolving KRANT " << file << endl;
   }
   zipType inputType;
   xmlDoc *xmldoc = getXml( file, inputType );
@@ -735,6 +872,272 @@ void solveAlto( const string& altoDir,
   }
 }
 
+void solveBook( const string& altoFile, const string& id,
+		const string& urn,
+		const string& outDir, zipType outputType ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cout << "start handling " << altoFile << endl;
+    }
+  }
+  zipType inputType;
+  xmlDoc *xmldoc = getXml( altoFile, inputType );
+  if ( xmldoc ){
+    string docid = replaceColon( id, '.' );
+    folia::Document doc( "id='" + docid + "'" );
+    doc.declare( folia::AnnotationType::STRING, "alto",
+		 "annotator='alto', datetime='now()'" );
+    //    doc.set_metadata( "genre", subject );
+    folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
+    doc.append( text );
+    xmlNode *root = xmlDocGetRootElement( xmldoc );
+    list<xmlNode*> textblocks = getNodes( root, "TextBlock" );
+    if ( textblocks.size() == 0 ){
+#pragma omp critical
+      {
+	cerr << "found no textblocks in" <<  altoFile << endl;
+      }
+      return;
+    }
+    xmlNode *keepPart1 = 0;
+    set<string> ids;
+    list<xmlNode*>::const_iterator bit = textblocks.begin();
+    while ( bit != textblocks.end() ){
+      string id = TiCC::getAttribute( *bit, "ID" );
+      if ( ids.find(id) != ids.end() ){
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "skip duplicate ID " << id << endl;
+	  }
+	}
+	++bit;
+	continue;
+      }
+      else {
+	ids.insert(id);
+      }
+      folia::Paragraph *p =
+	new folia::Paragraph( text->doc(), "id='" + text->id() + ".p." + id + "'" );
+      text->append( p );
+      string ocr_text;
+      list<xmlNode*> v =
+	TiCC::FindNodes( root,
+			 "//*[local-name()='TextBlock' and @ID='"
+			 + id + "']" );
+      if ( v.size() == 1 ){
+	xmlNode *node = v.front();
+	string tb_id = TiCC::getAttribute( node, "ID" );
+	list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
+	list<xmlNode*>::const_iterator lit = lv.begin();
+	while ( lit != lv.end() ){
+	  xmlNode *pnt = (*lit)->children;
+	  while ( pnt != 0 ){
+	    if ( pnt->type == XML_ELEMENT_NODE ){
+	      if ( TiCC::Name(pnt) == "String" ){
+		string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
+		if ( sub == "HypPart2" ){
+		  if ( keepPart1 == 0 ){
+		    addStr( p, ocr_text, pnt, urn );
+		  }
+		  else {
+		    folia::KWargs atts = folia::getAttributes( keepPart1 );
+		    folia::KWargs args;
+		    args["id"] = atts["ID"];
+		    args["class"] = "OCR";
+		    folia::String *s = new folia::String( text->doc(), args );
+		    p->append( s );
+		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(), "OCR" );
+		    ocr_text += " " + atts["SUBS_CONTENT"];
+		    folia::Alignment *h =
+		      new folia::Alignment( "href='" + urn + "'" );
+		    s->append( h );
+		    folia::AlignReference *a = 0;
+		    a = new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+		    h->append( a );
+		    a = new folia::AlignReference( "id='" +
+						   TiCC::getAttribute( pnt, "ID" )
+						   + "', type='str'" );
+		    h->append( a );
+		    keepPart1 = 0;
+		  }
+		  pnt = pnt->next;
+		  continue;
+		}
+		else if ( sub == "HypPart1" ){
+		  // see if there is a Part2 in next line at this level.
+		  xmlNode *part2 = findPart2Level( *lit );
+		  if ( part2 ){
+		    keepPart1 = pnt;
+		    break; //continue with next TextLine
+		  }
+		  else {
+		    // no second part on this level. seek in the next TextBlock
+		    part2 = findPart2Block( node );
+		    if ( !part2 ){
+		      // Ok. Just ignore this and take the CONTENT
+		      addStr( p, ocr_text, pnt, urn );
+		    }
+		    else {
+		      keepPart1 = pnt;
+		      break; //continue with next TextLine, but this should
+		      // be empty, so in fact we go to the next block
+		    }
+		  }
+		}
+		else {
+		  addStr( p, ocr_text, pnt, urn );
+		}
+	      }
+	    }
+	    pnt = pnt->next;
+	  }
+	  ++lit;
+	}
+      }
+      else if ( v.size() == 0 ){
+	// probably an CB node...
+	if ( id.find("CB") != string::npos ){
+	  // YES
+	}
+	else
+	  cerr << "found nothing, what is this? " << id << endl;
+      }
+      else {
+	cerr << "Confusing! " << endl;
+      }
+      if ( !ocr_text.empty() )
+	p->settext( ocr_text.substr(1), "OCR" );
+      ++bit;
+    }
+    zipType type = inputType;
+    string outName = outDir + docid + ".folia.xml";
+    if ( outputType != NORMAL )
+      type = outputType;
+    if ( type == BZ2 )
+      outName += ".bz2";
+    else if ( type == GZ )
+      outName += ".gz";
+    vector<folia::Paragraph*> pv = doc.paragraphs();
+    if ( pv.size() == 0 ||
+	 ( pv.size() == 1 && pv[0]->size() == 0 ) ){
+      // no paragraphs, or just 1 without data
+#pragma omp critical
+      {
+	cerr << "skipped empty result : " << outName << endl;
+      }
+    }
+    else {
+      doc.save( outName );
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cout << "created: " << outName << endl;
+	}
+      }
+    }
+  }
+  else {
+    cerr << "unable to read " << altoFile << endl;
+  }
+}
+
+void solveBookAlto( const string& altoDir,
+		    const string& file,
+		    const string& outDir,
+		    zipType outputType ){
+  bool succes = true;
+#pragma omp critical
+  {
+    cout << "resolving BOEK " << file << endl;
+  }
+  zipType inputType;
+  xmlDoc *xmldoc = getXml( file, inputType );
+  if ( xmldoc ){
+    xmlNode *root = xmlDocGetRootElement( xmldoc );
+    xmlNode *metadata = getNode( root, "metadata" );
+    if ( metadata ){
+      xmlNode *didl = getNode( metadata, "DIDL" );
+      if ( didl ){
+	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
+	if ( resources.size() == 0 ){
+#pragma omp critical
+	  {
+	    cout << "Unable to find usable text/xml resources in the DIDL: "
+		 << file << endl;
+	    succes = false;
+	  }
+	}
+	else {
+	  map<string,string> urns;
+	  map<string,string> downloaded_files;
+	  if ( download( altoDir, resources, urns, downloaded_files ) ){
+	    if ( downloaded_files.size() == 0 ){
+#pragma omp critical
+	      {
+		cerr << "unable to find downloadable files " <<  file << endl;
+	      }
+	      succes = false;
+	    }
+	    else {
+	      cout << "Downloaded files " << endl;
+	      list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component" );
+	      list<xmlNode*>::const_iterator it = meta.begin();
+	      while ( it != meta.end() ){
+		string id = TiCC::getAttribute( *it, "identifier");
+		if ( !id.empty() ){
+		  map<string,string>::const_iterator it = downloaded_files.find( id );
+		  if ( it != downloaded_files.end() ){
+		    cerr << "found a file for id = " << id << endl;
+		    cerr << "found a file for URN = " << urns[id] << endl;
+		    solveBook( it->second, id, urns[id], outDir, outputType );
+		  }
+		}
+		++it;
+	      }
+	    }
+	  }
+	}
+      }
+      else {
+#pragma omp critical
+	{
+	  cerr << "no didl" << endl;
+	}
+	succes = false;
+      }
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "no metadata" << endl;
+      }
+      succes = false;
+    }
+    xmlFreeDoc( xmldoc );
+  }
+  else {
+#pragma omp critical
+    {
+      cerr << "XML failed: " << file << endl;
+    }
+    succes = false;
+  }
+  if ( succes ){
+#pragma omp critical
+    {
+      cout << "resolved " << file << endl;
+    }
+  }
+  else {
+#pragma omp critical
+    {
+      cout << "FAILED: " << file << endl;
+    }
+  }
+}
+
 size_t predictAlto( const string& altoDir, const string& file ){
   size_t article_count = 0;
 #pragma omp critical
@@ -809,8 +1212,9 @@ int main( int argc, char *argv[] ){
   int numThreads=1;
   string altoDir = "/tmp/altocache/";
   string outputDir;
+  string kind = "krant";
   zipType outputType = NORMAL;
-  while ((opt = getopt(argc, argv, "a:bcght:vVo:p")) != -1) {
+  while ((opt = getopt(argc, argv, "a:bcghK:t:vVo:p")) != -1) {
     switch (opt) {
     case 'b':
       outputType = BZ2;
@@ -820,6 +1224,13 @@ int main( int argc, char *argv[] ){
       break;
     case 'g':
       outputType = GZ;
+      break;
+    case 'K':
+      kind = optarg;
+      if ( kind != "krant" && kind != "boek" ){
+	cerr << "unknown Kind: use 'krant' or 'boek' (default='krant')" << endl;
+	exit(EXIT_FAILURE);
+      }
       break;
     case 't':
       numThreads = atoi(optarg);
@@ -871,26 +1282,28 @@ int main( int argc, char *argv[] ){
 	exit(EXIT_FAILURE);
       }
     }
-    name = outputDir + "artikel/";
-    if ( !TiCC::isDir(name) ){
-      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-      if ( res < 0 ){
-	cerr << "outputdir '" << name
-	     << "' doesn't existing and can't be created" << endl;
-	exit(EXIT_FAILURE);
+    if ( kind == "krant" ){
+      name = outputDir + "artikel/";
+      if ( !TiCC::isDir(name) ){
+	int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+	if ( res < 0 ){
+	  cerr << "outputdir '" << name
+	       << "' doesn't existing and can't be created" << endl;
+	  exit(EXIT_FAILURE);
+	}
       }
-    }
-    name = outputDir + "overige/";
-    if ( !TiCC::isDir(name) ){
-      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-      if ( res < 0 ){
-	cerr << "outputdir '" << name
-	     << "' doesn't existing and can't be created" << endl;
-	exit(EXIT_FAILURE);
+      name = outputDir + "overige/";
+      if ( !TiCC::isDir(name) ){
+	int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+	if ( res < 0 ){
+	  cerr << "outputdir '" << name
+	       << "' doesn't existing and can't be created" << endl;
+	  exit(EXIT_FAILURE);
+	}
       }
     }
   }
-  else {
+  else if ( kind == "krant" ){
     string name = "artikel/";
     if ( !TiCC::isDir(name) ){
       int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
@@ -960,8 +1373,10 @@ int main( int argc, char *argv[] ){
   else {
 #pragma omp parallel for shared(fileNames)
     for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-
-      solveAlto( altoDir, fileNames[fn], outputDir, outputType );
+      if ( kind == "krant" )
+	solveArtAlto( altoDir, fileNames[fn], outputDir, outputType );
+      else
+	solveBookAlto( altoDir, fileNames[fn], outputDir, outputType );
     }
   }
   cout << "done" << endl;
