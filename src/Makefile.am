@@ -2,7 +2,7 @@
 # $URL$
 
 bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
-	FoLiA-alto FoLiA-langcat FoLiA-hocr
+	FoLiA-alto FoLiA-langcat FoLiA-hocr FoLiA-page
 
 FoLiA_stats_SOURCES = FoLiA-stats.cxx
 FoLiA_collect_SOURCES = FoLiA-collect.cxx
@@ -11,3 +11,4 @@ FoLiA_correct_SOURCES = FoLiA-correct.cxx
 FoLiA_alto_SOURCES = FoLiA-alto.cxx
 FoLiA_langcat_SOURCES = FoLiA-langcat.cxx
 FoLiA_hocr_SOURCES = FoLiA-hocr.cxx
+FoLiA_page_SOURCES = FoLiA-page.cxx
