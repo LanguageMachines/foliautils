@@ -115,6 +115,16 @@ string getOrg( xmlNode *node ){
   return result;
 }
 
+string stripDir( const string& name ){
+  string::size_type pos = name.rfind( "/" );
+  if ( pos == string::npos ){
+    return name;
+  }
+  else {
+    return name.substr( pos+1 );
+  }
+}
+
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType ){
@@ -227,7 +237,8 @@ bool convert_pagexml( const string& fileName,
   string docid = orgFile;
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
-	       "annotator='folia-hocr', datetime='now()'" );
+	       "annotator='folia-page', datetime='now()'" );
+  doc.set_metadata( "page_file", stripDir( fileName ) );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
   process( text, regionStrings, backrefs, docid );
