@@ -100,6 +100,35 @@ void process( folia::FoliaElement *out,
   }
 }
 
+void process( folia::FoliaElement *out,
+	      const map<string,string>& values,
+	      const map<string,string>& labels,
+	      const string& file ){
+  map<string,string>::const_iterator it = values.begin();
+  while ( it != values.end() ){
+    string line = it->second;
+    vector<string> parts;
+    TiCC::split( line, parts );
+    string parTxt;
+    for ( size_t j=0; j< parts.size(); ++j ){
+      parTxt += parts[j];
+      if ( j != parts.size()-1 )
+	parTxt += " ";
+    }
+    folia::Paragraph *par
+      = new folia::Paragraph( out->doc(),
+			      "id='" + out->id() + "." + labels.at(it->first) + "'");
+    par->settext( parTxt, setname );
+    out->append( par );
+    int pos = 0;
+    for ( size_t j=0; j< parts.size(); ++j ){
+      string id = "word_" + TiCC::toString(j);
+      appendStr( par, pos, parts[j], id, file );
+    }
+    ++it;
+  }
+}
+
 string getOrg( xmlNode *node ){
   string result;
   if ( node->type == XML_CDATA_SECTION_NODE ){
@@ -194,6 +223,8 @@ bool convert_pagexml( const string& fileName,
   }
 
   vector<string> regionStrings( refs.size() );
+  map<string,string> specials;
+  map<string,string> specialRefs;
   list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
   if ( regions.size() == 0 ){
 #pragma omp critical
@@ -205,34 +236,56 @@ bool convert_pagexml( const string& fileName,
   it = regions.begin();
   while ( it != regions.end() ){
     string index = TiCC::getAttribute( *it, "id" );
-    map<string,int>::const_iterator mit = refs.find(index);
-    if ( mit == refs.end() ){
-      if ( verbose ){
+    string type = TiCC::getAttribute( *it, "type" );
+    int key = -1;
+    if ( type == "paragraph" || type == "catch-word" ){
+      map<string,int>::const_iterator mit = refs.find(index);
+      if ( mit == refs.end() ){
 #pragma omp critical
 	{
-	  cerr << "ignoring Unordered id " << index << " in " << fileName << endl;
+	  cerr << "ignoring paragraph index=" << index
+	       << ", not found in ReadingOrder of " << fileName << endl;
 	}
       }
+      else {
+	key = mit->second;
+      }
+    }
+    else if ( type == "page-number" || type == "header" ){
+      //
     }
     else {
+#pragma omp critical
+      {
+	cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
+      }
+      type.clear();
+    }
+    if ( !type.empty() ){
       xmlNode *unicode = TiCC::xPath( *it, ".//*:Unicode" );
       if ( !unicode ){
 #pragma omp critical
 	{
 	  cerr << "missing Unicode node in " << TiCC::Name(*it) << " of " << fileName << endl;
 	}
-
       }
       else {
-	regionStrings[mit->second] = TiCC::XmlContent( unicode );
+	string value = TiCC::XmlContent( unicode );
+	if ( key >= 0 ){
+	  regionStrings[key] = value;
+	}
+	else if ( type == "page-number" || type == "header"){
+	  specials[type] = value;
+	  specialRefs[type] = index;
+	}
       }
     }
     ++it;
   }
   xmlFreeDoc( xdoc );
-  // for ( size_t i=0; i < regionStrings.size(); ++i ){
-  //   cerr << "[" << i << "]-" << regionStrings[i] << endl;
-  // }
+  for ( size_t i=0; i < regionStrings.size(); ++i ){
+     cerr << "[" << i << "]-" << regionStrings[i] << endl;
+  }
 
   string docid = orgFile;
   folia::Document doc( "id='" + docid + "'" );
@@ -241,6 +294,7 @@ bool convert_pagexml( const string& fileName,
   doc.set_metadata( "page_file", stripDir( fileName ) );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
+  process( text, specials, specialRefs, docid );
   process( text, regionStrings, backrefs, docid );
 
   string outName = outputDir;
