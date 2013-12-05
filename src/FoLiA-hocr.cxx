@@ -26,21 +26,6 @@ bool predict = false;
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
-xmlNode *getNode( xmlNode *pnt, const string& tag ){
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
-      return pnt;
-    }
-    else {
-      xmlNode *res  = getNode( pnt->children, tag );
-      if ( res )
-	return res;
-    }
-    pnt = pnt->next;
-  }
-  return 0;
-}
-
 void getNodes( xmlNode *pnt, const string& tag, vector<xmlNode*>& res ){
   while ( pnt ){
     if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
