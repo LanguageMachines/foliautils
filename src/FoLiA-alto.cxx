@@ -25,37 +25,6 @@ bool clearCachedFiles = false;
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
-xmlNode *getNode( xmlNode *pnt, const string& tag ){
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
-      return pnt;
-    }
-    else {
-      xmlNode *res  = getNode( pnt->children, tag );
-      if ( res )
-	return res;
-    }
-    pnt = pnt->next;
-  }
-  return 0;
-}
-
-void getNodes( xmlNode *pnt, const string& tag, list<xmlNode*>& res ){
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
-      res.push_back( pnt );
-    }
-    getNodes( pnt->children, tag, res );
-    pnt = pnt->next;
-  }
-}
-
-list<xmlNode*> getNodes( xmlNode *pnt, const string& tag ){
-  list<xmlNode*> res;
-  getNodes( pnt, tag, res );
-  return res;
-}
-
 class docCache {
 public:
   ~docCache() { clear(); };
@@ -183,6 +152,8 @@ xmlNode *findPart2Block( const xmlNode *start ){
   return 0;
 }
 
+const string setname = "OCR";
+
 void addStr( folia::Paragraph *par, string& txt,
 	     const xmlNode *pnt, const string& altoFile ){
   folia::KWargs atts = folia::getAttributes( pnt );
@@ -190,7 +161,7 @@ void addStr( folia::Paragraph *par, string& txt,
   args["id"] = atts["ID"];
   folia::String *s = new folia::String( par->doc(), args );
   par->append( s );
-  s->settext( atts["CONTENT"], txt.length(), "OCR" );
+  s->settext( atts["CONTENT"], txt.length(), setname );
   txt += " " + atts["CONTENT"];
   folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
   s->append( h );
@@ -249,10 +220,10 @@ void createFile( folia::FoliaElement *text,
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  folia::KWargs args;
 		  args["id"] = atts["ID"];
-		  args["class"] = "OCR";
+		  args["class"] = setname;
 		  folia::String *s = new folia::String( text->doc(), args );
 		  p->append( s );
-		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(), "OCR" );
+		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(), setname );
 		  ocr_text += " " + atts["SUBS_CONTENT"];
 		  folia::Alignment *h =
 		    new folia::Alignment( "href='" + altoFile + "'" );
@@ -312,7 +283,7 @@ void createFile( folia::FoliaElement *text,
       cerr << "Confusing! " << endl;
     }
     if ( !ocr_text.empty() )
-      p->settext( ocr_text.substr(1), "OCR" );
+      p->settext( ocr_text.substr(1), setname );
     ++bit;
   }
 }
@@ -721,9 +692,9 @@ void solveArtAlto( const string& altoDir,
   xmlDoc *xmldoc = getXml( file, inputType );
   if ( xmldoc ){
     xmlNode *root = xmlDocGetRootElement( xmldoc );
-    xmlNode *metadata = getNode( root, "metadata" );
+    xmlNode *metadata = TiCC::xPath( root, "//*:metadata" );
     if ( metadata ){
-      xmlNode *didl = getNode( metadata, "DIDL" );
+      xmlNode *didl = TiCC::xPath( metadata, "//*[local-name()='DIDL']" );
       if ( didl ){
 	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
 	if ( resources.size() == 0 ){
@@ -889,7 +860,7 @@ void solveBook( const string& altoFile, const string& id,
     folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
-    list<xmlNode*> textblocks = getNodes( root, "TextBlock" );
+    list<xmlNode*> textblocks = TiCC::FindNodes( root, "TextBlock" );
     if ( textblocks.size() == 0 ){
 #pragma omp critical
       {
@@ -942,10 +913,10 @@ void solveBook( const string& altoFile, const string& id,
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    folia::KWargs args;
 		    args["id"] = atts["ID"];
-		    args["class"] = "OCR";
+		    args["class"] = setname;
 		    folia::String *s = new folia::String( text->doc(), args );
 		    p->append( s );
-		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(), "OCR" );
+		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(), setname );
 		    ocr_text += " " + atts["SUBS_CONTENT"];
 		    folia::Alignment *h =
 		      new folia::Alignment( "href='" + urn + "'" );
@@ -1005,7 +976,7 @@ void solveBook( const string& altoFile, const string& id,
 	cerr << "Confusing! " << endl;
       }
       if ( !ocr_text.empty() )
-	p->settext( ocr_text.substr(1), "OCR" );
+	p->settext( ocr_text.substr(1), setname );
       ++bit;
     }
     zipType type = inputType;
@@ -1053,9 +1024,9 @@ void solveBookAlto( const string& altoDir,
   xmlDoc *xmldoc = getXml( file, inputType );
   if ( xmldoc ){
     xmlNode *root = xmlDocGetRootElement( xmldoc );
-    xmlNode *metadata = getNode( root, "metadata" );
+    xmlNode *metadata = TiCC::xPath( root, "//*:metadata" );
     if ( metadata ){
-      xmlNode *didl = getNode( metadata, "DIDL" );
+      xmlNode *didl = TiCC::xPath( metadata, "//*[local-name()='DIDL']" );
       if ( didl ){
 	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
 	if ( resources.size() == 0 ){
