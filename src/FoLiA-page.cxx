@@ -25,37 +25,6 @@ bool predict = false;
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
-xmlNode *getNode( xmlNode *pnt, const string& tag ){
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
-      return pnt;
-    }
-    else {
-      xmlNode *res  = getNode( pnt->children, tag );
-      if ( res )
-	return res;
-    }
-    pnt = pnt->next;
-  }
-  return 0;
-}
-
-void getNodes( xmlNode *pnt, const string& tag, vector<xmlNode*>& res ){
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
-      res.push_back( pnt );
-    }
-    getNodes( pnt->children, tag, res );
-    pnt = pnt->next;
-  }
-}
-
-vector<xmlNode*> getNodes( xmlNode *pnt, const string& tag ){
-  vector<xmlNode*> res;
-  getNodes( pnt, tag, res );
-  return res;
-}
-
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
   if ( TiCC::match_back( file, ".xml" ) ){
@@ -85,16 +54,7 @@ xmlDoc *getXml( const string& file, zipType& type ){
 			0, 0, XML_PARSE_NOBLANKS );
 }
 
-string extractContent( xmlNode* pnt ) {
-  string result;
-  if ( pnt ){
-    result = TiCC::XmlContent(pnt);
-    if ( result == "" )
-      return extractContent( pnt->children );
-  }
-  return result;
-}
-
+const string setname = "OCR-GT";
 
 void appendStr( folia::FoliaElement *par, int& pos,
 		const string& val, const string& id,
@@ -104,7 +64,7 @@ void appendStr( folia::FoliaElement *par, int& pos,
 					    "id='" + par->id()
 					    + "." + id + "'" );
     par->append( str );
-    str->settext( val, pos, "OCR" );
+    str->settext( val, pos, setname );
     pos += val.length();
     folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
     str->append( h );
@@ -130,7 +90,7 @@ void process( folia::FoliaElement *out,
     folia::Paragraph *par
       = new folia::Paragraph( out->doc(),
 			      "id='" + out->id() + "." + refs[i] + "'");
-    par->settext( parTxt, "OCR" );
+    par->settext( parTxt, setname );
     out->append( par );
     int pos = 0;
     for ( size_t j=0; j< parts.size(); ++j ){
@@ -155,7 +115,7 @@ string getOrg( xmlNode *node ){
   return result;
 }
 
-void convert_pagexml( const string& fileName,
+bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType ){
   if ( verbose ){
@@ -167,7 +127,7 @@ void convert_pagexml( const string& fileName,
   zipType inputType;
   xmlDoc *xdoc = getXml( fileName, inputType );
   xmlNode *root = xmlDocGetRootElement( xdoc );
-  xmlNode* comment = getNode( root, "Comment" );
+  xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
   string orgFile;
   if ( comment ){
     orgFile = getOrg( comment->children );
@@ -177,35 +137,66 @@ void convert_pagexml( const string& fileName,
     {
       cerr << "unable to retrieve an original filename from " << fileName << endl;
     }
-    return;
+    return false;
   }
-
-  vector<xmlNode*> order = getNodes( root, "ReadingOrder" );
-  if ( order.size() != 1 ){
+  if ( verbose ){
 #pragma omp critical
     {
-      cerr << "Problem finding 1 ReadingOrder node in " << fileName << endl;
+      cout << "original file: " << orgFile << endl;
     }
-    return;
   }
-  order = getNodes( order[0], "RegionRefIndexed" );
+  list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
+  if ( order.size() ==  0 ){
+#pragma omp critical
+    {
+      cerr << "Problem finding ReadingOrder node in " << fileName << endl;
+    }
+    return false;
+  }
+  if ( order.size() > 1 ){
+#pragma omp critical
+    {
+      cerr << "Found more then 1 ReadingOrder node in " << fileName << endl;
+      cerr << "This is not supported." << endl;
+    }
+    return false;
+  }
+  list<xmlNode*>::const_iterator it = order.begin();
+  order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
+  if ( order.size() == 0 ){
+#pragma omp critical
+    {
+      cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
+    }
+    return false;
+  }
   string title;
   map<string,int> refs;
-  vector<string> backrefs( order.size() );;
-  for ( size_t i=0; i < order.size(); ++i ){
-    string ref = TiCC::getAttribute( order[i], "regionRef" );
-    string index = TiCC::getAttribute( order[i], "index" );
+  vector<string> backrefs( order.size() );
+  it = order.begin();
+  while ( it != order.end() ){
+    string ref = TiCC::getAttribute( *it, "regionRef" );
+    string index = TiCC::getAttribute( *it, "index" );
     int id = TiCC::stringTo<int>( index );
     refs[ref] = id;
     backrefs[id] = ref;
+    ++it;
   }
 
   vector<string> regionStrings( refs.size() );
-  vector<xmlNode*> regions = getNodes( root, "TextRegion" );
-  for ( size_t i=0; i < regions.size(); ++i ){
-    string index = TiCC::getAttribute( regions[i], "id" );
-    map<string,int>::const_iterator it = refs.find(index);
-    if ( it == refs.end() ){
+  list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
+  if ( regions.size() == 0 ){
+#pragma omp critical
+    {
+      cerr << "missing TextRegion nodes in " << fileName << endl;
+    }
+    return false;
+  }
+  it = regions.begin();
+  while ( it != regions.end() ){
+    string index = TiCC::getAttribute( *it, "id" );
+    map<string,int>::const_iterator mit = refs.find(index);
+    if ( mit == refs.end() ){
       if ( verbose ){
 #pragma omp critical
 	{
@@ -214,9 +205,19 @@ void convert_pagexml( const string& fileName,
       }
     }
     else {
-      xmlNode *unicode = getNode( regions[i], "Unicode" );
-      regionStrings[it->second] = TiCC::XmlContent( unicode );
+      xmlNode *unicode = TiCC::xPath( *it, ".//*:Unicode" );
+      if ( !unicode ){
+#pragma omp critical
+	{
+	  cerr << "missing Unicode node in " << TiCC::Name(*it) << " of " << fileName << endl;
+	}
+
+      }
+      else {
+	regionStrings[mit->second] = TiCC::XmlContent( unicode );
+      }
     }
+    ++it;
   }
   xmlFreeDoc( xdoc );
   // for ( size_t i=0; i < regionStrings.size(); ++i ){
@@ -225,7 +226,7 @@ void convert_pagexml( const string& fileName,
 
   string docid = orgFile;
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, "OCR",
+  doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
@@ -258,6 +259,7 @@ void convert_pagexml( const string& fileName,
       }
     }
   }
+  return true;
 }
 
 int main( int argc, char *argv[] ){
@@ -344,7 +346,7 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    fileNames = TiCC::searchFilesMatch( name, "*.xml" );
+    fileNames = TiCC::searchFilesMatch( name, ".xml", false );
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
@@ -359,7 +361,11 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_pagexml( fileNames[fn], outputDir, outputType );
+    if ( !convert_pagexml( fileNames[fn], outputDir, outputType ) )
+#pragma omp critical
+      {
+	cerr << "failure on " << fileNames[fn] << endl;
+      }
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
