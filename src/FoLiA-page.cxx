@@ -238,7 +238,8 @@ bool convert_pagexml( const string& fileName,
     string index = TiCC::getAttribute( *it, "id" );
     string type = TiCC::getAttribute( *it, "type" );
     int key = -1;
-    if ( type == "paragraph" || type == "catch-word" ){
+    if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
+	 || type == "catch-word" || type == "drop-capital" ){
       map<string,int>::const_iterator mit = refs.find(index);
       if ( mit == refs.end() ){
 #pragma omp critical
@@ -254,10 +255,19 @@ bool convert_pagexml( const string& fileName,
     else if ( type == "page-number" || type == "header" ){
       //
     }
+    else  if ( type == "signature-mark" ){
+      if ( verbose ) {
+#pragma omp critical
+	{
+	  cerr << "ignoring " << type << " in " << fileName << endl;
+	}
+      }
+      type.clear();
+    }
     else {
 #pragma omp critical
       {
-	cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
+	  cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
       }
       type.clear();
     }
@@ -283,9 +293,9 @@ bool convert_pagexml( const string& fileName,
     ++it;
   }
   xmlFreeDoc( xdoc );
-  for ( size_t i=0; i < regionStrings.size(); ++i ){
-     cerr << "[" << i << "]-" << regionStrings[i] << endl;
-  }
+  // for ( size_t i=0; i < regionStrings.size(); ++i ){
+  //    cerr << "[" << i << "]-" << regionStrings[i] << endl;
+  // }
 
   string docid = orgFile;
   folia::Document doc( "id='" + docid + "'" );
