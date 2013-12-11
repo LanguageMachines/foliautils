@@ -26,22 +26,6 @@ bool predict = false;
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
-void getNodes( xmlNode *pnt, const string& tag, vector<xmlNode*>& res ){
-  while ( pnt ){
-    if ( pnt->type == XML_ELEMENT_NODE && TiCC::Name(pnt) == tag ){
-      res.push_back( pnt );
-    }
-    getNodes( pnt->children, tag, res );
-    pnt = pnt->next;
-  }
-}
-
-vector<xmlNode*> getNodes( xmlNode *pnt, const string& tag ){
-  vector<xmlNode*> res;
-  getNodes( pnt, tag, res );
-  return res;
-}
-
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
   bool isHtml;
@@ -70,7 +54,10 @@ xmlDoc *getXml( const string& file, zipType& type ){
     isHtml = true;
   }
   else {
-    cerr << "problem detecting type of file: " << file << endl;
+#pragma omp critical
+    {
+      cerr << "problem detecting type of file: " << file << endl;
+    }
     return 0;
   }
   if ( isHtml ){
@@ -114,55 +101,58 @@ string extractContent( xmlNode* pnt ) {
 }
 
 
-void processDiv( xmlNode *div, folia::FoliaElement *out, const string& file ){
-  vector<xmlNode*> pars = getNodes( div->children, "p" );
-  for ( size_t i = 0; i < pars.size(); ++i ){
-    string p_id = TiCC::getAttribute( pars[i], "id" );
+void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& file ){
+  list<xmlNode*> pars = TiCC::FindNodes( div, "//p" );
+  list<xmlNode*>::const_iterator pit = pars.begin();
+  while ( pit != pars.end() ){
+    string p_id = TiCC::getAttribute( *pit, "id" );
     folia::Paragraph *par
       = new folia::Paragraph( out->doc(),
 			      "id='" + out->id() + "." + p_id + "'");
-    xmlNode *pnt = pars[i]->children;
+    list<xmlNode*> lines = TiCC::FindNodes( *pit, ".//span[@class='ocr_line']" );
+    if ( lines.size() == 0 ){
+#pragma omp critical
+      {
+	cerr << "found no OCR_LINE nodes in " << file << endl;
+      }
+      return;
+    }
+    list<xmlNode*>::const_iterator lit = lines.begin();
     string txt;
-    while ( pnt ){
-      if ( pnt->type == XML_ELEMENT_NODE ){
-	if ( TiCC::Name(pnt) == "span" ){
-	  string cls = TiCC::getAttribute( pnt, "class" );
-	  if ( cls == "ocr_line" ){
-	    string l_id = TiCC::getAttribute( pnt, "id" );
-	    vector<xmlNode*> words = getNodes( pnt->children, "span" );
-	    for ( size_t j = 0; j < words.size(); ++j ){
-	      string cls = TiCC::getAttribute( words[j], "class" );
-	      if ( cls == "ocrx_word" ){
-		string w_id = TiCC::getAttribute( words[j], "id" );
-		string content = extractContent( words[j] );
-		content = TiCC::trim( content );
-		if ( !content.empty() ){
-		  folia::String *str = new folia::String( out->doc(),
-							  "id='" + par->id()
-							  + "." + w_id + "'" );
-		  par->append( str );
-		  str->settext( content, txt.length(), "OCR" );
-		  txt += " " + content;
-		  folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
-		  str->append( h );
-		  folia::AlignReference *a =
-		    new folia::AlignReference( "id='" + w_id + "', type='str'" );
-		  h->append( a );
-		}
-	      }
-	      else {
-		cerr << "expected class='ocrx_word', got: " << cls << endl;
-		return;
-	      }
-	    }
+    while ( lit != lines.end() ){
+      list<xmlNode*> words = TiCC::FindNodes( *lit, ".//span[@class='ocrx_word']" );
+      if ( words.size() == 0 ){
+	// no ocrx_words. Lets see...
+	words = TiCC::FindNodes( *lit, ".//span[@class='ocr_word']" );
+	if ( words.size() == 0 ){
+#pragma omp critical
+	  {
+	    cerr << "found no OCRX_WORD or OCR_WORD nodes in " << file << endl;
 	  }
-	  else {
-	    cerr << "expected class='ocr_line', got: " << cls << endl;
-	    return;
-	  }
+	  return;
 	}
       }
-      pnt = pnt->next;
+      list<xmlNode*>::const_iterator it = words.begin();
+      while ( it != words.end() ){
+	string w_id = TiCC::getAttribute( *it, "id" );
+	string content = extractContent( *it );
+	content = TiCC::trim( content );
+	if ( !content.empty() ){
+	  folia::String *str = new folia::String( out->doc(),
+						  "id='" + par->id()
+						  + "." + w_id + "'" );
+	  par->append( str );
+	  str->settext( content, txt.length(), "OCR" );
+	  txt += " " + content;
+	  folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
+	  str->append( h );
+	  folia::AlignReference *a =
+	    new folia::AlignReference( "id='" + w_id + "', type='str'" );
+	  h->append( a );
+	}
+	++it;
+      }
+      ++lit;
     }
     if ( txt.size() > 1 ){
       out->append( par );
@@ -170,20 +160,11 @@ void processDiv( xmlNode *div, folia::FoliaElement *out, const string& file ){
     }
     else
       delete par;
+    ++pit;
   }
 }
 
-void process( xmlNode *root, folia::FoliaElement *out, const string& file ){
-  vector<xmlNode*> divs = getNodes( root, "div" );
-  for ( size_t i=0; i < divs.size(); ++i ){
-    string cls = TiCC::getAttribute( divs[i], "class" );
-    if ( cls == "ocr_page" ){
-      processDiv( divs[i], out, file );
-    }
-  }
-}
-
-string getFile( const string& title ){
+string getDocId( const string& title ){
   string result;
   vector<string> vec;
   TiCC::split_at( title, vec, ";" );
@@ -216,29 +197,36 @@ void convert_hocr( const string& fileName,
   zipType inputType;
   xmlDoc *xdoc = getXml( fileName, inputType );
   xmlNode *root = xmlDocGetRootElement( xdoc );
-  vector<xmlNode*> divs = getNodes( root, "div" );
-  string title;
-  for ( size_t i=0; i < divs.size(); ++i ){
-    string cls = TiCC::getAttribute( divs[i], "class" );
-    if ( cls == "ocr_page" ){
-      if ( !title.empty() ){
-	cerr << "multiple 'ocr_page' <div> nodes not supported: " << fileName << endl;
-	exit(EXIT_FAILURE);
-      }
-      title = TiCC::getAttribute( divs[i], "title" );
+  list<xmlNode*> divs = TiCC::FindNodes( root, "//div[@class='ocr_page']" );
+  if ( divs.size() == 0 ) {
+#pragma omp critical
+    {
+      cerr << "no OCR_PAGE node found in " << fileName << endl;
     }
-  }
-  if ( title.empty() ){
-    cerr << "No 'ocr_page' <div> node found: " << fileName << endl;
     exit(EXIT_FAILURE);
   }
-  string docid = getFile( title );
+  if ( divs.size() > 1 ) {
+#pragma omp critical
+    {
+      cerr << "multiple OCR_PAGE nodes found. Not supported. in " << fileName << endl;
+    }
+    exit(EXIT_FAILURE);
+  }
+  string title = TiCC::getAttribute( *divs.begin(), "title" );
+  if ( title.empty() ){
+#pragma omp critical
+    {
+      cerr << "No 'title' attribute found in ocr_page: " << fileName << endl;
+    }
+    exit(EXIT_FAILURE);
+  }
+  string docid = getDocId( title );
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, "OCR",
 	       "annotator='folia-hocr', datetime='now()'" );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
-  process( root, text, docid );
+  processParagraphs( root, text, docid );
   xmlFreeDoc( xdoc );
 
   string outName = outputDir;
