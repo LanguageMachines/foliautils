@@ -191,8 +191,13 @@ string getFile( const string& title ){
     vector<string> v1;
     size_t num = TiCC::split( vec[i], v1 );
     if ( num == 2 ){
-      if ( TiCC::trim( v1[0] ) == "image" )
+      if ( TiCC::trim( v1[0] ) == "image" ){
 	result = v1[1];
+	string::size_type pos = result.rfind( "/" );
+	if ( pos != string::npos ){
+	  result = result.substr( pos+1 );
+	}
+      }
     }
   }
   result = TiCC::trim( result, " \t\"" );
@@ -267,14 +272,14 @@ void convert_hocr( const string& fileName,
 
 int main( int argc, char *argv[] ){
   if ( argc < 2	){
-    cerr << "Usage: [-t number_of_threads] [-o outputdir] [-a altodir] dir/filename " << endl;
+    cerr << "Usage: [-t number_of_threads] [-o outputdir] dir/filename " << endl;
     exit(EXIT_FAILURE);
   }
   int opt;
   int numThreads=1;
   string outputDir;
   zipType outputType = NORMAL;
-  while ((opt = getopt(argc, argv, "a:bcght:vVo:p")) != -1) {
+  while ((opt = getopt(argc, argv, "bcght:vVo:p")) != -1) {
     switch (opt) {
     case 'b':
       outputType = BZ2;
@@ -310,7 +315,7 @@ int main( int argc, char *argv[] ){
       outputDir = string(optarg) + "/";
       break;
     default: /* '?' */
-      cerr << "Usage: alto [-t number_of_threads] [-o output_dir] dir/filename " << endl;
+      cerr << "Usage: FoLiA-hocr [-t number_of_threads] [-o output_dir] dir/filename " << endl;
       exit(EXIT_FAILURE);
     }
   }
