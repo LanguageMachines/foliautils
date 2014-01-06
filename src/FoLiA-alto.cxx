@@ -887,11 +887,11 @@ void solveBook( const string& altoFile, const string& id,
     folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
-    list<xmlNode*> textblocks = TiCC::FindNodes( root, "TextBlock" );
+    list<xmlNode*> textblocks = TiCC::FindNodes( root, "//*:TextBlock" );
     if ( textblocks.size() == 0 ){
 #pragma omp critical
       {
-	cerr << "found no textblocks in" <<  altoFile << endl;
+	cerr << "found no textblocks in " << altoFile << endl;
       }
       return;
     }
@@ -1178,6 +1178,7 @@ int main( int argc, char *argv[] ){
       cerr << "\t-t\t number_of_threads" << endl;
       cerr << "\t-h\t this messages " << endl;
       cerr << "\t-o\t output directory " << endl;
+      cerr << "\t-K\t kind ('krant' or 'boek' Default: 'krant' " << endl;
       cerr << "\t-b\t create bzip2 files (.bz2)" << endl;
       cerr << "\t-g\t create gzip files (.gz)" << endl;
       cerr << "\t-v\t verbose output " << endl;
