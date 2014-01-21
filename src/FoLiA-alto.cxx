@@ -893,6 +893,7 @@ void solveBook( const string& altoFile, const string& id,
       {
 	cerr << "found no textblocks in " << altoFile << endl;
       }
+      xmlFreeDoc( xmldoc );
       return;
     }
     xmlNode *keepPart1 = 0;
@@ -1032,6 +1033,7 @@ void solveBook( const string& altoFile, const string& id,
 	}
       }
     }
+    xmlFreeDoc( xmldoc );
   }
   else {
     cerr << "unable to read " << altoFile << endl;
