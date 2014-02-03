@@ -163,7 +163,7 @@ public:
 void TCdata::procesFile( const string& outDir, const string& docName,
 			 bool doStrings,
 			 bool doAll ){
-#pragma omp critical
+#pragma omp critical (logging)
   {
     cout << "process " << docName << endl;
   }
@@ -175,7 +175,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   if ( doStrings ){
     xs = doc.doc()->select<String>();
     Size = xs.size();
-#pragma omp critical
+#pragma omp critical (logging)
     {
       cout << "document '" << docName << "' has " << Size
 	   << " strings " << endl;
@@ -184,19 +184,25 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   else {
     xp = doc.paragraphs();
     Size = xp.size();
-#pragma omp critical
+#pragma omp critical (logging)
     {
       cout << "document '" << docName << "' has " << Size
 	   << " paragraphs " << endl;
     }
   }
-  cerr << "OUTDIR" << outDir << endl;
+#pragma omp critical (logging)
+  {
+    cerr << "OUTDIR=" << outDir << endl;
+  }
   string outName;
   if ( !outDir.empty() )
     outName = outDir + "/";
   outName += docName.substr(0, docName.find(".xml") );
   outName += ".lc.xml";
-  cerr << "OUTNAME" << outName << endl;
+#pragma omp critical (logging)
+  {
+    cerr << "OUTNAME=" << outName << endl;
+  }
   //attempt to open the outfile
   ofstream os1( outName.c_str() );
   if ( !os1.good() ){
@@ -213,7 +219,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 	//	cerr << "mkdir path = " << path << endl;
 	int status = mkdir( path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH );
 	if ( status != 0 && errno != EEXIST ){
-#pragma omp critical
+#pragma omp critical (logging)
 	  {
 	    cerr << "unable to create directory: " << path << endl;
 	  }
@@ -225,7 +231,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
     ofstream os2( outName.c_str() );
     if ( !os2 ){
       // still fails, we are lost
-#pragma omp critical
+#pragma omp critical (logging)
       {
 	cerr << "unable to open output file " << outName << endl;
 	cerr << "does the outputdir exist? And is it writabe?" << endl;
@@ -237,7 +243,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   ofstream os( outName.c_str() );
   if ( !os ){
     // this can never fail but ok.
-#pragma omp critical
+#pragma omp critical (logging)
     {
       cerr << "unable to open output file " << outName << endl;
       cerr << "does the outputdir exist? And is it writabe?" << endl;
@@ -253,7 +259,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
     string para = t->str();
     para = compress( para );
     if ( para.empty() ){
-      // #pragma omp_critical
+      // #pragma omp_critical (logging)
       // 	    {
       // 	      cerr << "WARNING: empty paragraph " << id << endl;
       // 	    }
@@ -278,7 +284,7 @@ bool gatherNames( const string& dirName, vector<string>& fileNames ){
   struct dirent *entry = readdir( dir );
   while ( entry ){
     string tmp = entry->d_name;
-    cerr << "BEKIJK " << tmp << endl;
+    //    cerr << "BEKIJK " << tmp << endl;
     if ( tmp[0] != '.' ){
       struct stat st_buf;
       string fullName  = dirName + "/" + tmp;
@@ -381,8 +387,8 @@ int main( int argc, char *argv[] ){
   size_t toDo = fileNames.size();
   if ( toDo > 1 )
     cout << "start processing of " << toDo << " files " << endl;
-#pragma omp parallel for firstprivate(TC),shared(fileNames)
-  for ( size_t fn=0; fn < fileNames.size(); ++fn ){
+#pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
+  for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
     TC.procesFile( outDir, docName, doStrings, doAll );
   }
