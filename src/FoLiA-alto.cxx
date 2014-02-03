@@ -184,12 +184,15 @@ const string setname = "OCR";
 void addStr( folia::Paragraph *par, string& txt,
 	     const xmlNode *pnt, const string& altoFile ){
   folia::KWargs atts = folia::getAttributes( pnt );
+  string content = atts["CONTENT"];
+  if ( content.empty() )
+    return;
   folia::KWargs args;
   args["id"] = atts["ID"];
   folia::String *s = new folia::String( par->doc(), args );
   par->append( s );
-  s->settext( atts["CONTENT"], txt.length(), setname );
-  txt += " " + atts["CONTENT"];
+  s->settext( content , txt.length(), setname );
+  txt += " " + content;
   folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
   s->append( h );
   folia::AlignReference *a =
