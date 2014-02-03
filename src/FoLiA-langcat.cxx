@@ -211,6 +211,13 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 	path += parts[i] + "/";
 	//	cerr << "mkdir path = " << path << endl;
 	int status = mkdir( path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH );
+	if ( status != 0 ){
+#pragma omp critical
+	  {
+	    cerr << "unable to create directory: " << path << endl;
+	  }
+	  exit(EXIT_FAILURE);
+	}
       }
     }
     // now retry
@@ -275,6 +282,10 @@ bool gatherNames( const string& dirName, vector<string>& fileNames ){
       struct stat st_buf;
       string fullName  = dirName + "/" + tmp;
       int status = stat( fullName.c_str(), &st_buf );
+      if ( status != 0 ){
+	cerr << "cannot 'stat' file: " << fullName << endl;
+	return false;
+      }
       if ( S_ISDIR (st_buf.st_mode) ){
 	if ( !gatherNames( fullName, fileNames ) )
 	  return false;
@@ -302,7 +313,7 @@ int main( int argc, char *argv[] ){
   string outDir;
   string config = "./config/tc.txt";
   bool doStrings = false;
-  while ((opt = getopt(argc, argv, "ac:hn:o:sV")) != -1) {
+  while ((opt = getopt(argc, argv, "ac:ho:sV")) != -1) {
     switch (opt) {
     case 'a':
       doAll = true;
@@ -322,6 +333,10 @@ int main( int argc, char *argv[] ){
       break;
     case 'h':
       cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
+      cerr << "-a\tassign ALL detected languages to the result. (default is to assing the most probable)." << endl;
+      cerr << "-c <file> use LM config from 'file'" << endl;
+      cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
+      cerr << "-V\tshow version info." << endl;
       exit(EXIT_SUCCESS);
       break;
     default: /* '?' */
@@ -358,7 +373,9 @@ int main( int argc, char *argv[] ){
     if ( pos != string::npos )
       name.erase(pos);
     dirName = name;
-    bool result = gatherNames( dirName, fileNames );
+    if ( !gatherNames( dirName, fileNames ) ){
+      exit( EXIT_FAILURE );
+    }
   }
   size_t toDo = fileNames.size();
   if ( toDo > 1 )
