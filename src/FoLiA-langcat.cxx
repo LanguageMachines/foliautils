@@ -27,6 +27,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <errno.h>
 #include <dirent.h>
 #include <unistd.h>
 #include <cstdlib>
@@ -211,7 +212,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 	path += parts[i] + "/";
 	//	cerr << "mkdir path = " << path << endl;
 	int status = mkdir( path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH );
-	if ( status != 0 ){
+	if ( status != 0 && errno != EEXIST ){
 #pragma omp critical
 	  {
 	    cerr << "unable to create directory: " << path << endl;
