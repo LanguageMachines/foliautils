@@ -190,19 +190,12 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 	   << " paragraphs " << endl;
     }
   }
-#pragma omp critical (logging)
-  {
-    cerr << "OUTDIR=" << outDir << endl;
-  }
+
   string outName;
   if ( !outDir.empty() )
     outName = outDir + "/";
   outName += docName.substr(0, docName.find(".xml") );
   outName += ".lc.xml";
-#pragma omp critical (logging)
-  {
-    cerr << "OUTNAME=" << outName << endl;
-  }
   //attempt to open the outfile
   ofstream os1( outName.c_str() );
   if ( !os1.good() ){
@@ -271,7 +264,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 	addLang( t, res, doAll );
       }
     }
-  }
+  }  
   os << doc << endl;
 }
 
@@ -368,14 +361,14 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   if ( S_ISREG (st_buf.st_mode) ){
-    cerr << "name " << name << " is a file" << endl;
+    //    cerr << "name " << name << " is a file" << endl;
     fileNames.push_back( name );
     string::size_type pos = name.rfind( "/" );
     if ( pos != string::npos )
       dirName = name.substr(0,pos);
   }
   else if ( S_ISDIR (st_buf.st_mode) ){
-    cerr << "name " << name << " is a dir" << endl;
+    //    cerr << "name " << name << " is a dir" << endl;
     string::size_type pos = name.rfind( "/" );
     if ( pos != string::npos )
       name.erase(pos);
@@ -385,8 +378,14 @@ int main( int argc, char *argv[] ){
     }
   }
   size_t toDo = fileNames.size();
-  if ( toDo > 1 )
+  if ( toDo > 1 ){
+    try {
+      Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
+    }
+    catch(...){
+    };
     cout << "start processing of " << toDo << " files " << endl;
+  }
 #pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
