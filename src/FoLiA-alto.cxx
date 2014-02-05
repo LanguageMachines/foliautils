@@ -1287,12 +1287,18 @@ int main( int argc, char *argv[] ){
     fileNames = TiCC::searchFilesMatch( name, "*:mpeg21.xml*" );
   }
   size_t toDo = fileNames.size();
-  if ( toDo > 1 )
-    cout << "start processing of " << toDo << " files " << endl;
+  if ( toDo > 1 ){
+    try {
+      folia::Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
+    }
+    catch(...){
+    };
+  }
+  cout << "start processing of " << toDo << " files " << endl;
   if ( numThreads >= 1 ){
     omp_set_num_threads( numThreads );
   }
-
+  
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( kind == "krant" )

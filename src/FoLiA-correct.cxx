@@ -281,8 +281,14 @@ int main( int argc, char *argv[] ){
     cerr << "no unknown words!" << endl;
   }
 
-  if ( doDir )
+  if ( doDir ){
+    try {
+      Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
+    }
+    catch(...){
+    };    
     cout << "start processing of " << toDo << " files " << endl;
+  }
 
 #pragma omp parallel for shared(fileNames,toDo) schedule(dynamic,1)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){

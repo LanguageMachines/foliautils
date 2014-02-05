@@ -182,8 +182,15 @@ int main( int argc, char *argv[] ){
       outPrefix = "current";
   }
 
-  if ( toDo > 1 )
+  if ( toDo > 1 ){
+    try {
+      Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
+    }
+    catch(...){
+    };
     cout << "start processing of " << toDo << " files " << endl;
+  }
+  
 
   map<string,unsigned int> wc;
   unsigned int wordTotal =0;
