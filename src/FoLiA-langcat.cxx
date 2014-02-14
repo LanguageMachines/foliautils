@@ -127,7 +127,7 @@ void addLang( TextContent *t, const string& val, bool doAll ){
   vector<string> vals;
   size_t num = split_at( val, vals, "[]" );
   if ( num == 0 ){
-    cerr << "O JEE: unexpected language value: " << val << endl;
+    cerr << "O JEE: unexpected language value: '" << val << "'" << endl;
     setlang( t->parent(), val );
   }
   else {
@@ -167,13 +167,23 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   {
     cout << "process " << docName << endl;
   }
-  Document doc( "file='" + docName + "'" );
-  doc.declare( AnnotationType::LANG, "iso" );
+  Document *doc = 0;
+  try {
+    doc = new Document( "file='" + docName + "'" );
+  }
+  catch (const exception& e){
+#pragma omp critical (logging)
+    {
+      cerr << "no document: " << e.what() << endl;
+    }
+    return;
+  }
+  doc->declare( AnnotationType::LANG, "iso" );
   vector<Paragraph*> xp;
   vector<String*> xs;
   size_t Size;
   if ( doStrings ){
-    xs = doc.doc()->select<String>();
+    xs = doc->doc()->select<String>();
     Size = xs.size();
 #pragma omp critical (logging)
     {
@@ -182,7 +192,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
     }
   }
   else {
-    xp = doc.paragraphs();
+    xp = doc->paragraphs();
     Size = xp.size();
 #pragma omp critical (logging)
     {
@@ -260,12 +270,13 @@ void TCdata::procesFile( const string& outDir, const string& docName,
     else {
       decap( para );
       char *res = textcat_Classify( TC, para.c_str(), para.size() );
-      if ( res && strcmp( res, "SHORT" ) != 0 ){
+      if ( res && strlen(res) > 0 && strcmp( res, "SHORT" ) != 0 ){
 	addLang( t, res, doAll );
       }
     }
   }  
   os << doc << endl;
+  delete doc;
 }
 
 bool gatherNames( const string& dirName, vector<string>& fileNames ){
