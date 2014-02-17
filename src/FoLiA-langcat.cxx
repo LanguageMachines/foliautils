@@ -155,12 +155,13 @@ public:
   }
   ~TCdata() { textcat_Done( TC ); };
   bool isInit() const { return TC != 0; };
-  void procesFile( const string&, const string&, bool, bool );
+  void procesFile( const string&, const string&, const string&, bool, bool );
   void *TC;
   string cfName;
 };
 
 void TCdata::procesFile( const string& outDir, const string& docName,
+			 const string& default_lang,
 			 bool doStrings,
 			 bool doAll ){
 #pragma omp critical (logging)
@@ -178,6 +179,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
     }
     return;
   }
+  doc->set_metadata( "language", default_lang );
   doc->declare( AnnotationType::LANG, "iso" );
   vector<Paragraph*> xp;
   vector<String*> xs;
@@ -274,7 +276,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 	addLang( t, res, doAll );
       }
     }
-  }  
+  }
   os << doc << endl;
   delete doc;
 }
@@ -323,14 +325,18 @@ int main( int argc, char *argv[] ){
   int opt;
   string outDir;
   string config = "./config/tc.txt";
+  string lang = "dut";
   bool doStrings = false;
-  while ((opt = getopt(argc, argv, "ac:ho:sV")) != -1) {
+  while ((opt = getopt(argc, argv, "ac:hL:o:sV")) != -1) {
     switch (opt) {
     case 'a':
       doAll = true;
       break;
     case 'c':
       config = optarg;
+      break;
+    case 'L':
+      lang = optarg;
       break;
     case 'o':
       outDir = optarg;
@@ -346,6 +352,7 @@ int main( int argc, char *argv[] ){
       cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
       cerr << "-a\tassign ALL detected languages to the result. (default is to assing the most probable)." << endl;
       cerr << "-c <file> use LM config from 'file'" << endl;
+      cerr << "-L <lan>  use 'lan' for unindentified text. (default 'dut')" << endl;
       cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
       cerr << "-V\tshow version info." << endl;
       exit(EXIT_SUCCESS);
@@ -400,6 +407,6 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
-    TC.procesFile( outDir, docName, doStrings, doAll );
+    TC.procesFile( outDir, docName, lang, doStrings, doAll );
   }
 }
