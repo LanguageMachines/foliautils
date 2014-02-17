@@ -629,8 +629,11 @@ int main( int argc, char *argv[] ){
   }
   cout << "start calculating the results" << endl;
   string ext;
+  if ( lang != "dut" ){
+    ext += "." + lang;
+  }
   if ( nG > 1 ){
-    ext = "." + TiCC::toString( nG ) + "-gram";
+    ext += "." + TiCC::toString( nG ) + "-gram";
   }
   ext += ".tsv";
 #pragma omp parallel sections
