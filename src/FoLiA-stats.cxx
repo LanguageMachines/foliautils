@@ -171,16 +171,67 @@ struct wlp_rec {
 const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
+template<class F>
+string get_lang( F *element ){
+  string result;
+  try {
+    LangAnnotation *l = element->template annotation<LangAnnotation>();
+    if ( l != 0 ){
+      // there is language info.
+      result = l->cls();
+    }
+  }
+  catch (...){
+  }
+  return result;
+}
+
+template<class F>
+void taal_filter( vector<F*>& words,
+		  const string& global_taal, const string& taal ){
+  typename vector<F*>::iterator it = words.begin();
+  while ( it != words.end() ){
+    string lang = get_lang( *it );
+    if ( !lang.empty() ){
+      // there is language info.
+      if ( lang.find( taal ) == string::npos ){
+	// no match.
+	it = words.erase( it );
+      }
+      else {
+	++it;
+      }
+    }
+    else {
+      // So NO language info. It is the documents default then
+      //
+      if ( global_taal != taal ){
+	it = words.erase( it );
+      }
+      else {
+	++it;
+      }
+    }
+  }
+}
+
+
 size_t word_inventory( const Document *d, const string& docName,
 		       size_t nG,
 		       bool lowercase,
+		       const string& lang,
 		       map<string,unsigned int>& wc,
 		       map<string,unsigned int>& lc,
 		       multimap<string, rec>& lpc ){
   size_t wordTotal = 0;
   vector<Sentence *> sents = d->sentences();
+  string doc_lang = d->get_metadata( "language" );
   for ( unsigned int s=0; s < sents.size(); ++s ){
+    string sent_lang = get_lang( sents[s] );
+    if ( sent_lang.empty() )
+      sent_lang = doc_lang;
     vector<Word*> words = sents[s]->words();
+    taal_filter( words, sent_lang, lang );
     if ( words.size() < nG )
       continue;
     vector<wlp_rec> data;
@@ -311,9 +362,12 @@ size_t word_inventory( const Document *d, const string& docName,
 size_t str_inventory( const Document *d, const string& docName,
 		      size_t nG,
 		      bool lowercase,
+		      const string& lang,
 		      map<string,unsigned int>& wc ){
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
+  string doc_lang = d->get_metadata( "language" );
+  taal_filter( strings, doc_lang, lang );
   if ( strings.size() < nG )
     return 0;
   vector<string> data;
@@ -363,11 +417,17 @@ size_t str_inventory( const Document *d, const string& docName,
 size_t par_str_inventory( const Document *d, const string& docName,
 			  size_t nG,
 			  bool lowercase,
+			  const string& lang,
 			  map<string,unsigned int>& wc ){
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
+  string doc_lang = d->get_metadata( "language" );
   for ( unsigned int p=0; p < pars.size(); ++p ){
     vector<String*> strings = pars[p]->select<String>();
+    string par_lang = get_lang( pars[p] );
+    if ( par_lang.empty() )
+      par_lang = doc_lang;
+    taal_filter( strings, par_lang, lang );
     if ( strings.size() < nG )
       continue;
     vector<string> data;
@@ -415,9 +475,27 @@ size_t par_str_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
+void usage(){
+  cerr << "Usage: [options] file/dir" << endl;
+  cerr << "\t-c\t clipping factor. " << endl;
+  cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
+  cerr << "\t-l\t Lowercase all words" << endl;
+  cerr << "\t-n\t Ngram count " << endl;
+  cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
+  cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
+  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-V\t show version " << endl;
+  cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
+  cerr << "\t or a whole directoy of FoLiA files " << endl;
+  cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
+  cerr << "\t-o\t output prefix" << endl;
+  cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+}
+
 int main( int argc, char *argv[] ){
   if ( argc < 2	){
-    cerr << "Usage: [-t number_of_threads]  [-n Ngram count] dir/filename " << endl;
+    usage();
     exit(EXIT_FAILURE);
   }
   int opt;
@@ -430,13 +508,17 @@ int main( int argc, char *argv[] ){
   bool doparstr = false;
   string expression;
   string outPrefix;
-  while ((opt = getopt(argc, argv, "c:e:hlt:sSn:o:RV")) != -1) {
+  string lang = "dut";
+  while ((opt = getopt(argc, argv, "c:e:hlL:t:sSn:o:RV")) != -1) {
     switch (opt) {
     case 'c':
       clip = atoi(optarg);
       break;
     case 'l':
       lowercase = true;
+      break;
+    case 'L':
+      lang = optarg;
       break;
     case 'e':
       expression = optarg;
@@ -464,25 +546,11 @@ int main( int argc, char *argv[] ){
       exit(EXIT_SUCCESS);
       break;
     case 'h':
-      cerr << "Usage: [options] file/dir" << endl;
-      cerr << "\t-c\t clipping factor. " << endl;
-      cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
-      cerr << "\t-l\t Lowercase all words" << endl;
-      cerr << "\t-n\t Ngram count " << endl;
-      cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
-      cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
-      cerr << "\t-t\t number_of_threads" << endl;
-      cerr << "\t-h\t this messages " << endl;
-      cerr << "\t-V\t show version " << endl;
-      cerr << "\t " << argv[0] << " will produce ngram statistics for a FoLiA file, " << endl;
-      cerr << "\t or a whole directoy of FoLiA files " << endl;
-      cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
-      cerr << "\t-o\t output prefix" << endl;
-      cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+      usage();
       exit(EXIT_SUCCESS);
       break;
     default: /* '?' */
-      cerr << "Usage: [-t number_of_threads]  [-n Ngram count] dir/filename " << endl;
+      usage();
       exit(EXIT_FAILURE);
     }
   }
@@ -514,7 +582,7 @@ int main( int argc, char *argv[] ){
       Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
     }
     catch(...){
-    };    
+    };
     cout << "start processing of " << toDo << " files " << endl;
   }
   map<string,unsigned int> wc;
@@ -539,13 +607,13 @@ int main( int argc, char *argv[] ){
     }
     size_t count = 0;
     if ( doparstr ){
-      count = par_str_inventory( d, docName, nG, lowercase, wc );
+      count = par_str_inventory( d, docName, nG, lowercase, lang, wc );
     }
     else if ( donoparstr ){
-      count = str_inventory( d, docName, nG, lowercase, wc );
+      count = str_inventory( d, docName, nG, lowercase, lang, wc );
     }
     else
-      count = word_inventory( d, docName, nG, lowercase, wc, lc, lpc );
+      count = word_inventory( d, docName, nG, lowercase, lang, wc, lc, lpc );
     wordTotal += count;
 #pragma omp critical
     {
