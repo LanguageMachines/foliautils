@@ -629,7 +629,7 @@ int main( int argc, char *argv[] ){
   }
   cout << "start calculating the results" << endl;
   string ext;
-  if ( lang != "dut" ){
+  if ( !lang.empty() && lang != "dut" ){
     ext += "." + lang;
   }
   if ( nG > 1 ){
