@@ -30,7 +30,9 @@ ostream& operator<<( ostream& os, const word_conf& wc ){
   return os;
 }
 
-bool fillVariants( const string& fn, map<string,vector<word_conf> >& variants ){
+bool fillVariants( const string& fn,
+		   map<string,vector<word_conf> >& variants,
+		   size_t numSugg ){
   ifstream is( fn.c_str() );
   string line;
   string current_word;
@@ -41,7 +43,7 @@ bool fillVariants( const string& fn, map<string,vector<word_conf> >& variants ){
       string word = parts[0];
       if ( current_word.empty() )
 	current_word = word;
-      if ( word != current_word ){
+      if ( word != current_word || vec.size() == numSugg ){
 	// finish previous word
 	variants[current_word] = vec;
 	vec.clear();
@@ -68,12 +70,27 @@ bool fillUnknowns( const string& fn, set<string>& unknowns ){
       // '1' character words ar never UNK
       double dum;
       if ( !TiCC::stringTo( word, dum ) ){
-	// 'true' values are never UNK
+	// 'true' numeric values are never UNK
 	unknowns.insert( word );
       }
     }
   }
   return !unknowns.empty();
+}
+
+bool fillPuncts( const string& fn, map<string,string>& puncts ){
+  ifstream is( fn.c_str() );
+  string line;
+  while ( getline( is, line ) ) {
+    vector<string> parts;
+    if ( TiCC::split( line, parts ) == 2 ){
+      puncts[parts[0]] = parts[1];
+    }
+    else {
+      cerr << "error reading puny+ clean value from line " << line << endl;
+    }
+  }
+  return !puncts.empty();
 }
 
 void filter( string& word ){
@@ -86,8 +103,8 @@ void filter( string& word ){
 void correctParagraph( Paragraph* par,
 		       const map<string,vector<word_conf> >& variants,
 		       const set<string>& unknowns,
-		       const string& classname,
-		       int numSugg ){
+		       const map<string,string>& puncts,
+		       const string& classname ){
   vector<String*> sv = par->select<String>();
   int offset = 0;
   string corrected;
@@ -96,6 +113,10 @@ void correctParagraph( Paragraph* par,
     vector<TextContent *> origV = s->select<TextContent>();
     string word = origV[0]->str();
     filter(word);
+    map<string,string>::const_iterator pit = puncts.find( word );
+    if ( pit != puncts.end() ){
+      word = pit->second;
+    }
     map<string,vector<word_conf> >::const_iterator it = variants.find( word );
     if ( it != variants.end() ){
       // 1 or more edits found
@@ -112,16 +133,16 @@ void correctParagraph( Paragraph* par,
       offset = corrected.size();
       nV.push_back( newT );
       vector<FoliaElement*> sV;
-      size_t limit = min<size_t>( numSugg, it->second.size() );
+      size_t limit = it->second.size();
       for( size_t j=0; j < limit; ++j ){
-	  Suggestion *sug = new Suggestion( "confidence='" +
-					    it->second[j].conf +
-					    "', n='" +
-					    TiCC::toString(j+1) + "/" +
-					    TiCC::toString(limit) +
-					    "'" );
-	  sug->settext( it->second[j].word, classname );
-	  sV.push_back( sug );
+	Suggestion *sug = new Suggestion( "confidence='" +
+					  it->second[j].conf +
+					  "', n='" +
+					  TiCC::toString(j+1) + "/" +
+					  TiCC::toString(limit) +
+					  "'" );
+	sug->settext( it->second[j].word, classname );
+	sV.push_back( sug );
       }
       vector<FoliaElement*> cV;
       args.clear();
@@ -163,8 +184,8 @@ void correctParagraph( Paragraph* par,
 bool correctDoc( Document *doc,
 		 const map<string,vector<word_conf> >& variants,
 		 const set<string>& unknowns,
-		 const string& classname,
-		 int numSugg ){
+		 const map<string,string>& puncts,
+		 const string& classname ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
 			"Ticcl-Set" ) ){
     return false;
@@ -173,7 +194,7 @@ bool correctDoc( Document *doc,
 		"annotator='TICCL', annotatortype='auto', datetime='now()'");
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( size_t i=0; i < pv.size(); ++i ){
-    correctParagraph( pv[i], variants, unknowns, classname, numSugg );
+    correctParagraph( pv[i], variants, unknowns, puncts, classname );
   }
   return true;
 }
@@ -185,15 +206,15 @@ int main( int argc, char *argv[] ){
   }
   int opt;
   int numThreads = 1;
-  size_t numSugg = 1000;
+  size_t numSugg = 10;
   bool recursiveDirs = false;
-  bool lowercase = false;
   string expression;
   string variantFileName;
   string unknownFileName;
+  string punctFileName;
   string outPrefix;
   string classname = "Ticcl";
-  while ((opt = getopt(argc, argv, "c:e:ht:o:RVw:s:u:")) != -1) {
+  while ((opt = getopt(argc, argv, "c:e:ht:o:RVw:p:s:u:")) != -1) {
     switch (opt) {
     case 'c':
       classname = optarg;
@@ -206,6 +227,9 @@ int main( int argc, char *argv[] ){
       break;
     case 't':
       numThreads = atoi(optarg);
+      break;
+    case 'p':
+      punctFileName = optarg;
       break;
     case 'u':
       unknownFileName = optarg;
@@ -227,7 +251,7 @@ int main( int argc, char *argv[] ){
       cerr << "Usage: [options] file/dir" << endl;
       cerr << "\t-c\t classname" << endl;
       cerr << "\t-t\t number_of_threads" << endl;
-      cerr << "\t-s\t max number_of_suggestions" << endl;
+      cerr << "\t-s\t max number_of_suggestions. (default 10)" << endl;
       cerr << "\t-h\t these messages " << endl;
       cerr << "\t-V\t show version " << endl;
       cerr << "\t " << argv[0] << " will correct FoLiA files, " << endl;
@@ -235,6 +259,7 @@ int main( int argc, char *argv[] ){
       cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
       cerr << "\t-o\t output prefix" << endl;
       cerr << "\t-u 'uname'\t name of unknown words file" << endl;
+      cerr << "\t-p 'pname'\t name of punct words file" << endl;
       cerr << "\t-w 'vname'\t name of variants file" << endl;
       cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
       exit(EXIT_SUCCESS);
@@ -271,7 +296,7 @@ int main( int argc, char *argv[] ){
   bool doDir = ( toDo > 1 );
 
   map<string,vector<word_conf> > variants;
-  if ( !fillVariants( variantFileName, variants ) ){
+  if ( !fillVariants( variantFileName, variants, numSugg ) ){
     cerr << "no variants." << endl;
     exit( EXIT_FAILURE );
   }
@@ -281,12 +306,17 @@ int main( int argc, char *argv[] ){
     cerr << "no unknown words!" << endl;
   }
 
+  map<string,string> puncts;
+  if ( !fillPuncts( unknownFileName, puncts ) ){
+    cerr << "no punct words!" << endl;
+  }
+
   if ( doDir ){
     try {
       Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
     }
     catch(...){
-    };    
+    };
     cout << "start processing of " << toDo << " files " << endl;
   }
 
@@ -317,7 +347,7 @@ int main( int argc, char *argv[] ){
 #pragma omp critical
       cerr << "skipping already done file: " << outName << endl;
     }
-    else if ( correctDoc( doc, variants, unknowns, classname, numSugg ) ){
+    else if ( correctDoc( doc, variants, unknowns, puncts, classname ) ){
       doc->save( outName );
 #pragma omp critical
       {
