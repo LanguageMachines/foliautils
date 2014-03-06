@@ -295,21 +295,27 @@ int main( int argc, char *argv[] ){
   }
   bool doDir = ( toDo > 1 );
 
+  cout << "start reading variants " << endl;
   map<string,vector<word_conf> > variants;
   if ( !fillVariants( variantFileName, variants, numSugg ) ){
     cerr << "no variants." << endl;
     exit( EXIT_FAILURE );
   }
+  cout << "read " << variants.size() << " variants " << endl;
 
+  cout << "start reading unknowns " << endl;
   set<string> unknowns;
   if ( !fillUnknowns( unknownFileName, unknowns ) ){
     cerr << "no unknown words!" << endl;
   }
+  cout << "read " << unknowns.size() << " unknown words " << endl;
 
+  cout << "start reading puncts " << endl;
   map<string,string> puncts;
   if ( !fillPuncts( unknownFileName, puncts ) ){
     cerr << "no punct words!" << endl;
   }
+  cout << "read " << puncts.size() << " punctuated words " << endl;
 
   if ( doDir ){
     try {
