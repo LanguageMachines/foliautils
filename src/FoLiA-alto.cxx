@@ -187,17 +187,37 @@ void addStr( folia::Paragraph *par, string& txt,
   string content = atts["CONTENT"];
   if ( content.empty() )
     return;
-  folia::KWargs args;
-  args["id"] = atts["ID"];
-  folia::String *s = new folia::String( par->doc(), args );
-  par->append( s );
-  s->settext( content , txt.length(), setname );
-  txt += " " + content;
-  folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
-  s->append( h );
-  folia::AlignReference *a =
-    new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
-  h->append( a );
+  vector<string> parts;
+  size_t num = TiCC::split( content, parts );
+  if ( num == 1 ){
+    // OK that's what we hoped for
+    folia::KWargs args;
+    args["id"] = atts["ID"];
+    folia::String *s = new folia::String( par->doc(), args );
+    par->append( s );
+    s->settext( content , txt.length(), setname );
+    txt += " " + content;
+    folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
+    s->append( h );
+    folia::AlignReference *a =
+      new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+    h->append( a );
+  }
+  else {
+    for ( size_t i=0; i < parts.size(); ++i ){
+      folia::KWargs args;
+      args["id"] = atts["ID"] + "_" + TiCC::toString(i);
+      folia::String *s = new folia::String( par->doc(), args );
+      par->append( s );
+      s->settext( parts[i], txt.length(), setname );
+      txt += " " + parts[i];
+      folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
+      s->append( h );
+      folia::AlignReference *a =
+	new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+      h->append( a );
+    }
+  }
 }
 
 void createFile( folia::FoliaElement *text,
@@ -1298,7 +1318,7 @@ int main( int argc, char *argv[] ){
   if ( numThreads >= 1 ){
     omp_set_num_threads( numThreads );
   }
-  
+
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( kind == "krant" )
