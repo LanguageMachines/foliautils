@@ -87,7 +87,7 @@ bool fillPuncts( const string& fn, map<string,string>& puncts ){
       puncts[parts[0]] = parts[1];
     }
     else {
-      cerr << "error reading puny+ clean value from line " << line << endl;
+      cerr << "error reading punct value from line " << line << endl;
     }
   }
   return !puncts.empty();
@@ -194,7 +194,17 @@ bool correctDoc( Document *doc,
 		"annotator='TICCL', annotatortype='auto', datetime='now()'");
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( size_t i=0; i < pv.size(); ++i ){
-    correctParagraph( pv[i], variants, unknowns, puncts, classname );
+    try {
+      correctParagraph( pv[i], variants, unknowns, puncts, classname );
+    }
+    catch ( exception& e ){
+#pragma omp critical
+      {
+	cerr << "FoLiA error in paragraph " << pv[i]->id() << " of document" << doc->id() << endl;
+	cerr << e.what() << endl;
+      }
+      return false;
+    }
   }
   return true;
 }
