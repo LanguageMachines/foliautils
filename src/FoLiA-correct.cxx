@@ -64,15 +64,20 @@ bool fillUnknowns( const string& fn, set<string>& unknowns ){
   ifstream is( fn.c_str() );
   string line;
   while ( getline( is, line ) ) {
-    string word = TiCC::trim( line );
-    UnicodeString us( word.c_str() );
-    if ( us.length() > 1 ){
-      // '1' character words ar never UNK
-      double dum;
-      if ( !TiCC::stringTo( word, dum ) ){
-	// 'true' numeric values are never UNK
-	unknowns.insert( word );
+    vector<string> parts;
+    if ( TiCC::split( line, parts ) == 2 ){
+      UnicodeString us( parts[0].c_str() );
+      if ( us.length() > 1 ){
+	// '1' character words ar never UNK
+	double dum;
+	if ( !TiCC::stringTo( parts[0], dum ) ){
+	  // 'true' numeric values are never UNK
+	  unknowns.insert( parts[0] );
+	}
       }
+    }
+    else {
+      cerr << "error reading Unknown value from line " << line << endl;
     }
   }
   return !unknowns.empty();
