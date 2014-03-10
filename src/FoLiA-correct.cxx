@@ -106,6 +106,8 @@ void correctParagraph( Paragraph* par,
 		       const map<string,string>& puncts,
 		       const string& classname ){
   vector<String*> sv = par->select<String>();
+  if ( sv.size() == 0 )
+    return;
   int offset = 0;
   string corrected;
   for ( size_t i=0; i < sv.size(); ++i ){
@@ -200,7 +202,7 @@ bool correctDoc( Document *doc,
     catch ( exception& e ){
 #pragma omp critical
       {
-	cerr << "FoLiA error in paragraph " << pv[i]->id() << " of document" << doc->id() << endl;
+	cerr << "FoLiA error in paragraph " << pv[i]->id() << " of document " << doc->id() << endl;
 	cerr << e.what() << endl;
       }
       return false;
