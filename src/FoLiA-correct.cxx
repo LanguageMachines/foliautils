@@ -345,7 +345,7 @@ int main( int argc, char *argv[] ){
 
   cout << "start reading puncts " << endl;
   map<string,string> puncts;
-  if ( !fillPuncts( unknownFileName, puncts ) ){
+  if ( !fillPuncts( punctFileName, puncts ) ){
     cerr << "no punct words!" << endl;
   }
   cout << "read " << puncts.size() << " punctuated words " << endl;
