@@ -20,6 +20,7 @@ const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
 struct word_conf {
+  word_conf(){};
   word_conf( const string& w, const string& c ): word(w), conf(c){};
   string word;
   string conf;
@@ -38,13 +39,21 @@ bool fillVariants( const string& fn,
   string current_word;
   vector<word_conf> vec;
   while ( getline( is, line ) ) {
+    cerr << "read: " << line << endl;
     vector<string> parts;
     if ( TiCC::split_at( line, parts, "#" ) == 6 ){
       string word = parts[0];
       if ( current_word.empty() )
 	current_word = word;
-      if ( word != current_word || vec.size() == numSugg ){
+
+      if ( word != current_word ){
 	// finish previous word
+	cerr << "switch word from: " << current_word << " to " << word << endl;
+	cerr << "vorige variant was " << vec.size() << " lang." << endl;
+	if ( vec.size() > numSugg ){
+	  vec.resize( numSugg );
+	}
+	cerr << "vorige variant IS " << vec.size() << " lang." << endl;
 	variants[current_word] = vec;
 	vec.clear();
 	current_word = word;
@@ -56,6 +65,16 @@ bool fillVariants( const string& fn,
     else {
       cerr << "error in line " << line << endl;
     }
+  }
+  if ( !vec.empty() ){
+    cerr << "LAST entries " << current_word << endl;
+    cerr << "vorige variant was " << vec.size() << " lang." << endl;
+    if ( vec.size() > numSugg ){
+      vec.resize( numSugg );
+    }
+    cerr << "vorige variant IS " << vec.size() << " lang." << endl;
+    variants[current_word] = vec;
+    vec.clear();
   }
   return !variants.empty();
 }
@@ -120,6 +139,7 @@ void correctParagraph( Paragraph* par,
     vector<TextContent *> origV = s->select<TextContent>();
     string word = origV[0]->str();
     filter(word);
+    string orig_word = word;
     map<string,string>::const_iterator pit = puncts.find( word );
     if ( pit != puncts.end() ){
       word = pit->second;
@@ -157,6 +177,9 @@ void correctParagraph( Paragraph* par,
     }
     else {
       set<string>::const_iterator sit = unknowns.find( word );
+      if ( sit == unknowns.end() ){
+	sit = unknowns.find( orig_word );
+      }
       if ( sit != unknowns.end() ){
 	// a registrated garbage word
 	string edit = "UNK";
