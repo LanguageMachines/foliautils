@@ -39,7 +39,6 @@ bool fillVariants( const string& fn,
   string current_word;
   vector<word_conf> vec;
   while ( getline( is, line ) ) {
-    cerr << "read: " << line << endl;
     vector<string> parts;
     if ( TiCC::split_at( line, parts, "#" ) == 6 ){
       string word = parts[0];
@@ -48,12 +47,9 @@ bool fillVariants( const string& fn,
 
       if ( word != current_word ){
 	// finish previous word
-	cerr << "switch word from: " << current_word << " to " << word << endl;
-	cerr << "vorige variant was " << vec.size() << " lang." << endl;
 	if ( vec.size() > numSugg ){
 	  vec.resize( numSugg );
 	}
-	cerr << "vorige variant IS " << vec.size() << " lang." << endl;
 	variants[current_word] = vec;
 	vec.clear();
 	current_word = word;
@@ -67,12 +63,9 @@ bool fillVariants( const string& fn,
     }
   }
   if ( !vec.empty() ){
-    cerr << "LAST entries " << current_word << endl;
-    cerr << "vorige variant was " << vec.size() << " lang." << endl;
     if ( vec.size() > numSugg ){
       vec.resize( numSugg );
     }
-    cerr << "vorige variant IS " << vec.size() << " lang." << endl;
     variants[current_word] = vec;
     vec.clear();
   }
