@@ -328,27 +328,65 @@ int main( int argc, char *argv[] ){
   }
   bool doDir = ( toDo > 1 );
 
-  cout << "start reading variants " << endl;
   map<string,vector<word_conf> > variants;
-  if ( !fillVariants( variantFileName, variants, numSugg ) ){
-    cerr << "no variants." << endl;
-    exit( EXIT_FAILURE );
-  }
-  cout << "read " << variants.size() << " variants " << endl;
-
-  cout << "start reading unknowns " << endl;
   set<string> unknowns;
-  if ( !fillUnknowns( unknownFileName, unknowns ) ){
-    cerr << "no unknown words!" << endl;
-  }
-  cout << "read " << unknowns.size() << " unknown words " << endl;
-
-  cout << "start reading puncts " << endl;
   map<string,string> puncts;
-  if ( !fillPuncts( punctFileName, puncts ) ){
-    cerr << "no punct words!" << endl;
+
+#pragma omp parallel sections
+  {
+#pragma omp section
+    {
+#pragma omp critical
+      {
+	cout << "start reading variants " << endl;
+      }
+      if ( !fillVariants( variantFileName, variants, numSugg ) ){
+#pragma omp critical
+	{
+	  cerr << "no variants." << endl;
+	}
+	exit( EXIT_FAILURE );
+      }
+#pragma omp critical
+      {
+	cout << "read " << variants.size() << " variants " << endl;
+      }
+    }
+#pragma omp section
+    {
+#pragma omp critical
+      {
+	cout << "start reading unknowns " << endl;
+      }
+      if ( !fillUnknowns( unknownFileName, unknowns ) ){
+#pragma omp critical
+	{
+	  cerr << "no unknown words!" << endl;
+	}
+      }
+#pragma omp critical
+      {
+	cout << "read " << unknowns.size() << " unknown words " << endl;
+      }
+    }
+#pragma omp section
+    {
+#pragma omp critical
+      {
+	cout << "start reading puncts " << endl;
+      }
+      if ( !fillPuncts( punctFileName, puncts ) ){
+#pragma omp critical
+	{
+	  cerr << "no punct words!" << endl;
+	}
+      }
+#pragma omp critical
+      {
+	cout << "read " << puncts.size() << " punctuated words " << endl;
+      }
+    }
   }
-  cout << "read " << puncts.size() << " punctuated words " << endl;
 
   if ( doDir ){
     try {
