@@ -57,7 +57,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
   map<string,unsigned int >::const_iterator cit = wc.begin();
   while( cit != wc.end()  ){
     if ( cit->second <= clip ){
-      --total;
+      total -= cit->second;
     }
     else {
       wf[cit->second].insert( cit->first );
@@ -65,6 +65,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
     ++cit;
   }
   unsigned int sum=0;
+  unsigned int types=0;
   map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
   while ( wit != wf.rend() ){
     set<string>::const_iterator sit = wit->second.begin();
@@ -72,6 +73,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
       sum += wit->first;
       os << *sit << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100 * double(sum)/total << endl;
+      ++types;
       ++sit;
     }
     ++wit;
@@ -80,11 +82,11 @@ void create_wf_list( const map<string, unsigned int>& wc,
   {
     cout << "created WordFreq list '" << filename << "'" << endl;
     if ( clip > 0 ){
-      cout << "with " << totalIn << " words, of which " << totalIn - total
-	   << " were clipped. " << endl;
+      cout << "with " << total << " words and " << types << " types. (" << totalIn - total
+	   << " of the original " << totalIn << " words were clipped.)" << endl;
     }
     else {
-      cout << "with " << totalIn << " words." << endl;
+      cout << "with " << total << " words." << endl;
     }
   }
 }
@@ -107,7 +109,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
   map<string,unsigned int >::const_iterator cit = lc.begin();
   while( cit != lc.end()  ){
     if ( cit->second <= clip ){
-      --total;
+      total -= cit->second;
     }
     else {
       lf[cit->second].insert( cit->first );
@@ -116,6 +118,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
   }
 
   unsigned int sum=0;
+  unsigned int types=0;
   map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
   while ( wit != lf.rend() ){
     set<string>::const_iterator sit = wit->second.begin();
@@ -123,6 +126,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
       sum += wit->first;
       os << *sit << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100* double(sum)/total << endl;
+      ++types;
       ++sit;
     }
     ++wit;
@@ -131,11 +135,11 @@ void create_lf_list( const map<string, unsigned int>& lc,
   {
     cout << "created LemmaFreq list '" << filename << "'" << endl;
     if ( clip > 0 ){
-      cout << "with " << totalIn << " lemmas, of which " << totalIn - total
-	   << " were clipped. " << endl;
+      cout << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
+	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
     }
     else {
-      cout << "with " << totalIn << " lemmas. " << endl;
+      cout << "with " << total << " lemmas. " << endl;
     }
   }
 }
@@ -155,7 +159,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
     map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
     while ( pit != cit->second.pc.end() ){
       if ( pit->second <= clip ){
-	--total;
+	total -= pit->second;
       }
       else {
 	lpf.insert( make_pair( pit->second,
@@ -166,19 +170,21 @@ void create_lpf_list( const multimap<string, rec>& lpc,
     ++cit;
   }
   unsigned int sum =0;
+  unsigned int types =0;
   multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
   while ( wit != lpf.rend() ){
     sum += wit->first;
     os << wit->second.first << " " << wit->second.second << "\t"
        << wit->first << "\t" << sum << "\t" << 100 * double(sum)/total << endl;
+    ++types;
     ++wit;
   }
 #pragma omp critical
   {
     cout << "created LemmaPosFreq list '" << filename << "'" << endl;
     if ( clip > 0 ){
-      cout << "with " << totalIn << " lemmas, of which " << totalIn - total
-	   << " were clipped. " << endl;
+      cout << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
+	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
     }
     else {
       cout << "with " << totalIn << " lemmas. " << endl;
