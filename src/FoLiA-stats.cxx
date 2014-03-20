@@ -81,7 +81,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
     cout << "created WordFreq list '" << filename << "'" << endl;
     if ( clip > 0 ){
       cout << "with " << totalIn << " words, of which " << totalIn - total
-	   << "were clipped. " << endl;
+	   << " were clipped. " << endl;
     }
     else {
       cout << "with " << totalIn << " words." << endl;
@@ -132,7 +132,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
     cout << "created LemmaFreq list '" << filename << "'" << endl;
     if ( clip > 0 ){
       cout << "with " << totalIn << " lemmas, of which " << totalIn - total
-	   << "were clipped. " << endl;
+	   << " were clipped. " << endl;
     }
     else {
       cout << "with " << totalIn << " lemmas. " << endl;
@@ -178,7 +178,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
     cout << "created LemmaPosFreq list '" << filename << "'" << endl;
     if ( clip > 0 ){
       cout << "with " << totalIn << " lemmas, of which " << totalIn - total
-	   << "were clipped. " << endl;
+	   << " were clipped. " << endl;
     }
     else {
       cout << "with " << totalIn << " lemmas. " << endl;
@@ -504,6 +504,7 @@ void usage(){
   cerr << "\t-c\t clipping factor. " << endl;
   cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t-l\t Lowercase all words" << endl;
+  cerr << "\t-L\t Language. (default='dut'). 'none' is also possible" << endl;
   cerr << "\t-n\t Ngram count " << endl;
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
@@ -543,6 +544,8 @@ int main( int argc, char *argv[] ){
       break;
     case 'L':
       lang = optarg;
+      if ( lang == "none" )
+	lang.clear();
       break;
     case 'e':
       expression = optarg;
