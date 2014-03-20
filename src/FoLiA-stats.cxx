@@ -512,7 +512,7 @@ void usage(){
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-V\t show version " << endl;
   cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
-  cerr << "\t or a whole directoy of FoLiA files " << endl;
+  cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
   cerr << "\t-o\t output prefix" << endl;
   cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
