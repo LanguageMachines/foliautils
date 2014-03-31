@@ -39,6 +39,7 @@
 #include <iostream>
 #include <fstream>
 #include "libfolia/document.h"
+#include "ticcutils/FileUtils.h"
 #include "config.h"
 
 #ifdef HAVE_TEXTCAT_H
@@ -206,55 +207,23 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   string outName;
   if ( !outDir.empty() )
     outName = outDir + "/";
-  outName += docName.substr(0, docName.find(".xml") );
+
+  string::size_type pos = docName.rfind("/");
+  if ( pos != string::npos )
+    outName += docName.substr( pos+1, docName.find(".xml") - pos - 1);
+  else
+    outName += docName.substr(0, docName.find(".xml") );
   outName += ".lc.xml";
-  //attempt to open the outfile
-  ofstream os1( outName.c_str() );
-  if ( !os1.good() ){
-    // it fails
-    // attempt to create the path
-    vector<string> parts;
-    int num = split_at( outName, parts, "/" );
-    if ( num > 1 ){
-      string path;
-      if ( outName[0] == '/' )
-	path += "/";
-      for ( size_t i=0; i < parts.size()-1; ++i ){
-	path += parts[i] + "/";
-	//	cerr << "mkdir path = " << path << endl;
-	int status = mkdir( path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH );
-	if ( status != 0 && errno != EEXIST ){
-#pragma omp critical (logging)
-	  {
-	    cerr << "unable to create directory: " << path << endl;
-	  }
-	  exit(EXIT_FAILURE);
-	}
-      }
-    }
-    // now retry
-    ofstream os2( outName.c_str() );
-    if ( !os2 ){
-      // still fails, we are lost
-#pragma omp critical (logging)
-      {
-	cerr << "unable to open output file " << outName << endl;
-	cerr << "does the outputdir exist? And is it writabe?" << endl;
-      }
-      exit( EXIT_FAILURE);
-    }
-  }
-  os1.close();
-  ofstream os( outName.c_str() );
-  if ( !os ){
-    // this can never fail but ok.
+  if ( !TiCC::createPath( outName ) ){
 #pragma omp critical (logging)
     {
       cerr << "unable to open output file " << outName << endl;
       cerr << "does the outputdir exist? And is it writabe?" << endl;
     }
-    exit( EXIT_FAILURE );
+    exit( EXIT_FAILURE);
   }
+
+  ofstream os( outName.c_str() );
   for ( size_t i=0; i < Size; ++i ){
     TextContent *t = 0;
     if ( doStrings )
@@ -316,9 +285,18 @@ bool gatherNames( const string& dirName, vector<string>& fileNames ){
   return true;
 }
 
+void usage(){
+  cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
+  cerr << "-a\tassign ALL detected languages to the result. (default is to assing the most probable)." << endl;
+  cerr << "-c <file> use LM config from 'file'" << endl;
+  cerr << "-L <lan>  use 'lan' for unindentified text. (default 'dut')" << endl;
+  cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
+  cerr << "-V\tshow version info." << endl;
+}
+
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    cerr << "missing arg " << endl;
+  if ( argc < 4	){
+    usage();
     exit(EXIT_FAILURE);
   }
   bool doAll =false;
@@ -349,12 +327,7 @@ int main( int argc, char *argv[] ){
       exit(EXIT_SUCCESS);
       break;
     case 'h':
-      cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
-      cerr << "-a\tassign ALL detected languages to the result. (default is to assing the most probable)." << endl;
-      cerr << "-c <file> use LM config from 'file'" << endl;
-      cerr << "-L <lan>  use 'lan' for unindentified text. (default 'dut')" << endl;
-      cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
-      cerr << "-V\tshow version info." << endl;
+      usage();
       exit(EXIT_SUCCESS);
       break;
     default: /* '?' */
@@ -368,33 +341,9 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
 
-  vector<string> fileNames;
-  string dirName;
   string name = argv[optind];
-  struct stat st_buf;
-  int status = stat( name.c_str(), &st_buf );
-  if ( status != 0 ){
-    cerr << "parameter '" << name << "' doesn't seem to be a file or directory"
-	 << endl;
-    exit(EXIT_FAILURE);
-  }
-  if ( S_ISREG (st_buf.st_mode) ){
-    //    cerr << "name " << name << " is a file" << endl;
-    fileNames.push_back( name );
-    string::size_type pos = name.rfind( "/" );
-    if ( pos != string::npos )
-      dirName = name.substr(0,pos);
-  }
-  else if ( S_ISDIR (st_buf.st_mode) ){
-    //    cerr << "name " << name << " is a dir" << endl;
-    string::size_type pos = name.rfind( "/" );
-    if ( pos != string::npos )
-      name.erase(pos);
-    dirName = name;
-    if ( !gatherNames( dirName, fileNames ) ){
-      exit( EXIT_FAILURE );
-    }
-  }
+  vector<string> fileNames = TiCC::searchFilesExt( name, ".xml", false );
+
   size_t toDo = fileNames.size();
   if ( toDo > 1 ){
     try {
