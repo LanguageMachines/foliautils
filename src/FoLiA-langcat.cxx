@@ -295,7 +295,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  if ( argc < 4	){
+  if ( argc < 2	){
     usage();
     exit(EXIT_FAILURE);
   }
@@ -339,6 +339,11 @@ int main( int argc, char *argv[] ){
   if ( !TC.isInit() ){
     cerr << "unable to init from: " << config << endl;
     exit(EXIT_FAILURE);
+  }
+
+  if ( !argv[optind] ){
+    cerr << "missing input file(s)" << endl;
+    exit( EXIT_FAILURE );
   }
 
   string name = argv[optind];
