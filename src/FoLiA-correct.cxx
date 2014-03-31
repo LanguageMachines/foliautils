@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/PrettyPrint.h"
 #include "libfolia/document.h"
 
 #include "config.h"
@@ -15,6 +16,7 @@
 
 using namespace	std;
 using namespace	folia;
+using namespace	TiCC;
 
 const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
@@ -232,9 +234,26 @@ bool correctDoc( Document *doc,
   return true;
 }
 
+void usage( const string& name ){
+  cerr << "Usage: [options] file/dir" << endl;
+  cerr << "\t-c\t classname" << endl;
+  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-s\t max number_of_suggestions. (default 10)" << endl;
+  cerr << "\t-h\t these messages " << endl;
+  cerr << "\t-V\t show version " << endl;
+  cerr << "\t " << name << " will correct FoLiA files, " << endl;
+  cerr << "\t or a whole directory of FoLiA files " << endl;
+  cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
+  cerr << "\t-o\t output prefix" << endl;
+  cerr << "\t-u 'uname'\t name of unknown words file" << endl;
+  cerr << "\t-p 'pname'\t name of punct words file" << endl;
+  cerr << "\t-w 'vname'\t name of variants file" << endl;
+  cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+}
+
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    cerr << "Usage: [-t number_of_threads] dir/filename " << endl;
+  if ( argc < 3	){
+    usage( argv[0] );
     exit(EXIT_FAILURE);
   }
   int opt;
@@ -281,20 +300,7 @@ int main( int argc, char *argv[] ){
       exit(EXIT_SUCCESS);
       break;
     case 'h':
-      cerr << "Usage: [options] file/dir" << endl;
-      cerr << "\t-c\t classname" << endl;
-      cerr << "\t-t\t number_of_threads" << endl;
-      cerr << "\t-s\t max number_of_suggestions. (default 10)" << endl;
-      cerr << "\t-h\t these messages " << endl;
-      cerr << "\t-V\t show version " << endl;
-      cerr << "\t " << argv[0] << " will correct FoLiA files, " << endl;
-      cerr << "\t or a whole directory of FoLiA files " << endl;
-      cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
-      cerr << "\t-o\t output prefix" << endl;
-      cerr << "\t-u 'uname'\t name of unknown words file" << endl;
-      cerr << "\t-p 'pname'\t name of punct words file" << endl;
-      cerr << "\t-w 'vname'\t name of variants file" << endl;
-      cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+      usage( argv[0] );
       exit(EXIT_SUCCESS);
       break;
     default: /* '?' */
@@ -303,9 +309,15 @@ int main( int argc, char *argv[] ){
     }
   }
 
-  if ( !outPrefix.empty() && !TiCC::isDir( outPrefix ) ){
-    cerr << "non existing output dir: '" << outPrefix << "'" << endl;
-    exit( EXIT_FAILURE );
+  if ( !outPrefix.empty() ){
+    if ( outPrefix[outPrefix.length()-1] != '/' )
+      outPrefix += "/";
+    if ( !TiCC::isDir( outPrefix ) ){
+      if ( !createPath( outPrefix ) ){
+	cerr << "unable to find or create: '" << outPrefix << "'" << endl;
+	exit( EXIT_FAILURE );
+      }
+    }
   }
 
 #ifdef HAVE_OPENMP
@@ -413,31 +425,42 @@ int main( int argc, char *argv[] ){
       continue;
     }
     string outName = outPrefix;
-    string::size_type pos = docName.rfind(".");
+    string::size_type pos = docName.rfind("/");
     if ( pos != string::npos ){
-      outName += docName.substr(0,pos) + ".corrected" + docName.substr(pos);
+      docName = docName.substr( pos+1 );
+    }
+    pos = docName.rfind(".");
+    if ( pos != string::npos ){
+      outName += docName.substr(0,pos) + ".ticcl" + docName.substr(pos);
     }
     else {
-      outName += docName + ".corrected";
+      outName += docName + ".ticcl";
     }
     if ( TiCC::isFile( outName ) ){
 #pragma omp critical
       cerr << "skipping already done file: " << outName << endl;
     }
-    else if ( correctDoc( doc, variants, unknowns, puncts, classname ) ){
-      doc->save( outName );
+    else {
+      if ( !createPath( outName ) ){
 #pragma omp critical
-      {
-	if ( toDo > 1 ){
-	  cout << "Processed :" << docName << " into " << outName
-	       << " still " << --toDo << " files to go." << endl;
+	cerr << "unable to create output file! " << outName << endl;
+	exit(EXIT_FAILURE);
+      }
+      if ( correctDoc( doc, variants, unknowns, puncts, classname ) ){
+	doc->save( outName );
+#pragma omp critical
+	{
+	  if ( toDo > 1 ){
+	    cout << "Processed :" << docName << " into " << outName
+		 << " still " << --toDo << " files to go." << endl;
+	  }
 	}
       }
-    }
-    else {
+      else {
 #pragma omp critical
-      {
-	cerr << "skipped " << docName << " seems to be already processed" << endl;
+	{
+	  cerr << "skipped " << docName << " seems to be already processed" << endl;
+	}
       }
     }
     delete doc;
