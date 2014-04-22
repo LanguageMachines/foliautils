@@ -1,0 +1,117 @@
+.TH FoLiA-stats 1 "2014 apr 22"
+
+.SH NAME
+FoLiA-stats - gather n-gram statistics from FoLiA files
+
+.SH SYNOPSYS
+FoLiA-stats [options] FILE
+
+FoLiA-stats [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-stats
+will process all FoLiA files in DIR and store its results in the currect
+directory in files called DIR.wordfreqlist.tsv, DIR.lemmafreqlist.tsv etc.
+
+When a FILE is provided,
+.B FoLiA-stats
+will process that file and store its results in the directory where FILE is
+found.
+
+The output format will be 2 or 4 <tab> separated columns (depending on the
+.B -p
+option)
+
+First column:
+the 'word', 'lemma' or POS tag at hand.
+
+Second colum:
+the Frequency of the 'word', 'lemma' or 'tag'
+
+when -p is provided:
+
+Third column:
+the accumulated freqency for all entries upto and including this one.
+
+Forth column:
+the releative presence of the entry: Which percentage of the corpus does the
+entry belong to?
+
+.SH OPTIONS
+.B -c
+number
+.RS
+clipping factor. When a frequency is lower then 'number', it will not be stored.
+.RE
+
+.B -p
+.RS
+Also output accumulated counts and percentages
+
+.RE
+
+.B -l
+.RS
+Lowercase all words.
+.RE
+
+.B -L
+language
+.RS
+only process nodes with the desired language tag.
+Default is 'dut', 'none' is also possible to avoid this check.
+.RE
+
+.B -n
+count
+.RS
+The n-gram value to process
+.RE
+
+.B -s
+.RS
+Process FoLiA <str> nodes for every <p> node. (instead of the default <w> nodes)
+.RE
+
+.B -S
+.RS
+Process FoLiA <str> nodes for the whole document. (instead of the default <w> nodes)
+.RE
+
+.B -t
+number
+.RS
+Number of concurrent threads
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -e
+expr
+.RS
+when searching for files,
+.B
+idf
+will only considers files that match with the expression 'expr' which may contain wildcards. The 'expr' is only matched against the file part. Not against paths.
+.RE
+
+.B -R
+.RS
+when a DIR is provided,
+.B FoLiA-langcat
+will recurse through this DIR and its subdirs to find files.
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot: Timbl@uvt.nl
+
+Martin Reynaert
+
