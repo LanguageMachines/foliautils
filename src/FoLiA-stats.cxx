@@ -46,7 +46,8 @@ using namespace	folia;
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int totalIn,
-		     unsigned int clip ){
+		     unsigned int clip,
+		     bool doperc ){
   unsigned int total = totalIn;
   ofstream os( filename.c_str() );
   if ( !os ){
@@ -71,8 +72,11 @@ void create_wf_list( const map<string, unsigned int>& wc,
     set<string>::const_iterator sit = wit->second.begin();
     while ( sit != wit->second.end() ){
       sum += wit->first;
-      os << *sit << "\t" << wit->first << "\t" << sum << "\t"
-	 << 100 * double(sum)/total << endl;
+      os << *sit << "\t" << wit->first;
+      if ( doperc ){
+	os << "\t" << sum << "\t" << 100 * double(sum)/total;
+      }
+      os << endl;
       ++types;
       ++sit;
     }
@@ -98,7 +102,8 @@ struct rec {
 
 void create_lf_list( const map<string, unsigned int>& lc,
 		     const string& filename, unsigned int totalIn,
-		     unsigned int clip ){
+		     unsigned int clip,
+		     bool doperc ){
   unsigned int total = totalIn;
   ofstream os( filename.c_str() );
   if ( !os ){
@@ -124,8 +129,11 @@ void create_lf_list( const map<string, unsigned int>& lc,
     set<string>::const_iterator sit = wit->second.begin();
     while ( sit != wit->second.end() ){
       sum += wit->first;
-      os << *sit << "\t" << wit->first << "\t" << sum << "\t"
-	 << 100* double(sum)/total << endl;
+      os << *sit << "\t" << wit->first;
+      if ( doperc ){
+	os << "\t" << sum << "\t" << 100* double(sum)/total;
+      }
+      os << endl;
       ++types;
       ++sit;
     }
@@ -146,7 +154,8 @@ void create_lf_list( const map<string, unsigned int>& lc,
 
 void create_lpf_list( const multimap<string, rec>& lpc,
 		      const string& filename, unsigned int totalIn,
-		      unsigned int clip ){
+		      unsigned int clip,
+		      bool doperc ){
   unsigned int total = totalIn;
   ofstream os( filename.c_str() );
   if ( !os ){
@@ -174,8 +183,11 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
   while ( wit != lpf.rend() ){
     sum += wit->first;
-    os << wit->second.first << " " << wit->second.second << "\t"
-       << wit->first << "\t" << sum << "\t" << 100 * double(sum)/total << endl;
+    os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
+    if ( doperc ){
+      os << "\t" << sum << "\t" << 100 * double(sum)/total;
+    }
+    os << endl;
     ++types;
     ++wit;
   }
@@ -508,6 +520,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t-c\t clipping factor. " << endl;
+  cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t-l\t Lowercase all words" << endl;
   cerr << "\t-L\t Language. (default='dut'). 'none' is also possible" << endl;
@@ -515,10 +528,11 @@ void usage(){
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
   cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
+  cerr << "\t The output will be a 4 columned tab sparated file, extension: *tsv " << endl;
   cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
   cerr << "\t-o\t output prefix" << endl;
   cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
@@ -537,13 +551,17 @@ int main( int argc, char *argv[] ){
   bool lowercase = false;
   bool donoparstr = false;
   bool doparstr = false;
+  bool dopercentage = false;
   string expression;
   string outPrefix;
   string lang = "dut";
-  while ((opt = getopt(argc, argv, "c:e:hlL:t:sSn:o:RV")) != -1) {
+  while ((opt = getopt(argc, argv, "c:e:hlL:t:sSn:o:pRV")) != -1) {
     switch (opt) {
     case 'c':
       clip = atoi(optarg);
+      break;
+    case 'p':
+      dopercentage = true;
       break;
     case 'l':
       lowercase = true;
@@ -675,14 +693,14 @@ int main( int argc, char *argv[] ){
     {
       string filename;
       filename = outPrefix + ".wordfreqlist" + ext;
-      create_wf_list( wc, filename, wordTotal, clip );
+      create_wf_list( wc, filename, wordTotal, clip, dopercentage );
     }
 #pragma omp section
     {
       if ( !( doparstr || donoparstr ) ){
 	string filename;
 	filename = outPrefix + ".lemmafreqlist" + ext;
-	create_lf_list( lc, filename, wordTotal, clip );
+	create_lf_list( lc, filename, wordTotal, clip, dopercentage );
       }
     }
 #pragma omp section
@@ -690,7 +708,7 @@ int main( int argc, char *argv[] ){
       if ( !( doparstr || donoparstr ) ){
 	string filename;
 	filename = outPrefix + ".lemmaposfreqlist" + ext;
-	create_lpf_list( lpc, filename, wordTotal, clip );
+	create_lpf_list( lpc, filename, wordTotal, clip, dopercentage );
       }
     }
   }
