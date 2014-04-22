@@ -1,0 +1,78 @@
+.TH FoLiA-langcat 1 "2014 apr 22"
+
+.SH NAME
+FoLiA-langcat - a FoLiA language detector
+.SH SYNOPSYS
+
+FoLiA-langcat [options] FILE
+
+FoLiA-langcat [options] DIR
+
+.SH DESCRIPTION
+.B FoLiA-lancat
+processes text nodes in FoLiA documents and assigns a language attribute to
+each <t> node.
+It uses Language Models as provided by  Gertjan van Noords language guesser.
+
+This program is called 'textcat' 'libtextcat' or 'libexttextcat'
+(depending on your configuration.) and is installed in /usr/share/libexttextcat/
+or the like.
+See also (http://odur.let.rug.nl/~vannoord/TextCat/)
+
+When a DIR is provided,
+.B FoLiA-langcat
+will process all FoLiA files in DIR and for each file.xml it will produce
+a file with a name file.lc.xml
+
+When a FILE is provided,
+.B FoLiA-stats
+will simply process that file and create file.lc.xml
+
+
+.SH OPTIONS
+.B -c
+config
+.RS
+read the configuration for the 'textcat' LM from this file.
+
+A typical configuration file might be:
+.nf
+#
+# NB We use the iso639-2 codes here.
+#
+/usr/share/libexttextcat/nl.lm	dut
+/usr/share/libexttextcat/de.lm	ger
+.fi
+
+This will detect Dutch and German, and assigns attributes 'dut' or 'ger'
+accordingly.
+
+.RE
+
+.B -L
+lan
+.RS
+for unindentified text, assign the attribute 'lan'. (Default is 'dut')
+.RE
+
+.B -a
+.RS
+assign ALL detected language categories. The default is to assign the most
+probable one.
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -s
+.RS
+process FoLiA <str> nodes. The default is to process <t> nodes in <p> nodes.
+
+.SH BUGS
+possibly
+
+.SH AUTHORS
+Ko van der Sloot Timbl@uvt.nl
+
