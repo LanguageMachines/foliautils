@@ -239,16 +239,16 @@ void usage( const string& name ){
   cerr << "\t-c\t classname" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-s\t max number_of_suggestions. (default 10)" << endl;
-  cerr << "\t-h\t these messages " << endl;
+  cerr << "\t-h\t this message " << endl;
   cerr << "\t-V\t show version " << endl;
-  cerr << "\t " << name << " will correct FoLiA files, " << endl;
+  cerr << "\t " << name << " will correct FoLiA files " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
   cerr << "\t-o\t output prefix" << endl;
-  cerr << "\t-u 'uname'\t name of unknown words file" << endl;
-  cerr << "\t-p 'pname'\t name of punct words file" << endl;
-  cerr << "\t-w 'vname'\t name of variants file" << endl;
-  cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+  cerr << "\t-u 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
+  cerr << "\t-p 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
+  cerr << "\t-w 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
+  cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
 }
 
 int main( int argc, char *argv[] ){
