@@ -287,7 +287,7 @@ bool gatherNames( const string& dirName, vector<string>& fileNames ){
 
 void usage(){
   cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
-  cerr << "-a\tassign ALL detected languages to the result. (default is to assing the most probable)." << endl;
+  cerr << "-a\tassign ALL detected languages to the result. (default is to assign the most probable)." << endl;
   cerr << "-c <file> use LM config from 'file'" << endl;
   cerr << "-L <lan>  use 'lan' for unindentified text. (default 'dut')" << endl;
   cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;

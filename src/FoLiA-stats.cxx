@@ -520,8 +520,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t-c\t clipping factor. " << endl;
-  cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
+  cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t-l\t Lowercase all words" << endl;
   cerr << "\t-L\t Language. (default='dut'). 'none' is also possible" << endl;
   cerr << "\t-n\t Ngram count " << endl;
@@ -532,10 +532,11 @@ void usage(){
   cerr << "\t-V\t show version " << endl;
   cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t The output will be a 4 columned tab sparated file, extension: *tsv " << endl;
+  cerr << "\t The output will be a 2 or 4 columned tab sparated file, extension: *tsv " << endl;
+  cerr << "\t\t (4 columns when -p is specified)" << endl;
   cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
   cerr << "\t-o\t output prefix" << endl;
-  cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+  cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
 }
 
 int main( int argc, char *argv[] ){
