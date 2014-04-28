@@ -106,7 +106,7 @@ size_t inventory( const Document *doc,
 
 int main( int argc, char *argv[] ){
   if ( argc < 2	){
-    cerr << "Usage: [-t number_of_threads] dir/filename " << endl;
+    cerr << "Usage: [-t threads] dir/filename " << endl;
     exit(EXIT_FAILURE);
   }
   int opt;
@@ -145,17 +145,17 @@ int main( int argc, char *argv[] ){
       cerr << "\t-c\t clipping factor. " << endl;
       cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
       cerr << "\t-l\t Lowercase all words" << endl;
-      cerr << "\t-t\t number_of_threads" << endl;
-      cerr << "\t-h\t this messages " << endl;
+      cerr << "\t-t\t number of threads" << endl;
+      cerr << "\t-h\t this message " << endl;
       cerr << "\t-V\t show version " << endl;
-      cerr << "\t " << argv[0] << " will produce IDF statistics for a directoy of FoLiA files " << endl;
+      cerr << "\t " << argv[0] << " will produce IDF statistics for a directory of FoLiA files " << endl;
       cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
       cerr << "\t-o\t output prefix" << endl;
-      cerr << "\t-R\t search the dirs recursively. (when appropriate)" << endl;
+      cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
       exit(EXIT_SUCCESS);
       break;
     default: /* '?' */
-      cerr << "Usage: [-t number_of_threads]  dir " << endl;
+      cerr << "Usage: [-t threads]  dir " << endl;
       exit(EXIT_FAILURE);
     }
   }
