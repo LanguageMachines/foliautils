@@ -131,7 +131,7 @@ int main( int argc, char *argv[] ){
       if ( line.empty() ){
 	TiCC::trim( parTxt );
 	if ( par && !parTxt.empty() ){
-	  par->settext( parTxt );
+	  par->settext( parTxt, "OCR" );
 	  text->append( par );
 	  parTxt = "";
 	}
@@ -150,14 +150,14 @@ int main( int argc, char *argv[] ){
 	folia::KWargs args;
 	args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
 	folia::FoliaElement *str = new folia::String( d, args );
-	str->settext( content );
+	str->settext( content, "OCR" );
 	parTxt += " " + content;
 	par->append( str );
       }
     }
     TiCC::trim( parTxt );
     if ( !parTxt.empty() ){
-      par->settext( parTxt );
+      par->settext( parTxt, "OCR" );
     }
     string outname = docid + ".folia.xml";
     d->save( outname );
