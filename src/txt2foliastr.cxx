@@ -96,6 +96,10 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames )
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docid = fileNames[fn];
+#pragma omp critical
+      {
+	cout << "examine: " << docid << endl;
+      }
     ifstream is( docid.c_str() );
     if ( !is ){
 #pragma omp critical
@@ -135,21 +139,29 @@ int main( int argc, char *argv[] ){
     while ( getline( is, line ) ){
       line = TiCC::trim(line);
       if ( line.empty() ){
-	++parCount;
-	par->settext( parTxt );
-	parTxt = "";
-	args["id"] = docid + ".p." +  TiCC::toString(parCount);
-	par = new folia::Paragraph( args );
-	text->append( par );
+	if ( !parTxt.empty() ){
+	  par->settext( parTxt );
+	  parTxt = "";
+	  folia::KWargs args;
+	  args["id"] = docid + ".p." +  TiCC::toString(++parCount);
+	  par = new folia::Paragraph( args );
+	  text->append( par );
+	}
 	continue;
       }
       vector<string> words;
       TiCC::split( line, words );
       for ( size_t i=0; i < words.size(); ++i ){
 	string content = words[i];
+	folia::KWargs args;
 	args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
 	folia::FoliaElement *str = new folia::String( args );
-	str->settext( content );
+	if ( content.empty() ){
+	  cerr << "GVD " << wrdCnt-1 << endl;
+	}
+	else {
+	  str->settext( content );
+	}
 	parTxt += " " + content;
 	par->append( str );
       }
