@@ -456,14 +456,12 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   if ( toDo > 1 ){
-    try {
-      folia::Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
-    }
-    catch(...){
-    };    
+#ifdef HAVE_OPENMP
+    folia::initMT();
+#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
-  
+
   if ( numThreads >= 1 ){
     omp_set_num_threads( numThreads );
   }

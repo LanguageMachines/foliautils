@@ -1308,11 +1308,9 @@ int main( int argc, char *argv[] ){
   }
   size_t toDo = fileNames.size();
   if ( toDo > 1 ){
-    try {
-      folia::Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
-    }
-    catch(...){
-    };
+#ifdef HAVE_OPENMP
+    folia::initMT();
+#endif
   }
   cout << "start processing of " << toDo << " files " << endl;
   if ( numThreads >= 1 ){

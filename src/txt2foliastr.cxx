@@ -70,13 +70,6 @@ int main( int argc, char *argv[] ){
     numThreads = TiCC::stringTo<int>( value );
   }
 
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 )
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-#endif
-
   vector<string> fileNames = opts.getMassOpts();
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
@@ -84,13 +77,18 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   if ( toDo > 1 ){
-    try {
-      Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
-    }
-    catch(...){
-    };
+#ifdef HAVE_OPENMP
+    folia::initMT();
+#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
+
+#ifdef HAVE_OPENMP
+  omp_set_num_threads( numThreads );
+#else
+  if ( numThreads != 1 )
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+#endif
 
 #pragma omp parallel for shared(fileNames )
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
@@ -121,46 +119,43 @@ int main( int argc, char *argv[] ){
     }
     d->declare( folia::AnnotationType::STRING, "foliastr",
 		"annotator='txt2folia', datetime='now()'" );
-    folia::FoliaElement *text = new folia::Text( "id='" + docid + ".text'" );
+    folia::FoliaElement *text = new folia::Text( d, "id='" + docid + ".text'" );
     d->append( text );
-    int parCount = 1;
-    folia::KWargs args;
-    args["id"] = docid + ".p." +  TiCC::toString(parCount);
-    folia::FoliaElement *par = new folia::Paragraph( args );
-    text->append( par );
-    string line;
+    int parCount = 0;
     int wrdCnt = 0;
+    folia::FoliaElement *par = 0;
     string parTxt;
+    string line;
     while ( getline( is, line ) ){
       line = TiCC::trim(line);
       if ( line.empty() ){
-	if ( !parTxt.empty() ){
+	TiCC::trim( parTxt );
+	if ( par && !parTxt.empty() ){
 	  par->settext( parTxt );
-	  parTxt = "";
-	  folia::KWargs args;
-	  args["id"] = docid + ".p." +  TiCC::toString(++parCount);
-	  par = new folia::Paragraph( args );
 	  text->append( par );
+	  parTxt = "";
 	}
+	par = 0;
 	continue;
       }
       vector<string> words;
       TiCC::split( line, words );
       for ( size_t i=0; i < words.size(); ++i ){
+	if ( par == 0 ){
+	  folia::KWargs args;
+	  args["id"] = docid + ".p." +  TiCC::toString(++parCount);
+	  par = new folia::Paragraph( d, args );
+	}
 	string content = words[i];
 	folia::KWargs args;
 	args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
-	folia::FoliaElement *str = new folia::String( args );
-	if ( content.empty() ){
-	  cerr << "GVD " << wrdCnt-1 << endl;
-	}
-	else {
-	  str->settext( content );
-	}
+	folia::FoliaElement *str = new folia::String( d, args );
+	str->settext( content );
 	parTxt += " " + content;
 	par->append( str );
       }
     }
+    TiCC::trim( parTxt );
     if ( !parTxt.empty() ){
       par->settext( parTxt );
     }

@@ -183,14 +183,12 @@ int main( int argc, char *argv[] ){
   }
 
   if ( toDo > 1 ){
-    try {
-      Document doc( "string='<?xml version=\"1.0\" encoding=\"UTF-8\"?><FoLiA/>'" );
-    }
-    catch(...){
-    };
+#ifdef HAVE_OPENMP
+    folia::initMT();
+#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
-  
+
 
   map<string,unsigned int> wc;
   unsigned int wordTotal =0;
