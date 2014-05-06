@@ -71,8 +71,7 @@ int main( int argc, char *argv[] ){
   }
 
 #ifdef HAVE_OPENMP
-  if ( numThreads != 1 )
-    omp_set_num_threads( numThreads );
+  omp_set_num_threads( numThreads );
 #else
   if ( numThreads != 1 )
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
@@ -96,10 +95,6 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames )
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docid = fileNames[fn];
-#pragma omp critical
-      {
-	cout << "examine: " << docid << endl;
-      }
     ifstream is( docid.c_str() );
     if ( !is ){
 #pragma omp critical
