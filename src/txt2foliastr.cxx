@@ -52,6 +52,20 @@ void usage(){
   cerr << "\t The output will only contain <p> and <str> nodes." << endl;
 }
 
+string filterMeuck( const string& s ){
+  string result;
+  for( size_t i=0; i < s.size(); ++i ){
+    int val = int(s[i]);
+    //    cerr << s[i] << "-" << val << endl;
+    if ( val == 31 || val == 12 ){
+      result += ' ';
+    }
+    else
+      result += s[i];
+  }
+  return result;
+}
+
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( argc, argv );
   int numThreads = 1;
@@ -154,17 +168,22 @@ int main( int argc, char *argv[] ){
 	  par = new folia::Paragraph( d, args );
 	}
 	string content = words[i];
-	folia::KWargs args;
-	args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
-	folia::FoliaElement *str = new folia::String( d, args );
-	str->settext( content, "OCR" );
-	parTxt += " " + content;
-	par->append( str );
+	content = filterMeuck( content );
+	content = TiCC::trim( content);
+	if ( !content.empty() ){
+	  folia::KWargs args;
+	  args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
+	  folia::FoliaElement *str = new folia::String( d, args );
+	  str->settext( content, "OCR" );
+	  parTxt += " " + content;
+	  par->append( str );
+	}
       }
     }
-    TiCC::trim( parTxt );
+    parTxt = TiCC::trim( parTxt );
     if ( !parTxt.empty() ){
       par->settext( parTxt, "OCR" );
+      text->append( par );
     }
     string outname = nameNoExt + ".folia.xml";
     d->save( outname );
