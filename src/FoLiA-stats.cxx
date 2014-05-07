@@ -530,6 +530,7 @@ void usage(){
   cerr << "\t-n\t Ngram count " << endl;
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
+  cerr << "\t--setname='name' When processing <str> nodes, use 'name' as the setname for <t> nodes." << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
