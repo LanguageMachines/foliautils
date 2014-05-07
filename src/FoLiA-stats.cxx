@@ -25,13 +25,13 @@
       Timbl@uvt.nl
 */
 
-#include <getopt.h>
 #include <string>
 #include <map>
 #include <vector>
 #include <iostream>
 #include <fstream>
 
+#include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "libfolia/document.h"
 
@@ -42,6 +42,7 @@
 
 using namespace	std;
 using namespace	folia;
+using namespace	TiCC;
 
 
 void create_wf_list( const map<string, unsigned int>& wc,
@@ -405,7 +406,8 @@ size_t str_inventory( const Document *d, const string& docName,
 		      size_t nG,
 		      bool lowercase,
 		      const string& lang,
-		      map<string,unsigned int>& wc ){
+		      map<string,unsigned int>& wc,
+		      const string& setname ){
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
   string doc_lang = d->get_metadata( "language" );
@@ -416,7 +418,7 @@ size_t str_inventory( const Document *d, const string& docName,
   for ( unsigned int i=0; i < strings.size(); ++i ){
     UnicodeString us;
     try {
-      us = strings[i]->text("OCR");
+      us = strings[i]->text(setname);
       if ( lowercase ){
 	us.toLower();
       }
@@ -460,7 +462,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  size_t nG,
 			  bool lowercase,
 			  const string& lang,
-			  map<string,unsigned int>& wc ){
+			  map<string,unsigned int>& wc,
+			  const string& setname ){
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
   string doc_lang = d->get_metadata( "language" );
@@ -476,7 +479,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     for ( unsigned int i=0; i < strings.size(); ++i ){
       UnicodeString us;
       try {
-	us = strings[i]->text("OCR");
+	us = strings[i]->text(setname);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -540,11 +543,15 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    usage();
-    exit(EXIT_FAILURE);
+  CL_Options opts( "hVc:plL:e:n:t:o:RsS", "setname:" );
+  try {
+    opts.init(argc,argv);
   }
-  int opt;
+  catch( OptionError& e ){
+    cerr << e.what() << endl;
+    usage();
+    exit( EXIT_FAILURE );
+  }
   int clip = 0;
   int nG = 1;
   int numThreads = 1;
@@ -556,56 +563,61 @@ int main( int argc, char *argv[] ){
   string expression;
   string outPrefix;
   string lang = "dut";
-  while ((opt = getopt(argc, argv, "c:e:hlL:t:sSn:o:pRV")) != -1) {
-    switch (opt) {
-    case 'c':
-      clip = atoi(optarg);
-      break;
-    case 'p':
-      dopercentage = true;
-      break;
-    case 'l':
-      lowercase = true;
-      break;
-    case 'L':
-      lang = optarg;
-      if ( lang == "none" )
-	lang.clear();
-      break;
-    case 'e':
-      expression = optarg;
-      break;
-    case 'n':
-      nG = atoi(optarg);
-      break;
-    case 't':
-      numThreads = atoi(optarg);
-      break;
-    case 'o':
-      outPrefix = optarg;
-      break;
-    case 'R':
-      recursiveDirs = true;
-      break;
-    case 's':
-      doparstr = true;
-      break;
-    case 'S':
-      donoparstr = true;
-      break;
-    case 'V':
-      cerr << PACKAGE_STRING << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      usage();
-      exit(EXIT_SUCCESS);
-      break;
-    default: /* '?' */
-      usage();
-      exit(EXIT_FAILURE);
-    }
+  string setname = "OCR";
+  bool mood;
+  string value;
+  if ( opts.pull('V', value, mood ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
   }
+  if ( opts.pull('h', value, mood ) ){
+    usage();
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.pull('c', value, mood ) ){
+    clip = stringTo<int>(value);
+  }
+  if ( opts.pull('p', value, mood ) ){
+    dopercentage = true;
+  }
+  if ( opts.pull('l', value, mood ) ){
+    lowercase = true;
+  }
+  if ( opts.pull('L', value, mood ) ){
+    if ( value == "none" )
+      lang.clear();
+    else
+      lang = value;
+  }
+  if ( opts.pull('e', value, mood ) ){
+    expression = value;
+  }
+  if ( opts.pull('n', value, mood ) ){
+    nG = stringTo<int>( value );
+  }
+  if ( opts.pull('t', value, mood ) ){
+    numThreads = stringTo<int>( value );
+  }
+  if ( opts.pull( 'o', value, mood ) ){
+    outPrefix = value;
+  }
+  if ( opts.pull( 'R', value, mood ) ){
+    recursiveDirs = true;
+  }
+  if ( opts.pull( 's', value, mood ) ){
+    doparstr = true;
+  }
+  if ( opts.pull( 'S', value, mood ) ){
+    donoparstr = true;
+  }
+  if ( opts.pull( "setname", value ) ){
+    setname = value;
+  }
+  if ( !opts.empty() ){
+    usage();
+    exit(EXIT_FAILURE);
+  }
+
 #ifdef HAVE_OPENMP
   if ( numThreads != 1 )
     omp_set_num_threads( numThreads );
@@ -614,8 +626,13 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
-  string name = argv[optind];
-  vector<string> fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
+  vector<string> massOpts = opts.getMassOpts();
+  if ( massOpts.empty() ){
+    cerr << "no file or dir specified!" << endl;
+    exit(EXIT_FAILURE);
+  }
+  string name = massOpts[0];
+  vector<string> fileNames = searchFilesMatch( name, expression, recursiveDirs );
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
     cerr << "no matching files found" << endl;
@@ -657,10 +674,10 @@ int main( int argc, char *argv[] ){
     }
     size_t count = 0;
     if ( doparstr ){
-      count = par_str_inventory( d, docName, nG, lowercase, lang, wc );
+      count = par_str_inventory( d, docName, nG, lowercase, lang, wc, setname );
     }
     else if ( donoparstr ){
-      count = str_inventory( d, docName, nG, lowercase, lang, wc );
+      count = str_inventory( d, docName, nG, lowercase, lang, wc, setname );
     }
     else
       count = word_inventory( d, docName, nG, lowercase, lang, wc, lc, lpc );
@@ -683,7 +700,7 @@ int main( int argc, char *argv[] ){
     ext += "." + lang;
   }
   if ( nG > 1 ){
-    ext += "." + TiCC::toString( nG ) + "-gram";
+    ext += "." + toString( nG ) + "-gram";
   }
   ext += ".tsv";
 #pragma omp parallel sections

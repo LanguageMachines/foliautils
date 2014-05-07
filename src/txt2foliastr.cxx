@@ -67,8 +67,10 @@ string filterMeuck( const string& s ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( argc, argv );
+  TiCC::CL_Options opts( "hVt:", "setname:" );
+  opts.init( argc, argv );
   int numThreads = 1;
+  string setname = "OCR";
   string value;
   bool mood;
   if ( opts.find( 'h', value, mood ) ){
@@ -82,6 +84,9 @@ int main( int argc, char *argv[] ){
   }
   if ( opts.find( 't', value, mood ) ){
     numThreads = TiCC::stringTo<int>( value );
+  }
+  if ( opts.find( "setname", value ) ){
+    setname = value;
   }
 
   vector<string> fileNames = opts.getMassOpts();
@@ -152,7 +157,7 @@ int main( int argc, char *argv[] ){
       if ( line.empty() ){
 	TiCC::trim( parTxt );
 	if ( par && !parTxt.empty() ){
-	  par->settext( parTxt, "OCR" );
+	  par->settext( parTxt, setname );
 	  text->append( par );
 	  parTxt = "";
 	}
@@ -174,7 +179,7 @@ int main( int argc, char *argv[] ){
 	  folia::KWargs args;
 	  args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = new folia::String( d, args );
-	  str->settext( content, "OCR" );
+	  str->settext( content, setname );
 	  parTxt += " " + content;
 	  par->append( str );
 	}
@@ -182,7 +187,7 @@ int main( int argc, char *argv[] ){
     }
     parTxt = TiCC::trim( parTxt );
     if ( !parTxt.empty() ){
-      par->settext( parTxt, "OCR" );
+      par->settext( parTxt, setname );
       text->append( par );
     }
     string outname = nameNoExt + ".folia.xml";
