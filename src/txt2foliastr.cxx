@@ -48,7 +48,7 @@ void usage(){
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
-  cerr << "\t tst2folia will produce basic FoLiA files from text files " << endl;
+  cerr << "\t txt2folia will produce basic FoLiA files from text files " << endl;
   cerr << "\t The output will only contain <p> and <str> nodes." << endl;
 }
 
@@ -92,19 +92,26 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames )
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    string docid = fileNames[fn];
-    ifstream is( docid.c_str() );
+    string fileName = fileNames[fn];
+    ifstream is( fileName.c_str() );
     if ( !is ){
 #pragma omp critical
       {
-	cerr << "failed to read " << docid << endl;
+	cerr << "failed to read " << fileName << endl;
       }
       continue;
     }
-    string::size_type pos = docid.rfind( "." );
+    string nameNoExt = fileName;
+    string::size_type pos = fileName.rfind( "." );
     if ( pos != string::npos ){
-      docid = docid.substr(0, pos );
+      nameNoExt = fileName.substr(0, pos );
     }
+    string docid = nameNoExt;
+    pos = docid.rfind( "/" );
+    if ( pos != string::npos ){
+      docid = docid.substr( pos+1 );
+    }
+
     Document *d = 0;
     try {
       d = new Document( "id='"+ docid + "'" );
@@ -112,7 +119,7 @@ int main( int argc, char *argv[] ){
     catch ( exception& e ){
 #pragma omp critical
       {
-	cerr << "failed to create a document '" << docid << "'" << endl;
+	cerr << "failed to create a document with id:'" << docid << "'" << endl;
 	cerr << "reason: " << e.what() << endl;
       }
       continue;
@@ -159,11 +166,11 @@ int main( int argc, char *argv[] ){
     if ( !parTxt.empty() ){
       par->settext( parTxt, "OCR" );
     }
-    string outname = docid + ".folia.xml";
+    string outname = nameNoExt + ".folia.xml";
     d->save( outname );
 #pragma omp critical
     {
-      cout << "Processed :" << docid << " into " << outname
+      cout << "Processed: " << fileName << " into " << outname
 	   << " still " << --toDo << " files to go." << endl;
     }
     delete d;
