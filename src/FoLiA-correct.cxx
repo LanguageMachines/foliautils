@@ -171,12 +171,13 @@ void correctParagraph( Paragraph* par,
       s->correct( oV, cV, nV, sV, args );
     }
     else {
+      // a word with no suggested variants
       set<string>::const_iterator sit = unknowns.find( word );
       if ( sit == unknowns.end() ){
 	sit = unknowns.find( orig_word );
       }
       if ( sit != unknowns.end() ){
-	// a registrated garbage word
+	// ok it is a registrated garbage word
 	string edit = "UNK";
 	vector<FoliaElement*> oV;
 	oV.push_back( origV[0] );
@@ -195,7 +196,8 @@ void correctParagraph( Paragraph* par,
 	s->correct( oV, cV, nV, sV, args );
       }
       else {
-	// just use the word
+	// just use the ORIGINAL word
+	word = orig_word;
 	s->settext( word, offset, classname );
 	corrected += word + " ";
 	offset = corrected.size();
