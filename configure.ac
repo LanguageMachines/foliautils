@@ -26,6 +26,12 @@ AC_PROG_CXX( [g++] )
 # when running tests, use CXX
 AC_LANG([C++])
 
+OPENMP_CHECK( [CXXFLAGS="$CXXFLAGS $OPENMP_CXXFLAGS"
+	       AC_DEFINE(HAVE_OPENMP, 1 , Define to 1 if you have OpenMP )],
+	      [AC_MSG_NOTICE(We don't have OpenMP. Multithreaded testing is disabled)] )
+
+AC_SUBST([OPENMPFLAGS],[$OPENMP_CXXFLAGS])
+
 # use libtool
 AC_PROG_LIBTOOL
 LT_INIT
@@ -60,7 +66,7 @@ AX_ICU_CHECK( [3.6],
 
 AC_CHECK_HEADERS([libexttextcat/textcat.h],
  	         [CXXFLAGS="$CXXFLAGS -I$prefix/include"
-                  LIBS="-L$prefix/lib -lexttextcat $LIBS"],
+                  LIBS="-L$prefix/lib -lexttextcat-2.0 $LIBS"],
 	         [AC_CHECK_HEADERS([libtextcat/textcat.h],
                                    [CXXFLAGS="$CXXFLAGS -I$prefix/include"
                                     LIBS="-L$prefix/lib -ltextcat $LIBS"],
@@ -91,12 +97,6 @@ AC_ARG_WITH(folia,
 PKG_CHECK_MODULES([folia], [folia >= 0.11] )
 CXXFLAGS="$folia_CFLAGS $CXXFLAGS"
 LIBS="$folia_LIBS $LIBS"
-
-OPENMP_CHECK( [CXXFLAGS="$CXXFLAGS $OPENMP_CXXFLAGS"
-	       AC_DEFINE(HAVE_OPENMP, 1 , Define to 1 if you have OpenMP )],
-	      [AC_MSG_NOTICE(We don't have OpenMP. Multithreaded testing is disabled)] )
-
-AC_SUBST([OPENMPFLAGS],[$OPENMP_CXXFLAGS])
 
 AC_CONFIG_FILES([
   Makefile
