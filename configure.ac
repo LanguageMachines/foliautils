@@ -65,14 +65,15 @@ AX_ICU_CHECK( [3.6],
  or the like is installed" )] )
 
 AC_CHECK_HEADERS([libexttextcat/textcat.h],
- 	         [CXXFLAGS="$CXXFLAGS -I$prefix/include"
-                  LIBS="-L$prefix/lib -lexttextcat-2.0 $LIBS"],
+	         [CXXFLAGS="$CXXFLAGS -I$prefix/include"],
 	         [AC_CHECK_HEADERS([libtextcat/textcat.h],
-                                   [CXXFLAGS="$CXXFLAGS -I$prefix/include"
-                                    LIBS="-L$prefix/lib -ltextcat $LIBS"],
+                                   [CXXFLAGS="$CXXFLAGS -I$prefix/include"],
 		                   [AC_CHECK_HEADERS([textcat.h],
-                                                      [LIBS="-L$prefix/lib -ltextcat $LIBS"],
-		                                      [AC_MSG_ERROR([Desperatly seeking libtextextcat-dev, it is needed])])])])
+						     []
+		                                     [AC_MSG_ERROR([Desperatly seeking textcat header file, it is needed])])])])
+
+AC_SEARCH_LIBS([textcat_Init],[exttextcat-2.0 exttextcat textcat],[],
+  [AC_MSG_ERROR([Unable to find  textcat library. it is needed])])
 
 AC_ARG_WITH(ticcutils,
        [  --with-ticcutils=DIR       use ticcutils installed in <DIR>;
