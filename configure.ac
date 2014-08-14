@@ -69,7 +69,7 @@ AC_CHECK_HEADERS([libexttextcat/textcat.h],
 	         [AC_CHECK_HEADERS([libtextcat/textcat.h],
                                    [CXXFLAGS="$CXXFLAGS -I$prefix/include"],
 		                   [AC_CHECK_HEADERS([textcat.h],
-						     []
+						     [],
 		                                     [AC_MSG_ERROR([Desperatly seeking textcat header file, it is needed])])])])
 
 AC_SEARCH_LIBS([textcat_Init],[exttextcat-2.0 exttextcat textcat],[],
