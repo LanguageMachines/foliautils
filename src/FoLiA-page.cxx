@@ -48,7 +48,6 @@
 using namespace	std;
 
 bool verbose = false;
-bool predict = false;
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
@@ -373,7 +372,7 @@ int main( int argc, char *argv[] ){
   int numThreads=1;
   string outputDir;
   zipType outputType = NORMAL;
-  while ((opt = getopt(argc, argv, "bcght:vVo:p")) != -1) {
+  while ((opt = getopt(argc, argv, "bght:vVo:")) != -1) {
     switch (opt) {
     case 'b':
       outputType = BZ2;
@@ -386,9 +385,6 @@ int main( int argc, char *argv[] ){
       break;
     case 'v':
       verbose = true;
-      break;
-    case 'p':
-      predict = true;
       break;
     case 'V':
       cerr << PACKAGE_STRING << endl;
