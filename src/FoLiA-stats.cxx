@@ -567,51 +567,51 @@ int main( int argc, char *argv[] ){
   string setname = "OCR";
   bool mood;
   string value;
-  if ( opts.pull('V', value, mood ) ){
+  if ( opts.extract('V', value, mood ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( opts.pull('h', value, mood ) ){
+  if ( opts.extract('h', value, mood ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.pull('c', value, mood ) ){
+  if ( opts.extract('c', value, mood ) ){
     clip = stringTo<int>(value);
   }
-  if ( opts.pull('p', value, mood ) ){
+  if ( opts.extract('p', value, mood ) ){
     dopercentage = true;
   }
-  if ( opts.pull('l', value, mood ) ){
+  if ( opts.extract('l', value, mood ) ){
     lowercase = true;
   }
-  if ( opts.pull('L', value, mood ) ){
+  if ( opts.extract('L', value, mood ) ){
     if ( value == "none" )
       lang.clear();
     else
       lang = value;
   }
-  if ( opts.pull('e', value, mood ) ){
+  if ( opts.extract('e', value, mood ) ){
     expression = value;
   }
-  if ( opts.pull('n', value, mood ) ){
+  if ( opts.extract('n', value, mood ) ){
     nG = stringTo<int>( value );
   }
-  if ( opts.pull('t', value, mood ) ){
+  if ( opts.extract('t', value, mood ) ){
     numThreads = stringTo<int>( value );
   }
-  if ( opts.pull( 'o', value, mood ) ){
+  if ( opts.extract( 'o', value, mood ) ){
     outPrefix = value;
   }
-  if ( opts.pull( 'R', value, mood ) ){
+  if ( opts.extract( 'R', value, mood ) ){
     recursiveDirs = true;
   }
-  if ( opts.pull( 's', value, mood ) ){
+  if ( opts.extract( 's', value, mood ) ){
     doparstr = true;
   }
-  if ( opts.pull( 'S', value, mood ) ){
+  if ( opts.extract( 'S', value, mood ) ){
     donoparstr = true;
   }
-  if ( opts.pull( "setname", value ) ){
+  if ( opts.extract( "setname", value ) ){
     setname = value;
   }
   if ( !opts.empty() ){

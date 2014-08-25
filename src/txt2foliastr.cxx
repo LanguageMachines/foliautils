@@ -73,19 +73,19 @@ int main( int argc, char *argv[] ){
   string setname = "OCR";
   string value;
   bool mood;
-  if ( opts.find( 'h', value, mood ) ){
+  if ( opts.is_present( 'h', value, mood ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.find( 'V', value, mood ) ){
+  if ( opts.is_present( 'V', value, mood ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
     exit(EXIT_SUCCESS);
   }
-  if ( opts.find( 't', value, mood ) ){
+  if ( opts.is_present( 't', value, mood ) ){
     numThreads = TiCC::stringTo<int>( value );
   }
-  if ( opts.find( "setname", value ) ){
+  if ( opts.is_present( "setname", value ) ){
     setname = value;
   }
 
