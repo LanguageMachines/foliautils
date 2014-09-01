@@ -33,6 +33,7 @@
 #include <fstream>
 
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/CommandLine.h"
 #include "libfolia/document.h"
 
 #include "config.h"
@@ -43,6 +44,7 @@
 using namespace	std;
 using namespace	folia;
 
+bool verbose = false;
 
 void create_idf_list( const map<string, unsigned int>& wc,
 		      const string& filename, unsigned int clip ){
@@ -104,60 +106,66 @@ size_t inventory( const Document *doc,
   return ws.size();
 }
 
+void usage(){
+  cerr << "Usage: [options] file/dir" << endl;
+  cerr << "\t FoLiA-idf will produce IDF statistics for a directory of FoLiA files " << endl;
+  cerr << "\t--clip\t clipping factor. " << endl;
+  cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
+  cerr << "\t--lower\t Lowercase all words" << endl;
+  cerr << "\t-t\t number of threads" << endl;
+  cerr << "\t-h\t this message " << endl;
+  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
+  cerr << "\t-O\t output prefix" << endl;
+  cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
+  exit(EXIT_SUCCESS);
+}
+
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    cerr << "Usage: [-t threads] dir/filename " << endl;
-    exit(EXIT_FAILURE);
+  TiCC::CL_Options opts( "vVt:O:Rhe:", "clip:,lower" );
+  try {
+    opts.init( argc, argv );
   }
-  int opt;
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
+    usage();
+    exit( EXIT_FAILURE );
+  }
   int clip = 0;
   int numThreads = 1;
   bool recursiveDirs = false;
   bool lowercase = false;
   string expression;
   string outPrefix;
-  while ((opt = getopt(argc, argv, "c:e:hlt:o:RV")) != -1) {
-    switch (opt) {
-    case 'c':
-      clip = atoi(optarg);
-      break;
-    case 'l':
-      lowercase = true;
-      break;
-    case 'e':
-      expression = optarg;
-      break;
-    case 't':
-      numThreads = atoi(optarg);
-      break;
-    case 'o':
-      outPrefix = optarg;
-      break;
-    case 'R':
-      recursiveDirs = true;
-      break;
-    case 'V':
-      cerr << "IDF" << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      cerr << "Usage: [options] file/dir" << endl;
-      cerr << "\t-c\t clipping factor. " << endl;
-      cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
-      cerr << "\t-l\t Lowercase all words" << endl;
-      cerr << "\t-t\t number of threads" << endl;
-      cerr << "\t-h\t this message " << endl;
-      cerr << "\t-V\t show version " << endl;
-      cerr << "\t " << argv[0] << " will produce IDF statistics for a directory of FoLiA files " << endl;
-      cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
-      cerr << "\t-o\t output prefix" << endl;
-      cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    default: /* '?' */
-      cerr << "Usage: [-t threads]  dir " << endl;
-      exit(EXIT_FAILURE);
+  string value;
+  if ( opts.extract('h' ) ){
+    usage();
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract('V' ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  verbose = opts.extract( 'v' );
+  opts.extract( 'e', expression );
+  recursiveDirs = opts.extract( 'R' );
+  opts.extract( 'O', outPrefix );
+  if ( opts.extract( 't', value ) ){
+    if ( !TiCC::stringTo( value, numThreads ) ){
+      cerr << "unsupported value for -t (" << value << ")" << endl;
+      exit(EXIT_FAILURE);  }
+  }
+  if ( opts.extract( "clip", value ) ){
+    if ( !TiCC::stringTo( value, clip ) ){
+      cerr << "illegal --clip value (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
     }
+  }
+  lowercase = opts.extract( "lowercase" );
+  if ( !opts.empty() ){
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage();
+    exit(EXIT_FAILURE);
   }
 #ifdef HAVE_OPENMP
   if ( numThreads != 1 )
@@ -167,8 +175,18 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
-  string name = argv[optind];
-  vector<string> fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.size() == 0 ){
+    cerr << "missing input file or directory" << endl;
+    exit( EXIT_FAILURE );
+  }
+  else if ( fileNames.size() > 1 ){
+    cerr << "currently only 1 file or directory is supported" << endl;
+    exit( EXIT_FAILURE );
+  }
+
+  string dirName = fileNames[0];
+  fileNames = TiCC::searchFilesMatch( dirName, expression, recursiveDirs );
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
     cerr << "no matching files found" << endl;
@@ -219,7 +237,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( toDo > 1 ){
-    cout << "done processsing directory '" << name << "' in total "
+    cout << "done processsing directory '" << dirName << "' in total "
 	 << wordTotal << " unique words were found." << endl;
   }
   cout << "start calculating the results" << endl;

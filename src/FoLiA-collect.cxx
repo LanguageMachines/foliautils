@@ -35,6 +35,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
 #include "config.h"
@@ -44,6 +45,7 @@
 
 using namespace	std;
 
+bool verbose = false; // not yest used
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int total ){
@@ -248,62 +250,81 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
   return total;
 }
 
+void usage(){
+  cerr << "Usage: [options] file/dir" << endl;
+  cerr << "\t collect the ngram statistics of a file" << endl;
+  cerr << "\t or a whole directoy" << endl;
+  cerr << "\t--ngram\t Ngram count " << endl;
+  cerr << "\t--hapax also include HAPAXes (default is don't) " << endl;
+  cerr << "\t-O\t outout directory." << endl;
+  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-v\t verbosity " << endl;
+}
+
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    cerr << "Usage: collect [-n Ngram count] dir " << endl;
-    exit(EXIT_FAILURE);
+  TiCC::CL_Options opts( "vVhO:t:", "hapax,ngram:" );
+  try {
+    opts.init( argc, argv );
   }
-  int opt;
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
+    usage();
+    exit( EXIT_FAILURE );
+  }
   string nG = "1";
   int nGv = 1;
   int numThreads=1;
   string outDir;
   bool keepSingles = false;
-  while ((opt = getopt(argc, argv, "hn:t:Vo:s")) != -1) {
-    switch (opt) {
-    case 'n':
-      {
-	nGv = atoi(optarg);
-	if ( nGv <= 0 || nGv >= 10 ){
-	  cerr << "unsupported value for n (" << optarg << ")" << endl;
-	  exit(EXIT_FAILURE);
-	}
-	nG = optarg;
-      }
-      break;
-    case 'o':
-      outDir = optarg;
-      break;
-    case 's':
-      keepSingles = true;
-      break;
-    case 't':
-      numThreads = atoi(optarg);
-      break;
-    case 'V':
-      cerr << PACKAGE_STRING << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      cerr << "Usage: [options] file/dir" << endl;
-      cerr << "\t-n\t Ngram count " << endl;
-      cerr << "\t-h\t this messages " << endl;
-      cerr << "\t-V\t show version " << endl;
-      cerr << "\t-s\t also include HAPAXes (default is don't) " << endl;
-      cerr << "\t will collect the ngram statistics of " << endl;
-      cerr << "\t or a whole directoy" << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    default: /* '?' */
-      cerr << "Usage:  [-n Ngram count] dir " << endl;
+  string value;
+  if ( opts.extract( 'h' ) ){
+    usage();
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract( 'V' ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  verbose = opts.extract( 'v' );
+  if ( opts.extract( "ngram", nG ) ){
+    if ( !TiCC::stringTo( nG, nGv ) ){
+      cerr << "unsupported value for --ngram (" << nG << ")" << endl;
       exit(EXIT_FAILURE);
     }
+    if ( nGv <= 0 || nGv >= 10 ){
+      cerr << "unsupported value for --ngram (" << nG << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  opts.extract( 'O', outDir );
+  keepSingles = opts.extract( "hapax" );
+  if ( opts.extract( 't', value ) ){
+    if ( !TiCC::stringTo( value, numThreads ) ){
+      cerr << "unsupported value for -t (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  if ( !opts.empty() ){
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage();
+    exit(EXIT_FAILURE);
   }
 
   vector<string> lfNames;
   vector<string> lpfNames;
   vector<string> wfNames;
-  string name = argv[optind];
+
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.size() == 0 ){
+    cerr << "missing file or directory to process!" << endl;
+    exit( EXIT_FAILURE );
+  }
+  else if ( fileNames.size() >1 ){
+    cerr << "Only 1 file or directory may be specified!" << endl;
+    exit( EXIT_FAILURE );
+  }
+  string name = fileNames[0];
   if ( !TiCC::isFile(name) && !TiCC::isDir(name) ){
     cerr << "parameter '" << name << "' doesn't seem to be a file or directory"
 	 << endl;

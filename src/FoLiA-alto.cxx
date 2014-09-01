@@ -39,6 +39,7 @@
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
+#include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -179,9 +180,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
   return 0;
 }
 
-const string setname = "OCR";
-
-void addStr( folia::Paragraph *par, string& txt,
+void addStr( folia::Paragraph *par, string& txt, const string& cls,
 	     const xmlNode *pnt, const string& altoFile ){
   folia::KWargs atts = folia::getAttributes( pnt );
   string content = atts["CONTENT"];
@@ -195,7 +194,7 @@ void addStr( folia::Paragraph *par, string& txt,
     args["id"] = atts["ID"];
     folia::String *s = new folia::String( par->doc(), args );
     par->append( s );
-    s->settext( content , txt.length(), setname );
+    s->settext( content , txt.length(), cls );
     txt += " " + content;
     folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
     s->append( h );
@@ -209,7 +208,7 @@ void addStr( folia::Paragraph *par, string& txt,
       args["id"] = atts["ID"] + "_" + TiCC::toString(i);
       folia::String *s = new folia::String( par->doc(), args );
       par->append( s );
-      s->settext( parts[i], txt.length(), setname );
+      s->settext( parts[i], txt.length(), cls );
       txt += " " + parts[i];
       folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
       s->append( h );
@@ -222,6 +221,7 @@ void addStr( folia::Paragraph *par, string& txt,
 
 void createFile( folia::FoliaElement *text,
 		 xmlDoc *alt_doc,
+		 const string& cls,
 		 const string& altoFile,
 		 const list<xmlNode*>& textblocks ){
   xmlNode *root = xmlDocGetRootElement( alt_doc );
@@ -264,16 +264,16 @@ void createFile( folia::FoliaElement *text,
 	      string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 	      if ( sub == "HypPart2" ){
 		if ( keepPart1 == 0 ){
-		  addStr( p, ocr_text, pnt, altoFile );
+		  addStr( p, ocr_text, cls, pnt, altoFile );
 		}
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  folia::KWargs args;
 		  args["id"] = atts["ID"];
-		  args["class"] = setname;
+		  args["class"] = cls;
 		  folia::String *s = new folia::String( text->doc(), args );
 		  p->append( s );
-		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(), setname );
+		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(), cls );
 		  ocr_text += " " + atts["SUBS_CONTENT"];
 		  folia::Alignment *h =
 		    new folia::Alignment( "href='" + altoFile + "'" );
@@ -302,7 +302,7 @@ void createFile( folia::FoliaElement *text,
 		  part2 = findPart2Block( node );
 		  if ( !part2 ){
 		    // Ok. Just ignore this and take the CONTENT
-		    addStr( p, ocr_text, pnt, altoFile );
+		    addStr( p, ocr_text, cls, pnt, altoFile );
 		  }
 		  else {
 		    keepPart1 = pnt;
@@ -312,7 +312,7 @@ void createFile( folia::FoliaElement *text,
 		}
 	      }
 	      else {
-		addStr( p, ocr_text, pnt, altoFile );
+		addStr( p, ocr_text, cls, pnt, altoFile );
 	      }
 	    }
 	  }
@@ -333,12 +333,13 @@ void createFile( folia::FoliaElement *text,
       cerr << "Confusing! " << endl;
     }
     if ( !ocr_text.empty() )
-      p->settext( ocr_text.substr(1), setname );
+      p->settext( ocr_text.substr(1), cls );
     ++bit;
   }
 }
 
 void processBlocks( folia::FoliaElement *text,
+		    const string& cls,
 		    const list<xmlNode*>& blocks,
 		    const docCache& cache ){
   list<xmlNode*>::const_iterator it = blocks.begin();
@@ -347,7 +348,7 @@ void processBlocks( folia::FoliaElement *text,
     xmlDoc *alt_doc = cache.find( alt );
     if ( alt_doc ){
       list<xmlNode*> texts = TiCC::FindNodes( *it, "dcx:TextBlock" );
-      createFile( text, alt_doc, alt, texts );
+      createFile( text, alt_doc, cls, alt, texts );
     }
     else {
 #pragma omp critical
@@ -370,6 +371,7 @@ string replaceColon( const string& f, char r ){
 
 void processArticle( const string& f,
 		     const string& subject,
+		     const string& cls,
 		     const list<xmlNode*>& parts,
 		     const docCache& cache,
 		     const string& outDir,
@@ -398,7 +400,7 @@ void processArticle( const string& f,
 	cerr << "found no blocks" << endl;
       }
     }
-    processBlocks( text, blocks, cache );
+    processBlocks( text, cls, blocks, cache );
     ++it;
   }
   string outName = outDir;
@@ -436,6 +438,7 @@ void processArticle( const string& f,
 
 void processZone( const string& id,
 		  const string& subject,
+		  const string& cls,
 		  xmlNode *zone,
 		  const docCache& cache,
 		  const string& outDir,
@@ -443,7 +446,7 @@ void processZone( const string& id,
 		  const zipType outputType ){
   list<xmlNode *> parts =  TiCC::FindNodes( zone, "dcx:article-part" );
   if ( parts.size() >= 1 ){
-    processArticle( id, subject, parts, cache, outDir, inputType, outputType );
+    processArticle( id, subject, cls, parts, cache, outDir, inputType, outputType );
   }
 }
 
@@ -732,6 +735,7 @@ xmlDoc *getXml( const string& file, zipType& type ){
 void solveArtAlto( const string& altoDir,
 		   const string& file,
 		   const string& outDir,
+		   const string& cls,
 		   zipType outputType ){
   bool succes = true;
 #pragma omp critical
@@ -825,7 +829,8 @@ void solveArtAlto( const string& altoDir,
 		  if ( comps.size() == 1 ){
 		    list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
 		    if ( zones.size() == 1 ){
-		      processZone( *art_it, subject, zones.front(), cache, outDir,
+		      processZone( *art_it, subject, cls,
+				   zones.front(), cache, outDir,
 				   inputType, outputType );
 		    }
 		    else {
@@ -892,7 +897,9 @@ void solveArtAlto( const string& altoDir,
 
 void solveBook( const string& altoFile, const string& id,
 		const string& urn,
-		const string& outDir, zipType outputType ){
+		const string& outDir,
+		const string& cls,
+		zipType outputType ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -958,16 +965,16 @@ void solveBook( const string& altoFile, const string& id,
 		string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 		if ( sub == "HypPart2" ){
 		  if ( keepPart1 == 0 ){
-		    addStr( p, ocr_text, pnt, urn );
+		    addStr( p, ocr_text, cls, pnt, urn );
 		  }
 		  else {
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    folia::KWargs args;
 		    args["id"] = atts["ID"];
-		    args["class"] = setname;
+		    args["class"] = cls;
 		    folia::String *s = new folia::String( text->doc(), args );
 		    p->append( s );
-		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(), setname );
+		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(), cls );
 		    ocr_text += " " + atts["SUBS_CONTENT"];
 		    folia::Alignment *h =
 		      new folia::Alignment( "href='" + urn + "'" );
@@ -996,7 +1003,7 @@ void solveBook( const string& altoFile, const string& id,
 		    part2 = findPart2Block( node );
 		    if ( !part2 ){
 		      // Ok. Just ignore this and take the CONTENT
-		      addStr( p, ocr_text, pnt, urn );
+		      addStr( p, ocr_text, cls, pnt, urn );
 		    }
 		    else {
 		      keepPart1 = pnt;
@@ -1006,7 +1013,7 @@ void solveBook( const string& altoFile, const string& id,
 		  }
 		}
 		else {
-		  addStr( p, ocr_text, pnt, urn );
+		  addStr( p, ocr_text, cls, pnt, urn );
 		}
 	      }
 	    }
@@ -1027,7 +1034,7 @@ void solveBook( const string& altoFile, const string& id,
 	cerr << "Confusing! " << endl;
       }
       if ( !ocr_text.empty() )
-	p->settext( ocr_text.substr(1), setname );
+	p->settext( ocr_text.substr(1), cls );
       ++bit;
     }
     zipType type = inputType;
@@ -1066,6 +1073,7 @@ void solveBook( const string& altoFile, const string& id,
 void solveBookAlto( const string& altoDir,
 		    const string& file,
 		    const string& outDir,
+		    const string& cls,
 		    zipType outputType ){
   bool succes = true;
 #pragma omp critical
@@ -1109,7 +1117,8 @@ void solveBookAlto( const string& altoDir,
 		if ( !id.empty() ){
 		  map<string,string>::const_iterator it = downloaded_files.find( id );
 		  if ( it != downloaded_files.end() ){
-		    solveBook( it->second, id, urns[id], outDir, outputType );
+		    solveBook( it->second, id, urns[id], outDir,
+			       cls, outputType );
 		  }
 		}
 		++it;
@@ -1156,72 +1165,97 @@ void solveBookAlto( const string& altoDir,
   }
 }
 
+void usage(){
+  cerr << "Usage: alto [options] file/dir" << endl;
+  cerr << "\t--cache\t alto cache directory " << endl;
+  cerr << "\t--clear\t clear cached Alto files at start" << endl;
+  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-O\t output directory " << endl;
+  cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant' " << endl;
+  cerr << "\t--class=<cls>\t specfies the FoLiA class of the string nodes. (default 'OCR')"
+       << endl;
+  cerr << "\t--compress=<c>\t create zipped files." << endl;
+  cerr << "\t\t\t 'c'=b creates bzip2 files (.bz2)" << endl;
+  cerr << "\t-g\t 'c'=g creates gzip files (.gz)" << endl;
+  cerr << "\t-v\t verbose output " << endl;
+  cerr << "\t-V\t show version " << endl;
+}
 
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    cerr << "Usage: [-t number_of_threads] [-o outputdir] [-a altodir] dir/filename " << endl;
-    exit(EXIT_FAILURE);
+  TiCC::CL_Options opts;
+  try {
+    opts.set_short_options( "vVt:O:h" );
+    opts.set_long_options( "cache:,clear,class:,compress:,type:" );
+    opts.init( argc, argv );
   }
-  int opt;
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
+    usage();
+    exit( EXIT_FAILURE );
+  }
   int numThreads=1;
   string altoDir = "/tmp/altocache/";
   string outputDir;
   string kind = "krant";
   zipType outputType = NORMAL;
-  while ((opt = getopt(argc, argv, "a:bcghK:t:vVo:")) != -1) {
-    switch (opt) {
-    case 'b':
-      outputType = BZ2;
-      break;
-    case 'c':
-      clearCachedFiles = true;
-      break;
-    case 'g':
-      outputType = GZ;
-      break;
-    case 'K':
-      kind = optarg;
-      if ( kind != "krant" && kind != "boek" ){
-	cerr << "unknown Kind: use 'krant' or 'boek' (default='krant')" << endl;
-	exit(EXIT_FAILURE);
-      }
-      break;
-    case 't':
-      numThreads = atoi(optarg);
-      break;
-    case 'v':
-      verbose = true;
-      break;
-    case 'V':
-      cerr << PACKAGE_STRING << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      cerr << "Usage: alto [options] file/dir" << endl;
-      cerr << "\t-a\t alto cache directory " << endl;
-      cerr << "\t-c\t clear cached Alto files" << endl;
-      cerr << "\t-t\t number_of_threads" << endl;
-      cerr << "\t-h\t this messages " << endl;
-      cerr << "\t-o\t output directory " << endl;
-      cerr << "\t-K\t kind ('krant' or 'boek' Default: 'krant' " << endl;
-      cerr << "\t-b\t create bzip2 files (.bz2)" << endl;
-      cerr << "\t-g\t create gzip files (.gz)" << endl;
-      cerr << "\t-v\t verbose output " << endl;
-      cerr << "\t-V\t show version " << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'a':
-      altoDir = string(optarg) + "/";
-      break;
-    case 'o':
-      outputDir = string(optarg) + "/";
-      break;
-    default: /* '?' */
-      cerr << "Usage: alto [-t number_of_threads] [-o output_dir] dir/filename " << endl;
+  string cls = "OCR";
+  string value;
+  if ( opts.extract('h' ) ){
+    usage();
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract('V' ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  verbose = opts.extract( 'v' );
+  clearCachedFiles = opts.extract( "clear" );
+  if ( opts.extract( "type", kind ) ){
+    if ( kind != "krant" && kind != "boek" ){
+      cerr << "unknown type: use 'krant' or 'boek' (default='krant')" << endl;
       exit(EXIT_FAILURE);
     }
   }
-  vector<string> fileNames;
+  if ( opts.extract( "compress", value ) ){
+    if ( value == "b" )
+      outputType = BZ2;
+    else if ( value == "g" )
+      outputType = GZ;
+    else {
+      cerr << "unknown compression: use 'b' or 'g'" << endl;
+      exit( EXIT_FAILURE );
+    }
+  }
+  if ( opts.extract( 't', value ) ){
+    numThreads = TiCC::stringTo<int>( value );
+  }
+  opts.extract( "class", cls );
+  opts.extract( "cache", altoDir );
+  if ( !altoDir.empty() && altoDir[altoDir.length()-1] != '/' )
+    altoDir += "/";
+  opts.extract( 'O', outputDir );
+  if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' )
+    outputDir += "/";
+  if ( !opts.empty() ){
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage();
+    exit(EXIT_FAILURE);
+  }
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.empty() ){
+    if ( clearCachedFiles ){
+      if ( clear_alto_files( altoDir ) )
+	exit(EXIT_SUCCESS);
+      else
+	exit(EXIT_FAILURE);
+    }
+    else {
+      cerr << "missing input file(s)" << endl;
+      usage();
+      exit(EXIT_FAILURE);
+    }
+  }
   string dirName;
   if ( !outputDir.empty() ){
     string name = outputDir;
@@ -1233,29 +1267,9 @@ int main( int argc, char *argv[] ){
 	exit(EXIT_FAILURE);
       }
     }
-    if ( kind == "krant" ){
-      name = outputDir + "artikel/";
-      if ( !TiCC::isDir(name) ){
-	int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-	if ( res < 0 ){
-	  cerr << "outputdir '" << name
-	       << "' doesn't existing and can't be created" << endl;
-	  exit(EXIT_FAILURE);
-	}
-      }
-      name = outputDir + "overige/";
-      if ( !TiCC::isDir(name) ){
-	int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-	if ( res < 0 ){
-	  cerr << "outputdir '" << name
-	       << "' doesn't existing and can't be created" << endl;
-	  exit(EXIT_FAILURE);
-	}
-      }
-    }
   }
-  else if ( kind == "krant" ){
-    string name = "artikel/";
+  if ( kind == "krant" ){
+    string name = outputDir + "artikel/";
     if ( !TiCC::isDir(name) ){
       int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
       if ( res < 0 ){
@@ -1264,7 +1278,7 @@ int main( int argc, char *argv[] ){
 	exit(EXIT_FAILURE);
       }
     }
-    name = "overige/";
+    name = outputDir + "overige/";
     if ( !TiCC::isDir(name) ){
       int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
       if ( res < 0 ){
@@ -1274,37 +1288,41 @@ int main( int argc, char *argv[] ){
       }
     }
   }
-  if ( !argv[optind] ){
-    if ( clearCachedFiles ){
-      if ( clear_alto_files( altoDir ) )
-	exit(EXIT_SUCCESS);
-      else
+  if ( fileNames.size() == 1 ){
+    string name = fileNames[0];
+    if ( !( TiCC::isFile(name) || TiCC::isDir(name) ) ){
+      cerr << "'" << name << "' doesn't seem to be a file or directory"
+	   << endl;
+      exit(EXIT_FAILURE);
+    }
+    if ( TiCC::isFile(name) ){
+      if ( TiCC::match_back( name, ".tar" ) ){
+	cerr << "TAR files are not supported." << endl;
 	exit(EXIT_FAILURE);
+      }
+      else {
+	string::size_type pos = name.rfind( "/" );
+	if ( pos != string::npos )
+	  dirName = name.substr(0,pos);
+      }
     }
     else {
-      exit(EXIT_FAILURE);
-    }
-  }
-  string name = argv[optind];
-  if ( !( TiCC::isFile(name) || TiCC::isDir(name) ) ){
-    cerr << "parameter '" << name << "' doesn't seem to be a file or directory"
-	 << endl;
-    exit(EXIT_FAILURE);
-  }
-  if ( TiCC::isFile(name) ){
-    if ( TiCC::match_back( name, ".tar" ) ){
-      cerr << "TAR files are not supported yet." << endl;
-      exit(EXIT_FAILURE);
-    }
-    else {
-      fileNames.push_back( name );
-      string::size_type pos = name.rfind( "/" );
-      if ( pos != string::npos )
-	dirName = name.substr(0,pos);
+      fileNames = TiCC::searchFilesMatch( name, "*:mpeg21.xml*" );
     }
   }
   else {
-    fileNames = TiCC::searchFilesMatch( name, "*:mpeg21.xml*" );
+    // sanity check
+    vector<string>::iterator it = fileNames.begin();
+    while ( it != fileNames.end() ){
+      if ( it->find( ":mpeg21.xml" ) == string::npos ){
+	if ( verbose ){
+	  cerr << "skipping file: " << *it << endl;
+	}
+	it = fileNames.erase(it);
+      }
+      else
+	++it;
+    }
   }
   size_t toDo = fileNames.size();
   if ( toDo > 1 ){
@@ -1320,9 +1338,9 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( kind == "krant" )
-      solveArtAlto( altoDir, fileNames[fn], outputDir, outputType );
+      solveArtAlto( altoDir, fileNames[fn], outputDir, cls, outputType );
     else
-      solveBookAlto( altoDir, fileNames[fn], outputDir, outputType );
+      solveBookAlto( altoDir, fileNames[fn], outputDir, cls, outputType );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);

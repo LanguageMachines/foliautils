@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/CommandLine.h"
 #include "ticcutils/PrettyPrint.h"
 #include "libfolia/document.h"
 
@@ -16,10 +17,11 @@
 
 using namespace	std;
 using namespace	folia;
-using namespace	TiCC;
 
 const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
+
+bool verbose = false;
 
 struct word_conf {
   word_conf(){};
@@ -238,84 +240,111 @@ bool correctDoc( Document *doc,
 
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t-c\t classname" << endl;
+  cerr << "\t--class\t classname" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-s\t max number_of_suggestions. (default 10)" << endl;
+  cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t-h\t this message " << endl;
   cerr << "\t-V\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
-  cerr << "\t-o\t output prefix" << endl;
-  cerr << "\t-u 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
-  cerr << "\t-p 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
-  cerr << "\t-w 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
+  cerr << "\t-O\t output prefix" << endl;
+  cerr << "\t--unk 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
+  cerr << "\t--puncts 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
+  cerr << "\t--ranks 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
+  cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
 }
 
-int main( int argc, char *argv[] ){
-  if ( argc < 3	){
-    usage( argv[0] );
-    exit(EXIT_FAILURE);
+void checkFile( const string& what, const string& name, const string& ext ){
+  if ( name.empty() ) {
+    cerr << "missing '--" << what << "' option" << endl;
+    exit( EXIT_FAILURE );
   }
-  int opt;
+  if ( name.find( ext ) == string::npos ){
+    cerr << what << " file " << name << " has wrong extension!"
+	 << " expected: " << ext << endl;
+    exit( EXIT_FAILURE );
+  }
+  if ( !TiCC::isFile( name ) ){
+    cerr << "unable to find file '" << name << "'" << endl;
+  }
+}
+
+int main( int argc, char *argv[] ){
+  TiCC::CL_Options opts( "e:vVt:O:Rh",
+			 "class:,clear,unk:,ranks:,puncts:,nums:" );
+  try {
+    opts.init( argc, argv );
+  }
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
+    usage(argv[0]);
+    exit( EXIT_FAILURE );
+  }
+  string progname = opts.prog_name();
   int numThreads = 1;
   size_t numSugg = 10;
   bool recursiveDirs = false;
+  bool clear = false;
   string expression;
   string variantFileName;
   string unknownFileName;
   string punctFileName;
   string outPrefix;
   string classname = "Ticcl";
-  while ((opt = getopt(argc, argv, "c:e:ht:o:RVw:p:s:u:")) != -1) {
-    switch (opt) {
-    case 'c':
-      classname = optarg;
-      break;
-    case 'e':
-      expression = optarg;
-      break;
-    case 's':
-      numSugg = atoi(optarg);
-      break;
-    case 't':
-      numThreads = atoi(optarg);
-      break;
-    case 'p':
-      punctFileName = optarg;
-      break;
-    case 'u':
-      unknownFileName = optarg;
-      break;
-    case 'o':
-      outPrefix = optarg;
-      break;
-    case 'w':
-      variantFileName = optarg;
-      break;
-    case 'R':
-      recursiveDirs = true;
-      break;
-    case 'V':
-      cerr << PACKAGE_STRING << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      usage( argv[0] );
-      exit(EXIT_SUCCESS);
-      break;
-    default: /* '?' */
-      cerr << "Usage: [-t number_of_threads] dir/filename " << endl;
+  string value;
+  if ( opts.extract( 'h' ) ){
+    usage(progname);
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract( 'V' ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  verbose = opts.extract( 'v' );
+  opts.extract( "class", classname );
+  clear = opts.extract( "clear" );
+  opts.extract( 'e', expression );
+  recursiveDirs = opts.extract( 'R' );
+  opts.extract( 'O', outPrefix );
+  opts.extract( "puncts", punctFileName );
+  checkFile( "puncts", punctFileName, ".punct" );
+  opts.extract( "unk", unknownFileName );
+  checkFile( "unk", unknownFileName, ".unk" );
+  opts.extract( "ranks", variantFileName );
+  checkFile( "rank", variantFileName, ".rank" );
+  if ( opts.extract( "nums", value ) ){
+    if ( !TiCC::stringTo( value, numSugg ) ){
+      cerr << "unsupported value for --nums (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
+  }
+  if ( opts.extract( 't', value ) ){
+    if ( !TiCC::stringTo( value, numThreads ) ){
+      cerr << "unsupported value for -t (" << value << ")" << endl;
+      exit(EXIT_FAILURE);  }
+  }
+  if ( !opts.empty() ){
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage(progname);
+    exit(EXIT_FAILURE);
+  }
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.size() == 0 ){
+    cerr << "missing input file or directory" << endl;
+    exit( EXIT_FAILURE );
+  }
+  else if ( fileNames.size() > 1 ){
+    cerr << "currently only 1 file or directory is supported" << endl;
+    exit( EXIT_FAILURE );
   }
 
   if ( !outPrefix.empty() ){
     if ( outPrefix[outPrefix.length()-1] != '/' )
       outPrefix += "/";
     if ( !TiCC::isDir( outPrefix ) ){
-      if ( !createPath( outPrefix ) ){
+      if ( !TiCC::createPath( outPrefix ) ){
 	cerr << "unable to find or create: '" << outPrefix << "'" << endl;
 	exit( EXIT_FAILURE );
       }
@@ -329,12 +358,8 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
-  if ( !argv[optind] ){
-    cerr << "missing input file(s)" << endl;
-    exit( EXIT_FAILURE );
-  }
-  string name = argv[optind];
-  vector<string> fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
+  string name = fileNames[0];
+  fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
     cerr << "no matching files found" << endl;
@@ -436,12 +461,15 @@ int main( int argc, char *argv[] ){
     else {
       outName += docName + ".ticcl";
     }
+    if ( clear ){
+      unlink( outName.c_str() );
+    }
     if ( TiCC::isFile( outName ) ){
 #pragma omp critical
       cerr << "skipping already done file: " << outName << endl;
     }
     else {
-      if ( !createPath( outName ) ){
+      if ( !TiCC::createPath( outName ) ){
 #pragma omp critical
 	cerr << "unable to create output file! " << outName << endl;
 	exit(EXIT_FAILURE);

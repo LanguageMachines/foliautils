@@ -40,6 +40,7 @@
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/CommandLine.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -63,7 +64,6 @@ xmlDoc *getXml( const string& file, zipType& type ){
     type = BZ2;
   }
   else {
-    cerr << "problem detecting type of file: " << file << endl;
     return 0;
   }
   if ( type == NORMAL ){
@@ -191,6 +191,14 @@ bool convert_pagexml( const string& fileName,
   }
   zipType inputType;
   xmlDoc *xdoc = getXml( fileName, inputType );
+  if ( !xdoc ){
+#pragma omp critical
+    {
+      cerr << "problem detecting type of file: " << fileName << endl;
+      cerr << "it MUST have extension .xml, .xml.bz2 or .xml.gz" << endl;
+    }
+    return false;
+  }
   xmlNode *root = xmlDocGetRootElement( xdoc );
   xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
   string orgFile;
@@ -333,8 +341,7 @@ bool convert_pagexml( const string& fileName,
   process( text, specials, specialRefs, docid );
   process( text, regionStrings, backrefs, docid );
 
-  string outName = outputDir;
-  outName += docid + ".folia.xml";
+  string outName = outputDir + "/" + docid + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
     type = outputType;
@@ -363,53 +370,69 @@ bool convert_pagexml( const string& fileName,
   return true;
 }
 
+void usage(){
+  cerr << "Usage: FoLiA-page [options] file/dir" << endl;
+  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-o\t output directory " << endl;
+  cerr << "\t--compres='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
+  cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
+  cerr << "\t-v\t verbose output " << endl;
+  cerr << "\t-V\t show version " << endl;
+}
+
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
-    cerr << "Usage: [-t number_of_threads] [-o outputdir] dir/filename " << endl;
-    exit(EXIT_FAILURE);
+  TiCC::CL_Options opts( "vVt:O:h", "compress:" );
+  try {
+    opts.init( argc, argv );
   }
-  int opt;
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
+    usage();
+    exit( EXIT_FAILURE );
+  }
   int numThreads=1;
   string outputDir;
   zipType outputType = NORMAL;
-  while ((opt = getopt(argc, argv, "bght:vVo:")) != -1) {
-    switch (opt) {
-    case 'b':
+  string value;
+  if ( opts.extract( 'h' ) ){
+    usage();
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract( 'V' ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract( "compress", value ) ){
+    if ( value == "b" )
       outputType = BZ2;
-      break;
-    case 'g':
+    else if ( value == "g" )
       outputType = GZ;
-      break;
-    case 't':
-      numThreads = atoi(optarg);
-      break;
-    case 'v':
-      verbose = true;
-      break;
-    case 'V':
-      cerr << PACKAGE_STRING << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      cerr << "Usage: FoLiA-page [options] file/dir" << endl;
-      cerr << "\t-t\t number_of_threads" << endl;
-      cerr << "\t-h\t this messages " << endl;
-      cerr << "\t-o\t output directory " << endl;
-      cerr << "\t-b\t create bzip2 files (.bz2)" << endl;
-      cerr << "\t-g\t create gzip files (.gz)" << endl;
-      cerr << "\t-v\t verbose output " << endl;
-      cerr << "\t-V\t show version " << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'o':
-      outputDir = string(optarg) + "/";
-      break;
-    default: /* '?' */
-      cerr << "Usage: alto [-t number_of_threads] [-o output_dir] dir/filename " << endl;
-      exit(EXIT_FAILURE);
+    else {
+      cerr << "unknown compression: use 'b' or 'g'" << endl;
+      exit( EXIT_FAILURE );
     }
   }
-  vector<string> fileNames;
+  if ( opts.extract( 't', value ) ){
+    numThreads = TiCC::stringTo<int>( value );
+  }
+  verbose = opts.extract( 'v' );
+  opts.extract( 'O', outputDir );
+  if ( !opts.empty() ){
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage();
+    exit(EXIT_FAILURE);
+  }
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.empty() ){
+    cerr << "missing input file(s)" << endl;
+    exit(EXIT_FAILURE);
+  }
+  else if ( fileNames.size() > 1 ){
+    cerr << "currently only 1 file or directory is supported" << endl;
+    exit( EXIT_FAILURE );
+  }
+
   string dirName;
   if ( !outputDir.empty() ){
     string name = outputDir;
@@ -422,10 +445,7 @@ int main( int argc, char *argv[] ){
       }
     }
   }
-  if ( !argv[optind] ){
-    exit(EXIT_FAILURE);
-  }
-  string name = argv[optind];
+  string name = fileNames[0];
   if ( !( TiCC::isFile(name) || TiCC::isDir(name) ) ){
     cerr << "parameter '" << name << "' doesn't seem to be a file or directory"
 	 << endl;
@@ -437,7 +457,6 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
     else {
-      fileNames.push_back( name );
       string::size_type pos = name.rfind( "/" );
       if ( pos != string::npos )
 	dirName = name.substr(0,pos);

@@ -40,6 +40,7 @@
 #include <fstream>
 #include "libfolia/document.h"
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/CommandLine.h"
 #include "config.h"
 
 #ifdef HAVE_TEXTCAT_H
@@ -156,7 +157,7 @@ public:
   }
   ~TCdata() { textcat_Done( TC ); };
   bool isInit() const { return TC != 0; };
-  void procesFile( const string&, const string&, const string&, bool, bool );
+  void procesFile( const string&, const string&, const string&, bool, bool, const string& );
   void *TC;
   string cfName;
 };
@@ -164,7 +165,8 @@ public:
 void TCdata::procesFile( const string& outDir, const string& docName,
 			 const string& default_lang,
 			 bool doStrings,
-			 bool doAll ){
+			 bool doAll,
+			 const string& cls ){
 #pragma omp critical (logging)
   {
     cout << "process " << docName << endl;
@@ -227,9 +229,9 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   for ( size_t i=0; i < Size; ++i ){
     TextContent *t = 0;
     if ( doStrings )
-      t = xs[i]->textcontent("OCR");
+      t = xs[i]->textcontent(cls);
     else
-      t = xp[i]->textcontent("OCR");
+      t = xp[i]->textcontent(cls);
     string para = t->str();
     para = compress( para );
     if ( para.empty() ){
@@ -250,90 +252,54 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   delete doc;
 }
 
-bool gatherNames( const string& dirName, vector<string>& fileNames ){
-  DIR *dir = opendir( dirName.c_str() );
-  if ( !dir ){
-    cerr << "unable to open dir:" << dirName << endl;
-    return false;
-  }
-  struct dirent *entry = readdir( dir );
-  while ( entry ){
-    string tmp = entry->d_name;
-    //    cerr << "BEKIJK " << tmp << endl;
-    if ( tmp[0] != '.' ){
-      struct stat st_buf;
-      string fullName  = dirName + "/" + tmp;
-      int status = stat( fullName.c_str(), &st_buf );
-      if ( status != 0 ){
-	cerr << "cannot 'stat' file: " << fullName << endl;
-	return false;
-      }
-      if ( S_ISDIR (st_buf.st_mode) ){
-	if ( !gatherNames( fullName, fileNames ) )
-	  return false;
-      }
-      else {
-	string::size_type pos = fullName.find( ".xml" );
-	if ( pos != string::npos && fullName.substr( pos ).length() == 4 ){
-	  fileNames.push_back( fullName );
-	}
-      }
-    }
-    entry = readdir( dir );
-  }
-  closedir( dir );
-  return true;
-}
 
 void usage(){
-  cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
-  cerr << "-a\tassign ALL detected languages to the result. (default is to assign the most probable)." << endl;
-  cerr << "-c <file> use LM config from 'file'" << endl;
-  cerr << "-L <lan>  use 'lan' for unindentified text. (default 'dut')" << endl;
+  cerr << "Usage: [options] dir/filename " << endl;
+  cerr << "--all\tassign ALL detected languages to the result. (default is to assign the most probable)." << endl;
+  cerr << "--config=<file> use LM config from 'file'" << endl;
+  cerr << "--lang=<lan> use 'lan' for unindentified text. (default 'dut')" << endl;
   cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
-  cerr << "-V\tshow version info." << endl;
+  cerr << "--class=<cls> use 'cls' as the FoLiA classname for text. (default 'OCR')" << endl;  cerr << "-V\tshow version info." << endl;
+  cerr << "-v\tverbose" << endl;
+  cerr << "-h\tthis messages." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  if ( argc < 2	){
+  TiCC::CL_Options opts( "svVhO:", "all,lang:,class:,config:" );
+  try {
+    opts.init( argc, argv );
+  }
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
     usage();
-    exit(EXIT_FAILURE);
+    exit( EXIT_FAILURE );
   }
   bool doAll =false;
-  int opt;
   string outDir;
   string config = "./config/tc.txt";
   string lang = "dut";
+  string cls = "OCR";
+  bool verbose = false;
   bool doStrings = false;
-  while ((opt = getopt(argc, argv, "ac:hL:o:sV")) != -1) {
-    switch (opt) {
-    case 'a':
-      doAll = true;
-      break;
-    case 'c':
-      config = optarg;
-      break;
-    case 'L':
-      lang = optarg;
-      break;
-    case 'o':
-      outDir = optarg;
-      break;
-    case 's':
-      doStrings = true;
-      break;
-    case 'V':
-      cout << PACKAGE_STRING << endl;
-      exit(EXIT_SUCCESS);
-      break;
-    case 'h':
-      usage();
-      exit(EXIT_SUCCESS);
-      break;
-    default: /* '?' */
-      cerr << "Usage: [-c config] [-a] [-V] [-s] [-o outputdir] dir/filename " << endl;
-      exit(EXIT_FAILURE);
-    }
+  if ( opts.extract( 'V' ) ){
+    cout << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract( 'h' ) ){
+    usage();
+    exit(EXIT_SUCCESS);
+  }
+  verbose = opts.extract( 'v' );
+  doAll = opts.extract( "all" );
+  opts.extract( "config", config );
+  opts.extract( "lang", lang );
+  cls = opts.extract( "class" );
+  opts.extract( 'O', outDir );
+  doStrings = opts.extract( 's' );
+  if ( !opts.empty() ){
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage();
+    exit(EXIT_FAILURE);
   }
   TCdata TC( config );
   if ( !TC.isInit() ){
@@ -341,14 +307,15 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
 
-  if ( !argv[optind] ){
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
     exit( EXIT_FAILURE );
   }
-
-  string name = argv[optind];
-  vector<string> fileNames = TiCC::searchFilesExt( name, ".xml", false );
-
+  else if ( fileNames.size() == 1 ){
+    string name = fileNames[0];
+    fileNames = TiCC::searchFilesExt( name, ".xml", false );
+  }
   size_t toDo = fileNames.size();
   if ( toDo > 1 ){
 #ifdef HAVE_OPENMP
@@ -359,6 +326,6 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
-    TC.procesFile( outDir, docName, lang, doStrings, doAll );
+    TC.procesFile( outDir, docName, lang, doStrings, doAll, cls );
   }
 }

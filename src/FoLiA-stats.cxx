@@ -407,7 +407,7 @@ size_t str_inventory( const Document *d, const string& docName,
 		      bool lowercase,
 		      const string& lang,
 		      map<string,unsigned int>& wc,
-		      const string& setname ){
+		      const string& cls ){
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
   string doc_lang = d->get_metadata( "language" );
@@ -418,7 +418,7 @@ size_t str_inventory( const Document *d, const string& docName,
   for ( unsigned int i=0; i < strings.size(); ++i ){
     UnicodeString us;
     try {
-      us = strings[i]->text(setname);
+      us = strings[i]->text(cls);
       if ( lowercase ){
 	us.toLower();
       }
@@ -463,7 +463,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  bool lowercase,
 			  const string& lang,
 			  map<string,unsigned int>& wc,
-			  const string& setname ){
+			  const string& cls ){
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
   string doc_lang = d->get_metadata( "language" );
@@ -479,7 +479,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     for ( unsigned int i=0; i < strings.size(); ++i ){
       UnicodeString us;
       try {
-	us = strings[i]->text(setname);
+	us = strings[i]->text(cls);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -520,39 +520,40 @@ size_t par_str_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
-void usage(){
-  cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t-c\t clipping factor. " << endl;
-  cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
-  cerr << "\t-p\t output percentages too. " << endl;
-  cerr << "\t-l\t Lowercase all words" << endl;
-  cerr << "\t-L\t Language. (default='dut'). 'none' is also possible" << endl;
-  cerr << "\t-n\t Ngram count " << endl;
-  cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
-  cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
-  cerr << "\t--setname='name' When processing <str> nodes, use 'name' as the setname for <t> nodes." << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this message" << endl;
-  cerr << "\t-V\t show version " << endl;
+void usage( const string& name ){
+  cerr << "Usage: " << name << "[options] file/dir" << endl;
   cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t The output will be a 2 or 4 columned tab sparated file, extension: *tsv " << endl;
   cerr << "\t\t (4 columns when -p is specified)" << endl;
+  cerr << "\t--clip\t clipping factor. " << endl;
+  cerr << "\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
+  cerr << "\t-p\t output percentages too. " << endl;
+  cerr << "\t-lower\t Lowercase all words" << endl;
+  cerr << "\t-lang\t Language. (default='dut'). 'none' is also possible" << endl;
+  cerr << "\t-ngram\t Ngram count " << endl;
+  cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
+  cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
+  cerr << "\t--class='name' When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
+  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-h\t this message" << endl;
+  cerr << "\t-V\t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
-  cerr << "\t-o\t output prefix" << endl;
+  cerr << "\t-O\t output prefix" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVc:plL:e:n:t:o:RsS", "setname:" );
+  CL_Options opts( "hVvpe:t:O:RsS", "class:,clip:,lang:,ngram:,lower" );
   try {
     opts.init(argc,argv);
   }
   catch( OptionError& e ){
     cerr << e.what() << endl;
-    usage();
+    usage(argv[0]);
     exit( EXIT_FAILURE );
   }
+  string progname = opts.prog_name();
   int clip = 0;
   int nG = 1;
   int numThreads = 1;
@@ -564,58 +565,42 @@ int main( int argc, char *argv[] ){
   string expression;
   string outPrefix;
   string lang = "dut";
-  string setname = "OCR";
-  bool mood;
+  string cls = "OCR";
   string value;
-  if ( opts.extract('V', value, mood ) ){
+  if ( opts.extract('V' ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('h', value, mood ) ){
-    usage();
+  if ( opts.extract('h' ) ){
+    usage(progname);
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('c', value, mood ) ){
+  if ( opts.extract("clip", value ) ){
     clip = stringTo<int>(value);
   }
-  if ( opts.extract('p', value, mood ) ){
-    dopercentage = true;
-  }
-  if ( opts.extract('l', value, mood ) ){
-    lowercase = true;
-  }
-  if ( opts.extract('L', value, mood ) ){
+  dopercentage = opts.extract('p');
+  lowercase = opts.extract("lower");
+  if ( opts.extract("lang", value ) ){
     if ( value == "none" )
       lang.clear();
     else
       lang = value;
   }
-  if ( opts.extract('e', value, mood ) ){
-    expression = value;
-  }
-  if ( opts.extract('n', value, mood ) ){
+  opts.extract('e', expression );
+  if ( opts.extract("ngram", value ) ){
     nG = stringTo<int>( value );
   }
-  if ( opts.extract('t', value, mood ) ){
+  if ( opts.extract('t', value ) ){
     numThreads = stringTo<int>( value );
   }
-  if ( opts.extract( 'o', value, mood ) ){
-    outPrefix = value;
-  }
-  if ( opts.extract( 'R', value, mood ) ){
-    recursiveDirs = true;
-  }
-  if ( opts.extract( 's', value, mood ) ){
-    doparstr = true;
-  }
-  if ( opts.extract( 'S', value, mood ) ){
-    donoparstr = true;
-  }
-  if ( opts.extract( "setname", value ) ){
-    setname = value;
-  }
+  opts.extract( 'O', outPrefix );
+  recursiveDirs = opts.extract( 'R' );
+  doparstr = opts.extract( 's' );
+  donoparstr = opts.extract( 'S' );
+  opts.extract( "class", cls );
   if ( !opts.empty() ){
-    usage();
+    cerr << "unsupported options : " << opts.toString() << endl;
+    usage(progname);
     exit(EXIT_FAILURE);
   }
 
@@ -675,10 +660,10 @@ int main( int argc, char *argv[] ){
     }
     size_t count = 0;
     if ( doparstr ){
-      count = par_str_inventory( d, docName, nG, lowercase, lang, wc, setname );
+      count = par_str_inventory( d, docName, nG, lowercase, lang, wc, cls );
     }
     else if ( donoparstr ){
-      count = str_inventory( d, docName, nG, lowercase, lang, wc, setname );
+      count = str_inventory( d, docName, nG, lowercase, lang, wc, cls );
     }
     else
       count = word_inventory( d, docName, nG, lowercase, lang, wc, lc, lpc );
