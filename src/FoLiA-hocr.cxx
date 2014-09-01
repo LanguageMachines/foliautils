@@ -292,7 +292,7 @@ void usage(){
   cerr << "Usage: FoLiA-hocr [options] file/dir" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this messages " << endl;
-  cerr << "\t-o\t output directory " << endl;
+  cerr << "\t-O\t output directory " << endl;
   cerr << "\t--compres='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t verbose output " << endl;
