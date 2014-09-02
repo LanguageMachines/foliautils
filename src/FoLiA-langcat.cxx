@@ -274,13 +274,6 @@ int main( int argc, char *argv[] ){
     usage();
     exit( EXIT_FAILURE );
   }
-  bool doAll =false;
-  string outDir;
-  string config = "./config/tc.txt";
-  string lang = "dut";
-  string cls = "OCR";
-  bool verbose = false;
-  bool doStrings = false;
   if ( opts.extract( 'V' ) ){
     cout << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
@@ -289,13 +282,17 @@ int main( int argc, char *argv[] ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  verbose = opts.extract( 'v' );
-  doAll = opts.extract( "all" );
+  string outDir;
+  string config = "./config/tc.txt";
+  string lang = "dut";
+  string cls = "OCR";
+  bool verbose = opts.extract( 'v' );
+  bool doAll = opts.extract( "all" );
+  bool doStrings = opts.extract( 's' );
   opts.extract( "config", config );
   opts.extract( "lang", lang );
-  cls = opts.extract( "class" );
+  opts.extract( "class", cls );
   opts.extract( 'O', outDir );
-  doStrings = opts.extract( 's' );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
     usage();
