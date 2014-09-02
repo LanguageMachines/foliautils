@@ -91,7 +91,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
 	   << " of the original " << totalIn << " words were clipped.)" << endl;
     }
     else {
-      cout << "with " << total << " words." << endl;
+      cout << "for " << total << " word tokens." << endl;
     }
   }
 }
@@ -148,7 +148,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
 	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
     }
     else {
-      cout << "with " << total << " lemmas. " << endl;
+      cout << "for " << total << " lemmas. " << endl;
     }
   }
 }
@@ -200,7 +200,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
 	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
     }
     else {
-      cout << "with " << totalIn << " lemmas. " << endl;
+      cout << "for " << totalIn << " lemmas. " << endl;
     }
   }
 }
@@ -521,30 +521,30 @@ size_t par_str_inventory( const Document *d, const string& docName,
 }
 
 void usage( const string& name ){
-  cerr << "Usage: " << name << "[options] file/dir" << endl;
+  cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t The output will be a 2 or 4 columned tab sparated file, extension: *tsv " << endl;
+  cerr << "\t The output will be a 2 or 4 columned tab separated file, extension: *tsv " << endl;
   cerr << "\t\t (4 columns when -p is specified)" << endl;
   cerr << "\t--clip\t clipping factor. " << endl;
   cerr << "\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t-p\t output percentages too. " << endl;
-  cerr << "\t-lower\t Lowercase all words" << endl;
-  cerr << "\t-lang\t Language. (default='dut'). 'none' is also possible" << endl;
-  cerr << "\t-ngram\t Ngram count " << endl;
+  cerr << "\t--lower\t Lowercase all words" << endl;
+  cerr << "\t--lang\t Language. (default='dut'). 'none' is also possible" << endl;
+  cerr << "\t--ngram\t Ngram count " << endl;
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
   cerr << "\t--class='name' When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
-  cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
-  cerr << "\t-O\t output prefix" << endl;
+  cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
+  cerr << "\t-o\t name of the output file(s) prefix." << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:O:RsS", "class:,clip:,lang:,ngram:,lower" );
+  CL_Options opts( "hVvpe:t:o:RsS", "class:,clip:,lang:,ngram:,lower" );
   try {
     opts.init(argc,argv);
   }
@@ -554,16 +554,15 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
   string progname = opts.prog_name();
+  if ( argc < 2 ){
+    usage( progname );
+    exit(EXIT_FAILURE);
+  }
   int clip = 0;
   int nG = 1;
   int numThreads = 1;
-  bool recursiveDirs = false;
-  bool lowercase = false;
-  bool donoparstr = false;
-  bool doparstr = false;
-  bool dopercentage = false;
   string expression;
-  string outPrefix;
+  string outputPrefix;
   string lang = "dut";
   string cls = "OCR";
   string value;
@@ -575,11 +574,33 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract("clip", value ) ){
-    clip = stringTo<int>(value);
+  bool dopercentage = opts.extract('p');
+  bool lowercase = opts.extract("lower");
+  bool recursiveDirs = opts.extract( 'R' );
+  bool doparstr = opts.extract( 's' );
+  bool donoparstr = opts.extract( 'S' );
+  if ( !opts.extract( 'o', outputPrefix ) ){
+    cerr << "an output filename prefix is required. (-o option) " << endl;
+    exit(EXIT_FAILURE);
   }
-  dopercentage = opts.extract('p');
-  lowercase = opts.extract("lower");
+  if ( opts.extract("clip", value ) ){
+    if ( !stringTo(value, clip ) ){
+      cerr << "illegal value for --clip (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  if ( opts.extract("ngram", value ) ){
+    if ( !stringTo(value, nG ) ){
+      cerr << "illegal value for --ngram (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  if ( opts.extract('t', value ) ){
+    if ( !stringTo(value, numThreads ) ){
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
   if ( opts.extract("lang", value ) ){
     if ( value == "none" )
       lang.clear();
@@ -587,16 +608,6 @@ int main( int argc, char *argv[] ){
       lang = value;
   }
   opts.extract('e', expression );
-  if ( opts.extract("ngram", value ) ){
-    nG = stringTo<int>( value );
-  }
-  if ( opts.extract('t', value ) ){
-    numThreads = stringTo<int>( value );
-  }
-  opts.extract( 'O', outPrefix );
-  recursiveDirs = opts.extract( 'R' );
-  doparstr = opts.extract( 's' );
-  donoparstr = opts.extract( 'S' );
   opts.extract( "class", cls );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
@@ -624,12 +635,16 @@ int main( int argc, char *argv[] ){
     cerr << "no matching files found" << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( outPrefix.empty() ){
-    string::size_type pos = fileNames[0].find( "/" );
-    if ( pos != string::npos )
-      outPrefix = fileNames[0].substr(0,pos);
-    else
-      outPrefix = "current";
+
+  string::size_type pos = outputPrefix.find( "." );
+  if ( pos != string::npos && pos == outputPrefix.length()-1 ){
+    // outputname ends with a .
+    outputPrefix = outputPrefix.substr(0,pos);
+  }
+  pos = outputPrefix.find( "/" );
+  if ( pos != string::npos && pos == outputPrefix.length()-1 ){
+    // outputname ends with a /
+    outputPrefix += "foliastats";
   }
 
   if ( toDo > 1 ){
@@ -694,14 +709,14 @@ int main( int argc, char *argv[] ){
 #pragma omp section
     {
       string filename;
-      filename = outPrefix + ".wordfreqlist" + ext;
+      filename = outputPrefix + ".wordfreqlist" + ext;
       create_wf_list( wc, filename, wordTotal, clip, dopercentage );
     }
 #pragma omp section
     {
       if ( !( doparstr || donoparstr ) ){
 	string filename;
-	filename = outPrefix + ".lemmafreqlist" + ext;
+	filename = outputPrefix + ".lemmafreqlist" + ext;
 	create_lf_list( lc, filename, wordTotal, clip, dopercentage );
       }
     }
@@ -709,7 +724,7 @@ int main( int argc, char *argv[] ){
     {
       if ( !( doparstr || donoparstr ) ){
 	string filename;
-	filename = outPrefix + ".lemmaposfreqlist" + ext;
+	filename = outputPrefix + ".lemmaposfreqlist" + ext;
 	create_lpf_list( lpc, filename, wordTotal, clip, dopercentage );
       }
     }
