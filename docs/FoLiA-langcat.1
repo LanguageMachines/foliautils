@@ -25,12 +25,12 @@ will process all FoLiA files in DIR and for each file.xml it will produce
 a file with a name file.lc.xml
 
 When a FILE is provided,
-.B FoLiA-stats
+.B FoLiA-langcat
 will simply process that file and create file.lc.xml
 
 
 .SH OPTIONS
-.B -c
+.B --config
 config
 .RS
 read the configuration for the 'textcat' LM from this file.
@@ -49,21 +49,34 @@ accordingly.
 
 .RE
 
-.B -L
+.B --lang
 lan
 .RS
 for unindentified text, assign the attribute 'lan'. (Default is 'dut')
 .RE
 
-.B -a
+.B --all
 .RS
 assign ALL detected language categories. The default is to assign the most
 probable one.
 .RE
 
+.B --class
+classname
+.RS
+The FoLiA classname of the <str> nodes that are created. (default OCR).
+.RE
+
+.RE
+
 .B -V
 .RS
 Show VERSION
+.RE
+
+.B -v
+.RS
+be more verbose
 .RE
 
 .B -s
