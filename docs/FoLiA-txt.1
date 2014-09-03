@@ -1,0 +1,80 @@
+.TH FoLiA-txt 1 "2014 sep 03"
+
+.SH NAME
+FoLiA-txt - Convert TXT files into FoLiA.
+
+.SH SYNOPSYS
+FoLiA-txt [options] FILE
+
+FoLiA-txt [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-txt
+will process all files in DIR and store the result in DIR, or in
+the directory provided with
+.B -O
+
+When a FILE is provided,
+.B FoLiA-txt
+will process that file and store its result in the directory where FILE is
+found or in the directory provided with
+.B -O
+
+All files should be in TXT XML format or BZIP2 or GZ versions thereof.
+When the input file(s) are zipped, the output will be too.
+
+.SH OPTIONS
+.B --compress
+kind
+.RS
+Use BZIP2 compression (kind=b) or GZIP compression (kind=g)
+.RE
+
+.B -O
+prefix
+.RS
+use 'prefix' as a directory name to store the txt-ed files in.
+.RE
+
+.B --setname
+set
+.RS
+The FoLiA set of the <str> nodes that are created. (default FoLiA-txt-set).
+.RE
+
+.B --class
+classname
+.RS
+The FoLiA classname of the <str> nodes that are created. (default OCR).
+.RE
+
+.B -t
+number
+.RS
+Number of concurrent threads to be used by the program.
+.RE
+
+.B -v
+.RS
+be more verbose.
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -h
+.RS
+Show some help
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot: Timbl@uvt.nl
+
+Martin Reynaert: reynaert@uvt.nl
