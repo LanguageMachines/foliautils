@@ -1,0 +1,78 @@
+.TH FoLiA-collect 1 "2014 sep 03"
+
+.SH NAME
+FoLiA-collect - collect ngram statistics of a FoLiA file as produced by
+.B FoLiA-stats
+, or a direcory of such FoLiA files.
+
+.SH SYNOPSYS
+FoLiA-collect [options] FILE
+
+FoLiA-collect [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-collect
+will process all FoLiA xml files in DIR and store the result in DIR, or in
+the directory provided with
+.B -O
+
+When a FILE is provided,
+.B FoLiA-collect
+will process that file and store its result in the directory where FILE is
+found or in the directory provided with
+.B -O
+
+All files should match the extension:
+.I *-gram.tsv
+(for ngram values > 1 )
+or
+.I *list.tsv
+
+.SH OPTIONS
+.B --ngram
+count
+.RS
+which ngram size to examine.
+.RE
+
+.B -O
+prefix
+.RS
+use 'prefix' as a directory name to store the collected files in.
+.RE
+
+.B --hapax
+.RS
+Also include HAPAX-es. (default is to ignore them)
+.RE
+
+.B -t
+number
+.RS
+Number of concurrent threads to be used by the program.
+.RE
+
+.B -v
+.RS
+be more verbose.
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -h
+.RS
+Show some help
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot: Timbl@uvt.nl
+
+Martin Reynaert: reynaert@uvt.nl
