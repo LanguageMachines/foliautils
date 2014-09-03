@@ -112,7 +112,7 @@ void decap( string& s ){
 }
 
 void setlang( FoliaElement* e, const string& lan ){
-  // append a LangAnnotation child of class 'cls'
+  // append a LangAnnotation child of class 'lan'
   KWargs args;
   args["class"] = lan;
   LangAnnotation *node = new LangAnnotation( e->doc() );
@@ -255,14 +255,17 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 
 void usage(){
   cerr << "Usage: [options] dir/filename " << endl;
-  cerr << "--all\tassign ALL detected languages to the result. (default is to assign the most probable)." << endl;
   cerr << "--config=<file> use LM config from 'file'" << endl;
   cerr << "--lang=<lan> use 'lan' for unindentified text. (default 'dut')" << endl;
-  cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
-  cerr << "--class=<cls> use 'cls' as the FoLiA classname for text. (default 'OCR')" << endl;  cerr << "-V\tshow version info." << endl;
+  cerr << "-s\t examine text in <str> nodes. (default is to use the <p> nodes)." << endl;
+  cerr << "--all\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
+  cerr << "--class=<cls> use 'cls' as the FoLiA classname for searching text. "
+       << endl;
+  cerr << "\t (default 'OCR')" << endl;
   cerr << "-O\t path. output path" << endl;
-  cerr << "-v\tverbose" << endl;
-  cerr << "-h\tthis messages." << endl;
+  cerr << "-V\t show version info." << endl;
+  cerr << "-v\t verbose" << endl;
+  cerr << "-h\t this messages." << endl;
 }
 
 int main( int argc, char *argv[] ){
