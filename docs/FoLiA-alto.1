@@ -1,0 +1,81 @@
+.TH FoLiA-alto 1 "2014 sep 03"
+
+.SH NAME
+FoLiA-alto - retrieve .alto files as specified in mpeg21.xml DIDL files,
+as provided by the KB in The Hague.
+Then extract articles or books from them.
+
+.SH SYNOPSYS
+FoLiA-alto [options] FILE
+
+FoLiA-alto [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-alto
+will process all DIDL files in DIR and store its results in the working
+directory or in the directory specified with
+.B -O
+
+When a FILE is provided,
+.B FoLiA-alto
+will process that DIDL file and store its results in the directory where FILE is
+found, or in the directory specified with
+.B -O
+
+.SH OPTIONS
+.B --cache
+path
+.RS
+specifies the cache directory for .alto files. They will be kept for later use,
+unless
+.B --clear
+is also present.
+.RE
+
+.B --clear
+.RS
+clear the cache directory at the start of the program.
+
+.RE
+
+.B --type
+kind
+.RS
+Type of document ('krant' or 'boek' Default: 'krant')
+.RE
+
+.B --compress
+type
+.RS
+Create compressed files. type=b for .bz2 and type=g for .gz files.
+.RE
+
+.B -t
+number
+.RS
+Number of concurrent threads to be used by the programme
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B --class
+name
+.RS
+When processing <str> nodes,
+.B FoLiA-alto
+will only search for text in the named classname. The default is
+.B OCR
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot: Timbl@uvt.nl
+
+Martin Reynaert: reynaert@uvt.nl
