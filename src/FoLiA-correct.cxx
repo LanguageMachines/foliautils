@@ -248,18 +248,14 @@ void usage( const string& name ){
   cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t--unk 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
-  cerr << "\t--puncts 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
-  cerr << "\t--ranks 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
+  cerr << "\t--punct 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
+  cerr << "\t--rank 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
 }
 
 void checkFile( const string& what, const string& name, const string& ext ){
-  if ( name.empty() ) {
-    cerr << "missing '--" << what << "' option" << endl;
-    exit( EXIT_FAILURE );
-  }
-  if ( name.find( ext ) == string::npos ){
+  if ( !TiCC::match_back( name, ext ) ){
     cerr << what << " file " << name << " has wrong extension!"
 	 << " expected: " << ext << endl;
     exit( EXIT_FAILURE );
@@ -271,7 +267,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,setname:,clear,unk:,ranks:,puncts:,nums:" );
+			 "class:,setname:,clear,unk:,rank:,punct:,nums:" );
   try {
     opts.init( argc, argv );
   }
@@ -306,11 +302,21 @@ int main( int argc, char *argv[] ){
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
   opts.extract( 'O', outPrefix );
-  opts.extract( "puncts", punctFileName );
-  checkFile( "puncts", punctFileName, ".punct" );
-  opts.extract( "unk", unknownFileName );
+  if ( !opts.extract( "punct", punctFileName ) ){
+    cerr << "missing '--punct' option" << endl;
+    exit( EXIT_FAILURE );
+  }
+  checkFile( "punct", punctFileName, ".punct" );
+  if ( !opts.extract( "unk", unknownFileName ) ){
+    cerr << "missing '--unk' option" << endl;
+    exit( EXIT_FAILURE );
+  }
   checkFile( "unk", unknownFileName, ".unk" );
-  opts.extract( "ranks", variantFileName );
+  opts.extract( "rank", variantFileName );
+  if ( !opts.extract( "rank", variantFileName ) ){
+    cerr << "missing '--rank' option" << endl;
+    exit( EXIT_FAILURE );
+  }
   checkFile( "rank", variantFileName, ".rank" );
   if ( opts.extract( "nums", value ) ){
     if ( !TiCC::stringTo( value, numSugg ) ){
