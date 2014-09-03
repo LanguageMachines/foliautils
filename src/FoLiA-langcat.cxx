@@ -260,6 +260,7 @@ void usage(){
   cerr << "--lang=<lan> use 'lan' for unindentified text. (default 'dut')" << endl;
   cerr << "-s\texamine text in <str> nodes. (default is to use the <p> nodes)." << endl;
   cerr << "--class=<cls> use 'cls' as the FoLiA classname for text. (default 'OCR')" << endl;  cerr << "-V\tshow version info." << endl;
+  cerr << "-O\t path. output path" << endl;
   cerr << "-v\tverbose" << endl;
   cerr << "-h\tthis messages." << endl;
 }
