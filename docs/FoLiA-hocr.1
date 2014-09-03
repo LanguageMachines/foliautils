@@ -1,0 +1,75 @@
+.TH FoLiA-hocr 1 "2014 sep 03"
+
+.SH NAME
+FoLiA-hocr - Convert HOCR files into FoLiA.
+
+.SH SYNOPSYS
+FoLiA-hocr [options] FILE
+
+FoLiA-hocr [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-hocr
+will process all files in DIR and store the result in DIR, or in
+the directory provided with
+.B -O
+
+When a FILE is provided,
+.B FoLiA-hocr
+will process that file and store its result in the directory where FILE is
+found or in the directory provided with
+.B -O
+
+All files should be either HTML (.html), XHTML (.xhtml) or BZIP2 or GZ versions
+of (X)HTML.
+When the input file(s) are zipped, the output will be too.
+
+.SH OPTIONS
+.B --compress
+kind
+.RS
+Use BZIP2 compression (kind=b) or GZIP compression (kind=g)
+.RE
+
+.B --class
+classname
+.RS
+The FoLiA classname of the <str> nodes that are created. (default OCR-GT).
+.RE
+
+.B -O
+prefix
+.RS
+use 'prefix' as a directory name to store the hocr-ed files in.
+.RE
+
+.B -t
+number
+.RS
+Number of concurrent threads to be used by the program.
+.RE
+
+.B -v
+.RS
+be more verbose.
+.RE
+
+.B -V
+.RS
+Show VERSION
+.RE
+
+.B -h
+.RS
+Show some help
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot: Timbl@uvt.nl
+
+Martin Reynaert: reynaert@uvt.nl
