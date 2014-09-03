@@ -257,6 +257,7 @@ void usage(){
   cerr << "\t--ngram\t Ngram count " << endl;
   cerr << "\t--hapax also include HAPAXes (default is don't) " << endl;
   cerr << "\t-O\t outout directory." << endl;
+  cerr << "\t-t num \t Run on 'num' threads." << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-V\t show version " << endl;
   cerr << "\t-v\t verbosity " << endl;
