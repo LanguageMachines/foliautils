@@ -1,4 +1,4 @@
-.TH FoLiA-stats 1 "2014 apr 28"
+.TH FoLiA-stats 1 "2014 sep 03"
 
 .SH NAME
 FoLiA-stats - gather n-gram statistics from FoLiA files
@@ -12,7 +12,7 @@ FoLiA-stats [options] DIR
 
 When a DIR is provided,
 .B FoLiA-stats
-will process all FoLiA files in DIR and store its results in the currect
+will process all FoLiA files in DIR and store its results in the current
 directory in files called DIR.wordfreqlist.tsv, DIR.lemmafreqlist.tsv etc.
 
 When a FILE is provided,
@@ -40,7 +40,7 @@ the relative presence of the entry: what percentage of the corpus does the
 entry belong to?
 
 .SH OPTIONS
-.B -c
+.B --clip
 number
 .RS
 clipping factor. When an item's frequency is lower than 'number', it will not be stored.
@@ -52,19 +52,20 @@ Also output accumulated counts and percentages
 
 .RE
 
-.B -l
+.B --lower
 .RS
 Lowercase all words.
 .RE
 
-.B -L
+.B --lang
 language
 .RS
-only process nodes with the desired language tag. This would have been inserted in the FoLiA xml by the programme FoLiA-langcat.
+only process nodes with the desired language tag. This would have been inserted
+in the FoLiA xml by the programme FoLiA-langcat.
 Default is 'dut', 'none' is also possible to avoid this check.
 .RE
 
-.B -n
+.B --ngram
 count
 .RS
 The n-gram value to process
@@ -107,7 +108,7 @@ when a DIR is provided,
 will recurse through this DIR and its subdirs to find files.
 .RE
 
-.B --setname
+.B --class
 = name
 .RS
 When processing <str> nodes,
@@ -115,7 +116,7 @@ When processing <str> nodes,
 will only search for text in the named setname. The default is
 .B OCR
 and you may provide an empty string.
-This option is NOT user for processing <w> nodes!
+This option is NOT used for processing <w> nodes!
 .RE
 
 .SH BUGS
@@ -125,4 +126,3 @@ possible
 Ko van der Sloot: Timbl@uvt.nl
 
 Martin Reynaert: reynaert@uvt.nl
-
