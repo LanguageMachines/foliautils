@@ -66,9 +66,6 @@ void create_idf_list( const map<string, unsigned int>& wc,
   }
 }
 
-const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
-const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
-
 size_t inventory( const Document *doc,
 		  bool lowercase,
 		  map<string,unsigned int>& wc ){

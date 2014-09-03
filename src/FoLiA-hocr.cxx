@@ -296,8 +296,10 @@ void usage(){
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
-  cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes (default FoLiA-hocr-set)" << endl;
-  cerr << "\t--class='class'\t the FoLiA class name for <t> nodes (default OCR)" << endl;
+  cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes. "
+    "(default '" << setname << "')" << endl;
+  cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
+    "(default '" << classname << "')" << endl;
   cerr << "\t-v\t verbose output " << endl;
   cerr << "\t-V\t show version " << endl;
 }

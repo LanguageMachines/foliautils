@@ -26,12 +26,6 @@ found.
 It will rewrite the original OCR paragraph on the basis of the best-first ranked correction candidates and add a specified number of ranked correction suggestion elements.
 
 .SH OPTIONS
-.B --class
-classname
-.RS
-Corrections will be placed in TextContent nodes with class='classname'. (the
-default is 'Ticcl')
-.RE
 
 .B -O
 prefix
@@ -103,6 +97,19 @@ Not against paths.
 when a DIR is provided,
 .B FoLiA-correct
 will recurse through this DIR and its subdirs to find files.
+.RE
+
+.B --setname
+set
+.RS
+Corrections will be in the FoLiA setname 'set'. (the default is 'Ticcl-set')
+.RE
+
+.B --class
+classname
+.RS
+Corrections will be placed in TextContent nodes with class='classname'. (the
+default is 'Ticcl')
 .RE
 
 .B -V

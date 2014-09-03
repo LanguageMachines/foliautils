@@ -237,8 +237,8 @@ bool correctDoc( Document *doc,
 
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t--setname\t FoLiA setname" << endl;
-  cerr << "\t--class\t classname" << endl;
+  cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
+  cerr << "\t--class\t classname. (default '" << classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t-h\t this message " << endl;

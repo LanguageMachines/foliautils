@@ -41,6 +41,9 @@
 using namespace	std;
 using namespace	folia;
 
+string setname = "FoLiA-txt-set";
+string classname = "FoLiA-txt";
+
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t FoLiA-txt will produce FoLiA files from text files " << endl;
@@ -48,10 +51,10 @@ void usage(){
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
-  cerr << "\t--setname The FoLiA setname of the <str> nodes. (Default FoLiA-txt-set)"
-       << endl;
-  cerr << "\t--class The classname of the <str> nodes. (Default FoLiA-txt)"
-       << endl;
+  cerr << "\t--setname The FoLiA setname of the <str> nodes. "
+    "(Default '" << setname << "')" << endl;
+  cerr << "\t--class The classname of the <str> nodes. (Default '"
+       << classname << "')"<< endl;
 }
 
 string filterMeuck( const string& s ){
@@ -72,8 +75,6 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:", "class:,setname:" );
   opts.init( argc, argv );
   int numThreads = 1;
-  string cls = "FoLiA-txt";
-  string setname = "FoLiA-txt-set";
   string value;
   if ( opts.extract( 'h' ) ){
     usage();
@@ -86,7 +87,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 't', value ) ){
     numThreads = TiCC::stringTo<int>( value );
   }
-  opts.extract( "class", cls );
+  opts.extract( "class", classname );
   opts.extract( "setname", setname );
   if ( !opts.empty() ){
     usage();
@@ -160,7 +161,7 @@ int main( int argc, char *argv[] ){
       if ( line.empty() ){
 	TiCC::trim( parTxt );
 	if ( par && !parTxt.empty() ){
-	  par->settext( parTxt, cls );
+	  par->settext( parTxt, classname );
 	  text->append( par );
 	  parTxt = "";
 	}
@@ -182,7 +183,7 @@ int main( int argc, char *argv[] ){
 	  folia::KWargs args;
 	  args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = new folia::String( d, args );
-	  str->settext( content, cls );
+	  str->settext( content, classname );
 	  parTxt += " " + content;
 	  par->append( str );
 	}
@@ -190,7 +191,7 @@ int main( int argc, char *argv[] ){
     }
     parTxt = TiCC::trim( parTxt );
     if ( !parTxt.empty() ){
-      par->settext( parTxt, cls );
+      par->settext( parTxt, classname );
       text->append( par );
     }
     string outname = nameNoExt + ".folia.xml";

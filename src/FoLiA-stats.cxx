@@ -44,6 +44,7 @@ using namespace	std;
 using namespace	folia;
 using namespace	TiCC;
 
+string classname = "OCR";
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int totalIn,
@@ -406,8 +407,7 @@ size_t str_inventory( const Document *d, const string& docName,
 		      size_t nG,
 		      bool lowercase,
 		      const string& lang,
-		      map<string,unsigned int>& wc,
-		      const string& cls ){
+		      map<string,unsigned int>& wc ){
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
   string doc_lang = d->get_metadata( "language" );
@@ -418,7 +418,7 @@ size_t str_inventory( const Document *d, const string& docName,
   for ( unsigned int i=0; i < strings.size(); ++i ){
     UnicodeString us;
     try {
-      us = strings[i]->text(cls);
+      us = strings[i]->text(classname);
       if ( lowercase ){
 	us.toLower();
       }
@@ -462,8 +462,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  size_t nG,
 			  bool lowercase,
 			  const string& lang,
-			  map<string,unsigned int>& wc,
-			  const string& cls ){
+			  map<string,unsigned int>& wc ){
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
   string doc_lang = d->get_metadata( "language" );
@@ -479,7 +478,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     for ( unsigned int i=0; i < strings.size(); ++i ){
       UnicodeString us;
       try {
-	us = strings[i]->text(cls);
+	us = strings[i]->text(classname);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -564,7 +563,6 @@ int main( int argc, char *argv[] ){
   string expression;
   string outputPrefix;
   string lang = "dut";
-  string cls = "OCR";
   string value;
   if ( opts.extract('V' ) ){
     cerr << PACKAGE_STRING << endl;
@@ -608,7 +606,7 @@ int main( int argc, char *argv[] ){
       lang = value;
   }
   opts.extract('e', expression );
-  opts.extract( "class", cls );
+  opts.extract( "class", classname );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
     usage(progname);
@@ -675,10 +673,10 @@ int main( int argc, char *argv[] ){
     }
     size_t count = 0;
     if ( doparstr ){
-      count = par_str_inventory( d, docName, nG, lowercase, lang, wc, cls );
+      count = par_str_inventory( d, docName, nG, lowercase, lang, wc );
     }
     else if ( donoparstr ){
-      count = str_inventory( d, docName, nG, lowercase, lang, wc, cls );
+      count = str_inventory( d, docName, nG, lowercase, lang, wc );
     }
     else
       count = word_inventory( d, docName, nG, lowercase, lang, wc, lc, lpc );

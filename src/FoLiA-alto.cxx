@@ -1170,10 +1170,10 @@ void usage(){
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
-  cerr << "\t--setname=<set>\t the FoLiA setname of the string nodes. (default 'FoLiA-alto-set')"
-       << endl;
-  cerr << "\t--class=<cls>\t the FoLiA class of the string nodes. (default 'OCR')"
-       << endl;
+  cerr << "\t--setname=<set>\t the FoLiA setname of the string nodes. "
+    "(default '" << setname << "')" << endl;
+  cerr << "\t--class=<cls>\t the FoLiA class of the string nodes. "
+    "(default '" << classname << "')" << endl;
   cerr << "\t--compress=<c>\t create zipped files." << endl;
   cerr << "\t\t\t 'c'=b creates bzip2 files (.bz2)" << endl;
   cerr << "\t\t\t 'c'=g creates gzip files (.gz)" << endl;
