@@ -110,7 +110,7 @@ void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t FoLiA-idf will produce IDF statistics for a directory of FoLiA files " << endl;
   cerr << "\t--clip\t clipping factor. " << endl;
-  cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
+  cerr << "\t\t\t (entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
   cerr << "\t-t\t number of threads" << endl;
   cerr << "\t-h\t this message " << endl;

@@ -11,18 +11,18 @@ counts the intradocument frequency of the words in FoLiA documents.
 It will process all folia XML files in DIR and store its results in the current directory in a file called DIR.idf.tsv
 
 .SH OPTIONS
-.B -c
+.B --clip
 number
 .RS
 clipping factor. When an idf is lower than 'number', it will not be stored.
 .RE
 
-.B -l
+.B --lower
 .RS
 Lowercase all words.
 .RE
 
-.B -n
+.B -t
 number
 .RS
 Number of concurrent threads the program may use
