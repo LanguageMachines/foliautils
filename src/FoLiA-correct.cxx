@@ -18,10 +18,9 @@
 using namespace	std;
 using namespace	folia;
 
-const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
-const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
-
 bool verbose = false;
+string classname = "Ticcl";
+string setname = "Ticcl-set";
 
 struct word_conf {
   word_conf(){};
@@ -124,8 +123,7 @@ void filter( string& word ){
 void correctParagraph( Paragraph* par,
 		       const map<string,vector<word_conf> >& variants,
 		       const set<string>& unknowns,
-		       const map<string,string>& puncts,
-		       const string& classname ){
+		       const map<string,string>& puncts ){
   vector<String*> sv = par->select<String>();
   if ( sv.size() == 0 )
     return;
@@ -213,18 +211,17 @@ void correctParagraph( Paragraph* par,
 bool correctDoc( Document *doc,
 		 const map<string,vector<word_conf> >& variants,
 		 const set<string>& unknowns,
-		 const map<string,string>& puncts,
-		 const string& classname ){
+		 const map<string,string>& puncts ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
-			"Ticcl-Set" ) ){
+			setname ) ){
     return false;
   }
-  doc->declare( folia::AnnotationType::CORRECTION, "Ticcl-Set",
+  doc->declare( folia::AnnotationType::CORRECTION, setname,
 		"annotator='TICCL', annotatortype='auto', datetime='now()'");
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( size_t i=0; i < pv.size(); ++i ){
     try {
-      correctParagraph( pv[i], variants, unknowns, puncts, classname );
+      correctParagraph( pv[i], variants, unknowns, puncts );
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -240,6 +237,7 @@ bool correctDoc( Document *doc,
 
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
+  cerr << "\t--setname\t FoLiA setname" << endl;
   cerr << "\t--class\t classname" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
@@ -273,7 +271,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,clear,unk:,ranks:,puncts:,nums:" );
+			 "class:,setname:,clear,unk:,ranks:,puncts:,nums:" );
   try {
     opts.init( argc, argv );
   }
@@ -292,7 +290,6 @@ int main( int argc, char *argv[] ){
   string unknownFileName;
   string punctFileName;
   string outPrefix;
-  string classname = "Ticcl";
   string value;
   if ( opts.extract( 'h' ) ){
     usage(progname);
@@ -303,6 +300,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   verbose = opts.extract( 'v' );
+  opts.extract( "setname", setname );
   opts.extract( "class", classname );
   clear = opts.extract( "clear" );
   opts.extract( 'e', expression );
@@ -474,7 +472,7 @@ int main( int argc, char *argv[] ){
 	cerr << "unable to create output file! " << outName << endl;
 	exit(EXIT_FAILURE);
       }
-      if ( correctDoc( doc, variants, unknowns, puncts, classname ) ){
+      if ( correctDoc( doc, variants, unknowns, puncts ) ){
 	doc->save( outName );
 #pragma omp critical
 	{

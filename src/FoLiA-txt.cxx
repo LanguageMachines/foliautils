@@ -41,15 +41,17 @@
 using namespace	std;
 using namespace	folia;
 
-
-
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
+  cerr << "\t FoLiA-txt will produce FoLiA files from text files " << endl;
+  cerr << "\t The output will only contain <p> and <str> nodes." << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
-  cerr << "\t txt2folia will produce basic FoLiA files from text files " << endl;
-  cerr << "\t The output will only contain <p> and <str> nodes." << endl;
+  cerr << "\t--setname The FoLiA setname of the <str> nodes. (Default FoLiA-txt-set)"
+       << endl;
+  cerr << "\t--class The classname of the <str> nodes. (Default FoLiA-txt)"
+       << endl;
 }
 
 string filterMeuck( const string& s ){
@@ -67,23 +69,25 @@ string filterMeuck( const string& s ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVt:", "class:" );
+  TiCC::CL_Options opts( "hVt:", "class:,setname:" );
   opts.init( argc, argv );
   int numThreads = 1;
-  string cls = "OCR";
+  string cls = "FoLiA-txt";
+  string setname = "FoLiA-txt-set";
   string value;
-  if ( opts.is_present( 'h' ) ){
+  if ( opts.extract( 'h' ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.is_present( 'V' ) ){
+  if ( opts.extract( 'V' ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( opts.is_present( 't', value ) ){
+  if ( opts.extract( 't', value ) ){
     numThreads = TiCC::stringTo<int>( value );
   }
-  opts.is_present( "class", cls );
+  opts.extract( "class", cls );
+  opts.extract( "setname", setname );
   if ( !opts.empty() ){
     usage();
     exit(EXIT_FAILURE);
@@ -142,8 +146,8 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    d->declare( folia::AnnotationType::STRING, "foliastr",
-		"annotator='txt2folia', datetime='now()'" );
+    d->declare( folia::AnnotationType::STRING, setname,
+		"annotator='FoLiA-txt', datetime='now()'" );
     folia::Text *text = new folia::Text( d, "id='" + docid + ".text'" );
     d->addText( text );
     int parCount = 0;

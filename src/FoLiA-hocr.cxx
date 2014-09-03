@@ -49,6 +49,7 @@
 using namespace	std;
 
 bool verbose = false;
+string setname = "FoLiA-hocr-set";
 string classname = "OCR";
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
@@ -253,7 +254,7 @@ void convert_hocr( const string& fileName,
   }
   string docid = getDocId( title );
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, classname,
+  doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
@@ -295,13 +296,14 @@ void usage(){
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
+  cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes (default FoLiA-hocr-set)" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes (default OCR)" << endl;
   cerr << "\t-v\t verbose output " << endl;
   cerr << "\t-V\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:" );
+  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:" );
   try {
     opts.init( argc, argv );
   }
@@ -337,6 +339,7 @@ int main( int argc, char *argv[] ){
     numThreads = TiCC::stringTo<int>( value );
   }
   opts.extract( 'O', outputDir );
+  opts.extract( "setname", setname );
   opts.extract( "class", classname );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;

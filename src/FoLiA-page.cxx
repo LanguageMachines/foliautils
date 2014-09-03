@@ -80,7 +80,8 @@ xmlDoc *getXml( const string& file, zipType& type ){
 			0, 0, XML_PARSE_NOBLANKS );
 }
 
-string classname = "OCR-GT";
+string setname = "FoLiA-page-set";
+string classname = "OCR";
 
 void appendStr( folia::FoliaElement *par, int& pos,
 		const string& val, const string& id,
@@ -333,7 +334,7 @@ bool convert_pagexml( const string& fileName,
 
   string docid = orgFile;
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, classname,
+  doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
@@ -375,7 +376,8 @@ void usage(){
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
-  cerr << "\t--class='class'\t the FoLiA class name for <t> nodes (default OCR-GT)" << endl;
+  cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes (default FoLiA-page-set)" << endl;
+  cerr << "\t--class='class'\t the FoLiA class name for <t> nodes (default OCR)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t verbose output " << endl;
@@ -383,7 +385,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:" );
+  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:" );
   try {
     opts.init( argc, argv );
   }
@@ -419,6 +421,7 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   opts.extract( 'O', outputDir );
+  opts.extract( "setname", setname );
   opts.extract( "class", classname );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;

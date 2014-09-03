@@ -50,6 +50,8 @@ using namespace	std;
 
 bool verbose = false;
 bool clearCachedFiles = false;
+string setname = "FoLia-alto-set";
+string classname = "OCR";
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
@@ -180,7 +182,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
   return 0;
 }
 
-void addStr( folia::Paragraph *par, string& txt, const string& cls,
+void addStr( folia::Paragraph *par, string& txt,
 	     const xmlNode *pnt, const string& altoFile ){
   folia::KWargs atts = folia::getAttributes( pnt );
   string content = atts["CONTENT"];
@@ -194,7 +196,7 @@ void addStr( folia::Paragraph *par, string& txt, const string& cls,
     args["id"] = atts["ID"];
     folia::String *s = new folia::String( par->doc(), args );
     par->append( s );
-    s->settext( content , txt.length(), cls );
+    s->settext( content , txt.length(), classname );
     txt += " " + content;
     folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
     s->append( h );
@@ -208,7 +210,7 @@ void addStr( folia::Paragraph *par, string& txt, const string& cls,
       args["id"] = atts["ID"] + "_" + TiCC::toString(i);
       folia::String *s = new folia::String( par->doc(), args );
       par->append( s );
-      s->settext( parts[i], txt.length(), cls );
+      s->settext( parts[i], txt.length(), classname );
       txt += " " + parts[i];
       folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
       s->append( h );
@@ -221,7 +223,6 @@ void addStr( folia::Paragraph *par, string& txt, const string& cls,
 
 void createFile( folia::FoliaElement *text,
 		 xmlDoc *alt_doc,
-		 const string& cls,
 		 const string& altoFile,
 		 const list<xmlNode*>& textblocks ){
   xmlNode *root = xmlDocGetRootElement( alt_doc );
@@ -264,16 +265,17 @@ void createFile( folia::FoliaElement *text,
 	      string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 	      if ( sub == "HypPart2" ){
 		if ( keepPart1 == 0 ){
-		  addStr( p, ocr_text, cls, pnt, altoFile );
+		  addStr( p, ocr_text, pnt, altoFile );
 		}
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  folia::KWargs args;
 		  args["id"] = atts["ID"];
-		  args["class"] = cls;
+		  args["class"] = classname;
 		  folia::String *s = new folia::String( text->doc(), args );
 		  p->append( s );
-		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(), cls );
+		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
+			      classname );
 		  ocr_text += " " + atts["SUBS_CONTENT"];
 		  folia::Alignment *h =
 		    new folia::Alignment( "href='" + altoFile + "'" );
@@ -302,7 +304,7 @@ void createFile( folia::FoliaElement *text,
 		  part2 = findPart2Block( node );
 		  if ( !part2 ){
 		    // Ok. Just ignore this and take the CONTENT
-		    addStr( p, ocr_text, cls, pnt, altoFile );
+		    addStr( p, ocr_text, pnt, altoFile );
 		  }
 		  else {
 		    keepPart1 = pnt;
@@ -312,7 +314,7 @@ void createFile( folia::FoliaElement *text,
 		}
 	      }
 	      else {
-		addStr( p, ocr_text, cls, pnt, altoFile );
+		addStr( p, ocr_text, pnt, altoFile );
 	      }
 	    }
 	  }
@@ -333,13 +335,12 @@ void createFile( folia::FoliaElement *text,
       cerr << "Confusing! " << endl;
     }
     if ( !ocr_text.empty() )
-      p->settext( ocr_text.substr(1), cls );
+      p->settext( ocr_text.substr(1), classname );
     ++bit;
   }
 }
 
 void processBlocks( folia::FoliaElement *text,
-		    const string& cls,
 		    const list<xmlNode*>& blocks,
 		    const docCache& cache ){
   list<xmlNode*>::const_iterator it = blocks.begin();
@@ -348,7 +349,7 @@ void processBlocks( folia::FoliaElement *text,
     xmlDoc *alt_doc = cache.find( alt );
     if ( alt_doc ){
       list<xmlNode*> texts = TiCC::FindNodes( *it, "dcx:TextBlock" );
-      createFile( text, alt_doc, cls, alt, texts );
+      createFile( text, alt_doc, alt, texts );
     }
     else {
 #pragma omp critical
@@ -371,7 +372,6 @@ string replaceColon( const string& f, char r ){
 
 void processArticle( const string& f,
 		     const string& subject,
-		     const string& cls,
 		     const list<xmlNode*>& parts,
 		     const docCache& cache,
 		     const string& outDir,
@@ -385,7 +385,7 @@ void processArticle( const string& f,
   }
   string docid = replaceColon(f,'.');
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, "alto",
+  doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
   doc.set_metadata( "genre", subject );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
@@ -400,7 +400,7 @@ void processArticle( const string& f,
 	cerr << "found no blocks" << endl;
       }
     }
-    processBlocks( text, cls, blocks, cache );
+    processBlocks( text, blocks, cache );
     ++it;
   }
   string outName = outDir;
@@ -438,7 +438,6 @@ void processArticle( const string& f,
 
 void processZone( const string& id,
 		  const string& subject,
-		  const string& cls,
 		  xmlNode *zone,
 		  const docCache& cache,
 		  const string& outDir,
@@ -446,7 +445,7 @@ void processZone( const string& id,
 		  const zipType outputType ){
   list<xmlNode *> parts =  TiCC::FindNodes( zone, "dcx:article-part" );
   if ( parts.size() >= 1 ){
-    processArticle( id, subject, cls, parts, cache, outDir, inputType, outputType );
+    processArticle( id, subject, parts, cache, outDir, inputType, outputType );
   }
 }
 
@@ -735,7 +734,6 @@ xmlDoc *getXml( const string& file, zipType& type ){
 void solveArtAlto( const string& altoDir,
 		   const string& file,
 		   const string& outDir,
-		   const string& cls,
 		   zipType outputType ){
   bool succes = true;
 #pragma omp critical
@@ -829,7 +827,7 @@ void solveArtAlto( const string& altoDir,
 		  if ( comps.size() == 1 ){
 		    list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
 		    if ( zones.size() == 1 ){
-		      processZone( *art_it, subject, cls,
+		      processZone( *art_it, subject,
 				   zones.front(), cache, outDir,
 				   inputType, outputType );
 		    }
@@ -898,7 +896,6 @@ void solveArtAlto( const string& altoDir,
 void solveBook( const string& altoFile, const string& id,
 		const string& urn,
 		const string& outDir,
-		const string& cls,
 		zipType outputType ){
   if ( verbose ){
 #pragma omp critical
@@ -911,7 +908,7 @@ void solveBook( const string& altoFile, const string& id,
   if ( xmldoc ){
     string docid = replaceColon( id, '.' );
     folia::Document doc( "id='" + docid + "'" );
-    doc.declare( folia::AnnotationType::STRING, "alto",
+    doc.declare( folia::AnnotationType::STRING, setname,
 		 "annotator='alto', datetime='now()'" );
     //    doc.set_metadata( "genre", subject );
     folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
@@ -965,16 +962,17 @@ void solveBook( const string& altoFile, const string& id,
 		string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 		if ( sub == "HypPart2" ){
 		  if ( keepPart1 == 0 ){
-		    addStr( p, ocr_text, cls, pnt, urn );
+		    addStr( p, ocr_text, pnt, urn );
 		  }
 		  else {
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    folia::KWargs args;
 		    args["id"] = atts["ID"];
-		    args["class"] = cls;
+		    args["class"] = classname;
 		    folia::String *s = new folia::String( text->doc(), args );
 		    p->append( s );
-		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(), cls );
+		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
+				classname );
 		    ocr_text += " " + atts["SUBS_CONTENT"];
 		    folia::Alignment *h =
 		      new folia::Alignment( "href='" + urn + "'" );
@@ -1003,7 +1001,7 @@ void solveBook( const string& altoFile, const string& id,
 		    part2 = findPart2Block( node );
 		    if ( !part2 ){
 		      // Ok. Just ignore this and take the CONTENT
-		      addStr( p, ocr_text, cls, pnt, urn );
+		      addStr( p, ocr_text, pnt, urn );
 		    }
 		    else {
 		      keepPart1 = pnt;
@@ -1013,7 +1011,7 @@ void solveBook( const string& altoFile, const string& id,
 		  }
 		}
 		else {
-		  addStr( p, ocr_text, cls, pnt, urn );
+		  addStr( p, ocr_text, pnt, urn );
 		}
 	      }
 	    }
@@ -1034,7 +1032,7 @@ void solveBook( const string& altoFile, const string& id,
 	cerr << "Confusing! " << endl;
       }
       if ( !ocr_text.empty() )
-	p->settext( ocr_text.substr(1), cls );
+	p->settext( ocr_text.substr(1), classname );
       ++bit;
     }
     zipType type = inputType;
@@ -1073,7 +1071,6 @@ void solveBook( const string& altoFile, const string& id,
 void solveBookAlto( const string& altoDir,
 		    const string& file,
 		    const string& outDir,
-		    const string& cls,
 		    zipType outputType ){
   bool succes = true;
 #pragma omp critical
@@ -1118,7 +1115,7 @@ void solveBookAlto( const string& altoDir,
 		  map<string,string>::const_iterator it = downloaded_files.find( id );
 		  if ( it != downloaded_files.end() ){
 		    solveBook( it->second, id, urns[id], outDir,
-			       cls, outputType );
+			       outputType );
 		  }
 		}
 		++it;
@@ -1173,7 +1170,9 @@ void usage(){
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
-  cerr << "\t--class=<cls>\t specfies the FoLiA class of the string nodes. (default 'OCR')"
+  cerr << "\t--setname=<set>\t the FoLiA setname of the string nodes. (default 'FoLiA-alto-set')"
+       << endl;
+  cerr << "\t--class=<cls>\t the FoLiA class of the string nodes. (default 'OCR')"
        << endl;
   cerr << "\t--compress=<c>\t create zipped files." << endl;
   cerr << "\t\t\t 'c'=b creates bzip2 files (.bz2)" << endl;
@@ -1186,7 +1185,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,compress:,type:" );
+    opts.set_long_options( "cache:,clear,class:,setname:,compress:,type:" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1199,7 +1198,6 @@ int main( int argc, char *argv[] ){
   string outputDir;
   string kind = "krant";
   zipType outputType = NORMAL;
-  string cls = "OCR";
   string value;
   if ( opts.extract('h' ) ){
     usage();
@@ -1230,7 +1228,8 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 't', value ) ){
     numThreads = TiCC::stringTo<int>( value );
   }
-  opts.extract( "class", cls );
+  opts.extract( "setname", setname );
+  opts.extract( "class", classname );
   opts.extract( "cache", altoDir );
   if ( !altoDir.empty() && altoDir[altoDir.length()-1] != '/' )
     altoDir += "/";
@@ -1338,9 +1337,9 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( kind == "krant" )
-      solveArtAlto( altoDir, fileNames[fn], outputDir, cls, outputType );
+      solveArtAlto( altoDir, fileNames[fn], outputDir, outputType );
     else
-      solveBookAlto( altoDir, fileNames[fn], outputDir, cls, outputType );
+      solveBookAlto( altoDir, fileNames[fn], outputDir, outputType );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
