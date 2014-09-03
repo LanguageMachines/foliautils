@@ -25,7 +25,6 @@
       Timbl@uvt.nl
 */
 
-#include <unistd.h> // getopt, unlink
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <string>
@@ -50,6 +49,7 @@
 using namespace	std;
 
 bool verbose = false;
+string classname = "OCR";
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
@@ -165,7 +165,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 						  "id='" + par->id()
 						  + "." + w_id + "'" );
 	  par->append( str );
-	  str->settext( content, txt.length(), "OCR" );
+	  str->settext( content, txt.length(), classname );
 	  txt += " " + content;
 	  folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
 	  str->append( h );
@@ -179,7 +179,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     }
     if ( txt.size() > 1 ){
       out->append( par );
-      par->settext( txt.substr(1), "OCR" );
+      par->settext( txt.substr(1), classname );
     }
     else
       delete par;
@@ -223,7 +223,7 @@ void convert_hocr( const string& fileName,
 #pragma omp critical
     {
       cerr << "problem detecting type of file: " << fileName << endl;
-      cerr << "it MUST have extension .html or .xhtml" << endl;
+      cerr << "it MUST have extension .html or .xhtml (or .bz2 or .gz variants)" << endl;
     }
     return;
   }
@@ -253,7 +253,7 @@ void convert_hocr( const string& fileName,
   }
   string docid = getDocId( title );
   folia::Document doc( "id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, "OCR",
+  doc.declare( folia::AnnotationType::STRING, classname,
 	       "annotator='folia-hocr', datetime='now()'" );
   folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
   doc.append( text );
@@ -293,14 +293,15 @@ void usage(){
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
-  cerr << "\t--compres='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
+  cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
+  cerr << "\t--class='class'\t the FoLiA class name for <t> nodes (default OCR)" << endl;
   cerr << "\t-v\t verbose output " << endl;
   cerr << "\t-V\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:" );
+  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:" );
   try {
     opts.init( argc, argv );
   }
@@ -336,6 +337,7 @@ int main( int argc, char *argv[] ){
     numThreads = TiCC::stringTo<int>( value );
   }
   opts.extract( 'O', outputDir );
+  opts.extract( "class", classname );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
     usage();
