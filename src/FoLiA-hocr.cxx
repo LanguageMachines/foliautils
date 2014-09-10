@@ -65,11 +65,19 @@ xmlDoc *getXml( const string& file, zipType& type ){
     type = NORMAL;
     isHtml = true;
   }
+  else if ( TiCC::match_back( file, ".hocr" ) ){
+    type = NORMAL;
+    isHtml = true;
+  }
   else if ( TiCC::match_back( file, ".xhtml.gz" ) ){
     type = GZ;
     isHtml = false;
   }
   else if ( TiCC::match_back( file, ".html.gz" ) ){
+    type = GZ;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".hocr.gz" ) ){
     type = GZ;
     isHtml = true;
   }
@@ -224,7 +232,7 @@ void convert_hocr( const string& fileName,
 #pragma omp critical
     {
       cerr << "problem detecting type of file: " << fileName << endl;
-      cerr << "it MUST have extension .html or .xhtml (or .bz2 or .gz variants)" << endl;
+      cerr << "it MUST have extension .hocr, .html or .xhtml (or .bz2 or .gz variants)" << endl;
     }
     return;
   }
