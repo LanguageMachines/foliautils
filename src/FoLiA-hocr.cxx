@@ -292,7 +292,7 @@ void convert_hocr( const string& fileName,
 void usage(){
   cerr << "Usage: FoLiA-hocr [options] file/dir" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-h\t this message " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
