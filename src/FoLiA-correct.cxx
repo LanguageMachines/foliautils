@@ -312,7 +312,6 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
   checkFile( "unk", unknownFileName, ".unk" );
-  opts.extract( "rank", variantFileName );
   if ( !opts.extract( "rank", variantFileName ) ){
     cerr << "missing '--rank' option" << endl;
     exit( EXIT_FAILURE );
