@@ -317,7 +317,7 @@ int main( int argc, char *argv[] ){
     cerr << "missing '--rank' option" << endl;
     exit( EXIT_FAILURE );
   }
-  checkFile( "rank", variantFileName, ".rank" );
+  checkFile( "rank", variantFileName, ".ranked" );
   if ( opts.extract( "nums", value ) ){
     if ( !TiCC::stringTo( value, numSugg ) ){
       cerr << "unsupported value for --nums (" << value << ")" << endl;
