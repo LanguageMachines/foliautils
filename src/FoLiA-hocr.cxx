@@ -396,7 +396,9 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    fileNames = TiCC::searchFilesMatch( name, "*html" );
+    fileNames = TiCC::searchFilesMatch( name, "*hocr" );
+    if ( fileNames.empty() )
+      fileNames = TiCC::searchFilesMatch( name, "*html" );
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
