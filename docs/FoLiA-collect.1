@@ -1,27 +1,19 @@
-.TH FoLiA-collect 1 "2014 sep 03"
+.TH FoLiA-collect 1 "2014 oct 01"
 
 .SH NAME
-FoLiA-collect - collect ngram statistics of a FoLiA file as produced by
+FoLiA-collect - collect ngram statistics of .tsv files produced by
 .B FoLiA-stats
-, or a direcory of such FoLiA files.
 
 .SH SYNOPSYS
-FoLiA-collect [options] FILE
-
 FoLiA-collect [options] DIR
 
 .SH DESCRIPTION
 
-When a DIR is provided,
 .B FoLiA-collect
-will process all FoLiA xml files in DIR and store the result in DIR, or in
+will process files produced by
+.B FoLia-stats
+found in DIR and store the result in DIR, or in
 the directory provided with
-.B -O
-
-When a FILE is provided,
-.B FoLiA-collect
-will process that file and store its result in the directory where FILE is
-found or in the directory provided with
 .B -O
 
 All files should match the extension:

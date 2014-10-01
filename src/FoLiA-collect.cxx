@@ -252,8 +252,8 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
 
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t collect the ngram statistics of a file" << endl;
-  cerr << "\t or a whole directoy" << endl;
+  cerr << "\t collect the ngram statistics of a directory containing" << endl;
+  cerr << "\t files produced by FoLiA-stats." << endl;
   cerr << "\t--ngram\t Ngram count " << endl;
   cerr << "\t--hapax also include HAPAXes (default is don't) " << endl;
   cerr << "\t-O\t outout directory." << endl;
@@ -318,17 +318,16 @@ int main( int argc, char *argv[] ){
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
-    cerr << "missing file or directory to process!" << endl;
+    cerr << "missing a directory to process!" << endl;
     exit( EXIT_FAILURE );
   }
   else if ( fileNames.size() >1 ){
-    cerr << "Only 1 file or directory may be specified!" << endl;
+    cerr << "Only 1 directory may be specified!" << endl;
     exit( EXIT_FAILURE );
   }
   string name = fileNames[0];
-  if ( !TiCC::isFile(name) && !TiCC::isDir(name) ){
-    cerr << "parameter '" << name << "' doesn't seem to be a file or directory"
-	 << endl;
+  if ( !TiCC::isDir(name) ){
+    cerr << "parameter '" << name << "' doesn't seem to be a directory" << endl;
     exit(EXIT_FAILURE);
   }
   else {
