@@ -26,8 +26,6 @@
 */
 
 #include <unistd.h> // getopt, unlink
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <string>
 #include <list>
 #include <map>
@@ -467,17 +465,14 @@ bool download( const string& altoDir,
 	       map<string,string>& downloaded ) {
   urns.clear();
   downloaded.clear();
-  struct stat sbuf;
   int d_cnt = 0;
   int c_cnt = 0;
-  int res = stat( altoDir.c_str(), &sbuf );
-  if ( res == -1 || !S_ISDIR(sbuf.st_mode) ){
-    res = mkdir( altoDir.c_str(), S_IRWXU|S_IRWXG );
-    if ( res ){
+  if ( !TiCC::isDir(altoDir) ){
+    if ( !TiCC::createPath( altoDir ) ){
 #pragma omp critical
       {
-	cerr << "problem finding or creating alto dir '" << altoDir
-	     << "' : " << res << endl;
+	cerr << "alto dir '" << altoDir
+	     << "' doesn't exist and can't be created" << endl;
       }
       return false;
     }
@@ -572,17 +567,14 @@ bool download( const string& altoDir,
 	       const list<xmlNode*>& resources,
 	       set<string>& downloaded ){
   downloaded.clear();
-  struct stat sbuf;
   int d_cnt = 0;
   int c_cnt = 0;
-  int res = stat( altoDir.c_str(), &sbuf );
-  if ( res == -1 || !S_ISDIR(sbuf.st_mode) ){
-    res = mkdir( altoDir.c_str(), S_IRWXU|S_IRWXG );
-    if ( res ){
+  if ( !TiCC::isDir(altoDir) ){
+    if ( !TiCC::createPath( altoDir ) ){
 #pragma omp critical
       {
-	cerr << "problem finding or creating alto dir '" << altoDir
-	     << "' : " << res << endl;
+	cerr << "alto dir '" << altoDir
+	     << "' doesn't exist and can't be created" << endl;
       }
       return false;
     }
@@ -1257,12 +1249,10 @@ int main( int argc, char *argv[] ){
   }
   string dirName;
   if ( !outputDir.empty() ){
-    string name = outputDir;
-    if ( !TiCC::isDir(name) ){
-      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-      if ( res < 0 ){
-	cerr << "outputdir '" << name
-	     << "' doesn't existing and can't be created" << endl;
+    if ( !TiCC::isDir(outputDir) ){
+      if ( !TiCC::createPath( outputDir ) ){
+	cerr << "outputdir '" << outputDir
+	     << "' doesn't exist and can't be created" << endl;
 	exit(EXIT_FAILURE);
       }
     }
@@ -1270,19 +1260,17 @@ int main( int argc, char *argv[] ){
   if ( kind == "krant" ){
     string name = outputDir + "artikel/";
     if ( !TiCC::isDir(name) ){
-      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-      if ( res < 0 ){
+      if ( !TiCC::createPath( name ) ){
 	cerr << "outputdir '" << name
-	     << "' doesn't existing and can't be created" << endl;
+	     << "' doesn't exist and can't be created" << endl;
 	exit(EXIT_FAILURE);
       }
     }
     name = outputDir + "overige/";
     if ( !TiCC::isDir(name) ){
-      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-      if ( res < 0 ){
+      if ( !TiCC::createPath( name ) ){
 	cerr << "outputdir '" << name
-	     << "' doesn't existing and can't be created" << endl;
+	     << "' doesn't exist and can't be created" << endl;
 	exit(EXIT_FAILURE);
       }
     }
