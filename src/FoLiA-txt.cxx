@@ -215,7 +215,6 @@ int main( int argc, char *argv[] ){
       text->append( par );
     }
     string outname = outputDir + nameNoExt + ".folia.xml";
-    cerr << "OUTNAME " << outname << endl;
     d->save( outname );
 #pragma omp critical
     {
