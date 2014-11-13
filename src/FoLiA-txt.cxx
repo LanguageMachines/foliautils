@@ -149,7 +149,9 @@ int main( int argc, char *argv[] ){
     if ( pos != string::npos ){
       docid = docid.substr( pos+1 );
     }
-
+    if ( !outputDir.empty() ){
+      nameNoExt = docid;
+    }
     Document *d = 0;
     try {
       d = new Document( "id='"+ docid + "'" );
@@ -213,6 +215,7 @@ int main( int argc, char *argv[] ){
       text->append( par );
     }
     string outname = outputDir + nameNoExt + ".folia.xml";
+    cerr << "OUTNAME " << outname << endl;
     d->save( outname );
 #pragma omp critical
     {
