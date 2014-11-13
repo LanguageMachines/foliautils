@@ -25,8 +25,6 @@
       Timbl@uvt.nl
 */
 
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <string>
 #include <list>
 #include <map>
@@ -369,10 +367,9 @@ int main( int argc, char *argv[] ){
   if ( !outputDir.empty() ){
     string name = outputDir;
     if ( !TiCC::isDir(name) ){
-      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
-      if ( res < 0 ){
+      if ( !TiCC::createPath( name ) ){
 	cerr << "outputdir '" << name
-	     << "' doesn't existing and can't be created" << endl;
+	     << "' doesn't exist and can't be created" << endl;
 	exit(EXIT_FAILURE);
       }
     }
