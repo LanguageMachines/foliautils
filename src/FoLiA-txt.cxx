@@ -25,12 +25,14 @@
       Timbl@uvt.nl
 */
 
+#include <sys/stat.h>
 #include <string>
 #include <iostream>
 #include <fstream>
 
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/FileUtils.h"
 #include "libfolia/document.h"
 
 #include "config.h"
@@ -51,6 +53,7 @@ void usage(){
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-V\t show version " << endl;
+  cerr << "\t-O\t output directory " << endl;
   cerr << "\t--setname The FoLiA setname of the <str> nodes. "
     "(Default '" << setname << "')" << endl;
   cerr << "\t--class The classname of the <str> nodes. (Default '"
@@ -72,8 +75,9 @@ string filterMeuck( const string& s ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVt:", "class:,setname:" );
+  TiCC::CL_Options opts( "hVt:O:", "class:,setname:" );
   opts.init( argc, argv );
+  string outputDir;
   int numThreads = 1;
   string value;
   if ( opts.extract( 'h' ) ){
@@ -87,11 +91,25 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 't', value ) ){
     numThreads = TiCC::stringTo<int>( value );
   }
+  opts.extract( 'O', outputDir );
+  if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' )
+    outputDir += "/";
   opts.extract( "class", classname );
   opts.extract( "setname", setname );
   if ( !opts.empty() ){
     usage();
     exit(EXIT_FAILURE);
+  }
+  if ( !outputDir.empty() ){
+    string name = outputDir;
+    if ( !TiCC::isDir(name) ){
+      int res = mkdir( name.c_str(), S_IRWXU|S_IRWXG );
+      if ( res < 0 ){
+	cerr << "outputdir '" << name
+	     << "' doesn't existing and can't be created" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
   }
   vector<string> fileNames = opts.getMassOpts();
   size_t toDo = fileNames.size();
@@ -155,6 +173,7 @@ int main( int argc, char *argv[] ){
     int wrdCnt = 0;
     folia::FoliaElement *par = 0;
     string parTxt;
+    string parId;
     string line;
     while ( getline( is, line ) ){
       line = TiCC::trim(line);
@@ -173,15 +192,17 @@ int main( int argc, char *argv[] ){
       for ( size_t i=0; i < words.size(); ++i ){
 	if ( par == 0 ){
 	  folia::KWargs args;
-	  args["id"] = docid + ".p." +  TiCC::toString(++parCount);
+	  parId = docid + ".p." +  TiCC::toString(++parCount);
+	  args["id"] = parId;
 	  par = new folia::Paragraph( d, args );
+	  wrdCnt = 0;
 	}
 	string content = words[i];
 	content = filterMeuck( content );
 	content = TiCC::trim( content);
 	if ( !content.empty() ){
 	  folia::KWargs args;
-	  args["id"] = docid + ".str." +  TiCC::toString(++wrdCnt);
+	  args["id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = new folia::String( d, args );
 	  str->settext( content, classname );
 	  parTxt += " " + content;
@@ -194,7 +215,7 @@ int main( int argc, char *argv[] ){
       par->settext( parTxt, classname );
       text->append( par );
     }
-    string outname = nameNoExt + ".folia.xml";
+    string outname = outputDir + nameNoExt + ".folia.xml";
     d->save( outname );
 #pragma omp critical
     {
