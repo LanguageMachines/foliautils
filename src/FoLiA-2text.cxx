@@ -1,6 +1,6 @@
 /*
-  $Id: FoLiA-stats.cxx 17603 2014-09-03 10:57:28Z sloot $
-  $URL: https://ilk.uvt.nl/svn/sources/foliatools/trunk/src/FoLiA-stats.cxx $
+  $Id$
+  $URL$
   Copyright (c) 1998 - 2014
   TICC  -  Tilburg University
 
