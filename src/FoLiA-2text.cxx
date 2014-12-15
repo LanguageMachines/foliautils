@@ -234,7 +234,7 @@ int main( int argc, char *argv[] ){
     cout << "start processing of " << toDo << " files " << endl;
   }
 
-#pragma omp parallel for shared(fileNames)
+#pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -251,7 +251,10 @@ int main( int argc, char *argv[] ){
     }
     string outname = outputPrefix + docName + ".txt";
     if ( !TiCC::createPath( outname ) ){
-      cerr << "Output to '" << outname << "' is impossible" << endl;
+#pragma omp critical
+      {
+	cerr << "Output to '" << outname << "' is impossible" << endl;
+      }
     }
     else
       text_out( d, outname );
