@@ -256,12 +256,13 @@ int main( int argc, char *argv[] ){
 	cerr << "Output to '" << outname << "' is impossible" << endl;
       }
     }
-    else
+    else {
       text_out( d, outname );
 #pragma omp critical
-    {
-      cout << "Processed :" << docName << " into " << outname
-	   << " still " << --toDo << " files to go." << endl;
+      {
+	cout << "Processed :" << docName << " into " << outname
+	     << " still " << --toDo << " files to go." << endl;
+      }
     }
     delete d;
   }
