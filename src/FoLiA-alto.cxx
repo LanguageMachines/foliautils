@@ -191,7 +191,7 @@ void addStr( folia::Paragraph *par, string& txt,
   if ( num == 1 ){
     // OK that's what we hoped for
     folia::KWargs args;
-    args["id"] = atts["ID"];
+    args["id"] = par->id() + "." + atts["ID"];
     folia::String *s = new folia::String( par->doc(), args );
     par->append( s );
     s->settext( content , txt.length(), classname );
@@ -205,7 +205,7 @@ void addStr( folia::Paragraph *par, string& txt,
   else {
     for ( size_t i=0; i < parts.size(); ++i ){
       folia::KWargs args;
-      args["id"] = atts["ID"] + "_" + TiCC::toString(i);
+      args["id"] = par->id() + "." + atts["ID"] + "_" + TiCC::toString(i);
       folia::String *s = new folia::String( par->doc(), args );
       par->append( s );
       s->settext( parts[i], txt.length(), classname );
@@ -268,7 +268,7 @@ void createFile( folia::FoliaElement *text,
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  folia::KWargs args;
-		  args["id"] = atts["ID"];
+		  args["id"] = p->id() + "." + atts["ID"];
 		  args["class"] = classname;
 		  folia::String *s = new folia::String( text->doc(), args );
 		  p->append( s );
@@ -959,7 +959,7 @@ void solveBook( const string& altoFile, const string& id,
 		  else {
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    folia::KWargs args;
-		    args["id"] = atts["ID"];
+		    args["id"] = p->id() + "." + atts["ID"];
 		    args["class"] = classname;
 		    folia::String *s = new folia::String( text->doc(), args );
 		    p->append( s );
