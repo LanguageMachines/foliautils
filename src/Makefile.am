@@ -1,6 +1,8 @@
 # $Id$
 # $URL$
 
+AM_CXXFLAGS = -std=c++11
+
 bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
 	FoLiA-alto FoLiA-langcat FoLiA-hocr FoLiA-page FoLiA-txt FoLiA-2text
 

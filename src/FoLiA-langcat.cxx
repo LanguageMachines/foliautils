@@ -291,6 +291,9 @@ int main( int argc, char *argv[] ){
   string lang = "dut";
   string cls = "OCR";
   bool verbose = opts.extract( 'v' );
+  if ( verbose ){
+    cerr << "verbose option specified, but not used!" << endl;
+  }
   bool doAll = opts.extract( "all" );
   bool doStrings = opts.extract( 's' );
   opts.extract( "config", config );
