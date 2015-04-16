@@ -51,7 +51,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
 		     unsigned int clip,
 		     bool doperc ){
   unsigned int total = totalIn;
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
@@ -107,7 +107,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
 		     unsigned int clip,
 		     bool doperc ){
   unsigned int total = totalIn;
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
@@ -159,7 +159,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
 		      unsigned int clip,
 		      bool doperc ){
   unsigned int total = totalIn;
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
@@ -282,13 +282,11 @@ size_t word_inventory( const Document *d, const string& docName,
     for ( unsigned int i=0; i < words.size(); ++i ){
       wlp_rec rec;
       try {
+	UnicodeString uword = words[i]->text(classname);
 	if ( lowercase ){
-	  UnicodeString uword = UTF8ToUnicode( words[i]->str() );
 	  uword.toLower();
-	  rec.word = UnicodeToUTF8( uword );
 	}
-	else
-	  rec.word = words[i]->str();
+	rec.word = UnicodeToUTF8( uword );
       }
       catch(...){
 #pragma omp critical
