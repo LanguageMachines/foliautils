@@ -44,6 +44,7 @@ using namespace	std;
 using namespace	folia;
 using namespace	TiCC;
 
+bool verbose = false;
 string classname = "OCR";
 
 void create_wf_list( const map<string, unsigned int>& wc,
@@ -86,13 +87,13 @@ void create_wf_list( const map<string, unsigned int>& wc,
   }
 #pragma omp critical
   {
-    cout << "created WordFreq list '" << filename << "'" << endl;
+    cout << "created WordFreq list '" << filename << "'";
     if ( clip > 0 ){
-      cout << "with " << total << " words and " << types << " types. (" << totalIn - total
+      cout << endl << "with " << total << " words and " << types << " types. (" << totalIn - total
 	   << " of the original " << totalIn << " words were clipped.)" << endl;
     }
     else {
-      cout << "for " << total << " word tokens." << endl;
+      cout << " for " << total << " word tokens." << endl;
     }
   }
 }
@@ -143,13 +144,13 @@ void create_lf_list( const map<string, unsigned int>& lc,
   }
 #pragma omp critical
   {
-    cout << "created LemmaFreq list '" << filename << "'" << endl;
+    cout << "created LemmaFreq list '" << filename << "'";
     if ( clip > 0 ){
-      cout << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
+      cout << endl << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
 	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
     }
     else {
-      cout << "for " << total << " lemmas. " << endl;
+      cout << " for " << total << " lemmas. " << endl;
     }
   }
 }
@@ -195,13 +196,13 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   }
 #pragma omp critical
   {
-    cout << "created LemmaPosFreq list '" << filename << "'" << endl;
+    cout << "created LemmaPosFreq list '" << filename << "'";
     if ( clip > 0 ){
-      cout << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
+      cout << endl << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
 	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
     }
     else {
-      cout << "for " << totalIn << " lemmas. " << endl;
+      cout << " for " << totalIn << " lemmas. " << endl;
     }
   }
 }
@@ -266,16 +267,39 @@ size_t word_inventory( const Document *d, const string& docName,
 		       const string& lang,
 		       map<string,unsigned int>& wc,
 		       map<string,unsigned int>& lc,
-		       multimap<string, rec>& lpc ){
+		       multimap<string, rec>& lpc,
+		       unsigned int& lemTotal,
+		       unsigned int& posTotal ){
   size_t wordTotal = 0;
+  lemTotal = 0;
+  posTotal = 0;
   vector<Sentence *> sents = d->sentences();
   string doc_lang = d->get_metadata( "language" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << docName <<  ": " << sents.size() << " sentences" << endl;
+    }
+  }
   for ( unsigned int s=0; s < sents.size(); ++s ){
     string sent_lang = get_lang( sents[s] );
-    if ( sent_lang.empty() )
+    if ( sent_lang.empty() ){
       sent_lang = doc_lang;
+    }
     vector<Word*> words = sents[s]->words();
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << docName <<  "sentence-" << s << " :" << words.size() << "words" << endl;
+      }
+    }
     taal_filter( words, sent_lang, lang );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << docName <<  "sentence-" << s << " after language filter :" << words.size() << "words" << endl;
+      }
+    }
     if ( words.size() < nG )
       continue;
     vector<wlp_rec> data;
@@ -356,46 +380,53 @@ size_t word_inventory( const Document *d, const string& docName,
 	}
       }
       ++wordTotal;
+      if ( !lem_mis ){
+	++lemTotal;
+      }
+      if ( !pos_mis ){
+	++posTotal;
+      }
 #pragma omp critical
       {
 	++wc[multiw];
       }
 
-      if ( multil.empty() ){
-#pragma omp critical
-	{
-	  cerr << "info: some lemma's are missing in "  << sents[s]->id() << endl;
-	}
-      }
-      else {
+      if ( !multil.empty() ){
 #pragma omp critical
 	{
 	  ++lc[multil];
 	}
-
-	if ( multip.empty() ){
+      }
+      if ( !multip.empty() ){
 #pragma omp critical
-	  {
-	    cerr << "info: some POS tags are missing in "  << sents[s]->id() << endl;
+	{
+	  multimap<string, rec >::iterator it = lpc.find(multil);
+	  if ( it == lpc.end() ){
+	    rec tmp;
+	    tmp.count = 1;
+	    tmp.pc[multip]=1;
+	    lpc.insert( make_pair(multil,tmp) );
 	  }
-	}
-	else {
-#pragma omp critical
-	  {
-	    multimap<string, rec >::iterator it = lpc.find(multil);
-	    if ( it == lpc.end() ){
-	      rec tmp;
-	      tmp.count = 1;
-	      tmp.pc[multip]=1;
-	      lpc.insert( make_pair(multil,tmp) );
-	    }
-	    else {
-	      ++it->second.count;
-	      ++it->second.pc[multip];
-	    }
+	  else {
+	    ++it->second.count;
+	    ++it->second.pc[multip];
 	  }
 	}
       }
+    }
+  }
+  if ( verbose && (lemTotal < wordTotal) ){
+#pragma omp critical
+    {
+      cerr << "info: " << wordTotal - lemTotal
+	   << " lemma's are missing in "  << d->id() << endl;
+    }
+  }
+  if ( verbose && (posTotal < wordTotal) ){
+#pragma omp critical
+    {
+      cerr << "info: " << wordTotal - posTotal
+	   << " POS tags are missing in "  << d->id() << endl;
     }
   }
   return wordTotal;
@@ -534,6 +565,7 @@ void usage( const string& name ){
   cerr << "\t--class='name' When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
+  cerr << "\t-v\t very verbose output." << endl;
   cerr << "\t-V\t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
   cerr << "\t-o\t name of the output file(s) prefix." << endl;
@@ -570,6 +602,7 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
+  verbose = opts.extract( 'v' );
   bool dopercentage = opts.extract('p');
   bool lowercase = opts.extract("lower");
   bool recursiveDirs = opts.extract( 'R' );
@@ -653,8 +686,10 @@ int main( int argc, char *argv[] ){
   map<string,unsigned int> lc;
   multimap<string, rec> lpc;
   unsigned int wordTotal =0;
+  unsigned int posTotal =0;
+  unsigned int lemTotal =0;
 
-#pragma omp parallel for shared(fileNames,wordTotal,wc,lc,lpc)
+#pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wc,lc,lpc)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -669,19 +704,25 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    size_t count = 0;
+    unsigned int word_count = 0;
+    unsigned int lem_count = 0;
+    unsigned int pos_count = 0;
     if ( doparstr ){
-      count = par_str_inventory( d, docName, nG, lowercase, lang, wc );
+      word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc );
     }
     else if ( donoparstr ){
-      count = str_inventory( d, docName, nG, lowercase, lang, wc );
+      word_count = str_inventory( d, docName, nG, lowercase, lang, wc );
     }
     else
-      count = word_inventory( d, docName, nG, lowercase, lang, wc, lc, lpc );
-    wordTotal += count;
+      word_count = word_inventory( d, docName, nG, lowercase,
+				   lang, wc, lc, lpc, lem_count, pos_count );
+    wordTotal += word_count;
+    lemTotal += lem_count;
+    posTotal += pos_count;
 #pragma omp critical
     {
-      cout << "Processed :" << docName << " with " << count << " words."
+      cout << "Processed :" << docName << " with " << word_count << " words,"
+	   << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
 	   << " still " << --toDo << " files to go." << endl;
     }
     delete d;
@@ -713,7 +754,7 @@ int main( int argc, char *argv[] ){
       if ( !( doparstr || donoparstr ) ){
 	string filename;
 	filename = outputPrefix + ".lemmafreqlist" + ext;
-	create_lf_list( lc, filename, wordTotal, clip, dopercentage );
+	create_lf_list( lc, filename, lemTotal, clip, dopercentage );
       }
     }
 #pragma omp section
@@ -721,7 +762,7 @@ int main( int argc, char *argv[] ){
       if ( !( doparstr || donoparstr ) ){
 	string filename;
 	filename = outputPrefix + ".lemmaposfreqlist" + ext;
-	create_lpf_list( lpc, filename, wordTotal, clip, dopercentage );
+	create_lpf_list( lpc, filename, posTotal, clip, dopercentage );
       }
     }
   }
