@@ -67,6 +67,8 @@ extern "C" {
 using namespace	std;
 using namespace	folia;
 
+bool verbose = false;
+
 size_t split_at( const string& src, vector<string>& results,
 		 const string& sep ){
   // split a string into substrings, using seps as seperator
@@ -228,23 +230,41 @@ void TCdata::procesFile( const string& outDir, const string& docName,
   ofstream os( outName.c_str() );
   for ( size_t i=0; i < Size; ++i ){
     TextContent *t = 0;
-    if ( doStrings )
-      t = xs[i]->textcontent(cls);
-    else
-      t = xp[i]->textcontent(cls);
-    string para = t->str();
-    para = compress( para );
-    if ( para.empty() ){
-      // #pragma omp_critical (logging)
-      // 	    {
-      // 	      cerr << "WARNING: empty paragraph " << id << endl;
-      // 	    }
+    string id = "NO ID";
+    try {
+      if ( doStrings ){
+	id = xs[i]->id();
+	t = xs[i]->textcontent(cls);
+      }
+      else {
+	id = xp[i]->id();
+	t = xp[i]->textcontent(cls);
+      }
     }
-    else {
-      decap( para );
-      char *res = textcat_Classify( TC, para.c_str(), para.size() );
-      if ( res && strlen(res) > 0 && strcmp( res, "SHORT" ) != 0 ){
-	addLang( t, res, doAll );
+    catch (...){
+    }
+    if ( t ){
+      string para = t->str();
+      para = compress( para );
+      if ( para.empty() ){
+	if ( verbose )
+#pragma omp_critical (logging)
+	  {
+	    cerr << "WARNING: no textcontent " << id << endl;
+	  }
+      }
+      else {
+	decap( para );
+	char *res = textcat_Classify( TC, para.c_str(), para.size() );
+	if ( res && strlen(res) > 0 && strcmp( res, "SHORT" ) != 0 ){
+	  addLang( t, res, doAll );
+	}
+      }
+    }
+    else if ( verbose ){
+#pragma omp_critical (logging)
+      {
+	cerr << "WARNING: no textcontent " << id << endl;
       }
     }
   }
@@ -290,10 +310,7 @@ int main( int argc, char *argv[] ){
   string config = "./config/tc.txt";
   string lang = "dut";
   string cls = "OCR";
-  bool verbose = opts.extract( 'v' );
-  if ( verbose ){
-    cerr << "verbose option specified, but not used!" << endl;
-  }
+  verbose = opts.extract( 'v' );
   bool doAll = opts.extract( "all" );
   bool doStrings = opts.extract( 's' );
   opts.extract( "config", config );
