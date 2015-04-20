@@ -248,7 +248,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
       para = compress( para );
       if ( para.empty() ){
 	if ( verbose )
-#pragma omp_critical (logging)
+#pragma omp critical (logging)
 	  {
 	    cerr << "WARNING: no textcontent " << id << endl;
 	  }
@@ -262,7 +262,7 @@ void TCdata::procesFile( const string& outDir, const string& docName,
       }
     }
     else if ( verbose ){
-#pragma omp_critical (logging)
+#pragma omp critical (logging)
       {
 	cerr << "WARNING: no textcontent " << id << endl;
       }
