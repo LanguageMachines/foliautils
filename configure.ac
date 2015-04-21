@@ -4,7 +4,7 @@
 # $URL $
 
 AC_PREREQ(2.61)
-AC_INIT([foliatools],[0.1],[ko.vandersloot@uvt.nl])
+AC_INIT([foliatools],[0.2],[ko.vandersloot@uvt.nl])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([.])
 AC_CONFIG_MACRO_DIR([m4])
@@ -45,7 +45,6 @@ AC_TYPE_SIZE_T
 AC_HEADER_STDBOOL
 
 # Checks for library functions.
-AC_CHECK_FUNCS([mkdir])
 
 # ugly hack when PKG_CONFIG_PATH isn't defined.
 # couldn't get it to work otherwise
@@ -58,7 +57,7 @@ PKG_CHECK_MODULES([XML2], [libxml-2.0 >= 2.6.16] )
 CXXFLAGS="$CXXFLAGS $XML2_CFLAGS"
 LIBS="$XML2_LIBS $LIBS"
 
-AX_ICU_CHECK( [3.6],
+AX_ICU_CHECK( [4.2],
 	      [CXXFLAGS="$CXXFLAGS $ICU_CPPSEARCHPATH"
 	      LIBS="$ICU_LIBPATH $ICU_LIBS $ICU_IOLIBS $LIBS"],
 	      [AC_MSG_FAILURE( "No ICU development environment found. Please check if libicu-dev
