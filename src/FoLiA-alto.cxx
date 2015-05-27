@@ -1319,7 +1319,11 @@ int main( int argc, char *argv[] ){
   }
   cout << "start processing of " << toDo << " files " << endl;
   if ( numThreads >= 1 ){
+#ifdef HAVE_OPENMP
     omp_set_num_threads( numThreads );
+#else
+    numThreads = 1;
+#endif
   }
 
 #pragma omp parallel for shared(fileNames)
