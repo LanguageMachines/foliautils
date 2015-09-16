@@ -60,7 +60,7 @@ void handle_sentences( vector<Sentence *>& sents, ostream& os ){
   for ( unsigned int s=0; s < sents.size(); ++s ){
     UnicodeString us;
     try {
-      us = sents[s]->text(classname);
+      us = sents[s]->stricttext(classname);
     }
     catch(...){
 #pragma omp critical
@@ -82,7 +82,7 @@ void handle_heads( vector<Head*>& heads, ostream& os ){
     return;
   for ( unsigned int h=0; h < heads.size(); ++h ){
     if ( heads[h]->hastext(classname) ){
-      UnicodeString us = heads[h]->text(classname);
+      UnicodeString us = heads[h]->stricttext(classname);
       string line = UnicodeToUTF8( us );
       os << line << endl;
     }
@@ -107,7 +107,7 @@ void handle_pars( vector<Paragraph *>& pars, ostream& os ){
     // vector<Head *> heads = getHead( pars[p] );
     // handle_heads( heads, os );
     if ( pars[p]->hastext(classname) ){
-      UnicodeString us = pars[p]->text(classname);
+      UnicodeString us = pars[p]->stricttext(classname);
       string line = UnicodeToUTF8( us );
       os << line << endl;
     }
