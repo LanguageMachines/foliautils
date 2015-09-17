@@ -1,9 +1,9 @@
 #
-# A sample config file for the language models 
+# A sample config file for the language models
 # provided with Gertjan van Noords language guesser
 # (http://odur.let.rug.nl/~vannoord/TextCat/)
 #
-# Notes: 
+# Notes:
 # - You may consider eliminating a couple of small languages from this
 # list because they cause false positives with big languages and are
 # bad for performance. (Do you really want to recognize Drents?)
@@ -13,10 +13,10 @@
 #
 # NB We use the iso639-2 codes here, because Political mashup likes them
 #
-config/LM/dutch.lm		dut
-config/LM/french.lm		fre
-#config/LM/german.lm		ger
-config/LM/english.lm		eng
-#config/LM/italian.lm		ita
-#config/LM/portuguese.lm	por
-#config/LM/spanish.lm		spa
+lcconfig/LM/dutch.lm		dut
+lcconfig/LM/french.lm		fre
+#clconfig/LM/german.lm		ger
+lcconfig/LM/english.lm		eng
+#lcconfig/LM/italian.lm		ita
+#lcconfig/LM/portuguese.lm	por
+#lcconfig/LM/spanish.lm		spa
