@@ -320,7 +320,10 @@ int main( int argc, char *argv[] ){
     usage();
     exit( EXIT_FAILURE );
   }
+#ifdef HAVE_OPENMP
   int numThreads=1;
+#endif
+
   string outputDir;
   zipType outputType = NORMAL;
   string value;

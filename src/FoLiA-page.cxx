@@ -393,7 +393,9 @@ int main( int argc, char *argv[] ){
     usage();
     exit( EXIT_FAILURE );
   }
+#ifdef HAVE_OPENMP
   int numThreads=1;
+#endif
   string outputDir;
   zipType outputType = NORMAL;
   string value;
@@ -416,7 +418,12 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( opts.extract( 't', value ) ){
+#ifdef HAVE_OPENMP
     numThreads = TiCC::stringTo<int>( value );
+#else
+    cerr << "OpenMP support is missing. -t options not supported!" << endl;
+    exit( EXIT_FAILURE );
+#endif
   }
   verbose = opts.extract( 'v' );
   opts.extract( 'O', outputDir );
@@ -480,9 +487,11 @@ int main( int argc, char *argv[] ){
     cout << "start processing of " << toDo << " files " << endl;
   }
 
+#ifdef HAVE_OPENMP
   if ( numThreads >= 1 ){
     omp_set_num_threads( numThreads );
   }
+#endif
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){

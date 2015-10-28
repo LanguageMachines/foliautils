@@ -589,7 +589,9 @@ int main( int argc, char *argv[] ){
   }
   int clip = 0;
   int nG = 1;
+#ifdef HAVE_OPENMP
   int numThreads = 1;
+#endif
   string expression;
   string outputPrefix;
   string lang = "dut";
@@ -625,10 +627,15 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( opts.extract('t', value ) ){
+#ifdef HAVE_OPENMP
     if ( !stringTo(value, numThreads ) ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
+#else
+    cerr << "OpenMP support is missing. -t option is not supported" << endl;
+    exit( EXIT_FAILURE );
+#endif
   }
   if ( opts.extract("lang", value ) ){
     if ( value == "none" )
@@ -647,9 +654,6 @@ int main( int argc, char *argv[] ){
 #ifdef HAVE_OPENMP
   if ( numThreads != 1 )
     omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 )
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
   vector<string> massOpts = opts.getMassOpts();
