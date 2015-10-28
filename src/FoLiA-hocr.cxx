@@ -344,7 +344,12 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( opts.extract( 't', value ) ){
+#ifdef HAVE_OPENMP
     numThreads = TiCC::stringTo<int>( value );
+#else
+    cerr << "You don't have OpenMP support, so '-t' option is impossible" << endl;
+    exit(EXIT_FAILURE);
+#endif
   }
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
@@ -409,9 +414,11 @@ int main( int argc, char *argv[] ){
     cout << "start processing of " << toDo << " files " << endl;
   }
 
+#ifdef HAVE_OPENMP
   if ( numThreads >= 1 ){
     omp_set_num_threads( numThreads );
   }
+#endif
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
