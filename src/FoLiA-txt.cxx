@@ -32,6 +32,9 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/StringOps.h"
+#include "libfolia/foliautils.h"
+#include "libfolia/folia.h"
 #include "libfolia/document.h"
 
 #include "config.h"
