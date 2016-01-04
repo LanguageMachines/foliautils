@@ -1,8 +1,7 @@
 /*
-  $Id$
-  $URL$
-  Copyright (c) 1998 - 2015
-  TICC  -  Tilburg University
+  Copyright (c) 2014 - 2016
+  CLST  - Radboud University
+  ILK   - Tilburg University
 
   This file is part of foliatools
 
@@ -20,9 +19,10 @@
   along with this program; if not, see <http://www.gnu.org/licenses/>.
 
   For questions and suggestions, see:
-      http://ilk.uvt.nl/software.html
+      https://github.com/LanguageMachines/foliatools/issues
   or send mail to:
-      Timbl@uvt.nl
+      lamasoftware (at ) science.ru.nl
+
 */
 
 #include <unistd.h> // getopt, unlink
