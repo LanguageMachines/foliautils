@@ -1,2 +1,10 @@
+foliatools 0.2 2016-01-14
+[Ko van der Sloot]
+* repository moved to GitHub
+* added Travis support
+* fixed OpenMP problems
+* made the code 'distributable': overhauling the beta-stuff
+ adding new programs
+
 0.1 [Ko vd Sloot]
 first attempt
