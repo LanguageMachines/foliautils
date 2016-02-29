@@ -186,12 +186,10 @@ void correctParagraph( Paragraph* par,
       vector<FoliaElement*> sV;
       size_t limit = it->second.size();
       for( size_t j=0; j < limit; ++j ){
-	Suggestion *sug = new Suggestion( "confidence='" +
-					  it->second[j].conf +
-					  "', n='" +
-					  TiCC::toString(j+1) + "/" +
-					  TiCC::toString(limit) +
-					  "'" );
+	KWargs sargs;
+	sargs["confidence"] = it->second[j].conf;
+	sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+	Suggestion *sug = new Suggestion( sargs );
 	sug->settext( it->second[j].word, classname );
 	sV.push_back( sug );
       }

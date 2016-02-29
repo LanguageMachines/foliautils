@@ -87,15 +87,15 @@ void appendStr( folia::FoliaElement *par, int& pos,
 		const string& file ){
   if ( !val.empty() ){
     folia::String *str = new folia::String( par->doc(),
-					    "id='" + par->id()
-					    + "." + id + "'" );
+					    folia::getArgs( "id='" + par->id()
+							    + "." + id + "'" ) );
     par->append( str );
     str->settext( val, pos, classname );
     pos += val.length();
-    folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
+    folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
     str->append( h );
     folia::AlignReference *a =
-      new folia::AlignReference( "id='" + id + "', type='str'" );
+      new folia::AlignReference( folia::getArgs("id='" + id + "', type='str'") );
     h->append( a );
   }
 }
@@ -115,7 +115,7 @@ void process( folia::FoliaElement *out,
     }
     folia::Paragraph *par
       = new folia::Paragraph( out->doc(),
-			      "id='" + out->id() + "." + refs[i] + "'");
+			      folia::getArgs( "id='" + out->id() + "." + refs[i] + "'" ));
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -143,7 +143,7 @@ void process( folia::FoliaElement *out,
     }
     folia::Paragraph *par
       = new folia::Paragraph( out->doc(),
-			      "id='" + out->id() + "." + labels.at(it->first) + "'");
+			      folia::getArgs( "id='" + out->id() + "." + labels.at(it->first) + "'") );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -336,7 +336,7 @@ bool convert_pagexml( const string& fileName,
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
+  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'" ));
   doc.append( text );
   process( text, specials, specialRefs, docid );
   process( text, regionStrings, backrefs, docid );

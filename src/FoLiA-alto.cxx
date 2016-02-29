@@ -199,10 +199,11 @@ void addStr( folia::Paragraph *par, string& txt,
     par->append( s );
     s->settext( content , txt.length(), classname );
     txt += " " + content;
-    folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
+    folia::Alignment *h
+      = new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
     s->append( h );
     folia::AlignReference *a =
-      new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+      new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
     h->append( a );
   }
   else {
@@ -213,10 +214,11 @@ void addStr( folia::Paragraph *par, string& txt,
       par->append( s );
       s->settext( parts[i], txt.length(), classname );
       txt += " " + parts[i];
-      folia::Alignment *h = new folia::Alignment( "href='" + altoFile + "'" );
+      folia::Alignment *h
+	= new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
       s->append( h );
       folia::AlignReference *a =
-	new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+	new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
       h->append( a );
     }
   }
@@ -246,7 +248,8 @@ void createFile( folia::FoliaElement *text,
       ids.insert(id);
     }
     folia::Paragraph *p =
-      new folia::Paragraph( text->doc(), "id='" + text->id() + ".p." + altoFile + "." + id + "'" );
+      new folia::Paragraph( text->doc(),
+			    folia::getArgs("id='" + text->id() + ".p." + altoFile + "." + id + "'" ) );
     text->append( p );
     string ocr_text;
     list<xmlNode*> v =
@@ -279,14 +282,14 @@ void createFile( folia::FoliaElement *text,
 			      classname );
 		  ocr_text += " " + atts["SUBS_CONTENT"];
 		  folia::Alignment *h =
-		    new folia::Alignment( "href='" + altoFile + "'" );
+		    new folia::Alignment( folia::getArgs( "href='" + altoFile + "'" ) );
 		  s->append( h );
 		  folia::AlignReference *a = 0;
-		  a = new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+		  a = new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
 		  h->append( a );
-		  a = new folia::AlignReference( "id='" +
-						 TiCC::getAttribute( pnt, "ID" )
-						 + "', type='str'" );
+		  a = new folia::AlignReference( folia::getArgs ( "id='" +
+								  TiCC::getAttribute( pnt, "ID" )
+								  + "', type='str'" ) );
 		  h->append( a );
 		  keepPart1 = 0;
 		}
@@ -389,7 +392,7 @@ void processArticle( const string& f,
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
   doc.set_metadata( "genre", subject );
-  folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
+  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"  ) );
   doc.append( text );
 
   list<xmlNode*>::const_iterator it = parts.begin();
@@ -906,7 +909,7 @@ void solveBook( const string& altoFile, const string& id,
     doc.declare( folia::AnnotationType::STRING, setname,
 		 "annotator='alto', datetime='now()'" );
     //    doc.set_metadata( "genre", subject );
-    folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
+    folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'" ));
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     list<xmlNode*> textblocks = TiCC::FindNodes( root, "//*:TextBlock" );
@@ -937,7 +940,8 @@ void solveBook( const string& altoFile, const string& id,
 	ids.insert(id);
       }
       folia::Paragraph *p =
-	new folia::Paragraph( text->doc(), "id='" + text->id() + ".p." + id + "'" );
+	new folia::Paragraph( text->doc(),
+			      folia::getArgs("id='" + text->id() + ".p." + id + "'" ) );
       text->append( p );
       string ocr_text;
       list<xmlNode*> v =
@@ -970,14 +974,14 @@ void solveBook( const string& altoFile, const string& id,
 				classname );
 		    ocr_text += " " + atts["SUBS_CONTENT"];
 		    folia::Alignment *h =
-		      new folia::Alignment( "href='" + urn + "'" );
+		      new folia::Alignment( folia::getArgs("href='" + urn + "'" ));
 		    s->append( h );
 		    folia::AlignReference *a = 0;
-		    a = new folia::AlignReference( "id='" + atts["ID"] + "', type='str'" );
+		    a = new folia::AlignReference( folia::getArgs("id='" + atts["ID"] + "', type='str'" ) );
 		    h->append( a );
-		    a = new folia::AlignReference( "id='" +
-						   TiCC::getAttribute( pnt, "ID" )
-						   + "', type='str'" );
+		    a = new folia::AlignReference( folia::getArgs( "id='" +
+								   TiCC::getAttribute( pnt, "ID" )
+								   + "', type='str'" ) );
 		    h->append( a );
 		    keepPart1 = 0;
 		  }

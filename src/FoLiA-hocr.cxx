@@ -140,7 +140,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     string p_id = TiCC::getAttribute( *pit, "id" );
     folia::Paragraph *par
       = new folia::Paragraph( out->doc(),
-			      "id='" + out->id() + "." + p_id + "'");
+			      folia::getArgs( "id='" + out->id() + "." + p_id + "'" ) );
     list<xmlNode*> lines = TiCC::FindNodes( *pit, ".//span[@class='ocr_line']" );
     if ( lines.size() == 0 ){
 #pragma omp critical
@@ -171,15 +171,14 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
 	  folia::String *str = new folia::String( out->doc(),
-						  "id='" + par->id()
-						  + "." + w_id + "'" );
+						  folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ) );
 	  par->append( str );
 	  str->settext( content, txt.length(), classname );
 	  txt += " " + content;
-	  folia::Alignment *h = new folia::Alignment( "href='" + file + "'" );
+	  folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
 	  str->append( h );
 	  folia::AlignReference *a =
-	    new folia::AlignReference( "id='" + w_id + "', type='str'" );
+	    new folia::AlignReference( folia::getArgs( "id='" + w_id + "', type='str'"  ) );
 	  h->append( a );
 	}
 	++it;
@@ -264,7 +263,7 @@ void convert_hocr( const string& fileName,
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
-  folia::Text *text = new folia::Text( "id='" + docid + ".text'" );
+  folia::Text *text = new folia::Text( folia::getArgs( "id='" + docid + ".text'"  ));
   doc.append( text );
   processParagraphs( root, text, docid );
   xmlFreeDoc( xdoc );

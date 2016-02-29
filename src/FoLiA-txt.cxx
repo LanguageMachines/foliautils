@@ -168,7 +168,7 @@ int main( int argc, char *argv[] ){
     }
     d->declare( folia::AnnotationType::STRING, setname,
 		"annotator='FoLiA-txt', datetime='now()'" );
-    folia::Text *text = new folia::Text( d, "id='" + docid + ".text'" );
+    folia::Text *text = new folia::Text( d, folia::getArgs("id='" + docid + ".text'") );
     d->addText( text );
     int parCount = 0;
     int wrdCnt = 0;
