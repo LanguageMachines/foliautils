@@ -139,8 +139,8 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
   while ( pit != pars.end() ){
     string p_id = TiCC::getAttribute( *pit, "id" );
     folia::Paragraph *par
-      = new folia::Paragraph( out->doc(),
-			      folia::getArgs( "id='" + out->id() + "." + p_id + "'" ) );
+      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
+			      out->doc() );
     list<xmlNode*> lines = TiCC::FindNodes( *pit, ".//span[@class='ocr_line']" );
     if ( lines.size() == 0 ){
 #pragma omp critical
@@ -170,8 +170,8 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	string content = extractContent( *it );
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
-	  folia::String *str = new folia::String( out->doc(),
-						  folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ) );
+	  folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ),
+						   out->doc() );
 	  par->append( str );
 	  str->settext( content, txt.length(), classname );
 	  txt += " " + content;

@@ -195,7 +195,7 @@ void addStr( folia::Paragraph *par, string& txt,
     // OK that's what we hoped for
     folia::KWargs args;
     args["id"] = par->id() + "." + atts["ID"];
-    folia::String *s = new folia::String( par->doc(), args );
+    folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
     s->settext( content , txt.length(), classname );
     txt += " " + content;
@@ -210,7 +210,7 @@ void addStr( folia::Paragraph *par, string& txt,
     for ( size_t i=0; i < parts.size(); ++i ){
       folia::KWargs args;
       args["id"] = par->id() + "." + atts["ID"] + "_" + TiCC::toString(i);
-      folia::String *s = new folia::String( par->doc(), args );
+      folia::String *s = new folia::String( args, par->doc() );
       par->append( s );
       s->settext( parts[i], txt.length(), classname );
       txt += " " + parts[i];
@@ -248,8 +248,8 @@ void createFile( folia::FoliaElement *text,
       ids.insert(id);
     }
     folia::Paragraph *p =
-      new folia::Paragraph( text->doc(),
-			    folia::getArgs("id='" + text->id() + ".p." + altoFile + "." + id + "'" ) );
+      new folia::Paragraph( folia::getArgs("id='" + text->id() + ".p." + altoFile + "." + id + "'" ),
+			     text->doc() );
     text->append( p );
     string ocr_text;
     list<xmlNode*> v =
@@ -276,7 +276,7 @@ void createFile( folia::FoliaElement *text,
 		  folia::KWargs args;
 		  args["id"] = p->id() + "." + atts["ID"];
 		  args["class"] = classname;
-		  folia::String *s = new folia::String( text->doc(), args );
+		  folia::String *s = new folia::String( args, text->doc() );
 		  p->append( s );
 		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
 			      classname );
@@ -940,8 +940,8 @@ void solveBook( const string& altoFile, const string& id,
 	ids.insert(id);
       }
       folia::Paragraph *p =
-	new folia::Paragraph( text->doc(),
-			      folia::getArgs("id='" + text->id() + ".p." + id + "'" ) );
+	new folia::Paragraph( folia::getArgs("id='" + text->id() + ".p." + id + "'" ),
+			      text->doc() );
       text->append( p );
       string ocr_text;
       list<xmlNode*> v =
@@ -968,7 +968,7 @@ void solveBook( const string& altoFile, const string& id,
 		    folia::KWargs args;
 		    args["id"] = p->id() + "." + atts["ID"];
 		    args["class"] = classname;
-		    folia::String *s = new folia::String( text->doc(), args );
+		    folia::String *s = new folia::String( args, text->doc() );
 		    p->append( s );
 		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
 				classname );

@@ -168,7 +168,7 @@ int main( int argc, char *argv[] ){
     }
     d->declare( folia::AnnotationType::STRING, setname,
 		"annotator='FoLiA-txt', datetime='now()'" );
-    folia::Text *text = new folia::Text( d, folia::getArgs("id='" + docid + ".text'") );
+    folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"), d );
     d->addText( text );
     int parCount = 0;
     int wrdCnt = 0;
@@ -195,7 +195,7 @@ int main( int argc, char *argv[] ){
 	  folia::KWargs args;
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
 	  args["id"] = parId;
-	  par = new folia::Paragraph( d, args );
+	  par = new folia::Paragraph( args, d );
 	  wrdCnt = 0;
 	}
 	string content = words[i];
@@ -204,7 +204,7 @@ int main( int argc, char *argv[] ){
 	if ( !content.empty() ){
 	  folia::KWargs args;
 	  args["id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
-	  folia::FoliaElement *str = new folia::String( d, args );
+	  folia::FoliaElement *str = new folia::String( args, d );
 	  str->settext( content, classname );
 	  parTxt += " " + content;
 	  par->append( str );

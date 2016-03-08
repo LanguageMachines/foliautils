@@ -86,9 +86,9 @@ void appendStr( folia::FoliaElement *par, int& pos,
 		const string& val, const string& id,
 		const string& file ){
   if ( !val.empty() ){
-    folia::String *str = new folia::String( par->doc(),
-					    folia::getArgs( "id='" + par->id()
-							    + "." + id + "'" ) );
+    folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()
+							    + "." + id + "'" ),
+					     par->doc() );
     par->append( str );
     str->settext( val, pos, classname );
     pos += val.length();
@@ -114,8 +114,7 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
     }
     folia::Paragraph *par
-      = new folia::Paragraph( out->doc(),
-			      folia::getArgs( "id='" + out->id() + "." + refs[i] + "'" ));
+      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + refs[i] + "'" ),  out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -142,8 +141,7 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
     }
     folia::Paragraph *par
-      = new folia::Paragraph( out->doc(),
-			      folia::getArgs( "id='" + out->id() + "." + labels.at(it->first) + "'") );
+      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + labels.at(it->first) + "'"), out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
