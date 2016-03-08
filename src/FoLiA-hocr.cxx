@@ -32,9 +32,7 @@
 #include <iostream>
 #include <fstream>
 #include "ticcutils/StringOps.h"
-#include "libfolia/foliautils.h"
 #include "libfolia/folia.h"
-#include "libfolia/document.h"
 #include "libxml/HTMLparser.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"

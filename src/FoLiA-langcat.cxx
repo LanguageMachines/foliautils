@@ -38,9 +38,7 @@
 #include <iostream>
 #include <fstream>
 #include "ticcutils/StringOps.h"
-#include "libfolia/foliautils.h"
 #include "libfolia/folia.h"
-#include "libfolia/document.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
 #include "config.h"
