@@ -1,3 +1,8 @@
+foliautils 0.3 2016-03-1-
+[Ko van der Sloot]
+ * renamed from foliatools to foliautils
+ * now based on libfolia v1.0
+
 foliatools 0.2 2016-01-14
 [Ko van der Sloot]
 * repository moved to GitHub
