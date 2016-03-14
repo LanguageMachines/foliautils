@@ -60,7 +60,7 @@ void handle_sentences( vector<Sentence *>& sents, ostream& os ){
   for ( unsigned int s=0; s < sents.size(); ++s ){
     UnicodeString us;
     try {
-      us = sents[s]->stricttext(classname);
+      us = sents[s]->deeptext(classname);
     }
     catch(...){
 #pragma omp critical
