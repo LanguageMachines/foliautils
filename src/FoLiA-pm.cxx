@@ -55,7 +55,7 @@ void process_stage( Division *root, xmlNode *stage ){
   while ( stage ){
     string id = TiCC::getAttribute( stage, "id" );
     string type = TiCC::getAttribute( stage, "type" );
-    cerr << "Node: " << TiCC::Name( stage ) <<
+    cerr << "Node: " << TiCC::Name( stage )
 	 << " type='" << type << "' id = '" << id << "'" << endl;
     if ( type == "chair" ){
       KWargs args;
