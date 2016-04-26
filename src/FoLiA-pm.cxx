@@ -51,7 +51,51 @@ using namespace	folia;
 
 bool verbose = false;
 
-void process_stage( Division *root, xmlNode *stage ){
+void process_par( Division *root, xmlNode *p ){
+  string id = TiCC::getAttribute( p, "id" );
+  cerr << "process_par: " << TiCC::Name( p )
+       << " id = '" << id << "'" << endl;
+  KWargs args;
+  args["id"] = id;
+  Paragraph *par = new Paragraph( args, root->doc() );
+  string txt = TiCC::XmlContent(p);
+  par->settext( txt );
+  root->append( par );
+}
+
+void process_speech( Division *root, xmlNode *speech ){
+  string id = TiCC::getAttribute( speech, "id" );
+  cerr << "process_speech: " << TiCC::Name( speech )
+       << " id = '" << id << "'" << endl;
+  xmlNode *p = speech->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    string id = TiCC::getAttribute( p, "id" );
+    if ( label == "p" ){
+      process_par( root, p );
+    }
+    p = p->next;
+  }
+}
+
+void process_break( Division *root, xmlNode *brk ){
+  KWargs args;
+  args["subset"] = "source";
+  args["class"] = TiCC::getAttribute( brk, "source");
+  Feature *feat = new Feature( args );
+  root->append( feat );
+  args["subset"] = "originalpagenr";
+  args["class"] = TiCC::getAttribute( brk, "originalpagenr");
+  feat = new Feature( args );
+  root->append( feat );
+}
+
+void process_stage( Division *root, xmlNode *_stage ){
+  xmlNode *stage = _stage;
+  string id = TiCC::getAttribute( stage, "id" );
+  string type = TiCC::getAttribute( stage, "type" );
+  cerr << "process_stage: " << TiCC::Name( stage )
+       << " type='" << type << "' id = '" << id << "'" << endl;
   while ( stage ){
     string id = TiCC::getAttribute( stage, "id" );
     string type = TiCC::getAttribute( stage, "type" );
@@ -71,20 +115,49 @@ void process_stage( Division *root, xmlNode *stage ){
       Division *div = new Division( args, root->doc() );
       root->append( div );
     }
+    else if ( type == "pagebreak" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div = new Division( args, root->doc() );
+      root->append( div );
+      process_break( div, stage->children );
+    }
     else if ( type == "speech" ){
       KWargs args;
       args["id"] = id;
       args["class"] = type;
       Division *div = new Division( args, root->doc() );
       root->append( div );
+      process_speech( root, stage );
     }
-    else if ( type == "" ){ //nested
-      KWargs args;
-      args["id"] = id;
-      args["class"] = "stage-direction";
-      Division *div = new Division( args, root->doc() );
-      root->append( div );
-      process_stage( div, stage->children );
+    else if ( type == "" ){ //nested or?
+      string label = TiCC::Name( stage );
+      if ( label == "text" ){
+	cerr << "subnode = text" << endl;
+      }
+      else if ( label == "stage-direction" ){
+	KWargs args;
+	args["id"] = id;
+	args["class"] = "stage-direction";
+	Division *div = new Division( args, root->doc() );
+	root->append( div );
+	process_stage( div, stage->children );
+      }
+      else if ( label == "speech" ){
+	// KWargs args;
+	// args["id"] = id;
+	// args["class"] = "speech";
+	// Division *div = new Division( args, root->doc() );
+	// root->append( div );
+	// process_speech( div, stage );
+      }
+      else if ( label == "p" ){
+	process_par( root, stage );
+      }
+      else {
+	cerr << "unhandled nested " << label << endl;
+      }
     }
     else {
       cerr << "unhandled stage type: " << type << endl;
@@ -100,9 +173,19 @@ void process_topic( Division *root, xmlNode *topic ){
   args["class"] = "topic";
   Division *div = new Division( args, root->doc() );
   root->append( div );
-  list<xmlNode*> sdl = TiCC::FindNodes( topic, "./*:stage-direction" );
-  for ( const auto& sd : sdl ){
-    process_stage( div, sd );
+  xmlNode *p = topic->children;
+  while ( p ){
+    cerr << "process_topic " << TiCC::Name(p) << endl;
+    if ( TiCC::Name(p) == "stage-direction" ){
+      process_stage( div, p );
+    }
+    else if ( TiCC::Name(p) == "speech" ){
+      process_speech( div, p );
+    }
+    else {
+      cerr << "unhandled " << TiCC::Name(p) << endl;
+    }
+    p = p->next;
   }
 }
 
