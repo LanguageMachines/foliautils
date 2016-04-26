@@ -47,8 +47,77 @@
 #endif
 
 using namespace	std;
+using namespace	folia;
 
 bool verbose = false;
+
+void process_stage( Division *root, xmlNode *stage ){
+  while ( stage ){
+    string id = TiCC::getAttribute( stage, "id" );
+    string type = TiCC::getAttribute( stage, "type" );
+    cerr << "Node: " << TiCC::Name( stage ) <<
+	 << " type='" << type << "' id = '" << id << "'" << endl;
+    if ( type == "chair" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div = new Division( args, root->doc() );
+      root->append( div );
+    }
+    else if ( type == "subject" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div = new Division( args, root->doc() );
+      root->append( div );
+    }
+    else if ( type == "speech" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div = new Division( args, root->doc() );
+      root->append( div );
+    }
+    else if ( type == "" ){ //nested
+      KWargs args;
+      args["id"] = id;
+      args["class"] = "stage-direction";
+      Division *div = new Division( args, root->doc() );
+      root->append( div );
+      process_stage( div, stage->children );
+    }
+    else {
+      cerr << "unhandled stage type: " << type << endl;
+    }
+    stage = stage->next;
+  }
+}
+
+void process_topic( Division *root, xmlNode *topic ){
+  string id = TiCC::getAttribute( topic, "id" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = "topic";
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  list<xmlNode*> sdl = TiCC::FindNodes( topic, "./*:stage-direction" );
+  for ( const auto& sd : sdl ){
+    process_stage( div, sd );
+  }
+}
+
+void process_proceeding( Text *root, xmlNode *proceed ){
+  string id = TiCC::getAttribute( proceed, "id" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = "proceedings";
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  list<xmlNode*> topics = TiCC::FindNodes( proceed, "*:topic" );
+  for ( const auto& topic : topics ){
+    process_topic( div, topic );
+  }
+}
 
 void convert_to_folia( const string& file,
 		       const string& outDir ){
@@ -62,7 +131,8 @@ void convert_to_folia( const string& file,
 				XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
   if ( xmldoc ){
     string docid = "test";
-    folia::Document doc( "id='" + docid + "'" );
+    Document doc( "id='" + docid + "'" );
+    doc.declare( folia::AnnotationType::DIVISION, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
     if ( metadata ){
@@ -83,22 +153,12 @@ void convert_to_folia( const string& file,
       }
       succes = false;
     }
-    folia::Text *text = new folia::Text( folia::getArgs( "id='" + docid + ".text'"  ));
+    Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
     doc.append( text );
     xmlNode *p = metadata->next;
     while ( p ){
       if ( TiCC::Name( p ) == "proceedings" ){
-	string id = TiCC::getAttribute( p, "id" );
-	folia::Division *div = new folia::Division( folia::getArgs( "id='" + id + "'") );
-	text->append( div );
-	xmlNode *topic = TiCC::xPath( p, "*:topic" );
-	xmlNode *p = topic;
-	while ( p ){
-	  string id = TiCC::getAttribute( p, "id" );
-	  folia::Division *div1 = new folia::Division( folia::getArgs( "id='" + id + "'") );
-	  div->append( div1 );
-	  p = p->next;
-	}
+	process_proceeding( text, p );
       }
       p = p->next;
     }
