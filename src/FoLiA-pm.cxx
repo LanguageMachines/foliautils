@@ -76,9 +76,20 @@ void add_par( Division *root, xmlNode *p ){
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
       if ( tag == "tagged" ){
-	XmlText *txt = new XmlText();
-	txt->setvalue( "DELETED REF" );
-	tc->append( txt );
+	xmlNode *t = p->children;
+	while ( t ){
+	  if ( t->type == XML_TEXT_NODE ){
+	    xmlChar *tmp = xmlNodeGetContent( t );
+	    if ( tmp ){
+	      string part = " " + std::string( (char *)tmp ) + " ";
+	      XmlText *txt = new XmlText();
+	      txt->setvalue( part );
+	      tc->append( txt );
+	      xmlFree( tmp );
+	    }
+	  }
+	  t = t->next;
+	}
       }
     }
     p = p->next;
