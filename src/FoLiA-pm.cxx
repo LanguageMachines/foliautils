@@ -25,7 +25,6 @@
 
 */
 
-#include <unistd.h> // getopt, unlink
 #include <string>
 #include <list>
 #include <map>
@@ -51,28 +50,130 @@ using namespace	folia;
 
 bool verbose = false;
 
-void process_par( Division *root, xmlNode *p ){
+void process_stage( Division *, xmlNode * );
+
+void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   cerr << "process_par: " << TiCC::Name( p )
        << " id = '" << id << "'" << endl;
   KWargs args;
   args["id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
-  string txt = TiCC::XmlContent(p);
-  par->settext( txt );
+  TextContent *tc = new TextContent();
+  par->append( tc );
+  p = p->children;
+  while ( p ){
+    if ( p->type == XML_TEXT_NODE ){
+      xmlChar *tmp = xmlNodeGetContent( p );
+      if ( tmp ){
+	string part = std::string( (char *)tmp );
+	XmlText *txt = new XmlText();
+	txt->setvalue( part );
+	tc->append( txt );
+	xmlFree( tmp );
+      }
+    }
+    else if ( p->type == XML_ELEMENT_NODE ){
+      string tag = TiCC::Name( p );
+      if ( tag == "tagged" ){
+	XmlText *txt = new XmlText();
+	txt->setvalue( "DELETED REF" );
+	tc->append( txt );
+      }
+    }
+    p = p->next;
+  }
   root->append( par );
+}
+
+void process_chair( Division *root, xmlNode *chair ){
+  string id = TiCC::getAttribute( chair, "id" );
+  string type = TiCC::getAttribute( chair, "type" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  xmlNode *p = chair->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "p" ){
+      add_par( div, p );
+    }
+    if ( label == "chair" ){
+      string speaker = TiCC::getAttribute( p, "speaker" );
+      string member = TiCC::getAttribute( p, "member-ref" );
+      KWargs args;
+      args["subset"] = "speaker";
+      args["class"] = speaker;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+      args["subset"] = "member-ref";
+      args["class"] = member;
+      feat = new Feature( args );
+      div->append( feat );
+    }
+    p = p->next;
+  }
 }
 
 void process_speech( Division *root, xmlNode *speech ){
   string id = TiCC::getAttribute( speech, "id" );
-  cerr << "process_speech: " << TiCC::Name( speech )
-       << " id = '" << id << "'" << endl;
+  string type = TiCC::getAttribute( speech, "type" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  string speaker = TiCC::getAttribute( speech, "speaker" );
+  if ( !speaker.empty() ){
+    KWargs args;
+    args["subset"] = "speaker";
+    args["class"] = speaker;
+    Feature *feat = new Feature( args );
+    div->append( feat );
+  }
+  string function = TiCC::getAttribute( speech, "function" );
+  if ( !function.empty() ){
+    KWargs args;
+    args["subset"] = "function";
+    args["class"] = function;
+    Feature *feat = new Feature( args );
+    div->append( feat );
+  }
+  string role = TiCC::getAttribute( speech, "role" );
+  if ( !role.empty() ){
+    KWargs args;
+    args["subset"] = "role";
+    args["class"] = role;
+    Feature *feat = new Feature( args );
+    div->append( feat );
+  }
+  string party_ref = TiCC::getAttribute( speech, "party-ref" );
+  if ( !party_ref.empty() ){
+    KWargs args;
+    args["subset"] = "party-ref";
+    args["class"] = party_ref;
+    Feature *feat = new Feature( args );
+    div->append( feat );
+  }
+  string member_ref = TiCC::getAttribute( speech, "member-ref" );
+  if ( !member_ref.empty() ){
+    KWargs args;
+    args["subset"] = "member-ref";
+    args["class"] = member_ref;
+    Feature *feat = new Feature( args );
+    div->append( feat );
+  }
+
   xmlNode *p = speech->children;
   while ( p ){
     string label = TiCC::Name(p);
-    string id = TiCC::getAttribute( p, "id" );
     if ( label == "p" ){
-      process_par( root, p );
+      add_par( div, p );
+    }
+    else if ( label == "stage-direction" ){
+      process_stage( div, p );
     }
     p = p->next;
   }
@@ -80,56 +181,60 @@ void process_speech( Division *root, xmlNode *speech ){
 
 void process_break( Division *root, xmlNode *brk ){
   KWargs args;
-  args["subset"] = "source";
-  args["class"] = TiCC::getAttribute( brk, "source");
-  Feature *feat = new Feature( args );
-  root->append( feat );
-  args["subset"] = "originalpagenr";
-  args["class"] = TiCC::getAttribute( brk, "originalpagenr");
-  feat = new Feature( args );
-  root->append( feat );
+  args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
+  args["newpage"] = "yes";
+  Linebreak *pb = new Linebreak( args );
+  root->append( pb );
+  args.clear();
+  args["class"] = "page";
+  args["format"] = "image/jpeg";
+  args["href"] = TiCC::getAttribute( brk, "source");
+  Alignment *align = new Alignment( args, root->doc() );
+  pb->append( align );
 }
 
 void process_stage( Division *root, xmlNode *_stage ){
-  xmlNode *stage = _stage;
-  string id = TiCC::getAttribute( stage, "id" );
-  string type = TiCC::getAttribute( stage, "type" );
-  cerr << "process_stage: " << TiCC::Name( stage )
-       << " type='" << type << "' id = '" << id << "'" << endl;
+  KWargs args;
+  string id = TiCC::getAttribute( _stage, "id" );
+  string type = TiCC::getAttribute( _stage, "type" );
+  args["id"] = id;
+  if ( type.empty() ){
+    args["class"] = "stage-direction";
+  }
+  else {
+    args["class"] = type;
+  }
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  xmlNode *stage = _stage->children;
   while ( stage ){
     string id = TiCC::getAttribute( stage, "id" );
     string type = TiCC::getAttribute( stage, "type" );
     cerr << "Node: " << TiCC::Name( stage )
 	 << " type='" << type << "' id = '" << id << "'" << endl;
     if ( type == "chair" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div = new Division( args, root->doc() );
-      root->append( div );
-    }
-    else if ( type == "subject" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div = new Division( args, root->doc() );
-      root->append( div );
+      process_chair( div, stage );
     }
     else if ( type == "pagebreak" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div = new Division( args, root->doc() );
-      root->append( div );
       process_break( div, stage->children );
     }
-    else if ( type == "speech" ){
+    else if ( type == "header" || type == "subject" ){
       KWargs args;
       args["id"] = id;
       args["class"] = type;
-      Division *div = new Division( args, root->doc() );
-      root->append( div );
-      process_speech( root, stage );
+      Division *div1 = new Division( args, root->doc() );
+      div->append( div1 );
+      xmlNode *p = stage->children;
+      while ( p ){
+	string label = TiCC::Name(p);
+	if ( label == "p" ){
+	  add_par( div1, p );
+	}
+	p = p->next;
+      }
+    }
+    else if ( type == "speech" ){
+      process_speech( div, stage->children );
     }
     else if ( type == "" ){ //nested or?
       string label = TiCC::Name( stage );
@@ -137,23 +242,16 @@ void process_stage( Division *root, xmlNode *_stage ){
 	cerr << "subnode = text" << endl;
       }
       else if ( label == "stage-direction" ){
-	KWargs args;
-	args["id"] = id;
-	args["class"] = "stage-direction";
-	Division *div = new Division( args, root->doc() );
-	root->append( div );
-	process_stage( div, stage->children );
-      }
-      else if ( label == "speech" ){
-	// KWargs args;
-	// args["id"] = id;
-	// args["class"] = "speech";
-	// Division *div = new Division( args, root->doc() );
-	// root->append( div );
-	// process_speech( div, stage );
+	process_stage( div, stage );
       }
       else if ( label == "p" ){
-	process_par( root, stage );
+	add_par( div, stage );
+      }
+      else if ( label == "pagebreak" ){
+	process_break( div, stage );
+      }
+      else if ( label == "speech" ){
+	process_speech( div, stage );
       }
       else {
 	cerr << "unhandled nested " << label << endl;
@@ -173,6 +271,14 @@ void process_topic( Division *root, xmlNode *topic ){
   args["class"] = "topic";
   Division *div = new Division( args, root->doc() );
   root->append( div );
+  string title = TiCC::getAttribute( topic, "title" );
+  if ( !title.empty() ){
+    KWargs args;
+    args["subset"] = "title";
+    args["class"] = title;
+    Feature *feat = new Feature( args );
+    div->append( feat );
+  }
   xmlNode *p = topic->children;
   while ( p ){
     cerr << "process_topic " << TiCC::Name(p) << endl;
@@ -216,6 +322,7 @@ void convert_to_folia( const string& file,
     string docid = "test";
     Document doc( "id='" + docid + "'" );
     doc.declare( folia::AnnotationType::DIVISION, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
+    doc.declare( folia::AnnotationType::ALIGNMENT, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
     if ( metadata ){
