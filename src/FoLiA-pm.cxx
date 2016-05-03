@@ -101,7 +101,7 @@ void add_par( Division *root, xmlNode *p ){
 	  if ( !ref.empty()
 	       && type == "reference" ){
 	    KWargs args;
-	    args["id"] = ref;
+	    args["href"] = ref;
 	    args["type"] = "simple";
 	    if ( !text_part.empty() ){
 	     args["text"] = text_part;
