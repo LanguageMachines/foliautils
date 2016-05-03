@@ -54,8 +54,6 @@ void process_stage( Division *, xmlNode * );
 
 void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
-  cerr << "process_par: " << TiCC::Name( p )
-       << " id = '" << id << "'" << endl;
   KWargs args;
   args["id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
@@ -76,20 +74,54 @@ void add_par( Division *root, xmlNode *p ){
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
       if ( tag == "tagged" ){
-	xmlNode *t = p->children;
-	while ( t ){
-	  if ( t->type == XML_TEXT_NODE ){
-	    xmlChar *tmp = xmlNodeGetContent( t );
-	    if ( tmp ){
-	      string part = " " + std::string( (char *)tmp ) + " ";
-	      XmlText *txt = new XmlText();
-	      txt->setvalue( part );
-	      tc->append( txt );
-	      xmlFree( tmp );
+	if ( TiCC::getAttribute( p, "type" ) == "reference" ) {
+	  string text_part;
+	  string ref;
+	  string type;
+	  string sub_type;
+	  xmlNode *t = p->children;
+	  while ( t ){
+	    if ( t->type == XML_TEXT_NODE ){
+	      xmlChar *tmp = xmlNodeGetContent( t );
+	      if ( tmp ){
+		text_part = std::string( (char *)tmp );
+		xmlFree( tmp );
+	      }
+	    }
+	    else if ( TiCC::Name(t) == "tagged-entity" ){
+	      ref = TiCC::getAttribute( t, "reference" );
+	      type = TiCC::getAttribute( t, "type" );
+	      sub_type = TiCC::getAttribute( t, "sub-type" );
+	    }
+	    else {
+	      cerr << "tagged, unhandled: " << TiCC::Name(t) << endl;
+	    }
+	    t = t->next;
+	  }
+	  if ( !ref.empty()
+	       && type == "reference" ){
+	    KWargs args;
+	    args["id"] = ref;
+	    args["type"] = "external";
+	    Reference *r = new Reference( args );
+	    args.clear();
+	    args["subset"] = "sub-type";
+	    args["class"] = sub_type;
+	    Feature *feat = new Feature( args );
+	    r->append(feat);
+	    tc->append( r );
+	    if ( !text_part.empty() ){
+	      r->settext( text_part );
 	    }
 	  }
-	  t = t->next;
+	  else {
+	    cerr << "tagged, unhandled type=" << type << endl
+		 << " sub_type=" << sub_type << " ref=" << ref << endl;
+	  }
 	}
+      }
+      else {
+	cerr << "paragraph, unhandled tag : " << tag << endl;
       }
     }
     p = p->next;
@@ -98,83 +130,61 @@ void add_par( Division *root, xmlNode *p ){
 }
 
 void process_chair( Division *root, xmlNode *chair ){
-  string id = TiCC::getAttribute( chair, "id" );
-  string type = TiCC::getAttribute( chair, "type" );
-  KWargs args;
-  args["id"] = id;
-  args["class"] = type;
-  Division *div = new Division( args, root->doc() );
-  root->append( div );
   xmlNode *p = chair->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
-      add_par( div, p );
+      add_par( root, p );
     }
-    if ( label == "chair" ){
+    else if ( label == "chair" ){
       string speaker = TiCC::getAttribute( p, "speaker" );
       string member = TiCC::getAttribute( p, "member-ref" );
       KWargs args;
       args["subset"] = "speaker";
       args["class"] = speaker;
       Feature *feat = new Feature( args );
-      div->append( feat );
+      root->append( feat );
       args["subset"] = "member-ref";
       args["class"] = member;
       feat = new Feature( args );
-      div->append( feat );
+      root->append( feat );
+    }
+    else {
+      cerr << "chair, unhandled: " << label << endl;
     }
     p = p->next;
   }
 }
 
 void process_speech( Division *root, xmlNode *speech ){
-  string id = TiCC::getAttribute( speech, "id" );
-  string type = TiCC::getAttribute( speech, "type" );
+  KWargs atts = folia::getAttributes( speech );
+  string id = atts["id"];
+  string type = atts["type"];
   KWargs args;
   args["id"] = id;
   args["class"] = type;
   Division *div = new Division( args, root->doc() );
   root->append( div );
-  string speaker = TiCC::getAttribute( speech, "speaker" );
-  if ( !speaker.empty() ){
-    KWargs args;
-    args["subset"] = "speaker";
-    args["class"] = speaker;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string function = TiCC::getAttribute( speech, "function" );
-  if ( !function.empty() ){
-    KWargs args;
-    args["subset"] = "function";
-    args["class"] = function;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string role = TiCC::getAttribute( speech, "role" );
-  if ( !role.empty() ){
-    KWargs args;
-    args["subset"] = "role";
-    args["class"] = role;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string party_ref = TiCC::getAttribute( speech, "party-ref" );
-  if ( !party_ref.empty() ){
-    KWargs args;
-    args["subset"] = "party-ref";
-    args["class"] = party_ref;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string member_ref = TiCC::getAttribute( speech, "member-ref" );
-  if ( !member_ref.empty() ){
-    KWargs args;
-    args["subset"] = "member-ref";
-    args["class"] = member_ref;
-    Feature *feat = new Feature( args );
-    div->append( feat );
+  for ( const auto& att : atts ){
+    if ( att.first == "id"
+	 || att.first == "type" ){
+      continue;
+    }
+    else if ( att.first == "speaker"
+	      || att.first == "function"
+	      || att.first == "party"
+	      || att.first == "role"
+	      || att.first == "party-ref"
+	      || att.first == "member-ref" ){
+      KWargs args;
+      args["subset"] = att.first;
+      args["class"] = att.second;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+    }
+    else {
+      cerr << "unsupported attribute: " << att.first << " on speech" << endl;
+    }
   }
 
   xmlNode *p = speech->children;
@@ -185,6 +195,56 @@ void process_speech( Division *root, xmlNode *speech ){
     }
     else if ( label == "stage-direction" ){
       process_stage( div, p );
+    }
+    else {
+      cerr << "speech, unhandled: " << label << endl;
+    }
+    p = p->next;
+  }
+}
+
+void process_scene( Division *root, xmlNode *scene ){
+  KWargs atts = folia::getAttributes( scene );
+  string id = atts["id"];
+  string type = atts["type"];
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  for ( const auto& att : atts ){
+    if ( att.first == "id"
+	 || att.first == "type" ){
+      continue;
+    }
+    else if ( att.first == "speaker"
+	      || att.first == "function"
+	      || att.first == "party"
+	      || att.first == "role"
+	      || att.first == "party-ref"
+	      || att.first == "member-ref" ){
+      KWargs args;
+      args["subset"] = att.first;
+      args["class"] = att.second;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+    }
+    else {
+      cerr << "unsupported attribute: " << att.first << " on scene" << endl;
+    }
+  }
+
+  xmlNode *p = scene->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "speech" ){
+      process_speech( div, p );
+    }
+    else if ( label == "stage-direction" ){
+      process_stage( div, p );
+    }
+    else {
+      cerr << "scene, unhandled: " << label << endl;
     }
     p = p->next;
   }
@@ -204,6 +264,34 @@ void process_break( Division *root, xmlNode *brk ){
   pb->append( align );
 }
 
+void process_members( Division *root, xmlNode *members ){
+  List *lst = new List();
+  root->append( lst );
+  xmlNode *mem = members->children;
+  while ( mem ){
+    ListItem *it = new ListItem();
+    lst->append( it );
+    KWargs atts = folia::getAttributes( mem );
+    for ( const auto& att : atts ){
+      if ( att.first == "speaker"
+	   || att.first == "role"
+	   || att.first == "function"
+	   || att.first == "party-ref"
+	   || att.first == "member-ref" ){
+	KWargs args;
+	args["subset"] = att.first;
+	args["class"] = att.second;
+	Feature *feat = new Feature( args );
+	it->append( feat );
+      }
+      else {
+	cerr << "members, unhandled attribute : " << att.first << endl;
+      }
+    }
+    mem = mem->next;
+  }
+}
+
 void process_stage( Division *root, xmlNode *_stage ){
   KWargs args;
   string id = TiCC::getAttribute( _stage, "id" );
@@ -221,15 +309,16 @@ void process_stage( Division *root, xmlNode *_stage ){
   while ( stage ){
     string id = TiCC::getAttribute( stage, "id" );
     string type = TiCC::getAttribute( stage, "type" );
-    cerr << "Node: " << TiCC::Name( stage )
-	 << " type='" << type << "' id = '" << id << "'" << endl;
-    if ( type == "chair" ){
+    string label = TiCC::Name( stage );
+    if ( type == "chair" || label == "chair" ){
       process_chair( div, stage );
     }
     else if ( type == "pagebreak" ){
       process_break( div, stage->children );
     }
-    else if ( type == "header" || type == "subject" ){
+    else if ( type == "header"
+	      || type == "footer"
+	      || type == "subject" ){
       KWargs args;
       args["id"] = id;
       args["class"] = type;
@@ -241,6 +330,10 @@ void process_stage( Division *root, xmlNode *_stage ){
 	if ( label == "p" ){
 	  add_par( div1, p );
 	}
+	else {
+	  cerr << "stage-direction, unhandled :" << label << " type=" << type
+	       << endl;
+	}
 	p = p->next;
       }
     }
@@ -248,11 +341,7 @@ void process_stage( Division *root, xmlNode *_stage ){
       process_speech( div, stage->children );
     }
     else if ( type == "" ){ //nested or?
-      string label = TiCC::Name( stage );
-      if ( label == "text" ){
-	cerr << "subnode = text" << endl;
-      }
-      else if ( label == "stage-direction" ){
+      if ( label == "stage-direction" ){
 	process_stage( div, stage );
       }
       else if ( label == "p" ){
@@ -264,12 +353,15 @@ void process_stage( Division *root, xmlNode *_stage ){
       else if ( label == "speech" ){
 	process_speech( div, stage );
       }
+      else if ( label == "members" ){
+	process_members( div, stage );
+      }
       else {
-	cerr << "unhandled nested " << label << endl;
+	cerr << "stage-direction, unhandled nested: " << label << endl;
       }
     }
     else {
-      cerr << "unhandled stage type: " << type << endl;
+      cerr << "stage-direction, unhandled type: " << type << endl;
     }
     stage = stage->next;
   }
@@ -284,23 +376,24 @@ void process_topic( Division *root, xmlNode *topic ){
   root->append( div );
   string title = TiCC::getAttribute( topic, "title" );
   if ( !title.empty() ){
-    KWargs args;
-    args["subset"] = "title";
-    args["class"] = title;
-    Feature *feat = new Feature( args );
-    div->append( feat );
+    Head *hd = new Head( );
+    hd->settext( title );
+    div->append( hd );
   }
   xmlNode *p = topic->children;
   while ( p ){
-    cerr << "process_topic " << TiCC::Name(p) << endl;
-    if ( TiCC::Name(p) == "stage-direction" ){
+    string tag = TiCC::Name(p);
+    if ( tag == "stage-direction" ){
       process_stage( div, p );
     }
-    else if ( TiCC::Name(p) == "speech" ){
+    else if ( tag == "speech" ){
       process_speech( div, p );
     }
+    else if ( tag == "scene" ){
+      process_scene( div, p );
+    }
     else {
-      cerr << "unhandled " << TiCC::Name(p) << endl;
+      cerr << "topic, unhandled: " << tag << endl;
     }
     p = p->next;
   }
