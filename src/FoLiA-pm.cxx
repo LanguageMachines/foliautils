@@ -102,17 +102,17 @@ void add_par( Division *root, xmlNode *p ){
 	       && type == "reference" ){
 	    KWargs args;
 	    args["id"] = ref;
-	    args["type"] = "external";
-	    Reference *r = new Reference( args );
-	    args.clear();
-	    args["subset"] = "sub-type";
-	    args["class"] = sub_type;
-	    Feature *feat = new Feature( args );
-	    r->append(feat);
-	    tc->append( r );
+	    args["type"] = "simple";
 	    if ( !text_part.empty() ){
-	      r->settext( text_part );
+	     args["text"] = text_part;
 	    }
+	    TextMarkupString *tm = new TextMarkupString( args );
+	    // args.clear();
+	    // args["subset"] = "sub-type";
+	    // args["class"] = sub_type;
+	    // Feature *feat = new Feature( args );
+	    // tm->append(feat);
+	    tc->append( tm );
 	  }
 	  else {
 	    cerr << "tagged, unhandled type=" << type << endl
