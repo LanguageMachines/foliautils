@@ -304,31 +304,9 @@ void process_break( Division *root, xmlNode *brk ){
 }
 
 void process_members( Division *root, xmlNode *members ){
-  List *lst = new List();
-  root->append( lst );
-  xmlNode *mem = members->children;
-  while ( mem ){
-    ListItem *it = new ListItem();
-    lst->append( it );
-    KWargs atts = getAllAttributes( mem );
-    for ( const auto& att : atts ){
-      if ( att.first == "speaker"
-	   || att.first == "role"
-	   || att.first == "function"
-	   || att.first == "party-ref"
-	   || att.first == "member-ref" ){
-	KWargs args;
-	args["subset"] = att.first;
-	args["class"] = att.second;
-	Feature *feat = new Feature( args );
-	it->append( feat );
-      }
-      else {
-	cerr << "members, unhandled attribute : " << att.first << endl;
-      }
-    }
-    mem = mem->next;
-  }
+  ForeignData *fd = new ForeignData();
+  root->append( fd );
+  fd->set_data( members );
 }
 
 void process_stage( Division *root, xmlNode *_stage ){
@@ -393,8 +371,7 @@ void process_stage( Division *root, xmlNode *_stage ){
 	process_speech( div, stage );
       }
       else if ( label == "members" ){
-	// ignore
-	//	process_members( div, stage );
+	process_members( div, stage );
       }
       else {
 	cerr << "stage-direction, unhandled nested: " << label << endl;
