@@ -50,10 +50,25 @@ using namespace	folia;
 
 bool verbose = false;
 
+KWargs getAllAttributes( const xmlNode *node ){
+  KWargs atts;
+  if ( node ){
+    xmlAttr *a = node->properties;
+    while ( a ){
+      atts[(char*)a->name] = (char *)a->children->content;
+      a = a->next;
+    }
+  }
+  return atts;
+}
+
 void process_stage( Division *, xmlNode * );
 
-void add_par( Division *root, xmlNode *p ){
+ void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
+  if ( verbose ){
+    cerr << "add_par: id=" << id << endl;
+  }
   KWargs args;
   args["id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
@@ -75,10 +90,14 @@ void add_par( Division *root, xmlNode *p ){
       string tag = TiCC::Name( p );
       if ( tag == "tagged" ){
 	if ( TiCC::getAttribute( p, "type" ) == "reference" ) {
+	  if ( verbose ){
+	    cerr << "add_par: REFERENCE" << endl;
+	  }
 	  string text_part;
 	  string ref;
 	  string type;
 	  string sub_type;
+	  string status;
 	  xmlNode *t = p->children;
 	  while ( t ){
 	    if ( t->type == XML_TEXT_NODE ){
@@ -92,6 +111,7 @@ void add_par( Division *root, xmlNode *p ){
 	      ref = TiCC::getAttribute( t, "reference" );
 	      type = TiCC::getAttribute( t, "type" );
 	      sub_type = TiCC::getAttribute( t, "sub-type" );
+	      status = TiCC::getAttribute( t, "status" );
 	    }
 	    else {
 	      cerr << "tagged, unhandled: " << TiCC::Name(t) << endl;
@@ -102,7 +122,13 @@ void add_par( Division *root, xmlNode *p ){
 	       && type == "reference" ){
 	    KWargs args;
 	    args["href"] = ref;
-	    args["type"] = "simple";
+	    args["type"] = "locator";
+	    if ( !sub_type.empty() ){
+	      args["role"] = sub_type;
+	    }
+	    if ( !status.empty() ){
+	      args["label"] = status;
+	    }
 	    if ( !text_part.empty() ){
 	     args["text"] = text_part;
 	    }
@@ -130,6 +156,9 @@ void add_par( Division *root, xmlNode *p ){
 }
 
 void process_chair( Division *root, xmlNode *chair ){
+  if ( verbose ){
+    cerr << "process_chair" << endl;
+  }
   xmlNode *p = chair->children;
   while ( p ){
     string label = TiCC::Name(p);
@@ -157,8 +186,12 @@ void process_chair( Division *root, xmlNode *chair ){
 }
 
 void process_speech( Division *root, xmlNode *speech ){
-  KWargs atts = folia::getAttributes( speech );
+  KWargs atts = getAllAttributes( speech );
   string id = atts["id"];
+  if ( verbose ){
+    using TiCC::operator<<;
+    cerr << "process_speech: id=" << atts << endl;
+  }
   string type = atts["type"];
   KWargs args;
   args["id"] = id;
@@ -204,8 +237,11 @@ void process_speech( Division *root, xmlNode *speech ){
 }
 
 void process_scene( Division *root, xmlNode *scene ){
-  KWargs atts = folia::getAttributes( scene );
+  KWargs atts = getAllAttributes( scene );
   string id = atts["id"];
+  if ( verbose ){
+    cerr << "process_scene: id=" << id << endl;
+  }
   string type = atts["type"];
   KWargs args;
   args["id"] = id;
@@ -251,6 +287,9 @@ void process_scene( Division *root, xmlNode *scene ){
 }
 
 void process_break( Division *root, xmlNode *brk ){
+  if ( verbose ){
+    cerr << "process_break" << endl;
+  }
   KWargs args;
   args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
   args["newpage"] = "yes";
@@ -271,7 +310,7 @@ void process_members( Division *root, xmlNode *members ){
   while ( mem ){
     ListItem *it = new ListItem();
     lst->append( it );
-    KWargs atts = folia::getAttributes( mem );
+    KWargs atts = getAllAttributes( mem );
     for ( const auto& att : atts ){
       if ( att.first == "speaker"
 	   || att.first == "role"
@@ -354,7 +393,8 @@ void process_stage( Division *root, xmlNode *_stage ){
 	process_speech( div, stage );
       }
       else if ( label == "members" ){
-	process_members( div, stage );
+	// ignore
+	//	process_members( div, stage );
       }
       else {
 	cerr << "stage-direction, unhandled nested: " << label << endl;
@@ -369,6 +409,9 @@ void process_stage( Division *root, xmlNode *_stage ){
 
 void process_topic( Division *root, xmlNode *topic ){
   string id = TiCC::getAttribute( topic, "id" );
+  if ( verbose ){
+    cerr << "process_topic: id=" << id << endl;
+  }
   KWargs args;
   args["id"] = id;
   args["class"] = "topic";
@@ -401,6 +444,9 @@ void process_topic( Division *root, xmlNode *topic ){
 
 void process_proceeding( Text *root, xmlNode *proceed ){
   string id = TiCC::getAttribute( proceed, "id" );
+  if ( verbose ){
+    cerr << "process_proceeding: id=" << id << endl;
+  }
   KWargs args;
   args["id"] = id;
   args["class"] = "proceedings";
@@ -423,7 +469,8 @@ void convert_to_folia( const string& file,
 				0,
 				XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
   if ( xmldoc ){
-    string docid = "test";
+    string base = TiCC::basename( file );
+    string docid = base;
     Document doc( "id='" + docid + "'" );
     doc.declare( folia::AnnotationType::DIVISION, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
     doc.declare( folia::AnnotationType::ALIGNMENT, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
@@ -447,22 +494,31 @@ void convert_to_folia( const string& file,
       }
       succes = false;
     }
-    Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
-    doc.append( text );
-    xmlNode *p = metadata->next;
-    while ( p ){
-      if ( TiCC::Name( p ) == "proceedings" ){
-	process_proceeding( text, p );
+    try {
+      Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
+      doc.append( text );
+      xmlNode *p = metadata->next;
+      while ( p ){
+	if ( TiCC::Name( p ) == "proceedings" ){
+	  process_proceeding( text, p );
+	}
+	p = p->next;
       }
-      p = p->next;
-    }
-    string outname = outDir+file+".folia";
+      string outname = outDir+base+".folia";
 #pragma omp critical
-    {
-      cerr << "save " << outname << endl;
+      {
+	cerr << "save " << outname << endl;
+      }
+      doc.save( outname );
     }
-
-    doc.save( outname );
+    catch ( const exception& e ){
+#pragma omp critical
+      {
+	cerr << "error processing " << file << endl
+	     << e.what() << endl;
+	succes = false;
+      }
+    }
     xmlFreeDoc( xmldoc );
   }
   else {
