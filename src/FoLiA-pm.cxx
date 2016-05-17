@@ -618,7 +618,7 @@ void convert_to_folia( const string& file,
       outname += ".folia.xml";
 #pragma omp critical
       {
-	cerr << "save " << outname << endl;
+	cout << "save " << outname << endl;
       }
       doc.save( outname );
     }
@@ -642,7 +642,7 @@ void convert_to_folia( const string& file,
   if ( !succes ){
 #pragma omp critical
     {
-      cout << "FAILED: " << file << endl;
+      cerr << "FAILED: " << file << endl;
     }
   }
 }
