@@ -64,10 +64,51 @@ KWargs getAllAttributes( const xmlNode *node ){
 
 void process_stage( Division *, xmlNode * );
 
- void add_par( Division *root, xmlNode *p ){
+string extract_embedded( xmlNode *p ){
+  string result;
+  if ( p == 0 ){
+    return result;
+  }
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "extract embedded: " << TiCC::Name(p) << endl;
+    }
+  }
+  p = p->children;
+  while ( p ){
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "examine: " << TiCC::Name(p) << endl;
+      }
+    }
+    string content = TiCC::XmlContent(p);
+    if ( !content.empty() ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cerr << "embedded add: " << content << endl;
+	}
+      }
+      result += content;
+    }
+    else {
+      string part = extract_embedded( p->children );
+      result += part;
+    }
+    p = p->next;
+  }
+  return result;
+}
+
+void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
-    cerr << "add_par: id=" << id << endl;
+#pragma omp critical
+    {
+      cerr << "add_par: id=" << id << endl;
+    }
   }
   KWargs args;
   args["id"] = id;
@@ -75,6 +116,7 @@ void process_stage( Division *, xmlNode * );
   TextContent *tc = new TextContent();
   par->append( tc );
   p = p->children;
+  bool first = true;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
@@ -84,6 +126,7 @@ void process_stage( Division *, xmlNode * );
 	txt->setvalue( part );
 	tc->append( txt );
 	xmlFree( tmp );
+	first = false;
       }
     }
     else if ( p->type == XML_ELEMENT_NODE ){
@@ -91,7 +134,10 @@ void process_stage( Division *, xmlNode * );
       if ( tag == "tagged" ){
 	if ( TiCC::getAttribute( p, "type" ) == "reference" ) {
 	  if ( verbose ){
-	    cerr << "add_par: REFERENCE" << endl;
+#pragma omp critical
+	    {
+	      cerr << "add_par: REFERENCE" << endl;
+	    }
 	  }
 	  string text_part;
 	  string ref;
@@ -114,7 +160,11 @@ void process_stage( Division *, xmlNode * );
 	      status = TiCC::getAttribute( t, "status" );
 	    }
 	    else {
-	      cerr << "tagged, unhandled: " << TiCC::Name(t) << endl;
+#pragma omp critical
+	      {
+		cerr << "tagged" << id << ", unhandled: "
+		     << TiCC::Name(t) << endl;
+	      }
 	    }
 	    t = t->next;
 	  }
@@ -139,15 +189,45 @@ void process_stage( Division *, xmlNode * );
 	    // Feature *feat = new Feature( args );
 	    // tm->append(feat);
 	    tc->append( tm );
+	    first = false;
 	  }
 	  else {
-	    cerr << "tagged, unhandled type=" << type << endl
-		 << " sub_type=" << sub_type << " ref=" << ref << endl;
+#pragma omp critical
+	    {
+	      cerr << "tagged: " << id << ", unhandled type=" << type << endl
+		   << " sub_type=" << sub_type << " ref=" << ref << endl;
+	    }
 	  }
 	}
       }
+      else if ( tag == "stage-direction" ){
+	string embedded = extract_embedded( p );
+	string id = TiCC::getAttribute( p, "id" );
+	if ( embedded.empty() ){
+#pragma omp critical
+	  {
+	    cerr << "paragraph:stage-direction: " << id << " without text?"
+		 << endl;
+	  }
+	}
+	else {
+	  XmlText *txt = new XmlText();
+	  if ( !first  ){
+	    embedded = " " + embedded;
+	  }
+	  if ( p->next != 0 ){
+	    // not last
+	    embedded += " ";
+	  }
+	  txt->setvalue( embedded );
+	  tc->append( txt );
+	}
+      }
       else {
-	cerr << "paragraph, unhandled tag : " << tag << endl;
+#pragma omp critical
+	{
+	  cerr << "paragraph: " << id << ", unhandled tag : " << tag << endl;
+	}
       }
     }
     p = p->next;
@@ -157,7 +237,10 @@ void process_stage( Division *, xmlNode * );
 
 void process_chair( Division *root, xmlNode *chair ){
   if ( verbose ){
-    cerr << "process_chair" << endl;
+#pragma omp critical
+    {
+      cerr << "process_chair" << endl;
+    }
   }
   xmlNode *p = chair->children;
   while ( p ){
@@ -179,7 +262,10 @@ void process_chair( Division *root, xmlNode *chair ){
       root->append( feat );
     }
     else {
-      cerr << "chair, unhandled: " << label << endl;
+#pragma omp critical
+      {
+	cerr << "chair, unhandled: " << label << endl;
+      }
     }
     p = p->next;
   }
@@ -189,8 +275,11 @@ void process_speech( Division *root, xmlNode *speech ){
   KWargs atts = getAllAttributes( speech );
   string id = atts["id"];
   if ( verbose ){
-    using TiCC::operator<<;
-    cerr << "process_speech: id=" << atts << endl;
+#pragma omp critical
+    {
+      using TiCC::operator<<;
+      cerr << "process_speech: id=" << atts << endl;
+    }
   }
   string type = atts["type"];
   KWargs args;
@@ -216,7 +305,11 @@ void process_speech( Division *root, xmlNode *speech ){
       div->append( feat );
     }
     else {
-      cerr << "unsupported attribute: " << att.first << " on speech" << endl;
+#pragma omp critical
+      {
+	cerr << "unsupported attribute: " << att.first << " on speech: "
+	     << id << endl;
+      }
     }
   }
 
@@ -230,7 +323,10 @@ void process_speech( Division *root, xmlNode *speech ){
       process_stage( div, p );
     }
     else {
-      cerr << "speech, unhandled: " << label << endl;
+#pragma omp critical
+      {
+	cerr << "speech: " << id << ", unhandled: " << label << endl;
+      }
     }
     p = p->next;
   }
@@ -240,7 +336,10 @@ void process_scene( Division *root, xmlNode *scene ){
   KWargs atts = getAllAttributes( scene );
   string id = atts["id"];
   if ( verbose ){
-    cerr << "process_scene: id=" << id << endl;
+#pragma omp critical
+    {
+      cerr << "process_scene: id=" << id << endl;
+    }
   }
   string type = atts["type"];
   KWargs args;
@@ -266,7 +365,11 @@ void process_scene( Division *root, xmlNode *scene ){
       div->append( feat );
     }
     else {
-      cerr << "unsupported attribute: " << att.first << " on scene" << endl;
+#pragma omp critical
+      {
+	cerr << "unsupported attribute: " << att.first << " on scene:"
+	     << id << endl;
+      }
     }
   }
 
@@ -280,7 +383,10 @@ void process_scene( Division *root, xmlNode *scene ){
       process_stage( div, p );
     }
     else {
-      cerr << "scene, unhandled: " << label << endl;
+#pragma omp critical
+      {
+	cerr << "scene: " << id << ", unhandled: " << label << endl;
+      }
     }
     p = p->next;
   }
@@ -288,7 +394,10 @@ void process_scene( Division *root, xmlNode *scene ){
 
 void process_break( Division *root, xmlNode *brk ){
   if ( verbose ){
-    cerr << "process_break" << endl;
+#pragma omp critical
+    {
+      cerr << "process_break" << endl;
+    }
   }
   KWargs args;
   args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
@@ -348,8 +457,11 @@ void process_stage( Division *root, xmlNode *_stage ){
 	  add_par( div1, p );
 	}
 	else {
-	  cerr << "stage-direction, unhandled :" << label << " type=" << type
-	       << endl;
+#pragma omp critical
+	  {
+	    cerr << "stage-direction: " << id << ", unhandled :" << label
+		 << " type=" << type << endl;
+	  }
 	}
 	p = p->next;
       }
@@ -374,11 +486,19 @@ void process_stage( Division *root, xmlNode *_stage ){
 	process_members( div, stage );
       }
       else {
-	cerr << "stage-direction, unhandled nested: " << label << endl;
+#pragma omp critical
+	{
+	  cerr << "stage-direction: " << id << ", unhandled nested: "
+	       << label << endl;
+	}
       }
     }
     else {
-      cerr << "stage-direction, unhandled type: " << type << endl;
+#pragma omp critical
+      {
+	cerr << "stage-direction: " << id << ", unhandled type: "
+	     << type << endl;
+      }
     }
     stage = stage->next;
   }
@@ -387,7 +507,10 @@ void process_stage( Division *root, xmlNode *_stage ){
 void process_topic( Division *root, xmlNode *topic ){
   string id = TiCC::getAttribute( topic, "id" );
   if ( verbose ){
-    cerr << "process_topic: id=" << id << endl;
+#pragma omp critical
+    {
+      cerr << "process_topic: id=" << id << endl;
+    }
   }
   KWargs args;
   args["id"] = id;
@@ -413,7 +536,10 @@ void process_topic( Division *root, xmlNode *topic ){
       process_scene( div, p );
     }
     else {
-      cerr << "topic, unhandled: " << tag << endl;
+#pragma omp critical
+      {
+	cerr << "topic: " << id << ", unhandled: " << tag << endl;
+      }
     }
     p = p->next;
   }
@@ -422,7 +548,10 @@ void process_topic( Division *root, xmlNode *topic ){
 void process_proceeding( Text *root, xmlNode *proceed ){
   string id = TiCC::getAttribute( proceed, "id" );
   if ( verbose ){
-    cerr << "process_proceeding: id=" << id << endl;
+#pragma omp critical
+    {
+      cerr << "process_proceeding: id=" << id << endl;
+    }
   }
   KWargs args;
   args["id"] = id;
