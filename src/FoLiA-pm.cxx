@@ -639,13 +639,7 @@ void convert_to_folia( const string& file,
     }
     succes = false;
   }
-  if ( succes ){
-#pragma omp critical
-    {
-      cout << "resolved " << file << endl;
-    }
-  }
-  else {
+  if ( !succes ){
 #pragma omp critical
     {
       cout << "FAILED: " << file << endl;
