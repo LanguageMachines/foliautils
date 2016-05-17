@@ -649,8 +649,10 @@ void convert_to_folia( const string& file,
 
 
 void usage(){
-  cerr << "Usage: FoLiA-pm [options] file/dir" << endl;
+  cerr << "Usage: FoLiA-pm [options] files/dir" << endl;
   cerr << "\t convert Political Mashup XML files to FoLiA" << endl;
+  cerr << "\t when a dir is given, all '.xml' files in that dir are processed"
+       << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
