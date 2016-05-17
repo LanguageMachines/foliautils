@@ -610,7 +610,12 @@ void convert_to_folia( const string& file,
 	}
 	p = p->next;
       }
-      string outname = outDir+base+".folia";
+      string outname = outDir+docid;
+      string::size_type pos = outname.rfind( ".xml" );
+      if ( pos != string::npos ){
+	outname = outname.substr(0,pos);
+      }
+      outname += ".folia.xml";
 #pragma omp critical
       {
 	cerr << "save " << outname << endl;
