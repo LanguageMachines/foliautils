@@ -583,14 +583,20 @@ void convert_to_folia( const string& file,
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
     if ( metadata ){
+      if ( metadata->nsDef == 0 ){
+	xmlNewNs( metadata,
+		  (const xmlChar*)"http://www.politicalmashup.nl",
+		  0 );
+	//	cerr << "fixed up NS!" << endl;
+      }
       doc.set_foreign_metadata( metadata );
       // xmlNode *p = metadata;
       // while ( p ){
-      // 	cerr << "Node: " << TiCC::Name( p ) << endl;
-      // 	std::map<std::string,std::string> ns = TiCC::getDefinedNS( p );
-      // 	using TiCC::operator<<;
-      // 	cerr << ns << endl;
-      // 	p = p->next;
+      //  	cerr << "Node: " << TiCC::Name( p ) << endl;
+      //  	std::map<std::string,std::string> ns = TiCC::getDefinedNS( p );
+      //  	using TiCC::operator<<;
+      //  	cerr << ns << endl;
+      //  	p = p->next;
       // }
     }
     else {
