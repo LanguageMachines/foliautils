@@ -592,6 +592,8 @@ void convert_to_folia( const string& file,
       xmlNode *tmp=metadata->next;
       metadata->next = 0;
       doc.set_foreign_metadata( metadata );
+      // metadata is copied, including metadata->next. DONT'T know why.
+      // so hack around it
       metadata->next = tmp;
       // xmlNode *p = metadata;
       // while ( p ){
@@ -612,7 +614,7 @@ void convert_to_folia( const string& file,
     try {
       Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
       doc.append( text );
-      xmlNode *p = metadata->next;
+      xmlNode *p = root->children;
       while ( p ){
 	if ( TiCC::Name( p ) == "proceedings" ){
 	  process_proceeding( text, p );
