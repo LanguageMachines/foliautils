@@ -589,12 +589,7 @@ void convert_to_folia( const string& file,
 		  0 );
 	//	cerr << "fixed up NS!" << endl;
       }
-      xmlNode *tmp=metadata->next;
-      metadata->next = 0;
       doc.set_foreign_metadata( metadata );
-      // metadata is copied, including metadata->next. DONT'T know why.
-      // so hack around it
-      metadata->next = tmp;
       // xmlNode *p = metadata;
       // while ( p ){
       //  	cerr << "Node: " << TiCC::Name( p ) << endl;
