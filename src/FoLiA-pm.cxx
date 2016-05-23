@@ -50,18 +50,73 @@ using namespace	folia;
 
 bool verbose = false;
 
+KWargs getAllAttributes( const xmlNode *node ){
+  KWargs atts;
+  if ( node ){
+    xmlAttr *a = node->properties;
+    while ( a ){
+      atts[(char*)a->name] = (char *)a->children->content;
+      a = a->next;
+    }
+  }
+  return atts;
+}
+
 void process_stage( Division *, xmlNode * );
+
+string extract_embedded( xmlNode *p ){
+  string result;
+  if ( p == 0 ){
+    return result;
+  }
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "extract embedded: " << TiCC::Name(p) << endl;
+    }
+  }
+  p = p->children;
+  while ( p ){
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "examine: " << TiCC::Name(p) << endl;
+      }
+    }
+    string content = TiCC::XmlContent(p);
+    if ( !content.empty() ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cerr << "embedded add: " << content << endl;
+	}
+      }
+      result += content;
+    }
+    else {
+      string part = extract_embedded( p->children );
+      result += part;
+    }
+    p = p->next;
+  }
+  return result;
+}
 
 void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
-  cerr << "process_par: " << TiCC::Name( p )
-       << " id = '" << id << "'" << endl;
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "add_par: id=" << id << endl;
+    }
+  }
   KWargs args;
   args["id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   TextContent *tc = new TextContent();
   par->append( tc );
   p = p->children;
+  bool first = true;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
@@ -71,24 +126,107 @@ void add_par( Division *root, xmlNode *p ){
 	txt->setvalue( part );
 	tc->append( txt );
 	xmlFree( tmp );
+	first = false;
       }
     }
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
       if ( tag == "tagged" ){
-	xmlNode *t = p->children;
-	while ( t ){
-	  if ( t->type == XML_TEXT_NODE ){
-	    xmlChar *tmp = xmlNodeGetContent( t );
-	    if ( tmp ){
-	      string part = " " + std::string( (char *)tmp ) + " ";
-	      XmlText *txt = new XmlText();
-	      txt->setvalue( part );
-	      tc->append( txt );
-	      xmlFree( tmp );
+	if ( TiCC::getAttribute( p, "type" ) == "reference" ) {
+	  if ( verbose ){
+#pragma omp critical
+	    {
+	      cerr << "add_par: REFERENCE" << endl;
 	    }
 	  }
-	  t = t->next;
+	  string text_part;
+	  string ref;
+	  string type;
+	  string sub_type;
+	  string status;
+	  xmlNode *t = p->children;
+	  while ( t ){
+	    if ( t->type == XML_TEXT_NODE ){
+	      xmlChar *tmp = xmlNodeGetContent( t );
+	      if ( tmp ){
+		text_part = std::string( (char *)tmp );
+		xmlFree( tmp );
+	      }
+	    }
+	    else if ( TiCC::Name(t) == "tagged-entity" ){
+	      ref = TiCC::getAttribute( t, "reference" );
+	      type = TiCC::getAttribute( t, "type" );
+	      sub_type = TiCC::getAttribute( t, "sub-type" );
+	      status = TiCC::getAttribute( t, "status" );
+	    }
+	    else {
+#pragma omp critical
+	      {
+		cerr << "tagged" << id << ", unhandled: "
+		     << TiCC::Name(t) << endl;
+	      }
+	    }
+	    t = t->next;
+	  }
+	  if ( !ref.empty()
+	       && type == "reference" ){
+	    KWargs args;
+	    args["href"] = ref;
+	    args["type"] = "locator";
+	    if ( !sub_type.empty() ){
+	      args["role"] = sub_type;
+	    }
+	    if ( !status.empty() ){
+	      args["label"] = status;
+	    }
+	    if ( !text_part.empty() ){
+	     args["text"] = text_part;
+	    }
+	    TextMarkupString *tm = new TextMarkupString( args );
+	    // args.clear();
+	    // args["subset"] = "sub-type";
+	    // args["class"] = sub_type;
+	    // Feature *feat = new Feature( args );
+	    // tm->append(feat);
+	    tc->append( tm );
+	    first = false;
+	  }
+	  else {
+#pragma omp critical
+	    {
+	      cerr << "tagged: " << id << ", unhandled type=" << type << endl
+		   << " sub_type=" << sub_type << " ref=" << ref << endl;
+	    }
+	  }
+	}
+      }
+      else if ( tag == "stage-direction" ){
+	string embedded = extract_embedded( p );
+	string id = TiCC::getAttribute( p, "id" );
+	if ( embedded.empty() ){
+#pragma omp critical
+	  {
+	    cerr << "paragraph:stage-direction: " << id << " without text?"
+		 << endl;
+	  }
+	}
+	else {
+	  XmlText *txt = new XmlText();
+	  if ( !first  ){
+	    embedded = " " + embedded;
+	  }
+	  if ( p->next != 0 ){
+	    // not last
+	    embedded += " ";
+	  }
+	  txt->setvalue( embedded );
+	  tc->append( txt );
+	}
+      }
+      else {
+#pragma omp critical
+	{
+	  cerr << "paragraph: " << id << ", unhandled tag : " << tag << endl;
 	}
       }
     }
@@ -98,83 +236,81 @@ void add_par( Division *root, xmlNode *p ){
 }
 
 void process_chair( Division *root, xmlNode *chair ){
-  string id = TiCC::getAttribute( chair, "id" );
-  string type = TiCC::getAttribute( chair, "type" );
-  KWargs args;
-  args["id"] = id;
-  args["class"] = type;
-  Division *div = new Division( args, root->doc() );
-  root->append( div );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_chair" << endl;
+    }
+  }
   xmlNode *p = chair->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
-      add_par( div, p );
+      add_par( root, p );
     }
-    if ( label == "chair" ){
+    else if ( label == "chair" ){
       string speaker = TiCC::getAttribute( p, "speaker" );
       string member = TiCC::getAttribute( p, "member-ref" );
       KWargs args;
       args["subset"] = "speaker";
       args["class"] = speaker;
       Feature *feat = new Feature( args );
-      div->append( feat );
+      root->append( feat );
       args["subset"] = "member-ref";
       args["class"] = member;
       feat = new Feature( args );
-      div->append( feat );
+      root->append( feat );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "chair, unhandled: " << label << endl;
+      }
     }
     p = p->next;
   }
 }
 
 void process_speech( Division *root, xmlNode *speech ){
-  string id = TiCC::getAttribute( speech, "id" );
-  string type = TiCC::getAttribute( speech, "type" );
+  KWargs atts = getAllAttributes( speech );
+  string id = atts["id"];
+  if ( verbose ){
+#pragma omp critical
+    {
+      using TiCC::operator<<;
+      cerr << "process_speech: id=" << atts << endl;
+    }
+  }
+  string type = atts["type"];
   KWargs args;
   args["id"] = id;
   args["class"] = type;
   Division *div = new Division( args, root->doc() );
   root->append( div );
-  string speaker = TiCC::getAttribute( speech, "speaker" );
-  if ( !speaker.empty() ){
-    KWargs args;
-    args["subset"] = "speaker";
-    args["class"] = speaker;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string function = TiCC::getAttribute( speech, "function" );
-  if ( !function.empty() ){
-    KWargs args;
-    args["subset"] = "function";
-    args["class"] = function;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string role = TiCC::getAttribute( speech, "role" );
-  if ( !role.empty() ){
-    KWargs args;
-    args["subset"] = "role";
-    args["class"] = role;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string party_ref = TiCC::getAttribute( speech, "party-ref" );
-  if ( !party_ref.empty() ){
-    KWargs args;
-    args["subset"] = "party-ref";
-    args["class"] = party_ref;
-    Feature *feat = new Feature( args );
-    div->append( feat );
-  }
-  string member_ref = TiCC::getAttribute( speech, "member-ref" );
-  if ( !member_ref.empty() ){
-    KWargs args;
-    args["subset"] = "member-ref";
-    args["class"] = member_ref;
-    Feature *feat = new Feature( args );
-    div->append( feat );
+  for ( const auto& att : atts ){
+    if ( att.first == "id"
+	 || att.first == "type" ){
+      continue;
+    }
+    else if ( att.first == "speaker"
+	      || att.first == "function"
+	      || att.first == "party"
+	      || att.first == "role"
+	      || att.first == "party-ref"
+	      || att.first == "member-ref" ){
+      KWargs args;
+      args["subset"] = att.first;
+      args["class"] = att.second;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "unsupported attribute: " << att.first << " on speech: "
+	     << id << endl;
+      }
+    }
   }
 
   xmlNode *p = speech->children;
@@ -186,11 +322,83 @@ void process_speech( Division *root, xmlNode *speech ){
     else if ( label == "stage-direction" ){
       process_stage( div, p );
     }
+    else {
+#pragma omp critical
+      {
+	cerr << "speech: " << id << ", unhandled: " << label << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
+void process_scene( Division *root, xmlNode *scene ){
+  KWargs atts = getAllAttributes( scene );
+  string id = atts["id"];
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_scene: id=" << id << endl;
+    }
+  }
+  string type = atts["type"];
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  for ( const auto& att : atts ){
+    if ( att.first == "id"
+	 || att.first == "type" ){
+      continue;
+    }
+    else if ( att.first == "speaker"
+	      || att.first == "function"
+	      || att.first == "party"
+	      || att.first == "role"
+	      || att.first == "party-ref"
+	      || att.first == "member-ref" ){
+      KWargs args;
+      args["subset"] = att.first;
+      args["class"] = att.second;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "unsupported attribute: " << att.first << " on scene:"
+	     << id << endl;
+      }
+    }
+  }
+
+  xmlNode *p = scene->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "speech" ){
+      process_speech( div, p );
+    }
+    else if ( label == "stage-direction" ){
+      process_stage( div, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "scene: " << id << ", unhandled: " << label << endl;
+      }
+    }
     p = p->next;
   }
 }
 
 void process_break( Division *root, xmlNode *brk ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_break" << endl;
+    }
+  }
   KWargs args;
   args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
   args["newpage"] = "yes";
@@ -202,6 +410,12 @@ void process_break( Division *root, xmlNode *brk ){
   args["href"] = TiCC::getAttribute( brk, "source");
   Alignment *align = new Alignment( args, root->doc() );
   pb->append( align );
+}
+
+void process_members( Division *root, xmlNode *members ){
+  ForeignData *fd = new ForeignData();
+  root->append( fd );
+  fd->set_data( members );
 }
 
 void process_stage( Division *root, xmlNode *_stage ){
@@ -221,15 +435,16 @@ void process_stage( Division *root, xmlNode *_stage ){
   while ( stage ){
     string id = TiCC::getAttribute( stage, "id" );
     string type = TiCC::getAttribute( stage, "type" );
-    cerr << "Node: " << TiCC::Name( stage )
-	 << " type='" << type << "' id = '" << id << "'" << endl;
-    if ( type == "chair" ){
+    string label = TiCC::Name( stage );
+    if ( type == "chair" || label == "chair" ){
       process_chair( div, stage );
     }
     else if ( type == "pagebreak" ){
       process_break( div, stage->children );
     }
-    else if ( type == "header" || type == "subject" ){
+    else if ( type == "header"
+	      || type == "footer"
+	      || type == "subject" ){
       KWargs args;
       args["id"] = id;
       args["class"] = type;
@@ -241,6 +456,13 @@ void process_stage( Division *root, xmlNode *_stage ){
 	if ( label == "p" ){
 	  add_par( div1, p );
 	}
+	else {
+#pragma omp critical
+	  {
+	    cerr << "stage-direction: " << id << ", unhandled :" << label
+		 << " type=" << type << endl;
+	  }
+	}
 	p = p->next;
       }
     }
@@ -248,11 +470,7 @@ void process_stage( Division *root, xmlNode *_stage ){
       process_speech( div, stage->children );
     }
     else if ( type == "" ){ //nested or?
-      string label = TiCC::Name( stage );
-      if ( label == "text" ){
-	cerr << "subnode = text" << endl;
-      }
-      else if ( label == "stage-direction" ){
+      if ( label == "stage-direction" ){
 	process_stage( div, stage );
       }
       else if ( label == "p" ){
@@ -264,12 +482,23 @@ void process_stage( Division *root, xmlNode *_stage ){
       else if ( label == "speech" ){
 	process_speech( div, stage );
       }
+      else if ( label == "members" ){
+	process_members( div, stage );
+      }
       else {
-	cerr << "unhandled nested " << label << endl;
+#pragma omp critical
+	{
+	  cerr << "stage-direction: " << id << ", unhandled nested: "
+	       << label << endl;
+	}
       }
     }
     else {
-      cerr << "unhandled stage type: " << type << endl;
+#pragma omp critical
+      {
+	cerr << "stage-direction: " << id << ", unhandled type: "
+	     << type << endl;
+      }
     }
     stage = stage->next;
   }
@@ -277,6 +506,12 @@ void process_stage( Division *root, xmlNode *_stage ){
 
 void process_topic( Division *root, xmlNode *topic ){
   string id = TiCC::getAttribute( topic, "id" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_topic: id=" << id << endl;
+    }
+  }
   KWargs args;
   args["id"] = id;
   args["class"] = "topic";
@@ -284,23 +519,27 @@ void process_topic( Division *root, xmlNode *topic ){
   root->append( div );
   string title = TiCC::getAttribute( topic, "title" );
   if ( !title.empty() ){
-    KWargs args;
-    args["subset"] = "title";
-    args["class"] = title;
-    Feature *feat = new Feature( args );
-    div->append( feat );
+    Head *hd = new Head( );
+    hd->settext( title );
+    div->append( hd );
   }
   xmlNode *p = topic->children;
   while ( p ){
-    cerr << "process_topic " << TiCC::Name(p) << endl;
-    if ( TiCC::Name(p) == "stage-direction" ){
+    string tag = TiCC::Name(p);
+    if ( tag == "stage-direction" ){
       process_stage( div, p );
     }
-    else if ( TiCC::Name(p) == "speech" ){
+    else if ( tag == "speech" ){
       process_speech( div, p );
     }
+    else if ( tag == "scene" ){
+      process_scene( div, p );
+    }
     else {
-      cerr << "unhandled " << TiCC::Name(p) << endl;
+#pragma omp critical
+      {
+	cerr << "topic: " << id << ", unhandled: " << tag << endl;
+      }
     }
     p = p->next;
   }
@@ -308,6 +547,12 @@ void process_topic( Division *root, xmlNode *topic ){
 
 void process_proceeding( Text *root, xmlNode *proceed ){
   string id = TiCC::getAttribute( proceed, "id" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_proceeding: id=" << id << endl;
+    }
+  }
   KWargs args;
   args["id"] = id;
   args["class"] = "proceedings";
@@ -330,21 +575,28 @@ void convert_to_folia( const string& file,
 				0,
 				XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
   if ( xmldoc ){
-    string docid = "test";
+    string base = TiCC::basename( file );
+    string docid = base;
     Document doc( "id='" + docid + "'" );
     doc.declare( folia::AnnotationType::DIVISION, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
     doc.declare( folia::AnnotationType::ALIGNMENT, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
     if ( metadata ){
+      if ( metadata->nsDef == 0 ){
+	xmlNewNs( metadata,
+		  (const xmlChar*)"http://www.politicalmashup.nl",
+		  0 );
+	//	cerr << "fixed up NS!" << endl;
+      }
       doc.set_foreign_metadata( metadata );
       // xmlNode *p = metadata;
       // while ( p ){
-      // 	cerr << "Node: " << TiCC::Name( p ) << endl;
-      // 	std::map<std::string,std::string> ns = TiCC::getDefinedNS( p );
-      // 	using TiCC::operator<<;
-      // 	cerr << ns << endl;
-      // 	p = p->next;
+      //  	cerr << "Node: " << TiCC::Name( p ) << endl;
+      //  	std::map<std::string,std::string> ns = TiCC::getDefinedNS( p );
+      //  	using TiCC::operator<<;
+      //  	cerr << ns << endl;
+      //  	p = p->next;
       // }
     }
     else {
@@ -354,22 +606,36 @@ void convert_to_folia( const string& file,
       }
       succes = false;
     }
-    Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
-    doc.append( text );
-    xmlNode *p = metadata->next;
-    while ( p ){
-      if ( TiCC::Name( p ) == "proceedings" ){
-	process_proceeding( text, p );
+    try {
+      Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
+      doc.append( text );
+      xmlNode *p = root->children;
+      while ( p ){
+	if ( TiCC::Name( p ) == "proceedings" ){
+	  process_proceeding( text, p );
+	}
+	p = p->next;
       }
-      p = p->next;
-    }
-    string outname = outDir+file+".folia";
+      string outname = outDir+docid;
+      string::size_type pos = outname.rfind( ".xml" );
+      if ( pos != string::npos ){
+	outname = outname.substr(0,pos);
+      }
+      outname += ".folia.xml";
 #pragma omp critical
-    {
-      cerr << "save " << outname << endl;
+      {
+	cout << "save " << outname << endl;
+      }
+      doc.save( outname );
     }
-
-    doc.save( outname );
+    catch ( const exception& e ){
+#pragma omp critical
+      {
+	cerr << "error processing " << file << endl
+	     << e.what() << endl;
+	succes = false;
+      }
+    }
     xmlFreeDoc( xmldoc );
   }
   else {
@@ -379,24 +645,20 @@ void convert_to_folia( const string& file,
     }
     succes = false;
   }
-  if ( succes ){
+  if ( !succes ){
 #pragma omp critical
     {
-      cout << "resolved " << file << endl;
-    }
-  }
-  else {
-#pragma omp critical
-    {
-      cout << "FAILED: " << file << endl;
+      cerr << "FAILED: " << file << endl;
     }
   }
 }
 
 
 void usage(){
-  cerr << "Usage: FoLiA-pm [options] file/dir" << endl;
+  cerr << "Usage: FoLiA-pm [options] files/dir" << endl;
   cerr << "\t convert Political Mashup XML files to FoLiA" << endl;
+  cerr << "\t when a dir is given, all '.xml' files in that dir are processed"
+       << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
