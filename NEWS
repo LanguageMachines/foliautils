@@ -1,4 +1,9 @@
-foliautils 0.3 2016-03-1-
+foliautils 0.4  24-05-2016
+[Ko van der Sloot]
+ * added FoLiA-pm, a convertor from Political Mashup format to FoLiA
+   needs libfolia v1.2 for new ForeignData meta nodes and extended references
+
+foliautils 0.3 2016-03-1
 [Ko van der Sloot]
  * renamed from foliatools to foliautils
  * now based on libfolia v1.0
