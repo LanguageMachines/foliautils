@@ -504,7 +504,30 @@ void process_stage( Division *root, xmlNode *_stage ){
   }
 }
 
-void process_topic( Division *root, xmlNode *topic ){
+folia::Document *create_basedoc( const string& docid,
+				 xmlNode *metadata = 0 ){
+  Document *doc = new Document( "id='" + docid + "'" );
+  doc->declare( folia::AnnotationType::DIVISION,
+		"polmash",
+		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+  doc->declare( folia::AnnotationType::ALIGNMENT,
+		"polmash",
+		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+  if ( metadata ){
+    if ( metadata->nsDef == 0 ){
+      xmlNewNs( metadata,
+		(const xmlChar*)"http://www.politicalmashup.nl",
+		0 );
+    }
+    doc->set_foreign_metadata( metadata );
+  }
+  return doc;
+}
+
+void process_topic( const string& outDir,
+		    Text* base_text,
+		    xmlNode *topic,
+		    bool no_split ){
   string id = TiCC::getAttribute( topic, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -513,9 +536,30 @@ void process_topic( Division *root, xmlNode *topic ){
     }
   }
   KWargs args;
-  args["id"] = id;
+  Document *doc = 0;
+  FoliaElement *root;
+  if ( no_split ){
+    doc = base_text->doc();
+    string div_id = id;
+    string::size_type pos = id.rfind( "." );
+    if ( pos != string::npos ){
+      div_id = id.substr(0,pos);
+    }
+    args["id"] = div_id + ".div";
+    args["class"] = "proceedings";
+    root = new Division( args, doc );
+    base_text->append( root );
+  }
+  else {
+    doc = create_basedoc( id );
+    args["id"] = id + ".text";
+    Text *txt = new Text( args, doc );
+    doc->append( txt );
+    root = txt;
+  }
+  args["id"] = id + ".div";
   args["class"] = "topic";
-  Division *div = new Division( args, root->doc() );
+  Division *div = new Division( args, doc );
   root->append( div );
   string title = TiCC::getAttribute( topic, "title" );
   if ( !title.empty() ){
@@ -543,9 +587,27 @@ void process_topic( Division *root, xmlNode *topic ){
     }
     p = p->next;
   }
+  if ( !no_split ){
+    string filename = outDir+id+".folia.xml";
+    doc->save( filename );
+#pragma omp critical
+    {
+      cerr << "saved external file: " << filename << endl;
+    }
+
+    args.clear();
+    args["id"] = id;
+    args["src"] = id + ".folia.xml";
+    args["include"] = "no";
+    folia::External *ext = new External( args );
+    base_text->append( ext );
+  }
 }
 
-void process_proceeding( Text *root, xmlNode *proceed ){
+void process_proceeding( const string& outDir,
+			 Text *root,
+			 xmlNode *proceed,
+			 bool no_split ){
   string id = TiCC::getAttribute( proceed, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -553,19 +615,15 @@ void process_proceeding( Text *root, xmlNode *proceed ){
       cerr << "process_proceeding: id=" << id << endl;
     }
   }
-  KWargs args;
-  args["id"] = id;
-  args["class"] = "proceedings";
-  Division *div = new Division( args, root->doc() );
-  root->append( div );
   list<xmlNode*> topics = TiCC::FindNodes( proceed, "*:topic" );
   for ( const auto& topic : topics ){
-    process_topic( div, topic );
+    process_topic( outDir, root, topic, no_split );
   }
 }
 
 void convert_to_folia( const string& file,
-		       const string& outDir ){
+		       const string& outDir,
+		       bool no_split ){
   bool succes = true;
 #pragma omp critical
   {
@@ -575,65 +633,47 @@ void convert_to_folia( const string& file,
 				0,
 				XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
   if ( xmldoc ){
-    string base = TiCC::basename( file );
-    string docid = base;
-    Document doc( "id='" + docid + "'" );
-    doc.declare( folia::AnnotationType::DIVISION, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
-    doc.declare( folia::AnnotationType::ALIGNMENT, "polmash", "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'" );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
-    if ( metadata ){
-      if ( metadata->nsDef == 0 ){
-	xmlNewNs( metadata,
-		  (const xmlChar*)"http://www.politicalmashup.nl",
-		  0 );
-	//	cerr << "fixed up NS!" << endl;
-      }
-      doc.set_foreign_metadata( metadata );
-      // xmlNode *p = metadata;
-      // while ( p ){
-      //  	cerr << "Node: " << TiCC::Name( p ) << endl;
-      //  	std::map<std::string,std::string> ns = TiCC::getDefinedNS( p );
-      //  	using TiCC::operator<<;
-      //  	cerr << ns << endl;
-      //  	p = p->next;
-      // }
-    }
-    else {
+    if ( !metadata ){
 #pragma omp critical
       {
 	cerr << "no metadata" << endl;
       }
       succes = false;
     }
-    try {
-      Text *text = new Text( getArgs( "id='" + docid + ".text'"  ));
-      doc.append( text );
-      xmlNode *p = root->children;
-      while ( p ){
-	if ( TiCC::Name( p ) == "proceedings" ){
-	  process_proceeding( text, p );
-	}
-	p = p->next;
-      }
-      string outname = outDir+docid;
-      string::size_type pos = outname.rfind( ".xml" );
+    else {
+      string base = TiCC::basename( file );
+      string docid = base;
+      Document *doc = create_basedoc( docid, metadata );
+      string::size_type pos = docid.rfind( ".xml" );
       if ( pos != string::npos ){
-	outname = outname.substr(0,pos);
+	docid = docid.substr(0,pos);
       }
-      outname += ".folia.xml";
+      folia::Text *text = new folia::Text( getArgs( "id='" + docid + ".text'"  ));
+      doc->append( text );
+      try {
+	xmlNode *p = root->children;
+	while ( p ){
+	  if ( TiCC::Name( p ) == "proceedings" ){
+	    process_proceeding( outDir, text, p, no_split );
+	  }
+	  p = p->next;
+	}
+	string outname = outDir + docid + ".folia.xml";
 #pragma omp critical
-      {
-	cout << "save " << outname << endl;
+	{
+	  cout << "save " << outname << endl;
+	}
+	doc->save( outname );
       }
-      doc.save( outname );
-    }
-    catch ( const exception& e ){
+      catch ( const exception& e ){
 #pragma omp critical
-      {
-	cerr << "error processing " << file << endl
-	     << e.what() << endl;
-	succes = false;
+	{
+	  cerr << "error processing " << file << endl
+	       << e.what() << endl;
+	  succes = false;
+	}
       }
     }
     xmlFreeDoc( xmldoc );
@@ -660,6 +700,7 @@ void usage(){
   cerr << "\t when a dir is given, all '.xml' files in that dir are processed"
        << endl;
   cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-nosplit\t don't create separate topic files" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t-v\t verbose output " << endl;
@@ -670,6 +711,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
+    opts.set_long_options( "nosplit,help,version" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -679,11 +721,13 @@ int main( int argc, char *argv[] ){
   }
   int numThreads=1;
   string outputDir;
-  if ( opts.extract('h' ) ){
+  if ( opts.extract( 'h' )
+       || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('V' ) ){
+  if ( opts.extract('V' )
+       || opts.extract( "version" ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
@@ -695,6 +739,7 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' )
     outputDir += "/";
+  bool no_split = opts.extract( "nosplit" );
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
     usage();
@@ -758,7 +803,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_to_folia( fileNames[fn], outputDir );
+    convert_to_folia( fileNames[fn], outputDir, no_split );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
