@@ -627,8 +627,8 @@ void usage( const string& name ){
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
   cerr << "\t--class='name' When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
-  cerr << "\t--hemp=<file>. Create a histrorical emphasis file. " << endl;
-  cerr << "\t\t\t(words cosisting of single, space separated letters)" << endl;
+  cerr << "\t--hemp=<file>. Create a historical emphasis file. " << endl;
+  cerr << "\t\t\t(words consisting of single, space separated letters)" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-v\t very verbose output." << endl;
