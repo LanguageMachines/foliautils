@@ -260,6 +260,64 @@ void taal_filter( vector<F*>& words,
   }
 }
 
+bool is_emph( const string& data ){
+  return (data.size() < 2) && isalnum(data[0]);
+}
+
+void add_emph_inventory( const vector<string>& data,
+			 set<string>& emph ){
+  for ( unsigned int i=0; i < data.size(); ++i ){
+    bool done = false;
+    for ( unsigned int j=i; j < data.size() && !done; ++j ){
+      if ( is_emph( data[j] ) ){
+	// a candidate?
+	if ( j + 1 < data.size()
+	     && is_emph( data[j+1] ) ){
+	  // yes a second short word
+	  string mw = data[j] + "_" + data[j+1];
+	  for ( unsigned int k=j+2; k < data.size(); ++k ){
+	    if ( is_emph(data[k]) ){
+	      mw += "_" + data[k];
+	    }
+	    else {
+	      emph.insert(mw);
+	      mw.clear();
+	      i = k; // restart i loop there
+	      done = true; // get out of j loop
+	      break; // k loop
+	    }
+	  }
+	}
+      }
+    }
+  }
+}
+
+void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
+  for ( unsigned int i=0; i < data.size(); ++i ){
+    string mw;
+    bool first = true;
+    for ( unsigned int j=i; j < data.size(); ++j ){
+      cerr << "bekijk:" << data[j].word << endl;
+      if ( data[j].word.size() < 2 ){
+	cerr << "YES:" << data[j].word << endl;
+	if ( !first ){
+	  mw += "_";
+	}
+	cerr << "MW='" << mw << "'" << endl;
+	first = false;
+	mw += data[j].word;
+	cerr << "MW='" << mw << "'" << endl;
+      }
+      else {
+	emph.insert(mw);
+	mw.clear();
+	first = true;
+      }
+    }
+  }
+}
+
 
 size_t word_inventory( const Document *d, const string& docName,
 		       size_t nG,
@@ -269,7 +327,8 @@ size_t word_inventory( const Document *d, const string& docName,
 		       map<string,unsigned int>& lc,
 		       multimap<string, rec>& lpc,
 		       unsigned int& lemTotal,
-		       unsigned int& posTotal ){
+		       unsigned int& posTotal,
+		       set<string>& emph ){
   size_t wordTotal = 0;
   lemTotal = 0;
   posTotal = 0;
@@ -351,6 +410,7 @@ size_t word_inventory( const Document *d, const string& docName,
       continue;
     }
 
+    add_emph_inventory( data, emph );
     for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
       string multiw;
       string multil;
@@ -436,7 +496,8 @@ size_t str_inventory( const Document *d, const string& docName,
 		      size_t nG,
 		      bool lowercase,
 		      const string& lang,
-		      map<string,unsigned int>& wc ){
+		      map<string,unsigned int>& wc,
+		      set<string>& emph ){
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
   string doc_lang = d->get_metadata( "language" );
@@ -470,6 +531,7 @@ size_t str_inventory( const Document *d, const string& docName,
     return 0;
   }
 
+  add_emph_inventory( data, emph );
   for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
     string multiw;
     for ( size_t j=0; j < nG; ++j ){
@@ -491,7 +553,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  size_t nG,
 			  bool lowercase,
 			  const string& lang,
-			  map<string,unsigned int>& wc ){
+			  map<string,unsigned int>& wc,
+			  set<string>& emph ){
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
   string doc_lang = d->get_metadata( "language" );
@@ -530,6 +593,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
       continue;
     }
 
+    add_emph_inventory( data, emph );
     for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
       string multiw;
       for ( size_t j=0; j < nG; ++j ){
@@ -563,6 +627,8 @@ void usage( const string& name ){
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
   cerr << "\t--class='name' When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
+  cerr << "\t--hemp=<file>. Create a histrorical emphasis file. " << endl;
+  cerr << "\t\t\t(words cosisting of single, space separated letters)" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h\t this message" << endl;
   cerr << "\t-v\t very verbose output." << endl;
@@ -573,7 +639,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:RsS", "class:,clip:,lang:,ngram:,lower" );
+  CL_Options opts( "hVvpe:t:o:RsS", "class:,clip:,lang:,ngram:,lower,hemp:" );
   try {
     opts.init(argc,argv);
   }
@@ -607,6 +673,8 @@ int main( int argc, char *argv[] ){
   verbose = opts.extract( 'v' );
   bool dopercentage = opts.extract('p');
   bool lowercase = opts.extract("lower");
+  string hempName;
+  opts.extract("hemp", hempName );
   bool recursiveDirs = opts.extract( 'R' );
   bool doparstr = opts.extract( 's' );
   bool donoparstr = opts.extract( 'S' );
@@ -692,8 +760,9 @@ int main( int argc, char *argv[] ){
   unsigned int wordTotal =0;
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
+  set<string> emph;
 
-#pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wc,lc,lpc)
+#pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wc,lc,lpc,emph)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -712,14 +781,14 @@ int main( int argc, char *argv[] ){
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
     if ( doparstr ){
-      word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc );
+      word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph );
     }
     else if ( donoparstr ){
-      word_count = str_inventory( d, docName, nG, lowercase, lang, wc );
+      word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph );
     }
     else
       word_count = word_inventory( d, docName, nG, lowercase,
-				   lang, wc, lc, lpc, lem_count, pos_count );
+				   lang, wc, lc, lpc, lem_count, pos_count, emph );
     wordTotal += word_count;
     lemTotal += lem_count;
     posTotal += pos_count;
@@ -735,6 +804,19 @@ int main( int argc, char *argv[] ){
   if ( toDo > 1 ){
     cout << "done processsing directory '" << name << "' in total "
 	 << wordTotal << " words were found." << endl;
+  }
+
+  if ( !hempName.empty() ){
+    ofstream out( hempName );
+    if ( out ){
+      for( auto const& it : emph ){
+	out << it << endl;
+      }
+      cout << "historical emphasis stored in: " << hempName << endl;
+    }
+    else {
+      cerr << "unable to create historical emphasis file: " << hempName << endl;
+    }
   }
   cout << "start calculating the results" << endl;
   string ext;
