@@ -328,7 +328,8 @@ size_t word_inventory( const Document *d, const string& docName,
 		       multimap<string, rec>& lpc,
 		       unsigned int& lemTotal,
 		       unsigned int& posTotal,
-		       set<string>& emph ){
+		       set<string>& emph,
+		       const string& sep ){
   size_t wordTotal = 0;
   lemTotal = 0;
   posTotal = 0;
@@ -432,11 +433,11 @@ size_t word_inventory( const Document *d, const string& docName,
 	  multip += data[i+j].pos;
 	}
 	if ( j < nG-1 ){
-	  multiw += " ";
+	  multiw += sep;
 	  if ( !lem_mis )
-	    multil += " ";
+	    multil += sep;
 	  if ( !pos_mis )
-	    multip += " ";
+	    multip += sep;
 	}
       }
       ++wordTotal;
@@ -497,7 +498,8 @@ size_t str_inventory( const Document *d, const string& docName,
 		      bool lowercase,
 		      const string& lang,
 		      map<string,unsigned int>& wc,
-		      set<string>& emph ){
+		      set<string>& emph,
+		      const string& sep ){
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
   string doc_lang = d->get_metadata( "language" );
@@ -537,7 +539,7 @@ size_t str_inventory( const Document *d, const string& docName,
     for ( size_t j=0; j < nG; ++j ){
       multiw += data[i+j];
       if ( j < nG-1 ){
-	multiw += " ";
+	multiw += sep;
       }
     }
     ++wordTotal;
@@ -554,7 +556,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  bool lowercase,
 			  const string& lang,
 			  map<string,unsigned int>& wc,
-			  set<string>& emph ){
+			  set<string>& emph,
+			  const string& sep ){
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
   string doc_lang = d->get_metadata( "language" );
@@ -599,7 +602,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
       for ( size_t j=0; j < nG; ++j ){
 	multiw += data[i+j];
 	if ( j < nG-1 ){
-	  multiw += " ";
+	  multiw += sep;
 	}
       }
       ++wordTotal;
@@ -622,6 +625,7 @@ void usage( const string& name ){
   cerr << "\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
+  cerr << "\t--underscore\t connect all words with underscores" << endl;
   cerr << "\t--lang\t Language. (default='dut'). 'none' is also possible" << endl;
   cerr << "\t--ngram\t Ngram count " << endl;
   cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
@@ -639,7 +643,8 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:RsS", "class:,clip:,lang:,ngram:,lower,hemp:" );
+  CL_Options opts( "hVvpe:t:o:RsS",
+		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore" );
   try {
     opts.init(argc,argv);
   }
@@ -678,6 +683,11 @@ int main( int argc, char *argv[] ){
   bool recursiveDirs = opts.extract( 'R' );
   bool doparstr = opts.extract( 's' );
   bool donoparstr = opts.extract( 'S' );
+  bool do_under = opts.extract( "underscore" );
+  string sep = " ";
+  if ( do_under ){
+    sep = "_";
+  }
   if ( !opts.extract( 'o', outputPrefix ) ){
     cerr << "an output filename prefix is required. (-o option) " << endl;
     exit(EXIT_FAILURE);
@@ -781,14 +791,14 @@ int main( int argc, char *argv[] ){
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
     if ( doparstr ){
-      word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph );
+      word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
     }
     else if ( donoparstr ){
-      word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph );
+      word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
     }
     else
       word_count = word_inventory( d, docName, nG, lowercase,
-				   lang, wc, lc, lpc, lem_count, pos_count, emph );
+				   lang, wc, lc, lpc, lem_count, pos_count, emph, sep );
     wordTotal += word_count;
     lemTotal += lem_count;
     posTotal += pos_count;
