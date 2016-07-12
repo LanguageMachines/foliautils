@@ -1,6 +1,5 @@
 missing a directory to process!
 foliautils 0.5
-option-error: invalid option 'help'
 Usage: [options] file/dir
 	 collect the ngram statistics of a directory containing
 	 files produced by FoLiA-stats.
@@ -8,6 +7,6 @@ Usage: [options] file/dir
 	--hapax also include HAPAXes (default is don't) 
 	-O	 outout directory.
 	-t num 	 Run on 'num' threads.
-	-h	 this messages 
-	-V	 show version 
+	-h or --help	 this messages 
+	-V or --version	 show version 
 	-v	 verbosity 

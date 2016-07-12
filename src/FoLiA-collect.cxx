@@ -257,13 +257,13 @@ void usage(){
   cerr << "\t--hapax also include HAPAXes (default is don't) " << endl;
   cerr << "\t-O\t outout directory." << endl;
   cerr << "\t-t num \t Run on 'num' threads." << endl;
-  cerr << "\t-h\t this messages " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-h or --help\t this messages " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-v\t verbosity " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVhO:t:", "hapax,ngram:" );
+  TiCC::CL_Options opts( "vVhO:t:", "hapax,ngram:,help,version" );
   try {
     opts.init( argc, argv );
   }
@@ -278,11 +278,11 @@ int main( int argc, char *argv[] ){
   string outDir;
   bool keepSingles = false;
   string value;
-  if ( opts.extract( 'h' ) ){
+  if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'V' ) ){
+  if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
