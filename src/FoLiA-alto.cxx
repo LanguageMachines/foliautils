@@ -1164,7 +1164,7 @@ void usage(){
   cerr << "\t--cache\t alto cache directory " << endl;
   cerr << "\t--clear\t clear cached Alto files at start" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this messages " << endl;
+  cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
   cerr << "\t--setname=<set>\t the FoLiA setname of the string nodes. "
@@ -1175,7 +1175,7 @@ void usage(){
   cerr << "\t\t\t 'c'=b creates bzip2 files (.bz2)" << endl;
   cerr << "\t\t\t 'c'=g creates gzip files (.gz)" << endl;
   cerr << "\t-v\t verbose output " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
