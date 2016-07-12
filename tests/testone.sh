@@ -9,8 +9,6 @@ OK="\033[1;32m OK  \033[0m"
 FAIL="\033[1;31m  FAILED  \033[0m"
 KNOWNFAIL="\033[1;33m  KNOWN FAILURES  \033[0m"
 
-echo $my_bin
-
 for file in $1
 do if test -x $file
    then
@@ -19,7 +17,7 @@ do if test -x $file
        \rm -f $file.out
        echo -n "testing $file "
        ./$file > $file.err 2>&1
-       diff -w $file.out $file.ok >& $file.diff
+       diff -w --ignore-matching-lines=".?*-annotation .?*" --ignore-matching-lines=".*generator=.*"  $file.out $file.ok >& $file.diff
        if [ $? -ne 0 ];
        then
            diff -w $file.diff $file.diff.known >& /dev/null
