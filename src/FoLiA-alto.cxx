@@ -110,13 +110,11 @@ void docCache::add( const string& dir, const string& f ){
 }
 
 void docCache::fill( const string& altoDir, const list<xmlNode*>& blocks ){
-  list<xmlNode*>::const_iterator it = blocks.begin();
-  while ( it != blocks.end() ){
-    string alt = TiCC::getAttribute( *it, "alto" );
+  for ( const auto& it : blocks ){
+    string alt = TiCC::getAttribute( it, "alto" );
     if ( !alt.empty() ){
       add( altoDir, alt );
     }
-    ++it;
   }
 }
 
@@ -227,11 +225,10 @@ void createFile( folia::FoliaElement *text,
 		 const string& altoFile,
 		 const list<xmlNode*>& textblocks ){
   xmlNode *root = xmlDocGetRootElement( alt_doc );
-  list<xmlNode*>::const_iterator bit = textblocks.begin();
   xmlNode *keepPart1 = 0;
   set<string> ids;
-  while ( bit != textblocks.end() ){
-    string id = TiCC::getAttribute( *bit, "ID" );
+  for ( const auto& block : textblocks ){
+    string id = TiCC::getAttribute( block, "ID" );
     if ( ids.find(id) != ids.end() ){
       if ( verbose ){
 #pragma omp critical
@@ -239,7 +236,6 @@ void createFile( folia::FoliaElement *text,
 	  cout << "skip duplicate ID " << id << endl;
 	}
       }
-      ++bit;
       continue;
     }
     else {
@@ -258,9 +254,8 @@ void createFile( folia::FoliaElement *text,
       xmlNode *node = v.front();
       string tb_id = TiCC::getAttribute( node, "ID" );
       list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
-      list<xmlNode*>::const_iterator lit = lv.begin();
-      while ( lit != lv.end() ){
-	xmlNode *pnt = (*lit)->children;
+      for ( const auto& line : lv ){
+	xmlNode *pnt = line->children;
 	while ( pnt != 0 ){
 	  if ( pnt->type == XML_ELEMENT_NODE ){
 	    if ( TiCC::Name(pnt) == "String" ){
@@ -296,7 +291,7 @@ void createFile( folia::FoliaElement *text,
 	      }
 	      else if ( sub == "HypPart1" ){
 		// see if there is a Part2 in next line at this level.
-		xmlNode *part2 = findPart2Level( *lit );
+		xmlNode *part2 = findPart2Level( line );
 		if ( part2 ){
 		  keepPart1 = pnt;
 		  break; //continue with next TextLine
@@ -322,7 +317,6 @@ void createFile( folia::FoliaElement *text,
 	  }
 	  pnt = pnt->next;
 	}
-	++lit;
       }
     }
     else if ( v.size() == 0 ){
@@ -338,7 +332,6 @@ void createFile( folia::FoliaElement *text,
     }
     if ( !ocr_text.empty() )
       p->settext( ocr_text.substr(1), classname );
-    ++bit;
   }
 }
 
@@ -921,9 +914,8 @@ void solveBook( const string& altoFile, const string& id,
     }
     xmlNode *keepPart1 = 0;
     set<string> ids;
-    list<xmlNode*>::const_iterator bit = textblocks.begin();
-    while ( bit != textblocks.end() ){
-      string id = TiCC::getAttribute( *bit, "ID" );
+    for ( auto const& block : textblocks ){
+      string id = TiCC::getAttribute( block, "ID" );
       if ( ids.find(id) != ids.end() ){
 	if ( verbose ){
 #pragma omp critical
@@ -931,7 +923,6 @@ void solveBook( const string& altoFile, const string& id,
 	    cout << "skip duplicate ID " << id << endl;
 	  }
 	}
-	++bit;
 	continue;
       }
       else {
@@ -950,9 +941,8 @@ void solveBook( const string& altoFile, const string& id,
 	xmlNode *node = v.front();
 	string tb_id = TiCC::getAttribute( node, "ID" );
 	list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
-	list<xmlNode*>::const_iterator lit = lv.begin();
-	while ( lit != lv.end() ){
-	  xmlNode *pnt = (*lit)->children;
+	for ( const auto& line : lv ){
+	  xmlNode *pnt = line->children;
 	  while ( pnt != 0 ){
 	    if ( pnt->type == XML_ELEMENT_NODE ){
 	      if ( TiCC::Name(pnt) == "String" ){
@@ -988,7 +978,7 @@ void solveBook( const string& altoFile, const string& id,
 		}
 		else if ( sub == "HypPart1" ){
 		  // see if there is a Part2 in next line at this level.
-		  xmlNode *part2 = findPart2Level( *lit );
+		  xmlNode *part2 = findPart2Level( line );
 		  if ( part2 ){
 		    keepPart1 = pnt;
 		    break; //continue with next TextLine
@@ -1014,7 +1004,6 @@ void solveBook( const string& altoFile, const string& id,
 	    }
 	    pnt = pnt->next;
 	  }
-	  ++lit;
 	}
       }
       else if ( v.size() == 0 ){
@@ -1030,7 +1019,6 @@ void solveBook( const string& altoFile, const string& id,
       }
       if ( !ocr_text.empty() )
 	p->settext( ocr_text.substr(1), classname );
-      ++bit;
     }
     zipType type = inputType;
     string outName = outDir + docid + ".folia.xml";
