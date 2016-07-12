@@ -9,6 +9,6 @@ then
     export my_bin=/home/sloot/usr/local/bin
 fi
 
-for file in testfolia2text testfoliatxt testfoliaalto
+for file in testfolia2text testfoliatxt testfoliaalto testcollect
 do ./testone.sh $file
 done
