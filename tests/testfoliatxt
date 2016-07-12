@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-txt -O out data/test.txt
+cat out/test.folia.xml > testfoliatxt.out
