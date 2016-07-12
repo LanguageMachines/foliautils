@@ -123,9 +123,6 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
 

@@ -1182,7 +1182,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,setname:,compress:,type:" );
+    opts.set_long_options( "cache:,clear,class:,setname:,compress:,type:,help,version" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1196,11 +1196,11 @@ int main( int argc, char *argv[] ){
   string kind = "krant";
   zipType outputType = NORMAL;
   string value;
-  if ( opts.extract('h' ) ){
+  if ( opts.extract('h') || opts.extract("help") ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('V' ) ){
+  if ( opts.extract('V') || opts.extract("version") ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
@@ -1317,11 +1317,6 @@ int main( int argc, char *argv[] ){
     }
   }
   size_t toDo = fileNames.size();
-  if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
-  }
   cout << "start processing of " << toDo << " files " << endl;
   if ( numThreads >= 1 ){
 #ifdef HAVE_OPENMP
