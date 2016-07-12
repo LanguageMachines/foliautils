@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="folia.xsl"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="untitled" generator="libfolia-v0.14" version="0.12.0">
+  <metadata type="native">
+    <annotations>
+      <token-annotation annotator="ucto" annotatortype="auto" datetime="2016-01-20T14:48:00" set="tokconfig-nl"/>
+      <pos-annotation annotator="frog-mbpos-1.0" annotatortype="auto" datetime="2016-01-20T14:48:00" set="http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn"/>
+      <lemma-annotation annotator="frog-mblem-1.1" annotatortype="auto" datetime="2016-01-20T14:48:00" set="http://ilk.uvt.nl/folia/sets/frog-mblem-nl"/>
+    </annotations>
+  </metadata>
+  <text xml:id="untitled.text">
+    <p xml:id="untitled.p.1">
+      <t>tegen de lamp gelopen.</t>
+      <s xml:id="untitled.p.1.s.1">
+        <t>tegen de lamp gelopen.</t>
+        <w xml:id="untitled.p.1.s.1.w.1" class="WORD">
+          <t>tegen</t>
+          <pos class="VZ(init)" confidence="0.997583" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="tegen"/>
+        </w>
+        <w xml:id="untitled.p.1.s.1.w.2" class="WORD">
+          <t>de</t>
+          <pos class="LID(bep,stan,rest)" confidence="0.999964" head="LID">
+            <feat class="bep" subset="lwtype"/>
+            <feat class="stan" subset="naamval"/>
+            <feat class="rest" subset="npagr"/>
+          </pos>
+          <lemma class="de"/>
+        </w>
+        <w xml:id="untitled.p.1.s.1.w.3" class="WORD">
+          <t>lamp</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.997745" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="lamp"/>
+        </w>
+        <w xml:id="untitled.p.1.s.1.w.4" class="WORD" space="no">
+          <t>gelopen</t>
+          <pos class="WW(vd,vrij,zonder)" confidence="0.998549" head="WW">
+            <feat class="vd" subset="wvorm"/>
+            <feat class="vrij" subset="positie"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="lopen"/>
+        </w>
+        <w xml:id="untitled.p.1.s.1.w.5" class="PUNCTUATION">
+          <t>.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>
