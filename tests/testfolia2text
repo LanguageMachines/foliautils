@@ -3,3 +3,6 @@
 
 $my_bin/FoLiA-2text -o out data/folia.xml
 cat out/data/folia.xml.txt > testfolia2text.out
+
+$my_bin/FoLiA-2text -o out --class=anders data/folia.xml
+cat out/data/folia.xml.txt >> testfolia2text.out
