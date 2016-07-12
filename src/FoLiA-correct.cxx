@@ -451,9 +451,6 @@ int main( int argc, const char *argv[] ){
   }
 
   if ( doDir ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
 
