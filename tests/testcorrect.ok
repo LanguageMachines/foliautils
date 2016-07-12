@@ -1,0 +1,18 @@
+missing '--punct' option
+foliautils 0.5
+Usage: [options] file/dir
+	--setname	 FoLiA setname. (default 'Ticcl-set')
+	--class	 classname. (default 'Ticcl')
+	-t	 number_of_threads
+	--nums	 max number_of_suggestions. (default 10)
+	-h or --help	 this message 
+	-V or --version	 show version 
+	 FoLiA-correct will correct FoLiA files 
+	 or a whole directory of FoLiA files 
+	-e 'expr': specify the expression all files should match with.
+	-O	 output prefix
+	--unk 'uname'	 name of unknown words file, the *unk file produced by TICCL-unk
+	--punct 'pname'	 name of punct words file, the *punct file produced by TICCL-unk
+	--rank 'vname'	 name of variants file, the *ranked file produced by TICCL-rank
+	--clear	 redo ALL corrections. (default is to skip already processed file)
+	-R	 search the dirs recursively (when appropriate)
