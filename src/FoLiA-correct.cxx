@@ -156,8 +156,7 @@ void correctParagraph( Paragraph* par,
     return;
   int offset = 0;
   string corrected;
-  for ( size_t i=0; i < sv.size(); ++i ){
-    String *s = sv[i];
+  for ( const auto& s : sv ){
     vector<TextContent *> origV = s->select<TextContent>();
     string word = origV[0]->str();
     filter(word);
@@ -244,14 +243,14 @@ bool correctDoc( Document *doc,
   doc->declare( folia::AnnotationType::CORRECTION, setname,
 		"annotator='TICCL', annotatortype='auto', datetime='now()'");
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
-  for( size_t i=0; i < pv.size(); ++i ){
+  for( const auto& par : pv ){
     try {
-      correctParagraph( pv[i], variants, unknowns, puncts );
+      correctParagraph( par, variants, unknowns, puncts );
     }
     catch ( exception& e ){
 #pragma omp critical
       {
-	cerr << "FoLiA error in paragraph " << pv[i]->id() << " of document " << doc->id() << endl;
+	cerr << "FoLiA error in paragraph " << par->id() << " of document " << doc->id() << endl;
 	cerr << e.what() << endl;
       }
       return false;
