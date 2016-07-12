@@ -266,8 +266,8 @@ void usage( const string& name ){
   cerr << "\t--class\t classname. (default '" << classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
-  cerr << "\t-h\t this message " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-h or --help\t this message " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
@@ -290,9 +290,9 @@ void checkFile( const string& what, const string& name, const string& ext ){
   }
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,setname:,clear,unk:,rank:,punct:,nums:" );
+			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help" );
   try {
     opts.init( argc, argv );
   }
@@ -312,11 +312,11 @@ int main( int argc, char *argv[] ){
   string punctFileName;
   string outPrefix;
   string value;
-  if ( opts.extract( 'h' ) ){
+  if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'V' ) ){
+  if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
@@ -352,11 +352,6 @@ int main( int argc, char *argv[] ){
     if ( !TiCC::stringTo( value, numThreads ) ){
       cerr << "unsupported value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);  }
-  }
-  if ( !opts.empty() ){
-    cerr << "unsupported options : " << opts.toString() << endl;
-    usage(progname);
-    exit(EXIT_FAILURE);
   }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
