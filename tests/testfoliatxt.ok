@@ -1,8 +1,27 @@
+Usage: [options] file/dir
+	 FoLiA-txt will produce FoLiA files from text files 
+	 The output will only contain <p> and <str> nodes.
+	-t	 number_of_threads
+	-h	 this message
+	-V	 show version 
+	-O	 output directory 
+	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
+	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
+foliautils 0.5
+Usage: [options] file/dir
+	 FoLiA-txt will produce FoLiA files from text files 
+	 The output will only contain <p> and <str> nodes.
+	-t	 number_of_threads
+	-h	 this message
+	-V	 show version 
+	-O	 output directory 
+	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
+	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
 <?xml version="1.0" encoding="UTF-8"?>
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4" version="1.2.0">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T12:34:56" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T14:19:23" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -73,6 +92,164 @@
       </str>
       <str xml:id="test.p.2.str.10">
         <t class="FoLiA-txt">geval.</t>
+      </str>
+    </p>
+  </text>
+</FoLiA>
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4" version="1.2.0">
+  <metadata type="native">
+    <annotations>
+      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T14:19:23" set="FoLiA-txt-set"/>
+    </annotations>
+  </metadata>
+  <text xml:id="test.text">
+    <p xml:id="test.p.1">
+      <t class="foobar"> Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
+      <str xml:id="test.p.1.str.1">
+        <t class="foobar">Dit</t>
+      </str>
+      <str xml:id="test.p.1.str.2">
+        <t class="foobar">is</t>
+      </str>
+      <str xml:id="test.p.1.str.3">
+        <t class="foobar">een</t>
+      </str>
+      <str xml:id="test.p.1.str.4">
+        <t class="foobar">test.</t>
+      </str>
+      <str xml:id="test.p.1.str.5">
+        <t class="foobar">Met</t>
+      </str>
+      <str xml:id="test.p.1.str.6">
+        <t class="foobar">enkele</t>
+      </str>
+      <str xml:id="test.p.1.str.7">
+        <t class="foobar">paragrafen.</t>
+      </str>
+      <str xml:id="test.p.1.str.8">
+        <t class="foobar">Dit</t>
+      </str>
+      <str xml:id="test.p.1.str.9">
+        <t class="foobar">is</t>
+      </str>
+      <str xml:id="test.p.1.str.10">
+        <t class="foobar">de</t>
+      </str>
+      <str xml:id="test.p.1.str.11">
+        <t class="foobar">eerste.</t>
+      </str>
+    </p>
+    <p xml:id="test.p.2">
+      <t class="foobar">En dit de tweede. Met e e n speciaaal geval.</t>
+      <str xml:id="test.p.2.str.1">
+        <t class="foobar">En</t>
+      </str>
+      <str xml:id="test.p.2.str.2">
+        <t class="foobar">dit</t>
+      </str>
+      <str xml:id="test.p.2.str.3">
+        <t class="foobar">de</t>
+      </str>
+      <str xml:id="test.p.2.str.4">
+        <t class="foobar">tweede.</t>
+      </str>
+      <str xml:id="test.p.2.str.5">
+        <t class="foobar">Met</t>
+      </str>
+      <str xml:id="test.p.2.str.6">
+        <t class="foobar">e</t>
+      </str>
+      <str xml:id="test.p.2.str.7">
+        <t class="foobar">e</t>
+      </str>
+      <str xml:id="test.p.2.str.8">
+        <t class="foobar">n</t>
+      </str>
+      <str xml:id="test.p.2.str.9">
+        <t class="foobar">speciaaal</t>
+      </str>
+      <str xml:id="test.p.2.str.10">
+        <t class="foobar">geval.</t>
+      </str>
+    </p>
+  </text>
+</FoLiA>
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4" version="1.2.0">
+  <metadata type="native">
+    <annotations>
+      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T14:19:23" set="foo"/>
+    </annotations>
+  </metadata>
+  <text xml:id="test.text">
+    <p xml:id="test.p.1">
+      <t class="bar"> Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
+      <str xml:id="test.p.1.str.1">
+        <t class="bar">Dit</t>
+      </str>
+      <str xml:id="test.p.1.str.2">
+        <t class="bar">is</t>
+      </str>
+      <str xml:id="test.p.1.str.3">
+        <t class="bar">een</t>
+      </str>
+      <str xml:id="test.p.1.str.4">
+        <t class="bar">test.</t>
+      </str>
+      <str xml:id="test.p.1.str.5">
+        <t class="bar">Met</t>
+      </str>
+      <str xml:id="test.p.1.str.6">
+        <t class="bar">enkele</t>
+      </str>
+      <str xml:id="test.p.1.str.7">
+        <t class="bar">paragrafen.</t>
+      </str>
+      <str xml:id="test.p.1.str.8">
+        <t class="bar">Dit</t>
+      </str>
+      <str xml:id="test.p.1.str.9">
+        <t class="bar">is</t>
+      </str>
+      <str xml:id="test.p.1.str.10">
+        <t class="bar">de</t>
+      </str>
+      <str xml:id="test.p.1.str.11">
+        <t class="bar">eerste.</t>
+      </str>
+    </p>
+    <p xml:id="test.p.2">
+      <t class="bar">En dit de tweede. Met e e n speciaaal geval.</t>
+      <str xml:id="test.p.2.str.1">
+        <t class="bar">En</t>
+      </str>
+      <str xml:id="test.p.2.str.2">
+        <t class="bar">dit</t>
+      </str>
+      <str xml:id="test.p.2.str.3">
+        <t class="bar">de</t>
+      </str>
+      <str xml:id="test.p.2.str.4">
+        <t class="bar">tweede.</t>
+      </str>
+      <str xml:id="test.p.2.str.5">
+        <t class="bar">Met</t>
+      </str>
+      <str xml:id="test.p.2.str.6">
+        <t class="bar">e</t>
+      </str>
+      <str xml:id="test.p.2.str.7">
+        <t class="bar">e</t>
+      </str>
+      <str xml:id="test.p.2.str.8">
+        <t class="bar">n</t>
+      </str>
+      <str xml:id="test.p.2.str.9">
+        <t class="bar">speciaaal</t>
+      </str>
+      <str xml:id="test.p.2.str.10">
+        <t class="bar">geval.</t>
       </str>
     </p>
   </text>
