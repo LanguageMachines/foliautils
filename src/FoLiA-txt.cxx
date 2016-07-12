@@ -74,16 +74,28 @@ string filterMeuck( const string& s ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVt:O:", "class:,setname:" );
-  opts.init( argc, argv );
+  TiCC::CL_Options opts( "hVt:O:", "class:,setname:,help,version" );
+  try {
+    opts.init( argc, argv );
+  }
+  catch ( exception&e ){
+    cerr << e.what() << endl;
+    exit(EXIT_FAILURE);
+  }
   string outputDir;
   int numThreads = 1;
   string value;
-  if ( opts.extract( 'h' ) ){
+  if ( opts.empty() ){
+    usage();
+    exit(EXIT_FAILURE);
+  }
+  if ( opts.extract( 'h' ) ||
+       opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'V' ) ){
+  if ( opts.extract( 'V' ) ||
+       opts.extract( "version" ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
@@ -95,10 +107,6 @@ int main( int argc, char *argv[] ){
     outputDir += "/";
   opts.extract( "class", classname );
   opts.extract( "setname", setname );
-  if ( !opts.empty() ){
-    usage();
-    exit(EXIT_FAILURE);
-  }
   if ( !outputDir.empty() ){
     if ( !TiCC::isDir(outputDir) ){
       if ( !TiCC::createPath( outputDir ) ){
