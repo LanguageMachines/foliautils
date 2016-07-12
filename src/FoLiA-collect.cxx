@@ -54,20 +54,16 @@ void create_wf_list( const map<string, unsigned int>& wc,
     exit(EXIT_FAILURE);
   }
   map<unsigned int, set<string> > wf;
-  map<string,unsigned int >::const_iterator cit = wc.begin();
-  while( cit != wc.end()  ){
-    wf[cit->second].insert( cit->first );
-    ++cit;
+  for ( const auto& cit : wc ){
+    wf[cit.second].insert( cit.first );
   }
   unsigned int sum=0;
   map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
   while ( wit != wf.rend() ){
-    set<string>::const_iterator sit = wit->second.begin();
-    while ( sit != wit->second.end() ){
+    for ( const auto& st : wit->second ){
       sum += wit->first;
-      os << *sit << "\t" << wit->first << "\t" << sum << "\t"
+      os << st << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100 * double(sum)/total << endl;
-      ++sit;
     }
     ++wit;
   }
@@ -86,21 +82,17 @@ void create_lf_list( const map<string, unsigned int>& lc,
     exit(EXIT_FAILURE);
   }
   map<unsigned int, set<string> > lf;
-  map<string,unsigned int >::const_iterator cit = lc.begin();
-  while( cit != lc.end()  ){
-    lf[cit->second].insert( cit->first );
-    ++cit;
+  for ( const auto& cit : lc ){
+    lf[cit.second].insert( cit.first );
   }
 
   unsigned int sum=0;
   map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
   while ( wit != lf.rend() ){
-    set<string>::const_iterator sit = wit->second.begin();
-    while ( sit != wit->second.end() ){
+    for ( const auto& st : wit->second ){
       sum += wit->first;
-      os << *sit << "\t" << wit->first << "\t" << sum << "\t"
+      os << st << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100* double(sum)/total << endl;
-      ++sit;
     }
     ++wit;
   }
@@ -114,15 +106,12 @@ void create_lpf_list( const multimap<string, rec>& lpc,
     exit(EXIT_FAILURE);
   }
   multimap<unsigned int, pair<string,string> > lpf;
-  multimap<string,rec>::const_iterator cit = lpc.begin();
-  while( cit != lpc.end()  ){
-    map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
-    while ( pit != cit->second.pc.end() ){
-      lpf.insert( make_pair( pit->second,
-			     make_pair( cit->first, pit->first ) ) );
-      ++pit;
+  for ( const auto& cit : lpc ){
+    map<string,unsigned int>::const_iterator pit = cit.second.pc.begin();
+    for ( const auto& pit : cit.second.pc ){
+      lpf.insert( make_pair( pit.second,
+			     make_pair( cit.first, pit.first ) ) );
     }
-    ++cit;
   }
   unsigned int sum =0;
   multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
@@ -342,8 +331,7 @@ int main( int argc, char *argv[] ){
     else
       filenames = TiCC::searchFilesMatch( name, "list.tsv" );
     cout << "found " << filenames.size() << " files to process" << endl;
-    for ( size_t i=0; i < filenames.size(); ++ i ){
-      string fullName = filenames[i];
+    for ( const auto& fullName : filenames ){
       string::size_type pos = fullName.find( ".lemmafreqlist" );
       if ( pos != string::npos ){
 	lfNames.push_back( fullName );
