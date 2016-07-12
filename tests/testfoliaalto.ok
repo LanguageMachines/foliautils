@@ -1,0 +1,30 @@
+missing input file(s)
+Usage: alto [options] file/dir
+	--cache	 alto cache directory 
+	--clear	 clear cached Alto files at start
+	-t	 number_of_threads
+	-h or --help	 this messages 
+	-O	 output directory 
+	--type	 Type of document ('krant' or 'boek' Default: 'krant')
+	--setname=<set>	 the FoLiA setname of the string nodes. (default 'FoLia-alto-set')
+	--class=<cls>	 the FoLiA class of the string nodes. (default 'OCR')
+	--compress=<c>	 create zipped files.
+			 'c'=b creates bzip2 files (.bz2)
+			 'c'=g creates gzip files (.gz)
+	-v	 verbose output 
+	-V or --version	 show version 
+foliautils 0.5
+Usage: alto [options] file/dir
+	--cache	 alto cache directory 
+	--clear	 clear cached Alto files at start
+	-t	 number_of_threads
+	-h or --help	 this messages 
+	-O	 output directory 
+	--type	 Type of document ('krant' or 'boek' Default: 'krant')
+	--setname=<set>	 the FoLiA setname of the string nodes. (default 'FoLia-alto-set')
+	--class=<cls>	 the FoLiA class of the string nodes. (default 'OCR')
+	--compress=<c>	 create zipped files.
+			 'c'=b creates bzip2 files (.bz2)
+			 'c'=g creates gzip files (.gz)
+	-v	 verbose output 
+	-V or --version	 show version 

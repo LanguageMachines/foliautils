@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-alto > testfoliaalto.out 2>&1
+
+$my_bin/FoLiA-alto -V >> testfoliaalto.out 2>&1
+
+$my_bin/FoLiA-alto --help >> testfoliaalto.out 2>&1
