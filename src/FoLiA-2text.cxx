@@ -138,14 +138,14 @@ void usage( const string& name ){
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this message" << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-h or --help\t this message" << endl;
+  cerr << "\t-V or --version \t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
   cerr << "\t-o\t name of the output file(s) prefix." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:", "class:" );
+  CL_Options opts( "hVvpe:t:o:", "class:,help,version" );
   try {
     opts.init(argc,argv);
   }
@@ -155,7 +155,7 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
   string progname = opts.prog_name();
-  if ( argc < 2 ){
+  if ( opts.empty() ){
     usage( progname );
     exit(EXIT_FAILURE);
   }
@@ -163,11 +163,11 @@ int main( int argc, char *argv[] ){
   string expression;
   string outputPrefix;
   string value;
-  if ( opts.extract('V' ) ){
+  if ( opts.extract('V') || opts.extract("version") ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('h' ) ){
+  if ( opts.extract('h') || opts.extract("help") ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
@@ -185,11 +185,6 @@ int main( int argc, char *argv[] ){
   }
   opts.extract('e', expression );
   opts.extract( "class", classname );
-  if ( !opts.empty() ){
-    cerr << "unsupported options : " << opts.toString() << endl;
-    usage(progname);
-    exit(EXIT_FAILURE);
-  }
 
 #ifdef HAVE_OPENMP
   if ( numThreads != 1 )
