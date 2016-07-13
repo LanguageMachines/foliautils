@@ -19,3 +19,4 @@ Usage: FoLiA-hocr [options] file/dir
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	-v	 verbose output 
 	-V or --version	 show version 
+done
