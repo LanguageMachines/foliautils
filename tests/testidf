@@ -6,3 +6,11 @@ $my_bin/FoLiA-idf > testidf.out 2>&1
 $my_bin/FoLiA-idf -V >> testidf.out 2>&1
 
 $my_bin/FoLiA-idf --help >> testidf.out 2>&1
+
+$my_bin/FoLiA-idf --class=OCR --strings -O out1 -e alto.folia.xml out >> testidf.out 2>&1
+
+wc out1.idf.tsv >> testidf.out 2>&1
+
+$my_bin/FoLiA-idf --class=OCR --lower --strings -O out2 -e alto.folia.xml out >> testidf.out 2>&1
+
+wc out2.idf.tsv >> testidf.out 2>&1

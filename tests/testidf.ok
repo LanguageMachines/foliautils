@@ -3,6 +3,8 @@ Usage: [options] file/dir
 	--clip	 clipping factor. 
 			 (entries with frequency <= this factor will be ignored). 
 	--lower	 Lowercase all words
+	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
+	--strings	 search for String nodes (default is Word)
 	-t	 number of threads
 	-h or --help	 this message 
 	-V or --version	 show version 
@@ -15,9 +17,35 @@ Usage: [options] file/dir
 	--clip	 clipping factor. 
 			 (entries with frequency <= this factor will be ignored). 
 	--lower	 Lowercase all words
+	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
+	--strings	 search for String nodes (default is Word)
 	-t	 number of threads
 	-h or --help	 this message 
 	-V or --version	 show version 
 	-e	 expr: specify the expression all files should match with.
 	-O	 output prefix
 	-R	 search the dirs recursively (when appropriate).
+start processing of 7 files 
+Processed :out/dpo.1880.mpeg21.0003.alto.folia.xml with 32 unique words. still 6 files to go.
+Processed :out/dpo.1880.mpeg21.0005.alto.folia.xml with 114 unique words. still 5 files to go.
+Processed :out/dpo.1880.mpeg21.0006.alto.folia.xml with 202 unique words. still 4 files to go.
+Processed :out/dpo.1880.mpeg21.0007.alto.folia.xml with 207 unique words. still 3 files to go.
+Processed :out/dpo.1880.mpeg21.0009.alto.folia.xml with 213 unique words. still 2 files to go.
+Processed :out/dpo.1880.mpeg21.0008.alto.folia.xml with 218 unique words. still 1 files to go.
+Processed :out/dpo.1880.mpeg21.0010.alto.folia.xml with 218 unique words. still 0 files to go.
+start calculating the results
+created IDF list 'out1.idf.tsv'
+done: 
+ 806 1612 8009 out1.idf.tsv
+start processing of 7 files 
+Processed :out/dpo.1880.mpeg21.0003.alto.folia.xml with 32 unique words. still 6 files to go.
+Processed :out/dpo.1880.mpeg21.0005.alto.folia.xml with 112 unique words. still 5 files to go.
+Processed :out/dpo.1880.mpeg21.0009.alto.folia.xml with 204 unique words. still 4 files to go.
+Processed :out/dpo.1880.mpeg21.0008.alto.folia.xml with 210 unique words. still 3 files to go.
+Processed :out/dpo.1880.mpeg21.0007.alto.folia.xml with 201 unique words. still 2 files to go.
+Processed :out/dpo.1880.mpeg21.0006.alto.folia.xml with 199 unique words. still 1 files to go.
+Processed :out/dpo.1880.mpeg21.0010.alto.folia.xml with 212 unique words. still 0 files to go.
+start calculating the results
+created IDF list 'out2.idf.tsv'
+done: 
+ 764 1528 7707 out2.idf.tsv
