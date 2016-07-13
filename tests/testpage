@@ -6,3 +6,7 @@ $my_bin/FoLiA-page > testpage.out 2>&1
 $my_bin/FoLiA-page -V >> testpage.out 2>&1
 
 $my_bin/FoLiA-page --help >> testpage.out 2>&1
+
+$my_bin/FoLiA-page -O out data/page >> testpage.out 2>&1
+
+wc out/00*.tif.folia.xml >> testpage.out
