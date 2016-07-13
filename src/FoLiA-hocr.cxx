@@ -133,13 +133,12 @@ string extractContent( xmlNode* pnt ) {
 
 void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& file ){
   list<xmlNode*> pars = TiCC::FindNodes( div, "//p" );
-  list<xmlNode*>::const_iterator pit = pars.begin();
-  while ( pit != pars.end() ){
-    string p_id = TiCC::getAttribute( *pit, "id" );
+  for ( const auto& p : pars ){
+    string p_id = TiCC::getAttribute( p, "id" );
     folia::Paragraph *par
       = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
 			      out->doc() );
-    list<xmlNode*> lines = TiCC::FindNodes( *pit, ".//span[@class='ocr_line']" );
+    list<xmlNode*> lines = TiCC::FindNodes( p, ".//span[@class='ocr_line']" );
     if ( lines.size() == 0 ){
 #pragma omp critical
       {
@@ -147,13 +146,13 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       }
       return;
     }
-    list<xmlNode*>::const_iterator lit = lines.begin();
     string txt;
-    while ( lit != lines.end() ){
-      list<xmlNode*> words = TiCC::FindNodes( *lit, ".//span[@class='ocrx_word']" );
+    for ( const auto& line : lines ){
+      list<xmlNode*> words = TiCC::FindNodes( line,
+					      ".//span[@class='ocrx_word']" );
       if ( words.size() == 0 ){
 	// no ocrx_words. Lets see...
-	words = TiCC::FindNodes( *lit, ".//span[@class='ocr_word']" );
+	words = TiCC::FindNodes( line, ".//span[@class='ocr_word']" );
 	if ( words.size() == 0 ){
 #pragma omp critical
 	  {
@@ -162,10 +161,9 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  return;
 	}
       }
-      list<xmlNode*>::const_iterator it = words.begin();
-      while ( it != words.end() ){
-	string w_id = TiCC::getAttribute( *it, "id" );
-	string content = extractContent( *it );
+      for ( const auto word : words ){
+	string w_id = TiCC::getAttribute( word, "id" );
+	string content = extractContent( word );
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
 	  folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ),
@@ -179,9 +177,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	    new folia::AlignReference( folia::getArgs( "id='" + w_id + "', type='str'"  ) );
 	  h->append( a );
 	}
-	++it;
       }
-      ++lit;
     }
     if ( txt.size() > 1 ){
       out->append( par );
@@ -189,7 +185,6 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     }
     else
       delete par;
-    ++pit;
   }
 }
 
@@ -197,9 +192,9 @@ string getDocId( const string& title ){
   string result;
   vector<string> vec;
   TiCC::split_at( title, vec, ";" );
-  for ( size_t i=0; i < vec.size(); ++i ){
+  for ( const auto& part : vec ){
     vector<string> v1;
-    size_t num = TiCC::split( vec[i], v1 );
+    size_t num = TiCC::split( part, v1 );
     if ( num == 2 ){
       if ( TiCC::trim( v1[0] ) == "image" ){
 	result = v1[1];
@@ -297,7 +292,7 @@ void convert_hocr( const string& fileName,
 void usage(){
   cerr << "Usage: FoLiA-hocr [options] file/dir" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this message " << endl;
+  cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
@@ -306,11 +301,11 @@ void usage(){
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
   cerr << "\t-v\t verbose output " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:" );
+  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:,help,version" );
   try {
     opts.init( argc, argv );
   }
@@ -326,11 +321,15 @@ int main( int argc, char *argv[] ){
   string outputDir;
   zipType outputType = NORMAL;
   string value;
-  if ( opts.extract( 'h' ) ){
+  if ( opts.empty() ){
+    usage();
+    exit(EXIT_FAILURE);
+  }
+  if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'V' ) ){
+  if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
@@ -356,11 +355,6 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
-  if ( !opts.empty() ){
-    cerr << "unsupported options : " << opts.toString() << endl;
-    usage();
-    exit(EXIT_FAILURE);
-  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -410,9 +404,6 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
 
