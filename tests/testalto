@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-alto > testalto.out 2>&1
+
+$my_bin/FoLiA-alto -V >> testalto.out 2>&1
+
+$my_bin/FoLiA-alto --help >> testalto.out 2>&1
+
+rm -rf /tmp/cache  >> testalto.out 2>&1
+rm -f out/dpo.*.folia.xml  >> testalto.out 2>&1
+
+$my_bin/FoLiA-alto --cache=/tmp/cache -O out --type=boek data/test:mpeg21.xml >> testalto.out 2>&1
+
+ls /tmp/cache >> testalto.out
+
+ls out/dpo.*.folia.xml >> testalto.out
