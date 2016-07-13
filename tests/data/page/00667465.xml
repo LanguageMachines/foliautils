@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd" pcGtsId="pc-00667465">
+	<Metadata>
+	<Creator>ABBYY FineReader Engine 9.0</Creator>
+	<Created>2011-05-19T07:21:36</Created>
+	<LastChange>2011-12-02T15:33:42</LastChange>
+<Comment><![CDATA[ <PageMetadata><meta key="Can.be.published?">No</meta>
+<meta key="Colour.Depth">8 bit</meta>
+<meta key="Comment.on.file.acquisition">Result of splitting image ID 539792. (USAL-cp, May 2011)</meta>
+<meta key="Date.Description">1814/15</meta>
+<meta key="Document.ID">00667465</meta>
+<meta key="Document.Type">Legal</meta>
+<meta key="File.Extension">.tif</meta>
+<meta key="Image.Sets">KB Demonstrator Set</meta>
+<meta key="Institution">KB - Koninklijke Bibliotheek</meta>
+<meta key="Language">Dutch</meta>
+<meta key="Original.Path">00539792a.tif</meta>
+<meta key="Original.Source">Microfilm</meta>
+<meta key="Publication.Date.Year">1814</meta>
+<meta key="Resolution">300 dpi</meta>
+<meta key="Script">Latin</meta>
+<meta key="Size">2778 &times; 4279 pixels, 23.5&times;36.2cm</meta>
+<meta key="Status">final</meta>
+<meta key="Title">Staten-Generaal Digitaal 1814-1815</meta>
+</PageMetadata> ]]></Comment>
+</Metadata>
+	<Page imageFilename="00667465.tif" imageWidth="2778" imageHeight="4279">
+	<ReadingOrder>
+	<OrderedGroup id="ro357564684568544579089">
+	<RegionRefIndexed regionRef="r16" index="0"/>
+	<RegionRefIndexed regionRef="r17" index="1"/>
+	<RegionRefIndexed regionRef="r19" index="2"/>
+	<RegionRefIndexed regionRef="r21" index="3"/>
+	<RegionRefIndexed regionRef="r22" index="4"/>
+	<RegionRefIndexed regionRef="r23" index="5"/>
+	<RegionRefIndexed regionRef="r27" index="6"/>
+	<RegionRefIndexed regionRef="r28" index="7"/>
+	<RegionRefIndexed regionRef="r29" index="8"/>
+	<RegionRefIndexed regionRef="r31" index="9"/></OrderedGroup></ReadingOrder>
+	<TextRegion id="r13" type="page-number" textColour="black">
+	<Coords>
+	<Point x="1318" y="172"/>
+	<Point x="1318" y="254"/>
+	<Point x="1427" y="254"/>
+	<Point x="1427" y="172"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>84</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r15">
+	<Coords>
+	<Point x="2539" y="263"/>
+	<Point x="2539" y="318"/>
+	<Point x="130" y="318"/>
+	<Point x="130" y="263"/></Coords></SeparatorRegion>
+	<TextRegion id="r16" type="heading" textColour="black">
+	<Coords>
+	<Point x="872" y="333"/>
+	<Point x="872" y="400"/>
+	<Point x="1806" y="400"/>
+	<Point x="1806" y="333"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>16DE VERGADERING. — 12 JANUARIJ 1815.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r17" type="heading" textColour="black">
+	<Coords>
+	<Point x="869" y="421"/>
+	<Point x="869" y="500"/>
+	<Point x="1790" y="500"/>
+	<Point x="1790" y="421"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Bijlagen der concept-wet op de nationale militie.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r18">
+	<Coords>
+	<Point x="2542" y="518"/>
+	<Point x="2542" y="569"/>
+	<Point x="130" y="569"/>
+	<Point x="130" y="518"/></Coords></SeparatorRegion>
+	<TextRegion id="r19" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="130" y="581"/>
+	<Point x="130" y="648"/>
+	<Point x="500" y="648"/>
+	<Point x="500" y="581"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MODEL LITT. H.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r20">
+	<Coords>
+	<Point x="242" y="660"/>
+	<Point x="242" y="678"/>
+	<Point x="409" y="678"/>
+	<Point x="409" y="660"/></Coords></SeparatorRegion>
+	<TextRegion id="r21" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="448" y="878"/>
+	<Point x="448" y="948"/>
+	<Point x="875" y="948"/>
+	<Point x="875" y="878"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MILITIE-DISTRICT.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r22" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="1209" y="872"/>
+	<Point x="1209" y="942"/>
+	<Point x="1609" y="942"/>
+	<Point x="1609" y="872"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MILITIE-KANTON.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r23" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="1933" y="872"/>
+	<Point x="1933" y="936"/>
+	<Point x="2233" y="936"/>
+	<Point x="2233" y="872"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>GEMEENTE.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r24">
+	<Coords>
+	<Point x="427" y="1024"/>
+	<Point x="427" y="1063"/>
+	<Point x="912" y="1063"/>
+	<Point x="912" y="1024"/></Coords></SeparatorRegion>
+	<SeparatorRegion id="r25">
+	<Coords>
+	<Point x="1160" y="1021"/>
+	<Point x="1160" y="1057"/>
+	<Point x="1639" y="1057"/>
+	<Point x="1639" y="1021"/></Coords></SeparatorRegion>
+	<SeparatorRegion id="r26">
+	<Coords>
+	<Point x="1884" y="1018"/>
+	<Point x="1884" y="1054"/>
+	<Point x="2330" y="1054"/>
+	<Point x="2330" y="1018"/></Coords></SeparatorRegion>
+	<TextRegion id="r27" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="106" y="1327"/>
+	<Point x="106" y="1651"/>
+	<Point x="2575" y="1651"/>
+	<Point x="2575" y="1327"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Het plaatselijk bestuur van verklaart, dat NN. bij de loting voor de nationale militie van het jaar
+in het militie-kanton gemeente van getrokken hebbende n°. is de eenige
+zoon van (naam en voornaam van den vader en van de moeder) of (bij vooroverlijden van de beide ouders) de eenige klein-
+zoon van (naam en voornaam van den grootvader en van de grootmoeder.)</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r28" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="1630" y="1718"/>
+	<Point x="1630" y="1806"/>
+	<Point x="2324" y="1806"/>
+	<Point x="2324" y="1718"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Van wege het plaatselijk bestuur,</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r29" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="157" y="2051"/>
+	<Point x="157" y="2136"/>
+	<Point x="539" y="2136"/>
+	<Point x="539" y="2051"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MODEL LITT. K.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r30">
+	<Coords>
+	<Point x="266" y="2148"/>
+	<Point x="266" y="2169"/>
+	<Point x="451" y="2169"/>
+	<Point x="451" y="2148"/></Coords></SeparatorRegion>
+	<TextRegion id="r31" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="2569" y="2203"/>
+	<Point x="2569" y="2281"/>
+	<Point x="1151" y="2281"/>
+	<Point x="1151" y="2203"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>REGISTER der plaatsvervangers en verwisselde nummers in het</Unicode></TextEquiv></TextRegion>
+	<TableRegion id="r32">
+	<Coords>
+	<Point x="127" y="2303"/>
+	<Point x="127" y="3903"/>
+	<Point x="2760" y="3903"/>
+	<Point x="2760" y="2303"/></Coords></TableRegion></Page></PcGts>

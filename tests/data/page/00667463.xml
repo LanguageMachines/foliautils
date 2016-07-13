@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd" pcGtsId="pc-00667463">
+	<Metadata>
+	<Creator>ABBYY FineReader Engine 9.0</Creator>
+	<Created>2011-05-19T00:21:24</Created>
+	<LastChange>2011-12-02T15:33:41</LastChange>
+<Comment><![CDATA[ <PageMetadata><meta key="Can.be.published?">No</meta>
+<meta key="Colour.Depth">8 bit</meta>
+<meta key="Comment.on.file.acquisition">Result of splitting image ID 539791. (USAL-cp, May 2011)</meta>
+<meta key="Date.Description">1814/15</meta>
+<meta key="Document.ID">00667463</meta>
+<meta key="Document.Type">Legal</meta>
+<meta key="File.Extension">.tif</meta>
+<meta key="Image.Sets">KB Demonstrator Set</meta>
+<meta key="Institution">KB - Koninklijke Bibliotheek</meta>
+<meta key="Language">Dutch</meta>
+<meta key="Original.Path">00539791a.tif</meta>
+<meta key="Original.Source">Microfilm</meta>
+<meta key="Publication.Date.Year">1814</meta>
+<meta key="Resolution">300 dpi</meta>
+<meta key="Script">Latin</meta>
+<meta key="Size">2796 &times; 4279 pixels, 23.7&times;36.2cm</meta>
+<meta key="Status">final</meta>
+<meta key="Title">Staten-Generaal Digitaal 1814-1815</meta>
+</PageMetadata> ]]></Comment>
+</Metadata>
+	<Page imageFilename="00667463.tif" imageWidth="2796" imageHeight="4279">
+	<ReadingOrder>
+	<OrderedGroup id="ro357564684568544579089">
+	<RegionRefIndexed regionRef="r17" index="0"/>
+	<RegionRefIndexed regionRef="r18" index="1"/>
+	<RegionRefIndexed regionRef="r20" index="2"/>
+	<RegionRefIndexed regionRef="r22" index="3"/>
+	<RegionRefIndexed regionRef="r24" index="4"/>
+	<RegionRefIndexed regionRef="r25" index="5"/>
+	<RegionRefIndexed regionRef="r27" index="6"/>
+	<RegionRefIndexed regionRef="r28" index="7"/>
+	<RegionRefIndexed regionRef="r29" index="8"/>
+	<RegionRefIndexed regionRef="r42" index="9"/>
+	<RegionRefIndexed regionRef="r41" index="10"/></OrderedGroup></ReadingOrder>
+	<TextRegion id="r15" type="page-number" textColour="black">
+	<Coords>
+	<Point x="1327" y="151"/>
+	<Point x="1327" y="236"/>
+	<Point x="1439" y="236"/>
+	<Point x="1439" y="151"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>82</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r16">
+	<Coords>
+	<Point x="2590" y="242"/>
+	<Point x="2590" y="300"/>
+	<Point x="169" y="300"/>
+	<Point x="169" y="242"/></Coords></SeparatorRegion>
+	<TextRegion id="r17" type="heading" textColour="black">
+	<Coords>
+	<Point x="906" y="312"/>
+	<Point x="906" y="375"/>
+	<Point x="1854" y="375"/>
+	<Point x="1854" y="312"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>16DE VERGADERING. — 12 JANUARIJ 1815.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r18" type="heading" textColour="black">
+	<Coords>
+	<Point x="915" y="390"/>
+	<Point x="915" y="475"/>
+	<Point x="1839" y="475"/>
+	<Point x="1839" y="390"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Bijlagen der concept‑wet op de nationale militie.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r19">
+	<Coords>
+	<Point x="181" y="539"/>
+	<Point x="181" y="493"/>
+	<Point x="2596" y="493"/>
+	<Point x="2596" y="539"/></Coords></SeparatorRegion>
+	<TextRegion id="r20" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="200" y="557"/>
+	<Point x="200" y="624"/>
+	<Point x="557" y="624"/>
+	<Point x="557" y="557"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MODEL LITT. E.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r21">
+	<Coords>
+	<Point x="300" y="633"/>
+	<Point x="300" y="663"/>
+	<Point x="484" y="663"/>
+	<Point x="484" y="633"/></Coords></SeparatorRegion>
+	<TextRegion id="r22" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="2603" y="636"/>
+	<Point x="2603" y="721"/>
+	<Point x="1493" y="721"/>
+	<Point x="1493" y="636"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>LOTINGS‑LIJST voor de nationale militie van het</Unicode></TextEquiv></TextRegion>
+	<TableRegion id="r23">
+	<Coords>
+	<Point x="121" y="745"/>
+	<Point x="121" y="2327"/>
+	<Point x="2792" y="2327"/>
+	<Point x="2792" y="747"/></Coords></TableRegion>
+	<TextRegion id="r24" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="321" y="2339"/>
+	<Point x="321" y="2424"/>
+	<Point x="2624" y="2424"/>
+	<Point x="2624" y="2339"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>NB. Na het laatste numero zal deze lijst door den militie‑commissaris gesloten en met den gecommitteerde van het</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r25" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="200" y="2536"/>
+	<Point x="200" y="2618"/>
+	<Point x="572" y="2618"/>
+	<Point x="572" y="2536"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MODEL LITT. F.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r26">
+	<Coords>
+	<Point x="281" y="2645"/>
+	<Point x="281" y="2672"/>
+	<Point x="496" y="2672"/>
+	<Point x="496" y="2645"/></Coords></SeparatorRegion>
+	<TextRegion id="r27" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="369" y="2787"/>
+	<Point x="369" y="2857"/>
+	<Point x="812" y="2857"/>
+	<Point x="812" y="2787"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MILITIE‑DISTRICT.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r28" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="1178" y="2790"/>
+	<Point x="1178" y="2860"/>
+	<Point x="1593" y="2860"/>
+	<Point x="1593" y="2790"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MILITIE‑KANTON.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r29" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="2012" y="2772"/>
+	<Point x="2012" y="2857"/>
+	<Point x="2342" y="2857"/>
+	<Point x="2342" y="2772"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>GEMEENTE.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r30">
+	<Coords>
+	<Point x="845" y="2969"/>
+	<Point x="845" y="2939"/>
+	<Point x="315" y="2939"/>
+	<Point x="315" y="2969"/></Coords></SeparatorRegion>
+	<SeparatorRegion id="r31">
+	<Coords>
+	<Point x="1087" y="2933"/>
+	<Point x="1087" y="2966"/>
+	<Point x="1654" y="2966"/>
+	<Point x="1654" y="2933"/></Coords></SeparatorRegion>
+	<SeparatorRegion id="r32">
+	<Coords>
+	<Point x="1921" y="2933"/>
+	<Point x="1921" y="2969"/>
+	<Point x="2445" y="2969"/>
+	<Point x="2445" y="2933"/></Coords></SeparatorRegion>
+	<TextRegion id="r41" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="151" y="3693"/>
+	<Point x="151" y="3812"/>
+	<Point x="2621" y="3812"/>
+	<Point x="2621" y="3693"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>NB. Indien de geestelijke slechts proponent is en geene vaste woonplaats heeft, moet dit in de verklaring gemeld, en dezelve
+in zooverre veranderd word�n.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r42" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="132" y="3172"/>
+	<Point x="132" y="3528"/>
+	<Point x="2624" y="3528"/>
+	<Point x="2624" y="3172"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Het plaatselijk bestuur van verklaart dat N. N. zich als bij de
+gemeente in bevindt, alwaar bij op den als zoodanig is beroepen
+of aangesteld.
+Van wege het plaatselijk bestuur,</Unicode></TextEquiv></TextRegion></Page></PcGts>

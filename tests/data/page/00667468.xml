@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd" pcGtsId="pc-00667468">
+	<Metadata>
+	<Creator>ABBYY FineReader Engine 9.0</Creator>
+	<Created>2011-05-19T07:22:01</Created>
+	<LastChange>2011-12-02T15:33:42</LastChange>
+<Comment><![CDATA[ <PageMetadata><meta key="Can.be.published?">No</meta>
+<meta key="Colour.Depth">8 bit</meta>
+<meta key="Comment.on.file.acquisition">Result of splitting image ID 539795. (USAL-cp, May 2011)</meta>
+<meta key="Date.Description">1814/15</meta>
+<meta key="Document.ID">00667468</meta>
+<meta key="Document.Type">Legal</meta>
+<meta key="File.Extension">.tif</meta>
+<meta key="Image.Sets">KB Demonstrator Set</meta>
+<meta key="Institution">KB - Koninklijke Bibliotheek</meta>
+<meta key="Language">Dutch</meta>
+<meta key="Original.Path">00539795b.tif</meta>
+<meta key="Original.Source">Microfilm</meta>
+<meta key="Publication.Date.Year">1814</meta>
+<meta key="Resolution">300 dpi</meta>
+<meta key="Script">Latin</meta>
+<meta key="Size">2782 &times; 4279 pixels, 23.6&times;36.2cm</meta>
+<meta key="Status">final</meta>
+<meta key="Title">Staten-Generaal Digitaal 1814-1815</meta>
+</PageMetadata> ]]></Comment>
+</Metadata>
+	<Page imageFilename="00667468.tif" imageWidth="2782" imageHeight="4279">
+	<ReadingOrder>
+	<OrderedGroup id="ro357564684568544579089">
+	<RegionRefIndexed regionRef="r16" index="0"/>
+	<RegionRefIndexed regionRef="r17" index="1"/>
+	<RegionRefIndexed regionRef="r19" index="2"/>
+	<RegionRefIndexed regionRef="r21" index="3"/>
+	<RegionRefIndexed regionRef="r23" index="4"/>
+	<RegionRefIndexed regionRef="r25" index="5"/></OrderedGroup></ReadingOrder>
+	<TextRegion id="r13" type="header" textColour="black">
+	<Coords>
+	<Point x="221" y="160"/>
+	<Point x="221" y="242"/>
+	<Point x="492" y="242"/>
+	<Point x="492" y="160"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Vel 23.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r14" type="page-number" textColour="black">
+	<Coords>
+	<Point x="1353" y="167"/>
+	<Point x="1353" y="242"/>
+	<Point x="1475" y="242"/>
+	<Point x="1475" y="167"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>89</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r15">
+	<Coords>
+	<Point x="171" y="264"/>
+	<Point x="171" y="303"/>
+	<Point x="2603" y="303"/>
+	<Point x="2603" y="264"/></Coords></SeparatorRegion>
+	<TextRegion id="r16" type="heading" textColour="black">
+	<Coords>
+	<Point x="950" y="325"/>
+	<Point x="950" y="392"/>
+	<Point x="1892" y="392"/>
+	<Point x="1892" y="325"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>16DE VERGADERING. — 12 JANUARIJ 1815.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r17" type="heading" textColour="black">
+	<Coords>
+	<Point x="935" y="403"/>
+	<Point x="935" y="496"/>
+	<Point x="1878" y="496"/>
+	<Point x="1878" y="403"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Bijlagen der concept-wet op de nationale militie.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r18">
+	<Coords>
+	<Point x="192" y="510"/>
+	<Point x="192" y="553"/>
+	<Point x="2603" y="553"/>
+	<Point x="2603" y="510"/></Coords></SeparatorRegion>
+	<TextRegion id="r19" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="167" y="660"/>
+	<Point x="167" y="753"/>
+	<Point x="1825" y="753"/>
+	<Point x="1825" y="660"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>ten einde ingelijfd te worden in het korps nationale militie, bataillon n°.</Unicode></TextEquiv></TextRegion>
+	<TableRegion id="r20">
+	<Coords>
+	<Point x="9" y="775"/>
+	<Point x="9" y="2392"/>
+	<Point x="2642" y="2392"/>
+	<Point x="2642" y="778"/></Coords></TableRegion>
+	<TextRegion id="r21" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="217" y="2578"/>
+	<Point x="217" y="2646"/>
+	<Point x="596" y="2646"/>
+	<Point x="596" y="2578"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>MODEL LITT. Q.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r22">
+	<Coords>
+	<Point x="325" y="2657"/>
+	<Point x="325" y="2685"/>
+	<Point x="514" y="2685"/>
+	<Point x="514" y="2657"/></Coords></SeparatorRegion>
+	<TextRegion id="r23" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="485" y="2781"/>
+	<Point x="485" y="2933"/>
+	<Point x="2629" y="2933"/>
+	<Point x="2629" y="2781"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>REGISTER, behelzende de namen van alle de leden der nationale militie, dewelke behooren tot
+de gemeente van</Unicode></TextEquiv></TextRegion>
+	<TableRegion id="r24">
+	<Coords>
+	<Point x="177" y="2944"/>
+	<Point x="177" y="3859"/>
+	<Point x="2625" y="3859"/>
+	<Point x="2625" y="2944"/></Coords></TableRegion>
+	<TextRegion id="r25" type="paragraph" textColour="black">
+	<Coords>
+	<Point x="236" y="3863"/>
+	<Point x="236" y="3925"/>
+	<Point x="1555" y="3925"/>
+	<Point x="1555" y="3863"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>HANDELINGEN DER STATEN-GENERAAL. Zitting 1814—1815.</Unicode></TextEquiv></TextRegion></Page></PcGts>

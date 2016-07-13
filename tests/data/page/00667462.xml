@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19 http://schema.primaresearch.org/PAGE/gts/pagecontent/2010-03-19/pagecontent.xsd" pcGtsId="pc-00667462">
+	<Metadata>
+	<Creator>ABBYY FineReader Engine 9.0</Creator>
+	<Created>2011-05-19T00:21:16</Created>
+	<LastChange>2011-12-02T15:33:41</LastChange>
+<Comment><![CDATA[ <PageMetadata><meta key="Can.be.published?">No</meta>
+<meta key="Colour.Depth">8 bit</meta>
+<meta key="Comment.on.file.acquisition">Result of splitting image ID 539790. (USAL-cp, May 2011)</meta>
+<meta key="Date.Description">1814/15</meta>
+<meta key="Document.ID">00667462</meta>
+<meta key="Document.Type">Legal</meta>
+<meta key="File.Extension">.tif</meta>
+<meta key="Image.Sets">KB Demonstrator Set</meta>
+<meta key="Institution">KB - Koninklijke Bibliotheek</meta>
+<meta key="Language">Dutch</meta>
+<meta key="Original.Path">00539790b.tif</meta>
+<meta key="Original.Source">Microfilm</meta>
+<meta key="Publication.Date.Year">1814</meta>
+<meta key="Resolution">300 dpi</meta>
+<meta key="Script">Latin</meta>
+<meta key="Size">2760 &times; 4279 pixels, 23.4&times;36.2cm</meta>
+<meta key="Status">final</meta>
+<meta key="Title">Staten-Generaal Digitaal 1814-1815</meta>
+</PageMetadata> ]]></Comment>
+</Metadata>
+	<Page imageFilename="00667462.tif" imageWidth="2760" imageHeight="4279">
+	<ReadingOrder>
+	<OrderedGroup id="ro357564684568544579089">
+	<RegionRefIndexed regionRef="r11" index="0"/>
+	<RegionRefIndexed regionRef="r12" index="1"/>
+	<RegionRefIndexed regionRef="r14" index="2"/>
+	<RegionRefIndexed regionRef="r18" index="3"/>
+	<RegionRefIndexed regionRef="r19" index="4"/></OrderedGroup></ReadingOrder>
+	<TextRegion id="r8" type="header">
+	<Coords>
+	<Point x="187" y="122"/>
+	<Point x="187" y="206"/>
+	<Point x="493" y="206"/>
+	<Point x="493" y="122"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Vel 21.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r9" type="page-number">
+	<Coords>
+	<Point x="1325" y="116"/>
+	<Point x="1325" y="212"/>
+	<Point x="1454" y="212"/>
+	<Point x="1454" y="116"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>81</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r10">
+	<Coords>
+	<Point x="167" y="225"/>
+	<Point x="167" y="270"/>
+	<Point x="2580" y="270"/>
+	<Point x="2580" y="225"/></Coords></SeparatorRegion>
+	<TextRegion id="r11" type="heading">
+	<Coords>
+	<Point x="935" y="287"/>
+	<Point x="935" y="351"/>
+	<Point x="1858" y="351"/>
+	<Point x="1858" y="287"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>16DE VERGADERING. — 12 JANUARIJ 1815.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r12" type="heading">
+	<Coords>
+	<Point x="932" y="370"/>
+	<Point x="932" y="451"/>
+	<Point x="1851" y="451"/>
+	<Point x="1851" y="370"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>Bijlagen der concept‑wet op de nationale militie.</Unicode></TextEquiv></TextRegion>
+	<SeparatorRegion id="r13">
+	<Coords>
+	<Point x="170" y="470"/>
+	<Point x="170" y="519"/>
+	<Point x="2596" y="519"/>
+	<Point x="2596" y="470"/></Coords></SeparatorRegion>
+	<TextRegion id="r14" type="paragraph">
+	<Coords>
+	<Point x="164" y="619"/>
+	<Point x="164" y="712"/>
+	<Point x="900" y="712"/>
+	<Point x="900" y="619"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>ingeschrevenen van de gemeente</Unicode></TextEquiv></TextRegion>
+	<TableRegion id="r16">
+	<Coords>
+	<Point x="6" y="729"/>
+	<Point x="6" y="2003"/>
+	<Point x="2664" y="2003"/>
+	<Point x="2664" y="729"/></Coords></TableRegion>
+	<TextRegion id="r18" type="paragraph">
+	<Coords>
+	<Point x="161" y="2029"/>
+	<Point x="161" y="2100"/>
+	<Point x="2574" y="2100"/>
+	<Point x="2574" y="2029"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>daarop terstond de getrokkene numero's te kunnen invullen en dezelve vervolgens ter griﬃe of secretarie te kunnen deponeren.</Unicode></TextEquiv></TextRegion>
+	<TextRegion id="r19" type="paragraph">
+	<Coords>
+	<Point x="1545" y="3874"/>
+	<Point x="1545" y="3787"/>
+	<Point x="203" y="3787"/>
+	<Point x="203" y="3874"/></Coords>
+	<TextEquiv>
+	<PlainText></PlainText>
+	<Unicode>HANDELINGEN DER STATEN‑GENERAAL. Zitting 1814—1815.</Unicode></TextEquiv></TextRegion></Page></PcGts>
