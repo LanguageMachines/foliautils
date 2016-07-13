@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-idf > testidf.out 2>&1
+
+$my_bin/FoLiA-idf -V >> testidf.out 2>&1
+
+$my_bin/FoLiA-idf --help >> testidf.out 2>&1

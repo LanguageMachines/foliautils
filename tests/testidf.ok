@@ -1,0 +1,23 @@
+Usage: [options] file/dir
+	 FoLiA-idf will produce IDF statistics for a directory of FoLiA files 
+	--clip	 clipping factor. 
+			 (entries with frequency <= this factor will be ignored). 
+	--lower	 Lowercase all words
+	-t	 number of threads
+	-h or --help	 this message 
+	-V or --version	 show version 
+	-e	 expr: specify the expression all files should match with.
+	-O	 output prefix
+	-R	 search the dirs recursively (when appropriate).
+foliautils 0.5
+Usage: [options] file/dir
+	 FoLiA-idf will produce IDF statistics for a directory of FoLiA files 
+	--clip	 clipping factor. 
+			 (entries with frequency <= this factor will be ignored). 
+	--lower	 Lowercase all words
+	-t	 number of threads
+	-h or --help	 this message 
+	-V or --version	 show version 
+	-e	 expr: specify the expression all files should match with.
+	-O	 output prefix
+	-R	 search the dirs recursively (when appropriate).
