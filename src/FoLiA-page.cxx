@@ -322,6 +322,9 @@ bool convert_pagexml( const string& fileName,
   // }
 
   string docid = orgFile;
+  if ( isdigit(docid[0]) ){
+    docid = "id-" + docid;
+  }
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
@@ -331,7 +334,11 @@ bool convert_pagexml( const string& fileName,
   process( text, specials, specialRefs, docid );
   process( text, regionStrings, backrefs, docid );
 
-  string outName = outputDir + "/" + docid + ".folia.xml";
+  string outName;
+  if ( !outputDir.empty() ){
+    outName = outputDir + "/";
+  }
+  outName += orgFile + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
     type = outputType;
@@ -391,10 +398,6 @@ int main( int argc, char *argv[] ){
   string outputDir;
   zipType outputType = NORMAL;
   string value;
-  if ( opts.empty() ){
-    usage();
-    exit(EXIT_FAILURE);
-  }
   if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
