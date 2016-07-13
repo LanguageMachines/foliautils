@@ -40,6 +40,7 @@ src/FoLiA-langcat
 src/FoLiA-page
 src/FoLiA-stats
 src/FoLiA-txt
+src/FoLiA-pm
 src/Makefile
 src/Makefile.in
 stamp-h1
