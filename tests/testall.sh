@@ -10,6 +10,6 @@ then
 fi
 
 for file in testfolia2text testfoliatxt testfoliaalto testcollect testcorrect \
-	    testhocr testidf
+	    testhocr testidf testpage
 do ./testone.sh $file
 done

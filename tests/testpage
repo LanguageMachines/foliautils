@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-page > testpage.out 2>&1
+
+$my_bin/FoLiA-page -V >> testpage.out 2>&1
+
+$my_bin/FoLiA-page --help >> testpage.out 2>&1
