@@ -28,3 +28,28 @@ Usage: alto [options] file/dir
 			 'c'=g creates gzip files (.gz)
 	-v	 verbose output 
 	-V or --version	 show version 
+start processing of 1 files 
+resolving BOEK data/test:mpeg21.xml
+Downloaded files 
+found no textblocks in /tmp/cache/dpo_1880_0001_alto.xml
+found no textblocks in /tmp/cache/dpo_1880_0002_alto.xml
+found no textblocks in /tmp/cache/dpo_1880_0004_alto.xml
+resolved data/test:mpeg21.xml
+done
+dpo_1880_0001_alto.xml
+dpo_1880_0002_alto.xml
+dpo_1880_0003_alto.xml
+dpo_1880_0004_alto.xml
+dpo_1880_0005_alto.xml
+dpo_1880_0006_alto.xml
+dpo_1880_0007_alto.xml
+dpo_1880_0008_alto.xml
+dpo_1880_0009_alto.xml
+dpo_1880_0010_alto.xml
+out/dpo.1880.mpeg21.0003.alto.folia.xml
+out/dpo.1880.mpeg21.0005.alto.folia.xml
+out/dpo.1880.mpeg21.0006.alto.folia.xml
+out/dpo.1880.mpeg21.0007.alto.folia.xml
+out/dpo.1880.mpeg21.0008.alto.folia.xml
+out/dpo.1880.mpeg21.0009.alto.folia.xml
+out/dpo.1880.mpeg21.0010.alto.folia.xml
