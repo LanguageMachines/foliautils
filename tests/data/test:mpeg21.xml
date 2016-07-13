@@ -1,0 +1,571 @@
+<?xml version="1.0"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+         http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+	<responseDate>2013-11-21T11:29:17.925Z</responseDate>
+	<request verb="GetRecord" metadataPrefix="didl" >ajp://services.kb.nl/mdo/oai	</request>
+	<GetRecord>
+		<record>
+			<header>
+				<identifier>DPO:dpo:1880:mpeg21</identifier>
+				<datestamp>2011-05-04</datestamp>
+				<setSpec>DPO</setSpec>
+			</header>
+			<metadata>
+<didl:DIDL xmlns:didl="urn:mpeg:mpeg21:2002:02-DIDL-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mpeg:mpeg21:2002:02-DIDL-NS http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-21_schema_files/did/didl.xsd" xmlns:srw_dc="info:srw/schema/1/dc-v1.1" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcx="http://krait.kb.nl/coop/tel/handbook/telterms.html" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:srw="http://www.loc.gov/zing/srw/">
+				<didl:Item xsi:schemaLocation="http://purl.org/dc/elements/1.1/ http://dublincore.org/schemas/xmls/qdc/2006/01/06/dc.xsd" dc:identifier="dpo:1880:mpeg21">
+					<didl:Descriptor>
+						<didl:Statement mimeType="text/plain">1880</didl:Statement>
+					</didl:Descriptor>
+					<didl:Descriptor>
+						<didl:Statement mimeType="text/plain">Algemeene oefenschoole van konsten en weetenschappen. Eerste afdeeling. Behelzende de wysbegeerte [...] of, achtereenvolgende beschouwingen van de werken der natuur. : Part 3</didl:Statement>
+					</didl:Descriptor>
+					<didl:Component dc:identifier="dpo:1880:mpeg21">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+						</didl:Descriptor>
+						<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21">
+							<srw_dc:dc xsi:schemaLocation="http://purl.org/dc/elements/1.1/ http://dublincore.org/schemas/xmls/qdc/2006/01/06/dc.xsd http://purl.org/dc/terms/ http://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd">
+								<dc:title>Algemeene oefenschoole van konsten en weetenschappen. Eerste afdeeling. Behelzende de wysbegeerte [...] of, achtereenvolgende beschouwingen van de werken der natuur. : Part 3</dc:title>
+								<dcx:digitizationProject>dpo</dcx:digitizationProject>
+								<dcterms:isPartOf xsi:type="dcx:collectionIdentifier">DPO</dcterms:isPartOf>
+								<dcterms:issued>2011-01-01</dcterms:issued>
+								<dc:identifier xsi:type="dcterms:URI">http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21</dc:identifier>
+								<dcx:recordIdentifier xsi:type="dcterms:URI">dpo:1880:mpeg21</dcx:recordIdentifier>
+								<dc:extent xsi:type="dcx:numberOfPages">458</dc:extent>
+								<dcx:part></dcx:part>
+								<dcx:seq>1</dcx:seq>
+								<dcx:recordIdentifier xsi:type="dcx:PPN">297909177</dcx:recordIdentifier>
+								<dcx:recordIdentifier xsi:type="dcx:EPN">467614563</dcx:recordIdentifier>
+							</srw_dc:dc>
+						</didl:Resource>
+					</didl:Component>
+					<didl:Component dc:identifier="dpo:1880:mpeg21:pdf">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">PDF</didl:Statement>
+						</didl:Descriptor>
+						<didl:Resource mimeType="application/pdf" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:pdf"></didl:Resource>
+					</didl:Component>
+					<didl:Component dc:identifier="dpo:1880:mpeg21:pica">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">pica</didl:Statement>
+						</didl:Descriptor>
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain">The pica+ record from the moment the title was digitized.</didl:Statement>
+						</didl:Descriptor>
+						<didl:Resource mimeType="application/xml" ref="http://www.picarta.nl/sru/version=1.1?DB=3.11&amp;operation=searchRetrieve&amp;query=PPN:297909177&amp;recordSchema=pica"><srw:record>
+<srw:recordSchema>pica</srw:recordSchema>
+<srw:recordPacking>XML</srw:recordPacking>
+<srw:recordData>
+<record>
+<datafield tag="001@"><subfield code="0">20</subfield></datafield>
+<datafield tag="001A"><subfield code="0">1996:10-11-06</subfield></datafield>
+<datafield tag="001B"><subfield code="0">1996:30-11-06</subfield>
+<subfield code="t">11:41:05.000</subfield></datafield>
+<datafield tag="001D"><subfield code="0">1996:10-11-06</subfield></datafield>
+<datafield tag="001U"><subfield code="0">utf8</subfield></datafield>
+<datafield tag="001X"><subfield code="0">20</subfield>
+<subfield code="A">111</subfield></datafield>
+<datafield tag="002@"><subfield code="0">Aav</subfield></datafield>
+<datafield tag="003@"><subfield code="0">297909177</subfield></datafield>
+<datafield tag="007P"><subfield code="0">178208</subfield>
+<subfield code="c">b1 A yk : *b2 2F4 ood$</subfield>
+<subfield code="c">c1 A ng : c2 D3 $ge</subfield></datafield>
+<datafield tag="010@"><subfield code="a">ned</subfield>
+<subfield code="c">eng</subfield></datafield>
+<datafield tag="011@"><subfield code="a">1782</subfield></datafield>
+<datafield tag="014@"><subfield code="0">x</subfield></datafield>
+<datafield tag="014@"><subfield code="0">i</subfield></datafield>
+<datafield tag="019@"><subfield code="a">nl</subfield></datafield>
+<datafield tag="021A"><subfield code="a">@Algemeene oefenschoole van konsten en weetenschappen. Eerste afdeeling. Behelzende de wysbegeerte [...] of, achtereenvolgende beschouwingen van de werken der natuur.</subfield>
+<subfield code="d">`IT`Part 3`LO`</subfield></datafield>
+<datafield occurrence="01" tag="022A"><subfield code="a">The @general magazine of arts and sciences. Dutch. Section 1. Part 03</subfield></datafield>
+<datafield tag="033D"><subfield code="a">Amsteldam, P. Meijer, 1782</subfield></datafield>
+<datafield tag="033J"><subfield code="9">136534759</subfield>
+<subfield code="8">Meyer, Pieter (erven) Amsterdam, 1781-1799</subfield></datafield>
+<datafield tag="033J"><subfield code="9">075575434</subfield>
+<subfield code="8">Warnars, Gerrit Amsterdam, 1768-1804</subfield></datafield>
+<datafield tag="034D"><subfield code="a">Ï€1 A-2D`SUP`8`LO` 2E`SUP`4`LO`(-2E4) 2F`SUP`8`LO` (lacks 2F8, blank?), `SUP`2`LO`A-C`SUP`8`LO` `SUP`2`LO`D1,2,3</subfield></datafield>
+<datafield tag="034I"><subfield code="a">8Â°</subfield></datafield>
+<datafield tag="036D"><subfield code="9">29790468X</subfield>
+<subfield code="8">@Algemeene oefenschoole van konsten en weetenschappen. Eerste afdeeling; behelzende de wysbegeerte [...] of, achtereenvolgende beschouwingen van de werken der natuur. : `IT`Part 1`LO`</subfield></datafield>
+<datafield tag="037A"><subfield code="a">`IT`Index also issued in: Algemeene bladwyzers van de voornaamste zaaken, welke voorkomen in de ses afdelingen der Algemeene oefenschoole, 1782`LO`</subfield></datafield>
+<datafield tag="037A"><subfield code="a">`IT`Published in instalments`LO`</subfield></datafield>
+<datafield tag="101@"><subfield code="a">20</subfield>
+<subfield code="c">PICA</subfield>
+<subfield code="d">, STCN</subfield></datafield>
+<datafield tag="101B"><subfield code="0">10-11-06</subfield>
+<subfield code="t">16:15:07.000</subfield></datafield>
+<datafield tag="101U"><subfield code="0">utf8</subfield></datafield>
+<datafield occurrence="11" tag="144Z"><subfield code="9">155445820</subfield>
+<subfield code="8">Exact sciences in general</subfield></datafield>
+<datafield occurrence="01" tag="147B"><subfield code="a">A-VU (ho)</subfield></datafield>
+<datafield occurrence="01" tag="201B"><subfield code="0">13-08-08</subfield>
+<subfield code="t">14:00:52.000</subfield></datafield>
+<datafield occurrence="01" tag="201U"><subfield code="0">utf8</subfield></datafield>
+<datafield occurrence="01" tag="203@"><subfield code="0">460408771</subfield></datafield>
+<datafield occurrence="01" tag="208@"><subfield code="a">10-11-06</subfield>
+<subfield code="b">S.avu</subfield></datafield>
+<datafield occurrence="01" tag="209A"><subfield code="a">XM.00315:3</subfield>
+<subfield code="f">AVU</subfield>
+<subfield code="d">i</subfield>
+<subfield code="x">00</subfield></datafield>
+<datafield occurrence="01" tag="209S"><subfield code="z">Illustration</subfield>
+<subfield code="0">html</subfield>
+<subfield code="a">http://racer.kb.nl/pregvn/STCN/STCN_297909177_01.jpg</subfield></datafield>
+<datafield occurrence="02" tag="201B"><subfield code="0">10-11-06</subfield>
+<subfield code="t">16:15:49.000</subfield></datafield>
+<datafield occurrence="02" tag="201U"><subfield code="0">utf8</subfield></datafield>
+<datafield occurrence="02" tag="203@"><subfield code="0">460408801</subfield></datafield>
+<datafield occurrence="02" tag="208@"><subfield code="a">10-11-06</subfield>
+<subfield code="b">S.h</subfield></datafield>
+<datafield occurrence="02" tag="209A"><subfield code="a">199 F 1:3</subfield>
+<subfield code="f">H</subfield>
+<subfield code="d">i</subfield>
+<subfield code="x">00</subfield></datafield>
+<datafield occurrence="03" tag="201B"><subfield code="0">01-05-07</subfield>
+<subfield code="t">13:19:49.000</subfield></datafield>
+<datafield occurrence="03" tag="201U"><subfield code="0">utf8</subfield></datafield>
+<datafield occurrence="03" tag="203@"><subfield code="0">467614563</subfield></datafield>
+<datafield occurrence="03" tag="208@"><subfield code="a">01-05-07</subfield>
+<subfield code="b">S.l</subfield></datafield>
+<datafield occurrence="03" tag="209A"><subfield code="a">1161 A 7</subfield>
+<subfield code="f">L</subfield>
+<subfield code="d">i</subfield>
+<subfield code="x">00</subfield></datafield>
+<datafield occurrence="04" tag="201B"><subfield code="0">08-08-08</subfield>
+<subfield code="t">12:02:41.000</subfield></datafield>
+<datafield occurrence="04" tag="201U"><subfield code="0">utf8</subfield></datafield>
+<datafield occurrence="04" tag="203@"><subfield code="0">504282255</subfield></datafield>
+<datafield occurrence="04" tag="208@"><subfield code="a">08-08-08</subfield>
+<subfield code="b">S.n</subfield></datafield>
+<datafield occurrence="04" tag="209A"><subfield code="a">OD 241 c 26</subfield>
+<subfield code="f">N</subfield>
+<subfield code="d">i</subfield>
+<subfield code="x">00</subfield></datafield>
+<datafield occurrence="05" tag="201B"><subfield code="0">08-08-08</subfield>
+<subfield code="t">12:02:41.000</subfield></datafield>
+<datafield occurrence="05" tag="201U"><subfield code="0">utf8</subfield></datafield>
+<datafield occurrence="05" tag="203@"><subfield code="0">46040881X</subfield></datafield>
+<datafield occurrence="05" tag="208@"><subfield code="a">10-11-06</subfield>
+<subfield code="b">S.u</subfield></datafield>
+<datafield occurrence="05" tag="209A"><subfield code="a">A oct. 1388:3</subfield>
+<subfield code="f">U</subfield>
+<subfield code="d">i</subfield>
+<subfield code="x">00</subfield></datafield></record></srw:recordData><srw:recordPosition>1</srw:recordPosition></srw:record></didl:Resource>
+					</didl:Component>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0001">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 1</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0001">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>1</dcx:sequentialPageNumber>
+								<dcx:OCRConfidencelevel>1</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0001:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0001:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0001:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0001:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0001:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0001:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0001:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0001_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0002">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 2</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0002">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>2</dcx:sequentialPageNumber>
+								<dcx:OCRConfidencelevel>1</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0002:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0002:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0002:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0002:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0002:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0002:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0002:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0002_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0003">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 3</didl:Statement>
+						</didl:Descriptor>
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">titlepage</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0003">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>3</dcx:sequentialPageNumber>
+								<dcx:OCRConfidencelevel>0.886382978723404</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0003:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0003:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0003:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0003:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0003:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0003:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0003:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0003_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0004">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 4</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0004">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>4</dcx:sequentialPageNumber>
+								<dcx:OCRConfidencelevel>1</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0004:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0004:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0004:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0004:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0004:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0004:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0004:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0004_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0005">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 5</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0005">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>5</dcx:sequentialPageNumber>
+								<dcx:OCRConfidencelevel>0.94796178343949</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0005:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0005:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0005:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0005:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0005:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0005:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0005:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0005_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0006">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 6</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0006">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>6</dcx:sequentialPageNumber>
+								<dcx:originalPageNumber>2</dcx:originalPageNumber>
+								<dcx:OCRConfidencelevel>0.964242424242424</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0006:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0006:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0006:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0006:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0006:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0006:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0006:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0006_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0007">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 7</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0007">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>7</dcx:sequentialPageNumber>
+								<dcx:originalPageNumber>3</dcx:originalPageNumber>
+								<dcx:OCRConfidencelevel>0.973081570996979</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0007:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0007:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0007:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0007:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0007:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0007:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0007:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0007_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0008">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 8</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0008">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>8</dcx:sequentialPageNumber>
+								<dcx:originalPageNumber>4</dcx:originalPageNumber>
+								<dcx:OCRConfidencelevel>0.980552325581395</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0008:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0008:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0008:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0008:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0008:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0008:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0008:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0008_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0009">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 9</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0009">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>9</dcx:sequentialPageNumber>
+								<dcx:originalPageNumber>5</dcx:originalPageNumber>
+								<dcx:OCRConfidencelevel>0.984289940828402</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0009:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0009:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0009:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0009:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0009:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0009:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0009:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0009_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+					<didl:Item dc:identifier="dpo:1880:mpeg21:0010">
+						<didl:Descriptor>
+							<didl:Statement mimeType="text/plain" dc:type="role">page 10</didl:Statement>
+						</didl:Descriptor>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0010">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">metadata</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml">
+								<srw_dc:dcx>
+								<dcx:sequentialPageNumber>10</dcx:sequentialPageNumber>
+								<dcx:originalPageNumber>6</dcx:originalPageNumber>
+								<dcx:OCRConfidencelevel>0.970114285714286</dcx:OCRConfidencelevel>
+								</srw_dc:dcx>
+							</didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0010:ocr">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">OCR</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0010:ocr"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0010:image">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0010:image"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0010:alto">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">wordPositions</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="text/xml" ref="http://resolver.kb.nl/resolve?urn=dpo:1880:mpeg21:0010:alto"></didl:Resource>
+						</didl:Component>
+						<didl:Component dc:identifier="dpo:1880:mpeg21:0010:image/preservation">
+							<didl:Descriptor>
+								<didl:Statement mimeType="text/plain" dc:type="role">image/preservation</didl:Statement>
+							</didl:Descriptor>
+							<didl:Resource mimeType="image/jp2" ref="dpo_1880_0010_master.jpf"></didl:Resource>
+						</didl:Component>
+					</didl:Item>
+				</didl:Item>
+			</didl:DIDL>
+			</metadata>
+		</record>
+	</GetRecord>
+</OAI-PMH>
