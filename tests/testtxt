@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-txt > testtxt.out 2>&1
+
+$my_bin/FoLiA-txt -V >> testtxt.out 2>&1
+
+$my_bin/FoLiA-txt --help >> testtxt.out 2>&1
+
+$my_bin/FoLiA-txt -O out data/test.txt
+cat out/test.folia.xml >> testtxt.out
+
+$my_bin/FoLiA-txt --class=foobar -O out data/test.txt
+cat out/test.folia.xml >> testtxt.out
+
+$my_bin/FoLiA-txt --class=bar --setname=foo -O out data/test.txt
+cat out/test.folia.xml >> testtxt.out
