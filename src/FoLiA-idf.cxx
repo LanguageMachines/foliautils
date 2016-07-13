@@ -64,21 +64,56 @@ void create_idf_list( const map<string, unsigned int>& wc,
   }
 }
 
-size_t inventory( const Document *doc,
-		  bool lowercase,
-		  map<string,unsigned int>& wc ){
+size_t words_inventory( const Document *doc,
+			bool lowercase,
+			const string& classname,
+			map<string,unsigned int>& wc ){
   vector<Word*> words = doc->words();
   set<string> ws;
   for ( auto const& folia_word : words ){
     string word;
     try {
       if ( lowercase ){
-	UnicodeString uword = UTF8ToUnicode( folia_word->str() );
+	UnicodeString uword = UTF8ToUnicode( folia_word->str(classname) );
 	uword.toLower();
 	word = UnicodeToUTF8( uword );
       }
       else
-	word = folia_word->str();
+	word = folia_word->str(classname);
+    }
+    catch(...){
+#pragma omp critical
+      {
+	cerr << "missing text for word " << folia_word->id() << endl;
+      }
+      break;
+    }
+    ws.insert( word );
+  }
+
+  for ( const auto& s : ws ){
+#pragma omp critical
+    {
+      ++wc[s];
+    }
+  }
+  return ws.size();
+}
+
+size_t strings_inventory( const Document *doc,
+			  bool lowercase,
+			  const string& classname,
+			  map<string,unsigned int>& wc ){
+  vector<String*> words = doc->doc()->select<String>();
+  set<string> ws;
+  for ( auto const& folia_word : words ){
+    string word;
+    try {
+      UnicodeString uword = folia_word->text(classname);
+      if ( lowercase ){
+	uword.toLower();
+      }
+      word = UnicodeToUTF8( uword );
     }
     catch(...){
 #pragma omp critical
@@ -105,6 +140,8 @@ void usage(){
   cerr << "\t--clip\t clipping factor. " << endl;
   cerr << "\t\t\t (entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
+  cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
+  cerr << "\t--strings\t search for String nodes (default is Word)" << endl;
   cerr << "\t-t\t number of threads" << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
@@ -115,7 +152,8 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:Rhe:", "clip:,lower,help,version" );
+  TiCC::CL_Options opts( "vVt:O:Rhe:",
+			 "class:,clip:,lower,help,strings,version" );
   try {
     opts.init( argc, argv );
   }
@@ -131,6 +169,7 @@ int main( int argc, char *argv[] ){
   string expression;
   string outPrefix;
   string value;
+  string classname;
   if ( opts.empty() ){
     usage();
     exit(EXIT_FAILURE);
@@ -144,6 +183,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   verbose = opts.extract( 'v' );
+  bool do_strings = opts.extract( "strings" );
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
   opts.extract( 'O', outPrefix );
@@ -158,7 +198,8 @@ int main( int argc, char *argv[] ){
       exit( EXIT_FAILURE );
     }
   }
-  lowercase = opts.extract( "lowercase" );
+  lowercase = opts.extract( "lower" );
+  opts.extract( "class", classname );
 #ifdef HAVE_OPENMP
   if ( numThreads != 1 )
     omp_set_num_threads( numThreads );
@@ -215,7 +256,13 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    size_t count = inventory( d, lowercase, wc );
+    size_t count;
+    if ( do_strings ){
+      count = strings_inventory( d, lowercase, classname, wc );
+    }
+    else {
+      count = words_inventory( d, lowercase, classname, wc );
+    }
     wordTotal += count;
 #pragma omp critical
     {
