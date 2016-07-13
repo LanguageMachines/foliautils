@@ -1,0 +1,21 @@
+Usage: FoLiA-hocr [options] file/dir
+	-t	 number_of_threads
+	-h or --help	 this message 
+	-O	 output directory 
+	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
+			 with 'c'=g create gzip files (.gz)
+	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-hocr-set')
+	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
+	-v	 verbose output 
+	-V or --version	 show version 
+foliautils 0.5
+Usage: FoLiA-hocr [options] file/dir
+	-t	 number_of_threads
+	-h or --help	 this message 
+	-O	 output directory 
+	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
+			 with 'c'=g create gzip files (.gz)
+	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-hocr-set')
+	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
+	-v	 verbose output 
+	-V or --version	 show version 

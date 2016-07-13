@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-hocr > testhocr.out 2>&1
+
+$my_bin/FoLiA-hocr -V >> testhocr.out 2>&1
+
+$my_bin/FoLiA-hocr --help >> testhocr.out 2>&1
