@@ -127,9 +127,8 @@ void process( folia::FoliaElement *out,
 	      const map<string,string>& values,
 	      const map<string,string>& labels,
 	      const string& file ){
-  map<string,string>::const_iterator it = values.begin();
-  while ( it != values.end() ){
-    string line = it->second;
+  for ( const auto& value : values ){
+    string line = value.second;
     vector<string> parts;
     TiCC::split( line, parts );
     string parTxt;
@@ -139,7 +138,7 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
     }
     folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + labels.at(it->first) + "'"), out->doc() );
+      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + labels.at(value.first) + "'"), out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -147,7 +146,6 @@ void process( folia::FoliaElement *out,
       string id = "word_" + TiCC::toString(j);
       appendStr( par, pos, parts[j], id, file );
     }
-    ++it;
   }
 }
 
@@ -242,14 +240,12 @@ bool convert_pagexml( const string& fileName,
   string title;
   map<string,int> refs;
   vector<string> backrefs( order.size() );
-  it = order.begin();
-  while ( it != order.end() ){
-    string ref = TiCC::getAttribute( *it, "regionRef" );
-    string index = TiCC::getAttribute( *it, "index" );
+  for ( const auto& ord : order ){
+    string ref = TiCC::getAttribute( ord, "regionRef" );
+    string index = TiCC::getAttribute( ord, "index" );
     int id = TiCC::stringTo<int>( index );
     refs[ref] = id;
     backrefs[id] = ref;
-    ++it;
   }
 
   vector<string> regionStrings( refs.size() );
@@ -263,10 +259,9 @@ bool convert_pagexml( const string& fileName,
     }
     return false;
   }
-  it = regions.begin();
-  while ( it != regions.end() ){
-    string index = TiCC::getAttribute( *it, "id" );
-    string type = TiCC::getAttribute( *it, "type" );
+  for ( const auto& region : regions ){
+    string index = TiCC::getAttribute( region, "id" );
+    string type = TiCC::getAttribute( region, "type" );
     int key = -1;
     if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
 	 || type == "catch-word" || type == "drop-capital" ){
@@ -302,7 +297,7 @@ bool convert_pagexml( const string& fileName,
       type.clear();
     }
     if ( !type.empty() ){
-      xmlNode *unicode = TiCC::xPath( *it, ".//*:Unicode" );
+      xmlNode *unicode = TiCC::xPath( region, ".//*:Unicode" );
       if ( !unicode ){
 #pragma omp critical
 	{
@@ -320,7 +315,6 @@ bool convert_pagexml( const string& fileName,
 	}
       }
     }
-    ++it;
   }
   xmlFreeDoc( xdoc );
   // for ( size_t i=0; i < regionStrings.size(); ++i ){
@@ -368,21 +362,21 @@ bool convert_pagexml( const string& fileName,
 
 void usage(){
   cerr << "Usage: FoLiA-page [options] file/dir" << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this messages " << endl;
-  cerr << "\t-O\t output directory " << endl;
+  cerr << "\t-t\t\t number_of_threads" << endl;
+  cerr << "\t-h or --help\t this messages " << endl;
+  cerr << "\t-O\t\t output directory " << endl;
   cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes. "
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
-  cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
-  cerr << "\t-v\t verbose output " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
+  cerr << "\t-v\t\t verbose output " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:" );
+  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:,help,version" );
   try {
     opts.init( argc, argv );
   }
@@ -397,12 +391,16 @@ int main( int argc, char *argv[] ){
   string outputDir;
   zipType outputType = NORMAL;
   string value;
-  if ( opts.extract( 'h' ) ){
+  if ( opts.empty() ){
+    usage();
+    exit(EXIT_FAILURE);
+  }
+  if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'V' ) ){
-    cerr << PACKAGE_STRING << endl;
+  if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
+    cerr << opts.prog_name() << " [" << PACKAGE_STRING << "]"<< endl;
     exit(EXIT_SUCCESS);
   }
   if ( opts.extract( "compress", value ) ){
@@ -427,11 +425,6 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
-  if ( !opts.empty() ){
-    cerr << "unsupported options : " << opts.toString() << endl;
-    usage();
-    exit(EXIT_FAILURE);
-  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -479,9 +472,6 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
 
