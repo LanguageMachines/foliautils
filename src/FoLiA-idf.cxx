@@ -53,12 +53,10 @@ void create_idf_list( const map<string, unsigned int>& wc,
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
   }
-  map<string,unsigned int >::const_iterator cit = wc.begin();
-  while( cit != wc.end()  ){
-    if ( cit->second > clip ){
-      os << cit->first << "\t" << cit->second << endl;
+  for ( const auto& cit : wc  ){
+    if ( cit.second > clip ){
+      os << cit.first << "\t" << cit.second << endl;
     }
-    ++cit;
   }
 #pragma omp critical
   {
@@ -71,34 +69,32 @@ size_t inventory( const Document *doc,
 		  map<string,unsigned int>& wc ){
   vector<Word*> words = doc->words();
   set<string> ws;
-  for ( unsigned int i=0; i < words.size(); ++i ){
+  for ( auto const& folia_word : words ){
     string word;
     try {
       if ( lowercase ){
-	UnicodeString uword = UTF8ToUnicode( words[i]->str() );
+	UnicodeString uword = UTF8ToUnicode( folia_word->str() );
 	uword.toLower();
 	word = UnicodeToUTF8( uword );
       }
       else
-	word = words[i]->str();
+	word = folia_word->str();
     }
     catch(...){
 #pragma omp critical
       {
-	cerr << "missing text for word " << words[i]->id() << endl;
+	cerr << "missing text for word " << folia_word->id() << endl;
       }
       break;
     }
     ws.insert( word );
   }
 
-  set<string>::const_iterator it = ws.begin();
-  while ( it != ws.end() ){
+  for ( const auto& s : ws ){
 #pragma omp critical
     {
-      ++wc[*it];
+      ++wc[s];
     }
-    ++it;
   }
   return ws.size();
 }
@@ -110,8 +106,8 @@ void usage(){
   cerr << "\t\t\t (entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
   cerr << "\t-t\t number of threads" << endl;
-  cerr << "\t-h\t this message " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-h or --help\t this message " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
@@ -119,7 +115,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:Rhe:", "clip:,lower" );
+  TiCC::CL_Options opts( "vVt:O:Rhe:", "clip:,lower,help,version" );
   try {
     opts.init( argc, argv );
   }
@@ -135,11 +131,15 @@ int main( int argc, char *argv[] ){
   string expression;
   string outPrefix;
   string value;
-  if ( opts.extract('h' ) ){
+  if ( opts.empty() ){
+    usage();
+    exit(EXIT_FAILURE);
+  }
+  if ( opts.extract('h') || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('V' ) ){
+  if ( opts.extract('V') || opts.extract( "version" ) ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
@@ -159,11 +159,6 @@ int main( int argc, char *argv[] ){
     }
   }
   lowercase = opts.extract( "lowercase" );
-  if ( !opts.empty() ){
-    cerr << "unsupported options : " << opts.toString() << endl;
-    usage();
-    exit(EXIT_FAILURE);
-  }
 #ifdef HAVE_OPENMP
   if ( numThreads != 1 )
     omp_set_num_threads( numThreads );
@@ -198,9 +193,6 @@ int main( int argc, char *argv[] ){
   }
 
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
 
