@@ -617,34 +617,34 @@ size_t par_str_inventory( const Document *d, const string& docName,
 
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
-  cerr << "\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
-  cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t The output will be a 2 or 4 columned tab separated file, extension: *tsv " << endl;
-  cerr << "\t\t (4 columns when -p is specified)" << endl;
-  cerr << "\t--clip\t clipping factor. " << endl;
-  cerr << "\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
-  cerr << "\t-p\t output percentages too. " << endl;
-  cerr << "\t--lower\t Lowercase all words" << endl;
+  cerr << "\t\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
+  cerr << "\t\t or a whole directory of FoLiA files " << endl;
+  cerr << "\t\t The output will be a 2 or 4 columned tab separated file, extension: *tsv " << endl;
+  cerr << "\t\t\t (4 columns when -p is specified)" << endl;
+  cerr << "\t--clip\t\t clipping factor. " << endl;
+  cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
+  cerr << "\t-p\t\t output percentages too. " << endl;
+  cerr << "\t--lower\t\t Lowercase all words" << endl;
   cerr << "\t--underscore\t connect all words with underscores" << endl;
-  cerr << "\t--lang\t Language. (default='dut'). 'none' is also possible" << endl;
-  cerr << "\t--ngram\t Ngram count " << endl;
-  cerr << "\t-s\t Process <str> nodes not <w> per <p> node" << endl;
-  cerr << "\t-S\t Process <str> nodes not <w> per document" << endl;
-  cerr << "\t--class='name' When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
-  cerr << "\t--hemp=<file>. Create a historical emphasis file. " << endl;
-  cerr << "\t\t\t(words consisting of single, space separated letters)" << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this message" << endl;
-  cerr << "\t-v\t very verbose output." << endl;
-  cerr << "\t-V\t show version " << endl;
-  cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
-  cerr << "\t-o\t name of the output file(s) prefix." << endl;
-  cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
+  cerr << "\t--lang\t\t Language. (default='dut'). 'none' is also possible" << endl;
+  cerr << "\t--ngram\t\t Ngram count " << endl;
+  cerr << "\t-s\t\t Process <str> nodes not <w> per <p> node" << endl;
+  cerr << "\t-S\t\t Process <str> nodes not <w> per document" << endl;
+  cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
+  cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
+  cerr << "\t\t\t (words consisting of single, space separated letters)" << endl;
+  cerr << "\t-t\t\t number_of_threads" << endl;
+  cerr << "\t-h or --help\t this message" << endl;
+  cerr << "\t-v\t\t very verbose output." << endl;
+  cerr << "\t-V or --version\t show version " << endl;
+  cerr << "\t-e\t\t expr: specify the expression all input files should match with." << endl;
+  cerr << "\t-o\t\t name of the output file(s) prefix." << endl;
+  cerr << "\t-R\t\t search the dirs recursively (when appropriate)." << endl;
 }
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore" );
+		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version" );
   try {
     opts.init(argc,argv);
   }
@@ -667,11 +667,11 @@ int main( int argc, char *argv[] ){
   string outputPrefix;
   string lang = "dut";
   string value;
-  if ( opts.extract('V' ) ){
+  if ( opts.extract('V') || opts.extract("version") ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract('h' ) ){
+  if ( opts.extract('h') || opts.extract("help") ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
