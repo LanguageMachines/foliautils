@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-pm > testpm.out 2>&1
+
+$my_bin/FoLiA-pm -V >> testpm.out 2>&1
+
+$my_bin/FoLiA-pm --help >> testpm.out 2>&1
+
+rm -rf test1
+rm -rf test2
+
+$my_bin/FoLiA-pm --nosplit -O test1 data/pm/ > out1 2>&1
+cat test1/pm5.folia.xml >> testpm.out
+
+$my_bin/FoLiA-pm -O test2 data/pm/ > out1 2>&1
+cat test2/pm4.folia.xml >> testpm.out
+cat test2/nl.proc.sgd.d.189818990000112.2.folia.xml >> testpm.out
