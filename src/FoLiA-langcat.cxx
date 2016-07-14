@@ -275,21 +275,21 @@ void TCdata::procesFile( const string& outDir, const string& docName,
 
 void usage(){
   cerr << "Usage: [options] dir/filename " << endl;
-  cerr << "--config=<file> use LM config from 'file'" << endl;
-  cerr << "--lang=<lan> use 'lan' for unindentified text. (default 'dut')" << endl;
-  cerr << "-s\t examine text in <str> nodes. (default is to use the <p> nodes)." << endl;
-  cerr << "--all\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
-  cerr << "--class=<cls> use 'cls' as the FoLiA classname for searching text. "
+  cerr << "--config=<file>\t use LM config from 'file'" << endl;
+  cerr << "--lang=<lan>\t use 'lan' for unindentified text. (default 'dut')" << endl;
+  cerr << "-s\t\t examine text in <str> nodes. (default is to use the <p> nodes)." << endl;
+  cerr << "--all\t\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
+  cerr << "--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
        << endl;
-  cerr << "\t (default 'OCR')" << endl;
-  cerr << "-O\t path. output path" << endl;
-  cerr << "-V\t show version info." << endl;
-  cerr << "-v\t verbose" << endl;
-  cerr << "-h\t this messages." << endl;
+  cerr << "\t\t\t (default 'OCR')" << endl;
+  cerr << "-O path\t\t output path" << endl;
+  cerr << "-V or --version\t show version info." << endl;
+  cerr << "-v\t\t verbose" << endl;
+  cerr << "-h or --help\t this messages." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "svVhO:", "all,lang:,class:,config:" );
+  TiCC::CL_Options opts( "svVhO:", "all,lang:,class:,config:,help,version" );
   try {
     opts.init( argc, argv );
   }
@@ -298,11 +298,11 @@ int main( int argc, char *argv[] ){
     usage();
     exit( EXIT_FAILURE );
   }
-  if ( opts.extract( 'V' ) ){
+  if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
     cout << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'h' ) ){
+  if ( opts.extract( 'h' ) || opts.extract( "help") ){
     usage();
     exit(EXIT_SUCCESS);
   }
