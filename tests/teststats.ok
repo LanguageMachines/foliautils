@@ -1,0 +1,49 @@
+Usage: FoLiA-stats [options] file/dir
+		 FoLiA-stats will produce ngram statistics for a FoLiA file, 
+		 or a whole directory of FoLiA files 
+		 The output will be a 2 or 4 columned tab separated file, extension: *tsv 
+			 (4 columns when -p is specified)
+	--clip		 clipping factor. 
+				(entries with frequency <= this factor will be ignored). 
+	-p		 output percentages too. 
+	--lower		 Lowercase all words
+	--underscore	 connect all words with underscores
+	--lang		 Language. (default='dut'). 'none' is also possible
+	--ngram		 Ngram count 
+	-s		 Process <str> nodes not <w> per <p> node
+	-S		 Process <str> nodes not <w> per document
+	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')
+	--hemp=<file>	 Create a historical emphasis file. 
+			 (words consisting of single, space separated letters)
+	-t		 number_of_threads
+	-h or --help	 this message
+	-v		 very verbose output.
+	-V or --version	 show version 
+	-e		 expr: specify the expression all input files should match with.
+	-o		 name of the output file(s) prefix.
+	-R		 search the dirs recursively (when appropriate).
+foliautils 0.5
+Usage: FoLiA-stats [options] file/dir
+		 FoLiA-stats will produce ngram statistics for a FoLiA file, 
+		 or a whole directory of FoLiA files 
+		 The output will be a 2 or 4 columned tab separated file, extension: *tsv 
+			 (4 columns when -p is specified)
+	--clip		 clipping factor. 
+				(entries with frequency <= this factor will be ignored). 
+	-p		 output percentages too. 
+	--lower		 Lowercase all words
+	--underscore	 connect all words with underscores
+	--lang		 Language. (default='dut'). 'none' is also possible
+	--ngram		 Ngram count 
+	-s		 Process <str> nodes not <w> per <p> node
+	-S		 Process <str> nodes not <w> per document
+	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')
+	--hemp=<file>	 Create a historical emphasis file. 
+			 (words consisting of single, space separated letters)
+	-t		 number_of_threads
+	-h or --help	 this message
+	-v		 very verbose output.
+	-V or --version	 show version 
+	-e		 expr: specify the expression all input files should match with.
+	-o		 name of the output file(s) prefix.
+	-R		 search the dirs recursively (when appropriate).

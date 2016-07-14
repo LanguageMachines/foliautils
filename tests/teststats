@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-stats > teststats.out 2>&1
+
+$my_bin/FoLiA-stats -V >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --help >> teststats.out 2>&1

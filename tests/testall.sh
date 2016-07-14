@@ -10,6 +10,6 @@ then
 fi
 
 for file in test2text testtxt testalto testcollect testcorrect \
-	    testhocr testidf testpage testlangcat
+	    testhocr testidf testpage testlangcat teststats
 do ./testone.sh $file
 done
