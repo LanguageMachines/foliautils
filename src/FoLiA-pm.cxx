@@ -545,7 +545,7 @@ void process_topic( const string& outDir,
     if ( pos != string::npos ){
       div_id = id.substr(0,pos);
     }
-    args["id"] = div_id + ".div";
+    args["generate_id"] = base_text->id();
     args["class"] = "proceedings";
     root = new Division( args, doc );
     base_text->append( root );
@@ -557,6 +557,7 @@ void process_topic( const string& outDir,
     doc->append( txt );
     root = txt;
   }
+  args.clear();
   args["id"] = id + ".div";
   args["class"] = "topic";
   Division *div = new Division( args, doc );
