@@ -6,3 +6,9 @@ $my_bin/FoLiA-stats > teststats.out 2>&1
 $my_bin/FoLiA-stats -V >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --help >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats -s --class=OCR --lang="none" -o stats -e dpo out/ > out1 2>&1
+diff stats.wordfreqlist.tsv stats-1.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --ngram=3 -s --class=OCR --lang="none" -o stats -e dpo out/ > out2 2>&1
+diff stats.wordfreqlist.3-gram.tsv stats-3.ok >> teststats.out 2>&1

@@ -330,6 +330,12 @@ size_t word_inventory( const Document *d, const string& docName,
 		       unsigned int& posTotal,
 		       set<string>& emph,
 		       const string& sep ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "make a word_str inventory on:" << docName << endl;
+    }
+  }
   size_t wordTotal = 0;
   lemTotal = 0;
   posTotal = 0;
@@ -500,10 +506,29 @@ size_t str_inventory( const Document *d, const string& docName,
 		      map<string,unsigned int>& wc,
 		      set<string>& emph,
 		      const string& sep ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "make a str inventory on:" << docName << endl;
+    }
+  }
   size_t wordTotal = 0;
   vector<String*> strings = d->doc()->select<String>();
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "found " << strings.size() << " strings" << endl;
+    }
+  }
+
   string doc_lang = d->get_metadata( "language" );
   taal_filter( strings, doc_lang, lang );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "after fileter on " << lang << " " << strings.size() << " strings" << endl;
+    }
+  }
   if ( strings.size() < nG )
     return 0;
   vector<string> data;
@@ -558,15 +583,33 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  map<string,unsigned int>& wc,
 			  set<string>& emph,
 			  const string& sep ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "make a par_str inventory on:" << docName << endl;
+    }
+  }
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
   string doc_lang = d->get_metadata( "language" );
   for ( unsigned int p=0; p < pars.size(); ++p ){
     vector<String*> strings = pars[p]->select<String>();
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "found " << strings.size() << " strings" << endl;
+      }
+    }
     string par_lang = get_lang( pars[p] );
     if ( par_lang.empty() )
       par_lang = doc_lang;
     taal_filter( strings, par_lang, lang );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "after filter on " << lang << " " << strings.size() << " strings" << endl;
+      }
+    }
     if ( strings.size() < nG )
       continue;
     vector<string> data;
