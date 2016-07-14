@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:pmd="http://www.politicalmashup.nl/docinfo" xmlns:pm="http://www.politicalmashup.nl" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms/">
+    <docinfo xmlns="http://www.politicalmashup.nl/docinfo">
+        <transformer pmd:name="pdf2europarl" pmd:version="15378" pmd:datetime="2011-03-17T10:06:48.847341" pmd:result="pass"/>
+        <transformer pmd:name="xmllint" pmd:datetime="2011-03-17T10:06:51.228008" pmd:arguments="--noout" pmd:result="pass"/>
+        <transformer pmd:name="RelaxNG" pmd:version="15293" pmd:datetime="2011-03-17T10:06:54.399660" pmd:arguments="-c /scratch/schemas/DutchParl.rnc" pmd:result="pass"/>
+        <transformer pmd:name="annotator" pmd:version="15346:15397M" pmd:datetime="2011-03-18T10:40:24.234733" pmd:result="pass"/>
+        <transformer pmd:datetime="2011-03-21T18:53:17.809+01:00" pmd:name="nl-sgd.sh" pmd:version="1.1" pmd:result="pass">
+            <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+        <transformer pmd:name="nl-sgd-repair-1930-1995.xsl" pmd:version="1.1" pmd:result="pass" pmd:datetime="2012-06-15T01:39:01.681+02:00">
+            <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+    </docinfo>
+    <meta>
+        <dc:identifier>nl.proc.sgd.d.191719180000088</dc:identifier>
+        <dc:format>text/xml</dc:format>
+        <dc:type>Verbatim Proceedings</dc:type>
+        <dc:contributor>http://www.politicalmashup.nl</dc:contributor>
+        <dc:coverage>
+            <country dcterms:ISO3166-1="NL">Netherlands</country>
+        </dc:coverage>
+        <dc:creator>http://www.statengeneraaldigitaal.nl</dc:creator>
+        <dc:language>
+            <pm:language dcterms:ISO639-2="dut">Dutch; Flemish</pm:language>
+        </dc:language>
+        <dc:publisher>http://www.statengeneraaldigitaal.nl</dc:publisher>
+        <dc:rights>  http://www.overheid.nl/overdesite/ should contain IPR information, but it doesn't. 
+            Investigation with the Koninklijke Bibliotheek (who keep the Proceedings data in the statengeneraaldigitaal.nl project) 
+            and the Tweede Kamer led to the following response:
+            
+            Van: Beijer A. [mailto:T.Beijer@tweedekamer.nl]
+            Verzonden: woensdag 13 oktober 2010 13:31
+            Aan: Statengeneraaldigitaal Info Mailbox
+            Onderwerp: RE: gebruik van de Handelingen voor onderzoek
+         
+            Beste Karin,
+           
+            Heb het nog even bij Jan Keukens nagevraagd. Maar er is geen overeenkomst nodig.
+            
+            Hij verwees nog naar de auteurswet.
+            
+            Hieronder artikel 11 van de auteurswet:
+            
+            Artikel 11
+            
+            Er bestaat geen auteursrecht op wetten, besluiten en verordeningen, door
+            de openbare macht uitgevaardigd, noch op rechterlijke uitspraken en
+            administratieve beslissingen.
+                
+            Groet,
+            Tonny
+            
+            070-3182458</dc:rights>
+        <dc:date>1918-01-08</dc:date>
+        <dc:title>Handelingen Eerste Kamer 1917-1918 08 januari 1918, Paginas 93-95.</dc:title>
+        <dc:description>Handelingen Eerste Kamer 1917-1918 08 januari 1918, Paginas 93-95.</dc:description>
+        <dc:source>
+            <dc:source pm:used-source="true">
+                <pm:link pm:linktype="metadata" pm:source="http://services.kb.nl/mdo/oai?verb=GetRecord&amp;identifier=SGD:sgd:mpeg21:19171918:0000088&amp;metadataPrefix=didl"/>
+            </dc:source>
+            <dc:source pm:used-source="true">
+                <pm:link pm:linktype="pdf" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:19171918:0000088:pdf"/>
+            </dc:source>
+        </dc:source>
+        <dc:subject>
+            <pm:house pm:house="senate">Handelingen Eerste Kamer 1917-1918 08 januari 1918, Paginas 93-95.</pm:house>
+            <pm:legislative-period>1917-1918</pm:legislative-period>
+        </dc:subject>
+        <dc:relation>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="baron van Voorst tot Voorst" pm:role="chair" pm:member-ref="nl.m.01468" pm:function="voorzitter"/>
+                </pm:actor>
+            </pm:subject>
+        </dc:relation>
+    </meta>
+    <proceedings xmlns="http://www.politicalmashup.nl" pm:id="nl.proc.sgd.d.191719180000088">
+        <topic pm:title="" pm:id="nl.proc.sgd.d.191719180000088.1">
+            <stage-direction pm:id="nl.proc.sgd.d.191719180000088.1.1">
+                <stage-direction pm:type="pagebreak" pm:id="nl.proc.sgd.d.191719180000088.1.1.1">
+                    <pagebreak pm:originalpagenr="93" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:19171918:0000088:0001:image"/>
+                </stage-direction>
+                <stage-direction pm:type="header" pm:id="nl.proc.sgd.d.191719180000088.1.1.2">
+                    <p pm:id="nl.proc.sgd.d.191719180000088.1.1.2.1">Vel 26. 93 Eerste Kamer.</p>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.1.3">8ste VERGADERING. VERGADERING VAN DINSDAG S JANUARI 1918. (Bijeenroepingsuur 8J des avonds.) Ingekomen: 1°. berichten van leden; 2". missives van dpn directeur van het Kabinet der Koningin; 3°. een Koninklijk besluit; 4°. regeeringsmissivos; 5". boekwerken; 6". een geschrift; 7°. ontwerpen van wet. — Trekking der afdeelingen. — Schorsing der ver gadering. — Hervatting der vergadering. — Mede deeling van de benoeming van voorzitters en onder voorzitters der afdeelingen. — Regeling van werk zaamheden.</p>
+                <stage-direction pm:type="chair" pm:id="nl.proc.sgd.d.191719180000088.1.1.4">
+                    <p pm:id="nl.proc.sgd.d.191719180000088.1.1.4.1">Voorzitter: de heer van Voorst tot Voorst</p>
+                    <chair pm:speaker="baron van Voorst tot Voorst" pm:member-ref="nl.m.01468"/>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.1.5">Tegenwoordig, met den Voorzitter, 41 leden, te weten de %eren: de Boer, van der Maeseu de Sombreff, van der Hoeven, van den Berg, de Vos van Steenwijk., de Waal Malefijt, Cremer, Reeken, Bavinck. Binnerts, S •:its. van (tasten Batenburg, Bosch van Oud-Amelisweerd, van Swaay, Gilissen, Kappeyuo van de Coppello, van Lamsweerde, Lucasse, Franssen, Kraus. Gecrtsema, de Gijselaar, Verheijen, Dojes, Diepen, van Houten, van der Does de Willebois. van Nierop, van Kol, van Lanschot, van der Feliz, 't Hooft, d'Aumale van Hardenbroek. van Holtlie tot Kchteu. Westerdijk, Stork, Bergsma, Michiels van Kcssenich, van Wassenaer van Catwijck en Haffmans. De notulen van het verhandelde in de vorige vergadering worden gelezen en goedgekeurd.</p>
+            </stage-direction>
+            <speech pm:speaker="baron van Voorst tot Voorst" pm:function="voorzitter" pm:role="chair" pm:party-ref="nl.p.algemeenebond" pm:member-ref="nl.m.01468" pm:id="nl.proc.sgd.d.191719180000088.1.2">
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.1">Ik deel mede, dat zijn ingekomen:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.2">_ 1".</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.3">berichten van leden, die verhinderd zijn de vergadering bij te wonen: van den heer Fokker, wegens de slechte reisgelegenheid; van den heer Laan, om gezondheidsredenen; van den heer Polak, deze week. wegens ambtsbezigheden: van de heeren Vliegen en Staal, wegen? ongesteldheid, de laatste deze week.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.4">Deze berichten worden voor kennisgeving aangenomen; 2°.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.5">19 missives van den directeur van het Kabinet der Koningin, houdende mededeeling van de bekrachtiging door i Hare Majesteit van even zoovele ontwerpen van wet, door I de Eerste Kamer aangenomen in hare vergaderingen van 31 Augustus en 8 November 1917.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.6">Deze missives worden voor kennisgeving aangenomen; 3*.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.7">een Koninklijk besluit van 5 December 1917 n°. 7, waarbij wordt ingesteld een staatscommissie met de opdracht 8ste VERGADERING. — 8 JANUAR I 1918.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.8">Mededeeliwr van ingekomen stukken.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.9">(Voorzitter.) te onderzoeken in hoeverre de bezoldiging van het militair personeel van land- en zeemacht bij een behoorlijke werkverdeeling aan billijke eischen voldoet en in hoeverre daarin wijziging zal dienen te worden gebracht.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.10">Diet besluit wordt voor kennisgeving aangenomen; 4°.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.11">de volgende regeeringsmissivos:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.12">een, van het Departement van Biunenlandsche Zaken, ten geleide van het rapport in zake de salarieering van het perBoneel aan de rijksuniversiteiten en de Technische Hoogeschool verbonden; een, van het Departement van Financiën, ten geleide van het jaarverslag omtrent den toestand der vissseherijen op de Zecuwsche stroomen over het jaar 1916; twee. van het Departement van Oorlog, ten geleide van het Eindrapport van de Commissie van onderzoek voor de Artillerie-Inrichlingen, met bijlage, uitsluitend ter inzage voor de leden, en Statistische gegevens betreffende den smokkelhandel; drie, van het Departement van Waterstaat, ten geleide van blad Uithuizen 2 der Waterstaatskaart; blad 1 (Lobith) van serie I der herziene rivierkaart, en bescheiden betreffende het ongeval met trein 4 S.S. op 7 Juni j.l. j twee. van het Departement van Landbouw, Nijverheid en Handel, ten geleide van het jaarverslag van den hoofdingenieur voor het stoomwezen en den afrekeningsstaat der Rijkskolendistributie, met bijbehoorende toelichting.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.13">Deze missives worden voor kennisgeving aangenomen; een exemplaar der bijlagen zal worden geplaatst in de boekerij der Kamer; 5°.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.14">de volgende boekwerken:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.15">dr. H . A. Poelman, Bronnen tot de geschiedenis van den Oostzeehandel; eerste deel; eerste en tweede stuk. (Rijks Geschiedkundige Publicatiën); verslag van d« Kamer van koophandel en fabrieken te Almelo over 1916; Nederlandsche Bond tot Kinderbescherming en CentraalBond van Christelijk-Philanthropische Inrichtingen in Nederland. Verslag der buitengewone gemeenschappelijke vergadering, gehouden te Utrecht op 16 Juni 1917; Kamer van arbeid en Kamer van koophandel en fabrieken te Paramaribo. ,,De Economische Toestand van Suriname op 31 December 1916."; Bond van Nederlandsch Post-, Telegraaf" en Telefoonpereoneel ,,de Post". Jaarboekje voor 1918; P . J . L. M. Goulmy. ,,'s Pausen Diplomatie en do Nederlanden." (v. d. S.); Algemeene Nederlandsche Diamantbewerkersbond. Verslag 1916; P . J . L. M. Goulmy. ,,Hoe staat rechts tegenover het Kabinet-Cort van der Linden:"' (v. d. S.) ; mr. H . van de Rivière. ,.Brengt Indië naar Nederland."; „Analyse van de Douanestatistiek van N. I. " (Nr. 1 der Mededeelingen van de Commissie tot ontwikkeling van de Fabrieksnijverheid in Nederlandsch-Indië) ; Weekblad gewijd aan de belangen van Rotterdam. 4de jaargang, n°. 8, met artikel: „Noodlot", door W. v. R.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.16">Deze boekwerken zullen worden geplaatst in 4e boekerij der Kamer; 6°.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.17">een geschrift van Ernst Heinemann, te Berlijn-Schö</p>
+                <stage-direction pm:type="footer" pm:id="nl.proc.sgd.d.191719180000088.1.2.18">
+                    <p pm:id="nl.proc.sgd.d.191719180000088.1.2.18.1">Handelingen der Staten-Generaal. — 1917-1918. — I.</p>
+                </stage-direction>
+                <stage-direction pm:type="pagebreak" pm:id="nl.proc.sgd.d.191719180000088.1.2.19">
+                    <pagebreak pm:originalpagenr="94" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:19171918:0000088:0002:image"/>
+                </stage-direction>
+                <stage-direction pm:type="header" pm:id="nl.proc.sgd.d.191719180000088.1.2.20">
+                    <p pm:id="nl.proc.sgd.d.191719180000088.1.2.20.1">94</p>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.21">Ssto VERGADERING.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.22">Meded. v. iugek. stukken. — Trekking der afd. — Ben. v.voorz. en ondervoorz. der afd. — Regeling v. werkzaamh.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.23">(Voorzitter.) nebcrg, betreffende de bijeenroeping van een conferentie over de oorzaken van den wereldoorlog.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.24">Dit geschrift zal ter griffie worden nedergelegd ter inzage van de leden ; 7U.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.25">van de Tweede Kamer de volgende door baar aangenomen ontwerpen van wet:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.26">Hoofdstuk II I (Departement van Buitenlandscbe Zaken); Hoofdstuk VI (Departement van Marine); Hoofdstuk VILS (Departement van Financiën); Hoofdstuk I X (Departement van Waterstaat) van Staatsbegrooting voor bet dienstjaar 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K2"/>2</tagged>) ; Wijziging en verhoogiug ven hoofdstuk I I der Staatsbcgrooting vcor 191S (ïegemoetkomingen wegens duurte van levensmiddelen (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K244"/>244</tagged>); Vaststelling van de begrooting van het Staatsvissckersbavenbedrijf to Umuiden voor 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K153"/>153</tagged>); Verhooging van bet Vide hoofdstuk der Staatsbegrooting voor 1917 (Buitengewoon krediet) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K190"/>190</tagged>); Naturalisatie van B. H . Bruuklaus en 49 anderen (50 wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K193"/>193</tagged>); Vaststelling van de begrooting van de inkomsten en uitgaven van de Posterijen, de Telegrafie en Telefonie voor 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K194"/>194</tagged>); Naturalisatie van P . A. Stenz en negen anderen wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K202"/>202</tagged>); Naturalisatie van E. Cohen en elf anderen (12 wetsoi.twerpen (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K206"/>206</tagged>) ; Onteigening voor ue inrichting eener boezembemaling van het wattnehap „Eiectra " (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K220"/>220</tagged>); Verhooging van hoofdstuk V I der Staatsbegrooting en van hoofdstuk I der begrootinjr van uitgaven van NederïandschIndië voor 1917 (Herziening bezoldiging Europeesch marinepersoneel benedon den rang van officier tijdens verblijf binnen de keerkringen) (2 wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K924"/>924</tagged>) ; Wijziging van hoofdstuk IX der Staatsbegrooting voor 1917 (Herstel van de sluizen te Terneuzen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K232"/>232</tagged>); Begroeting van het Fonds voor de uitvoering van de Tiendwet 1907 (Staatsblad n°. 222) voor 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K238"/>238</tagged>); Regeling van de inkomsten en uitgaven voor het Staatsnjuutbcdrijf voer 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K239"/>239</tagged>); Verhooging van het lild e hoofdstuk der Staatsbegrooting voor 1917 (Traktementsverhooging van een administrateur) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K210"/>210</tagged>); Aanvulling der wet tot instelling eener Rijkspostspaarbank. der Weduwenwet voor de anihieuaren 1890, der Ongevallcnwet 1901 en der wet houdende nadere voorzieningen met betrekking tot de tiendrechteu, behoorende tot Kioondomein (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K242"/>242</tagged>); Verhoogiag van hoofdstuk I I der Staatsbegrooting voor 1913 (Kotten Kort Verslag) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K247"/>247</tagged>); Wijziging en verhooging van hoofdstuk VUB der Staatsbegrooting voor 1916 (Diverse onderwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K248"/>248</tagged>); Wijziging van art. 54 der wet op de Oorlogswinstbelasting 191G '(<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K253"/>253</tagged>)'; Tijdelijke vrijstelling van invoerrecht vcor gedistilleerd, waarvoor vrijdom van den accijns wordt genoten (2G2); Verevening van de door het Staatsbedrijf van de Posterrjen. de Telegrafie en Telefonie over 1915 en 1916 aan 's Rijks middelen uit te keeren wins* (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K266"/>266</tagged>); — 8 JANUAR I 1918.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.27">Vaststelling van bepalingen in het belang van den omloop van 's Rijks munten (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K267"/>267</tagged>); Verhooging van de begrooting van bet Pensioenfonds voor de gemeente-ambtenaren voor 1916 en aanvulling en yercooging dier begrooting voor 1917 (Drukwerk en belegging saldo) (2 wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K279"/>279</tagged>); Verhooging van hoofdstuk VIIA der Staatsbegrooting voor 1915 (Betaalde courtage aan bankiers eu makelaars) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K280"/>280</tagged>); Voorziening in het kastekort van den Indischcn dienst 1918 (2S2).</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.28">Deze wetsontwerpen worden naar do afdeelingen verde zonden.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.29">De vergadering gaat over tot de trekking der afdeelingen.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.30">Do uitslag daarvan is dat zullen bshooren:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.2.31">tot de eersto afdeeling de keeren: Diepen, van der Does de Willebois, vaji Wichen, Laan, Cremer, van Houten, van Kol, Polak, Westerdijk, van der Feltz; tot de tweedo afdeeling de heeren: Verheijen, ' t Hooft, Bavinck, van der Hoeven, Vliegen, Fokker, Stork, do Vos van Steenwijk, Dojes, Geertsema; tot de derde afdeeling de ke2ren: Smits, van Lamsweerdo, de Gijselaar, de Waal Malefijt. Giiissen, Staal, d'Aumale van Hardenbroek, Binnerts, van Holthe tot Echten; tot de vierde afdeeling de heeren: Reekers, van Wassenaer (10 van Catwiick, van Swaay, Kuyper, de Boer, van Nierop, Lucasse, Bergsma, van der ilaesen de Sombreff; tot de vijfde afdeeling de heeren: van Lan=chot, van Basten Batenburg, Colijn, van den Berg, Kappeyne van do Coppello, Kraus, Bosch van Oud-Amelisweerd, Franssen, Michiels van Kessenich, Haffmanns.</p>
+            </speech>
+            <speech pm:speaker="baron van Voorst tot Voorst" pm:function="voorzitter" pm:role="chair" pm:party-ref="nl.p.algemeenebond" pm:member-ref="nl.m.01468" pm:id="nl.proc.sgd.d.191719180000088.1.3">
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.3.1">Ik verzoek den leden zich thans te be~ geven naar de afdeelingen tot het verkiezen van voorzitters on ondervoorzitters.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.3.2">De vergadering wordt voor twintig minuten geschorst.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.3.3">De vergadering wordt hervat.</p>
+            </speech>
+            <speech pm:speaker="baron van Voorst tot Voorst" pm:function="voorzitter" pm:role="chair" pm:party-ref="nl.p.algemeenebond" pm:member-ref="nl.m.01468" pm:id="nl.proc.sgd.d.191719180000088.1.4">
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.1">Ik deel aan de Vergadering mede, dat door de afdeelingen zijn benoemd tot voorzitters de heeren Cremer, 't Hooit, van Lamsweerde, Reekers en Michiels van Kessenich, en tot ondervoorzitters de heeren van der Feltz, Verheijen, de Gijselaar, van Swaay en Franssen.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.2">Voorts deel ik mede, dat de Centrale Afdeeling heeft besloten morgen te 11 uur in de afdeelingen te doen onderzoeken de ontwerpen van wet:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.3">Wijziging en verhooging van hoofdstuk I I der Staatshet begrooting voor 1918 (Tegemoetkomingen wegens duurte van levensmiddelen (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K244"/>244</tagged>); Vaststelling van de begrooting van het Staatsvisschersuavenbedrijf te Umuiden voor 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K153"/>153</tagged>); Verhooging van het Vide hoofdstuk der Staatsbegrooting voor 1917 (Buitengewoon krediet) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K190"/>190</tagged>); Naturalisatie van B. H. Brunklaus en 49 anderen (50 wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K199"/>199</tagged>); Vaststelling van de begrooting van de inkomsten en uitgaven van de Posterijen, de Telegrafie en Telefonie voor 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K194"/>194</tagged>); ' Naturalisatie van P . A. Stenz en negen andexen (J.0 wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K202"/>202</tagged>);</p>
+                <stage-direction pm:type="pagebreak" pm:id="nl.proc.sgd.d.191719180000088.1.4.4">
+                    <pagebreak pm:originalpagenr="95" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:19171918:0000088:0003:image"/>
+                </stage-direction>
+                <stage-direction pm:type="header" pm:id="nl.proc.sgd.d.191719180000088.1.4.5">
+                    <p pm:id="nl.proc.sgd.d.191719180000088.1.4.5.1">95</p>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.6">(Voorzitter.) Naturalisatie van E. Cohen en elf anderen (12 wctsoatwerpen (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K206"/>206</tagged>); Onteigening voor de inrichting eener boezeinbeiu:iling van bet waterschap ,,Electra" (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K220"/>220</tagged>); Verhooging van hoofdstuk V I der Staatsbegrooting en van boofdstuk I der begrooting van uitgaven van NederlandschIndië voor 1917 (Herziening bezoldiging Europeesch marine, personeel beneden den rang vau officier tijdens verblijf binnen de keerkringen) (2 wetsontwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K221"/>221</tagged>); Wijziging van hoofdstuk I X der Staatsbegrootiug voor 1917 (Herstel van de sluizen te Terneuzen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K232"/>232</tagged>); Begrooting van het Eonds voor de uitvoering van de Tiendwet 1907 (Staatsblad n°. 222) voor 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K23" pm:chapter="S"/>23S</tagged>); Regeling van de inkomsten en uitgaven voor bet Staatsmuntbedrijf voor 1918 (231»; Verhooging van het lild e hoofdstuk der Staatsbegrooting voor 1917 (Traktcmentsverhooging van een administrateur) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K210"/>210</tagged>); Aanvulling der wet tot instelling eener Rijkspostspaarbank, der Weduweuwet vcor de ambtenaren 1890, der Ongevallenwet 1901 en der wet houdende nadere voorzieningen met betrekking tot de tiendrechten, beboorende tot het Kroondomein (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K242"/>242</tagged>); Verhooging van hoofdstuk I I der Staatsbegrooting voor 1916 (Kosten Kort Verslag) (til); Wijziging en verhooging van hoofdstuk VU B der Staatsbegrooting voor 1916 (Diverse onderwerpen) (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K248"/>248</tagged>); Wijzising van art. 54 der wet op de Oorlogswinstbelasting 1916 '(<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K253"/>253</tagged>); Tijdelijke vrijstelling van invoerrecht voor gedistilleerd, waarvoor vrijdom van den accijns wordt genoten (2G2); Verevening van de door het Staatsbedrijf van de Poste8ste VERGADERING . — 8 JANUAR I 1918.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.7">Regeling van werkzaamheden.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.8">rijen. de Telegrafie en Telefonie over 1915 tn 1916 aan 's Rijks middelen uit te keuren winst (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K266"/>266</tagged>); Vaststelling van bepalingen in het belang van dcu omloop van 's Rijks munten (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K267"/>267</tagged>); Voorziening in het kastekort van den Iudisehen dienst 1918 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K282"/>282</tagged>), Verhooging van het Vide hoofdstuk der Staatsbegrooting voor 1917 (Tijdelijke loonsverhooging personeel bij 's Rijks maritieme inrichtingen (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K234"/>234</tagged>), en bovendien het wetsontwerp tot vaststelling vau hoofdstuk I I der Staatsbegrootmjr voor het dienstjaar 1018 (Hoogt Colleges van Staat en Kabinet der Koningin (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K2"/>2</tagged>), terwijl de overige hoofdstukken en de algemeen© beschouwingen zullen worden behandeld, zoodra all© begrootingsontwerpen in de Tweede Kamer zullen zijn afgedaan eu bij deze Kamer zullen zijn ingekomen.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.9">Voorts zullen Donderdagmorgen te 11 uur worden behandeld de ontwerpen tot:</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.10">Heffing eener dividend- en tantièmebelasting (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K212"/>212</tagged>) en Wijziging van de wet op de Inkomstenbelasting 191-4 (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K213"/>213</tagged>), terwijl t© 2 uur de Me n in de gelegenheid zullen zijn gevolg te geven aan de uitnoodiging van den Minister vau Landbouw, Nijverheid en Handel tot een bezoek aan hel nieuwe gebouw van zijn Departement.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.11">Eindelijk stel ik mij voor, a.s. Vrijdag te 11 uur een opsnbare vergadering tehouden en alsdan te behandelen het wetsontwerp tot Instelling van enn centraal testamentenregister (<tagged pm:type="reference">
+                        <tagged-entity pm:type="reference" pm:sub-type="dossierref" pm:reference="19171918:0000088:K14"/>14</tagged>) en de wetsontwerpen, die alsdan verder in staat van wijzen zullen zijn.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.12">Daartoe wordt besloten.</p>
+                <p pm:id="nl.proc.sgd.d.191719180000088.1.4.13">De vergadering wordt goilotcn.</p>
+            </speech>
+        </topic>
+    </proceedings>
+</root>

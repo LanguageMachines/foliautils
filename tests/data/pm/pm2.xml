@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:pmd="http://www.politicalmashup.nl/docinfo" xmlns:pm="http://www.politicalmashup.nl" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms/">
+    <pmd:docinfo xmlns="http://www.politicalmashup.nl/docinfo" pm:id="nl.proc.ob.d.h-tk-20122013-7-1.docinfo">
+        <pmd:transformer pmd:version="1.1" pmd:result="pass" pmd:datetime="2012-10-23T18:21:37.195+02:00" pmd:name="nl-officielebekendmakingen-ge-2011.xsl">
+            <pmd:comment>Transformer works on files downloaded from https://zoek.officielebekendmakingen.nl/ RELAX NG: parlproceedings.rnc.</pmd:comment>
+            <pmd:comment>xml source format changed to current at 01-01-2011 (confirm this)</pmd:comment>
+        </pmd:transformer>
+        <pmd:validation pmd:type="rnc" pmd:datetime="2012-10-23T18:21:37.311+02:00" pmd:schema="http://schema.politicalmashup.nl/proceedings.rnc" pmd:version="626372a238f7832c26da876b49de627c2b628cf6"/>
+        <pmd:validation pmd:type="sch" pmd:datetime="2012-10-23T18:21:37.319+02:00" pmd:schema="http://schema.politicalmashup.nl/proceedingsschematron.xsl" pmd:version="626372a238f7832c26da876b49de627c2b628cf6"/>
+        <pmd:validation pmd:type="sch" pmd:datetime="2012-10-23T18:21:37.324+02:00" pmd:schema="http://schema.politicalmashup.nl/nl-votes.xsl" pmd:version="626372a238f7832c26da876b49de627c2b628cf6"/>
+    </pmd:docinfo>
+    <meta pm:id="nl.proc.ob.d.h-tk-20122013-7-1.meta">
+        <dc:identifier>nl.proc.ob.d.h-tk-20122013-7-1</dc:identifier>
+        <dc:format>text/xml</dc:format>
+        <dc:type>Verbatim Proceedings</dc:type>
+        <dc:contributor>http://www.politicalmashup.nl</dc:contributor>
+        <dc:coverage>
+            <country dcterms:ISO3166-1="NL">Netherlands</country>
+        </dc:coverage>
+        <dc:creator>http://www.politicalmashup.nl</dc:creator>
+        <dc:language>
+            <pm:language dcterms:ISO639-2="dut">Dutch; Flemish</pm:language>
+        </dc:language>
+        <dc:publisher>https://zoek.officielebekendmakingen.nl/</dc:publisher>
+        <dc:rights> http://www.overheid.nl/overdesite/ should contain IPR information, but it doesn't. 
+            Investigation with the Koninklijke Bibliotheek (who keep the Proceedings data in the statengeneraaldigitaal.nl project) 
+            and the Tweede Kamer led to the following response:
+            
+            Van: Beijer A. [mailto:T.Beijer@tweedekamer.nl]
+            Verzonden: woensdag 13 oktober 2010 13:31
+            Aan: Statengeneraaldigitaal Info Mailbox
+            Onderwerp: RE: gebruik van de Handelingen voor onderzoek
+            
+            
+            
+            Beste Karin,
+            
+            
+            
+            Heb het nog even bij Jan Keukens nagevraagd. Maar er is geen overeenkomst nodig.
+            
+            Hij verwees nog naar de auteurswet.
+            
+            Hieronder artikel 11 van de auteurswet:
+            
+            Artikel 11
+            
+            Er bestaat geen auteursrecht op wetten, besluiten en verordeningen, door
+            de openbare macht uitgevaardigd, noch op rechterlijke uitspraken en
+            administratieve beslissingen.
+            
+            
+            
+            Groet,
+            Tonny
+            
+            070-3182458</dc:rights>
+        <dc:date>2012-10-02</dc:date>
+        <dc:title>Presentie en opening</dc:title>
+        <dc:description>Presentie en opening</dc:description>
+        <dc:source>
+            <dc:source>
+                <pm:link pm:linktype="pdf" pm:source="https://zoek.officielebekendmakingen.nl/h-tk-20122013-7-1.pdf"/>
+            </dc:source>
+            <dc:source pm:used-source="true">
+                <pm:link pm:linktype="xml" pm:source="https://zoek.officielebekendmakingen.nl/h-tk-20122013-7-1.xml"/>
+            </dc:source>
+            <dc:source>
+                <pm:link pm:linktype="html" pm:source="https://zoek.officielebekendmakingen.nl/h-tk-20122013-7-1.html"/>
+            </dc:source>
+        </dc:source>
+        <dc:subject>
+            <pm:house pm:house="commons">Tweede Kamer der Staten-Generaal</pm:house>
+            <pm:legislative-period>2012-2013</pm:legislative-period>
+            <pm:session-number>7</pm:session-number>
+            <pm:item-number>1</pm:item-number>
+            <pm:publication-date>2012-10-16</pm:publication-date>
+            <pm:categories>
+                <pm:entity>Bestuur <pm:entity> Parlement</pm:entity>
+                </pm:entity>
+            </pm:categories>
+        </dc:subject>
+        <dc:relation/>
+    </meta>
+    <proceedings xmlns="http://www.politicalmashup.nl" pm:id="nl.proc.ob.d.h-tk-20122013-7-1">
+        <topic pm:title="1. Presentie en opening" pm:source-start-page="1" pm:source-end-page="1" pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1">
+            <stage-direction pm:type="chair" pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.1">
+                <chair pm:speaker="Van Miltenburg" pm:member-ref="nl.m.02413"/>
+            </stage-direction>
+            <stage-direction pm:type="intro" pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.2">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.2.1">7e vergadering</p>
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.2.2">Dinsdag 2 oktober 2012</p>
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.2.3">Aanvang 14:00 uur</p>
+            </stage-direction>
+            <stage-direction pm:type="intro" pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.3">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.3.1">Voorzitter: Van Miltenburg</p>
+                <chair pm:speaker="Van Miltenburg" pm:member-ref="nl.m.02413"/>
+            </stage-direction>
+            <stage-direction pm:type="present" pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.4">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.4.1">Aanwezig zijn 146 leden der Kamer, te weten:</p>
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.4.2">Agema, Arib, Azmani, Bashir, Beertema, Berckmoes-Duindam, Bergkamp, Berndsen-Jansen, Bisschop, Blok, De Boer, Bonis, Bontes, Bosma, Bosman, Bouwmeester, Ten Broeke, Bruins Slot, Van der Burg, De Caluwé, Van Dam, Van Dekken, Tony van Dijck, Jasper van Dijk, Otwin van Dijk, Dijkgraaf, Dijkhoff, Pia Dijkstra, Remco Dijkstra, Dijsselbloem, Dik-Faber, Dikkers, Duisenberg, Eijsink, Elias, Fokke, Fritsma, Van Gerven, Gesthuizen, Geurts, De Graaf, Graus, Groot, Hachchi, Van Haersma Buma, Hamer, Harbers, Heerma, Heijnen, Helder, Hennis-Plasschaert, Van Hijum, Hilkens, Huizing, Jacobi, Jadnanansing, Paulus Jansen, Karabulut, Keijzer, Kerstens, Klaver, Van Klaveren, Klein, Klever, Klijnsma, Knops, Kooiman, Koolmees, Krol, Kuiken, Kuzu, Leegte, Leijten, De Liefde, Litjens, Lodders, Lucas, Madlener, Maij, Marcouch, Van Meenen, Merkies, Van Miltenburg, Mohandis, Monasch, Agnes Mulder, Anne Mulder, Neppérus, Van Nieuwenhuizen-Wijbenga, Nijboer, Van Ojik, Oosenbrug, Van Oosten, Oskam, Ouwehand, Pechtold, Plasterk, Van Raak, Recourt, Roemer, Rog, De Roon, De Rouwe, Arno Rutte, Mark Rutte, Samsom, Sap, Schouten, Schouw, Schut-Welkzijn, Segers, Servaes, Sjoerdsma, Slob, Smits, Van der Steur, Straus, Teeven, Tellegen, Thieme, Timmermans, Van Tongeren, Van Toorenburg, Ulenbelt, Van Veen, Van Veldhoven, Venrooy, Verheijen, Verhoeven, Vermeij, Visser, Van Vliet, Voordewind, Jan Vos, Mei Li Vos, De Vries, Weekers, Van Weyenberg, Wilders, De Wit, Wolbert, Van 't Wout, Ypma, Yücel, Ziengs en Zijlstra,</p>
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.4.3">en de heer Opstelten, minister van Veiligheid en Justitie, mevrouw Spies, minister van Binnenlandse Zaken en Koninkrijksrelaties, en de heer Teeven, staatssecretaris van Veiligheid en Justitie,</p>
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-7-1.1.4.4">en de heren Bos en Kamp.</p>
+                <members pm:status="present">
+                    <person pm:speaker="Agema" pm:role="mp" pm:member-ref="nl.m.03048" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Arib" pm:role="mp" pm:member-ref="nl.m.02203" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Azmani" pm:role="mp" pm:member-ref="nl.m.03200" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Bashir" pm:role="mp" pm:member-ref="nl.m.03149" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Beertema" pm:role="mp" pm:member-ref="nl.m.03209" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Berckmoes-Duindam" pm:role="mp" pm:member-ref="nl.m.03262" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Bergkamp" pm:role="mp" pm:member-ref="nl.m.03349" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Berndsen-Jansen" pm:role="mp" pm:member-ref="nl.m.03187" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Bisschop" pm:role="mp" pm:member-ref="nl.m.03353" pm:party-ref="nl.p.sgp"/>
+                    <person pm:speaker="Blok" pm:role="mp" pm:member-ref="nl.m.02205" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="De Boer" pm:role="mp" pm:member-ref="nl.m.16075" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Bonis" pm:role="mp" pm:member-ref="nl.m.03341" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Bontes" pm:role="mp" pm:member-ref="nl.m.16079" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Bosma" pm:role="mp" pm:member-ref="nl.m.03127" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Bosman" pm:role="mp" pm:member-ref="nl.m.03252" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Bouwmeester" pm:role="mp" pm:member-ref="nl.m.03082" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Ten Broeke" pm:role="mp" pm:member-ref="nl.m.03069" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Bruins Slot" pm:role="mp" pm:member-ref="nl.m.03221" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Van der Burg" pm:role="mp" pm:member-ref="nl.m.03063" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="De Caluwé" pm:role="mp" pm:member-ref="nl.m.03261" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Van Dam" pm:role="mp" pm:member-ref="nl.m.02464" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van Dekken" pm:role="mp" pm:member-ref="nl.m.03243" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Tony van Dijck" pm:role="mp" pm:member-ref="nl.m.03130" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Jasper van Dijk" pm:role="mp" pm:member-ref="nl.m.03104" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Otwin van Dijk" pm:role="mp" pm:member-ref="nl.m.03377" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Dijkgraaf" pm:role="mp" pm:member-ref="nl.m.02306" pm:party-ref="nl.p.sgp"/>
+                    <person pm:speaker="Dijkhoff" pm:role="mp" pm:member-ref="nl.m.03250" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Pia Dijkstra" pm:role="mp" pm:member-ref="nl.m.03188" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Remco Dijkstra" pm:role="mp" pm:member-ref="nl.m.03334" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Dijsselbloem" pm:role="mp" pm:member-ref="nl.m.02200" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Dik-Faber" pm:role="mp" pm:member-ref="nl.m.03331" pm:party-ref="nl.p.cu"/>
+                    <person pm:speaker="Dikkers" pm:role="mp" pm:member-ref="nl.m.03241" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Duisenberg" pm:role="mp" pm:member-ref="nl.m.03304" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Eijsink" pm:role="mp" pm:member-ref="nl.m.02404" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Elias" pm:role="mp" pm:member-ref="nl.m.03064" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Fokke" pm:role="mp" pm:member-ref="nl.m.03378" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Fritsma" pm:role="mp" pm:member-ref="nl.m.03131" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Van Gerven" pm:role="mp" pm:member-ref="nl.m.03116" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Gesthuizen" pm:role="mp" pm:member-ref="nl.m.03103" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Geurts" pm:role="mp" pm:member-ref="nl.m.03322" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="De Graaf" pm:role="mp" pm:member-ref="nl.m.03290" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Graus" pm:role="mp" pm:member-ref="nl.m.03128" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Groot" pm:role="mp" pm:member-ref="nl.m.03240" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Hachchi" pm:role="mp" pm:member-ref="nl.m.03190" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Van Haersma Buma" pm:role="mp" pm:member-ref="nl.m.02316" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Hamer" pm:role="mp" pm:member-ref="nl.m.02221" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Harbers" pm:role="mp" pm:member-ref="nl.m.03111" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Heerma" pm:role="mp" pm:member-ref="nl.m.03325" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Heijnen" pm:role="mp" pm:member-ref="nl.m.03086" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Helder" pm:role="mp" pm:member-ref="nl.m.03210" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Hennis-Plasschaert" pm:role="mp" pm:member-ref="nl.m.16052" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Van Hijum" pm:role="mp" pm:member-ref="nl.m.02442" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Hilkens" pm:role="mp" pm:member-ref="nl.m.03248" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Huizing" pm:role="mp" pm:member-ref="nl.m.03260" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Jacobi" pm:role="mp" pm:member-ref="nl.m.03079" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Jadnanansing" pm:role="mp" pm:member-ref="nl.m.03244" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Paulus Jansen" pm:role="mp" pm:member-ref="nl.m.03106" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Karabulut" pm:role="mp" pm:member-ref="nl.m.03102" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Keijzer" pm:role="mp" pm:member-ref="nl.m.03301" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Kerstens" pm:role="mp" pm:member-ref="nl.m.03342" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Klaver" pm:role="mp" pm:member-ref="nl.m.03226" pm:party-ref="nl.p.gl"/>
+                    <person pm:speaker="Van Klaveren" pm:role="mp" pm:member-ref="nl.m.03217" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Klein" pm:role="mp" pm:member-ref="nl.m.03376" pm:party-ref="nl.p.50plus"/>
+                    <person pm:speaker="Klever" pm:role="mp" pm:member-ref="nl.m.03292" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Klijnsma" pm:role="mp" pm:member-ref="nl.m.03181" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Knops" pm:role="mp" pm:member-ref="nl.m.03039" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Kooiman" pm:role="mp" pm:member-ref="nl.m.03231" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Koolmees" pm:role="mp" pm:member-ref="nl.m.03189" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Krol" pm:role="mp" pm:member-ref="nl.m.03305" pm:party-ref="nl.p.50plus"/>
+                    <person pm:speaker="Kuiken" pm:role="mp" pm:member-ref="nl.m.03075" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Kuzu" pm:role="mp" pm:member-ref="nl.m.03345" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Leegte" pm:role="mp" pm:member-ref="nl.m.03255" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Leijten" pm:role="mp" pm:member-ref="nl.m.03095" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="De Liefde" pm:role="mp" pm:member-ref="nl.m.03259" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Litjens" pm:role="mp" pm:member-ref="nl.m.03306" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Lodders" pm:role="mp" pm:member-ref="nl.m.03251" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Lucas" pm:role="mp" pm:member-ref="nl.m.03253" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Madlener" pm:role="mp" pm:member-ref="nl.m.03129" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Maij" pm:role="mp" pm:member-ref="nl.m.03382" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Marcouch" pm:role="mp" pm:member-ref="nl.m.03186" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van Meenen" pm:role="mp" pm:member-ref="nl.m.03350" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Merkies" pm:role="mp" pm:member-ref="nl.m.03309" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Van Miltenburg" pm:role="mp" pm:member-ref="nl.m.02413" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Mohandis" pm:role="mp" pm:member-ref="nl.m.03249" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Monasch" pm:role="mp" pm:member-ref="nl.m.03246" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Agnes Mulder" pm:role="mp" pm:member-ref="nl.m.03323" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Anne Mulder" pm:role="mp" pm:member-ref="nl.m.03203" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Neppérus" pm:role="mp" pm:member-ref="nl.m.03065" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Van Nieuwenhuizen-Wijbenga" pm:role="mp" pm:member-ref="nl.m.03201" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Nijboer" pm:role="mp" pm:member-ref="nl.m.03343" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van Ojik" pm:role="mp" pm:member-ref="nl.m.02895" pm:party-ref="nl.p.gl"/>
+                    <person pm:speaker="Oosenbrug" pm:role="mp" pm:member-ref="nl.m.03380" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van Oosten" pm:role="mp" pm:member-ref="nl.m.03336" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Oskam" pm:role="mp" pm:member-ref="nl.m.03324" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Ouwehand" pm:role="mp" pm:member-ref="nl.m.03108" pm:party-ref="nl.p.pvdd"/>
+                    <person pm:speaker="Pechtold" pm:role="mp" pm:member-ref="nl.m.02993" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Plasterk" pm:role="mp" pm:member-ref="nl.m.03154" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van Raak" pm:role="mp" pm:member-ref="nl.m.03035" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Recourt" pm:role="mp" pm:member-ref="nl.m.03242" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Roemer" pm:role="mp" pm:member-ref="nl.m.03094" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Rog" pm:role="mp" pm:member-ref="nl.m.03321" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="De Roon" pm:role="mp" pm:member-ref="nl.m.03126" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="De Rouwe" pm:role="mp" pm:member-ref="nl.m.03054" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Arno Rutte" pm:role="mp" pm:member-ref="nl.m.03386" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Mark Rutte" pm:role="mp" pm:member-ref="nl.m.02396" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Samsom" pm:role="mp" pm:member-ref="nl.m.02335" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Sap" pm:role="mp" pm:member-ref="nl.m.03090" pm:party-ref="nl.p.gl"/>
+                    <person pm:speaker="Schouten" pm:role="mp" pm:member-ref="nl.m.03206" pm:party-ref="nl.p.cu"/>
+                    <person pm:speaker="Schouw" pm:role="mp" pm:member-ref="nl.m.03025" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Schut-Welkzijn" pm:role="mp" pm:member-ref="nl.m.03387" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Segers" pm:role="mp" pm:member-ref="nl.m.03330" pm:party-ref="nl.p.cu"/>
+                    <person pm:speaker="Servaes" pm:role="mp" pm:member-ref="nl.m.03344" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Sjoerdsma" pm:role="mp" pm:member-ref="nl.m.03352" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Slob" pm:role="mp" pm:member-ref="nl.m.01639" pm:party-ref="nl.p.cu"/>
+                    <person pm:speaker="Smits" pm:role="mp" pm:member-ref="nl.m.03179" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Van der Steur" pm:role="mp" pm:member-ref="nl.m.03205" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Straus" pm:role="mp" pm:member-ref="nl.m.03256" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Teeven" pm:role="mp" pm:member-ref="nl.m.02336" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Tellegen" pm:role="mp" pm:member-ref="nl.m.03335" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Thieme" pm:role="mp" pm:member-ref="nl.m.03100" pm:party-ref="nl.p.pvdd"/>
+                    <person pm:speaker="Timmermans" pm:role="mp" pm:member-ref="nl.m.02244" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van Tongeren" pm:role="mp" pm:member-ref="nl.m.03225" pm:party-ref="nl.p.gl"/>
+                    <person pm:speaker="Van Toorenburg" pm:role="mp" pm:member-ref="nl.m.03058" pm:party-ref="nl.p.cda"/>
+                    <person pm:speaker="Ulenbelt" pm:role="mp" pm:member-ref="nl.m.03096" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Van Veen" pm:role="mp" pm:member-ref="nl.m.03385" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Van Veldhoven" pm:role="mp" pm:member-ref="nl.m.03191" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Venrooy" pm:role="mp" pm:member-ref="nl.m.03202" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Verheijen" pm:role="mp" pm:member-ref="nl.m.03302" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Verhoeven" pm:role="mp" pm:member-ref="nl.m.03192" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Vermeij" pm:role="mp" pm:member-ref="nl.m.03084" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Visser" pm:role="mp" pm:member-ref="nl.m.03303" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Van Vliet" pm:role="mp" pm:member-ref="nl.m.03214" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="Voordewind" pm:role="mp" pm:member-ref="nl.m.03070" pm:party-ref="nl.p.cu"/>
+                    <person pm:speaker="Jan Vos" pm:role="mp" pm:member-ref="nl.m.03381" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Mei Li Vos" pm:role="mp" pm:member-ref="nl.m.03087" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="De Vries" pm:role="mp" pm:member-ref="nl.m.03364" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Weekers" pm:role="mp" pm:member-ref="nl.m.02247" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Van Weyenberg" pm:role="mp" pm:member-ref="nl.m.03351" pm:party-ref="nl.p.d66"/>
+                    <person pm:speaker="Wilders" pm:role="mp" pm:member-ref="nl.m.02258" pm:party-ref="nl.p.pvv"/>
+                    <person pm:speaker="De Wit" pm:role="mp" pm:member-ref="nl.m.02940" pm:party-ref="nl.p.sp"/>
+                    <person pm:speaker="Wolbert" pm:role="mp" pm:member-ref="nl.m.03078" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Van 't Wout" pm:role="mp" pm:member-ref="nl.m.03307" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Ypma" pm:role="mp" pm:member-ref="nl.m.03363" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Yücel" pm:role="mp" pm:member-ref="nl.m.03185" pm:party-ref="nl.p.pvda"/>
+                    <person pm:speaker="Ziengs" pm:role="mp" pm:member-ref="nl.m.03204" pm:party-ref="nl.p.vvd"/>
+                    <person pm:speaker="Zijlstra" pm:role="mp" pm:member-ref="nl.m.03068" pm:party-ref="nl.p.vvd"/>
+                    <person pm:function="minister van Veiligheid en Justitie" pm:member-ref="nl.m.17998" pm:role="government" pm:speaker="Opstelten"/>
+                    <person pm:function="minister van Binnenlandse Zaken en Koninkrijksrelaties" pm:member-ref="nl.m.02371" pm:role="government" pm:speaker="Spies"/>
+                    <person pm:function="staatssecretaris van Veiligheid en Justitie," pm:member-ref="nl.m.02336" pm:role="government" pm:speaker="Teeven"/>
+                </members>
+            </stage-direction>
+        </topic>
+    </proceedings>
+</root>

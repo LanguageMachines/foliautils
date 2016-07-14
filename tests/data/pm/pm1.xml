@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:pmd="http://www.politicalmashup.nl/docinfo" xmlns:pm="http://www.politicalmashup.nl" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms/">
+    <pmd:docinfo xmlns="http://www.politicalmashup.nl/docinfo" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.docinfo">
+        <pmd:transformer pmd:version="1.1" pmd:result="pass" pmd:datetime="2013-02-18T05:53:33.532+01:00" pmd:name="nl-officielebekendmakingen-ge-2011.xsl">
+            <pmd:comment>Transformer works on files downloaded from https://zoek.officielebekendmakingen.nl/ RELAX NG: parlproceedings.rnc.</pmd:comment>
+            <pmd:comment>xml source format changed to current at 01-01-2011 (confirm this)</pmd:comment>
+        </pmd:transformer>
+        <pmd:validation pmd:type="rnc" pmd:datetime="2013-02-18T05:53:43.179+01:00" pmd:schema="http://schema.politicalmashup.nl/proceedings.rnc" pmd:version="9c4824a13a83f5621f96150e9137e956b3d6c4e1"/>
+        <pmd:validation pmd:type="sch" pmd:datetime="2013-02-18T05:53:43.202+01:00" pmd:schema="http://schema.politicalmashup.nl/proceedingsschematron.xsl" pmd:version="9c4824a13a83f5621f96150e9137e956b3d6c4e1"/>
+        <pmd:validation pmd:type="sch" pmd:datetime="2013-02-18T05:53:43.218+01:00" pmd:schema="http://schema.politicalmashup.nl/nl-votes.xsl" pmd:version="9c4824a13a83f5621f96150e9137e956b3d6c4e1"/>
+    </pmd:docinfo>
+    <meta pm:id="nl.proc.ob.d.h-tk-20122013-33-7.meta">
+        <dc:identifier>nl.proc.ob.d.h-tk-20122013-33-7</dc:identifier>
+        <dc:format>text/xml</dc:format>
+        <dc:type>Verbatim Proceedings</dc:type>
+        <dc:contributor>http://www.politicalmashup.nl</dc:contributor>
+        <dc:coverage>
+            <country dcterms:ISO3166-1="NL">Netherlands</country>
+        </dc:coverage>
+        <dc:creator>http://www.politicalmashup.nl</dc:creator>
+        <dc:language>
+            <pm:language dcterms:ISO639-2="dut">Dutch; Flemish</pm:language>
+        </dc:language>
+        <dc:publisher>https://zoek.officielebekendmakingen.nl/</dc:publisher>
+        <dc:rights> http://www.overheid.nl/overdesite/ should contain IPR information, but it doesn't. 
+            Investigation with the Koninklijke Bibliotheek (who keep the Proceedings data in the statengeneraaldigitaal.nl project) 
+            and the Tweede Kamer led to the following response:
+            
+            Van: Beijer A. [mailto:T.Beijer@tweedekamer.nl]
+            Verzonden: woensdag 13 oktober 2010 13:31
+            Aan: Statengeneraaldigitaal Info Mailbox
+            Onderwerp: RE: gebruik van de Handelingen voor onderzoek
+            
+            
+            
+            Beste Karin,
+            
+            
+            
+            Heb het nog even bij Jan Keukens nagevraagd. Maar er is geen overeenkomst nodig.
+            
+            Hij verwees nog naar de auteurswet.
+            
+            Hieronder artikel 11 van de auteurswet:
+            
+            Artikel 11
+            
+            Er bestaat geen auteursrecht op wetten, besluiten en verordeningen, door
+            de openbare macht uitgevaardigd, noch op rechterlijke uitspraken en
+            administratieve beslissingen.
+            
+            
+            
+            Groet,
+            Tonny
+            
+            070-3182458</dc:rights>
+        <dc:date>2012-12-11</dc:date>
+        <dc:title>Regeling van werkzaamheden</dc:title>
+        <dc:description>Regeling van werkzaamheden</dc:description>
+        <dc:source>
+            <dc:source>
+                <pm:link pm:linktype="pdf" pm:source="https://zoek.officielebekendmakingen.nl/h-tk-20122013-33-7.pdf"/>
+            </dc:source>
+            <dc:source pm:used-source="true">
+                <pm:link pm:linktype="xml" pm:source="https://zoek.officielebekendmakingen.nl/h-tk-20122013-33-7.xml"/>
+            </dc:source>
+            <dc:source>
+                <pm:link pm:linktype="html" pm:source="https://zoek.officielebekendmakingen.nl/h-tk-20122013-33-7.html"/>
+            </dc:source>
+        </dc:source>
+        <dc:subject>
+            <pm:house pm:house="commons">Tweede Kamer der Staten-Generaal</pm:house>
+            <pm:legislative-period>2012-2013</pm:legislative-period>
+            <pm:session-number>33</pm:session-number>
+            <pm:item-number>7</pm:item-number>
+            <pm:publication-date>2013-02-07</pm:publication-date>
+            <pm:categories>
+                <pm:entity>Bestuur <pm:entity> Parlement</pm:entity>
+                </pm:entity>
+            </pm:categories>
+        </dc:subject>
+        <dc:relation>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Van Miltenburg" pm:role="chair" pm:member-ref="nl.m.02413" pm:function="De voorzitter"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Knops" pm:role="mp" pm:member-ref="nl.m.03039" pm:party="CDA" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Van Hijum" pm:role="mp" pm:member-ref="nl.m.02442" pm:party="CDA" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Klaver" pm:role="mp" pm:member-ref="nl.m.03226" pm:party="GroenLinks" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Harbers" pm:role="mp" pm:member-ref="nl.m.03111" pm:party="VVD" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Tony van Dijck" pm:role="mp" pm:member-ref="nl.m.03130" pm:party="PVV" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Koolmees" pm:role="mp" pm:member-ref="nl.m.03189" pm:party="D66" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Slob" pm:role="mp" pm:member-ref="nl.m.01639" pm:party="ChristenUnie" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Nijboer" pm:role="mp" pm:member-ref="nl.m.03343" pm:party="PvdA" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Merkies" pm:role="mp" pm:member-ref="nl.m.03309" pm:party="SP" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Krol" pm:role="mp" pm:member-ref="nl.m.03305" pm:party="50PLUS" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Dijkgraaf" pm:role="mp" pm:member-ref="nl.m.02306" pm:party="SGP" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Hachchi" pm:role="mp" pm:member-ref="nl.m.03190" pm:party="D66" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Verhoeven" pm:role="mp" pm:member-ref="nl.m.03192" pm:party="D66" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Gesthuizen" pm:role="mp" pm:member-ref="nl.m.03103" pm:party="SP" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Schouw" pm:role="mp" pm:member-ref="nl.m.03025" pm:party="D66" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Van Ojik" pm:role="mp" pm:member-ref="nl.m.02895" pm:party="GroenLinks" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Arib" pm:role="mp" pm:member-ref="nl.m.02203" pm:party="PvdA" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Azmani" pm:role="mp" pm:member-ref="nl.m.03200" pm:party="VVD" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Pechtold" pm:role="mp" pm:member-ref="nl.m.02993" pm:party="D66" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Roemer" pm:role="mp" pm:member-ref="nl.m.03094" pm:party="SP" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Omtzigt" pm:role="mp" pm:member-ref="nl.m.02441" pm:party="CDA" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Verheijen" pm:role="mp" pm:member-ref="nl.m.03302" pm:party="VVD" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Thieme" pm:role="mp" pm:member-ref="nl.m.03100" pm:party="PvdD" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Madlener" pm:role="mp" pm:member-ref="nl.m.03129" pm:party="PVV" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Servaes" pm:role="mp" pm:member-ref="nl.m.03344" pm:party="PvdA" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Agema" pm:role="mp" pm:member-ref="nl.m.03048" pm:party="PVV" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Leijten" pm:role="mp" pm:member-ref="nl.m.03095" pm:party="SP" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Bruins Slot" pm:role="mp" pm:member-ref="nl.m.03221" pm:party="CDA" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Van 't Wout" pm:role="mp" pm:member-ref="nl.m.03307" pm:party="VVD" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Otwin van Dijk" pm:role="mp" pm:member-ref="nl.m.03377" pm:party="PvdA" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Bergkamp" pm:role="mp" pm:member-ref="nl.m.03349" pm:party="D66" pm:function="Mevrouw"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="50PLUS" pm:function="party" pm:ref="nl.p.50plus"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Christen-Democratisch Appel" pm:function="party" pm:ref="nl.p.cda"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="ChristenUnie" pm:function="party" pm:ref="nl.p.cu"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Democraten 66" pm:function="party" pm:ref="nl.p.d66"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="GroenLinks" pm:function="party" pm:ref="nl.p.gl"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Partij van de Arbeid" pm:function="party" pm:ref="nl.p.pvda"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Partij voor de Dieren" pm:function="party" pm:ref="nl.p.pvdd"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Partij voor de Vrijheid" pm:function="party" pm:ref="nl.p.pvv"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Staatkundig Gereformeerde Partij" pm:function="party" pm:ref="nl.p.sgp"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Socialistische Partij" pm:function="party" pm:ref="nl.p.sp"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="party">
+                <pm:actor>
+                    <pm:organization pm:name="Volkspartij voor Vrijheid en Democratie" pm:function="party" pm:ref="nl.p.vvd"/>
+                </pm:actor>
+            </pm:subject>
+        </dc:relation>
+    </meta>
+    <proceedings xmlns="http://www.politicalmashup.nl" pm:id="nl.proc.ob.d.h-tk-20122013-33-7">
+        <topic pm:title="7. Regeling van werkzaamheden" pm:source-start-page="11" pm:source-end-page="16" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1">
+            <stage-direction pm:type="chair" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.1">
+                <chair pm:speaker="Van Miltenburg" pm:member-ref="nl.m.02413"/>
+            </stage-direction>
+            <stage-direction pm:type="subject" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.2">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.2.1"> Regeling van werkzaamheden</p>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.3">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.3.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.3.1.1">Ik stel de Kamer voor, a.s. woensdag en donderdag én volgende week woensdag en donderdag de vergadering om 9.00 uur te laten aanvangen. Wellicht ten overvloede wijs ik erop dat dit betekent dat er om 9.00 uur ten minste 76 handtekeningen moeten zijn geplaatst op de presentielijst, omdat de vergadering anders niet kan beginnen. Het is de verantwoordelijkheid van de Kamerleden zelf dat ze dat ook doen.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.3.1.2">Ik stel voor om de spreektijden bij het debat over de Europese top als volgt vast te stellen: 12 minuten voor de VVD en de PvdA, 10 minuten voor de PVV, de SP, het CDA en D66, en 7 minuten voor de ChristenUnie, GroenLinks, de SGP, de PvdD en 50PLUS.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="other" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.4">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.4.1">Overeenkomstig de voorstellen van de voorzitter wordt besloten.</p>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.1">Op verzoek van de 50PLUS-fractie benoem ik in de commissie voor de Werkwijze der Kamer het lid Klein tot lid.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.2">Op verzoek van de GroenLinks-fractie benoem ik in de commissie voor de Werkwijze der Kamer het lid Klaver tot lid.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.3">Op verzoek van de aanvrager stel ik voor om het debat over het bericht "Toezicht Justitie op bedrijven werkt niet" van de agenda af te voeren.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.4">Ik stel voor, hedenmiddag ook te stemmen over de aangehouden motie-Klaver (<tagged pm:type="reference">
+                            <tagged-entity pm:type="reference" pm:sub-type="extref" pm:reference="kst-33402-35" pm:status="actief"/>33402, nr. 35</tagged>).</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.5">Op verzoek van het lid Thieme stel ik voor, haar motie op stuk<tagged pm:type="reference">
+                            <tagged-entity pm:type="reference" pm:sub-type="extref" pm:reference="kst-26991-328" pm:status="actief"/>26991, nr. 328</tagged>opnieuw aan te houden. Dit betekent dat de in artikel 69, tweede lid, genoemde termijn van twee maanden voor deze motie opnieuw gaat lopen.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.6">Ik stel voor, aan de agenda toe te voegen:</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.7">-</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.8">het VAO Connexxion, naar aanleiding van een AO gehouden op 6 december, met als eerste spreker het lid Bashir;</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.9">-</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.5.1.10">het VAO Bouwregelgeving en brandveiligheid, naar aanleiding van een AO gehouden op 6 december, met als eerste spreker het lid Paulus Jansen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="other" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.6">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.6.1">Overeenkomstig de voorstellen van de voorzitter wordt besloten.</p>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.7">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.7.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.7.1.1">Het woord is aan de heer Knops.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.8">
+                <speech pm:speaker="Knops" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.03039" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.8.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.8.1.1">Voorzitter. Enige weken geleden heb ik de minister voor Wonen en Rijksdienst gevraagd om opheldering naar aanleiding van geruchten over het mogelijk maken van inzet van pensioengelden voor de hypotheekmarkt. Inmiddels heeft de minister via de media laten weten dat hij de heer Van Dijkhuizen, voorzitter van NIBC, heeft gevraagd om dat op te pakken. Ik zou graag een uitvoerige brief ontvangen van de minister waarin hij de Kamer netjes informeert over het plan van aanpak, de doelstellingen en tijdslijnen. Daarnaast zie ik graag een antwoord op de vraag of de opdracht aan de heer Van Dijkhuizen verder gaat dan alleen de hypotheekmarkt en bijvoorbeeld ook de huurmarkt treft. Syntrus Achmea heeft aangekondigd zich terug te trekken uit de bouw van studentenwoningen. Ik kan mij voorstellen dat als gevolg van de maatregelen van het kabinet onduidelijkheid blijft bestaan. Ik vraag de minister om daarop in te gaan in de brief.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.9">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.9.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.9.1.1">Ik zal dit gedeelte van het stenogram doorgeleiden naar het kabinet.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.9.1.2">Het woord is aan de heer Van Hijum.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.10">
+                <speech pm:speaker="Van Hijum" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02442" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.10.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.10.1.1">Voorzitter. Gisteren kwam de Nederlandsche Bank naar buiten met de groeiverwachting voor de Nederlandse economie voor de jaren 2013 en 2014. Deze ramingen wijken behoorlijk af van de aannames die ten grondslag liggen aan de groeiverwachting uit het regeerakkoord. Naar onze mening raakt die nieuwe werkelijkheid echt aan de fundamenten van de afspraken in het regeerakkoord over groei, over werkgelegenheid en over het terugdringen van tekorten en schulden. Wij willen daarom graag een debat met de minister van Financiën over deze nieuwe ramingen en de betekenis daarvan voor de gemaakte afspraken. Voorafgaand daaraan ontvangen wij graag een reactie van het kabinet op deze ramingen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.11">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.11.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.11.1.1">Voordat ik het woord geef aan de heer Klaver, wijs ik erop dat er volgende week een debat is gepland over de Najaarsnota. Dit is een uitgelezen onderwerp om daarbij te betrekken. Het staat de Kamer echter vrij om een debat aan te vragen. Ik meld het slechts voor de volledigheid.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.12">
+                <speech pm:speaker="Klaver" pm:party="GroenLinks" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.gl" pm:member-ref="nl.m.03226" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.12.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.12.1.1">Ik steun het verzoek van de heer Van Hijum van harte. Dit is veel breder dan de Najaarsnota. Het regeerakkoord staat straks weer op zijn grondvesten te schudden. Ik wil aan het verzoek, dat ik steun, toevoegen dat ik graag de premier en de vicepremier daarbij zou willen uitnodigen, zodat wij wat verdergaand kunnen spreken over de vraag wat deze nieuwe groeiverwachtingen, of eigenlijk het gebrek daaraan, betekenen voor het kabinet en voor de te nemen maatregelen voor de toekomst.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.13">
+                <speech pm:speaker="Harbers" pm:party="VVD" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.vvd" pm:member-ref="nl.m.03111" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.13.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.13.1.1">Uiteraard wil ik graag spreken over die groeicijfers, maar dat hoeft van mij niet in een apart debat. Het bijzondere is dat volgende week niet alleen het debat is over de Najaarsnota, maar ook het debat over de Startnota. Wij hebben toch al de goede gewoonte hier om een paar keer per jaar over de vooruitzichten te spreken, namelijk in het debat over de voorjaarsnota, bij de algemene financiële beschouwingen en in het debat over de najaarsnota. Ik denk dat wij dit onderwerp perfect kunnen betrekken bij het debat dat al gepland staat voor volgende week. Dat lijkt mij bovendien de eerstvolgende mogelijkheid op de agenda. Als wij nu een apart debat zouden aanvragen, zou dat veel later komen dan het debat dat al voor volgende week is gepland.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.14">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.14.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.14.1.1">U steunt het verzoek om een debat dus niet. Steunt u wel het verzoek om een brief met een reactie?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.15">
+                <speech pm:speaker="Harbers" pm:party="VVD" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.vvd" pm:member-ref="nl.m.03111" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.15.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.15.1.1">Ik steun niet het verzoek om een apart debat. Een brief kan natuurlijk altijd. Die kan dan worden betrokken bij het debat over de Startnota van volgende week.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.16">
+                <speech pm:speaker="Tony van Dijck" pm:party="PVV" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03130" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.16.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.16.1.1">Ik steun het verzoek om een brief en ook dat om een debat. Het gaat keihard de verkeerde kant op met Nederland. Dit kabinet verhoogt de belastingen ...</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.17">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.17.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.17.1.1">Dank u wel, mijnheer Van Dijck. Dit is een regeling van werkzaamheden.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.18">
+                <speech pm:speaker="Tony van Dijck" pm:party="PVV" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03130" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.18.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.18.1.1">Hoe sneller een debat hierover, hoe beter voor Nederland.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.19">
+                <speech pm:speaker="Koolmees" pm:party="D66" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.03189" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.19.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.19.1.1">Ik steun het verzoek van de heer Van Hijum om een debat en een brief. Ik heb ook veel sympathie voor het verzoek van de heer Klaver om iets later een debat te voeren met de premier en de vicepremier om de vraag hoe wij moeten omgaan met deze cijfers in een breder perspectief te plaatsen. Steun voor beide verzoeken.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.20">
+                <speech pm:speaker="Slob" pm:party="ChristenUnie" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cu" pm:member-ref="nl.m.01639" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.20.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.20.1.1">Ook de fractie van de ChristenUnie steunt het verzoek om de brief en het verzoek om daar met de minister-president en de minister van Financiën een debat over te voeren.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.21">
+                <speech pm:speaker="Nijboer" pm:party="PvdA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.03343" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.21.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.21.1.1">Het is goed om over de cijfers te spreken. Dat kan al heel snel, namelijk volgende week in het debat over de Najaarsnota. In dat debat kunnen wij er goed over spreken. Daarna kan men altijd nog zien wat men vervolgens wil.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.22">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.22.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.22.1.1">Tegen het verzoek om een brief hebt u geen bezwaar, neem ik aan.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.23">
+                <speech pm:speaker="Nijboer" pm:party="PvdA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.03343" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.23.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.23.1.1">Een brief is uitstekend.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.24">
+                <speech pm:speaker="Merkies" pm:party="SP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03309" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.24.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.24.1.1">Ik heb geen bezwaar tegen een debat. Het lijkt mij dat wij dit onderwerp prima kunnen betrekken bij het debat over de Najaarsnota dat voor volgende week is gepland. Ik steun wel het verzoek om een brief. Ik zou daarin ook een verklaring willen zien voor de tegenvallende groeicijfers.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.25">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.25.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.25.1.1">U steunt dus niet het verzoek om een apart debat omdat het volgens u kan worden besproken in het debat over de Najaarsnota?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.26">
+                <speech pm:speaker="Merkies" pm:party="SP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03309" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.26.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.26.1.1">Ik denk dat het bij het debat over de Najaarsnota kan worden betrokken. Ik steun wel het verzoek om een brief.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.27">
+                <speech pm:speaker="Krol" pm:party="50PLUS" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.50plus" pm:member-ref="nl.m.03305" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.27.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.27.1.1">De fractie van 50PLUS steunt zowel het verzoek om een brief als dat om een debat.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.28">
+                <speech pm:speaker="Dijkgraaf" pm:party="SGP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sgp" pm:member-ref="nl.m.02306" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.28.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.28.1.1">In ieder geval steun voor de brief. Verschillende leden benadrukken de noodzaak om hierover snel te spreken. Ik zou dus willen suggereren om dit volgende week bij de behandeling van de Najaarsnota te betrekken. Het is zaak dat wij de brief dan ook ruim voor de bespreking hebben. Dan kunnen wij als Kamer altijd nog bezien of er na afloop van dat debat nog een nieuw debat nodig is.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.29">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.29.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.29.1.1">Mijnheer Van Hijum, u hebt steun voor een brief. De meerderheid is ervoor om die brief volgende week te betrekken bij de Najaarsnota. U hebt geen steun voor een apart debat.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.30">
+                <speech pm:speaker="Van Hijum" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02442" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.30.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.30.1.1">Laat ik mijn zegeningen tellen: ik proef in elk geval steun voor het verzoek om dit onderwerp te betrekken bij het debat volgende week over de Najaarsnota. Ik zou dat graag willen doen. Daarbij vraag ik of de brief voor die tijd bij de Kamer kan verschijnen. Daarnaast heb ik de aanvullende suggestie gehoord om apart met de minister-president en de vicepremier te spreken over dit onderwerp. Als ik de heer Klaver goed begrijp, hoeft dat niet op heel korte termijn. Dat verzoek zou ik dus willen handhaven.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.31">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.31.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.31.1.1">Voor dat verzoek is er geen meerderheid, tenzij u nu een nieuw verzoek doet; dan doen wij opnieuw een rondje. Maar volgens mij lijkt dit verzoek heel erg op het verzoek dat u zelf hebt gedaan. Daarvoor is zojuist geen steun uitgesproken. Er is steun om dit te betrekken bij de Voorjaarsnota en er is steun voor een brief.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.32">
+                <speech pm:speaker="Van Hijum" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02442" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.32.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.32.1.1">Ik kijk nog even naar de collega's. Als hiervoor geen steun is, moet ik mijn knopen tellen, naast mijn zegeningen; dat laatste had ik zonet al gedaan. Dan laat ik het daarbij.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.33">
+                <speech pm:speaker="Slob" pm:party="ChristenUnie" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cu" pm:member-ref="nl.m.01639" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.33.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.33.1.1">Voorzitter, u zei "Voorjaarsnota", maar u bedoelde waarschijnlijk "Najaarsnota".</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.34">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.34.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.34.1.1">Ik bedoelde natuurlijk "Najaarsnota". Excuses. Hoop doet leven, denk ik altijd maar.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.35">
+                <speech pm:speaker="Slob" pm:party="ChristenUnie" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cu" pm:member-ref="nl.m.01639" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.35.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.35.1.1">Betekent dit dat de minister-president volgende week ook bij het debat over de Najaarsnota uitgenodigd wordt?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.36">
+                <speech pm:speaker="Van Hijum" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02442" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.36.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.36.1.1">Wat mij betreft zou dat kunnen, maar naar ik begreep was de suggestie van de heer Klaver een andere, namelijk om een wat breder debat over de fundamenten van het regeerakkoord, dat wil zeggen de groei, de werkgelegenheid en de raming, op een later moment te voeren, en het debat over de Najaarsnota gewoon te laten voor wat het is.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.37">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.37.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.37.1.1">Nogmaals, ik heb geen steun geproefd voor het houden van een apart debat. Wij kunnen het wel hebben over de vraag wie wij daarbij dan zouden moeten uitnodigen, maar ik heb daarvoor geen steun gehoord. Normaal is het zo dat bij het debat over de Najaarsnota alleen de minister van Financiën aanwezig is.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.38">
+                <speech pm:speaker="Van Hijum" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02442" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.38.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.38.1.1">Akkoord.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.39">
+                <speech pm:speaker="Klaver" pm:party="GroenLinks" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.gl" pm:member-ref="nl.m.03226" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.39.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.39.1.1">Voorzitter, ik wilde u complimenteren met de conclusie. Ik kom gewoon bij u terug met een verzoek voor in het nieuwe jaar.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.40">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.40.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.40.1.1">Daar hield ik al helemaal rekening mee.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.41">
+                <speech pm:speaker="Merkies" pm:party="SP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03309" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.41.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.41.1.1">Volgens ons was er wel steun voor een debat met de minister-president bij de behandeling van de Najaarsnota.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.42">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.42.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.42.1.1">Dat is dan een apart verzoek.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.43">
+                <speech pm:speaker="Merkies" pm:party="SP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03309" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.43.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.43.1.1">Dat is een apart verzoek en dat doe ik bij dezen. Toevallig is er de Najaarsnota en er is het voorstel van de heer Van Hijum.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.44">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.44.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.44.1.1">Dan is het verzoek om volgende week bij de Najaarsnota ook de minister-president uit te nodigen. Ik kijk naar alle leden. Ik zie de heer Harbers als eerste naar voren rennen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.45">
+                <speech pm:speaker="Harbers" pm:party="VVD" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.vvd" pm:member-ref="nl.m.03111" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.45.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.45.1.1">Wat ons betreft voeren wij het debat gewoon, zoals wij dat ieder jaar doen, met de minister van Financiën.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.46">
+                <speech pm:speaker="Nijboer" pm:party="PvdA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.03343" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.46.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.46.1.1">Daar sluit ik me bij aan. Als het daarna nog nodig is, staat het iedereen vrij om nog een nieuw debat aan te vragen, maar ik denk dat wij volgende week op een goede manier de argumenten kunnen wisselen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.47">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.47.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.47.1.1">Ik kan iedereen het woord geven, maar er is geen meerderheid die het verzoek steunt om de premier ook bij dit debat uit te nodigen. De heer Klaver heeft al aangekondigd dat hij bij de volgende regeling met een verzoek komt om een debat te plannen. Dan komen wij weer bij elkaar.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.47.1.2">Het stenogram van het gedeelte van de vergadering dat ging over het verzoek om een brief, zal ik doorgeleiden naar het kabinet.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.47.1.3">Ik geef het woord aan mevrouw Hachchi.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.48">
+                <speech pm:speaker="Hachchi" pm:party="D66" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.03190" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.48.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.48.1.1">Voorzitter. De minister van Defensie heeft zaterdag in De Telegraaf weer onduidelijkheid gezaaid over haar belofte, niet ten koste van troepen te bezuinigen. In zes weken tijd zijn er vier verschillende formuleringen gebruikt. Daarom wil D66 vóór de begrotingsbehandeling deze week, dus als het kan morgen voor 12.00 uur, een brief ontvangen met daarin allereerst een heldere en vooral definitieve definitie van wat de minister verstaat onder "troepen" en vervolgens een definitieve uitspraak welke formulering van deze belofte geldt. Gaat het om een uitgangspunt, een streven of een resultaatverplichting? Dit verzoek doe ik mede namens de collega's van de ChristenUnie.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.49">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.49.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.49.1.1">Ik kijk naar de Kamer. Ik stel voor om dit gedeelte van het stenogram door te geleiden naar het kabinet.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="other" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.50">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.50.1">Daartoe wordt besloten.</p>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.51">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.51.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.51.1.1">Het woord is aan de heer Verhoeven.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.52">
+                <speech pm:speaker="Verhoeven" pm:party="D66" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.03192" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.52.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.52.1.1">Voorzitter. Normaal gezien zou ik hier niet staan om een brief te vragen, maar dit is een spoedgeval. Wij hebben gisteren namelijk cijfers gekregen van het Centraal Planbureau waaruit bleek dat de doorrekening van het regeerakkoord op het gebied van de huurplannen minimaal discutabel is gebleken. De minister heeft ons daar gisteren een brief over geschreven, maar in die brief staat niet wat hij gaat doen om die plannen te veranderen. Aangezien wij volgende week over de begroting van wonen spreken, leek het mij goed als de minister ons ook een brief doet toekomen waarin hij schrijft hoe hij de plannen, die op een of andere manier van tafel zullen moeten, gaat aanpassen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.53">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.53.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.53.1.1">Ik stel voor om dit gedeelte van het stenogram door te geleiden naar het kabinet.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="other" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.54">
+                <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.54.1">Daartoe wordt besloten.</p>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.55">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.55.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.55.1.1">Het woord is aan mevrouw Gesthuizen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.56">
+                <speech pm:speaker="Gesthuizen" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03103" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.56.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.56.1.1">Voorzitter. Nog maar twee weken geleden bespraken wij de begroting van Veiligheid en Justitie en de vrijdag daarna was het zover: toen viel het doek voor het tentenkamp met vluchtelingen in Amsterdam. Den Haag volgt. Ook hier wordt binnenkort het tentenkamp ontruimd. Dat betekent dat er zo'n 200 mensen op straat komen te staan. Omdat het een zeer urgente kwestie is, wil ik een debat hierover voeren met de staatssecretaris van Veiligheid en Justitie. Er ligt immers een door de Kamer aangenomen motie waarin wordt verzocht om opvang voor deze mensen te regelen. De staatssecretaris dient die uit te voeren. Omdat de zaak urgent is, wil ik nog voor het kerstreces met de staatssecretaris hierover van gedachten wisselen. Dit verzoek doe ik mede namens de ChristenUnie-fractie.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.57">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.57.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.57.1.1">Het verzoek is om een debat te houden over het ontruimen van de tentenkampen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.58">
+                <speech pm:speaker="Schouw" pm:party="D66" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.03025" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.58.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.58.1.1">Wij steunen dit verzoek van de SP-fractie. Maar mevrouw de voorzitter, wij doen ook een verzoek aan u, want dit is nou typisch zo'n debat dat echt vooraan op de agenda moet komen. Over anderhalve week is het kerstreces. Ik doe dus een stevig pleidooi om het heel snel hier te houden.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.59">
+                <speech pm:speaker="Van Ojik" pm:party="GroenLinks" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.gl" pm:member-ref="nl.m.02895" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.59.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.59.1.1">Ook GroenLinks steunt graag het verzoek van mevrouw Gesthuizen voor dit debat. Ook ik wil graag de urgentie van de situatie onderstrepen. Het kan simpelweg niet wachten tot na het kerstreces.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.60">
+                <speech pm:speaker="Van Hijum" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02442" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.60.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.60.1.1">Gelet op de voortdurende onduidelijkheid over dit dossier, wil mijn fractie het verzoek steunen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.61">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.61.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.61.1.1">Het verzoek was om een debat te houden. Ik tel daar geen meerderheid voor.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.62">
+                <speech pm:speaker="Gesthuizen" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03103" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.62.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.62.1.1">Dat is jammer. Ook jammer dat de PVV dit niet steunt. De heer Fritsma staat altijd wel helemaal vooraan als er wordt gedebatteerd en wil dan graag als eerste het woord voeren.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.63">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.63.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.63.1.1">Dit is een regeling.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.64">
+                <speech pm:speaker="Gesthuizen" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03103" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.64.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.64.1.1">Helaas, ik heb geprobeerd het in de commissie te regelen. Wij hebben echt ons best gedaan om de plenaire agenda te ontzien. Ik handhaaf mijn verzoek. Er is in ieder geval steun voor een dertigledendebat. Dan is het verder aan de Voorzitter om te bekijken of het voor het kerstreces gevoerd kan worden.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.65">
+                <speech pm:speaker="Schouw" pm:party="D66" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.03025" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.65.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.65.1.1">Mag ik toch even aan mijn collega's van de fracties van de PvdA en de VVD vragen om te motiveren waarom zij een debat hierover en afspraken hierover met het kabinet kennelijk niet belangrijk vinden?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.66">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.66.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.66.1.1">Gaat uw gang, mevrouw Arib.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.67">
+                <speech pm:speaker="Arib" pm:party="PvdA" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.02203" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.67.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.67.1.1">In de procedurevergadering hebben wij precies aangegeven wat wij wel en niet vinden van de tentenkampen. Dat is uitgebreid gewisseld. Ik vind dus niet dat je daar in deze regeling op terug moet komen, maar ik wil graag een brief van de staatssecretaris hebben over de ontstane situatie. Meer kan ik er niet over zeggen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.68">
+                <speech pm:speaker="Azmani" pm:party="VVD" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.vvd" pm:member-ref="nl.m.03200" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.68.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.68.1.1">Wij hebben dit ook in de procedurevergadering gewisseld. Ik vind het bijzonder dat het nu weer bij de regeling van werkzaamheden moet plaatsvinden. Er was toen geen meerderheid. Er is nu ook geen meerderheid. Met andere woorden, wij hebben hier al over gedebatteerd en wij moeten dit gewoon verder volgen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.69">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.69.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.69.1.1">Ik stel opnieuw vast dat er geen steun is voor een debat. Er ligt wel een nieuw verzoek voor een brief. Ik neem aan dat u daar geen bezwaar tegen hebt, mevrouw Gesthuizen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.70">
+                <speech pm:speaker="Gesthuizen" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03103" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.70.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.70.1.1">Ik had al aangegeven dat ik mijn verzoek voor een debat handhaaf, want ik zie dat er wel voldoende steun is voor een dertigledendebat.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.71">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.71.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.71.1.1">Ja, dat klopt. Er is voldoende steun voor een dertigledendebat. Dan komt het onderaan op de lijst van debatten, met drie minuten spreektijd per fractie. Ik zal dit gedeelte van het stenogram doorgeleiden naar het kabinet.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.72">
+                <speech pm:speaker="Gesthuizen" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03103" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.72.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.72.1.1">Mag ik u één ding vragen, voorzitter? Ik hoorde u net zeggen dat het onderaan komt op de lijst van debatten. Dat betekent dus dat u geen gehoor geeft aan het verzoek van een deel van de Kamer om het nog voor het kerstreces te laten plaatsvinden omdat er een paar honderd mensen in de kou op straat staan. Mag ik dat zo noteren?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.73">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.73.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.73.1.1">Nee, zo mag u dat niet noteren, want dan maakt u het heel persoonlijk en dat vind ik niet terecht. Ik heb de Kamer zojuist in de regeling voorgesteld om vanaf morgenochtend om 09.00 uur te beginnen. Dat was voordat u uw verzoek deed. Dat besluit heb ik niet lichtvaardig genomen. Het betekent dat wij een heel volle agenda hebben. Ik zal dus mijn best doen om te bekijken of er een mogelijkheid is, maar ik ben er ook eerlijk over dat ik eigenlijk geen kans zie. Als zich echter een kans voordoet, zal ik aan u denken.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.74">
+                <speech pm:speaker="Pechtold" pm:party="D66" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.02993" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.74.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.74.1.1">Ik vul toch even aan wat de woordvoerders van mijn fractie en van andere fracties hebben gezegd. Dertigledendebatten worden natuurlijk gehouden in een bepaalde volgorde. We hebben in deze Kamer echter het goede gebruik om, wanneer een bepaalde datum geldt of wanneer de urgentie van een debat prangend is, ook te kijken naar de inhoud van een debat. U weet ook dat er, als u het onder aan de lijst zet, straks geen enkele noodzaak meer is om het debat te houden. Het is goed gebruik om bij uitzondering naar de inhoud te kijken als daar een noodzaak toe is, en die is er in dit geval, want de termijn loopt. Ik wil dat beroep op u doen, en dat is niet persoonlijk maar goed gebruik.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.75">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.75.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.75.1.1">Ik heb mijn woorden hersteld. Ik heb gezegd: als ik enige gelegenheid zie, ga ik mijn best doen, maar ik ben er ook eerlijk over dat de kans dat die gelegenheid zich voordoet heel klein is gezien het feit dat wij vanaf morgen vanaf 9.00 uur vergaderen en wij de vergadering waarschijnlijk geen avond voor 00.00 uur sluiten. Dat is de situatie die zich voordoet.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.76">
+                <speech pm:speaker="Roemer" pm:party="SP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03094" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.76.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.76.1.1">Hier komt nog bij dat het een aangenomen motie van de Kamer betreft. Als de Kamer zichzelf serieus neemt en het kabinet de aangenomen motie niet uitvoert, is het ook in uw belang dat we daar alert op zijn. Ik wil een suggestie doen aan de fracties die vandaag niet willen instemmen met een debat in de Kamer. Ik stel voor om voor morgen een procedurevergadering af te spreken met de commissie, zodat hierover zo snel mogelijk, en wel voor het kerstreces, in ieder geval in commissieverband gedebatteerd kan worden.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.77">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.77.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.77.1.1">Ik hoop dat dit zo is. Doorgaans doen we dat niet via de regeling, maar dit is een beroep dat collega's op elkaar kunnen doen. Ik herhaal mijn woorden: ik ga mijn uiterste best doen, maar ik moet wel eerlijk blijven.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.78">
+                <speech pm:speaker="Slob" pm:party="ChristenUnie" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cu" pm:member-ref="nl.m.01639" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.78.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.78.1.1">Dat laatste kan ik alleen maar onderstrepen; dat geldt voor ons allemaal. Het zou wel fijn zijn als wij in de loop van vandaag van u horen wat de uitkomst is geweest van het uw best doen. Dan kunnen wij op basis daarvan verder handelen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.79">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.79.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.79.1.1">Ik heb al gezegd dat de agenda voor deze week, plat gezegd, meer dan ramvol zit. Voor volgende week heb ik daar geen zicht op, maar ik hoop dat de boodschap overkomt dat ik mijn best zal doen, dat dit betekent dat we tot midden in de nacht zullen vergaderen en dat er dus misschien ruimte ontstaat om een AO te houden. Ik hoop dat die handschoen wordt opgepakt. Maar nogmaals, ik ga dat niet in de regeling doen, want dan is het hek van de dam. Daar hebben we snelle e-mailprocedures voor. Ik hoop dat ik in de loop van vandaag en wellicht morgen het bericht krijg dat ik er geen beslissing meer over hoef te nemen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.80">
+                <speech pm:speaker="Arib" pm:party="PvdA" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.02203" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.80.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.80.1.1">En ik wilde u zo graag helpen, voorzitter ...</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.81">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.81.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.81.1.1">Nee, we gaan het dus niet in de regeling doen, maar u hebt met uw body language al aangegeven dat het goed zal komen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.82">
+                <speech pm:speaker="Arib" pm:party="PvdA" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.02203" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.82.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.82.1.1">Nou, ik wil …</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.83">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.83.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.83.1.1">Nee, ook hiervoor geldt dat we vanavond al tot na 00.00 uur aan het vergaderen zijn.Het woord is aan de heer Omtzigt.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.84">
+                <speech pm:speaker="Omtzigt" pm:party="CDA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.02441" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.84.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.84.1.1">Voorzitter. In het AO van vorige week over de Europese top mochten wij niet citeren uit de conceptconclusies van de Europese Raad. Die conceptconclusies worden verspreid in heel Europa, ook onder de parlementen, en zijn nu dus ook aan de Kamer toegestuurd. Ik verzoek u om die conceptconclusies wél toe te voegen aan het debat van morgen, zodat er wél opmerkingen over gemaakt kunnen worden. Ze maken namelijk deel uit van de Europese top van morgen. We kunnen op een nader tijdstip terugkomen op de vraag wanneer stukken vertrouwelijk zijn in Europa en wanneer niet.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.85">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.85.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.85.1.1">Het verzoek is om de conceptconclusies van de Europese Raad die gisteren toegezonden zijn aan de Kamer, toe te voegen aan de agenda van het debat over de Europese top van morgen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.86">
+                <speech pm:speaker="Verheijen" pm:party="VVD" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.vvd" pm:member-ref="nl.m.03302" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.86.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.86.1.1">Ik begrijp de argumentatie van het kabinet, maar net zoals de heer Omtzigt ben ik het er niet mee eens. Wij kunnen die conclusies niet negeren en wij kunnen ze onmogelijk niet citeren. Ik steun dus het verzoek van de heer Omtzigt, ook om er in een later stadium nog eens met het kabinet over te spreken.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.87">
+                <speech pm:speaker="Thieme" pm:party="PvdD" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvdd" pm:member-ref="nl.m.03100" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.87.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.87.1.1">Ik sluit mij hierbij graag aan.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.88">
+                <speech pm:speaker="Madlener" pm:party="PVV" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03129" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.88.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.88.1.1">Uiteraard steun ik het verzoek.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.89">
+                <speech pm:speaker="Servaes" pm:party="PvdA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.03344" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.89.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.89.1.1">Het lijkt mij dat wij in ieder geval zelf gebruik moeten kunnen maken van alle stukken die wij hoe dan ook weten te bemachtigen. In die zin steun ik het verzoek.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.90">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.90.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.90.1.1">De stukken zijn ons gewoon toegestuurd. Dat scheelt een heleboel.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.91">
+                <speech pm:speaker="Roemer" pm:party="SP" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03094" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.91.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.91.1.1">Uiteraard steun ik het verzoek.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.92">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.92.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.92.1.1">Mijnheer Omtzigt, uw verzoek krijgt brede steun. Wij voegen de stukken dus toe aan de agenda. Ik had u al laten weten dat ik ook zal terugkomen op uw verzoek aan mij om daar in nader verband over te spreken. Er is even tijd voor nodig om dit alles op een rijtje te zetten.</p>
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.92.1.2">Ik geef het woord aan mevrouw Agema van de PVV.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.93">
+                <speech pm:speaker="Agema" pm:party="PVV" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03048" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.93.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.93.1.1">Voorzitter. De fractie van de PVV heeft vaker zorgen geuit over zorggeld dat besteed kan worden aan lantaarnpalen. Er ligt nu een concrete casus voor van de gemeente Putten die groenperkjes aanlegt met Wmo-middelen. Kan de staatssecretaris daarop reageren? Hij heeft al een brief in een breder perspectief toegezegd. Naar aanleiding van die brief zou ik graag een debat organiseren.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.94">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.94.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.94.1.1">Wilt u niet wachten met het aanvragen van het debat totdat de brief binnen is?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.95">
+                <speech pm:speaker="Agema" pm:party="PVV" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03048" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.95.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.95.1.1">Nee, want er is al een concrete casus.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.96">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.96.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.96.1.1">Het verzoek is om een debat.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.97">
+                <speech pm:speaker="Leijten" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03095" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.97.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.97.1.1">Voorzitter. Het is goed te horen dat de Partij voor de Vrijheid weer vindt dat zorggeld aan zorg besteed moet worden. Dat was een jaar geleden nog anders.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.98">
+                <speech pm:speaker="Agema" pm:party="PVV" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03048" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.98.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.98.1.1">Onzin, voorzitter. Echt totale onzin!</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.99">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.99.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.99.1.1">Laten wij ons in de regeling beperken tot de regeling.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.100">
+                <speech pm:speaker="Leijten" pm:party="SP" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.sp" pm:member-ref="nl.m.03095" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.100.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.100.1.1">Ik wil het verzoek graag steunen.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.101">
+                <speech pm:speaker="Bruins Slot" pm:party="CDA" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.cda" pm:member-ref="nl.m.03221" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.101.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.101.1.1">De CDA-fractievoorzitter Van Dijk uit Putten vond dit ook al een onzinnig plan, dus graag een debat.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.102">
+                <speech pm:speaker="Van 't Wout" pm:party="VVD" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.vvd" pm:member-ref="nl.m.03307" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.102.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.102.1.1">Laten wij eerst de brief van het kabinet afwachten.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.103">
+                <speech pm:speaker="Otwin van Dijk" pm:party="PvdA" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.pvda" pm:member-ref="nl.m.03377" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.103.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.103.1.1">Laten wij eerst de brief van het kabinet afwachten. Er is volgens mij binnenkort ook een AO. Laten wij daar dan ook breed over de Wmo praten, dan nemen wij dit daarin mee.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.104">
+                <speech pm:speaker="Bergkamp" pm:party="D66" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.d66" pm:member-ref="nl.m.03349" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.104.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.104.1.1">D66 vindt ook: eerst een brief en daarna eventueel een debat.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.105">
+                <speech pm:speaker="Agema" pm:party="PVV" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03048" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.105.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.105.1.1">Ik zie in ieder geval dat er voldoende steun is voor een dertigledendebat. Mijn voorstel is om dat op het langetermijnschema te plaatsen. Als de brief komt, zien wij in het nieuwe jaar op welke wijze wij het debat vorm zullen geven.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.106">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.106.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.106.1.1">De brief was al toegezegd?</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.107">
+                <speech pm:speaker="Agema" pm:party="PVV" pm:function="Mevrouw" pm:role="mp" pm:party-ref="nl.p.pvv" pm:member-ref="nl.m.03048" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.107.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.107.1.1">Die was al toegezegd.</p>
+                </speech>
+            </stage-direction>
+            <stage-direction pm:type="speech" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.108">
+                <speech pm:speaker="Van Miltenburg" pm:function="De voorzitter" pm:role="chair" pm:member-ref="nl.m.02413" pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.108.1">
+                    <p pm:id="nl.proc.ob.d.h-tk-20122013-33-7.1.108.1.1">Goed. Wij voegen het dertigledendebat toe aan de lijst, met spreektijden van drie minuten per fractie.</p>
+                </speech>
+            </stage-direction>
+        </topic>
+    </proceedings>
+</root>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:pmd="http://www.politicalmashup.nl/docinfo" xmlns:pm="http://www.politicalmashup.nl" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms/">
+    <docinfo xmlns="http://www.politicalmashup.nl/docinfo">
+        <transformer pmd:name="pdf2europarl" pmd:version="15378" pmd:datetime="2011-03-17T17:33:48.971321" pmd:result="pass"/>
+        <transformer pmd:name="xmllint" pmd:datetime="2011-03-17T17:33:50.316392" pmd:arguments="--noout" pmd:result="pass"/>
+        <transformer pmd:name="RelaxNG" pmd:version="15293" pmd:datetime="2011-03-17T17:33:53.369472" pmd:arguments="-c /scratch/schemas/DutchParl.rnc" pmd:result="pass"/>
+        <transformer pmd:name="annotator" pmd:version="15346:15397M" pmd:datetime="2011-03-18T10:04:08.000090" pmd:result="pass"/>
+        <transformer pmd:datetime="2011-03-21T17:53:18.623+01:00" pmd:name="nl-sgd.sh" pmd:version="1.1" pmd:result="pass">
+            <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+        <transformer pmd:name="nl-sgd-repair-1930-1995.xsl" pmd:version="1.1" pmd:result="pass" pmd:datetime="2012-06-14T17:15:24.655+02:00">
+            <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+    </docinfo>
+    <meta>
+        <dc:identifier>nl.proc.sgd.d.181718180000030</dc:identifier>
+        <dc:format>text/xml</dc:format>
+        <dc:type>Verbatim Proceedings</dc:type>
+        <dc:contributor>http://www.politicalmashup.nl</dc:contributor>
+        <dc:coverage>
+            <country dcterms:ISO3166-1="NL">Netherlands</country>
+        </dc:coverage>
+        <dc:creator>http://www.statengeneraaldigitaal.nl</dc:creator>
+        <dc:language>
+            <pm:language dcterms:ISO639-2="dut">Dutch; Flemish</pm:language>
+        </dc:language>
+        <dc:publisher>http://www.statengeneraaldigitaal.nl</dc:publisher>
+        <dc:rights>  http://www.overheid.nl/overdesite/ should contain IPR information, but it doesn't. 
+            Investigation with the Koninklijke Bibliotheek (who keep the Proceedings data in the statengeneraaldigitaal.nl project) 
+            and the Tweede Kamer led to the following response:
+            
+            Van: Beijer A. [mailto:T.Beijer@tweedekamer.nl]
+            Verzonden: woensdag 13 oktober 2010 13:31
+            Aan: Statengeneraaldigitaal Info Mailbox
+            Onderwerp: RE: gebruik van de Handelingen voor onderzoek
+         
+            Beste Karin,
+           
+            Heb het nog even bij Jan Keukens nagevraagd. Maar er is geen overeenkomst nodig.
+            
+            Hij verwees nog naar de auteurswet.
+            
+            Hieronder artikel 11 van de auteurswet:
+            
+            Artikel 11
+            
+            Er bestaat geen auteursrecht op wetten, besluiten en verordeningen, door
+            de openbare macht uitgevaardigd, noch op rechterlijke uitspraken en
+            administratieve beslissingen.
+                
+            Groet,
+            Tonny
+            
+            070-3182458</dc:rights>
+        <dc:date>1818-01-13</dc:date>
+        <dc:title>Handelingen Tweede Kamer 1817-1818 13 januari 1818, Paginas 128-129.</dc:title>
+        <dc:description>Handelingen Tweede Kamer 1817-1818 13 januari 1818, Paginas 128-129.</dc:description>
+        <dc:source>
+            <dc:source pm:used-source="true">
+                <pm:link pm:linktype="metadata" pm:source="http://services.kb.nl/mdo/oai?verb=GetRecord&amp;identifier=SGD:sgd:mpeg21:18171818:0000030&amp;metadataPrefix=didl"/>
+            </dc:source>
+            <dc:source pm:used-source="true">
+                <pm:link pm:linktype="pdf" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:18171818:0000030:pdf"/>
+            </dc:source>
+        </dc:source>
+        <dc:subject>
+            <pm:house pm:house="commons">Handelingen Tweede Kamer 1817-1818 13 januari 1818, Paginas 128-129.</pm:house>
+            <pm:legislative-period>1817-1818</pm:legislative-period>
+        </dc:subject>
+        <dc:relation>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="van Crombrugghe" pm:role="mp" pm:member-ref="nl.m.04465" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+            <pm:subject xsi:type="speaker">
+                <pm:actor>
+                    <pm:person pm:speaker="Serruys" pm:role="mp" pm:member-ref="nl.m.04431" pm:function="De heer"/>
+                </pm:actor>
+            </pm:subject>
+        </dc:relation>
+    </meta>
+    <proceedings xmlns="http://www.politicalmashup.nl" pm:id="nl.proc.sgd.d.181718180000030">
+        <topic pm:title="" pm:id="nl.proc.sgd.d.181718180000030.1">
+            <stage-direction pm:id="nl.proc.sgd.d.181718180000030.1.1">
+                <stage-direction pm:type="pagebreak" pm:id="nl.proc.sgd.d.181718180000030.1.1.1">
+                    <pagebreak pm:originalpagenr="128" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:18171818:0000030:0001:image"/>
+                </stage-direction>
+                <stage-direction pm:type="header" pm:id="nl.proc.sgd.d.181718180000030.1.1.2">
+                    <p pm:id="nl.proc.sgd.d.181718180000030.1.1.2.1">128</p>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.1.3">27ST E Mededeeling 27ste ZITTING . ZITTIN G VA N DINGSDA G 13 JANÜARI J 1818. (1) (GEOPEXD TEN 1 URE.) Ingekomen : 1°. Koninklijke boodschap, ten geleide van zes met vreemde besturen gelsoten verdragen; 2°. ver zoekschriften; 3°. boekwerk. — Verslagen op verzoek schriften uitgebragt. — Verslag uitgebragt op het door den heer Reypliins gedaan voorstel tot afstand van wetten met de Grondwet in strijd geacht; bepaling van den dag der beraadslaging.</p>
+                <stage-direction pm:type="chair" pm:id="nl.proc.sgd.d.181718180000030.1.1.4">
+                    <p pm:id="nl.proc.sgd.d.181718180000030.1.1.4.1">Voorzitter, de heer Ta n Wickevoor t Crommelln</p>
+                    <chair pm:speaker="van Wickevoort Crommelin" pm:member-ref="nl.m.04178"/>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.1.5">Tegenwoordig, met den Voorzitter, 71 leden, te weten , de heeren: Gendebien , Hennequin , d'Omalius Thierry , de Pitteurs Budin gen , Duvelaer van de Spiegel, Kemper , A. G . Verheijen , Gockinga, Cornet de Grez, P . Tack , de Vaernewijck d'Angest, Cuypers, van Wassenaar Paneras , van Markel Bouwer, van Iddekingo, de la Motte Baraffe, A. J . J . H. Verheijen, van Hees , de Moor, Wassoige, Reigersman, de Ie Vielleuze, do Vinck van Wezel, Faber , de Spoelbergh d'Eynhouts , var, Nes van Meerkerk, Bon tinck tot Nyenhuis, Pesters van Cattcnbroek, Bijlevcld, van Heerdt tot Eversberg, de Serret , van Spaen van Biljoen, de Ham , de Tornaco de Berlo , PaulMaibo , de Goër, van Boetzelaer, Baesen d'Hautain, Roest van Alkemade, de Lebidart , van Heeckeren tot Keil , Meeus, van Croinbrugghc, van Panhuys , Collard, van Tuyl van Serooskerken van Heeze en Leende, Nagelmaekcrs, Rosier, de Troije, Membréde, Dotrenge, van Stichtelcn tot de Haero, Serruys, Carbasius Bzn. , J . F . L. Tack , Groeninx van Zoelen van Ridderkerk, d'ünyn de Chastre, G . Clifford, Huyssen van Kattendyke, Jarges , deCodt , de Surlet deChokier , de Floen d'Adlercrona, Huyttens Kerremans, van Alphen, Sandberg va n Essenburg, Roorda van Eysinga , Repelaer, Alberda van Rensuma, Vilain XIIII , Collot d'Kscury, Deutz van Assendelft, de Hoffschniidt en Délia Faille d' Huysse. De notulen van hot verhandelde in de vorige zitting worden gelezen en goedgekeurd. (i) Dit verslag is zamengesteld uit : 1° de Officiële Notulen van het voorgevallene in deze zitting ; 2° Nederlandsche Staats-Courant n ' i 2 ; 3" l'Oracle n° i5 ; 4" Journaille la Belgique n° 16. ZITTING . — 13 JANÜARIJ . van ingekomen stukken. De Voorzitte r berigt, dat zijn ingekomon : 1°. eeno Koninklijke boodschap, dd. 9 Januarij , strekkende ten geleide van zes gesloten Verdragen , respectivelijk met de stad Emden, en met de Koningen van Denemarken, van Han nover, van Pruissen, van Beijeron en van Wurtemberg. Deze Verdragen zullen worden gedrukt en ann de leden rondgedeeld. (I) 2°. de navolgende verzoekschriften, als; oen van Monteyremar van den Bosch en Wed . Devons te Ant werpen , daarbij aandringende, een vorig door hen aan de Kamer gedaan verzoek, ter bekoming van volledige uitbetaling van het geen door het Rijk aan hen is verschuldigd ; een van van Hoobrouck Morreghem, te Gent , overleggende een afschrift van een door hem aan den Koning ingolevcrd request, betreffende eene pi etensie op de voormalige kastellenije van Yperen ; een van den ab t de Foere, te Vilvoorden, daarbij zich bekla gende over do belemmering, welke hij van wege het Ministerie van Justitie ondervindt, in het voortzetten gedurende zijne gevan genis der uitgave van een tijdschrift, genoemd le Spectateur Belge, en verzoekende de tusschenkomst van Hun Edel Mogenden om zoodanige onwettige belemmering te doen ophouden. (2) Deze adressen zullen worden verzonden naar de Com missie voor de verzoekschriften. 3°. van wege den schrijver, den heer Kluyskens, te Gend, een exemplaar van zijn werk, getiteld: «Mémoire sur la fièvre inflamatoire typhoïde." Van do inzending van dit boekwerk, dat in de boekerij der Kamer zal worden geplaatst, zal in de Notulen van het verhandelde op heden melding gemaakt worden. De Commissie voor de verzoekschriften brengt de navolgende verslagen uit : (3)</p>
+            </stage-direction>
+            <speech pm:speaker="van Crombrugghe" pm:function="De heer" pm:role="mp" pm:party-ref="nl.p.regeringsgezindwillem" pm:member-ref="nl.m.04465" pm:id="nl.proc.sgd.d.181718180000030.1.2">
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.1">, lid der Commissie :</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.2">I.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.3">I n een adres van verscheiden fabriekanten en kooplieden in saijet, wonende te Poperinghe in Oost-Vlaanderen, beklagen zich dezen over de hindernissen der uitoefening hunner nijverheid en van hunnen handel in den weg gelegd door eenige formaliteiten, bij de wet van den 3den October 1816 op de Convoijen en Licenten, voorgeschreven. De hinder, dien zij ondervinden, komt, zeggen zij, voornamelijk daarvan daan, dat zij verpligt zijn acquits à caution te nemen, zoo om hunne waren naar de naburige markten binnen het Koningrijk te brengen, als om hunne verzendingen naa r de gemeenten ten phitten lande te doen; eene verpligting, zoo zy zeggen, ontstaande uit het onderscheid tusschen het vrije on onvrije territoir, bij do boven aangehaalde wet daargesteld. Poperinghe, zeggen de requestranten al verder, hoewel in dcszelfs inwendige vrij territoir zijnde, is met onvrij territoir omgeven, en gelijkt voor hen naar eene ingesloten stad, waarin de in- of uitvoer van (i ) Zie Bijlagen onder n ' XVI, De Koninklijke boodschap is ook te vinden in de Nederlandsche Staats-Courant n" l3 ; Amsterdamsche Courant n° i/j ; en Algetneene Nederlandsche Courant (Gazette Générale des Pays-Bas) n° &lt;)35; de verdragen in de Nederlandsche Staats-Courant n° 20 en 21 ; Amsterdamsche Courant n* 2 1 , 2 3 en 2 5 ; Rottcrdamsche Courant n" 11 en 1 2 • en /llgemeene Nederlandsche Courant (Gazette Générale des Pays-Bas) n ' g44 en 945.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.4">(2) Le Journal de la Belgique meldt omtrent de indiening van.het adres van den abt de Foere het volgende: &gt; » Dans la séance du | 3 de la .Seconde Chambre des Etats-Généraux, M. de Serret a rappelé qu'il avait mis sur le bureau une pétition adressée à la Chambre par l'abbé de Foere, et il invita le Président à en faire mention; celui-ci répondit que , ne l'ayant vue qu'an moment de son entrée, il n'avait pu examiner si elle était en règle pour être présentée. M. de Serret répliqua quelle était individuelle et signée par le pétitionnaire. En conséquence de cette explication, l'envoi en a été ordonné à la Commis sion des pétitions.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.5">(3) Deze verslagen komen voor in de Nederlandsche Staats-Courant n° 17; Nieuwe Gazette van Brugge 11° G7O (Hollandich)j Algemeen» Nederlandsche Courant ( Gazette Générale des Pays-Bas) 11° 943 ; Journal de la Belgique n° 3a (Fransch), en zijn nagenoeg gelijkluidende met de oorspronkelijke in het Archief der Tweede Kamer voorhanden bescheiden.</p>
+                <stage-direction pm:type="pagebreak" pm:id="nl.proc.sgd.d.181718180000030.1.2.6">
+                    <pagebreak pm:originalpagenr="129" pm:source="http://resolver.kb.nl/resolve?urn=sgd:mpeg21:18171818:0000030:0002:image"/>
+                </stage-direction>
+                <stage-direction pm:type="header" pm:id="nl.proc.sgd.d.181718180000030.1.2.7">
+                    <p pm:id="nl.proc.sgd.d.181718180000030.1.2.7.1">Vel 33. 129 tftÊÊÊKff^ÊÊÊÊÊBBÊ!ÊÊBÊBÊB!BBÊÊBSÊÊ!ÊSSÊÊSBtÊ!BÊISBÊÊ^SÊBBBÊ!SBBBÊÊBÊÊBBÊ!BÊBBÊÊS!BS</p>
+                </stage-direction>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.8">Verslagen uilgebragt door de Commissie koopmanschappen niet is veroorloofd, dan met eene permissie onder borgtogt, terwijl zy dagelijks moeten zien, dat vreemde kooplieden hunne stad doorkruisen en hunne koopmanschappen daarin brengen, enkel voorzien van pas-avants voor wollen en katoenen stoffen, en zulks tot groot achterdeel van de requestranten en van de werklieden, die in hunne fabrieken arbeiden. De requestranten eindigen met te verzoeken, dat de bepalingen der wet van den 3den Oc tober 1816, waarover zy zich beklagen, ingetrokken of gemodificeerd mogen worden. De Commissie heeft uit de bylagen van dit request gezien, dat de requestranten hunne réclamation hebben gerigt, zoo aan den Directeur der Convoijen en Licenten te Ostende, als aan den Staatsraad , Directeur-Generaal van die administratie. E r zijn dus termen om te gelooven, dat , indien de in deze petitie aangevoerde daadzaken naauwkeurig zijn, en hun verzoek alzoo gegrond is, het Gouvernement van Zijne Majesteit, in zijne bezorgdheid voor het algemeen welzijn der inwoners van het Koningrijk, niet nalaten zal maatregelen te nemen, om in de ongelegenheid, waarover de requestranten zich beklagen, te voorzien; weshalve de Commissie zich bepaalt, om tot het nederleggen van het gemeld iquest ter griffie te adviseren.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.9">II .</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.2.10">In een adres van verscheiden schippers ot schuitonvoerders ait de stad Doornik, geven de requestranten te kennen, dat , volgens de wet op het binnenlandsch lastgeld, hunne schuiten in de tweede klasse vallen en gevolgelijk aan een regt van f 1,50 per last onderworpen zijn; hetgeen het jaarlijks van iedere schuit geheven wordende eene som van 260 franken doet beloopen. De requestranten willen, dat dezo belasting ongelijk omgeslagen is, aangezien hunne vaartuigen, die slechts ée'ne of twee reizen 's jaar s doen, evenveel betalen als andere, die er tien doen ; zij verlangen dat deze belasting omgeslagen worde, zoodanig dat dezelve geheven worde bij iedere keer, dat de vaartuigen de schutsluizen op de vaarten passeren, even als zulks met opzigt tot de tol of barrièregelden plaats heeft, dewijl het binnenlandsch lastgeld gelegd is voer het noodige onderhoud en verzorging der kanalen en sluizen, even als het barrière- of weggeld, ingevolge art . 225 der Grondwet, tot onderhoud der wegen gelegd is. De requestranten meenen in hun systema het voordeel te vinden, van gemakkelijk te kunnen beletten dat de schepen niet boven derzelver last geladen worden, een misbruik, even nadeelig voor het algemeen als voor het par ticulier belang, omdat de overladen schepen blootgesteld zijn om te zinken, en alzoo de vaart op de rivieren te belemmeren. De Commissie heeft in de bijlagen van dit request gezien, dat de requestranten zich reeds aan de Staten hunner provincie en aan Zijne Majestuit hebben geadresseerd; er is dus reden te gelooven da t hun verzoek in overweging zal worden genomen, bijaldien het Gouvernement het noodig mogt achten, veranderingen en verbeteringen in het stelsel der indirecte belastingen daar te stellen ; zy is derhalve van advies om dit request ter griffie te deponeren.</p>
+            </speech>
+            <speech pm:speaker="Serruys" pm:function="De heer" pm:role="mp" pm:member-ref="nl.m.04431" pm:id="nl.proc.sgd.d.181718180000030.1.3">
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.1">, lid der Commissie :</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.2">III .</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.3">I n een adres van P. J. Demey c. s., voorheen gezworen landmeters, taxateurs en grond-indeelers van de voormalige kastelenije van Yperen, brengen zij onder het oog van Hun Edel Mogenden hunne klagten en bezwaren omtrent de afschaffing hunner functien sedert de invasie der Fransche republikeinen, in 27ST E ZITTING . — 13 JANUARIJ .</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.4">voor de verzoekschriften.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.5">1793. Zij zeggen, dit hun ambt niet te hebben bekomen, dan n a de som van f 100 in de ka s van gezegde kastelenije te hebben gestort, ten gevolge waarvan zij dan ook het voorregt genoten van , bij uitsluiting, alle opmetingen . taxatien en grond verdeelingen in hun arrondissement te doen, en daarenboveu nog tevens, met de notarissen, wanneer zy daartoe werden uitgenoodigd, de publieke verkoopingen van onroerende goederen hielden ; dat zij , door d e bepalingen der Fransche wetten , waarbij de verdeeling en verkoop van onroerende goederen bij uitsluiting aan de notarissen wordt opgedragen, geheel verstoken zijn geraakt van de voorname attri bution van hunnen stand en hun beroep; dat Frankrijk thans binnen deszelfs grenzen zijnde besloten, zij van oordeel zijn, dat de wet geving op dat stuk, die zij eene geweldadigheid noemen, is komen te vervallen, en dat zij bij gevolg in hunne oude regten en privi legiën behooren te worden hersteld, enz. De requesiranten verzoeken dienvolgens Hun Edel Mogenden, om een ontwerp van wet te provoceren of voor te stellen , strekkende om hen te her stellen in het regt van bij uitsluiting te mogen meten, taxeren en verdeelen de in het arrondissement van de voormalige kastelenije van Yperen gelegen goederen, en om, tevens met de notarissen en andere zaakgelastigden, de verkoopingen van onroerende goederen te mogen houden.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.6">De Commissie acht zich verpligt te doen opmerken, dat het verzoek der requestranten voornamelijk ten doel heeft, om , ten hunnen voordeele, van de bestaande wetgeving, en bij gevolg van eene menigte bepalingen van het burgerlijk wetboek en van dat op de manier van procederen over de vordeeling en liquidatie de r nalatenschappen af te gaan ; — eene derogatic die , eene zekere uitzondering aan de requestranten verleenende, niet kan toegestaan worden, maar het onderwerp eener algemeene wet behoort uit te maken ; en , uit dit oogpunt beschouwd, is het de Commissie voorgekomen, da t de quaestio, of er termen zijn om eenige verandering t e dien opzigte te maken, zich bij Hun Edel Mogenden zou kunnen opdoen ten tijde dat zij over de wetboeken zouden delibereren; ja , da t deze quaestie, misschien zelfs vóór dien tijd, het onderwarp van een algemeen voorstel desaangaande aan een der leden van de Kamer zou kunnen opleveren ; waarom de Commissie dan ook proponeert om dit request ter griffie neder te leggen.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.7">De Vergadering vereenigt zich achtereenvolgens met de by deze verslagen voorgestelde conclusion.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.8">De Voorzitte r meldt daarna , dat de Centrale Afdeeling ge reed is met haar Verslag op he t voorstel van den heer Beyphins, aangaande de afschaffing van wetten met de Grondwet in strijd geacht.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.9">Van den inhoud van dit Verslag wordt voorlezing aan de Vergadering gedaan, (1) waarna besloten wordt de beraadslaging over dat voorstel te houden op Dingsdag den 20sten Januarij .</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.10">De zitting wordt als nu gesloten, en verdaagd tot Dingsdag 20 Januarij , des namiddags ten één ure.</p>
+                <p pm:id="nl.proc.sgd.d.181718180000030.1.3.11">(l ) Zie Bijlagen onder n" XIII ; men vergelijke ook de Nederlandsche Staatscourant n° 17 ; Amsterdamsche Courant 11° l4 i en Algemeene Nederlandsche Courant (Gazette Générale des Pays-Bas) n° 943 .</p>
+                <stage-direction pm:type="footer" pm:id="nl.proc.sgd.d.181718180000030.1.3.12">
+                    <p pm:id="nl.proc.sgd.d.181718180000030.1.3.12.1">HANDELINGEN DEK STATEN-GENERAAL. 181 7 1818 .</p>
+                </stage-direction>
+            </speech>
+        </topic>
+    </proceedings>
+</root>
