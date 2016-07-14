@@ -1,0 +1,14 @@
+Failed to open config file './config/tc.txt'
+unable to init from: ./config/tc.txt
+foliautils 0.5
+Usage: [options] dir/filename 
+--config=<file>	 use LM config from 'file'
+--lang=<lan>	 use 'lan' for unindentified text. (default 'dut')
+-s		 examine text in <str> nodes. (default is to use the <p> nodes).
+--all		 assign ALL detected languages to the result. (default is to assign the most probable).
+--class=<cls>	 use 'cls' as the FoLiA classname for searching text. 
+			 (default 'OCR')
+-O path		 output path
+-V or --version	 show version info.
+-v		 verbose
+-h or --help	 this messages.

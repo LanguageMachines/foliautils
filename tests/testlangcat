@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-langcat > testlangcat.out 2>&1
+
+$my_bin/FoLiA-langcat -V >> testlangcat.out 2>&1
+
+$my_bin/FoLiA-langcat --help >> testlangcat.out 2>&1
