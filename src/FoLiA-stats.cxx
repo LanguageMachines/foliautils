@@ -298,16 +298,12 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
     string mw;
     bool first = true;
     for ( unsigned int j=i; j < data.size(); ++j ){
-      cerr << "bekijk:" << data[j].word << endl;
       if ( data[j].word.size() < 2 ){
-	cerr << "YES:" << data[j].word << endl;
 	if ( !first ){
 	  mw += "_";
 	}
-	cerr << "MW='" << mw << "'" << endl;
 	first = false;
 	mw += data[j].word;
-	cerr << "MW='" << mw << "'" << endl;
       }
       else {
 	emph.insert(mw);
@@ -356,14 +352,14 @@ size_t word_inventory( const Document *d, const string& docName,
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << docName <<  "sentence-" << s << " :" << words.size() << "words" << endl;
+	cerr << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
       }
     }
     taal_filter( words, sent_lang, lang );
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << docName <<  "sentence-" << s << " after language filter :" << words.size() << "words" << endl;
+	cerr << docName <<  " sentence-" << s << " after language filter :" << words.size() << "words" << endl;
       }
     }
     if ( words.size() < nG )
@@ -526,7 +522,7 @@ size_t str_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "after fileter on " << lang << " " << strings.size() << " strings" << endl;
+      cerr << "after filter on " << lang << " " << strings.size() << " strings" << endl;
     }
   }
   if ( strings.size() < nG )
