@@ -180,7 +180,8 @@ xmlNode *findPart2Block( const xmlNode *start ){
 }
 
 void addStr( folia::Paragraph *par, string& txt,
-	     const xmlNode *pnt, const string& altoFile ){
+	     const xmlNode *pnt, const string& altoFile,
+	     int cnt = 1 ){
   folia::KWargs atts = folia::getAttributes( pnt );
   string content = atts["CONTENT"];
   if ( content.empty() )
@@ -190,32 +191,52 @@ void addStr( folia::Paragraph *par, string& txt,
   if ( num == 1 ){
     // OK that's what we hoped for
     folia::KWargs args;
-    args["id"] = par->id() + "." + atts["ID"];
+    string arg = par->id() + ".";
+    if ( !atts["ID"].empty() ){
+      arg += atts["ID"];
+    }
+    else {
+      arg += "String_" + TiCC::toString(cnt);
+    }
+    args["id"] = arg;
     folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
     s->settext( content , txt.length(), classname );
     txt += " " + content;
-    folia::Alignment *h
-      = new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
-    s->append( h );
-    folia::AlignReference *a =
-      new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
-    h->append( a );
-  }
-  else {
-    for ( size_t i=0; i < parts.size(); ++i ){
-      folia::KWargs args;
-      args["id"] = par->id() + "." + atts["ID"] + "_" + TiCC::toString(i);
-      folia::String *s = new folia::String( args, par->doc() );
-      par->append( s );
-      s->settext( parts[i], txt.length(), classname );
-      txt += " " + parts[i];
+    if ( !altoFile.empty() ){
+      // direct mode has no altofile
       folia::Alignment *h
 	= new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
       s->append( h );
       folia::AlignReference *a =
 	new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
       h->append( a );
+    }
+  }
+  else {
+    for ( size_t i=0; i < parts.size(); ++i ){
+      folia::KWargs args;
+      string arg = par->id() + ".";
+      if ( !atts["ID"].empty() ){
+	arg += atts["ID"] + "_" + TiCC::toString(i);
+      }
+      else {
+	arg += "String_" + TiCC::toString(i);
+      }
+      args["id"] = arg;
+
+      folia::String *s = new folia::String( args, par->doc() );
+      par->append( s );
+      s->settext( parts[i], txt.length(), classname );
+      txt += " " + parts[i];
+      if ( !altoFile.empty() ){
+	folia::Alignment *h
+	  = new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
+	s->append( h );
+	folia::AlignReference *a =
+	  new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
+	h->append( a );
+      }
     }
   }
 }
@@ -241,9 +262,15 @@ void createFile( folia::FoliaElement *text,
     else {
       ids.insert(id);
     }
+    folia::KWargs args;
+    string arg = text->id() + ".p.";
+    if ( !altoFile.empty() ){
+      arg += altoFile + ".";
+    }
+    arg += id;
+    args["id"] = arg;
     folia::Paragraph *p =
-      new folia::Paragraph( folia::getArgs("id='" + text->id() + ".p." + altoFile + "." + id + "'" ),
-			     text->doc() );
+      new folia::Paragraph( args, text->doc() );
     text->append( p );
     string ocr_text;
     list<xmlNode*> v =
@@ -254,6 +281,7 @@ void createFile( folia::FoliaElement *text,
       xmlNode *node = v.front();
       string tb_id = TiCC::getAttribute( node, "ID" );
       list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
+      int cnt = 0;
       for ( const auto& line : lv ){
 	xmlNode *pnt = line->children;
 	while ( pnt != 0 ){
@@ -262,28 +290,37 @@ void createFile( folia::FoliaElement *text,
 	      string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 	      if ( sub == "HypPart2" ){
 		if ( keepPart1 == 0 ){
-		  addStr( p, ocr_text, pnt, altoFile );
+		  addStr( p, ocr_text, pnt, altoFile, ++cnt );
 		}
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  folia::KWargs args;
-		  args["id"] = p->id() + "." + atts["ID"];
+		  string arg = p->id() + ".";
+		  if ( !atts["ID"].empty() ){
+		    arg += atts["ID"];
+		  }
+		  else {
+		    arg += "String_" + TiCC::toString(++cnt);
+		  }
+		  args["id"] = arg;
 		  args["class"] = classname;
 		  folia::String *s = new folia::String( args, text->doc() );
 		  p->append( s );
 		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
 			      classname );
 		  ocr_text += " " + atts["SUBS_CONTENT"];
-		  folia::Alignment *h =
-		    new folia::Alignment( folia::getArgs( "href='" + altoFile + "'" ) );
-		  s->append( h );
-		  folia::AlignReference *a = 0;
-		  a = new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
-		  h->append( a );
-		  a = new folia::AlignReference( folia::getArgs ( "id='" +
-								  TiCC::getAttribute( pnt, "ID" )
-								  + "', type='str'" ) );
-		  h->append( a );
+		  if ( !altoFile.empty() ){
+		    folia::Alignment *h =
+		      new folia::Alignment( folia::getArgs( "href='" + altoFile + "'" ) );
+		    s->append( h );
+		    folia::AlignReference *a = 0;
+		    a = new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
+		    h->append( a );
+		    a = new folia::AlignReference( folia::getArgs ( "id='" +
+								    TiCC::getAttribute( pnt, "ID" )
+								    + "', type='str'" ) );
+		    h->append( a );
+		  }
 		  keepPart1 = 0;
 		}
 		pnt = pnt->next;
@@ -311,7 +348,7 @@ void createFile( folia::FoliaElement *text,
 		}
 	      }
 	      else {
-		addStr( p, ocr_text, pnt, altoFile );
+		addStr( p, ocr_text, pnt, altoFile, ++cnt );
 	      }
 	    }
 	  }
@@ -1149,18 +1186,21 @@ void solveBookAlto( const string& alto_cache,
 
 void solveDirectAlto( const string& full_file, const string& outDir, zipType outputType ){
 
+#pragma omp critical
+  {
+    cout << "resolving direct on " << full_file << endl;
+  }
   zipType type;
   xmlDoc *xmldoc = getXml( full_file, type );
   string filename = TiCC::basename( full_file );
   string docid = replaceColon(filename,'.');
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
-  cerr << "found " << texts.size() << " textblocks" << endl;
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
   folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"  ) );
   doc.append( text );
-  createFile( text, xmldoc, filename, texts );
+  createFile( text, xmldoc, "", texts );
   string outName = outDir + docid + ".folia.xml";
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
