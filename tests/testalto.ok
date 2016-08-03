@@ -2,6 +2,7 @@ missing input file(s)
 Usage: alto [options] file/dir
 	--cache	 alto cache directory 
 	--clear	 clear cached Alto files at start
+	--direct	 read alto files directly. (so NO Didl)
 	-t	 number_of_threads
 	-h or --help	 this messages 
 	-O	 output directory 
@@ -17,6 +18,7 @@ foliautils 0.5
 Usage: alto [options] file/dir
 	--cache	 alto cache directory 
 	--clear	 clear cached Alto files at start
+	--direct	 read alto files directly. (so NO Didl)
 	-t	 number_of_threads
 	-h or --help	 this messages 
 	-O	 output directory 

@@ -109,11 +109,11 @@ void docCache::add( const string& dir, const string& f ){
   }
 }
 
-void docCache::fill( const string& altoDir, const list<xmlNode*>& blocks ){
+void docCache::fill( const string& alto_cache, const list<xmlNode*>& blocks ){
   for ( const auto& it : blocks ){
     string alt = TiCC::getAttribute( it, "alto" );
     if ( !alt.empty() ){
-      add( altoDir, alt );
+      add( alto_cache, alt );
     }
   }
 }
@@ -456,7 +456,7 @@ string generateName( const string& ref, string& id ){
   return res;
 }
 
-bool download( const string& altoDir,
+bool download( const string& alto_cache,
 	       const list<xmlNode*>& resources,
 	       map<string,string>& urns,
 	       map<string,string>& downloaded ) {
@@ -464,11 +464,11 @@ bool download( const string& altoDir,
   downloaded.clear();
   int d_cnt = 0;
   int c_cnt = 0;
-  if ( !TiCC::isDir(altoDir) ){
-    if ( !TiCC::createPath( altoDir ) ){
+  if ( !TiCC::isDir(alto_cache) ){
+    if ( !TiCC::createPath( alto_cache ) ){
 #pragma omp critical
       {
-	cerr << "alto dir '" << altoDir
+	cerr << "alto dir '" << alto_cache
 	     << "' doesn't exist and can't be created" << endl;
       }
       return false;
@@ -483,7 +483,7 @@ bool download( const string& altoDir,
       string fn = generateName( ref, id );
       urns[id] = ref;
       if ( !fn.empty() ){
-	fn = altoDir + fn;
+	fn = alto_cache + fn;
 	ifstream is( fn.c_str() );
 	if ( !is ){
 	  // not yet downloaded
@@ -560,17 +560,17 @@ bool download( const string& altoDir,
   return true;
 }
 
-bool download( const string& altoDir,
+bool download( const string& alto_cache,
 	       const list<xmlNode*>& resources,
 	       set<string>& downloaded ){
   downloaded.clear();
   int d_cnt = 0;
   int c_cnt = 0;
-  if ( !TiCC::isDir(altoDir) ){
-    if ( !TiCC::createPath( altoDir ) ){
+  if ( !TiCC::isDir(alto_cache) ){
+    if ( !TiCC::createPath( alto_cache ) ){
 #pragma omp critical
       {
-	cerr << "alto dir '" << altoDir
+	cerr << "alto dir '" << alto_cache
 	     << "' doesn't exist and can't be created" << endl;
       }
       return false;
@@ -583,7 +583,7 @@ bool download( const string& altoDir,
     string fn = TiCC::getAttribute( *it, "filename" );
     if ( ref.find( ":alto" ) != string::npos ){
       if ( !fn.empty() ){
-	fn = altoDir + fn;
+	fn = alto_cache + fn;
 	ifstream is( fn.c_str() );
 	if ( !is ){
 	  // not yet downloaded
@@ -720,7 +720,7 @@ xmlDoc *getXml( const string& file, zipType& type ){
 			0, 0, XML_PARSE_NOBLANKS );
 }
 
-void solveArtAlto( const string& altoDir,
+void solveArtAlto( const string& alto_cache,
 		   const string& file,
 		   const string& outDir,
 		   zipType outputType ){
@@ -748,7 +748,7 @@ void solveArtAlto( const string& altoDir,
 	}
 	else {
 	  set<string> downloaded_files;
-	  if ( download( altoDir, resources, downloaded_files ) ){
+	  if ( download( alto_cache, resources, downloaded_files ) ){
 	    if ( downloaded_files.size() == 0 ){
 #pragma omp critical
 	      {
@@ -760,7 +760,7 @@ void solveArtAlto( const string& altoDir,
 	      cout << "Downloaded files " << endl;
 	      list<xmlNode*> blocks = TiCC::FindNodes( didl, "//dcx:blocks" );
 	      docCache cache; // each thread it own cache...
-	      cache.fill( altoDir, blocks );
+	      cache.fill( alto_cache, blocks );
 	      list<xmlNode*> items = TiCC::FindNodes( didl, "didl:Item/didl:Item/didl:Item" );
 	      set<string> article_names;
 	      if ( items.size() == 0 ){
@@ -1053,7 +1053,7 @@ void solveBook( const string& altoFile, const string& id,
   }
 }
 
-void solveBookAlto( const string& altoDir,
+void solveBookAlto( const string& alto_cache,
 		    const string& file,
 		    const string& outDir,
 		    zipType outputType ){
@@ -1082,7 +1082,7 @@ void solveBookAlto( const string& altoDir,
 	else {
 	  map<string,string> urns;
 	  map<string,string> downloaded_files;
-	  if ( download( altoDir, resources, urns, downloaded_files ) ){
+	  if ( download( alto_cache, resources, urns, downloaded_files ) ){
 	    if ( downloaded_files.size() == 0 ){
 #pragma omp critical
 	      {
@@ -1147,10 +1147,50 @@ void solveBookAlto( const string& altoDir,
   }
 }
 
+void solveDirectAlto( const string& full_file, const string& outDir, zipType outputType ){
+
+  zipType type;
+  xmlDoc *xmldoc = getXml( full_file, type );
+  string filename = TiCC::basename( full_file );
+  string docid = replaceColon(filename,'.');
+  list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
+  cerr << "found " << texts.size() << " textblocks" << endl;
+  folia::Document doc( "id='" + docid + "'" );
+  doc.declare( folia::AnnotationType::STRING, setname,
+	       "annotator='alto', datetime='now()'" );
+  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"  ) );
+  doc.append( text );
+  createFile( text, xmldoc, filename, texts );
+  string outName = outDir + docid + ".folia.xml";
+  vector<folia::Paragraph*> pv = doc.paragraphs();
+  if ( pv.size() == 0 ||
+       ( pv.size() == 1 && pv[0]->size() == 0 ) ){
+    // no paragraphs, or just 1 without data
+#pragma omp critical
+    {
+      cerr << "skipped empty result : " << filename << endl;
+    }
+  }
+  else {
+    if ( outputType == BZ2 )
+      outName += ".bz2";
+    else if ( outputType == GZ )
+      outName += ".gz";
+    doc.save( outName );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "created: " << outName << endl;
+      }
+    }
+  }
+}
+
 void usage(){
   cerr << "Usage: alto [options] file/dir" << endl;
   cerr << "\t--cache\t alto cache directory " << endl;
   cerr << "\t--clear\t clear cached Alto files at start" << endl;
+  cerr << "\t--direct\t read alto files directly. (so NO Didl)" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
@@ -1170,7 +1210,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,setname:,compress:,type:,help,version" );
+    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,type:,help,version" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1179,7 +1219,8 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
   int numThreads=1;
-  string altoDir = "/tmp/altocache/";
+  string alto_cache = "/tmp/altocache/";
+  bool do_direct;
   string outputDir;
   string kind = "krant";
   zipType outputType = NORMAL;
@@ -1193,7 +1234,11 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   verbose = opts.extract( 'v' );
-  clearCachedFiles = opts.extract( "clear" );
+  do_direct = opts.extract("direct");
+  if ( !do_direct ){
+    clearCachedFiles = opts.extract( "clear" );
+    opts.extract( "cache", alto_cache );
+  }
   if ( opts.extract( "type", kind ) ){
     if ( kind != "krant" && kind != "boek" ){
       cerr << "unknown type: use 'krant' or 'boek' (default='krant')" << endl;
@@ -1215,9 +1260,8 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
-  opts.extract( "cache", altoDir );
-  if ( !altoDir.empty() && altoDir[altoDir.length()-1] != '/' )
-    altoDir += "/";
+  if ( !alto_cache.empty() && alto_cache[alto_cache.length()-1] != '/' )
+    alto_cache += "/";
   opts.extract( 'O', outputDir );
   if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' )
     outputDir += "/";
@@ -1229,7 +1273,7 @@ int main( int argc, char *argv[] ){
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     if ( clearCachedFiles ){
-      if ( clear_alto_files( altoDir ) )
+      if ( clear_alto_files( alto_cache ) )
 	exit(EXIT_SUCCESS);
       else
 	exit(EXIT_FAILURE);
@@ -1250,21 +1294,23 @@ int main( int argc, char *argv[] ){
       }
     }
   }
-  if ( kind == "krant" ){
-    string name = outputDir + "artikel/";
-    if ( !TiCC::isDir(name) ){
-      if ( !TiCC::createPath( name ) ){
-	cerr << "outputdir '" << name
-	     << "' doesn't exist and can't be created" << endl;
-	exit(EXIT_FAILURE);
+  if ( !do_direct ){
+    if ( kind == "krant" ){
+      string name = outputDir + "artikel/";
+      if ( !TiCC::isDir(name) ){
+	if ( !TiCC::createPath( name ) ){
+	  cerr << "outputdir '" << name
+	       << "' doesn't exist and can't be created" << endl;
+	  exit(EXIT_FAILURE);
+	}
       }
-    }
-    name = outputDir + "overige/";
-    if ( !TiCC::isDir(name) ){
-      if ( !TiCC::createPath( name ) ){
-	cerr << "outputdir '" << name
-	     << "' doesn't exist and can't be created" << endl;
-	exit(EXIT_FAILURE);
+      name = outputDir + "overige/";
+      if ( !TiCC::isDir(name) ){
+	if ( !TiCC::createPath( name ) ){
+	  cerr << "outputdir '" << name
+	       << "' doesn't exist and can't be created" << endl;
+	  exit(EXIT_FAILURE);
+      }
       }
     }
   }
@@ -1287,16 +1333,20 @@ int main( int argc, char *argv[] ){
       }
     }
     else {
-      fileNames = TiCC::searchFilesMatch( name, "*:mpeg21.xml*" );
+      if ( do_direct ){
+	fileNames = TiCC::searchFilesMatch( name, "*.xml" );      }
+      else {
+	fileNames = TiCC::searchFilesMatch( name, "*:mpeg21.xml*" );
+      }
     }
   }
-  else {
-    // sanity check
+  else if ( !do_direct ) {
+    // sanity check, not for direct reading
     vector<string>::iterator it = fileNames.begin();
     while ( it != fileNames.end() ){
       if ( it->find( ":mpeg21.xml" ) == string::npos ){
 	if ( verbose ){
-	  cerr << "skipping file: " << *it << endl;
+	  cerr << "skipping non didl file: " << *it << endl;
 	}
 	it = fileNames.erase(it);
       }
@@ -1316,10 +1366,15 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    if ( kind == "krant" )
-      solveArtAlto( altoDir, fileNames[fn], outputDir, outputType );
-    else
-      solveBookAlto( altoDir, fileNames[fn], outputDir, outputType );
+    if ( do_direct ){
+      solveDirectAlto( fileNames[fn], outputDir, outputType );
+    }
+    else {
+      if ( kind == "krant" )
+	solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType );
+      else
+	solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType );
+    }
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
