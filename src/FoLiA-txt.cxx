@@ -50,8 +50,8 @@ void usage(){
   cerr << "\t FoLiA-txt will produce FoLiA files from text files " << endl;
   cerr << "\t The output will only contain <p> and <str> nodes." << endl;
   cerr << "\t-t\t number_of_threads" << endl;
-  cerr << "\t-h\t this message" << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-h or --help\t this message" << endl;
+  cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--setname The FoLiA setname of the <str> nodes. "
     "(Default '" << setname << "')" << endl;
@@ -121,6 +121,16 @@ int main( int argc, char *argv[] ){
   if ( toDo == 0 ){
     cerr << "no matching files found" << endl;
     exit(EXIT_SUCCESS);
+  }
+  if ( toDo == 1 ){
+    if ( TiCC::isDir( fileNames[0] ) ){
+      fileNames = TiCC::searchFiles( fileNames[0] );
+      toDo = fileNames.size();      
+      if ( toDo == 0 ){
+	cerr << "no files found in inputdir" << endl;
+	exit(EXIT_SUCCESS);
+      }
+    }
   }
   if ( toDo > 1 ){
     cout << "start processing of " << toDo << " files " << endl;
