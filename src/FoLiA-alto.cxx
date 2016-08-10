@@ -52,6 +52,8 @@ bool clearCachedFiles = false;
 string setname = "FoLia-alto-set";
 string classname = "OCR";
 
+const int XML_PARSER_OPTIONS = XML_PARSE_NOBLANKS|XML_PARSE_HUGE;
+
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
 class docCache {
@@ -83,7 +85,7 @@ void docCache::add( const string& dir, const string& f ){
 	  cout << "open file " << file << endl;
 	}
       }
-      xmlDoc *xmldoc = xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+      xmlDoc *xmldoc = xmlReadFile( file.c_str(), 0, XML_PARSER_OPTIONS );
       if ( xmldoc ){
 	cache[f] = xmldoc;
       }
@@ -744,7 +746,7 @@ xmlDoc *getXml( const string& file, zipType& type ){
     return 0;
   }
   if ( type == NORMAL ){
-    return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+    return xmlReadFile( file.c_str(), 0, XML_PARSER_OPTIONS );
   }
   string buffer;
   if ( type == GZ ){
@@ -754,7 +756,7 @@ xmlDoc *getXml( const string& file, zipType& type ){
     buffer = TiCC::bz2ReadFile( file );
   }
   return xmlReadMemory( buffer.c_str(), buffer.length(),
-			0, 0, XML_PARSE_NOBLANKS );
+			0, 0, XML_PARSER_OPTIONS );
 }
 
 void solveArtAlto( const string& alto_cache,
