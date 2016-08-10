@@ -2,8 +2,8 @@ Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.
 	-t	 number_of_threads
-	-h	 this message
-	-V	 show version 
+	-h or --help	 this message
+	-V or --version	 show version 
 	-O	 output directory 
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
@@ -12,8 +12,8 @@ Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.
 	-t	 number_of_threads
-	-h	 this message
-	-V	 show version 
+	-h or --help	 this message
+	-V or --version	 show version 
 	-O	 output directory 
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
@@ -21,7 +21,7 @@ Usage: [options] file/dir
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4" version="1.2.0">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T14:19:23" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2016-08-10T16:44:50" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -100,7 +100,7 @@ Usage: [options] file/dir
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4" version="1.2.0">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T14:19:23" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2016-08-10T16:44:50" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -179,7 +179,7 @@ Usage: [options] file/dir
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4" version="1.2.0">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2016-07-12T14:19:23" set="foo"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2016-08-10T16:44:50" set="foo"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
