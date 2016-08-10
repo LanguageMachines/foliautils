@@ -147,6 +147,116 @@ void filter( string& word ){
   }
 }
 
+void correctNgrams( Paragraph* par,
+		    const map<string,vector<word_conf> >& variants,
+		    const set<string>& unknowns,
+		    const map<string,string>& puncts,
+		    int ngrams ){
+  vector<TextContent *> origV = par->select<TextContent>();
+  string content = origV[0]->str();
+  cerr << "correct ngrams in: '" << content << "'" << endl;
+  vector<string> unigrams;
+  vector<string> bigrams;
+  vector<string> trigrams;
+  TiCC::split( content, unigrams );
+  string bi;
+  int bi_cnt = 0;
+  for ( const auto& w : unigrams ){
+    ++bi_cnt;
+    //    cerr << "bi = " << bi << " (" << bi_cnt << ")" << endl;
+    if ( bi_cnt == 2 ){
+      bi += w;
+      bigrams.push_back( bi );
+      cerr << "add " << bi << endl;
+      bi.clear();
+      bi_cnt = 1;
+      bi = w + "_";
+    }
+    else {
+      bi += w + "_";
+    }
+  }
+  string corrected;
+  int skip = 0;
+  for ( const auto& bi : bigrams ){
+    if ( skip > 0 ){
+      --skip;
+      continue;
+    }
+    string word = bi;
+    filter(word);
+    string orig_word = word;
+    map<string,string>::const_iterator pit = puncts.find( word );
+    if ( pit != puncts.end() ){
+      word = pit->second;
+    }
+    map<string,vector<word_conf> >::const_iterator it = variants.find( word );
+    if ( it != variants.end() ){
+      // 1 or more edits found
+      string edit = it->second[0].word;
+      vector<string> parts;
+      TiCC::split_at( edit, parts, "_" );
+      corrected += "C:";
+      for ( const auto& p : parts ){
+	corrected += p + " ";
+      }
+      skip = parts.size();
+    }
+    else {
+      // a word with no suggested variants
+      set<string>::const_iterator sit = unknowns.find( word );
+      if ( sit == unknowns.end() ){
+	sit = unknowns.find( orig_word );
+      }
+      if ( sit != unknowns.end() ){
+	// ok it is a registrated garbage word
+	corrected += "UNK UNK ";
+	skip = 2;
+      }
+      else {
+	// just use the ORIGINAL word and handle the parts like unigram
+	vector<string> parts;
+	TiCC::split_at( orig_word, parts, "_" );
+	for ( const auto& p : parts ){
+	  string word = p;
+	  string orig_word = word;
+	  map<string,string>::const_iterator pit = puncts.find( word );
+	  if ( pit != puncts.end() ){
+	    word = pit->second;
+	  }
+	  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
+	  if ( it != variants.end() ){
+	    // 1 or more edits found
+	    string edit = it->second[0].word;
+	    corrected += "C:" + edit + " ";
+	  }
+	  else {
+	    // a word with no suggested variants
+	    set<string>::const_iterator sit = unknowns.find( word );
+	    if ( sit == unknowns.end() ){
+	      sit = unknowns.find( orig_word );
+	    }
+	    if ( sit != unknowns.end() ){
+	      // ok it is a registrated garbage word
+	      corrected += "UNK ";
+	    }
+	    else {
+	      // just use word
+	      corrected += word + " ";
+	    }
+	  }
+	}
+	skip = 1;
+	//	skip = parts.size();
+      }
+    }
+  }
+  corrected = TiCC::trim( corrected );
+  if ( !corrected.empty() ){
+    par->settext( corrected, classname );
+  }
+}
+
 void correctParagraph( Paragraph* par,
 		       const map<string,vector<word_conf> >& variants,
 		       const set<string>& unknowns,
@@ -235,7 +345,8 @@ void correctParagraph( Paragraph* par,
 bool correctDoc( Document *doc,
 		 const map<string,vector<word_conf> >& variants,
 		 const set<string>& unknowns,
-		 const map<string,string>& puncts ){
+		 const map<string,string>& puncts,
+		 int ngrams ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
 			setname ) ){
     return false;
@@ -245,7 +356,12 @@ bool correctDoc( Document *doc,
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( const auto& par : pv ){
     try {
-      correctParagraph( par, variants, unknowns, puncts );
+      if ( ngrams > 1 ){
+	correctNgrams( par, variants, unknowns, puncts, ngrams );
+      }
+      else {
+	correctParagraph( par, variants, unknowns, puncts );
+      }
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -265,6 +381,7 @@ void usage( const string& name ){
   cerr << "\t--class\t classname. (default '" << classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
+  //  cerr << "\t--gram\t n also analyse n-grams. Don't descend into <str> node" << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
@@ -291,7 +408,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help" );
+			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:" );
   try {
     opts.init( argc, argv );
   }
@@ -303,6 +420,7 @@ int main( int argc, const char *argv[] ){
   string progname = opts.prog_name();
   int numThreads = 1;
   size_t numSugg = 10;
+  int ngram = 1;
   bool recursiveDirs = false;
   bool clear = false;
   string expression;
@@ -351,6 +469,14 @@ int main( int argc, const char *argv[] ){
     if ( !TiCC::stringTo( value, numThreads ) ){
       cerr << "unsupported value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);  }
+  }
+  if ( opts.extract( "ngram", value ) ){
+    if ( !TiCC::stringTo( value, ngram )
+	 || ngram > 2
+	 || ngram < 0 ){
+      cerr << "unsupported value for --ngram (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
   }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
@@ -493,7 +619,7 @@ int main( int argc, const char *argv[] ){
 	cerr << "unable to create output file! " << outName << endl;
 	exit(EXIT_FAILURE);
       }
-      if ( correctDoc( doc, variants, unknowns, puncts ) ){
+      if ( correctDoc( doc, variants, unknowns, puncts, ngram ) ){
 	doc->save( outName );
 #pragma omp critical
 	{
