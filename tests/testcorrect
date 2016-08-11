@@ -9,4 +9,8 @@ $my_bin/FoLiA-correct --help >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear corr.xml >> testcorrect.out  2>&1
 
-diff corr.ticcl.xml corr.ticcl.ok  >> testcorrect.out 2>&1
+diff corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear corr.xml >> testcorrect.out  2>&1
+
+diff corr.ticcl.xml corr.ticcl.3.ok  >> testcorrect.out 2>&1

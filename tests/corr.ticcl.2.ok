@@ -4,7 +4,7 @@
     <annotations>
       <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
-      <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T12:24:04" set="Ticcl-set"/>
+      <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:43:11" set="Ticcl-set"/>
     </annotations>
     <meta id="language">dut</meta>
   </metadata>
@@ -40,8 +40,8 @@
       </div>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen.</t>
-          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen.</t>
+          <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .</t>
           <lang class="dut"/>
         </p>
       </div>
