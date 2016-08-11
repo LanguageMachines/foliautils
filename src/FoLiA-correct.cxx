@@ -45,6 +45,7 @@
 using namespace	std;
 using namespace	folia;
 
+const string SEPARATOR = "_";
 bool verbose = false;
 string classname = "Ticcl";
 string setname = "Ticcl-set";
@@ -147,6 +148,104 @@ void filter( string& word ){
   }
 }
 
+string correct_unigram( const string& w,
+			const map<string,vector<word_conf> >& variants,
+			const set<string>& unknowns,
+			const map<string,string>& puncts ){
+  if ( verbose ){
+    cout << "\t\tUNI correct: " << w;
+  }
+  string result;
+  string word = w;
+  string orig_word = word;
+  map<string,string>::const_iterator pit = puncts.find( word );
+  if ( pit != puncts.end() ){
+    word = pit->second;
+  }
+  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
+  if ( it != variants.end() ){
+    // 1 or more edits found
+    string edit = it->second[0].word;
+    result = edit + " ";
+  }
+  else {
+    // a word with no suggested variants
+    set<string>::const_iterator sit = unknowns.find( word );
+    if ( sit == unknowns.end() ){
+      sit = unknowns.find( orig_word );
+    }
+    if ( sit != unknowns.end() ){
+      // ok it is a registrated garbage word
+      result = "UNK ";
+    }
+    else {
+      // just use the word
+      result = word + " ";
+    }
+  }
+  if ( verbose ){
+    cout << " ==> " << result << endl;
+  }
+  return result;
+}
+
+bool correct_bigram( const string& bi,
+		     const map<string,vector<word_conf> >& variants,
+		     const set<string>& unknowns,
+		     const map<string,string>& puncts,
+		     string& result ){
+  result.clear();
+  if ( verbose ){
+    cout << "correct bigram " << bi << endl;
+  }
+  string word = bi;
+  filter(word);
+  string orig_word = word;
+  map<string,string>::const_iterator pit = puncts.find( word );
+  if ( pit != puncts.end() ){
+    word = pit->second;
+  }
+  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
+  if ( it != variants.end() ){
+    // an edits found
+    string edit = it->second[0].word;
+    vector<string> parts;
+    TiCC::split_at( edit, parts, SEPARATOR ); // edit can can be unseperated!
+    for ( const auto& p : parts ){
+      result += p + " ";
+    }
+    if ( verbose ){
+      cout << " ==> " << result << endl;
+    }
+    return true;
+  }
+  else {
+    // a word with no suggested variants
+    set<string>::const_iterator sit = unknowns.find( word );
+    if ( sit == unknowns.end() ){
+      sit = unknowns.find( orig_word );
+    }
+    if ( sit != unknowns.end() ){
+      // ok it is a registrated garbage bigram
+      result = "UNK UNK ";
+      if ( verbose ){
+	cout << " ==> " << result << endl;
+      }
+      return true;
+    }
+    else {
+      // just use the ORIGINAL word and handle the first part like unigram
+      vector<string> parts;
+      TiCC::split_at( orig_word, parts, SEPARATOR );
+      result = correct_unigram( parts[0], variants, unknowns, puncts );
+    }
+  }
+  if ( verbose ){
+    cout << " ==> " << result << endl;
+  }
+  return false;
+}
+
 void correctNgrams( Paragraph* par,
 		    const map<string,vector<word_conf> >& variants,
 		    const set<string>& unknowns,
@@ -156,102 +255,66 @@ void correctNgrams( Paragraph* par,
   string content = origV[0]->str();
   cerr << "correct ngrams in: '" << content << "'" << endl;
   vector<string> unigrams;
-  vector<string> bigrams;
-  vector<string> trigrams;
   TiCC::split( content, unigrams );
   string bi;
   int bi_cnt = 0;
+  vector<string> bigrams;
+  //  string tri;
+  //  int tri_cnt = 0;
+  //  vector<string> trigrams;
   for ( const auto& w : unigrams ){
     ++bi_cnt;
-    //    cerr << "bi = " << bi << " (" << bi_cnt << ")" << endl;
+    //    ++tri_cnt;
     if ( bi_cnt == 2 ){
       bi += w;
       bigrams.push_back( bi );
-      cerr << "add " << bi << endl;
       bi.clear();
       bi_cnt = 1;
-      bi = w + "_";
+      bi = w + SEPARATOR;
     }
     else {
-      bi += w + "_";
+      bi += w + SEPARATOR;
     }
+    // if ( tri_cnt == 3 ){
+    //   tri += w;
+    //   trigrams.push_back( tri );
+    //   cerr << "add TRI " << tri << endl;
+    //   tri.clear();
+    //   tri_cnt = 1;
+    //   tri = w + SEPARATOR;
+    // }
+    // else {
+    //   tri += w + SEPARATOR;
+    // }
   }
   string corrected;
   int skip = 0;
-  for ( const auto& bi : bigrams ){
-    if ( skip > 0 ){
-      --skip;
-      continue;
-    }
-    string word = bi;
-    filter(word);
-    string orig_word = word;
-    map<string,string>::const_iterator pit = puncts.find( word );
-    if ( pit != puncts.end() ){
-      word = pit->second;
-    }
-    map<string,vector<word_conf> >::const_iterator it = variants.find( word );
-    if ( it != variants.end() ){
-      // 1 or more edits found
-      string edit = it->second[0].word;
-      vector<string> parts;
-      TiCC::split_at( edit, parts, "_" );
-      corrected += "C:";
-      for ( const auto& p : parts ){
-	corrected += p + " ";
+  if ( bigrams.empty() ){
+    corrected = correct_unigram( unigrams[0], variants, unknowns, puncts );
+  }
+  else {
+    for ( const auto& bi : bigrams ){
+      if ( skip > 0 ){
+	--skip;
+	continue;
       }
-      skip = parts.size();
-    }
-    else {
-      // a word with no suggested variants
-      set<string>::const_iterator sit = unknowns.find( word );
-      if ( sit == unknowns.end() ){
-	sit = unknowns.find( orig_word );
-      }
-      if ( sit != unknowns.end() ){
-	// ok it is a registrated garbage word
-	corrected += "UNK UNK ";
-	skip = 2;
+      string cor;
+      if ( correct_bigram( bi, variants, unknowns, puncts, cor ) ){
+	skip = 1;
       }
       else {
-	// just use the ORIGINAL word and handle the parts like unigram
-	vector<string> parts;
-	TiCC::split_at( orig_word, parts, "_" );
-	for ( const auto& p : parts ){
-	  string word = p;
-	  string orig_word = word;
-	  map<string,string>::const_iterator pit = puncts.find( word );
-	  if ( pit != puncts.end() ){
-	    word = pit->second;
-	  }
-	  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
-	  if ( it != variants.end() ){
-	    // 1 or more edits found
-	    string edit = it->second[0].word;
-	    corrected += "C:" + edit + " ";
-	  }
-	  else {
-	    // a word with no suggested variants
-	    set<string>::const_iterator sit = unknowns.find( word );
-	    if ( sit == unknowns.end() ){
-	      sit = unknowns.find( orig_word );
-	    }
-	    if ( sit != unknowns.end() ){
-	      // ok it is a registrated garbage word
-	      corrected += "UNK ";
-	    }
-	    else {
-	      // just use word
-	      corrected += word + " ";
-	    }
-	  }
-	}
-	skip = 1;
-	//	skip = parts.size();
+	skip = 0;
       }
+      corrected += cor;
     }
+    string corr = correct_unigram( unigrams.back(), variants, unknowns, puncts );
+    if ( verbose ){
+      cout << "handled last word: " << corr << endl;
+    }
+    corrected += corr;
   }
   corrected = TiCC::trim( corrected );
+  cerr << " corrected ngrams: '" << corrected << "'" << endl;
   if ( !corrected.empty() ){
     par->settext( corrected, classname );
   }
