@@ -148,14 +148,15 @@ void filter( string& word ){
   }
 }
 
-string correct_unigram( const string& w,
-			const map<string,vector<word_conf> >& variants,
-			const set<string>& unknowns,
-			const map<string,string>& puncts ){
+bool correct_unigram( const string& w,
+		      const map<string,vector<word_conf> >& variants,
+		      const set<string>& unknowns,
+		      const map<string,string>& puncts,
+		      string& result ){
+  bool did_edit = false;
   if ( verbose ){
     cout << "\t\tUNI correct: " << w;
   }
-  string result;
   string word = w;
   string orig_word = word;
   map<string,string>::const_iterator pit = puncts.find( word );
@@ -171,6 +172,7 @@ string correct_unigram( const string& w,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    did_edit = true;
   }
   else {
     // a word with no suggested variants
@@ -181,6 +183,7 @@ string correct_unigram( const string& w,
     if ( sit != unknowns.end() ){
       // ok it is a registrated garbage word
       result = "UNK ";
+      did_edit = true;
     }
     else {
       // just use the word
@@ -190,14 +193,15 @@ string correct_unigram( const string& w,
   if ( verbose ){
     cout << " = 1 => " << result << endl;
   }
-  return result;
+  return did_edit;
 }
 
-bool correct_one_bigram( const string& bi,
-			 const map<string,vector<word_conf> >& variants,
-			 const set<string>& unknowns,
-			 const map<string,string>& puncts,
-			 string& result ){
+int correct_one_bigram( const string& bi,
+			const map<string,vector<word_conf> >& variants,
+			const set<string>& unknowns,
+			const map<string,string>& puncts,
+			string& result ){
+  int extra_skip = 0;
   result.clear();
   if ( verbose ){
     cout << "correct bigram " << bi << endl;
@@ -221,7 +225,7 @@ bool correct_one_bigram( const string& bi,
     if ( verbose ){
       cout << " = 2 => " << result << endl;
     }
-    return true;
+    extra_skip = 1;
   }
   else {
     // a word with no suggested variants
@@ -235,23 +239,22 @@ bool correct_one_bigram( const string& bi,
       if ( verbose ){
 	cout << " = 2 => " << result << endl;
       }
-      return true;
+      extra_skip = 1;
     }
     else {
       // just use the ORIGINAL word and handle the first part like unigram
       vector<string> parts;
       TiCC::split_at( orig_word, parts, SEPARATOR );
-      result = correct_unigram( parts[0], variants, unknowns, puncts );
+      correct_unigram( parts[0], variants, unknowns, puncts, result );
       if ( verbose ){
 	cout << " = 2 => " << result << endl;
       }
-      //      return result != (parts[0] + " ");
     }
   }
   if ( verbose ){
     cout << " = 2 => " << result << endl;
   }
-  return false;
+  return extra_skip;
 }
 
 string correct_bigrams( const vector<string>& bigrams,
@@ -267,15 +270,11 @@ string correct_bigrams( const vector<string>& bigrams,
       continue;
     }
     string cor;
-    if ( correct_one_bigram( bi, variants, unknowns, puncts, cor ) ){
-      skip = 1;
-    }
-    else {
-      skip = 0;
-    }
+    skip = correct_one_bigram( bi, variants, unknowns, puncts, cor );
     result += cor;
   }
-  string corr = correct_unigram( last, variants, unknowns, puncts );
+  string corr;
+  correct_unigram( last, variants, unknowns, puncts, corr );
   if ( verbose ){
     cout << "handled last word: " << corr << endl;
   }
@@ -288,6 +287,7 @@ int correct_one_trigram( const string& tri,
 			  const set<string>& unknowns,
 			  const map<string,string>& puncts,
 			  string& result ){
+  int extra_skip = 0;
   result.clear();
   if ( verbose ){
     cout << "correct trigram " << tri << endl;
@@ -308,10 +308,7 @@ int correct_one_trigram( const string& tri,
     for ( const auto& p : parts ){
       result += p + " ";
     }
-    if ( verbose ){
-      cout << " = 3 => " << result << endl;
-    }
-    return 2;
+    extra_skip = 2;
   }
   else {
     // a word with no suggested variants
@@ -325,7 +322,7 @@ int correct_one_trigram( const string& tri,
       if ( verbose ){
 	cout << " = 3 => " << result << endl;
       }
-      return 2;
+      extra_skip = 2;
     }
     else {
       // just use the ORIGINAL word so handle the first part like bigram
@@ -333,24 +330,14 @@ int correct_one_trigram( const string& tri,
       TiCC::split_at( orig_word, parts, SEPARATOR );
       string corr;
       string test = parts[0] + SEPARATOR + parts[1];
-      bool b = correct_one_bigram( test, variants, unknowns, puncts, corr );
-      cerr << "b=" << b << endl;
-      cerr << "corr='" << corr << "' part='" << parts[0] << "'" << endl;
-      bool diff = ( corr != (parts[0] + " "));
-      cerr << "diff = " << diff << endl;
+      extra_skip = correct_one_bigram( test, variants, unknowns, puncts, corr );
       result += corr;
-      if ( diff && b ){
-	if ( verbose ){
-	  cout << " = 3333 => " << result << endl;
-	}
-	return 1;
-      }
     }
   }
   if ( verbose ){
-    cout << " = 3 => " << result << endl;
+    cout << " = 3 => " << result << " skip=" << extra_skip << endl;
   }
-  return 0;
+  return extra_skip;
 }
 
 string correct_trigrams( const vector<string>& trigrams,
@@ -380,7 +367,8 @@ string correct_trigrams( const vector<string>& trigrams,
   }
   else if ( skip == 1 ){
     string last = unigrams[unigrams.size()-1];
-    string corr = correct_unigram( last, variants, unknowns, puncts );
+    string corr;
+    correct_unigram( last, variants, unknowns, puncts, corr );
     if ( verbose ){
       cout << "handled last word: " << corr << endl;
     }
@@ -389,19 +377,15 @@ string correct_trigrams( const vector<string>& trigrams,
   }
   else {
     string last = unigrams[unigrams.size()-1];
-    string corr = correct_unigram( last, variants, unknowns, puncts );
-    if ( verbose ){
-      cout << "handled last word: " << corr << endl;
-    }
-    result += corr;
     string last_bi = unigrams[unigrams.size()-2] + SEPARATOR + last;
-    bool b = correct_one_bigram( last_bi, variants, unknowns, puncts, corr );
+    string corr;
+    int skip = correct_one_bigram( last_bi, variants, unknowns, puncts, corr );
     if ( verbose ){
       cout << "handled last bigram: " << corr << endl;
     }
     result += corr;
-    if ( !b ){
-      corr = correct_unigram( last, variants, unknowns, puncts );
+    if ( skip == 0 ){
+      correct_unigram( last, variants, unknowns, puncts, corr );
       if ( verbose ){
 	cout << "handled last word: " << corr << endl;
       }
@@ -418,19 +402,22 @@ void correctNgrams( Paragraph* par,
 		    int ngrams ){
   vector<TextContent *> origV = par->select<TextContent>();
   string content = origV[0]->str();
-  cerr << "correct ngrams in: '" << content << "'" << endl;
+#pragma omp critical
+  {
+    cerr << "correct ngrams in: '" << content << "'" << endl;
+  }
   vector<string> unigrams;
   TiCC::split( content, unigrams );
   vector<string> bigrams;
   vector<string> trigrams;
-  if ( unigrams.size() > 1 ){
+  if ( ngrams > 0  && unigrams.size() > 1 ){
     for ( size_t i=0; i < unigrams.size()-1; ++i ){
       string bi;
       bi = unigrams[i] + SEPARATOR + unigrams[i+1];
       bigrams.push_back( bi );
     }
   }
-  if ( unigrams.size() > 2 ){
+  if ( ngrams > 2 && unigrams.size() > 2 ){
     for ( size_t i=0; i < unigrams.size()-2; ++i ){
       string tri;
       tri = unigrams[i] + SEPARATOR + unigrams[i+1] + SEPARATOR + unigrams[i+2];
@@ -438,10 +425,9 @@ void correctNgrams( Paragraph* par,
     }
   }
   string corrected;
-  trigrams.clear(); // FOR NOW sabotage
   if ( trigrams.empty() ){
     if ( bigrams.empty() ){
-      corrected = correct_unigram( unigrams[0], variants, unknowns, puncts );
+      correct_unigram( unigrams[0], variants, unknowns, puncts, corrected );
     }
     else {
       corrected = correct_bigrams( bigrams, variants, unknowns, puncts, unigrams.back() );
@@ -451,7 +437,10 @@ void correctNgrams( Paragraph* par,
     corrected = correct_trigrams( trigrams, variants, unknowns, puncts, unigrams );
   }
   corrected = TiCC::trim( corrected );
-  cerr << " corrected ngrams: '" << corrected << "'" << endl;
+#pragma omp critical
+  {
+    cerr << " corrected ngrams: '" << corrected << "'" << endl;
+  }
   if ( !corrected.empty() ){
     par->settext( corrected, classname );
   }
@@ -672,7 +661,7 @@ int main( int argc, const char *argv[] ){
   }
   if ( opts.extract( "ngram", value ) ){
     if ( !TiCC::stringTo( value, ngram )
-	 || ngram > 2
+	 || ngram > 3
 	 || ngram < 0 ){
       cerr << "unsupported value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
