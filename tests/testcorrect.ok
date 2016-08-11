@@ -16,3 +16,30 @@ Usage: [options] file/dir
 	--rank 'vname'	 name of variants file, the *ranked file produced by TICCL-rank
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
+start reading variants 
+read 3 variants 
+start reading unknowns 
+read 2 unknown words 
+start reading puncts 
+read 10 punctuated words 
+correct ngrams in: '40ste vergadering'
+ corrected ngrams: '40ste vergadering'
+correct ngrams in: '2003-2004'
+ corrected ngrams: '2003-2004'
+correct ngrams in: '40'
+ corrected ngrams: '40'
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op_de omzetbelasting 1968.'
+correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen.'
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen.'
+finished corr.xml
+7c7
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T11:51:26" set="Ticcl-set"/>
+---
+>       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T11:43:36" set="Ticcl-set"/>
+36,37c36,37
+<           <t>Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  </t>
+<           <t class="Ticcl">Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op_de omzetbelasting 1968.</t>
+---
+>           <t>Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968 met betrekking tot de plaats van levering van gas en elektriciteit  </t>
+>           <t class="Ticcl">Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968 met betrekking tot de plaats van levering van gas en elektriciteit</t>
