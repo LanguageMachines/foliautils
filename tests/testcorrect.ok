@@ -17,7 +17,7 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
-read 3 variants 
+read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -30,10 +30,16 @@ correct ngrams in: '40'
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen.'
- corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen.'
+correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished corr.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T12:27:31" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T15:10:08" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T12:24:04" set="Ticcl-set"/>
+43,44c43,44
+<           <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+<           <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .</t>
+---
+>           <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen.</t>
+>           <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen.</t>
