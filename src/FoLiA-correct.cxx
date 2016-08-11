@@ -166,7 +166,11 @@ string correct_unigram( const string& w,
   if ( it != variants.end() ){
     // 1 or more edits found
     string edit = it->second[0].word;
-    result = edit + " ";
+    vector<string> parts;
+    TiCC::split_at( edit, parts, SEPARATOR ); // edit can be seperated!
+    for ( const auto& p : parts ){
+      result += p + " ";
+    }
   }
   else {
     // a word with no suggested variants
@@ -207,7 +211,7 @@ bool correct_bigram( const string& bi,
   }
   map<string,vector<word_conf> >::const_iterator it = variants.find( word );
   if ( it != variants.end() ){
-    // an edits found
+    // edits found
     string edit = it->second[0].word;
     vector<string> parts;
     TiCC::split_at( edit, parts, SEPARATOR ); // edit can can be unseperated!

@@ -29,17 +29,11 @@ correct ngrams in: '2003-2004'
 correct ngrams in: '40'
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
- corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op_de omzetbelasting 1968.'
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen.'
 finished corr.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T11:51:26" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T12:27:31" set="Ticcl-set"/>
 ---
->       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T11:43:36" set="Ticcl-set"/>
-36,37c36,37
-<           <t>Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  </t>
-<           <t class="Ticcl">Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op_de omzetbelasting 1968.</t>
----
->           <t>Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968 met betrekking tot de plaats van levering van gas en elektriciteit  </t>
->           <t class="Ticcl">Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968 met betrekking tot de plaats van levering van gas en elektriciteit</t>
+>       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T12:24:04" set="Ticcl-set"/>
