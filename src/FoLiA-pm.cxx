@@ -132,11 +132,13 @@ void add_par( Division *root, xmlNode *p ){
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
       if ( tag == "tagged" ){
-	if ( TiCC::getAttribute( p, "type" ) == "reference" ) {
+	string tag_type = TiCC::getAttribute( p, "type" );
+	if ( tag_type == "reference"
+	     || tag_type == "named-entity" ) {
 	  if ( verbose ){
 #pragma omp critical
 	    {
-	      cerr << "add_par: REFERENCE" << endl;
+	      cerr << "add_par: " << tag_type << endl;
 	    }
 	  }
 	  string text_part;
@@ -170,6 +172,28 @@ void add_par( Division *root, xmlNode *p ){
 	  }
 	  if ( !ref.empty()
 	       && type == "reference" ){
+	    KWargs args;
+	    args["href"] = ref;
+	    args["type"] = "locator";
+	    if ( !sub_type.empty() ){
+	      args["role"] = sub_type;
+	    }
+	    if ( !status.empty() ){
+	      args["label"] = status;
+	    }
+	    if ( !text_part.empty() ){
+	     args["text"] = text_part;
+	    }
+	    TextMarkupString *tm = new TextMarkupString( args );
+	    // args.clear();
+	    // args["subset"] = "sub-type";
+	    // args["class"] = sub_type;
+	    // Feature *feat = new Feature( args );
+	    // tm->append(feat);
+	    tc->append( tm );
+	    first = false;
+	  }
+	  else if ( sub_type == "member-ref" ){
 	    KWargs args;
 	    args["href"] = ref;
 	    args["type"] = "locator";
@@ -635,6 +659,11 @@ void process_block1( Division *root, xmlNode *_block ){
     }
     if ( label == "p" ){
       add_par( root, block );
+    }
+    else if ( label == "heading" ){
+      Head *hd = new Head( );
+      hd->settext( TiCC::XmlContent(block) );
+      root->append( hd );
     }
     else if ( type == "header"
 	      || type == "content"
