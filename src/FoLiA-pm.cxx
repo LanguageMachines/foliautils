@@ -622,6 +622,123 @@ void process_proceeding( const string& outDir,
   }
 }
 
+void process_block( Division *root, xmlNode *_block ){
+  KWargs args;
+  xmlNode *block = _block->children;
+  while ( block ){
+    string id = TiCC::getAttribute( block, "id" );
+    string type = TiCC::getAttribute( block, "type" );
+    string label = TiCC::Name(block);
+#pragma omp critical
+    {
+      cerr << "process_block_children: id=" << id << " type=" << type << endl;
+    }
+    if ( label == "block" ){
+      process_block( root, block );
+    }
+    else if ( label == "p" ){
+      add_par( root, block );
+    }
+    else if ( type == "header"
+	      || type == "content"
+	      || type == "title" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div1 = new Division( args, root->doc() );
+      root->append( div1 );
+      xmlNode *p = block->children;
+      while ( p ){
+	string label = TiCC::Name(p);
+	if ( label == "p" ){
+	  add_par( div1, p );
+	}
+	else {
+#pragma omp critical
+	  {
+	    cerr << "block " << id << ", unhandled :" << label
+		 << " type=" << type << endl;
+	  }
+	}
+	p = p->next;
+      }
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "block: " << id << ", unhandled type: "
+	     << type << endl;
+      }
+    }
+    block = block->next;
+  }
+}
+
+void process_block( const string& outDir,
+		    Text* base_text,
+		    xmlNode *block,
+		    bool no_split ){
+  string id = TiCC::getAttribute( block, "id" );
+  string type = TiCC::getAttribute( block, "type" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_block: id=" << id << " type=" << type << endl;
+    }
+  }
+  KWargs args;
+  Document *doc = 0;
+  FoliaElement *root;
+  doc = base_text->doc();
+  string div_id = id;
+  string::size_type pos = id.rfind( "." );
+  if ( pos != string::npos ){
+    div_id = id.substr(0,pos);
+  }
+  args["generate_id"] = base_text->id();
+  args["class"] = "block";
+  root = new Division( args, doc );
+  base_text->append( root );
+  args.clear();
+  args["id"] = id + ".div";
+  args["class"] = "block";
+  Division *div = new Division( args, doc );
+  root->append( div );
+  process_block( div, block );
+  if ( !no_split ){
+    string filename = outDir+id+".folia.xml";
+    doc->save( filename );
+#pragma omp critical
+    {
+      cerr << "saved external file: " << filename << endl;
+    }
+
+    args.clear();
+    args["id"] = id;
+    args["src"] = id + ".folia.xml";
+    args["include"] = "no";
+    folia::External *ext = new External( args );
+    base_text->append( ext );
+  }
+}
+
+void process_parldoc( const string& outDir,
+		      Text *root,
+		      xmlNode *pdoc,
+		      bool no_split ){
+  string id = TiCC::getAttribute( pdoc, "id" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_parldoc: id=" << id << endl;
+    }
+  }
+  list<xmlNode*> blocks = TiCC::FindNodes( pdoc, "*:block" );
+  for ( const auto& block : blocks ){
+    process_block( outDir, root, block, no_split );
+  }
+}
+
 void convert_to_folia( const string& file,
 		       const string& outDir,
 		       bool no_split ){
@@ -658,6 +775,9 @@ void convert_to_folia( const string& file,
 	while ( p ){
 	  if ( TiCC::Name( p ) == "proceedings" ){
 	    process_proceeding( outDir, text, p, no_split );
+	  }
+	  else if ( TiCC::Name( p ) == "parliamentary-document" ){
+	    process_parldoc( outDir, text, p, no_split );
 	  }
 	  p = p->next;
 	}
