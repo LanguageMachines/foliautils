@@ -133,8 +133,7 @@ void add_par( Division *root, xmlNode *p ){
       string tag = TiCC::Name( p );
       if ( tag == "tagged" ){
 	string tag_type = TiCC::getAttribute( p, "type" );
-	if ( tag_type == "reference"
-	     || tag_type == "named-entity" ) {
+	if ( tag_type == "reference" ){
 	  if ( verbose ){
 #pragma omp critical
 	    {
@@ -170,8 +169,7 @@ void add_par( Division *root, xmlNode *p ){
 	    }
 	    t = t->next;
 	  }
-	  if ( !ref.empty()
-	       && type == "reference" ){
+	  if ( !ref.empty() ){
 	    KWargs args;
 	    args["href"] = ref;
 	    args["type"] = "locator";
@@ -185,33 +183,6 @@ void add_par( Division *root, xmlNode *p ){
 	     args["text"] = text_part;
 	    }
 	    TextMarkupString *tm = new TextMarkupString( args );
-	    // args.clear();
-	    // args["subset"] = "sub-type";
-	    // args["class"] = sub_type;
-	    // Feature *feat = new Feature( args );
-	    // tm->append(feat);
-	    tc->append( tm );
-	    first = false;
-	  }
-	  else if ( sub_type == "member-ref" ){
-	    KWargs args;
-	    args["href"] = ref;
-	    args["type"] = "locator";
-	    if ( !sub_type.empty() ){
-	      args["role"] = sub_type;
-	    }
-	    if ( !status.empty() ){
-	      args["label"] = status;
-	    }
-	    if ( !text_part.empty() ){
-	     args["text"] = text_part;
-	    }
-	    TextMarkupString *tm = new TextMarkupString( args );
-	    // args.clear();
-	    // args["subset"] = "sub-type";
-	    // args["class"] = sub_type;
-	    // Feature *feat = new Feature( args );
-	    // tm->append(feat);
 	    tc->append( tm );
 	    first = false;
 	  }
@@ -222,6 +193,78 @@ void add_par( Division *root, xmlNode *p ){
 		   << " sub_type=" << sub_type << " ref=" << ref << endl;
 	    }
 	  }
+	}
+	else if ( tag_type == "named-entity" ) {
+	  if ( verbose ){
+#pragma omp critical
+	    {
+	      cerr << "add_par: " << tag_type << endl;
+	    }
+	  }
+	  string text_part;
+	  string mem_ref;
+	  string part_ref;
+	  xmlNode *t = p->children;
+	  while ( t ){
+	    if ( t->type == XML_TEXT_NODE ){
+	      xmlChar *tmp = xmlNodeGetContent( t );
+	      if ( tmp ){
+		text_part = std::string( (char *)tmp );
+		xmlFree( tmp );
+	      }
+	    }
+	    else if ( TiCC::Name(t) == "tagged-entity" ){
+	      mem_ref = TiCC::getAttribute( t, "member-ref" );
+	      part_ref = TiCC::getAttribute( t, "party-ref" );
+	    }
+	    else {
+#pragma omp critical
+	      {
+		cerr << "tagged" << id << ", unhandled: "
+		     << TiCC::Name(t) << endl;
+	      }
+	    }
+	    t = t->next;
+	  }
+	  root->doc()->declare( folia::AnnotationType::ENTITY,
+				"polmash",
+			"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+	  EntitiesLayer *el = new EntitiesLayer();
+	  root->append( el );
+	  args.clear();
+	  args["class"] = "member";
+	  Entity *ent = new Entity( args, root->doc() );
+	  el->append(ent);
+	  args.clear();
+	  args["subset"] = "member-ref";
+	  if ( !mem_ref.empty() ){
+	    args["class"] = mem_ref;
+	  }
+	  else {
+	    args["class"] = "unknown";
+	  }
+	  Feature *f = new Feature( args );
+	  ent->append( f );
+	  args.clear();
+	  args["subset"] = "party-ref";
+	  if ( !part_ref.empty() ){
+	    args["class"] = part_ref;
+	  }
+	  else {
+	    args["class"] = "unknown";
+	  }
+	  f = new Feature( args );
+	  ent->append( f );
+	  args.clear();
+	  args["subset"] = "name";
+	  if ( !text_part.empty() ){
+	    args["class"] = text_part;
+	  }
+	  else {
+	    args["class"] = "unknown";
+	  }
+	  f = new Feature( args );
+	  ent->append( f );
 	}
       }
       else if ( tag == "stage-direction" ){
@@ -529,7 +572,8 @@ void process_stage( Division *root, xmlNode *_stage ){
 }
 
 folia::Document *create_basedoc( const string& docid,
-				 xmlNode *metadata = 0 ){
+				 xmlNode *metadata = 0,
+				 xmlNode *docinfo = 0 ){
   Document *doc = new Document( "id='" + docid + "'" );
   doc->declare( folia::AnnotationType::DIVISION,
 		"polmash",
@@ -544,6 +588,9 @@ folia::Document *create_basedoc( const string& docid,
 		0 );
     }
     doc->set_foreign_metadata( metadata );
+  }
+  if ( docinfo ){
+    doc->set_foreign_metadata( docinfo );
   }
   return doc;
 }
@@ -653,9 +700,11 @@ void process_block1( Division *root, xmlNode *_block ){
     string id = TiCC::getAttribute( block, "id" );
     string type = TiCC::getAttribute( block, "type" );
     string label = TiCC::Name(block);
+    if ( verbose ){
 #pragma omp critical
-    {
-      cerr << "process_block_children: id=" << id << " type=" << type << endl;
+      {
+	cerr << "process_block_children: id=" << id << " type=" << type << endl;
+      }
     }
     if ( label == "p" ){
       add_par( root, block );
@@ -762,6 +811,7 @@ void convert_to_folia( const string& file,
   if ( xmldoc ){
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
+    xmlNode *docinfo = TiCC::xPath( root, "//*[local-name()='docinfo']" );
     if ( !metadata ){
 #pragma omp critical
       {
@@ -772,7 +822,7 @@ void convert_to_folia( const string& file,
     else {
       string base = TiCC::basename( file );
       string docid = base;
-      Document *doc = create_basedoc( docid, metadata );
+      Document *doc = create_basedoc( docid, metadata, docinfo );
       string::size_type pos = docid.rfind( ".xml" );
       if ( pos != string::npos ){
 	docid = docid.substr(0,pos);

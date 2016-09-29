@@ -19,11 +19,11 @@ Usage: FoLiA-pm [options] files/dir
 	-v	 verbose output 
 	-V	 show version 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm5.xml" generator="libfolia-v1.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm5.xml" generator="libfolia-v1.4" version="1.3.1">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-07-14T13:23:02" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-07-14T13:23:02" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
     </annotations>
     <foreign-data>
       <meta xmlns="http://www.politicalmashup.nl" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pm="http://www.politicalmashup.nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -164,6 +164,20 @@ Usage: FoLiA-pm [options] files/dir
           </pm:subject>
         </dc:relation>
       </meta>
+    </foreign-data>
+    <foreign-data>
+      <docinfo xmlns="http://www.politicalmashup.nl/docinfo" xmlns:pmd="http://www.politicalmashup.nl/docinfo">
+        <transformer pmd:name="pdf2europarl" pmd:version="15378" pmd:datetime="2011-03-17T17:35:10.128497" pmd:result="pass"/>
+        <transformer pmd:name="xmllint" pmd:datetime="2011-03-17T17:35:14.044566" pmd:arguments="--noout" pmd:result="pass"/>
+        <transformer pmd:name="RelaxNG" pmd:version="15293" pmd:datetime="2011-03-17T17:35:25.663825" pmd:arguments="-c /scratch/schemas/DutchParl.rnc" pmd:result="pass"/>
+        <transformer pmd:name="annotator" pmd:version="15346:15397M" pmd:datetime="2011-03-18T10:04:12.665614" pmd:result="pass"/>
+        <transformer pmd:datetime="2011-03-21T17:53:24.931+01:00" pmd:name="nl-sgd.sh" pmd:version="1.1" pmd:result="pass">
+          <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+        <transformer pmd:name="nl-sgd-repair-1930-1995.xsl" pmd:version="1.1" pmd:result="pass" pmd:datetime="2012-06-14T17:15:28.108+02:00">
+          <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+      </docinfo>
     </foreign-data>
   </metadata>
   <text xml:id="pm5.text">
@@ -1771,11 +1785,11 @@ Usage: FoLiA-pm [options] files/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm4.xml" generator="libfolia-v1.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm4.xml" generator="libfolia-v1.4" version="1.3.1">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-07-14T13:23:02" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-07-14T13:23:02" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
     </annotations>
     <foreign-data>
       <meta xmlns="http://www.politicalmashup.nl" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pm="http://www.politicalmashup.nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1847,17 +1861,31 @@ Usage: FoLiA-pm [options] files/dir
         </dc:relation>
       </meta>
     </foreign-data>
+    <foreign-data>
+      <docinfo xmlns="http://www.politicalmashup.nl/docinfo" xmlns:pmd="http://www.politicalmashup.nl/docinfo">
+        <transformer pmd:name="pdf2europarl" pmd:version="15378" pmd:datetime="2011-03-17T17:33:48.971321" pmd:result="pass"/>
+        <transformer pmd:name="xmllint" pmd:datetime="2011-03-17T17:33:50.316392" pmd:arguments="--noout" pmd:result="pass"/>
+        <transformer pmd:name="RelaxNG" pmd:version="15293" pmd:datetime="2011-03-17T17:33:53.369472" pmd:arguments="-c /scratch/schemas/DutchParl.rnc" pmd:result="pass"/>
+        <transformer pmd:name="annotator" pmd:version="15346:15397M" pmd:datetime="2011-03-18T10:04:08.000090" pmd:result="pass"/>
+        <transformer pmd:datetime="2011-03-21T17:53:18.623+01:00" pmd:name="nl-sgd.sh" pmd:version="1.1" pmd:result="pass">
+          <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+        <transformer pmd:name="nl-sgd-repair-1930-1995.xsl" pmd:version="1.1" pmd:result="pass" pmd:datetime="2012-06-14T17:15:24.655+02:00">
+          <comment>Transformer works on PDF files downloaded from http://www.statengeneraaldigitaal.nl which are transformed to XML by politicalmashup pdf2xml script and then preprocessed with the Speaker and Kamerstuk recognizer and then with nl-sgd-preprocessing.xsl and postprocessed with nl-sgd-postprocessing.xsl RELAX NG: parlproceedings.rnc.</comment>
+        </transformer>
+      </docinfo>
+    </foreign-data>
   </metadata>
   <text xml:id="pm4.text">
     <external xml:id="nl.proc.sgd.d.181718180000030.1" src="nl.proc.sgd.d.181718180000030.1.folia.xml"/>
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.sgd.d.189818990000112.2" generator="libfolia-v1.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.sgd.d.189818990000112.2" generator="libfolia-v1.4" version="1.3.1">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-07-14T13:23:02" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-07-14T13:23:02" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
     </annotations>
   </metadata>
   <text xml:id="nl.proc.sgd.d.189818990000112.2.text">
