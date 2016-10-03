@@ -102,6 +102,43 @@ string extract_embedded( xmlNode *p ){
   return result;
 }
 
+void add_note( Note *root, xmlNode *p ){
+  string id = TiCC::getAttribute( p, "id" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "add_note: id=" << id << endl;
+    }
+  }
+  KWargs args;
+  args["id"] = id;
+  Paragraph *par = new Paragraph( args, root->doc() );
+  root->append( par );
+  TextContent *tc = new TextContent();
+  par->append( tc );
+  p = p->children;
+  while ( p ){
+    if ( p->type == XML_TEXT_NODE ){
+      xmlChar *tmp = xmlNodeGetContent( p );
+      if ( tmp ){
+	string part = std::string( (char *)tmp );
+	XmlText *txt = new XmlText();
+	txt->setvalue( part );
+	tc->append( txt );
+	xmlFree( tmp );
+      }
+    }
+    else if ( p->type == XML_ELEMENT_NODE ){
+      string tag = TiCC::Name( p );
+#pragma omp critical
+      {
+	cerr << "paragraph: " << id << ", unhandled tag : " << tag << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
 void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
@@ -290,6 +327,40 @@ void add_par( Division *root, xmlNode *p ){
 	  tc->append( txt );
 	}
       }
+      else if ( tag == "note" ){
+	KWargs args;
+	string id = TiCC::getAttribute( p, "id" );
+	string ref = TiCC::getAttribute( p, "ref" );
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cerr << "paragraph:note: " << id << ", ref= " << ref << endl;
+	  }
+	}
+	args["_id"] = id;
+	args["id"] = ref;
+	args["type"] = "note";
+	Reference *rf = new Reference( args );
+	par->append( rf );
+	args.clear();
+	args["id"] = ref;
+	Note *note = new Note( args );
+	par->append( note );
+	xmlNode *pnt = p->children;
+	while ( pnt ){
+	  string tag = TiCC::Name(pnt);
+	  if ( tag == "p" ){
+	    add_note( note, pnt );
+	  }
+	  else {
+#pragma omp critical
+	    {
+	      cerr << "note: " << id << ", unhandled tag : " << tag << endl;
+	    }
+	  }
+	  pnt = pnt->next;
+	}
+      }
       else {
 #pragma omp critical
 	{
@@ -332,6 +403,99 @@ void process_chair( Division *root, xmlNode *chair ){
 #pragma omp critical
       {
 	cerr << "chair, unhandled: " << label << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
+void add_entity( EntitiesLayer *root, xmlNode *p ){
+  string id = TiCC::getAttribute( p, "id" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "add_entity: id=" << id << endl;
+    }
+  }
+  KWargs args;
+  p = p->children;
+  while ( p ){
+    string tag = TiCC::Name( p );
+    if ( tag == "tagged" ){
+      string tag_type = TiCC::getAttribute( p, "type" );
+      if ( tag_type == "named-entity" ) {
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cerr << "add_entity: " << tag_type << endl;
+	  }
+	}
+	string text_part;
+	string mem_ref;
+	string part_ref;
+	xmlNode *t = p->children;
+	while ( t ){
+	  if ( t->type == XML_TEXT_NODE ){
+	    xmlChar *tmp = xmlNodeGetContent( t );
+	    if ( tmp ){
+	      text_part = std::string( (char *)tmp );
+	      xmlFree( tmp );
+	    }
+	  }
+	  else if ( TiCC::Name(t) == "tagged-entity" ){
+	    mem_ref = TiCC::getAttribute( t, "member-ref" );
+	    part_ref = TiCC::getAttribute( t, "party-ref" );
+	  }
+	  else {
+#pragma omp critical
+	    {
+	      cerr << "tagged" << id << ", unhandled: "
+		   << TiCC::Name(t) << endl;
+	    }
+	  }
+	  t = t->next;
+	}
+	args.clear();
+	args["class"] = "member";
+	args["id"] = id;
+	Entity *ent = new Entity( args, root->doc() );
+	root->append(ent);
+	args.clear();
+	args["subset"] = "member-ref";
+	if ( !mem_ref.empty() ){
+	  args["class"] = mem_ref;
+	}
+	else {
+	  args["class"] = "unknown";
+	}
+	Feature *f = new Feature( args );
+	ent->append( f );
+	args.clear();
+	args["subset"] = "party-ref";
+	if ( !part_ref.empty() ){
+	  args["class"] = part_ref;
+	}
+	else {
+	  args["class"] = "unknown";
+	}
+	f = new Feature( args );
+	ent->append( f );
+	args.clear();
+	args["subset"] = "name";
+	if ( !text_part.empty() ){
+	  args["class"] = text_part;
+	}
+	else {
+	  args["class"] = "unknown";
+	}
+	f = new Feature( args );
+	ent->append( f );
+      }
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "add_entity: " << id << ", unhandled tag : " << tag << endl;
       }
     }
     p = p->next;
@@ -706,7 +870,34 @@ void process_block1( Division *root, xmlNode *_block ){
 	cerr << "process_block_children: id=" << id << " type=" << type << endl;
       }
     }
-    if ( label == "p" ){
+    if ( type == "signed-by" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div = new Division( args, root->doc() );
+      root->append( div );
+      root->doc()->declare( folia::AnnotationType::ENTITY,
+			    "polmash",
+			    "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+      EntitiesLayer *el = new EntitiesLayer();
+      div->append( el );
+      xmlNode *p = block->children;
+      while ( p ){
+	string label = TiCC::Name(p);
+	if ( label == "p" ){
+	  add_entity( el, p );
+	}
+	else {
+#pragma omp critical
+	  {
+	    cerr << "block " << id << ", unhandled :" << label
+		 << " type=" << type << endl;
+	  }
+	}
+	p = p->next;
+      }
+    }
+    else if ( label == "p" ){
       add_par( root, block );
     }
     else if ( label == "heading" ){
