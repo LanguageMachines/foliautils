@@ -337,6 +337,18 @@ void add_par( Division *root, xmlNode *p ){
 	    cerr << "paragraph:note: " << id << ", ref= " << ref << endl;
 	  }
 	}
+	try {
+	  isNCName( ref );
+	}
+	catch( ... ){
+	  ref = "v." + ref;
+	  try {
+	    isNCName( ref );
+	  }
+	  catch( ... ){
+	    throw ( "the ref attribute in note cannot be comverted to an ID" );
+	  }
+	}
 	args["_id"] = id;
 	args["id"] = ref;
 	args["type"] = "note";
