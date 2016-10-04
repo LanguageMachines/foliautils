@@ -921,7 +921,16 @@ void process_block1( Division *root, xmlNode *_block ){
       if ( !txt.empty() ){
 	hd->settext( txt );
       }
-      root->append( hd );
+      try {
+	root->append( hd );
+      }
+      catch (...){
+#pragma omp critical
+	{
+	  cerr << "appending another Head failed, id=" << id << " just ignore"
+	       <<  endl;
+	}
+      }
     }
     else if ( type == "header"
 	      || type == "content"
@@ -946,6 +955,30 @@ void process_block1( Division *root, xmlNode *_block ){
 	}
 	p = p->next;
       }
+    }
+    else if ( type == "section" ){
+      KWargs args;
+      args["id"] = id;
+      args["class"] = type;
+      Division *div1 = new Division( args, root->doc() );
+      root->append( div1 );
+      string section_id = TiCC::getAttribute( block, "section-identifier" );
+      if ( !section_id.empty() ){
+	args.clear();
+	args["subset"] = "section-identifier";
+	args["class"] = section_id;
+	Feature *f = new Feature( args );
+	div1->append( f );
+      }
+      string section_path =TiCC::getAttribute( block, "section-path" );
+      if ( !section_path.empty() ){
+	args.clear();
+	args["subset"] = "section-path";
+	args["class"] = section_id;
+	Feature *f = new Feature( args );
+	div1->append( f );
+      }
+      process_block1( div1, block );
     }
     else if ( label == "block" ){
       KWargs args;
