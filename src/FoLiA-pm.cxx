@@ -408,26 +408,33 @@ void add_par( Division *root, xmlNode *p ){
 	    cerr << "paragraph:note: " << id << ", ref= " << ref << endl;
 	  }
 	}
-	try {
-	  isNCName( ref );
+	Note *note = 0;
+	if ( ref.empty() ){
+	  args["id"] = id;
+	  note = new Note( args );
 	}
-	catch( ... ){
-	  ref = "v." + ref;
+	else {
 	  try {
 	    isNCName( ref );
 	  }
 	  catch( ... ){
-	    throw ( "the ref attribute in note cannot be comverted to an ID" );
+	    ref = "v." + ref;
+	    try {
+	      isNCName( ref );
+	    }
+	    catch( ... ){
+	      throw ( "the ref attribute in note cannot be comverted to an ID" );
+	    }
 	  }
+	  args["_id"] = id;
+	  args["id"] = ref;
+	  args["type"] = "note";
+	  Reference *rf = new Reference( args );
+	  par->append( rf );
+	  args.clear();
+	  args["id"] = ref;
+	  note = new Note( args );
 	}
-	args["_id"] = id;
-	args["id"] = ref;
-	args["type"] = "note";
-	Reference *rf = new Reference( args );
-	par->append( rf );
-	args.clear();
-	args["id"] = ref;
-	Note *note = new Note( args );
 	par->append( note );
 	xmlNode *pnt = p->children;
 	while ( pnt ){
