@@ -914,7 +914,10 @@ void process_block1( Division *root, xmlNode *_block ){
     }
     else if ( label == "heading" ){
       Head *hd = new Head( );
-      hd->settext( TiCC::XmlContent(block) );
+      string txt = TiCC::XmlContent(block);
+      if ( !txt.empty() ){
+	hd->settext( txt );
+      }
       root->append( hd );
     }
     else if ( type == "header"
