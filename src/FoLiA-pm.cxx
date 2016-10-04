@@ -206,6 +206,9 @@ void add_par( Division *root, xmlNode *p ){
 	    }
 	    t = t->next;
 	  }
+	  if ( ref.empty() && !text_part.empty() ){
+	    ref = "unknown";
+	  }
 	  if ( !ref.empty() ){
 	    KWargs args;
 	    args["href"] = ref;
