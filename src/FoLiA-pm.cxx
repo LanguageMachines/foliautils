@@ -130,9 +130,77 @@ void add_note( Note *root, xmlNode *p ){
     }
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
+      if ( tag == "tagged" ){
+	string tag_type = TiCC::getAttribute( p, "type" );
+	if ( tag_type == "reference" ){
+	  if ( verbose ){
 #pragma omp critical
-      {
-	cerr << "paragraph: " << id << ", unhandled tag : " << tag << endl;
+	    {
+	      cerr << "add_par: " << tag_type << endl;
+	    }
+	  }
+	  string text_part;
+	  string ref;
+	  string type;
+	  string sub_type;
+	  string status;
+	  xmlNode *t = p->children;
+	  while ( t ){
+	    if ( t->type == XML_TEXT_NODE ){
+	      xmlChar *tmp = xmlNodeGetContent( t );
+	      if ( tmp ){
+		text_part = std::string( (char *)tmp );
+		xmlFree( tmp );
+	      }
+	    }
+	    else if ( TiCC::Name(t) == "tagged-entity" ){
+	      ref = TiCC::getAttribute( t, "reference" );
+	      type = TiCC::getAttribute( t, "type" );
+	      sub_type = TiCC::getAttribute( t, "sub-type" );
+	      status = TiCC::getAttribute( t, "status" );
+	    }
+	    else {
+#pragma omp critical
+	      {
+		cerr << "tagged" << id << ", unhandled: "
+		     << TiCC::Name(t) << endl;
+	      }
+	    }
+	    t = t->next;
+	  }
+	  if ( ref.empty() && !text_part.empty() ){
+	    ref = "unknown";
+	  }
+	  if ( !ref.empty() ){
+	    KWargs args;
+	    args["href"] = ref;
+	    args["type"] = "locator";
+	    if ( !sub_type.empty() ){
+	      args["role"] = sub_type;
+	    }
+	    if ( !status.empty() ){
+	      args["label"] = status;
+	    }
+	    if ( !text_part.empty() ){
+	     args["text"] = text_part;
+	    }
+	    TextMarkupString *tm = new TextMarkupString( args );
+	    tc->append( tm );
+	  }
+	  else {
+#pragma omp critical
+	    {
+	      cerr << "tagged: " << id << ", unhandled type=" << type << endl
+		   << " sub_type=" << sub_type << " ref=" << ref << endl;
+	    }
+	  }
+	}
+      }
+      else {
+#pragma omp critical
+	{
+	  cerr << "note: " << id << ", unhandled tag : " << tag << endl;
+	}
       }
     }
     p = p->next;
