@@ -948,6 +948,97 @@ void process_proceeding( const string& outDir,
   }
 }
 
+void process_block1( Division *root, xmlNode *_block );
+
+Division *create_signed( xmlNode* block, Document *doc ){
+  string id = TiCC::getAttribute( block, "id" );
+  string type = TiCC::getAttribute( block, "type" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, doc );
+  doc->declare( folia::AnnotationType::ENTITY,
+		"polmash",
+		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+  EntitiesLayer *el = new EntitiesLayer();
+  div->append( el );
+  xmlNode *p = block->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "p" ){
+      add_entity( el, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "create_signed: " << id << ", unhandled :" << label
+	     << " type=" << type << endl;
+      }
+    }
+    p = p->next;
+  }
+  return div;
+}
+
+Division *create_section( xmlNode* block, Document *doc ){
+  string id = TiCC::getAttribute( block, "id" );
+  string type = TiCC::getAttribute( block, "type" );
+  string section_id = TiCC::getAttribute( block, "section-identifier" );
+  string section_path =TiCC::getAttribute( block, "section-path" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  if ( !section_id.empty() ){
+    args["n"] = section_id;
+  }
+  Division *div = new Division( args, doc );
+  if ( !section_path.empty() ){
+    args.clear();
+    args["subset"] = "section-path";
+    args["class"] = section_path;
+    Feature *f = new Feature( args );
+    div->append( f );
+  }
+  process_block1( div, block );
+  return div;
+}
+
+Division *create_h_c_t( xmlNode *block, Document *doc ){
+  string id = TiCC::getAttribute( block, "id" );
+  string type = TiCC::getAttribute( block, "type" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, doc );
+  xmlNode *p = block->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "p" ){
+      add_par( div, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "create_" << type << ", unhandled :" << label
+	     << " id=" << id << endl;
+      }
+    }
+    p = p->next;
+  }
+  return div;
+}
+
+Division *create_block( xmlNode *block, Document *doc ){
+  string id = TiCC::getAttribute( block, "id" );
+  string type = TiCC::getAttribute( block, "type" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, doc );
+  process_block1( div, block );
+  return div;
+}
+
 void process_block1( Division *root, xmlNode *_block ){
   KWargs args;
   xmlNode *block = _block->children;
@@ -963,31 +1054,8 @@ void process_block1( Division *root, xmlNode *_block ){
       }
     }
     if ( type == "signed-by" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div = new Division( args, root->doc() );
+      Division *div = create_signed( block, root->doc() );
       root->append( div );
-      root->doc()->declare( folia::AnnotationType::ENTITY,
-			    "polmash",
-			    "annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
-      EntitiesLayer *el = new EntitiesLayer();
-      div->append( el );
-      xmlNode *p = block->children;
-      while ( p ){
-	string label = TiCC::Name(p);
-	if ( label == "p" ){
-	  add_entity( el, p );
-	}
-	else {
-#pragma omp critical
-	  {
-	    cerr << "block " << id << ", unhandled :" << label
-		 << " type=" << type << endl;
-	  }
-	}
-	p = p->next;
-      }
     }
     else if ( label == "p" ){
       add_par( root, block );
@@ -1012,54 +1080,16 @@ void process_block1( Division *root, xmlNode *_block ){
     else if ( type == "header"
 	      || type == "content"
 	      || type == "title" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div1 = new Division( args, root->doc() );
-      root->append( div1 );
-      xmlNode *p = block->children;
-      while ( p ){
-	string label = TiCC::Name(p);
-	if ( label == "p" ){
-	  add_par( div1, p );
-	}
-	else {
-#pragma omp critical
-	  {
-	    cerr << "block " << id << ", unhandled :" << label
-		 << " type=" << type << endl;
-	  }
-	}
-	p = p->next;
-      }
+      Division *div = create_h_c_t( block, root->doc() );
+      root->append( div );
     }
     else if ( type == "section" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      string section_id = TiCC::getAttribute( block, "section-identifier" );
-      if ( !section_id.empty() ){
-	args["n"] = section_id;
-      }
-      Division *div1 = new Division( args, root->doc() );
-      root->append( div1 );
-      string section_path =TiCC::getAttribute( block, "section-path" );
-      if ( !section_path.empty() ){
-	args.clear();
-	args["subset"] = "section-path";
-	args["class"] = section_path;
-	Feature *f = new Feature( args );
-	div1->append( f );
-      }
-      process_block1( div1, block );
+      Division *div = create_section( block, root->doc() );
+      root->append( div );
     }
     else if ( label == "block" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div1 = new Division( args, root->doc() );
-      root->append( div1 );
-      process_block1( div1, block );
+      Division *div = create_block( block, root->doc() );
+      root->append( div );
     }
     else {
 #pragma omp critical
