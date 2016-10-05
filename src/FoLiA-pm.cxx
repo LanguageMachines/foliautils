@@ -220,6 +220,7 @@ void add_par( Division *root, xmlNode *p ){
   Paragraph *par = new Paragraph( args, root->doc() );
   TextContent *tc = new TextContent();
   par->append( tc );
+  root->append( par );
   p = p->children;
   bool first = true;
   while ( p ){
@@ -423,7 +424,7 @@ void add_par( Division *root, xmlNode *p ){
 	      isNCName( ref );
 	    }
 	    catch( ... ){
-	      throw ( "the ref attribute in note cannot be comverted to an ID" );
+	      throw ( "the ref attribute in note cannot be converted to an ID" );
 	    }
 	  }
 	  args["_id"] = id;
@@ -460,7 +461,6 @@ void add_par( Division *root, xmlNode *p ){
     }
     p = p->next;
   }
-  root->append( par );
 }
 
 void process_chair( Division *root, xmlNode *chair ){
@@ -916,6 +916,7 @@ void process_topic( const string& outDir,
   if ( !no_split ){
     string filename = outDir+id+".folia.xml";
     doc->save( filename );
+    delete doc;
 #pragma omp critical
     {
       cerr << "saved external file: " << filename << endl;
@@ -957,7 +958,8 @@ void process_block1( Division *root, xmlNode *_block ){
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << "process_block_children: id=" << id << " type=" << type << endl;
+	cerr << "process_block_children: id=" << id
+	     << " tag=" << label << " type=" << type << endl;
       }
     }
     if ( type == "signed-by" ){
@@ -991,20 +993,20 @@ void process_block1( Division *root, xmlNode *_block ){
       add_par( root, block );
     }
     else if ( label == "heading" ){
-      Head *hd = new Head( );
-      string txt = TiCC::XmlContent(block);
-      if ( !txt.empty() ){
-	hd->settext( txt );
-      }
+      FoliaElement *el = new Head( );
       try {
-	root->append( hd );
+	root->append( el );
       }
       catch (...){
-#pragma omp critical
-	{
-	  cerr << "appending another Head failed, id=" << id << " just ignore"
-	       <<  endl;
-	}
+	// so if another Head is already there, append it as a Div
+	KWargs args;
+	args["class"] = "subheading";
+	el = new Division( args, root->doc() );
+	root->append( el );
+      }
+      string txt = TiCC::XmlContent(block);
+      if ( !txt.empty() ){
+	el->settext( txt );
       }
     }
     else if ( type == "header"
@@ -1172,6 +1174,7 @@ void convert_to_folia( const string& file,
 	  succes = false;
 	}
       }
+      delete doc;
     }
     xmlFreeDoc( xmldoc );
   }
