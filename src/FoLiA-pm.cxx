@@ -709,6 +709,9 @@ void add_h_c_t( FoliaElement *root, xmlNode *block ){
     if ( label == "p" ){
       add_par( div, p );
     }
+    else if ( label == "stage-direction" ){
+      process_stage( div, p );
+    }
     else {
 #pragma omp critical
       {
@@ -747,8 +750,12 @@ void process_stage( Division *root, xmlNode *_stage ){
     }
     else if ( type == "header"
 	      || type == "title"
+	      || type == "subtitle"
 	      || type == "other"
+	      || type == "question"
+	      || type == "table"
 	      || type == "label"
+	      || type == "motie"
 	      || type == "footer"
 	      || type == "subject" ){
       add_h_c_t( div, stage );
