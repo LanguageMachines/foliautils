@@ -746,6 +746,9 @@ void process_stage( Division *root, xmlNode *_stage ){
       process_break( div, stage->children );
     }
     else if ( type == "header"
+	      || type == "title"
+	      || type == "other"
+	      || type == "label"
 	      || type == "footer"
 	      || type == "subject" ){
       add_h_c_t( div, stage );
