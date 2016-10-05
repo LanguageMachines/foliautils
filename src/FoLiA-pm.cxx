@@ -102,6 +102,63 @@ string extract_embedded( xmlNode *p ){
   return result;
 }
 
+void add_reference( TextContent *tc, xmlNode *p ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "add_reference" << endl;
+    }
+  }
+  string text_part;
+  string ref;
+  string type;
+  string sub_type;
+  string status;
+  xmlNode *t = p->children;
+  while ( t ){
+    if ( t->type == XML_TEXT_NODE ){
+      xmlChar *tmp = xmlNodeGetContent( t );
+      if ( tmp ){
+	text_part = std::string( (char *)tmp );
+	xmlFree( tmp );
+      }
+    }
+    else if ( TiCC::Name(t) == "tagged-entity" ){
+      ref = TiCC::getAttribute( t, "reference" );
+      type = TiCC::getAttribute( t, "type" );
+      sub_type = TiCC::getAttribute( t, "sub-type" );
+      status = TiCC::getAttribute( t, "status" );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "reference unhandled: "
+	     << TiCC::Name(t) << endl;
+      }
+    }
+    t = t->next;
+  }
+  if ( ref.empty() && !text_part.empty() ){
+    ref = "unknown";
+  }
+  if ( !ref.empty() ){
+    KWargs args;
+    args["href"] = ref;
+    args["type"] = "locator";
+    if ( !sub_type.empty() ){
+      args["role"] = sub_type;
+    }
+    if ( !status.empty() ){
+      args["label"] = status;
+    }
+    if ( !text_part.empty() ){
+      args["text"] = text_part;
+    }
+    TextMarkupString *tm = new TextMarkupString( args );
+    tc->append( tm );
+  }
+}
+
 void add_note( Note *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
@@ -133,66 +190,12 @@ void add_note( Note *root, xmlNode *p ){
       if ( tag == "tagged" ){
 	string tag_type = TiCC::getAttribute( p, "type" );
 	if ( tag_type == "reference" ){
-	  if ( verbose ){
+	  add_reference( tc, p );
+	}
+	else {
 #pragma omp critical
-	    {
-	      cerr << "add_par: " << tag_type << endl;
-	    }
-	  }
-	  string text_part;
-	  string ref;
-	  string type;
-	  string sub_type;
-	  string status;
-	  xmlNode *t = p->children;
-	  while ( t ){
-	    if ( t->type == XML_TEXT_NODE ){
-	      xmlChar *tmp = xmlNodeGetContent( t );
-	      if ( tmp ){
-		text_part = std::string( (char *)tmp );
-		xmlFree( tmp );
-	      }
-	    }
-	    else if ( TiCC::Name(t) == "tagged-entity" ){
-	      ref = TiCC::getAttribute( t, "reference" );
-	      type = TiCC::getAttribute( t, "type" );
-	      sub_type = TiCC::getAttribute( t, "sub-type" );
-	      status = TiCC::getAttribute( t, "status" );
-	    }
-	    else {
-#pragma omp critical
-	      {
-		cerr << "tagged" << id << ", unhandled: "
-		     << TiCC::Name(t) << endl;
-	      }
-	    }
-	    t = t->next;
-	  }
-	  if ( ref.empty() && !text_part.empty() ){
-	    ref = "unknown";
-	  }
-	  if ( !ref.empty() ){
-	    KWargs args;
-	    args["href"] = ref;
-	    args["type"] = "locator";
-	    if ( !sub_type.empty() ){
-	      args["role"] = sub_type;
-	    }
-	    if ( !status.empty() ){
-	      args["label"] = status;
-	    }
-	    if ( !text_part.empty() ){
-	     args["text"] = text_part;
-	    }
-	    TextMarkupString *tm = new TextMarkupString( args );
-	    tc->append( tm );
-	  }
-	  else {
-#pragma omp critical
-	    {
-	      cerr << "tagged: " << id << ", unhandled type=" << type << endl
-		   << " sub_type=" << sub_type << " ref=" << ref << endl;
-	    }
+	  {
+	    cerr << "tagged: " << id << ", unhandled type=" << tag_type << endl;
 	  }
 	}
       }
@@ -204,6 +207,100 @@ void add_note( Note *root, xmlNode *p ){
       }
     }
     p = p->next;
+  }
+}
+
+void add_entity( FoliaElement* root, xmlNode *p ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "add_entity "<< endl;
+    }
+  }
+  string text_part;
+  string mem_ref;
+  string part_ref;
+  string id = TiCC::getAttribute( p, "id" );
+  xmlNode *t = p->children;
+  while ( t ){
+    if ( t->type == XML_TEXT_NODE ){
+      xmlChar *tmp = xmlNodeGetContent( t );
+      if ( tmp ){
+	text_part = std::string( (char *)tmp );
+	xmlFree( tmp );
+      }
+    }
+    else if ( TiCC::Name(t) == "tagged-entity" ){
+      mem_ref = TiCC::getAttribute( t, "member-ref" );
+      part_ref = TiCC::getAttribute( t, "party-ref" );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "entity" << id << ", unhandled: " << TiCC::Name(t) << endl;
+      }
+    }
+    t = t->next;
+  }
+  root->doc()->declare( folia::AnnotationType::ENTITY,
+			"polmash",
+			"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+  EntitiesLayer *el = new EntitiesLayer();
+  root->append( el );
+  KWargs args;
+  args["class"] = "member";
+  Entity *ent = new Entity( args, root->doc() );
+  el->append(ent);
+  args.clear();
+  args["subset"] = "member-ref";
+  if ( !mem_ref.empty() ){
+    args["class"] = mem_ref;
+  }
+  else {
+    args["class"] = "unknown";
+  }
+  Feature *f = new Feature( args );
+  ent->append( f );
+  args.clear();
+  args["subset"] = "party-ref";
+  if ( !part_ref.empty() ){
+    args["class"] = part_ref;
+  }
+  else {
+    args["class"] = "unknown";
+  }
+  f = new Feature( args );
+  ent->append( f );
+  args.clear();
+  args["subset"] = "name";
+  if ( !text_part.empty() ){
+    args["class"] = text_part;
+  }
+  else {
+    args["class"] = "unknown";
+  }
+  f = new Feature( args );
+  ent->append( f );
+}
+
+void add_stage_direction( TextContent *tc, xmlNode *p ){
+  string embedded = extract_embedded( p );
+  string id = TiCC::getAttribute( p, "id" );
+  if ( embedded.empty() ){
+#pragma omp critical
+    {
+      cerr << "stage-direction: " << id << " without text?"
+	   << endl;
+    }
+  }
+  else {
+    XmlText *txt = new XmlText();
+    if ( p->next != 0 ){
+      // not last
+      embedded += " ";
+    }
+    txt->setvalue( embedded );
+    tc->append( txt );
   }
 }
 
@@ -222,7 +319,6 @@ void add_par( Division *root, xmlNode *p ){
   par->append( tc );
   root->append( par );
   p = p->children;
-  bool first = true;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
@@ -232,7 +328,6 @@ void add_par( Division *root, xmlNode *p ){
 	txt->setvalue( part );
 	tc->append( txt );
 	xmlFree( tmp );
-	first = false;
       }
     }
     else if ( p->type == XML_ELEMENT_NODE ){
@@ -240,164 +335,14 @@ void add_par( Division *root, xmlNode *p ){
       if ( tag == "tagged" ){
 	string tag_type = TiCC::getAttribute( p, "type" );
 	if ( tag_type == "reference" ){
-	  if ( verbose ){
-#pragma omp critical
-	    {
-	      cerr << "add_par: " << tag_type << endl;
-	    }
-	  }
-	  string text_part;
-	  string ref;
-	  string type;
-	  string sub_type;
-	  string status;
-	  xmlNode *t = p->children;
-	  while ( t ){
-	    if ( t->type == XML_TEXT_NODE ){
-	      xmlChar *tmp = xmlNodeGetContent( t );
-	      if ( tmp ){
-		text_part = std::string( (char *)tmp );
-		xmlFree( tmp );
-	      }
-	    }
-	    else if ( TiCC::Name(t) == "tagged-entity" ){
-	      ref = TiCC::getAttribute( t, "reference" );
-	      type = TiCC::getAttribute( t, "type" );
-	      sub_type = TiCC::getAttribute( t, "sub-type" );
-	      status = TiCC::getAttribute( t, "status" );
-	    }
-	    else {
-#pragma omp critical
-	      {
-		cerr << "tagged" << id << ", unhandled: "
-		     << TiCC::Name(t) << endl;
-	      }
-	    }
-	    t = t->next;
-	  }
-	  if ( ref.empty() && !text_part.empty() ){
-	    ref = "unknown";
-	  }
-	  if ( !ref.empty() ){
-	    KWargs args;
-	    args["href"] = ref;
-	    args["type"] = "locator";
-	    if ( !sub_type.empty() ){
-	      args["role"] = sub_type;
-	    }
-	    if ( !status.empty() ){
-	      args["label"] = status;
-	    }
-	    if ( !text_part.empty() ){
-	     args["text"] = text_part;
-	    }
-	    TextMarkupString *tm = new TextMarkupString( args );
-	    tc->append( tm );
-	    first = false;
-	  }
-	  else {
-#pragma omp critical
-	    {
-	      cerr << "tagged: " << id << ", unhandled type=" << type << endl
-		   << " sub_type=" << sub_type << " ref=" << ref << endl;
-	    }
-	  }
+	  add_reference( tc, p );
 	}
 	else if ( tag_type == "named-entity" ) {
-	  if ( verbose ){
-#pragma omp critical
-	    {
-	      cerr << "add_par: " << tag_type << endl;
-	    }
-	  }
-	  string text_part;
-	  string mem_ref;
-	  string part_ref;
-	  xmlNode *t = p->children;
-	  while ( t ){
-	    if ( t->type == XML_TEXT_NODE ){
-	      xmlChar *tmp = xmlNodeGetContent( t );
-	      if ( tmp ){
-		text_part = std::string( (char *)tmp );
-		xmlFree( tmp );
-	      }
-	    }
-	    else if ( TiCC::Name(t) == "tagged-entity" ){
-	      mem_ref = TiCC::getAttribute( t, "member-ref" );
-	      part_ref = TiCC::getAttribute( t, "party-ref" );
-	    }
-	    else {
-#pragma omp critical
-	      {
-		cerr << "tagged" << id << ", unhandled: "
-		     << TiCC::Name(t) << endl;
-	      }
-	    }
-	    t = t->next;
-	  }
-	  root->doc()->declare( folia::AnnotationType::ENTITY,
-				"polmash",
-			"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
-	  EntitiesLayer *el = new EntitiesLayer();
-	  root->append( el );
-	  args.clear();
-	  args["class"] = "member";
-	  Entity *ent = new Entity( args, root->doc() );
-	  el->append(ent);
-	  args.clear();
-	  args["subset"] = "member-ref";
-	  if ( !mem_ref.empty() ){
-	    args["class"] = mem_ref;
-	  }
-	  else {
-	    args["class"] = "unknown";
-	  }
-	  Feature *f = new Feature( args );
-	  ent->append( f );
-	  args.clear();
-	  args["subset"] = "party-ref";
-	  if ( !part_ref.empty() ){
-	    args["class"] = part_ref;
-	  }
-	  else {
-	    args["class"] = "unknown";
-	  }
-	  f = new Feature( args );
-	  ent->append( f );
-	  args.clear();
-	  args["subset"] = "name";
-	  if ( !text_part.empty() ){
-	    args["class"] = text_part;
-	  }
-	  else {
-	    args["class"] = "unknown";
-	  }
-	  f = new Feature( args );
-	  ent->append( f );
+	  add_entity( root, p );
 	}
       }
       else if ( tag == "stage-direction" ){
-	string embedded = extract_embedded( p );
-	string id = TiCC::getAttribute( p, "id" );
-	if ( embedded.empty() ){
-#pragma omp critical
-	  {
-	    cerr << "paragraph:stage-direction: " << id << " without text?"
-		 << endl;
-	  }
-	}
-	else {
-	  XmlText *txt = new XmlText();
-	  if ( !first  ){
-	    embedded = " " + embedded;
-	  }
-	  if ( p->next != 0 ){
-	    // not last
-	    embedded += " ";
-	  }
-	  txt->setvalue( embedded );
-	  tc->append( txt );
-	}
+	add_stage_direction( tc, p );
       }
       else if ( tag == "note" ){
 	KWargs args;
@@ -599,7 +544,7 @@ void process_speech( Division *root, xmlNode *speech ){
 #pragma omp critical
     {
       using TiCC::operator<<;
-      cerr << "process_speech: id=" << atts << endl;
+      cerr << "process_speech: atts" << atts << endl;
     }
   }
   string type = atts["type"];
@@ -647,9 +592,17 @@ void process_speech( Division *root, xmlNode *speech ){
 #pragma omp critical
       {
 	cerr << "speech: " << id << ", unhandled: " << label << endl;
+	cerr << "speech-content " << TiCC::XmlContent(p) << endl;
       }
     }
     p = p->next;
+  }
+}
+
+void process_vote( Division *, xmlNode * ){
+#pragma omp critical
+  {
+      cerr << "process_vote not implemented!" << endl;
   }
 }
 
@@ -795,7 +748,10 @@ void process_stage( Division *root, xmlNode *_stage ){
       add_h_c_t( div, stage );
     }
     else if ( type == "speech" ){
-      process_speech( div, stage->children );
+      process_speech( div, stage );
+    }
+    else if ( label == "vote" ){
+      process_vote( div, stage );
     }
     else if ( type == "" ){ //nested or?
       if ( label == "stage-direction" ){
