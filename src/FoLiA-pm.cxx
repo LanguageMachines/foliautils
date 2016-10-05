@@ -588,6 +588,9 @@ void process_speech( Division *root, xmlNode *speech ){
     else if ( label == "stage-direction" ){
       process_stage( div, p );
     }
+    else if ( label == "speech" ){
+      process_speech( div, p );
+    }
     else {
 #pragma omp critical
       {
