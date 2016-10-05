@@ -739,6 +739,32 @@ void process_members( Division *root, xmlNode *members ){
   fd->set_data( members );
 }
 
+void add_h_c_t( FoliaElement *root, xmlNode *block ){
+  Document *doc = root->doc();
+  string id = TiCC::getAttribute( block, "id" );
+  string type = TiCC::getAttribute( block, "type" );
+  KWargs args;
+  args["id"] = id;
+  args["class"] = type;
+  Division *div = new Division( args, doc );
+  xmlNode *p = block->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "p" ){
+      add_par( div, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "create_" << type << ", unhandled :" << label
+	     << " id=" << id << endl;
+      }
+    }
+    p = p->next;
+  }
+  root->append( div );
+}
+
 void process_stage( Division *root, xmlNode *_stage ){
   KWargs args;
   string id = TiCC::getAttribute( _stage, "id" );
@@ -766,26 +792,7 @@ void process_stage( Division *root, xmlNode *_stage ){
     else if ( type == "header"
 	      || type == "footer"
 	      || type == "subject" ){
-      KWargs args;
-      args["id"] = id;
-      args["class"] = type;
-      Division *div1 = new Division( args, root->doc() );
-      div->append( div1 );
-      xmlNode *p = stage->children;
-      while ( p ){
-	string label = TiCC::Name(p);
-	if ( label == "p" ){
-	  add_par( div1, p );
-	}
-	else {
-#pragma omp critical
-	  {
-	    cerr << "stage-direction: " << id << ", unhandled :" << label
-		 << " type=" << type << endl;
-	  }
-	}
-	p = p->next;
-      }
+      add_h_c_t( div, stage );
     }
     else if ( type == "speech" ){
       process_speech( div, stage->children );
@@ -919,7 +926,7 @@ void process_topic( const string& outDir,
     delete doc;
 #pragma omp critical
     {
-      cerr << "saved external file: " << filename << endl;
+      cout << "saved external file: " << filename << endl;
     }
 
     args.clear();
@@ -948,14 +955,15 @@ void process_proceeding( const string& outDir,
   }
 }
 
-void process_block1( Division *root, xmlNode *_block );
+void process_sub_block( Division *, xmlNode * );
 
-Division *create_signed( xmlNode* block, Document *doc ){
+void add_signed( FoliaElement *root, xmlNode* block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
   args["id"] = id;
   args["class"] = type;
+  Document *doc = root->doc();
   Division *div = new Division( args, doc );
   doc->declare( folia::AnnotationType::ENTITY,
 		"polmash",
@@ -977,10 +985,11 @@ Division *create_signed( xmlNode* block, Document *doc ){
     }
     p = p->next;
   }
-  return div;
+  root->append( div );
 }
 
-Division *create_section( xmlNode* block, Document *doc ){
+void add_section( FoliaElement *root, xmlNode* block ){
+  Document *doc = root->doc();
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   string section_id = TiCC::getAttribute( block, "section-identifier" );
@@ -999,47 +1008,40 @@ Division *create_section( xmlNode* block, Document *doc ){
     Feature *f = new Feature( args );
     div->append( f );
   }
-  process_block1( div, block );
-  return div;
+  process_sub_block( div, block );
+  root->append( div );
 }
 
-Division *create_h_c_t( xmlNode *block, Document *doc ){
+void add_block( FoliaElement *root, xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
   args["id"] = id;
   args["class"] = type;
-  Division *div = new Division( args, doc );
-  xmlNode *p = block->children;
-  while ( p ){
-    string label = TiCC::Name(p);
-    if ( label == "p" ){
-      add_par( div, p );
-    }
-    else {
-#pragma omp critical
-      {
-	cerr << "create_" << type << ", unhandled :" << label
-	     << " id=" << id << endl;
-      }
-    }
-    p = p->next;
+  Division *div = new Division( args, root->doc() );
+  process_sub_block( div, block );
+  root->append( div );
+}
+
+void add_heading( FoliaElement *root, xmlNode *block ){
+  FoliaElement *el = new Head( );
+  try {
+    root->append( el );
   }
-  return div;
+  catch (...){
+    // so if another Head is already there, append it as a Div
+    KWargs args;
+    args["class"] = "subheading";
+    el = new Division( args, root->doc() );
+    root->append( el );
+  }
+  string txt = TiCC::XmlContent(block);
+  if ( !txt.empty() ){
+    el->settext( txt );
+  }
 }
 
-Division *create_block( xmlNode *block, Document *doc ){
-  string id = TiCC::getAttribute( block, "id" );
-  string type = TiCC::getAttribute( block, "type" );
-  KWargs args;
-  args["id"] = id;
-  args["class"] = type;
-  Division *div = new Division( args, doc );
-  process_block1( div, block );
-  return div;
-}
-
-void process_block1( Division *root, xmlNode *_block ){
+void process_sub_block( Division *root, xmlNode *_block ){
   KWargs args;
   xmlNode *block = _block->children;
   while ( block ){
@@ -1054,42 +1056,24 @@ void process_block1( Division *root, xmlNode *_block ){
       }
     }
     if ( type == "signed-by" ){
-      Division *div = create_signed( block, root->doc() );
-      root->append( div );
+      add_signed( root, block );
     }
     else if ( label == "p" ){
       add_par( root, block );
     }
     else if ( label == "heading" ){
-      FoliaElement *el = new Head( );
-      try {
-	root->append( el );
-      }
-      catch (...){
-	// so if another Head is already there, append it as a Div
-	KWargs args;
-	args["class"] = "subheading";
-	el = new Division( args, root->doc() );
-	root->append( el );
-      }
-      string txt = TiCC::XmlContent(block);
-      if ( !txt.empty() ){
-	el->settext( txt );
-      }
+      add_heading( root, block );
     }
     else if ( type == "header"
 	      || type == "content"
 	      || type == "title" ){
-      Division *div = create_h_c_t( block, root->doc() );
-      root->append( div );
+      add_h_c_t( root, block );
     }
     else if ( type == "section" ){
-      Division *div = create_section( block, root->doc() );
-      root->append( div );
+      add_section( root, block );
     }
     else if ( label == "block" ){
-      Division *div = create_block( block, root->doc() );
-      root->append( div );
+      add_block( root, block );
     }
     else {
 #pragma omp critical
@@ -1124,7 +1108,7 @@ void process_block( Text* base_text,
   args["class"] = type;
   Division *root = new Division( args, doc );
   base_text->append( root );
-  process_block1( root, block );
+  process_sub_block( root, block );
 }
 
 void process_parldoc( Text *root,
