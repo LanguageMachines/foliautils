@@ -671,6 +671,7 @@ void add_information( FoliaElement *root, xmlNode *info ){
     if ( label == "dossiernummer"
 	 || label == "ondernummer"
 	 || label == "introduction"
+	 || label == "part"
 	 || label == "outcome" ){
       KWargs args;
       args["subset"] = label;
@@ -764,6 +765,13 @@ void process_vote( Division *div, xmlNode *vote ){
     string label = TiCC::Name(p);
     if ( label == "about" ){
       add_about( div, p );
+    }
+    else if ( label == "consequence" ){
+      KWargs args;
+      args["subset"] = label;
+      args["class"] = TiCC::XmlContent( p );
+      Feature *f = new Feature( args );
+      div->append( f );
     }
     else if ( label == "division" ){
 #pragma omp critical
