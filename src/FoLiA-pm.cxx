@@ -692,6 +692,7 @@ void add_information( FoliaElement *root, xmlNode *info ){
     string label = TiCC::Name(p);
     if ( label == "dossiernummer"
 	 || label == "ondernummer"
+	 || label == "rijkswetnummer"
 	 || label == "introduction"
 	 || label == "part"
 	 || label == "outcome" ){
