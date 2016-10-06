@@ -602,10 +602,182 @@ void process_speech( Division *root, xmlNode *speech ){
   }
 }
 
-void process_vote( Division *, xmlNode * ){
+
+void add_actor( FoliaElement *root, xmlNode *act ){
+  Document *doc = root->doc();
+  KWargs args;
+  args["class"] = "actor";
+  Division *div = new Division( args, doc );
+  root->append( div );
+  xmlNode *p = act->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "person" ){
+      string speaker = TiCC::getAttribute( p, "speaker" );
+      string ref = TiCC::getAttribute( p, "member-ref" );
+      KWargs args;
+      args["subset"] = "speaker";
+      args["class"] = speaker;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+      args.clear();
+      args["subset"] = "member-ref";
+      args["class"] = ref;
+      feat = new Feature( args );
+      div->append( feat );
+    }
+    else {
 #pragma omp critical
-  {
-      cerr << "process_vote not implemented!" << endl;
+      {
+	cerr << "add actor, unhandled :" << label << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
+
+void add_submit( FoliaElement *root, xmlNode *sm ){
+  Document *doc = root->doc();
+  KWargs args;
+  args["class"] = "submitted-by";
+  Division *div = new Division( args, doc );
+  root->append( div );
+  xmlNode *p = sm->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "actor" ){
+      add_actor( div, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "add sumitted, unhandled :" << label << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
+void add_information( FoliaElement *root, xmlNode *info ){
+  Document *doc = root->doc();
+  KWargs args;
+  args["class"] = "information";
+  Division *div = new Division( args, doc );
+  root->append( div );
+  xmlNode *p = info->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "dossiernummer"
+	 || label == "ondernummer"
+	 || label == "introduction"
+	 || label == "outcome" ){
+      KWargs args;
+      args["subset"] = label;
+      args["class"] = TiCC::XmlContent( p );
+      Feature *f = new Feature( args );
+      div->append( f );
+    }
+    else if ( label == "submitted-by" ){
+      add_submit( div, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "add information, unhandled :" << label << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
+void add_about( Division *root, xmlNode *p ){
+  KWargs atts = getAllAttributes( p );
+  if ( verbose ){
+#pragma omp critical
+    {
+      using TiCC::operator<<;
+      cerr << "add_vote, atts=" << atts << endl;
+    }
+  }
+  string title = atts["title"];
+  string voted_on = atts["voted_on"];
+  string ref =  atts["ref"];
+  KWargs args;
+  args["class"] = "about";
+  Division *div = new Division( args, root->doc() );
+  root->append( div );
+  args.clear();
+  args["class"] = title;
+  args["subset"] = "title";
+  Feature *f = new Feature( args );
+  div->append( f );
+  args.clear();
+  args["class"] = voted_on;
+  args["subset"] = "voted-on";
+  f = new Feature( args );
+  div->append( f );
+  args.clear();
+  args["class"] = ref;
+  args["subset"] = "ref";
+  f = new Feature( args );
+  div->append( f );
+  p = p->children;
+  while ( p ){
+    string tag = TiCC::Name( p );
+    if ( tag == "information" ){
+      add_information( div, p );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "about vote, unhandled: " << tag << endl;
+      }
+    }
+    p = p->next;
+  }
+}
+
+void process_vote( Division *div, xmlNode *vote ){
+  KWargs atts = getAllAttributes( vote );
+  string vote_type = atts["vote-type"];
+  string outcome = atts["outcome"];
+  string id = atts["id"];
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_vote: id = " << id << endl;
+    }
+  }
+  KWargs args;
+  args["class"] = vote_type;
+  args["subset"] = "vote-type";
+  Feature *f = new Feature( args );
+  div->append( f );
+  args.clear();
+  args["subset"] = "outcome";
+  args["class"] = outcome;
+  f = new Feature( args );
+  div->append( f );
+  xmlNode *p = vote->children;
+  while ( p ){
+    string label = TiCC::Name(p);
+    if ( label == "about" ){
+      add_about( div, p );
+    }
+    else if ( label == "division" ){
+#pragma omp critical
+      {
+	cerr << "vote: skip divison stuff" << endl;
+      }
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "vote: " << id << ", unhandled: " << label << endl;
+      }
+    }
+    p = p->next;
   }
 }
 
