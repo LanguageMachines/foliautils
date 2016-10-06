@@ -626,6 +626,28 @@ void add_actor( FoliaElement *root, xmlNode *act ){
       feat = new Feature( args );
       div->append( feat );
     }
+    else if ( label == "organization" ){
+      string name = TiCC::getAttribute( p, "name" );
+      string function = TiCC::getAttribute( p, "function" );
+      string ref = TiCC::getAttribute( p, "ref" );
+      KWargs args;
+      args["subset"] = "name";
+      args["class"] = name;
+      Feature *feat = new Feature( args );
+      div->append( feat );
+      args.clear();
+      args["subset"] = "function";
+      args["class"] = function;
+      feat = new Feature( args );
+      div->append( feat );
+      if ( !ref.empty() ){
+	args.clear();
+	args["subset"] = "ref";
+	args["class"] = ref;
+	feat = new Feature( args );
+	div->append( feat );
+      }
+    }
     else {
 #pragma omp critical
       {
@@ -776,7 +798,7 @@ void process_vote( Division *div, xmlNode *vote ){
     else if ( label == "division" ){
 #pragma omp critical
       {
-	cerr << "vote: skip divison stuff" << endl;
+	cerr << "vote: skip division stuff" << endl;
       }
     }
     else {
