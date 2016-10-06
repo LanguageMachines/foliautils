@@ -930,6 +930,12 @@ void process_stage( Division *root, xmlNode *_stage ){
   KWargs args;
   string id = TiCC::getAttribute( _stage, "id" );
   string type = TiCC::getAttribute( _stage, "type" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "process_stage: " << type << " ID=" << id << endl;
+    }
+  }
   args["id"] = id;
   if ( type.empty() ){
     args["class"] = "stage-direction";
@@ -944,6 +950,12 @@ void process_stage( Division *root, xmlNode *_stage ){
     string id = TiCC::getAttribute( stage, "id" );
     string type = TiCC::getAttribute( stage, "type" );
     string label = TiCC::Name( stage );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "process_stage: LOOP:" << label << " type=" << type << " ID=" << id << endl;
+      }
+    }
     if ( type == "chair" || label == "chair" ){
       process_chair( div, stage );
     }
@@ -967,6 +979,9 @@ void process_stage( Division *root, xmlNode *_stage ){
     }
     else if ( label == "vote" ){
       process_vote( div, stage );
+    }
+    else if ( label == "stage-direction" ){
+      process_stage( div, stage );
     }
     else if ( type == "" ){ //nested or?
       if ( label == "stage-direction" ){
