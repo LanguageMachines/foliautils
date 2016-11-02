@@ -1,5 +1,4 @@
-Failed to open config file './config/tc.txt'
-unable to init from: ./config/tc.txt
+missing input file(s)
 foliautils 0.5
 Usage: [options] dir/filename 
 --config=<file>	 use LM config from 'file'
@@ -15,7 +14,7 @@ Usage: [options] dir/filename
 process data/langcat.test.xml
 document 'data/langcat.test.xml' has 3 paragraphs 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.5">
   <metadata type="native">
     <annotations>
       <lang-annotation set="iso"/>

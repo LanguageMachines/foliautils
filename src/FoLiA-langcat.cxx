@@ -41,28 +41,7 @@
 #include "libfolia/folia.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
-#include "config.h"
-
-#ifdef HAVE_TEXTCAT_H
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "textcat.h"
-
-#ifdef __cplusplus
-}
-#endif
-
-#else
-#ifdef HAVE_LIBTEXTCAT_TEXTCAT_H
-#include "libtextcat/textcat.h"
-#else
-#ifdef HAVE_LIBEXTTEXTCAT_TEXTCAT_H
-#include "libexttextcat/textcat.h"
-#endif
-#endif
-#endif
+#include "ucto/textcat.h"
 
 using namespace	std;
 using namespace	folia;
@@ -122,53 +101,31 @@ void setlang( FoliaElement* e, const string& lan ){
   e->replace( node );
 }
 
-void addLang( TextContent *t, const string& val, bool doAll ){
+void addLang( TextContent *t,
+	      const vector<string>& lv,
+	      bool doAll ){
   //
   // we expect something like [dutch][french]
-  // or [dutch]
-  // or WEIRD
   //
-  vector<string> vals;
-  size_t num = split_at( val, vals, "[]" );
-  if ( num == 0 ){
-    cerr << "O JEE: unexpected language value: '" << val << "'" << endl;
-    setlang( t->parent(), val );
+  string val;
+  for ( size_t i = 0; i < lv.size(); ++i ){
+    if ( i > 0 )
+      val += "|";
+    val += lv[i];
+    if ( !doAll )
+      break;
   }
-  else {
-    string val;
-    for ( size_t i = 0; i < vals.size(); ++i ){
-      if ( i > 0 )
-	val += "|";
-      val += vals[i];
-      if ( !doAll )
-	break;
-    }
+  if ( !val.empty() ){
     setlang( t->parent(), val );
   }
 }
 
-class TCdata {
-public:
-  TCdata( const string& cf ) {
-    cfName = cf;
-    TC = textcat_Init( cf.c_str() );
-  }
-  TCdata( const TCdata& in ) {
-    TC = textcat_Init( in.cfName.c_str() );
-    cfName = in.cfName;
-  }
-  ~TCdata() { textcat_Done( TC ); };
-  bool isInit() const { return TC != 0; };
-  void procesFile( const string&, const string&, const string&, bool, bool, const string& );
-  void *TC;
-  string cfName;
-};
-
-void TCdata::procesFile( const string& outDir, const string& docName,
-			 const string& default_lang,
-			 bool doStrings,
-			 bool doAll,
-			 const string& cls ){
+void procesFile( const TextCat& tc,
+		 const string& outDir, const string& docName,
+		 const string& default_lang,
+		 bool doStrings,
+		 bool doAll,
+		 const string& cls ){
 #pragma omp critical (logging)
   {
     cout << "process " << docName << endl;
@@ -255,10 +212,8 @@ void TCdata::procesFile( const string& outDir, const string& docName,
       }
       else {
 	decap( para );
-	char *res = textcat_Classify( TC, para.c_str(), para.size() );
-	if ( res && strlen(res) > 0 && strcmp( res, "SHORT" ) != 0 ){
-	  addLang( t, res, doAll );
-	}
+	vector<string> lv = tc.get_languages( para );
+	addLang( t, lv, doAll );
       }
     }
     else if ( verbose ){
@@ -322,12 +277,6 @@ int main( int argc, char *argv[] ){
     usage();
     exit(EXIT_FAILURE);
   }
-  TCdata TC( config );
-  if ( !TC.isInit() ){
-    cerr << "unable to init from: " << config << endl;
-    exit(EXIT_FAILURE);
-  }
-
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -337,6 +286,12 @@ int main( int argc, char *argv[] ){
     string name = fileNames[0];
     fileNames = TiCC::searchFilesExt( name, ".xml", false );
   }
+  TextCat TC( config );
+  if ( !TC.isInit() ){
+    cerr << "unable to init from: " << config << endl;
+    exit(EXIT_FAILURE);
+  }
+
   size_t toDo = fileNames.size();
   if ( toDo > 1 ){
 #ifdef HAVE_OPENMP
@@ -347,6 +302,6 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
-    TC.procesFile( outDir, docName, lang, doStrings, doAll, cls );
+    procesFile( TC, outDir, docName, lang, doStrings, doAll, cls );
   }
 }
