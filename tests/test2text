@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 
+rm -rf out/*
 $my_bin/FoLiA-2text > test2text.out 2>&1
 $my_bin/FoLiA-2text -V >> test2text.out 2>&1
 $my_bin/FoLiA-2text --help >> test2text.out 2>&1
@@ -10,3 +11,9 @@ cat out/data/folia.xml.txt >> test2text.out
 
 $my_bin/FoLiA-2text -o out --class=anders data/folia.xml
 cat out/data/folia.xml.txt >> test2text.out
+
+$my_bin/FoLiA-2text -o out data/folia-head.xml
+cat out/data/folia-head.xml.txt >> test2text.out
+
+$my_bin/FoLiA-2text --heads -o out data/folia-head.xml
+cat out/data/folia-head.xml.txt >> test2text.out

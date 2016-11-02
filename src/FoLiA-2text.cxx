@@ -45,27 +45,26 @@ using namespace	folia;
 using namespace	TiCC;
 
 string classname = "current";
+bool doHeads = false;
 
 vector<Head*> getHead( const FoliaElement  *el ) {
   static set<ElementType> excludeSet;
   if ( excludeSet.empty() ){
     excludeSet.insert( Quote_t );
   }
-  return el->select<Head>( excludeSet );
+  return el->select<Head>( excludeSet, false );
 }
 
 void handle_sentences( vector<Sentence *>& sents, ostream& os ){
-  if ( sents.empty() )
-    return;
-  for ( unsigned int s=0; s < sents.size(); ++s ){
+  for ( const auto& s : sents ){
     UnicodeString us;
     try {
-      us = sents[s]->deeptext(classname);
+      us = s->deeptext(classname);
     }
     catch(...){
 #pragma omp critical
       {
-	cerr << "missing text for sentence " << sents[s]->id() << endl;
+	cerr << "missing text for sentence " << s->id() << endl;
       }
       break;
     }
@@ -75,60 +74,97 @@ void handle_sentences( vector<Sentence *>& sents, ostream& os ){
   os << endl;
 }
 
-void handle_pars( vector<Paragraph *>&, ostream& );
+void handle_deeper( FoliaElement *, ostream&, bool );
 
 void handle_heads( vector<Head*>& heads, ostream& os ){
-  if ( heads.empty() )
-    return;
-  for ( unsigned int h=0; h < heads.size(); ++h ){
-    if ( heads[h]->hastext(classname) ){
-      UnicodeString us = heads[h]->stricttext(classname);
+  for ( const auto& h : heads ){
+    if ( h->hastext(classname) ){
+      UnicodeString us = h->stricttext(classname);
       string line = UnicodeToUTF8( us );
       os << line << endl;
     }
     else {
-      vector<Paragraph *> pars = heads[h]->paragraphs();
-      if ( pars.empty() ){
-	vector<Sentence *> sents = heads[h]->sentences();
-	handle_sentences( sents, os );
-      }
-      else {
-	handle_pars( pars, os );
-      }
+      handle_deeper( h, os, true );
     }
   }
   os << endl;
 }
 
-void handle_pars( vector<Paragraph *>& pars, ostream& os ){
-  if ( pars.empty() )
-    return;
-  for ( unsigned int p=0; p < pars.size(); ++p ){
-    // vector<Head *> heads = getHead( pars[p] );
-    // handle_heads( heads, os );
-    if ( pars[p]->hastext(classname) ){
-      UnicodeString us = pars[p]->stricttext(classname);
+void handle_pars( vector<Paragraph *>& pars, ostream& os, bool doHeads ){
+  for ( const auto& p : pars ){
+    if ( doHeads ){
+      vector<Head *> heads = getHead( p );
+      handle_heads( heads, os );
+    }
+    if ( p->hastext(classname) ){
+      UnicodeString us = p->stricttext(classname);
       string line = UnicodeToUTF8( us );
       os << line << endl;
     }
     else {
-      vector<Sentence *> sents = pars[p]->sentences();
+      vector<Sentence *> sents = p->select<Sentence>( false );
       handle_sentences( sents, os );
     }
   }
 }
 
-void text_out( const Document *d, const string& docName ){
-  ofstream os( docName.c_str() );
-  // vector<Head *> heads = getHead( d->doc() );
-  // handle_heads( heads, os );
-  vector<Paragraph *> pars = d->paragraphs();
+void handle_deeper( FoliaElement *el, ostream& os, bool doHeads ){
+  vector<Paragraph *> pars = el->select<Paragraph>( false );
   if ( pars.empty() ){
-    vector<Sentence *> sents = d->sentences();
+    vector<Sentence *> sents = el->select<Sentence>( false );
     handle_sentences( sents, os );
   }
   else {
-    handle_pars( pars, os );
+    handle_pars( pars, os, doHeads );
+  }
+}
+
+void handle_divs( vector<Division *>& divs, ostream& os, bool doHeads ){
+  for ( unsigned int p=0; p < divs.size(); ++p ){
+    if ( doHeads ){
+      vector<Head *> heads = getHead( divs[p] );
+      handle_heads( heads, os );
+    }
+    handle_deeper( divs[p], os, doHeads );
+  }
+}
+
+void handle_txts( vector<Text *>& txts, ostream& os, bool doHeads ){
+  for ( const auto& txt : txts ){
+    if ( doHeads ){
+      vector<Head *> heads = getHead( txt );
+      handle_heads( heads, os );
+    }
+    vector<Division *> divs = txt->select<Division>( false );
+    if ( divs.empty() ){
+      handle_deeper( txt, os, doHeads );
+    }
+    else {
+      handle_divs( divs, os, doHeads );
+    }
+  }
+}
+
+void text_out( const Document *d,
+	       ostream& os,
+	       bool doHeads ){
+  FoliaElement *doc = d->doc();
+  if ( doHeads ){
+    vector<Head *> heads = getHead( doc );
+    handle_heads( heads, os );
+  }
+  vector<Text *> txts = doc->select<Text>( false );
+  if ( txts.empty() ){
+    vector<Division *> divs = doc->select<Division>( false );
+    if ( divs.empty() ){
+      handle_deeper( doc, os, doHeads );
+    }
+    else {
+      handle_divs( divs, os, doHeads );
+    }
+  }
+  else {
+    handle_txts( txts, os, doHeads );
   }
 }
 
@@ -137,6 +173,7 @@ void usage( const string& name ){
   cerr << "\t FoLiA-2text will produce a text from a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
+  cerr << "\t--heads\t Incude text from Head nodes too. (default don't)" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
@@ -145,7 +182,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:", "class:,help,version" );
+  CL_Options opts( "hVvpe:t:o:", "class:,help,version,heads" );
   try {
     opts.init(argc,argv);
   }
@@ -177,6 +214,7 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
+  bool doHeads = opts.extract( "heads" );
   if ( opts.extract('t', value ) ){
     if ( !stringTo(value, numThreads ) ){
       cerr << "illegal value for -t (" << value << ")" << endl;
@@ -187,11 +225,11 @@ int main( int argc, char *argv[] ){
   opts.extract( "class", classname );
 
 #ifdef HAVE_OPENMP
-  if ( numThreads != 1 )
-    omp_set_num_threads( numThreads );
+  omp_set_num_threads( numThreads );
 #else
-  if ( numThreads != 1 )
+  if ( numThreads != 1 ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+  }
 #endif
 
   vector<string> fileNames = opts.getMassOpts();
@@ -249,7 +287,8 @@ int main( int argc, char *argv[] ){
       }
     }
     else {
-      text_out( d, outname );
+      ofstream os( outname );
+      text_out( d, os, doHeads );
 #pragma omp critical
       {
 	cout << "Processed :" << docName << " into " << outname
@@ -258,5 +297,4 @@ int main( int argc, char *argv[] ){
     }
     delete d;
   }
-
 }

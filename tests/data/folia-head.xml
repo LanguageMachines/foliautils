@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="folia.xsl"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v0.14" version="0.12.0">
+  <metadata type="native">
+    <annotations>
+    </annotations>
+  </metadata>
+  <text xml:id="test.text">
+    <div>
+      <head>
+	<t>Dit is hoofdstuk 1.</t>
+      </head>
+      <p xml:id="test.p.1">
+	<head>
+	  <t>Dit is paragraaf 1.</t>
+	</head>
+	<t>Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.</t>
+	<t class="anders">Wie had dat gedacht?</t>
+	<s xml:id="test.p.1.s.1">
+	  <t>Hij is tegen de lamp gelopen.</t>
+	</s>
+	<s xml:id="test.p.1.s.2">
+          <t>Met een flinke hoofdwond tot gevolg.</t>
+	</s>
+      </p>
+      <p xml:id="test.p.2">
+	<head>
+	  <t>Dit is paragraaf 2.</t>
+	</head>
+	<t>De tekst gaat verder hier.</t>
+	<t class="anders">Totaal iets anders.</t>
+      </p>
+      <p xml:id="test.p.3">
+	<t>Een tekst in paragraaf 3.</t>
+      </p>
+    </div>
+    <div>
+      <head>
+	<s id="apart">
+	  <t>Dit is hoofdstuk 2.</t>
+	</s>
+      </head>
+      <p xml:id="test.2.p.1">
+	<t>Een tekst in paragraaf 1 van hoofdstuk 2.</t>
+      </p>
+    </div>
+  </text>
+</FoLiA>
