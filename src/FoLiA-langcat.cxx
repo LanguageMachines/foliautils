@@ -49,50 +49,6 @@ using namespace	folia;
 
 bool verbose = false;
 
-size_t split_at( const string& src, vector<string>& results,
-		 const string& sep ){
-  // split a string into substrings, using seps as seperator
-  // silently skip empty entries (e.g. when two or more seperators co-incide)
-  results.clear();
-  string::size_type pos = 0, p;
-  string res;
-  while ( pos != string::npos ){
-    p = src.find_first_of( sep, pos );
-    if ( p == string::npos ){
-      res = src.substr( pos );
-      pos = p;
-    }
-    else {
-      res = src.substr( pos, p - pos );
-      pos = p + 1;
-    }
-    if ( !res.empty() )
-      results.push_back( res );
-  }
-  return results.size();
-}
-
-string compress( const string& s ){
-  // remove leading and trailing spaces from a string
-  string result;
-  if ( !s.empty() ){
-    string::const_iterator b_it = s.begin();
-    while ( b_it != s.end() && isspace( *b_it ) ) ++b_it;
-    string::const_iterator e_it = s.end();
-    --e_it;
-    while ( e_it != s.begin() && isspace( *e_it ) ) --e_it;
-    if ( b_it <= e_it )
-      result = string( b_it, e_it+1 );
-  }
-  return result;
-}
-
-int to_lower( const int& i ){ return tolower(i); }
-
-void decap( string& s ){
-  transform( s.begin()+1, s.end(), s.begin()+1, to_lower );
-}
-
 void setlang( FoliaElement* e, const string& lan ){
   // append a LangAnnotation child of class 'lan'
   KWargs args;
@@ -203,7 +159,7 @@ void procesFile( const TextCat& tc,
     }
     if ( t ){
       string para = t->str();
-      para = compress( para );
+      para = TiCC::trim( para );
       if ( para.empty() ){
 	if ( verbose )
 #pragma omp critical (logging)
@@ -212,7 +168,7 @@ void procesFile( const TextCat& tc,
 	  }
       }
       else {
-	decap( para );
+	TiCC::to_lower( para );
 	vector<string> lv = tc.get_languages( para );
 	addLang( t, lv, doAll );
       }
