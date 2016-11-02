@@ -178,12 +178,11 @@ void usage( const string& name ){
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
-  cerr << "\t--single-output\t name of a single output file. THREADING IMPOSSIBLE!" << endl;
   cerr << "\t-o\t name of the output file(s) prefix." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:", "class:,help,version,single-output:,heads" );
+  CL_Options opts( "hVvpe:t:o:", "class:,help,version,heads" );
   try {
     opts.init(argc,argv);
   }
@@ -209,36 +208,16 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  string outputFile;
-  opts.extract( "single-output", outputFile );
   if ( opts.extract( 'o', outputPrefix ) ){
     if ( outputPrefix.empty() ){
       cerr << "an output filename prefix is required. (-o option) " << endl;
       exit(EXIT_FAILURE);
     }
   }
-  if ( !outputFile.empty() && !outputPrefix.empty() ){
-    cerr << "--single-output and -o options conflict." << endl;
-    exit(EXIT_FAILURE);
-  }
-
-  ostream *osp = 0;
-  if ( !outputFile.empty() ){
-    osp = new ofstream( outputFile );
-    if ( !osp->good() ){
-      cerr << "Output to '" << outputFile << "' is impossible" << endl;
-      exit(EXIT_FAILURE);
-    }
-  }
-
   bool doHeads = opts.extract( "heads" );
   if ( opts.extract('t', value ) ){
     if ( !stringTo(value, numThreads ) ){
       cerr << "illegal value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);
-    }
-    if ( doHeads ){
-      cerr << "--heads and -t conflict." << endl;
       exit(EXIT_FAILURE);
     }
   }
@@ -246,11 +225,11 @@ int main( int argc, char *argv[] ){
   opts.extract( "class", classname );
 
 #ifdef HAVE_OPENMP
-  if ( numThreads != 1 )
-    omp_set_num_threads( numThreads );
+  omp_set_num_threads( numThreads );
 #else
-  if ( numThreads != 1 )
+  if ( numThreads != 1 ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+  }
 #endif
 
   vector<string> fileNames = opts.getMassOpts();
@@ -300,32 +279,22 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    if ( !osp ){
-      string outname = outputPrefix + docName + ".txt";
-      if ( !TiCC::createPath( outname ) ){
+    string outname = outputPrefix + docName + ".txt";
+    if ( !TiCC::createPath( outname ) ){
 #pragma omp critical
-	{
-	  cerr << "Output to '" << outname << "' is impossible" << endl;
-	}
-      }
-      else {
-	ofstream os( outname );
-	text_out( d, os, doHeads );
-#pragma omp critical
-	{
-	  cout << "Processed :" << docName << " into " << outname
-	       << " still " << --toDo << " files to go." << endl;
-	}
+      {
+	cerr << "Output to '" << outname << "' is impossible" << endl;
       }
     }
     else {
-      text_out( d, *osp, doHeads );
+      ofstream os( outname );
+      text_out( d, os, doHeads );
 #pragma omp critical
       {
-	cout << "Processed :" << docName << " still " << --toDo << " files to go." << endl;
+	cout << "Processed :" << docName << " into " << outname
+	     << " still " << --toDo << " files to go." << endl;
       }
     }
     delete d;
   }
-
 }
