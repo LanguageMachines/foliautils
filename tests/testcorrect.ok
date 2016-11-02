@@ -33,8 +33,12 @@ correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsigi
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished corr.xml
+2c2
+< <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.5" version="1.2.0">
+---
+> <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T18:00:44" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-02T17:52:47" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:43:11" set="Ticcl-set"/>
 start reading variants 
@@ -54,7 +58,11 @@ correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsigi
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished corr.xml
+2c2
+< <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.5" version="1.2.0">
+---
+> <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T18:00:44" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-02T17:52:47" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:52:27" set="Ticcl-set"/>
