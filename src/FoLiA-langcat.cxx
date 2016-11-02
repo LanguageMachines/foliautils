@@ -41,6 +41,7 @@
 #include "libfolia/folia.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
+#include "config.h"
 #include "ucto/textcat.h"
 
 using namespace	std;
