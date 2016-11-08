@@ -44,136 +44,12 @@ using namespace	std;
 using namespace	folia;
 using namespace	TiCC;
 
-string classname = "current";
-bool doHeads = false;
-
-vector<Head*> getHead( const FoliaElement  *el ) {
-  static set<ElementType> excludeSet;
-  if ( excludeSet.empty() ){
-    excludeSet.insert( Quote_t );
-  }
-  return el->select<Head>( excludeSet, false );
-}
-
-void handle_sentences( vector<Sentence *>& sents, ostream& os ){
-  for ( const auto& s : sents ){
-    UnicodeString us;
-    try {
-      us = s->deeptext(classname);
-    }
-    catch(...){
-#pragma omp critical
-      {
-	cerr << "missing text for sentence " << s->id() << endl;
-      }
-      break;
-    }
-    string line = UnicodeToUTF8( us );
-    os << line << endl;
-  }
-  os << endl;
-}
-
-void handle_deeper( FoliaElement *, ostream&, bool );
-
-void handle_heads( vector<Head*>& heads, ostream& os ){
-  for ( const auto& h : heads ){
-    if ( h->hastext(classname) ){
-      UnicodeString us = h->stricttext(classname);
-      string line = UnicodeToUTF8( us );
-      os << line << endl;
-    }
-    else {
-      handle_deeper( h, os, true );
-    }
-  }
-  os << endl;
-}
-
-void handle_pars( vector<Paragraph *>& pars, ostream& os, bool doHeads ){
-  for ( const auto& p : pars ){
-    if ( doHeads ){
-      vector<Head *> heads = getHead( p );
-      handle_heads( heads, os );
-    }
-    if ( p->hastext(classname) ){
-      UnicodeString us = p->stricttext(classname);
-      string line = UnicodeToUTF8( us );
-      os << line << endl;
-    }
-    else {
-      vector<Sentence *> sents = p->select<Sentence>( false );
-      handle_sentences( sents, os );
-    }
-  }
-}
-
-void handle_deeper( FoliaElement *el, ostream& os, bool doHeads ){
-  vector<Paragraph *> pars = el->select<Paragraph>( false );
-  if ( pars.empty() ){
-    vector<Sentence *> sents = el->select<Sentence>( false );
-    handle_sentences( sents, os );
-  }
-  else {
-    handle_pars( pars, os, doHeads );
-  }
-}
-
-void handle_divs( vector<Division *>& divs, ostream& os, bool doHeads ){
-  for ( unsigned int p=0; p < divs.size(); ++p ){
-    if ( doHeads ){
-      vector<Head *> heads = getHead( divs[p] );
-      handle_heads( heads, os );
-    }
-    handle_deeper( divs[p], os, doHeads );
-  }
-}
-
-void handle_txts( vector<Text *>& txts, ostream& os, bool doHeads ){
-  for ( const auto& txt : txts ){
-    if ( doHeads ){
-      vector<Head *> heads = getHead( txt );
-      handle_heads( heads, os );
-    }
-    vector<Division *> divs = txt->select<Division>( false );
-    if ( divs.empty() ){
-      handle_deeper( txt, os, doHeads );
-    }
-    else {
-      handle_divs( divs, os, doHeads );
-    }
-  }
-}
-
-void text_out( const Document *d,
-	       ostream& os,
-	       bool doHeads ){
-  FoliaElement *doc = d->doc();
-  if ( doHeads ){
-    vector<Head *> heads = getHead( doc );
-    handle_heads( heads, os );
-  }
-  vector<Text *> txts = doc->select<Text>( false );
-  if ( txts.empty() ){
-    vector<Division *> divs = doc->select<Division>( false );
-    if ( divs.empty() ){
-      handle_deeper( doc, os, doHeads );
-    }
-    else {
-      handle_divs( divs, os, doHeads );
-    }
-  }
-  else {
-    handle_txts( txts, os, doHeads );
-  }
-}
-
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t FoLiA-2text will produce a text from a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
-  cerr << "\t--heads\t Incude text from Head nodes too. (default don't)" << endl;
+  cerr << "\t--retaintok\t retain tokenization. Default is attempt to remove." << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
@@ -182,7 +58,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:", "class:,help,version,heads" );
+  CL_Options opts( "hVvpe:t:o:", "class:,help,version,retaintok" );
   try {
     opts.init(argc,argv);
   }
@@ -214,7 +90,7 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
-  bool doHeads = opts.extract( "heads" );
+  bool retaintok = opts.extract( "retaintok" );
   if ( opts.extract('t', value ) ){
     if ( !stringTo(value, numThreads ) ){
       cerr << "illegal value for -t (" << value << ")" << endl;
@@ -222,7 +98,8 @@ int main( int argc, char *argv[] ){
     }
   }
   opts.extract('e', expression );
-  opts.extract( "class", classname );
+  string class_name = "current";
+  opts.extract( "class", class_name );
 
 #ifdef HAVE_OPENMP
   omp_set_num_threads( numThreads );
@@ -288,7 +165,8 @@ int main( int argc, char *argv[] ){
     }
     else {
       ofstream os( outname );
-      text_out( d, os, doHeads );
+      UnicodeString us = d->text( class_name,retaintok);
+      os << us << endl;
 #pragma omp critical
       {
 	cout << "Processed :" << docName << " into " << outname
