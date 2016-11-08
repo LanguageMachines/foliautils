@@ -2,7 +2,7 @@ Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
 	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
-	--heads	 Incude text from Head nodes too. (default don't)
+	--retaintok	 retain tokenization. Default is attempt to remove.
 	-t	 number_of_threads
 	-h or --help	 this message
 	-V or --version 	 show version 
@@ -13,34 +13,32 @@ Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
 	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
-	--heads	 Incude text from Head nodes too. (default don't)
+	--retaintok	 retain tokenization. Default is attempt to remove.
 	-t	 number_of_threads
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-e	 expr: specify the expression all input files should match with.
 	-o	 name of the output file(s) prefix.
 Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.
+
 De tekst gaat verder hier.
 Wie had dat gedacht?
+
 Totaal iets anders.
-Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.
-De tekst gaat verder hier.
-Een tekst in paragraaf 3.
-Een tekst in paragraaf 1 van hoofdstuk 2.
-
-
 Dit is hoofdstuk 1.
 
 Dit is paragraaf 1.
 
 Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.
+
 Dit is paragraaf 2.
 
-De tekst gaat verder hier.
-
 Een tekst in paragraaf 3.
+
+
 Dit is hoofdstuk 2.
 
-
-
 Een tekst in paragraaf 1 van hoofdstuk 2.
+Wie had dat gedacht?
+
+Totaal iets anders.
