@@ -731,21 +731,27 @@ void add_about( Division *root, xmlNode *p ){
   args["class"] = "about";
   Division *div = new Division( args, root->doc() );
   root->append( div );
-  args.clear();
-  args["class"] = title;
-  args["subset"] = "title";
-  Feature *f = new Feature( args );
-  div->append( f );
-  args.clear();
-  args["class"] = voted_on;
-  args["subset"] = "voted-on";
-  f = new Feature( args );
-  div->append( f );
-  args.clear();
-  args["class"] = ref;
-  args["subset"] = "ref";
-  f = new Feature( args );
-  div->append( f );
+  if ( !title.empty() ){
+    args.clear();
+    args["class"] = title;
+    args["subset"] = "title";
+    Feature *f = new Feature( args );
+    div->append( f );
+  }
+  if ( !voted_on.empty() ){
+    args.clear();
+    args["class"] = voted_on;
+    args["subset"] = "voted-on";
+    Feature *f = new Feature( args );
+    div->append( f );
+  }
+  if ( !ref.empty() ){
+    args.clear();
+    args["class"] = ref;
+    args["subset"] = "ref";
+    Feature *f = new Feature( args );
+    div->append( f );
+  }
   p = p->children;
   while ( p ){
     string tag = TiCC::Name( p );
