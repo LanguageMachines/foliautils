@@ -423,7 +423,13 @@ void process_chair( Division *root, xmlNode *chair ){
     }
     else if ( label == "chair" ){
       string speaker = TiCC::getAttribute( p, "speaker" );
+      if ( speaker.empty() ){
+	speaker = "unknown";
+      }
       string member = TiCC::getAttribute( p, "member-ref" );
+      if ( member.empty() ){
+	member = "unknown";
+      }
       KWargs args;
       args["subset"] = "speaker";
       args["class"] = speaker;
@@ -566,7 +572,11 @@ void process_speech( Division *root, xmlNode *speech ){
 	      || att.first == "member-ref" ){
       KWargs args;
       args["subset"] = att.first;
-      args["class"] = att.second;
+      string cls =  att.second;
+      if ( cls.empty() ){
+	cls = "unknown";
+      }
+      args["class"] = cls;
       Feature *feat = new Feature( args );
       div->append( feat );
     }
@@ -614,7 +624,13 @@ void add_actor( FoliaElement *root, xmlNode *act ){
     string label = TiCC::Name(p);
     if ( label == "person" ){
       string speaker = TiCC::getAttribute( p, "speaker" );
+      if ( speaker.empty() ){
+	speaker = "unknown";
+      }
       string ref = TiCC::getAttribute( p, "member-ref" );
+      if ( ref.empty() ){
+	ref = "unknown";
+      }
       KWargs args;
       args["subset"] = "speaker";
       args["class"] = speaker;
@@ -628,7 +644,13 @@ void add_actor( FoliaElement *root, xmlNode *act ){
     }
     else if ( label == "organization" ){
       string name = TiCC::getAttribute( p, "name" );
+      if ( name.empty() ){
+	name = "unknown";
+      }
       string function = TiCC::getAttribute( p, "function" );
+      if ( function.empty() ){
+	function = "unknown";
+      }
       string ref = TiCC::getAttribute( p, "ref" );
       KWargs args;
       args["subset"] = "name";
@@ -698,7 +720,11 @@ void add_information( FoliaElement *root, xmlNode *info ){
 	 || label == "outcome" ){
       KWargs args;
       args["subset"] = label;
-      args["class"] = TiCC::XmlContent( p );
+      string cls = TiCC::XmlContent( p );
+      if ( cls.empty() ){
+	cls = "unknown";
+      }
+      args["class"] = cls;
       Feature *f = new Feature( args );
       div->append( f );
     }
@@ -771,7 +797,13 @@ void add_about( Division *root, xmlNode *p ){
 void process_vote( Division *div, xmlNode *vote ){
   KWargs atts = getAllAttributes( vote );
   string vote_type = atts["vote-type"];
+  if ( vote_type.empty() ){
+    vote_type = "unknown";
+  }
   string outcome = atts["outcome"];
+  if ( outcome.empty() ){
+    outcome = "unknown";
+  }
   string id = atts["id"];
   if ( verbose ){
 #pragma omp critical
@@ -798,7 +830,11 @@ void process_vote( Division *div, xmlNode *vote ){
     else if ( label == "consequence" ){
       KWargs args;
       args["subset"] = label;
-      args["class"] = TiCC::XmlContent( p );
+      string cls = TiCC::XmlContent( p );
+      if ( cls.empty() ){
+	cls = "unknown";
+      }
+      args["class"] = cls;
       Feature *f = new Feature( args );
       div->append( f );
     }
@@ -846,7 +882,11 @@ void process_scene( Division *root, xmlNode *scene ){
 	      || att.first == "member-ref" ){
       KWargs args;
       args["subset"] = att.first;
-      args["class"] = att.second;
+      string cls = att.second;
+      if ( cls.empty() ){
+	cls = "unknown";
+      }
+      args["class"] = cls;
       Feature *feat = new Feature( args );
       div->append( feat );
     }
