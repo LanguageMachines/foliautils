@@ -360,15 +360,9 @@ void add_par( Division *root, xmlNode *p ){
 	  note = new Note( args );
 	}
 	else {
-	  try {
-	    isNCName( ref );
-	  }
-	  catch( ... ){
+	  if ( !isNCName( ref ) ){
 	    ref = "v." + ref;
-	    try {
-	      isNCName( ref );
-	    }
-	    catch( ... ){
+	    if ( !isNCName( ref ) ){
 	      throw ( "the ref attribute in note cannot be converted to an ID" );
 	    }
 	  }
