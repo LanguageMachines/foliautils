@@ -188,7 +188,7 @@ void procesFile( const TextCat& tc,
 void usage(){
   cerr << "Usage: [options] dir/filename " << endl;
   cerr << "--config=<file>\t use LM config from 'file'" << endl;
-  cerr << "--lang=<lan>\t use 'lan' for unindentified text. (default 'dut')" << endl;
+  cerr << "--lang=<lan>\t use 'lan' for unindentified text. (default 'nld')" << endl;
   cerr << "-s\t\t examine text in <str> nodes. (default is to use the <p> nodes)." << endl;
   cerr << "--all\t\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
   cerr << "--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
@@ -220,7 +220,7 @@ int main( int argc, char *argv[] ){
   }
   string outDir;
   string config = "./config/tc.txt";
-  string lang = "dut";
+  string lang = "nld";
   string cls = "OCR";
   verbose = opts.extract( 'v' );
   bool doAll = opts.extract( "all" );

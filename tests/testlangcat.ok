@@ -2,7 +2,7 @@ missing input file(s)
 foliautils 0.5
 Usage: [options] dir/filename 
 --config=<file>	 use LM config from 'file'
---lang=<lan>	 use 'lan' for unindentified text. (default 'dut')
+--lang=<lan>	 use 'lan' for unindentified text. (default 'nld')
 -s		 examine text in <str> nodes. (default is to use the <p> nodes).
 --all		 assign ALL detected languages to the result. (default is to assign the most probable).
 --class=<cls>	 use 'cls' as the FoLiA classname for searching text. 
@@ -19,7 +19,7 @@ document 'data/langcat.test.xml' has 3 paragraphs
     <annotations>
       <lang-annotation set="iso"/>
     </annotations>
-    <meta id="language">dut</meta>
+    <meta id="language">nld</meta>
   </metadata>
   <text xml:id="text">
     <p xml:id="text.p1">
