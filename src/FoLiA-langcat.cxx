@@ -47,12 +47,15 @@
 using namespace	std;
 using namespace	folia;
 
+const string ISO_SET = "http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset";
+
 bool verbose = false;
 
 void setlang( FoliaElement* e, const string& lan ){
   // append a LangAnnotation child of class 'lan'
   KWargs args;
   args["class"] = lan;
+  args["set"] = ISO_SET;
   LangAnnotation *node = new LangAnnotation( e->doc() );
   node->setAttributes( args );
   e->replace( node );
@@ -99,7 +102,7 @@ void procesFile( const TextCat& tc,
     return;
   }
   doc->set_metadata( "language", default_lang );
-  doc->declare( AnnotationType::LANG, "iso" );
+  doc->declare( AnnotationType::LANG, ISO_SET );
   vector<Paragraph*> xp;
   vector<String*> xs;
   size_t Size;

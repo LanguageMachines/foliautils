@@ -47,6 +47,39 @@ using namespace	TiCC;
 bool verbose = false;
 string classname = "OCR";
 
+enum Mode { UNKNOWN,
+	    T_IN_D, T_IN_P, T_IN_S,
+	    S_IN_D, S_IN_P,
+	    W_IN_D, W_IN_P, W_IN_S  };
+
+Mode stringToMode( const string& ms ){
+  if ( ms == "text_in_doc" ){
+    return T_IN_D;
+  }
+  else if ( ms == "text_in_par" ){
+    return T_IN_P;
+  }
+  else if ( ms == "text_in_sent" ){
+    return T_IN_S;
+  }
+  else if ( ms == "string_in_doc" ){
+    return S_IN_D;
+  }
+  else if ( ms == "string_in_par" ){
+    return S_IN_P;
+  }
+  else if ( ms == "word_in_doc" ){
+    return W_IN_D;
+  }
+  else if ( ms == "word_in_par" ){
+    return W_IN_P;
+  }
+  else if ( ms == "word_in_sent" ){
+    return W_IN_S;
+  }
+  return UNKNOWN;
+}
+
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int totalIn,
 		     unsigned int clip,
@@ -646,7 +679,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version" );
+		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version,mode:" );
   try {
     opts.init(argc,argv);
   }
@@ -680,11 +713,33 @@ int main( int argc, char *argv[] ){
   verbose = opts.extract( 'v' );
   bool dopercentage = opts.extract('p');
   bool lowercase = opts.extract("lower");
+  string modes;
+  opts.extract("mode", modes );
+  Mode mode = W_IN_S;
+  if ( !modes.empty() ){
+    mode = stringToMode( modes );
+  }
   string hempName;
   opts.extract("hemp", hempName );
   bool recursiveDirs = opts.extract( 'R' );
-  bool doparstr = opts.extract( 's' );
-  bool donoparstr = opts.extract( 'S' );
+  if ( opts.extract( 's' ) ) {
+    if ( !modes.empty() ){
+      cerr << "old style -s option cannot be combined with --mode option" << endl;
+      exit( EXIT_FAILURE );
+    }
+    else {
+      mode = S_IN_P;
+    }
+  }
+  if ( opts.extract( 'S' ) ){
+    if ( !modes.empty() ){
+      cerr << "old style -S option cannot be combined with --mode option" << endl;
+      exit( EXIT_FAILURE );
+    }
+    else {
+      mode = S_IN_D;
+    }
+  }
   bool do_under = opts.extract( "underscore" );
   string sep = " ";
   if ( do_under ){
@@ -792,10 +847,10 @@ int main( int argc, char *argv[] ){
     unsigned int word_count = 0;
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
-    if ( doparstr ){
+    if ( mode == S_IN_P ){
       word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
     }
-    else if ( donoparstr ){
+    else if ( mode == S_IN_D ){
       word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
     }
     else
@@ -849,7 +904,7 @@ int main( int argc, char *argv[] ){
     }
 #pragma omp section
     {
-      if ( !( doparstr || donoparstr ) ){
+      if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmafreqlist" + ext;
 	create_lf_list( lc, filename, lemTotal, clip, dopercentage );
@@ -857,7 +912,7 @@ int main( int argc, char *argv[] ){
     }
 #pragma omp section
     {
-      if ( !( doparstr || donoparstr ) ){
+      if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmaposfreqlist" + ext;
 	create_lpf_list( lpc, filename, posTotal, clip, dopercentage );
