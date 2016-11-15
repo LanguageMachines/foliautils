@@ -46,7 +46,7 @@ using namespace	folia;
 using namespace	TiCC;
 
 bool verbose = false;
-string classname = "OCR";
+string classname = "current";
 
 enum Mode { UNKNOWN,
 	    T_IN_D, T_IN_P, T_IN_S,
@@ -687,7 +687,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       if ( verbose ){
 #pragma omp critical
 	{
-	  cerr << "found NO string in paragraph " << p << endl;
+	  cerr << "found NO string in paragraph " << p << " (" << pars[p]->id() << ")" << endl;
 	}
       }
       continue;
