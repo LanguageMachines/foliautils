@@ -343,17 +343,17 @@ size_t add_word_inventory( const vector<string>& data,
   return count;
 }
 
-size_t word_inventory( const Document *d, const string& docName,
-		       size_t nG,
-		       bool lowercase,
-		       const string& lang,
-		       map<string,unsigned int>& wc,
-		       map<string,unsigned int>& lc,
-		       multimap<string, rec>& lpc,
-		       unsigned int& lemTotal,
-		       unsigned int& posTotal,
-		       set<string>& emph,
-		       const string& sep ){
+size_t doc_word_inventory( const Document *d, const string& docName,
+			   size_t nG,
+			   bool lowercase,
+			   const string& lang,
+			   map<string,unsigned int>& wc,
+			   map<string,unsigned int>& lc,
+			   multimap<string, rec>& lpc,
+			   unsigned int& lemTotal,
+			   unsigned int& posTotal,
+			   set<string>& emph,
+			   const string& sep ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -518,13 +518,13 @@ size_t word_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
-size_t str_inventory( const Document *d, const string& docName,
-		      size_t nG,
-		      bool lowercase,
-		      const string& lang,
-		      map<string,unsigned int>& wc,
-		      set<string>& emph,
-		      const string& sep ){
+size_t doc_str_inventory( const Document *d, const string& docName,
+			  size_t nG,
+			  bool lowercase,
+			  const string& lang,
+			  map<string,unsigned int>& wc,
+			  set<string>& emph,
+			  const string& sep ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -916,14 +916,17 @@ int main( int argc, char *argv[] ){
       word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
       break;
     case T_IN_P:
-      word_count = par_text_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
+      word_count = par_text_inventory( d, docName, nG, lowercase,
+				       lang, wc, emph, sep );
       break;
     case S_IN_D:
-      word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
+      word_count = doc_str_inventory( d, docName, nG, lowercase,
+				      lang, wc, emph, sep );
       break;
     case W_IN_D:
-      word_count = word_inventory( d, docName, nG, lowercase,
-				   lang, wc, lc, lpc, lem_count, pos_count, emph, sep );
+      word_count = doc_word_inventory( d, docName, nG, lowercase,
+				       lang, wc, lc, lpc, lem_count,
+				       pos_count, emph, sep );
       break;
     default:
       cerr << "not yet implemented mode: " << modes << endl;
