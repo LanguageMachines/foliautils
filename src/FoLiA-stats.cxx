@@ -33,6 +33,7 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/PrettyPrint.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -650,6 +651,86 @@ size_t par_str_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
+size_t par_text_inventory( const Document *d, const string& docName,
+			   size_t nG,
+			   bool lowercase,
+			   const string& lang,
+			   map<string,unsigned int>& wc,
+			   set<string>& emph,
+			   const string& sep ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "make a text_in_par inventory on:" << docName << endl;
+    }
+  }
+  size_t wordTotal = 0;
+  vector<Paragraph*> pars = d->paragraphs();
+  for ( unsigned int p=0; p < pars.size(); ++p ){
+    string p_lang = pars[p]->language();
+    if ( p_lang != lang && lang != "none" ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cerr << "skip a paragraph in wrong language: " << p_lang << endl;
+	}
+      }
+      continue;
+    }
+    string s;
+    UnicodeString us;
+    try {
+      us = pars[p]->text(classname);
+      if ( lowercase ){
+	us.toLower();
+      }
+      s = UnicodeToUTF8( us );
+    }
+    catch(...){
+    }
+    if ( s.empty() ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cerr << "found NO string in paragraph " << p << endl;
+	}
+      }
+      continue;
+    }
+    vector<string> data;
+    size_t num = TiCC::split( s, data );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "found string: '" << s << "'" << endl;
+	if ( num <= 1 ){
+	  cerr << "with no substrings" << endl;
+	}
+	else {
+	  using TiCC::operator<<;
+	  cerr << "with " << num << " substrings: " << data << endl;
+	}
+      }
+    }
+    add_emph_inventory( data, emph );
+    for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
+      string multiw;
+      for ( size_t j=0; j < nG; ++j ){
+	multiw += data[i+j];
+	if ( j < nG-1 ){
+	  multiw += sep;
+	}
+      }
+      ++wordTotal;
+#pragma omp critical
+      {
+	++wc[multiw];
+      }
+    }
+  }
+  return wordTotal;
+}
+
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
@@ -670,7 +751,7 @@ void usage( const string& name ){
   cerr << "\t\t\t (words consisting of single, space separated letters)" << endl;
   cerr << "\t-t\t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
-  cerr << "\t-v\t\t very verbose output." << endl;
+  cerr << "\t-v or --verbose\t very verbose output." << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-e\t\t expr: specify the expression all input files should match with." << endl;
   cerr << "\t-o\t\t name of the output file(s) prefix." << endl;
@@ -679,7 +760,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version,mode:" );
+		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
   try {
     opts.init(argc,argv);
   }
@@ -710,7 +791,7 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  verbose = opts.extract( 'v' );
+  verbose = opts.extract( 'v' ) || opts.extract( "verbose" );
   bool dopercentage = opts.extract('p');
   bool lowercase = opts.extract("lower");
   string modes;
@@ -718,6 +799,10 @@ int main( int argc, char *argv[] ){
   Mode mode = W_IN_S;
   if ( !modes.empty() ){
     mode = stringToMode( modes );
+    if ( mode == UNKNOWN ){
+      cerr << "unknown --mode " << modes << endl;
+      return EXIT_FAILURE;
+    }
   }
   string hempName;
   opts.extract("hemp", hempName );
@@ -725,7 +810,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 's' ) ) {
     if ( !modes.empty() ){
       cerr << "old style -s option cannot be combined with --mode option" << endl;
-      exit( EXIT_FAILURE );
+      return EXIT_FAILURE;
     }
     else {
       mode = S_IN_P;
@@ -734,7 +819,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 'S' ) ){
     if ( !modes.empty() ){
       cerr << "old style -S option cannot be combined with --mode option" << endl;
-      exit( EXIT_FAILURE );
+      return EXIT_FAILURE;
     }
     else {
       mode = S_IN_D;
@@ -847,15 +932,24 @@ int main( int argc, char *argv[] ){
     unsigned int word_count = 0;
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
-    if ( mode == S_IN_P ){
+    switch ( mode ){
+    case S_IN_P:
       word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
-    }
-    else if ( mode == S_IN_D ){
+      break;
+    case T_IN_P:
+      word_count = par_text_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
+      break;
+    case S_IN_D:
       word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
-    }
-    else
+      break;
+    case W_IN_D:
       word_count = word_inventory( d, docName, nG, lowercase,
 				   lang, wc, lc, lpc, lem_count, pos_count, emph, sep );
+      break;
+    default:
+      cerr << "not yet implemented mode: " << modes << endl;
+      exit( EXIT_FAILURE );
+    }
     wordTotal += word_count;
     lemTotal += lem_count;
     posTotal += pos_count;
