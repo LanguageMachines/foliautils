@@ -321,6 +321,27 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
   }
 }
 
+size_t add_word_inventory( const vector<string>& data,
+			   map<string,unsigned int>& wc,
+			   size_t nG,
+			   const string& sep ){
+  size_t count = 0;
+  for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
+    string multiw;
+    for ( size_t j=0; j < nG; ++j ){
+      multiw += data[i+j];
+      if ( j < nG-1 ){
+	multiw += sep;
+      }
+    }
+    ++count;
+#pragma omp critical
+    {
+      ++wc[multiw];
+    }
+  }
+  return count;
+}
 
 size_t word_inventory( const Document *d, const string& docName,
 		       size_t nG,
@@ -556,20 +577,7 @@ size_t str_inventory( const Document *d, const string& docName,
   }
 
   add_emph_inventory( data, emph );
-  for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-    string multiw;
-    for ( size_t j=0; j < nG; ++j ){
-      multiw += data[i+j];
-      if ( j < nG-1 ){
-	multiw += sep;
-      }
-    }
-    ++wordTotal;
-#pragma omp critical
-    {
-      ++wc[multiw];
-    }
-  }
+  wordTotal += add_word_inventory( data, wc, nG, sep );
   return wordTotal;
 }
 
@@ -633,20 +641,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-      string multiw;
-      for ( size_t j=0; j < nG; ++j ){
-	multiw += data[i+j];
-	if ( j < nG-1 ){
-	  multiw += sep;
-	}
-      }
-      ++wordTotal;
-#pragma omp critical
-      {
-	++wc[multiw];
-      }
-    }
+    wordTotal += add_word_inventory( data, wc, nG, sep );
   }
   return wordTotal;
 }
@@ -713,20 +708,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       }
     }
     add_emph_inventory( data, emph );
-    for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-      string multiw;
-      for ( size_t j=0; j < nG; ++j ){
-	multiw += data[i+j];
-	if ( j < nG-1 ){
-	  multiw += sep;
-	}
-      }
-      ++wordTotal;
-#pragma omp critical
-      {
-	++wc[multiw];
-      }
-    }
+    wordTotal += add_word_inventory( data, wc, nG, sep );
   }
   return wordTotal;
 }
@@ -901,9 +883,6 @@ int main( int argc, char *argv[] ){
   }
 
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
   map<string,unsigned int> wc;
