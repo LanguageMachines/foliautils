@@ -218,29 +218,17 @@ const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
 template<class F>
 void taal_filter( vector<F*>& words,
-		  const string& global_taal, const string& taal ){
+		  const string& taal ){
   typename vector<F*>::iterator it = words.begin();
   while ( it != words.end() ){
     string lang = (*it)->language(classname);
-    if ( !lang.empty() ){
-      // there is language info.
-      if ( lang.find( taal ) == string::npos ){
-	// no match.
-	it = words.erase( it );
-      }
-      else {
-	++it;
-      }
+    if ( !lang.empty()
+	 && lang.find( taal ) == string::npos ){
+      // there is language info, and ist the wrong language
+      it = words.erase( it );
     }
     else {
-      // So NO language info. It is the documents default then
-      //
-      if ( global_taal != taal ){
-	it = words.erase( it );
-      }
-      else {
-	++it;
-      }
+      ++it;
     }
   }
 }
@@ -328,7 +316,6 @@ size_t word_inventory( const Document *d, const string& docName,
     }
   }
   for ( unsigned int s=0; s < sents.size(); ++s ){
-    string sent_lang = sents[s]->language(classname);
     vector<Word*> words = sents[s]->words();
     if ( verbose ){
 #pragma omp critical
@@ -336,7 +323,7 @@ size_t word_inventory( const Document *d, const string& docName,
 	cerr << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
       }
     }
-    taal_filter( words, sent_lang, lang );
+    taal_filter( words, lang );
     if ( verbose ){
 #pragma omp critical
       {
@@ -498,8 +485,7 @@ size_t str_inventory( const Document *d, const string& docName,
     }
   }
 
-  string doc_lang = d->get_metadata( "language" );
-  taal_filter( strings, doc_lang, lang );
+  taal_filter( strings, lang );
   if ( verbose ){
 #pragma omp critical
     {
@@ -576,8 +562,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	cerr << "found " << strings.size() << " strings" << endl;
       }
     }
-    string par_lang = pars[p]->language(classname);
-    taal_filter( strings, par_lang, lang );
+    taal_filter( strings, lang );
     if ( verbose ){
 #pragma omp critical
       {
