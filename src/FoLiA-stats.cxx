@@ -786,6 +786,9 @@ int main( int argc, char *argv[] ){
       return EXIT_FAILURE;
     }
   }
+  else {
+    mode = W_IN_D;
+  }
   string hempName;
   opts.extract("hemp", hempName );
   bool recursiveDirs = opts.extract( 'R' );
