@@ -11,11 +11,11 @@
 # improves performance, because this will raise the threshold for
 # likely candidates more quickly.
 #
-# NB We use the iso639-2 codes here, because Political mashup likes them
+# NB We use the iso639-3 codes here!
 #
-lcconfig/LM/dutch.lm		dut
-lcconfig/LM/french.lm		fre
-#clconfig/LM/german.lm		ger
+lcconfig/LM/dutch.lm		nld
+lcconfig/LM/french.lm		fra
+#clconfig/LM/german.lm		deu
 lcconfig/LM/english.lm		eng
 #lcconfig/LM/italian.lm		ita
 #lcconfig/LM/portuguese.lm	por
