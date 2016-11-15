@@ -17,22 +17,25 @@ document 'data/langcat.test.xml' has 3 paragraphs
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.5">
   <metadata type="native">
     <annotations>
-      <lang-annotation set="iso"/>
+      <lang-annotation annotatortype="manual" set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
+      <lang-annotation annotatortype="manual" set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
     </annotations>
     <meta id="language">nld</meta>
   </metadata>
   <text xml:id="text">
     <p xml:id="text.p1">
       <t class="OCR">To be or not to be, that is the question</t>
-      <lang class="eng"/>
+      <lang class="eng" set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
     </p>
     <p xml:id="text.p2">
       <t class="OCR">c'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli, il mérite fcul un voyage, ne fut ce que pour fa poficion.</t>
-      <lang class="fre"/>
+      <lang class="fre" set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
     </p>
     <p xml:id="text.p3">
       <t class="OCR">Ok., en nu ook in het nederands!</t>
-      <lang class="dut"/>
+      <lang class="dut" set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
     </p>
   </text>
 </FoLiA>
