@@ -217,26 +217,11 @@ const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
 template<class F>
-string get_lang( F *element ){
-  string result;
-  try {
-    LangAnnotation *l = element->template annotation<LangAnnotation>();
-    if ( l != 0 ){
-      // there is language info.
-      result = l->cls();
-    }
-  }
-  catch (...){
-  }
-  return result;
-}
-
-template<class F>
 void taal_filter( vector<F*>& words,
 		  const string& global_taal, const string& taal ){
   typename vector<F*>::iterator it = words.begin();
   while ( it != words.end() ){
-    string lang = get_lang( *it );
+    string lang = (*it)->language(classname);
     if ( !lang.empty() ){
       // there is language info.
       if ( lang.find( taal ) == string::npos ){
@@ -336,7 +321,6 @@ size_t word_inventory( const Document *d, const string& docName,
   lemTotal = 0;
   posTotal = 0;
   vector<Sentence *> sents = d->sentences();
-  string doc_lang = d->get_metadata( "language" );
   if ( verbose ){
 #pragma omp critical
     {
@@ -344,10 +328,7 @@ size_t word_inventory( const Document *d, const string& docName,
     }
   }
   for ( unsigned int s=0; s < sents.size(); ++s ){
-    string sent_lang = get_lang( sents[s] );
-    if ( sent_lang.empty() ){
-      sent_lang = doc_lang;
-    }
+    string sent_lang = sents[s]->language(classname);
     vector<Word*> words = sents[s]->words();
     if ( verbose ){
 #pragma omp critical
@@ -587,7 +568,6 @@ size_t par_str_inventory( const Document *d, const string& docName,
   }
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
-  string doc_lang = d->get_metadata( "language" );
   for ( unsigned int p=0; p < pars.size(); ++p ){
     vector<String*> strings = pars[p]->select<String>();
     if ( verbose ){
@@ -596,9 +576,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	cerr << "found " << strings.size() << " strings" << endl;
       }
     }
-    string par_lang = get_lang( pars[p] );
-    if ( par_lang.empty() )
-      par_lang = doc_lang;
+    string par_lang = pars[p]->language(classname);
     taal_filter( strings, par_lang, lang );
     if ( verbose ){
 #pragma omp critical
