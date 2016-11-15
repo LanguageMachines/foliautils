@@ -28,11 +28,11 @@ document 'data/langcat.test.xml' has 3 paragraphs
     </p>
     <p xml:id="text.p2">
       <t class="OCR">c'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli, il mérite fcul un voyage, ne fut ce que pour fa poficion.</t>
-      <lang class="fre"/>
+      <lang class="fra"/>
     </p>
     <p xml:id="text.p3">
       <t class="OCR">Ok., en nu ook in het nederands!</t>
-      <lang class="dut"/>
+      <lang class="nld"/>
     </p>
   </text>
 </FoLiA>
