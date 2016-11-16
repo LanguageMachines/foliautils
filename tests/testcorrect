@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -v
 #
 
 $my_bin/FoLiA-correct > testcorrect.out 2>&1
@@ -6,6 +6,14 @@ $my_bin/FoLiA-correct > testcorrect.out 2>&1
 $my_bin/FoLiA-correct -V >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --help >> testcorrect.out 2>&1
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear corr_str.xml >> testcorrect.out  2>&1
+
+diff corr_str.ticcl.xml corr_str.ticcl.1.ok  >> testcorrect.out 2>&1
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes corr_str.xml >> testcorrect.out  2>&1
+
+diff corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear corr.xml >> testcorrect.out  2>&1
 

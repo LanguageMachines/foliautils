@@ -535,7 +535,8 @@ bool correctDoc( Document *doc,
 		 const map<string,vector<word_conf> >& variants,
 		 const set<string>& unknowns,
 		 const map<string,string>& puncts,
-		 int ngrams ){
+		 int ngrams,
+		 bool string_nodes ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
 			setname ) ){
     return false;
@@ -545,11 +546,11 @@ bool correctDoc( Document *doc,
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( const auto& par : pv ){
     try {
-      if ( ngrams > 1 ){
-	correctNgrams( par, variants, unknowns, puncts, ngrams );
+      if ( ngrams == 1 && string_nodes ){
+	correctParagraph( par, variants, unknowns, puncts );
       }
       else {
-	correctParagraph( par, variants, unknowns, puncts );
+	correctNgrams( par, variants, unknowns, puncts, ngrams );
       }
     }
     catch ( exception& e ){
@@ -570,7 +571,8 @@ void usage( const string& name ){
   cerr << "\t--class\t classname. (default '" << classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
-  //  cerr << "\t--gram\t n also analyse n-grams. Don't descend into <str> node" << endl;
+  cerr << "\t--ngram\t n analyse upto n N-grams. for n=1 see --string-nodes" << endl;
+  cerr << "\t--string-nodes\t Only for UNIGRAMS: descend into <str> nodes. " << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
@@ -597,7 +599,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:" );
+			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes" );
   try {
     opts.init( argc, argv );
   }
@@ -612,6 +614,7 @@ int main( int argc, const char *argv[] ){
   int ngram = 1;
   bool recursiveDirs = false;
   bool clear = false;
+  bool string_nodes = false;
   string expression;
   string variantFileName;
   string unknownFileName;
@@ -667,6 +670,7 @@ int main( int argc, const char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
+  string_nodes = opts.extract( "string-nodes" );
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
     cerr << "missing input file or directory" << endl;
@@ -808,7 +812,7 @@ int main( int argc, const char *argv[] ){
 	cerr << "unable to create output file! " << outName << endl;
 	exit(EXIT_FAILURE);
       }
-      if ( correctDoc( doc, variants, unknowns, puncts, ngram ) ){
+      if ( correctDoc( doc, variants, unknowns, puncts, ngram, string_nodes ) ){
 	doc->save( outName );
 #pragma omp critical
 	{
