@@ -17,6 +17,10 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --cle
 
 diff corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
 
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --word-nodes data/corr_word.xml >> testcorrect.out  2>&1
+
+diff corr_word.ticcl.xml corr_word.ticcl.1.ok  >> testcorrect.out 2>&1
+
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear data/corr.xml >> testcorrect.out  2>&1
 
 diff corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1

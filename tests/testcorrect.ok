@@ -5,8 +5,9 @@ Usage: [options] file/dir
 	--class	 classname. (default 'Ticcl')
 	-t	 number_of_threads
 	--nums	 max number_of_suggestions. (default 10)
-	--ngram	 n analyse upto n N-grams. for n=1 see --string-nodes
+	--ngram	 n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes
 	--string-nodes	 Only for UNIGRAMS: descend into <str> nodes. 
+	--word-nodes	 Only for UNIGRAMS: descend into <w> nodes. 
 	-h or --help	 this message 
 	-V or --version	 show version 
 	 FoLiA-correct will correct FoLiA files 
@@ -36,7 +37,7 @@ correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemin
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_str.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T16:09:56" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:23:24" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T15:57:05" set="Ticcl-set"/>
 start reading variants 
@@ -47,9 +48,20 @@ start reading puncts
 read 10 punctuated words 
 finished data/corr_str.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T16:09:56" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:23:24" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T15:58:11" set="Ticcl-set"/>
+start reading variants 
+read 4 variants 
+start reading unknowns 
+read 2 unknown words 
+start reading puncts 
+read 10 punctuated words 
+finished data/corr_word.xml
+7c7
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:23:24" set="Ticcl-set"/>
+---
+>       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:20:32" set="Ticcl-set"/>
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -72,7 +84,7 @@ finished data/corr.xml
 ---
 > <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T16:09:56" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:23:24" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:43:11" set="Ticcl-set"/>
 start reading variants 
@@ -97,6 +109,6 @@ finished data/corr.xml
 ---
 > <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T16:09:56" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:23:24" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:52:27" set="Ticcl-set"/>
