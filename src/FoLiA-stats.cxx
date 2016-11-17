@@ -326,6 +326,9 @@ size_t add_word_inventory( const vector<string>& data,
 			   size_t nG,
 			   const string& sep ){
   size_t count = 0;
+  if ( data.size() < nG ){
+    return 0;
+  }
   for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
     string multiw;
     for ( size_t j=0; j < nG; ++j ){
