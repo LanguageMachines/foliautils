@@ -860,8 +860,7 @@ int main( int argc, char *argv[] ){
   }
 
 #ifdef HAVE_OPENMP
-  if ( numThreads != 1 )
-    omp_set_num_threads( numThreads );
+  omp_set_num_threads( numThreads );
 #endif
 
   vector<string> massOpts = opts.getMassOpts();
