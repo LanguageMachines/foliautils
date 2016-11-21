@@ -33,6 +33,7 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/PrettyPrint.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -45,7 +46,40 @@ using namespace	folia;
 using namespace	TiCC;
 
 bool verbose = false;
-string classname = "OCR";
+string classname = "current";
+
+enum Mode { UNKNOWN,
+	    T_IN_D, T_IN_P, T_IN_S,
+	    S_IN_D, S_IN_P,
+	    W_IN_D, W_IN_P, W_IN_S  };
+
+Mode stringToMode( const string& ms ){
+  if ( ms == "text_in_doc" ){
+    return T_IN_D;
+  }
+  else if ( ms == "text_in_par" ){
+    return T_IN_P;
+  }
+  else if ( ms == "text_in_sent" ){
+    return T_IN_S;
+  }
+  else if ( ms == "string_in_doc" ){
+    return S_IN_D;
+  }
+  else if ( ms == "string_in_par" ){
+    return S_IN_P;
+  }
+  else if ( ms == "word_in_doc" ){
+    return W_IN_D;
+  }
+  else if ( ms == "word_in_par" ){
+    return W_IN_P;
+  }
+  else if ( ms == "word_in_sent" ){
+    return W_IN_S;
+  }
+  return UNKNOWN;
+}
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int totalIn,
@@ -217,45 +251,18 @@ const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
 template<class F>
-string get_lang( F *element ){
-  string result;
-  try {
-    LangAnnotation *l = element->template annotation<LangAnnotation>();
-    if ( l != 0 ){
-      // there is language info.
-      result = l->cls();
-    }
-  }
-  catch (...){
-  }
-  return result;
-}
-
-template<class F>
 void taal_filter( vector<F*>& words,
-		  const string& global_taal, const string& taal ){
+		  const string& taal ){
   typename vector<F*>::iterator it = words.begin();
   while ( it != words.end() ){
-    string lang = get_lang( *it );
-    if ( !lang.empty() ){
-      // there is language info.
-      if ( lang.find( taal ) == string::npos ){
-	// no match.
-	it = words.erase( it );
-      }
-      else {
-	++it;
-      }
+    string lang = (*it)->language(classname);
+    if ( !lang.empty()
+	 && lang.find( taal ) == string::npos ){
+      // there is language info, and ist the wrong language
+      it = words.erase( it );
     }
     else {
-      // So NO language info. It is the documents default then
-      //
-      if ( global_taal != taal ){
-	it = words.erase( it );
-      }
-      else {
-	++it;
-      }
+      ++it;
     }
   }
 }
@@ -314,18 +321,42 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
   }
 }
 
+size_t add_word_inventory( const vector<string>& data,
+			   map<string,unsigned int>& wc,
+			   size_t nG,
+			   const string& sep ){
+  size_t count = 0;
+  if ( data.size() < nG ){
+    return 0;
+  }
+  for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
+    string multiw;
+    for ( size_t j=0; j < nG; ++j ){
+      multiw += data[i+j];
+      if ( j < nG-1 ){
+	multiw += sep;
+      }
+    }
+    ++count;
+#pragma omp critical
+    {
+      ++wc[multiw];
+    }
+  }
+  return count;
+}
 
-size_t word_inventory( const Document *d, const string& docName,
-		       size_t nG,
-		       bool lowercase,
-		       const string& lang,
-		       map<string,unsigned int>& wc,
-		       map<string,unsigned int>& lc,
-		       multimap<string, rec>& lpc,
-		       unsigned int& lemTotal,
-		       unsigned int& posTotal,
-		       set<string>& emph,
-		       const string& sep ){
+size_t doc_word_inventory( const Document *d, const string& docName,
+			   size_t nG,
+			   bool lowercase,
+			   const string& lang,
+			   map<string,unsigned int>& wc,
+			   map<string,unsigned int>& lc,
+			   multimap<string, rec>& lpc,
+			   unsigned int& lemTotal,
+			   unsigned int& posTotal,
+			   set<string>& emph,
+			   const string& sep ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -336,7 +367,6 @@ size_t word_inventory( const Document *d, const string& docName,
   lemTotal = 0;
   posTotal = 0;
   vector<Sentence *> sents = d->sentences();
-  string doc_lang = d->get_metadata( "language" );
   if ( verbose ){
 #pragma omp critical
     {
@@ -344,10 +374,6 @@ size_t word_inventory( const Document *d, const string& docName,
     }
   }
   for ( unsigned int s=0; s < sents.size(); ++s ){
-    string sent_lang = get_lang( sents[s] );
-    if ( sent_lang.empty() ){
-      sent_lang = doc_lang;
-    }
     vector<Word*> words = sents[s]->words();
     if ( verbose ){
 #pragma omp critical
@@ -355,7 +381,7 @@ size_t word_inventory( const Document *d, const string& docName,
 	cerr << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
       }
     }
-    taal_filter( words, sent_lang, lang );
+    taal_filter( words, lang );
     if ( verbose ){
 #pragma omp critical
       {
@@ -495,13 +521,13 @@ size_t word_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
-size_t str_inventory( const Document *d, const string& docName,
-		      size_t nG,
-		      bool lowercase,
-		      const string& lang,
-		      map<string,unsigned int>& wc,
-		      set<string>& emph,
-		      const string& sep ){
+size_t doc_str_inventory( const Document *d, const string& docName,
+			  size_t nG,
+			  bool lowercase,
+			  const string& lang,
+			  map<string,unsigned int>& wc,
+			  set<string>& emph,
+			  const string& sep ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -517,8 +543,7 @@ size_t str_inventory( const Document *d, const string& docName,
     }
   }
 
-  string doc_lang = d->get_metadata( "language" );
-  taal_filter( strings, doc_lang, lang );
+  taal_filter( strings, lang );
   if ( verbose ){
 #pragma omp critical
     {
@@ -555,20 +580,7 @@ size_t str_inventory( const Document *d, const string& docName,
   }
 
   add_emph_inventory( data, emph );
-  for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-    string multiw;
-    for ( size_t j=0; j < nG; ++j ){
-      multiw += data[i+j];
-      if ( j < nG-1 ){
-	multiw += sep;
-      }
-    }
-    ++wordTotal;
-#pragma omp critical
-    {
-      ++wc[multiw];
-    }
-  }
+  wordTotal += add_word_inventory( data, wc, nG, sep );
   return wordTotal;
 }
 
@@ -587,7 +599,6 @@ size_t par_str_inventory( const Document *d, const string& docName,
   }
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
-  string doc_lang = d->get_metadata( "language" );
   for ( unsigned int p=0; p < pars.size(); ++p ){
     vector<String*> strings = pars[p]->select<String>();
     if ( verbose ){
@@ -596,10 +607,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	cerr << "found " << strings.size() << " strings" << endl;
       }
     }
-    string par_lang = get_lang( pars[p] );
-    if ( par_lang.empty() )
-      par_lang = doc_lang;
-    taal_filter( strings, par_lang, lang );
+    taal_filter( strings, lang );
     if ( verbose ){
 #pragma omp critical
       {
@@ -636,20 +644,74 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-      string multiw;
-      for ( size_t j=0; j < nG; ++j ){
-	multiw += data[i+j];
-	if ( j < nG-1 ){
-	  multiw += sep;
+    wordTotal += add_word_inventory( data, wc, nG, sep );
+  }
+  return wordTotal;
+}
+
+size_t par_text_inventory( const Document *d, const string& docName,
+			   size_t nG,
+			   bool lowercase,
+			   const string& lang,
+			   map<string,unsigned int>& wc,
+			   set<string>& emph,
+			   const string& sep ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << "make a text_in_par inventory on:" << docName << endl;
+    }
+  }
+  size_t wordTotal = 0;
+  vector<Paragraph*> pars = d->paragraphs();
+  for ( unsigned int p=0; p < pars.size(); ++p ){
+    string p_lang = pars[p]->language();
+    if ( p_lang != lang && lang != "none" ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cerr << "skip a paragraph in wrong language: " << p_lang << endl;
 	}
       }
-      ++wordTotal;
+      continue;
+    }
+    string s;
+    UnicodeString us;
+    try {
+      us = pars[p]->text(classname);
+      if ( lowercase ){
+	us.toLower();
+      }
+      s = UnicodeToUTF8( us );
+    }
+    catch(...){
+    }
+    if ( s.empty() ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cerr << "found NO string in paragraph " << p << " (" << pars[p]->id() << ")" << endl;
+	}
+      }
+      continue;
+    }
+    vector<string> data;
+    size_t num = TiCC::split( s, data );
+    if ( verbose ){
 #pragma omp critical
       {
-	++wc[multiw];
+	cerr << "found string: '" << s << "'" << endl;
+	if ( num <= 1 ){
+	  cerr << "with no substrings" << endl;
+	}
+	else {
+	  using TiCC::operator<<;
+	  cerr << "with " << num << " substrings: " << data << endl;
+	}
       }
     }
+    add_emph_inventory( data, emph );
+    wordTotal += add_word_inventory( data, wc, nG, sep );
   }
   return wordTotal;
 }
@@ -674,7 +736,7 @@ void usage( const string& name ){
   cerr << "\t\t\t (words consisting of single, space separated letters)" << endl;
   cerr << "\t-t\t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
-  cerr << "\t-v\t\t very verbose output." << endl;
+  cerr << "\t-v or --verbose\t very verbose output." << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-e\t\t expr: specify the expression all input files should match with." << endl;
   cerr << "\t-o\t\t name of the output file(s) prefix." << endl;
@@ -683,7 +745,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version" );
+		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
   try {
     opts.init(argc,argv);
   }
@@ -714,14 +776,43 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  verbose = opts.extract( 'v' );
+  verbose = opts.extract( 'v' ) || opts.extract( "verbose" );
   bool dopercentage = opts.extract('p');
   bool lowercase = opts.extract("lower");
+  string modes;
+  opts.extract("mode", modes );
+  Mode mode = W_IN_S;
+  if ( !modes.empty() ){
+    mode = stringToMode( modes );
+    if ( mode == UNKNOWN ){
+      cerr << "unknown --mode " << modes << endl;
+      return EXIT_FAILURE;
+    }
+  }
+  else {
+    mode = W_IN_D;
+  }
   string hempName;
   opts.extract("hemp", hempName );
   bool recursiveDirs = opts.extract( 'R' );
-  bool doparstr = opts.extract( 's' );
-  bool donoparstr = opts.extract( 'S' );
+  if ( opts.extract( 's' ) ) {
+    if ( !modes.empty() ){
+      cerr << "old style -s option cannot be combined with --mode option" << endl;
+      return EXIT_FAILURE;
+    }
+    else {
+      mode = S_IN_P;
+    }
+  }
+  if ( opts.extract( 'S' ) ){
+    if ( !modes.empty() ){
+      cerr << "old style -S option cannot be combined with --mode option" << endl;
+      return EXIT_FAILURE;
+    }
+    else {
+      mode = S_IN_D;
+    }
+  }
   bool do_under = opts.extract( "underscore" );
   string sep = " ";
   if ( do_under ){
@@ -769,8 +860,7 @@ int main( int argc, char *argv[] ){
   }
 
 #ifdef HAVE_OPENMP
-  if ( numThreads != 1 )
-    omp_set_num_threads( numThreads );
+  omp_set_num_threads( numThreads );
 #endif
 
   vector<string> massOpts = opts.getMassOpts();
@@ -798,9 +888,6 @@ int main( int argc, char *argv[] ){
   }
 
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
   map<string,unsigned int> wc;
@@ -829,15 +916,27 @@ int main( int argc, char *argv[] ){
     unsigned int word_count = 0;
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
-    if ( doparstr ){
+    switch ( mode ){
+    case S_IN_P:
       word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
+      break;
+    case T_IN_P:
+      word_count = par_text_inventory( d, docName, nG, lowercase,
+				       lang, wc, emph, sep );
+      break;
+    case S_IN_D:
+      word_count = doc_str_inventory( d, docName, nG, lowercase,
+				      lang, wc, emph, sep );
+      break;
+    case W_IN_D:
+      word_count = doc_word_inventory( d, docName, nG, lowercase,
+				       lang, wc, lc, lpc, lem_count,
+				       pos_count, emph, sep );
+      break;
+    default:
+      cerr << "not yet implemented mode: " << modes << endl;
+      exit( EXIT_FAILURE );
     }
-    else if ( donoparstr ){
-      word_count = str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
-    }
-    else
-      word_count = word_inventory( d, docName, nG, lowercase,
-				   lang, wc, lc, lpc, lem_count, pos_count, emph, sep );
     wordTotal += word_count;
     lemTotal += lem_count;
     posTotal += pos_count;
@@ -886,7 +985,7 @@ int main( int argc, char *argv[] ){
     }
 #pragma omp section
     {
-      if ( !( doparstr || donoparstr ) ){
+      if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmafreqlist" + ext;
 	create_lf_list( lc, filename, lemTotal, clip, dopercentage );
@@ -894,7 +993,7 @@ int main( int argc, char *argv[] ){
     }
 #pragma omp section
     {
-      if ( !( doparstr || donoparstr ) ){
+      if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmaposfreqlist" + ext;
 	create_lpf_list( lpc, filename, posTotal, clip, dopercentage );

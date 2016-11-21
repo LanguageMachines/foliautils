@@ -87,6 +87,10 @@ PKG_CHECK_MODULES([ticcutils], [ticcutils >= 0.6] )
 CXXFLAGS="$ticcutils_CFLAGS $CXXFLAGS"
 LIBS="$ticcutils_LIBS $LIBS"
 
+PKG_CHECK_MODULES([ucto], [ucto >= 0.9.4] )
+CXXFLAGS="$ucto_CFLAGS $CXXFLAGS"
+LIBS="$ucto_LIBS $LIBS"
+
 AC_ARG_WITH(folia,
        [  --with-folia=DIR       use libfolia installed in <DIR>;
                note that you can install folia in a non-default directory with

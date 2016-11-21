@@ -449,13 +449,24 @@ void correctNgrams( Paragraph* par,
 void correctParagraph( Paragraph* par,
 		       const map<string,vector<word_conf> >& variants,
 		       const set<string>& unknowns,
-		       const map<string,string>& puncts ){
-  vector<String*> sv = par->select<String>();
-  if ( sv.size() == 0 )
+		       const map<string,string>& puncts,
+		       bool doStrings ){
+  vector<FoliaElement*> ev;
+  if ( doStrings ){
+    vector<String*> sv = par->select<String>();
+    ev.resize(sv.size());
+    copy( sv.begin(), sv.end(), ev.begin() );
+  }
+  else {
+    vector<Word*> sv = par->select<Word>();
+    ev.resize(sv.size());
+    copy( sv.begin(), sv.end(), ev.begin() );
+  }
+  if ( ev.size() == 0 )
     return;
   int offset = 0;
   string corrected;
-  for ( const auto& s : sv ){
+  for ( const auto& s : ev ){
     vector<TextContent *> origV = s->select<TextContent>();
     string word = origV[0]->str();
     filter(word);
@@ -535,7 +546,9 @@ bool correctDoc( Document *doc,
 		 const map<string,vector<word_conf> >& variants,
 		 const set<string>& unknowns,
 		 const map<string,string>& puncts,
-		 int ngrams ){
+		 int ngrams,
+		 bool string_nodes,
+		 bool word_nodes ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
 			setname ) ){
     return false;
@@ -545,11 +558,11 @@ bool correctDoc( Document *doc,
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( const auto& par : pv ){
     try {
-      if ( ngrams > 1 ){
-	correctNgrams( par, variants, unknowns, puncts, ngrams );
+      if ( ngrams == 1 && ( string_nodes || word_nodes ) ){
+	correctParagraph( par, variants, unknowns, puncts, string_nodes );
       }
       else {
-	correctParagraph( par, variants, unknowns, puncts );
+	correctNgrams( par, variants, unknowns, puncts, ngrams );
       }
     }
     catch ( exception& e ){
@@ -570,7 +583,9 @@ void usage( const string& name ){
   cerr << "\t--class\t classname. (default '" << classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
-  //  cerr << "\t--gram\t n also analyse n-grams. Don't descend into <str> node" << endl;
+  cerr << "\t--ngram\t n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes" << endl;
+  cerr << "\t--string-nodes\t Only for UNIGRAMS: descend into <str> nodes. " << endl;
+  cerr << "\t--word-nodes\t Only for UNIGRAMS: descend into <w> nodes. " << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
@@ -597,7 +612,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:" );
+			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes" );
   try {
     opts.init( argc, argv );
   }
@@ -612,6 +627,8 @@ int main( int argc, const char *argv[] ){
   int ngram = 1;
   bool recursiveDirs = false;
   bool clear = false;
+  bool string_nodes = false;
+  bool word_nodes = false;
   string expression;
   string variantFileName;
   string unknownFileName;
@@ -666,6 +683,12 @@ int main( int argc, const char *argv[] ){
       cerr << "unsupported value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
+  }
+  string_nodes = opts.extract( "string-nodes" );
+  word_nodes = opts.extract( "word-nodes" );
+  if ( string_nodes && word_nodes ){
+    cerr << "--string-nodes and --word-nodes conflict" << endl;
+    exit(EXIT_FAILURE);
   }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
@@ -808,7 +831,7 @@ int main( int argc, const char *argv[] ){
 	cerr << "unable to create output file! " << outName << endl;
 	exit(EXIT_FAILURE);
       }
-      if ( correctDoc( doc, variants, unknowns, puncts, ngram ) ){
+      if ( correctDoc( doc, variants, unknowns, puncts, ngram, string_nodes, word_nodes ) ){
 	doc->save( outName );
 #pragma omp critical
 	{

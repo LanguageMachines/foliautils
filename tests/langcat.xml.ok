@@ -2,9 +2,9 @@
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4">
   <metadata type="native">
     <annotations>
-      <lang-annotation set="iso"/>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset" />
     </annotations>
-    <meta id="language">dut</meta>
+    <meta id="language">nld</meta>
   </metadata>
   <text xml:id="text">
     <p xml:id="text.p1">
@@ -13,13 +13,11 @@
     </p>
     <p xml:id="text.p2">
       <t class="OCR">c'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli, il mérite fcul un voyage, ne fut ce que pour fa poficion.</t>
-      <lang class="fre"/>
+      <lang class="fra"/>
     </p>
     <p xml:id="text.p3">
       <t class="OCR">Ok., en nu ook in het nederands!</t>
-      <lang class="dut"/>
+      <lang class="nld"/>
     </p>
   </text>
 </FoLiA>
-
-

@@ -1,9 +1,8 @@
-Failed to open config file './config/tc.txt'
-unable to init from: ./config/tc.txt
+missing input file(s)
 foliautils 0.5
 Usage: [options] dir/filename 
 --config=<file>	 use LM config from 'file'
---lang=<lan>	 use 'lan' for unindentified text. (default 'dut')
+--lang=<lan>	 use 'lan' for unindentified text. (default 'nld')
 -s		 examine text in <str> nodes. (default is to use the <p> nodes).
 --all		 assign ALL detected languages to the result. (default is to assign the most probable).
 --class=<cls>	 use 'cls' as the FoLiA classname for searching text. 
@@ -15,12 +14,12 @@ Usage: [options] dir/filename
 process data/langcat.test.xml
 document 'data/langcat.test.xml' has 3 paragraphs 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.4">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.5">
   <metadata type="native">
     <annotations>
-      <lang-annotation set="iso"/>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
     </annotations>
-    <meta id="language">dut</meta>
+    <meta id="language">nld</meta>
   </metadata>
   <text xml:id="text">
     <p xml:id="text.p1">
@@ -29,11 +28,11 @@ document 'data/langcat.test.xml' has 3 paragraphs
     </p>
     <p xml:id="text.p2">
       <t class="OCR">c'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli, il mérite fcul un voyage, ne fut ce que pour fa poficion.</t>
-      <lang class="fre"/>
+      <lang class="fra"/>
     </p>
     <p xml:id="text.p3">
       <t class="OCR">Ok., en nu ook in het nederands!</t>
-      <lang class="dut"/>
+      <lang class="nld"/>
     </p>
   </text>
 </FoLiA>

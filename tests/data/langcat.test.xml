@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v0.11">
   <metadata type="native">
+    <annotations>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset" />
+    </annotations>
   </metadata>
   <text xml:id="text">
     <p xml:id="text.p1">
       <t class="OCR">To be or not to be, that is the question</t>
+      <lang class="eng" />
     </p>
     <p xml:id="text.p2">
       <t class="OCR">c'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli, il mérite fcul un voyage, ne fut ce que pour fa poficion.</t>
