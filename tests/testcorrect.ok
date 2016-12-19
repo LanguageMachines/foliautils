@@ -25,6 +25,7 @@ start reading unknowns
 read 2 unknown words 
 start reading puncts 
 read 10 punctuated words 
+verbosity = 2
 correct ngrams in: '40ste vergadering'
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
@@ -32,12 +33,17 @@ correct ngrams in: '2003-2004'
 correct ngrams in: '40'
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+unigram corrections:
+behándeling : behandeling 
+opde : op de 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+unigram corrections:
+s4s67621 : UNK 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_str.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T14:36:58" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T17:01:41" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T14:36:28" set="Ticcl-set"/>
 start reading variants 
@@ -46,9 +52,10 @@ start reading unknowns
 read 2 unknown words 
 start reading puncts 
 read 10 punctuated words 
+verbosity = 2
 finished data/corr_str.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T14:36:58" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T17:01:41" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T15:58:11" set="Ticcl-set"/>
 start reading variants 
@@ -57,9 +64,10 @@ start reading unknowns
 read 2 unknown words 
 start reading puncts 
 read 10 punctuated words 
+verbosity = 2
 finished data/corr_word.xml
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T14:36:58" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T17:01:41" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-11-16T17:20:32" set="Ticcl-set"/>
 start reading variants 
@@ -68,15 +76,40 @@ start reading unknowns
 read 2 unknown words 
 start reading puncts 
 read 10 punctuated words 
+verbosity = 2
 correct ngrams in: '40ste vergadering'
+ = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+ = 2 => Aan 
+ = 2 => de 
+ = 2 => orde 
+ = 2 => is 
+ = 2 => de 
+ = 2 => behandeling 
+ = 2 => van: 
+ = 2 => het 
+ = 2 => wetsvoorstel 
+ = 2 => Wijziging van 
+ = 2 => de 
+ = 2 => Wet 
+ = 2 => op de 
+ = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+ = 2 => Deze 
+ = 2 => wetsvoorstellen 
+ = 2 => worden 
+ = 2 => zonder 
+ = 2 => UNK 
+ = 2 => en 
+ = 2 => zonder 
+ = 2 => steming 
+ = 2 => aangenomen 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr.xml
 2c2
@@ -84,7 +117,7 @@ finished data/corr.xml
 ---
 > <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T14:36:58" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T17:01:41" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:43:11" set="Ticcl-set"/>
 start reading variants 
@@ -93,15 +126,37 @@ start reading unknowns
 read 2 unknown words 
 start reading puncts 
 read 10 punctuated words 
+verbosity = 2
 correct ngrams in: '40ste vergadering'
+ = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+ = 2 => Aan 
+ = 2 => de 
+ = 2 => orde 
+ = 2 => is 
+ = 2 => de 
+ = 2 => behandeling 
+ = 2 => van: 
+ = 2 => het 
+ = 2 => wetsvoorstel 
+ = 2 => Wijziging van 
+ = 2 => de 
+ = 2 => Wet 
+ = 2 => op de 
+ = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+ = 2 => Deze 
+ = 2 => wetsvoorstellen 
+ = 2 => worden 
+ = 2 => zonder 
+ = 2 => UNK 
+ = 2 => en 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.xml
 2c2
@@ -109,6 +164,6 @@ finished data/corr.xml
 ---
 > <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
 7c7
-<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T14:36:58" set="Ticcl-set"/>
+<       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-12-19T17:01:41" set="Ticcl-set"/>
 ---
 >       <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2016-08-11T17:52:27" set="Ticcl-set"/>
