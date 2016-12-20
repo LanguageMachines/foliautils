@@ -1,4 +1,13 @@
 *.err
 *.out
 *.diff
-out
+out*
+corr.ticcl.xml
+corr_str.ticcl.xml
+corr_word.ticcl.xml
+statS.wordfreqlist.3-gram.tsv
+stats.lemmafreqlist.eng.tsv
+stats.lemmaposfreqlist.eng.tsv
+stats.wordfreqlist.3-gram.tsv
+stats.wordfreqlist.eng.tsv
+stats.wordfreqlist.tsv
