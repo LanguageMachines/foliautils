@@ -145,7 +145,7 @@ void procesFile( const TextCat& tc,
     exit( EXIT_FAILURE);
   }
 
-  ofstream os( outName.c_str() );
+  ofstream os( outName );
   for ( size_t i=0; i < Size; ++i ){
     TextContent *t = 0;
     string id = "NO ID";
