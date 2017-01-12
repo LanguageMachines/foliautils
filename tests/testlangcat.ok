@@ -14,7 +14,7 @@ Usage: [options] dir/filename
 process data/langcat.test.xml
 document 'data/langcat.test.xml' has 3 paragraphs 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.5">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.6.1">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
@@ -33,6 +33,25 @@ document 'data/langcat.test.xml' has 3 paragraphs
     <p xml:id="text.p3">
       <t class="OCR">Ok., en nu ook in het nederands!</t>
       <lang class="nld"/>
+    </p>
+  </text>
+</FoLiA>
+
+
+process data/langcat.test2.xml
+document 'data/langcat.test2.xml' has 1 paragraphs 
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.6.1">
+  <metadata type="native">
+    <annotations>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
+    </annotations>
+    <meta id="language">nld</meta>
+  </metadata>
+  <text xml:id="text">
+    <p xml:id="text.p1">
+      <t class="OCR">This is the question. C'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli.</t>
+      <lang class="fra|eng"/>
     </p>
   </text>
 </FoLiA>
