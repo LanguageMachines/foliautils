@@ -48,7 +48,7 @@ bool verbose = false; // not yest used
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int total ){
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
@@ -76,7 +76,7 @@ struct rec {
 
 void create_lf_list( const map<string, unsigned int>& lc,
 		     const string& filename, unsigned int total ){
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
@@ -100,7 +100,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
 
 void create_lpf_list( const multimap<string, rec>& lpc,
 		      const string& filename, unsigned int total ){
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
@@ -150,7 +150,7 @@ unsigned int fillWF( const string& fName,
 		     map<string,unsigned int>& wf,
 		     bool keepSingles ){
   unsigned int total = 0;
-  ifstream is( fName.c_str() );
+  ifstream is( fName );
   while ( is ){
     string line;
     getline( is, line );
@@ -172,7 +172,7 @@ unsigned int fillLF( const string& fName,
 		     map<string,unsigned int>& lf,
 		     bool keepSingles ){
   unsigned int total = 0;
-  ifstream is( fName.c_str() );
+  ifstream is( fName );
   while ( is ){
     string line;
     getline( is, line );
@@ -194,7 +194,7 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
 		      multimap<string, rec>& lpc,
 		      bool keepSingles ){
   unsigned int total = 0;
-  ifstream is( fName.c_str() );
+  ifstream is( fName );
   while ( is ){
     string line;
     getline( is, line );
@@ -359,8 +359,7 @@ int main( int argc, char *argv[] ){
     {
       map<string,unsigned int> wf;
       unsigned int total = 0;
-      for ( size_t fn=0; fn < wfNames.size(); ++fn ){
-	string fName = wfNames[fn];
+      for ( const auto& fName : wfNames ){
 #pragma omp critical (log)
 	{
 	  cout << "\twords \t" << fName << endl;
@@ -387,8 +386,7 @@ int main( int argc, char *argv[] ){
     {
       map<string,unsigned int> lf;
       unsigned int total = 0;
-      for ( size_t fn=0; fn < lfNames.size(); ++fn ){
-	string fName = lfNames[fn];
+      for ( const auto& fName : lfNames ){
 #pragma omp critical (log)
 	{
 	  cout << "\tlemmas \t" << fName << endl;
@@ -416,8 +414,7 @@ int main( int argc, char *argv[] ){
     {
       multimap<string, rec> lpc;
       unsigned int total = 0;
-      for ( size_t fn=0; fn < lpfNames.size(); ++fn ){
-	string fName = lpfNames[fn];
+      for ( const auto& fName : lpfNames ){
 #pragma omp critical (log)
 	{
 	  cout << "\tlemmapos \t" << fName << endl;

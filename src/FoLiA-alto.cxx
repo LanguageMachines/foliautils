@@ -77,7 +77,7 @@ void docCache::clear(){
 void docCache::add( const string& dir, const string& f ){
   string file = dir + f;
   if ( cache.find( f ) == cache.end() ){
-    ifstream is( file.c_str() );
+    ifstream is( file );
     if ( is ){
       if ( verbose ){
 #pragma omp critical
@@ -523,7 +523,7 @@ bool download( const string& alto_cache,
       urns[id] = ref;
       if ( !fn.empty() ){
 	fn = alto_cache + fn;
-	ifstream is( fn.c_str() );
+	ifstream is( fn );
 	if ( !is ){
 	  // not yet downloaded
 	  ref_file_map[ref] = fn;
@@ -623,7 +623,7 @@ bool download( const string& alto_cache,
     if ( ref.find( ":alto" ) != string::npos ){
       if ( !fn.empty() ){
 	fn = alto_cache + fn;
-	ifstream is( fn.c_str() );
+	ifstream is( fn );
 	if ( !is ){
 	  // not yet downloaded
 	  ref_file_map[ref] = fn;
