@@ -391,10 +391,10 @@ size_t doc_word_inventory( const Document *d, const string& docName,
     if ( words.size() < nG )
       continue;
     vector<wlp_rec> data;
-    for ( unsigned int i=0; i < words.size(); ++i ){
+    for ( const auto& w : words ){
       wlp_rec rec;
       try {
-	UnicodeString uword = words[i]->text(classname);
+	UnicodeString uword = w->text(classname);
 	if ( lowercase ){
 	  uword.toLower();
 	}
@@ -403,27 +403,27 @@ size_t doc_word_inventory( const Document *d, const string& docName,
       catch(...){
 #pragma omp critical
 	{
-	  cerr << "missing text for word " << words[i]->id() << endl;
+	  cerr << "missing text for word " << w->id() << endl;
 	}
 	break;
       }
       try {
-	rec.lemma = words[i]->lemma(frog_mblemtagset);
+	rec.lemma = w->lemma(frog_mblemtagset);
       }
       catch(...){
 	try {
-	  rec.lemma = words[i]->lemma();
+	  rec.lemma = w->lemma();
 	}
 	catch(...){
 	  rec.lemma = "";
 	}
       }
       try {
-	rec.pos = words[i]->pos(frog_cgntagset);
+	rec.pos = w->pos(frog_cgntagset);
       }
       catch(...){
 	try {
-	  rec.pos = words[i]->pos();
+	  rec.pos = w->pos();
 	}
 	catch (...){
 	  rec.pos = "";
@@ -553,10 +553,10 @@ size_t doc_str_inventory( const Document *d, const string& docName,
   if ( strings.size() < nG )
     return 0;
   vector<string> data;
-  for ( unsigned int i=0; i < strings.size(); ++i ){
+  for ( const auto& s : strings ){
     UnicodeString us;
     try {
-      us = strings[i]->text(classname);
+      us = s->text(classname);
       if ( lowercase ){
 	us.toLower();
       }
@@ -564,7 +564,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
     catch(...){
 #pragma omp critical
       {
-	cerr << "missing text for word " << strings[i]->id() << endl;
+	cerr << "missing text for word " << s->id() << endl;
       }
       break;
     }
@@ -599,8 +599,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
   }
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
-  for ( unsigned int p=0; p < pars.size(); ++p ){
-    vector<String*> strings = pars[p]->select<String>();
+  for ( const auto& p : pars ){
+    vector<String*> strings = p->select<String>();
     if ( verbose ){
 #pragma omp critical
       {
@@ -617,10 +617,10 @@ size_t par_str_inventory( const Document *d, const string& docName,
     if ( strings.size() < nG )
       continue;
     vector<string> data;
-    for ( unsigned int i=0; i < strings.size(); ++i ){
+    for ( const auto& s : strings ){
       UnicodeString us;
       try {
-	us = strings[i]->text(classname);
+	us = s->text(classname);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -628,7 +628,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
       catch(...){
 #pragma omp critical
 	{
-	  cerr << "missing text for word " << strings[i]->id() << endl;
+	  cerr << "missing text for word " << s->id() << endl;
 	}
       break;
       }
@@ -638,7 +638,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     if ( data.size() != strings.size() ) {
 #pragma omp critical
       {
-	cerr << "Error: Missing words! skipped paragraph " << pars[p]->id() << " in " << docName << endl;
+	cerr << "Error: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
       }
       continue;
     }
@@ -664,8 +664,8 @@ size_t par_text_inventory( const Document *d, const string& docName,
   }
   size_t wordTotal = 0;
   vector<Paragraph*> pars = d->paragraphs();
-  for ( unsigned int p=0; p < pars.size(); ++p ){
-    string p_lang = pars[p]->language();
+  for ( const auto& p : pars ){
+    string p_lang = p->language();
     if ( p_lang != lang && lang != "none" ){
       if ( verbose ){
 #pragma omp critical
@@ -678,7 +678,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
     string s;
     UnicodeString us;
     try {
-      us = pars[p]->text(classname);
+      us = p->text(classname);
       if ( lowercase ){
 	us.toLower();
       }
@@ -690,7 +690,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       if ( verbose ){
 #pragma omp critical
 	{
-	  cerr << "found NO string in paragraph " << p << " (" << pars[p]->id() << ")" << endl;
+	  cerr << "found NO string in paragraph: " << p->id() << endl;
 	}
       }
       continue;
