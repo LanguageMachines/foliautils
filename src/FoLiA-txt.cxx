@@ -125,7 +125,7 @@ int main( int argc, char *argv[] ){
   if ( toDo == 1 ){
     if ( TiCC::isDir( fileNames[0] ) ){
       fileNames = TiCC::searchFiles( fileNames[0] );
-      toDo = fileNames.size();      
+      toDo = fileNames.size();
       if ( toDo == 0 ){
 	cerr << "no files found in inputdir" << endl;
 	exit(EXIT_SUCCESS);
@@ -146,7 +146,7 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames )
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string fileName = fileNames[fn];
-    ifstream is( fileName.c_str() );
+    ifstream is( fileName );
     if ( !is ){
 #pragma omp critical
       {
@@ -203,7 +203,7 @@ int main( int argc, char *argv[] ){
       }
       vector<string> words;
       TiCC::split( line, words );
-      for ( size_t i=0; i < words.size(); ++i ){
+      for ( const auto& w : words ){
 	if ( par == 0 ){
 	  folia::KWargs args;
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
@@ -211,8 +211,7 @@ int main( int argc, char *argv[] ){
 	  par = new folia::Paragraph( args, d );
 	  wrdCnt = 0;
 	}
-	string content = words[i];
-	content = filterMeuck( content );
+	string content = w;
 	content = TiCC::trim( content);
 	if ( !content.empty() ){
 	  folia::KWargs args;
