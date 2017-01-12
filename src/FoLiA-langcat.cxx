@@ -68,12 +68,13 @@ void addLang( TextContent *t,
   // we expect something like [dutch][french]
   //
   string val;
-  for ( size_t i = 0; i < lv.size(); ++i ){
-    if ( i > 0 )
-      val += "|";
-    val += lv[i];
+  for ( const auto& l : lv ){
+    val += l;
     if ( !doAll )
       break;
+    if ( &l != &lv.back() ){
+      val += "|";
+    }
   }
   if ( !val.empty() ){
     setlang( t->parent(), val );

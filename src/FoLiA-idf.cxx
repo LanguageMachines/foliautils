@@ -48,7 +48,7 @@ bool verbose = false;
 
 void create_idf_list( const map<string, unsigned int>& wc,
 		      const string& filename, unsigned int clip ){
-  ofstream os( filename.c_str() );
+  ofstream os( filename );
   if ( !os ){
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
