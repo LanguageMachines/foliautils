@@ -106,10 +106,11 @@ void process( folia::FoliaElement *out,
     vector<string> parts;
     TiCC::split( vec[i], parts );
     string parTxt;
-    for ( size_t j=0; j< parts.size(); ++j ){
-      parTxt += parts[j];
-      if ( j != parts.size()-1 )
+    for ( auto const& p : parts ){
+      parTxt += p;
+      if ( &p != &parts.back() ){
 	parTxt += " ";
+      }
     }
     folia::Paragraph *par
       = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + refs[i] + "'" ),  out->doc() );
@@ -132,10 +133,11 @@ void process( folia::FoliaElement *out,
     vector<string> parts;
     TiCC::split( line, parts );
     string parTxt;
-    for ( size_t j=0; j< parts.size(); ++j ){
-      parTxt += parts[j];
-      if ( j != parts.size()-1 )
+    for ( const auto& p : parts ){
+      parTxt += p;
+      if ( &p != &parts.back() ){
 	parTxt += " ";
+      }
     }
     folia::Paragraph *par
       = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + labels.at(value.first) + "'"), out->doc() );
@@ -317,9 +319,6 @@ bool convert_pagexml( const string& fileName,
     }
   }
   xmlFreeDoc( xdoc );
-  // for ( size_t i=0; i < regionStrings.size(); ++i ){
-  //    cerr << "[" << i << "]-" << regionStrings[i] << endl;
-  // }
 
   string docid = orgFile;
   if ( isdigit(docid[0]) ){
