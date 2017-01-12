@@ -65,7 +65,7 @@ ostream& operator<<( ostream& os, const word_conf& wc ){
 bool fillVariants( const string& fn,
 		   map<string,vector<word_conf> >& variants,
 		   size_t numSugg ){
-  ifstream is( fn.c_str() );
+  ifstream is( fn );
   string line;
   string current_word;
   vector<word_conf> vec;
@@ -104,7 +104,7 @@ bool fillVariants( const string& fn,
 }
 
 bool fillUnknowns( const string& fn, set<string>& unknowns ){
-  ifstream is( fn.c_str() );
+  ifstream is( fn );
   string line;
   while ( getline( is, line ) ) {
     vector<string> parts;
@@ -127,7 +127,7 @@ bool fillUnknowns( const string& fn, set<string>& unknowns ){
 }
 
 bool fillPuncts( const string& fn, map<string,string>& puncts ){
-  ifstream is( fn.c_str() );
+  ifstream is( fn );
   string line;
   while ( getline( is, line ) ) {
     vector<string> parts;
@@ -142,9 +142,9 @@ bool fillPuncts( const string& fn, map<string,string>& puncts ){
 }
 
 void filter( string& word ){
-  for ( size_t i=0; i < word.size(); ++i ){
-    if ( word[i] == '#' )
-      word[i] = '.';
+  for ( auto& w : word ){
+    if ( w == '#' )
+      w = '.';
   }
 }
 
