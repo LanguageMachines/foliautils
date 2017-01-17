@@ -7,6 +7,7 @@ foliautils 0.5  17-01-2017
  * improved tests
  * bug fixes in FoLiA-correct unigram correction
  * extended and improved FoLiA-pm a lot
+ * changed default values for '--lang' and '--class' in FoLiA-stats
  * FoLiA-alto can now work without a Didl too
  * numerous additions...
 
