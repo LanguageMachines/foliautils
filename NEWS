@@ -1,3 +1,15 @@
+foliautils 0.5  17-01-2017
+[Ko van der Sloot]
+ * based on libfolia 1.5 or higher
+ * use recent ucto with textcat support
+ * use ISO 639-3 language names
+ * lot's of code refactoring
+ * improved tests
+ * bug fixes in FoLiA-correct unigram correction
+ * extended and improved FoLiA-pm a lot
+ * FoLiA-alto can now work without a Didl too
+ * numerous additions...
+
 foliautils 0.4  24-05-2016
 [Ko van der Sloot]
  * added FoLiA-pm, a convertor from Political Mashup format to FoLiA
