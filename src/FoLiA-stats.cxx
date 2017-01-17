@@ -727,11 +727,11 @@ void usage( const string& name ){
   cerr << "\t-p\t\t output percentages too. " << endl;
   cerr << "\t--lower\t\t Lowercase all words" << endl;
   cerr << "\t--underscore\t connect all words with underscores" << endl;
-  cerr << "\t--lang\t\t Language. (default='dut'). 'none' is also possible" << endl;
+  cerr << "\t--lang\t\t Language. (default='none')." << endl;
   cerr << "\t--ngram\t\t Ngram count " << endl;
   cerr << "\t-s\t\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t\t Process <str> nodes not <w> per document" << endl;
-  cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')" << endl;
+  cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t\t (words consisting of single, space separated letters)" << endl;
   cerr << "\t-t\t\t number_of_threads" << endl;
@@ -766,7 +766,7 @@ int main( int argc, char *argv[] ){
 #endif
   string expression;
   string outputPrefix;
-  string lang = "dut";
+  string lang = "none";
   string value;
   if ( opts.extract('V') || opts.extract("version") ){
     cerr << PACKAGE_STRING << endl;
@@ -968,7 +968,7 @@ int main( int argc, char *argv[] ){
   }
   cout << "start calculating the results" << endl;
   string ext;
-  if ( !lang.empty() && lang != "dut" ){
+  if ( !lang.empty() && lang != "none" ){
     ext += "." + lang;
   }
   if ( nG > 1 ){

@@ -8,11 +8,11 @@ Usage: FoLiA-stats [options] file/dir
 	-p		 output percentages too. 
 	--lower		 Lowercase all words
 	--underscore	 connect all words with underscores
-	--lang		 Language. (default='dut'). 'none' is also possible
+	--lang		 Language. (default='none').
 	--ngram		 Ngram count 
 	-s		 Process <str> nodes not <w> per <p> node
 	-S		 Process <str> nodes not <w> per document
-	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')
+	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')
 	--hemp=<file>	 Create a historical emphasis file. 
 			 (words consisting of single, space separated letters)
 	-t		 number_of_threads
@@ -33,11 +33,11 @@ Usage: FoLiA-stats [options] file/dir
 	-p		 output percentages too. 
 	--lower		 Lowercase all words
 	--underscore	 connect all words with underscores
-	--lang		 Language. (default='dut'). 'none' is also possible
+	--lang		 Language. (default='none').
 	--ngram		 Ngram count 
 	-s		 Process <str> nodes not <w> per <p> node
 	-S		 Process <str> nodes not <w> per document
-	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'OCR')
+	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')
 	--hemp=<file>	 Create a historical emphasis file. 
 			 (words consisting of single, space separated letters)
 	-t		 number_of_threads
