@@ -33,6 +33,8 @@ correct ngrams in: '2003-2004'
 correct ngrams in: '40'
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+behándeling = 11 => behandeling 
+opde = 12 => op de 
 unigram corrections:
 behándeling : behandeling 
 opde : op de 
@@ -42,6 +44,12 @@ unigram corrections:
 s4s67621 : UNK 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_str.xml
+edit statistics: 
+	edit	 count
+	11	1
+	12	1
+	TOKENS	30
+	UNK 	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -78,13 +86,16 @@ correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsigi
  = 2 => orde 
  = 2 => is 
  = 2 => de 
+behándeling = 11 => behandeling 
  = 2 => behandeling 
  = 2 => van: 
  = 2 => het 
  = 2 => wetsvoorstel 
+Wijsiging_van = 22 => Wijziging van 
  = 2 => Wijziging van 
  = 2 => de 
  = 2 => Wet 
+opde = 12 => op de 
  = 2 => op de 
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
@@ -100,6 +111,13 @@ correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemin
  = 2 => aangenomen 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr.xml
+edit statistics: 
+	edit	 count
+	11	1
+	12	1
+	22	1
+	TOKENS	30
+	UNK 	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -120,13 +138,16 @@ correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsigi
  = 2 => orde 
  = 2 => is 
  = 2 => de 
+behándeling = 11 => behandeling 
  = 2 => behandeling 
  = 2 => van: 
  = 2 => het 
  = 2 => wetsvoorstel 
+Wijsiging_van = 22 => Wijziging van 
  = 2 => Wijziging van 
  = 2 => de 
  = 2 => Wet 
+opde = 12 => op de 
  = 2 => op de 
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
@@ -139,3 +160,11 @@ correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemin
  = 2 => en 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.xml
+edit statistics: 
+	edit	 count
+	11	1
+	12	1
+	22	1
+	33	1
+	TOKENS	30
+	UNK 	1

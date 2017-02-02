@@ -174,22 +174,27 @@ bool correct_one_unigram( const string& w,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    string ed;
     switch ( num ){
     case 1:
-      ++counts["11"];
+      ed ="11";
       break;
     case 2:
-      ++counts["12"];
+      ed = "12";
       break;
     case 3:
-      ++counts["13"];
+      ed = "13";
       break;
     case 4:
-      ++counts["14"];
+      ed = "14";
       break;
     default:
       break;
       // just ignore for now
+    }
+    ++counts[ed];
+    if ( verbose > 1 ){
+      cout << word << " = " << ed << " => " << result << endl;
     }
     did_edit = true;
   }
@@ -209,9 +214,6 @@ bool correct_one_unigram( const string& w,
       // just use the word
       result = word + " ";
     }
-  }
-  if ( verbose > 2 ){
-    cout << " = 1 => " << result << endl;
   }
   return did_edit;
 }
@@ -262,25 +264,27 @@ int correct_one_bigram( const string& bi,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    string ed;
     switch ( num ){
     case 1:
-      ++counts["21"];
+      ed ="21";
       break;
     case 2:
-      ++counts["22"];
+      ed = "22";
       break;
     case 3:
-      ++counts["23"];
+      ed = "23";
       break;
     case 4:
-      ++counts["24"];
+      ed = "24";
       break;
     default:
       break;
       // just ignore for now
     }
-    if ( verbose > 2 ){
-      cout << " = 2 => " << result << endl;
+    ++counts[ed];
+    if ( verbose > 1 ){
+      cout << word << " = " << ed << " => " << result << endl;
     }
     extra_skip = 1;
   }
@@ -371,22 +375,27 @@ int correct_one_trigram( const string& tri,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    string ed;
     switch ( num ){
     case 1:
-      ++counts["31"];
+      ed ="31";
       break;
     case 2:
-      ++counts["32"];
+      ed = "32";
       break;
     case 3:
-      ++counts["33"];
+      ed = "33";
       break;
     case 4:
-      ++counts["34"];
+      ed = "34";
       break;
     default:
       break;
       // just ignore for now
+    }
+    ++counts[ed];
+    if ( verbose > 2 ){
+      cout << word << " = " << ed << " => " << result << endl;
     }
     extra_skip = 2;
   }
@@ -415,9 +424,6 @@ int correct_one_trigram( const string& tri,
 				       puncts, corr, counts );
       result += corr;
     }
-  }
-  if ( verbose > 2 ){
-    cout << " = 3 => " << result << " skip=" << extra_skip << endl;
   }
   return extra_skip;
 }
@@ -500,6 +506,7 @@ void correctNgrams( Paragraph* par,
   TiCC::split( content, unigrams );
   vector<string> bigrams;
   vector<string> trigrams;
+  counts["TOKENS"] += unigrams.size();
   if ( ngrams > 1  && unigrams.size() > 1 ){
     for ( size_t i=0; i < unigrams.size()-1; ++i ){
       string bi;
@@ -975,9 +982,11 @@ int main( int argc, const char *argv[] ){
   else {
     cout << "finished " << name << endl;
   }
-  cout << "edit statistics: " << endl;
-  cout << "\tedit\t count" << endl;
-  for ( const auto& it : total_counts ){
-    cout << "\t" << it.first << "\t" << it.second << endl;
+  if ( !total_counts.empty() ){
+    cout << "edit statistics: " << endl;
+    cout << "\tedit\t count" << endl;
+    for ( const auto& it : total_counts ){
+      cout << "\t" << it.first << "\t" << it.second << endl;
+    }
   }
 }
