@@ -22,7 +22,7 @@ Usage: FoLiA-stats [options] file/dir
 	-e		 expr: specify the expression all input files should match with.
 	-o		 name of the output file(s) prefix.
 	-R		 search the dirs recursively (when appropriate).
-foliautils 0.5
+foliautils 0.6
 Usage: FoLiA-stats [options] file/dir
 		 FoLiA-stats will produce ngram statistics for a FoLiA file, 
 		 or a whole directory of FoLiA files 

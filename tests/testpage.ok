@@ -1,5 +1,5 @@
 missing input file(s)
-FoLiA-page [foliautils 0.5]
+FoLiA-page [foliautils 0.6]
 Usage: FoLiA-page [options] file/dir
 	-t		 number_of_threads
 	-h or --help	 this messages 

@@ -1,5 +1,5 @@
 missing input file(s)
-foliautils 0.5
+foliautils 0.6
 Usage: [options] dir/filename 
 --config=<file>	 use LM config from 'file'
 --lang=<lan>	 use 'lan' for unindentified text. (default 'nld')

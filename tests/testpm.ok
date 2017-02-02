@@ -8,7 +8,7 @@ Usage: FoLiA-pm [options] files/dir
 	-O	 output directory 
 	-v	 verbose output 
 	-V	 show version 
-foliautils 0.5
+foliautils 0.6
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed
@@ -19,11 +19,11 @@ Usage: FoLiA-pm [options] files/dir
 	-v	 verbose output 
 	-V	 show version 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm5.xml" generator="libfolia-v1.4" version="1.3.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm5.xml" generator="libfolia-v1.6.1" version="1.4.0">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2017-02-02T11:36:17" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2017-02-02T11:36:17" set="polmash"/>
     </annotations>
     <foreign-data>
       <meta xmlns="http://www.politicalmashup.nl" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pm="http://www.politicalmashup.nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1785,11 +1785,11 @@ Usage: FoLiA-pm [options] files/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm4.xml" generator="libfolia-v1.4" version="1.3.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm4.xml" generator="libfolia-v1.6.1" version="1.4.0">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2017-02-02T11:36:17" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2017-02-02T11:36:17" set="polmash"/>
     </annotations>
     <foreign-data>
       <meta xmlns="http://www.politicalmashup.nl" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pm="http://www.politicalmashup.nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1881,11 +1881,11 @@ Usage: FoLiA-pm [options] files/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.sgd.d.189818990000112.2" generator="libfolia-v1.4" version="1.3.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.sgd.d.189818990000112.2" generator="libfolia-v1.6.1" version="1.4.0">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-09-29T16:36:11" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2017-02-02T11:36:17" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2017-02-02T11:36:17" set="polmash"/>
     </annotations>
   </metadata>
   <text xml:id="nl.proc.sgd.d.189818990000112.2.text">
