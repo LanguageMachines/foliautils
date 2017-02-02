@@ -394,7 +394,7 @@ int correct_one_trigram( const string& tri,
       // just ignore for now
     }
     ++counts[ed];
-    if ( verbose > 2 ){
+    if ( verbose > 1 ){
       cout << word << " = " << ed << " => " << result << endl;
     }
     extra_skip = 2;
