@@ -158,6 +158,7 @@ correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemin
  = 2 => zonder 
  = 2 => UNK 
  = 2 => en 
+zonder_steming_aangenomen = 33 => zonder stemming aangenomen 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.xml
 edit statistics: 
