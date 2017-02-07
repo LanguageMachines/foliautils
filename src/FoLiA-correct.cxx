@@ -45,7 +45,9 @@
 using namespace	std;
 using namespace	folia;
 
+const char SEPCHAR = '_';
 const string SEPARATOR = "_";
+
 int verbose = 0;
 string classname = "Ticcl";
 string setname = "Ticcl-set";
@@ -141,11 +143,15 @@ bool fillPuncts( const string& fn, map<string,string>& puncts ){
   return !puncts.empty();
 }
 
-void filter( string& word ){
+void filter( string& word, char c ){
   for ( auto& w : word ){
-    if ( w == '#' )
+    if ( w == c )
       w = '.';
   }
+}
+
+void filter( string& word ){
+  filter( word, '#' );
 }
 
 bool correct_one_unigram( const string& w,
@@ -502,6 +508,7 @@ void correctNgrams( Paragraph* par,
       cerr << "correct ngrams in: '" << content << "'" << endl;
     }
   }
+  filter( content, SEPCHAR ); // HACK
   vector<string> unigrams;
   TiCC::split( content, unigrams );
   vector<string> bigrams;
