@@ -47,7 +47,7 @@ using namespace	TiCC;
 void clean_folia( FoliaElement *node,
 		  const string& text,
 		  bool current,
-		  const set<string>& setnames ){
+		  map<AnnotationType::AnnotationType,set<string>>& setnames ){
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
     if ( p->element_id() == TextContent_t ) {
@@ -64,8 +64,10 @@ void clean_folia( FoliaElement *node,
     }
     else {
       cerr << "clean anno: bekijk " << p << endl;
+      AnnotationType::AnnotationType at = p->annotation_type();
       string set = p->sett();
-      if ( !set.empty() && setnames.find(set) != setnames.end() ){
+      if ( !set.empty()
+	   && setnames[at].find(set) != setnames[at].end() ){
 	cerr << "matched : " << set << endl;
 	cerr << "remove" << p << endl;
 	node->remove(p,true);
@@ -82,9 +84,14 @@ void clean_doc( Document *d,
 		const string& outname,
 		const string& text,
 		bool current,
-		const set<string>& setnames ){
+		map<AnnotationType::AnnotationType,set<string>>& setnames ){
   FoliaElement *root = d->doc();
   clean_folia( root, text, current, setnames );
+  for( const auto& it : setnames ){
+    for ( const auto& set : it.second ){
+      d->un_declare( it.first, set );
+    }
+  }
   d->save( outname );
 }
 
@@ -103,7 +110,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanset:,help,version,retaintok" );
+  CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok" );
   try {
     opts.init(argc,argv);
   }
@@ -143,10 +150,23 @@ int main( int argc, char *argv[] ){
     cerr << "missing value for --textclass" << endl;
     exit(EXIT_FAILURE);
   }
-  set<string> clean_sets;
-  string set;
-  while ( opts.extract( "cleanset", set ) ){
-    clean_sets.insert( set );
+  map<AnnotationType::AnnotationType,set<string>> clean_sets;
+  string line;
+  while ( opts.extract( "cleanannoset", line ) ){
+    vector<string> vals;
+    if ( TiCC::split_at( line, vals, ":" ) != 2 ){
+      cerr << "invalid value in cleanannoset: '" << line << "'" << endl;
+      exit(EXIT_FAILURE);
+    }
+    AnnotationType::AnnotationType at;
+    try {
+      at = stringTo<AnnotationType::AnnotationType>( vals[0] );
+    }
+    catch ( exception& e){
+      cerr << e.what() << endl;
+      exit(EXIT_FAILURE);
+    }
+    clean_sets[at].insert(vals[1]);
   }
 #ifdef HAVE_OPENMP
   omp_set_num_threads( numThreads );
