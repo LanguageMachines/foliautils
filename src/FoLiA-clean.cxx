@@ -51,24 +51,30 @@ void clean_folia( FoliaElement *node,
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
     if ( p->element_id() == TextContent_t ) {
-      cerr << "clean text: bekijk " << p << endl;
-      cerr << "p.text(" << p->cls() << ")" << endl;
-      if ( p->cls() != text ){
-	cerr << "remove" << p << endl;
-	node->remove(p,true);
-	--i;
-      }
-      else {
-	clean_folia( p, text, current, setnames );
+      if ( !text.empty() ){
+	cerr << "clean text: bekijk " << p << endl;
+	cerr << "p.text(" << p->cls() << ")" << endl;
+	if ( p->cls() != text ){
+	  cerr << "remove" << p << endl;
+	  node->remove(p,true);
+	  --i;
+	}
+	else {
+	  clean_folia( p, text, current, setnames );
+	}
       }
     }
     else {
       cerr << "clean anno: bekijk " << p << endl;
       AnnotationType::AnnotationType at = p->annotation_type();
       string set = p->sett();
+      cerr << "set = " << set << endl;
+      cerr << "AT  = " << toString(at) << endl;
       if ( !set.empty()
-	   && setnames[at].find(set) != setnames[at].end() ){
-	cerr << "matched : " << set << endl;
+	   && ( setnames[at].find(set) != setnames[at].end()
+		|| setnames[at].find("") != setnames[at].end() ) ){
+	cerr << "matched: " << toString(at) << "-annotation("
+	     << set << ")" << endl;
 	cerr << "remove" << p << endl;
 	node->remove(p,true);
 	--i;
@@ -99,9 +105,9 @@ void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t FoLiA-clean will produce a cleaned up version of a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t--textclass='name', retain only text nodes with this class. (required option)" << endl;
+  cerr << "\t--textclass='name', retain only text nodes with this class. (default is to retain all)" << endl;
   //  cerr << "\t--current\t Make the textclass 'current'. (default is to keep 'name')" << endl;
-  cerr << "\t--cleanset='setname'\t remove annotations with this 'setname'. This option can be repeated for different annotations." << endl;
+  cerr << "\t--cleanannoset='type:setname'\t remove annotations with 'type' and 'setname'. This option can be repeated for different annotations." << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with. (default .xml)" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
@@ -145,28 +151,32 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
-  string class_name = "current";
-  if ( !opts.extract( "textclass", class_name ) ){
-    cerr << "missing value for --textclass" << endl;
-    exit(EXIT_FAILURE);
-  }
+  string class_name;
+  opts.extract( "textclass", class_name );
   map<AnnotationType::AnnotationType,set<string>> clean_sets;
   string line;
   while ( opts.extract( "cleanannoset", line ) ){
     vector<string> vals;
-    if ( TiCC::split_at( line, vals, ":" ) != 2 ){
+    string ats;
+    string set;
+    size_t num = TiCC::split_at( line, vals, ":" );
+    if ( num == 0 || num > 2 ){
       cerr << "invalid value in cleanannoset: '" << line << "'" << endl;
       exit(EXIT_FAILURE);
     }
+    ats = vals[0];
+    if ( num > 1 ){
+      set = vals[1];
+    }
     AnnotationType::AnnotationType at;
     try {
-      at = stringTo<AnnotationType::AnnotationType>( vals[0] );
+      at = stringTo<AnnotationType::AnnotationType>( ats );
     }
     catch ( exception& e){
       cerr << e.what() << endl;
       exit(EXIT_FAILURE);
     }
-    clean_sets[at].insert(vals[1]);
+    clean_sets[at].insert(set);
   }
 #ifdef HAVE_OPENMP
   omp_set_num_threads( numThreads );
