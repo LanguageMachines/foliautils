@@ -60,6 +60,9 @@ void clean_folia( FoliaElement *node,
 	  --i;
 	}
 	else {
+	  if ( current ){
+	    p->set_to_current();
+	  }
 	  clean_folia( p, text, current, setnames );
 	}
       }
