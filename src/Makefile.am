@@ -1,4 +1,4 @@
-AM_CXXFLAGS = -std=c++0x -W -Wall -pedantic
+AM_CXXFLAGS = -std=c++11 -W -Wall -pedantic
 
 bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
 	FoLiA-alto FoLiA-langcat FoLiA-hocr FoLiA-page FoLiA-txt FoLiA-2text \
