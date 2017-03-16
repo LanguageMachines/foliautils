@@ -81,52 +81,64 @@ Mode stringToMode( const string& ms ){
   return UNKNOWN;
 }
 
-void create_wf_list( const map<string, unsigned int>& wc,
+void create_wf_list( const map<string,map<string, unsigned int>>& wc,
 		     const string& filename, unsigned int totalIn,
 		     unsigned int clip, int nG,
 		     bool doperc ){
   unsigned int total = totalIn;
-  ofstream os( filename );
-  if ( !os ){
-    cerr << "FoLiA-stats: failed to create outputfile '" << filename << "'" << endl;
-    exit(EXIT_FAILURE);
-  }
-  map<unsigned int, set<string> > wf;
-  map<string,unsigned int >::const_iterator cit = wc.begin();
-  while( cit != wc.end()  ){
-    if ( cit->second <= clip ){
-      total -= cit->second;
+  for ( const auto& wc0 : wc ){
+    string ext;
+    string lang = wc0.first;
+    if ( lang != "none" ){
+      ext += "." + lang;
     }
-    else {
-      wf[cit->second].insert( cit->first );
+    if ( nG > 1 ){
+      ext += "." + toString( nG ) + "-gram";
     }
-    ++cit;
-  }
-  unsigned int sum=0;
-  unsigned int types=0;
-  map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
-  while ( wit != wf.rend() ){
-    set<string>::const_iterator sit = wit->second.begin();
-    while ( sit != wit->second.end() ){
-      sum += wit->first;
-      os << *sit << "\t" << wit->first;
-      if ( doperc ){
-	os << "\t" << sum << "\t" << 100 * double(sum)/total;
+    ext += ".tsv";
+    string ofilename = filename + ext;
+    ofstream os( ofilename );
+    if ( !os ){
+      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+      exit(EXIT_FAILURE);
+    }
+    map<unsigned int, set<string>> wf;
+    map<string,unsigned int >::const_iterator cit = wc0.second.begin();
+    while( cit != wc0.second.end()  ){
+      if ( cit->second <= clip ){
+	total -= cit->second;
       }
-      os << endl;
-      ++types;
-      ++sit;
+      else {
+	wf[cit->second].insert( cit->first );
+      }
+      ++cit;
     }
-    ++wit;
-  }
+    unsigned int sum=0;
+    unsigned int types=0;
+    map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
+    while ( wit != wf.rend() ){
+      set<string>::const_iterator sit = wit->second.begin();
+      while ( sit != wit->second.end() ){
+	sum += wit->first;
+	os << *sit << "\t" << wit->first;
+	if ( doperc ){
+	  os << "\t" << sum << "\t" << 100 * double(sum)/total;
+	}
+	os << endl;
+	++types;
+	++sit;
+      }
+      ++wit;
+    }
 #pragma omp critical
-  {
-    cout << "created WordFreq list '" << filename << "'";
-    cout << " with " << types << " unique " << nG << "-gram tokens";
-    if ( clip > 0 ){
-      cout << " ("<< totalIn - total << " were clipped.)";
+    {
+      cout << "created WordFreq list '" << filename << "'";
+      cout << " with " << types << " unique " << nG << "-gram tokens";
+      if ( clip > 0 ){
+	cout << " ("<< totalIn - total << " were clipped.)";
+      }
+      cout << endl;
     }
-    cout << endl;
   }
 }
 
@@ -135,7 +147,7 @@ struct rec {
   map<string,unsigned int> pc;
 };
 
-void create_lf_list( const map<string, unsigned int>& lc,
+void create_lf_list( const map<string,map<string, unsigned int>>& lc,
 		     const string& filename, unsigned int totalIn,
 		     unsigned int clip,
 		     int nG,
@@ -147,8 +159,9 @@ void create_lf_list( const map<string, unsigned int>& lc,
     exit(EXIT_FAILURE);
   }
   map<unsigned int, set<string> > lf;
-  map<string,unsigned int >::const_iterator cit = lc.begin();
-  while( cit != lc.end()  ){
+  auto const lc0 = lc.begin()->second;
+  map<string,unsigned int >::const_iterator cit = lc0.begin();
+  while( cit != lc0.end()  ){
     if ( cit->second <= clip ){
       total -= cit->second;
     }
@@ -186,7 +199,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
   }
 }
 
-void create_lpf_list( const multimap<string, rec>& lpc,
+void create_lpf_list( const map<string,multimap<string, rec>>& lpc,
 		      const string& filename, unsigned int totalIn,
 		      unsigned int clip,
 		      int nG,
@@ -198,8 +211,9 @@ void create_lpf_list( const multimap<string, rec>& lpc,
     exit(EXIT_FAILURE);
   }
   multimap<unsigned int, pair<string,string> > lpf;
-  multimap<string,rec>::const_iterator cit = lpc.begin();
-  while( cit != lpc.end()  ){
+  auto const lpc0 = lpc.begin()->second;
+  multimap<string,rec>::const_iterator cit = lpc0.begin();
+  while( cit != lpc0.end()  ){
     map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
     while ( pit != cit->second.pc.end() ){
       if ( pit->second <= clip ){
@@ -345,10 +359,10 @@ size_t add_word_inventory( const vector<string>& data,
 size_t doc_word_inventory( const Document *d, const string& docName,
 			   size_t nG,
 			   bool lowercase,
-			   const string& lang,
-			   map<string,unsigned int>& wc,
-			   map<string,unsigned int>& lc,
-			   multimap<string, rec>& lpc,
+			   const vector<string>& languages,
+			   map<string,map<string,unsigned int>>& wc,
+			   map<string,map<string,unsigned int>>& lc,
+			   map<string,multimap<string, rec>>& lpc,
 			   unsigned int& lemTotal,
 			   unsigned int& posTotal,
 			   set<string>& emph,
@@ -377,134 +391,137 @@ size_t doc_word_inventory( const Document *d, const string& docName,
 	cout << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
       }
     }
-    taal_filter( words, lang );
-    if ( verbose ){
-#pragma omp critical
-      {
-	cout << docName <<  " sentence-" << s << " after language filter :" << words.size() << "words" << endl;
-      }
-    }
-    if ( words.size() < nG )
-      continue;
-    vector<wlp_rec> data;
-    for ( const auto& w : words ){
-      wlp_rec rec;
-      try {
-	UnicodeString uword = w->text(classname);
-	if ( lowercase ){
-	  uword.toLower();
-	}
-	rec.word = UnicodeToUTF8( uword );
-      }
-      catch(...){
+    for( const auto& lang : languages ){
+      taal_filter( words, lang );
+      if ( verbose ){
 #pragma omp critical
 	{
-	  cerr << "FoLiA-stats: missing text for word " << w->id() << endl;
+	  cout << docName <<  " sentence-" << s << " after language filter :" << words.size() << "words" << endl;
 	}
-	break;
       }
-      try {
-	rec.lemma = w->lemma(frog_mblemtagset);
-      }
-      catch(...){
+      if ( words.size() < nG )
+	continue;
+      vector<wlp_rec> data;
+      for ( const auto& w : words ){
+	wlp_rec rec;
 	try {
-	  rec.lemma = w->lemma();
+	  UnicodeString uword = w->text(classname);
+	  if ( lowercase ){
+	    uword.toLower();
+	  }
+	  rec.word = UnicodeToUTF8( uword );
 	}
 	catch(...){
-	  rec.lemma = "";
+#pragma omp critical
+	  {
+	    cerr << "FoLiA-stats: missing text for word " << w->id() << endl;
+	  }
+	  break;
 	}
-      }
-      try {
-	rec.pos = w->pos(frog_cgntagset);
-      }
-      catch(...){
 	try {
-	  rec.pos = w->pos();
+	  rec.lemma = w->lemma(frog_mblemtagset);
 	}
-	catch (...){
-	  rec.pos = "";
-	}
-      }
-      data.push_back( rec );
-    }
-    if ( data.size() != words.size() ) {
-#pragma omp critical
-      {
-	cerr << "FoLiA-stats: Error: Missing words! skipped sentence " << sents[s]->id() << " in " << docName << endl;
-      }
-      continue;
-    }
-
-    add_emph_inventory( data, emph );
-    for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-      string multiw;
-      string multil;
-      string multip;
-      bool lem_mis = false;
-      bool pos_mis = false;
-      for ( size_t j=0; j < nG; ++j ){
-	multiw += data[i+j].word;
-	if ( data[i+j].lemma.empty() ){
-	  lem_mis = true;
-	}
-	else if ( !lem_mis ){
-	  multil += data[i+j].lemma;
-	}
-	if ( data[i+j].pos.empty() ){
-	  pos_mis = true;
-	}
-	else if ( !pos_mis ){
-	  multip += data[i+j].pos;
-	}
-	if ( j < nG-1 ){
-	  multiw += sep;
-	  if ( !lem_mis )
-	    multil += sep;
-	  if ( !pos_mis )
-	    multip += sep;
-	}
-      }
-      ++wordTotal;
-      if ( !lem_mis ){
-	++lemTotal;
-      }
-      if ( !pos_mis ){
-	++posTotal;
-      }
-#pragma omp critical
-      {
-	++wc[multiw];
-      }
-
-      if ( !multil.empty() ){
-#pragma omp critical
-	{
-	  ++lc[multil];
-	}
-      }
-      if ( !multip.empty() ){
-#pragma omp critical
-	{
-	  multimap<string, rec >::iterator it = lpc.find(multil);
-	  if ( it == lpc.end() ){
-	    rec tmp;
-	    tmp.count = 1;
-	    tmp.pc[multip]=1;
-	    lpc.insert( make_pair(multil,tmp) );
+	catch(...){
+	  try {
+	    rec.lemma = w->lemma();
 	  }
-	  else {
-	    ++it->second.count;
-	    ++it->second.pc[multip];
+	  catch(...){
+	    rec.lemma = "";
 	  }
 	}
+	try {
+	  rec.pos = w->pos(frog_cgntagset);
+	}
+	catch(...){
+	  try {
+	    rec.pos = w->pos();
+	  }
+	  catch (...){
+	    rec.pos = "";
+	  }
+	}
+	data.push_back( rec );
+      }
+      if ( data.size() != words.size() ) {
+#pragma omp critical
+	{
+	  cerr << "FoLiA-stats: Error: Missing words! skipped sentence " << sents[s]->id() << " in " << docName << endl;
+	}
+	continue;
+      }
+
+      add_emph_inventory( data, emph );
+      for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
+	string multiw;
+	string multil;
+	string multip;
+	bool lem_mis = false;
+	bool pos_mis = false;
+	for ( size_t j=0; j < nG; ++j ){
+	  multiw += data[i+j].word;
+	  if ( data[i+j].lemma.empty() ){
+	    lem_mis = true;
+	  }
+	  else if ( !lem_mis ){
+	    multil += data[i+j].lemma;
+	  }
+	  if ( data[i+j].pos.empty() ){
+	    pos_mis = true;
+	  }
+	  else if ( !pos_mis ){
+	    multip += data[i+j].pos;
+	  }
+	  if ( j < nG-1 ){
+	    multiw += sep;
+	    if ( !lem_mis )
+	      multil += sep;
+	    if ( !pos_mis )
+	      multip += sep;
+	  }
+	}
+	++wordTotal;
+	if ( !lem_mis ){
+	  ++lemTotal;
+	}
+	if ( !pos_mis ){
+	  ++posTotal;
+	}
+#pragma omp critical
+	{
+	  ++wc[lang][multiw];
+	}
+
+	if ( !multil.empty() ){
+#pragma omp critical
+	  {
+	    ++lc[lang][multil];
+	  }
+	}
+	if ( !multip.empty() ){
+#pragma omp critical
+	  {
+	    auto lpc0 = lpc[lang];
+	    multimap<string, rec >::iterator it = lpc0.find(multil);
+	    if ( it == lpc0.end() ){
+	      rec tmp;
+	      tmp.count = 1;
+	      tmp.pc[multip]=1;
+	      lpc[lang].insert( make_pair(multil,tmp) );
+	    }
+	    else {
+	      ++it->second.count;
+	      ++it->second.pc[multip];
+	    }
+	  }
+	}
       }
     }
-  }
-  if ( verbose && (lemTotal < wordTotal) ){
+    if ( verbose && (lemTotal < wordTotal) ){
 #pragma omp critical
-    {
-      cout << "info: " << wordTotal - lemTotal
-	   << " lemma's are missing in "  << d->id() << endl;
+      {
+	cout << "info: " << wordTotal - lemTotal
+	     << " lemma's are missing in "  << d->id() << endl;
+      }
     }
   }
   if ( verbose && (posTotal < wordTotal) ){
@@ -517,11 +534,12 @@ size_t doc_word_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
-size_t doc_str_inventory( const Document *d, const string& docName,
+size_t doc_str_inventory( const Document *d,
+			  const string& docName,
 			  size_t nG,
 			  bool lowercase,
-			  const string& lang,
-			  map<string,unsigned int>& wc,
+			  const vector<string>& languages,
+			  map<string,map<string,unsigned int>>& wc,
 			  set<string>& emph,
 			  const string& sep ){
   if ( verbose ){
@@ -538,71 +556,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
       cout << "found " << strings.size() << " strings" << endl;
     }
   }
-
-  taal_filter( strings, lang );
-  if ( verbose ){
-#pragma omp critical
-    {
-      cout << "after filter on " << lang << " " << strings.size() << " strings" << endl;
-    }
-  }
-  if ( strings.size() < nG )
-    return 0;
-  vector<string> data;
-  for ( const auto& s : strings ){
-    UnicodeString us;
-    try {
-      us = s->text(classname);
-      if ( lowercase ){
-	us.toLower();
-      }
-    }
-    catch(...){
-#pragma omp critical
-      {
-	cerr << "FoLiA-stats: missing text for word " << s->id() << endl;
-      }
-      break;
-    }
-    string w = UnicodeToUTF8( us );
-    data.push_back( w );
-  }
-  if ( data.size() != strings.size() ) {
-#pragma omp critical
-    {
-      cerr << "FoLiA-stats: Missing words! skipped document " << docName << endl;
-    }
-    return 0;
-  }
-
-  add_emph_inventory( data, emph );
-  wordTotal += add_word_inventory( data, wc, nG, sep );
-  return wordTotal;
-}
-
-size_t par_str_inventory( const Document *d, const string& docName,
-			  size_t nG,
-			  bool lowercase,
-			  const string& lang,
-			  map<string,unsigned int>& wc,
-			  set<string>& emph,
-			  const string& sep ){
-  if ( verbose ){
-#pragma omp critical
-    {
-      cout << "make a par_str inventory on:" << docName << endl;
-    }
-  }
-  size_t wordTotal = 0;
-  vector<Paragraph*> pars = d->paragraphs();
-  for ( const auto& p : pars ){
-    vector<String*> strings = p->select<String>();
-    if ( verbose ){
-#pragma omp critical
-      {
-	cout << "found " << strings.size() << " strings" << endl;
-      }
-    }
+  for ( const auto& lang : languages ){
     taal_filter( strings, lang );
     if ( verbose ){
 #pragma omp critical
@@ -626,7 +580,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	{
 	  cerr << "FoLiA-stats: missing text for word " << s->id() << endl;
 	}
-      break;
+	break;
       }
       string w = UnicodeToUTF8( us );
       data.push_back( w );
@@ -634,13 +588,80 @@ size_t par_str_inventory( const Document *d, const string& docName,
     if ( data.size() != strings.size() ) {
 #pragma omp critical
       {
-	cerr << "FoLiA-stats: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
+	cerr << "FoLiA-stats: Missing words! skipped document " << docName << endl;
       }
-      continue;
+      return 0;
     }
 
     add_emph_inventory( data, emph );
-    wordTotal += add_word_inventory( data, wc, nG, sep );
+    wordTotal += add_word_inventory( data, wc[lang], nG, sep );
+  }
+  return wordTotal;
+}
+
+size_t par_str_inventory( const Document *d, const string& docName,
+			  size_t nG,
+			  bool lowercase,
+			  const vector<string>& languages,
+			  map<string,map<string,unsigned int>>& wc,
+			  set<string>& emph,
+			  const string& sep ){
+  if ( verbose ){
+#pragma omp critical
+    {
+      cout << "make a par_str inventory on:" << docName << endl;
+    }
+  }
+  size_t wordTotal = 0;
+  vector<Paragraph*> pars = d->paragraphs();
+  for ( const auto& p : pars ){
+    vector<String*> strings = p->select<String>();
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "found " << strings.size() << " strings" << endl;
+      }
+    }
+    for ( const auto& lang : languages ){
+      taal_filter( strings, lang );
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cout << "after filter on " << lang << " " << strings.size() << " strings" << endl;
+	}
+      }
+      if ( strings.size() < nG )
+	continue;
+      vector<string> data;
+      for ( const auto& s : strings ){
+	UnicodeString us;
+	try {
+	  us = s->text(classname);
+	  if ( lowercase ){
+	    us.toLower();
+	  }
+	}
+	catch(...){
+#pragma omp critical
+	  {
+	    cerr << "FoLiA-stats: missing text for word " << s->id() << endl;
+	  }
+	  break;
+	}
+	string w = UnicodeToUTF8( us );
+	data.push_back( w );
+      }
+      if ( data.size() != strings.size() ) {
+#pragma omp critical
+	{
+	  cerr << "FoLiA-stats: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
+	}
+	continue;
+      }
+
+      add_emph_inventory( data, emph );
+      wordTotal += add_word_inventory( data, wc[lang], nG, sep );
+    }
   }
   return wordTotal;
 }
@@ -648,8 +669,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 size_t par_text_inventory( const Document *d, const string& docName,
 			   size_t nG,
 			   bool lowercase,
-			   const string& lang,
-			   map<string,unsigned int>& wc,
+			   const vector<string>& languages,
+			   map<string,map<string,unsigned int>>& wc,
 			   set<string>& emph,
 			   const string& sep ){
   if ( verbose ){
@@ -662,52 +683,54 @@ size_t par_text_inventory( const Document *d, const string& docName,
   vector<Paragraph*> pars = d->paragraphs();
   for ( const auto& p : pars ){
     string p_lang = p->language();
-    if ( p_lang != lang && lang != "none" ){
+    for ( const auto& lang : languages ){
+      if ( p_lang != lang && lang != "none" ){
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "skip a paragraph in wrong language: " << p_lang << endl;
+	  }
+	}
+	continue;
+      }
+      string s;
+      UnicodeString us;
+      try {
+	us = p->text(classname);
+	if ( lowercase ){
+	  us.toLower();
+	}
+	s = UnicodeToUTF8( us );
+      }
+      catch(...){
+      }
+      if ( s.empty() ){
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "found NO string in paragraph: " << p->id() << endl;
+	  }
+	}
+	continue;
+      }
+      vector<string> data;
+      size_t num = TiCC::split( s, data );
       if ( verbose ){
 #pragma omp critical
 	{
-	  cout << "skip a paragraph in wrong language: " << p_lang << endl;
+	  cout << "found string: '" << s << "'" << endl;
+	  if ( num <= 1 ){
+	    cout << "with no substrings" << endl;
+	  }
+	  else {
+	    using TiCC::operator<<;
+	    cout << "with " << num << " substrings: " << data << endl;
+	  }
 	}
       }
-      continue;
+      add_emph_inventory( data, emph );
+      wordTotal += add_word_inventory( data, wc[lang], nG, sep );
     }
-    string s;
-    UnicodeString us;
-    try {
-      us = p->text(classname);
-      if ( lowercase ){
-	us.toLower();
-      }
-      s = UnicodeToUTF8( us );
-    }
-    catch(...){
-    }
-    if ( s.empty() ){
-      if ( verbose ){
-#pragma omp critical
-	{
-	  cout << "found NO string in paragraph: " << p->id() << endl;
-	}
-      }
-      continue;
-    }
-    vector<string> data;
-    size_t num = TiCC::split( s, data );
-    if ( verbose ){
-#pragma omp critical
-      {
-	cout << "found string: '" << s << "'" << endl;
-	if ( num <= 1 ){
-	  cout << "with no substrings" << endl;
-	}
-	else {
-	  using TiCC::operator<<;
-	  cout << "with " << num << " substrings: " << data << endl;
-	}
-      }
-    }
-    add_emph_inventory( data, emph );
-    wordTotal += add_word_inventory( data, wc, nG, sep );
   }
   return wordTotal;
 }
@@ -900,9 +923,9 @@ int main( int argc, char *argv[] ){
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-  map<string,unsigned int> wc;
-  map<string,unsigned int> lc;
-  multimap<string, rec> lpc;
+  map<string,map<string,unsigned int>> wc;
+  map<string,map<string,unsigned int>> lc;
+  map<string,multimap<string, rec>> lpc;
   unsigned int wordTotal =0;
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
@@ -928,19 +951,19 @@ int main( int argc, char *argv[] ){
     unsigned int pos_count = 0;
     switch ( mode ){
     case S_IN_P:
-      word_count = par_str_inventory( d, docName, nG, lowercase, languages[0], wc, emph, sep );
+      word_count = par_str_inventory( d, docName, nG, lowercase, languages, wc, emph, sep );
       break;
     case T_IN_P:
       word_count = par_text_inventory( d, docName, nG, lowercase,
-				       languages[0], wc, emph, sep );
+				       languages, wc, emph, sep );
       break;
     case S_IN_D:
       word_count = doc_str_inventory( d, docName, nG, lowercase,
-				      languages[0], wc, emph, sep );
+				      languages, wc, emph, sep );
       break;
     case W_IN_D:
       word_count = doc_word_inventory( d, docName, nG, lowercase,
-				       languages[0], wc, lc, lpc, lem_count,
+				       languages, wc, lc, lpc, lem_count,
 				       pos_count, emph, sep );
       break;
     default:
@@ -994,7 +1017,7 @@ int main( int argc, char *argv[] ){
 #pragma omp section
     {
       string filename;
-      filename = outputPrefix + ".wordfreqlist" + ext;
+      filename = outputPrefix + ".wordfreqlist";
       create_wf_list( wc, filename, wordTotal, clip, nG, dopercentage );
     }
 #pragma omp section
