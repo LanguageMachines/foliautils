@@ -132,7 +132,7 @@ void create_wf_list( const map<string,map<string, unsigned int>>& wc,
     }
 #pragma omp critical
     {
-      cout << "created WordFreq list '" << filename << "'";
+      cout << "created WordFreq list '" << ofilename << "'";
       cout << " with " << types << " unique " << nG << "-gram tokens";
       if ( clip > 0 ){
 	cout << " ("<< totalIn - total << " were clipped.)";
@@ -148,54 +148,66 @@ struct rec {
 };
 
 void create_lf_list( const map<string,map<string, unsigned int>>& lc,
-		     const string& filename, unsigned int totalIn,
+		     const string& filename,
+		     unsigned int totalIn,
 		     unsigned int clip,
 		     int nG,
 		     bool doperc ){
   unsigned int total = totalIn;
-  ofstream os( filename );
-  if ( !os ){
-    cerr << "FoLiA-stats: failed to create outputfile '" << filename << "'" << endl;
-    exit(EXIT_FAILURE);
-  }
-  map<unsigned int, set<string> > lf;
-  auto const lc0 = lc.begin()->second;
-  map<string,unsigned int >::const_iterator cit = lc0.begin();
-  while( cit != lc0.end()  ){
-    if ( cit->second <= clip ){
-      total -= cit->second;
+  for ( const auto& lc0 : lc ){
+    string ext;
+    string lang = lc0.first;
+    if ( lang != "none" ){
+      ext += "." + lang;
     }
-    else {
-      lf[cit->second].insert( cit->first );
+    if ( nG > 1 ){
+      ext += "." + toString( nG ) + "-gram";
     }
-    ++cit;
-  }
-
-  unsigned int sum=0;
-  unsigned int types=0;
-  map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
-  while ( wit != lf.rend() ){
-    set<string>::const_iterator sit = wit->second.begin();
-    while ( sit != wit->second.end() ){
-      sum += wit->first;
-      os << *sit << "\t" << wit->first;
-      if ( doperc ){
-	os << "\t" << sum << "\t" << 100* double(sum)/total;
+    ext += ".tsv";
+    string ofilename = filename + ext;
+    ofstream os( ofilename );
+    if ( !os ){
+      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+      exit(EXIT_FAILURE);
+    }
+    map<unsigned int, set<string> > lf;
+    map<string,unsigned int >::const_iterator cit = lc0.second.begin();
+    while( cit != lc0.second.end()  ){
+      if ( cit->second <= clip ){
+	total -= cit->second;
       }
-      os << endl;
-      ++types;
-      ++sit;
+      else {
+	lf[cit->second].insert( cit->first );
+      }
+      ++cit;
     }
-    ++wit;
-  }
+
+    unsigned int sum=0;
+    unsigned int types=0;
+    map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
+    while ( wit != lf.rend() ){
+      set<string>::const_iterator sit = wit->second.begin();
+      while ( sit != wit->second.end() ){
+	sum += wit->first;
+	os << *sit << "\t" << wit->first;
+	if ( doperc ){
+	  os << "\t" << sum << "\t" << 100* double(sum)/total;
+	}
+	os << endl;
+	++types;
+	++sit;
+      }
+      ++wit;
+    }
 #pragma omp critical
-  {
-    cout << "created LemmaFreq list '" << filename << "'";
-    cout << " with " << types << " unique " << nG << "-gram lemmas";
-    if ( clip > 0 ){
-      cout << " ("<< totalIn - total << " were clipped.)";
+    {
+      cout << "created LemmaFreq list '" << filename << "'";
+      cout << " with " << types << " unique " << nG << "-gram lemmas";
+      if ( clip > 0 ){
+	cout << " ("<< totalIn - total << " were clipped.)";
+      }
+      cout << endl;
     }
-    cout << endl;
   }
 }
 
@@ -205,49 +217,61 @@ void create_lpf_list( const map<string,multimap<string, rec>>& lpc,
 		      int nG,
 		      bool doperc ){
   unsigned int total = totalIn;
-  ofstream os( filename );
-  if ( !os ){
-    cerr << "FoLiA-stats: failed to create outputfile '" << filename << "'" << endl;
-    exit(EXIT_FAILURE);
-  }
-  multimap<unsigned int, pair<string,string> > lpf;
-  auto const lpc0 = lpc.begin()->second;
-  multimap<string,rec>::const_iterator cit = lpc0.begin();
-  while( cit != lpc0.end()  ){
-    map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
-    while ( pit != cit->second.pc.end() ){
-      if ( pit->second <= clip ){
-	total -= pit->second;
-      }
-      else {
-	lpf.insert( make_pair( pit->second,
-			       make_pair( cit->first, pit->first ) ) );
-      }
-      ++pit;
+  for ( const auto& lpc0 : lpc ){
+    string ext;
+    string lang = lpc0.first;
+    if ( lang != "none" ){
+      ext += "." + lang;
     }
-    ++cit;
-  }
-  unsigned int sum =0;
-  unsigned int types =0;
-  multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
-  while ( wit != lpf.rend() ){
-    sum += wit->first;
-    os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
-    if ( doperc ){
-      os << "\t" << sum << "\t" << 100 * double(sum)/total;
+    if ( nG > 1 ){
+      ext += "." + toString( nG ) + "-gram";
     }
-    os << endl;
-    ++types;
-    ++wit;
-  }
+    ext += ".tsv";
+    string ofilename = filename + ext;
+    ofstream os( ofilename );
+    if ( !os ){
+      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+      exit(EXIT_FAILURE);
+    }
+
+    multimap<unsigned int, pair<string,string> > lpf;
+    multimap<string,rec>::const_iterator cit = lpc0.second.begin();
+    while( cit != lpc0.second.end()  ){
+      map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
+      while ( pit != cit->second.pc.end() ){
+	if ( pit->second <= clip ){
+	  total -= pit->second;
+	}
+	else {
+	  lpf.insert( make_pair( pit->second,
+				 make_pair( cit->first, pit->first ) ) );
+	}
+	++pit;
+      }
+      ++cit;
+    }
+    unsigned int sum =0;
+    unsigned int types =0;
+    multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+    while ( wit != lpf.rend() ){
+      sum += wit->first;
+      os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
+      if ( doperc ){
+	os << "\t" << sum << "\t" << 100 * double(sum)/total;
+      }
+      os << endl;
+      ++types;
+      ++wit;
+    }
 #pragma omp critical
-  {
-    cout << "created LemmaPosFreq list '" << filename << "'";
-    cout << " with " << types << " unique " << nG << "-gram lemmas and tags";
-    if ( clip > 0 ){
-      cout << " ("<< totalIn - total << " were clipped.)";
+    {
+      cout << "created LemmaPosFreq list '" << ofilename << "'";
+      cout << " with " << types << " unique " << nG << "-gram lemmas and tags";
+      if ( clip > 0 ){
+	cout << " ("<< totalIn - total << " were clipped.)";
+      }
+      cout << endl;
     }
-    cout << endl;
   }
 }
 
@@ -656,7 +680,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	{
 	  cerr << "FoLiA-stats: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
 	}
-	continue;
+	return 0;
       }
 
       add_emph_inventory( data, emph );
@@ -747,7 +771,7 @@ void usage( const string& name ){
   cerr << "\t--lower\t\t Lowercase all words" << endl;
   cerr << "\t--underscore\t connect all words with underscores" << endl;
   cerr << "\t--lang\t\t Language. (default='none')." << endl;
-  cerr << "\t--languages\t\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
+  cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t--ngram\t\t Ngram count " << endl;
   cerr << "\t-s\t\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t\t Process <str> nodes not <w> per document" << endl;
@@ -1004,14 +1028,7 @@ int main( int argc, char *argv[] ){
     cout << "in " << toDo << " FoLiA documents.";
   }
   cout << endl;
-  string ext;
-  if ( languages[0] != "none" ){
-    ext += "." + languages[0];
-  }
-  if ( nG > 1 ){
-    ext += "." + toString( nG ) + "-gram";
-  }
-  ext += ".tsv";
+
 #pragma omp parallel sections
   {
 #pragma omp section
@@ -1024,7 +1041,7 @@ int main( int argc, char *argv[] ){
     {
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
-	filename = outputPrefix + ".lemmafreqlist" + ext;
+	filename = outputPrefix + ".lemmafreqlist";
 	create_lf_list( lc, filename, lemTotal, clip, nG, dopercentage );
       }
     }
@@ -1032,7 +1049,7 @@ int main( int argc, char *argv[] ){
     {
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
-	filename = outputPrefix + ".lemmaposfreqlist" + ext;
+	filename = outputPrefix + ".lemmaposfreqlist";
 	create_lpf_list( lpc, filename, posTotal, clip, nG, dopercentage );
       }
     }
