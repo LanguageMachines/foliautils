@@ -724,6 +724,7 @@ void usage( const string& name ){
   cerr << "\t--lower\t\t Lowercase all words" << endl;
   cerr << "\t--underscore\t connect all words with underscores" << endl;
   cerr << "\t--lang\t\t Language. (default='none')." << endl;
+  cerr << "\t--languages\t\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t--ngram\t\t Ngram count " << endl;
   cerr << "\t-s\t\t Process <str> nodes not <w> per <p> node" << endl;
   cerr << "\t-S\t\t Process <str> nodes not <w> per document" << endl;
@@ -741,7 +742,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
+		   "class:,clip:,lang:,languages:,ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
   try {
     opts.init(argc,argv);
   }
@@ -762,10 +763,10 @@ int main( int argc, char *argv[] ){
 #endif
   string expression;
   string outputPrefix;
-  string lang = "none";
   string value;
+  vector<string> languages;
   if ( opts.extract('V') || opts.extract("version") ){
-    cerr << "FoLiA-stats: " << PACKAGE_STRING << endl;
+    cerr << "FoLiA-stats from " << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
   if ( opts.extract('h') || opts.extract("help") ){
@@ -841,11 +842,24 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
 #endif
   }
+  if ( opts.extract("languages", value ) ){
+    TiCC::split_at( value, languages, "," );
+    if ( languages.size() < 1 ){
+      cerr << "FoLiA-stats: unable to extract a default language from --languages option" << endl;
+      exit( EXIT_FAILURE );
+    }
+  }
   if ( opts.extract("lang", value ) ){
-    if ( value == "none" )
-      lang.clear();
-    else
-      lang = value;
+    if ( languages.size() > 0 ){
+      cerr << "FoLiA-stats: --lang and --languages options conflict. Use only one!" << endl;
+      exit( EXIT_FAILURE );
+    }
+    else {
+      languages.push_back( value );
+    }
+  }
+  if ( languages.size() == 0 ){
+    languages.push_back( "none" );
   }
   opts.extract('e', expression );
   opts.extract( "class", classname );
@@ -914,19 +928,19 @@ int main( int argc, char *argv[] ){
     unsigned int pos_count = 0;
     switch ( mode ){
     case S_IN_P:
-      word_count = par_str_inventory( d, docName, nG, lowercase, lang, wc, emph, sep );
+      word_count = par_str_inventory( d, docName, nG, lowercase, languages[0], wc, emph, sep );
       break;
     case T_IN_P:
       word_count = par_text_inventory( d, docName, nG, lowercase,
-				       lang, wc, emph, sep );
+				       languages[0], wc, emph, sep );
       break;
     case S_IN_D:
       word_count = doc_str_inventory( d, docName, nG, lowercase,
-				      lang, wc, emph, sep );
+				      languages[0], wc, emph, sep );
       break;
     case W_IN_D:
       word_count = doc_word_inventory( d, docName, nG, lowercase,
-				       lang, wc, lc, lpc, lem_count,
+				       languages[0], wc, lc, lpc, lem_count,
 				       pos_count, emph, sep );
       break;
     default:
@@ -968,8 +982,8 @@ int main( int argc, char *argv[] ){
   }
   cout << endl;
   string ext;
-  if ( !lang.empty() && lang != "none" ){
-    ext += "." + lang;
+  if ( languages[0] != "none" ){
+    ext += "." + languages[0];
   }
   if ( nG > 1 ){
     ext += "." + toString( nG ) + "-gram";

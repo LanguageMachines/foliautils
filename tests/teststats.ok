@@ -9,6 +9,7 @@ Usage: FoLiA-stats [options] file/dir
 	--lower		 Lowercase all words
 	--underscore	 connect all words with underscores
 	--lang		 Language. (default='none').
+	--languages		 Lan1,Lan2,Lan3. (default='Lan1').
 	--ngram		 Ngram count 
 	-s		 Process <str> nodes not <w> per <p> node
 	-S		 Process <str> nodes not <w> per document
@@ -22,7 +23,7 @@ Usage: FoLiA-stats [options] file/dir
 	-e		 expr: specify the expression all input files should match with.
 	-o		 name of the output file(s) prefix.
 	-R		 search the dirs recursively (when appropriate).
-foliautils 0.6
+FoLiA-stats from foliautils 0.6
 Usage: FoLiA-stats [options] file/dir
 		 FoLiA-stats will produce ngram statistics for a FoLiA file, 
 		 or a whole directory of FoLiA files 
@@ -34,6 +35,7 @@ Usage: FoLiA-stats [options] file/dir
 	--lower		 Lowercase all words
 	--underscore	 connect all words with underscores
 	--lang		 Language. (default='none').
+	--languages		 Lan1,Lan2,Lan3. (default='Lan1').
 	--ngram		 Ngram count 
 	-s		 Process <str> nodes not <w> per <p> node
 	-S		 Process <str> nodes not <w> per document
