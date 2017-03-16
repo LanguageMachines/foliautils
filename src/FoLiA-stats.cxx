@@ -83,7 +83,7 @@ Mode stringToMode( const string& ms ){
 
 void create_wf_list( const map<string, unsigned int>& wc,
 		     const string& filename, unsigned int totalIn,
-		     unsigned int clip,
+		     unsigned int clip, int nG,
 		     bool doperc ){
   unsigned int total = totalIn;
   ofstream os( filename );
@@ -122,13 +122,11 @@ void create_wf_list( const map<string, unsigned int>& wc,
 #pragma omp critical
   {
     cout << "created WordFreq list '" << filename << "'";
+    cout << " with " << types << " " << nG << "-gram tokens";
     if ( clip > 0 ){
-      cout << endl << "with " << total << " words and " << types << " types. (" << totalIn - total
-	   << " of the original " << totalIn << " words were clipped.)" << endl;
+      cout << " ("<< totalIn - total << " were clipped.)";
     }
-    else {
-      cout << " for " << total << " word tokens." << endl;
-    }
+    cout << endl;
   }
 }
 
@@ -140,6 +138,7 @@ struct rec {
 void create_lf_list( const map<string, unsigned int>& lc,
 		     const string& filename, unsigned int totalIn,
 		     unsigned int clip,
+		     int nG,
 		     bool doperc ){
   unsigned int total = totalIn;
   ofstream os( filename );
@@ -179,19 +178,18 @@ void create_lf_list( const map<string, unsigned int>& lc,
 #pragma omp critical
   {
     cout << "created LemmaFreq list '" << filename << "'";
+    cout << " with " << types << " " << nG << "-gram lemmas";
     if ( clip > 0 ){
-      cout << endl << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
-	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
+      cout << " ("<< totalIn - total << " were clipped.)";
     }
-    else {
-      cout << " for " << total << " lemmas. " << endl;
-    }
+    cout << endl;
   }
 }
 
 void create_lpf_list( const multimap<string, rec>& lpc,
 		      const string& filename, unsigned int totalIn,
 		      unsigned int clip,
+		      int nG,
 		      bool doperc ){
   unsigned int total = totalIn;
   ofstream os( filename );
@@ -231,13 +229,11 @@ void create_lpf_list( const multimap<string, rec>& lpc,
 #pragma omp critical
   {
     cout << "created LemmaPosFreq list '" << filename << "'";
+    cout << " with " << types << " " << nG << "-gram lemmas and tags";
     if ( clip > 0 ){
-      cout << endl << "with " << total << " lemmas and " << types << " types. (" << totalIn - total
-	   << " of the original " << totalIn << " lemmas were clipped.)" << endl;
+      cout << " ("<< totalIn - total << " were clipped.)";
     }
-    else {
-      cout << " for " << totalIn << " lemmas. " << endl;
-    }
+    cout << endl;
   }
 }
 
@@ -887,7 +883,8 @@ int main( int argc, char *argv[] ){
     outputPrefix += "foliastats";
   }
 
-  if ( toDo > 1 ){
+  bool more_then_one = (toDo > 1);
+  if ( more_then_one ){
     cout << "start processing of " << toDo << " files " << endl;
   }
   map<string,unsigned int> wc;
@@ -937,21 +934,22 @@ int main( int argc, char *argv[] ){
       cerr << "not yet implemented mode: " << modes << endl;
       exit( EXIT_FAILURE );
     }
-    wordTotal += word_count;
-    lemTotal += lem_count;
-    posTotal += pos_count;
 #pragma omp critical
     {
-      cout << "Processed :" << docName << " with " << word_count << " words,"
+      wordTotal += word_count;
+      lemTotal += lem_count;
+      posTotal += pos_count;
+      cout << "Processed :" << docName << " with " << word_count << " "
+	   << nG << "-grams,"
 	   << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
 	   << " still " << --toDo << " files to go." << endl;
     }
     delete d;
   }
 
-  if ( toDo > 1 ){
-    cout << "done processsing directory '" << name << "' in total "
-	 << wordTotal << " words were found." << endl;
+  if ( more_then_one ){
+    cout << "done processsing directory '" << name << "', in total "
+	 << wordTotal << " " << nG << "-grams were found." << endl;
   }
 
   if ( !hempName.empty() ){
@@ -981,14 +979,14 @@ int main( int argc, char *argv[] ){
     {
       string filename;
       filename = outputPrefix + ".wordfreqlist" + ext;
-      create_wf_list( wc, filename, wordTotal, clip, dopercentage );
+      create_wf_list( wc, filename, wordTotal, clip, nG, dopercentage );
     }
 #pragma omp section
     {
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmafreqlist" + ext;
-	create_lf_list( lc, filename, lemTotal, clip, dopercentage );
+	create_lf_list( lc, filename, lemTotal, clip, nG, dopercentage );
       }
     }
 #pragma omp section
@@ -996,7 +994,7 @@ int main( int argc, char *argv[] ){
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmaposfreqlist" + ext;
-	create_lpf_list( lpc, filename, posTotal, clip, dopercentage );
+	create_lpf_list( lpc, filename, posTotal, clip, nG, dopercentage );
       }
     }
   }
