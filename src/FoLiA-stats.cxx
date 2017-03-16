@@ -88,7 +88,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
   unsigned int total = totalIn;
   ofstream os( filename );
   if ( !os ){
-    cerr << "failed to create outputfile '" << filename << "'" << endl;
+    cerr << "FoLiA-stats: failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
   }
   map<unsigned int, set<string> > wf;
@@ -122,7 +122,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
 #pragma omp critical
   {
     cout << "created WordFreq list '" << filename << "'";
-    cout << " with " << types << " " << nG << "-gram tokens";
+    cout << " with " << types << " unique " << nG << "-gram tokens";
     if ( clip > 0 ){
       cout << " ("<< totalIn - total << " were clipped.)";
     }
@@ -143,7 +143,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
   unsigned int total = totalIn;
   ofstream os( filename );
   if ( !os ){
-    cerr << "failed to create outputfile '" << filename << "'" << endl;
+    cerr << "FoLiA-stats: failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
   }
   map<unsigned int, set<string> > lf;
@@ -178,7 +178,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
 #pragma omp critical
   {
     cout << "created LemmaFreq list '" << filename << "'";
-    cout << " with " << types << " " << nG << "-gram lemmas";
+    cout << " with " << types << " unique " << nG << "-gram lemmas";
     if ( clip > 0 ){
       cout << " ("<< totalIn - total << " were clipped.)";
     }
@@ -194,7 +194,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   unsigned int total = totalIn;
   ofstream os( filename );
   if ( !os ){
-    cerr << "failed to create outputfile '" << filename << "'" << endl;
+    cerr << "FoLiA-stats: failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
   }
   multimap<unsigned int, pair<string,string> > lpf;
@@ -229,7 +229,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
 #pragma omp critical
   {
     cout << "created LemmaPosFreq list '" << filename << "'";
-    cout << " with " << types << " " << nG << "-gram lemmas and tags";
+    cout << " with " << types << " unique " << nG << "-gram lemmas and tags";
     if ( clip > 0 ){
       cout << " ("<< totalIn - total << " were clipped.)";
     }
@@ -356,7 +356,7 @@ size_t doc_word_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "make a word_str inventory on:" << docName << endl;
+      cout << "make a word_str inventory on:" << docName << endl;
     }
   }
   size_t wordTotal = 0;
@@ -366,7 +366,7 @@ size_t doc_word_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << docName <<  ": " << sents.size() << " sentences" << endl;
+      cout << docName <<  ": " << sents.size() << " sentences" << endl;
     }
   }
   for ( unsigned int s=0; s < sents.size(); ++s ){
@@ -374,14 +374,14 @@ size_t doc_word_inventory( const Document *d, const string& docName,
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
+	cout << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
       }
     }
     taal_filter( words, lang );
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << docName <<  " sentence-" << s << " after language filter :" << words.size() << "words" << endl;
+	cout << docName <<  " sentence-" << s << " after language filter :" << words.size() << "words" << endl;
       }
     }
     if ( words.size() < nG )
@@ -399,7 +399,7 @@ size_t doc_word_inventory( const Document *d, const string& docName,
       catch(...){
 #pragma omp critical
 	{
-	  cerr << "missing text for word " << w->id() << endl;
+	  cerr << "FoLiA-stats: missing text for word " << w->id() << endl;
 	}
 	break;
       }
@@ -430,7 +430,7 @@ size_t doc_word_inventory( const Document *d, const string& docName,
     if ( data.size() != words.size() ) {
 #pragma omp critical
       {
-	cerr << "Error: Missing words! skipped sentence " << sents[s]->id() << " in " << docName << endl;
+	cerr << "FoLiA-stats: Error: Missing words! skipped sentence " << sents[s]->id() << " in " << docName << endl;
       }
       continue;
     }
@@ -503,14 +503,14 @@ size_t doc_word_inventory( const Document *d, const string& docName,
   if ( verbose && (lemTotal < wordTotal) ){
 #pragma omp critical
     {
-      cerr << "info: " << wordTotal - lemTotal
+      cout << "info: " << wordTotal - lemTotal
 	   << " lemma's are missing in "  << d->id() << endl;
     }
   }
   if ( verbose && (posTotal < wordTotal) ){
 #pragma omp critical
     {
-      cerr << "info: " << wordTotal - posTotal
+      cout << "info: " << wordTotal - posTotal
 	   << " POS tags are missing in "  << d->id() << endl;
     }
   }
@@ -527,7 +527,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "make a str inventory on:" << docName << endl;
+      cout << "make a str inventory on:" << docName << endl;
     }
   }
   size_t wordTotal = 0;
@@ -535,7 +535,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "found " << strings.size() << " strings" << endl;
+      cout << "found " << strings.size() << " strings" << endl;
     }
   }
 
@@ -543,7 +543,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "after filter on " << lang << " " << strings.size() << " strings" << endl;
+      cout << "after filter on " << lang << " " << strings.size() << " strings" << endl;
     }
   }
   if ( strings.size() < nG )
@@ -560,7 +560,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
     catch(...){
 #pragma omp critical
       {
-	cerr << "missing text for word " << s->id() << endl;
+	cerr << "FoLiA-stats: missing text for word " << s->id() << endl;
       }
       break;
     }
@@ -570,7 +570,7 @@ size_t doc_str_inventory( const Document *d, const string& docName,
   if ( data.size() != strings.size() ) {
 #pragma omp critical
     {
-      cerr << "Error: Missing words! skipped document " << docName << endl;
+      cerr << "FoLiA-stats: Missing words! skipped document " << docName << endl;
     }
     return 0;
   }
@@ -590,7 +590,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "make a par_str inventory on:" << docName << endl;
+      cout << "make a par_str inventory on:" << docName << endl;
     }
   }
   size_t wordTotal = 0;
@@ -600,14 +600,14 @@ size_t par_str_inventory( const Document *d, const string& docName,
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << "found " << strings.size() << " strings" << endl;
+	cout << "found " << strings.size() << " strings" << endl;
       }
     }
     taal_filter( strings, lang );
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << "after filter on " << lang << " " << strings.size() << " strings" << endl;
+	cout << "after filter on " << lang << " " << strings.size() << " strings" << endl;
       }
     }
     if ( strings.size() < nG )
@@ -624,7 +624,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
       catch(...){
 #pragma omp critical
 	{
-	  cerr << "missing text for word " << s->id() << endl;
+	  cerr << "FoLiA-stats: missing text for word " << s->id() << endl;
 	}
       break;
       }
@@ -634,7 +634,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     if ( data.size() != strings.size() ) {
 #pragma omp critical
       {
-	cerr << "Error: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
+	cerr << "FoLiA-stats: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
       }
       continue;
     }
@@ -655,7 +655,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "make a text_in_par inventory on:" << docName << endl;
+      cout << "make a text_in_par inventory on:" << docName << endl;
     }
   }
   size_t wordTotal = 0;
@@ -666,7 +666,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       if ( verbose ){
 #pragma omp critical
 	{
-	  cerr << "skip a paragraph in wrong language: " << p_lang << endl;
+	  cout << "skip a paragraph in wrong language: " << p_lang << endl;
 	}
       }
       continue;
@@ -686,7 +686,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       if ( verbose ){
 #pragma omp critical
 	{
-	  cerr << "found NO string in paragraph: " << p->id() << endl;
+	  cout << "found NO string in paragraph: " << p->id() << endl;
 	}
       }
       continue;
@@ -696,13 +696,13 @@ size_t par_text_inventory( const Document *d, const string& docName,
     if ( verbose ){
 #pragma omp critical
       {
-	cerr << "found string: '" << s << "'" << endl;
+	cout << "found string: '" << s << "'" << endl;
 	if ( num <= 1 ){
-	  cerr << "with no substrings" << endl;
+	  cout << "with no substrings" << endl;
 	}
 	else {
 	  using TiCC::operator<<;
-	  cerr << "with " << num << " substrings: " << data << endl;
+	  cout << "with " << num << " substrings: " << data << endl;
 	}
       }
     }
@@ -746,7 +746,7 @@ int main( int argc, char *argv[] ){
     opts.init(argc,argv);
   }
   catch( OptionError& e ){
-    cerr << e.what() << endl;
+    cerr << "FoLiA-stats: " << e.what() << endl;
     usage(argv[0]);
     exit( EXIT_FAILURE );
   }
@@ -765,7 +765,7 @@ int main( int argc, char *argv[] ){
   string lang = "none";
   string value;
   if ( opts.extract('V') || opts.extract("version") ){
-    cerr << PACKAGE_STRING << endl;
+    cerr << "FoLiA-stats: " << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
   if ( opts.extract('h') || opts.extract("help") ){
@@ -781,7 +781,7 @@ int main( int argc, char *argv[] ){
   if ( !modes.empty() ){
     mode = stringToMode( modes );
     if ( mode == UNKNOWN ){
-      cerr << "unknown --mode " << modes << endl;
+      cerr << "FoLiA-stats: unknown --mode " << modes << endl;
       return EXIT_FAILURE;
     }
   }
@@ -793,7 +793,7 @@ int main( int argc, char *argv[] ){
   bool recursiveDirs = opts.extract( 'R' );
   if ( opts.extract( 's' ) ) {
     if ( !modes.empty() ){
-      cerr << "old style -s option cannot be combined with --mode option" << endl;
+      cerr << "FoLiA-stats: old style -s option cannot be combined with --mode option" << endl;
       return EXIT_FAILURE;
     }
     else {
@@ -802,7 +802,7 @@ int main( int argc, char *argv[] ){
   }
   if ( opts.extract( 'S' ) ){
     if ( !modes.empty() ){
-      cerr << "old style -S option cannot be combined with --mode option" << endl;
+      cerr << "FoLiA-stats: old style -S option cannot be combined with --mode option" << endl;
       return EXIT_FAILURE;
     }
     else {
@@ -815,29 +815,29 @@ int main( int argc, char *argv[] ){
     sep = "_";
   }
   if ( !opts.extract( 'o', outputPrefix ) ){
-    cerr << "an output filename prefix is required. (-o option) " << endl;
+    cerr << "FoLiA-stats: an output filename prefix is required. (-o option) " << endl;
     exit(EXIT_FAILURE);
   }
   if ( opts.extract("clip", value ) ){
     if ( !stringTo(value, clip ) ){
-      cerr << "illegal value for --clip (" << value << ")" << endl;
+      cerr << "FoLiA-stats: illegal value for --clip (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
   }
   if ( opts.extract("ngram", value ) ){
     if ( !stringTo(value, nG ) ){
-      cerr << "illegal value for --ngram (" << value << ")" << endl;
+      cerr << "FoLiA-stats: illegal value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
   }
   if ( opts.extract('t', value ) ){
 #ifdef HAVE_OPENMP
     if ( !stringTo(value, numThreads ) ){
-      cerr << "illegal value for -t (" << value << ")" << endl;
+      cerr << "FoLiA-stats: illegal value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
 #else
-    cerr << "OpenMP support is missing. -t option is not supported" << endl;
+    cerr << "FoLiA-stats: OpenMP support is missing. -t option is not supported" << endl;
     exit( EXIT_FAILURE );
 #endif
   }
@@ -850,7 +850,7 @@ int main( int argc, char *argv[] ){
   opts.extract('e', expression );
   opts.extract( "class", classname );
   if ( !opts.empty() ){
-    cerr << "unsupported options : " << opts.toString() << endl;
+    cerr << "FoLiA-stats: unsupported options : " << opts.toString() << endl;
     usage(progname);
     exit(EXIT_FAILURE);
   }
@@ -861,14 +861,14 @@ int main( int argc, char *argv[] ){
 
   vector<string> massOpts = opts.getMassOpts();
   if ( massOpts.empty() ){
-    cerr << "no file or dir specified!" << endl;
+    cerr << "FoLiA-stats: no file or dir specified!" << endl;
     exit(EXIT_FAILURE);
   }
   string name = massOpts[0];
   vector<string> fileNames = searchFilesMatch( name, expression, recursiveDirs );
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
-    cerr << "no matching files found" << endl;
+    cerr << "FoLiA-stats: no matching files found" << endl;
     exit(EXIT_SUCCESS);
   }
 
@@ -883,8 +883,7 @@ int main( int argc, char *argv[] ){
     outputPrefix += "foliastats";
   }
 
-  bool more_then_one = (toDo > 1);
-  if ( more_then_one ){
+  if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
   map<string,unsigned int> wc;
@@ -894,7 +893,7 @@ int main( int argc, char *argv[] ){
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
   set<string> emph;
-
+  int doc_counter = toDo;
 #pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wc,lc,lpc,emph)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
@@ -905,8 +904,8 @@ int main( int argc, char *argv[] ){
     catch ( exception& e ){
 #pragma omp critical
       {
-	cerr << "failed to load document '" << docName << "'" << endl;
-	cerr << "reason: " << e.what() << endl;
+	cerr << "FoLiA-stats: failed to load document '" << docName << "'" << endl;
+	cerr << "FoLiA-stats: reason: " << e.what() << endl;
       }
       continue;
     }
@@ -931,7 +930,7 @@ int main( int argc, char *argv[] ){
 				       pos_count, emph, sep );
       break;
     default:
-      cerr << "not yet implemented mode: " << modes << endl;
+      cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
       exit( EXIT_FAILURE );
     }
 #pragma omp critical
@@ -942,16 +941,14 @@ int main( int argc, char *argv[] ){
       cout << "Processed :" << docName << " with " << word_count << " "
 	   << nG << "-grams,"
 	   << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
-	   << " still " << --toDo << " files to go." << endl;
+	   << " still " << --doc_counter << " files to go." << endl;
     }
     delete d;
   }
 
-  if ( more_then_one ){
-    cout << "done processsing directory '" << name << "', in total "
-	 << wordTotal << " " << nG << "-grams were found." << endl;
+  if ( toDo ){
+    cout << "done processsing directory '" << name << "'" << endl;
   }
-
   if ( !hempName.empty() ){
     ofstream out( hempName );
     if ( out ){
@@ -961,10 +958,15 @@ int main( int argc, char *argv[] ){
       cout << "historical emphasis stored in: " << hempName << endl;
     }
     else {
-      cerr << "unable to create historical emphasis file: " << hempName << endl;
+      cerr << "FoLiA-stats: unable to create historical emphasis file: " << hempName << endl;
     }
   }
   cout << "start calculating the results" << endl;
+  cout << "in total " << wordTotal << " " << nG << "-grams were found.";
+  if ( toDo > 1 ){
+    cout << "in " << toDo << " FoLiA documents.";
+  }
+  cout << endl;
   string ext;
   if ( !lang.empty() && lang != "none" ){
     ext += "." + lang;
@@ -998,4 +1000,5 @@ int main( int argc, char *argv[] ){
       }
     }
   }
+
 }
