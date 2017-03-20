@@ -380,6 +380,29 @@ size_t add_word_inventory( const vector<string>& data,
   return count;
 }
 
+template <class foliaclass>
+void segment_sentences( const vector<foliaclass>& words,
+			multimap<string,vector<foliaclass>>& lang_sent_map){
+  // split the 'text' in words into segments per language.
+  // a change in language marks a new segment
+  string cur_lang = "";
+  vector<foliaclass> segment;
+  for ( const auto& word : words ){
+    string lang = word->language();
+    if ( cur_lang.empty() ){
+      cur_lang = lang;
+    }
+    if ( cur_lang != lang ){
+      // language change. save current segment;
+      lang_sent_map.insert( make_pair(cur_lang,segment) );
+      cur_lang = lang;
+      segment.clear();
+    }
+    segment.push_back( word );
+  }
+  lang_sent_map.insert( make_pair(cur_lang,segment) );
+}
+
 size_t doc_word_inventory( const Document *d, const string& docName,
 			   size_t nG,
 			   bool lowercase,
@@ -412,15 +435,21 @@ size_t doc_word_inventory( const Document *d, const string& docName,
     if ( verbose ){
 #pragma omp critical
       {
-	cout << docName <<  " sentence-" << s << " :" << words.size() << "words" << endl;
+	cout << docName <<  " sentence-" << s+1 << " : " << words.size() << " words" << endl;
       }
+    }
+    multimap<string,vector<Word*>> lang_sent_map;
+    segment_sentences( words, lang_sent_map );
+    using TiCC::operator<<;
+    for ( const auto& it : lang_sent_map ){
+      cerr << it.first << ": " << it.second << endl;
     }
     for( const auto& lang : languages ){
       taal_filter( words, lang );
       if ( verbose ){
 #pragma omp critical
 	{
-	  cout << docName <<  " sentence-" << s << " after language filter :" << words.size() << "words" << endl;
+	  cout << docName <<  " sentence-" << s << " after language filter: " << words.size() << " words" << endl;
 	}
       }
       if ( words.size() < nG )
@@ -580,6 +609,8 @@ size_t doc_str_inventory( const Document *d,
       cout << "found " << strings.size() << " strings" << endl;
     }
   }
+  multimap<string,vector<String*>> lang_sent_map;
+  segment_sentences( strings, lang_sent_map );
   for ( const auto& lang : languages ){
     taal_filter( strings, lang );
     if ( verbose ){
@@ -645,6 +676,12 @@ size_t par_str_inventory( const Document *d, const string& docName,
       {
 	cout << "found " << strings.size() << " strings" << endl;
       }
+    }
+    multimap<string,vector<String*>> lang_sent_map;
+    segment_sentences( strings, lang_sent_map );
+    using TiCC::operator<<;
+    for ( const auto& it : lang_sent_map ){
+      cerr << it.first << ": " << it.second << endl;
     }
     for ( const auto& lang : languages ){
       taal_filter( strings, lang );
@@ -773,8 +810,17 @@ void usage( const string& name ){
   cerr << "\t--lang\t\t Language. (default='none')." << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t--ngram\t\t Ngram count " << endl;
-  cerr << "\t-s\t\t Process <str> nodes not <w> per <p> node" << endl;
-  cerr << "\t-S\t\t Process <str> nodes not <w> per document" << endl;
+  cerr << "\t--mode='mode' Process text found like this: (default: 'word_in_sent')" << endl;
+  //  cerr << "\t\t 'text_in_doc'" << endl;
+  cerr << "\t\t 'text_in_par' Process text nodes per <p> node." << endl;
+  //cerr << "\t\t 'text_in_sent'" << endl;
+  cerr << "\t\t 'string_in_doc' Process <str> nodes per document." << endl;
+  cerr << "\t\t 'string_in_par' Process <str> nodes per <p> node." << endl;
+  //  cerr << "\t\t 'word_in_doc' Process <w> nodes per document." << endl;
+  //  cerr << "\t\t 'word_in_par'" << endl;
+  cerr << "\t\t 'word_in_sent' Process <w> nodes per <s> in the document." << endl;
+  cerr << "\t-s\t\t equal to --mode=string_in_par" << endl;
+  cerr << "\t-S\t\t equal to --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t\t (words consisting of single, space separated letters)" << endl;
@@ -834,7 +880,7 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    mode = W_IN_D;
+    mode = W_IN_S;
   }
   string hempName;
   opts.extract("hemp", hempName );
@@ -985,7 +1031,7 @@ int main( int argc, char *argv[] ){
       word_count = doc_str_inventory( d, docName, nG, lowercase,
 				      languages, wc, emph, sep );
       break;
-    case W_IN_D:
+    case W_IN_S:
       word_count = doc_word_inventory( d, docName, nG, lowercase,
 				       languages, wc, lc, lpc, lem_count,
 				       pos_count, emph, sep );
