@@ -9,10 +9,15 @@ Usage: FoLiA-stats [options] file/dir
 	--lower		 Lowercase all words
 	--underscore	 connect all words with underscores
 	--lang		 Language. (default='none').
-	--languages		 Lan1,Lan2,Lan3. (default='Lan1').
+	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 	--ngram		 Ngram count 
-	-s		 Process <str> nodes not <w> per <p> node
-	-S		 Process <str> nodes not <w> per document
+	--mode='mode' Process text found like this: (default: 'word_in_sent')
+		 'text_in_par' Process text nodes per <p> node.
+		 'string_in_doc' Process <str> nodes per document.
+		 'string_in_par' Process <str> nodes per <p> node.
+		 'word_in_sent' Process <w> nodes per <s> in the document.
+	-s		 equal to --mode=string_in_par
+	-S		 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')
 	--hemp=<file>	 Create a historical emphasis file. 
 			 (words consisting of single, space separated letters)
@@ -35,10 +40,15 @@ Usage: FoLiA-stats [options] file/dir
 	--lower		 Lowercase all words
 	--underscore	 connect all words with underscores
 	--lang		 Language. (default='none').
-	--languages		 Lan1,Lan2,Lan3. (default='Lan1').
+	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 	--ngram		 Ngram count 
-	-s		 Process <str> nodes not <w> per <p> node
-	-S		 Process <str> nodes not <w> per document
+	--mode='mode' Process text found like this: (default: 'word_in_sent')
+		 'text_in_par' Process text nodes per <p> node.
+		 'string_in_doc' Process <str> nodes per document.
+		 'string_in_par' Process <str> nodes per <p> node.
+		 'word_in_sent' Process <w> nodes per <s> in the document.
+	-s		 equal to --mode=string_in_par
+	-S		 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')
 	--hemp=<file>	 Create a historical emphasis file. 
 			 (words consisting of single, space separated letters)
