@@ -403,12 +403,14 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
       continue;
     string lang = sents[s]->language(); // the language this sentence is in
     // ignore language labels on the invidual words!
-    if ( languages.find( lang ) == languages.end() ){
-      // lang is 'unwanted', just add to the default
-      if ( default_language == "skip" ){
-	continue;
+    if ( default_language != "all" ){
+      if ( languages.find( lang ) == languages.end() ){
+	// lang is 'unwanted', just add to the default
+	if ( default_language == "skip" ){
+	  continue;
+	}
+	lang = default_language;
       }
-      lang = default_language;
     }
     vector<wlp_rec> data;
     for ( const auto& w : words ){
@@ -568,12 +570,14 @@ size_t doc_str_inventory( const Document *d,
   if ( strings.size() < nG )
     return wordTotal;
   string lang = d->language();
-  if ( languages.find( lang ) == languages.end() ){
-    // lang is 'unwanted', just add to the default
-    if ( default_language == "skip" ){
-      return wordTotal;
+  if ( default_language != "all" ){
+    if ( languages.find( lang ) == languages.end() ){
+      // lang is 'unwanted', just add to the default
+      if ( default_language == "skip" ){
+	return wordTotal;
+      }
+      lang = default_language;
     }
-    lang = default_language;
   }
   vector<string> data;
   for ( const auto& s : strings ){
@@ -635,12 +639,14 @@ size_t par_str_inventory( const Document *d, const string& docName,
       continue;
 
     string lang = p->language();
-    if ( languages.find( lang ) == languages.end() ){
-      // lang is 'unwanted', just add to the default
-      if ( default_language == "skip" ){
-	continue;
+    if ( default_language != "all" ){
+      if ( languages.find( lang ) == languages.end() ){
+	// lang is 'unwanted', just add to the default
+	if ( default_language == "skip" ){
+	  continue;
+	}
+	lang = default_language;
       }
-      lang = default_language;
     }
     vector<string> data;
     for ( const auto& s : strings ){
@@ -694,12 +700,14 @@ size_t par_text_inventory( const Document *d, const string& docName,
   for ( const auto& p : pars ){
     string lang = p->language(); // get the language the paragraph is in
     // totally ignore language annotation on embeded <s> and or <w> elements.
-    if ( languages.find( lang ) == languages.end() ){
-      // lang is 'unwanted', just add to the default
-      if ( default_language == "skip" ){
-	continue;
+    if ( default_language != "all" ){
+      if ( languages.find( lang ) == languages.end() ){
+	// lang is 'unwanted', just add to the default
+	if ( default_language == "skip" ){
+	  continue;
+	}
+	lang = default_language;
       }
-      lang = default_language;
     }
     string s;
     UnicodeString us;
@@ -755,7 +763,8 @@ void usage( const string& name ){
   cerr << "\t--underscore\t connect all words with underscores" << endl;
   cerr << "\t--lang\t\t Language. (default='none')." << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
-  cerr << "\t\t\t Use 'skip' as Lan1 to ignore all languages not mentioned as Lan2,..." << endl;
+  cerr << "\t\t\t If Lan1=='skip' all languages not mentioned as Lan2,... are ignored." << endl;
+  cerr << "\t\t\t If Lan1=='all' all languages are counted." << endl;
   cerr << "\t--ngram\t\t Ngram count " << endl;
   cerr << "\t--mode='mode' Process text found like this: (default: 'word_in_sent')" << endl;
   //  cerr << "\t\t 'text_in_doc'" << endl;

@@ -29,3 +29,9 @@ $my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="skip,eng,nld,fra
 diff stats3.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 diff stats3.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
 diff stats3.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="all" -o stats4 data/statstest.xml > out2 2>&1
+diff stats4.wordfreqlist.deu.tsv stats-deu.ok >> teststats.out 2>&1
+diff stats4.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
+diff stats4.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
+diff stats4.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
