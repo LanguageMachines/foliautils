@@ -19,7 +19,13 @@ diff statS.wordfreqlist.3-gram.tsv statS-3.ok >> teststats.out 2>&1
 $my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="skip,eng" -o stats1 out/langcat.test.lc.xml > out2 2>&1
 diff stats1.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="eng,nld,fra" -o stats2 out/langcat.test.lc.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="eng,nld,fra,deu" -o stats2 data/statstest.xml > out2 2>&1
 diff stats2.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 diff stats2.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
 diff stats2.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
+diff stats2.wordfreqlist.deu.tsv stats-deu.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="skip,eng,nld,fra" -o stats3 data/statstest.xml > out2 2>&1
+diff stats3.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
+diff stats3.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
+diff stats3.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
