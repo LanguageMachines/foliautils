@@ -10,6 +10,7 @@ Usage: FoLiA-stats [options] file/dir
 	--underscore	 connect all words with underscores
 	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
+			 Use 'skip' as Lan1 to ignore all languages not mentioned as Lan2,...
 	--ngram		 Ngram count 
 	--mode='mode' Process text found like this: (default: 'word_in_sent')
 		 'text_in_par' Process text nodes per <p> node.
@@ -41,6 +42,7 @@ Usage: FoLiA-stats [options] file/dir
 	--underscore	 connect all words with underscores
 	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
+			 Use 'skip' as Lan1 to ignore all languages not mentioned as Lan2,...
 	--ngram		 Ngram count 
 	--mode='mode' Process text found like this: (default: 'word_in_sent')
 		 'text_in_par' Process text nodes per <p> node.
