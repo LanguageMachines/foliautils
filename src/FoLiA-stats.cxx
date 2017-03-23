@@ -81,63 +81,66 @@ Mode stringToMode( const string& ms ){
   return UNKNOWN;
 }
 
-void create_wf_list( const map<string,map<string, unsigned int>>& wc,
+void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 		     const string& filename, unsigned int totalIn,
-		     unsigned int clip, int nG,
+		     unsigned int clip, int max_ng,
 		     bool doperc ){
   unsigned int total = totalIn;
-  for ( const auto& wc0 : wc ){
-    string ext;
+  for ( const auto& wc0 : wcv ){
+    string lext;
     string lang = wc0.first;
     if ( lang != "none" ){
-      ext += "." + lang;
+      lext += "." + lang;
     }
-    if ( nG > 1 ){
-      ext += "." + toString( nG ) + "-gram";
-    }
-    ext += ".tsv";
-    string ofilename = filename + ext;
-    ofstream os( ofilename );
-    if ( !os ){
-      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
-      exit(EXIT_FAILURE);
-    }
-    map<unsigned int, set<string>> wf;
-    map<string,unsigned int >::const_iterator cit = wc0.second.begin();
-    while( cit != wc0.second.end()  ){
-      if ( cit->second <= clip ){
-	total -= cit->second;
+    for ( int ng=1; ng <= max_ng; ++ng ){
+      string ext = lext;
+      if ( ng > 1 ){
+	ext += "." + toString( ng ) + "-gram";
       }
-      else {
-	wf[cit->second].insert( cit->first );
+      ext += ".tsv";
+      string ofilename = filename + ext;
+      ofstream os( ofilename );
+      if ( !os ){
+	cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+	exit(EXIT_FAILURE);
       }
-      ++cit;
-    }
-    unsigned int sum=0;
-    unsigned int types=0;
-    map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
-    while ( wit != wf.rend() ){
-      set<string>::const_iterator sit = wit->second.begin();
-      while ( sit != wit->second.end() ){
-	sum += wit->first;
-	os << *sit << "\t" << wit->first;
-	if ( doperc ){
-	  os << "\t" << sum << "\t" << 100 * double(sum)/total;
+      map<unsigned int, set<string>> wf;
+      map<string,unsigned int >::const_iterator cit = wc0.second[ng].begin();
+      while( cit != wc0.second[ng].end()  ){
+	if ( cit->second <= clip ){
+	  total -= cit->second;
 	}
-	os << endl;
-	++types;
-	++sit;
+	else {
+	  wf[cit->second].insert( cit->first );
+	}
+	++cit;
       }
-      ++wit;
-    }
+      unsigned int sum=0;
+      unsigned int types=0;
+      map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
+      while ( wit != wf.rend() ){
+	set<string>::const_iterator sit = wit->second.begin();
+	while ( sit != wit->second.end() ){
+	  sum += wit->first;
+	  os << *sit << "\t" << wit->first;
+	  if ( doperc ){
+	    os << "\t" << sum << "\t" << 100 * double(sum)/total;
+	  }
+	  os << endl;
+	  ++types;
+	  ++sit;
+	}
+	++wit;
+      }
 #pragma omp critical
-    {
-      cout << "created WordFreq list '" << ofilename << "'";
-      cout << " with " << types << " unique " << nG << "-gram tokens";
-      if ( clip > 0 ){
-	cout << " ("<< totalIn - total << " were clipped.)";
+      {
+	cout << "created WordFreq list '" << ofilename << "'";
+	cout << " with " << types << " unique " << ng << "-gram tokens";
+	if ( clip > 0 ){
+	  cout << " ("<< totalIn - total << " were clipped.)";
+	}
+	cout << endl;
       }
-      cout << endl;
     }
   }
 }
@@ -147,130 +150,136 @@ struct rec {
   map<string,unsigned int> pc;
 };
 
-void create_lf_list( const map<string,map<string, unsigned int>>& lc,
+void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 		     const string& filename,
 		     unsigned int totalIn,
 		     unsigned int clip,
-		     int nG,
+		     int max_ng,
 		     bool doperc ){
   unsigned int total = totalIn;
-  for ( const auto& lc0 : lc ){
-    string ext;
+  for ( const auto& lc0 : lcv ){
+    string lext;
     string lang = lc0.first;
     if ( lang != "none" ){
-      ext += "." + lang;
+      lext += "." + lang;
     }
-    if ( nG > 1 ){
-      ext += "." + toString( nG ) + "-gram";
-    }
-    ext += ".tsv";
-    string ofilename = filename + ext;
-    ofstream os( ofilename );
-    if ( !os ){
-      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
-      exit(EXIT_FAILURE);
-    }
-    map<unsigned int, set<string> > lf;
-    map<string,unsigned int >::const_iterator cit = lc0.second.begin();
-    while( cit != lc0.second.end()  ){
-      if ( cit->second <= clip ){
-	total -= cit->second;
+    for ( int ng=1; ng <= max_ng; ++ng ){
+      string ext = lext;
+      if ( ng > 1 ){
+	ext += "." + toString( ng ) + "-gram";
       }
-      else {
-	lf[cit->second].insert( cit->first );
+      ext += ".tsv";
+      string ofilename = filename + ext;
+      ofstream os( ofilename );
+      if ( !os ){
+	cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+	exit(EXIT_FAILURE);
       }
-      ++cit;
-    }
-
-    unsigned int sum=0;
-    unsigned int types=0;
-    map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
-    while ( wit != lf.rend() ){
-      set<string>::const_iterator sit = wit->second.begin();
-      while ( sit != wit->second.end() ){
-	sum += wit->first;
-	os << *sit << "\t" << wit->first;
-	if ( doperc ){
-	  os << "\t" << sum << "\t" << 100* double(sum)/total;
+      map<unsigned int, set<string> > lf;
+      map<string,unsigned int >::const_iterator cit = lc0.second[ng].begin();
+      while( cit != lc0.second[ng].end()  ){
+	if ( cit->second <= clip ){
+	  total -= cit->second;
 	}
-	os << endl;
-	++types;
-	++sit;
+	else {
+	  lf[cit->second].insert( cit->first );
+	}
+	++cit;
       }
-      ++wit;
-    }
+
+      unsigned int sum=0;
+      unsigned int types=0;
+      map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
+      while ( wit != lf.rend() ){
+	set<string>::const_iterator sit = wit->second.begin();
+	while ( sit != wit->second.end() ){
+	  sum += wit->first;
+	  os << *sit << "\t" << wit->first;
+	  if ( doperc ){
+	    os << "\t" << sum << "\t" << 100* double(sum)/total;
+	  }
+	  os << endl;
+	  ++types;
+	  ++sit;
+	}
+	++wit;
+      }
 #pragma omp critical
-    {
-      cout << "created LemmaFreq list '" << filename << "'";
-      cout << " with " << types << " unique " << nG << "-gram lemmas";
-      if ( clip > 0 ){
-	cout << " ("<< totalIn - total << " were clipped.)";
+      {
+	cout << "created LemmaFreq list '" << filename << "'";
+	cout << " with " << types << " unique " << ng << "-gram lemmas";
+	if ( clip > 0 ){
+	  cout << " ("<< totalIn - total << " were clipped.)";
+	}
+	cout << endl;
       }
-      cout << endl;
     }
   }
 }
 
-void create_lpf_list( const map<string,multimap<string, rec>>& lpc,
+void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 		      const string& filename, unsigned int totalIn,
 		      unsigned int clip,
-		      int nG,
+		      int max_ng,
 		      bool doperc ){
   unsigned int total = totalIn;
-  for ( const auto& lpc0 : lpc ){
-    string ext;
+  for ( const auto& lpc0 : lpcv ){
+    string lext;
     string lang = lpc0.first;
     if ( lang != "none" ){
-      ext += "." + lang;
+      lext += "." + lang;
     }
-    if ( nG > 1 ){
-      ext += "." + toString( nG ) + "-gram";
-    }
-    ext += ".tsv";
-    string ofilename = filename + ext;
-    ofstream os( ofilename );
-    if ( !os ){
-      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
-      exit(EXIT_FAILURE);
-    }
+    for( int ng=1; ng <= max_ng; ++ng ){
+      string ext = lext;
+      if ( ng > 1 ){
+	ext += "." + toString( ng ) + "-gram";
+      }
+      ext += ".tsv";
+      string ofilename = filename + ext;
+      ofstream os( ofilename );
+      if ( !os ){
+	cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+	exit(EXIT_FAILURE);
+      }
 
-    multimap<unsigned int, pair<string,string> > lpf;
-    multimap<string,rec>::const_iterator cit = lpc0.second.begin();
-    while( cit != lpc0.second.end()  ){
-      map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
-      while ( pit != cit->second.pc.end() ){
-	if ( pit->second <= clip ){
-	  total -= pit->second;
+      multimap<unsigned int, pair<string,string> > lpf;
+      multimap<string,rec>::const_iterator cit = lpc0.second[ng].begin();
+      while( cit != lpc0.second[ng].end()  ){
+	map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
+	while ( pit != cit->second.pc.end() ){
+	  if ( pit->second <= clip ){
+	    total -= pit->second;
+	  }
+	  else {
+	    lpf.insert( make_pair( pit->second,
+				   make_pair( cit->first, pit->first ) ) );
+	  }
+	  ++pit;
 	}
-	else {
-	  lpf.insert( make_pair( pit->second,
-				 make_pair( cit->first, pit->first ) ) );
+	++cit;
+      }
+      unsigned int sum =0;
+      unsigned int types =0;
+      multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+      while ( wit != lpf.rend() ){
+	sum += wit->first;
+	os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
+	if ( doperc ){
+	  os << "\t" << sum << "\t" << 100 * double(sum)/total;
 	}
-	++pit;
+	os << endl;
+	++types;
+	++wit;
       }
-      ++cit;
-    }
-    unsigned int sum =0;
-    unsigned int types =0;
-    multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
-    while ( wit != lpf.rend() ){
-      sum += wit->first;
-      os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
-      if ( doperc ){
-	os << "\t" << sum << "\t" << 100 * double(sum)/total;
-      }
-      os << endl;
-      ++types;
-      ++wit;
-    }
 #pragma omp critical
-    {
-      cout << "created LemmaPosFreq list '" << ofilename << "'";
-      cout << " with " << types << " unique " << nG << "-gram lemmas and tags";
-      if ( clip > 0 ){
-	cout << " ("<< totalIn - total << " were clipped.)";
+      {
+	cout << "created LemmaPosFreq list '" << ofilename << "'";
+	cout << " with " << types << " unique " << ng << "-gram lemmas and tags";
+	if ( clip > 0 ){
+	  cout << " ("<< totalIn - total << " were clipped.)";
+	}
+	cout << endl;
       }
-      cout << endl;
     }
   }
 }
@@ -339,38 +348,41 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
 }
 
 size_t add_word_inventory( const vector<string>& data,
-			   map<string,unsigned int>& wc,
-			   size_t nG,
+			   vector<map<string,unsigned int>>& wc,
+			   int max_ng,
 			   const string& sep ){
-  size_t count = 0;
-  if ( data.size() < nG ){
-    return 0;
-  }
-  for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-    string multiw;
-    for ( size_t j=0; j < nG; ++j ){
-      multiw += data[i+j];
-      if ( j < nG-1 ){
-	multiw += sep;
-      }
-    }
-    ++count;
 #pragma omp critical
-    {
-      ++wc[multiw];
+  {
+    wc.resize(max_ng+1);
+  }
+  size_t count = 0;
+  for( int ng=1; ng <= max_ng; ++ng ){
+    for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
+      string multiw;
+      for ( int j=0; j < ng; ++j ){
+	multiw += data[i+j];
+	if ( j < ng-1 ){
+	  multiw += sep;
+	}
+      }
+      ++count;
+#pragma omp critical
+      {
+	++wc[ng][multiw];
+      }
     }
   }
   return count;
 }
 
 size_t doc_sent_word_inventory( const Document *d, const string& docName,
-				size_t nG,
+				int max_ng,
 				bool lowercase,
 				const string& default_language,
 				const set<string>& languages,
-				map<string,map<string,unsigned int>>& wc,
-				map<string,map<string,unsigned int>>& lc,
-				map<string,multimap<string, rec>>& lpc,
+				map<string,vector<map<string,unsigned int>>>& wcv,
+				map<string,vector<map<string,unsigned int>>>& lcv,
+				map<string,vector<multimap<string, rec>>>& lpcv,
 				unsigned int& lemTotal,
 				unsigned int& posTotal,
 				set<string>& emph,
@@ -399,8 +411,6 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	cout << docName <<  " sentence-" << s+1 << " : " << words.size() << " words" << endl;
       }
     }
-    if ( words.size() < nG )
-      continue;
     string lang = sents[s]->language(); // the language this sentence is in
     // ignore language labels on the invidual words!
     if ( default_language != "all" ){
@@ -412,6 +422,13 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	lang = default_language;
       }
     }
+#pragma omp critical
+    {
+      wcv[lang].resize(max_ng+1);
+      lcv[lang].resize(max_ng+1);
+      lpcv[lang].resize(max_ng+1);
+    }
+
     vector<wlp_rec> data;
     for ( const auto& w : words ){
       wlp_rec rec;
@@ -462,66 +479,68 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    for ( unsigned int i=0; i <= data.size() - nG ; ++i ){
-      string multiw;
-      string multil;
-      string multip;
-      bool lem_mis = false;
-      bool pos_mis = false;
-      for ( size_t j=0; j < nG; ++j ){
-	multiw += data[i+j].word;
-	if ( data[i+j].lemma.empty() ){
-	  lem_mis = true;
-	}
-	else if ( !lem_mis ){
-	  multil += data[i+j].lemma;
-	}
-	if ( data[i+j].pos.empty() ){
-	  pos_mis = true;
-	}
-	else if ( !pos_mis ){
-	  multip += data[i+j].pos;
-	}
-	if ( j < nG-1 ){
-	  multiw += sep;
-	  if ( !lem_mis )
-	    multil += sep;
-	  if ( !pos_mis )
-	    multip += sep;
-	}
-      }
-      ++wordTotal;
-      if ( !lem_mis ){
-	++lemTotal;
-      }
-      if ( !pos_mis ){
-	++posTotal;
-      }
-#pragma omp critical
-      {
-	++wc[lang][multiw];
-      }
-
-      if ( !multil.empty() ){
-#pragma omp critical
-	{
-	  ++lc[lang][multil];
-	}
-      }
-      if ( !multip.empty() ){
-#pragma omp critical
-	{
-	  auto lpc0 = lpc[lang];
-	  multimap<string, rec >::iterator it = lpc0.find(multil);
-	  if ( it == lpc0.end() ){
-	    rec tmp;
-	    tmp.count = 1;
-	    tmp.pc[multip]=1;
-	    lpc[lang].insert( make_pair(multil,tmp) );
+    for ( int ng = 1; ng <= max_ng; ++ng ){
+      for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
+	string multiw;
+	string multil;
+	string multip;
+	bool lem_mis = false;
+	bool pos_mis = false;
+	for ( int j=0; j < ng; ++j ){
+	  multiw += data[i+j].word;
+	  if ( data[i+j].lemma.empty() ){
+	    lem_mis = true;
 	  }
-	  else {
-	    ++it->second.count;
-	    ++it->second.pc[multip];
+	  else if ( !lem_mis ){
+	    multil += data[i+j].lemma;
+	  }
+	  if ( data[i+j].pos.empty() ){
+	    pos_mis = true;
+	  }
+	  else if ( !pos_mis ){
+	    multip += data[i+j].pos;
+	  }
+	  if ( j < ng-1 ){
+	    multiw += sep;
+	    if ( !lem_mis )
+	      multil += sep;
+	    if ( !pos_mis )
+	      multip += sep;
+	  }
+	}
+	++wordTotal;
+	if ( !lem_mis ){
+	  ++lemTotal;
+	}
+	if ( !pos_mis ){
+	  ++posTotal;
+	}
+#pragma omp critical
+	{
+	  ++wcv[lang][ng][multiw];
+	}
+
+	if ( !multil.empty() ){
+#pragma omp critical
+	  {
+	    ++lcv[lang][ng][multil];
+	  }
+	}
+	if ( !multip.empty() ){
+#pragma omp critical
+	  {
+	    auto lpc0 = lpcv[lang][ng];
+	    multimap<string, rec >::iterator it = lpc0.find(multil);
+	    if ( it == lpc0.end() ){
+	      rec tmp;
+	      tmp.count = 1;
+	      tmp.pc[multip]=1;
+	      lpcv[lang][ng].insert( make_pair(multil,tmp) );
+	    }
+	    else {
+	      ++it->second.count;
+	      ++it->second.pc[multip];
+	    }
 	  }
 	}
       }
@@ -546,11 +565,11 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 
 size_t doc_str_inventory( const Document *d,
 			  const string& docName,
-			  size_t nG,
+			  int max_ng,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
-			  map<string,map<string,unsigned int>>& wc,
+			  map<string,vector<map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
 			  const string& sep ){
   if ( verbose ){
@@ -567,8 +586,6 @@ size_t doc_str_inventory( const Document *d,
       cout << "found " << strings.size() << " strings" << endl;
     }
   }
-  if ( strings.size() < nG )
-    return wordTotal;
   string lang = d->language();
   if ( default_language != "all" ){
     if ( languages.find( lang ) == languages.end() ){
@@ -607,16 +624,16 @@ size_t doc_str_inventory( const Document *d,
   }
 
   add_emph_inventory( data, emph );
-  wordTotal += add_word_inventory( data, wc[lang], nG, sep );
+  wordTotal += add_word_inventory( data, wcv[lang], max_ng, sep );
   return wordTotal;
 }
 
 size_t par_str_inventory( const Document *d, const string& docName,
-			  size_t nG,
+			  int max_ng,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
-			  map<string,map<string,unsigned int>>& wc,
+			  map<string,vector<map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
 			  const string& sep ){
   if ( verbose ){
@@ -635,9 +652,6 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	cout << "found " << strings.size() << " strings" << endl;
       }
     }
-    if ( strings.size() < nG )
-      continue;
-
     string lang = p->language();
     if ( default_language != "all" ){
       if ( languages.find( lang ) == languages.end() ){
@@ -676,17 +690,17 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    wordTotal += add_word_inventory( data, wc[lang], nG, sep );
+    wordTotal += add_word_inventory( data, wcv[lang], max_ng, sep );
   }
   return wordTotal;
 }
 
 size_t par_text_inventory( const Document *d, const string& docName,
-			   size_t nG,
+			   int max_ng,
 			   bool lowercase,
 			   const string& default_language,
 			   const set<string>& languages,
-			   map<string,map<string,unsigned int>>& wc,
+			   map<string,vector<map<string,unsigned int>>>& wcv,
 			   set<string>& emph,
 			   const string& sep ){
   if ( verbose ){
@@ -745,7 +759,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       }
     }
     add_emph_inventory( data, emph );
-    wordTotal += add_word_inventory( data, wc[lang], nG, sep );
+    wordTotal += add_word_inventory( data, wcv[lang], max_ng, sep );
   }
   return wordTotal;
 }
@@ -806,7 +820,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   int clip = 0;
-  int nG = 1;
+  int max_NG = 1;
 #ifdef HAVE_OPENMP
   int numThreads = 1;
 #endif
@@ -876,7 +890,7 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( opts.extract("ngram", value ) ){
-    if ( !stringTo(value, nG ) ){
+    if ( !stringTo(value, max_NG ) ){
       cerr << "FoLiA-stats: illegal value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
@@ -956,15 +970,15 @@ int main( int argc, char *argv[] ){
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-  map<string,map<string,unsigned int>> wc;
-  map<string,map<string,unsigned int>> lc;
-  map<string,multimap<string, rec>> lpc;
+  map<string,vector<map<string,unsigned int>>> wcv;
+  map<string,vector<map<string,unsigned int>>> lcv;
+  map<string,vector<multimap<string, rec>>> lpcv;
   unsigned int wordTotal =0;
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
   set<string> emph;
   int doc_counter = toDo;
-#pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wc,lc,lpc,emph)
+#pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wcv,lcv,lpcv,emph)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -984,24 +998,24 @@ int main( int argc, char *argv[] ){
     unsigned int pos_count = 0;
     switch ( mode ){
     case S_IN_P:
-      word_count = par_str_inventory( d, docName, nG,
+      word_count = par_str_inventory( d, docName, max_NG,
 				      lowercase, default_language, languages,
-				      wc, emph, sep );
+				      wcv, emph, sep );
       break;
     case T_IN_P:
-      word_count = par_text_inventory( d, docName, nG, lowercase,
+      word_count = par_text_inventory( d, docName, max_NG, lowercase,
 				       default_language, languages,
-				       wc, emph, sep );
+				       wcv, emph, sep );
       break;
     case S_IN_D:
-      word_count = doc_str_inventory( d, docName, nG, lowercase,
-				      default_language, languages, wc,
+      word_count = doc_str_inventory( d, docName, max_NG, lowercase,
+				      default_language, languages, wcv,
 				      emph, sep );
       break;
     case W_IN_S:
-      word_count = doc_sent_word_inventory( d, docName, nG, lowercase,
+      word_count = doc_sent_word_inventory( d, docName, max_NG, lowercase,
 					    default_language, languages,
-					    wc, lc, lpc, lem_count,
+					    wcv, lcv, lpcv, lem_count,
 					    pos_count, emph, sep );
       break;
     default:
@@ -1014,7 +1028,7 @@ int main( int argc, char *argv[] ){
       lemTotal += lem_count;
       posTotal += pos_count;
       cout << "Processed :" << docName << " with " << word_count << " "
-	   << nG << "-grams,"
+	   << "n-grams,"
 	   << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
 	   << " still " << --doc_counter << " files to go." << endl;
     }
@@ -1037,7 +1051,7 @@ int main( int argc, char *argv[] ){
     }
   }
   cout << "start calculating the results" << endl;
-  cout << "in total " << wordTotal << " " << nG << "-grams were found.";
+  cout << "in total " << wordTotal << " " << "n-grams were found.";
   if ( toDo > 1 ){
     cout << "in " << toDo << " FoLiA documents.";
   }
@@ -1049,14 +1063,14 @@ int main( int argc, char *argv[] ){
     {
       string filename;
       filename = outputPrefix + ".wordfreqlist";
-      create_wf_list( wc, filename, wordTotal, clip, nG, dopercentage );
+      create_wf_list( wcv, filename, wordTotal, clip, max_NG, dopercentage );
     }
 #pragma omp section
     {
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmafreqlist";
-	create_lf_list( lc, filename, lemTotal, clip, nG, dopercentage );
+	create_lf_list( lcv, filename, lemTotal, clip, max_NG, dopercentage );
       }
     }
 #pragma omp section
@@ -1064,7 +1078,7 @@ int main( int argc, char *argv[] ){
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmaposfreqlist";
-	create_lpf_list( lpc, filename, posTotal, clip, nG, dopercentage );
+	create_lpf_list( lpcv, filename, posTotal, clip, max_NG, dopercentage );
       }
     }
   }
