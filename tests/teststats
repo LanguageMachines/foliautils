@@ -45,3 +45,9 @@ diff stats4.wordfreqlist.deu.tsv stats-deu.ok >> teststats.out 2>&1
 diff stats4.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 diff stats4.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
 diff stats4.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --ngram=2 --underscore -o stats5 data/statstest.xml > out2 2>&1
+diff stats5.wordfreqlist.2-gram.tsv stats-under.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --ngram=2 --separator='°' -o stats6 data/statstest.xml > out2 2>&1
+diff stats6.wordfreqlist.2-gram.tsv stats-o.ok >> teststats.out 2>&1

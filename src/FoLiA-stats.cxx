@@ -781,7 +781,8 @@ void usage( const string& name ){
   cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
   cerr << "\t-p\t\t output percentages too. " << endl;
   cerr << "\t--lower\t\t Lowercase all words" << endl;
-  cerr << "\t--underscore\t connect all words with underscores" << endl;
+  cerr << "\t--seperator='sep' \tconnect all n-grams with 'sep' (default is a space)" << endl;
+  cerr << "\t--underscore\t Obsolete. Equals to --separator='_'" << endl;
   cerr << "\t--lang\t\t Language. (default='none')." << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t\t\t If Lan1=='skip' all languages not mentioned as Lan2,... are ignored." << endl;
@@ -814,7 +815,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
+		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,separator:,help,version,mode:,verbose" );
   try {
     opts.init(argc,argv);
   }
@@ -884,9 +885,15 @@ int main( int argc, char *argv[] ){
       mode = S_IN_D;
     }
   }
-  bool do_under = opts.extract( "underscore" );
   string sep = " ";
-  if ( do_under ){
+  if( opts.extract( "separator", value ) ){
+    sep = value;
+  }
+  if ( opts.extract( "underscore" ) ){
+    if ( sep != " " ){
+      cerr << "--searator and --underscore conflict!" << endl;
+      exit(EXIT_FAILURE);
+    }
     sep = "_";
   }
   if ( !opts.extract( 'o', outputPrefix ) ){

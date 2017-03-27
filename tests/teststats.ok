@@ -7,7 +7,8 @@ Usage: FoLiA-stats [options] file/dir
 				(entries with frequency <= this factor will be ignored). 
 	-p		 output percentages too. 
 	--lower		 Lowercase all words
-	--underscore	 connect all words with underscores
+	--seperator='sep' 	connect all n-grams with 'sep' (default is a space)
+	--underscore	 Obsolete. Equals to --separator='_'
 	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 			 If Lan1=='skip' all languages not mentioned as Lan2,... are ignored.
@@ -42,7 +43,8 @@ Usage: FoLiA-stats [options] file/dir
 				(entries with frequency <= this factor will be ignored). 
 	-p		 output percentages too. 
 	--lower		 Lowercase all words
-	--underscore	 connect all words with underscores
+	--seperator='sep' 	connect all n-grams with 'sep' (default is a space)
+	--underscore	 Obsolete. Equals to --separator='_'
 	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 			 If Lan1=='skip' all languages not mentioned as Lan2,... are ignored.
