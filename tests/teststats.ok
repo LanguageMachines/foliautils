@@ -12,7 +12,9 @@ Usage: FoLiA-stats [options] file/dir
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 			 If Lan1=='skip' all languages not mentioned as Lan2,... are ignored.
 			 If Lan1=='all' all languages are counted.
-	--ngram		 Ngram count 
+	--ngram='count'		 construct n-grams of length 'count'
+	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
+			 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Process text found like this: (default: 'word_in_sent')
 		 'text_in_par' Process text nodes per <p> node.
 		 'string_in_doc' Process <str> nodes per document.
@@ -45,7 +47,9 @@ Usage: FoLiA-stats [options] file/dir
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 			 If Lan1=='skip' all languages not mentioned as Lan2,... are ignored.
 			 If Lan1=='all' all languages are counted.
-	--ngram		 Ngram count 
+	--ngram='count'		 construct n-grams of length 'count'
+	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
+			 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Process text found like this: (default: 'word_in_sent')
 		 'text_in_par' Process text nodes per <p> node.
 		 'string_in_doc' Process <str> nodes per document.

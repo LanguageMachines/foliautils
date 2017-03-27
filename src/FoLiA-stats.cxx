@@ -83,7 +83,7 @@ Mode stringToMode( const string& ms ){
 
 void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 		     const string& filename, unsigned int totalIn,
-		     unsigned int clip, int max_ng,
+		     unsigned int clip, int min_ng, int max_ng,
 		     bool doperc ){
   unsigned int total = totalIn;
   for ( const auto& wc0 : wcv ){
@@ -92,7 +92,7 @@ void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
     if ( lang != "none" ){
       lext += "." + lang;
     }
-    for ( int ng=1; ng <= max_ng; ++ng ){
+    for ( int ng=min_ng; ng <= max_ng; ++ng ){
       string ext = lext;
       if ( ng > 1 ){
 	ext += "." + toString( ng ) + "-gram";
@@ -154,6 +154,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 		     const string& filename,
 		     unsigned int totalIn,
 		     unsigned int clip,
+		     int min_ng,
 		     int max_ng,
 		     bool doperc ){
   unsigned int total = totalIn;
@@ -163,7 +164,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
     if ( lang != "none" ){
       lext += "." + lang;
     }
-    for ( int ng=1; ng <= max_ng; ++ng ){
+    for ( int ng=min_ng; ng <= max_ng; ++ng ){
       string ext = lext;
       if ( ng > 1 ){
 	ext += "." + toString( ng ) + "-gram";
@@ -220,6 +221,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 		      const string& filename, unsigned int totalIn,
 		      unsigned int clip,
+		      int min_ng,
 		      int max_ng,
 		      bool doperc ){
   unsigned int total = totalIn;
@@ -229,7 +231,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
     if ( lang != "none" ){
       lext += "." + lang;
     }
-    for( int ng=1; ng <= max_ng; ++ng ){
+    for( int ng=min_ng; ng <= max_ng; ++ng ){
       string ext = lext;
       if ( ng > 1 ){
 	ext += "." + toString( ng ) + "-gram";
@@ -349,6 +351,7 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
 
 size_t add_word_inventory( const vector<string>& data,
 			   vector<map<string,unsigned int>>& wc,
+			   int min_ng,
 			   int max_ng,
 			   const string& sep ){
 #pragma omp critical
@@ -356,8 +359,8 @@ size_t add_word_inventory( const vector<string>& data,
     wc.resize(max_ng+1);
   }
   size_t count = 0;
-  for( int ng=1; ng <= max_ng; ++ng ){
-    for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
+  for( int ng=min_ng; ng <= max_ng; ++ng ){
+    for ( int i=0; i <= int(data.size()) - ng ; ++i ){
       string multiw;
       for ( int j=0; j < ng; ++j ){
 	multiw += data[i+j];
@@ -376,6 +379,7 @@ size_t add_word_inventory( const vector<string>& data,
 }
 
 size_t doc_sent_word_inventory( const Document *d, const string& docName,
+				int min_ng,
 				int max_ng,
 				bool lowercase,
 				const string& default_language,
@@ -479,7 +483,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    for ( int ng = 1; ng <= max_ng; ++ng ){
+    for ( int ng = min_ng; ng <= max_ng; ++ng ){
       for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
 	string multiw;
 	string multil;
@@ -565,6 +569,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 
 size_t doc_str_inventory( const Document *d,
 			  const string& docName,
+			  int min_ng,
 			  int max_ng,
 			  bool lowercase,
 			  const string& default_language,
@@ -624,11 +629,12 @@ size_t doc_str_inventory( const Document *d,
   }
 
   add_emph_inventory( data, emph );
-  wordTotal += add_word_inventory( data, wcv[lang], max_ng, sep );
+  wordTotal += add_word_inventory( data, wcv[lang], min_ng, max_ng, sep );
   return wordTotal;
 }
 
 size_t par_str_inventory( const Document *d, const string& docName,
+			  int min_ng,
 			  int max_ng,
 			  bool lowercase,
 			  const string& default_language,
@@ -690,12 +696,13 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    wordTotal += add_word_inventory( data, wcv[lang], max_ng, sep );
+    wordTotal += add_word_inventory( data, wcv[lang], min_ng, max_ng, sep );
   }
   return wordTotal;
 }
 
 size_t par_text_inventory( const Document *d, const string& docName,
+			   int min_ng,
 			   int max_ng,
 			   bool lowercase,
 			   const string& default_language,
@@ -759,7 +766,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       }
     }
     add_emph_inventory( data, emph );
-    wordTotal += add_word_inventory( data, wcv[lang], max_ng, sep );
+    wordTotal += add_word_inventory( data, wcv[lang], min_ng, max_ng, sep );
   }
   return wordTotal;
 }
@@ -779,7 +786,9 @@ void usage( const string& name ){
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t\t\t If Lan1=='skip' all languages not mentioned as Lan2,... are ignored." << endl;
   cerr << "\t\t\t If Lan1=='all' all languages are counted." << endl;
-  cerr << "\t--ngram\t\t Ngram count " << endl;
+  cerr << "\t--ngram='count'\t\t construct n-grams of length 'count'" << endl;
+  cerr << "\t--max-ngram='max'\t construct ALL n-grams upto a length of 'max'" << endl;
+  cerr << "\t\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
   cerr << "\t--mode='mode' Process text found like this: (default: 'word_in_sent')" << endl;
   //  cerr << "\t\t 'text_in_doc'" << endl;
   cerr << "\t\t 'text_in_par' Process text nodes per <p> node." << endl;
@@ -805,7 +814,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,languages:,ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
+		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,help,version,mode:,verbose" );
   try {
     opts.init(argc,argv);
   }
@@ -821,6 +830,7 @@ int main( int argc, char *argv[] ){
   }
   int clip = 0;
   int max_NG = 1;
+  int min_NG = 0;
 #ifdef HAVE_OPENMP
   int numThreads = 1;
 #endif
@@ -857,7 +867,7 @@ int main( int argc, char *argv[] ){
   opts.extract("hemp", hempName );
   bool recursiveDirs = opts.extract( 'R' );
   if ( opts.extract( 's' ) ) {
-    if ( !modes.empty() ){
+  if ( !modes.empty() ){
       cerr << "FoLiA-stats: old style -s option cannot be combined with --mode option" << endl;
       return EXIT_FAILURE;
     }
@@ -885,15 +895,27 @@ int main( int argc, char *argv[] ){
   }
   if ( opts.extract("clip", value ) ){
     if ( !stringTo(value, clip ) ){
-      cerr << "FoLiA-stats: illegal value for --clip (" << value << ")" << endl;
+  cerr << "FoLiA-stats: illegal value for --clip (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
   }
   if ( opts.extract("ngram", value ) ){
-    if ( !stringTo(value, max_NG ) ){
+    if ( !stringTo(value, min_NG ) ){
       cerr << "FoLiA-stats: illegal value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
+  }
+  if ( opts.extract("max-ngram", value ) ){
+    if ( !stringTo(value, max_NG ) ){
+      cerr << "FoLiA-stats: illegal value for --max-ngram (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+  if ( min_NG == 0 ){
+    min_NG = 1;
+  }
+  else if ( max_NG < min_NG ){
+    max_NG = min_NG;
   }
   if ( opts.extract('t', value ) ){
 #ifdef HAVE_OPENMP
@@ -924,7 +946,7 @@ int main( int argc, char *argv[] ){
       exit( EXIT_FAILURE );
     }
     else {
-      default_language = "skip";
+      default_language = value;
       languages.insert( value );
     }
   }
@@ -998,22 +1020,22 @@ int main( int argc, char *argv[] ){
     unsigned int pos_count = 0;
     switch ( mode ){
     case S_IN_P:
-      word_count = par_str_inventory( d, docName, max_NG,
+      word_count = par_str_inventory( d, docName, min_NG, max_NG,
 				      lowercase, default_language, languages,
 				      wcv, emph, sep );
       break;
     case T_IN_P:
-      word_count = par_text_inventory( d, docName, max_NG, lowercase,
+      word_count = par_text_inventory( d, docName, min_NG, max_NG, lowercase,
 				       default_language, languages,
 				       wcv, emph, sep );
       break;
     case S_IN_D:
-      word_count = doc_str_inventory( d, docName, max_NG, lowercase,
+      word_count = doc_str_inventory( d, docName, min_NG, max_NG, lowercase,
 				      default_language, languages, wcv,
 				      emph, sep );
       break;
     case W_IN_S:
-      word_count = doc_sent_word_inventory( d, docName, max_NG, lowercase,
+      word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG, lowercase,
 					    default_language, languages,
 					    wcv, lcv, lpcv, lem_count,
 					    pos_count, emph, sep );
@@ -1063,14 +1085,14 @@ int main( int argc, char *argv[] ){
     {
       string filename;
       filename = outputPrefix + ".wordfreqlist";
-      create_wf_list( wcv, filename, wordTotal, clip, max_NG, dopercentage );
+      create_wf_list( wcv, filename, wordTotal, clip, min_NG, max_NG, dopercentage );
     }
 #pragma omp section
     {
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmafreqlist";
-	create_lf_list( lcv, filename, lemTotal, clip, max_NG, dopercentage );
+	create_lf_list( lcv, filename, lemTotal, clip, min_NG, max_NG, dopercentage );
       }
     }
 #pragma omp section
@@ -1078,7 +1100,7 @@ int main( int argc, char *argv[] ){
       if ( !( mode == S_IN_P || mode == S_IN_D ) ){
 	string filename;
 	filename = outputPrefix + ".lemmaposfreqlist";
-	create_lpf_list( lpcv, filename, posTotal, clip, max_NG, dopercentage );
+	create_lpf_list( lpcv, filename, posTotal, clip, min_NG, max_NG, dopercentage );
       }
     }
   }
