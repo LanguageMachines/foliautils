@@ -785,8 +785,9 @@ void usage( const string& name ){
   cerr << "\t--underscore\t Obsolete. Equals to --separator='_'" << endl;
   cerr << "\t--lang\t\t Language. (default='none')." << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
-  cerr << "\t\t\t If Lan1=='skip' all languages not mentioned as Lan2,... are ignored." << endl;
-  cerr << "\t\t\t If Lan1=='all' all languages are counted." << endl;
+  cerr << "\t\t\t languages that are not assigned to Lan1,Lan2,... are counted as Lan1" << endl;
+  cerr << "\t\t\t If Lan1='skip' all languages not mentioned as Lan2,... are ignored." << endl;
+  cerr << "\t\t\t If Lan1='all' all detected languages are counted." << endl;
   cerr << "\t--ngram='count'\t\t construct n-grams of length 'count'" << endl;
   cerr << "\t--max-ngram='max'\t construct ALL n-grams upto a length of 'max'" << endl;
   cerr << "\t\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
