@@ -11,8 +11,9 @@ Usage: FoLiA-stats [options] file/dir
 	--underscore	 Obsolete. Equals to --separator='_'
 	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
-			 If Lan1=='skip' all languages not mentioned as Lan2,... are ignored.
-			 If Lan1=='all' all languages are counted.
+			 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
+			 If Lan1='skip' all languages not mentioned as Lan2,... are ignored.
+			 If Lan1='all' all detected languages are counted.
 	--ngram='count'		 construct n-grams of length 'count'
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
 			 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
@@ -47,8 +48,9 @@ Usage: FoLiA-stats [options] file/dir
 	--underscore	 Obsolete. Equals to --separator='_'
 	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
-			 If Lan1=='skip' all languages not mentioned as Lan2,... are ignored.
-			 If Lan1=='all' all languages are counted.
+			 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
+			 If Lan1='skip' all languages not mentioned as Lan2,... are ignored.
+			 If Lan1='all' all detected languages are counted.
 	--ngram='count'		 construct n-grams of length 'count'
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
 			 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
