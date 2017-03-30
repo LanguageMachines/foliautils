@@ -1,73 +1,83 @@
 Usage: FoLiA-stats [options] file/dir
-		 FoLiA-stats will produce ngram statistics for a FoLiA file, 
-		 or a whole directory of FoLiA files 
-		 The output will be a 2 or 4 columned tab separated file, extension: *tsv 
-			 (4 columns when -p is specified)
-	--clip		 clipping factor. 
-				(entries with frequency <= this factor will be ignored). 
-	-p		 output percentages too. 
-	--lower		 Lowercase all words
+
+FoLiA-stats will produce ngram statistics for a FoLiA file, 
+or a whole directory of FoLiA files 
+The output will be a 2 or 4 columned tab separated file, extension: *tsv 
+	 (4 columns when -p is specified)
+	--clip='factor'		 clipping factor. 
+		(entries with frequency <= 'factor' will be ignored). 
+	-p	 output percentages too. 
+	--lower	 Lowercase all words
 	--seperator='sep' 	connect all n-grams with 'sep' (default is a space)
 	--underscore	 Obsolete. Equals to --separator='_'
-	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
-			 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
-			 If Lan1='skip' all languages not mentioned as Lan2,... are ignored.
-			 If Lan1='all' all detected languages are counted.
+		 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
+		 If Lan1='skip' all languages not mentioned as Lan2,... are ignored.
+		 If Lan1='all' all detected languages are counted.
+	--lang='lan' (default='none').
+		 This is a shorthand for --languages=skip,lan.
+		 The value 'none' (the default) means: accept all languages.
+		 Meaning: only count words from 'lan' ignoring all other languages.
 	--ngram='count'		 construct n-grams of length 'count'
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
-			 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
+		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Process text found like this: (default: 'word_in_sent')
 		 'text_in_par' Process text nodes per <p> node.
 		 'string_in_doc' Process <str> nodes per document.
 		 'string_in_par' Process <str> nodes per <p> node.
 		 'word_in_sent' Process <w> nodes per <s> in the document.
-	-s		 equal to --mode=string_in_par
-	-S		 equal to --mode=string_in_doc
-	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')
+	-s	 equal to --mode=string_in_par
+	-S	 equal to --mode=string_in_doc
+	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
+		 (default is 'current')
 	--hemp=<file>	 Create a historical emphasis file. 
-			 (words consisting of single, space separated letters)
-	-t		 number_of_threads
+		 (words consisting of single, space separated letters)
+	-t	 number_of_threads
 	-h or --help	 this message
 	-v or --verbose	 very verbose output.
 	-V or --version	 show version 
-	-e		 expr: specify the expression all input files should match with.
-	-o		 name of the output file(s) prefix.
-	-R		 search the dirs recursively (when appropriate).
+	-e	 expr: specify the expression all input files should match with.
+	-o	 name of the output file(s) prefix.
+	-R	 search the dirs recursively (when appropriate).
 FoLiA-stats from foliautils 0.6
 Usage: FoLiA-stats [options] file/dir
-		 FoLiA-stats will produce ngram statistics for a FoLiA file, 
-		 or a whole directory of FoLiA files 
-		 The output will be a 2 or 4 columned tab separated file, extension: *tsv 
-			 (4 columns when -p is specified)
-	--clip		 clipping factor. 
-				(entries with frequency <= this factor will be ignored). 
-	-p		 output percentages too. 
-	--lower		 Lowercase all words
+
+FoLiA-stats will produce ngram statistics for a FoLiA file, 
+or a whole directory of FoLiA files 
+The output will be a 2 or 4 columned tab separated file, extension: *tsv 
+	 (4 columns when -p is specified)
+	--clip='factor'		 clipping factor. 
+		(entries with frequency <= 'factor' will be ignored). 
+	-p	 output percentages too. 
+	--lower	 Lowercase all words
 	--seperator='sep' 	connect all n-grams with 'sep' (default is a space)
 	--underscore	 Obsolete. Equals to --separator='_'
-	--lang		 Language. (default='none').
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
-			 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
-			 If Lan1='skip' all languages not mentioned as Lan2,... are ignored.
-			 If Lan1='all' all detected languages are counted.
+		 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
+		 If Lan1='skip' all languages not mentioned as Lan2,... are ignored.
+		 If Lan1='all' all detected languages are counted.
+	--lang='lan' (default='none').
+		 This is a shorthand for --languages=skip,lan.
+		 The value 'none' (the default) means: accept all languages.
+		 Meaning: only count words from 'lan' ignoring all other languages.
 	--ngram='count'		 construct n-grams of length 'count'
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
-			 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
+		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Process text found like this: (default: 'word_in_sent')
 		 'text_in_par' Process text nodes per <p> node.
 		 'string_in_doc' Process <str> nodes per document.
 		 'string_in_par' Process <str> nodes per <p> node.
 		 'word_in_sent' Process <w> nodes per <s> in the document.
-	-s		 equal to --mode=string_in_par
-	-S		 equal to --mode=string_in_doc
-	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')
+	-s	 equal to --mode=string_in_par
+	-S	 equal to --mode=string_in_doc
+	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
+		 (default is 'current')
 	--hemp=<file>	 Create a historical emphasis file. 
-			 (words consisting of single, space separated letters)
-	-t		 number_of_threads
+		 (words consisting of single, space separated letters)
+	-t	 number_of_threads
 	-h or --help	 this message
 	-v or --verbose	 very verbose output.
 	-V or --version	 show version 
-	-e		 expr: specify the expression all input files should match with.
-	-o		 name of the output file(s) prefix.
-	-R		 search the dirs recursively (when appropriate).
+	-e	 expr: specify the expression all input files should match with.
+	-o	 name of the output file(s) prefix.
+	-R	 search the dirs recursively (when appropriate).
