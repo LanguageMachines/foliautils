@@ -772,25 +772,28 @@ size_t par_text_inventory( const Document *d, const string& docName,
 }
 
 void usage( const string& name ){
-  cerr << "Usage: " << name << " [options] file/dir" << endl;
-  cerr << "\t\t FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
-  cerr << "\t\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t\t The output will be a 2 or 4 columned tab separated file, extension: *tsv " << endl;
-  cerr << "\t\t\t (4 columns when -p is specified)" << endl;
-  cerr << "\t--clip\t\t clipping factor. " << endl;
-  cerr << "\t\t\t\t(entries with frequency <= this factor will be ignored). " << endl;
-  cerr << "\t-p\t\t output percentages too. " << endl;
-  cerr << "\t--lower\t\t Lowercase all words" << endl;
+  cerr << "Usage: " << name << " [options] file/dir" << endl << endl;
+  cerr << "FoLiA-stats will produce ngram statistics for a FoLiA file, " << endl;
+  cerr << "or a whole directory of FoLiA files " << endl;
+  cerr << "The output will be a 2 or 4 columned tab separated file, extension: *tsv " << endl;
+  cerr << "\t (4 columns when -p is specified)" << endl;
+  cerr << "\t--clip='factor'\t\t clipping factor. " << endl;
+  cerr << "\t\t(entries with frequency <= 'factor' will be ignored). " << endl;
+  cerr << "\t-p\t output percentages too. " << endl;
+  cerr << "\t--lower\t Lowercase all words" << endl;
   cerr << "\t--seperator='sep' \tconnect all n-grams with 'sep' (default is a space)" << endl;
   cerr << "\t--underscore\t Obsolete. Equals to --separator='_'" << endl;
-  cerr << "\t--lang\t\t Language. (default='none')." << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
-  cerr << "\t\t\t languages that are not assigned to Lan1,Lan2,... are counted as Lan1" << endl;
-  cerr << "\t\t\t If Lan1='skip' all languages not mentioned as Lan2,... are ignored." << endl;
-  cerr << "\t\t\t If Lan1='all' all detected languages are counted." << endl;
+  cerr << "\t\t languages that are not assigned to Lan1,Lan2,... are counted as Lan1" << endl;
+  cerr << "\t\t If Lan1='skip' all languages not mentioned as Lan2,... are ignored." << endl;
+  cerr << "\t\t If Lan1='all' all detected languages are counted." << endl;
+  cerr << "\t--lang='lan' (default='none')." << endl;
+  cerr << "\t\t This is a shorthand for --languages=skip,lan." << endl;
+  cerr << "\t\t The value 'none' (the default) means: accept all languages." << endl;
+  cerr << "\t\t Meaning: only count words from 'lan' ignoring all other languages." << endl;
   cerr << "\t--ngram='count'\t\t construct n-grams of length 'count'" << endl;
   cerr << "\t--max-ngram='max'\t construct ALL n-grams upto a length of 'max'" << endl;
-  cerr << "\t\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
+  cerr << "\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
   cerr << "\t--mode='mode' Process text found like this: (default: 'word_in_sent')" << endl;
   //  cerr << "\t\t 'text_in_doc'" << endl;
   cerr << "\t\t 'text_in_par' Process text nodes per <p> node." << endl;
@@ -800,18 +803,19 @@ void usage( const string& name ){
   //  cerr << "\t\t 'word_in_doc' Process <w> nodes per document." << endl;
   //  cerr << "\t\t 'word_in_par'" << endl;
   cerr << "\t\t 'word_in_sent' Process <w> nodes per <s> in the document." << endl;
-  cerr << "\t-s\t\t equal to --mode=string_in_par" << endl;
-  cerr << "\t-S\t\t equal to --mode=string_in_doc" << endl;
-  cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
+  cerr << "\t-s\t equal to --mode=string_in_par" << endl;
+  cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
+  cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
+  cerr << "\t\t (default is 'current')" << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
-  cerr << "\t\t\t (words consisting of single, space separated letters)" << endl;
-  cerr << "\t-t\t\t number_of_threads" << endl;
+  cerr << "\t\t (words consisting of single, space separated letters)" << endl;
+  cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-v or --verbose\t very verbose output." << endl;
   cerr << "\t-V or --version\t show version " << endl;
-  cerr << "\t-e\t\t expr: specify the expression all input files should match with." << endl;
-  cerr << "\t-o\t\t name of the output file(s) prefix." << endl;
-  cerr << "\t-R\t\t search the dirs recursively (when appropriate)." << endl;
+  cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
+  cerr << "\t-o\t name of the output file(s) prefix." << endl;
+  cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
 }
 
 int main( int argc, char *argv[] ){
@@ -953,13 +957,13 @@ int main( int argc, char *argv[] ){
       cerr << "FoLiA-stats: --lang and --languages options conflict. Use only one!" << endl;
       exit( EXIT_FAILURE );
     }
-    else {
-      default_language = value;
+    else if ( value != "none" ){
+      default_language = "skip"; // skip except when the 'lang' value is found
       languages.insert( value );
     }
   }
   if ( languages.size() == 0 ){
-    default_language = "none";
+    default_language = "none"; // don't care, any language wiil do
   }
   opts.extract('e', expression );
   opts.extract( "class", classname );
