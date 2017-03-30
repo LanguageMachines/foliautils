@@ -81,6 +81,56 @@ Mode stringToMode( const string& ms ){
   return UNKNOWN;
 }
 
+void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
+		      const string& filename, unsigned int totalIn,
+		      unsigned int clip, int min_ng, int max_ng ){
+  unsigned int total = totalIn;
+  for ( int ng=min_ng; ng <= max_ng; ++ng ){
+    string ext;
+    if ( ng > 1 ){
+      ext += "." + toString( ng ) + "-gram";
+    }
+    ext += ".tsv";
+    string ofilename = filename + ext;
+    ofstream os( ofilename );
+    if ( !os ){
+      cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+      exit(EXIT_FAILURE);
+    }
+    os << "## " << ng << "-gram\t\ttotal" ;
+    for ( const auto& wc0 : wcv ){
+      os << "\t" << wc0.first;
+    }
+    os << endl;
+    map<string,map<string,unsigned int>> totals;
+    for ( const auto& wc0 : wcv ){
+      string lang = wc0.first;
+      map<string,unsigned int >::const_iterator cit = wc0.second[ng].begin();
+      while( cit != wc0.second[ng].end()  ){
+	if ( cit->second <= clip ){
+	  total -= cit->second;
+	}
+	else {
+	  totals[cit->first].insert( make_pair(lang, cit->second ) );
+	  cerr << "tel " << cit->first << " " << lang << " " << cit->second << endl;
+	}
+	++cit;
+      }
+    }
+    for ( const auto& it : totals ){
+      os << it.first << "\t" << it.second.size() << "\t" << endl;
+    }
+#pragma omp critical
+    {
+      cout << "created aggregate WordFreq list '" << ofilename << "'";
+      if ( clip > 0 ){
+	cout << " ("<< totalIn - total << " were clipped.)";
+      }
+      cout << endl;
+    }
+  }
+}
+
 void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 		     const string& filename, unsigned int totalIn,
 		     unsigned int clip, int min_ng, int max_ng,
@@ -820,7 +870,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,separator:,help,version,mode:,verbose" );
+		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,separator:,help,version,mode:,verbose,aggregate" );
   try {
     opts.init(argc,argv);
   }
@@ -854,8 +904,13 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   verbose = opts.extract( 'v' ) || opts.extract( "verbose" );
-  bool dopercentage = opts.extract('p');
   bool lowercase = opts.extract("lower");
+  bool dopercentage = opts.extract('p');
+  bool aggregate = opts.extract("aggregate");
+  if ( dopercentage && aggregate ){
+    cerr << "FoLiA-stats: --aggregate and -p conflict." << endl;
+    return EXIT_FAILURE;
+  }
   string modes;
   opts.extract("mode", modes );
   Mode mode = W_IN_S;
@@ -1090,30 +1145,36 @@ int main( int argc, char *argv[] ){
     cout << "in " << toDo << " FoLiA documents.";
   }
   cout << endl;
-
+  if ( aggregate ){
+    string filename;
+    filename = outputPrefix + ".agg.freqlist";
+    create_agg_list( wcv, filename, wordTotal, clip, min_NG, max_NG );
+  }
+  else {
 #pragma omp parallel sections
-  {
-#pragma omp section
     {
-      string filename;
-      filename = outputPrefix + ".wordfreqlist";
-      create_wf_list( wcv, filename, wordTotal, clip, min_NG, max_NG, dopercentage );
-    }
 #pragma omp section
-    {
-      if ( !( mode == S_IN_P || mode == S_IN_D ) ){
+      {
 	string filename;
-	filename = outputPrefix + ".lemmafreqlist";
-	create_lf_list( lcv, filename, lemTotal, clip, min_NG, max_NG, dopercentage );
+	filename = outputPrefix + ".wordfreqlist";
+	create_wf_list( wcv, filename, wordTotal, clip, min_NG, max_NG, dopercentage );
       }
-    }
 #pragma omp section
-    {
-      if ( !( mode == S_IN_P || mode == S_IN_D ) ){
-	string filename;
-	filename = outputPrefix + ".lemmaposfreqlist";
-	create_lpf_list( lpcv, filename, posTotal, clip, min_NG, max_NG, dopercentage );
+      {
+	if ( !( mode == S_IN_P || mode == S_IN_D ) ){
+	  string filename;
+	  filename = outputPrefix + ".lemmafreqlist";
+	  create_lf_list( lcv, filename, lemTotal, clip, min_NG, max_NG, dopercentage );
+	}
       }
+#pragma omp section
+      {
+	if ( !( mode == S_IN_P || mode == S_IN_D ) ){
+	  string filename;
+	  filename = outputPrefix + ".lemmaposfreqlist";
+	  create_lpf_list( lpcv, filename, posTotal, clip, min_NG, max_NG, dopercentage );
+	}
+    }
     }
   }
 
