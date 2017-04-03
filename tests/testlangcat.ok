@@ -3,7 +3,8 @@ foliautils 0.6
 Usage: [options] dir/filename 
 --config=<file>	 use LM config from 'file'
 --lang=<lan>	 use 'lan' for unindentified text. (default 'nld')
--s		 examine text in <str> nodes. (default is to use the <p> nodes).
+--tags=t1,t2,..	 examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes).
+-s		 (obsolete) shorthand for --tags='str'
 --all		 assign ALL detected languages to the result. (default is to assign the most probable).
 --class=<cls>	 use 'cls' as the FoLiA classname for searching text. 
 			 (default 'OCR')

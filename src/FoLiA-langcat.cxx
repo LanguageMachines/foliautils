@@ -192,7 +192,8 @@ void usage(){
   cerr << "Usage: [options] dir/filename " << endl;
   cerr << "--config=<file>\t use LM config from 'file'" << endl;
   cerr << "--lang=<lan>\t use 'lan' for unindentified text. (default 'nld')" << endl;
-  cerr << "-s\t\t examine text in <str> nodes. (default is to use the <p> nodes)." << endl;
+  cerr << "--tags=t1,t2,..\t examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes)." << endl;
+  cerr << "-s\t\t (obsolete) shorthand for --tags='str'" << endl;
   cerr << "--all\t\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
   cerr << "--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
        << endl;
