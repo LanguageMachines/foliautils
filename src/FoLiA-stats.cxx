@@ -28,6 +28,7 @@
 #include <map>
 #include <vector>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 
 #include "ticcutils/CommandLine.h"
@@ -97,9 +98,11 @@ void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
       cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
       exit(EXIT_FAILURE);
     }
+    vector<string> srt;
     os << "## " << ng << "-gram\t\ttotal" ;
     for ( const auto& wc0 : wcv ){
       os << "\t" << wc0.first;
+      srt.push_back( wc0.first );
     }
     os << endl;
     map<string,map<string,unsigned int>> totals;
@@ -112,14 +115,52 @@ void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 	}
 	else {
 	  totals[cit->first].insert( make_pair(lang, cit->second ) );
-	  cerr << "tel " << cit->first << " " << lang << " " << cit->second << endl;
 	}
 	++cit;
       }
     }
+    map<string,unsigned int> lang_tot;
+    unsigned int grand_total = 0;
     for ( const auto& it : totals ){
-      os << it.first << "\t" << it.second.size() << "\t" << endl;
+      os << it.first;
+      if ( it.first.size() < 8 ){
+	os << "\t\t\t";
+      }
+      else if ( it.first.size() < 16 ){
+	os << "\t\t";
+      }
+      else {
+	os << "\t";
+      }
+      os << it.second.size();
+      for ( const auto& l : srt ){
+	auto const& f = it.second.find(l);
+	if ( f == it.second.end() ){
+	  os << "\t" << 0;
+	}
+	else {
+	  os << "\t" << f->second;
+	  lang_tot[l] += f->second;
+	  grand_total += f->second;
+	}
+      }
+      os << endl;
     }
+    os << "## " << ng << "-gram\t\ttotal" ;
+    for ( const auto& wc0 : wcv ){
+      os << "\t" << wc0.first;
+    }
+    os << endl;
+    os << "##totals:\t\t" << grand_total;
+    for ( const auto& l : srt  ){
+      os << "\t" << lang_tot[l];
+    }
+    os << endl;
+    os << "##percentages:\t\t100";
+    for ( const auto& l : srt  ){
+      os << "\t" << std::fixed << std::setprecision(1) << (double)lang_tot[l]/grand_total*100;
+    }
+    os << endl;
 #pragma omp critical
     {
       cout << "created aggregate WordFreq list '" << ofilename << "'";
