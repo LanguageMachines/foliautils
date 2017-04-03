@@ -934,12 +934,18 @@ int main( int argc, const char *argv[] ){
     if ( pos != string::npos ){
       docName = docName.substr( pos+1 );
     }
-    pos = docName.rfind(".");
+    pos = docName.rfind(".folia");
     if ( pos != string::npos ){
       outName += docName.substr(0,pos) + ".ticcl" + docName.substr(pos);
     }
     else {
-      outName += docName + ".ticcl";
+      pos = docName.rfind(".");
+      if ( pos != string::npos ){
+	outName += docName.substr(0,pos) + ".ticcl" + docName.substr(pos);
+      }
+      else {
+	outName += docName + ".ticcl";
+      }
     }
     if ( clear ){
       unlink( outName.c_str() );
