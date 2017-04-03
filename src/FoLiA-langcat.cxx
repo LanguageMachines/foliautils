@@ -61,7 +61,7 @@ void setlang( FoliaElement* e, const string& lan ){
   e->replace( node );
 }
 
-void addLang( TextContent *t,
+void addLang( const TextContent *t,
 	      const vector<string>& lv,
 	      bool doAll ){
   //
@@ -85,7 +85,18 @@ vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
 				    const set<string>& tags ){
   vector<FoliaElement*> result;
   for ( const auto& tag : tags ){
-    ElementType et = stringToET( tag );
+    ElementType et;
+    try {
+      et = stringToET( tag );
+    }
+    catch ( ... ){
+#pragma omp critical (logging)
+      {
+	cerr << "the string '" << tag
+	     << "' doesn't represent a known FoLiA tag" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
     vector<FoliaElement*> v = doc->doc()->select( et, true );
 #pragma omp critical (logging)
     {
@@ -120,9 +131,6 @@ void procesFile( const TextCat& tc,
   }
   doc->set_metadata( "language", default_lang );
   doc->declare( AnnotationType::LANG, ISO_SET );
-  vector<Paragraph*> xp;
-  vector<String*> xs;
-  vector<FoliaElement*> nodes = gather_nodes( doc, docName, tags );
   string outName;
   if ( !outDir.empty() )
     outName = outDir + "/";
@@ -141,10 +149,10 @@ void procesFile( const TextCat& tc,
     }
     exit( EXIT_FAILURE);
   }
-
+  vector<FoliaElement*> nodes = gather_nodes( doc, docName, tags );
   ofstream os( outName );
   for ( const auto& node : nodes ){
-    TextContent *t = 0;
+    const TextContent *t = 0;
     string id = "NO ID";
     try {
       id = node->id();

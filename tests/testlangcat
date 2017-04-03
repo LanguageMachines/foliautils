@@ -18,3 +18,7 @@ cat out/langcat.test2.lc.xml >> testlangcat.out
 $my_bin/FoLiA-langcat --config=tc.txt -O out -s --all data/langcat.test-str.xml >> testlangcat.out 2>&1
 
 cat out/langcat.test-str.lc.xml >> testlangcat.out
+
+$my_bin/FoLiA-langcat --config=tc.txt -O out --tags=str --all data/langcat.test-str.xml >> testlangcat.out 2>&1
+
+cat out/langcat.test-str.lc.xml >> testlangcat.out
