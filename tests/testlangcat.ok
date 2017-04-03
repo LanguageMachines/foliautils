@@ -12,7 +12,7 @@ Usage: [options] dir/filename
 -v		 verbose
 -h or --help	 this messages.
 process data/langcat.test.xml
-document 'data/langcat.test.xml' has 3 paragraphs 
+document 'data/langcat.test.xml' has 3 p nodes 
 <?xml version="1.0" encoding="UTF-8"?>
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.6.1">
   <metadata type="native">
@@ -39,7 +39,7 @@ document 'data/langcat.test.xml' has 3 paragraphs
 
 
 process data/langcat.test2.xml
-document 'data/langcat.test2.xml' has 1 paragraphs 
+document 'data/langcat.test2.xml' has 1 p nodes 
 <?xml version="1.0" encoding="UTF-8"?>
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.6.1">
   <metadata type="native">
@@ -58,7 +58,7 @@ document 'data/langcat.test2.xml' has 1 paragraphs
 
 
 process data/langcat.test-str.xml
-document 'data/langcat.test-str.xml' has 2 strings 
+document 'data/langcat.test-str.xml' has 2 str nodes 
 <?xml version="1.0" encoding="UTF-8"?>
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.6.1">
   <metadata type="native">

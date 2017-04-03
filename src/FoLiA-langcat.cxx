@@ -81,10 +81,26 @@ void addLang( TextContent *t,
   }
 }
 
+vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
+				    const set<string>& tags ){
+  vector<FoliaElement*> result;
+  for ( const auto& tag : tags ){
+    ElementType et = stringToET( tag );
+    vector<FoliaElement*> v = doc->doc()->select( et, true );
+#pragma omp critical (logging)
+    {
+      cout << "document '" << docName << "' has " << v.size() << " "
+	   << tag << " nodes " << endl;
+    }
+    result.insert( result.end(), v.begin(), v.end() );
+  }
+  return result;
+}
+
 void procesFile( const TextCat& tc,
 		 const string& outDir, const string& docName,
 		 const string& default_lang,
-		 bool doStrings,
+		 set<string> tags,
 		 bool doAll,
 		 const string& cls ){
 #pragma omp critical (logging)
@@ -106,26 +122,7 @@ void procesFile( const TextCat& tc,
   doc->declare( AnnotationType::LANG, ISO_SET );
   vector<Paragraph*> xp;
   vector<String*> xs;
-  size_t Size;
-  if ( doStrings ){
-    xs = doc->doc()->select<String>();
-    Size = xs.size();
-#pragma omp critical (logging)
-    {
-      cout << "document '" << docName << "' has " << Size
-	   << " strings " << endl;
-    }
-  }
-  else {
-    xp = doc->paragraphs();
-    Size = xp.size();
-#pragma omp critical (logging)
-    {
-      cout << "document '" << docName << "' has " << Size
-	   << " paragraphs " << endl;
-    }
-  }
-
+  vector<FoliaElement*> nodes = gather_nodes( doc, docName, tags );
   string outName;
   if ( !outDir.empty() )
     outName = outDir + "/";
@@ -146,18 +143,12 @@ void procesFile( const TextCat& tc,
   }
 
   ofstream os( outName );
-  for ( size_t i=0; i < Size; ++i ){
+  for ( const auto& node : nodes ){
     TextContent *t = 0;
     string id = "NO ID";
     try {
-      if ( doStrings ){
-	id = xs[i]->id();
-	t = xs[i]->textcontent(cls);
-      }
-      else {
-	id = xp[i]->id();
-	t = xp[i]->textcontent(cls);
-      }
+      id = node->id();
+      t = node->textcontent(cls);
     }
     catch (...){
     }
@@ -205,7 +196,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "svVhO:", "all,lang:,class:,config:,help,version" );
+  TiCC::CL_Options opts( "svVhO:", "all,lang:,class:,config:,help,version,tags:" );
   try {
     opts.init( argc, argv );
   }
@@ -233,6 +224,28 @@ int main( int argc, char *argv[] ){
   opts.extract( "lang", lang );
   opts.extract( "class", cls );
   opts.extract( 'O', outDir );
+  set<string> tags;
+  string tagsstring;
+  opts.extract( "tags", tagsstring );
+  if ( !tagsstring.empty() ){
+    vector<string> parts;
+    TiCC::split_at( tagsstring, parts, "," );
+    for( const auto& t : parts ){
+      tags.insert( t );
+    }
+  }
+  if ( doStrings ){
+    if ( !tags.empty() ){
+      cerr << "--tags and -s conflict." << endl;
+      exit(EXIT_FAILURE);
+    }
+    else {
+      tags.insert( "str" );
+    }
+  }
+  if ( tags.empty() ){
+    tags.insert( "p" );
+  }
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
     usage();
@@ -245,7 +258,13 @@ int main( int argc, char *argv[] ){
   }
   else if ( fileNames.size() == 1 ){
     string name = fileNames[0];
-    fileNames = TiCC::searchFilesExt( name, ".xml", false );
+    try {
+      fileNames = TiCC::searchFilesExt( name, ".xml", false );
+    }
+    catch ( ... ){
+      cerr << "no matching file found: '" << name << "'" << endl;
+      exit( EXIT_FAILURE );
+    }
   }
   TextCat TC( config );
   if ( !TC.isInit() ){
@@ -255,14 +274,11 @@ int main( int argc, char *argv[] ){
 
   size_t toDo = fileNames.size();
   if ( toDo > 1 ){
-#ifdef HAVE_OPENMP
-    folia::initMT();
-#endif
     cout << "start processing of " << toDo << " files " << endl;
   }
 #pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
-    procesFile( TC, outDir, docName, lang, doStrings, doAll, cls );
+    procesFile( TC, outDir, docName, lang, tags, doAll, cls );
   }
 }
