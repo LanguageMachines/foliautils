@@ -1,3 +1,24 @@
+foliautils 0.6  04-04-2017
+This is an intermediate release!!
+Work on some tools is developing rapidly. next releases won't take long.
+For now, backward compatibility is still maintained mostly.
+
+[Ko van der Sloot]
+* uses libfolia 1.7 now!
+* FoLiA-correct now uses an other output file naming scheme (breaks backward compatiblity)
+* FoLiA-langcat now has a --tags parameter to select which <t> nodes are searched
+* FoLiA-stats:
+   - a new --separator option is added
+   - added a --max-ngram option.
+   - added a --languages option for multiple languages
+   - now we have a --aggregate option for multiple language statistics
+   - fixed a bug in total counts
+* added a first version of FoLiA-clean program. Cleans up tests/tags in FoLiA files.
+* FoLiA-correct:
+  - output statistics
+  - verbosity option improved
+* added and improved a lot of tests
+
 foliautils 0.5  17-01-2017
 [Ko van der Sloot]
  * based on libfolia 1.5 or higher
