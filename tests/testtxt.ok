@@ -21,7 +21,7 @@ Usage: [options] file/dir
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.7" version="1.4.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2017-04-04T16:25:05" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2017-04-04T17:43:55" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -100,7 +100,7 @@ Usage: [options] file/dir
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.7" version="1.4.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2017-04-04T16:25:05" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2017-04-04T17:43:55" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -179,7 +179,7 @@ Usage: [options] file/dir
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.7" version="1.4.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2017-04-04T16:25:05" set="foo"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2017-04-04T17:43:55" set="foo"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">

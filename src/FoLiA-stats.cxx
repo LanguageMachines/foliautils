@@ -50,33 +50,14 @@ bool verbose = false;
 string classname = "current";
 
 enum Mode { UNKNOWN,
-	    T_IN_D, T_IN_P, T_IN_S,
-	    S_IN_D, S_IN_P,
-	    W_IN_D, W_IN_P, W_IN_S  };
+	    S_IN_D,
+	    W_IN_S  };
 
 Mode stringToMode( const string& ms ){
-  if ( ms == "text_in_doc" ){
-    return T_IN_D;
-  }
-  else if ( ms == "text_in_par" ){
-    return T_IN_P;
-  }
-  else if ( ms == "text_in_sent" ){
-    return T_IN_S;
+  if ( ms == "word_in_sent" ){
+    return W_IN_S;
   }
   else if ( ms == "string_in_doc" ){
-    return S_IN_D;
-  }
-  else if ( ms == "string_in_par" ){
-    return S_IN_P;
-  }
-  else if ( ms == "word_in_doc" ){
-    return W_IN_D;
-  }
-  else if ( ms == "word_in_par" ){
-    return W_IN_P;
-  }
-  else if ( ms == "word_in_sent" ){
     return W_IN_S;
   }
   return UNKNOWN;
@@ -792,26 +773,54 @@ size_t par_str_inventory( const Document *d, const string& docName,
   return wordTotal;
 }
 
-size_t par_text_inventory( const Document *d, const string& docName,
-			   int min_ng,
-			   int max_ng,
-			   bool lowercase,
-			   const string& default_language,
-			   const set<string>& languages,
-			   map<string,vector<map<string,unsigned int>>>& wcv,
-			   set<string>& emph,
-			   const string& sep ){
+vector<FoliaElement*> gather_nodes( const Document *doc, const string& docName,
+				    const set<string>& tags ){
+  vector<FoliaElement*> result;
+  for ( const auto& tag : tags ){
+    ElementType et;
+    try {
+      et = stringToET( tag );
+    }
+    catch ( ... ){
+#pragma omp critical (logging)
+      {
+	cerr << "the string '" << tag
+	     << "' doesn't represent a known FoLiA tag" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
+    vector<FoliaElement*> v = doc->doc()->select( et, true );
+#pragma omp critical (logging)
+    {
+      cout << "document '" << docName << "' has " << v.size() << " "
+	   << tag << " nodes " << endl;
+    }
+    result.insert( result.end(), v.begin(), v.end() );
+  }
+  return result;
+}
+
+
+size_t text_inventory( const Document *d, const string& docName,
+		       int min_ng,
+		       int max_ng,
+		       bool lowercase,
+		       const string& default_language,
+		       const set<string>& languages,
+		       const set<string>& tags,
+		       map<string,vector<map<string,unsigned int>>>& wcv,
+		       set<string>& emph,
+		       const string& sep ){
   if ( verbose ){
 #pragma omp critical
     {
-      cout << "make a text_in_par inventory on:" << docName << endl;
+      cout << "make a text inventory on:" << docName << endl;
     }
   }
   size_t wordTotal = 0;
-  vector<Paragraph*> pars = d->paragraphs();
-  for ( const auto& p : pars ){
-    string lang = p->language(); // get the language the paragraph is in
-    // totally ignore language annotation on embeded <s> and or <w> elements.
+  vector<FoliaElement *> nodes = gather_nodes( d, docName, tags );
+  for ( const auto& node : nodes ){
+    string lang = node->language(); // get the language the node is in
     if ( default_language != "all" ){
       if ( languages.find( lang ) == languages.end() ){
 	// lang is 'unwanted', just add to the default
@@ -824,7 +833,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
     string s;
     UnicodeString us;
     try {
-      us = p->text(classname);
+      us = node->stricttext(classname);
       if ( lowercase ){
 	us.toLower();
       }
@@ -836,7 +845,7 @@ size_t par_text_inventory( const Document *d, const string& docName,
       if ( verbose ){
 #pragma omp critical
 	{
-	  cout << "found NO string in paragraph: " << p->id() << endl;
+	  cout << "found NO string in node: " << node->id() << endl;
 	}
       }
       continue;
@@ -886,13 +895,9 @@ void usage( const string& name ){
   cerr << "\t--max-ngram='max'\t construct ALL n-grams upto a length of 'max'" << endl;
   cerr << "\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
   cerr << "\t--mode='mode' Process text found like this: (default: 'word_in_sent')" << endl;
-  //  cerr << "\t\t 'text_in_doc'" << endl;
   cerr << "\t\t 'text_in_par' Process text nodes per <p> node." << endl;
-  //cerr << "\t\t 'text_in_sent'" << endl;
   cerr << "\t\t 'string_in_doc' Process <str> nodes per document." << endl;
   cerr << "\t\t 'string_in_par' Process <str> nodes per <p> node." << endl;
-  //  cerr << "\t\t 'word_in_doc' Process <w> nodes per document." << endl;
-  //  cerr << "\t\t 'word_in_par'" << endl;
   cerr << "\t\t 'word_in_sent' Process <w> nodes per <s> in the document." << endl;
   cerr << "\t-s\t equal to --mode=string_in_par" << endl;
   cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
@@ -911,7 +916,7 @@ void usage( const string& name ){
 
 int main( int argc, char *argv[] ){
   CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,separator:,help,version,mode:,verbose,aggregate" );
+		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,separator:,help,version,mode:,verbose,aggregate,tags:" );
   try {
     opts.init(argc,argv);
   }
@@ -952,34 +957,46 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: --aggregate and -p conflict." << endl;
     return EXIT_FAILURE;
   }
+  set<string> tags;
+  string tagsstring;
+  opts.extract( "tags", tagsstring );
+  if ( !tagsstring.empty() ){
+    vector<string> parts;
+    TiCC::split_at( tagsstring, parts, "," );
+    for( const auto& t : parts ){
+      tags.insert( t );
+    }
+  }
   string modes;
   opts.extract("mode", modes );
-  Mode mode = W_IN_S;
+  Mode mode = UNKNOWN;
   if ( !modes.empty() ){
     mode = stringToMode( modes );
     if ( mode == UNKNOWN ){
-      cerr << "FoLiA-stats: unknown --mode " << modes << endl;
-      return EXIT_FAILURE;
+      if ( modes == "text_in_par" ){
+	tags.insert("p");
+      }
+      else {
+	cerr << "FoLiA-stats: unknown --mode " << modes << endl;
+	return EXIT_FAILURE;
+      }
     }
-  }
-  else {
-    mode = W_IN_S;
   }
   string hempName;
   opts.extract("hemp", hempName );
   bool recursiveDirs = opts.extract( 'R' );
   if ( opts.extract( 's' ) ) {
-  if ( !modes.empty() ){
-      cerr << "FoLiA-stats: old style -s option cannot be combined with --mode option" << endl;
+    if ( !modes.empty() || !tags.empty() ){
+      cerr << "FoLiA-stats: old style -s option cannot be combined with --mode or --tags option" << endl;
       return EXIT_FAILURE;
     }
     else {
-      mode = S_IN_P;
+      tags.insert( "p" );
     }
   }
   if ( opts.extract( 'S' ) ){
-    if ( !modes.empty() ){
-      cerr << "FoLiA-stats: old style -S option cannot be combined with --mode option" << endl;
+    if ( !modes.empty() || !tags.empty() ){
+      cerr << "FoLiA-stats: old style -S option cannot be combined with --mode or --tags option" << endl;
       return EXIT_FAILURE;
     }
     else {
@@ -1127,30 +1144,27 @@ int main( int argc, char *argv[] ){
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
     switch ( mode ){
-    case S_IN_P:
-      word_count = par_str_inventory( d, docName, min_NG, max_NG,
-				      lowercase, default_language, languages,
-				      wcv, emph, sep );
-      break;
-    case T_IN_P:
-      word_count = par_text_inventory( d, docName, min_NG, max_NG, lowercase,
-				       default_language, languages,
-				       wcv, emph, sep );
-      break;
-    case S_IN_D:
-      word_count = doc_str_inventory( d, docName, min_NG, max_NG, lowercase,
-				      default_language, languages, wcv,
-				      emph, sep );
-      break;
     case W_IN_S:
       word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG, lowercase,
 					    default_language, languages,
 					    wcv, lcv, lpcv, lem_count,
 					    pos_count, emph, sep );
       break;
+    case S_IN_D:
+      word_count = doc_str_inventory( d, docName, min_NG, max_NG, lowercase,
+				      default_language, languages,
+				      wcv, emph, sep );
+      break;
     default:
-      cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
-      exit( EXIT_FAILURE );
+      if ( !tags.empty() ){
+	word_count = text_inventory( d, docName, min_NG, max_NG, lowercase,
+				     default_language, languages, tags,
+				     wcv, emph, sep );
+      }
+      else {
+	cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
+	exit( EXIT_FAILURE );
+      }
     }
 #pragma omp critical
     {
@@ -1202,7 +1216,7 @@ int main( int argc, char *argv[] ){
       }
 #pragma omp section
       {
-	if ( !( mode == S_IN_P || mode == S_IN_D ) ){
+	if ( mode == W_IN_S ){
 	  string filename;
 	  filename = outputPrefix + ".lemmafreqlist";
 	  create_lf_list( lcv, filename, lemTotal, clip, min_NG, max_NG, dopercentage );
@@ -1210,7 +1224,7 @@ int main( int argc, char *argv[] ){
       }
 #pragma omp section
       {
-	if ( !( mode == S_IN_P || mode == S_IN_D ) ){
+	if ( mode == W_IN_S ){
 	  string filename;
 	  filename = outputPrefix + ".lemmaposfreqlist";
 	  create_lpf_list( lpcv, filename, posTotal, clip, min_NG, max_NG, dopercentage );
