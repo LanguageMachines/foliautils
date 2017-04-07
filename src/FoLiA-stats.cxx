@@ -58,7 +58,7 @@ Mode stringToMode( const string& ms ){
     return W_IN_S;
   }
   else if ( ms == "string_in_doc" ){
-    return W_IN_S;
+    return S_IN_D;
   }
   return UNKNOWN;
 }
@@ -553,7 +553,6 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
       }
       continue;
     }
-
     add_emph_inventory( data, emph );
     for ( int ng = min_ng; ng <= max_ng; ++ng ){
       for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
@@ -605,7 +604,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	if ( !multip.empty() ){
 #pragma omp critical
 	  {
-	    auto lpc0 = lpcv[lang][ng];
+	    auto& lpc0 = lpcv[lang][ng];
 	    multimap<string, rec >::iterator it = lpc0.find(multil);
 	    if ( it == lpc0.end() ){
 	      rec tmp;
