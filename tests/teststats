@@ -54,3 +54,8 @@ diff stats6.wordfreqlist.2-gram.tsv stats-o.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats7 --languages=all --aggregate data/statstest.xml > out2 2>&1
 diff stats7.agg.freqlist.tsv stats-agg.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --tags=s --mode=lemma_pos -o stats8 data/frog.xml > out2 2>&1
+diff stats8.wordfreqlist.tsv stats-words.ok >> teststats.out 2>&1
+diff stats8.lemmafreqlist.tsv stats-lemmas.ok >> teststats.out 2>&1
+diff stats8.lemmaposfreqlist.tsv stats-lempos.ok >> teststats.out 2>&1
