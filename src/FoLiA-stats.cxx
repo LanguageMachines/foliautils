@@ -51,14 +51,14 @@ string classname = "current";
 
 enum Mode { UNKNOWN,
 	    S_IN_D,
-	    W_IN_S  };
+	    L_P };
 
 Mode stringToMode( const string& ms ){
-  if ( ms == "word_in_sent" ){
-    return W_IN_S;
-  }
-  else if ( ms == "string_in_doc" ){
+  if ( ms == "string_in_doc" ){
     return S_IN_D;
+  }
+  else if ( ms == "lemma_pos" ){
+    return L_P;
   }
   return UNKNOWN;
 }
@@ -893,12 +893,10 @@ void usage( const string& name ){
   cerr << "\t--ngram='count'\t\t construct n-grams of length 'count'" << endl;
   cerr << "\t--max-ngram='max'\t construct ALL n-grams upto a length of 'max'" << endl;
   cerr << "\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
-  cerr << "\t--mode='mode' Process text found like this: (default: 'word_in_sent')" << endl;
-  cerr << "\t\t 'text_in_par' Process text nodes per <p> node." << endl;
-  cerr << "\t\t 'string_in_doc' Process <str> nodes per document." << endl;
-  cerr << "\t\t 'string_in_par' Process <str> nodes per <p> node." << endl;
-  cerr << "\t\t 'word_in_sent' Process <w> nodes per <s> in the document." << endl;
-  cerr << "\t-s\t equal to --mode=string_in_par" << endl;
+  cerr << "\t--mode='mode' Special actions:" << endl;
+  cerr << "\t\t 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence." << endl;
+  cerr << "\t\t 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s" << endl;
+  cerr << "\t-s\t equal to --tags=p" << endl;
   cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
   cerr << "\t\t (default is 'current')" << endl;
@@ -979,6 +977,10 @@ int main( int argc, char *argv[] ){
 	cerr << "FoLiA-stats: unknown --mode " << modes << endl;
 	return EXIT_FAILURE;
       }
+    }
+    else if ( !tags.empty() ){
+      cerr << "FoLiA-stats: --mode cannot be combined with --tags option" << endl;
+      return EXIT_FAILURE;
     }
   }
   string hempName;
@@ -1143,7 +1145,7 @@ int main( int argc, char *argv[] ){
     unsigned int lem_count = 0;
     unsigned int pos_count = 0;
     switch ( mode ){
-    case W_IN_S:
+    case L_P:
       word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG, lowercase,
 					    default_language, languages,
 					    wcv, lcv, lpcv, lem_count,
@@ -1215,7 +1217,7 @@ int main( int argc, char *argv[] ){
       }
 #pragma omp section
       {
-	if ( mode == W_IN_S ){
+	if ( mode == L_P ){
 	  string filename;
 	  filename = outputPrefix + ".lemmafreqlist";
 	  create_lf_list( lcv, filename, lemTotal, clip, min_NG, max_NG, dopercentage );
@@ -1223,7 +1225,7 @@ int main( int argc, char *argv[] ){
       }
 #pragma omp section
       {
-	if ( mode == W_IN_S ){
+	if ( mode == L_P ){
 	  string filename;
 	  filename = outputPrefix + ".lemmaposfreqlist";
 	  create_lpf_list( lpcv, filename, posTotal, clip, min_NG, max_NG, dopercentage );

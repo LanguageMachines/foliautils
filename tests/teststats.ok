@@ -21,13 +21,10 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	--ngram='count'		 construct n-grams of length 'count'
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
 		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
-	--mode='mode' Process text found like this: (default: 'word_in_sent')
-		 'text_in_par' Process text nodes per <p> node.
-		 'string_in_doc' Process <str> nodes per document.
-		 'string_in_par' Process <str> nodes per <p> node.
-		 'word_in_sent' Process <w> nodes per <s> in the document.
-		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information.
-	-s	 equal to --mode=string_in_par
+	--mode='mode' Special actions:
+		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
+		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+	-s	 equal to --tags=p
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
@@ -64,13 +61,10 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	--ngram='count'		 construct n-grams of length 'count'
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
 		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
-	--mode='mode' Process text found like this: (default: 'word_in_sent')
-		 'text_in_par' Process text nodes per <p> node.
-		 'string_in_doc' Process <str> nodes per document.
-		 'string_in_par' Process <str> nodes per <p> node.
-		 'word_in_sent' Process <w> nodes per <s> in the document.
-		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information.
-	-s	 equal to --mode=string_in_par
+	--mode='mode' Special actions:
+		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
+		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+	-s	 equal to --tags=p
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
