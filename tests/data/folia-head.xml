@@ -14,7 +14,7 @@
 	<head>
 	  <t>Dit is paragraaf 1.</t>
 	</head>
-	<t>Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.</t>
+	<t>Dit is paragraaf 1.<br/><br/>Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.</t>
 	<t class="anders">Wie had dat gedacht?</t>
 	<s xml:id="test.p.1.s.1">
 	  <t>Hij is tegen de lamp gelopen.</t>
@@ -27,7 +27,7 @@
 	<head>
 	  <t>Dit is paragraaf 2.</t>
 	</head>
-	<t>De tekst gaat verder hier.</t>
+	<t>Dit is paragraaf 2.</t>
 	<t class="anders">Totaal iets anders.</t>
       </p>
       <p xml:id="test.p.3">

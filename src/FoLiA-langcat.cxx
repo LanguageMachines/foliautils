@@ -135,12 +135,26 @@ void procesFile( const TextCat& tc,
   if ( !outDir.empty() )
     outName = outDir + "/";
 
+  string::size_type ext_pos = docName.find(".folia.xml");
+  bool fol_ext = true;
+  if ( ext_pos == string::npos ){
+    ext_pos = docName.find(".xml");
+    fol_ext = false;
+  }
   string::size_type pos = docName.rfind("/");
-  if ( pos != string::npos )
-    outName += docName.substr( pos+1, docName.find(".xml") - pos - 1);
-  else
-    outName += docName.substr(0, docName.find(".xml") );
-  outName += ".lc.xml";
+  if ( pos != string::npos ){
+    outName += docName.substr( pos+1, ext_pos - pos - 1);
+  }
+  else {
+    outName += docName.substr(0, ext_pos );
+  }
+  outName += ".lang";
+  if ( fol_ext ){
+    outName += ".folia.xml";
+  }
+  else {
+    outName += ".xml";
+  }
   if ( !TiCC::createPath( outName ) ){
 #pragma omp critical (logging)
     {
