@@ -8,6 +8,7 @@ Usage: [options] dir/filename
 --all		 assign ALL detected languages to the result. (default is to assign the most probable).
 --class=<cls>	 use 'cls' as the FoLiA classname for searching text. 
 			 (default 'OCR')
+-t		 number_of_threads
 -O path		 output path
 -V or --version	 show version info.
 -v		 verbose

@@ -42,6 +42,9 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
 #include "config.h"
+#ifdef HAVE_OPENMP
+#include "omp.h"
+#endif
 #include "ucto/textcat.h"
 
 using namespace	std;
@@ -212,6 +215,7 @@ void usage(){
   cerr << "--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
        << endl;
   cerr << "\t\t\t (default 'OCR')" << endl;
+  cerr << "-t\t\t number_of_threads" << endl;
   cerr << "-O path\t\t output path" << endl;
   cerr << "-V or --version\t show version info." << endl;
   cerr << "-v\t\t verbose" << endl;
@@ -219,7 +223,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "svVhO:", "all,lang:,class:,config:,help,version,tags:" );
+  TiCC::CL_Options opts( "svVhO:t:", "all,lang:,class:,config:,help,version,tags:" );
   try {
     opts.init( argc, argv );
   }
@@ -241,6 +245,22 @@ int main( int argc, char *argv[] ){
   string lang = "nld";
   string cls = "OCR";
   verbose = opts.extract( 'v' );
+#ifdef HAVE_OPENMP
+  int numThreads = 1;
+#endif
+  string value;
+  if ( opts.extract('t', value ) ){
+#ifdef HAVE_OPENMP
+    if ( !TiCC::stringTo(value, numThreads ) ){
+      cerr << "FoLiA-stats: illegal value for -t (" << value << ")" << endl;
+      exit(EXIT_FAILURE);
+    }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "FoLiA-stats: OpenMP support is missing. -t option is not supported" << endl;
+    exit( EXIT_FAILURE );
+#endif
+  }
   bool doAll = opts.extract( "all" );
   bool doStrings = opts.extract( 's' );
   opts.extract( "config", config );
