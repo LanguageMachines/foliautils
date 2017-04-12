@@ -135,29 +135,21 @@ void procesFile( const TextCat& tc,
   doc->set_metadata( "language", default_lang );
   doc->declare( AnnotationType::LANG, ISO_SET );
   string outName;
-  if ( !outDir.empty() )
+  if ( !outDir.empty() ){
     outName = outDir + "/";
-
-  string::size_type ext_pos = docName.find(".folia.xml");
-  bool fol_ext = true;
-  if ( ext_pos == string::npos ){
-    ext_pos = docName.find(".xml");
-    fol_ext = false;
   }
   string::size_type pos = docName.rfind("/");
   if ( pos != string::npos ){
-    outName += docName.substr( pos+1, ext_pos - pos - 1);
+    outName += docName.substr( pos+1);
   }
   else {
-    outName += docName.substr(0, ext_pos );
+    outName += docName;
   }
-  outName += ".lang";
-  if ( fol_ext ){
-    outName += ".folia.xml";
+  string::size_type xml_pos = outName.find(".folia.xml");
+  if ( xml_pos == string::npos ){
+    xml_pos = outName.find(".xml");
   }
-  else {
-    outName += ".xml";
-  }
+  outName.insert( xml_pos, ".lang" );
   if ( !TiCC::createPath( outName ) ){
 #pragma omp critical (logging)
     {
@@ -167,7 +159,6 @@ void procesFile( const TextCat& tc,
     exit( EXIT_FAILURE);
   }
   vector<FoliaElement*> nodes = gather_nodes( doc, docName, tags );
-  ofstream os( outName );
   for ( const auto& node : nodes ){
     const TextContent *t = 0;
     string id = "NO ID";
@@ -200,13 +191,16 @@ void procesFile( const TextCat& tc,
       }
     }
   }
-  os << doc << endl;
+  doc->save(outName);
   delete doc;
 }
 
 
 void usage(){
   cerr << "Usage: [options] dir/filename " << endl;
+  cerr << "\t add language information to a file or files in FoLiA XML format" << endl;
+  cerr << "\t  The files must have extension '.folia.xml' or '.xml'" << endl;
+  cerr << "\t  or their .gz or .bz2 variants" << endl;
   cerr << "--config=<file>\t use LM config from 'file'" << endl;
   cerr << "--lang=<lan>\t use 'lan' for unindentified text. (default 'nld')" << endl;
   cerr << "--tags=t1,t2,..\t examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes)." << endl;
@@ -302,10 +296,10 @@ int main( int argc, char *argv[] ){
   else if ( fileNames.size() == 1 ){
     string name = fileNames[0];
     try {
-      fileNames = TiCC::searchFilesExt( name, ".xml", false );
+      fileNames = TiCC::searchFilesMatch( name, "*.xml*", false );
     }
     catch ( ... ){
-      cerr << "no matching file found: '" << name << "'" << endl;
+      cerr << "no matching xml file found: '" << name << "'" << endl;
       exit( EXIT_FAILURE );
     }
   }

@@ -1,6 +1,9 @@
 missing input file(s)
 foliautils 0.7
 Usage: [options] dir/filename 
+	 add language information to a file or files in FoLiA XML format
+	  The files must have extension '.folia.xml' or '.xml'
+	  or their .gz or .bz2 variants
 --config=<file>	 use LM config from 'file'
 --lang=<lan>	 use 'lan' for unindentified text. (default 'nld')
 --tags=t1,t2,..	 examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes).
@@ -38,8 +41,31 @@ document 'data/langcat.test.xml' has 3 p nodes
     </p>
   </text>
 </FoLiA>
-
-
+process data/lc.xml.gz
+document 'data/lc.xml.gz' has 3 p nodes 
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.8">
+  <metadata type="native">
+    <annotations>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
+    </annotations>
+    <meta id="language">nld</meta>
+  </metadata>
+  <text xml:id="text">
+    <p xml:id="text.p1">
+      <t class="OCR">To be or not to be, that is the question</t>
+      <lang class="eng"/>
+    </p>
+    <p xml:id="text.p2">
+      <t class="OCR">c'est une des plus intéresfantes chofes que j'aie encore vues jnsqu'ici. Quoi* que démoli, il mérite fcul un voyage, ne fut ce que pour fa poficion.</t>
+      <lang class="fra"/>
+    </p>
+    <p xml:id="text.p3">
+      <t class="OCR">Ok., en nu ook in het nederands!</t>
+      <lang class="nld"/>
+    </p>
+  </text>
+</FoLiA>
 process data/langcat.test2.xml
 document 'data/langcat.test2.xml' has 1 p nodes 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -57,8 +83,6 @@ document 'data/langcat.test2.xml' has 1 p nodes
     </p>
   </text>
 </FoLiA>
-
-
 process data/langcat.test-str.folia.xml
 document 'data/langcat.test-str.folia.xml' has 2 str nodes 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -80,8 +104,6 @@ document 'data/langcat.test-str.folia.xml' has 2 str nodes
     </str>
   </text>
 </FoLiA>
-
-
 process data/langcat.test-str.folia.xml
 document 'data/langcat.test-str.folia.xml' has 2 str nodes 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -103,5 +125,3 @@ document 'data/langcat.test-str.folia.xml' has 2 str nodes
     </str>
   </text>
 </FoLiA>
-
-

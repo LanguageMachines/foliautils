@@ -11,6 +11,10 @@ $my_bin/FoLiA-langcat --config=tc.txt -O out data/langcat.test.xml >> testlangca
 
 cat out/langcat.test.lang.xml >> testlangcat.out
 
+$my_bin/FoLiA-langcat --config=tc.txt -O out data/lc.xml.gz >> testlangcat.out 2>&1
+
+zcat out/lc.lang.xml.gz >> testlangcat.out
+
 $my_bin/FoLiA-langcat --config=tc.txt -O out --all data/langcat.test2.xml >> testlangcat.out 2>&1
 
 cat out/langcat.test2.lang.xml >> testlangcat.out
