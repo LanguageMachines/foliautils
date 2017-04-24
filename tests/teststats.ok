@@ -8,7 +8,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 		(entries with frequency <= 'factor' will be ignored). 
 	-p	 output percentages too. 
 	--lower	 Lowercase all words
-	--seperator='sep' 	connect all n-grams with 'sep' (default is a space)
+	--separator='sep' 	connect all n-grams with 'sep' (default is a space)
 	--underscore	 Obsolete. Equals to --separator='_'
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 		 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
@@ -24,6 +24,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	--mode='mode' Special actions:
 		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
 		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+	--tags='tags' collect text from all nodes in the list 'tags'
 	-s	 equal to --tags=p
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
@@ -48,7 +49,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 		(entries with frequency <= 'factor' will be ignored). 
 	-p	 output percentages too. 
 	--lower	 Lowercase all words
-	--seperator='sep' 	connect all n-grams with 'sep' (default is a space)
+	--separator='sep' 	connect all n-grams with 'sep' (default is a space)
 	--underscore	 Obsolete. Equals to --separator='_'
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 		 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
@@ -64,6 +65,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	--mode='mode' Special actions:
 		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
 		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+	--tags='tags' collect text from all nodes in the list 'tags'
 	-s	 equal to --tags=p
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.

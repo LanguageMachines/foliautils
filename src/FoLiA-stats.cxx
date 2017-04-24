@@ -880,7 +880,7 @@ void usage( const string& name ){
   cerr << "\t\t(entries with frequency <= 'factor' will be ignored). " << endl;
   cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
-  cerr << "\t--seperator='sep' \tconnect all n-grams with 'sep' (default is a space)" << endl;
+  cerr << "\t--separator='sep' \tconnect all n-grams with 'sep' (default is a space)" << endl;
   cerr << "\t--underscore\t Obsolete. Equals to --separator='_'" << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t\t languages that are not assigned to Lan1,Lan2,... are counted as Lan1" << endl;
@@ -896,6 +896,7 @@ void usage( const string& name ){
   cerr << "\t--mode='mode' Special actions:" << endl;
   cerr << "\t\t 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence." << endl;
   cerr << "\t\t 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s" << endl;
+  cerr << "\t--tags='tags' collect text from all nodes in the list 'tags'" << endl;
   cerr << "\t-s\t equal to --tags=p" << endl;
   cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
