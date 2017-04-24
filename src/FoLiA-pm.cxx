@@ -304,6 +304,17 @@ void add_stage_direction( TextContent *tc, xmlNode *p ){
   }
 }
 
+void add_notes( Paragraph *par, const list<Note*>& notes ){
+  KWargs args;
+  args["id"] = par->id() + ".d.1";
+  args["class"] = "notes";
+  Division *div = new Division( args, par->doc() );
+  par->parent()->append( div );
+  for ( const auto& note : notes ){
+    div->append( note );
+  }
+}
+
 void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
@@ -316,6 +327,7 @@ void add_par( Division *root, xmlNode *p ){
   args["id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   TextContent *tc = new TextContent();
+  list<Note*> notes;
   par->append( tc );
   root->append( par );
   p = p->children;
@@ -375,7 +387,8 @@ void add_par( Division *root, xmlNode *p ){
 	  args["id"] = ref;
 	  note = new Note( args );
 	}
-	par->append( note );
+	//	par->append( note );
+	notes.push_back( note );
 	xmlNode *pnt = p->children;
 	while ( pnt ){
 	  string tag = TiCC::Name(pnt);
@@ -399,6 +412,9 @@ void add_par( Division *root, xmlNode *p ){
       }
     }
     p = p->next;
+  }
+  if ( !notes.empty() ){
+    add_notes( par, notes );
   }
 }
 
