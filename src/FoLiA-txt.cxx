@@ -143,7 +143,7 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
-#pragma omp parallel for shared(fileNames )
+#pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string fileName = fileNames[fn];
     ifstream is( fileName );

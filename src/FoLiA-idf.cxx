@@ -241,7 +241,7 @@ int main( int argc, char *argv[] ){
   map<string,unsigned int> wc;
   unsigned int wordTotal =0;
 
-#pragma omp parallel for shared(fileNames,wordTotal,wc )
+#pragma omp parallel for shared(fileNames,wordTotal,wc ) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;

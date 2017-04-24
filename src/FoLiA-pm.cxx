@@ -1554,7 +1554,7 @@ int main( int argc, char *argv[] ){
 #endif
   }
 
-#pragma omp parallel for shared(fileNames)
+#pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     convert_to_folia( fileNames[fn], outputDir, no_split );
   }

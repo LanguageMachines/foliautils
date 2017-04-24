@@ -313,7 +313,7 @@ int main( int argc, char *argv[] ){
   if ( toDo > 1 ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-#pragma omp parallel for firstprivate(TC),shared(fileNames,toDo)
+#pragma omp parallel for firstprivate(TC) shared(fileNames,toDo) schedule(dynamic)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
     procesFile( TC, outDir, docName, lang, tags, doAll, cls );
