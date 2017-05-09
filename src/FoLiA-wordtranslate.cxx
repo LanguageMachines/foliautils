@@ -76,19 +76,23 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
     vector<Word*> words = doc->doc()->select<Word>();
     for (const auto& word : words) {
         const string source = UnicodeToUTF8(word->text(inputclass));
+        string target = source;
         if (dictionary.find(source) != dictionary.end()) {
             if (outputclass != inputclass) {
                 //TODO: check if outputclass is not already present
-                KWargs args;
-                args["class"] = outputclass;
-                args["value"] = dictionary[source];
-                TextContent * translatedtext = new TextContent( args );
-                word->append(translatedtext);
+                target = dictionary[source];
                 changed = true;
             } else {
                 //TODO (also remove check when implemented)
             }
         }
+
+        //add text content
+        KWargs args;
+        args["class"] = outputclass;
+        args["value"] = target;
+        TextContent * translatedtext = new TextContent( args );
+        word->append(translatedtext);
     }
     return changed;
 }
@@ -113,7 +117,7 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
 
 
 int main( int argc, const char *argv[] ) {
-      TiCC::CL_Options opts( "e:vVt:O:Rh",
+      TiCC::CL_Options opts( "d:e:vVt:O:Rh",
                              "inputclass:,outputclass:,version,help" );
       try {
         opts.init( argc, argv );
@@ -204,7 +208,7 @@ int main( int argc, const char *argv[] ) {
           string docName = fileNames[fn];
           Document *doc = 0;
           try {
-              doc = new Document( "file='"+ docName + "'" );
+              doc = new Document( "file='"+ docName + "',mode='nochecktext'" ); //TODO: remove nochecktext?
           }
           catch ( exception& e ){
 #pragma omp critical
