@@ -282,7 +282,12 @@ int main( int argc, char *argv[] ){
     string docName = fileNames[fn];
     Document *d = 0;
     try {
-      d = new Document( "file='"+ docName + "'" );
+      if ( fixtext ){
+	d = new Document( "file='"+ docName + "',mode='fixtext'" );
+      }
+      else {
+	d = new Document( "file='"+ docName + "'" );
+      }
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -291,9 +296,6 @@ int main( int argc, char *argv[] ){
 	cerr << "reason: " << e.what() << endl;
       }
       continue;
-    }
-    if ( fixtext ){
-      d->setmode( "fixtext" );
     }
     string outname ;
     string::size_type pos = docName.find( expression );
