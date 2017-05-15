@@ -44,6 +44,8 @@ using namespace	std;
 using namespace	folia;
 using namespace	TiCC;
 
+int debug = 0;
+
 void clean_folia( FoliaElement *node,
 		  const string& text,
 		  bool current,
@@ -52,10 +54,20 @@ void clean_folia( FoliaElement *node,
     FoliaElement *p = node->index(i);
     if ( p->element_id() == TextContent_t ) {
       if ( !text.empty() ){
-	cerr << "clean text: bekijk " << p << endl;
-	cerr << "p.text(" << p->cls() << ")" << endl;
+	if ( debug ){
+#pragma omp critical( debugging )
+	  {
+	    cerr << "clean text: bekijk " << p << endl;
+	    cerr << "p.text(" << p->cls() << ")" << endl;
+	  }
+	}
 	if ( p->cls() != text ){
-	  cerr << "remove" << p << endl;
+	  if ( debug ){
+#pragma omp critical( debugging )
+	    {
+	      cerr << "remove" << p << endl;
+	    }
+	  }
 	  node->remove(p,true);
 	  --i;
 	}
@@ -68,17 +80,32 @@ void clean_folia( FoliaElement *node,
       }
     }
     else {
-      cerr << "clean anno: bekijk " << p << endl;
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "clean anno: bekijk " << p << endl;
+	}
+      }
       AnnotationType::AnnotationType at = p->annotation_type();
       string set = p->sett();
-      cerr << "set = " << set << endl;
-      cerr << "AT  = " << toString(at) << endl;
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "set = " << set << endl;
+	  cerr << "AT  = " << toString(at) << endl;
+	}
+      }
       if ( !set.empty()
 	   && ( setnames[at].find(set) != setnames[at].end()
 		|| setnames[at].find("") != setnames[at].end() ) ){
-	cerr << "matched: " << toString(at) << "-annotation("
-	     << set << ")" << endl;
-	cerr << "remove" << p << endl;
+	if ( debug ){
+#pragma omp critical( debugging )
+	  {
+	    cerr << "matched: " << toString(at) << "-annotation("
+		 << set << ")" << endl;
+	    cerr << "remove" << p << endl;
+	  }
+	}
 	node->remove(p,true);
 	--i;
       }
@@ -109,9 +136,12 @@ void usage( const string& name ){
   cerr << "\t FoLiA-clean will produce a cleaned up version of a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t--textclass='name', retain only text nodes with this class. (default is to retain all)" << endl;
-  //  cerr << "\t--current\t Make the textclass 'current'. (default is to keep 'name')" << endl;
-  cerr << "\t--cleanannoset='type:setname'\t remove annotations with 'type' and 'setname'. This option can be repeated for different annotations." << endl;
-  cerr << "\t-e\t expr: specify the expression all input files should match with. (default .xml)" << endl;
+  cerr << "\t--current\t Make the textclass 'current'. (default is to keep 'name')" << endl;
+  cerr << "\t--fixtext\t Fixup problems in structured text. " << endl;
+  cerr << "\t\t Replaces on structure nodes the text class 'textclass' by what is found on deeper levels." << endl;
+  cerr << "\t--cleanannoset='type\\\\setname'\t remove annotations with 'type' and 'setname'. NOTE: use a double '\\' !. The setname can be empty. This option can be repeated for different annotations." << endl;
+  cerr << "\t-e\t expr: specify the expression all input files should match with. (default .folia.xml)" << endl;
+  cerr << "\t--debug Set dubugging" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
@@ -119,7 +149,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok" );
+  CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok,fixtext,debug" );
   try {
     opts.init(argc,argv);
   }
@@ -143,7 +173,7 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  string expression = ".xml";
+  string expression = ".folia.xml";
   opts.extract( 'e', expression );
   string output_dir;
   opts.extract( 'O', output_dir );
@@ -156,30 +186,37 @@ int main( int argc, char *argv[] ){
   }
   string class_name;
   opts.extract( "textclass", class_name );
+  if ( opts.extract( "debug" ) ){
+    debug = 1;
+  }
+  bool fixtext = opts.extract( "fixtext" );
+  if ( fixtext && make_current ){
+    cerr << "cannot combine --fixtext and --current" << endl;
+    exit( EXIT_FAILURE );
+  }
   map<AnnotationType::AnnotationType,set<string>> clean_sets;
   string line;
   while ( opts.extract( "cleanannoset", line ) ){
-    vector<string> vals;
-    string ats;
-    string set;
-    size_t num = TiCC::split_at( line, vals, ":" );
-    if ( num == 0 || num > 2 ){
-      cerr << "invalid value in cleanannoset: '" << line << "'" << endl;
-      exit(EXIT_FAILURE);
+    string type;
+    string setname;
+    string::size_type bs_pos = line.find( "\\" );
+    if ( bs_pos == string::npos ){
+      // no '\' separator, so only a type
+      type = line;
     }
-    ats = vals[0];
-    if ( num > 1 ){
-      set = vals[1];
+    else {
+      type = line.substr( 0, bs_pos );
+      setname = line.substr( bs_pos+1 );
     }
     AnnotationType::AnnotationType at;
     try {
-      at = stringTo<AnnotationType::AnnotationType>( ats );
+      at = stringTo<AnnotationType::AnnotationType>( type );
     }
     catch ( exception& e){
       cerr << e.what() << endl;
       exit(EXIT_FAILURE);
     }
-    clean_sets[at].insert(set);
+    clean_sets[at].insert(setname);
   }
 #ifdef HAVE_OPENMP
   omp_set_num_threads( numThreads );
@@ -188,6 +225,7 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
   }
 #endif
+
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
@@ -236,7 +274,18 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    string outname = output_dir + docName + ".cleaned.xml";
+    if ( fixtext ){
+      d->setmode( "fixtext" );
+    }
+    string outname ;
+    string::size_type pos = docName.find( expression );
+    if ( pos != string::npos ){
+      outname = docName.substr( 0, pos );
+    }
+    else {
+      outname = docName;
+    }
+    outname = output_dir + outname + ".cleaned.folia.xml";
     if ( !TiCC::createPath( outname ) ){
 #pragma omp critical
       {
