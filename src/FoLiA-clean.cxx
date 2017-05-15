@@ -46,14 +46,13 @@ using namespace	TiCC;
 
 int debug = 0;
 
-void clean_folia( FoliaElement *node,
-		  const string& text,
-		  bool current,
-		  map<AnnotationType::AnnotationType,set<string>>& setnames ){
+void clean_text( FoliaElement *node,
+		 const string& textclass,
+		 bool current ){
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
     if ( p->element_id() == TextContent_t ) {
-      if ( !text.empty() ){
+      if ( !textclass.empty() ){
 	if ( debug ){
 #pragma omp critical( debugging )
 	  {
@@ -61,7 +60,7 @@ void clean_folia( FoliaElement *node,
 	    cerr << "p.text(" << p->cls() << ")" << endl;
 	  }
 	}
-	if ( p->cls() != text ){
+	if ( p->cls() != textclass ){
 	  if ( debug ){
 #pragma omp critical( debugging )
 	    {
@@ -75,59 +74,74 @@ void clean_folia( FoliaElement *node,
 	  if ( current ){
 	    p->set_to_current();
 	  }
-	  clean_folia( p, text, current, setnames );
+	  clean_text( p, textclass, current );
 	}
       }
     }
     else {
+      clean_text( p, textclass, current );
+    }
+  }
+}
+
+void clean_anno( FoliaElement *node,
+		 const AnnotationType::AnnotationType anno_type,
+		 const string& setname ){
+  for ( size_t i=0; i < node->size(); ++i ){
+    FoliaElement *p = node->index(i);
+    if ( debug ){
+#pragma omp critical( debugging )
+      {
+	cerr << "clean anno: bekijk " << p << endl;
+      }
+    }
+    string set = p->sett();
+    AnnotationType::AnnotationType at = p->annotation_type();
+    if ( debug ){
+#pragma omp critical( debugging )
+      {
+	cerr << "set = " << set << endl;
+	cerr << "AT  = " << toString(at) << endl;
+      }
+    }
+    if ( at == anno_type ){
       if ( debug ){
 #pragma omp critical( debugging )
 	{
-	  cerr << "clean anno: bekijk " << p << endl;
+	  cerr << "matched: " << toString(at) << "-annotation("
+	       << set << ")" << endl;
+	  cerr << "remove" << p << endl;
 	}
       }
-      AnnotationType::AnnotationType at = p->annotation_type();
-      string set = p->sett();
-      if ( debug ){
-#pragma omp critical( debugging )
-	{
-	  cerr << "set = " << set << endl;
-	  cerr << "AT  = " << toString(at) << endl;
-	}
-      }
-      if ( !set.empty()
-	   && ( setnames[at].find(set) != setnames[at].end()
-		|| setnames[at].find("") != setnames[at].end() ) ){
-	if ( debug ){
-#pragma omp critical( debugging )
-	  {
-	    cerr << "matched: " << toString(at) << "-annotation("
-		 << set << ")" << endl;
-	    cerr << "remove" << p << endl;
-	  }
-	}
+      if ( ( ( !set.empty() && setname == set )
+	     || setname.empty() ) ){
 	node->remove(p,true);
 	--i;
       }
-      else {
-	clean_folia( p, text, current, setnames );
-      }
+    }
+    else {
+      clean_anno( p, anno_type, setname );
     }
   }
 }
 
 void clean_doc( Document *d,
 		const string& outname,
-		const string& text,
+		const string& textclass,
 		bool current,
-		map<AnnotationType::AnnotationType,set<string>>& setnames ){
+		map<AnnotationType::AnnotationType,set<string>>& anno_setname ){
   FoliaElement *root = d->doc();
-  clean_folia( root, text, current, setnames );
-  for( const auto& it : setnames ){
+  for( const auto& it : anno_setname ){
+    for ( const auto& set : it.second ){
+      clean_anno( root, it.first, set );
+    }
+  }
+  for( const auto& it : anno_setname ){
     for ( const auto& set : it.second ){
       d->un_declare( it.first, set );
     }
   }
+  clean_text( root, textclass, current );
   d->save( outname );
 }
 
@@ -207,6 +221,10 @@ int main( int argc, char *argv[] ){
     else {
       type = line.substr( 0, bs_pos );
       setname = line.substr( bs_pos+1 );
+    }
+    if ( type == "token" ){
+      cerr << "deleting token annotation is not supported yet." << endl;
+      exit( EXIT_FAILURE );
     }
     AnnotationType::AnnotationType at;
     try {
