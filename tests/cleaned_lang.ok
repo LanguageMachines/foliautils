@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.8" version="1.4.0">
+  <metadata type="native">
+    <annotations>
+      <token-annotation annotator="ucto" annotatortype="auto" datetime="2017-05-02T22:10:06" set="tokconfig-nld"/>
+      <pos-annotation annotator="frog-mbpos-1.0" annotatortype="auto" datetime="2017-05-02T22:10:06" set="http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn"/>
+      <lemma-annotation annotator="frog-mblem-1.1" annotatortype="auto" datetime="2017-05-02T22:10:06" set="http://ilk.uvt.nl/folia/sets/frog-mblem-nl"/>
+      <entity-annotation annotator="frog-ner-1.0" annotatortype="auto" datetime="2017-05-02T22:10:06" set="http://ilk.uvt.nl/folia/sets/frog-ner-nl"/>
+    </annotations>
+    <meta id="language">nld</meta>
+    <meta id="genre">artikel</meta>
+  </metadata>
+  <text xml:id="dirty.text">
+    <p xml:id="dirty.text.p.2">
+      <t class="OCR">Beursoverzicht.</t>
+    </p>
+    <p xml:id="dirty.text.p.3">
+      <t class="OCR">Berichten omtrent rondsen Toorkomende Dp de officiële lijst. Daar Londen en New-York heden belangrijk hoogere koersen zonden, was ook to dezer plaatse de Amerikaansche spoorwegmarkt aanzienlijk hooger dan gisteren, vooral voor Southern en Pref. Popika Shares, met vraag voor buitenlandsohe rekening, speciaal Duitschland. Buitenlandsche staatsfondsen vast, vooral voor Spanje Nationale staatsfondsen voor de meeste soorten meer aangeboden. Hooger: Franoo Dcli 2, Langkat Tabak 1%, Langkat Cultuur 8%, Eott. Dcli %. Moeara Enim 8%, Schibaeß 1%, Palembang %. , Lager: Amst. Dcli Comp. 4, Amßt. Sum. Aand. 3. | Binnenlandsshe en Russische Sporen stil. Zuid-Afrik. Sporen stil. Amerik. Sporen % a 2 lager. Berichten omtrent fondsen zonderoffloieele noteering. Opr. Euim 545, 550, Eumeuië 1899-90. Prolongatie 4% pCt. Gisteren zijn 4 pCt. Oblig. Rumenië 1894 abusiof genoteerd 77%, moest zgn 79%.</t>
+      <s xml:id="dirty.text.p.3.s.1">
+        <t class="OCR">Berichten omtrent rondsen Toorkomende Dp de officiële lijst.</t>
+        <w xml:id="dirty.text.p.3.s.1.w.1" class="WORD">
+          <t class="OCR">Berichten</t>
+          <pos class="N(soort,mv,basis)" confidence="0.994206" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="bericht"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.2" class="WORD">
+          <t class="OCR">omtrent</t>
+          <pos class="VZ(init)" confidence="0.997963" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="omtrent"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.3" class="WORD">
+          <t class="OCR">rondsen</t>
+          <pos class="N(soort,mv,basis)" confidence="1" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="rondsen"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.4" class="WORD">
+          <t class="OCR">Toorkomende</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Toorkomende"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.5" class="WORD">
+          <t class="OCR">Dp</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Dp"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.6" class="WORD">
+          <t class="OCR">de</t>
+          <pos class="LID(bep,stan,rest)" confidence="0.999805" head="LID">
+            <feat class="bep" subset="lwtype"/>
+            <feat class="stan" subset="naamval"/>
+            <feat class="rest" subset="npagr"/>
+          </pos>
+          <lemma class="de"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.7" class="WORD">
+          <t class="OCR">officiële</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="0.999763" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="officieel"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.8" class="WORD" space="no">
+          <t class="OCR">lijst</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.999705" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="lijst"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.9" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.1.entities.1">
+          <entity xml:id="dirty.text.p.3.s.1.entities.1.entity.1" class="pro" confidence="1">
+            <wref id="dirty.text.p.3.s.1.w.1"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.1.entities.1.entity.2" class="per" confidence="0.631398">
+            <wref id="dirty.text.p.3.s.1.w.4"/>
+            <wref id="dirty.text.p.3.s.1.w.5"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.2">
+        <t class="OCR">Daar Londen en New-York heden belangrijk hoogere koersen zonden, was ook to dezer plaatse de Amerikaansche spoorwegmarkt aanzienlijk hooger dan gisteren, vooral voor Southern en Pref.</t>
+        <w xml:id="dirty.text.p.3.s.2.w.1" class="WORD">
+          <t class="OCR">Daar</t>
+          <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" confidence="0.998699" head="VNW">
+            <feat class="aanw" subset="vwtype"/>
+            <feat class="adv-pron" subset="pdtype"/>
+            <feat class="obl" subset="naamval"/>
+            <feat class="vol" subset="status"/>
+            <feat class="3o" subset="persoon"/>
+            <feat class="getal" subset="getal"/>
+          </pos>
+          <lemma class="daar"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.2" class="WORD">
+          <t class="OCR">Londen</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Londen"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.3" class="WORD">
+          <t class="OCR">en</t>
+          <pos class="VG(neven)" confidence="0.99571" head="VG">
+            <feat class="neven" subset="conjtype"/>
+          </pos>
+          <lemma class="en"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.4" class="WORD-COMPOUND">
+          <t class="OCR">New-York</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="New-York"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.5" class="WORD">
+          <t class="OCR">heden</t>
+          <pos class="BW()" confidence="0.5" head="BW"/>
+          <lemma class="heden"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.6" class="WORD">
+          <t class="OCR">belangrijk</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.816523" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="belangrijk"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.7" class="WORD">
+          <t class="OCR">hoogere</t>
+          <pos class="ADJ(prenom,comp,met-e,stan)" confidence="0.512465" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="comp" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="hooog"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.8" class="WORD">
+          <t class="OCR">koersen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.793317" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="koers"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.9" class="WORD" space="no">
+          <t class="OCR">zonden</t>
+          <pos class="N(soort,mv,basis)" confidence="0.5" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="zonde"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.10" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.11" class="WORD">
+          <t class="OCR">was</t>
+          <pos class="WW(pv,verl,ev)" confidence="0.998638" head="WW">
+            <feat class="pv" subset="wvorm"/>
+            <feat class="verl" subset="pvtijd"/>
+            <feat class="ev" subset="pvagr"/>
+          </pos>
+          <lemma class="zijn"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.12" class="WORD">
+          <t class="OCR">ook</t>
+          <pos class="BW()" confidence="0.999979" head="BW"/>
+          <lemma class="ook"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.13" class="WORD">
+          <t class="OCR">to</t>
+          <pos class="SPEC(vreemd)" confidence="1" head="SPEC">
+            <feat class="vreemd" subset="spectype"/>
+          </pos>
+          <lemma class="to"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.14" class="WORD">
+          <t class="OCR">dezer</t>
+          <pos class="VNW(aanw,det,gen,prenom,met-e,rest3)" confidence="0.553571" head="VNW">
+            <feat class="aanw" subset="vwtype"/>
+            <feat class="det" subset="pdtype"/>
+            <feat class="gen" subset="naamval"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="rest3" subset="npagr"/>
+          </pos>
+          <lemma class="deze"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.15" class="WORD">
+          <t class="OCR">plaatse</t>
+          <pos class="N(soort,ev,basis,dat)" confidence="0.99762" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="dat" subset="naamval"/>
+          </pos>
+          <lemma class="plaats"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.16" class="WORD">
+          <t class="OCR">de</t>
+          <pos class="LID(bep,stan,rest)" confidence="0.981886" head="LID">
+            <feat class="bep" subset="lwtype"/>
+            <feat class="stan" subset="naamval"/>
+            <feat class="rest" subset="npagr"/>
+          </pos>
+          <lemma class="de"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.17" class="WORD">
+          <t class="OCR">Amerikaansche</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="0.655513" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="amerikaansch"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.18" class="WORD">
+          <t class="OCR">spoorwegmarkt</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="1" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="spoorwegmarkt"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.19" class="WORD">
+          <t class="OCR">aanzienlijk</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.830986" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="aanzienlijk"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.20" class="WORD">
+          <t class="OCR">hooger</t>
+          <pos class="ADJ(vrij,comp,zonder)" confidence="0.998036" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="comp" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="hooger"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.21" class="WORD">
+          <t class="OCR">dan</t>
+          <pos class="VG(onder)" confidence="0.9375" head="VG">
+            <feat class="onder" subset="conjtype"/>
+          </pos>
+          <lemma class="dan"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.22" class="WORD" space="no">
+          <t class="OCR">gisteren</t>
+          <pos class="BW()" confidence="0.992308" head="BW"/>
+          <lemma class="gisteren"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.23" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.24" class="WORD">
+          <t class="OCR">vooral</t>
+          <pos class="BW()" confidence="0.998251" head="BW"/>
+          <lemma class="vooral"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.25" class="WORD">
+          <t class="OCR">voor</t>
+          <pos class="VZ(init)" confidence="0.982808" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="voor"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.26" class="WORD">
+          <t class="OCR">Southern</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Southern"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.27" class="WORD">
+          <t class="OCR">en</t>
+          <pos class="VG(neven)" confidence="0.999194" head="VG">
+            <feat class="neven" subset="conjtype"/>
+          </pos>
+          <lemma class="en"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.28" class="WORD" space="no">
+          <t class="OCR">Pref</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Pref"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.29" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.2.entities.1">
+          <entity xml:id="dirty.text.p.3.s.2.entities.1.entity.1" class="loc" confidence="1">
+            <wref id="dirty.text.p.3.s.2.w.2"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.2.entities.1.entity.2" class="loc" confidence="0.950183">
+            <wref id="dirty.text.p.3.s.2.w.4"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.2.entities.1.entity.3" class="loc" confidence="0.526633">
+            <wref id="dirty.text.p.3.s.2.w.17"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.2.entities.1.entity.4" class="org" confidence="0">
+            <wref id="dirty.text.p.3.s.2.w.26"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.2.entities.1.entity.5" class="org" confidence="0.809313">
+            <wref id="dirty.text.p.3.s.2.w.28"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.3">
+        <t class="OCR">Popika Shares, met vraag voor buitenlandsohe rekening, speciaal Duitschland.</t>
+        <w xml:id="dirty.text.p.3.s.3.w.1" class="WORD">
+          <t class="OCR">Popika</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Popika"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.2" class="WORD" space="no">
+          <t class="OCR">Shares</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Shares"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.3" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.4" class="WORD">
+          <t class="OCR">met</t>
+          <pos class="VZ(init)" confidence="0.99948" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="met"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.5" class="WORD">
+          <t class="OCR">vraag</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.95283" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="vraag"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.6" class="WORD">
+          <t class="OCR">voor</t>
+          <pos class="VZ(init)" confidence="0.899456" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="voor"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.7" class="WORD">
+          <t class="OCR">buitenlandsohe</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="1" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="buitenlandsohe"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.8" class="WORD" space="no">
+          <t class="OCR">rekening</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.999633" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="rekening"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.9" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.10" class="WORD">
+          <t class="OCR">speciaal</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.830986" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="speciaal"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.11" class="WORD" space="no">
+          <t class="OCR">Duitschland</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Duitschland"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.12" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.3.entities.1">
+          <entity xml:id="dirty.text.p.3.s.3.entities.1.entity.1" class="per" confidence="0.956637">
+            <wref id="dirty.text.p.3.s.3.w.1"/>
+            <wref id="dirty.text.p.3.s.3.w.2"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.3.entities.1.entity.2" class="per" confidence="0.399133">
+            <wref id="dirty.text.p.3.s.3.w.11"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.4">
+        <t class="OCR">Buitenlandsche staatsfondsen vast, vooral voor Spanje Nationale staatsfondsen voor de meeste soorten meer aangeboden.</t>
+        <w xml:id="dirty.text.p.3.s.4.w.1" class="WORD">
+          <t class="OCR">Buitenlandsche</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="1" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="buitenlandsche"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.2" class="WORD">
+          <t class="OCR">staatsfondsen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.99802" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="staatsfonds"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.3" class="WORD" space="no">
+          <t class="OCR">vast</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.957916" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="vast"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.4" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.5" class="WORD">
+          <t class="OCR">vooral</t>
+          <pos class="BW()" confidence="0.998251" head="BW"/>
+          <lemma class="vooral"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.6" class="WORD">
+          <t class="OCR">voor</t>
+          <pos class="VZ(init)" confidence="0.982808" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="voor"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.7" class="WORD">
+          <t class="OCR">Spanje</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Spanje"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.8" class="WORD">
+          <t class="OCR">Nationale</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="0.99271" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="nationaal"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.9" class="WORD">
+          <t class="OCR">staatsfondsen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.999404" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="staatsfonds"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.10" class="WORD">
+          <t class="OCR">voor</t>
+          <pos class="VZ(init)" confidence="0.998512" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="voor"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.11" class="WORD">
+          <t class="OCR">de</t>
+          <pos class="LID(bep,stan,rest)" confidence="0.981886" head="LID">
+            <feat class="bep" subset="lwtype"/>
+            <feat class="stan" subset="naamval"/>
+            <feat class="rest" subset="npagr"/>
+          </pos>
+          <lemma class="de"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.12" class="WORD">
+          <t class="OCR">meeste</t>
+          <pos class="VNW(onbep,grad,stan,prenom,met-e,agr,sup)" confidence="0.997028" head="VNW">
+            <feat class="onbep" subset="lwtype"/>
+            <feat class="grad" subset="pdtype"/>
+            <feat class="stan" subset="naamval"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="agr" subset="npagr"/>
+            <feat class="sup" subset="graad"/>
+          </pos>
+          <lemma class="meest"/>
+          <alt xml:id="dirty.text.p.3.s.4.w.12.alt-lem.1" auth="no">
+            <lemma class="meeste"/>
+          </alt>
+          <alt xml:id="dirty.text.p.3.s.4.w.12.alt-lem.2" auth="no">
+            <lemma class="veel"/>
+          </alt>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.13" class="WORD">
+          <t class="OCR">soorten</t>
+          <pos class="N(soort,mv,basis)" confidence="0.995146" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="soort"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.14" class="WORD">
+          <t class="OCR">meer</t>
+          <pos class="VNW(onbep,grad,stan,vrij,zonder,comp)" confidence="0.973025" head="VNW">
+            <feat class="onbep" subset="lwtype"/>
+            <feat class="grad" subset="pdtype"/>
+            <feat class="stan" subset="naamval"/>
+            <feat class="vrij" subset="positie"/>
+            <feat class="zonder" subset="buiging"/>
+            <feat class="comp" subset="graad"/>
+          </pos>
+          <lemma class="veel"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.15" class="WORD" space="no">
+          <t class="OCR">aangeboden</t>
+          <pos class="WW(vd,vrij,zonder)" confidence="0.998549" head="WW">
+            <feat class="vd" subset="wvorm"/>
+            <feat class="vrij" subset="positie"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="aanbieden"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.16" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.4.entities.1">
+          <entity xml:id="dirty.text.p.3.s.4.entities.1.entity.1" class="loc" confidence="1">
+            <wref id="dirty.text.p.3.s.4.w.7"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.4.entities.1.entity.2" class="org" confidence="0">
+            <wref id="dirty.text.p.3.s.4.w.8"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.5">
+        <t class="OCR">Hooger: Franoo Dcli 2, Langkat Tabak 1%, Langkat Cultuur 8%, Eott.</t>
+        <w xml:id="dirty.text.p.3.s.5.w.1" class="WORD" space="no">
+          <t class="OCR">Hooger</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Hooger"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.2" class="PUNCTUATION">
+          <t class="OCR">:</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=":"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.3" class="WORD">
+          <t class="OCR">Franoo</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Franoo"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.4" class="WORD">
+          <t class="OCR">Dcli</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Dcli"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.5" class="NUMBER" space="no">
+          <t class="OCR">2</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.930233" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="2"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.6" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.7" class="WORD">
+          <t class="OCR">Langkat</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Langkat"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.8" class="WORD">
+          <t class="OCR">Tabak</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.992126" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="tabak"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.9" class="NUMBER" space="no">
+          <t class="OCR">1</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.833333" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="1"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.10" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.11" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.12" class="WORD">
+          <t class="OCR">Langkat</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Langkat"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.13" class="WORD">
+          <t class="OCR">Cultuur</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Cultuur"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.14" class="NUMBER" space="no">
+          <t class="OCR">8</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.903226" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="8"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.15" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.16" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.17" class="WORD" space="no">
+          <t class="OCR">Eott</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Eott"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.18" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.5.entities.1">
+          <entity xml:id="dirty.text.p.3.s.5.entities.1.entity.1" class="per" confidence="0.93448">
+            <wref id="dirty.text.p.3.s.5.w.3"/>
+            <wref id="dirty.text.p.3.s.5.w.4"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.5.entities.1.entity.2" class="per" confidence="0.738702">
+            <wref id="dirty.text.p.3.s.5.w.7"/>
+            <wref id="dirty.text.p.3.s.5.w.8"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.5.entities.1.entity.3" class="loc" confidence="0.328377">
+            <wref id="dirty.text.p.3.s.5.w.12"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.5.entities.1.entity.4" class="misc" confidence="0">
+            <wref id="dirty.text.p.3.s.5.w.13"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.5.entities.1.entity.5" class="loc" confidence="0.387775">
+            <wref id="dirty.text.p.3.s.5.w.17"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.6">
+        <t class="OCR">Dcli %.</t>
+        <w xml:id="dirty.text.p.3.s.6.w.1" class="WORD">
+          <t class="OCR">Dcli</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Dcli"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.6.w.2" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.6.w.3" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.7">
+        <t class="OCR">Moeara Enim 8%, Schibaess 1%, Palembang %.</t>
+        <w xml:id="dirty.text.p.3.s.7.w.1" class="WORD">
+          <t class="OCR">Moeara</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Moeara"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.2" class="WORD">
+          <t class="OCR">Enim</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Enim"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.3" class="NUMBER" space="no">
+          <t class="OCR">8</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.903226" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="8"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.4" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.5" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.6" class="WORD">
+          <t class="OCR">Schibaess</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Schibaess"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.7" class="NUMBER" space="no">
+          <t class="OCR">1</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.904523" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="1"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.8" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.9" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.10" class="WORD">
+          <t class="OCR">Palembang</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Palembang"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.11" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.12" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.7.entities.1">
+          <entity xml:id="dirty.text.p.3.s.7.entities.1.entity.1" class="per" confidence="0.960829">
+            <wref id="dirty.text.p.3.s.7.w.1"/>
+            <wref id="dirty.text.p.3.s.7.w.2"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.7.entities.1.entity.2" class="loc" confidence="0.358118">
+            <wref id="dirty.text.p.3.s.7.w.6"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.7.entities.1.entity.3" class="loc" confidence="0.486106">
+            <wref id="dirty.text.p.3.s.7.w.10"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.8">
+        <t class="OCR">, Lager: Amst.</t>
+        <w xml:id="dirty.text.p.3.s.8.w.1" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.2" class="WORD" space="no">
+          <t class="OCR">Lager</t>
+          <pos class="ADJ(vrij,comp,zonder)" confidence="0.8" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="comp" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="laag"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.3" class="PUNCTUATION">
+          <t class="OCR">:</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=":"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.4" class="WORD" space="no">
+          <t class="OCR">Amst</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.733446" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="amst"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.5" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.8.entities.1">
+          <entity xml:id="dirty.text.p.3.s.8.entities.1.entity.1" class="loc" confidence="0.596616">
+            <wref id="dirty.text.p.3.s.8.w.4"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.9">
+        <t class="OCR">Dcli Comp.</t>
+        <w xml:id="dirty.text.p.3.s.9.w.1" class="WORD">
+          <t class="OCR">Dcli</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Dcli"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.9.w.2" class="WORD" space="no">
+          <t class="OCR">Comp</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Comp"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.9.w.3" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.9.entities.1">
+          <entity xml:id="dirty.text.p.3.s.9.entities.1.entity.1" class="per" confidence="0.891565">
+            <wref id="dirty.text.p.3.s.9.w.1"/>
+            <wref id="dirty.text.p.3.s.9.w.2"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.10">
+        <t class="OCR">4, Amsst.</t>
+        <w xml:id="dirty.text.p.3.s.10.w.1" class="NUMBER" space="no">
+          <t class="OCR">4</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.933775" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="4"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.10.w.2" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.10.w.3" class="WORD" space="no">
+          <t class="OCR">Amsst</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.751882" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="amsst"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.10.w.4" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.10.entities.1">
+          <entity xml:id="dirty.text.p.3.s.10.entities.1.entity.1" class="loc" confidence="0.687549">
+            <wref id="dirty.text.p.3.s.10.w.3"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.11">
+        <t class="OCR">Sum.</t>
+        <w xml:id="dirty.text.p.3.s.11.w.1" class="WORD" space="no">
+          <t class="OCR">Sum</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Sum"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.11.w.2" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.11.entities.1">
+          <entity xml:id="dirty.text.p.3.s.11.entities.1.entity.1" class="pro" confidence="0.783129">
+            <wref id="dirty.text.p.3.s.11.w.1"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.12">
+        <t class="OCR">Aand.</t>
+        <w xml:id="dirty.text.p.3.s.12.w.1" class="WORD" space="no">
+          <t class="OCR">Aand</t>
+          <pos class="WW(vd,vrij,zonder)" confidence="0.342304" head="WW">
+            <feat class="vd" subset="wvorm"/>
+            <feat class="vrij" subset="positie"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="aand"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.12.w.2" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.13">
+        <t class="OCR">3.</t>
+        <w xml:id="dirty.text.p.3.s.13.w.1" class="NUMBER" space="no">
+          <t class="OCR">3</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.855556" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="3"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.13.w.2" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.14">
+        <t class="OCR">| Binnenlandsshe en Russische Sporen stil.</t>
+        <w xml:id="dirty.text.p.3.s.14.w.1" class="SYMBOL">
+          <t class="OCR">|</t>
+          <pos class="LET()" confidence="0.995005" head="LET"/>
+          <lemma class="|"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.2" class="WORD">
+          <t class="OCR">Binnenlandsshe</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="0.64425" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="binnenlandsshe"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.3" class="WORD">
+          <t class="OCR">en</t>
+          <pos class="VG(neven)" confidence="0.987805" head="VG">
+            <feat class="neven" subset="conjtype"/>
+          </pos>
+          <lemma class="en"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.4" class="WORD">
+          <t class="OCR">Russische</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="0.939024" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="russisch"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.5" class="WORD">
+          <t class="OCR">Sporen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.996849" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="spoor"/>
+          <alt xml:id="dirty.text.p.3.s.14.w.5.alt-lem.1" auth="no">
+            <lemma class="spore"/>
+          </alt>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.6" class="WORD" space="no">
+          <t class="OCR">stil</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.993597" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="stil"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.7" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.14.entities.1">
+          <entity xml:id="dirty.text.p.3.s.14.entities.1.entity.1" class="loc" confidence="0.478017">
+            <wref id="dirty.text.p.3.s.14.w.2"/>
+          </entity>
+          <entity xml:id="dirty.text.p.3.s.14.entities.1.entity.2" class="loc" confidence="0">
+            <wref id="dirty.text.p.3.s.14.w.4"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.15">
+        <t class="OCR">Zuid-Afrik.</t>
+        <w xml:id="dirty.text.p.3.s.15.w.1" class="WORD-COMPOUND" space="no">
+          <t class="OCR">Zuid-Afrik</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.80213" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="zuid-afrik"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.15.w.2" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.16">
+        <t class="OCR">Sporen stil.</t>
+        <w xml:id="dirty.text.p.3.s.16.w.1" class="WORD">
+          <t class="OCR">Sporen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.996849" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="spoor"/>
+          <alt xml:id="dirty.text.p.3.s.16.w.1.alt-lem.1" auth="no">
+            <lemma class="spore"/>
+          </alt>
+        </w>
+        <w xml:id="dirty.text.p.3.s.16.w.2" class="WORD" space="no">
+          <t class="OCR">stil</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.993597" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="stil"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.16.w.3" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.17">
+        <t class="OCR">Amerik.</t>
+        <w xml:id="dirty.text.p.3.s.17.w.1" class="WORD" space="no">
+          <t class="OCR">Amerik</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.809908" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="amerik"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.17.w.2" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.18">
+        <t class="OCR">Sporen % a 2 lager.</t>
+        <w xml:id="dirty.text.p.3.s.18.w.1" class="WORD">
+          <t class="OCR">Sporen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.996849" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="spoor"/>
+          <alt xml:id="dirty.text.p.3.s.18.w.1.alt-lem.1" auth="no">
+            <lemma class="spore"/>
+          </alt>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.2" class="PUNCTUATION">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.3" class="WORD">
+          <t class="OCR">a</t>
+          <pos class="SPEC(vreemd)" confidence="1" head="SPEC">
+            <feat class="vreemd" subset="spectype"/>
+          </pos>
+          <lemma class="a"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.4" class="NUMBER">
+          <t class="OCR">2</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.582751" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="2"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.5" class="WORD" space="no">
+          <t class="OCR">lager</t>
+          <pos class="ADJ(vrij,comp,zonder)" confidence="0.978198" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="comp" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="laag"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.6" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.19">
+        <t class="OCR">Berichten omtrent fondsen zonderoffloieele noteering.</t>
+        <w xml:id="dirty.text.p.3.s.19.w.1" class="WORD">
+          <t class="OCR">Berichten</t>
+          <pos class="N(soort,mv,basis)" confidence="0.994206" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="bericht"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.2" class="WORD">
+          <t class="OCR">omtrent</t>
+          <pos class="VZ(init)" confidence="0.997963" head="VZ">
+            <feat class="init" subset="vztype"/>
+          </pos>
+          <lemma class="omtrent"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.3" class="WORD">
+          <t class="OCR">fondsen</t>
+          <pos class="N(soort,mv,basis)" confidence="0.99802" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="mv" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+          </pos>
+          <lemma class="fonds"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.4" class="WORD">
+          <t class="OCR">zonderoffloieele</t>
+          <pos class="ADJ(prenom,basis,met-e,stan)" confidence="0.809813" head="ADJ">
+            <feat class="prenom" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="met-e" subset="buiging"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="zonderoffloieele"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.5" class="WORD" space="no">
+          <t class="OCR">noteering</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="1" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="noteering"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.6" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.19.entities.1">
+          <entity xml:id="dirty.text.p.3.s.19.entities.1.entity.1" class="pro" confidence="0.898253">
+            <wref id="dirty.text.p.3.s.19.w.1"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.20">
+        <t class="OCR">Opr.</t>
+        <w xml:id="dirty.text.p.3.s.20.w.1" class="WORD" space="no">
+          <t class="OCR">Opr</t>
+          <pos class="WW(vd,vrij,zonder)" confidence="0.598379" head="WW">
+            <feat class="vd" subset="wvorm"/>
+            <feat class="vrij" subset="positie"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="opr"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.20.w.2" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.21">
+        <t class="OCR">Euim 545, 550, Eumeuië 1899-90.</t>
+        <w xml:id="dirty.text.p.3.s.21.w.1" class="WORD">
+          <t class="OCR">Euim</t>
+          <pos class="WW(pv,tgw,ev)" confidence="0.416314" head="WW">
+            <feat class="pv" subset="wvorm"/>
+            <feat class="tgw" subset="pvtijd"/>
+            <feat class="ev" subset="pvagr"/>
+          </pos>
+          <lemma class="euim"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.2" class="NUMBER" space="no">
+          <t class="OCR">545</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.968727" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="545"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.3" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.4" class="NUMBER" space="no">
+          <t class="OCR">550</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.913043" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="550"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.5" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.6" class="WORD">
+          <t class="OCR">Eumeuië</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Eumeuië"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.7" class="WORD-COMPOUND" space="no">
+          <t class="OCR">1899-90</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.96891" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="1899-90"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.8" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.21.entities.1">
+          <entity xml:id="dirty.text.p.3.s.21.entities.1.entity.1" class="loc" confidence="1">
+            <wref id="dirty.text.p.3.s.21.w.6"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.22">
+        <t class="OCR">Prolongatie 4% pCt. Gisteren zijn 4 pCt. Oblig.</t>
+        <w xml:id="dirty.text.p.3.s.22.w.1" class="WORD">
+          <t class="OCR">Prolongatie</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="1" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="prolongatie"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.2" class="NUMBER" space="no">
+          <t class="OCR">4</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.75" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="4"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.3" class="PUNCTUATION">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.4" class="ABBREVIATION-KNOWN">
+          <t class="OCR">pCt.</t>
+          <pos class="SPEC(afk)" confidence="1" head="SPEC">
+            <feat class="afk" subset="spectype"/>
+          </pos>
+          <lemma class="pCt."/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.5" class="WORD">
+          <t class="OCR">Gisteren</t>
+          <pos class="BW()" confidence="0.995349" head="BW"/>
+          <lemma class="gisteren"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.6" class="WORD">
+          <t class="OCR">zijn</t>
+          <pos class="WW(pv,tgw,mv)" confidence="0.75" head="WW">
+            <feat class="pv" subset="wvorm"/>
+            <feat class="tgw" subset="pvtijd"/>
+            <feat class="mv" subset="pvagr"/>
+          </pos>
+          <lemma class="zijn"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.7" class="NUMBER">
+          <t class="OCR">4</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.582751" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="4"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.8" class="ABBREVIATION-KNOWN">
+          <t class="OCR">pCt.</t>
+          <pos class="SPEC(afk)" confidence="1" head="SPEC">
+            <feat class="afk" subset="spectype"/>
+          </pos>
+          <lemma class="pCt."/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.9" class="WORD" space="no">
+          <t class="OCR">Oblig</t>
+          <pos class="ADJ(vrij,basis,zonder)" confidence="0.809975" head="ADJ">
+            <feat class="vrij" subset="positie"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="oblig"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.10" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+        <entities xml:id="dirty.text.p.3.s.22.entities.1">
+          <entity xml:id="dirty.text.p.3.s.22.entities.1.entity.1" class="loc" confidence="0.525168">
+            <wref id="dirty.text.p.3.s.22.w.9"/>
+          </entity>
+        </entities>
+      </s>
+      <s xml:id="dirty.text.p.3.s.23">
+        <t class="OCR">Rumenië 1894 abusiof genoteerd 77%, moest zgn 79%.</t>
+        <w xml:id="dirty.text.p.3.s.23.w.1" class="WORD">
+          <t class="OCR">Rumenië</t>
+          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+            <feat class="deeleigen" subset="spectype"/>
+          </pos>
+          <lemma class="Rumenië"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.2" class="NUMBER">
+          <t class="OCR">1894</t>
+          <pos class="TW(hoofd,vrij)" confidence="0.993492" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="vrij" subset="positie"/>
+          </pos>
+          <lemma class="1894"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.3" class="WORD">
+          <t class="OCR">abusiof</t>
+          <pos class="N(soort,ev,basis,zijd,stan)" confidence="0.531818" head="N">
+            <feat class="soort" subset="ntype"/>
+            <feat class="ev" subset="getal"/>
+            <feat class="basis" subset="graad"/>
+            <feat class="zijd" subset="genus"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="abusiof"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.4" class="WORD">
+          <t class="OCR">genoteerd</t>
+          <pos class="WW(vd,vrij,zonder)" confidence="0.992221" head="WW">
+            <feat class="vd" subset="wvorm"/>
+            <feat class="vrij" subset="positie"/>
+            <feat class="zonder" subset="buiging"/>
+          </pos>
+          <lemma class="noteren"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.5" class="NUMBER" space="no">
+          <t class="OCR">77</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.903226" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="77"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.6" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.7" class="PUNCTUATION">
+          <t class="OCR">,</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class=","/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.8" class="WORD">
+          <t class="OCR">moest</t>
+          <pos class="WW(pv,verl,ev)" confidence="0.999322" head="WW">
+            <feat class="pv" subset="wvorm"/>
+            <feat class="verl" subset="pvtijd"/>
+            <feat class="ev" subset="pvagr"/>
+          </pos>
+          <lemma class="moeten"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.9" class="ABBREVIATION-KNOWN">
+          <t class="OCR">zgn</t>
+          <pos class="SPEC(afk)" confidence="1" head="SPEC">
+            <feat class="afk" subset="spectype"/>
+          </pos>
+          <lemma class="zgn"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.10" class="NUMBER" space="no">
+          <t class="OCR">79</t>
+          <pos class="TW(hoofd,prenom,stan)" confidence="0.977778" head="TW">
+            <feat class="hoofd" subset="numtype"/>
+            <feat class="prenom" subset="positie"/>
+            <feat class="stan" subset="naamval"/>
+          </pos>
+          <lemma class="79"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.11" class="PUNCTUATION" space="no">
+          <t class="OCR">%</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="%"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.12" class="PUNCTUATION">
+          <t class="OCR">.</t>
+          <pos class="LET()" confidence="1" head="LET"/>
+          <lemma class="."/>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>
