@@ -35,6 +35,7 @@
 #include <iostream>
 #include <fstream>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
@@ -56,8 +57,8 @@ void usage( const string& name ){
   cerr << "Description: Simple word-by-word translator on the basis of a dictionary (or multiple)" << endl;
   cerr << "Options:" << endl;
   cerr << "\t-d\t dictionary_file (format: $source\\t$target\\n)" << endl;
-  //cerr << "\t-p\t lexicon_file (format: $word\n); monolingual lexicon of words that are preserved as-is" << endl;
-  //cerr << "\t-r or --rules\t rules_file" << endl;
+  cerr << "\t-p\t lexicon_file (format: $word\n); monolingual lexicon of words that are preserved as-is" << endl;
+  cerr << "\t-r or --rules\t rules_file" << endl;
   cerr << "\t--inputclass\t class (default: current)" << endl;
   cerr << "\t--outputclass\t class (default: translated)" << endl;
   cerr << "\t-e 'expr': specify the pattern matching expression all files should match with (default: *.folia.xml)" << endl;
@@ -70,6 +71,7 @@ void usage( const string& name ){
 }
 
 typedef unordered_map<string,string> t_dictionary;
+typedef unordered_set<string> t_lexicon;
 
 bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inputclass, const string & outputclass ) {
     bool changed = false;
@@ -104,17 +106,56 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
     int linenum = 0;
     while (getline(is, line)) {
         linenum++;
-        vector<string> parts;
-        if (TiCC::split_at(line, parts, "\t") == 2) {
-            added++;
-            dictionary[parts[0]] = parts[1];
-        } else {
-            cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
+        if ((!line.empty()) && (line[0] != '#')) {
+            vector<string> parts;
+            if (TiCC::split_at(line, parts, "\t") == 2) {
+                added++;
+                dictionary[parts[0]] = parts[1];
+            } else {
+                cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
+            }
         }
     }
     return added;
 }
 
+int loadLexicon(const string & filename, t_lexicon & lexicon) {
+    ifstream is(filename);
+    string line;
+    int added = 0;
+    int linenum = 0;
+    while (getline(is, line)) {
+        linenum++;
+        if ((!line.empty()) && (line[0] != '#')) {
+            vector<string> parts;
+            TiCC::split_at(line, parts, "\t");
+            added++;
+            lexicon.insert(parts[0]);
+        }
+    }
+    return added;
+}
+
+int loadRules(const string & filename, t_dictionary & rules) {
+    ifstream is(filename);
+    string line;
+    int added = 0;
+    int linenum = 0;
+    while (getline(is, line)) {
+        linenum++;
+        vector<string> parts;
+        if ((!line.empty()) && (line[0] != '#')) {
+            // example expected line format: 222 0.996 aen => aan
+            if (TiCC::split_at(line, parts, " ") == 5) {
+                added++;
+                rules[parts[0]] = parts[1];
+            } else {
+                cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
+            }
+        }
+    }
+    return added;
+}
 
 int main( int argc, const char *argv[] ) {
       TiCC::CL_Options opts( "d:e:vVt:O:Rh",
@@ -136,6 +177,8 @@ int main( int argc, const char *argv[] ) {
       string outPrefix;
       string value;
       t_dictionary dictionary;
+      t_dictionary rules;
+      t_lexicon preserve_lexicon;
 
       if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
         usage(progname);
@@ -183,6 +226,18 @@ int main( int argc, const char *argv[] ) {
       } else {
           cerr << "No dictionary specified" << endl;
           exit( EXIT_FAILURE );
+      }
+
+      string preservelexiconfile;
+      if ( opts.extract( 'p', preservelexiconfile) ){
+          cerr << "Loading preserve lexicon..." << endl;
+          loadLexicon(preservelexiconfile, preserve_lexicon);
+      }
+
+      string rulefile;
+      if ( opts.extract( 'r', rulefile) ){
+          cerr << "Loading rules..." << endl;
+          loadRules(rulefile, rules);
       }
 
 #ifdef HAVE_OPENMP
