@@ -75,7 +75,7 @@ typedef unordered_set<string> t_lexicon;
 typedef vector<pair<string,string>> t_rules;
 
 string applyRules(string source, t_rules & rules) {
-    UnicodeString target = "";
+    UnicodeString target = UTF8ToUnicode(source);
     for (t_rules::iterator iter = rules.begin(); iter != rules.end(); iter++) {
         UnicodeString pattern = UTF8ToUnicode( iter->first );
         UnicodeString replacement = UTF8ToUnicode( iter->second );
@@ -121,21 +121,30 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
             }
         }
 
-        //add text content
+
+        //sanity check
+        target = TiCC::trim(target);
         if (target.empty()) {
             cerr << "WARNING: Modernised text is empty! (source=" << source << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
             target = source;
         }
 
+        //add text content
         KWargs args;
         args["class"] = outputclass;
         args["value"] = target;
         TextContent * translatedtext = new TextContent( args );
         word->append(translatedtext);
+        if (source == "theologico-physico-metaphysicum") {
+            cerr << "DEBUG: target: '" << target << "'" << endl;
+            cerr << "DEBUG: from textcontent '" << UnicodeToUTF8(translatedtext->text("contemporary")) << "'" << endl;
+            cerr << "DEBUG: length from textcontent  " << translatedtext->text("contemporary").length() << "" << endl;
+            cerr << "DEBUG: from word '" << UnicodeToUTF8(translatedtext->text("contemporary")) << "'" << endl;
+            cerr << "DEBUG: XML serialisation '" << word->xmlstring() << "'" << endl;
+        }
 
         Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
         word->append(metric);
-
     }
     return changed;
 }
