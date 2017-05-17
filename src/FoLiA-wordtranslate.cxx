@@ -57,8 +57,8 @@ void usage( const string& name ){
   cerr << "Description: Simple word-by-word translator on the basis of a dictionary (or multiple)" << endl;
   cerr << "Options:" << endl;
   cerr << "\t-d\t dictionary_file (format: $source\\t$target\\n)" << endl;
-  cerr << "\t-p\t lexicon_file (format: $word\n); monolingual lexicon of words that are preserved as-is" << endl;
-  cerr << "\t-r or --rules\t rules_file" << endl;
+  cerr << "\t-p\t lexicon_file (format: $word\\n); monolingual lexicon of words that are preserved as-is" << endl;
+  cerr << "\t-r or --rules\t rules_file (format: $pattern\\s$replacement\\n)" << endl;
   cerr << "\t--inputclass\t class (default: current)" << endl;
   cerr << "\t--outputclass\t class (default: translated)" << endl;
   cerr << "\t-e 'expr': specify the pattern matching expression all files should match with (default: *.folia.xml)" << endl;
@@ -198,7 +198,7 @@ int loadRules(const string & filename, t_rules & rules) {
 }
 
 int main( int argc, const char *argv[] ) {
-      TiCC::CL_Options opts( "d:e:vVt:O:Rh",
+      TiCC::CL_Options opts( "d:e:p:r:vVt:O:Rh",
                              "inputclass:,outputclass:,version,help" );
       try {
         opts.init( argc, argv );
