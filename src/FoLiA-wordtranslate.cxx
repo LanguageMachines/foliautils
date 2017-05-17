@@ -148,7 +148,7 @@ int loadRules(const string & filename, t_dictionary & rules) {
             // example expected line format: 222 0.996 aen => aan
             if (TiCC::split_at(line, parts, " ") == 5) {
                 added++;
-                rules[parts[0]] = parts[1];
+                rules[parts[2]] = parts[4];
             } else {
                 cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
             }
