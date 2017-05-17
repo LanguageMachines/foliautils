@@ -142,13 +142,6 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
         args["class"] = outputclass;
         args["value"] = target;
         TextContent * translatedtext = new TextContent( args );
-        /*if (source == "theologico-physico-metaphysicum") {
-            cerr << "DEBUG: target: '" << target << "'" << endl;
-            cerr << "DEBUG: from textcontent '" << UnicodeToUTF8(translatedtext->text("contemporary")) << "'" << endl;
-            cerr << "DEBUG: length from textcontent  " << translatedtext->text("contemporary").length() << "" << endl;
-            cerr << "DEBUG: from word '" << UnicodeToUTF8(translatedtext->text("contemporary")) << "'" << endl;
-            cerr << "DEBUG: XML serialisation of word '" << word->xmlstring() << "'" << endl;
-        } else {*/
         word->append(translatedtext);
 
         Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
