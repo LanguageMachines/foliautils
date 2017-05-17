@@ -76,6 +76,18 @@ typedef vector<pair<string,string>> t_rules;
 
 string applyRules(const string & source, t_rules & rules) {
     for (t_rules::iterator iter = rules.begin(); iter != rules.end(); iter++) {
+        UnicodeString pattern = UTF8ToUnicode( iter->first );
+        UnicodeString replacement = UTF8ToUnicode( iter->second );
+        UErrorCode u_stat = U_ZERO_ERROR;
+        RegexMatcher * matcher = new RegexMatcher(pattern, UTF8ToUnicode(source), 0, u_stat);
+        if ( U_FAILURE(u_stat) ){
+          throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
+        }
+        matcher->replaceAll(replacement, u_stat);
+        if ( U_FAILURE(u_stat) ){
+          throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
+        }
+        delete matcher;
     }
 }
 
