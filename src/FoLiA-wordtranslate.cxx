@@ -74,7 +74,8 @@ typedef unordered_map<string,string> t_dictionary;
 typedef unordered_set<string> t_lexicon;
 typedef vector<pair<string,string>> t_rules;
 
-string applyRules(const string & source, t_rules & rules) {
+string applyRules(string source, t_rules & rules) {
+    UnicodeString target = "";
     for (t_rules::iterator iter = rules.begin(); iter != rules.end(); iter++) {
         UnicodeString pattern = UTF8ToUnicode( iter->first );
         UnicodeString replacement = UTF8ToUnicode( iter->second );
@@ -83,12 +84,14 @@ string applyRules(const string & source, t_rules & rules) {
         if ( U_FAILURE(u_stat) ){
           throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
         }
-        matcher->replaceAll(replacement, u_stat);
+        target = matcher->replaceAll(replacement, u_stat);
         if ( U_FAILURE(u_stat) ){
           throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
         }
+        source = UnicodeToUTF8(target); //reset source for next pattern
         delete matcher;
     }
+    return UnicodeToUTF8(target);
 }
 
 
