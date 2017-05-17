@@ -97,12 +97,14 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
     vector<Word*> words = doc->doc()->select<Word>();
     for (const auto& word : words) {
         const string source = UnicodeToUTF8(word->text(inputclass));
+        string modernisationsource = "none";
         string target = source;
         //check if word is in dictionary
         if (dictionary.find(source) != dictionary.end()) {
             if (outputclass != inputclass) {
                 //TODO: check if outputclass is not already present
                 target = dictionary[source];
+                modernisationsource = "lexicon";
                 changed = true;
             } else {
                 //TODO (also remove check when implemented)
@@ -112,6 +114,7 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
             if (!rules.empty()) {
                 target = applyRules(source, rules);
                 changed = (target != source);
+                if (changed) modernisationsource = "rules";
             }
         }
 
@@ -121,6 +124,10 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
         args["value"] = target;
         TextContent * translatedtext = new TextContent( args );
         word->append(translatedtext);
+
+        Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ) );
+        word->append(metric);
+
     }
     return changed;
 }
@@ -303,6 +310,7 @@ int main( int argc, const char *argv[] ) {
             }
             continue;
           }
+          doc->declare( folia::AnnotationType::METRIC, "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/nederlab-metrics.foliaset.ttl", "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
           string outName = outPrefix;
           string::size_type pos = docName.rfind("/");
           if ( pos != string::npos ){
