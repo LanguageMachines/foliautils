@@ -53,7 +53,7 @@ using namespace	folia;
 
 
 void usage( const string& name ){
-  cerr << "Usage: [options] file/dir" << endl;
+  cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "Description: Simple word-by-word translator on the basis of a dictionary (or multiple)" << endl;
   cerr << "Options:" << endl;
   cerr << "\t-d\t dictionary_file (format: $source\\t$target\\n)" << endl;
