@@ -123,25 +123,33 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
 
 
         //sanity check
-        target = TiCC::trim(target);
+        target = TiCC::trim(target, " \t\r\n\b\0");
         if (target.empty()) {
             cerr << "WARNING: Modernised text is empty! (source=" << source << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
             target = source;
         }
+        if (target[0] == 0) {
+            cerr << "WARNING: Target starts with a null-byte! (source=" << source << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
+            if (source[0] == 0) {
+                cerr << "WARNING: Source starts with a null-byte too! Data is malformed! .. Ignoring this word!" << endl;
+                continue;
+            } else {
+                target = source;
+            }
+        }
 
-        //add text content
         KWargs args;
         args["class"] = outputclass;
         args["value"] = target;
         TextContent * translatedtext = new TextContent( args );
-        word->append(translatedtext);
-        if (source == "theologico-physico-metaphysicum") {
+        /*if (source == "theologico-physico-metaphysicum") {
             cerr << "DEBUG: target: '" << target << "'" << endl;
             cerr << "DEBUG: from textcontent '" << UnicodeToUTF8(translatedtext->text("contemporary")) << "'" << endl;
             cerr << "DEBUG: length from textcontent  " << translatedtext->text("contemporary").length() << "" << endl;
             cerr << "DEBUG: from word '" << UnicodeToUTF8(translatedtext->text("contemporary")) << "'" << endl;
-            cerr << "DEBUG: XML serialisation '" << word->xmlstring() << "'" << endl;
-        }
+            cerr << "DEBUG: XML serialisation of word '" << word->xmlstring() << "'" << endl;
+        } else {*/
+        word->append(translatedtext);
 
         Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
         word->append(metric);
