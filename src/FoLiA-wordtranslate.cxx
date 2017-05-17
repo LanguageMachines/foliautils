@@ -122,6 +122,11 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
         }
 
         //add text content
+        if (target.empty()) {
+            cerr << "WARNING: Modernised text is empty! (source=" << source << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
+            target = source;
+        }
+
         KWargs args;
         args["class"] = outputclass;
         args["value"] = target;
