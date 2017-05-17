@@ -128,7 +128,7 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
         TextContent * translatedtext = new TextContent( args );
         word->append(translatedtext);
 
-        Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ) );
+        Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
         word->append(metric);
 
     }
