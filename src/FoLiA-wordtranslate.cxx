@@ -72,13 +72,21 @@ void usage( const string& name ){
 
 typedef unordered_map<string,string> t_dictionary;
 typedef unordered_set<string> t_lexicon;
+typedef vector<pair<string,string>> t_rules;
 
-bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inputclass, const string & outputclass ) {
+string applyRules(const string & source, t_rules & rules) {
+    for (t_rules::iterator iter = rules.begin(); iter != rules.end(); iter++) {
+    }
+}
+
+
+bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inputclass, const string & outputclass, t_lexicon & preserve_lexicon, t_rules & rules) {
     bool changed = false;
     vector<Word*> words = doc->doc()->select<Word>();
     for (const auto& word : words) {
         const string source = UnicodeToUTF8(word->text(inputclass));
         string target = source;
+        //check if word is in dictionary
         if (dictionary.find(source) != dictionary.end()) {
             if (outputclass != inputclass) {
                 //TODO: check if outputclass is not already present
@@ -86,6 +94,12 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
                 changed = true;
             } else {
                 //TODO (also remove check when implemented)
+            }
+        } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source) == preserve_lexicon.end())) {
+            //word is NOT in preservation lexicon, apply rules:
+            if (!rules.empty()) {
+                target = applyRules(source, rules);
+                changed = (target != source);
             }
         }
 
@@ -136,7 +150,7 @@ int loadLexicon(const string & filename, t_lexicon & lexicon) {
     return added;
 }
 
-int loadRules(const string & filename, t_dictionary & rules) {
+int loadRules(const string & filename, t_rules & rules) {
     ifstream is(filename);
     string line;
     int added = 0;
@@ -145,10 +159,14 @@ int loadRules(const string & filename, t_dictionary & rules) {
         linenum++;
         vector<string> parts;
         if ((!line.empty()) && (line[0] != '#')) {
-            // example expected line format: 222 0.996 aen => aan
             if (TiCC::split_at(line, parts, " ") == 5) {
+                // example expected line format: 222 0.996 aen => aan
                 added++;
-                rules[parts[2]] = parts[4];
+                rules.push_back(pair<string,string>(parts[2],parts[4]));
+            } else if (TiCC::split_at(line, parts, " ") == 2) {
+                // simplified format: aen aan
+                added++;
+                rules.push_back(pair<string,string>(parts[0],parts[1]));
             } else {
                 cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
             }
@@ -177,7 +195,7 @@ int main( int argc, const char *argv[] ) {
       string outPrefix;
       string value;
       t_dictionary dictionary;
-      t_dictionary rules;
+      t_rules rules;
       t_lexicon preserve_lexicon;
 
       if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
@@ -299,7 +317,7 @@ int main( int argc, const char *argv[] ) {
                   exit(EXIT_FAILURE);
                 }
 
-                translateDoc(doc, dictionary, inputclass, outputclass);
+                translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules);
                 doc->save(outName);
           }
 #pragma omp critical
