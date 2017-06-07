@@ -99,24 +99,28 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
     bool changed = false;
     vector<Word*> words = doc->doc()->select<Word>();
     for (const auto& word : words) {
-        const string source = UnicodeToUTF8(word->text(inputclass));
+        const UnicodeString source = word->text(inputclass);
+        UnicodeString source_u_flat = source;;
+        source_u_flat = source_u_flat.toLower();
+        const string source_flat = UnicodeToUTF8(source_u_flat);
+        const bool recase = (source_flat != UnicodeToUTF8(source));
         string modernisationsource = "none";
-        string target = source;
+        string target = source_flat;
         //check if word is in dictionary
-        if (dictionary.find(source) != dictionary.end()) {
+        if (dictionary.find(source_flat) != dictionary.end()) {
             if (outputclass != inputclass) {
                 //TODO: check if outputclass is not already present
-                target = dictionary[source];
+                target = dictionary[source_flat];
                 modernisationsource = "lexicon";
                 changed = true;
             } else {
                 //TODO (also remove check when implemented)
             }
-        } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source) == preserve_lexicon.end())) {
+        } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source_flat) == preserve_lexicon.end())) {
             //word is NOT in preservation lexicon, apply rules:
             if (!rules.empty()) {
-                target = applyRules(source, rules);
-                changed = (target != source);
+                target = applyRules(source_flat, rules);
+                changed = (target != source_flat);
                 if (changed) modernisationsource = "rules";
             }
         }
@@ -125,16 +129,37 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
         //sanity check
         target = TiCC::trim(target, " \t\r\n\b\0");
         if (target.empty()) {
-            cerr << "WARNING: Modernised text is empty! (source=" << source << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
-            target = source;
+            cerr << "WARNING: Modernised text is empty! (source=" << source_flat << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
+            target = source_flat;
         }
         if (target[0] == 0) {
-            cerr << "WARNING: Target starts with a null-byte! (source=" << source << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
-            if (source[0] == 0) {
+            cerr << "WARNING: Target starts with a null-byte! (source=" << source_flat << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
+            if (source_flat[0] == 0) {
                 cerr << "WARNING: Source starts with a null-byte too! Data is malformed! .. Ignoring this word!" << endl;
                 continue;
             } else {
-                target = source;
+                target = source_flat;
+            }
+        }
+
+        if (recase) {
+            //recase
+            bool allcaps = true;
+            bool initialcap = false;
+            bool islower = false;
+            for (int i = 0; i < source.length(); i++) {
+                islower = (source.tempSubString(i,1) == source.tempSubString(i,1).toLower());
+                if ((i == 0) && (!islower)) initialcap = true;
+                if (islower) allcaps = false;
+            }
+            if (allcaps || initialcap) {
+                UnicodeString target_u = UTF8ToUnicode(target);
+                if (allcaps) {
+                    target_u = target_u.toUpper();
+                } else if (initialcap) {
+                    target_u = target_u.replace(0,1, target_u.tempSubString(0,1).toUpper());
+                }
+                target = UnicodeToUTF8(target_u);
             }
         }
 
