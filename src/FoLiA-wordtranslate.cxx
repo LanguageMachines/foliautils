@@ -69,83 +69,69 @@ void usage( const string& name ){
   cerr << "\t-O\t output prefix" << endl;
 }
 
-typedef unordered_map<string,string> t_dictionary;
-typedef unordered_set<string> t_lexicon;
-typedef vector<pair<string,string>> t_rules;
+typedef map<UnicodeString,UnicodeString> t_dictionary;
+typedef set<UnicodeString> t_lexicon;
+typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
 
-string applyRules( const string& orig_source, t_rules & rules) {
-    UnicodeString source = UTF8ToUnicode(orig_source);
-    UnicodeString target = source;
-    for (t_rules::iterator iter = rules.begin(); iter != rules.end(); iter++) {
-        UnicodeString pattern = UTF8ToUnicode( iter->first );
-        UnicodeString replacement = UTF8ToUnicode( iter->second );
-	// cerr << "source =" << source << endl;
-	// cerr << "pattern=" << pattern << endl;
-	// cerr << "replace=" << replacement << endl;
-        UErrorCode u_stat = U_ZERO_ERROR;
-        RegexMatcher * matcher = new RegexMatcher(pattern, source, 0, u_stat);
-        if ( U_FAILURE(u_stat) ){
-          throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
-        }
-        target = matcher->replaceAll(replacement, u_stat);
-	//	cerr << "target =" << target << endl;
-        if ( U_FAILURE(u_stat) ){
-          throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
-        }
-        source = target; //reset source for next pattern
-        delete matcher;
+UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
+  UnicodeString source = orig_source;
+  UnicodeString target = source;
+  for ( const auto& iter : rules ) {
+    UnicodeString pattern = iter.first;
+    UnicodeString replacement = iter.second;
+    // cerr << "source =" << source << endl;
+    // cerr << "pattern=" << pattern << endl;
+    // cerr << "replace=" << replacement << endl;
+    UErrorCode u_stat = U_ZERO_ERROR;
+    RegexMatcher * matcher = new RegexMatcher(pattern, source, 0, u_stat);
+    if ( U_FAILURE(u_stat) ){
+      throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
     }
-    return UnicodeToUTF8(target);
+    target = matcher->replaceAll(replacement, u_stat);
+	//	cerr << "target =" << target << endl;
+    if ( U_FAILURE(u_stat) ){
+      throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
+    }
+    source = target; //reset source for next pattern
+    delete matcher;
+  }
+  return target;
 }
 
 
-bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inputclass, const string & outputclass, t_lexicon & preserve_lexicon, t_rules & rules) {
+bool translateDoc( Document *doc,
+		   const t_dictionary& dictionary,
+		   const string& inputclass,
+		   const string& outputclass,
+		   const t_lexicon& preserve_lexicon,
+		   const t_rules& rules) {
     bool changed = false;
     vector<Word*> words = doc->doc()->select<Word>();
     for (const auto& word : words) {
         const UnicodeString source = word->text(inputclass);
-        UnicodeString source_u_flat = source;;
-        source_u_flat = source_u_flat.toLower();
-        const string source_flat = UnicodeToUTF8(source_u_flat);
-        const bool recase = (source_flat != UnicodeToUTF8(source));
+        UnicodeString source_flat = source;
+        source_flat = source_flat.toLower();
+        const bool recase = (source_flat != source);
         string modernisationsource = "none";
-        string target = source_flat;
+        UnicodeString target = source_flat;
         //check if word is in dictionary
-        if (dictionary.find(source_flat) != dictionary.end()) {
-            if (outputclass != inputclass) {
-                //TODO: check if outputclass is not already present
-                target = dictionary[source_flat];
-                modernisationsource = "lexicon";
-                changed = true;
-            } else {
-                //TODO (also remove check when implemented)
-            }
+	const auto& entry = dictionary.find(source_flat);
+        if ( entry != dictionary.end()) {
+	  if (outputclass != inputclass) {
+	    //TODO: check if outputclass is not already present
+	    target = entry->second;
+	    modernisationsource = "lexicon";
+	    changed = true;
+	  } else {
+	    //TODO (also remove check when implemented)
+	  }
         } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source_flat) == preserve_lexicon.end())) {
-            //word is NOT in preservation lexicon, apply rules:
-            if (!rules.empty()) {
-                target = applyRules(source_flat, rules);
-                changed = (target != source_flat);
-                if (changed) modernisationsource = "rules";
-            }
-        }
-
-
-        //sanity check
-        target = TiCC::trim(target, " \t\r\n\b\0");
-        if (target.empty()) {
-            cerr << "WARNING: Modernised text is empty! (source=" << source_flat << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
-            target = source_flat;
-        }
-        if (target[0] == 0) {
-            cerr << "WARNING: Target starts with a null-byte! (source=" << source_flat << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
-	    cerr << TiCC::format_nonascii( target ) << endl;
-	    cerr << TiCC::format_nonascii( source_flat ) << endl;
-            if (source_flat[0] == 0) {
-                cerr << "WARNING: Source starts with a null-byte too! Data is malformed! .. Ignoring this word!" << endl;
-                continue;
-            } else {
-                target = source_flat;
-            }
+	  //word is NOT in preservation lexicon, apply rules:
+	  if (!rules.empty()) {
+	    target = applyRules(source_flat, rules);
+	    changed = (target != source_flat);
+	    if (changed) modernisationsource = "rules";
+	  }
         }
 
         if (recase) {
@@ -154,24 +140,24 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
             bool initialcap = false;
             bool islower = false;
             for (int i = 0; i < source.length(); i++) {
-                islower = (source.tempSubString(i,1) == source.tempSubString(i,1).toLower());
-                if ((i == 0) && (!islower)) initialcap = true;
-                if (islower) allcaps = false;
+	      islower = (source[i] == u_tolower(source[i]) );
+	      if ((i == 0) && (!islower)) initialcap = true;
+	      if (islower) allcaps = false;
             }
             if (allcaps || initialcap) {
-                UnicodeString target_u = UTF8ToUnicode(target);
-                if (allcaps) {
-                    target_u = target_u.toUpper();
-                } else if (initialcap) {
-                    target_u = target_u.replace(0,1, target_u.tempSubString(0,1).toUpper());
-                }
-                target = UnicodeToUTF8(target_u);
+	      UnicodeString target_u = target;
+	      if (allcaps) {
+		target_u = target_u.toUpper();
+	      } else if (initialcap) {
+		target_u = target_u.replace(0,1, target_u.tempSubString(0,1).toUpper());
+	      }
+	      target = target_u;
             }
         }
 
         KWargs args;
         args["class"] = outputclass;
-        args["value"] = target;
+        args["value"] = UnicodeToUTF8(target);
         TextContent * translatedtext = new TextContent( args );
         word->append(translatedtext);
 
@@ -187,58 +173,61 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
     int added = 0;
     int linenum = 0;
     while (getline(is, line)) {
-        linenum++;
-        if ((!line.empty()) && (line[0] != '#')) {
-            vector<string> parts;
-            if (TiCC::split_at(line, parts, "\t") == 2) {
-                added++;
-                dictionary[parts[0]] = parts[1];
-            } else {
-                cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
-            }
-        }
+      linenum++;
+      if ((!line.empty()) && (line[0] != '#')) {
+	vector<string> parts;
+	if (TiCC::split_at(line, parts, "\t") == 2) {
+	  added++;
+	  dictionary[UTF8ToUnicode(parts[0])] = UTF8ToUnicode(parts[1]);
+	} else {
+	  cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
+	}
+      }
     }
     return added;
 }
 
 int loadLexicon(const string & filename, t_lexicon & lexicon) {
-    ifstream is(filename);
-    string line;
-    int added = 0;
-    int linenum = 0;
-    while (getline(is, line)) {
-        linenum++;
-        if ((!line.empty()) && (line[0] != '#')) {
-            vector<string> parts;
-            TiCC::split_at(line, parts, "\t");
-            added++;
-            lexicon.insert(parts[0]);
-        }
+  ifstream is(filename);
+  string line;
+  int added = 0;
+  int linenum = 0;
+  while (getline(is, line)) {
+    linenum++;
+    if ((!line.empty()) && (line[0] != '#')) {
+      vector<string> parts;
+      TiCC::split_at(line, parts, "\t");
+      added++;
+      lexicon.insert(UTF8ToUnicode(parts[0]));
     }
-    return added;
+  }
+  return added;
 }
 
-int loadRules(const string & filename, t_rules & rules) {
+int loadRules( const string& filename,
+	       t_rules& rules) {
     ifstream is(filename);
     string line;
     int added = 0;
     int linenum = 0;
     while (getline(is, line)) {
-        linenum++;
-        vector<string> parts;
-        if ((!line.empty()) && (line[0] != '#')) {
-            if (TiCC::split_at(line, parts, " ") == 5) {
-                // example expected line format: 222 0.996 aen => aan
-                added++;
-                rules.push_back(pair<string,string>(parts[2],parts[4]));
-            } else if (TiCC::split_at(line, parts, " ") == 2) {
-                // simplified format: aen aan
-                added++;
-                rules.push_back(pair<string,string>(parts[0],parts[1]));
-            } else {
-                cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
-            }
-        }
+      linenum++;
+      vector<string> parts;
+      if ((!line.empty()) && (line[0] != '#')) {
+	if (TiCC::split_at(line, parts, " ") == 5) {
+	  // example expected line format: 222 0.996 aen => aan
+	  added++;
+	  rules.push_back(make_pair(UTF8ToUnicode(parts[2]),
+				    UTF8ToUnicode(parts[4])));
+	} else if (TiCC::split_at(line, parts, " ") == 2) {
+	  // simplified format: aen aan
+	  added++;
+	  rules.push_back(make_pair(UTF8ToUnicode(parts[0]),
+				    UTF8ToUnicode(parts[1])));
+	} else {
+	  cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
+	}
+      }
     }
     return added;
 }
