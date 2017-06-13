@@ -69,8 +69,21 @@ void usage( const string& name ){
   cerr << "\t-O\t output prefix" << endl;
 }
 
-typedef map<UnicodeString,UnicodeString> t_dictionary;
-typedef set<UnicodeString> t_lexicon;
+namespace std
+{
+  // needed to make unordered_[set|map] work
+  template<>
+  class hash<UnicodeString> {
+  public:
+    size_t operator()(const UnicodeString &s) const
+    {
+      return (size_t) s.hashCode();
+    }
+  };
+}
+
+typedef unordered_map<UnicodeString,UnicodeString> t_dictionary;
+typedef unordered_set<UnicodeString> t_lexicon;
 typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
 
 UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
