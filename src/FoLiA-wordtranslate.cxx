@@ -300,8 +300,9 @@ int main( int argc, const char *argv[] ) {
 
       string dictionaryfile;
       if ( opts.extract( 'd', dictionaryfile) ){
-          cerr << "Loading dictionary..." << endl;
-          loadDictionary(dictionaryfile, dictionary);
+	cerr << "Loading dictionary... ";
+	int cnt = loadDictionary(dictionaryfile, dictionary);
+	cerr << cnt << " entries" << endl;
       } else {
           cerr << "No dictionary specified" << endl;
           exit( EXIT_FAILURE );
@@ -309,14 +310,16 @@ int main( int argc, const char *argv[] ) {
 
       string preservelexiconfile;
       if ( opts.extract( 'p', preservelexiconfile) ){
-          cerr << "Loading preserve lexicon..." << endl;
-          loadLexicon(preservelexiconfile, preserve_lexicon);
+	cerr << "Loading preserve lexicon... ";
+          int cnt = loadLexicon(preservelexiconfile, preserve_lexicon);
+	  cerr << cnt << " entries" << endl;
       }
 
       string rulefile;
       if ( opts.extract( 'r', rulefile) ){
-          cerr << "Loading rules..." << endl;
-          loadRules(rulefile, rules);
+	cerr << "Loading rules... ";
+	int cnt = loadRules(rulefile, rules);
+	cerr << cnt << " entries" << endl;
       }
 
 #ifdef HAVE_OPENMP
