@@ -1,7 +1,6 @@
 /*
   Copyright (c) 2014 - 2017
   CLST  - Radboud University
-  ILK   - Tilburg University
 
   This file is part of foliautils
 

@@ -1,0 +1,2576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="_aar004aard01_01" generator="libfolia-v1.8" version="1.3">
+  <metadata type="native">
+    <annotations>
+      <division-annotation/>
+      <event-annotation/>
+      <paragraph-annotation/>
+      <token-annotation annotator="ucto" annotatortype="auto" datetime="2017-06-07T11:36:13" set="tokconfig-nld"/>
+    </annotations>
+    <meta id="language">nld</meta>
+  </metadata>
+  <text xml:id="_aar004aard01_01_text">
+    <div xml:id="_aar004aard01_01.TEI.2.text.body.div.100" class="chapter">
+      <div xml:id="_aar004aard01_01.TEI.2.text.body.div.div.99" class="section">
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85">
+          <t>Een Aardige en Vermakelyke Minneklagt.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1">
+            <t>Een Aardige en Vermakelyke Minneklagt.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1.w.1" class="WORD">
+              <t>Een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1.w.2" class="WORD">
+              <t>Aardige</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1.w.3" class="WORD">
+              <t>en</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1.w.4" class="WORD">
+              <t>Vermakelyke</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1.w.5" class="WORD" space="no">
+              <t>Minneklagt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.85.s.1.w.6" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86">
+          <t>Op een aengename Voys.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86.s.1">
+            <t>Op een aengename Voys.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86.s.1.w.1" class="WORD">
+              <t>Op</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86.s.1.w.2" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86.s.1.w.3" class="WORD">
+              <t>aengename</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86.s.1.w.4" class="WORD" space="no">
+              <t>Voys</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.head.86.s.1.w.5" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88">
+          <t>IK quam lest in Vrouw Venus Velde, Verbleyde daar my, Al in een Wey; Maar ik vond veel plyzier, By een Venus-Dier, Die ik daar zag, In 't krieke van den dag, fa la, &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1">
+            <t>IK quam lest in Vrouw Venus Velde, Verbleyde daar my, Al in een Wey; Maar ik vond veel plyzier, By een Venus-Dier, Die ik daar zag, In 't krieke van den dag, fa la, &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.1" class="WORD">
+              <t>IK</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.2" class="WORD">
+              <t>quam</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.3" class="WORD">
+              <t>lest</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.4" class="WORD">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.5" class="WORD">
+              <t>Vrouw</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.6" class="WORD">
+              <t>Venus</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.7" class="WORD" space="no">
+              <t>Velde</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.8" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.9" class="WORD">
+              <t>Verbleyde</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.10" class="WORD">
+              <t>daar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.11" class="WORD" space="no">
+              <t>my</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.12" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.13" class="WORD">
+              <t>Al</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.14" class="WORD">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.15" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.16" class="WORD" space="no">
+              <t>Wey</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.17" class="PUNCTUATION">
+              <t>;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.18" class="WORD">
+              <t>Maar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.19" class="WORD">
+              <t>ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.20" class="WORD">
+              <t>vond</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.21" class="WORD">
+              <t>veel</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.22" class="WORD" space="no">
+              <t>plyzier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.23" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.24" class="WORD">
+              <t>By</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.25" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.26" class="WORD-COMPOUND" space="no">
+              <t>Venus-Dier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.27" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.28" class="WORD">
+              <t>Die</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.29" class="WORD">
+              <t>ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.30" class="WORD">
+              <t>daar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.31" class="WORD" space="no">
+              <t>zag</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.32" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.33" class="WORD">
+              <t>In</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.34" class="WORD-TOKEN">
+              <t>'t</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.35" class="WORD">
+              <t>krieke</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.36" class="WORD">
+              <t>van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.37" class="WORD">
+              <t>den</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.38" class="WORD" space="no">
+              <t>dag</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.39" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.40" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.41" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.42" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.43" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.88.s.1.w.44" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89">
+          <t>Als ik dees Maget was genadert, Ik heb haar gegroet. Met mynen hoed, Aplona was in 't veld, Met een groot geweld. Die vlam der min Die trok een zoet begin, fa la, &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1">
+            <t>Als ik dees Maget was genadert, Ik heb haar gegroet.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.1" class="WORD">
+              <t>Als</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.2" class="WORD">
+              <t>ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.3" class="WORD">
+              <t>dees</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.4" class="WORD">
+              <t>Maget</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.5" class="WORD">
+              <t>was</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.6" class="WORD" space="no">
+              <t>genadert</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.7" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.8" class="WORD">
+              <t>Ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.9" class="WORD">
+              <t>heb</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.10" class="WORD">
+              <t>haar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.11" class="WORD" space="no">
+              <t>gegroet</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.1.w.12" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2">
+            <t>Met mynen hoed, Aplona was in 't veld, Met een groot geweld.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.1" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.2" class="WORD">
+              <t>mynen</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.3" class="WORD" space="no">
+              <t>hoed</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.4" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.5" class="WORD">
+              <t>Aplona</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.6" class="WORD">
+              <t>was</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.7" class="WORD">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.8" class="WORD-TOKEN">
+              <t>'t</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.9" class="WORD" space="no">
+              <t>veld</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.10" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.11" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.12" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.13" class="WORD">
+              <t>groot</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.14" class="WORD" space="no">
+              <t>geweld</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.2.w.15" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3">
+            <t>Die vlam der min Die trok een zoet begin, fa la, &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.1" class="WORD">
+              <t>Die</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.2" class="WORD">
+              <t>vlam</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.3" class="WORD">
+              <t>der</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.4" class="WORD">
+              <t>min</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.5" class="WORD">
+              <t>Die</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.6" class="WORD">
+              <t>trok</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.7" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.8" class="WORD">
+              <t>zoet</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.9" class="WORD" space="no">
+              <t>begin</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.10" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.11" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.12" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.13" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.14" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.89.s.3.w.15" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90">
+          <t>Ik nam dat zoete kind in myn Armen, Ik heb haar gekust, Met grote lust, En wat dat ik haar deê, Zy was wel te vree, Waar van myn heit Nog meer verhitsigt werd fa la, &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1">
+            <t>Ik nam dat zoete kind in myn Armen, Ik heb haar gekust, Met grote lust, En wat dat ik haar deê, Zy was wel te vree, Waar van myn heit Nog meer verhitsigt werd fa la, &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.1" class="WORD">
+              <t>Ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.2" class="WORD">
+              <t>nam</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.3" class="WORD">
+              <t>dat</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.4" class="WORD">
+              <t>zoete</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.5" class="WORD">
+              <t>kind</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.6" class="WORD">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.7" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.8" class="WORD" space="no">
+              <t>Armen</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.9" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.10" class="WORD">
+              <t>Ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.11" class="WORD">
+              <t>heb</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.12" class="WORD">
+              <t>haar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.13" class="WORD" space="no">
+              <t>gekust</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.14" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.15" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.16" class="WORD">
+              <t>grote</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.17" class="WORD" space="no">
+              <t>lust</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.18" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.19" class="WORD">
+              <t>En</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.20" class="WORD">
+              <t>wat</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.21" class="WORD">
+              <t>dat</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.22" class="WORD">
+              <t>ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.23" class="WORD">
+              <t>haar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.24" class="WORD" space="no">
+              <t>deê</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.25" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.26" class="WORD">
+              <t>Zy</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.27" class="WORD">
+              <t>was</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.28" class="WORD">
+              <t>wel</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.29" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.30" class="WORD" space="no">
+              <t>vree</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.31" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.32" class="WORD">
+              <t>Waar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.33" class="WORD">
+              <t>van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.34" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.35" class="WORD">
+              <t>heit</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.36" class="WORD">
+              <t>Nog</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.37" class="WORD">
+              <t>meer</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.38" class="WORD">
+              <t>verhitsigt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.39" class="WORD">
+              <t>werd</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.40" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.41" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.42" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.43" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.90.s.1.w.44" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91">
+          <t>Met verlof aanhoord myn smarte, Schoonste Engelin, Die ik bemin, Myn zoete teere jeugd, Die springt op van vreugd, Om de eer te ontfaân Van met u ter Jagt te gaan, fa la, &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1">
+            <t>Met verlof aanhoord myn smarte, Schoonste Engelin, Die ik bemin, Myn zoete teere jeugd, Die springt op van vreugd, Om de eer te ontfaân Van met u ter Jagt te gaan, fa la, &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.1" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.2" class="WORD">
+              <t>verlof</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.3" class="WORD">
+              <t>aanhoord</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.4" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.5" class="WORD" space="no">
+              <t>smarte</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.6" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.7" class="WORD">
+              <t>Schoonste</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.8" class="WORD" space="no">
+              <t>Engelin</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.9" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.10" class="WORD">
+              <t>Die</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.11" class="WORD">
+              <t>ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.12" class="WORD" space="no">
+              <t>bemin</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.13" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.14" class="WORD">
+              <t>Myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.15" class="WORD">
+              <t>zoete</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.16" class="WORD">
+              <t>teere</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.17" class="WORD" space="no">
+              <t>jeugd</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.18" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.19" class="WORD">
+              <t>Die</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.20" class="WORD">
+              <t>springt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.21" class="WORD">
+              <t>op</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.22" class="WORD">
+              <t>van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.23" class="WORD" space="no">
+              <t>vreugd</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.24" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.25" class="WORD">
+              <t>Om</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.26" class="WORD">
+              <t>de</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.27" class="WORD">
+              <t>eer</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.28" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.29" class="WORD">
+              <t>ontfaân</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.30" class="WORD">
+              <t>Van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.31" class="WORD">
+              <t>met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.32" class="WORD">
+              <t>u</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.33" class="WORD">
+              <t>ter</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.34" class="WORD">
+              <t>Jagt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.35" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.36" class="WORD" space="no">
+              <t>gaan</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.37" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.38" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.39" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.40" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.41" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.91.s.1.w.42" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92">
+          <t>Den Avond begon te dalen. Ik nam myn afschied. Met dankbaarheid, Ik heb haar adieu gezied, Tot op een andere tyd, En adieu pleizier Adieu Vrouw Venus-Dier, fa la, &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1">
+            <t>Den Avond begon te dalen.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1.w.1" class="WORD">
+              <t>Den</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1.w.2" class="WORD">
+              <t>Avond</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1.w.3" class="WORD">
+              <t>begon</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1.w.4" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1.w.5" class="WORD" space="no">
+              <t>dalen</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.1.w.6" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.2">
+            <t>Ik nam myn afschied.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.2.w.1" class="WORD">
+              <t>Ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.2.w.2" class="WORD">
+              <t>nam</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.2.w.3" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.2.w.4" class="WORD" space="no">
+              <t>afschied</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.2.w.5" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3">
+            <t>Met dankbaarheid, Ik heb haar adieu gezied, Tot op een andere tyd, En adieu pleizier Adieu Vrouw Venus-Dier, fa la, &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.1" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.2" class="WORD" space="no">
+              <t>dankbaarheid</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.3" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.4" class="WORD">
+              <t>Ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.5" class="WORD">
+              <t>heb</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.6" class="WORD">
+              <t>haar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.7" class="WORD">
+              <t>adieu</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.8" class="WORD" space="no">
+              <t>gezied</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.9" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.10" class="WORD">
+              <t>Tot</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.11" class="WORD">
+              <t>op</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.12" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.13" class="WORD">
+              <t>andere</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.14" class="WORD" space="no">
+              <t>tyd</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.15" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.16" class="WORD">
+              <t>En</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.17" class="WORD">
+              <t>adieu</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.18" class="WORD">
+              <t>pleizier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.19" class="WORD">
+              <t>Adieu</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.20" class="WORD">
+              <t>Vrouw</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.21" class="WORD-COMPOUND" space="no">
+              <t>Venus-Dier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.22" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.23" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.24" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.25" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.26" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.92.s.3.w.27" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93">
+          <t>En ik hebbe een Fles genomen, Om te drinken de smart, Al van myn hart, Sa Bacchus komt by myn, Schenkt maar bier en wyn, Om te laven myn dorst. Van myn verflaude borst, fa la.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1">
+            <t>En ik hebbe een Fles genomen, Om te drinken de smart, Al van myn hart, Sa Bacchus komt by myn, Schenkt maar bier en wyn, Om te laven myn dorst.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.1" class="WORD">
+              <t>En</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.2" class="WORD">
+              <t>ik</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.3" class="WORD">
+              <t>hebbe</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.4" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.5" class="WORD">
+              <t>Fles</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.6" class="WORD" space="no">
+              <t>genomen</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.7" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.8" class="WORD">
+              <t>Om</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.9" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.10" class="WORD">
+              <t>drinken</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.11" class="WORD">
+              <t>de</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.12" class="WORD" space="no">
+              <t>smart</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.13" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.14" class="WORD">
+              <t>Al</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.15" class="WORD">
+              <t>van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.16" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.17" class="WORD" space="no">
+              <t>hart</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.18" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.19" class="WORD">
+              <t>Sa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.20" class="WORD">
+              <t>Bacchus</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.21" class="WORD">
+              <t>komt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.22" class="WORD">
+              <t>by</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.23" class="WORD" space="no">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.24" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.25" class="WORD">
+              <t>Schenkt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.26" class="WORD">
+              <t>maar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.27" class="WORD">
+              <t>bier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.28" class="WORD">
+              <t>en</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.29" class="WORD" space="no">
+              <t>wyn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.30" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.31" class="WORD">
+              <t>Om</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.32" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.33" class="WORD">
+              <t>laven</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.34" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.35" class="WORD" space="no">
+              <t>dorst</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.1.w.36" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2">
+            <t>Van myn verflaude borst, fa la.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.1" class="WORD">
+              <t>Van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.2" class="WORD">
+              <t>myn</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.3" class="WORD">
+              <t>verflaude</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.4" class="WORD" space="no">
+              <t>borst</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.5" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.6" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.7" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.93.s.2.w.8" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94">
+          <t>Met verlof nog eens gedronken, Uit eene volle Fles, Al voor het lest, Men hoord de Trommel slaan, Men moet marcheeren gaan, Trekken uit Holland, En trekke na Duitsland, fa la</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1">
+            <t>Met verlof nog eens gedronken, Uit eene volle Fles, Al voor het lest, Men hoord de Trommel slaan, Men moet marcheeren gaan, Trekken uit Holland, En trekke na Duitsland, fa la</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.1" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.2" class="WORD">
+              <t>verlof</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.3" class="WORD">
+              <t>nog</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.4" class="WORD">
+              <t>eens</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.5" class="WORD" space="no">
+              <t>gedronken</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.6" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.7" class="WORD">
+              <t>Uit</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.8" class="WORD">
+              <t>eene</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.9" class="WORD">
+              <t>volle</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.10" class="WORD" space="no">
+              <t>Fles</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.11" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.12" class="WORD">
+              <t>Al</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.13" class="WORD">
+              <t>voor</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.14" class="WORD">
+              <t>het</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.15" class="WORD" space="no">
+              <t>lest</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.16" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.17" class="WORD">
+              <t>Men</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.18" class="WORD">
+              <t>hoord</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.19" class="WORD">
+              <t>de</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.20" class="WORD">
+              <t>Trommel</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.21" class="WORD" space="no">
+              <t>slaan</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.22" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.23" class="WORD">
+              <t>Men</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.24" class="WORD">
+              <t>moet</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.25" class="WORD">
+              <t>marcheeren</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.26" class="WORD" space="no">
+              <t>gaan</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.27" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.28" class="WORD">
+              <t>Trekken</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.29" class="WORD">
+              <t>uit</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.30" class="WORD" space="no">
+              <t>Holland</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.31" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.32" class="WORD">
+              <t>En</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.33" class="WORD">
+              <t>trekke</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.34" class="WORD">
+              <t>na</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.35" class="WORD" space="no">
+              <t>Duitsland</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.36" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.37" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.94.s.1.w.38" class="WORD">
+              <t>la</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95">
+          <t>Aanziet ook de Harderinne, Trokken te Velden in, Heel bly van zin, Zy speelden op haar Fluit, Met een zoet geluit, En de Schaapjes fier, Sprongen met pleizier, fa la &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1">
+            <t>Aanziet ook de Harderinne, Trokken te Velden in, Heel bly van zin, Zy speelden op haar Fluit, Met een zoet geluit, En de Schaapjes fier, Sprongen met pleizier, fa la &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.1" class="WORD">
+              <t>Aanziet</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.2" class="WORD">
+              <t>ook</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.3" class="WORD">
+              <t>de</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.4" class="WORD" space="no">
+              <t>Harderinne</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.5" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.6" class="WORD">
+              <t>Trokken</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.7" class="WORD">
+              <t>te</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.8" class="WORD">
+              <t>Velden</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.9" class="WORD" space="no">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.10" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.11" class="WORD">
+              <t>Heel</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.12" class="WORD">
+              <t>bly</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.13" class="WORD">
+              <t>van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.14" class="WORD" space="no">
+              <t>zin</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.15" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.16" class="WORD">
+              <t>Zy</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.17" class="WORD">
+              <t>speelden</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.18" class="WORD">
+              <t>op</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.19" class="WORD">
+              <t>haar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.20" class="WORD" space="no">
+              <t>Fluit</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.21" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.22" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.23" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.24" class="WORD">
+              <t>zoet</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.25" class="WORD" space="no">
+              <t>geluit</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.26" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.27" class="WORD">
+              <t>En</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.28" class="WORD">
+              <t>de</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.29" class="WORD">
+              <t>Schaapjes</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.30" class="WORD" space="no">
+              <t>fier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.31" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.32" class="WORD">
+              <t>Sprongen</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.33" class="WORD">
+              <t>met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.34" class="WORD" space="no">
+              <t>pleizier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.35" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.36" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.37" class="WORD">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.38" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.95.s.1.w.39" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96">
+          <t>Zy verheugde haar bly van harte, Al in deze tey, t'Zaam in de Wey; Oorlof Jongheid, Al wie gy zyt, Neemt dan uw pleizier, Met een Meisje al zo fier, fa la, &amp;c.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1">
+            <t>Zy verheugde haar bly van harte, Al in deze tey, t'Zaam in de Wey; Oorlof Jongheid, Al wie gy zyt, Neemt dan uw pleizier, Met een Meisje al zo fier, fa la, &amp;c.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.1" class="WORD">
+              <t>Zy</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.2" class="WORD">
+              <t>verheugde</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.3" class="WORD">
+              <t>haar</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.4" class="WORD">
+              <t>bly</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.5" class="WORD">
+              <t>van</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.6" class="WORD" space="no">
+              <t>harte</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.7" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.8" class="WORD">
+              <t>Al</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.9" class="WORD">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.10" class="WORD">
+              <t>deze</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.11" class="WORD" space="no">
+              <t>tey</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.12" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.13" class="WORD" space="no">
+              <t>t</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.14" class="PUNCTUATION" space="no">
+              <t>'</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.15" class="WORD">
+              <t>Zaam</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.16" class="WORD">
+              <t>in</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.17" class="WORD">
+              <t>de</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.18" class="WORD" space="no">
+              <t>Wey</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.19" class="PUNCTUATION">
+              <t>;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.20" class="WORD">
+              <t>Oorlof</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.21" class="WORD" space="no">
+              <t>Jongheid</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.22" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.23" class="WORD">
+              <t>Al</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.24" class="WORD">
+              <t>wie</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.25" class="WORD">
+              <t>gy</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.26" class="WORD" space="no">
+              <t>zyt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.27" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.28" class="WORD">
+              <t>Neemt</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.29" class="WORD">
+              <t>dan</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.30" class="WORD">
+              <t>uw</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.31" class="WORD" space="no">
+              <t>pleizier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.32" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.33" class="WORD">
+              <t>Met</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.34" class="WORD">
+              <t>een</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.35" class="WORD">
+              <t>Meisje</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.36" class="WORD">
+              <t>al</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.37" class="WORD">
+              <t>zo</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.38" class="WORD" space="no">
+              <t>fier</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.39" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.40" class="ABBREVIATION-KNOWN">
+              <t>fa</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.41" class="WORD" space="no">
+              <t>la</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.42" class="PUNCTUATION">
+              <t>,</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.43" class="PUNCTUATION" space="no">
+              <t>&amp;</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.96.s.1.w.44" class="ABBREVIATION-KNOWN">
+              <t>c.</t>
+            </w>
+          </s>
+        </p>
+        <p xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.98">
+          <t>EYNDE.</t>
+          <s xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.98.s.1">
+            <t>EYNDE.</t>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.98.s.1.w.1" class="WORD" space="no">
+              <t>EYNDE</t>
+            </w>
+            <w xml:id="_aar004aard01_01.TEI.2.text.body.div.div.p.98.s.1.w.2" class="PUNCTUATION">
+              <t>.</t>
+            </w>
+          </s>
+        </p>
+      </div>
+    </div>
+    <div xml:id="_aar004aard01_01.TEI.2.text.body.div.134" class="chapter">
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104">
+        <t>Den Vrolyke Minnaer, verandert in een Baggus vriend.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1">
+          <t>Den Vrolyke Minnaer, verandert in een Baggus vriend.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.1" class="WORD">
+            <t>Den</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.2" class="WORD">
+            <t>Vrolyke</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.3" class="WORD" space="no">
+            <t>Minnaer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.4" class="PUNCTUATION">
+            <t>,</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.5" class="WORD">
+            <t>verandert</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.6" class="WORD">
+            <t>in</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.7" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.8" class="WORD">
+            <t>Baggus</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.9" class="WORD" space="no">
+            <t>vriend</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.104.s.1.w.10" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105">
+        <t>Stem: Als 't begind.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1">
+          <t>Stem: Als 't begind.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1.w.1" class="WORD" space="no">
+            <t>Stem</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1.w.2" class="PUNCTUATION">
+            <t>:</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1.w.3" class="WORD">
+            <t>Als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1.w.4" class="WORD-TOKEN">
+            <t>'t</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1.w.5" class="WORD" space="no">
+            <t>begind</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.head.105.s.1.w.6" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107">
+        <t>Ik had' er een liefje uitverkoren / hy staet in myn hartje geprent / Maer ag! elaes nu moet ik hooren /</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1">
+          <t>Ik had' er een liefje uitverkoren / hy staet in myn hartje geprent / Maer ag!</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.1" class="WORD">
+            <t>Ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.2" class="WORD" space="no">
+            <t>had</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.3" class="PUNCTUATION">
+            <t>'</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.4" class="WORD">
+            <t>er</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.5" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.6" class="WORD">
+            <t>liefje</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.7" class="WORD">
+            <t>uitverkoren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.8" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.9" class="WORD">
+            <t>hy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.10" class="WORD">
+            <t>staet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.11" class="WORD">
+            <t>in</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.12" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.13" class="WORD">
+            <t>hartje</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.14" class="WORD">
+            <t>geprent</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.15" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.16" class="WORD">
+            <t>Maer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.17" class="WORD" space="no">
+            <t>ag</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.1.w.18" class="PUNCTUATION">
+            <t>!</t>
+          </w>
+        </s>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2">
+          <t>elaes nu moet ik hooren /</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2.w.1" class="WORD">
+            <t>elaes</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2.w.2" class="WORD">
+            <t>nu</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2.w.3" class="WORD">
+            <t>moet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2.w.4" class="WORD">
+            <t>ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2.w.5" class="WORD">
+            <t>hooren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.107.s.2.w.6" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109">
+        <t>Zy verkeert met een ander vent / Ik zal nog in droefheid smoren /</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1">
+          <t>Zy verkeert met een ander vent / Ik zal nog in droefheid smoren /</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.1" class="WORD">
+            <t>Zy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.2" class="WORD">
+            <t>verkeert</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.3" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.4" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.5" class="WORD">
+            <t>ander</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.6" class="WORD">
+            <t>vent</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.7" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.8" class="WORD">
+            <t>Ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.9" class="WORD">
+            <t>zal</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.10" class="WORD">
+            <t>nog</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.11" class="WORD">
+            <t>in</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.12" class="WORD">
+            <t>droefheid</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.13" class="WORD">
+            <t>smoren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.109.s.1.w.14" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111">
+        <t>Want myn Roosje myn niet kent.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1">
+          <t>Want myn Roosje myn niet kent.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.1" class="WORD">
+            <t>Want</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.2" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.3" class="WORD">
+            <t>Roosje</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.4" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.5" class="WORD">
+            <t>niet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.6" class="WORD" space="no">
+            <t>kent</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.111.s.1.w.7" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113">
+        <t>Zy is een Puykje van alle Vrouwen / Aan[...]ende Oogjes Bruin als Git / Haar roder mond om te aenschouwen; Haer Tandjes als een Lely wit Haer Bloosende Wangen met Kuyltjes gehouwe.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1">
+          <t>Zy is een Puykje van alle Vrouwen / Aan[...]ende Oogjes Bruin als Git / Haar roder mond om te aenschouwen; Haer Tandjes als een Lely wit Haer Bloosende Wangen met Kuyltjes gehouwe.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.1" class="WORD">
+            <t>Zy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.2" class="WORD">
+            <t>is</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.3" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.4" class="WORD">
+            <t>Puykje</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.5" class="WORD">
+            <t>van</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.6" class="WORD">
+            <t>alle</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.7" class="WORD">
+            <t>Vrouwen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.8" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.9" class="WORD" space="no">
+            <t>Aan</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.10" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.11" class="PUNCTUATION-MULTI" space="no">
+            <t>...</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.12" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.13" class="WORD">
+            <t>ende</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.14" class="WORD">
+            <t>Oogjes</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.15" class="WORD">
+            <t>Bruin</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.16" class="WORD">
+            <t>als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.17" class="WORD">
+            <t>Git</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.18" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.19" class="WORD">
+            <t>Haar</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.20" class="WORD">
+            <t>roder</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.21" class="WORD">
+            <t>mond</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.22" class="WORD">
+            <t>om</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.23" class="WORD">
+            <t>te</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.24" class="WORD" space="no">
+            <t>aenschouwen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.25" class="PUNCTUATION">
+            <t>;</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.26" class="WORD">
+            <t>Haer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.27" class="WORD">
+            <t>Tandjes</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.28" class="WORD">
+            <t>als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.29" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.30" class="WORD">
+            <t>Lely</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.31" class="WORD">
+            <t>wit</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.32" class="WORD">
+            <t>Haer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.33" class="WORD">
+            <t>Bloosende</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.34" class="WORD">
+            <t>Wangen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.35" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.36" class="WORD">
+            <t>Kuyltjes</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.37" class="WORD" space="no">
+            <t>gehouwe</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.113.s.1.w.38" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115">
+        <t>Haer lievelde lien die heeft een split.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1">
+          <t>Haer lievelde lien die heeft een split.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.1" class="WORD">
+            <t>Haer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.2" class="WORD">
+            <t>lievelde</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.3" class="WORD">
+            <t>lien</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.4" class="WORD">
+            <t>die</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.5" class="WORD">
+            <t>heeft</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.6" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.7" class="WORD" space="no">
+            <t>split</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.115.s.1.w.8" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117">
+        <t>Haer Neus die is seer net besneden. Haer blanke Hals gelyk een Zwaan: Sneeu witte handen [..]lin relite Leeden: Schoonder als Denus of Giaen / Mijn Ziele Voogdes gaet van my treden / met richt mag ik treuren gaen.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1">
+          <t>Haer Neus die is seer net besneden.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.1" class="WORD">
+            <t>Haer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.2" class="WORD">
+            <t>Neus</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.3" class="WORD">
+            <t>die</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.4" class="WORD">
+            <t>is</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.5" class="WORD">
+            <t>seer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.6" class="WORD">
+            <t>net</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.7" class="WORD" space="no">
+            <t>besneden</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.1.w.8" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2">
+          <t>Haer blanke Hals gelyk een Zwaan: Sneeu witte handen [..]lin relite Leeden: Schoonder als Denus of Giaen / Mijn Ziele Voogdes gaet van my treden / met richt mag ik treuren gaen.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.1" class="WORD">
+            <t>Haer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.2" class="WORD">
+            <t>blanke</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.3" class="WORD">
+            <t>Hals</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.4" class="WORD">
+            <t>gelyk</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.5" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.6" class="WORD" space="no">
+            <t>Zwaan</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.7" class="PUNCTUATION">
+            <t>:</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.8" class="WORD">
+            <t>Sneeu</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.9" class="WORD">
+            <t>witte</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.10" class="WORD">
+            <t>handen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.11" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.12" class="PUNCTUATION-MULTI" space="no">
+            <t>..</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.13" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.14" class="WORD">
+            <t>lin</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.15" class="WORD">
+            <t>relite</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.16" class="WORD" space="no">
+            <t>Leeden</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.17" class="PUNCTUATION">
+            <t>:</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.18" class="WORD">
+            <t>Schoonder</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.19" class="WORD">
+            <t>als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.20" class="WORD">
+            <t>Denus</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.21" class="WORD">
+            <t>of</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.22" class="WORD">
+            <t>Giaen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.23" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.24" class="WORD">
+            <t>Mijn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.25" class="WORD">
+            <t>Ziele</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.26" class="WORD">
+            <t>Voogdes</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.27" class="WORD">
+            <t>gaet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.28" class="WORD">
+            <t>van</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.29" class="WORD">
+            <t>my</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.30" class="WORD">
+            <t>treden</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.31" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.32" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.33" class="WORD">
+            <t>richt</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.34" class="WORD">
+            <t>mag</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.35" class="WORD">
+            <t>ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.36" class="WORD">
+            <t>treuren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.37" class="WORD" space="no">
+            <t>gaen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.117.s.2.w.38" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119">
+        <t>Maer wat kan myn het treuren baten. Zy wil niet hooren myn geschrey / Ik zal de Liefste baren laten / En scryen uyt de Dryery / Vrou [...]ns met haer ondersaten / Wil ik gaen zetten aen een zy.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1">
+          <t>Maer wat kan myn het treuren baten.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.1" class="WORD">
+            <t>Maer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.2" class="WORD">
+            <t>wat</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.3" class="WORD">
+            <t>kan</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.4" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.5" class="WORD">
+            <t>het</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.6" class="WORD">
+            <t>treuren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.7" class="WORD" space="no">
+            <t>baten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.1.w.8" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2">
+          <t>Zy wil niet hooren myn geschrey / Ik zal de Liefste baren laten / En scryen uyt de Dryery / Vrou [...]ns met haer ondersaten / Wil ik gaen zetten aen een zy.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.1" class="WORD">
+            <t>Zy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.2" class="WORD">
+            <t>wil</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.3" class="WORD">
+            <t>niet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.4" class="WORD">
+            <t>hooren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.5" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.6" class="WORD">
+            <t>geschrey</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.7" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.8" class="WORD">
+            <t>Ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.9" class="WORD">
+            <t>zal</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.10" class="WORD">
+            <t>de</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.11" class="WORD">
+            <t>Liefste</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.12" class="WORD">
+            <t>baren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.13" class="WORD">
+            <t>laten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.14" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.15" class="WORD">
+            <t>En</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.16" class="WORD">
+            <t>scryen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.17" class="WORD">
+            <t>uyt</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.18" class="WORD">
+            <t>de</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.19" class="WORD">
+            <t>Dryery</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.20" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.21" class="WORD">
+            <t>Vrou</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.22" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.23" class="PUNCTUATION-MULTI" space="no">
+            <t>...</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.24" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.25" class="WORD">
+            <t>ns</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.26" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.27" class="WORD">
+            <t>haer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.28" class="WORD">
+            <t>ondersaten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.29" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.30" class="WORD">
+            <t>Wil</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.31" class="WORD">
+            <t>ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.32" class="WORD">
+            <t>gaen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.33" class="WORD">
+            <t>zetten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.34" class="WORD">
+            <t>aen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.35" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.36" class="WORD" space="no">
+            <t>zy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.119.s.2.w.37" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121">
+        <t>Wat helpt myn lopen en het draven / Dat ik so dikwils heb gedaen / [...]mnaers zyn maer Dams slaven / Steeds met sorg en pyn belaen / Ik wil myn keel met vreugde layen /</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1">
+          <t>Wat helpt myn lopen en het draven / Dat ik so dikwils heb gedaen / [...]mnaers zyn maer Dams slaven / Steeds met sorg en pyn belaen / Ik wil myn keel met vreugde layen /</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.1" class="WORD">
+            <t>Wat</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.2" class="WORD">
+            <t>helpt</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.3" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.4" class="WORD">
+            <t>lopen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.5" class="WORD">
+            <t>en</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.6" class="WORD">
+            <t>het</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.7" class="WORD">
+            <t>draven</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.8" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.9" class="WORD">
+            <t>Dat</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.10" class="WORD">
+            <t>ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.11" class="WORD">
+            <t>so</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.12" class="WORD">
+            <t>dikwils</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.13" class="WORD">
+            <t>heb</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.14" class="WORD">
+            <t>gedaen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.15" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.16" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.17" class="PUNCTUATION-MULTI" space="no">
+            <t>...</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.18" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.19" class="WORD">
+            <t>mnaers</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.20" class="WORD">
+            <t>zyn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.21" class="WORD">
+            <t>maer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.22" class="WORD">
+            <t>Dams</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.23" class="WORD">
+            <t>slaven</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.24" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.25" class="WORD">
+            <t>Steeds</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.26" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.27" class="WORD">
+            <t>sorg</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.28" class="WORD">
+            <t>en</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.29" class="WORD">
+            <t>pyn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.30" class="WORD">
+            <t>belaen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.31" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.32" class="WORD">
+            <t>Ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.33" class="WORD">
+            <t>wil</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.34" class="WORD">
+            <t>myn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.35" class="WORD">
+            <t>keel</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.36" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.37" class="WORD">
+            <t>vreugde</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.38" class="WORD">
+            <t>layen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.121.s.1.w.39" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123">
+        <t>Day de edele Baggus traen.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1">
+          <t>Day de edele Baggus traen.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1.w.1" class="WORD">
+            <t>Day</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1.w.2" class="WORD">
+            <t>de</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1.w.3" class="WORD">
+            <t>edele</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1.w.4" class="WORD">
+            <t>Baggus</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1.w.5" class="WORD" space="no">
+            <t>traen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.123.s.1.w.6" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125">
+        <t>Want sou ik door de Min versmagten / En zyn tot De[..]s st[.]ef dne[.]n; Baggus wil ik ve[...] liever agten / Die schei[..]t zyn N[...]ter yver een Drinken de wyn hy dagen en magten / Leven in vreugd sonder geween.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1">
+          <t>Want sou ik door de Min versmagten / En zyn tot De[..]s st[.]ef dne[.]n; Baggus wil ik ve[...] liever agten / Die schei[..]t zyn N[...]ter yver een Drinken de wyn hy dagen en magten / Leven in vreugd sonder geween.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.1" class="WORD">
+            <t>Want</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.2" class="WORD">
+            <t>sou</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.3" class="WORD">
+            <t>ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.4" class="WORD">
+            <t>door</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.5" class="WORD">
+            <t>de</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.6" class="ABBREVIATION-KNOWN">
+            <t>Min</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.7" class="WORD">
+            <t>versmagten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.8" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.9" class="WORD">
+            <t>En</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.10" class="WORD">
+            <t>zyn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.11" class="WORD">
+            <t>tot</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.12" class="WORD" space="no">
+            <t>De</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.13" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.14" class="PUNCTUATION-MULTI" space="no">
+            <t>..</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.15" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.16" class="WORD">
+            <t>s</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.17" class="ABBREVIATION-KNOWN" space="no">
+            <t>st</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.18" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.19" class="PUNCTUATION" space="no">
+            <t>.</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.20" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.21" class="WORD">
+            <t>ef</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.22" class="WORD" space="no">
+            <t>dne</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.23" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.24" class="PUNCTUATION" space="no">
+            <t>.</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.25" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.26" class="WORD" space="no">
+            <t>n</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.27" class="PUNCTUATION">
+            <t>;</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.28" class="WORD">
+            <t>Baggus</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.29" class="WORD">
+            <t>wil</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.30" class="WORD">
+            <t>ik</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.31" class="WORD" space="no">
+            <t>ve</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.32" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.33" class="PUNCTUATION-MULTI" space="no">
+            <t>...</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.34" class="PUNCTUATION">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.35" class="WORD">
+            <t>liever</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.36" class="WORD">
+            <t>agten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.37" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.38" class="WORD">
+            <t>Die</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.39" class="WORD" space="no">
+            <t>schei</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.40" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.41" class="PUNCTUATION-MULTI" space="no">
+            <t>..</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.42" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.43" class="WORD">
+            <t>t</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.44" class="WORD">
+            <t>zyn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.45" class="WORD" space="no">
+            <t>N</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.46" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.47" class="PUNCTUATION-MULTI" space="no">
+            <t>...</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.48" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.49" class="WORD">
+            <t>ter</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.50" class="WORD">
+            <t>yver</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.51" class="WORD">
+            <t>een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.52" class="WORD">
+            <t>Drinken</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.53" class="WORD">
+            <t>de</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.54" class="WORD">
+            <t>wyn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.55" class="WORD">
+            <t>hy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.56" class="WORD">
+            <t>dagen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.57" class="WORD">
+            <t>en</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.58" class="WORD">
+            <t>magten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.59" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.60" class="WORD">
+            <t>Leven</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.61" class="WORD">
+            <t>in</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.62" class="WORD">
+            <t>vreugd</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.63" class="WORD">
+            <t>sonder</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.64" class="WORD" space="no">
+            <t>geween</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.125.s.1.w.65" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127">
+        <t>Sa k[..]ing laet ons vreugd hanteren En dat het Baggus at verschied Een glas heffen kan ons niet deren / Laten wy drinken ongefaelt / Dorst voor ons geld dan voor kleeren /</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1">
+          <t>Sa k[..]ing laet ons vreugd hanteren En dat het Baggus at verschied Een glas heffen kan ons niet deren / Laten wy drinken ongefaelt / Dorst voor ons geld dan voor kleeren /</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.1" class="WORD">
+            <t>Sa</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.2" class="WORD" space="no">
+            <t>k</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.3" class="PUNCTUATION" space="no">
+            <t>[</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.4" class="PUNCTUATION-MULTI" space="no">
+            <t>..</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.5" class="PUNCTUATION" space="no">
+            <t>]</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.6" class="ABBREVIATION-KNOWN">
+            <t>ing</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.7" class="WORD">
+            <t>laet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.8" class="WORD">
+            <t>ons</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.9" class="WORD">
+            <t>vreugd</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.10" class="WORD">
+            <t>hanteren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.11" class="WORD">
+            <t>En</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.12" class="WORD">
+            <t>dat</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.13" class="WORD">
+            <t>het</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.14" class="WORD">
+            <t>Baggus</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.15" class="WORD">
+            <t>at</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.16" class="WORD">
+            <t>verschied</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.17" class="WORD">
+            <t>Een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.18" class="WORD">
+            <t>glas</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.19" class="WORD">
+            <t>heffen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.20" class="WORD">
+            <t>kan</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.21" class="WORD">
+            <t>ons</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.22" class="WORD">
+            <t>niet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.23" class="WORD">
+            <t>deren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.24" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.25" class="WORD">
+            <t>Laten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.26" class="WORD">
+            <t>wy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.27" class="WORD">
+            <t>drinken</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.28" class="WORD">
+            <t>ongefaelt</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.29" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.30" class="WORD">
+            <t>Dorst</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.31" class="WORD">
+            <t>voor</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.32" class="WORD">
+            <t>ons</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.33" class="WORD">
+            <t>geld</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.34" class="WORD">
+            <t>dan</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.35" class="WORD">
+            <t>voor</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.36" class="WORD">
+            <t>kleeren</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.127.s.1.w.37" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129">
+        <t>Als wy dood zijn is 't al betaeld.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1">
+          <t>Als wy dood zijn is 't al betaeld.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.1" class="WORD">
+            <t>Als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.2" class="WORD">
+            <t>wy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.3" class="WORD">
+            <t>dood</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.4" class="WORD">
+            <t>zijn</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.5" class="WORD">
+            <t>is</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.6" class="WORD-TOKEN">
+            <t>'t</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.7" class="WORD">
+            <t>al</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.8" class="WORD" space="no">
+            <t>betaeld</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.129.s.1.w.9" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131">
+        <t>Gy Minnaers als gy gaet uit vreyen / U zinnen op geen schoonheyd slaet / Een schoone Frouw heeft veel te lyen / Daerom soeln eer en einddelmert / Als gy uyt liefde met u beyeen / Wilt leven in den egten staat.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1">
+          <t>Gy Minnaers als gy gaet uit vreyen / U zinnen op geen schoonheyd slaet / Een schoone Frouw heeft veel te lyen / Daerom soeln eer en einddelmert / Als gy uyt liefde met u beyeen / Wilt leven in den egten staat.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.1" class="WORD">
+            <t>Gy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.2" class="WORD">
+            <t>Minnaers</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.3" class="WORD">
+            <t>als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.4" class="WORD">
+            <t>gy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.5" class="WORD">
+            <t>gaet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.6" class="WORD">
+            <t>uit</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.7" class="WORD">
+            <t>vreyen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.8" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.9" class="WORD">
+            <t>U</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.10" class="WORD">
+            <t>zinnen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.11" class="WORD">
+            <t>op</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.12" class="WORD">
+            <t>geen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.13" class="WORD">
+            <t>schoonheyd</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.14" class="WORD">
+            <t>slaet</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.15" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.16" class="WORD">
+            <t>Een</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.17" class="WORD">
+            <t>schoone</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.18" class="WORD">
+            <t>Frouw</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.19" class="WORD">
+            <t>heeft</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.20" class="WORD">
+            <t>veel</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.21" class="WORD">
+            <t>te</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.22" class="WORD">
+            <t>lyen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.23" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.24" class="WORD">
+            <t>Daerom</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.25" class="WORD">
+            <t>soeln</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.26" class="WORD">
+            <t>eer</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.27" class="WORD">
+            <t>en</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.28" class="WORD">
+            <t>einddelmert</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.29" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.30" class="WORD">
+            <t>Als</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.31" class="WORD">
+            <t>gy</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.32" class="WORD">
+            <t>uyt</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.33" class="WORD">
+            <t>liefde</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.34" class="WORD">
+            <t>met</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.35" class="WORD">
+            <t>u</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.36" class="WORD">
+            <t>beyeen</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.37" class="PUNCTUATION">
+            <t>/</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.38" class="WORD">
+            <t>Wilt</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.39" class="WORD">
+            <t>leven</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.40" class="WORD">
+            <t>in</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.41" class="WORD">
+            <t>den</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.42" class="WORD">
+            <t>egten</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.43" class="WORD" space="no">
+            <t>staat</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.131.s.1.w.44" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+      <p xml:id="_aar004aard01_01.TEI.2.text.body.div.p.133">
+        <t>EYNDE.</t>
+        <s xml:id="_aar004aard01_01.TEI.2.text.body.div.p.133.s.1">
+          <t>EYNDE.</t>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.133.s.1.w.1" class="WORD" space="no">
+            <t>EYNDE</t>
+          </w>
+          <w xml:id="_aar004aard01_01.TEI.2.text.body.div.p.133.s.1.w.2" class="PUNCTUATION">
+            <t>.</t>
+          </w>
+        </s>
+      </p>
+    </div>
+  </text>
+</FoLiA>
