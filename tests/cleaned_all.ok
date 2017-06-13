@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.8" version="1.4.0">
+  <metadata type="native">
+    <annotations>
+      <token-annotation annotator="ucto" annotatortype="auto" datetime="2017-05-02T22:10:06" set="tokconfig-nld"/>
+    </annotations>
+    <meta id="language">nld</meta>
+    <meta id="genre">artikel</meta>
+  </metadata>
+  <text xml:id="dirty.text">
+    <p xml:id="dirty.text.p.2">
+      <t>Beursoverzicht.</t>
+    </p>
+    <p xml:id="dirty.text.p.3">
+      <t>Berichten omtrent rondsen Toorkomende Dp de officiële lijst. Daar Londen en New-York heden belangrijk hoogere koersen zonden, was ook to dezer plaatse de Amerikaansche spoorwegmarkt aanzienlijk hooger dan gisteren, vooral voor Southern en Pref. Popika Shares, met vraag voor buitenlandsohe rekening, speciaal Duitschland. Buitenlandsche staatsfondsen vast, vooral voor Spanje Nationale staatsfondsen voor de meeste soorten meer aangeboden. Hooger: Franoo Dcli 2, Langkat Tabak 1%, Langkat Cultuur 8%, Eott. Dcli %. Moeara Enim 8%, Schibaeß 1%, Palembang %. , Lager: Amst. Dcli Comp. 4, Amßt. Sum. Aand. 3. | Binnenlandsshe en Russische Sporen stil. Zuid-Afrik. Sporen stil. Amerik. Sporen % a 2 lager. Berichten omtrent fondsen zonderoffloieele noteering. Opr. Euim 545, 550, Eumeuië 1899-90. Prolongatie 4% pCt. Gisteren zijn 4 pCt. Oblig. Rumenië 1894 abusiof genoteerd 77%, moest zgn 79%.</t>
+      <s xml:id="dirty.text.p.3.s.1">
+        <t>Berichten omtrent rondsen Toorkomende Dp de officiële lijst.</t>
+        <w xml:id="dirty.text.p.3.s.1.w.1" class="WORD">
+          <t>Berichten</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.2" class="WORD">
+          <t>omtrent</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.3" class="WORD">
+          <t>rondsen</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.4" class="WORD">
+          <t>Toorkomende</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.5" class="WORD">
+          <t>Dp</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.6" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.7" class="WORD">
+          <t>officiële</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.8" class="WORD" space="no">
+          <t>lijst</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.1.w.9" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.2">
+        <t>Daar Londen en New-York heden belangrijk hoogere koersen zonden, was ook to dezer plaatse de Amerikaansche spoorwegmarkt aanzienlijk hooger dan gisteren, vooral voor Southern en Pref.</t>
+        <w xml:id="dirty.text.p.3.s.2.w.1" class="WORD">
+          <t>Daar</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.2" class="WORD">
+          <t>Londen</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.3" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.4" class="WORD-COMPOUND">
+          <t>New-York</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.5" class="WORD">
+          <t>heden</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.6" class="WORD">
+          <t>belangrijk</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.7" class="WORD">
+          <t>hoogere</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.8" class="WORD">
+          <t>koersen</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.9" class="WORD" space="no">
+          <t>zonden</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.10" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.11" class="WORD">
+          <t>was</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.12" class="WORD">
+          <t>ook</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.13" class="WORD">
+          <t>to</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.14" class="WORD">
+          <t>dezer</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.15" class="WORD">
+          <t>plaatse</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.16" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.17" class="WORD">
+          <t>Amerikaansche</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.18" class="WORD">
+          <t>spoorwegmarkt</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.19" class="WORD">
+          <t>aanzienlijk</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.20" class="WORD">
+          <t>hooger</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.21" class="WORD">
+          <t>dan</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.22" class="WORD" space="no">
+          <t>gisteren</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.23" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.24" class="WORD">
+          <t>vooral</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.25" class="WORD">
+          <t>voor</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.26" class="WORD">
+          <t>Southern</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.27" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.28" class="WORD" space="no">
+          <t>Pref</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.2.w.29" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.3">
+        <t>Popika Shares, met vraag voor buitenlandsohe rekening, speciaal Duitschland.</t>
+        <w xml:id="dirty.text.p.3.s.3.w.1" class="WORD">
+          <t>Popika</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.2" class="WORD" space="no">
+          <t>Shares</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.3" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.4" class="WORD">
+          <t>met</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.5" class="WORD">
+          <t>vraag</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.6" class="WORD">
+          <t>voor</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.7" class="WORD">
+          <t>buitenlandsohe</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.8" class="WORD" space="no">
+          <t>rekening</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.9" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.10" class="WORD">
+          <t>speciaal</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.11" class="WORD" space="no">
+          <t>Duitschland</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.3.w.12" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.4">
+        <t>Buitenlandsche staatsfondsen vast, vooral voor Spanje Nationale staatsfondsen voor de meeste soorten meer aangeboden.</t>
+        <w xml:id="dirty.text.p.3.s.4.w.1" class="WORD">
+          <t>Buitenlandsche</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.2" class="WORD">
+          <t>staatsfondsen</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.3" class="WORD" space="no">
+          <t>vast</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.4" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.5" class="WORD">
+          <t>vooral</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.6" class="WORD">
+          <t>voor</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.7" class="WORD">
+          <t>Spanje</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.8" class="WORD">
+          <t>Nationale</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.9" class="WORD">
+          <t>staatsfondsen</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.10" class="WORD">
+          <t>voor</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.11" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.12" class="WORD">
+          <t>meeste</t>
+          <alt xml:id="dirty.text.p.3.s.4.w.12.alt-lem.1" auth="no"/>
+          <alt xml:id="dirty.text.p.3.s.4.w.12.alt-lem.2" auth="no"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.13" class="WORD">
+          <t>soorten</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.14" class="WORD">
+          <t>meer</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.15" class="WORD" space="no">
+          <t>aangeboden</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.4.w.16" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.5">
+        <t>Hooger: Franoo Dcli 2, Langkat Tabak 1%, Langkat Cultuur 8%, Eott.</t>
+        <w xml:id="dirty.text.p.3.s.5.w.1" class="WORD" space="no">
+          <t>Hooger</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.2" class="PUNCTUATION">
+          <t>:</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.3" class="WORD">
+          <t>Franoo</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.4" class="WORD">
+          <t>Dcli</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.5" class="NUMBER" space="no">
+          <t>2</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.6" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.7" class="WORD">
+          <t>Langkat</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.8" class="WORD">
+          <t>Tabak</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.9" class="NUMBER" space="no">
+          <t>1</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.10" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.11" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.12" class="WORD">
+          <t>Langkat</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.13" class="WORD">
+          <t>Cultuur</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.14" class="NUMBER" space="no">
+          <t>8</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.15" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.16" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.17" class="WORD" space="no">
+          <t>Eott</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.5.w.18" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.6">
+        <t>Dcli %.</t>
+        <w xml:id="dirty.text.p.3.s.6.w.1" class="WORD">
+          <t>Dcli</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.6.w.2" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.6.w.3" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.7">
+        <t>Moeara Enim 8%, Schibaess 1%, Palembang %.</t>
+        <w xml:id="dirty.text.p.3.s.7.w.1" class="WORD">
+          <t>Moeara</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.2" class="WORD">
+          <t>Enim</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.3" class="NUMBER" space="no">
+          <t>8</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.4" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.5" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.6" class="WORD">
+          <t>Schibaess</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.7" class="NUMBER" space="no">
+          <t>1</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.8" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.9" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.10" class="WORD">
+          <t>Palembang</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.11" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.7.w.12" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.8">
+        <t>, Lager: Amst.</t>
+        <w xml:id="dirty.text.p.3.s.8.w.1" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.2" class="WORD" space="no">
+          <t>Lager</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.3" class="PUNCTUATION">
+          <t>:</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.4" class="WORD" space="no">
+          <t>Amst</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.8.w.5" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.9">
+        <t>Dcli Comp.</t>
+        <w xml:id="dirty.text.p.3.s.9.w.1" class="WORD">
+          <t>Dcli</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.9.w.2" class="WORD" space="no">
+          <t>Comp</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.9.w.3" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.10">
+        <t>4, Amsst.</t>
+        <w xml:id="dirty.text.p.3.s.10.w.1" class="NUMBER" space="no">
+          <t>4</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.10.w.2" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.10.w.3" class="WORD" space="no">
+          <t>Amsst</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.10.w.4" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.11">
+        <t>Sum.</t>
+        <w xml:id="dirty.text.p.3.s.11.w.1" class="WORD" space="no">
+          <t>Sum</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.11.w.2" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.12">
+        <t>Aand.</t>
+        <w xml:id="dirty.text.p.3.s.12.w.1" class="WORD" space="no">
+          <t>Aand</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.12.w.2" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.13">
+        <t>3.</t>
+        <w xml:id="dirty.text.p.3.s.13.w.1" class="NUMBER" space="no">
+          <t>3</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.13.w.2" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.14">
+        <t>| Binnenlandsshe en Russische Sporen stil.</t>
+        <w xml:id="dirty.text.p.3.s.14.w.1" class="SYMBOL">
+          <t>|</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.2" class="WORD">
+          <t>Binnenlandsshe</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.3" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.4" class="WORD">
+          <t>Russische</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.5" class="WORD">
+          <t>Sporen</t>
+          <alt xml:id="dirty.text.p.3.s.14.w.5.alt-lem.1" auth="no"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.6" class="WORD" space="no">
+          <t>stil</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.14.w.7" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.15">
+        <t>Zuid-Afrik.</t>
+        <w xml:id="dirty.text.p.3.s.15.w.1" class="WORD-COMPOUND" space="no">
+          <t>Zuid-Afrik</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.15.w.2" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.16">
+        <t>Sporen stil.</t>
+        <w xml:id="dirty.text.p.3.s.16.w.1" class="WORD">
+          <t>Sporen</t>
+          <alt xml:id="dirty.text.p.3.s.16.w.1.alt-lem.1" auth="no"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.16.w.2" class="WORD" space="no">
+          <t>stil</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.16.w.3" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.17">
+        <t>Amerik.</t>
+        <w xml:id="dirty.text.p.3.s.17.w.1" class="WORD" space="no">
+          <t>Amerik</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.17.w.2" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.18">
+        <t>Sporen % a 2 lager.</t>
+        <w xml:id="dirty.text.p.3.s.18.w.1" class="WORD">
+          <t>Sporen</t>
+          <alt xml:id="dirty.text.p.3.s.18.w.1.alt-lem.1" auth="no"/>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.2" class="PUNCTUATION">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.3" class="WORD">
+          <t>a</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.4" class="NUMBER">
+          <t>2</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.5" class="WORD" space="no">
+          <t>lager</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.18.w.6" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.19">
+        <t>Berichten omtrent fondsen zonderoffloieele noteering.</t>
+        <w xml:id="dirty.text.p.3.s.19.w.1" class="WORD">
+          <t>Berichten</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.2" class="WORD">
+          <t>omtrent</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.3" class="WORD">
+          <t>fondsen</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.4" class="WORD">
+          <t>zonderoffloieele</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.5" class="WORD" space="no">
+          <t>noteering</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.19.w.6" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.20">
+        <t>Opr.</t>
+        <w xml:id="dirty.text.p.3.s.20.w.1" class="WORD" space="no">
+          <t>Opr</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.20.w.2" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.21">
+        <t>Euim 545, 550, Eumeuië 1899-90.</t>
+        <w xml:id="dirty.text.p.3.s.21.w.1" class="WORD">
+          <t>Euim</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.2" class="NUMBER" space="no">
+          <t>545</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.3" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.4" class="NUMBER" space="no">
+          <t>550</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.5" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.6" class="WORD">
+          <t>Eumeuië</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.7" class="WORD-COMPOUND" space="no">
+          <t>1899-90</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.21.w.8" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.22">
+        <t>Prolongatie 4% pCt. Gisteren zijn 4 pCt. Oblig.</t>
+        <w xml:id="dirty.text.p.3.s.22.w.1" class="WORD">
+          <t>Prolongatie</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.2" class="NUMBER" space="no">
+          <t>4</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.3" class="PUNCTUATION">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.4" class="ABBREVIATION-KNOWN">
+          <t>pCt.</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.5" class="WORD">
+          <t>Gisteren</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.6" class="WORD">
+          <t>zijn</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.7" class="NUMBER">
+          <t>4</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.8" class="ABBREVIATION-KNOWN">
+          <t>pCt.</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.9" class="WORD" space="no">
+          <t>Oblig</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.22.w.10" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="dirty.text.p.3.s.23">
+        <t>Rumenië 1894 abusiof genoteerd 77%, moest zgn 79%.</t>
+        <w xml:id="dirty.text.p.3.s.23.w.1" class="WORD">
+          <t>Rumenië</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.2" class="NUMBER">
+          <t>1894</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.3" class="WORD">
+          <t>abusiof</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.4" class="WORD">
+          <t>genoteerd</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.5" class="NUMBER" space="no">
+          <t>77</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.6" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.7" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.8" class="WORD">
+          <t>moest</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.9" class="ABBREVIATION-KNOWN">
+          <t>zgn</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.10" class="NUMBER" space="no">
+          <t>79</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.11" class="PUNCTUATION" space="no">
+          <t>%</t>
+        </w>
+        <w xml:id="dirty.text.p.3.s.23.w.12" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>
