@@ -73,21 +73,26 @@ typedef unordered_map<string,string> t_dictionary;
 typedef unordered_set<string> t_lexicon;
 typedef vector<pair<string,string>> t_rules;
 
-string applyRules(string source, t_rules & rules) {
-    UnicodeString target = UTF8ToUnicode(source);
+string applyRules( const string& orig_source, t_rules & rules) {
+    UnicodeString source = UTF8ToUnicode(orig_source);
+    UnicodeString target = source;
     for (t_rules::iterator iter = rules.begin(); iter != rules.end(); iter++) {
         UnicodeString pattern = UTF8ToUnicode( iter->first );
         UnicodeString replacement = UTF8ToUnicode( iter->second );
+	// cerr << "source =" << source << endl;
+	// cerr << "pattern=" << pattern << endl;
+	// cerr << "replace=" << replacement << endl;
         UErrorCode u_stat = U_ZERO_ERROR;
-        RegexMatcher * matcher = new RegexMatcher(pattern, UTF8ToUnicode(source), 0, u_stat);
+        RegexMatcher * matcher = new RegexMatcher(pattern, source, 0, u_stat);
         if ( U_FAILURE(u_stat) ){
           throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
         }
         target = matcher->replaceAll(replacement, u_stat);
+	//	cerr << "target =" << target << endl;
         if ( U_FAILURE(u_stat) ){
           throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
         }
-        source = UnicodeToUTF8(target); //reset source for next pattern
+        source = target; //reset source for next pattern
         delete matcher;
     }
     return UnicodeToUTF8(target);
@@ -133,6 +138,8 @@ bool translateDoc( Document *doc, t_dictionary & dictionary, const string & inpu
         }
         if (target[0] == 0) {
             cerr << "WARNING: Target starts with a null-byte! (source=" << source_flat << ",modernisationsource=" << modernisationsource << ") ... Transferring source unmodified!" << endl;
+	    cerr << TiCC::format_nonascii( target ) << endl;
+	    cerr << TiCC::format_nonascii( source_flat ) << endl;
             if (source_flat[0] == 0) {
                 cerr << "WARNING: Source starts with a null-byte too! Data is malformed! .. Ignoring this word!" << endl;
                 continue;
