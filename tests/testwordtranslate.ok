@@ -1,0 +1,26 @@
+missing input file or directory
+foliautils 0.7
+Usage: FoLiA-wordtranslate [options] file/dir
+Description: Simple word-by-word translator on the basis of a dictionary (or multiple)
+Options:
+	-d	 dictionary_file (format: $source\t$target\n)
+	-p	 lexicon_file (format: $word\n); monolingual lexicon of words that are preserved as-is
+	-r or --rules	 rules_file (format: $pattern\s$replacement\n)
+	--inputclass	 class (default: current)
+	--outputclass	 class (default: translated)
+	-e 'expr': specify the pattern matching expression all files should match with (default: *.folia.xml)
+	-t	 number_of_threads
+	-h or --help	 this message 
+	-V or --version	 show version 
+	-R	 search the dirs recursively (when appropriate)
+	-O	 output prefix
+Loading dictionary...
+Loading preserve lexicon...
+Loading rules...
+Processed :_aar004aard01_01.tok.folia.xml into translate/_aar004aard01_01.tok.translated.folia.xml still 1 files to go.
+WARNING: Target starts with a null-byte! (source=theologico-physico-metaphysicum,modernisationsource=rules) ... Transferring source unmodified!
+WARNING: Target starts with a null-byte! (source=onderwierum-en-westerdijkshorn,modernisationsource=rules) ... Transferring source unmodified!
+WARNING: Target starts with a null-byte! (source=hollandsch-hoogduitsch-israelitische,modernisationsource=rules) ... Transferring source unmodified!
+WARNING: Target starts with a null-byte! (source=arrondissements-kiescollegie,modernisationsource=rules) ... Transferring source unmodified!
+WARNING: Target starts with a null-byte! (source=kollumerland-en-nieuw-kruisland,modernisationsource=rules) ... Transferring source unmodified!
+done processsing directory 'data/trans'
