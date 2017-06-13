@@ -18,9 +18,9 @@
   along with this program; if not, see <http://www.gnu.org/licenses/>.
 
   For questions and suggestions, see:
-      https://github.com/LanguageMachines/foliautils/issues
+  https://github.com/LanguageMachines/foliautils/issues
   or send mail to:
-      lamasoftware (at ) science.ru.nl
+  lamasoftware (at ) science.ru.nl
 */
 
 /*
@@ -101,7 +101,7 @@ UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules
       throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
     }
     target = matcher->replaceAll(replacement, u_stat);
-	//	cerr << "target =" << target << endl;
+    //	cerr << "target =" << target << endl;
     if ( U_FAILURE(u_stat) ){
       throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
     }
@@ -118,86 +118,93 @@ bool translateDoc( Document *doc,
 		   const string& outputclass,
 		   const t_lexicon& preserve_lexicon,
 		   const t_rules& rules) {
-    bool changed = false;
-    vector<Word*> words = doc->doc()->select<Word>();
-    for (const auto& word : words) {
-        const UnicodeString source = word->text(inputclass);
-        UnicodeString source_flat = source;
-        source_flat = source_flat.toLower();
-        const bool recase = (source_flat != source);
-        string modernisationsource = "none";
-        UnicodeString target = source_flat;
-        //check if word is in dictionary
-	const auto& entry = dictionary.find(source_flat);
-        if ( entry != dictionary.end()) {
-	  if (outputclass != inputclass) {
-	    //TODO: check if outputclass is not already present
-	    target = entry->second;
-	    modernisationsource = "lexicon";
-	    changed = true;
-	  } else {
-	    //TODO (also remove check when implemented)
-	  }
-        } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source_flat) == preserve_lexicon.end())) {
-	  //word is NOT in preservation lexicon, apply rules:
-	  if (!rules.empty()) {
-	    target = applyRules(source_flat, rules);
-	    changed = (target != source_flat);
-	    if (changed) modernisationsource = "rules";
-	  }
-        }
-
-        if (recase) {
-            //recase
-            bool allcaps = true;
-            bool initialcap = false;
-            bool islower = false;
-            for (int i = 0; i < source.length(); i++) {
-	      islower = (source[i] == u_tolower(source[i]) );
-	      if ((i == 0) && (!islower)) initialcap = true;
-	      if (islower) allcaps = false;
-            }
-            if (allcaps || initialcap) {
-	      UnicodeString target_u = target;
-	      if (allcaps) {
-		target_u = target_u.toUpper();
-	      } else if (initialcap) {
-		target_u = target_u.replace(0,1, target_u.tempSubString(0,1).toUpper());
-	      }
-	      target = target_u;
-            }
-        }
-
-        KWargs args;
-        args["class"] = outputclass;
-        args["value"] = UnicodeToUTF8(target);
-        TextContent * translatedtext = new TextContent( args );
-        word->append(translatedtext);
-
-        Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
-        word->append(metric);
+  bool changed = false;
+  vector<Word*> words = doc->doc()->select<Word>();
+  for (const auto& word : words) {
+    const UnicodeString source = word->text(inputclass);
+    UnicodeString source_flat = source;
+    source_flat = source_flat.toLower();
+    const bool recase = (source_flat != source);
+    string modernisationsource = "none";
+    UnicodeString target = source_flat;
+    //check if word is in dictionary
+    const auto& entry = dictionary.find(source_flat);
+    if ( entry != dictionary.end()) {
+      if (outputclass != inputclass) {
+	//TODO: check if outputclass is not already present
+	target = entry->second;
+	modernisationsource = "lexicon";
+	changed = true;
+      }
+      else {
+	//TODO (also remove check when implemented)
+      }
+    } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source_flat) == preserve_lexicon.end())) {
+      //word is NOT in preservation lexicon, apply rules:
+      if (!rules.empty()) {
+	target = applyRules(source_flat, rules);
+	changed = (target != source_flat);
+	if (changed) modernisationsource = "rules";
+      }
     }
-    return changed;
+
+    if (recase) {
+      //recase
+      bool allcaps = true;
+      bool initialcap = false;
+      bool islower = false;
+      for (int i = 0; i < source.length(); i++) {
+	islower = (source[i] == u_tolower(source[i]) );
+	if ((i == 0) && (!islower)) {
+	  initialcap = true;
+	}
+	if (islower) {
+	  allcaps = false;
+	}
+      }
+      if (allcaps || initialcap) {
+	UnicodeString target_u = target;
+	if (allcaps) {
+	  target_u = target_u.toUpper();
+	}
+	else if (initialcap) {
+	  target_u = target_u.replace(0,1, target_u.tempSubString(0,1).toUpper());
+	}
+	target = target_u;
+      }
+    }
+
+    KWargs args;
+    args["class"] = outputclass;
+    args["value"] = UnicodeToUTF8(target);
+    TextContent * translatedtext = new TextContent( args );
+    word->append(translatedtext);
+
+    Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
+    word->append(metric);
+  }
+  return changed;
 }
 
 int loadDictionary(const string & filename, t_dictionary & dictionary) {
-    ifstream is(filename);
-    string line;
-    int added = 0;
-    int linenum = 0;
-    while (getline(is, line)) {
-      linenum++;
-      if ((!line.empty()) && (line[0] != '#')) {
-	vector<string> parts;
-	if (TiCC::split_at(line, parts, "\t") == 2) {
-	  added++;
-	  dictionary[UTF8ToUnicode(parts[0])] = UTF8ToUnicode(parts[1]);
-	} else {
-	  cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
-	}
+  ifstream is(filename);
+  string line;
+  int added = 0;
+  int linenum = 0;
+  while (getline(is, line)) {
+    linenum++;
+    if ((!line.empty()) && (line[0] != '#')) {
+      vector<string> parts;
+      if (TiCC::split_at(line, parts, "\t") == 2) {
+	added++;
+	dictionary[UTF8ToUnicode(parts[0])] = UTF8ToUnicode(parts[1]);
+      }
+      else {
+	cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
       }
     }
-    return added;
+  }
+  return added;
 }
 
 int loadLexicon(const string & filename, t_lexicon & lexicon) {
@@ -219,193 +226,200 @@ int loadLexicon(const string & filename, t_lexicon & lexicon) {
 
 int loadRules( const string& filename,
 	       t_rules& rules) {
-    ifstream is(filename);
-    string line;
-    int added = 0;
-    int linenum = 0;
-    while (getline(is, line)) {
-      linenum++;
-      vector<string> parts;
-      if ((!line.empty()) && (line[0] != '#')) {
-	if (TiCC::split_at(line, parts, " ") == 5) {
-	  // example expected line format: 222 0.996 aen => aan
-	  added++;
-	  rules.push_back(make_pair(UTF8ToUnicode(parts[2]),
-				    UTF8ToUnicode(parts[4])));
-	} else if (TiCC::split_at(line, parts, " ") == 2) {
-	  // simplified format: aen aan
-	  added++;
-	  rules.push_back(make_pair(UTF8ToUnicode(parts[0]),
-				    UTF8ToUnicode(parts[1])));
-	} else {
-	  cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
-	}
+  ifstream is(filename);
+  string line;
+  int added = 0;
+  int linenum = 0;
+  while (getline(is, line)) {
+    linenum++;
+    vector<string> parts;
+    if ((!line.empty()) && (line[0] != '#')) {
+      if (TiCC::split_at(line, parts, " ") == 5) {
+	// example expected line format: 222 0.996 aen => aan
+	added++;
+	rules.push_back(make_pair(UTF8ToUnicode(parts[2]),
+				  UTF8ToUnicode(parts[4])));
+      }
+      else if (TiCC::split_at(line, parts, " ") == 2) {
+	// simplified format: aen aan
+	added++;
+	rules.push_back(make_pair(UTF8ToUnicode(parts[0]),
+				  UTF8ToUnicode(parts[1])));
+      }
+      else {
+	cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;
       }
     }
-    return added;
+  }
+  return added;
 }
 
 int main( int argc, const char *argv[] ) {
-      TiCC::CL_Options opts( "d:e:p:r:vVt:O:Rh",
-                             "inputclass:,outputclass:,version,help" );
-      try {
-        opts.init( argc, argv );
-      }
-      catch( TiCC::OptionError& e ){
-        cerr << e.what() << endl;
-        usage(argv[0]);
-        exit( EXIT_FAILURE );
-      }
-      string progname = opts.prog_name();
-      string inputclass = "current";
-      string outputclass = "translated";
-      string expression = "*.folia.xml";
-      int numThreads = 1;
-      bool recursiveDirs = false;
-      string outPrefix;
-      string value;
-      t_dictionary dictionary;
-      t_rules rules;
-      t_lexicon preserve_lexicon;
+  TiCC::CL_Options opts( "d:e:p:r:vVt:O:Rh",
+			 "inputclass:,outputclass:,version,help" );
+  try {
+    opts.init( argc, argv );
+  }
+  catch( TiCC::OptionError& e ){
+    cerr << e.what() << endl;
+    usage(argv[0]);
+    exit( EXIT_FAILURE );
+  }
+  string progname = opts.prog_name();
+  string inputclass = "current";
+  string outputclass = "translated";
+  string expression = "*.folia.xml";
+  int numThreads = 1;
+  bool recursiveDirs = false;
+  string outPrefix;
+  string value;
+  t_dictionary dictionary;
+  t_rules rules;
+  t_lexicon preserve_lexicon;
 
-      if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
-        usage(progname);
-        exit(EXIT_SUCCESS);
-      }
-      if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
-        cerr << PACKAGE_STRING << endl;
-        exit(EXIT_SUCCESS);
-      }
-      recursiveDirs = opts.extract( 'R' );
-      opts.extract( 'O', outPrefix );
+  if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
+    usage(progname);
+    exit(EXIT_SUCCESS);
+  }
+  if ( opts.extract( 'V' ) || opts.extract( "version" ) ){
+    cerr << PACKAGE_STRING << endl;
+    exit(EXIT_SUCCESS);
+  }
+  recursiveDirs = opts.extract( 'R' );
+  opts.extract( 'O', outPrefix );
 
-      vector<string> fileNames = opts.getMassOpts();
-      if ( fileNames.size() == 0 ){
-        cerr << "missing input file or directory" << endl;
-        exit( EXIT_FAILURE );
-      }
-      else if ( fileNames.size() > 1 ){
-        cerr << "currently only 1 file or directory is supported" << endl;
-        exit( EXIT_FAILURE );
-      }
+  vector<string> fileNames = opts.getMassOpts();
+  if ( fileNames.size() == 0 ){
+    cerr << "missing input file or directory" << endl;
+    exit( EXIT_FAILURE );
+  }
+  else if ( fileNames.size() > 1 ){
+    cerr << "currently only 1 file or directory is supported" << endl;
+    exit( EXIT_FAILURE );
+  }
 
-      if ( !outPrefix.empty() ){
-        if ( outPrefix[outPrefix.length()-1] != '/' ) outPrefix += "/";
-        if ( !TiCC::isDir( outPrefix ) ){
-          if ( !TiCC::createPath( outPrefix ) ){
-            cerr << "unable to find or create: '" << outPrefix << "'" << endl;
-            exit( EXIT_FAILURE );
-          }
-        }
+  if ( !outPrefix.empty() ){
+    if ( outPrefix[outPrefix.length()-1] != '/' ) outPrefix += "/";
+    if ( !TiCC::isDir( outPrefix ) ){
+      if ( !TiCC::createPath( outPrefix ) ){
+	cerr << "unable to find or create: '" << outPrefix << "'" << endl;
+	exit( EXIT_FAILURE );
       }
-      opts.extract( "inputclass", inputclass );
-      opts.extract( "outputclass", outputclass );
-      opts.extract( "expr", expression );
+    }
+  }
+  opts.extract( "inputclass", inputclass );
+  opts.extract( "outputclass", outputclass );
+  opts.extract( "expr", expression );
 
-      if (inputclass == outputclass) {
-          cerr << "Inputclass and outputclass are the same, this is not implemented yet..." << endl;
-          exit( EXIT_FAILURE );
-      }
+  if (inputclass == outputclass) {
+    cerr << "Inputclass and outputclass are the same, this is not implemented yet..." << endl;
+    exit( EXIT_FAILURE );
+  }
 
-      string dictionaryfile;
-      if ( opts.extract( 'd', dictionaryfile) ){
-	cerr << "Loading dictionary... ";
-	int cnt = loadDictionary(dictionaryfile, dictionary);
-	cerr << cnt << " entries" << endl;
-      } else {
-          cerr << "No dictionary specified" << endl;
-          exit( EXIT_FAILURE );
-      }
+  string dictionaryfile;
+  if ( opts.extract( 'd', dictionaryfile) ){
+    cerr << "Loading dictionary... ";
+    int cnt = loadDictionary(dictionaryfile, dictionary);
+    cerr << cnt << " entries" << endl;
+  }
+  else {
+    cerr << "No dictionary specified" << endl;
+    exit( EXIT_FAILURE );
+  }
 
-      string preservelexiconfile;
-      if ( opts.extract( 'p', preservelexiconfile) ){
-	cerr << "Loading preserve lexicon... ";
-          int cnt = loadLexicon(preservelexiconfile, preserve_lexicon);
-	  cerr << cnt << " entries" << endl;
-      }
+  string preservelexiconfile;
+  if ( opts.extract( 'p', preservelexiconfile) ){
+    cerr << "Loading preserve lexicon... ";
+    int cnt = loadLexicon(preservelexiconfile, preserve_lexicon);
+    cerr << cnt << " entries" << endl;
+  }
 
-      string rulefile;
-      if ( opts.extract( 'r', rulefile) ){
-	cerr << "Loading rules... ";
-	int cnt = loadRules(rulefile, rules);
-	cerr << cnt << " entries" << endl;
-      }
+  string rulefile;
+  if ( opts.extract( 'r', rulefile) ){
+    cerr << "Loading rules... ";
+    int cnt = loadRules(rulefile, rules);
+    cerr << cnt << " entries" << endl;
+  }
 
 #ifdef HAVE_OPENMP
-      omp_set_num_threads( numThreads );
+  omp_set_num_threads( numThreads );
 #else
-      if ( numThreads != 1 ) {
-          cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-          exit( EXIT_FAILURE );
-      }
+  if ( numThreads != 1 ) {
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit( EXIT_FAILURE );
+  }
 #endif
 
-      string name = fileNames[0];
-      fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
-      size_t filecount = fileNames.size();
-      if ( filecount == 0 ){
-        cerr << "no matching files found" << endl;
-        exit(EXIT_SUCCESS);
-      }
-      bool doDir = ( filecount > 1 );
+  string name = fileNames[0];
+  fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
+  size_t filecount = fileNames.size();
+  if ( filecount == 0 ){
+    cerr << "no matching files found" << endl;
+    exit(EXIT_SUCCESS);
+  }
+  bool doDir = ( filecount > 1 );
 
 #pragma omp parallel for shared(fileNames,filecount) schedule(dynamic,1)
-     for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-          string docName = fileNames[fn];
-          Document *doc = 0;
-          try {
-              doc = new Document( "file='"+ docName + "',mode='nochecktext'" ); //TODO: remove nochecktext?
-          }
-          catch ( exception& e ){
+  for ( size_t fn=0; fn < fileNames.size(); ++fn ){
+    string docName = fileNames[fn];
+    Document *doc = 0;
+    try {
+      doc = new Document( "file='"+ docName + "',mode='nochecktext'" ); //TODO: remove nochecktext?
+    }
+    catch ( exception& e ){
 #pragma omp critical
-            {
-              cerr << "failed to load document '" << docName << "'" << endl;
-              cerr << "reason: " << e.what() << endl;
-            }
-            continue;
-          }
-          doc->declare( folia::AnnotationType::METRIC, "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/nederlab-metrics.foliaset.ttl", "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
-          string outName = outPrefix;
-          string::size_type pos = docName.rfind("/");
-          if ( pos != string::npos ){
-              docName = docName.substr( pos+1 );
-          }
-          pos = docName.rfind(".folia");
-          if ( pos != string::npos ){
-              outName += docName.substr(0,pos) + ".translated" + docName.substr(pos);
-          } else {
-              pos = docName.rfind(".");
-              if ( pos != string::npos ){
-                  outName += docName.substr(0,pos) + ".translated" + docName.substr(pos);
-              } else {
-                  outName += docName + ".translated";
-              }
-          }
-          if ( TiCC::isFile( outName ) ){
+      {
+	cerr << "failed to load document '" << docName << "'" << endl;
+	cerr << "reason: " << e.what() << endl;
+      }
+      continue;
+    }
+    doc->declare( folia::AnnotationType::METRIC, "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/nederlab-metrics.foliaset.ttl", "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
+    string outName = outPrefix;
+    string::size_type pos = docName.rfind("/");
+    if ( pos != string::npos ){
+      docName = docName.substr( pos+1 );
+    }
+    pos = docName.rfind(".folia");
+    if ( pos != string::npos ){
+      outName += docName.substr(0,pos) + ".translated" + docName.substr(pos);
+    }
+    else {
+      pos = docName.rfind(".");
+      if ( pos != string::npos ){
+	outName += docName.substr(0,pos) + ".translated" + docName.substr(pos);
+      }
+      else {
+	outName += docName + ".translated";
+      }
+    }
+    if ( TiCC::isFile( outName ) ){
 #pragma omp critical
-                cerr << "skipping already done file: " << outName << endl;
-          } else {
-                if ( !TiCC::createPath( outName ) ){
+      cerr << "skipping already done file: " << outName << endl;
+    }
+    else {
+      if ( !TiCC::createPath( outName ) ){
 #pragma omp critical
-                  cerr << "unable to create output file! " << outName << endl;
-                  exit(EXIT_FAILURE);
-                }
+	cerr << "unable to create output file! " << outName << endl;
+	exit(EXIT_FAILURE);
+      }
 
-                translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules);
-                doc->save(outName);
-          }
+      translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules);
+      doc->save(outName);
+    }
 #pragma omp critical
-          {
-            if ( filecount > 1 ){
-              cout << "Processed :" << docName << " into " << outName << " still " << --filecount << " files to go." << endl;
-            }
-          }
-          delete doc;
-       }
+    {
+      if ( filecount > 1 ){
+	cout << "Processed :" << docName << " into " << outName << " still " << --filecount << " files to go." << endl;
+      }
+    }
+    delete doc;
+  }
 
-     if ( doDir ){
-         cout << "done processsing directory '" << name << "'" << endl;
-     } else {
-         cout << "finished " << name << endl;
-     }
+  if ( doDir ){
+    cout << "done processsing directory '" << name << "'" << endl;
+  }
+  else {
+    cout << "finished " << name << endl;
+  }
 }
