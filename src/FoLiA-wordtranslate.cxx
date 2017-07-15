@@ -126,14 +126,14 @@ void lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) 
             KWargs args;
             args["class"] = UnicodeToUTF8(lemma_id->second);
             args["set"] = INT_LEMMAIDSET;
-            LemmaAnnotation * lemma = new LemmaAnnotation( args );
+            LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
             word->append(lemma);
         }
         {
             KWargs args;
             args["class"] = UnicodeToUTF8(target);
             args["set"] = INT_LEMMATEXTSET;
-            LemmaAnnotation * lemma = new LemmaAnnotation( args );
+            LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
             word->append(lemma);
         }
     }
@@ -164,7 +164,6 @@ bool translateDoc( Document *doc,
       if (outputclass != inputclass) {
 	//TODO: check if outputclass is not already present
 	target = entry->second;
-        UnicodeString target_flat = target.toLower();
 	modernisationsource = "lexicon";
 	changed = true;
         lemmatiser(word, target, lemmamap);
@@ -172,14 +171,18 @@ bool translateDoc( Document *doc,
       else {
 	//TODO (also remove check when implemented)
       }
-    } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source_flat) == preserve_lexicon.end())) {
+    } else if ((!preserve_lexicon.empty()) && (preserve_lexicon.find(source_flat) != preserve_lexicon.end())) {
+      //word is in preservation lexicon
+        modernisationsource = "preservationlexicon";
+        lemmatiser(word, source_flat, lemmamap);
+    } else {
       //word is NOT in preservation lexicon
       if (histentry != histdictionary.end()) {
           //word is in INT historical lexicon
           if (outputclass != inputclass) {
             target = histentry->second;
             modernisationsource = "inthistlexicon";
-            changed = (target.toLower() != source_flat);
+            changed = true;
             lemmatiser(word, target, lemmamap);
           }
      } else if (!rules.empty()) {
@@ -270,9 +273,8 @@ int loadHistoricalLexicon(const string & filename, t_histdictionary & dictionary
             const UnicodeString lemma_id = UTF8ToUnicode(parts[1]) + UTF8ToUnicode(":") + UTF8ToUnicode(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
             lemmamap[lemma] = lemma_id;
         }
-      }
-      else {
-	cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
+      } else {
+	cerr << "WARNING: loadHistoricalLexicon: error in line " << linenum << ": " << line << endl;
       }
     }
   }
