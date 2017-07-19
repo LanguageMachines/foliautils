@@ -5,6 +5,7 @@ Description: Simple word-by-word translator on the basis of a dictionary (or mul
 Options:
 	-d	 dictionary_file (format: $source\t$target\n)
 	-p	 lexicon_file (format: $word\n); monolingual lexicon of words that are preserved as-is
+	-H	 dictionary_file (format: INT historical lexicon dump)
 	-r or --rules	 rules_file (format: $pattern\s$replacement\n)
 	--inputclass	 class (default: current)
 	--outputclass	 class (default: translated)
@@ -19,24 +20,3 @@ Loading preserve lexicon... 18532 entries
 Loading rules... 35 entries
 Processed :_aar004aard01_01.tok.folia.xml into translate/_aar004aard01_01.tok.translated.folia.xml still 1 files to go.
 done processsing directory 'data/trans'
-779691c779691
-<             <t class="contemporary">theologico-phijsico-metaphijsicum</t>
----
->             <t class="contemporary">theologico-physico-metaphysicum</t>
-894903c894903
-<             <metric class="modernisationsource" value="none"/>
----
->             <metric class="modernisationsource" value="rules"/>
-1168160c1168160
-<             <t class="contemporary">Hollandsch-hoogduitsch-israalitische</t>
----
->             <t class="contemporary">Hollandsch-hoogduitsch-israelitische</t>
-1170354c1170354
-<             <metric class="modernisationsource" value="none"/>
----
->             <metric class="modernisationsource" value="rules"/>
-1230478c1230478
-<             <metric class="modernisationsource" value="none"/>
----
->             <metric class="modernisationsource" value="rules"/>
-translate/aa__001biog01_01.tok.translated.folia.xml and aa__001biog01_01.tok.translated.folia.xml.ok are different
