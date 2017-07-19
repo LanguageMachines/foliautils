@@ -50,6 +50,8 @@
 using namespace	std;
 using namespace	folia;
 
+const string INT_LEMMAIDSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmaid_withcompounds.foliaset.ttl";
+const string INT_LEMMATEXTSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl";
 
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
@@ -57,6 +59,7 @@ void usage( const string& name ){
   cerr << "Options:" << endl;
   cerr << "\t-d\t dictionary_file (format: $source\\t$target\\n)" << endl;
   cerr << "\t-p\t lexicon_file (format: $word\\n); monolingual lexicon of words that are preserved as-is" << endl;
+  cerr << "\t-H\t dictionary_file (format: INT historical lexicon dump)" << endl;
   cerr << "\t-r or --rules\t rules_file (format: $pattern\\s$replacement\\n)" << endl;
   cerr << "\t--inputclass\t class (default: current)" << endl;
   cerr << "\t--outputclass\t class (default: translated)" << endl;
@@ -82,9 +85,12 @@ namespace std
   };
 }
 
+
 typedef unordered_map<UnicodeString,UnicodeString> t_dictionary;
 typedef unordered_set<UnicodeString> t_lexicon;
 typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
+typedef unordered_map<UnicodeString,UnicodeString> t_histdictionary; //dictionary from historical lexicon
+typedef unordered_map<UnicodeString,UnicodeString> t_lemmamap; //lemma => src:lemma_id
 
 UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
   UnicodeString source = orig_source;
@@ -111,13 +117,37 @@ UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules
   return target;
 }
 
+void lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) {
+    if (lemmamap.empty()) return;
+    const UnicodeString target_flat = target.toLower();
+    const auto& lemma_id = lemmamap.find(target_flat);
+    if (lemma_id != lemmamap.end()) {
+        {
+            KWargs args;
+            args["class"] = UnicodeToUTF8(lemma_id->second);
+            args["set"] = INT_LEMMAIDSET;
+            LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
+            word->append(lemma);
+        }
+        {
+            KWargs args;
+            args["class"] = UnicodeToUTF8(target);
+            args["set"] = INT_LEMMATEXTSET;
+            LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
+            word->append(lemma);
+        }
+    }
+}
+
 
 bool translateDoc( Document *doc,
 		   const t_dictionary& dictionary,
 		   const string& inputclass,
 		   const string& outputclass,
 		   const t_lexicon& preserve_lexicon,
-		   const t_rules& rules) {
+		   const t_rules& rules,
+                   const t_histdictionary& histdictionary,
+                   const t_lemmamap& lemmamap) {
   bool changed = false;
   vector<Word*> words = doc->doc()->select<Word>();
   for (const auto& word : words) {
@@ -129,24 +159,42 @@ bool translateDoc( Document *doc,
     UnicodeString target = source_flat;
     //check if word is in dictionary
     const auto& entry = dictionary.find(source_flat);
+    const auto& histentry = histdictionary.find(source_flat);
     if ( entry != dictionary.end()) {
       if (outputclass != inputclass) {
 	//TODO: check if outputclass is not already present
 	target = entry->second;
 	modernisationsource = "lexicon";
 	changed = true;
+        lemmatiser(word, target, lemmamap);
       }
       else {
 	//TODO (also remove check when implemented)
       }
-    } else if ((preserve_lexicon.empty()) || (preserve_lexicon.find(source_flat) == preserve_lexicon.end())) {
-      //word is NOT in preservation lexicon, apply rules:
-      if (!rules.empty()) {
+    } else if ((!preserve_lexicon.empty()) && (preserve_lexicon.find(source_flat) != preserve_lexicon.end())) {
+      //word is in preservation lexicon
+        modernisationsource = "preservationlexicon";
+        lemmatiser(word, source_flat, lemmamap);
+    } else {
+      //word is NOT in preservation lexicon
+      if (histentry != histdictionary.end()) {
+          //word is in INT historical lexicon
+          if (outputclass != inputclass) {
+            target = histentry->second;
+            modernisationsource = "inthistlexicon";
+            changed = true;
+            lemmatiser(word, target, lemmamap);
+          }
+     } else if (!rules.empty()) {
+       //apply rules:
 	target = applyRules(source_flat, rules);
 	changed = (target != source_flat);
 	if (changed) modernisationsource = "rules";
+        lemmatiser(word, target, lemmamap);
       }
     }
+
+
 
     if (recase) {
       //recase
@@ -207,6 +255,32 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
   return added;
 }
 
+int loadHistoricalLexicon(const string & filename, t_histdictionary & dictionary, t_lemmamap & lemmamap) {
+  //Load INT historical lexicon dump
+  ifstream is(filename);
+  string line;
+  int added = 0;
+  int linenum = 0;
+  while (getline(is, line)) {
+    linenum++;
+    if ((!line.empty()) && (line[0] != '#')) {
+      vector<string> parts;
+      if (TiCC::split_at(line, parts, "\t") == 9) {
+        if (parts[0] != "multiple") { //ignore many=>one
+            added++;
+            const UnicodeString lemma = UTF8ToUnicode(parts[4]).toLower();
+            dictionary[UTF8ToUnicode(parts[6])] = lemma;
+            const UnicodeString lemma_id = UTF8ToUnicode(parts[1]) + UTF8ToUnicode(":") + UTF8ToUnicode(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
+            lemmamap[lemma] = lemma_id;
+        }
+      } else {
+	cerr << "WARNING: loadHistoricalLexicon: error in line " << linenum << ": " << line << endl;
+      }
+    }
+  }
+  return added;
+}
+
 int loadLexicon(const string & filename, t_lexicon & lexicon) {
   ifstream is(filename);
   string line;
@@ -255,7 +329,7 @@ int loadRules( const string& filename,
 }
 
 int main( int argc, const char *argv[] ) {
-  TiCC::CL_Options opts( "d:e:p:r:vVt:O:Rh",
+  TiCC::CL_Options opts( "d:e:p:r:vVt:O:RhH:",
 			 "inputclass:,outputclass:,version,help" );
   try {
     opts.init( argc, argv );
@@ -274,6 +348,8 @@ int main( int argc, const char *argv[] ) {
   string outPrefix;
   string value;
   t_dictionary dictionary;
+  t_histdictionary histdictionary; //wordform => lemma   from INT historical lexicon
+  t_lemmamap lemmamap; // lemma => lemma_id    from INT historical lexicon
   t_rules rules;
   t_lexicon preserve_lexicon;
 
@@ -327,8 +403,15 @@ int main( int argc, const char *argv[] ) {
     exit( EXIT_FAILURE );
   }
 
+  string inthistlexiconfile;
+  if ( opts.extract( 'H', inthistlexiconfile) ){
+    cerr << "Loading INT historical lexicon... ";
+    int cnt = loadHistoricalLexicon(inthistlexiconfile, histdictionary, lemmamap);
+    cerr << cnt << " entries" << endl;
+  }
+
   string preservelexiconfile;
-  if ( opts.extract( 'p', preservelexiconfile) ){
+  if ( opts.extract( 'p', preservelexiconfile)) {
     cerr << "Loading preserve lexicon... ";
     int cnt = loadLexicon(preservelexiconfile, preserve_lexicon);
     cerr << cnt << " entries" << endl;
@@ -375,6 +458,10 @@ int main( int argc, const char *argv[] ) {
       continue;
     }
     doc->declare( folia::AnnotationType::METRIC, "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/nederlab-metrics.foliaset.ttl", "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
+    if (!lemmamap.empty()) {
+        doc->declare( folia::AnnotationType::LEMMA, INT_LEMMAIDSET, "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
+        doc->declare( folia::AnnotationType::LEMMA, INT_LEMMATEXTSET, "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
+    }
     string outName = outPrefix;
     string::size_type pos = docName.rfind("/");
     if ( pos != string::npos ){
@@ -404,7 +491,7 @@ int main( int argc, const char *argv[] ) {
 	exit(EXIT_FAILURE);
       }
 
-      translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules);
+      translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules, histdictionary, lemmamap);
       doc->save(outName);
     }
 #pragma omp critical
