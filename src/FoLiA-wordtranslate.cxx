@@ -132,7 +132,9 @@ UnicodeString lemmatiser(Word * word, UnicodeString target , const t_lemmamap &l
         }
         {
             KWargs args;
-            args["class"] = UnicodeToUTF8(target);
+            UnicodeString lemmatextclass = target;
+            lemmatextclass = lemmatextclass.findAndReplace(" ", "_"); //use underscores instead of spaces for multiword lemmas (does not affect ⊕!)
+            args["class"] = UnicodeToUTF8(lemmatextclass);
             args["set"] = INT_LEMMATEXTSET;
             LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
             word->append(lemma);
