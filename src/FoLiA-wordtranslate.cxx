@@ -52,6 +52,7 @@ using namespace	folia;
 
 const string INT_LEMMAIDSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmaid_withcompounds.foliaset.ttl";
 const string INT_LEMMATEXTSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl";
+const UnicodeString NBSP = UTF8ToUnicode(" ");//THIS IS NOT A NORMAL SPACE BUT A narrow no-break space (0x202F), this is a fairly ugly patch that will be propagated to the end-result because Frog can't deal with spaces in tokens at this stage
 
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
@@ -117,9 +118,9 @@ UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules
   return target;
 }
 
-void lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) {
-    if (lemmamap.empty()) return;
-    const UnicodeString target_flat = target.toLower();
+UnicodeString lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) {
+    UnicodeString target_flat = target.toLower();
+    if (lemmamap.empty()) return target_flat;
     const auto& lemma_id = lemmamap.find(target_flat);
     if (lemma_id != lemmamap.end()) {
         {
@@ -137,6 +138,19 @@ void lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) 
             word->append(lemma);
         }
     }
+
+    //return a version of target that could be suited for modernisation
+    target_flat = target_flat.findAndReplace(UTF8ToUnicode("⊕"), NBSP);
+    //we can't deal with pipes for multiple options, just choose the first one:
+    int pipeindex;
+    do {
+        pipeindex = target_flat.indexOf("|");
+        if (pipeindex != -1) {
+            const int end = target_flat.indexOf(NBSP, pipeindex);
+            target_flat = target_flat.replace(pipeindex, end-pipeindex,UTF8ToUnicode("")); //delete 2nd option
+        }
+    } while (pipeindex != -1);
+    return target_flat; //return variant more or less suitable for modernisation (whitespaces will be handled later still)
 }
 
 
@@ -183,7 +197,7 @@ bool translateDoc( Document *doc,
             target = histentry->second;
             modernisationsource = "inthistlexicon";
             changed = true;
-            lemmatiser(word, target, lemmamap);
+            target = lemmatiser(word, target, lemmamap);
           }
      } else if (!rules.empty()) {
        //apply rules:
@@ -194,6 +208,9 @@ bool translateDoc( Document *doc,
       }
     }
 
+    //Frog can't deal with spaces in the target, replace those with a narrow non-breaking space
+    //this is a bit of an ugly hack that will propagate to the final FoLiA
+    if (changed) target = target.findAndReplace(" ", NBSP);
 
 
     if (recase) {
