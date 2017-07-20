@@ -168,6 +168,7 @@ bool translateDoc( Document *doc,
   vector<Word*> words = doc->doc()->select<Word>();
   for (const auto& word : words) {
     const UnicodeString source = word->text(inputclass);
+    cerr << "Processing word " << word->id() << ": " << UnicodeToUTF8(source);
     UnicodeString source_flat = source;
     source_flat = source_flat.toLower();
     const bool recase = (source_flat != source);
@@ -213,6 +214,7 @@ bool translateDoc( Document *doc,
     //Frog can't deal with spaces in the target, replace those with a narrow non-breaking space
     //this is a bit of an ugly hack that will propagate to the final FoLiA
     if (changed) target = target.findAndReplace(" ", NBSP);
+    cerr << " -> " << UnicodeToUTF8(target) << "[" << modernisationsource << "]" << endl;
 
 
     if (recase) {
