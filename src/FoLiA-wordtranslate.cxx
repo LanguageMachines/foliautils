@@ -145,11 +145,16 @@ UnicodeString lemmatiser(Word * word, UnicodeString target , const t_lemmamap &l
     target_flat = target_flat.findAndReplace(UTF8ToUnicode("⊕"), NBSP);
     //we can't deal with pipes for multiple options, just choose the first one:
     int pipeindex;
+    const UnicodeString emptystr = "";
     do {
         pipeindex = target_flat.indexOf("|");
         if (pipeindex != -1) {
             const int end = target_flat.indexOf(NBSP, pipeindex);
-            target_flat = target_flat.replace(pipeindex, end-pipeindex,UTF8ToUnicode("")); //delete 2nd option
+            if (end != -1) {
+                target_flat = target_flat.remove(pipeindex, end-pipeindex); //delete 2nd option
+            } else {
+                target_flat = target_flat.remove(pipeindex, target_flat.length()-pipeindex); //delete 2nd option
+            }
         }
     } while (pipeindex != -1);
     return target_flat; //return variant more or less suitable for modernisation (whitespaces will be handled later still)
@@ -214,7 +219,7 @@ bool translateDoc( Document *doc,
     //Frog can't deal with spaces in the target, replace those with a narrow non-breaking space
     //this is a bit of an ugly hack that will propagate to the final FoLiA
     if (changed) target = target.findAndReplace(" ", NBSP);
-    cerr << " -> " << UnicodeToUTF8(target) << "[" << modernisationsource << "]" << endl;
+    cerr << " -> " << UnicodeToUTF8(target) << " [" << modernisationsource << "]" << endl;
 
 
     if (recase) {
