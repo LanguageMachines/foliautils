@@ -90,8 +90,8 @@ namespace std
 typedef unordered_map<UnicodeString,UnicodeString> t_dictionary;
 typedef unordered_set<UnicodeString> t_lexicon;
 typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
-typedef unordered_map<UnicodeString,UnicodeString> t_histdictionary; //dictionary from historical lexicon
-typedef unordered_map<UnicodeString,UnicodeString> t_lemmamap; //lemma => src:lemma_id
+typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_histdictionary; //dictionary from historical lexicon,    form => lemma => freq
+typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_lemmamap; //lemma => src:lemma_id => freq
 
 UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
   UnicodeString source = orig_source;
@@ -121,11 +121,20 @@ UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules
 UnicodeString lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) {
     UnicodeString target_flat = target.toLower();
     if (lemmamap.empty()) return target_flat;
-    const auto& lemma_id = lemmamap.find(target_flat);
-    if (lemma_id != lemmamap.end()) {
+    const auto& lemmamap_iter = lemmamap.find(target_flat);
+    if (lemmamap_iter != lemmamap.end()) {
+        //resolve ambiguity by majority vote: just select the most frequent lemma->id pair (lexicon contains multiple occurrences)
+        int max = 0;
+        UnicodeString lemma_id;
+        for (unordered_map<UnicodeString,int>::const_iterator iter2 = lemmamap_iter->second.begin(); iter2 != lemmamap_iter->second.end(); iter2++) {
+            if (iter2->second >= max) {
+                max = iter2->second;
+                lemma_id = iter2->first;
+            }
+        }
         {
             KWargs args;
-            args["class"] = UnicodeToUTF8(lemma_id->second);
+            args["class"] = UnicodeToUTF8(lemma_id);
             args["set"] = INT_LEMMAIDSET;
             LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
             word->append(lemma);
@@ -202,7 +211,15 @@ bool translateDoc( Document *doc,
       if (histentry != histdictionary.end()) {
           //word is in INT historical lexicon
           if (outputclass != inputclass) {
-            target = histentry->second;
+            //find the most frequent lemma for this word form (resolves ambiguity harshly)
+            int max = 0;
+            UnicodeString target;
+            for (unordered_map<UnicodeString,int>::const_iterator iter2 = histentry->second.begin(); iter2 != histentry->second.end(); iter2++) {
+                if (iter2->second >= max) {
+                    max = iter2->second;
+                    target = iter2->first;
+                }
+            }
             modernisationsource = "inthistlexicon";
             changed = true;
             target = lemmatiser(word, target, lemmamap);
@@ -295,9 +312,9 @@ int loadHistoricalLexicon(const string & filename, t_histdictionary & dictionary
         if (parts[0] != "multiple") { //ignore many=>one
             added++;
             const UnicodeString lemma = UTF8ToUnicode(parts[4]).toLower();
-            dictionary[UTF8ToUnicode(parts[6])] = lemma;
+            dictionary[UTF8ToUnicode(parts[6])][lemma]++;
             const UnicodeString lemma_id = UTF8ToUnicode(parts[1]) + UTF8ToUnicode(":") + UTF8ToUnicode(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
-            lemmamap[lemma] = lemma_id;
+            lemmamap[lemma][lemma_id]++;
         }
       } else {
 	cerr << "WARNING: loadHistoricalLexicon: error in line " << linenum << ": " << line << endl;
