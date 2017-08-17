@@ -213,7 +213,6 @@ bool translateDoc( Document *doc,
           if (outputclass != inputclass) {
             //find the most frequent lemma for this word form (resolves ambiguity harshly)
             int max = 0;
-            UnicodeString target;
             for (unordered_map<UnicodeString,int>::const_iterator iter2 = histentry->second.begin(); iter2 != histentry->second.end(); iter2++) {
                 if (iter2->second >= max) {
                     max = iter2->second;
