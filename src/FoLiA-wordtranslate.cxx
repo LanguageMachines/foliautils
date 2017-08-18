@@ -405,6 +405,9 @@ int main( int argc, const char *argv[] ) {
   }
   recursiveDirs = opts.extract( 'R' );
   opts.extract( 'O', outPrefix );
+  if ( opts.extract( 't', value ) ){
+    numThreads = TiCC::stringTo<int>( value );
+  }
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
