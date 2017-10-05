@@ -181,7 +181,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
   return 0;
 }
 
-void addStr( folia::Paragraph *par, string& txt,
+void addStr( folia::Paragraph *par, UnicodeString& txt,
 	     const xmlNode *pnt, const string& altoFile,
 	     int cnt = 1 ){
   folia::KWargs atts = folia::getAttributes( pnt );
@@ -203,8 +203,9 @@ void addStr( folia::Paragraph *par, string& txt,
     args["id"] = arg;
     folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
-    s->settext( content , txt.length(), classname );
-    txt += " " + content;
+    UnicodeString uc = folia::UTF8ToUnicode( content );
+    s->setutext( uc, txt.length(), classname );
+    txt += " " + uc;
     if ( !altoFile.empty() ){
       // direct mode has no altofile
       folia::Alignment *h
@@ -229,8 +230,9 @@ void addStr( folia::Paragraph *par, string& txt,
 
       folia::String *s = new folia::String( args, par->doc() );
       par->append( s );
-      s->settext( parts[i], txt.length(), classname );
-      txt += " " + parts[i];
+      UnicodeString uc = folia::UTF8ToUnicode( parts[i] );
+      s->setutext( uc, txt.length(), classname );
+      txt += " " + uc;
       if ( !altoFile.empty() ){
 	folia::Alignment *h
 	  = new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
@@ -274,7 +276,7 @@ void createFile( folia::FoliaElement *text,
     folia::Paragraph *p =
       new folia::Paragraph( args, text->doc() );
     text->append( p );
-    string ocr_text;
+    UnicodeString ocr_text;
     list<xmlNode*> v =
       TiCC::FindNodes( root,
 			"//*[local-name()='TextBlock' and @ID='"
@@ -308,9 +310,11 @@ void createFile( folia::FoliaElement *text,
 		  args["class"] = classname;
 		  folia::String *s = new folia::String( args, text->doc() );
 		  p->append( s );
-		  s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
-			      classname );
-		  ocr_text += " " + atts["SUBS_CONTENT"];
+		  UnicodeString subc = folia::UTF8ToUnicode(atts["SUBS_CONTENT"]);
+		  s->setutext( subc,
+			       ocr_text.length(),
+			       classname );
+		  ocr_text += " " + subc;
 		  if ( !altoFile.empty() ){
 		    folia::Alignment *h =
 		      new folia::Alignment( folia::getArgs( "href='" + altoFile + "'" ) );
@@ -369,8 +373,8 @@ void createFile( folia::FoliaElement *text,
     else {
       cerr << "Confusing! " << endl;
     }
-    if ( !ocr_text.empty() )
-      p->settext( ocr_text.substr(1), classname );
+    if ( !ocr_text.isEmpty() )
+      p->setutext( ocr_text.tempSubString(1), classname );
   }
 }
 
@@ -971,7 +975,7 @@ void solveBook( const string& altoFile, const string& id,
 	new folia::Paragraph( folia::getArgs("id='" + text->id() + ".p." + id + "'" ),
 			      text->doc() );
       text->append( p );
-      string ocr_text;
+      UnicodeString ocr_text;
       list<xmlNode*> v =
 	TiCC::FindNodes( root,
 			 "//*[local-name()='TextBlock' and @ID='"
@@ -997,9 +1001,11 @@ void solveBook( const string& altoFile, const string& id,
 		    args["class"] = classname;
 		    folia::String *s = new folia::String( args, text->doc() );
 		    p->append( s );
-		    s->settext( atts["SUBS_CONTENT"], ocr_text.length(),
-				classname );
-		    ocr_text += " " + atts["SUBS_CONTENT"];
+		    UnicodeString subc = folia::UTF8ToUnicode( atts["SUBS_CONTENT"] );
+		    s->setutext( subc,
+				 ocr_text.length(),
+				 classname );
+		    ocr_text += " " + subc;
 		    folia::Alignment *h =
 		      new folia::Alignment( folia::getArgs("href='" + urn + "'" ));
 		    s->append( h );
@@ -1056,8 +1062,8 @@ void solveBook( const string& altoFile, const string& id,
       else {
 	cerr << "Confusing! " << endl;
       }
-      if ( !ocr_text.empty() )
-	p->settext( ocr_text.substr(1), classname );
+      if ( !ocr_text.isEmpty() )
+	p->setutext( ocr_text.tempSubString(1), classname );
     }
     zipType type = inputType;
     string outName = outDir + docid + ".folia.xml";
