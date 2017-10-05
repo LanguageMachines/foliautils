@@ -11,7 +11,6 @@ $my_bin/FoLiA-clean --help >> testclean.out 2>&1
 
 $my_bin/FoLiA-clean -O clean --cleanannoset=lang data/dirty.folia.xml >> testclean.out 2>&1
 ./foliadiff.sh clean/data/dirty.cleaned.folia.xml cleaned_lang.ok  >> testclean.out 2>&1
-
 $my_bin/FoLiA-clean -O clean --cleanannoset=lang\\http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset data/dirty.folia.xml >> testclean.out 2>&1
 ./foliadiff.sh clean/data/dirty.cleaned.folia.xml cleaned_lang.ok  >> testclean.out 2>&1
 

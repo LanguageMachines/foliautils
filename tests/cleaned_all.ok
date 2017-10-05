@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.8" version="1.4.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.10" version="1.4.0">
   <metadata type="native">
     <annotations>
       <token-annotation annotator="ucto" annotatortype="auto" datetime="2017-05-02T22:10:06" set="tokconfig-nld"/>
     </annotations>
-    <meta id="language">nld</meta>
     <meta id="genre">artikel</meta>
+    <meta id="language">nld</meta>
   </metadata>
   <text xml:id="dirty.text">
     <p xml:id="dirty.text.p.2">
       <t>Beursoverzicht.</t>
     </p>
     <p xml:id="dirty.text.p.3">
-      <t>Berichten omtrent rondsen Toorkomende Dp de officiële lijst. Daar Londen en New-York heden belangrijk hoogere koersen zonden, was ook to dezer plaatse de Amerikaansche spoorwegmarkt aanzienlijk hooger dan gisteren, vooral voor Southern en Pref. Popika Shares, met vraag voor buitenlandsohe rekening, speciaal Duitschland. Buitenlandsche staatsfondsen vast, vooral voor Spanje Nationale staatsfondsen voor de meeste soorten meer aangeboden. Hooger: Franoo Dcli 2, Langkat Tabak 1%, Langkat Cultuur 8%, Eott. Dcli %. Moeara Enim 8%, Schibaeß 1%, Palembang %. , Lager: Amst. Dcli Comp. 4, Amßt. Sum. Aand. 3. | Binnenlandsshe en Russische Sporen stil. Zuid-Afrik. Sporen stil. Amerik. Sporen % a 2 lager. Berichten omtrent fondsen zonderoffloieele noteering. Opr. Euim 545, 550, Eumeuië 1899-90. Prolongatie 4% pCt. Gisteren zijn 4 pCt. Oblig. Rumenië 1894 abusiof genoteerd 77%, moest zgn 79%.</t>
+      <t>Berichten omtrent rondsen Toorkomende Dp de officiële lijst. Daar Londen en New-York heden belangrijk hoogere koersen zonden, was ook to dezer plaatse de Amerikaansche spoorwegmarkt aanzienlijk hooger dan gisteren, vooral voor Southern en Pref. Popika Shares, met vraag voor buitenlandsohe rekening, speciaal Duitschland. Buitenlandsche staatsfondsen vast, vooral voor Spanje Nationale staatsfondsen voor de meeste soorten meer aangeboden. Hooger: Franoo Dcli 2, Langkat Tabak 1%, Langkat Cultuur 8%, Eott. Dcli %. Moeara Enim 8%, Schibaess 1%, Palembang %. , Lager: Amst. Dcli Comp. 4, Amsst. Sum. Aand. 3. | Binnenlandsshe en Russische Sporen stil. Zuid-Afrik. Sporen stil. Amerik. Sporen % a 2 lager. Berichten omtrent fondsen zonderoffloieele noteering. Opr. Euim 545, 550, Eumeuië 1899-90. Prolongatie 4% pCt. Gisteren zijn 4 pCt. Oblig. Rumenië 1894 abusiof genoteerd 77%, moest zgn 79%.</t>
       <s xml:id="dirty.text.p.3.s.1">
         <t>Berichten omtrent rondsen Toorkomende Dp de officiële lijst.</t>
         <w xml:id="dirty.text.p.3.s.1.w.1" class="WORD">
