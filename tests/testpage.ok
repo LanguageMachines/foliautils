@@ -11,14 +11,32 @@ Usage: FoLiA-page [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 9 files 
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
+DETECTED FOLIA_TEXT_CHECK environment variable, value =''
+FOLIA_TEXT_CHECK unchanged:YES
 done
-   164    366   6631 out/00539789b.tif.folia.xml
-   647   1466  26474 out/00539790a.tif.folia.xml
-   290    654  11882 out/00539790b.tif.folia.xml
-   659   1500  27092 out/00539791a.tif.folia.xml
-   539   1220  22112 out/00539791b.tif.folia.xml
-   632   1440  26019 out/00539792a.tif.folia.xml
-   593   1346  24344 out/00539792b.tif.folia.xml
-   686   1560  28255 out/00539795a.tif.folia.xml
-   353    798  14418 out/00539795b.tif.folia.xml
-  4563  10350 187227 total
+   164    366   6632 out/00539789b.tif.folia.xml
+   647   1466  26481 out/00539790a.tif.folia.xml
+   290    654  11885 out/00539790b.tif.folia.xml
+   659   1500  27103 out/00539791a.tif.folia.xml
+   539   1220  22116 out/00539791b.tif.folia.xml
+   632   1440  26022 out/00539792a.tif.folia.xml
+   593   1346  24347 out/00539792b.tif.folia.xml
+   686   1560  28259 out/00539795a.tif.folia.xml
+   353    798  14421 out/00539795b.tif.folia.xml
+  4563  10350 187266 total
