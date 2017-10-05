@@ -81,15 +81,15 @@ string setname = "FoLiA-page-set";
 string classname = "OCR";
 
 void appendStr( folia::FoliaElement *par, int& pos,
-		const string& val, const string& id,
+		const UnicodeString& val, const string& id,
 		const string& file ){
-  if ( !val.empty() ){
+  if ( !val.isEmpty() ){
     folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()
 							    + "." + id + "'" ),
 					     par->doc() );
     par->append( str );
-    str->settext( val, pos, classname );
-    pos += val.length();
+    str->setutext( val, pos, classname );
+    pos += val.length() +1;
     folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
     str->append( h );
     folia::AlignReference *a =
@@ -119,7 +119,7 @@ void process( folia::FoliaElement *out,
     int pos = 0;
     for ( size_t j=0; j< parts.size(); ++j ){
       string id = "word_" + TiCC::toString(j);
-      appendStr( par, pos, parts[j], id, file );
+      appendStr( par, pos, folia::UTF8ToUnicode(parts[j]), id, file );
     }
   }
 }
@@ -146,7 +146,7 @@ void process( folia::FoliaElement *out,
     int pos = 0;
     for ( size_t j=0; j< parts.size(); ++j ){
       string id = "word_" + TiCC::toString(j);
-      appendStr( par, pos, parts[j], id, file );
+      appendStr( par, pos, folia::UTF8ToUnicode(parts[j]), id, file );
     }
   }
 }

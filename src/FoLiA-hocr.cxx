@@ -146,7 +146,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       }
       return;
     }
-    string txt;
+    UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
 					      ".//span[@class='ocrx_word']" );
@@ -167,10 +167,11 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
 	  folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ),
-						   out->doc() );
+						  out->doc() );
 	  par->append( str );
-	  str->settext( content, txt.length(), classname );
-	  txt += " " + content;
+	  UnicodeString uc = folia::UTF8ToUnicode( content );
+	  str->setutext( uc, txt.length(), classname );
+	  txt += " " + uc;
 	  folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
 	  str->append( h );
 	  folia::AlignReference *a =
@@ -179,9 +180,9 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	}
       }
     }
-    if ( txt.size() > 1 ){
+    if ( txt.length() > 1 ){
       out->append( par );
-      par->settext( txt.substr(1), classname );
+      par->setutext( txt.tempSubString(1), classname );
     }
     else
       delete par;
