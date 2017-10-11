@@ -107,7 +107,6 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   }
   multimap<unsigned int, pair<string,string> > lpf;
   for ( const auto& cit : lpc ){
-    map<string,unsigned int>::const_iterator pit = cit.second.pc.begin();
     for ( const auto& pit : cit.second.pc ){
       lpf.insert( make_pair( pit.second,
 			     make_pair( cit.first, pit.first ) ) );
