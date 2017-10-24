@@ -1,3 +1,19 @@
+foliautils 0.7  24-10-2017
+[ko vd Sloot]
+ * updated and expanded tests
+ * fixed offset calculations in FoLiA-hocr, FoLiA-page.cxx
+   and FoLiA-alto. We use unicode points now. (needed for folia v1.5 and above)
+ * Changed 'modes' in FoLiA-stats, to be a bit more comprehensible
+ * fixed problem with metadatatype when 'foreign-data' is present
+ * enhanced FoLiA-clean. Still not done...
+ * switched to dynamic OMP scheduling in most programs.
+   (which process files with probably big differences in processing time)
+ * small bugfixes.
+ * general cleanup and refactoring
+
+[Maarten van Gompel]
+ * Added and improved FoLiA-wordtranslate.cxx
+
 foliautils 0.6  04-04-2017
 This is an intermediate release!!
 Work on some tools is developing rapidly. next releases won't take long.
