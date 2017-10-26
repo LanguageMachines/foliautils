@@ -1,5 +1,5 @@
 missing input file(s)
-FoLiA-page [foliautils 0.7]
+FoLiA-page [foliautils 0.8]
 Usage: FoLiA-page [options] file/dir
 	-t		 number_of_threads
 	-h or --help	 this messages 
@@ -11,24 +11,6 @@ Usage: FoLiA-page [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 9 files 
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
-DETECTED FOLIA_TEXT_CHECK environment variable, value =''
-FOLIA_TEXT_CHECK unchanged:YES
 done
    164    366   6632 out/00539789b.tif.folia.xml
    647   1466  26481 out/00539790a.tif.folia.xml

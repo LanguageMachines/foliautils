@@ -8,7 +8,7 @@ Usage: FoLiA-hocr [options] file/dir
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	-v	 verbose output 
 	-V or --version	 show version 
-foliautils 0.7
+foliautils 0.8
 Usage: FoLiA-hocr [options] file/dir
 	-t	 number_of_threads
 	-h or --help	 this message 

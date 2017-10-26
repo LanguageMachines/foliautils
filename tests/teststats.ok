@@ -38,7 +38,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	-e	 expr: specify the expression all input files should match with.
 	-o	 name of the output file(s) prefix.
 	-R	 search the dirs recursively (when appropriate).
-FoLiA-stats from foliautils 0.7
+FoLiA-stats from foliautils 0.8
 Usage: FoLiA-stats [options] file/dir
 
 FoLiA-stats will produce ngram statistics for a FoLiA file, 
