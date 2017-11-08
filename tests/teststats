@@ -15,47 +15,50 @@ diff stats.wordfreqlist.tsv stats-1.ok >> teststats.out 2>&1
 $my_bin/FoLiA-stats --ngram=3 -s --class=OCR --lang="none" -o stats -e dpo out/ > out2 2>&1
 diff stats.wordfreqlist.3-gram.tsv stats-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --ngram=3 -S --class=OCR --lang="none" -o statS -e dpo out/ > out2 2>&1
+$my_bin/FoLiA-stats --ngram=3 -S --class=OCR --lang="none" -o statS -e dpo out/ > out3 2>&1
 diff statS.wordfreqlist.3-gram.tsv statS-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --max-ngram=3 -S --class=OCR --lang="none" -o statS1 -e dpo out/ > out2 2>&1
+$my_bin/FoLiA-stats --max-ngram=3 -S --class=OCR --lang="none" -o statS1 -e dpo out/ > out4 2>&1
 diff statS1.wordfreqlist.tsv statS1.ok >> teststats.out 2>&1
 diff statS1.wordfreqlist.2-gram.tsv statS1-2.ok >> teststats.out 2>&1
 diff statS1.wordfreqlist.3-gram.tsv statS1-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --ngram=3 --max-ngram=3 -S --class=OCR --lang="none" -o statS2 -e dpo out/ > out2 2>&1
+$my_bin/FoLiA-stats --ngram=3 --max-ngram=3 -S --class=OCR --lang="none" -o statS2 -e dpo out/ > out5 2>&1
 diff statS2.wordfreqlist.3-gram.tsv statS2-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --tags=p --class=OCR --languages="skip,eng" -o stats1 out/langcat.test.lang.xml > out2 2>&1
+$my_bin/FoLiA-stats --tags=p --class=OCR --languages="skip,eng" -o stats1 out/langcat.test.lang.xml > out6 2>&1
 diff stats1.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="eng,nld,fra,deu" -o stats2 data/statstest.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="eng,nld,fra,deu" -o stats2 data/statstest.xml > out7 2>&1
 diff stats2.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 diff stats2.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
 diff stats2.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
 diff stats2.wordfreqlist.deu.tsv stats-deu.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --tags=p --class=OCR --languages="skip,eng,nld,fra" -o stats3 data/statstest.xml > out2 2>&1
+$my_bin/FoLiA-stats --tags=p --class=OCR --languages="skip,eng,nld,fra" -o stats3 data/statstest.xml > out8 2>&1
 diff stats3.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 diff stats3.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
 diff stats3.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="all" -o stats4 data/statstest.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --languages="all" -o stats4 data/statstest.xml > out9 2>&1
 diff stats4.wordfreqlist.deu.tsv stats-deu.ok >> teststats.out 2>&1
 diff stats4.wordfreqlist.eng.tsv stats-eng.ok >> teststats.out 2>&1
 diff stats4.wordfreqlist.nld.tsv stats-nld.ok >> teststats.out 2>&1
 diff stats4.wordfreqlist.fra.tsv stats-fra.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --ngram=2 --underscore -o stats5 data/statstest.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --ngram=2 --underscore -o stats5 data/statstest.xml > out10 2>&1
 diff stats5.wordfreqlist.2-gram.tsv stats-under.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --ngram=2 --separator='°' -o stats6 data/statstest.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR --ngram=2 --separator='°' -o stats6 data/statstest.xml > out11 2>&1
 diff stats6.wordfreqlist.2-gram.tsv stats-o.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats7 --languages=all --aggregate data/statstest.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats7 --languages=all --aggregate data/statstest.xml > out12 2>&1
 diff stats7.agg.freqlist.tsv stats-agg.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=lemma_pos -o stats8 data/frog.xml > out2 2>&1
+$my_bin/FoLiA-stats --mode=lemma_pos -o stats8 data/frog.xml > out13 2>&1
 diff stats8.wordfreqlist.tsv stats-words.ok >> teststats.out 2>&1
 diff stats8.lemmafreqlist.tsv stats-lemmas.ok >> teststats.out 2>&1
 diff stats8.lemmaposfreqlist.tsv stats-lempos.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats9 --languages=none -p data/statstest.xml > out14 2>&1
+diff stats9.wordfreqlist.tsv stats9-perc.ok >> teststats.out 2>&1

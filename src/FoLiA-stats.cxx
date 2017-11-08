@@ -453,6 +453,7 @@ size_t add_word_inventory( const vector<string>& data,
 size_t doc_sent_word_inventory( const Document *d, const string& docName,
 				int min_ng,
 				int max_ng,
+				vector<unsigned int>& totals,
 				bool lowercase,
 				const string& default_language,
 				const set<string>& languages,
@@ -642,6 +643,7 @@ size_t doc_str_inventory( const Document *d,
 			  const string& docName,
 			  int min_ng,
 			  int max_ng,
+			  vector<unsigned int>& totals,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
@@ -707,6 +709,7 @@ size_t doc_str_inventory( const Document *d,
 size_t par_str_inventory( const Document *d, const string& docName,
 			  int min_ng,
 			  int max_ng,
+			  vector<unsigned int>& totals,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
@@ -803,6 +806,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc, const string& docName,
 size_t text_inventory( const Document *d, const string& docName,
 		       int min_ng,
 		       int max_ng,
+		       vector<unsigned int>& totals,
 		       bool lowercase,
 		       const string& default_language,
 		       const set<string>& languages,
@@ -1123,11 +1127,12 @@ int main( int argc, char *argv[] ){
   map<string,vector<map<string,unsigned int>>> lcv;
   map<string,vector<multimap<string, rec>>> lpcv;
   unsigned int wordTotal =0;
+  vector<unsigned int> wordTotals;
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
   set<string> emph;
   int doc_counter = toDo;
-#pragma omp parallel for shared(fileNames,wordTotal,posTotal,lemTotal,wcv,lcv,lpcv,emph) schedule(dynamic)
+#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotal,lemTotal,wcv,lcv,lpcv,emph) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -1147,19 +1152,22 @@ int main( int argc, char *argv[] ){
     unsigned int pos_count = 0;
     switch ( mode ){
     case L_P:
-      word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG, lowercase,
+      word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG,
+					    wordTotals, lowercase,
 					    default_language, languages,
 					    wcv, lcv, lpcv, lem_count,
 					    pos_count, emph, sep );
       break;
     case S_IN_D:
-      word_count = doc_str_inventory( d, docName, min_NG, max_NG, lowercase,
+      word_count = doc_str_inventory( d, docName, min_NG, max_NG,
+				      wordTotals, lowercase,
 				      default_language, languages,
 				      wcv, emph, sep );
       break;
     default:
       if ( !tags.empty() ){
-	word_count = text_inventory( d, docName, min_NG, max_NG, lowercase,
+	word_count = text_inventory( d, docName, min_NG, max_NG,
+				     wordTotals, lowercase,
 				     default_language, languages, tags,
 				     wcv, emph, sep );
       }
