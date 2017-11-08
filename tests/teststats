@@ -62,3 +62,8 @@ diff stats8.lemmaposfreqlist.tsv stats-lempos.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats9 --languages=none -p data/statstest.xml > out14 2>&1
 diff stats9.wordfreqlist.tsv stats9-perc.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats10 --languages=none -p --max-ngram=3 data/statstest.xml > out14 2>&1
+diff stats10.wordfreqlist.tsv stats9-perc.ok >> teststats.out 2>&1
+diff stats10.wordfreqlist.2-gram.tsv stats10-2.ok >> teststats.out 2>&1
+diff stats10.wordfreqlist.3-gram.tsv stats10-3.ok >> teststats.out 2>&1
