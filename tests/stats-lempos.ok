@@ -1,7 +1,7 @@
-zin N(soort,ev,basis,zijd,stan)	2
-zijn WW(pv,tgw,ev)	2
-dit VNW(aanw,pron,stan,vol,3o,ev)	2
-. LET()	2
-en VG(neven)	1
-2 TW(hoofd,vrij)	1
-1 TW(hoofd,vrij)	1
+zin N(soort,ev,basis,zijd,stan)	4
+zijn WW(pv,tgw,ev)	4
+dit VNW(aanw,pron,stan,vol,3o,ev)	4
+. LET()	4
+en VG(neven)	2
+2 TW(hoofd,vrij)	2
+1 TW(hoofd,vrij)	2
