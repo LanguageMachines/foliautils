@@ -212,7 +212,8 @@ void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 #pragma omp critical
       {
 	cout << "created WordFreq list '" << ofilename << "'";
-	cout << " with " << types << " unique " << ng << "-gram tokens";
+	cout << " for " << ng << "-grams. Stored " << sum << " tokens and "
+	     << types << " types, TTR= " << (double)types/sum;
 	if ( clip > 0 ){
 	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
