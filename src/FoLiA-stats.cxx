@@ -286,9 +286,10 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 #pragma omp critical
       {
 	cout << "created LemmaFreq list '" << ofilename << "'";
-	cout << " with " << types << " unique " << ng << "-gram lemmas";
+	cout << " for " << ng << "-gram lemmas. Stored " << sum
+	     << " tokens and " << types << " types. TTR= " << (double)types/sum;
 	if ( clip > 0 ){
-	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
+	  cout << " ("<< totals_per_n[lang][ng] - total_n << " lemmas were clipped.)";
 	}
 	cout << endl;
       }
@@ -355,7 +356,8 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 #pragma omp critical
       {
 	cout << "created LemmaPosFreq list '" << ofilename << "'";
-	cout << " with " << types << " unique " << ng << "-gram lemmas and tags";
+	cout << " for " << ng << "-gram Lemma-Pos pairs. Stored " << sum
+	     << " tokens and " << types << " types. TTR= " << (double)types/sum;
 	if ( clip > 0 ){
 	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
