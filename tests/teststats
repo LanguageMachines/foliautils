@@ -68,3 +68,11 @@ $my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats10 --languages=none -
 diff stats10.wordfreqlist.tsv stats9-perc.ok >> teststats.out 2>&1
 diff stats10.wordfreqlist.2-gram.tsv stats10-2.ok >> teststats.out 2>&1
 diff stats10.wordfreqlist.3-gram.tsv stats10-3.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats11 --languages=all -p --max-ngram=3 data/statstest.xml > out16 2>&1
+diff stats11.wordfreqlist.deu.tsv stats11-deu.ok >> teststats.out 2>&1
+diff stats11.wordfreqlist.deu.2-gram.tsv stats11-deu-2.ok >> teststats.out 2>&1
+diff stats11.wordfreqlist.deu.3-gram.tsv stats11-deu-3.ok >> teststats.out 2>&1
+diff stats11.wordfreqlist.nld.tsv stats11-nld.ok >> teststats.out 2>&1
+diff stats11.wordfreqlist.nld.2-gram.tsv stats11-nld-2.ok >> teststats.out 2>&1
+diff stats11.wordfreqlist.nld.3-gram.tsv stats11-nld-3.ok >> teststats.out 2>&1
