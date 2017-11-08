@@ -64,12 +64,12 @@ Mode stringToMode( const string& ms ){
 }
 
 void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
-		      const string& filename, vector<unsigned int> totals_per_n,
+		      const string& filename,
+		      map<string,vector<unsigned int>> totals_per_n,
 		      unsigned int clip, int min_ng, int max_ng ){
   unsigned int total = 0;
   for ( int ng=min_ng; ng <= max_ng; ++ng ){
     unsigned int clipped = 0;
-    total += totals_per_n[ng];
     string ext;
     if ( ng > 1 ){
       ext += "." + toString( ng ) + "-gram";
@@ -91,6 +91,7 @@ void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
     map<string,map<string,unsigned int>> totals;
     for ( const auto& wc0 : wcv ){
       string lang = wc0.first;
+      total += totals_per_n[lang][ng];
       map<string,unsigned int >::const_iterator cit = wc0.second[ng].begin();
       while( cit != wc0.second[ng].end()  ){
 	if ( cit->second <= clip ){
@@ -159,7 +160,7 @@ void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 		     const string& filename,
 		     unsigned int clip, int min_ng, int max_ng,
-		     vector<unsigned int>& totals_per_n,
+		     map<string,vector<unsigned int>>& totals_per_n,
 		     bool doperc ){
   for ( const auto& wc0 : wcv ){
     string lext;
@@ -168,7 +169,7 @@ void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
       lext += "." + lang;
     }
     for ( int ng=min_ng; ng <= max_ng; ++ng ){
-      unsigned int total_n = totals_per_n[ng];
+      unsigned int total_n = totals_per_n[lang][ng];
       string ext = lext;
       if ( ng > 1 ){
 	ext += "." + toString( ng ) + "-gram";
@@ -213,7 +214,7 @@ void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 	cout << "created WordFreq list '" << ofilename << "'";
 	cout << " with " << types << " unique " << ng << "-gram tokens";
 	if ( clip > 0 ){
-	  cout << " ("<< totals_per_n[ng] - total_n << " were clipped.)";
+	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
 	cout << endl;
       }
@@ -231,7 +232,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 		     unsigned int clip,
 		     int min_ng,
 		     int max_ng,
-		     vector<unsigned int>& totals_per_n,
+		     map<string,vector<unsigned int>>& totals_per_n,
 		     bool doperc ){
   for ( const auto& lc0 : lcv ){
     string lext;
@@ -240,7 +241,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
       lext += "." + lang;
     }
     for ( int ng=min_ng; ng <= max_ng; ++ng ){
-      unsigned int total_n = totals_per_n[ng];
+      unsigned int total_n = totals_per_n[lang][ng];
       string ext = lext;
       if ( ng > 1 ){
 	ext += "." + toString( ng ) + "-gram";
@@ -286,7 +287,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 	cout << "created LemmaFreq list '" << ofilename << "'";
 	cout << " with " << types << " unique " << ng << "-gram lemmas";
 	if ( clip > 0 ){
-	  cout << " ("<< totals_per_n[ng] - total_n << " were clipped.)";
+	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
 	cout << endl;
       }
@@ -299,7 +300,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 		      unsigned int clip,
 		      int min_ng,
 		      int max_ng,
-		      vector<unsigned int> totals_per_n,
+		      map<string,vector<unsigned int>>& totals_per_n,
 		      bool doperc ){
   for ( const auto& lpc0 : lpcv ){
     string lext;
@@ -308,7 +309,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
       lext += "." + lang;
     }
     for( int ng=min_ng; ng <= max_ng; ++ng ){
-      unsigned int total_n = totals_per_n[ng];
+      unsigned int total_n = totals_per_n[lang][ng];
       string ext = lext;
       if ( ng > 1 ){
 	ext += "." + toString( ng ) + "-gram";
@@ -355,7 +356,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 	cout << "created LemmaPosFreq list '" << ofilename << "'";
 	cout << " with " << types << " unique " << ng << "-gram lemmas and tags";
 	if ( clip > 0 ){
-	  cout << " ("<< totals_per_n[ng] - total_n << " were clipped.)";
+	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
 	cout << endl;
       }
@@ -435,6 +436,7 @@ size_t add_word_inventory( const vector<string>& data,
 #pragma omp critical
   {
     wc.resize(max_ng+1);
+    totals_per_n.resize(max_ng+1);
   }
   size_t count = 0;
   for( int ng=min_ng; ng <= max_ng; ++ng ){
@@ -460,9 +462,9 @@ size_t add_word_inventory( const vector<string>& data,
 size_t doc_sent_word_inventory( const Document *d, const string& docName,
 				int min_ng,
 				int max_ng,
-				vector<unsigned int>& w_totals_per_n,
-				vector<unsigned int>& l_totals_per_n,
-				vector<unsigned int>& p_totals_per_n,
+				map<string,vector<unsigned int>>& w_totals_per_n,
+				map<string,vector<unsigned int>>& l_totals_per_n,
+				map<string,vector<unsigned int>>& p_totals_per_n,
 				unsigned int& lem_count,
 				unsigned int& pos_count,
 				bool lowercase,
@@ -513,6 +515,9 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
       wcv[lang].resize(max_ng+1);
       lcv[lang].resize(max_ng+1);
       lpcv[lang].resize(max_ng+1);
+      w_totals_per_n[lang].resize(max_ng+1);
+      l_totals_per_n[lang].resize(max_ng+1);
+      p_totals_per_n[lang].resize(max_ng+1);
     }
 
     vector<wlp_rec> data;
@@ -594,20 +599,20 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	  }
 	}
 	++grand_total;
-	++w_totals_per_n[ng];
+	++w_totals_per_n[lang][ng];
 	if ( lem_mis ){
 	  ++mis_lem;
 	}
 	else {
 	  ++lem_count;
-	  ++l_totals_per_n[ng];
+	  ++l_totals_per_n[lang][ng];
 	}
 	if ( pos_mis ){
 	  ++mis_pos;
 	}
 	else {
 	  ++pos_count;
-	  ++p_totals_per_n[ng];
+	  ++p_totals_per_n[lang][ng];
 	}
 #pragma omp critical
 	{
@@ -661,7 +666,7 @@ size_t doc_str_inventory( const Document *d,
 			  const string& docName,
 			  int min_ng,
 			  int max_ng,
-			  vector<unsigned int>& totals_per_n,
+			  map<string,vector<unsigned int>>& totals_per_n,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
@@ -720,14 +725,14 @@ size_t doc_str_inventory( const Document *d,
   }
 
   add_emph_inventory( data, emph );
-  grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n, sep );
+  grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n[lang], sep );
   return grand_total;
 }
 
 size_t par_str_inventory( const Document *d, const string& docName,
 			  int min_ng,
 			  int max_ng,
-			  vector<unsigned int>& totals_per_n,
+			  map<string,vector<unsigned int>>& totals_per_n,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
@@ -788,7 +793,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
 
     add_emph_inventory( data, emph );
-    grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n, sep );
+    grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n[lang], sep );
   }
   return grand_total;
 }
@@ -824,7 +829,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc, const string& docName,
 size_t text_inventory( const Document *d, const string& docName,
 		       int min_ng,
 		       int max_ng,
-		       vector<unsigned int>& totals_per_n,
+		       map<string,vector<unsigned int>>& totals_per_n,
 		       bool lowercase,
 		       const string& default_language,
 		       const set<string>& languages,
@@ -887,7 +892,7 @@ size_t text_inventory( const Document *d, const string& docName,
       }
     }
     add_emph_inventory( data, emph );
-    grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n, sep );
+    grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n[lang], sep );
   }
   return grand_total;
 }
@@ -1152,9 +1157,9 @@ int main( int argc, char *argv[] ){
   map<string,vector<map<string,unsigned int>>> lcv;
   map<string,vector<multimap<string, rec>>> lpcv;
   unsigned int wordTotal =0;
-  vector<unsigned int> wordTotals(max_NG+1);
-  vector<unsigned int> lemmaTotals(max_NG+1);
-  vector<unsigned int> posTotals(max_NG+1);
+  map<string, vector<unsigned int>> wordTotals;
+  map<string,vector<unsigned int>> lemmaTotals;
+  map<string,vector<unsigned int>> posTotals;
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
   set<string> emph;
