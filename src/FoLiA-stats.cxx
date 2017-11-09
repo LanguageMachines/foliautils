@@ -26,6 +26,7 @@
 
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <iostream>
 #include <iomanip>
@@ -63,7 +64,7 @@ Mode stringToMode( const string& ms ){
   return UNKNOWN;
 }
 
-void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
+void create_agg_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
 		      const string& filename,
 		      map<string,vector<unsigned int>> totals_per_n,
 		      unsigned int clip, int min_ng, int max_ng ){
@@ -92,7 +93,7 @@ void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
     for ( const auto& wc0 : wcv ){
       string lang = wc0.first;
       total += totals_per_n[lang][ng];
-      map<string,unsigned int >::const_iterator cit = wc0.second[ng].begin();
+      auto cit = wc0.second[ng].begin();
       while( cit != wc0.second[ng].end()  ){
 	if ( cit->second <= clip ){
 	  total -= cit->second;
@@ -157,7 +158,7 @@ void create_agg_list( const map<string,vector<map<string, unsigned int>>>& wcv,
   }
 }
 
-void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
+void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
 		     const string& filename,
 		     unsigned int clip, int min_ng, int max_ng,
 		     map<string,vector<unsigned int>>& totals_per_n,
@@ -182,7 +183,7 @@ void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
 	exit(EXIT_FAILURE);
       }
       map<unsigned int, set<string>> wf;
-      map<string,unsigned int >::const_iterator cit = wc0.second[ng].begin();
+      auto cit = wc0.second[ng].begin();
       while( cit != wc0.second[ng].end()  ){
 	if ( cit->second <= clip ){
 	  total_n -= cit->second;
@@ -196,16 +197,14 @@ void create_wf_list( const map<string,vector<map<string, unsigned int>>>& wcv,
       unsigned int types=0;
       map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
       while ( wit != wf.rend() ){
-	set<string>::const_iterator sit = wit->second.begin();
-	while ( sit != wit->second.end() ){
+	for ( const auto sit : wit->second ){
 	  sum += wit->first;
-	  os << *sit << "\t" << wit->first;
+	  os << sit << "\t" << wit->first;
 	  if ( doperc ){
 	    os << "\t" << sum << "\t" << 100 * double(sum)/total_n;
 	  }
 	  os << endl;
 	  ++types;
-	  ++sit;
 	}
 	++wit;
       }
@@ -255,31 +254,27 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 	exit(EXIT_FAILURE);
       }
       map<unsigned int, set<string> > lf;
-      map<string,unsigned int >::const_iterator cit = lc0.second[ng].begin();
-      while( cit != lc0.second[ng].end()  ){
-	if ( cit->second <= clip ){
-	  total_n -= cit->second;
+      for ( const auto& cit : lc0.second[ng] ){
+	if ( cit.second <= clip ){
+	  total_n -= cit.second;
 	}
 	else {
-	  lf[cit->second].insert( cit->first );
+	  lf[cit.second].insert( cit.first );
 	}
-	++cit;
       }
 
       unsigned int sum=0;
       unsigned int types=0;
       map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
       while ( wit != lf.rend() ){
-	set<string>::const_iterator sit = wit->second.begin();
-	while ( sit != wit->second.end() ){
+	for ( const auto& sit : wit->second ){
 	  sum += wit->first;
-	  os << *sit << "\t" << wit->first;
+	  os << sit << "\t" << wit->first;
 	  if ( doperc ){
 	    os << "\t" << sum << "\t" << 100* double(sum)/total_n;
 	  }
 	  os << endl;
 	  ++types;
-	  ++sit;
 	}
 	++wit;
       }
@@ -325,20 +320,18 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
       }
 
       multimap<unsigned int, pair<string,string> > lpf;
-      multimap<string,rec>::const_iterator cit = lpc0.second[ng].begin();
-      while( cit != lpc0.second[ng].end()  ){
-	map<string,unsigned int>::const_iterator pit = cit->second.pc.begin();
-	while ( pit != cit->second.pc.end() ){
+      for ( const auto& cit : lpc0.second[ng] ){
+	map<string,unsigned int>::const_iterator pit = cit.second.pc.begin();
+	while ( pit != cit.second.pc.end() ){
 	  if ( pit->second <= clip ){
 	    total_n -= pit->second;
 	  }
 	  else {
 	    lpf.insert( make_pair( pit->second,
-				   make_pair( cit->first, pit->first ) ) );
+				   make_pair( cit.first, pit->first ) ) );
 	  }
 	  ++pit;
 	}
-	++cit;
       }
       unsigned int sum =0;
       unsigned int types =0;
@@ -431,7 +424,7 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
 }
 
 size_t add_word_inventory( const vector<string>& data,
-			   vector<map<string,unsigned int>>& wc,
+			   vector<unordered_map<string,unsigned int>>& wc,
 			   int min_ng,
 			   int max_ng,
 			   vector<unsigned int>& totals_per_n,
@@ -473,7 +466,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 				bool lowercase,
 				const string& default_language,
 				const set<string>& languages,
-				map<string,vector<map<string,unsigned int>>>& wcv,
+				map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 				map<string,vector<map<string,unsigned int>>>& lcv,
 				map<string,vector<multimap<string, rec>>>& lpcv,
 				set<string>& emph,
@@ -673,7 +666,7 @@ size_t doc_str_inventory( const Document *d,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
-			  map<string,vector<map<string,unsigned int>>>& wcv,
+			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
 			  const string& sep ){
   if ( verbose ){
@@ -739,7 +732,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
-			  map<string,vector<map<string,unsigned int>>>& wcv,
+			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
 			  const string& sep ){
   if ( verbose ){
@@ -837,7 +830,7 @@ size_t text_inventory( const Document *d, const string& docName,
 		       const string& default_language,
 		       const set<string>& languages,
 		       const set<string>& tags,
-		       map<string,vector<map<string,unsigned int>>>& wcv,
+		       map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 		       set<string>& emph,
 		       const string& sep ){
   if ( verbose ){
@@ -1156,13 +1149,13 @@ int main( int argc, char *argv[] ){
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-  map<string,vector<map<string,unsigned int>>> wcv;
-  map<string,vector<map<string,unsigned int>>> lcv;
-  map<string,vector<multimap<string, rec>>> lpcv;
+  map<string,vector<unordered_map<string,unsigned int>>> wcv; // word-freq list per language
+  map<string,vector<map<string,unsigned int>>> lcv; // lemma-freq list per language
+  map<string,vector<multimap<string, rec>>> lpcv; // lemma-pos freq list per language
   unsigned int wordTotal =0;
-  map<string, vector<unsigned int>> wordTotals;
-  map<string,vector<unsigned int>> lemmaTotals;
-  map<string,vector<unsigned int>> posTotals;
+  map<string,vector<unsigned int>> wordTotals;  // totals per language
+  map<string,vector<unsigned int>> lemmaTotals; // totals per language
+  map<string,vector<unsigned int>> posTotals;   // totals per language
   unsigned int posTotal =0;
   unsigned int lemTotal =0;
   set<string> emph;
