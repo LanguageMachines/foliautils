@@ -321,16 +321,14 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 
       multimap<unsigned int, pair<string,string> > lpf;
       for ( const auto& cit : lpc0.second[ng] ){
-	map<string,unsigned int>::const_iterator pit = cit.second.pc.begin();
-	while ( pit != cit.second.pc.end() ){
-	  if ( pit->second <= clip ){
-	    total_n -= pit->second;
+	for ( const auto& pit : cit.second.pc ){
+	  if ( pit.second <= clip ){
+	    total_n -= pit.second;
 	  }
 	  else {
-	    lpf.insert( make_pair( pit->second,
-				   make_pair( cit.first, pit->first ) ) );
+	    lpf.insert( make_pair( pit.second,
+				   make_pair( cit.first, pit.first ) ) );
 	  }
-	  ++pit;
 	}
       }
       unsigned int sum =0;
