@@ -155,7 +155,7 @@ unsigned int fillWF( const string& fName,
     getline( is, line );
     vector<string> parts;
     int num = split_at( line, parts, "\t" );
-    if ( num == 4 ){
+    if ( num == 4 || num == 2 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
 	string word = parts[0];
@@ -177,7 +177,7 @@ unsigned int fillLF( const string& fName,
     getline( is, line );
     vector<string> parts;
     int num = split_at( line, parts, "\t" );
-    if ( num == 4 ){
+    if ( num == 4 || num == 2 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
 	string lemma = parts[0];
@@ -199,7 +199,7 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
     getline( is, line );
     vector<string> parts;
     unsigned int num = split_at( line, parts, "\t" );
-    if ( num == 4 ){
+    if ( num == 2 || num == 4 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
 	vector<string> lp;
@@ -288,10 +288,15 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outDir );
   keepSingles = opts.extract( "hapax" );
   if ( opts.extract( 't', value ) ){
-    if ( !TiCC::stringTo( value, numThreads ) ){
-      cerr << "unsupported value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);
+#ifdef HAVE_OPENMP
+    if ( !TiCC::stringTo(value, numThreads ) ){
+      cerr << "FoLiA-collect: illegal value for -t (" << value << ")" << endl;
+
     }
+#else
+    cerr << "FoLiA-collect: OpenMP support is missing. -t option is not supported" << endl;
+    exit(EXIT_FAILURE);
+#endif
   }
   if ( !opts.empty() ){
     cerr << "unsupported options : " << opts.toString() << endl;
@@ -321,8 +326,12 @@ int main( int argc, char *argv[] ){
     string::size_type pos = name.rfind( "/" );
     if ( pos != string::npos )
       name.erase(pos);
-    if ( outDir.empty() )
+    if ( outDir.empty() ){
       outDir = name;
+    }
+    else {
+      TiCC::createPath(outDir);
+    }
     cout << "Processing dir '" << name << "'" << endl;
     vector<string> filenames;
     if ( nGv > 1 )
