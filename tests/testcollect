@@ -6,3 +6,5 @@ $my_bin/FoLiA-collect > testcollect.out 2>&1
 $my_bin/FoLiA-collect -V >> testcollect.out 2>&1
 
 $my_bin/FoLiA-collect --help >> testcollect.out 2>&1
+
+$my_bin/FoLiA-collect --ngram=2 -O collectout/ -t1 . >> testcollect.out 2>&1
