@@ -1220,16 +1220,14 @@ int main( int argc, char *argv[] ){
     cout << "done processsing directory '" << dir_name << "'" << endl;
   }
   if ( !hempName.empty() ){
-    ofstream out( hempName );
-    if ( out ){
-      for( auto const& it : emph ){
-	out << it << endl;
-      }
-      cout << "historical emphasis stored in: " << hempName << endl;
-    }
-    else {
+    if (!TiCC::createPath( hempName ) ){
       cerr << "FoLiA-stats: unable to create historical emphasis file: " << hempName << endl;
     }
+    ofstream out( hempName );
+    for( auto const& it : emph ){
+      out << it << endl;
+    }
+    cout << "historical emphasis stored in: " << hempName << endl;
   }
   cout << "start calculating the results" << endl;
   cout << "in total " << wordTotal << " " << "n-grams were found.";
