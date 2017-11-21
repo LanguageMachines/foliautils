@@ -77,11 +77,11 @@ void create_agg_list( const map<string,vector<unordered_map<string, unsigned int
     }
     ext += ".tsv";
     string ofilename = filename + ext;
-    ofstream os( ofilename );
-    if ( !os ){
+    if ( !TiCC::createPath( ofilename ) ){
       cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
       exit(EXIT_FAILURE);
     }
+    ofstream os( ofilename );
     vector<string> srt;
     os << "## " << ng << "-gram\t\ttotal" ;
     for ( const auto& wc0 : wcv ){
@@ -177,11 +177,11 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
       }
       ext += ".tsv";
       string ofilename = filename + ext;
-      ofstream os( ofilename );
-      if ( !os ){
+      if ( !TiCC::createPath( ofilename ) ){
 	cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
 	exit(EXIT_FAILURE);
       }
+      ofstream os( ofilename );
       map<unsigned int, set<string>> wf;
       auto cit = wc0.second[ng].begin();
       while( cit != wc0.second[ng].end()  ){
@@ -248,11 +248,11 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
       }
       ext += ".tsv";
       string ofilename = filename + ext;
-      ofstream os( ofilename );
-      if ( !os ){
+      if ( !TiCC::createPath( ofilename ) ){
 	cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
 	exit(EXIT_FAILURE);
       }
+      ofstream os( ofilename );
       map<unsigned int, set<string> > lf;
       for ( const auto& cit : lc0.second[ng] ){
 	if ( cit.second <= clip ){
@@ -313,12 +313,11 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
       }
       ext += ".tsv";
       string ofilename = filename + ext;
-      ofstream os( ofilename );
-      if ( !os ){
+      if ( !TiCC::createPath( ofilename ) ){
 	cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
 	exit(EXIT_FAILURE);
       }
-
+      ofstream os( ofilename );
       multimap<unsigned int, pair<string,string> > lpf;
       for ( const auto& cit : lpc0.second[ng] ){
 	for ( const auto& pit : cit.second.pc ){
