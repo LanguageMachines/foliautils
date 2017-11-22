@@ -380,7 +380,8 @@ int main( int argc, char *argv[] ){
   }
 
 #ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads);
+  omp_set_num_threads( numThreads );
+  omp_set_nested( 1);
 #endif
 
   cout << "start processing on " << numThreads << " threads" << endl;
@@ -391,7 +392,10 @@ int main( int argc, char *argv[] ){
     {
       map<string,unsigned int> wf;
       unsigned int total = 0;
-      for ( const auto& fName : wfNames ){
+
+#pragma omp parallel for shared(wfNames)
+      for ( unsigned int i=0; i < wfNames.size(); ++ i ){
+	const auto& fName = wfNames[i];
 #pragma omp critical (log)
 	{
 	  cout << "\twords \t" << fName << endl;
@@ -399,7 +403,10 @@ int main( int argc, char *argv[] ){
 	total += fillWF( fName, wf, keepSingles );
       }
       if ( wf.empty() ){
-	cerr << "no WordFrequencies found " << endl;
+#pragma omp critical (log)
+	{
+	  cerr << "no WordFrequencies found " << endl;
+	}
       }
       else {
 #pragma omp critical (log)
@@ -414,7 +421,9 @@ int main( int argc, char *argv[] ){
     {
       map<string,unsigned int> lf;
       unsigned int total = 0;
-      for ( const auto& fName : lfNames ){
+#pragma omp parallel for shared(lfNames)
+      for ( unsigned int i=0; i < lfNames.size(); ++ i ){
+	const auto& fName = lfNames[i];
 #pragma omp critical (log)
 	{
 	  cout << "\tlemmas \t" << fName << endl;
@@ -422,7 +431,10 @@ int main( int argc, char *argv[] ){
 	total += fillLF( fName, lf, keepSingles );
       }
       if ( lf.empty() ){
-	cerr << "no LemmaFrequencies found " << endl;
+#pragma omp critical (log)
+	{
+	  cerr << "no LemmaFrequencies found " << endl;
+	}
       }
       else {
 #pragma omp critical (log)
@@ -438,7 +450,9 @@ int main( int argc, char *argv[] ){
     {
       multimap<string, rec> lpc;
       unsigned int total = 0;
-      for ( const auto& fName : lpfNames ){
+#pragma omp parallel for shared(lpfNames)
+      for ( unsigned int i=0; i < lpfNames.size(); ++ i ){
+	const auto& fName = lpfNames[i];
 #pragma omp critical (log)
 	{
 	  cout << "\tlemmapos \t" << fName << endl;
@@ -446,7 +460,10 @@ int main( int argc, char *argv[] ){
 	total += fillLPF( fName, nGv, lpc, keepSingles );
       }
       if ( lpc.empty() ){
-	cerr << "no LemmaPosFrequencies found " << endl;
+#pragma omp critical (log)
+	{
+	  cerr << "no LemmaPosFrequencies found " << endl;
+	}
       }
       else {
 #pragma omp critical (log)
