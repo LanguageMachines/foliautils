@@ -58,14 +58,22 @@ void create_wf_list( const map<string, unsigned int>& wc,
     wf[cit.second].insert( cit.first );
   }
   unsigned int sum=0;
+  unsigned int types=0;
   map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
   while ( wit != wf.rend() ){
     for ( const auto& st : wit->second ){
       sum += wit->first;
       os << st << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100 * double(sum)/total << endl;
+      ++types;
     }
     ++wit;
+  }
+#pragma omp critical (log)
+  {
+    cout << "created WordFreq list '" << filename << "'" << endl;
+    cout << " Stored " << sum << " tokens and " << types << " types, TTR= "
+	 << (double)types/sum << endl;
   }
 }
 
@@ -87,14 +95,22 @@ void create_lf_list( const map<string, unsigned int>& lc,
   }
 
   unsigned int sum=0;
+  unsigned int types=0;
   map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
   while ( wit != lf.rend() ){
     for ( const auto& st : wit->second ){
       sum += wit->first;
       os << st << "\t" << wit->first << "\t" << sum << "\t"
 	 << 100* double(sum)/total << endl;
+      ++types;
     }
     ++wit;
+  }
+#pragma omp critical (log)
+  {
+    cout << "created LemmaFreq list '" << filename << "'" << endl;
+    cout << " Stored " << sum << " tokens and " << types << " types, TTR= "
+	 << (double)types/sum << endl;
   }
 }
 
@@ -114,11 +130,19 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   }
   unsigned int sum =0;
   multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+  unsigned int types = 0;
   while ( wit != lpf.rend() ){
     sum += wit->first;
     os << wit->second.first << " " << wit->second.second << "\t"
        << wit->first << "\t" << sum << "\t" << 100 * double(sum)/total << endl;
+    ++types;
     ++wit;
+  }
+#pragma omp critical (log)
+  {
+    cout << "created LemmaPosFreq list '" << filename << "'" << endl;
+    cout << " Stored " << sum << " tokens and " << types << " types, TTR= "
+	 << (double)types/sum << endl;
   }
 }
 
@@ -384,10 +408,6 @@ int main( int argc, char *argv[] ){
 	}
 	string filename = outDir + ".wordfreqlist." + nG + "-gram.total.tsv";
 	create_wf_list( wf, filename, total );
-#pragma omp critical (log)
-	{
-	  cout << "created WordFreq list '" << filename << "'" << endl;
-	}
       }
     }
 #pragma omp section
@@ -411,10 +431,6 @@ int main( int argc, char *argv[] ){
 	}
 	string filename = outDir + ".lemmafreqlist." + nG + "-gram.total.tsv";
 	create_lf_list( lf, filename, total );
-#pragma omp critical (log)
-	{
-	  cout << "created LemmaFreq list '" << filename << "'" << endl;
-	}
       }
     }
 
@@ -439,10 +455,6 @@ int main( int argc, char *argv[] ){
 	}
 	string filename = outDir + ".lemmaposfreqlist." + nG + "-gram.total.tsv";
 	create_lpf_list( lpc, filename, total );
-#pragma omp critical (log)
-	{
-	  cout << "created LemmaPosFreq list '" << filename << "'" << endl;
-	}
       }
     }
   }
