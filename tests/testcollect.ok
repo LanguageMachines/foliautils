@@ -14,14 +14,126 @@ Processing dir '.'
 found 8 files to process
 start processing on 1 threads
 	words 	./statS1.wordfreqlist.2-gram.tsv
-	words 	./stats5.wordfreqlist.2-gram.tsv
-	words 	./stats6.wordfreqlist.2-gram.tsv
-	words 	./stats10.wordfreqlist.2-gram.tsv
-	words 	./stats11.wordfreqlist.deu.2-gram.tsv
-	words 	./stats11.wordfreqlist.eng.2-gram.tsv
 	words 	./stats11.wordfreqlist.fra.2-gram.tsv
+	words 	./stats11.wordfreqlist.eng.2-gram.tsv
+	words 	./stats11.wordfreqlist.deu.2-gram.tsv
+	words 	./stats10.wordfreqlist.2-gram.tsv
+	words 	./stats5.wordfreqlist.2-gram.tsv
 	words 	./stats11.wordfreqlist.nld.2-gram.tsv
+	words 	./stats6.wordfreqlist.2-gram.tsv
 processed 8 wordfreq files.
-created WordFreq list 'collectout/.wordfreqlist.2-gram.total.tsv'
+created WordFreq list 'collected.wordfreqlist.2-gram.total.tsv'
+ Stored 285 tokens and 111 types, TTR= 0.389474
 no LemmaFrequencies found 
 no LemmaPosFrequencies found 
+in het	9	9	3.15789
+, en	8	17	5.96491
+in de	8	25	8.77193
+Natuurlyke Historie	7	32	11.2281
+, welke	6	38	13.3333
+van de	6	44	15.4386
+de Natuurlyke	5	49	17.193
+de menschen	5	54	18.9474
+? Cleon.	4	58	20.3509
+Euphros. Ik	4	62	21.7544
+JONGE HEEREN	4	66	23.1579
+als de	4	70	24.5614
+dat de	4	74	25.9649
+der Natuure	4	78	27.3684
+in den	4	82	28.7719
+, die	3	85	29.8246
+HEEREN EN	3	88	30.8772
+WYSBEGEERTE VOOR	3	91	31.9298
+dat wy	3	94	32.9825
+door de	3	97	34.0351
+met de	3	100	35.0877
+orde te	3	103	36.1404
+viervoetige Dieren	3	106	37.193
+welke in	3	109	38.2456
+welke zy	3	112	39.2982
+zekere orde	3	115	40.3509
+(VI. Afd.	2	117	41.0526
+, dan	2	119	41.7544
+, dat	2	121	42.4561
+; in	2	123	43.1579
+; maar	2	125	43.8596
+; want	2	127	44.5614
+A. De	2	129	45.2632
+Cleon. Het	2	131	45.9649
+Cleon. Zy	2	133	46.6667
+Dieren geweest	2	135	47.3684
+EN JUFFEREN.	2	137	48.0702
+Euphros. Het	2	139	48.7719
+Het is	2	141	49.4737
+Het komt	2	143	50.1754
+Ik begryp	2	145	50.8772
+Samenspr.) JONGE	2	147	51.5789
+VOOR JONGE	2	149	52.2807
+dan de	2	151	52.9825
+dan door	2	153	53.6842
+dat 'er	2	155	54.386
+dat men	2	157	55.0877
+de Natuur	2	159	55.7895
+de eerste	2	161	56.4912
+de konsten,	2	163	57.193
+de maagen	2	165	57.8947
+de mensch	2	167	58.5965
+de moeite	2	169	59.2982
+de viervoetige	2	171	60
+der Dieren	2	173	60.7018
+der menschen	2	175	61.4035
+der viervoetige	2	177	62.1053
+dewyl zy	2	179	62.807
+die in	2	181	63.5088
+die met	2	183	64.2105
+die van	2	185	64.9123
+door het	2	187	65.614
+en dat	2	189	66.3158
+en de	2	191	67.0175
+en derzelver	2	193	67.7193
+en zy	2	195	68.4211
+geheel zyn	2	197	69.1228
+geschikt naar	2	199	69.8246
+geschikt zyn	2	201	70.5263
+geweest zyn,	2	203	71.2281
+gy dat	2	205	71.9298
+heeft de	2	207	72.6316
+heerschen ,	2	209	73.3333
+ik u	2	211	74.0351
+in eene	2	213	74.7368
+in veele	2	215	75.4386
+kan maaken,	2	217	76.1404
+komt my	2	219	76.8421
+men in	2	221	77.5439
+met eene	2	223	78.2456
+naar die	2	225	78.9474
+of de	2	227	79.6491
+om de	2	229	80.3509
+om hen	2	231	81.0526
+ons in	2	233	81.7544
+ook de	2	235	82.4561
+op den	2	237	83.1579
+op te	2	239	83.8596
+over de	2	241	84.5614
+te maaken.	2	243	85.2632
+te worden.	2	245	85.9649
+tot de	2	247	86.6667
+tot een	2	249	87.3684
+uit de	2	251	88.0702
+van Dieren	2	253	88.7719
+van hunne	2	255	89.4737
+van onze	2	257	90.1754
+vinden wy	2	259	90.8772
+voor te	2	261	91.5789
+waren de	2	263	92.2807
+wegens de	2	265	92.9825
+welke wy	2	267	93.6842
+wilde Dieren	2	269	94.386
+zal ik	2	271	95.0877
+zelfs heeft	2	273	95.7895
+zo groot	2	275	96.4912
+zy van	2	277	97.193
+zyn ,	2	279	97.8947
+zyn om	2	281	98.5965
+zyn, die	2	283	99.2982
+zyn. Euphros.	2	285	100
