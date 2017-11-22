@@ -262,12 +262,13 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
 }
 
 void usage(){
-  cerr << "Usage: [options] file/dir" << endl;
+  cerr << "Usage: [options] dir" << endl;
   cerr << "\t collect the ngram statistics of a directory containing" << endl;
   cerr << "\t files produced by FoLiA-stats." << endl;
   cerr << "\t--ngram\t Ngram count " << endl;
   cerr << "\t--hapax also include HAPAXes (default is don't) " << endl;
-  cerr << "\t-O\t outout directory." << endl;
+  cerr << "\t-O\t output directory." << endl;
+  cerr << "\t-R\t recurse into the input directory." << endl;
   cerr << "\t-t num \t Run on 'num' threads." << endl;
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-V or --version\t show version " << endl;
@@ -275,7 +276,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVhO:t:", "hapax,ngram:,help,version" );
+  TiCC::CL_Options opts( "vVhO:t:R", "hapax,ngram:,help,version" );
   try {
     opts.init( argc, argv );
   }
@@ -289,6 +290,7 @@ int main( int argc, char *argv[] ){
   int numThreads=1;
   string outDir;
   bool keepSingles = false;
+  bool recurse = false;
   string value;
   if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage();
@@ -299,6 +301,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   verbose = opts.extract( 'v' );
+  recurse = opts.extract( 'R' );
   if ( opts.extract( "ngram", nG ) ){
     if ( !TiCC::stringTo( nG, nGv ) ){
       cerr << "unsupported value for --ngram (" << nG << ")" << endl;
@@ -359,9 +362,9 @@ int main( int argc, char *argv[] ){
     cout << "Processing dir '" << name << "'" << endl;
     vector<string> filenames;
     if ( nGv > 1 )
-      filenames = TiCC::searchFilesMatch( name, nG + "-gram.tsv" );
+      filenames = TiCC::searchFilesMatch( name, nG + "-gram.tsv", recurse );
     else
-      filenames = TiCC::searchFilesMatch( name, "list.tsv" );
+      filenames = TiCC::searchFilesMatch( name, "list.tsv", recurse );
     cout << "found " << filenames.size() << " files to process" << endl;
     for ( const auto& fullName : filenames ){
       string::size_type pos = fullName.find( ".lemmafreqlist" );
