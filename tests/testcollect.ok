@@ -1,11 +1,12 @@
 missing a directory to process!
 foliautils 0.8
-Usage: [options] file/dir
+Usage: [options] dir
 	 collect the ngram statistics of a directory containing
 	 files produced by FoLiA-stats.
 	--ngram	 Ngram count 
 	--hapax also include HAPAXes (default is don't) 
-	-O	 outout directory.
+	-O	 output directory.
+	-R	 recurse into the input directory.
 	-t num 	 Run on 'num' threads.
 	-h or --help	 this messages 
 	-V or --version	 show version 
