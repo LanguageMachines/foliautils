@@ -67,10 +67,8 @@ public:
 };
 
 void docCache::clear(){
-  map<string,xmlDoc*>::const_iterator it = cache.begin();
-  while ( it != cache.end() ){
-    xmlFreeDoc( it->second );
-    ++it;
+  for ( const auto& it : cache ){
+    xmlFreeDoc( it.second );
   }
 }
 
@@ -121,7 +119,7 @@ void docCache::fill( const string& alto_cache, const list<xmlNode*>& blocks ){
 }
 
 xmlDoc *docCache::find( const string& f ) const {
-  map<string,xmlDoc*>::const_iterator it = cache.find( f );
+  const auto it = cache.find( f );
   if ( it == cache.end() )
     return 0;
   else
@@ -139,11 +137,10 @@ xmlNode *findPart2Level( const xmlNode *start ){
       pnt = pnt->next;
     }
     if ( pnt ){
-      if ( TiCC::Name(pnt) == "String" ){
-	string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
-	if ( sub == "HypPart2" )
-	  return pnt;
-      }
+      // found a node "String"
+      string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
+      if ( sub == "HypPart2" )
+	return pnt;
     }
   }
   return 0;
@@ -160,6 +157,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
       pnt = pnt->next;
     }
     if ( pnt ){
+      // found a node "TextLine"
       pnt = pnt->children;
       while ( pnt != 0 ){
 	if ( pnt->type == XML_ELEMENT_NODE &&
@@ -169,11 +167,10 @@ xmlNode *findPart2Block( const xmlNode *start ){
 	pnt = pnt->next;
       }
       if ( pnt ){
-	if ( TiCC::Name(pnt) == "String" ){
-	  string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
-	  if ( sub == "HypPart2" ){
-	    return pnt;
-	  }
+	// found a node "String"
+	string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
+	if ( sub == "HypPart2" ){
+	  return pnt;
 	}
       }
     }
@@ -185,17 +182,17 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 	     const xmlNode *pnt, const string& altoFile,
 	     int cnt = 1 ){
   folia::KWargs atts = folia::getAttributes( pnt );
+  string kid = atts["ID"];
   string content = atts["CONTENT"];
   if ( content.empty() )
     return;
-  vector<string> parts;
-  size_t num = TiCC::split( content, parts );
-  if ( num == 1 ){
+  vector<string> parts = TiCC::split( content );
+  if ( parts.size() == 1 ){
     // OK that's what we hoped for
     folia::KWargs args;
     string arg = par->id() + ".";
-    if ( !atts["ID"].empty() ){
-      arg += atts["ID"];
+    if ( !kid.empty() ){
+      arg += kid;
     }
     else {
       arg += "String_" + TiCC::toString(cnt);
@@ -212,7 +209,8 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 	= new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
       s->append( h );
       folia::AlignReference *a =
-	new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
+	new folia::AlignReference( folia::getArgs( "id='"
+						   + kid + "', type='str'" ) );
       h->append( a );
     }
   }
@@ -220,8 +218,8 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     for ( size_t i=0; i < parts.size(); ++i ){
       folia::KWargs args;
       string arg = par->id() + ".";
-      if ( !atts["ID"].empty() ){
-	arg += atts["ID"] + "_" + TiCC::toString(i);
+      if ( !kid.empty() ){
+	arg += kid + "_" + TiCC::toString(i);
       }
       else {
 	arg += "String_" + TiCC::toString(i);
@@ -238,7 +236,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 	  = new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
 	s->append( h );
 	folia::AlignReference *a =
-	  new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
+	  new folia::AlignReference( folia::getArgs( "id='" + kid + "', type='str'" ) );
 	h->append( a );
       }
     }
@@ -273,8 +271,7 @@ void createFile( folia::FoliaElement *text,
     }
     arg += id;
     args["id"] = arg;
-    folia::Paragraph *p =
-      new folia::Paragraph( args, text->doc() );
+    folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
     text->append( p );
     UnicodeString ocr_text;
     list<xmlNode*> v =
@@ -298,10 +295,13 @@ void createFile( folia::FoliaElement *text,
 		}
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
+		  string kid = atts["ID"];
+		  string sub = atts["SUBS_CONTENT"];
+		  UnicodeString subc = folia::UTF8ToUnicode( sub );
 		  folia::KWargs args;
 		  string arg = p->id() + ".";
-		  if ( !atts["ID"].empty() ){
-		    arg += atts["ID"];
+		  if ( !kid.empty() ){
+		    arg += kid;
 		  }
 		  else {
 		    arg += "String_" + TiCC::toString(++cnt);
@@ -310,7 +310,6 @@ void createFile( folia::FoliaElement *text,
 		  args["class"] = classname;
 		  folia::String *s = new folia::String( args, text->doc() );
 		  p->append( s );
-		  UnicodeString subc = folia::UTF8ToUnicode(atts["SUBS_CONTENT"]);
 		  s->setutext( subc,
 			       ocr_text.length(),
 			       classname );
@@ -320,7 +319,8 @@ void createFile( folia::FoliaElement *text,
 		      new folia::Alignment( folia::getArgs( "href='" + altoFile + "'" ) );
 		    s->append( h );
 		    folia::AlignReference *a = 0;
-		    a = new folia::AlignReference( folia::getArgs( "id='" + atts["ID"] + "', type='str'" ) );
+		    a = new folia::AlignReference( folia::getArgs( "id='" + kid
+								   + "', type='str'" ) );
 		    h->append( a );
 		    a = new folia::AlignReference( folia::getArgs ( "id='" +
 								    TiCC::getAttribute( pnt, "ID" )
@@ -381,12 +381,11 @@ void createFile( folia::FoliaElement *text,
 void processBlocks( folia::FoliaElement *text,
 		    const list<xmlNode*>& blocks,
 		    const docCache& cache ){
-  list<xmlNode*>::const_iterator it = blocks.begin();
-  while ( it != blocks.end() ){
-    string alt = TiCC::getAttribute( *it, "alto" );
+  for ( const auto& it : blocks ){
+    string alt = TiCC::getAttribute( it, "alto" );
     xmlDoc *alt_doc = cache.find( alt );
     if ( alt_doc ){
-      list<xmlNode*> texts = TiCC::FindNodes( *it, "dcx:TextBlock" );
+      list<xmlNode*> texts = TiCC::FindNodes( it, "dcx:TextBlock" );
       createFile( text, alt_doc, alt, texts );
     }
     else {
@@ -395,7 +394,6 @@ void processBlocks( folia::FoliaElement *text,
 	cerr << "didn't find doc " << alt << endl;
       }
     }
-    ++it;
   }
 }
 
@@ -429,9 +427,8 @@ void processArticle( const string& f,
   folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"  ) );
   doc.append( text );
 
-  list<xmlNode*>::const_iterator it = parts.begin();
-  while ( it != parts.end() ){
-    list<xmlNode*> blocks = TiCC::FindNodes( *it, "dcx:blocks" );
+  for ( const auto& it : parts ){
+    list<xmlNode*> blocks = TiCC::FindNodes( it, "dcx:blocks" );
     if ( blocks.size() < 1 ){
 #pragma omp critical
       {
@@ -439,8 +436,8 @@ void processArticle( const string& f,
       }
     }
     processBlocks( text, blocks, cache );
-    ++it;
   }
+
   string outName = outDir;
   if ( subject == "artikel" )
     outName += "artikel/";
@@ -517,10 +514,9 @@ bool download( const string& alto_cache,
       return false;
     }
   }
-  list<xmlNode*>::const_iterator it = resources.begin();
   map<string,string> ref_file_map;
-  while ( it != resources.end() ){
-    string ref = TiCC::getAttribute( *it, "ref" );
+  for ( const auto& res : resources ){
+    string ref = TiCC::getAttribute( res, "ref" );
     if ( ref.find( ":alto" ) != string::npos ){
       string id;
       string fn = generateName( ref, id );
@@ -545,12 +541,11 @@ bool download( const string& alto_cache,
 	}
       }
     }
-    ++it;
   }
 
   int retry = 3;
   while ( retry-- > 0 ){
-    map<string,string>::iterator it = ref_file_map.begin();
+    auto it = ref_file_map.begin();
     while ( it != ref_file_map.end() ){
       string cmd = "wget " + it->first + " -q -O " + it->second;
       int res = system( cmd.c_str() );
@@ -575,13 +570,11 @@ bool download( const string& alto_cache,
     {
       cerr << "unable to retrieve some alto files:" << endl;
     }
-    map<string,string>::const_iterator it = ref_file_map.begin();
 #pragma omp critical
     {
-      while ( it != ref_file_map.end() ){
-	cerr << "reference:" << it->first
-	     << " filename: " << it->second << endl;
-	++it;
+      for ( const auto& it : ref_file_map ){
+	cerr << "reference:" << it.first
+	     << " filename: " << it.second << endl;
       }
     }
     if ( (d_cnt + c_cnt) == 0 ){
@@ -619,11 +612,10 @@ bool download( const string& alto_cache,
       return false;
     }
   }
-  list<xmlNode*>::const_iterator it = resources.begin();
   map<string,string> ref_file_map;
-  while ( it != resources.end() ){
-    string ref = TiCC::getAttribute( *it, "ref" );
-    string fn = TiCC::getAttribute( *it, "filename" );
+  for ( const auto res :resources ){
+    string ref = TiCC::getAttribute( res, "ref" );
+    string fn = TiCC::getAttribute( res, "filename" );
     if ( ref.find( ":alto" ) != string::npos ){
       if ( !fn.empty() ){
 	fn = alto_cache + fn;
@@ -644,12 +636,11 @@ bool download( const string& alto_cache,
 	}
       }
     }
-    ++it;
   }
 
   int retry = 3;
   while ( retry-- > 0 ){
-    map<string,string>::iterator it = ref_file_map.begin();
+    auto it = ref_file_map.begin();
     while ( it != ref_file_map.end() ){
       string cmd = "wget " + it->first + " -q -O " + it->second;
       int res = system( cmd.c_str() );
@@ -674,13 +665,11 @@ bool download( const string& alto_cache,
     {
       cerr << "unable to retrieve some alto files:" << endl;
     }
-    map<string,string>::const_iterator it = ref_file_map.begin();
 #pragma omp critical
     {
-      while ( it != ref_file_map.end() ){
-	cerr << "reference:" << it->first
-	     << " filename: " << it->second << endl;
-	++it;
+      for ( const auto& it : ref_file_map ){
+	cerr << "reference:" << it.first
+	     << " filename: " << it.second << endl;
       }
     }
     if ( (d_cnt + c_cnt) == 0 ){
@@ -715,22 +704,20 @@ bool clear_alto_files( const string& dirName ){
 }
 
 void clear_files( const set<string>& files ){
-  set<string>::const_iterator it = files.begin();
-  while( it != files.end() ){
-    int res = unlink( it->c_str() );
+  for( const auto& it : files ){
+    int res = unlink( it.c_str() );
     if ( res ){
 #pragma omp critical
       {
-	cerr << "problems removing file " << *it << endl;
+	cerr << "problems removing file " << it << endl;
       }
     }
     else if ( verbose ){
 #pragma omp critical
       {
-	cout << "cleared file " << *it << endl;
+	cout << "cleared file " << it << endl;
       }
     }
-    ++it;
   }
 }
 
@@ -815,25 +802,22 @@ void solveArtAlto( const string& alto_cache,
 		}
 	      }
 	      else {
-		list<xmlNode*>::const_iterator it = items.begin();
-		while ( it != items.end() ){
-		  string art_id = TiCC::getAttribute( *it, "article_id" );
+		for ( const auto& it : items ){
+		  string art_id = TiCC::getAttribute( it, "article_id" );
 		  if ( art_id.empty() ){
 #pragma omp critical
 		    {
-		      cerr << "no article ID in " << TiCC::getAttribute( *it, "identifier" )  << endl;
+		      cerr << "no article ID in " << TiCC::getAttribute( it, "identifier" )  << endl;
 		    }
 		    succes = false;
 		  }
 		  else {
 		    article_names.insert( art_id );
 		  }
-		  ++it;
 		}
-		set<string>::const_iterator art_it = article_names.begin();
-		while ( art_it != article_names.end() ){
+		for ( const auto& art : article_names ){
 		  string subject;
-		  list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":metadata']" );
+		  list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + art + ":metadata']" );
 		  if ( meta.size() == 1 ){
 		    list<xmlNode*> subs = TiCC::FindNodes( meta.front(), "didl:Resource//srw_dc:dcx/dc:subject" );
 		    if ( subs.size() == 1 ){
@@ -850,16 +834,16 @@ void solveArtAlto( const string& alto_cache,
 		  else {
 #pragma omp critical
 		    {
-		      cerr << "problems with metadata in " << *art_it << endl;
+		      cerr << "problems with metadata in " << art << endl;
 		    }
 		    succes = false;
 		  }
 
-		  list<xmlNode*> comps = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + *art_it + ":zoning']" );
+		  list<xmlNode*> comps = TiCC::FindNodes( didl, "//didl:Item/didl:Component[@dc:identifier='" + art + ":zoning']" );
 		  if ( comps.size() == 1 ){
 		    list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
 		    if ( zones.size() == 1 ){
-		      processZone( *art_it, subject,
+		      processZone( art, subject,
 				   zones.front(), cache, outDir,
 				   inputType, outputType );
 		    }
@@ -874,11 +858,10 @@ void solveArtAlto( const string& alto_cache,
 		  else {
 #pragma omp critical
 		    {
-		      cerr << "problems with Components in " << *art_it << endl;
+		      cerr << "problems with Components in " << art << endl;
 		    }
 		    succes = false;
 		  }
-		  ++art_it;
 		}
 	      }
 	      if ( clearCachedFiles )
@@ -996,12 +979,14 @@ void solveBook( const string& altoFile, const string& id,
 		  }
 		  else {
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
+		    string kid = atts["ID"];
+		    string sub = atts["SUBS_CONTENT"];
+		    UnicodeString subc = folia::UTF8ToUnicode( sub );
 		    folia::KWargs args;
-		    args["id"] = p->id() + "." + atts["ID"];
+		    args["id"] = p->id() + "." + kid;
 		    args["class"] = classname;
 		    folia::String *s = new folia::String( args, text->doc() );
 		    p->append( s );
-		    UnicodeString subc = folia::UTF8ToUnicode( atts["SUBS_CONTENT"] );
 		    s->setutext( subc,
 				 ocr_text.length(),
 				 classname );
@@ -1010,7 +995,8 @@ void solveBook( const string& altoFile, const string& id,
 		      new folia::Alignment( folia::getArgs("href='" + urn + "'" ));
 		    s->append( h );
 		    folia::AlignReference *a = 0;
-		    a = new folia::AlignReference( folia::getArgs("id='" + atts["ID"] + "', type='str'" ) );
+		    a = new folia::AlignReference( folia::getArgs("id='" + kid
+								  + "', type='str'" ) );
 		    h->append( a );
 		    a = new folia::AlignReference( folia::getArgs( "id='" +
 								   TiCC::getAttribute( pnt, "ID" )
@@ -1138,17 +1124,15 @@ void solveBookAlto( const string& alto_cache,
 	    else {
 	      cout << "Downloaded files " << endl;
 	      list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component" );
-	      list<xmlNode*>::const_iterator it = meta.begin();
-	      while ( it != meta.end() ){
-		string id = TiCC::getAttribute( *it, "identifier");
+	      for ( const auto& m : meta ){
+		string id = TiCC::getAttribute( m, "identifier");
 		if ( !id.empty() ){
-		  map<string,string>::const_iterator it = downloaded_files.find( id );
+		  const auto it = downloaded_files.find( id );
 		  if ( it != downloaded_files.end() ){
 		    solveBook( it->second, id, urns[id], outDir,
 			       outputType );
 		  }
 		}
-		++it;
 	      }
 	    }
 	  }
