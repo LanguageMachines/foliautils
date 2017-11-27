@@ -25,7 +25,8 @@
 */
 
 #include <string>
-#include <map>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -129,7 +130,8 @@ void clean_doc( Document *d,
 		const string& outname,
 		const string& textclass,
 		bool current,
-		map<AnnotationType::AnnotationType,set<string>>& anno_setname ){
+		unordered_map< AnnotationType::AnnotationType,
+		unordered_set<string>>& anno_setname ){
   FoliaElement *root = d->doc();
   for( const auto& it : anno_setname ){
     for ( const auto& set : it.second ){
@@ -208,7 +210,7 @@ int main( int argc, char *argv[] ){
     cerr << "cannot combine --fixtext and --current" << endl;
     exit( EXIT_FAILURE );
   }
-  map<AnnotationType::AnnotationType,set<string>> clean_sets;
+  unordered_map<AnnotationType::AnnotationType,unordered_set<string>> clean_sets;
   string line;
   while ( opts.extract( "cleanannoset", line ) ){
     string type;
