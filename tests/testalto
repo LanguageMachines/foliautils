@@ -15,3 +15,5 @@ $my_bin/FoLiA-alto --cache=/tmp/cache -O out --type=boek data/test:mpeg21.xml >>
 ls /tmp/cache >> testalto.out
 
 ls out/dpo.*.folia.xml >> testalto.out
+
+cat out/dpo.1880.mpeg21.0006.alto.folia.xml >> testalto.out
