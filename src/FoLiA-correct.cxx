@@ -24,9 +24,11 @@
       lamasoftware (at ) science.ru.nl
 */
 
-#include <unistd.h>
+#include <cstdio>
 #include <string>
 #include <map>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -65,15 +67,15 @@ ostream& operator<<( ostream& os, const word_conf& wc ){
 }
 
 bool fillVariants( const string& fn,
-		   map<string,vector<word_conf> >& variants,
+		   unordered_map<string,vector<word_conf> >& variants,
 		   size_t numSugg ){
   ifstream is( fn );
   string line;
   string current_word;
   vector<word_conf> vec;
   while ( getline( is, line ) ) {
-    vector<string> parts;
-    if ( TiCC::split_at( line, parts, "#" ) == 6 ){
+    vector<string> parts = TiCC::split_at( line, "#" );
+    if ( parts.size() == 6 ){
       string word = parts[0];
       if ( current_word.empty() )
 	current_word = word;
@@ -105,12 +107,12 @@ bool fillVariants( const string& fn,
   return !variants.empty();
 }
 
-bool fillUnknowns( const string& fn, set<string>& unknowns ){
+bool fillUnknowns( const string& fn, unordered_set<string>& unknowns ){
   ifstream is( fn );
   string line;
   while ( getline( is, line ) ) {
-    vector<string> parts;
-    if ( TiCC::split( line, parts ) == 2 ){
+    vector<string> parts = TiCC::split( line );
+    if ( parts.size() == 2 ){
       UnicodeString us( parts[0].c_str() );
       if ( us.length() > 1 ){
 	// '1' character words ar never UNK
@@ -128,12 +130,12 @@ bool fillUnknowns( const string& fn, set<string>& unknowns ){
   return !unknowns.empty();
 }
 
-bool fillPuncts( const string& fn, map<string,string>& puncts ){
+bool fillPuncts( const string& fn, unordered_map<string,string>& puncts ){
   ifstream is( fn );
   string line;
   while ( getline( is, line ) ) {
-    vector<string> parts;
-    if ( TiCC::split( line, parts ) == 2 ){
+    vector<string> parts = TiCC::split( line );
+    if ( parts.size() == 2 ){
       puncts[parts[0]] = parts[1];
     }
     else {
@@ -155,33 +157,32 @@ void filter( string& word ){
 }
 
 bool correct_one_unigram( const string& w,
-			  const map<string,vector<word_conf> >& variants,
-			  const set<string>& unknowns,
-			  const map<string,string>& puncts,
+			  const unordered_map<string,vector<word_conf> >& variants,
+			  const unordered_set<string>& unknowns,
+			  const unordered_map<string,string>& puncts,
 			  string& result,
-			  map<string,size_t>& counts ){
+			  unordered_map<string,size_t>& counts ){
   bool did_edit = false;
   if ( verbose > 2 ){
     cout << "correct unigram " << w << endl;
   }
   string word = w;
   string orig_word = word;
-  map<string,string>::const_iterator pit = puncts.find( word );
+  const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
     word = pit->second;
   }
-  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
-  if ( it != variants.end() ){
+  const auto vit = variants.find( word );
+  if ( vit != variants.end() ){
     // 1 or more edits found
-    string edit = it->second[0].word;
-    vector<string> parts;
-    size_t num = TiCC::split_at( edit, parts, SEPARATOR );
+    string edit = vit->second[0].word;
+    vector<string> parts = TiCC::split_at( edit, SEPARATOR );
     // edit might be seperatable!
     for ( const auto& p : parts ){
       result += p + " ";
     }
     string ed;
-    switch ( num ){
+    switch ( parts.size() ){
     case 1:
       ed ="11";
       break;
@@ -206,11 +207,11 @@ bool correct_one_unigram( const string& w,
   }
   else {
     // a word with no suggested variants
-    set<string>::const_iterator sit = unknowns.find( word );
-    if ( sit == unknowns.end() ){
-      sit = unknowns.find( orig_word );
+    auto uit = unknowns.find( word );
+    if ( uit == unknowns.end() ){
+      uit = unknowns.find( orig_word );
     }
-    if ( sit != unknowns.end() ){
+    if ( uit != unknowns.end() ){
       // ok it is a registrated garbage word
       result = "UNK ";
       ++counts[result];
@@ -225,11 +226,11 @@ bool correct_one_unigram( const string& w,
 }
 
 string correct_unigrams( const vector<string>& unigrams,
-			 const map<string,vector<word_conf> >& variants,
-			 const set<string>& unknowns,
-			 const map<string,string>& puncts,
+			 const unordered_map<string,vector<word_conf> >& variants,
+			 const unordered_set<string>& unknowns,
+			 const unordered_map<string,string>& puncts,
 			 vector<pair<string,string>>& corrections,
-			 map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts ){
   string result;
   for ( const auto& uni : unigrams ){
     string cor;
@@ -244,11 +245,11 @@ string correct_unigrams( const vector<string>& unigrams,
 
 
 int correct_one_bigram( const string& bi,
-			const map<string,vector<word_conf> >& variants,
-			const set<string>& unknowns,
-			const map<string,string>& puncts,
+			const unordered_map<string,vector<word_conf> >& variants,
+			const unordered_set<string>& unknowns,
+			const unordered_map<string,string>& puncts,
 			string& result,
-			map<string,size_t>& counts ){
+			unordered_map<string,size_t>& counts ){
   int extra_skip = 0;
   result.clear();
   if ( verbose > 2 ){
@@ -257,21 +258,20 @@ int correct_one_bigram( const string& bi,
   string word = bi;
   filter(word);
   string orig_word = word;
-  map<string,string>::const_iterator pit = puncts.find( word );
+  const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
     word = pit->second;
   }
-  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
-  if ( it != variants.end() ){
+  const auto vit = variants.find( word );
+  if ( vit != variants.end() ){
     // edits found
-    string edit = it->second[0].word;
-    vector<string> parts;
-    size_t num = TiCC::split_at( edit, parts, SEPARATOR ); // edit can can be unseperated!
+    string edit = vit->second[0].word;
+    vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     for ( const auto& p : parts ){
       result += p + " ";
     }
     string ed;
-    switch ( num ){
+    switch ( parts.size() ){
     case 1:
       ed ="21";
       break;
@@ -296,11 +296,11 @@ int correct_one_bigram( const string& bi,
   }
   else {
     // a word with no suggested variants
-    set<string>::const_iterator sit = unknowns.find( word );
-    if ( sit == unknowns.end() ){
-      sit = unknowns.find( orig_word );
+    auto uit = unknowns.find( word );
+    if ( uit == unknowns.end() ){
+      uit = unknowns.find( orig_word );
     }
-    if ( sit != unknowns.end() ){
+    if ( uit != unknowns.end() ){
       // ok it is a registrated garbage bigram
       result = "UNK UNK ";
       ++counts[result];
@@ -311,8 +311,7 @@ int correct_one_bigram( const string& bi,
     }
     else {
       // just use the ORIGINAL word and handle the first part like unigram
-      vector<string> parts;
-      TiCC::split_at( orig_word, parts, SEPARATOR );
+      vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
       correct_one_unigram( parts[0], variants, unknowns,
 			   puncts, result, counts );
       if ( verbose > 2 ){
@@ -327,11 +326,11 @@ int correct_one_bigram( const string& bi,
 }
 
 string correct_bigrams( const vector<string>& bigrams,
-			const map<string,vector<word_conf> >& variants,
-			const set<string>& unknowns,
-			const map<string,string>& puncts,
+			const unordered_map<string,vector<word_conf> >& variants,
+			const unordered_set<string>& unknowns,
+			const unordered_map<string,string>& puncts,
 			const string& last,
-			map<string,size_t>& counts ){
+			unordered_map<string,size_t>& counts ){
   string result;
   int skip = 0;
   for ( const auto& bi : bigrams ){
@@ -355,11 +354,11 @@ string correct_bigrams( const vector<string>& bigrams,
 }
 
 int correct_one_trigram( const string& tri,
-			 const map<string,vector<word_conf> >& variants,
-			 const set<string>& unknowns,
-			 const map<string,string>& puncts,
+			 const unordered_map<string,vector<word_conf> >& variants,
+			 const unordered_set<string>& unknowns,
+			 const unordered_map<string,string>& puncts,
 			 string& result,
-			 map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts ){
   int extra_skip = 0;
   result.clear();
   if ( verbose > 2 ){
@@ -368,21 +367,20 @@ int correct_one_trigram( const string& tri,
   string word = tri;
   filter(word);
   string orig_word = word;
-  map<string,string>::const_iterator pit = puncts.find( word );
+  const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
     word = pit->second;
   }
-  map<string,vector<word_conf> >::const_iterator it = variants.find( word );
-  if ( it != variants.end() ){
+  const auto vit = variants.find( word );
+  if ( vit != variants.end() ){
     // edits found
-    string edit = it->second[0].word;
-    vector<string> parts;
-    size_t num = TiCC::split_at( edit, parts, SEPARATOR ); // edit can can be unseperated!
+    string edit = vit->second[0].word;
+    vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     for ( const auto& p : parts ){
       result += p + " ";
     }
     string ed;
-    switch ( num ){
+    switch ( parts.size() ){
     case 1:
       ed ="31";
       break;
@@ -407,11 +405,11 @@ int correct_one_trigram( const string& tri,
   }
   else {
     // a word with no suggested variants
-    set<string>::const_iterator sit = unknowns.find( word );
-    if ( sit == unknowns.end() ){
-      sit = unknowns.find( orig_word );
+    auto uit = unknowns.find( word );
+    if ( uit == unknowns.end() ){
+      uit = unknowns.find( orig_word );
     }
-    if ( sit != unknowns.end() ){
+    if ( uit != unknowns.end() ){
       // ok it is a registrated garbage trigram
       result = "UNK UNK UNK";
       ++counts[result];
@@ -422,8 +420,7 @@ int correct_one_trigram( const string& tri,
     }
     else {
       // just use the ORIGINAL word so handle the first part like bigram
-      vector<string> parts;
-      TiCC::split_at( orig_word, parts, SEPARATOR );
+      vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
       string corr;
       string test = parts[0] + SEPARATOR + parts[1];
       extra_skip = correct_one_bigram( test, variants, unknowns,
@@ -435,11 +432,11 @@ int correct_one_trigram( const string& tri,
 }
 
 string correct_trigrams( const vector<string>& trigrams,
-			 const map<string,vector<word_conf> >& variants,
-			 const set<string>& unknowns,
-			 const map<string,string>& puncts,
+			 const unordered_map<string,vector<word_conf> >& variants,
+			 const unordered_set<string>& unknowns,
+			 const unordered_map<string,string>& puncts,
 			 const vector<string>& unigrams,
-			 map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts ){
   string result;
   int skip = 0;
   for ( const auto& tri : trigrams ){
@@ -495,11 +492,11 @@ string correct_trigrams( const vector<string>& trigrams,
 }
 
 void correctNgrams( Paragraph* par,
-		    const map<string,vector<word_conf> >& variants,
-		    const set<string>& unknowns,
-		    const map<string,string>& puncts,
+		    const unordered_map<string,vector<word_conf> >& variants,
+		    const unordered_set<string>& unknowns,
+		    const unordered_map<string,string>& puncts,
 		    int ngrams,
-		    map<string,size_t>& counts ){
+		    unordered_map<string,size_t>& counts ){
   vector<TextContent *> origV = par->select<TextContent>();
   string content = origV[0]->str();
   if ( verbose > 1 ){
@@ -509,8 +506,7 @@ void correctNgrams( Paragraph* par,
     }
   }
   filter( content, SEPCHAR ); // HACK
-  vector<string> unigrams;
-  TiCC::split( content, unigrams );
+  vector<string> unigrams = TiCC::split( content );
   vector<string> bigrams;
   vector<string> trigrams;
   counts["TOKENS"] += unigrams.size();
@@ -563,9 +559,9 @@ void correctNgrams( Paragraph* par,
 }
 
 void correctParagraph( Paragraph* par,
-		       const map<string,vector<word_conf> >& variants,
-		       const set<string>& unknowns,
-		       const map<string,string>& puncts,
+		       const unordered_map<string,vector<word_conf> >& variants,
+		       const unordered_set<string>& unknowns,
+		       const unordered_map<string,string>& puncts,
 		       bool doStrings ){
   vector<FoliaElement*> ev;
   if ( doStrings ){
@@ -587,14 +583,14 @@ void correctParagraph( Paragraph* par,
     string word = origV[0]->str();
     filter(word);
     string orig_word = word;
-    map<string,string>::const_iterator pit = puncts.find( word );
+    const auto pit = puncts.find( word );
     if ( pit != puncts.end() ){
       word = pit->second;
     }
-    map<string,vector<word_conf> >::const_iterator it = variants.find( word );
-    if ( it != variants.end() ){
+    const auto vit = variants.find( word );
+    if ( vit != variants.end() ){
       // 1 or more edits found
-      string edit = it->second[0].word;
+      string edit = vit->second[0].word;
       vector<FoliaElement*> oV;
       oV.push_back( origV[0] );
       vector<FoliaElement*> nV;
@@ -607,13 +603,13 @@ void correctParagraph( Paragraph* par,
       offset = corrected.size();
       nV.push_back( newT );
       vector<FoliaElement*> sV;
-      size_t limit = it->second.size();
+      size_t limit = vit->second.size();
       for( size_t j=0; j < limit; ++j ){
 	KWargs sargs;
-	sargs["confidence"] = it->second[j].conf;
+	sargs["confidence"] = vit->second[j].conf;
 	sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
 	Suggestion *sug = new Suggestion( sargs );
-	sug->settext( it->second[j].word, classname );
+	sug->settext( vit->second[j].word, classname );
 	sV.push_back( sug );
       }
       vector<FoliaElement*> cV;
@@ -622,11 +618,11 @@ void correctParagraph( Paragraph* par,
     }
     else {
       // a word with no suggested variants
-      set<string>::const_iterator sit = unknowns.find( word );
-      if ( sit == unknowns.end() ){
-	sit = unknowns.find( orig_word );
+      auto uit = unknowns.find( word );
+      if ( uit == unknowns.end() ){
+	uit = unknowns.find( orig_word );
       }
-      if ( sit != unknowns.end() ){
+      if ( uit != unknowns.end() ){
 	// ok it is a registrated garbage word
 	string edit = "UNK";
 	vector<FoliaElement*> oV;
@@ -659,13 +655,13 @@ void correctParagraph( Paragraph* par,
 }
 
 bool correctDoc( Document *doc,
-		 const map<string,vector<word_conf> >& variants,
-		 const set<string>& unknowns,
-		 const map<string,string>& puncts,
+		 const unordered_map<string,vector<word_conf> >& variants,
+		 const unordered_set<string>& unknowns,
+		 const unordered_map<string,string>& puncts,
 		 int ngrams,
 		 bool string_nodes,
 		 bool word_nodes,
-		 map<string,size_t>& counts ){
+		 unordered_map<string,size_t>& counts ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
 			setname ) ){
     return false;
@@ -846,9 +842,9 @@ int main( int argc, const char *argv[] ){
   }
   bool doDir = ( toDo > 1 );
 
-  map<string,vector<word_conf> > variants;
-  set<string> unknowns;
-  map<string,string> puncts;
+  unordered_map<string,vector<word_conf> > variants;
+  unordered_set<string> unknowns;
+  unordered_map<string,string> puncts;
 
 #pragma omp parallel sections
   {
@@ -948,7 +944,7 @@ int main( int argc, const char *argv[] ){
       }
     }
     if ( clear ){
-      unlink( outName.c_str() );
+      remove( outName.c_str() );
     }
     if ( TiCC::isFile( outName ) ){
 #pragma omp critical
@@ -960,7 +956,7 @@ int main( int argc, const char *argv[] ){
 	cerr << "unable to create output file! " << outName << endl;
 	exit(EXIT_FAILURE);
       }
-      map<string,size_t> counts;
+      unordered_map<string,size_t> counts;
       if ( correctDoc( doc, variants, unknowns, puncts,
 		       ngram, string_nodes, word_nodes, counts ) ){
 	doc->save( outName );

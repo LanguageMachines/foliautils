@@ -72,7 +72,7 @@ AC_CHECK_HEADERS([libexttextcat/textcat.h],
 AC_SEARCH_LIBS([textcat_Init],[exttextcat-2.0 exttextcat textcat],[],
   [AC_MSG_ERROR([Unable to find  textcat library. it is needed])])
 
-PKG_CHECK_MODULES([ticcutils], [ticcutils >= 0.6] )
+PKG_CHECK_MODULES([ticcutils], [ticcutils >= 0.17] )
 CXXFLAGS="$ticcutils_CFLAGS $CXXFLAGS"
 LIBS="$ticcutils_LIBS $LIBS"
 
