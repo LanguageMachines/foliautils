@@ -28,7 +28,8 @@
 #include <unistd.h> // getopt, unlink
 #include <string>
 #include <list>
-#include <map>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <stdexcept>
 #include <iostream>
@@ -63,7 +64,7 @@ public:
   void fill( const string&, const list<xmlNode*>& );
   void add( const string&, const string& );
   xmlDoc *find( const string& ) const;
-  map<string, xmlDoc*> cache;
+  unordered_map<string, xmlDoc*> cache;
 };
 
 void docCache::clear(){
@@ -498,8 +499,8 @@ string generateName( const string& ref, string& id ){
 
 bool download( const string& alto_cache,
 	       const list<xmlNode*>& resources,
-	       map<string,string>& urns,
-	       map<string,string>& downloaded ) {
+	       unordered_map<string,string>& urns,
+	       unordered_map<string,string>& downloaded ) {
   urns.clear();
   downloaded.clear();
   int d_cnt = 0;
@@ -514,7 +515,7 @@ bool download( const string& alto_cache,
       return false;
     }
   }
-  map<string,string> ref_file_map;
+  unordered_map<string,string> ref_file_map;
   for ( const auto& res : resources ){
     string ref = TiCC::getAttribute( res, "ref" );
     if ( ref.find( ":alto" ) != string::npos ){
@@ -598,7 +599,7 @@ bool download( const string& alto_cache,
 
 bool download( const string& alto_cache,
 	       const list<xmlNode*>& resources,
-	       set<string>& downloaded ){
+	       unordered_set<string>& downloaded ){
   downloaded.clear();
   int d_cnt = 0;
   int c_cnt = 0;
@@ -612,7 +613,7 @@ bool download( const string& alto_cache,
       return false;
     }
   }
-  map<string,string> ref_file_map;
+  unordered_map<string,string> ref_file_map;
   for ( const auto res :resources ){
     string ref = TiCC::getAttribute( res, "ref" );
     string fn = TiCC::getAttribute( res, "filename" );
@@ -703,7 +704,7 @@ bool clear_alto_files( const string& dirName ){
   return true;
 }
 
-void clear_files( const set<string>& files ){
+void clear_files( const unordered_set<string>& files ){
   for( const auto& it : files ){
     int res = unlink( it.c_str() );
     if ( res ){
@@ -777,7 +778,7 @@ void solveArtAlto( const string& alto_cache,
 	  }
 	}
 	else {
-	  set<string> downloaded_files;
+	  unordered_set<string> downloaded_files;
 	  if ( download( alto_cache, resources, downloaded_files ) ){
 	    if ( downloaded_files.size() == 0 ){
 #pragma omp critical
@@ -792,7 +793,6 @@ void solveArtAlto( const string& alto_cache,
 	      docCache cache; // each thread it own cache...
 	      cache.fill( alto_cache, blocks );
 	      list<xmlNode*> items = TiCC::FindNodes( didl, "didl:Item/didl:Item/didl:Item" );
-	      set<string> article_names;
 	      if ( items.size() == 0 ){
 #pragma omp critical
 		{
@@ -802,6 +802,7 @@ void solveArtAlto( const string& alto_cache,
 		}
 	      }
 	      else {
+		unordered_set<string> article_names;
 		for ( const auto& it : items ){
 		  string art_id = TiCC::getAttribute( it, "article_id" );
 		  if ( art_id.empty() ){
@@ -1111,8 +1112,8 @@ void solveBookAlto( const string& alto_cache,
 	  }
 	}
 	else {
-	  map<string,string> urns;
-	  map<string,string> downloaded_files;
+	  unordered_map<string,string> urns;
+	  unordered_map<string,string> downloaded_files;
 	  if ( download( alto_cache, resources, urns, downloaded_files ) ){
 	    if ( downloaded_files.size() == 0 ){
 #pragma omp critical
