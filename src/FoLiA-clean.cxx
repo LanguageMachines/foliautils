@@ -46,14 +46,15 @@ using namespace	folia;
 
 namespace std
 {
-  // needed to make unordered_[set|map] work on GCC < 5 (and when Clang
-  // uses old gcc includes)
+  // needed to make unordered_[set|map] work on GCC < 5 (or for Clang
+  // when uses old gcc includes)
+  // This is a defect in de C++ standard and fixed in more recent compilers
   template<>
   class hash<folia::AnnotationType::AnnotationType> {
   public:
     size_t operator()(const folia::AnnotationType::AnnotationType &t) const
     {
-      return (size_t) t;
+      return static_cast<size_t>(t);
     }
   };
 }
