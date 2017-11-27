@@ -43,7 +43,6 @@
 
 using namespace	std;
 using namespace	folia;
-using namespace	TiCC;
 
 int debug = 0;
 
@@ -165,11 +164,11 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok,fixtext,debug" );
+  TiCC::CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok,fixtext,debug" );
   try {
     opts.init(argc,argv);
   }
-  catch( OptionError& e ){
+  catch( TiCC::OptionError& e ){
     cerr << e.what() << endl;
     usage(argv[0]);
     exit( EXIT_FAILURE );
@@ -195,7 +194,7 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', output_dir );
   bool make_current = opts.extract( "current" );
   if ( opts.extract('t', value ) ){
-    if ( !stringTo(value, numThreads ) ){
+    if ( !TiCC::stringTo(value, numThreads ) ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
@@ -210,7 +209,8 @@ int main( int argc, char *argv[] ){
     cerr << "cannot combine --fixtext and --current" << endl;
     exit( EXIT_FAILURE );
   }
-  unordered_map<AnnotationType::AnnotationType,unordered_set<string>> clean_sets;
+  unordered_map<AnnotationType::AnnotationType,
+		unordered_set<string>> clean_sets;
   string line;
   while ( opts.extract( "cleanannoset", line ) ){
     string type;
@@ -230,7 +230,7 @@ int main( int argc, char *argv[] ){
     }
     AnnotationType::AnnotationType at;
     try {
-      at = stringTo<AnnotationType::AnnotationType>( type );
+      at = TiCC::stringTo<AnnotationType::AnnotationType>( type );
     }
     catch ( exception& e){
       cerr << e.what() << endl;
@@ -254,7 +254,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( fileNames.size() == 1 && TiCC::isDir( fileNames[0] ) ){
-    fileNames = searchFilesMatch( fileNames[0], expression );
+    fileNames = TiCC::searchFilesMatch( fileNames[0], expression );
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){

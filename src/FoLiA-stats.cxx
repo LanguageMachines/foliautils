@@ -28,6 +28,7 @@
 #include <map>
 #include <unordered_map>
 #include <vector>
+#include <exception>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -45,7 +46,6 @@
 
 using namespace	std;
 using namespace	folia;
-using namespace	TiCC;
 
 bool verbose = false;
 string classname = "current";
@@ -73,7 +73,7 @@ void create_agg_list( const map<string,vector<unordered_map<string, unsigned int
     unsigned int clipped = 0;
     string ext;
     if ( ng > 1 ){
-      ext += "." + toString( ng ) + "-gram";
+      ext += "." + TiCC::toString( ng ) + "-gram";
     }
     ext += ".tsv";
     string ofilename = filename + ext;
@@ -173,7 +173,7 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
       unsigned int total_n = totals_per_n[lang][ng];
       string ext = lext;
       if ( ng > 1 ){
-	ext += "." + toString( ng ) + "-gram";
+	ext += "." + TiCC::toString( ng ) + "-gram";
       }
       ext += ".tsv";
       string ofilename = filename + ext;
@@ -244,7 +244,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
       unsigned int total_n = totals_per_n[lang][ng];
       string ext = lext;
       if ( ng > 1 ){
-	ext += "." + toString( ng ) + "-gram";
+	ext += "." + TiCC::toString( ng ) + "-gram";
       }
       ext += ".tsv";
       string ofilename = filename + ext;
@@ -309,7 +309,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
       unsigned int total_n = totals_per_n[lang][ng];
       string ext = lext;
       if ( ng > 1 ){
-	ext += "." + toString( ng ) + "-gram";
+	ext += "." + TiCC::toString( ng ) + "-gram";
       }
       ext += ".tsv";
       string ofilename = filename + ext;
@@ -933,12 +933,14 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:RsS",
-		   "class:,clip:,lang:,languages:,ngram:,max-ngram:,lower,hemp:,underscore,separator:,help,version,mode:,verbose,aggregate,tags:" );
+  TiCC::CL_Options opts( "hVvpe:t:o:RsS",
+			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
+			 "lower,hemp:,underscore,separator:,help,version,"
+			 "mode:,verbose,aggregate,tags:" );
   try {
     opts.init(argc,argv);
   }
-  catch( OptionError& e ){
+  catch( TiCC::OptionError& e ){
     cerr << "FoLiA-stats: " << e.what() << endl;
     usage(argv[0]);
     exit( EXIT_FAILURE );
@@ -1041,19 +1043,19 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   if ( opts.extract("clip", value ) ){
-    if ( !stringTo(value, clip ) ){
+    if ( !TiCC::stringTo(value, clip ) ){
   cerr << "FoLiA-stats: illegal value for --clip (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
   }
   if ( opts.extract("ngram", value ) ){
-    if ( !stringTo(value, min_NG ) ){
+    if ( !TiCC::stringTo(value, min_NG ) ){
       cerr << "FoLiA-stats: illegal value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
   }
   if ( opts.extract("max-ngram", value ) ){
-    if ( !stringTo(value, max_NG ) ){
+    if ( !TiCC::stringTo(value, max_NG ) ){
       cerr << "FoLiA-stats: illegal value for --max-ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
@@ -1066,7 +1068,7 @@ int main( int argc, char *argv[] ){
   }
   if ( opts.extract('t', value ) ){
 #ifdef HAVE_OPENMP
-    if ( !stringTo(value, numThreads ) ){
+    if ( !TiCC::stringTo(value, numThreads ) ){
       cerr << "FoLiA-stats: illegal value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
@@ -1124,7 +1126,7 @@ int main( int argc, char *argv[] ){
   }
   else {
     dir_name = massOpts[0];
-    fileNames = searchFilesMatch( dir_name, expression, recursiveDirs );
+    fileNames = TiCC::searchFilesMatch( dir_name, expression, recursiveDirs );
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
