@@ -146,29 +146,6 @@ void create_lpf_list( const multimap<string, rec>& lpc,
   }
 }
 
-size_t split_at( const string& src, vector<string>& results,
-		 const string& sep ){
-  // split a string into substrings, using sep as seperator
-  // silently skip empty entries (e.g. when two or more seperators co-incide)
-  results.clear();
-  string::size_type pos = 0, p;
-  string res;
-  while ( pos != string::npos ){
-    p = src.find( sep, pos );
-    if ( p == string::npos ){
-      res = src.substr( pos );
-      pos = p;
-    }
-    else {
-      res = src.substr( pos, p - pos );
-      pos = p + sep.length();
-    }
-    if ( !res.empty() )
-      results.push_back( res );
-  }
-  return results.size();
-}
-
 unsigned int fillWF( const string& fName,
 		     map<string,unsigned int>& wf,
 		     bool keepSingles ){
@@ -177,8 +154,8 @@ unsigned int fillWF( const string& fName,
   while ( is ){
     string line;
     getline( is, line );
-    vector<string> parts;
-    int num = split_at( line, parts, "\t" );
+    vector<string> parts = TiCC::split_at( line, "\t" );
+    int num = parts.size();
     if ( num == 4 || num == 2 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
@@ -199,8 +176,8 @@ unsigned int fillLF( const string& fName,
   while ( is ){
     string line;
     getline( is, line );
-    vector<string> parts;
-    int num = split_at( line, parts, "\t" );
+    vector<string> parts = TiCC::split_at( line, "\t" );
+    int num = parts.size();
     if ( num == 4 || num == 2 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
@@ -221,16 +198,15 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
   while ( is ){
     string line;
     getline( is, line );
-    vector<string> parts;
-    unsigned int num = split_at( line, parts, "\t" );
+    vector<string> parts = TiCC::split_at( line, "\t" );
+    unsigned int num = parts.size();
     if ( num == 2 || num == 4 ){
       unsigned int cnt = TiCC::stringTo<unsigned int>( parts[1] );
       if ( keepSingles || cnt > 1 ){
-	vector<string> lp;
-	num = split_at( parts[0], lp, " " );
-	if ( num != 2*ng ){
-	  cerr << "suprise!" << endl;
-	  cerr << parts[0] << endl;
+	vector<string> lp = TiCC::split_at( parts[0], " " );
+	if ( lp.size() != 2*ng ){
+	  cerr << "suprise. expected " << 2*ng << " parts, got " << lp.size()
+	       << ". IN " << parts[0] << endl;
 	  exit( EXIT_FAILURE);
 	}
 	string lemma;

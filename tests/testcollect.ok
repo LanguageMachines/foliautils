@@ -17,11 +17,11 @@ start processing on 1 threads
 	words 	./statS1.wordfreqlist.2-gram.tsv
 	words 	./stats5.wordfreqlist.2-gram.tsv
 	words 	./stats10.wordfreqlist.2-gram.tsv
-	words 	./stats11.wordfreqlist.nld.2-gram.tsv
 	words 	./stats6.wordfreqlist.2-gram.tsv
-	words 	./stats11.wordfreqlist.fra.2-gram.tsv
 	words 	./stats11.wordfreqlist.deu.2-gram.tsv
 	words 	./stats11.wordfreqlist.eng.2-gram.tsv
+	words 	./stats11.wordfreqlist.fra.2-gram.tsv
+	words 	./stats11.wordfreqlist.nld.2-gram.tsv
 processed 8 wordfreq files.
 created WordFreq list 'collected.wordfreqlist.2-gram.total.tsv'
  Stored 285 tokens and 111 types, TTR= 0.389474
