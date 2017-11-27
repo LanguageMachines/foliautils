@@ -25,7 +25,6 @@
 */
 
 #include <string>
-#include <map>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -42,7 +41,6 @@
 
 using namespace	std;
 using namespace	folia;
-using namespace	TiCC;
 
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
@@ -58,11 +56,11 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  CL_Options opts( "hVvpe:t:o:", "class:,help,version,retaintok" );
+  TiCC::CL_Options opts( "hVvpe:t:o:", "class:,help,version,retaintok" );
   try {
     opts.init(argc,argv);
   }
-  catch( OptionError& e ){
+  catch( TiCC::OptionError& e ){
     cerr << e.what() << endl;
     usage(argv[0]);
     exit( EXIT_FAILURE );
@@ -92,7 +90,7 @@ int main( int argc, char *argv[] ){
   }
   bool retaintok = opts.extract( "retaintok" );
   if ( opts.extract('t', value ) ){
-    if ( !stringTo(value, numThreads ) ){
+    if ( !TiCC::stringTo(value, numThreads ) ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
@@ -116,7 +114,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( fileNames.size() == 1 && TiCC::isDir( fileNames[0] ) ){
-    fileNames = searchFilesMatch( fileNames[0], expression );
+    fileNames = TiCC::searchFilesMatch( fileNames[0], expression );
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
