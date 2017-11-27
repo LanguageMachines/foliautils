@@ -44,6 +44,21 @@
 using namespace	std;
 using namespace	folia;
 
+namespace std
+{
+  // needed to make unordered_[set|map] work on GCC < 5 (and when Clang
+  // uses old gcc includes)
+  template<>
+  class hash<folia::AnnotationType::AnnotationType> {
+  public:
+    size_t operator()(const folia::AnnotationType::AnnotationType &t) const
+    {
+      return (size_t) t;
+    }
+  };
+}
+
+
 int debug = 0;
 
 void clean_text( FoliaElement *node,

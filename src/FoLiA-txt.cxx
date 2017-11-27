@@ -201,8 +201,7 @@ int main( int argc, char *argv[] ){
 	par = 0;
 	continue;
       }
-      vector<string> words;
-      TiCC::split( line, words );
+      vector<string> words = TiCC::split( line );
       for ( const auto& w : words ){
 	if ( par == 0 ){
 	  folia::KWargs args;

@@ -869,18 +869,17 @@ size_t text_inventory( const Document *d, const string& docName,
       }
       continue;
     }
-    vector<string> data;
-    size_t num = TiCC::split( s, data );
+    vector<string> data = TiCC::split( s );
     if ( verbose ){
 #pragma omp critical
       {
 	cout << "found string: '" << s << "'" << endl;
-	if ( num <= 1 ){
+	if ( data.size() <= 1 ){
 	  cout << "with no substrings" << endl;
 	}
 	else {
 	  using TiCC::operator<<;
-	  cout << "with " << num << " substrings: " << data << endl;
+	  cout << "with " << data.size() << " substrings: " << data << endl;
 	}
       }
     }
@@ -981,8 +980,7 @@ int main( int argc, char *argv[] ){
   string tagsstring;
   opts.extract( "tags", tagsstring );
   if ( !tagsstring.empty() ){
-    vector<string> parts;
-    TiCC::split_at( tagsstring, parts, "," );
+    vector<string> parts = TiCC::split_at( tagsstring, "," );
     for( const auto& t : parts ){
       tags.insert( t );
     }
@@ -1078,8 +1076,7 @@ int main( int argc, char *argv[] ){
 #endif
   }
   if ( opts.extract("languages", value ) ){
-    vector<string> parts;
-    TiCC::split_at( value, parts, "," );
+    vector<string> parts = TiCC::split_at( value, "," );
     if ( parts.size() < 1 ){
       cerr << "FoLiA-stats: unable to extract a default language from --languages option" << endl;
       exit( EXIT_FAILURE );
