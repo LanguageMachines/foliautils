@@ -25,22 +25,20 @@
 
 */
 
-#include <unistd.h> // getopt, unlink
+#include <cstdio> // remove()
 #include <string>
 #include <list>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <stdexcept>
 #include <iostream>
 #include <fstream>
-#include "ticcutils/StringOps.h"
 #include "libfolia/folia.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
-#include "ticcutils/zipper.h"
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/zipper.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -706,7 +704,7 @@ bool clear_alto_files( const string& dirName ){
 
 void clear_files( const unordered_set<string>& files ){
   for( const auto& it : files ){
-    int res = unlink( it.c_str() );
+    int res = remove( it.c_str() );
     if ( res ){
 #pragma omp critical
       {
@@ -1177,7 +1175,9 @@ void solveBookAlto( const string& alto_cache,
   }
 }
 
-void solveDirectAlto( const string& full_file, const string& outDir, zipType outputType ){
+void solveDirectAlto( const string& full_file,
+		      const string& outDir,
+		      zipType outputType ){
 
 #pragma omp critical
   {
