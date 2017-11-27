@@ -26,9 +26,7 @@
 
 #include <string>
 #include <list>
-#include <map>
 #include <vector>
-#include <stdexcept>
 #include <iostream>
 #include <fstream>
 #include "ticcutils/StringOps.h"
@@ -191,14 +189,12 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 
 string getDocId( const string& title ){
   string result;
-  vector<string> vec;
-  TiCC::split_at( title, vec, ";" );
+  vector<string> vec = TiCC::split_at( title, ";" );
   for ( const auto& part : vec ){
-    vector<string> v1;
-    size_t num = TiCC::split( part, v1 );
-    if ( num == 2 ){
-      if ( TiCC::trim( v1[0] ) == "image" ){
-	result = v1[1];
+    vector<string> v2 = TiCC::split( part );
+    if ( v2.size() == 2 ){
+      if ( TiCC::trim( v2[0] ) == "image" ){
+	result = v2[1];
 	string::size_type pos = result.rfind( "/" );
 	if ( pos != string::npos ){
 	  result = result.substr( pos+1 );
