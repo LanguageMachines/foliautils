@@ -1156,7 +1156,7 @@ int main( int argc, char *argv[] ){
   unsigned int lemTotal =0;
   set<string> emph;
   int doc_counter = toDo;
-#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotal,lemTotal,wcv,lcv,lpcv,emph) schedule(dynamic)
+#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotal,posTotals,lemTotal,lemmaTotals,wcv,lcv,lpcv,emph) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
