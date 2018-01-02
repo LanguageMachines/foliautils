@@ -1,6 +1,3 @@
-# $Id$
-# $URL$
-
 # bootstrap - script to bootstrap the distribution rolling engine
 
 # usage:
@@ -61,4 +58,3 @@ AUTOMAKE=automake ACLOCAL=aclocal autoreconf --install \
 # aclocal-1.9 \
 #     && automake-1.9 --add-missing --verbose --gnu \
 #     && autoconf
-
