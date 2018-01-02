@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2014 - 2017
+  Copyright (c) 2014 - 2018
   CLST  - Radboud University
 
   This file is part of foliautils
