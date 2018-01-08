@@ -24,6 +24,7 @@
       lamasoftware (at ) science.ru.nl
 */
 
+#include <cmath>
 #include <string>
 #include <map>
 #include <unordered_map>
@@ -212,7 +213,9 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
       {
 	cout << "created WordFreq list '" << ofilename << "'";
 	cout << " for " << ng << "-grams. Stored " << sum << " tokens and "
-	     << types << " types, TTR= " << (double)types/sum;
+	     << types << " types, TTR= " << (double)types/sum
+	     << ", the angle is " << atan((double)types/sum)*180/M_PI
+	     << " degrees";
 	if ( clip > 0 ){
 	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
@@ -282,7 +285,9 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
       {
 	cout << "created LemmaFreq list '" << ofilename << "'";
 	cout << " for " << ng << "-gram lemmas. Stored " << sum
-	     << " tokens and " << types << " types. TTR= " << (double)types/sum;
+	     << " tokens and " << types << " types. TTR= " << (double)types/sum
+	     << ", the angle is " << atan((double)types/sum)*180/M_PI
+	     << " degrees";
 	if ( clip > 0 ){
 	  cout << " ("<< totals_per_n[lang][ng] - total_n << " lemmas were clipped.)";
 	}
@@ -347,7 +352,9 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
       {
 	cout << "created LemmaPosFreq list '" << ofilename << "'";
 	cout << " for " << ng << "-gram Lemma-Pos pairs. Stored " << sum
-	     << " tokens and " << types << " types. TTR= " << (double)types/sum;
+	     << " tokens and " << types << " types. TTR= " << (double)types/sum
+	     << ", the angle is " << atan((double)types/sum)*180/M_PI
+	     << " degrees";
 	if ( clip > 0 ){
 	  cout << " ("<< totals_per_n[lang][ng] - total_n << " were clipped.)";
 	}
