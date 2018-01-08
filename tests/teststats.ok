@@ -85,6 +85,6 @@ Processed :data/frog2.xml with 11 n-grams, 11 lemmas, and 11 POS tags. still 0 f
 done processsing directory ''
 start calculating the results
 in total 22 n-grams were found.in 2 FoLiA documents.
-created WordFreq list 'stats8.wordfreqlist.tsv' for 1-grams. Stored 22 tokens and 8 types, TTR= 0.363636
-created LemmaFreq list 'stats8.lemmafreqlist.tsv' for 1-gram lemmas. Stored 22 tokens and 7 types. TTR= 0.318182
-created LemmaPosFreq list 'stats8.lemmaposfreqlist.tsv' for 1-gram Lemma-Pos pairs. Stored 22 tokens and 7 types. TTR= 0.318182
+created WordFreq list 'stats8.wordfreqlist.tsv' for 1-grams. Stored 22 tokens and 8 types, TTR= 0.363636, the angle is 19.9831 degrees
+created LemmaFreq list 'stats8.lemmafreqlist.tsv' for 1-gram lemmas. Stored 22 tokens and 7 types. TTR= 0.318182, the angle is 17.6501 degrees
+created LemmaPosFreq list 'stats8.lemmaposfreqlist.tsv' for 1-gram Lemma-Pos pairs. Stored 22 tokens and 7 types. TTR= 0.318182, the angle is 17.6501 degrees
