@@ -45,7 +45,7 @@
 #ifdef HAVE_OPENMP
 #include "omp.h"
 #endif
-#include "ucto/textcat.h"
+#include "ucto/my_textcat.h"
 
 using namespace	std;
 using namespace	folia;
