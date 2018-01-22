@@ -22,14 +22,6 @@ matrix:
       compiler: gcc
       env: COMPILER=g++
 
-#    - os: linux
-#      compiler: gcc
-#      addons:
-#        apt:
-#          sources: ['ubuntu-toolchain-r-test']
-#          packages: ['g++-5']
-#      env: COMPILER=g++-5
-
     - os: linux
       compiler: clang
       addons:
@@ -41,10 +33,34 @@ matrix:
         - COMPILER=clang++
         - CXXFLAGS="-fopenmp=libiomp5"
 
+    - os: osx
+      compiler: clang
+      env:
+        - COMPILER=clang++
+
 
 before_install:
-    - sudo apt-get update
-    - sudo apt-get install pkg-config autoconf-archive autotools-dev libicu-dev libxml2-dev libbz2-dev zlib1g-dev libexttextcat-dev libboost-dev libboost-regex-dev
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo apt-get update;
+        sudo apt-get install pkg-config autoconf-archive ccache cppcheck libicu-
+dev libxml2-dev libbz2-dev zlib1g-dev libtar-dev libboost-dev libboost-regex-dev
+ libexttextcat-dev;
+      fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        brew update;
+        brew install pkg-config;
+        brew install autoconf-archive;
+        brew outdated || brew upgrade icu4c;
+        brew outdated || brew upgrade libxml2;
+        brew outdated || brew install bzip2;
+        brew outdated || brew install zlib;
+        brew install libtar;
+        brew install cppcheck;
+        brew install ccache;
+        brew install libtextcat;
+        brew outdated boost || brew upgrade boost;
+      fi
+
     - git clone https://github.com/proycon/ticcutils
     - cd ticcutils
     - bash bootstrap.sh

@@ -46,12 +46,20 @@ AC_HEADER_STDBOOL
 
 # Checks for library functions.
 
-PKG_PROG_PKG_CONFIG
-if test "x$PKG_CONFIG_PATH" = x; then
-    export PKG_CONFIG_PATH="/usr/lib/pkgconfig:$prefix/lib/pkgconfig"
-else
-    export PKG_CONFIG_PATH="/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
+if test $prefix = "NONE"; then
+   prefix="$ac_default_prefix"
 fi
+
+
+PKG_PROG_PKG_CONFIG
+
+if test "x$PKG_CONFIG_PATH" = x; then
+    export PKG_CONFIG_PATH="$prefix/lib/pkgconfig"
+else
+    export PKG_CONFIG_PATH="$prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
+fi
+
+AC_OSX_PKG( [icu4c] )
 
 PKG_CHECK_MODULES([ICU], [icu-uc >= 50 icu-io] )
 CXXFLAGS="$CXXFLAGS $ICU_CFLAGS"
