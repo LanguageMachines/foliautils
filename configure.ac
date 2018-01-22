@@ -8,16 +8,6 @@ AC_CONFIG_SRCDIR([.])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADER([config.h])
 
-if test x"${CXXFLAGS+set}" = xset; then
-  # the user set CXXFLAGS; don't override it.
-  cxx_flags_were_set=true
-else
-  cxx_flags_were_set=false
-fi
-if $cxx_flags_were_set; then
-  CXXFLAGS=$CXXFLAGS
-fi
-
 # Checks for programs.
 AC_PROG_CXX( [g++ c++] )
 
@@ -49,7 +39,6 @@ AC_HEADER_STDBOOL
 if test $prefix = "NONE"; then
    prefix="$ac_default_prefix"
 fi
-
 
 PKG_PROG_PKG_CONFIG
 
