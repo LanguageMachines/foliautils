@@ -17,3 +17,6 @@ FoLiA_2text_SOURCES = FoLiA-2text.cxx
 FoLiA_pm_SOURCES = FoLiA-pm.cxx
 FoLiA_clean_SOURCES = FoLiA-clean.cxx
 FoLiA_wordtranslate_SOURCES = FoLiA-wordtranslate.cxx
+
+TESTS = tst.sh
+EXTRA_DIST = tst.sh
