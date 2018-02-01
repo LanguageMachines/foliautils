@@ -73,6 +73,14 @@ read 2 unknown words
 start reading puncts 
 read 10 punctuated words 
 verbosity = 2
+finished data/corr_word.xml
+start reading variants 
+read 4 variants 
+start reading unknowns 
+read 2 unknown words 
+start reading puncts 
+read 10 punctuated words 
+verbosity = 2
 correct ngrams in: '40ste vergadering'
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
