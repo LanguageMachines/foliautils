@@ -280,4 +280,5 @@ int main( int argc, char *argv[] ){
   string filename = outPrefix + ".idf.tsv";
   create_idf_list( wc, filename, clip );
   cout << "done: " << endl;
+  return EXIT_SUCCESS;
 }

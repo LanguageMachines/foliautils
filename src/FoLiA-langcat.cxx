@@ -318,4 +318,5 @@ int main( int argc, char *argv[] ){
     string docName = fileNames[fn];
     procesFile( TC, outDir, docName, lang, tags, doAll, cls );
   }
+  return EXIT_SUCCESS;
 }

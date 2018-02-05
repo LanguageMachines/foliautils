@@ -554,4 +554,5 @@ int main( int argc, const char *argv[] ) {
   else {
     cout << "finished " << name << endl;
   }
+  return EXIT_SUCCESS;
 }

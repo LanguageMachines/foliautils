@@ -1273,8 +1273,8 @@ int main( int argc, char *argv[] ){
 	  create_lpf_list( lpcv, filename, clip, min_NG, max_NG,
 			   posTotals, dopercentage );
 	}
-    }
+      }
     }
   }
-
+  return EXIT_SUCCESS;
 }
