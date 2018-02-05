@@ -998,4 +998,5 @@ int main( int argc, const char *argv[] ){
       cout << "\t" << it.first << "\t" << it.second << endl;
     }
   }
+  return EXIT_SUCCESS;
 }
