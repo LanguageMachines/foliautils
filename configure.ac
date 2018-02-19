@@ -53,6 +53,32 @@ fi
 
 AC_OSX_PKG( [icu4c] )
 
+PKG_CHECK_MODULES( [TEXTCAT],
+  [libexttextcat],
+  [TEXTCAT_FOUND=1
+   CXXFLAGS="$CXXFLAGS $TEXTCAT_CFLAGS"
+   LIBS="$TEXTCAT_LIBS $LIBS"],
+  [PKG_CHECK_MODULES( [TEXTCAT],
+   [libtextcat],
+   [TEXTCAT_FOUND=1
+    CXXFLAGS="$CXXFLAGS $TEXTCAT_CFLAGS"
+    LIBS="$TEXTCAT_LIBS $LIBS"],
+   [TEXTCAT_FOUND=0]
+   )]
+ )
+
+if test $TEXTCAT_FOUND = 1; then
+   AC_DEFINE([HAVE_TEXTCAT], [1], [textcat])
+else
+# So, no pkg-config for textcat found.
+#     Hopefully an old style version can be found???
+  AC_CHECK_OLD_TEXTCAT
+fi
+
+if test $TEXTCAT_FOUND = 1; then
+  AC_SEARCH_LM
+fi
+
 PKG_CHECK_MODULES([ICU], [icu-uc >= 50 icu-io] )
 CXXFLAGS="$CXXFLAGS $ICU_CFLAGS"
 LIBS="$ICU_LIBS $LIBS"
@@ -60,17 +86,6 @@ LIBS="$ICU_LIBS $LIBS"
 PKG_CHECK_MODULES([XML2], [libxml-2.0 >= 2.6.16] )
 CXXFLAGS="$CXXFLAGS $XML2_CFLAGS"
 LIBS="$XML2_LIBS $LIBS"
-
-AC_CHECK_HEADERS([libexttextcat/textcat.h],
-	         [CXXFLAGS="$CXXFLAGS -I$prefix/include"],
-	         [AC_CHECK_HEADERS([libtextcat/textcat.h],
-                                   [CXXFLAGS="$CXXFLAGS -I$prefix/include"],
-		                   [AC_CHECK_HEADERS([textcat.h],
-						     [],
-		                                     [AC_MSG_ERROR([Desperatly seeking textcat header file, it is needed])])])])
-
-AC_SEARCH_LIBS([textcat_Init],[exttextcat-2.0 exttextcat textcat],[],
-  [AC_MSG_ERROR([Unable to find  textcat library. it is needed])])
 
 PKG_CHECK_MODULES([ticcutils], [ticcutils >= 0.17] )
 CXXFLAGS="$ticcutils_CFLAGS $CXXFLAGS"
