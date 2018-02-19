@@ -1,3 +1,14 @@
+foliautils 0.8  19-02-2018
+[Ko vd Sloot]
+* added -R option to FoLiA-collect
+* FoLiA-collect now can work in parallel (-t option)
+* modernized configuration, whit better Max OSX support (including OpenMP)
+* all modules end with an exit code now.
+* added more tests to 'make check'
+* added output of Type-Token Ratio's (also in degrees)
+* several bugfixes.
+* code cleanup and refactoring, some speedup too
+
 foliautils 0.7  24-10-2017
 [ko vd Sloot]
  * updated and expanded tests
