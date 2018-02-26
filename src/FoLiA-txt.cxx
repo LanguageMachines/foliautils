@@ -116,24 +116,24 @@ int main( int argc, char *argv[] ){
       }
     }
   }
-  vector<string> fileNames = opts.getMassOpts();
-  size_t toDo = fileNames.size();
-  if ( toDo == 0 ){
+  vector<string> file_names = opts.getMassOpts();
+  size_t to_do = file_names.size();
+  if ( to_do == 0 ){
     cerr << "no matching files found" << endl;
     exit(EXIT_SUCCESS);
   }
-  if ( toDo == 1 ){
-    if ( TiCC::isDir( fileNames[0] ) ){
-      fileNames = TiCC::searchFiles( fileNames[0] );
-      toDo = fileNames.size();
-      if ( toDo == 0 ){
+  if ( to_do == 1 ){
+    if ( TiCC::isDir( file_names[0] ) ){
+      file_names = TiCC::searchFiles( file_names[0] );
+      to_do = file_names.size();
+      if ( to_do == 0 ){
 	cerr << "no files found in inputdir" << endl;
 	exit(EXIT_SUCCESS);
       }
     }
   }
-  if ( toDo > 1 ){
-    cout << "start processing of " << toDo << " files " << endl;
+  if ( to_do > 1 ){
+    cout << "start processing of " << to_do << " files " << endl;
   }
 
 #ifdef HAVE_OPENMP
@@ -143,9 +143,10 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
-#pragma omp parallel for shared(fileNames) schedule(dynamic)
-  for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    string fileName = fileNames[fn];
+  size_t failed_docs = 0;
+#pragma omp parallel for shared(file_names) schedule(dynamic)
+  for ( size_t fn=0; fn < file_names.size(); ++fn ){
+    string fileName = file_names[fn];
     ifstream is( fileName );
     if ( !is ){
 #pragma omp critical
@@ -176,6 +177,8 @@ int main( int argc, char *argv[] ){
       {
 	cerr << "failed to create a document with id:'" << docid << "'" << endl;
 	cerr << "reason: " << e.what() << endl;
+	++failed_docs;
+	--to_do;
       }
       continue;
     }
@@ -232,9 +235,15 @@ int main( int argc, char *argv[] ){
 #pragma omp critical
     {
       cout << "Processed: " << fileName << " into " << outname
-	   << " still " << --toDo << " files to go." << endl;
+	   << " still " << --to_do << " files to go." << endl;
     }
     delete d;
   }
-  return EXIT_SUCCESS;
+  if ( failed_docs == to_do ){
+    cerr << "No documents could be handled successfully!" << endl;
+    return EXIT_SUCCESS;
+  }
+  else {
+    return EXIT_SUCCESS;
+  }
 }
