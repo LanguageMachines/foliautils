@@ -1163,7 +1163,8 @@ int main( int argc, char *argv[] ){
   unsigned int lemTotal =0;
   set<string> emph;
   int doc_counter = toDo;
-#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotal,posTotals,lemTotal,lemmaTotals,wcv,lcv,lpcv,emph) schedule(dynamic)
+  unsigned int fail_docs = 0;
+#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotal,posTotals,lemTotal,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -1175,6 +1176,8 @@ int main( int argc, char *argv[] ){
       {
 	cerr << "FoLiA-stats: failed to load document '" << docName << "'" << endl;
 	cerr << "FoLiA-stats: reason: " << e.what() << endl;
+	--doc_counter;
+	++fail_docs;
       }
       continue;
     }
@@ -1224,6 +1227,10 @@ int main( int argc, char *argv[] ){
 
   if ( toDo ){
     cout << "done processsing directory '" << dir_name << "'" << endl;
+  }
+  if ( fail_docs == toDo ){
+    cerr << "no documents were successfull handled!" << endl;
+    return EXIT_FAILURE;
   }
   if ( !hempName.empty() ){
     if (!TiCC::createPath( hempName ) ){
