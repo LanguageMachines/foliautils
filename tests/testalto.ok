@@ -14,7 +14,7 @@ Usage: alto [options] file/dir
 			 'c'=g creates gzip files (.gz)
 	-v	 verbose output 
 	-V or --version	 show version 
-foliautils 0.8
+foliautils 0.9
 Usage: alto [options] file/dir
 	--cache	 alto cache directory 
 	--clear	 clear cached Alto files at start
@@ -56,10 +56,10 @@ out/dpo.1880.mpeg21.0008.alto.folia.xml
 out/dpo.1880.mpeg21.0009.alto.folia.xml
 out/dpo.1880.mpeg21.0010.alto.folia.xml
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dpo.1880.mpeg21.0006.alto" generator="libfolia-v1.11" version="1.5.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dpo.1880.mpeg21.0006.alto" generator="libfolia-v1.13" version="1.5.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="alto" datetime="2017-11-27T12:06:15" set="FoLia-alto-set"/>
+      <string-annotation annotator="alto" datetime="2018-02-26T12:23:33" set="FoLia-alto-set"/>
     </annotations>
   </metadata>
   <text xml:id="dpo.1880.mpeg21.0006.alto.text">

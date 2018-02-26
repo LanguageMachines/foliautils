@@ -1,5 +1,5 @@
 missing a directory to process!
-foliautils 0.8
+foliautils 0.9
 Usage: [options] dir
 	 collect the ngram statistics of a directory containing
 	 files produced by FoLiA-stats.
@@ -15,12 +15,12 @@ Processing dir '.'
 found 8 files to process
 start processing on 1 threads
 	words 	./statS1.wordfreqlist.2-gram.tsv
+	words 	./stats11.wordfreqlist.fra.2-gram.tsv
+	words 	./stats6.wordfreqlist.2-gram.tsv
 	words 	./stats5.wordfreqlist.2-gram.tsv
 	words 	./stats10.wordfreqlist.2-gram.tsv
-	words 	./stats6.wordfreqlist.2-gram.tsv
 	words 	./stats11.wordfreqlist.deu.2-gram.tsv
 	words 	./stats11.wordfreqlist.eng.2-gram.tsv
-	words 	./stats11.wordfreqlist.fra.2-gram.tsv
 	words 	./stats11.wordfreqlist.nld.2-gram.tsv
 processed 8 wordfreq files.
 created WordFreq list 'collected.wordfreqlist.2-gram.total.tsv'
