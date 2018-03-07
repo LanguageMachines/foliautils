@@ -862,7 +862,7 @@ size_t text_inventory( const Document *d, const string& docName,
     string s;
     UnicodeString us;
     try {
-      us = node->stricttext(classname);
+      us = node->text(classname);
       if ( lowercase ){
 	us.toLower();
       }
