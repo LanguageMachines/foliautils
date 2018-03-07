@@ -460,8 +460,8 @@ size_t add_word_inventory( const vector<string>& data,
 }
 
 size_t doc_sent_word_inventory( const Document *d, const string& docName,
-				int min_ng,
-				int max_ng,
+				unsigned int min_ng,
+				unsigned int max_ng,
 				map<string,vector<unsigned int>>& w_totals_per_n,
 				map<string,vector<unsigned int>>& l_totals_per_n,
 				map<string,vector<unsigned int>>& p_totals_per_n,
@@ -569,14 +569,17 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
       continue;
     }
     add_emph_inventory( data, emph );
-    for ( int ng = min_ng; ng <= max_ng; ++ng ){
+    for ( unsigned int ng = min_ng; ng <= max_ng; ++ng ){
+      if ( ng > data.size() ){
+	break;
+      }
       for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
 	string multiw;
 	string multil;
 	string multip;
 	bool lem_mis = false;
 	bool pos_mis = false;
-	for ( int j=0; j < ng; ++j ){
+	for ( unsigned int j=0; j < ng; ++j ){
 	  multiw += data[i+j].word;
 	  if ( data[i+j].lemma.empty() ){
 	    lem_mis = true;
