@@ -88,3 +88,20 @@ in total 22 n-grams were found.in 2 FoLiA documents.
 created WordFreq list 'stats8.wordfreqlist.tsv' for 1-grams. Stored 22 tokens and 8 types, TTR= 0.363636, the angle is 19.9831 degrees
 created LemmaFreq list 'stats8.lemmafreqlist.tsv' for 1-gram lemmas. Stored 22 tokens and 7 types. TTR= 0.318182, the angle is 17.6501 degrees
 created LemmaPosFreq list 'stats8.lemmaposfreqlist.tsv' for 1-gram Lemma-Pos pairs. Stored 22 tokens and 7 types. TTR= 0.318182, the angle is 17.6501 degrees
+start processing of 1 files 
+Processed :data/sonar.xml with 998 n-grams, 998 lemmas, and 998 POS tags. still 0 files to go.
+done processsing directory 'data/sonar.xml'
+start calculating the results
+in total 998 n-grams were found.
+created WordFreq list 'stats12.wordfreqlist.tsv' for 1-grams. Stored 274 tokens and 153 types, TTR= 0.558394, the angle is 29.1787 degrees
+created WordFreq list 'stats12.wordfreqlist.2-gram.tsv' for 2-grams. Stored 257 tokens and 241 types, TTR= 0.937743, the angle is 43.1598 degrees
+created WordFreq list 'stats12.wordfreqlist.3-gram.tsv' for 3-grams. Stored 241 tokens and 239 types, TTR= 0.991701, the angle is 44.7613 degrees
+created WordFreq list 'stats12.wordfreqlist.4-gram.tsv' for 4-grams. Stored 226 tokens and 225 types, TTR= 0.995575, the angle is 44.873 degrees
+created LemmaFreq list 'stats12.lemmafreqlist.tsv' for 1-gram lemmas. Stored 274 tokens and 137 types. TTR= 0.5, the angle is 26.5651 degrees
+created LemmaFreq list 'stats12.lemmafreqlist.2-gram.tsv' for 2-gram lemmas. Stored 257 tokens and 238 types. TTR= 0.92607, the angle is 42.8018 degrees
+created LemmaFreq list 'stats12.lemmafreqlist.3-gram.tsv' for 3-gram lemmas. Stored 241 tokens and 238 types. TTR= 0.987552, the angle is 44.6412 degrees
+created LemmaFreq list 'stats12.lemmafreqlist.4-gram.tsv' for 4-gram lemmas. Stored 226 tokens and 225 types. TTR= 0.995575, the angle is 44.873 degrees
+created LemmaPosFreq list 'stats12.lemmaposfreqlist.tsv' for 1-gram Lemma-Pos pairs. Stored 274 tokens and 151 types. TTR= 0.551095, the angle is 28.8589 degrees
+created LemmaPosFreq list 'stats12.lemmaposfreqlist.2-gram.tsv' for 2-gram Lemma-Pos pairs. Stored 257 tokens and 239 types. TTR= 0.929961, the angle is 42.9216 degrees
+created LemmaPosFreq list 'stats12.lemmaposfreqlist.3-gram.tsv' for 3-gram Lemma-Pos pairs. Stored 241 tokens and 239 types. TTR= 0.991701, the angle is 44.7613 degrees
+created LemmaPosFreq list 'stats12.lemmaposfreqlist.4-gram.tsv' for 4-gram Lemma-Pos pairs. Stored 226 tokens and 225 types. TTR= 0.995575, the angle is 44.873 degrees

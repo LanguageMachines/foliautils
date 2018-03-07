@@ -76,3 +76,12 @@ diff stats11.wordfreqlist.deu.3-gram.tsv stats11-deu-3.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.tsv stats11-nld.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.2-gram.tsv stats11-nld-2.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.3-gram.tsv stats11-nld-3.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=lemma_pos --max-ngram=4 -o stats12 data/sonar*.xml > out17 2>&1
+diff stats12.wordfreqlist.tsv stats-words-son.ok >> teststats.out 2>&1
+diff stats12.lemmafreqlist.tsv stats-lemmas-son.ok >> teststats.out 2>&1
+diff stats12.lemmaposfreqlist.tsv stats-lempos-son.ok >> teststats.out 2>&1
+diff stats12.wordfreqlist.4-gram.tsv stats-words-son-4.ok >> teststats.out 2>&1
+diff stats12.lemmafreqlist.4-gram.tsv stats-lemmas-son-4.ok >> teststats.out 2>&1
+diff stats12.lemmaposfreqlist.4-gram.tsv stats-lempos-son-4.ok >> teststats.out 2>&1
+cat out17 >> teststats.out
