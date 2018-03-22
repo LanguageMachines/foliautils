@@ -29,7 +29,7 @@ matrix:
       cache: ccache
       env:
         - SCAN=scan-build
-         - OPENMPFLAG=--disable-openmp
+        - OPENMPFLAG=--disable-openmp
 
     - os: osx
       compiler: clang++
@@ -103,5 +103,5 @@ install:
 script:
     - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib make check
 
- after_failure:
+after_failure:
    - cat src/test_suite.log
