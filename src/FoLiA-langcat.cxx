@@ -111,6 +111,7 @@ vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
   return result;
 }
 
+
 void procesFile( const TextCat& tc,
 		 const string& outDir, const string& docName,
 		 const string& default_lang,
