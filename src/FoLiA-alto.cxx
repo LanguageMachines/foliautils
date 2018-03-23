@@ -279,7 +279,6 @@ void createFile( folia::FoliaElement *text,
 			+ id + "']" );
     if ( v.size() == 1 ){
       xmlNode *node = v.front();
-      string tb_id = TiCC::getAttribute( node, "ID" );
       list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
       int cnt = 0;
       for ( const auto& line : lv ){
@@ -361,7 +360,7 @@ void createFile( folia::FoliaElement *text,
 	}
       }
     }
-    else if ( v.size() == 0 ){
+    else if ( v.empty() ){
       // probably an CB node...
       if ( id.find("CB") != string::npos ){
 	// YES
@@ -428,7 +427,7 @@ void processArticle( const string& f,
 
   for ( const auto& it : parts ){
     list<xmlNode*> blocks = TiCC::FindNodes( it, "dcx:blocks" );
-    if ( blocks.size() < 1 ){
+    if ( blocks.empty() ){
 #pragma omp critical
       {
 	cerr << "found no blocks" << endl;
@@ -478,7 +477,7 @@ void processZone( const string& id,
 		  const zipType inputType,
 		  const zipType outputType ){
   list<xmlNode *> parts =  TiCC::FindNodes( zone, "dcx:article-part" );
-  if ( parts.size() >= 1 ){
+  if ( !parts.empty() ){
     processArticle( id, subject, parts, cache, outDir, inputType, outputType );
   }
 }
@@ -767,7 +766,7 @@ void solveArtAlto( const string& alto_cache,
       xmlNode *didl = TiCC::xPath( metadata, "//*[local-name()='DIDL']" );
       if ( didl ){
 	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
-	if ( resources.size() == 0 ){
+	if ( resources.empty() ){
 #pragma omp critical
 	  {
 	    cout << "Unable to find usable text/xml resources in the DIDL: "
@@ -778,7 +777,7 @@ void solveArtAlto( const string& alto_cache,
 	else {
 	  unordered_set<string> downloaded_files;
 	  if ( download( alto_cache, resources, downloaded_files ) ){
-	    if ( downloaded_files.size() == 0 ){
+	    if ( downloaded_files.empty() ){
 #pragma omp critical
 	      {
 		cerr << "unable to find downloadable files " <<  file << endl;
@@ -791,7 +790,7 @@ void solveArtAlto( const string& alto_cache,
 	      docCache cache; // each thread it own cache...
 	      cache.fill( alto_cache, blocks );
 	      list<xmlNode*> items = TiCC::FindNodes( didl, "didl:Item/didl:Item/didl:Item" );
-	      if ( items.size() == 0 ){
+	      if ( items.empty() ){
 #pragma omp critical
 		{
 		  cout << "Unable to find usable Items in the DIDL: "
@@ -929,7 +928,7 @@ void solveBook( const string& altoFile, const string& id,
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     list<xmlNode*> textblocks = TiCC::FindNodes( root, "//*:TextBlock" );
-    if ( textblocks.size() == 0 ){
+    if ( textblocks.empty() ){
 #pragma omp critical
       {
 	cerr << "found no textblocks in " << altoFile << endl;
@@ -964,7 +963,6 @@ void solveBook( const string& altoFile, const string& id,
 			 + id + "']" );
       if ( v.size() == 1 ){
 	xmlNode *node = v.front();
-	string tb_id = TiCC::getAttribute( node, "ID" );
 	list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
 	for ( const auto& line : lv ){
 	  xmlNode *pnt = line->children;
@@ -1036,7 +1034,7 @@ void solveBook( const string& altoFile, const string& id,
 	  }
 	}
       }
-      else if ( v.size() == 0 ){
+      else if ( v.empty() ){
 	// probably an CB node...
 	if ( id.find("CB") != string::npos ){
 	  // YES
@@ -1101,7 +1099,7 @@ void solveBookAlto( const string& alto_cache,
       xmlNode *didl = TiCC::xPath( metadata, "//*[local-name()='DIDL']" );
       if ( didl ){
 	list<xmlNode*> resources = TiCC::FindNodes( didl, "//didl:Component/didl:Resource[@mimeType='text/xml']" );
-	if ( resources.size() == 0 ){
+	if ( resources.empty() ){
 #pragma omp critical
 	  {
 	    cout << "Unable to find usable text/xml resources in the DIDL: "
@@ -1113,7 +1111,7 @@ void solveBookAlto( const string& alto_cache,
 	  unordered_map<string,string> urns;
 	  unordered_map<string,string> downloaded_files;
 	  if ( download( alto_cache, resources, urns, downloaded_files ) ){
-	    if ( downloaded_files.size() == 0 ){
+	    if ( downloaded_files.empty() ){
 #pragma omp critical
 	      {
 		cerr << "unable to find downloadable files " <<  file << endl;
@@ -1317,7 +1315,6 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
-  string dirName;
   if ( !outputDir.empty() ){
     if ( !TiCC::isDir(outputDir) ){
       if ( !TiCC::createPath( outputDir ) ){
@@ -1358,11 +1355,6 @@ int main( int argc, char *argv[] ){
       if ( TiCC::match_back( name, ".tar" ) ){
 	cerr << "TAR files are not supported." << endl;
 	exit(EXIT_FAILURE);
-      }
-      else {
-	string::size_type pos = name.rfind( "/" );
-	if ( pos != string::npos )
-	  dirName = name.substr(0,pos);
       }
     }
     else {
