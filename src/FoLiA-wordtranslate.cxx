@@ -118,55 +118,58 @@ UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules
   return target;
 }
 
-UnicodeString lemmatiser(Word * word, UnicodeString target , const t_lemmamap &lemmamap) {
-    UnicodeString target_flat = target.toLower();
-    if (lemmamap.empty()) return target_flat;
-    const auto& lemmamap_iter = lemmamap.find(target_flat);
-    if (lemmamap_iter != lemmamap.end()) {
-        //resolve ambiguity by majority vote: just select the most frequent lemma->id pair (lexicon contains multiple occurrences)
-        int max = 0;
-        UnicodeString lemma_id;
-        for (unordered_map<UnicodeString,int>::const_iterator iter2 = lemmamap_iter->second.begin(); iter2 != lemmamap_iter->second.end(); iter2++) {
-            if (iter2->second >= max) {
-                max = iter2->second;
-                lemma_id = iter2->first;
-            }
-        }
-        {
-            KWargs args;
-            args["class"] = UnicodeToUTF8(lemma_id);
-            args["set"] = INT_LEMMAIDSET;
-            LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
-            word->append(lemma);
-        }
-        {
-            KWargs args;
-            UnicodeString lemmatextclass = target;
-            lemmatextclass = lemmatextclass.findAndReplace(" ", "_"); //use underscores instead of spaces for multiword lemmas (does not affect ⊕!)
-            args["class"] = UnicodeToUTF8(lemmatextclass);
-            args["set"] = INT_LEMMATEXTSET;
-            LemmaAnnotation * lemma = new LemmaAnnotation( args, word->doc() );
-            word->append(lemma);
-        }
+UnicodeString lemmatiser( Word *word,
+			  const UnicodeString& target,
+			  const t_lemmamap &lemmamap) {
+  UnicodeString target_flat = target;
+  target_flat.toLower();
+  if (lemmamap.empty()) return target_flat;
+  const auto& lemmamap_iter = lemmamap.find(target_flat);
+  if (lemmamap_iter != lemmamap.end()) {
+    //resolve ambiguity by majority vote: just select the most frequent lemma->id pair (lexicon contains multiple occurrences)
+    int max = 0;
+    UnicodeString lemma_id;
+    for ( const auto& iter2 : lemmamap_iter->second ){
+      if (iter2.second >= max) {
+	max = iter2.second;
+	lemma_id = iter2.first;
+      }
     }
+    {
+      KWargs args;
+      args["class"] = UnicodeToUTF8(lemma_id);
+      args["set"] = INT_LEMMAIDSET;
+      LemmaAnnotation *lemma = new LemmaAnnotation( args, word->doc() );
+      word->append(lemma);
+    }
+    {
+      KWargs args;
+      UnicodeString lemmatextclass = target;
+      lemmatextclass = lemmatextclass.findAndReplace(" ", "_"); //use underscores instead of spaces for multiword lemmas (does not affect ⊕!)
+      args["class"] = UnicodeToUTF8(lemmatextclass);
+      args["set"] = INT_LEMMATEXTSET;
+      LemmaAnnotation *lemma = new LemmaAnnotation( args, word->doc() );
+      word->append(lemma);
+    }
+  }
 
-    //return a version of target that could be suited for modernisation
-    target_flat = target_flat.findAndReplace(UTF8ToUnicode("⊕"), NBSP);
-    //we can't deal with pipes for multiple options, just choose the first one:
-    int pipeindex;
-    const UnicodeString emptystr = "";
-    do {
-        pipeindex = target_flat.indexOf("|");
-        if (pipeindex != -1) {
-            const int end = target_flat.indexOf(NBSP, pipeindex);
-            if (end != -1) {
-                target_flat = target_flat.remove(pipeindex, end-pipeindex); //delete 2nd option
-            } else {
-                target_flat = target_flat.remove(pipeindex, target_flat.length()-pipeindex); //delete 2nd option
-            }
-        }
-    } while (pipeindex != -1);
-    return target_flat; //return variant more or less suitable for modernisation (whitespaces will be handled later still)
+  //return a version of target that could be suited for modernisation
+  target_flat = target_flat.findAndReplace(UTF8ToUnicode("⊕"), NBSP);
+  //we can't deal with pipes for multiple options, just choose the first one:
+  int pipeindex;
+  const UnicodeString emptystr = "";
+  do {
+    pipeindex = target_flat.indexOf("|");
+    if (pipeindex != -1) {
+      const int end = target_flat.indexOf(NBSP, pipeindex);
+      if (end != -1) {
+	target_flat = target_flat.remove(pipeindex, end-pipeindex); //delete 2nd option
+      } else {
+	target_flat = target_flat.remove(pipeindex, target_flat.length()-pipeindex); //delete 2nd option
+      }
+    }
+  } while (pipeindex != -1);
+  return target_flat; //return variant more or less suitable for modernisation (whitespaces will be handled later still)
 }
 
 
@@ -209,22 +212,22 @@ bool translateDoc( Document *doc,
     } else {
       //word is NOT in preservation lexicon
       if (histentry != histdictionary.end()) {
-          //word is in INT historical lexicon
-          if (outputclass != inputclass) {
-            //find the most frequent lemma for this word form (resolves ambiguity harshly)
-            int max = 0;
-            for (unordered_map<UnicodeString,int>::const_iterator iter2 = histentry->second.begin(); iter2 != histentry->second.end(); iter2++) {
-                if (iter2->second >= max) {
-                    max = iter2->second;
-                    target = iter2->first;
-                }
-            }
-            modernisationsource = "inthistlexicon";
-            changed = true;
-            target = lemmatiser(word, target, lemmamap);
-          }
-     } else if (!rules.empty()) {
-       //apply rules:
+	//word is in INT historical lexicon
+	if (outputclass != inputclass) {
+	  //find the most frequent lemma for this word form (resolves ambiguity harshly)
+	  int max = 0;
+	  for ( const auto& iter2 : histentry->second ){
+	    if (iter2.second >= max) {
+	      max = iter2.second;
+	      target = iter2.first;
+	    }
+	  }
+	  modernisationsource = "inthistlexicon";
+	  changed = true;
+	  target = lemmatiser(word, target, lemmamap);
+	}
+      } else if (!rules.empty()) {
+	//apply rules:
 	target = applyRules(source_flat, rules);
 	changed = (target != source_flat);
 	if (changed) modernisationsource = "rules";
@@ -242,9 +245,8 @@ bool translateDoc( Document *doc,
       //recase
       bool allcaps = true;
       bool initialcap = false;
-      bool islower = false;
       for (int i = 0; i < source.length(); i++) {
-	islower = (source[i] == u_tolower(source[i]) );
+	bool islower = (source[i] == u_tolower(source[i]) );
 	if ((i == 0) && (!islower)) {
 	  initialcap = true;
 	}

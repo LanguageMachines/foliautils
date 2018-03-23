@@ -133,7 +133,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
   list<xmlNode*> pars = TiCC::FindNodes( div, "//p" );
   for ( const auto& p : pars ){
     list<xmlNode*> lines = TiCC::FindNodes( p, ".//span[@class='ocr_line']" );
-    if ( lines.size() == 0 ){
+    if ( lines.empty() ){
 #pragma omp critical
       {
 	cerr << "found no OCR_LINE nodes in " << file << endl;
@@ -148,10 +148,10 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
 					      ".//span[@class='ocrx_word']" );
-      if ( words.size() == 0 ){
+      if ( words.empty() ){
 	// no ocrx_words. Lets see...
 	words = TiCC::FindNodes( line, ".//span[@class='ocr_word']" );
-	if ( words.size() == 0 ){
+	if ( words.empty() ){
 #pragma omp critical
 	  {
 	    cerr << "found no OCRX_WORD or OCR_WORD nodes in " << file << endl;
@@ -227,7 +227,7 @@ void convert_hocr( const string& fileName,
   }
   xmlNode *root = xmlDocGetRootElement( xdoc );
   list<xmlNode*> divs = TiCC::FindNodes( root, "//div[@class='ocr_page']" );
-  if ( divs.size() == 0 ) {
+  if ( divs.empty() ) {
 #pragma omp critical
     {
       cerr << "no OCR_PAGE node found in " << fileName << endl;
@@ -378,16 +378,10 @@ int main( int argc, char *argv[] ){
 	 << endl;
     exit(EXIT_FAILURE);
   }
-  string dirName;
   if ( TiCC::isFile(name) ){
     if ( TiCC::match_back( name, ".tar" ) ){
       cerr << "TAR files are not supported yet." << endl;
       exit(EXIT_FAILURE);
-    }
-    else {
-      string::size_type pos = name.rfind( "/" );
-      if ( pos != string::npos )
-	dirName = name.substr(0,pos);
     }
   }
   else {

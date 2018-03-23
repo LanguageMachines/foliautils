@@ -215,7 +215,7 @@ bool convert_pagexml( const string& fileName,
     }
   }
   list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
-  if ( order.size() ==  0 ){
+  if ( order.empty() ){
 #pragma omp critical
     {
       cerr << "Problem finding ReadingOrder node in " << fileName << endl;
@@ -232,14 +232,13 @@ bool convert_pagexml( const string& fileName,
   }
   list<xmlNode*>::const_iterator it = order.begin();
   order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
-  if ( order.size() == 0 ){
+  if ( order.empty() ){
 #pragma omp critical
     {
       cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
     }
     return false;
   }
-  string title;
   map<string,int> refs;
   vector<string> backrefs( order.size() );
   for ( const auto& ord : order ){
@@ -254,7 +253,7 @@ bool convert_pagexml( const string& fileName,
   map<string,string> specials;
   map<string,string> specialRefs;
   list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
-  if ( regions.size() == 0 ){
+  if ( regions.empty() ){
 #pragma omp critical
     {
       cerr << "missing TextRegion nodes in " << fileName << endl;
@@ -437,7 +436,6 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
 
-  string dirName;
   if ( !outputDir.empty() ){
     string name = outputDir;
     if ( !TiCC::isDir(name) ){
@@ -458,11 +456,6 @@ int main( int argc, char *argv[] ){
     if ( TiCC::match_back( name, ".tar" ) ){
       cerr << "TAR files are not supported yet." << endl;
       exit(EXIT_FAILURE);
-    }
-    else {
-      string::size_type pos = name.rfind( "/" );
-      if ( pos != string::npos )
-	dirName = name.substr(0,pos);
     }
   }
   else {

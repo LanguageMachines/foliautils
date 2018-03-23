@@ -67,9 +67,7 @@ Mode stringToMode( const string& ms ){
 
 void create_agg_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
 		      const string& filename,
-		      map<string,vector<unsigned int>> totals_per_n,
 		      unsigned int clip, int min_ng, int max_ng ){
-  unsigned int total = 0;
   for ( int ng=min_ng; ng <= max_ng; ++ng ){
     unsigned int clipped = 0;
     string ext;
@@ -93,11 +91,9 @@ void create_agg_list( const map<string,vector<unordered_map<string, unsigned int
     map<string,map<string,unsigned int>> totals;
     for ( const auto& wc0 : wcv ){
       string lang = wc0.first;
-      total += totals_per_n[lang][ng];
       auto cit = wc0.second[ng].begin();
       while( cit != wc0.second[ng].end()  ){
 	if ( cit->second <= clip ){
-	  total -= cit->second;
 	  ++clipped;
 	}
 	else {
@@ -1123,7 +1119,7 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( opts.extract("lang", value ) ){
-    if ( languages.size() > 0 ){
+    if ( !languages.empty() ){
       cerr << "FoLiA-stats: --lang and --languages options conflict. Use only one!" << endl;
       exit( EXIT_FAILURE );
     }
@@ -1132,7 +1128,7 @@ int main( int argc, char *argv[] ){
       languages.insert( value );
     }
   }
-  if ( languages.size() == 0 ){
+  if ( languages.empty() ){
     default_language = "none"; // don't care, any language wiil do
   }
   opts.extract('e', expression );
@@ -1188,12 +1184,10 @@ int main( int argc, char *argv[] ){
   map<string,vector<unsigned int>> wordTotals;  // totals per language
   map<string,vector<unsigned int>> lemmaTotals; // totals per language
   map<string,vector<unsigned int>> posTotals;   // totals per language
-  unsigned int posTotal =0;
-  unsigned int lemTotal =0;
   set<string> emph;
   int doc_counter = toDo;
   unsigned int fail_docs = 0;
-#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotal,posTotals,lemTotal,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
+#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *d = 0;
@@ -1244,8 +1238,6 @@ int main( int argc, char *argv[] ){
 #pragma omp critical
     {
       wordTotal += word_count;
-      lemTotal += lem_count;
-      posTotal += pos_count;
       cout << "Processed :" << docName << " with " << word_count << " "
 	   << "n-grams,"
 	   << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
@@ -1280,7 +1272,7 @@ int main( int argc, char *argv[] ){
   if ( aggregate ){
     string filename;
     filename = outputPrefix + ".agg.freqlist";
-    create_agg_list( wcv, filename, wordTotals, clip, min_NG, max_NG );
+    create_agg_list( wcv, filename, clip, min_NG, max_NG );
   }
   else {
 #pragma omp parallel sections

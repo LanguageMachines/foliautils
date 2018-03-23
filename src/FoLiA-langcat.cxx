@@ -240,12 +240,10 @@ int main( int argc, char *argv[] ){
   string lang = "nld";
   string cls = "OCR";
   verbose = opts.extract( 'v' );
-#ifdef HAVE_OPENMP
-  int numThreads = 1;
-#endif
   string value;
   if ( opts.extract('t', value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads;
     if ( !TiCC::stringTo(value, numThreads ) ){
       cerr << "FoLiA-stats: illegal value for -t (" << value << ")" << endl;
       exit(EXIT_FAILURE);

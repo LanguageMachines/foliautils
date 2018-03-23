@@ -111,7 +111,6 @@ void add_reference( TextContent *tc, xmlNode *p ){
   }
   string text_part;
   string ref;
-  string type;
   string sub_type;
   string status;
   xmlNode *t = p->children;
@@ -125,7 +124,6 @@ void add_reference( TextContent *tc, xmlNode *p ){
     }
     else if ( TiCC::Name(t) == "tagged-entity" ){
       ref = TiCC::getAttribute( t, "reference" );
-      type = TiCC::getAttribute( t, "type" );
       sub_type = TiCC::getAttribute( t, "sub-type" );
       status = TiCC::getAttribute( t, "status" );
     }
@@ -1115,11 +1113,6 @@ void process_topic( const string& outDir,
   FoliaElement *root;
   if ( no_split ){
     doc = base_text->doc();
-    string div_id = id;
-    string::size_type pos = id.rfind( "." );
-    if ( pos != string::npos ){
-      div_id = id.substr(0,pos);
-    }
     args["generate_id"] = base_text->id();
     args["class"] = "proceedings";
     root = new Division( args, doc );
@@ -1342,11 +1335,6 @@ void process_block( Text* base_text,
   KWargs args;
   Document *doc = 0;
   doc = base_text->doc();
-  string div_id = id;
-  string::size_type pos = id.rfind( "." );
-  if ( pos != string::npos ){
-    div_id = id.substr(0,pos);
-  }
   args["id"] = id;
   args["class"] = type;
   Division *root = new Division( args, doc );
@@ -1504,7 +1492,6 @@ int main( int argc, char *argv[] ){
     usage();
     exit(EXIT_FAILURE);
   }
-  string dirName;
   if ( !outputDir.empty() ){
     if ( !TiCC::isDir(outputDir) ){
       if ( !TiCC::createPath( outputDir ) ){
@@ -1521,12 +1508,7 @@ int main( int argc, char *argv[] ){
 	   << endl;
       exit(EXIT_FAILURE);
     }
-    if ( TiCC::isFile(name) ){
-      string::size_type pos = name.rfind( "/" );
-      if ( pos != string::npos )
-	dirName = name.substr(0,pos);
-    }
-    else {
+    if ( !TiCC::isFile(name) ){
       fileNames = TiCC::searchFilesMatch( name, "*.xml" );
     }
   }
