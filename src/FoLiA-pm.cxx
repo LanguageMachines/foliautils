@@ -1549,8 +1549,6 @@ int main( int argc, char *argv[] ){
   if ( numThreads >= 1 ){
 #ifdef HAVE_OPENMP
     omp_set_num_threads( numThreads );
-#else
-    numThreads = 1;
 #endif
   }
 

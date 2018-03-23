@@ -132,10 +132,6 @@ string extractContent( xmlNode* pnt ) {
 void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& file ){
   list<xmlNode*> pars = TiCC::FindNodes( div, "//p" );
   for ( const auto& p : pars ){
-    string p_id = TiCC::getAttribute( p, "id" );
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
-			      out->doc() );
     list<xmlNode*> lines = TiCC::FindNodes( p, ".//span[@class='ocr_line']" );
     if ( lines.size() == 0 ){
 #pragma omp critical
@@ -144,6 +140,10 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       }
       return;
     }
+    string p_id = TiCC::getAttribute( p, "id" );
+    folia::Paragraph *par
+      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
+			      out->doc() );
     UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
