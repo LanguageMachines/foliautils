@@ -163,7 +163,7 @@ int main( int argc, char *argv[] ){
     }
     else {
       ofstream os( outname );
-      UnicodeString us = d->text( class_name,retaintok);
+      icu::UnicodeString us = d->text( class_name,retaintok);
       os << us << endl;
 #pragma omp critical
       {

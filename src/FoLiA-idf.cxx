@@ -34,6 +34,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -74,9 +75,9 @@ size_t words_inventory( const Document *doc,
     string word;
     try {
       if ( lowercase ){
-	UnicodeString uword = UTF8ToUnicode( folia_word->str(classname) );
+	icu::UnicodeString uword = TiCC::UnicodeFromUTF8( folia_word->str(classname) );
 	uword.toLower();
-	word = UnicodeToUTF8( uword );
+	word = TiCC::UnicodeToUTF8( uword );
       }
       else
 	word = folia_word->str(classname);
@@ -109,11 +110,11 @@ size_t strings_inventory( const Document *doc,
   for ( auto const& folia_word : words ){
     string word;
     try {
-      UnicodeString uword = folia_word->text(classname);
+      icu::UnicodeString uword = folia_word->text(classname);
       if ( lowercase ){
 	uword.toLower();
       }
-      word = UnicodeToUTF8( uword );
+      word = TiCC::UnicodeToUTF8( uword );
     }
     catch(...){
 #pragma omp critical

@@ -40,6 +40,7 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/PrettyPrint.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -52,7 +53,7 @@ using namespace	folia;
 
 const string INT_LEMMAIDSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmaid_withcompounds.foliaset.ttl";
 const string INT_LEMMATEXTSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl";
-const UnicodeString NBSP = UTF8ToUnicode(" ");//THIS IS NOT A NORMAL SPACE BUT A narrow no-break space (0x202F), this is a fairly ugly patch that will be propagated to the end-result because Frog can't deal with spaces in tokens at this stage
+const icu::UnicodeString NBSP = TiCC::UnicodeFromUTF8(" ");//THIS IS NOT A NORMAL SPACE BUT A narrow no-break space (0x202F), this is a fairly ugly patch that will be propagated to the end-result because Frog can't deal with spaces in tokens at this stage
 
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
@@ -77,9 +78,9 @@ namespace std
 {
   // needed to make unordered_[set|map] work
   template<>
-  class hash<UnicodeString> {
+  class hash<icu::UnicodeString> {
   public:
-    size_t operator()(const UnicodeString &s) const
+    size_t operator()(const icu::UnicodeString &s) const
     {
       return (size_t) s.hashCode();
     }
@@ -87,30 +88,30 @@ namespace std
 }
 
 
-typedef unordered_map<UnicodeString,UnicodeString> t_dictionary;
-typedef unordered_set<UnicodeString> t_lexicon;
-typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
-typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_histdictionary; //dictionary from historical lexicon,    form => lemma => freq
-typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_lemmamap; //lemma => src:lemma_id => freq
+typedef unordered_map<icu::UnicodeString,icu::UnicodeString> t_dictionary;
+typedef unordered_set<icu::UnicodeString> t_lexicon;
+typedef vector<pair<icu::UnicodeString,icu::UnicodeString>> t_rules;
+typedef unordered_map<icu::UnicodeString,unordered_map<icu::UnicodeString,int>> t_histdictionary; //dictionary from historical lexicon,    form => lemma => freq
+typedef unordered_map<icu::UnicodeString,unordered_map<icu::UnicodeString,int>> t_lemmamap; //lemma => src:lemma_id => freq
 
-UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
-  UnicodeString source = orig_source;
-  UnicodeString target = source;
+icu::UnicodeString applyRules( const icu::UnicodeString& orig_source, const t_rules& rules) {
+  icu::UnicodeString source = orig_source;
+  icu::UnicodeString target = source;
   for ( const auto& iter : rules ) {
-    UnicodeString pattern = iter.first;
-    UnicodeString replacement = iter.second;
+    icu::UnicodeString pattern = iter.first;
+    icu::UnicodeString replacement = iter.second;
     // cerr << "source =" << source << endl;
     // cerr << "pattern=" << pattern << endl;
     // cerr << "replace=" << replacement << endl;
     UErrorCode u_stat = U_ZERO_ERROR;
     RegexMatcher * matcher = new RegexMatcher(pattern, source, 0, u_stat);
     if ( U_FAILURE(u_stat) ){
-      throw runtime_error( "failed to create a regexp matcher with '" + UnicodeToUTF8(pattern) + "'" );
+      throw runtime_error( "failed to create a regexp matcher with '" + TiCC::UnicodeToUTF8(pattern) + "'" );
     }
     target = matcher->replaceAll(replacement, u_stat);
     //	cerr << "target =" << target << endl;
     if ( U_FAILURE(u_stat) ){
-      throw runtime_error( "failed to execute regexp s/" + UnicodeToUTF8(pattern) + "/" + UnicodeToUTF8(replacement) + "/g" );
+      throw runtime_error( "failed to execute regexp s/" + TiCC::UnicodeToUTF8(pattern) + "/" + TiCC::UnicodeToUTF8(replacement) + "/g" );
     }
     source = target; //reset source for next pattern
     delete matcher;
@@ -118,17 +119,17 @@ UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules
   return target;
 }
 
-UnicodeString lemmatiser( Word *word,
-			  const UnicodeString& target,
+icu::UnicodeString lemmatiser( Word *word,
+			  const icu::UnicodeString& target,
 			  const t_lemmamap &lemmamap) {
-  UnicodeString target_flat = target;
+  icu::UnicodeString target_flat = target;
   target_flat.toLower();
   if (lemmamap.empty()) return target_flat;
   const auto& lemmamap_iter = lemmamap.find(target_flat);
   if (lemmamap_iter != lemmamap.end()) {
     //resolve ambiguity by majority vote: just select the most frequent lemma->id pair (lexicon contains multiple occurrences)
     int max = 0;
-    UnicodeString lemma_id;
+    icu::UnicodeString lemma_id;
     for ( const auto& iter2 : lemmamap_iter->second ){
       if (iter2.second >= max) {
 	max = iter2.second;
@@ -137,16 +138,16 @@ UnicodeString lemmatiser( Word *word,
     }
     {
       KWargs args;
-      args["class"] = UnicodeToUTF8(lemma_id);
+      args["class"] = TiCC::UnicodeToUTF8(lemma_id);
       args["set"] = INT_LEMMAIDSET;
       LemmaAnnotation *lemma = new LemmaAnnotation( args, word->doc() );
       word->append(lemma);
     }
     {
       KWargs args;
-      UnicodeString lemmatextclass = target;
+      icu::UnicodeString lemmatextclass = target;
       lemmatextclass = lemmatextclass.findAndReplace(" ", "_"); //use underscores instead of spaces for multiword lemmas (does not affect ⊕!)
-      args["class"] = UnicodeToUTF8(lemmatextclass);
+      args["class"] = TiCC::UnicodeToUTF8(lemmatextclass);
       args["set"] = INT_LEMMATEXTSET;
       LemmaAnnotation *lemma = new LemmaAnnotation( args, word->doc() );
       word->append(lemma);
@@ -154,10 +155,10 @@ UnicodeString lemmatiser( Word *word,
   }
 
   //return a version of target that could be suited for modernisation
-  target_flat = target_flat.findAndReplace(UTF8ToUnicode("⊕"), NBSP);
+  target_flat = target_flat.findAndReplace(TiCC::UnicodeFromUTF8("⊕"), NBSP);
   //we can't deal with pipes for multiple options, just choose the first one:
   int pipeindex;
-  const UnicodeString emptystr = "";
+  const icu::UnicodeString emptystr = "";
   do {
     pipeindex = target_flat.indexOf("|");
     if (pipeindex != -1) {
@@ -184,13 +185,13 @@ bool translateDoc( Document *doc,
   bool changed = false;
   vector<Word*> words = doc->doc()->select<Word>();
   for (const auto& word : words) {
-    const UnicodeString source = word->text(inputclass);
-    cerr << "Processing word " << word->id() << ": " << UnicodeToUTF8(source);
-    UnicodeString source_flat = source;
+    const icu::UnicodeString source = word->text(inputclass);
+    cerr << "Processing word " << word->id() << ": " << TiCC::UnicodeToUTF8(source);
+    icu::UnicodeString source_flat = source;
     source_flat = source_flat.toLower();
     const bool recase = (source_flat != source);
     string modernisationsource = "none";
-    UnicodeString target = source_flat;
+    icu::UnicodeString target = source_flat;
     //check if word is in dictionary
     const auto& entry = dictionary.find(source_flat);
     const auto& histentry = histdictionary.find(source_flat);
@@ -238,7 +239,7 @@ bool translateDoc( Document *doc,
     //Frog can't deal with spaces in the target, replace those with a narrow non-breaking space
     //this is a bit of an ugly hack that will propagate to the final FoLiA
     if (changed) target = target.findAndReplace(" ", NBSP);
-    cerr << " -> " << UnicodeToUTF8(target) << " [" << modernisationsource << "]" << endl;
+    cerr << " -> " << TiCC::UnicodeToUTF8(target) << " [" << modernisationsource << "]" << endl;
 
 
     if (recase) {
@@ -255,7 +256,7 @@ bool translateDoc( Document *doc,
 	}
       }
       if (allcaps || initialcap) {
-	UnicodeString target_u = target;
+	icu::UnicodeString target_u = target;
 	if (allcaps) {
 	  target_u = target_u.toUpper();
 	}
@@ -268,7 +269,7 @@ bool translateDoc( Document *doc,
 
     KWargs args;
     args["class"] = outputclass;
-    args["value"] = UnicodeToUTF8(target);
+    args["value"] = TiCC::UnicodeToUTF8(target);
     TextContent * translatedtext = new TextContent( args );
     word->append(translatedtext);
 
@@ -289,7 +290,7 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
       vector<string> parts;
       if (TiCC::split_at(line, parts, "\t") == 2) {
 	added++;
-	dictionary[UTF8ToUnicode(parts[0])] = UTF8ToUnicode(parts[1]);
+	dictionary[TiCC::UnicodeFromUTF8(parts[0])] = TiCC::UnicodeFromUTF8(parts[1]);
       }
       else {
 	cerr << "WARNING: loadDictionary: error in line " << linenum << ": " << line << endl;
@@ -312,9 +313,9 @@ int loadHistoricalLexicon(const string & filename, t_histdictionary & dictionary
       if (TiCC::split_at(line, parts, "\t") == 9) {
         if (parts[0] != "multiple") { //ignore many=>one
             added++;
-            const UnicodeString lemma = UTF8ToUnicode(parts[4]).toLower();
-            dictionary[UTF8ToUnicode(parts[6])][lemma]++;
-            const UnicodeString lemma_id = UTF8ToUnicode(parts[1]) + UTF8ToUnicode(":") + UTF8ToUnicode(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
+            const icu::UnicodeString lemma = TiCC::UnicodeFromUTF8(parts[4]).toLower();
+            dictionary[TiCC::UnicodeFromUTF8(parts[6])][lemma]++;
+            const icu::UnicodeString lemma_id = TiCC::UnicodeFromUTF8(parts[1]) + TiCC::UnicodeFromUTF8(":") + TiCC::UnicodeFromUTF8(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
             lemmamap[lemma][lemma_id]++;
         }
       } else {
@@ -336,7 +337,7 @@ int loadLexicon(const string & filename, t_lexicon & lexicon) {
       vector<string> parts;
       TiCC::split_at(line, parts, "\t");
       added++;
-      lexicon.insert(UTF8ToUnicode(parts[0]));
+      lexicon.insert(TiCC::UnicodeFromUTF8(parts[0]));
     }
   }
   return added;
@@ -355,14 +356,14 @@ int loadRules( const string& filename,
       if (TiCC::split_at(line, parts, " ") == 5) {
 	// example expected line format: 222 0.996 aen => aan
 	added++;
-	rules.push_back(make_pair(UTF8ToUnicode(parts[2]),
-				  UTF8ToUnicode(parts[4])));
+	rules.push_back(make_pair(TiCC::UnicodeFromUTF8(parts[2]),
+				  TiCC::UnicodeFromUTF8(parts[4])));
       }
       else if (TiCC::split_at(line, parts, " ") == 2) {
 	// simplified format: aen aan
 	added++;
-	rules.push_back(make_pair(UTF8ToUnicode(parts[0]),
-				  UTF8ToUnicode(parts[1])));
+	rules.push_back(make_pair(TiCC::UnicodeFromUTF8(parts[0]),
+				  TiCC::UnicodeFromUTF8(parts[1])));
       }
       else {
 	cerr << "WARNING: loadRules: error in line " << linenum << ": " << line << endl;

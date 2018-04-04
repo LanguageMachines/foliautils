@@ -38,6 +38,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/PrettyPrint.h"
+#include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -546,11 +547,11 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     for ( const auto& w : words ){
       wlp_rec rec;
       try {
-	UnicodeString uword = w->text(classname);
+	icu::UnicodeString uword = w->text(classname);
 	if ( lowercase ){
 	  uword.toLower();
 	}
-	rec.word = UnicodeToUTF8( uword );
+	rec.word = TiCC::UnicodeToUTF8( uword );
       }
       catch(...){
 #pragma omp critical
@@ -724,7 +725,7 @@ size_t doc_str_inventory( const Document *d,
   }
   vector<string> data;
   for ( const auto& s : strings ){
-    UnicodeString us;
+    icu::UnicodeString us;
     try {
       us = s->text(classname);
       if ( lowercase ){
@@ -738,7 +739,7 @@ size_t doc_str_inventory( const Document *d,
       }
       break;
     }
-    string w = UnicodeToUTF8( us );
+    string w = TiCC::UnicodeToUTF8( us );
     data.push_back( w );
   }
   if ( data.size() != strings.size() ) {
@@ -792,7 +793,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
     vector<string> data;
     for ( const auto& s : strings ){
-      UnicodeString us;
+      icu::UnicodeString us;
       try {
 	us = s->text(classname);
 	if ( lowercase ){
@@ -806,7 +807,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	}
 	  break;
       }
-      string w = UnicodeToUTF8( us );
+      string w = TiCC::UnicodeToUTF8( us );
       data.push_back( w );
     }
     if ( data.size() != strings.size() ) {
@@ -882,13 +883,13 @@ size_t text_inventory( const Document *d, const string& docName,
       }
     }
     string s;
-    UnicodeString us;
+    icu::UnicodeString us;
     try {
       us = node->text(classname);
       if ( lowercase ){
 	us.toLower();
       }
-      s = UnicodeToUTF8( us );
+      s = TiCC::UnicodeToUTF8( us );
     }
     catch(...){
     }

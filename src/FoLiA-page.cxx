@@ -37,6 +37,7 @@
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/Unicode.h"
 #include "ticcutils/CommandLine.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -81,7 +82,7 @@ string setname = "FoLiA-page-set";
 string classname = "OCR";
 
 void appendStr( folia::FoliaElement *par, int& pos,
-		const UnicodeString& val, const string& id,
+		const icu::UnicodeString& val, const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
     folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()
@@ -119,7 +120,7 @@ void process( folia::FoliaElement *out,
     int pos = 0;
     for ( size_t j=0; j< parts.size(); ++j ){
       string id = "word_" + TiCC::toString(j);
-      appendStr( par, pos, folia::UTF8ToUnicode(parts[j]), id, file );
+      appendStr( par, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
     }
   }
 }
@@ -146,7 +147,7 @@ void process( folia::FoliaElement *out,
     int pos = 0;
     for ( size_t j=0; j< parts.size(); ++j ){
       string id = "word_" + TiCC::toString(j);
-      appendStr( par, pos, folia::UTF8ToUnicode(parts[j]), id, file );
+      appendStr( par, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
     }
   }
 }

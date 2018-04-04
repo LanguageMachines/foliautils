@@ -36,6 +36,7 @@
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/FileUtils.h"
+#include "ticcutils/Unicode.h"
 #include "ticcutils/CommandLine.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -144,7 +145,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     folia::Paragraph *par
       = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
 			      out->doc() );
-    UnicodeString txt;
+    icu::UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
 					      ".//span[@class='ocrx_word']" );
@@ -167,7 +168,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ),
 						  out->doc() );
 	  par->append( str );
-	  UnicodeString uc = folia::UTF8ToUnicode( content );
+	  icu::UnicodeString uc = TiCC::UnicodeFromUTF8( content );
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
 	  folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );

@@ -113,9 +113,9 @@ bool fillUnknowns( const string& fn, unordered_set<string>& unknowns ){
   while ( getline( is, line ) ) {
     vector<string> parts = TiCC::split( line );
     if ( parts.size() == 2 ){
-      UnicodeString us( parts[0].c_str() );
+      icu::UnicodeString us( parts[0].c_str() );
       if ( us.length() > 1 ){
-	// '1' character words ar never UNK
+	// '1' character words are never UNK
 	double dum;
 	if ( !TiCC::stringTo( parts[0], dum ) ){
 	  // 'true' numeric values are never UNK
