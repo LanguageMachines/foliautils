@@ -955,7 +955,9 @@ void usage( const string& name ){
   cerr << "\t\t (default is 'current')" << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t (words consisting of single, space separated letters)" << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-v or --verbose\t very verbose output." << endl;
   cerr << "\t-V or --version\t show version " << endl;
@@ -968,7 +970,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:RsS",
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"
-			 "mode:,verbose,aggregate,tags:" );
+			 "mode:,verbose,aggregate,tags:,threads:" );
   try {
     opts.init(argc,argv);
   }
@@ -985,9 +987,6 @@ int main( int argc, char *argv[] ){
   int clip = 0;
   int max_NG = 1;
   int min_NG = 0;
-#ifdef HAVE_OPENMP
-  int numThreads = 1;
-#endif
   string expression;
   string outputPrefix;
   string value;
@@ -1097,17 +1096,29 @@ int main( int argc, char *argv[] ){
   else if ( max_NG < min_NG ){
     max_NG = min_NG;
   }
-  if ( opts.extract('t', value ) ){
-#ifdef HAVE_OPENMP
-    if ( !TiCC::stringTo(value, numThreads ) ){
-      cerr << "FoLiA-stats: illegal value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);
-    }
-#else
-    cerr << "FoLiA-stats: OpenMP support is missing. -t option is not supported" << endl;
-    exit( EXIT_FAILURE );
-#endif
+  int numThreads=1;
+  value = "1";
+  if ( !opts.extract( 't', value ) ){
+    opts.extract( "threads", value );
   }
+#ifdef HAVE_OPENMP
+  if ( TiCC::lowercase(value) == "max" ){
+    numThreads = omp_get_max_threads() - 2;
+  }
+  else {
+    if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+  }
+  omp_set_num_threads( numThreads );
+#else
+  if ( value != "1" ){
+    cerr << "unable to set number of threads!.\nNo OpenMP support available!"
+	 <<endl;
+    exit(EXIT_FAILURE);
+  }
+#endif
   if ( opts.extract("languages", value ) ){
     vector<string> parts = TiCC::split_at( value, "," );
     if ( parts.size() < 1 ){
@@ -1139,10 +1150,6 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_FAILURE);
   }
-
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#endif
 
   vector<string> massOpts = opts.getMassOpts();
   if ( massOpts.empty() ){
