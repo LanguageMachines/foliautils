@@ -1382,6 +1382,9 @@ void convert_to_folia( const string& file,
     else {
       string base = TiCC::basename( file );
       string docid = base;
+      if ( isdigit( docid[0]) ){
+	docid = "id-" + docid;
+      }
       Document *doc = create_basedoc( docid, metadata, docinfo );
       string::size_type pos = docid.rfind( ".xml" );
       if ( pos != string::npos ){

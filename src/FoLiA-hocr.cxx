@@ -204,6 +204,9 @@ string getDocId( const string& title ){
     }
   }
   result = TiCC::trim( result, " \t\"" );
+  if ( isdigit(result[0]) ){
+    result = "id-" + result;
+  }
   return result;
 }
 
