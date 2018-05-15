@@ -77,7 +77,7 @@ diff stats11.wordfreqlist.nld.tsv stats11-nld.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.2-gram.tsv stats11-nld-2.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.3-gram.tsv stats11-nld-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=lemma_pos --max-ngram=4 -o stats12 data/sonar*.xml > out17 2>&1
+$my_bin/FoLiA-stats --mode=lemma_pos --max-ngram=4 -o stats12 data/sonar*.xml > out17 --separator=_ 2>&1
 diff stats12.wordfreqlist.tsv stats-words-son.ok >> teststats.out 2>&1
 diff stats12.lemmafreqlist.tsv stats-lemmas-son.ok >> teststats.out 2>&1
 diff stats12.lemmaposfreqlist.tsv stats-lempos-son.ok >> teststats.out 2>&1
