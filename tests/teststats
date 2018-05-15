@@ -85,3 +85,11 @@ diff stats12.wordfreqlist.4-gram.tsv stats-words-son-4.ok >> teststats.out 2>&1
 diff stats12.lemmafreqlist.4-gram.tsv stats-lemmas-son-4.ok >> teststats.out 2>&1
 diff stats12.lemmaposfreqlist.4-gram.tsv stats-lempos-son-4.ok >> teststats.out 2>&1
 cat out17 >> teststats.out
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats13 -p --max-ngram=3 --collect data/statstest.xml --separator=_ > out18 2>&1
+diff stats13.wordfreqlist.1to3.tsv stats13.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=lemma_pos -o stats14 -p --max-ngram=3 --collect data/sonar*.xml --separator=_ > out19 2>&1
+diff stats14.wordfreqlist.1to3.tsv stats14.word.ok >> teststats.out 2>&1
+diff stats14.lemmafreqlist.1to3.tsv stats14.lemma.ok >> teststats.out 2>&1
+diff stats14.lemmaposfreqlist.1to3.tsv stats14.lemmapos.ok >> teststats.out 2>&1
