@@ -266,8 +266,8 @@ void create_collected_wf_list( const map<string,vector<unordered_map<string, uns
 	    wf[cit->second].insert( cit->first );
 	  }
 	  ++cit;
-	  grand_total_clipped += total_n;
 	}
+	grand_total_clipped += total_n;
       }
     }
   }
