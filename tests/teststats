@@ -93,3 +93,6 @@ $my_bin/FoLiA-stats --mode=lemma_pos -o stats14 -p --max-ngram=4 --collect data/
 diff stats14.wordfreqlist.1to4.tsv stats14.word.ok >> teststats.out 2>&1
 diff stats14.lemmafreqlist.1to4.tsv stats14.lemma.ok >> teststats.out 2>&1
 diff stats14.lemmaposfreqlist.1to4.tsv stats14.lemmapos.ok >> teststats.out 2>&1
+
+$my_bin/TICCL-mergelex -p -o BLA stats12.wordfreqlist.tsv stats12.wordfreqlist.2-gram.tsv stats12.wordfreqlist.3-gram.tsv stats12.wordfreqlist.4-gram.tsv > out20 2>&1
+diff  BLA.wordfreqlist.tsv stats14.word.ok >> teststats.out 2>&1
