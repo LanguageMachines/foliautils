@@ -101,7 +101,7 @@ install:
     - sudo make install
 
 script:
-    - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib make check
+    - LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib NO_TICCL=1 make check
 
 after_failure:
    - cat src/test_suite.log
