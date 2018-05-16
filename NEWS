@@ -1,3 +1,21 @@
+foliautils 0.9  16-05-2018
+[Ko vd Sloot]
+* FoLiA-stats.cxx:
+  - added a --collect option, to create files with all n-grams
+    together
+  - clearer message in FoLiA-stats when no results were found
+  - extract text from deeper nodes, if needed
+  - fixed out-of-bounds problem
+  - now fails when every inputfile fails
+* FoLiA-txt:
+  - now fails when every inputfile fails
+* avoid xml:id's starting with a number. Add "id-" in front.
+* added more tests
+
+[Maarten van Gompel]
+* added codemeta.json
+
+
 foliautils 0.8  19-02-2018
 [Ko vd Sloot]
 * added -R option to FoLiA-collect
