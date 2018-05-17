@@ -1,4 +1,4 @@
-# /bin/sh -x
+#/bin/sh -x
 
 if [ "$my_bin" = "" ];
 then

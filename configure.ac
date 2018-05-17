@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.61)
-AC_INIT([foliautils],[0.10],[lamasoftware@science.ru.nl])
+AC_INIT([foliautils],[0.9.1],[lamasoftware@science.ru.nl])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([.])
 AC_CONFIG_MACRO_DIR([m4])
@@ -104,5 +104,6 @@ AC_CONFIG_FILES([
   m4/Makefile
   src/Makefile
   docs/Makefile
+  tests/Makefile
 ])
 AC_OUTPUT

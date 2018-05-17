@@ -13,5 +13,5 @@ for file in test2text testtxt testalto testcorrect \
 		      testhocr testidf testpage testlangcat teststats \
 		      testcollect testpm \
 		      testclean testwordtranslate
-do ./testone.sh $file
+do bash ./testone.sh $file
 done
