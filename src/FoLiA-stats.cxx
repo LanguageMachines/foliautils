@@ -1305,12 +1305,12 @@ int main( int argc, char *argv[] ){
   else if ( max_NG < min_NG ){
     max_NG = min_NG;
   }
-  int numThreads=1;
   value = "1";
   if ( !opts.extract( 't', value ) ){
     opts.extract( "threads", value );
   }
 #ifdef HAVE_OPENMP
+  int numThreads=1;
   if ( TiCC::lowercase(value) == "max" ){
     numThreads = omp_get_max_threads() - 2;
   }
