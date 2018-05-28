@@ -1,11 +1,12 @@
 missing input file(s)
-FoLiA-page [foliautils 0.9.1]
+FoLiA-page [foliautils 0.10]
 Usage: FoLiA-page [options] file/dir
 	-t		 number_of_threads
 	-h or --help	 this messages 
 	-O		 output directory 
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-page-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FP-') 
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 				 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 

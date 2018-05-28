@@ -179,7 +179,8 @@ string stripDir( const string& name ){
 
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
-		      const zipType outputType ){
+		      const zipType outputType,
+		      const string& prefix ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -320,10 +321,7 @@ bool convert_pagexml( const string& fileName,
   }
   xmlFreeDoc( xdoc );
 
-  string docid = orgFile;
-  if ( isdigit(docid[0]) ){
-    docid = "id-" + docid;
-  }
+  string docid = prefix + orgFile;
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
@@ -375,6 +373,7 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FP-') " << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
@@ -382,7 +381,8 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:,help,version" );
+  TiCC::CL_Options opts( "vVt:O:h",
+			 "compress:,class:,setname:,help,version,prefix:" );
   try {
     opts.init( argc, argv );
   }
@@ -427,6 +427,8 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
+  string prefix = "FP-";
+  opts.extract( "prefix", prefix );
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -479,7 +481,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    if ( !convert_pagexml( fileNames[fn], outputDir, outputType ) )
+    if ( !convert_pagexml( fileNames[fn], outputDir, outputType, prefix ) )
 #pragma omp critical
       {
 	cerr << "failure on " << fileNames[fn] << endl;
