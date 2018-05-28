@@ -8,4 +8,4 @@ $my_bin/FoLiA-hocr -V >> testhocr.out 2>&1
 $my_bin/FoLiA-hocr --help >> testhocr.out 2>&1
 
 $my_bin/FoLiA-hocr -O out data/*.hocr >> testhocr.out 2>&1
-diff out/dpo_35_0302_master.tif.folia.xml hocr.xml.ok
+diff out/FH-dpo_35_0302_master.tif.folia.xml hocr.xml.ok

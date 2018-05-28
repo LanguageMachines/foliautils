@@ -188,7 +188,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
   }
 }
 
-string getDocId( const string& title ){
+string getDocId( const string& title, const string& prefix ){
   string result;
   vector<string> vec = TiCC::split_at( title, ";" );
   for ( const auto& part : vec ){
@@ -204,15 +204,13 @@ string getDocId( const string& title ){
     }
   }
   result = TiCC::trim( result, " \t\"" );
-  if ( isdigit(result[0]) ){
-    result = "id-" + result;
-  }
-  return result;
+  return prefix + result;
 }
 
 void convert_hocr( const string& fileName,
 		   const string& outputDir,
-		   const zipType outputType ){
+		   const zipType outputType,
+		   const string& prefix ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -253,7 +251,7 @@ void convert_hocr( const string& fileName,
     }
     exit(EXIT_FAILURE);
   }
-  string docid = getDocId( title );
+  string docid = getDocId( title, prefix );
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
@@ -301,12 +299,14 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FH-') " << endl;
   cerr << "\t-v\t verbose output " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:,help,version" );
+  TiCC::CL_Options opts( "vVt:O:h",
+			 "compress:,class:,setname:,help,version,prefix:" );
   try {
     opts.init( argc, argv );
   }
@@ -356,6 +356,8 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
+  string prefix = "FH-";
+  opts.extract( "prefix", prefix );
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -410,7 +412,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_hocr( fileNames[fn], outputDir, outputType );
+    convert_hocr( fileNames[fn], outputDir, outputType, prefix );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
