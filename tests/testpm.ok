@@ -4,26 +4,28 @@ Usage: FoLiA-pm [options] files/dir
 	 when a dir is given, all '.xml' files in that dir are processed
 	-t	 number_of_threads
 	-nosplit	 don't create separate topic files
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 	-h	 this messages 
 	-O	 output directory 
 	-v	 verbose output 
 	-V	 show version 
-foliautils 0.9.1
+foliautils 0.10
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed
 	-t	 number_of_threads
 	-nosplit	 don't create separate topic files
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 	-h	 this messages 
 	-O	 output directory 
 	-v	 verbose output 
 	-V	 show version 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm5.xml" generator="libfolia-v1.13" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FPM-pm5.xml" generator="libfolia-v1.14" version="1.5.1">
   <metadata type="foreign">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-17T11:01:16" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-17T11:01:16" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-28T16:05:45" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-28T16:05:45" set="polmash"/>
     </annotations>
     <foreign-data>
       <meta xmlns="http://www.politicalmashup.nl" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pm="http://www.politicalmashup.nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -180,8 +182,8 @@ Usage: FoLiA-pm [options] files/dir
       </docinfo>
     </foreign-data>
   </metadata>
-  <text xml:id="pm5.text">
-    <div xml:id="pm5.text.div.1" class="proceedings">
+  <text xml:id="FPM-pm5.text">
+    <div xml:id="FPM-pm5.text.div.1" class="proceedings">
       <div xml:id="nl.proc.sgd.d.181718180000032.1.div" class="topic">
         <div xml:id="nl.proc.sgd.d.181718180000032.1.1" class="stage-direction">
           <br newpage="yes" pagenr="135">
@@ -1785,11 +1787,11 @@ Usage: FoLiA-pm [options] files/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="pm4.xml" generator="libfolia-v1.13" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FPM-pm4.xml" generator="libfolia-v1.14" version="1.5.1">
   <metadata type="foreign">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-17T11:01:16" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-17T11:01:16" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-28T16:05:46" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-28T16:05:46" set="polmash"/>
     </annotations>
     <foreign-data>
       <meta xmlns="http://www.politicalmashup.nl" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pm="http://www.politicalmashup.nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1876,20 +1878,20 @@ Usage: FoLiA-pm [options] files/dir
       </docinfo>
     </foreign-data>
   </metadata>
-  <text xml:id="pm4.text">
-    <external xml:id="nl.proc.sgd.d.181718180000030.1" src="nl.proc.sgd.d.181718180000030.1.folia.xml"/>
+  <text xml:id="FPM-pm4.text">
+    <external xml:id="FPM-nl.proc.sgd.d.181718180000030.1" src="FPM-nl.proc.sgd.d.181718180000030.1.folia.xml"/>
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.sgd.d.189818990000112.2" generator="libfolia-v1.13" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FPM-nl.proc.sgd.d.189818990000112.2" generator="libfolia-v1.14" version="1.5.1">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-17T11:01:16" set="polmash"/>
-      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-17T11:01:16" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-28T16:05:46" set="polmash"/>
+      <alignment-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2018-05-28T16:05:46" set="polmash"/>
     </annotations>
   </metadata>
-  <text xml:id="nl.proc.sgd.d.189818990000112.2.text">
-    <div xml:id="nl.proc.sgd.d.189818990000112.2.div" class="topic">
+  <text xml:id="FPM-nl.proc.sgd.d.189818990000112.2.text">
+    <div xml:id="FPM-nl.proc.sgd.d.189818990000112.2.div" class="topic">
       <head>
         <t>behandeliug van de WETSONTWERPEN TOT</t>
       </head>
