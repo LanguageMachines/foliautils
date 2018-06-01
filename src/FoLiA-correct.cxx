@@ -695,7 +695,7 @@ void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
   cerr << "\t--inputclass\t classname. (default '" << input_classname << "')" << endl;
-  cerr << "\t--class\t classname. (default '" << output_classname << "')" << endl;
+  cerr << "\t--outputclass\t classname. (default '" << output_classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t--ngram\t n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes" << endl;
@@ -727,7 +727,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,inputclass:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes" );
+			 "class:,inputclass:,outputclass:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes" );
   try {
     opts.init( argc, argv );
   }
@@ -762,8 +762,15 @@ int main( int argc, const char *argv[] ){
     ++verbose;
   }
   opts.extract( "setname", setname );
+  // backward compatibility
   opts.extract( "class", output_classname );
-  opts.extract( "inputclassclass", input_classname );
+  // prefer newer variant, if both present.
+  opts.extract( "outputclass", output_classname );
+  opts.extract( "inputclass", input_classname );
+  if ( input_classname == output_classname ){
+    cerr << "inputclass and outputclass are the same" << endl;
+    exit( EXIT_FAILURE );
+  }
   clear = opts.extract( "clear" );
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
