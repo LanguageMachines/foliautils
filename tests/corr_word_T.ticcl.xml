@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.14" version="1.2.0">
+  <metadata type="native">
+    <annotations>
+      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
+      <lang-annotation set="iso"/>
+      <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2018-06-01T16:09:52" set="Ticcl-set"/>
+    </annotations>
+    <meta id="language">dut</meta>
+  </metadata>
+  <text xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.text">
+    <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.div" class="topic">
+      <head>
+        <t class="Test">Diverse wetsvoorstellen</t>
+      </head>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2" class="intro">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1">
+          <t class="test">40ste vergadering</t>
+          <t class="Apple">40ste vergadering</t>
+          <lang class="dut"/>
+          <w xml:id="p1.1">
+            <t class="test">40ste</t>
+            <t class="Apple" offset="0">40ste</t>
+          </w>
+          <w xml:id="p1.2">
+            <t class="test">vergadering</t>
+            <t class="Apple" offset="6">vergadering</t>
+          </w>
+        </p>
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.2">
+          <t class="test">2003-2004</t>
+          <t class="Apple">2003-2004</t>
+          <lang class="fre"/>
+          <w xml:id="p2.1">
+            <t class="test">2003-2004</t>
+            <t class="Apple" offset="0">2003-2004</t>
+          </w>
+        </p>
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.3">
+          <t class="test">40</t>
+          <t class="Apple">40</t>
+          <lang class="UNKNOWN"/>
+          <w xml:id="p3.1">
+            <t class="test">40</t>
+            <t class="Apple" offset="0">40</t>
+          </w>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3" class="subject">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1">
+          <t class="test">Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.</t>
+          <t class="Apple">Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op_de omzetbelasting 1998.</t>
+          <lang class="dut"/>
+          <w xml:id="p4.1">
+            <t class="test">Aan</t>
+            <t class="Apple" offset="0">Aan</t>
+          </w>
+          <w xml:id="p4.2">
+            <t class="test">de</t>
+            <t class="Apple" offset="4">de</t>
+          </w>
+          <w xml:id="p4.3">
+            <t class="test">orde</t>
+            <t class="Apple" offset="7">orde</t>
+          </w>
+          <w xml:id="p4.4">
+            <t class="test">is</t>
+            <t class="Apple" offset="12">is</t>
+          </w>
+          <w xml:id="p4.5">
+            <t class="test">de</t>
+            <t class="Apple" offset="15">de</t>
+          </w>
+          <w xml:id="p4.6">
+            <correction xml:id="p4.6.correction.1">
+              <new>
+                <t class="Apple" offset="18">behandeling</t>
+              </new>
+              <original auth="no">
+                <t class="test">behándeling</t>
+              </original>
+              <suggestion auth="no" confidence="0.87037" n="1/1">
+                <t class="Apple">behandeling</t>
+              </suggestion>
+            </correction>
+          </w>
+          <w xml:id="p4.7">
+            <t class="test">van:</t>
+            <t class="Apple" offset="30">van:</t>
+          </w>
+          <w xml:id="p4.8">
+            <t class="test">het</t>
+            <t class="Apple" offset="35">het</t>
+          </w>
+          <w xml:id="p4.9">
+            <t class="test">wetsvoorstel</t>
+            <t class="Apple" offset="39">wetsvoorstel</t>
+          </w>
+          <w xml:id="p4.10">
+            <t class="test">Wijsiging</t>
+            <t class="Apple" offset="52">Wijsiging</t>
+          </w>
+          <w xml:id="p4.11">
+            <t class="test">van</t>
+            <t class="Apple" offset="62">van</t>
+          </w>
+          <w xml:id="p4.12">
+            <t class="test">de</t>
+            <t class="Apple" offset="66">de</t>
+          </w>
+          <w xml:id="p4.13">
+            <t class="test">Wet</t>
+            <t class="Apple" offset="69">Wet</t>
+          </w>
+          <w xml:id="p4.14">
+            <correction xml:id="p4.14.correction.1">
+              <new>
+                <t class="Apple" offset="73">op_de</t>
+              </new>
+              <original auth="no">
+                <t class="test">opde</t>
+              </original>
+              <suggestion auth="no" confidence="1" n="1/1">
+                <t class="Apple">op_de</t>
+              </suggestion>
+            </correction>
+          </w>
+          <w xml:id="p4.15">
+            <t class="test">omzetbelasting</t>
+            <t class="Apple" offset="79">omzetbelasting</t>
+          </w>
+          <w xml:id="p4.16">
+            <t class="test">1998.</t>
+            <t class="Apple" offset="94">1998.</t>
+          </w>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
+          <t class="test">Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .</t>
+          <t class="Apple">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .</t>
+          <lang class="dut"/>
+          <w xml:id="p5.1">
+            <t class="test">Deze</t>
+            <t class="Apple" offset="0">Deze</t>
+          </w>
+          <w xml:id="p5.2">
+            <t class="test">wetsvoorstellen</t>
+            <t class="Apple" offset="5">wetsvoorstellen</t>
+          </w>
+          <w xml:id="p5.3">
+            <t class="test">worden</t>
+            <t class="Apple" offset="21">worden</t>
+          </w>
+          <w xml:id="p5.4">
+            <t class="test">zonder</t>
+            <t class="Apple" offset="28">zonder</t>
+          </w>
+          <w xml:id="p5.5">
+            <correction xml:id="p5.5.correction.1">
+              <new>
+                <t class="Apple" offset="35">UNK</t>
+              </new>
+              <original auth="no">
+                <t class="test">s4s67621</t>
+              </original>
+            </correction>
+          </w>
+          <w xml:id="p5.6">
+            <t class="test">en</t>
+            <t class="Apple" offset="39">en</t>
+          </w>
+          <w xml:id="p5.7">
+            <t class="test">zonder</t>
+            <t class="Apple" offset="42">zonder</t>
+          </w>
+          <w xml:id="p5.8">
+            <t class="test">stemming</t>
+            <t class="Apple" offset="49">stemming</t>
+          </w>
+          <w xml:id="p5.9">
+            <t class="test">aangenomen</t>
+            <t class="Apple" offset="58">aangenomen</t>
+          </w>
+          <w xml:id="p5.10">
+            <t class="test">.</t>
+            <t class="Apple" offset="69">.</t>
+          </w>
+        </p>
+      </div>
+    </div>
+  </text>
+</FoLiA>
