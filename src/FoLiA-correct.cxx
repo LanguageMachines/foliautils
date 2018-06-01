@@ -51,7 +51,8 @@ const char SEPCHAR = '_';
 const string SEPARATOR = "_";
 
 int verbose = 0;
-string classname = "Ticcl";
+string input_classname = "current";
+string output_classname = "Ticcl";
 string setname = "Ticcl-set";
 
 struct word_conf {
@@ -498,7 +499,7 @@ void correctNgrams( Paragraph* par,
 		    int ngrams,
 		    unordered_map<string,size_t>& counts ){
   vector<TextContent *> origV = par->select<TextContent>();
-  string content = origV[0]->str();
+  string content = origV[0]->str(input_classname);
   if ( verbose > 1 ){
 #pragma omp critical
     {
@@ -554,7 +555,7 @@ void correctNgrams( Paragraph* par,
     }
   }
   if ( !corrected.empty() ){
-    par->settext( corrected, classname );
+    par->settext( corrected, output_classname );
   }
 }
 
@@ -580,7 +581,7 @@ void correctParagraph( Paragraph* par,
   string corrected;
   for ( const auto& s : ev ){
     vector<TextContent *> origV = s->select<TextContent>();
-    string word = origV[0]->str();
+    string word = origV[0]->str(input_classname);
     filter(word);
     string orig_word = word;
     const auto pit = puncts.find( word );
@@ -595,7 +596,7 @@ void correctParagraph( Paragraph* par,
       oV.push_back( origV[0] );
       vector<FoliaElement*> nV;
       KWargs args;
-      args["class"] = classname;
+      args["class"] = output_classname;
       args["offset"] = TiCC::toString(offset);
       args["value"] = edit;
       TextContent *newT = new TextContent( args );
@@ -609,7 +610,7 @@ void correctParagraph( Paragraph* par,
 	sargs["confidence"] = vit->second[j].conf;
 	sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
 	Suggestion *sug = new Suggestion( sargs );
-	sug->settext( vit->second[j].word, classname );
+	sug->settext( vit->second[j].word, output_classname );
 	sV.push_back( sug );
       }
       vector<FoliaElement*> cV;
@@ -629,7 +630,7 @@ void correctParagraph( Paragraph* par,
 	oV.push_back( origV[0] );
 	vector<FoliaElement*> nV;
 	KWargs args;
-	args["class"] = classname;
+	args["class"] = output_classname;
 	args["offset"] = TiCC::toString(offset);
 	args["value"] = edit;
 	TextContent *newT = new TextContent( args );
@@ -644,14 +645,14 @@ void correctParagraph( Paragraph* par,
       else {
 	// just use the ORIGINAL word
 	word = orig_word;
-	s->settext( word, offset, classname );
+	s->settext( word, offset, output_classname );
 	corrected += word + " ";
 	offset = corrected.size();
       }
     }
   }
   corrected = TiCC::trim( corrected );
-  par->settext( corrected, classname );
+  par->settext( corrected, output_classname );
 }
 
 bool correctDoc( Document *doc,
@@ -693,7 +694,8 @@ bool correctDoc( Document *doc,
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
-  cerr << "\t--class\t classname. (default '" << classname << "')" << endl;
+  cerr << "\t--inputclass\t classname. (default '" << input_classname << "')" << endl;
+  cerr << "\t--class\t classname. (default '" << output_classname << "')" << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t--ngram\t n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes" << endl;
@@ -760,7 +762,8 @@ int main( int argc, const char *argv[] ){
     ++verbose;
   }
   opts.extract( "setname", setname );
-  opts.extract( "class", classname );
+  opts.extract( "class", output_classname );
+  opts.extract( "inputclassclass", input_classname );
   clear = opts.extract( "clear" );
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
