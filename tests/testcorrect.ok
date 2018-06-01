@@ -2,6 +2,7 @@ missing '--punct' option
 foliautils 0.10
 Usage: [options] file/dir
 	--setname	 FoLiA setname. (default 'Ticcl-set')
+	--inputclass	 classname. (default 'current')
 	--class	 classname. (default 'Ticcl')
 	-t	 number_of_threads
 	--nums	 max number_of_suggestions. (default 10)
