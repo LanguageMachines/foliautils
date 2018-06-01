@@ -4,7 +4,7 @@
     <annotations>
       <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
-      <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2018-06-01T16:09:52" set="Ticcl-set"/>
+      <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2018-06-01T18:12:02" set="Ticcl-set"/>
     </annotations>
     <meta id="language">dut</meta>
   </metadata>
