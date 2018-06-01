@@ -727,7 +727,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes" );
+			 "class:,inputclass:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes" );
   try {
     opts.init( argc, argv );
   }
