@@ -499,6 +499,15 @@ void correctNgrams( Paragraph* par,
 		    int ngrams,
 		    unordered_map<string,size_t>& counts ){
   vector<TextContent *> origV = par->select<TextContent>();
+  if ( origV.empty() ){
+    if ( verbose > 1 ){
+#pragma omp critical
+      {
+	cerr << "no text text in : " << par->id() << " skipping" << endl;
+      }
+    }
+    return;
+  }
   string content = origV[0]->str(input_classname);
   if ( verbose > 1 ){
 #pragma omp critical
@@ -581,6 +590,15 @@ void correctParagraph( Paragraph* par,
   string corrected;
   for ( const auto& s : ev ){
     vector<TextContent *> origV = s->select<TextContent>();
+    if ( origV.empty() ){
+      if ( verbose > 1 ){
+#pragma omp critical
+	{
+	  cerr << "no text text in : " << s->id() << " skipping" << endl;
+	}
+      }
+      continue;
+    }
     string word = origV[0]->str(input_classname);
     filter(word);
     string orig_word = word;
