@@ -1352,7 +1352,7 @@ int main( int argc, char *argv[] ){
   }
   bool collect = opts.extract("collect");
   if ( languages.empty() ){
-    default_language = "none"; // don't care, any language wiil do
+    default_language = "none"; // don't care, any language will do
   }
   else if ( collect ){
     cerr << "--collect cannot be combined with --languages" << endl;
