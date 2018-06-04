@@ -1162,6 +1162,7 @@ void usage( const string& name ){
   cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
   cerr << "\t\t (default is 'current')" << endl;
+  cerr << "\t\t --collect\t collect all n-gram values in one file." << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t (words consisting of single, space separated letters)" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
