@@ -1,6 +1,19 @@
-foliautils 0.9  17-05-2018
+foliautils 0.9.2  05-06-2018
 [Ko vd Sloot]
-Bug fix release: the tests directoru wasn't included in the distribution
+Bug fix release:
+ * append small prefixes to output filenames, to ALWAYS avoid names starting with
+   a numeric value.
+   'FPM-' for FoLiA-pm. 'FP-' for FoLiA-page, 'FH-' for FoLiA-hocr
+   Can bet set witth --prefix
+ * FoLiA-stats.cxx:
+   - added --collect to usage() and 'man' page
+ * FoLiA-correct:
+   - added --inputclass and --outputclass parameters (must be different)
+   - Don't crash on empty text.
+
+foliautils 0.9.1  17-05-2018
+[Ko vd Sloot]
+Bug fix release: the tests directory wasn't included in the distribution
 
 foliautils 0.9  16-05-2018
 [Ko vd Sloot]
