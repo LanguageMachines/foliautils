@@ -272,8 +272,9 @@ bool translateDoc( Document *doc,
     args["value"] = TiCC::UnicodeToUTF8(target);
     TextContent * translatedtext = new TextContent( args );
     word->append(translatedtext);
-
-    Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
+    args["class"] = "modernisationsource";
+    args["value"] =  modernisationsource;
+    Metric *metric = new Metric( args, doc );
     word->append(metric);
   }
   return changed;
@@ -287,8 +288,8 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
   while (getline(is, line)) {
     linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
-      vector<string> parts;
-      if (TiCC::split_at(line, parts, "\t") == 2) {
+      vector<string> parts = TiCC::split_at( line, "\t" );
+      if ( parts.size() == 2) {
 	added++;
 	dictionary[TiCC::UnicodeFromUTF8(parts[0])] = TiCC::UnicodeFromUTF8(parts[1]);
       }
@@ -309,14 +310,14 @@ int loadHistoricalLexicon(const string & filename, t_histdictionary & dictionary
   while (getline(is, line)) {
     linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
-      vector<string> parts;
-      if (TiCC::split_at(line, parts, "\t") == 9) {
+      vector<string> parts = TiCC::split_at( line, "\t" );
+      if ( parts.size() == 9) {
         if (parts[0] != "multiple") { //ignore many=>one
-            added++;
-            const icu::UnicodeString lemma = TiCC::UnicodeFromUTF8(parts[4]).toLower();
-            dictionary[TiCC::UnicodeFromUTF8(parts[6])][lemma]++;
-            const icu::UnicodeString lemma_id = TiCC::UnicodeFromUTF8(parts[1]) + TiCC::UnicodeFromUTF8(":") + TiCC::UnicodeFromUTF8(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
-            lemmamap[lemma][lemma_id]++;
+	  added++;
+	  const icu::UnicodeString lemma = TiCC::UnicodeFromUTF8(parts[4]).toLower();
+	  dictionary[TiCC::UnicodeFromUTF8(parts[6])][lemma]++;
+	  const icu::UnicodeString lemma_id = TiCC::UnicodeFromUTF8(parts[1]) + TiCC::UnicodeFromUTF8(":") + TiCC::UnicodeFromUTF8(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
+	  lemmamap[lemma][lemma_id]++;
         }
       } else {
 	cerr << "WARNING: loadHistoricalLexicon: error in line " << linenum << ": " << line << endl;
@@ -334,8 +335,7 @@ int loadLexicon(const string & filename, t_lexicon & lexicon) {
   while (getline(is, line)) {
     linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
-      vector<string> parts;
-      TiCC::split_at(line, parts, "\t");
+      vector<string> parts = TiCC::split_at( line, "\t" );
       added++;
       lexicon.insert(TiCC::UnicodeFromUTF8(parts[0]));
     }
@@ -351,15 +351,15 @@ int loadRules( const string& filename,
   int linenum = 0;
   while (getline(is, line)) {
     linenum++;
-    vector<string> parts;
     if ((!line.empty()) && (line[0] != '#')) {
-      if (TiCC::split_at(line, parts, " ") == 5) {
+      vector<string> parts = TiCC::split_at( line, " " );
+      if ( parts.size() == 5) {
 	// example expected line format: 222 0.996 aen => aan
 	added++;
 	rules.push_back(make_pair(TiCC::UnicodeFromUTF8(parts[2]),
 				  TiCC::UnicodeFromUTF8(parts[4])));
       }
-      else if (TiCC::split_at(line, parts, " ") == 2) {
+      else if ( parts.size() == 2 ) {
 	// simplified format: aen aan
 	added++;
 	rules.push_back(make_pair(TiCC::UnicodeFromUTF8(parts[0]),
