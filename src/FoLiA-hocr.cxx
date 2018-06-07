@@ -142,9 +142,9 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       return;
     }
     string p_id = TiCC::getAttribute( p, "id" );
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
-			      out->doc() );
+    folia::KWargs args;
+    args["id"] = out->id() + "." + p_id;
+    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     icu::UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
@@ -160,21 +160,26 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  return;
 	}
       }
-      for ( const auto word : words ){
+      for ( const auto& word : words ){
 	string w_id = TiCC::getAttribute( word, "id" );
 	string content = extractContent( word );
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
-	  folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ),
-						  out->doc() );
+	  folia::KWargs args;
+	  args["id"] = par->id() + "." + w_id;
+	  folia::String *str = new folia::String( args, out->doc() );
 	  par->append( str );
 	  icu::UnicodeString uc = TiCC::UnicodeFromUTF8( content );
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
-	  folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
+	  args.clear();
+	  args["href"] = file;
+	  folia::Alignment *h = new folia::Alignment( args );
 	  str->append( h );
-	  folia::AlignReference *a =
-	    new folia::AlignReference( folia::getArgs( "id='" + w_id + "', type='str'"  ) );
+	  args.clear();
+	  args["id"] = w_id;
+	  args["type"] = "str";
+	  folia::AlignReference *a = new folia::AlignReference( args );
 	  h->append( a );
 	}
       }
@@ -255,7 +260,9 @@ void convert_hocr( const string& fileName,
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
-  folia::Text *text = new folia::Text( folia::getArgs( "id='" + docid + ".text'"  ));
+  folia::KWargs args;
+  args["id"] = docid + ".text";
+  folia::Text *text = new folia::Text( args );
   doc.append( text );
   processParagraphs( root, text, docid );
   xmlFreeDoc( xdoc );
