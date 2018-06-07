@@ -1391,7 +1391,9 @@ void convert_to_folia( const string& file,
       if ( pos != string::npos ){
 	docid = docid.substr(0,pos);
       }
-      folia::Text *text = new folia::Text( getArgs( "id='" + docid + ".text'"  ));
+      folia::KWargs args;
+      args["id"] = docid + ".text";
+      folia::Text *text = new folia::Text( args );
       doc->append( text );
       try {
 	xmlNode *p = root->children;
