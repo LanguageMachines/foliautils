@@ -85,16 +85,20 @@ void appendStr( folia::FoliaElement *par, int& pos,
 		const icu::UnicodeString& val, const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
-    folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()
-							    + "." + id + "'" ),
-					     par->doc() );
+    folia::KWargs args;
+    args["id"] = par->id() + "." + id;
+    folia::String *str = new folia::String( args, par->doc() );
     par->append( str );
     str->setutext( val, pos, classname );
     pos += val.length() +1;
-    folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
+    args.clear();
+    args["href"] = file;
+    folia::Alignment *h = new folia::Alignment( args );
     str->append( h );
-    folia::AlignReference *a =
-      new folia::AlignReference( folia::getArgs("id='" + id + "', type='str'") );
+    args.clear();
+    args["id"] = id;
+    args["type"] = "str";
+    folia::AlignReference *a = new folia::AlignReference( args );
     h->append( a );
   }
 }
@@ -104,8 +108,7 @@ void process( folia::FoliaElement *out,
 	      const vector<string>& refs,
 	      const string& file ){
   for ( size_t i=0; i < vec.size(); ++i ){
-    vector<string> parts;
-    TiCC::split( vec[i], parts );
+    vector<string> parts = TiCC::split( vec[i] );
     string parTxt;
     for ( auto const& p : parts ){
       parTxt += p;
@@ -113,8 +116,9 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
       }
     }
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + refs[i] + "'" ),  out->doc() );
+    folia::KWargs args;
+    args["id"] = out->id() + "." + refs[i];
+    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -131,8 +135,7 @@ void process( folia::FoliaElement *out,
 	      const string& file ){
   for ( const auto& value : values ){
     string line = value.second;
-    vector<string> parts;
-    TiCC::split( line, parts );
+    vector<string> parts = TiCC::split( line );
     string parTxt;
     for ( const auto& p : parts ){
       parTxt += p;
@@ -140,8 +143,9 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
       }
     }
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + labels.at(value.first) + "'"), out->doc() );
+    folia::KWargs args;
+    args["id"] = out->id() + "." + labels.at(value.first);
+    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -326,7 +330,9 @@ bool convert_pagexml( const string& fileName,
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'" ));
+  folia::KWargs args;
+  args["id"] =  docid + ".text";
+  folia::Text *text = new folia::Text( args );
   doc.append( text );
   process( text, specials, specialRefs, docid );
   process( text, regionStrings, backrefs, docid );
