@@ -99,7 +99,7 @@ string get_line( xmlNode *line ){
   else if ( result.endsWith( "-" ) ){
     result.remove(result.length()-1);
   }
-  else {
+  else if ( !result.endsWith( " " ) ){
     result += " ";
   }
   return TiCC::UnicodeToUTF8(result);
@@ -116,15 +116,10 @@ void process_line( xmlNode *block, map<string,vector<string>>& parts ){
 
   for ( const auto& form : formats ){
     string small = TiCC::getAttribute( form, "smallcaps" );
-    string bold = TiCC::getAttribute( form, "bold" );
     string result = get_line( form );
     if ( !small.empty() ){
       cout << "ADD lemma: " << result << endl;
       parts["lemma"].push_back(result);
-    }
-    else if ( !bold.empty() && parts["lemma"].empty() ){
-      cout << "ADD header: " << result << endl;
-      parts["head"].push_back(result);
     }
     else {
       parts["entry"].push_back(result);
@@ -154,28 +149,18 @@ bool process_par( folia::FoliaElement *root,
     for ( const auto& s : it.second ){
       result += s;
     }
-    TiCC::trim(result);
-    if ( it.first == "head" ){
-      head += result;
-    }
-    else if ( it.first == "lemma" ){
+    result = TiCC::trim(result);
+    if ( it.first == "lemma" ){
       lemma += result;
     }
     else {
       entry += result;
     }
-
   }
+  lemma = TiCC::trim(lemma);
+  entry = TiCC::trim(entry);
   bool didit = false;
-  if ( !head.empty() ){
-    folia::KWargs args;
-    args["id"] = root->id() + ".head";
-    folia::Head *head_node = new folia::Head( args );
-    root->append( head_node );
-    head_node->settext( head, classname );
-    didit = true;
-  }
-  else if ( !lemma.empty() ){
+  if ( !lemma.empty() ){
     folia::KWargs args;
     args["id"] = root->id() + ".lemma";
     folia::Part *part = new folia::Part( args );
@@ -184,22 +169,17 @@ bool process_par( folia::FoliaElement *root,
     didit = true;
   }
   if ( !entry.empty() ){
-    if ( lemma.empty() && head.empty() ){
-      root->settext( entry, classname );
-    }
-    else {
-      folia::KWargs args;
-      args["id"] = root->id() + ".entry";
-      folia::Part *part = new folia::Part( args );
-      root->append( part );
-      part->settext( entry, classname );
-    }
+    folia::KWargs args;
+    args["id"] = root->id() + ".entry";
+    folia::Part *part = new folia::Part( args );
+    root->append( part );
+    part->settext( entry, classname );
     didit = true;
   }
   return didit;
 }
 
-bool process_text( folia::FoliaElement *root,
+bool process_page( folia::FoliaElement *root,
 		   xmlNode *block ){
   list<xmlNode*> paragraphs = TiCC::FindNodes( block, ".//*:par" );
   if ( true ){ //verbose ){
@@ -224,31 +204,6 @@ bool process_text( folia::FoliaElement *root,
     }
   }
   return didit;
-}
-
-void process_page( folia::FoliaElement *root,
-		   xmlNode *page ){
-  list<xmlNode*> blocks = TiCC::FindNodes( page, "*:block[@blockType='Text']" );
-  if ( true ){ //verbose ){
-#pragma omp critical
-    {
-      cout << "found " << blocks.size() << " Text blocks" << endl;
-
-    }
-  }
-  int i = 0;
-  for ( const auto& block : blocks ){
-    folia::KWargs args;
-    args["id"] = root->id() + ".div" + TiCC::toString(++i);
-    folia::Division *div = new folia::Division( args );
-    if ( process_text( div, block ) ){
-      root->append( div );
-    }
-    else {
-      --i;
-      delete div;
-    }
-  }
 }
 
 bool convert_abbyxml( const string& fileName,
