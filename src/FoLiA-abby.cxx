@@ -107,7 +107,7 @@ string get_line( xmlNode *line ){
 
 void process_line( xmlNode *block, map<string,vector<string>>& parts ){
   list<xmlNode*> formats = TiCC::FindNodes( block, "*:formatting" );
-  if ( true ){ //verbose ){
+  if ( verbose ){
 #pragma omp critical
     {
       cout << "\t\t\tfound " << formats.size() << " formatting nodes" << endl;
@@ -118,7 +118,6 @@ void process_line( xmlNode *block, map<string,vector<string>>& parts ){
     string small = TiCC::getAttribute( form, "smallcaps" );
     string result = get_line( form );
     if ( !small.empty() ){
-      cout << "ADD lemma: " << result << endl;
       parts["lemma"].push_back(result);
     }
     else {
@@ -130,7 +129,7 @@ void process_line( xmlNode *block, map<string,vector<string>>& parts ){
 bool process_par( folia::FoliaElement *root,
 		  xmlNode *par ){
   list<xmlNode*> lines = TiCC::FindNodes( par, "*:line" );
-  if ( true ){ //verbose ){
+  if ( verbose ){
 #pragma omp critical
     {
       cout << "\t\tfound " << lines.size() << " lines" << endl;
@@ -182,7 +181,7 @@ bool process_par( folia::FoliaElement *root,
 bool process_page( folia::FoliaElement *root,
 		   xmlNode *block ){
   list<xmlNode*> paragraphs = TiCC::FindNodes( block, ".//*:par" );
-  if ( true ){ //verbose ){
+  if ( verbose ){
 #pragma omp critical
     {
       cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
