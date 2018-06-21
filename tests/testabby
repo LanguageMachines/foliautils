@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+
+$my_bin/FoLiA-abby > testabby.out 2>&1
+
+$my_bin/FoLiA-abby -V >> testabby.out 2>&1
+
+$my_bin/FoLiA-abby --help >> testabby.out 2>&1
+
+$my_bin/FoLiA-abby -O out data/abby >> testabby.out 2>&1
