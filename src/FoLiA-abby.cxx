@@ -352,7 +352,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( !outputDir.empty() ){
-    string name = outputDir;
+    string name = outputDir + "/";
     if ( !TiCC::isDir(name) ){
       if ( !TiCC::createPath( name ) ){
 	cerr << "outputdir '" << name
