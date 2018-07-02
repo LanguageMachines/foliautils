@@ -227,7 +227,7 @@ int main( int argc, char *argv[] ){
 	}
       }
     }
-    if ( !par ){
+    if ( parCount == 0 ){
 #pragma omp critical
       {
 	cerr << "no useful data found in document:'" << docid << "'" << endl;
