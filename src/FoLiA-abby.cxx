@@ -257,6 +257,8 @@ bool convert_abbyxml( const string& fileName,
   if ( !outputDir.empty() ){
     outName = outputDir + "/";
   }
+  string::size_type pos = orgFile.find(".xml");
+  orgFile.erase( pos );
   outName += orgFile + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
@@ -374,7 +376,7 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    fileNames = TiCC::searchFilesMatch( name, ".xml", false );
+    fileNames = TiCC::searchFilesMatch( name, ".xml($|.gz$|.bz2$)", false );
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
@@ -397,6 +399,11 @@ int main( int argc, char *argv[] ){
 #pragma omp critical
       {
 	cerr << "failure on " << fileNames[fn] << endl;
+      }
+    else
+#pragma omp critical
+      {
+	cout << "\tconverted " << fileNames[fn] << endl;
       }
   }
   cout << "done" << endl;
