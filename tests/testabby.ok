@@ -11,4 +11,7 @@ Usage: FoLiA-abby [options] file/dir
 				 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
+start processing of 2 files 
+	converted data/abby/morse_OCR_perletter.xml
+	converted data/abby/morse_OCR_perletter2.xml.gz
 done
