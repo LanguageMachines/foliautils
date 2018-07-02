@@ -230,7 +230,7 @@ int main( int argc, char *argv[] ){
     if ( !par ){
 #pragma omp critical
       {
-	cerr << "nu useful data found in document:'" << docid << "'" << endl;
+	cerr << "no useful data found in document:'" << docid << "'" << endl;
 	cerr << "skipped!" << endl;
 	++failed_docs;
 	--to_do;
