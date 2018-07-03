@@ -251,7 +251,7 @@ int main( int argc, char *argv[] ){
     }
     delete d;
   }
-  if ( failed_docs == to_do ){
+  if ( failed_docs > 0 && failed_docs == to_do ){
     cerr << "No documents could be handled successfully!" << endl;
     return EXIT_SUCCESS;
   }
