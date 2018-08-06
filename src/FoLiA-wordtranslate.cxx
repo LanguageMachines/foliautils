@@ -104,7 +104,7 @@ icu::UnicodeString applyRules( const icu::UnicodeString& orig_source, const t_ru
     // cerr << "pattern=" << pattern << endl;
     // cerr << "replace=" << replacement << endl;
     UErrorCode u_stat = U_ZERO_ERROR;
-    RegexMatcher * matcher = new RegexMatcher(pattern, source, 0, u_stat);
+    icu::RegexMatcher *matcher = new icu::RegexMatcher(pattern, source, 0, u_stat);
     if ( U_FAILURE(u_stat) ){
       throw runtime_error( "failed to create a regexp matcher with '" + TiCC::UnicodeToUTF8(pattern) + "'" );
     }
