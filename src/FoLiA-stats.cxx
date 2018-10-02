@@ -1473,7 +1473,7 @@ int main( int argc, char *argv[] ){
     cout << "done processsing directory '" << dir_name << "'" << endl;
   }
   if ( fail_docs == toDo ){
-    cerr << "no documents were successfull handled!" << endl;
+    cerr << "no documents were successfully handled!" << endl;
     return EXIT_FAILURE;
   }
   if ( !hempName.empty() ){
