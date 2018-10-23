@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="folia.xsl"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v0.14" version="0.12.0">
+  <metadata type="native">
+    <annotations>
+      <token-annotation set="bla"/>
+    </annotations>
+  </metadata>
+  <text xml:id="test.text">
+    <p xml:id="test.p.1">
+      <s xml:id="VanGinniken.p.1.s.487">
+        <w xml:id="VanGinniken.p.1.s.487.w.1" class="PUNCTUATION" space="no">
+          <t>†</t>
+        </w>
+        <w xml:id="VanGinniken.p.1.s.487.w.2" class="WORD">
+          <t>Stomper</t>
+        </w>
+        <w xml:id="VanGinniken.p.1.s.487.w.3" class="PUNCTUATION" space="no">
+          <t>(</t>
+        </w>
+        <w xml:id="VanGinniken.p.1.s.487.w.4" class="WORD" space="no">
+          <t>knoeier</t>
+        </w>
+        <w xml:id="VanGinniken.p.1.s.487.w.5" class="WORD">
+          <t>)</t>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>
