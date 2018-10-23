@@ -706,7 +706,8 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 				map<string,vector<map<string,unsigned int>>>& lcv,
 				map<string,vector<multimap<string, rec>>>& lpcv,
 				set<string>& emph,
-				const string& sep ){
+				const string& sep,
+				bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -756,7 +757,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     for ( const auto& w : words ){
       wlp_rec rec;
       try {
-	icu::UnicodeString uword = w->text(classname);
+	icu::UnicodeString uword = w->text(classname,detokenize==false);
 	if ( lowercase ){
 	  uword.toLower();
 	}
@@ -907,7 +908,8 @@ size_t doc_str_inventory( const Document *d,
 			  const set<string>& languages,
 			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
-			  const string& sep ){
+			  const string& sep,
+			  bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -936,7 +938,7 @@ size_t doc_str_inventory( const Document *d,
   for ( const auto& s : strings ){
     icu::UnicodeString us;
     try {
-      us = s->text(classname);
+      us = s->text(classname,detokenize==false);
       if ( lowercase ){
 	us.toLower();
       }
@@ -973,7 +975,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  const set<string>& languages,
 			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
-			  const string& sep ){
+			  const string& sep,
+			  bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -1004,7 +1007,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     for ( const auto& s : strings ){
       icu::UnicodeString us;
       try {
-	us = s->text(classname);
+	us = s->text(classname,detokenize==false);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -1071,7 +1074,8 @@ size_t text_inventory( const Document *d, const string& docName,
 		       const set<string>& tags,
 		       map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 		       set<string>& emph,
-		       const string& sep ){
+		       const string& sep,
+		       bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -1094,7 +1098,7 @@ size_t text_inventory( const Document *d, const string& docName,
     string s;
     icu::UnicodeString us;
     try {
-      us = node->text(classname);
+      us = node->text(classname,detokenize==false);
       if ( lowercase ){
 	us.toLower();
       }
@@ -1165,6 +1169,7 @@ void usage( const string& name ){
   cerr << "\t --collect\t collect all n-gram values in one file." << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t (words consisting of single, space separated letters)" << endl;
+  cerr << "\t--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
@@ -1180,7 +1185,8 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:RsS",
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"
-			 "mode:,verbose,collect,aggregate,tags:,threads:" );
+			 "mode:,verbose,collect,aggregate,tags:,threads:,"
+			 "detokenize" );
   try {
     opts.init(argc,argv);
   }
@@ -1218,6 +1224,7 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: --aggregate and -p conflict." << endl;
     return EXIT_FAILURE;
   }
+  bool detokenize = opts.extract( "detokenize" );
   set<string> tags;
   string tagsstring;
   opts.extract( "tags", tagsstring );
@@ -1438,20 +1445,20 @@ int main( int argc, char *argv[] ){
 					    lowercase,
 					    default_language, languages,
 					    wcv, lcv, lpcv,
-					    emph, sep );
+					    emph, sep, detokenize );
       break;
     case S_IN_D:
       word_count = doc_str_inventory( d, docName, min_NG, max_NG,
 				      wordTotals, lowercase,
 				      default_language, languages,
-				      wcv, emph, sep );
+				      wcv, emph, sep, detokenize );
       break;
     default:
       if ( !tags.empty() ){
 	word_count = text_inventory( d, docName, min_NG, max_NG,
 				     wordTotals, lowercase,
 				     default_language, languages, tags,
-				     wcv, emph, sep );
+				     wcv, emph, sep, detokenize );
       }
       else {
 	cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
