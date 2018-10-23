@@ -29,9 +29,10 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
-		 --collect	 collect all n-gram values in one file.
+	 --collect	 collect all n-gram values in one file.
 	--hemp=<file>	 Create a historical emphasis file. 
 		 (words consisting of single, space separated letters)
+	--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)
 	-t <threads>
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
@@ -74,9 +75,10 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
-		 --collect	 collect all n-gram values in one file.
+	 --collect	 collect all n-gram values in one file.
 	--hemp=<file>	 Create a historical emphasis file. 
 		 (words consisting of single, space separated letters)
+	--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)
 	-t <threads>
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a

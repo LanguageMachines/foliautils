@@ -99,3 +99,9 @@ then
     $my_bin/TICCL-mergelex -p -o BLA stats12.wordfreqlist.tsv stats12.wordfreqlist.2-gram.tsv stats12.wordfreqlist.3-gram.tsv stats12.wordfreqlist.4-gram.tsv > out20 2>&1
     diff  BLA.wordfreqlist.tsv stats14.word.ok >> teststats.out 2>&1
 fi
+
+$my_bin/FoLiA-stats --mode=text_in_par -o stats15 -p data/folia2.xml --detokenize --max-ngram=4 --collect > out21 2>&1
+diff stats15.wordfreqlist.1to4.tsv stats15.word.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par -o stats16 -p data/folia2.xml --max-ngram=4 --collect > out22 2>&1
+diff stats16.wordfreqlist.1to4.tsv stats16.word.ok >> teststats.out 2>&1
