@@ -47,6 +47,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 bool verbose = false;
@@ -757,7 +758,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     for ( const auto& w : words ){
       wlp_rec rec;
       try {
-	icu::UnicodeString uword = w->text(classname,detokenize==false);
+	UnicodeString uword = w->text(classname,detokenize==false);
 	if ( lowercase ){
 	  uword.toLower();
 	}
@@ -936,7 +937,7 @@ size_t doc_str_inventory( const Document *d,
   }
   vector<string> data;
   for ( const auto& s : strings ){
-    icu::UnicodeString us;
+    UnicodeString us;
     try {
       us = s->text(classname,detokenize==false);
       if ( lowercase ){
@@ -1005,7 +1006,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
     vector<string> data;
     for ( const auto& s : strings ){
-      icu::UnicodeString us;
+      UnicodeString us;
       try {
 	us = s->text(classname,detokenize==false);
 	if ( lowercase ){
@@ -1096,7 +1097,7 @@ size_t text_inventory( const Document *d, const string& docName,
       }
     }
     string s;
-    icu::UnicodeString us;
+    UnicodeString us;
     try {
       us = node->text(classname,detokenize==false);
       if ( lowercase ){

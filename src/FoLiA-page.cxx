@@ -45,6 +45,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 
@@ -82,7 +83,7 @@ string setname = "FoLiA-page-set";
 string classname = "OCR";
 
 void appendStr( folia::FoliaElement *par, int& pos,
-		const icu::UnicodeString& val, const string& id,
+		const UnicodeString& val, const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
     folia::KWargs args;

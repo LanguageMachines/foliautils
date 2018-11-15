@@ -45,6 +45,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 const char SEPCHAR = '_';
@@ -114,7 +115,7 @@ bool fillUnknowns( const string& fn, unordered_set<string>& unknowns ){
   while ( getline( is, line ) ) {
     vector<string> parts = TiCC::split( line );
     if ( parts.size() == 2 ){
-      icu::UnicodeString us( parts[0].c_str() );
+      UnicodeString us( parts[0].c_str() );
       if ( us.length() > 1 ){
 	// '1' character words are never UNK
 	double dum;

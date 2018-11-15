@@ -40,6 +40,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 void usage( const string& name ){
@@ -163,7 +164,7 @@ int main( int argc, char *argv[] ){
     }
     else {
       ofstream os( outname );
-      icu::UnicodeString us = d->text( class_name,retaintok);
+      UnicodeString us = d->text( class_name,retaintok);
       os << us << endl;
 #pragma omp critical
       {

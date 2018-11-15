@@ -45,6 +45,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 
@@ -89,7 +90,7 @@ string get_line( xmlNode *line ){
       cout << "\t\t\t\tfound " << chars.size() << " chars" << endl;
     }
   }
-  icu::UnicodeString result;
+  UnicodeString result;
   for ( const auto& ch : chars ){
     result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
   }

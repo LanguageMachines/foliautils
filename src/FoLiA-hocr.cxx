@@ -44,6 +44,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 string setname = "FoLiA-hocr-set";
@@ -145,7 +146,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     folia::KWargs args;
     args["id"] = out->id() + "." + p_id;
     folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
-    icu::UnicodeString txt;
+    UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
 					      ".//span[@class='ocrx_word']" );
@@ -169,7 +170,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  args["id"] = par->id() + "." + w_id;
 	  folia::String *str = new folia::String( args, out->doc() );
 	  par->append( str );
-	  icu::UnicodeString uc = TiCC::UnicodeFromUTF8( content );
+	  UnicodeString uc = TiCC::UnicodeFromUTF8( content );
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
 	  args.clear();

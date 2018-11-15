@@ -46,6 +46,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 bool clearCachedFiles = false;
@@ -178,7 +179,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
   return 0;
 }
 
-void addStr( folia::Paragraph *par, icu::UnicodeString& txt,
+void addStr( folia::Paragraph *par, UnicodeString& txt,
 	     const xmlNode *pnt, const string& altoFile,
 	     int cnt = 1 ){
   folia::KWargs atts = folia::getAttributes( pnt );
@@ -200,7 +201,7 @@ void addStr( folia::Paragraph *par, icu::UnicodeString& txt,
     args["id"] = arg;
     folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
-    icu::UnicodeString uc = TiCC::UnicodeFromUTF8( content );
+    UnicodeString uc = TiCC::UnicodeFromUTF8( content );
     s->setutext( uc, txt.length(), classname );
     txt += " " + uc;
     if ( !altoFile.empty() ){
@@ -230,7 +231,7 @@ void addStr( folia::Paragraph *par, icu::UnicodeString& txt,
 
       folia::String *s = new folia::String( args, par->doc() );
       par->append( s );
-      icu::UnicodeString uc = TiCC::UnicodeFromUTF8( parts[i] );
+      UnicodeString uc = TiCC::UnicodeFromUTF8( parts[i] );
       s->setutext( uc, txt.length(), classname );
       txt += " " + uc;
       if ( !altoFile.empty() ){
@@ -278,7 +279,7 @@ void createFile( folia::FoliaElement *text,
     args["id"] = arg;
     folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
     text->append( p );
-    icu::UnicodeString ocr_text;
+    UnicodeString ocr_text;
     list<xmlNode*> v =
       TiCC::FindNodes( root,
 			"//*[local-name()='TextBlock' and @ID='"
@@ -301,7 +302,7 @@ void createFile( folia::FoliaElement *text,
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  string kid = atts["ID"];
 		  string sub = atts["SUBS_CONTENT"];
-		  icu::UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
+		  UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
 		  folia::KWargs args;
 		  string arg = p->id() + ".";
 		  if ( !kid.empty() ){
@@ -968,7 +969,7 @@ void solveBook( const string& altoFile, const string& id,
       args["id"] = text->id() + ".p." + id;
       folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
       text->append( p );
-      icu::UnicodeString ocr_text;
+      UnicodeString ocr_text;
       list<xmlNode*> v =
 	TiCC::FindNodes( root,
 			 "//*[local-name()='TextBlock' and @ID='"
@@ -990,7 +991,7 @@ void solveBook( const string& altoFile, const string& id,
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    string kid = atts["ID"];
 		    string sub = atts["SUBS_CONTENT"];
-		    icu::UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
+		    UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
 		    folia::KWargs args;
 		    args["id"] = p->id() + "." + kid;
 		    args["class"] = classname;
