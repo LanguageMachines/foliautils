@@ -158,6 +158,16 @@ void filter( string& word ){
   filter( word, '#' );
 }
 
+string test_final_punct( const string& word, const string& dep ){
+  const string real_puncts = ".,!?";
+  string result;
+  if ( real_puncts.find(word.back()) != string::npos
+       && dep.back() != word.back() ){
+    result = word.back();
+  }
+  return result;
+}
+
 bool correct_one_unigram( const string& w,
 			  const unordered_map<string,vector<word_conf> >& variants,
 			  const unordered_set<string>& unknowns,
@@ -170,8 +180,10 @@ bool correct_one_unigram( const string& w,
   }
   string word = w;
   string orig_word = word;
+  string final_punct;
   const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
+    final_punct = test_final_punct( word, pit->second );
     word = pit->second;
   }
   const auto vit = variants.find( word );
@@ -183,8 +195,13 @@ bool correct_one_unigram( const string& w,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    size_t ed_size = parts.size();
+    if ( !final_punct.empty() ){
+      ++ed_size;
+      result += final_punct + " ";
+    }
     string ed;
-    switch ( parts.size() ){
+    switch ( ed_size ){
     case 1:
       ed ="11";
       break;
@@ -196,6 +213,9 @@ bool correct_one_unigram( const string& w,
       break;
     case 4:
       ed = "14";
+      break;
+    case 5:
+      ed = "15";
       break;
     default:
       break;
@@ -222,6 +242,10 @@ bool correct_one_unigram( const string& w,
     else {
       // just use the word
       result = word + " ";
+      if ( !final_punct.empty() ){
+	result += final_punct + " ";
+	did_edit = true;
+      }
     }
   }
   return did_edit;
@@ -260,8 +284,10 @@ int correct_one_bigram( const string& bi,
   string word = bi;
   filter(word);
   string orig_word = word;
+  string final_punct;
   const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
+    final_punct = test_final_punct( word, pit->second );
     word = pit->second;
   }
   const auto vit = variants.find( word );
@@ -272,8 +298,13 @@ int correct_one_bigram( const string& bi,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    size_t ed_size = parts.size();
+    if ( !final_punct.empty() ){
+      ++ed_size;
+      result += final_punct + " ";
+    }
     string ed;
-    switch ( parts.size() ){
+    switch ( ed_size ){
     case 1:
       ed ="21";
       break;
@@ -285,6 +316,9 @@ int correct_one_bigram( const string& bi,
       break;
     case 4:
       ed = "24";
+      break;
+    case 5:
+      ed = "25";
       break;
     default:
       break;
@@ -369,8 +403,10 @@ int correct_one_trigram( const string& tri,
   string word = tri;
   filter(word);
   string orig_word = word;
+  string final_punct;
   const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
+    final_punct = test_final_punct( word, pit->second );
     word = pit->second;
   }
   const auto vit = variants.find( word );
@@ -381,8 +417,13 @@ int correct_one_trigram( const string& tri,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    size_t ed_size = parts.size();
+    if ( !final_punct.empty() ){
+      ++ed_size;
+      result += final_punct + " ";
+    }
     string ed;
-    switch ( parts.size() ){
+    switch ( ed_size ){
     case 1:
       ed ="31";
       break;
@@ -394,6 +435,9 @@ int correct_one_trigram( const string& tri,
       break;
     case 4:
       ed = "34";
+      break;
+    case 5:
+      ed = "35";
       break;
     default:
       break;
@@ -603,8 +647,10 @@ void correctParagraph( Paragraph* par,
     string word = origV[0]->str(input_classname);
     filter(word);
     string orig_word = word;
+    string final_punct;
     const auto pit = puncts.find( word );
     if ( pit != puncts.end() ){
+      final_punct = test_final_punct( word, pit->second );
       word = pit->second;
     }
     const auto vit = variants.find( word );
@@ -620,6 +666,9 @@ void correctParagraph( Paragraph* par,
       args["value"] = edit;
       TextContent *newT = new TextContent( args );
       corrected += edit + " ";
+      if ( !final_punct.empty() ){
+	corrected += final_punct + " ";
+      }
       offset = corrected.size();
       nV.push_back( newT );
       vector<FoliaElement*> sV;
@@ -654,6 +703,9 @@ void correctParagraph( Paragraph* par,
 	args["value"] = edit;
 	TextContent *newT = new TextContent( args );
 	corrected += edit + " ";
+	if ( !final_punct.empty() ){
+	  corrected += final_punct + " ";
+	}
 	offset = corrected.size();
 	nV.push_back( newT );
 	vector<FoliaElement*> sV;
@@ -663,9 +715,16 @@ void correctParagraph( Paragraph* par,
       }
       else {
 	// just use the ORIGINAL word
-	word = orig_word;
-	s->settext( word, offset, output_classname );
+	//	word = orig_word;
+	string my_word = word;
+	if ( !final_punct.empty() ){
+	  my_word += " " + final_punct;
+	}
+	s->settext( my_word, offset, output_classname );
 	corrected += word + " ";
+	if ( !final_punct.empty() ){
+	  corrected += final_punct + " ";
+	}
 	offset = corrected.size();
       }
     }

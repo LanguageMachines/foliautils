@@ -25,10 +25,12 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
-correct ngrams in: '40ste vergadering'
- corrected ngrams: '40ste vergadering'
+correct ngrams in: '40ste vergadering?'
+unigram corrections:
+vergadering? : vergadering ? 
+ corrected ngrams: '40ste vergadering ?'
 correct ngrams in: '2003-2004'
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
@@ -51,20 +53,44 @@ edit statistics:
 	12	1
 	TOKENS	30
 	UNK 	1
+18,19c18,19
+<           <t>40ste vergadering?</t>
+<           <t class="Ticcl">40ste vergadering ?</t>
+---
+>           <t>40ste vergadering</t>
+>           <t class="Ticcl">40ste vergadering</t>
+24c24
+<             <t>vergadering?</t>
+---
+>             <t>vergadering</t>
+corr_str.ticcl.xml and corr_str.ticcl.1.ok are different
 start reading variants 
 read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 finished data/corr_str.xml
+18,19c18,19
+<           <t>40ste vergadering?</t>
+<           <t class="Ticcl">40ste vergadering ?</t>
+---
+>           <t>40ste vergadering</t>
+>           <t class="Ticcl">40ste vergadering</t>
+25,26c25,26
+<             <t>vergadering?</t>
+<             <t class="Ticcl" offset="6">vergadering ?</t>
+---
+>             <t>vergadering</t>
+>             <t class="Ticcl" offset="6">vergadering</t>
+corr_str.ticcl.xml and corr_str.ticcl.2.ok are different
 start reading variants 
 read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 finished data/corr_word.xml
 inputclass and outputclass are the same
@@ -73,7 +99,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
  = 2 => 40ste 
@@ -125,7 +151,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
  = 2 => 40ste 
@@ -176,7 +202,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
  = 2 => 40ste 
@@ -227,6 +253,6 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 finished data/corr_word_T.xml
