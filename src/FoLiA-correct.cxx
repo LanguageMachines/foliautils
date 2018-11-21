@@ -543,74 +543,91 @@ void correctNgrams( Paragraph* par,
 		    const unordered_map<string,string>& puncts,
 		    int ngrams,
 		    unordered_map<string,size_t>& counts ){
-  vector<TextContent *> origV = par->select<TextContent>();
+  vector<TextContent *> origV = par->select<TextContent>(false);
   if ( origV.empty() ){
+    // OK, no text directly
+    // look deeper then
+    origV = par->select<TextContent>();
+    if ( origV.empty() ){
+      if ( verbose > 1 ){
+#pragma omp critical
+	{
+	  cerr << "no text text in : " << par->id() << " skipping" << endl;
+	}
+      }
+      return;
+    }
+  }
+  string partext;
+  for ( const auto& org : origV ){
+    string content = org->str(input_classname);
     if ( verbose > 1 ){
 #pragma omp critical
       {
-	cerr << "no text text in : " << par->id() << " skipping" << endl;
+	cerr << "correct ngrams in: '" << content << "'" << endl;
       }
     }
-    return;
-  }
-  string content = origV[0]->str(input_classname);
-  if ( verbose > 1 ){
-#pragma omp critical
-    {
-      cerr << "correct ngrams in: '" << content << "'" << endl;
+    filter( content, SEPCHAR ); // HACK
+    vector<string> unigrams = TiCC::split( content );
+    vector<string> bigrams;
+    vector<string> trigrams;
+    counts["TOKENS"] += unigrams.size();
+    if ( ngrams > 1  && unigrams.size() > 1 ){
+      for ( size_t i=0; i < unigrams.size()-1; ++i ){
+	string bi;
+	bi = unigrams[i] + SEPARATOR + unigrams[i+1];
+	bigrams.push_back( bi );
+      }
     }
-  }
-  filter( content, SEPCHAR ); // HACK
-  vector<string> unigrams = TiCC::split( content );
-  vector<string> bigrams;
-  vector<string> trigrams;
-  counts["TOKENS"] += unigrams.size();
-  if ( ngrams > 1  && unigrams.size() > 1 ){
-    for ( size_t i=0; i < unigrams.size()-1; ++i ){
-      string bi;
-      bi = unigrams[i] + SEPARATOR + unigrams[i+1];
-      bigrams.push_back( bi );
+    if ( ngrams > 2 && unigrams.size() > 2 ){
+      for ( size_t i=0; i < unigrams.size()-2; ++i ){
+	string tri;
+	tri = unigrams[i] + SEPARATOR + unigrams[i+1] + SEPARATOR + unigrams[i+2];
+	trigrams.push_back( tri );
+      }
     }
-  }
-  if ( ngrams > 2 && unigrams.size() > 2 ){
-    for ( size_t i=0; i < unigrams.size()-2; ++i ){
-      string tri;
-      tri = unigrams[i] + SEPARATOR + unigrams[i+1] + SEPARATOR + unigrams[i+2];
-      trigrams.push_back( tri );
-    }
-  }
-  string corrected;
-  if ( trigrams.empty() ){
-    if ( bigrams.empty() ){
-      vector<pair<string,string>> corrections;
-      corrected = correct_unigrams( unigrams, variants, unknowns,
-				    puncts, corrections, counts );
-      if ( verbose && !corrections.empty() ){
-	cout << "unigram corrections:" << endl;
-	for ( const auto& p : corrections ) {
-	  cout << p.first << " : " << p.second << endl;
+    string corrected;
+    if ( trigrams.empty() ){
+      if ( bigrams.empty() ){
+	vector<pair<string,string>> corrections;
+	corrected = correct_unigrams( unigrams, variants, unknowns,
+				      puncts, corrections, counts );
+	if ( verbose && !corrections.empty() ){
+	  cout << "unigram corrections:" << endl;
+	  for ( const auto& p : corrections ) {
+	    cout << p.first << " : " << p.second << endl;
+	  }
 	}
+      }
+      else {
+	corrected = correct_bigrams( bigrams, variants, unknowns,
+				     puncts, unigrams.back(), counts );
       }
     }
     else {
-      corrected = correct_bigrams( bigrams, variants, unknowns,
-				   puncts, unigrams.back(), counts );
+      corrected = correct_trigrams( trigrams, variants, unknowns,
+				    puncts, unigrams, counts );
     }
-  }
-  else {
-    corrected = correct_trigrams( trigrams, variants, unknowns,
-				  puncts, unigrams, counts );
-  }
-  corrected = TiCC::trim( corrected );
-  if ( verbose > 1 ){
+    corrected = TiCC::trim( corrected );
+    if ( verbose > 1 ){
 #pragma omp critical
-    {
-      cerr << " corrected ngrams: '" << corrected << "'" << endl;
+      {
+	cerr << " corrected ngrams: '" << corrected << "'" << endl;
+      }
+    }
+    if ( !corrected.empty() ){
+      org->parent()->settext( corrected, output_classname );
+      if ( partext.empty() ){
+	partext = corrected;
+      }
+      else {
+	partext += " " + corrected;
+      }
     }
   }
-  if ( !corrected.empty() ){
-    par->settext( corrected, output_classname );
-  }
+  // if ( !partext.empty() ){
+  //   par->settext( partext, output_classname );
+  // }
 }
 
 void correctParagraph( Paragraph* par,
