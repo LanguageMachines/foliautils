@@ -787,7 +787,7 @@ void usage( const string& name ){
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t--unk 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
   cerr << "\t--punct 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
-  cerr << "\t--rank 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
+  cerr << "\t--rank 'vname'\t name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean" << endl;
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
 }
@@ -823,7 +823,7 @@ int main( int argc, const char *argv[] ){
   bool string_nodes = false;
   bool word_nodes = false;
   string expression;
-  string variantFileName;
+  string variantsFileName;
   string unknownFileName;
   string punctFileName;
   string outPrefix;
@@ -863,11 +863,14 @@ int main( int argc, const char *argv[] ){
     exit( EXIT_FAILURE );
   }
   checkFile( "unk", unknownFileName, ".unk" );
-  if ( !opts.extract( "rank", variantFileName ) ){
+  if ( !opts.extract( "rank", variantsFileName ) ){
     cerr << "missing '--rank' option" << endl;
     exit( EXIT_FAILURE );
   }
-  checkFile( "rank", variantFileName, ".ranked" );
+  if ( !TiCC::isFile( variantsFileName ) ){
+    cerr << "unable to find file '" << variantsFileName << "'" << endl;
+    exit( EXIT_FAILURE );
+  }
   if ( opts.extract( "nums", value ) ){
     if ( !TiCC::stringTo( value, numSugg ) ){
       cerr << "unsupported value for --nums (" << value << ")" << endl;
@@ -942,7 +945,7 @@ int main( int argc, const char *argv[] ){
       {
 	cout << "start reading variants " << endl;
       }
-      if ( !fillVariants( variantFileName, variants, numSugg ) ){
+      if ( !fillVariants( variantsFileName, variants, numSugg ) ){
 #pragma omp critical
 	{
 	  cerr << "no variants." << endl;
