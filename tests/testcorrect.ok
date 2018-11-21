@@ -17,7 +17,7 @@ Usage: [options] file/dir
 	-O	 output prefix
 	--unk 'uname'	 name of unknown words file, the *unk file produced by TICCL-unk
 	--punct 'pname'	 name of punct words file, the *punct file produced by TICCL-unk
-	--rank 'vname'	 name of variants file, the *ranked file produced by TICCL-rank
+	--rank 'vname'	 name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
