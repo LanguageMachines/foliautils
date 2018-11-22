@@ -340,7 +340,7 @@ bool convert_pagexml( const string& fileName,
 
   string outName;
   if ( !outputDir.empty() ){
-    outName = outputDir + "/";
+    outName = outputDir;
   }
   outName += orgFile + ".folia.xml";
   zipType type = inputType;
@@ -447,6 +447,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( !outputDir.empty() ){
+    outputDir += "/";
     string name = outputDir;
     if ( !TiCC::isDir(name) ){
       if ( !TiCC::createPath( name ) ){
