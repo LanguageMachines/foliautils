@@ -17,7 +17,7 @@ Usage: [options] file/dir
 	-O	 output prefix
 	--unk 'uname'	 name of unknown words file, the *unk file produced by TICCL-unk
 	--punct 'pname'	 name of punct words file, the *punct file produced by TICCL-unk
-	--rank 'vname'	 name of variants file, the *ranked file produced by TICCL-rank
+	--rank 'vname'	 name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
@@ -25,15 +25,21 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
-correct ngrams in: '40ste vergadering'
- corrected ngrams: '40ste vergadering'
+correct ngrams in: '40ste vergadering?'
+correct unigrams
+unigram corrections:
+vergadering? : vergadering ? 
+ corrected ngrams: '40ste vergadering ?'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct unigrams
 behándeling = 11 => behandeling 
 opde = 12 => op de 
 unigram corrections:
@@ -41,6 +47,7 @@ behándeling : behandeling
 opde : op de 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct unigrams
 unigram corrections:
 s4s67621 : UNK 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
@@ -51,20 +58,44 @@ edit statistics:
 	12	1
 	TOKENS	30
 	UNK 	1
+18,19c18,19
+<           <t>40ste vergadering?</t>
+<           <t class="Ticcl">40ste vergadering ?</t>
+---
+>           <t>40ste vergadering</t>
+>           <t class="Ticcl">40ste vergadering</t>
+24c24
+<             <t>vergadering?</t>
+---
+>             <t>vergadering</t>
+corr_str.ticcl.xml and corr_str.ticcl.1.ok are different
 start reading variants 
 read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 finished data/corr_str.xml
+18,19c18,19
+<           <t>40ste vergadering?</t>
+<           <t class="Ticcl">40ste vergadering ?</t>
+---
+>           <t>40ste vergadering</t>
+>           <t class="Ticcl">40ste vergadering</t>
+25,26c25,26
+<             <t>vergadering?</t>
+<             <t class="Ticcl" offset="6">vergadering ?</t>
+---
+>             <t>vergadering</t>
+>             <t class="Ticcl" offset="6">vergadering</t>
+corr_str.ticcl.xml and corr_str.ticcl.2.ok are different
 start reading variants 
 read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 finished data/corr_word.xml
 inputclass and outputclass are the same
@@ -73,16 +104,20 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
+correct bigrams
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct bigrams
  = 2 => Aan 
  = 2 => de 
  = 2 => orde 
@@ -102,6 +137,7 @@ opde = 12 => op de
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct bigrams
  = 2 => Deze 
  = 2 => wetsvoorstellen 
  = 2 => worden 
@@ -125,16 +161,20 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
+correct bigrams
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct trigrams
  = 2 => Aan 
  = 2 => de 
  = 2 => orde 
@@ -154,6 +194,7 @@ opde = 12 => op de
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct trigrams
  = 2 => Deze 
  = 2 => wetsvoorstellen 
  = 2 => worden 
@@ -176,16 +217,20 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
+correct bigrams
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct trigrams
  = 2 => Aan 
  = 2 => de 
  = 2 => orde 
@@ -205,6 +250,7 @@ opde = 12 => op de
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct trigrams
  = 2 => Deze 
  = 2 => wetsvoorstellen 
  = 2 => worden 
@@ -227,6 +273,6 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 10 punctuated words 
+read 11 punctuated words 
 verbosity = 2
 finished data/corr_word_T.xml

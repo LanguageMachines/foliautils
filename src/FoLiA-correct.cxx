@@ -158,6 +158,16 @@ void filter( string& word ){
   filter( word, '#' );
 }
 
+string test_final_punct( const string& word, const string& dep ){
+  const string real_puncts = ".,;!?";
+  string result;
+  if ( real_puncts.find(word.back()) != string::npos
+       && dep.back() != word.back() ){
+    result = word.back();
+  }
+  return result;
+}
+
 bool correct_one_unigram( const string& w,
 			  const unordered_map<string,vector<word_conf> >& variants,
 			  const unordered_set<string>& unknowns,
@@ -170,8 +180,10 @@ bool correct_one_unigram( const string& w,
   }
   string word = w;
   string orig_word = word;
+  string final_punct;
   const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
+    final_punct = test_final_punct( word, pit->second );
     word = pit->second;
   }
   const auto vit = variants.find( word );
@@ -183,8 +195,13 @@ bool correct_one_unigram( const string& w,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    size_t ed_size = parts.size();
+    if ( !final_punct.empty() ){
+      ++ed_size;
+      result += final_punct + " ";
+    }
     string ed;
-    switch ( parts.size() ){
+    switch ( ed_size ){
     case 1:
       ed ="11";
       break;
@@ -196,6 +213,9 @@ bool correct_one_unigram( const string& w,
       break;
     case 4:
       ed = "14";
+      break;
+    case 5:
+      ed = "15";
       break;
     default:
       break;
@@ -222,6 +242,10 @@ bool correct_one_unigram( const string& w,
     else {
       // just use the word
       result = word + " ";
+      if ( !final_punct.empty() ){
+	result += final_punct + " ";
+	did_edit = true;
+      }
     }
   }
   return did_edit;
@@ -233,6 +257,9 @@ string correct_unigrams( const vector<string>& unigrams,
 			 const unordered_map<string,string>& puncts,
 			 vector<pair<string,string>>& corrections,
 			 unordered_map<string,size_t>& counts ){
+  if ( verbose > 1 ){
+    cout << "correct unigrams" << endl;
+  }
   string result;
   for ( const auto& uni : unigrams ){
     string cor;
@@ -260,8 +287,10 @@ int correct_one_bigram( const string& bi,
   string word = bi;
   filter(word);
   string orig_word = word;
+  string final_punct;
   const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
+    final_punct = test_final_punct( word, pit->second );
     word = pit->second;
   }
   const auto vit = variants.find( word );
@@ -272,8 +301,13 @@ int correct_one_bigram( const string& bi,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    size_t ed_size = parts.size();
+    if ( !final_punct.empty() ){
+      ++ed_size;
+      result += final_punct + " ";
+    }
     string ed;
-    switch ( parts.size() ){
+    switch ( ed_size ){
     case 1:
       ed ="21";
       break;
@@ -285,6 +319,9 @@ int correct_one_bigram( const string& bi,
       break;
     case 4:
       ed = "24";
+      break;
+    case 5:
+      ed = "25";
       break;
     default:
       break;
@@ -333,6 +370,9 @@ string correct_bigrams( const vector<string>& bigrams,
 			const unordered_map<string,string>& puncts,
 			const string& last,
 			unordered_map<string,size_t>& counts ){
+  if ( verbose > 1 ){
+    cout << "correct bigrams" << endl;
+  }
   string result;
   int skip = 0;
   for ( const auto& bi : bigrams ){
@@ -369,8 +409,10 @@ int correct_one_trigram( const string& tri,
   string word = tri;
   filter(word);
   string orig_word = word;
+  string final_punct;
   const auto pit = puncts.find( word );
   if ( pit != puncts.end() ){
+    final_punct = test_final_punct( word, pit->second );
     word = pit->second;
   }
   const auto vit = variants.find( word );
@@ -381,8 +423,13 @@ int correct_one_trigram( const string& tri,
     for ( const auto& p : parts ){
       result += p + " ";
     }
+    size_t ed_size = parts.size();
+    if ( !final_punct.empty() ){
+      ++ed_size;
+      result += final_punct + " ";
+    }
     string ed;
-    switch ( parts.size() ){
+    switch ( ed_size ){
     case 1:
       ed ="31";
       break;
@@ -394,6 +441,9 @@ int correct_one_trigram( const string& tri,
       break;
     case 4:
       ed = "34";
+      break;
+    case 5:
+      ed = "35";
       break;
     default:
       break;
@@ -439,6 +489,9 @@ string correct_trigrams( const vector<string>& trigrams,
 			 const unordered_map<string,string>& puncts,
 			 const vector<string>& unigrams,
 			 unordered_map<string,size_t>& counts ){
+  if ( verbose > 1 ){
+    cout << "correct trigrams" << endl;
+  }
   string result;
   int skip = 0;
   for ( const auto& tri : trigrams ){
@@ -475,6 +528,9 @@ string correct_trigrams( const vector<string>& trigrams,
     string last = unigrams[unigrams.size()-1];
     string last_bi = unigrams[unigrams.size()-2] + SEPARATOR + last;
     string corr;
+    if ( verbose > 2 ){
+      cout << "correct last bigram: " << last_bi << endl;
+    }
     int skip = correct_one_bigram( last_bi, variants, unknowns,
 				   puncts, corr, counts );
     if ( verbose > 2 ){
@@ -482,6 +538,9 @@ string correct_trigrams( const vector<string>& trigrams,
     }
     result += corr;
     if ( skip == 0 ){
+      if ( verbose > 2 ){
+	cout << "correct last word: " << last << endl;
+      }
       string uni_corr;
       correct_one_unigram( last, variants, unknowns,
 			   puncts, uni_corr, counts );
@@ -500,74 +559,91 @@ void correctNgrams( Paragraph* par,
 		    const unordered_map<string,string>& puncts,
 		    int ngrams,
 		    unordered_map<string,size_t>& counts ){
-  vector<TextContent *> origV = par->select<TextContent>();
+  vector<TextContent *> origV = par->select<TextContent>(false);
   if ( origV.empty() ){
+    // OK, no text directly
+    // look deeper then
+    origV = par->select<TextContent>();
+    if ( origV.empty() ){
+      if ( verbose > 1 ){
+#pragma omp critical
+	{
+	  cerr << "no text text in : " << par->id() << " skipping" << endl;
+	}
+      }
+      return;
+    }
+  }
+  string partext;
+  for ( const auto& org : origV ){
+    string content = org->str(input_classname);
     if ( verbose > 1 ){
 #pragma omp critical
       {
-	cerr << "no text text in : " << par->id() << " skipping" << endl;
+	cerr << "correct ngrams in: '" << content << "'" << endl;
       }
     }
-    return;
-  }
-  string content = origV[0]->str(input_classname);
-  if ( verbose > 1 ){
-#pragma omp critical
-    {
-      cerr << "correct ngrams in: '" << content << "'" << endl;
+    filter( content, SEPCHAR ); // HACK
+    vector<string> unigrams = TiCC::split( content );
+    vector<string> bigrams;
+    vector<string> trigrams;
+    counts["TOKENS"] += unigrams.size();
+    if ( ngrams > 1  && unigrams.size() > 1 ){
+      for ( size_t i=0; i < unigrams.size()-1; ++i ){
+	string bi;
+	bi = unigrams[i] + SEPARATOR + unigrams[i+1];
+	bigrams.push_back( bi );
+      }
     }
-  }
-  filter( content, SEPCHAR ); // HACK
-  vector<string> unigrams = TiCC::split( content );
-  vector<string> bigrams;
-  vector<string> trigrams;
-  counts["TOKENS"] += unigrams.size();
-  if ( ngrams > 1  && unigrams.size() > 1 ){
-    for ( size_t i=0; i < unigrams.size()-1; ++i ){
-      string bi;
-      bi = unigrams[i] + SEPARATOR + unigrams[i+1];
-      bigrams.push_back( bi );
+    if ( ngrams > 2 && unigrams.size() > 2 ){
+      for ( size_t i=0; i < unigrams.size()-2; ++i ){
+	string tri;
+	tri = unigrams[i] + SEPARATOR + unigrams[i+1] + SEPARATOR + unigrams[i+2];
+	trigrams.push_back( tri );
+      }
     }
-  }
-  if ( ngrams > 2 && unigrams.size() > 2 ){
-    for ( size_t i=0; i < unigrams.size()-2; ++i ){
-      string tri;
-      tri = unigrams[i] + SEPARATOR + unigrams[i+1] + SEPARATOR + unigrams[i+2];
-      trigrams.push_back( tri );
-    }
-  }
-  string corrected;
-  if ( trigrams.empty() ){
-    if ( bigrams.empty() ){
-      vector<pair<string,string>> corrections;
-      corrected = correct_unigrams( unigrams, variants, unknowns,
-				    puncts, corrections, counts );
-      if ( verbose && !corrections.empty() ){
-	cout << "unigram corrections:" << endl;
-	for ( const auto& p : corrections ) {
-	  cout << p.first << " : " << p.second << endl;
+    string corrected;
+    if ( trigrams.empty() ){
+      if ( bigrams.empty() ){
+	vector<pair<string,string>> corrections;
+	corrected = correct_unigrams( unigrams, variants, unknowns,
+				      puncts, corrections, counts );
+	if ( verbose && !corrections.empty() ){
+	  cout << "unigram corrections:" << endl;
+	  for ( const auto& p : corrections ) {
+	    cout << p.first << " : " << p.second << endl;
+	  }
 	}
+      }
+      else {
+	corrected = correct_bigrams( bigrams, variants, unknowns,
+				     puncts, unigrams.back(), counts );
       }
     }
     else {
-      corrected = correct_bigrams( bigrams, variants, unknowns,
-				   puncts, unigrams.back(), counts );
+      corrected = correct_trigrams( trigrams, variants, unknowns,
+				    puncts, unigrams, counts );
     }
-  }
-  else {
-    corrected = correct_trigrams( trigrams, variants, unknowns,
-				  puncts, unigrams, counts );
-  }
-  corrected = TiCC::trim( corrected );
-  if ( verbose > 1 ){
+    corrected = TiCC::trim( corrected );
+    if ( verbose > 1 ){
 #pragma omp critical
-    {
-      cerr << " corrected ngrams: '" << corrected << "'" << endl;
+      {
+	cerr << " corrected ngrams: '" << corrected << "'" << endl;
+      }
+    }
+    if ( !corrected.empty() ){
+      org->parent()->settext( corrected, output_classname );
+      if ( partext.empty() ){
+	partext = corrected;
+      }
+      else {
+	partext += " " + corrected;
+      }
     }
   }
-  if ( !corrected.empty() ){
-    par->settext( corrected, output_classname );
-  }
+  // if ( !partext.empty() ){
+  //   par->settext( partext, output_classname );
+  // }
 }
 
 void correctParagraph( Paragraph* par,
@@ -604,8 +680,10 @@ void correctParagraph( Paragraph* par,
     string word = origV[0]->str(input_classname);
     filter(word);
     string orig_word = word;
+    string final_punct;
     const auto pit = puncts.find( word );
     if ( pit != puncts.end() ){
+      final_punct = test_final_punct( word, pit->second );
       word = pit->second;
     }
     const auto vit = variants.find( word );
@@ -621,6 +699,9 @@ void correctParagraph( Paragraph* par,
       args["value"] = edit;
       TextContent *newT = new TextContent( args );
       corrected += edit + " ";
+      if ( !final_punct.empty() ){
+	corrected += final_punct + " ";
+      }
       offset = corrected.size();
       nV.push_back( newT );
       vector<FoliaElement*> sV;
@@ -655,6 +736,9 @@ void correctParagraph( Paragraph* par,
 	args["value"] = edit;
 	TextContent *newT = new TextContent( args );
 	corrected += edit + " ";
+	if ( !final_punct.empty() ){
+	  corrected += final_punct + " ";
+	}
 	offset = corrected.size();
 	nV.push_back( newT );
 	vector<FoliaElement*> sV;
@@ -664,9 +748,16 @@ void correctParagraph( Paragraph* par,
       }
       else {
 	// just use the ORIGINAL word
-	word = orig_word;
-	s->settext( word, offset, output_classname );
+	//	word = orig_word;
+	string my_word = word;
+	if ( !final_punct.empty() ){
+	  my_word += " " + final_punct;
+	}
+	s->settext( my_word, offset, output_classname );
 	corrected += word + " ";
+	if ( !final_punct.empty() ){
+	  corrected += final_punct + " ";
+	}
 	offset = corrected.size();
       }
     }
@@ -729,7 +820,7 @@ void usage( const string& name ){
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t--unk 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
   cerr << "\t--punct 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
-  cerr << "\t--rank 'vname'\t name of variants file, the *ranked file produced by TICCL-rank" << endl;
+  cerr << "\t--rank 'vname'\t name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean" << endl;
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
 }
@@ -765,7 +856,7 @@ int main( int argc, const char *argv[] ){
   bool string_nodes = false;
   bool word_nodes = false;
   string expression;
-  string variantFileName;
+  string variantsFileName;
   string unknownFileName;
   string punctFileName;
   string outPrefix;
@@ -805,11 +896,14 @@ int main( int argc, const char *argv[] ){
     exit( EXIT_FAILURE );
   }
   checkFile( "unk", unknownFileName, ".unk" );
-  if ( !opts.extract( "rank", variantFileName ) ){
+  if ( !opts.extract( "rank", variantsFileName ) ){
     cerr << "missing '--rank' option" << endl;
     exit( EXIT_FAILURE );
   }
-  checkFile( "rank", variantFileName, ".ranked" );
+  if ( !TiCC::isFile( variantsFileName ) ){
+    cerr << "unable to find file '" << variantsFileName << "'" << endl;
+    exit( EXIT_FAILURE );
+  }
   if ( opts.extract( "nums", value ) ){
     if ( !TiCC::stringTo( value, numSugg ) ){
       cerr << "unsupported value for --nums (" << value << ")" << endl;
@@ -884,7 +978,7 @@ int main( int argc, const char *argv[] ){
       {
 	cout << "start reading variants " << endl;
       }
-      if ( !fillVariants( variantFileName, variants, numSugg ) ){
+      if ( !fillVariants( variantsFileName, variants, numSugg ) ){
 #pragma omp critical
 	{
 	  cerr << "no variants." << endl;
