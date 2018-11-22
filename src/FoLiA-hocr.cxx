@@ -175,6 +175,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  txt += " " + uc;
 	  args.clear();
 	  args["href"] = file;
+	  args["format"] = "text/hocr+xml";
 	  folia::Alignment *h = new folia::Alignment( args );
 	  str->append( h );
 	  args.clear();
@@ -265,7 +266,7 @@ void convert_hocr( const string& fileName,
   args["id"] = docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
-  processParagraphs( root, text, docid );
+  processParagraphs( root, text, TiCC::basename(fileName) );
   xmlFreeDoc( xdoc );
 
   string outName = outputDir + "/" + docid + ".folia.xml";
