@@ -11,10 +11,9 @@ rm -rf test1
 rm -rf test2
 
 $my_bin/FoLiA-pm --nosplit -O test1 data/pm/ > out1 2>&1
-cat test1/FPM-pm5.folia.xml >> testpm.out
 $my_bin/folialint --nooutput test1/*.folia.xml >> testpm.out 2>&1
+$my_bin/foliadiff.sh test1/FPM-pm5.folia.xml pm5.folia.ok >> testpm.out
 
-$my_bin/FoLiA-pm -O test2 data/pm/ > out1 2>&1
-cat test2/FPM-pm4.folia.xml >> testpm.out
-cat test2/FPM-nl.proc.sgd.d.189818990000112.2.folia.xml >> testpm.out
+$my_bin/FoLiA-pm -O test2 data/pm/ > out2 2>&1
 $my_bin/folialint --nooutput test2/*.folia.xml >> testpm.out 2>&1
+$my_bin/foliadiff.sh test2/FPM-nl.proc.sgd.d.189818990000112.2.folia.xml pm-sgd.folia.ok >> testpm.out
