@@ -28,14 +28,18 @@ start reading puncts
 read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering?'
+correct unigrams
 unigram corrections:
 vergadering? : vergadering ? 
  corrected ngrams: '40ste vergadering ?'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct unigrams
 behándeling = 11 => behandeling 
 opde = 12 => op de 
 unigram corrections:
@@ -43,6 +47,7 @@ behándeling : behandeling
 opde : op de 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct unigrams
 unigram corrections:
 s4s67621 : UNK 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
@@ -102,13 +107,17 @@ start reading puncts
 read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
+correct bigrams
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct bigrams
  = 2 => Aan 
  = 2 => de 
  = 2 => orde 
@@ -128,6 +137,7 @@ opde = 12 => op de
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct bigrams
  = 2 => Deze 
  = 2 => wetsvoorstellen 
  = 2 => worden 
@@ -154,13 +164,17 @@ start reading puncts
 read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
+correct bigrams
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct trigrams
  = 2 => Aan 
  = 2 => de 
  = 2 => orde 
@@ -180,6 +194,7 @@ opde = 12 => op de
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct trigrams
  = 2 => Deze 
  = 2 => wetsvoorstellen 
  = 2 => worden 
@@ -205,13 +220,17 @@ start reading puncts
 read 11 punctuated words 
 verbosity = 2
 correct ngrams in: '40ste vergadering'
+correct bigrams
  = 2 => 40ste 
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004'
+correct unigrams
  corrected ngrams: '2003-2004'
 correct ngrams in: '40'
+correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  '
+correct trigrams
  = 2 => Aan 
  = 2 => de 
  = 2 => orde 
@@ -231,6 +250,7 @@ opde = 12 => op de
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .'
+correct trigrams
  = 2 => Deze 
  = 2 => wetsvoorstellen 
  = 2 => worden 
