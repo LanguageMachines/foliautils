@@ -482,12 +482,13 @@ string correct_trigrams( const vector<string>& trigrams,
     }
     result += corr;
     if ( skip == 0 ){
+      string uni_corr;
       correct_one_unigram( last, variants, unknowns,
-			   puncts, corr, counts );
+			   puncts, uni_corr, counts );
       if ( verbose > 2 ){
-	cout << "handled last word: " << corr << endl;
+	cout << "handled last word: " << uni_corr << endl;
       }
-      result += corr;
+      result += uni_corr;
     }
     return result;
   }
