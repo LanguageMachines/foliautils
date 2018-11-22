@@ -9,7 +9,7 @@ then
     export my_bin=/home/sloot/usr/local/bin
 fi
 
-for file in test2text testtxt testalto testcorrect \
+for file in test2text testtxt testalto testcorrect testcorbig \
 	    testhocr testidf testpage testlangcat teststats \
 	    testpm testclean testwordtranslate
 do bash ./testone.sh $file
