@@ -1,0 +1,6 @@
+#!/bin/sh -v
+#
+
+\rm *.ticcl.xml
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=OCR --outputclass=Ticcl -O morse -v -v data/Morse.xml > testcorbug.out  2>&1

@@ -159,7 +159,7 @@ void filter( string& word ){
 }
 
 string test_final_punct( const string& word, const string& dep ){
-  const string real_puncts = ".,!?";
+  const string real_puncts = ".,;!?";
   string result;
   if ( real_puncts.find(word.back()) != string::npos
        && dep.back() != word.back() ){
