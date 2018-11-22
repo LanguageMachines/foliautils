@@ -22,3 +22,1566 @@ Usage: FoLiA-hocr [options] file/dir
 	-v	 verbose output 
 	-V or --version	 show version 
 done
+2c2
+< <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FH-dpo_35_0302_master.tif" generator="" version="">
+---
+> <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dpo_35_0302_master.tif" generator="" version="">
+8,9c8,9
+<   <text xml:id="FH-dpo_35_0302_master.tif.text">
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_3">
+---
+>   <text xml:id="dpo_35_0302_master.tif.text">
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_3">
+11c11
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_3.word_1_4">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_3.word_1_4">
+13c13
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+17c17
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_3.word_1_5">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_3.word_1_5">
+19c19
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+23c23
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_3.word_1_6">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_3.word_1_6">
+25c25
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+30c30
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_4">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_4">
+32c32
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_7">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_7">
+34c34
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+38c38
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_8">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_8">
+40c40
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+44c44
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_9">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_9">
+46c46
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+50c50
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_10">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_10">
+52c52
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+56c56
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_11">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_11">
+58c58
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+62c62
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_12">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_12">
+64c64
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+68c68
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_13">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_13">
+70c70
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+74c74
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_14">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_14">
+76c76
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+80c80
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_15">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_15">
+82c82
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+86c86
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_16">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_16">
+88c88
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+92c92
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_17">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_17">
+94c94
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+98c98
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_18">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_18">
+100c100
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+104c104
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_19">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_19">
+106c106
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+110c110
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_20">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_20">
+112c112
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+116c116
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_21">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_4.word_1_21">
+118c118
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+123c123
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_5">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_5">
+125c125
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_22">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_22">
+127c127
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+131c131
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_23">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_23">
+133c133
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+137c137
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_24">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_24">
+139c139
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+143c143
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_25">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_25">
+145c145
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+149c149
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_26">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_26">
+151c151
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+155c155
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_27">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_27">
+157c157
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+161c161
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_28">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_28">
+163c163
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+167c167
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_29">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_29">
+169c169
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+173c173
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_30">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_30">
+175c175
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+179c179
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_31">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_31">
+181c181
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+185c185
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_32">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_32">
+187c187
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+191,193c191,193
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_33">
+<         <t class="OCR" offset="56">kegenstreeng</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_33">
+>         <t class="OCR" offset="58">kegenstreeng</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+197,199c197,199
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_34">
+<         <t class="OCR" offset="69">EIN-Mem</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_34">
+>         <t class="OCR" offset="71">EIN-Mem</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+203,205c203,205
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_35">
+<         <t class="OCR" offset="77">gemeakt</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_35">
+>         <t class="OCR" offset="79">gemeakt</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+209,211c209,211
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_36">
+<         <t class="OCR" offset="85">,</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_36">
+>         <t class="OCR" offset="87">,</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+215,217c215,217
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_37">
+<         <t class="OCR" offset="87">liep</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_37">
+>         <t class="OCR" offset="89">liep</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+221,223c221,223
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_38">
+<         <t class="OCR" offset="92">dook</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_38">
+>         <t class="OCR" offset="94">dook</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+227,229c227,229
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_39">
+<         <t class="OCR" offset="97">een</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_39">
+>         <t class="OCR" offset="99">een</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+233,235c233,235
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_40">
+<         <t class="OCR" offset="101">onweder</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_40">
+>         <t class="OCR" offset="103">onweder</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+239,241c239,241
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_41">
+<         <t class="OCR" offset="109">en</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_41">
+>         <t class="OCR" offset="111">en</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+245,247c245,247
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_42">
+<         <t class="OCR" offset="112">tegenweer</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_42">
+>         <t class="OCR" offset="114">tegenweer</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+251,253c251,253
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_43">
+<         <t class="OCR" offset="122">te</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_43">
+>         <t class="OCR" offset="124">te</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+257,259c257,259
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_44">
+<         <t class="OCR" offset="125">nier.</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_5.word_1_44">
+>         <t class="OCR" offset="127">nier.</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+264c264
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_6">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_6">
+266c266
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_45">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_6.word_1_45">
+268c268
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+272c272
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_46">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_6.word_1_46">
+274c274
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+278c278
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_47">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_6.word_1_47">
+280c280
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+284c284
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_48">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_6.word_1_48">
+286c286
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+290c290
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_49">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_6.word_1_49">
+292c292
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+296c296
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_50">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_6.word_1_50">
+298c298
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+303c303
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_7">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_7">
+305c305
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_51">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_51">
+307c307
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+311c311
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_52">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_52">
+313c313
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+317c317
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_53">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_53">
+319c319
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+323c323
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_54">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_54">
+325c325
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+329c329
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_55">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_55">
+331c331
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+335c335
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_56">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_56">
+337c337
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+341c341
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_57">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_57">
+343c343
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+347c347
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_58">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_58">
+349c349
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+353c353
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_59">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_59">
+355c355
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+359c359
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_60">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_60">
+361c361
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+365c365
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_61">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_61">
+367c367
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+371c371
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_62">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_62">
+373c373
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+377c377
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_63">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_63">
+379c379
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+383c383
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_64">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_7.word_1_64">
+385c385
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+390c390
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_8">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_8">
+392c392
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_65">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_65">
+394c394
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+398c398
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_66">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_66">
+400c400
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+404c404
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_67">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_67">
+406c406
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+410c410
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_68">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_68">
+412c412
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+416c416
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_69">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_69">
+418c418
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+422c422
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_70">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_70">
+424c424
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+428c428
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_71">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_71">
+430c430
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+434c434
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_72">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_72">
+436c436
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+440c440
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_73">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_73">
+442c442
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+446c446
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_74">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_74">
+448c448
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+452c452
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_75">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_75">
+454c454
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+458c458
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_76">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_76">
+460c460
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+464c464
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_77">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_77">
+466c466
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+470c470
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_78">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_78">
+472c472
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+476c476
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_79">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_79">
+478c478
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+482c482
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_80">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_80">
+484c484
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+488c488
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_81">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_81">
+490c490
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+494c494
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_82">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_82">
+496c496
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+500c500
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_83">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_83">
+502c502
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+506c506
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_84">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_84">
+508c508
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+512c512
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_85">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_85">
+514c514
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+518c518
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_86">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_86">
+520c520
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+524c524
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_87">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_87">
+526c526
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+530c530
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_88">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_8.word_1_88">
+532c532
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+537c537
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_9">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_9">
+539c539
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_89">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_9.word_1_89">
+541c541
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+545c545
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_90">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_9.word_1_90">
+547c547
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+551,553c551,553
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_91">
+<         <t class="OCR" offset="8">Welk</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_9.word_1_91">
+>         <t class="OCR" offset="9">Welk</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+557,559c557,559
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_92">
+<         <t class="OCR" offset="13">bestier</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_9.word_1_92">
+>         <t class="OCR" offset="14">bestier</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+563,565c563,565
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_93">
+<         <t class="OCR" offset="21">volgde</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_9.word_1_93">
+>         <t class="OCR" offset="22">volgde</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+569,571c569,571
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_94">
+<         <t class="OCR" offset="28">daar0p?</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_9.word_1_94">
+>         <t class="OCR" offset="29">daar0p?</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+576c576
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_10">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_10">
+578c578
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_95">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_95">
+580c580
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+584c584
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_96">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_96">
+586c586
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+590c590
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_97">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_97">
+592c592
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+596c596
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_98">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_98">
+598c598
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+602c602
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_99">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_99">
+604c604
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+608c608
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_100">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_100">
+610c610
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+614c614
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_101">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_101">
+616c616
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+620,622c620,622
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_102">
+<         <t class="OCR" offset="43">en</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_102">
+>         <t class="OCR" offset="45">en</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+626,628c626,628
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_103">
+<         <t class="OCR" offset="46">Frieden-i</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_103">
+>         <t class="OCR" offset="48">Frieden-i</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+632,634c632,634
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_104">
+<         <t class="OCR" offset="56">uitgezonderd)</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_104">
+>         <t class="OCR" offset="58">uitgezonderd)</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+638,640c638,640
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_105">
+<         <t class="OCR" offset="70">bellooten</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_105">
+>         <t class="OCR" offset="72">bellooten</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+644,646c644,646
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_106">
+<         <t class="OCR" offset="80">geenen</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_106">
+>         <t class="OCR" offset="82">geenen</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+650,652c650,652
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_107">
+<         <t class="OCR" offset="87">stati-</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_107">
+>         <t class="OCR" offset="89">stati-</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+656,658c656,658
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_108">
+<         <t class="OCR" offset="94">houder</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_108">
+>         <t class="OCR" offset="96">houder</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+662,664c662,664
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_109">
+<         <t class="OCR" offset="101">meer</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_109">
+>         <t class="OCR" offset="103">meer</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+668,670c668,670
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_110">
+<         <t class="OCR" offset="106">aan</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_110">
+>         <t class="OCR" offset="108">aan</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+674,676c674,676
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_111">
+<         <t class="OCR" offset="110">te</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_111">
+>         <t class="OCR" offset="112">te</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+680,682c680,682
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_112">
+<         <t class="OCR" offset="113">stellen:</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_112">
+>         <t class="OCR" offset="115">stellen:</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+686,688c686,688
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_113">
+<         <t class="OCR" offset="122">zy</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_113">
+>         <t class="OCR" offset="124">zy</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+692,694c692,694
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_114">
+<         <t class="OCR" offset="125">hielden</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_114">
+>         <t class="OCR" offset="127">hielden</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+698,700c698,700
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_115">
+<         <t class="OCR" offset="133">eene</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_115">
+>         <t class="OCR" offset="135">eene</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+704,706c704,706
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_116">
+<         <t class="OCR" offset="138">Grooss</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_116">
+>         <t class="OCR" offset="140">Grooss</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+710,712c710,712
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_117">
+<         <t class="OCR" offset="145">te</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_117">
+>         <t class="OCR" offset="147">te</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+716,718c716,718
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_118">
+<         <t class="OCR" offset="148">Vergadering</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_118">
+>         <t class="OCR" offset="150">Vergadering</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+722,724c722,724
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_119">
+<         <t class="OCR" offset="160">in</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_119">
+>         <t class="OCR" offset="162">in</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+728,730c728,730
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_120">
+<         <t class="OCR" offset="163">den</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_120">
+>         <t class="OCR" offset="165">den</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+734,736c734,736
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_121">
+<         <t class="OCR" offset="167">jaiuse</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_121">
+>         <t class="OCR" offset="169">jaiuse</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+740,742c740,742
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_122">
+<         <t class="OCR" offset="174">1651</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_122">
+>         <t class="OCR" offset="176">1651</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+746,748c746,748
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_123">
+<         <t class="OCR" offset="179">over</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_123">
+>         <t class="OCR" offset="181">over</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+752,754c752,754
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_124">
+<         <t class="OCR" offset="184">gewigtjge</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_124">
+>         <t class="OCR" offset="186">gewigtjge</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+758,760c758,760
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_125">
+<         <t class="OCR" offset="194">zaakem</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_125">
+>         <t class="OCR" offset="196">zaakem</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+764,766c764,766
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_126">
+<         <t class="OCR" offset="201">en</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_126">
+>         <t class="OCR" offset="203">en</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+770,772c770,772
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_127">
+<         <t class="OCR" offset="204">raakren</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_127">
+>         <t class="OCR" offset="206">raakren</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+776,778c776,778
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_128">
+<         <t class="OCR" offset="212">in</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_128">
+>         <t class="OCR" offset="214">in</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+782,784c782,784
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_129">
+<         <t class="OCR" offset="215">00110g</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_129">
+>         <t class="OCR" offset="217">00110g</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+788,790c788,790
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_130">
+<         <t class="OCR" offset="222">met</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_130">
+>         <t class="OCR" offset="224">met</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+794,796c794,796
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_131">
+<         <t class="OCR" offset="226">OLIVJER</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_131">
+>         <t class="OCR" offset="228">OLIVJER</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+800,802c800,802
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_132">
+<         <t class="OCR" offset="234">cRoM</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_132">
+>         <t class="OCR" offset="236">cRoM</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+806,808c806,808
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_133">
+<         <t class="OCR" offset="239">w1·:1.,</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_133">
+>         <t class="OCR" offset="241">w1·:1.,</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+812,814c812,814
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_134">
+<         <t class="OCR" offset="247">die,</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_134">
+>         <t class="OCR" offset="250">die,</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+818,820c818,820
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_135">
+<         <t class="OCR" offset="252">als</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_135">
+>         <t class="OCR" offset="255">als</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+824,826c824,826
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_136">
+<         <t class="OCR" offset="256">P-«»tet?m-.</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_136">
+>         <t class="OCR" offset="259">P-«»tet?m-.</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+830,832c830,832
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_137">
+<         <t class="OCR" offset="268">Engeln-M</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_137">
+>         <t class="OCR" offset="273">Engeln-M</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+836,838c836,838
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_138">
+<         <t class="OCR" offset="277">regeerde.</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_10.word_1_138">
+>         <t class="OCR" offset="282">regeerde.</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+843c843
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_11">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_11">
+845c845
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_139">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_139">
+847c847
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+851c851
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_140">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_140">
+853c853
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+857c857
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_141">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_141">
+859c859
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+863c863
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_142">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_142">
+865c865
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+869c869
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_143">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_143">
+871c871
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+875c875
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_144">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_144">
+877c877
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+881c881
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_145">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_145">
+883c883
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+887c887
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_146">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_11.word_1_146">
+889c889
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+894c894
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_12">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_12">
+896c896
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_147">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_147">
+898c898
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+902c902
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_148">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_148">
+904c904
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+908c908
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_149">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_149">
+910c910
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+914c914
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_150">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_150">
+916c916
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+920c920
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_151">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_151">
+922c922
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+926c926
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_152">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_152">
+928c928
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+932c932
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_153">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_153">
+934c934
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+938c938
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_154">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_154">
+940c940
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+944c944
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_155">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_155">
+946c946
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+950c950
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_156">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_156">
+952c952
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+956c956
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_157">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_157">
+958c958
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+962c962
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_158">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_158">
+964c964
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+968c968
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_159">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_159">
+970c970
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+974c974
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_160">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_160">
+976c976
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+980c980
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_161">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_161">
+982c982
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+986c986
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_162">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_162">
+988c988
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+992c992
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_163">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_163">
+994c994
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+998c998
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_164">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_164">
+1000c1000
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1004c1004
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_165">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_165">
+1006c1006
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1010c1010
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_166">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_12.word_1_166">
+1012c1012
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1017c1017
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_13">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_13">
+1019c1019
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_167">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_13.word_1_167">
+1021c1021
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1025c1025
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_168">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_13.word_1_168">
+1027c1027
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1031c1031
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_169">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_13.word_1_169">
+1033c1033
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1037c1037
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_170">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_13.word_1_170">
+1039c1039
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1043c1043
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_171">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_13.word_1_171">
+1045c1045
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1050c1050
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_14">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_14">
+1052c1052
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_172">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_172">
+1054c1054
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1058c1058
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_173">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_173">
+1060c1060
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1064c1064
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_174">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_174">
+1066c1066
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1070c1070
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_175">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_175">
+1072c1072
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1076c1076
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_176">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_176">
+1078c1078
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1082c1082
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_177">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_177">
+1084c1084
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1088c1088
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_178">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_178">
+1090c1090
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1094c1094
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_179">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_179">
+1096c1096
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1100,1102c1100,1102
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_180">
+<         <t class="OCR" offset="49">wz</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_180">
+>         <t class="OCR" offset="50">wz</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1106,1108c1106,1108
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_181">
+<         <t class="OCR" offset="52">quigavie</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_181">
+>         <t class="OCR" offset="53">quigavie</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1112,1114c1112,1114
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_182">
+<         <t class="OCR" offset="61">op,</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_182">
+>         <t class="OCR" offset="62">op,</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1118,1120c1118,1120
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_183">
+<         <t class="OCR" offset="65">dar</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_183">
+>         <t class="OCR" offset="66">dar</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1124,1126c1124,1126
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_184">
+<         <t class="OCR" offset="69">is,</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_184">
+>         <t class="OCR" offset="70">is,</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1130,1132c1130,1132
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_185">
+<         <t class="OCR" offset="73">dar</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_185">
+>         <t class="OCR" offset="74">dar</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1136,1138c1136,1138
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_186">
+<         <t class="OCR" offset="77">wy</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_186">
+>         <t class="OCR" offset="78">wy</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1142,1144c1142,1144
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_187">
+<         <t class="OCR" offset="80">Met</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_187">
+>         <t class="OCR" offset="81">Met</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1148,1150c1148,1150
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_188">
+<         <t class="OCR" offset="84">onze</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_14.word_1_188">
+>         <t class="OCR" offset="85">onze</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1155c1155
+<     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_15">
+---
+>     <p xml:id="dpo_35_0302_master.tif.text.par_1_15">
+1157c1157
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_15.word_1_189">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_15.word_1_189">
+1159c1159
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1163,1165c1163,1165
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_15.word_1_190">
+<         <t class="OCR" offset="2">«</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_15.word_1_190">
+>         <t class="OCR" offset="3">«</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+1169,1171c1169,1171
+<       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_15.word_1_191">
+<         <t class="OCR" offset="4">sche-</t>
+<         <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+---
+>       <str xml:id="dpo_35_0302_master.tif.text.par_1_15.word_1_191">
+>         <t class="OCR" offset="6">sche-</t>
+>         <alignment xlink:href="dpo_35_0302_master.tif" xlink:type="simple">
+out/FH-dpo_35_0302_master.tif.folia.xml and hocr.xml.ok are different
