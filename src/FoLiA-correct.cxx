@@ -257,6 +257,9 @@ string correct_unigrams( const vector<string>& unigrams,
 			 const unordered_map<string,string>& puncts,
 			 vector<pair<string,string>>& corrections,
 			 unordered_map<string,size_t>& counts ){
+  if ( verbose > 1 ){
+    cout << "correct unigrams" << endl;
+  }
   string result;
   for ( const auto& uni : unigrams ){
     string cor;
@@ -367,6 +370,9 @@ string correct_bigrams( const vector<string>& bigrams,
 			const unordered_map<string,string>& puncts,
 			const string& last,
 			unordered_map<string,size_t>& counts ){
+  if ( verbose > 1 ){
+    cout << "correct bigrams" << endl;
+  }
   string result;
   int skip = 0;
   for ( const auto& bi : bigrams ){
@@ -483,6 +489,9 @@ string correct_trigrams( const vector<string>& trigrams,
 			 const unordered_map<string,string>& puncts,
 			 const vector<string>& unigrams,
 			 unordered_map<string,size_t>& counts ){
+  if ( verbose > 1 ){
+    cout << "correct trigrams" << endl;
+  }
   string result;
   int skip = 0;
   for ( const auto& tri : trigrams ){
@@ -519,6 +528,9 @@ string correct_trigrams( const vector<string>& trigrams,
     string last = unigrams[unigrams.size()-1];
     string last_bi = unigrams[unigrams.size()-2] + SEPARATOR + last;
     string corr;
+    if ( verbose > 2 ){
+      cout << "correct last bigram: " << last_bi << endl;
+    }
     int skip = correct_one_bigram( last_bi, variants, unknowns,
 				   puncts, corr, counts );
     if ( verbose > 2 ){
@@ -526,6 +538,10 @@ string correct_trigrams( const vector<string>& trigrams,
     }
     result += corr;
     if ( skip == 0 ){
+      if ( verbose > 2 ){
+	cout << "correct last word: " << last << endl;
+      }
+      corr.clear();
       correct_one_unigram( last, variants, unknowns,
 			   puncts, corr, counts );
       if ( verbose > 2 ){
