@@ -94,6 +94,7 @@ void appendStr( folia::FoliaElement *par, int& pos,
     pos += val.length() +1;
     args.clear();
     args["href"] = file;
+    args["format"] = "text/page+xml";
     folia::Alignment *h = new folia::Alignment( args );
     str->append( h );
     args.clear();
@@ -335,8 +336,8 @@ bool convert_pagexml( const string& fileName,
   args["id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
-  process( text, specials, specialRefs, docid );
-  process( text, regionStrings, backrefs, docid );
+  process( text, specials, specialRefs, TiCC::basename(fileName) );
+  process( text, regionStrings, backrefs, TiCC::basename(fileName) );
 
   string outName;
   if ( !outputDir.empty() ){
