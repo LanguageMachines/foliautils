@@ -1449,6 +1449,7 @@ void usage(){
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-nosplit\t don't create separate topic files" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FPM-') " << endl;
+  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t-v\t verbose output " << endl;
@@ -1495,6 +1496,9 @@ int main( int argc, char *argv[] ){
   }
   string prefix = "FPM-";
   opts.extract( "prefix", prefix );
+  if ( prefix == "none" ){
+    prefix.clear();
+  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;

@@ -382,6 +382,7 @@ void usage(){
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FP-') " << endl;
+  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
@@ -437,6 +438,9 @@ int main( int argc, char *argv[] ){
   opts.extract( "class", classname );
   string prefix = "FP-";
   opts.extract( "prefix", prefix );
+  if ( prefix == "none" ){
+    prefix.clear();
+  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
