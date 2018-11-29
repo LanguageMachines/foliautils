@@ -5,6 +5,7 @@ Usage: FoLiA-pm [options] files/dir
 	-t	 number_of_threads
 	-nosplit	 don't create separate topic files
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
+			 use 'none' for an empty prefix. (can be dangerous)
 	-h	 this messages 
 	-O	 output directory 
 	-v	 verbose output 
@@ -16,6 +17,7 @@ Usage: FoLiA-pm [options] files/dir
 	-t	 number_of_threads
 	-nosplit	 don't create separate topic files
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
+			 use 'none' for an empty prefix. (can be dangerous)
 	-h	 this messages 
 	-O	 output directory 
 	-v	 verbose output 

@@ -7,6 +7,7 @@ Usage: FoLiA-hocr [options] file/dir
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-hocr-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FH-') 
+			 use 'none' for an empty prefix. (can be dangerous)
 	-v	 verbose output 
 	-V or --version	 show version 
 foliautils 0.10
@@ -19,6 +20,7 @@ Usage: FoLiA-hocr [options] file/dir
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-hocr-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FH-') 
+			 use 'none' for an empty prefix. (can be dangerous)
 	-v	 verbose output 
 	-V or --version	 show version 
 done
