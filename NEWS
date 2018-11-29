@@ -1,3 +1,19 @@
+foliautils 0.10  29-11-2018
+[Ko vd Sloot]
+  * fixed icu:namespace issues
+  * added FoLiA-abby, an ABBY to FoLiA convertor
+  * src/FoLiA-abby.cxx, src/FoLiA-page.cxx, src/FoLiA-pm.cxx:
+     - Allow 'none' value for --prefix
+  * src/FoLiA-page.cxx, src/FoLiA-hocr.cxx: fixed Alignment info
+  * src/FoLiA-correct.cxx:
+     - fixed a problem with correction of the last word of a trigram.
+     - fix correction of paragraphs with only deeper text
+     - The --rank option accepts more flavors of files
+  * src/FoLiA-stats.cxx:
+     - added a --detokenize option
+  * several minor fixes, refactorings etc.
+  * updated tests
+
 foliautils 0.9.2  05-06-2018
 [Ko vd Sloot]
 Bug fix release:
