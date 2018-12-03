@@ -7,7 +7,7 @@ Usage: [options] file/dir
 	-O	 output directory 
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
-foliautils 0.10
+foliautils 0.11
 Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.
@@ -18,10 +18,10 @@ Usage: [options] file/dir
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.14" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.16" version="1.5.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2018-05-28T17:07:10" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2018-12-03T11:54:49" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -97,10 +97,10 @@ Usage: [options] file/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.14" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.16" version="1.5.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2018-05-28T17:07:10" set="FoLiA-txt-set"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2018-12-03T11:54:49" set="FoLiA-txt-set"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
@@ -176,10 +176,10 @@ Usage: [options] file/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.14" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.16" version="1.5.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="FoLiA-txt" datetime="2018-05-28T17:07:10" set="foo"/>
+      <string-annotation annotator="FoLiA-txt" datetime="2018-12-03T11:54:49" set="foo"/>
     </annotations>
   </metadata>
   <text xml:id="test.text">
