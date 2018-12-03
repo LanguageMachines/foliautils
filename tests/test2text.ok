@@ -8,7 +8,7 @@ Usage: FoLiA-2text [options] file/dir
 	-V or --version 	 show version 
 	-e	 expr: specify the expression all input files should match with.
 	-o	 name of the output file(s) prefix.
-foliautils 0.10
+foliautils 0.11
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
@@ -39,6 +39,9 @@ Een tekst in paragraaf 3.
 Dit is hoofdstuk 2.
 
 Een tekst in paragraaf 1 van hoofdstuk 2.
+Wie had dat gedacht?
+
+Totaal iets anders.
 Wie had dat gedacht?
 
 Totaal iets anders.
