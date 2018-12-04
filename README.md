@@ -1,4 +1,4 @@
-FoliAutils 0.2 (c) CLST/TiCC/CLiPS 2018
+FoliAutils (c) CLST/TiCC/CLiPS 2018
   https://github.com/LanguageMachines/foliautils
 
     Centre for Language and Speech Technology, Radboud University Nijmegen
