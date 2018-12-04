@@ -1098,6 +1098,7 @@ folia::Document *create_basedoc( const string& docid,
 }
 
 void process_topic( const string& outDir,
+		    const string& prefix,
 		    Text* base_text,
 		    xmlNode *topic,
 		    bool no_split ){
@@ -1119,6 +1120,7 @@ void process_topic( const string& outDir,
     base_text->append( root );
   }
   else {
+    id = prefix + id;
     doc = create_basedoc( id );
     args["id"] = id + ".text";
     Text *txt = new Text( args, doc );
@@ -1175,6 +1177,7 @@ void process_topic( const string& outDir,
 }
 
 void process_proceeding( const string& outDir,
+			 const string& prefix,
 			 Text *root,
 			 xmlNode *proceed,
 			 bool no_split ){
@@ -1187,7 +1190,7 @@ void process_proceeding( const string& outDir,
   }
   list<xmlNode*> topics = TiCC::FindNodes( proceed, "*:topic" );
   for ( const auto& topic : topics ){
-    process_topic( outDir, root, topic, no_split );
+    process_topic( outDir, prefix, root, topic, no_split );
   }
 }
 
@@ -1359,6 +1362,7 @@ void process_parldoc( Text *root,
 
 void convert_to_folia( const string& file,
 		       const string& outDir,
+		       const string& prefix,
 		       bool no_split ){
   bool succes = true;
 #pragma omp critical
@@ -1381,19 +1385,21 @@ void convert_to_folia( const string& file,
     }
     else {
       string base = TiCC::basename( file );
-      string docid = base;
+      string docid = prefix + base;
       Document *doc = create_basedoc( docid, metadata, docinfo );
       string::size_type pos = docid.rfind( ".xml" );
       if ( pos != string::npos ){
 	docid = docid.substr(0,pos);
       }
-      folia::Text *text = new folia::Text( getArgs( "id='" + docid + ".text'"  ));
+      folia::KWargs args;
+      args["id"] = docid + ".text";
+      folia::Text *text = new folia::Text( args );
       doc->append( text );
       try {
 	xmlNode *p = root->children;
 	while ( p ){
 	  if ( TiCC::Name( p ) == "proceedings" ){
-	    process_proceeding( outDir, text, p, no_split );
+	    process_proceeding( outDir, prefix, text, p, no_split );
 	  }
 	  else if ( TiCC::Name( p ) == "parliamentary-document" ){
 	    process_parldoc( text, p );
@@ -1442,6 +1448,8 @@ void usage(){
        << endl;
   cerr << "\t-t\t number_of_threads" << endl;
   cerr << "\t-nosplit\t don't create separate topic files" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FPM-') " << endl;
+  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t-h\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t-v\t verbose output " << endl;
@@ -1452,7 +1460,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "nosplit,help,version" );
+    opts.set_long_options( "nosplit,help,version,prefix:" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1485,6 +1493,11 @@ int main( int argc, char *argv[] ){
     cerr << "unsupported options : " << opts.toString() << endl;
     usage();
     exit(EXIT_FAILURE);
+  }
+  string prefix = "FPM-";
+  opts.extract( "prefix", prefix );
+  if ( prefix == "none" ){
+    prefix.clear();
   }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
@@ -1536,7 +1549,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_to_folia( fileNames[fn], outputDir, no_split );
+    convert_to_folia( fileNames[fn], outputDir, prefix, no_split );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);

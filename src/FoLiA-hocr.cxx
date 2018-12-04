@@ -44,6 +44,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 string setname = "FoLiA-hocr-set";
@@ -142,10 +143,10 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       return;
     }
     string p_id = TiCC::getAttribute( p, "id" );
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + p_id + "'" ),
-			      out->doc() );
-    icu::UnicodeString txt;
+    folia::KWargs args;
+    args["id"] = out->id() + "." + p_id;
+    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
+    UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
 					      ".//span[@class='ocrx_word']" );
@@ -160,21 +161,27 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  return;
 	}
       }
-      for ( const auto word : words ){
+      for ( const auto& word : words ){
 	string w_id = TiCC::getAttribute( word, "id" );
 	string content = extractContent( word );
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
-	  folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()  + "." + w_id + "'" ),
-						  out->doc() );
+	  folia::KWargs args;
+	  args["id"] = par->id() + "." + w_id;
+	  folia::String *str = new folia::String( args, out->doc() );
 	  par->append( str );
-	  icu::UnicodeString uc = TiCC::UnicodeFromUTF8( content );
+	  UnicodeString uc = TiCC::UnicodeFromUTF8( content );
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
-	  folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
+	  args.clear();
+	  args["href"] = file;
+	  args["format"] = "text/hocr+xml";
+	  folia::Alignment *h = new folia::Alignment( args );
 	  str->append( h );
-	  folia::AlignReference *a =
-	    new folia::AlignReference( folia::getArgs( "id='" + w_id + "', type='str'"  ) );
+	  args.clear();
+	  args["id"] = w_id;
+	  args["type"] = "str";
+	  folia::AlignReference *a = new folia::AlignReference( args );
 	  h->append( a );
 	}
       }
@@ -188,7 +195,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
   }
 }
 
-string getDocId( const string& title ){
+string getDocId( const string& title, const string& prefix ){
   string result;
   vector<string> vec = TiCC::split_at( title, ";" );
   for ( const auto& part : vec ){
@@ -204,12 +211,13 @@ string getDocId( const string& title ){
     }
   }
   result = TiCC::trim( result, " \t\"" );
-  return result;
+  return prefix + result;
 }
 
 void convert_hocr( const string& fileName,
 		   const string& outputDir,
-		   const zipType outputType ){
+		   const zipType outputType,
+		   const string& prefix ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -250,13 +258,15 @@ void convert_hocr( const string& fileName,
     }
     exit(EXIT_FAILURE);
   }
-  string docid = getDocId( title );
+  string docid = getDocId( title, prefix );
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
-  folia::Text *text = new folia::Text( folia::getArgs( "id='" + docid + ".text'"  ));
+  folia::KWargs args;
+  args["id"] = docid + ".text";
+  folia::Text *text = new folia::Text( args );
   doc.append( text );
-  processParagraphs( root, text, docid );
+  processParagraphs( root, text, TiCC::basename(fileName) );
   xmlFreeDoc( xdoc );
 
   string outName = outputDir + "/" + docid + ".folia.xml";
@@ -298,12 +308,15 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FH-') " << endl;
+  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t-v\t verbose output " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:,help,version" );
+  TiCC::CL_Options opts( "vVt:O:h",
+			 "compress:,class:,setname:,help,version,prefix:" );
   try {
     opts.init( argc, argv );
   }
@@ -353,6 +366,11 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
+  string prefix = "FH-";
+  opts.extract( "prefix", prefix );
+  if ( prefix == "none" ){
+    prefix.clear();
+  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -407,7 +425,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_hocr( fileNames[fn], outputDir, outputType );
+    convert_hocr( fileNames[fn], outputDir, outputType, prefix );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);

@@ -45,6 +45,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 
@@ -82,19 +83,24 @@ string setname = "FoLiA-page-set";
 string classname = "OCR";
 
 void appendStr( folia::FoliaElement *par, int& pos,
-		const icu::UnicodeString& val, const string& id,
+		const UnicodeString& val, const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
-    folia::String *str = new folia::String( folia::getArgs( "id='" + par->id()
-							    + "." + id + "'" ),
-					     par->doc() );
+    folia::KWargs args;
+    args["id"] = par->id() + "." + id;
+    folia::String *str = new folia::String( args, par->doc() );
     par->append( str );
     str->setutext( val, pos, classname );
     pos += val.length() +1;
-    folia::Alignment *h = new folia::Alignment( folia::getArgs("href='" + file + "'") );
+    args.clear();
+    args["href"] = file;
+    args["format"] = "text/page+xml";
+    folia::Alignment *h = new folia::Alignment( args );
     str->append( h );
-    folia::AlignReference *a =
-      new folia::AlignReference( folia::getArgs("id='" + id + "', type='str'") );
+    args.clear();
+    args["id"] = id;
+    args["type"] = "str";
+    folia::AlignReference *a = new folia::AlignReference( args );
     h->append( a );
   }
 }
@@ -104,8 +110,7 @@ void process( folia::FoliaElement *out,
 	      const vector<string>& refs,
 	      const string& file ){
   for ( size_t i=0; i < vec.size(); ++i ){
-    vector<string> parts;
-    TiCC::split( vec[i], parts );
+    vector<string> parts = TiCC::split( vec[i] );
     string parTxt;
     for ( auto const& p : parts ){
       parTxt += p;
@@ -113,8 +118,9 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
       }
     }
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + refs[i] + "'" ),  out->doc() );
+    folia::KWargs args;
+    args["id"] = out->id() + "." + refs[i];
+    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -131,8 +137,7 @@ void process( folia::FoliaElement *out,
 	      const string& file ){
   for ( const auto& value : values ){
     string line = value.second;
-    vector<string> parts;
-    TiCC::split( line, parts );
+    vector<string> parts = TiCC::split( line );
     string parTxt;
     for ( const auto& p : parts ){
       parTxt += p;
@@ -140,8 +145,9 @@ void process( folia::FoliaElement *out,
 	parTxt += " ";
       }
     }
-    folia::Paragraph *par
-      = new folia::Paragraph( folia::getArgs( "id='" + out->id() + "." + labels.at(value.first) + "'"), out->doc() );
+    folia::KWargs args;
+    args["id"] = out->id() + "." + labels.at(value.first);
+    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
     int pos = 0;
@@ -179,7 +185,8 @@ string stripDir( const string& name ){
 
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
-		      const zipType outputType ){
+		      const zipType outputType,
+		      const string& prefix ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -320,22 +327,21 @@ bool convert_pagexml( const string& fileName,
   }
   xmlFreeDoc( xdoc );
 
-  string docid = orgFile;
-  if ( isdigit(docid[0]) ){
-    docid = "id-" + docid;
-  }
+  string docid = prefix + orgFile;
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'" ));
+  folia::KWargs args;
+  args["id"] =  docid + ".text";
+  folia::Text *text = new folia::Text( args );
   doc.append( text );
-  process( text, specials, specialRefs, docid );
-  process( text, regionStrings, backrefs, docid );
+  process( text, specials, specialRefs, TiCC::basename(fileName) );
+  process( text, regionStrings, backrefs, TiCC::basename(fileName) );
 
   string outName;
   if ( !outputDir.empty() ){
-    outName = outputDir + "/";
+    outName = outputDir;
   }
   outName += orgFile + ".folia.xml";
   zipType type = inputType;
@@ -375,6 +381,8 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FP-') " << endl;
+  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
@@ -382,7 +390,8 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h", "compress:,class:,setname:,help,version" );
+  TiCC::CL_Options opts( "vVt:O:h",
+			 "compress:,class:,setname:,help,version,prefix:" );
   try {
     opts.init( argc, argv );
   }
@@ -427,6 +436,11 @@ int main( int argc, char *argv[] ){
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
+  string prefix = "FP-";
+  opts.extract( "prefix", prefix );
+  if ( prefix == "none" ){
+    prefix.clear();
+  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -438,6 +452,7 @@ int main( int argc, char *argv[] ){
   }
 
   if ( !outputDir.empty() ){
+    outputDir += "/";
     string name = outputDir;
     if ( !TiCC::isDir(name) ){
       if ( !TiCC::createPath( name ) ){
@@ -479,7 +494,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    if ( !convert_pagexml( fileNames[fn], outputDir, outputType ) )
+    if ( !convert_pagexml( fileNames[fn], outputDir, outputType, prefix ) )
 #pragma omp critical
       {
 	cerr << "failure on " << fileNames[fn] << endl;

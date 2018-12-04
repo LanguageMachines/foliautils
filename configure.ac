@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.61)
-AC_INIT([foliautils],[0.9],[lamasoftware@science.ru.nl])
+AC_INIT([foliautils],[0.11],[lamasoftware@science.ru.nl])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([.])
 AC_CONFIG_MACRO_DIR([m4])
@@ -95,7 +95,7 @@ PKG_CHECK_MODULES([ucto], [ucto >= 0.9.4] )
 CXXFLAGS="$ucto_CFLAGS $CXXFLAGS"
 LIBS="$ucto_LIBS $LIBS"
 
-PKG_CHECK_MODULES([folia], [folia >= 1.7] )
+PKG_CHECK_MODULES([folia], [folia >= 1.14] )
 CXXFLAGS="$folia_CFLAGS $CXXFLAGS"
 LIBS="$folia_LIBS $LIBS"
 
@@ -104,5 +104,6 @@ AC_CONFIG_FILES([
   m4/Makefile
   src/Makefile
   docs/Makefile
+  tests/Makefile
 ])
 AC_OUTPUT

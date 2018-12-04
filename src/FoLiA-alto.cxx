@@ -46,6 +46,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 
 bool verbose = false;
 bool clearCachedFiles = false;
@@ -178,7 +179,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
   return 0;
 }
 
-void addStr( folia::Paragraph *par, icu::UnicodeString& txt,
+void addStr( folia::Paragraph *par, UnicodeString& txt,
 	     const xmlNode *pnt, const string& altoFile,
 	     int cnt = 1 ){
   folia::KWargs atts = folia::getAttributes( pnt );
@@ -200,17 +201,19 @@ void addStr( folia::Paragraph *par, icu::UnicodeString& txt,
     args["id"] = arg;
     folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
-    icu::UnicodeString uc = TiCC::UnicodeFromUTF8( content );
+    UnicodeString uc = TiCC::UnicodeFromUTF8( content );
     s->setutext( uc, txt.length(), classname );
     txt += " " + uc;
     if ( !altoFile.empty() ){
       // direct mode has no altofile
-      folia::Alignment *h
-	= new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
+      args.clear();
+      args["href"] = altoFile;
+      folia::Alignment *h = new folia::Alignment( args );
       s->append( h );
-      folia::AlignReference *a =
-	new folia::AlignReference( folia::getArgs( "id='"
-						   + kid + "', type='str'" ) );
+      args.clear();
+      args["id"] = kid;
+      args["type"] = "str";
+      folia::AlignReference *a = new folia::AlignReference( args );
       h->append( a );
     }
   }
@@ -228,15 +231,18 @@ void addStr( folia::Paragraph *par, icu::UnicodeString& txt,
 
       folia::String *s = new folia::String( args, par->doc() );
       par->append( s );
-      icu::UnicodeString uc = TiCC::UnicodeFromUTF8( parts[i] );
+      UnicodeString uc = TiCC::UnicodeFromUTF8( parts[i] );
       s->setutext( uc, txt.length(), classname );
       txt += " " + uc;
       if ( !altoFile.empty() ){
-	folia::Alignment *h
-	  = new folia::Alignment( folia::getArgs("href='" + altoFile + "'" ) );
+	args.clear();
+	args["href"] = altoFile;
+	folia::Alignment *h = new folia::Alignment( args );
 	s->append( h );
-	folia::AlignReference *a =
-	  new folia::AlignReference( folia::getArgs( "id='" + kid + "', type='str'" ) );
+	args.clear();
+	args["id"] = kid;
+	args["type"] = "str";
+	folia::AlignReference *a = new folia::AlignReference( args );
 	h->append( a );
       }
     }
@@ -273,7 +279,7 @@ void createFile( folia::FoliaElement *text,
     args["id"] = arg;
     folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
     text->append( p );
-    icu::UnicodeString ocr_text;
+    UnicodeString ocr_text;
     list<xmlNode*> v =
       TiCC::FindNodes( root,
 			"//*[local-name()='TextBlock' and @ID='"
@@ -296,7 +302,7 @@ void createFile( folia::FoliaElement *text,
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  string kid = atts["ID"];
 		  string sub = atts["SUBS_CONTENT"];
-		  icu::UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
+		  UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
 		  folia::KWargs args;
 		  string arg = p->id() + ".";
 		  if ( !kid.empty() ){
@@ -314,16 +320,18 @@ void createFile( folia::FoliaElement *text,
 			       classname );
 		  ocr_text += " " + subc;
 		  if ( !altoFile.empty() ){
-		    folia::Alignment *h =
-		      new folia::Alignment( folia::getArgs( "href='" + altoFile + "'" ) );
+		    args.clear();
+		    args["href"] = altoFile;
+		    folia::Alignment *h = new folia::Alignment( args );
 		    s->append( h );
-		    folia::AlignReference *a = 0;
-		    a = new folia::AlignReference( folia::getArgs( "id='" + kid
-								   + "', type='str'" ) );
+		    args.clear();
+		    args["id"] = kid;
+		    args["type"] = "str";
+		    folia::AlignReference *a
+		      = new folia::AlignReference( args );
 		    h->append( a );
-		    a = new folia::AlignReference( folia::getArgs ( "id='" +
-								    TiCC::getAttribute( pnt, "ID" )
-								    + "', type='str'" ) );
+		    args["id"] = TiCC::getAttribute( pnt, "ID" );
+		    a = new folia::AlignReference( args );
 		    h->append( a );
 		  }
 		  keepPart1 = 0;
@@ -423,7 +431,9 @@ void processArticle( const string& f,
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
   doc.set_metadata( "genre", subject );
-  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"  ) );
+  folia::KWargs args;
+  args["id"] = docid + ".text";
+  folia::Text *text = new folia::Text( args );
   doc.append( text );
 
   for ( const auto& it : parts ){
@@ -925,7 +935,9 @@ void solveBook( const string& altoFile, const string& id,
     doc.declare( folia::AnnotationType::STRING, setname,
 		 "annotator='alto', datetime='now()'" );
     //    doc.set_metadata( "genre", subject );
-    folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'" ));
+    folia::KWargs args;
+    args["id"] =  docid + ".text";
+    folia::Text *text = new folia::Text( args );
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     list<xmlNode*> textblocks = TiCC::FindNodes( root, "//*:TextBlock" );
@@ -953,11 +965,11 @@ void solveBook( const string& altoFile, const string& id,
       else {
 	ids.insert(id);
       }
-      folia::Paragraph *p =
-	new folia::Paragraph( folia::getArgs("id='" + text->id() + ".p." + id + "'" ),
-			      text->doc() );
+      folia::KWargs args;
+      args["id"] = text->id() + ".p." + id;
+      folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
       text->append( p );
-      icu::UnicodeString ocr_text;
+      UnicodeString ocr_text;
       list<xmlNode*> v =
 	TiCC::FindNodes( root,
 			 "//*[local-name()='TextBlock' and @ID='"
@@ -979,7 +991,7 @@ void solveBook( const string& altoFile, const string& id,
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    string kid = atts["ID"];
 		    string sub = atts["SUBS_CONTENT"];
-		    icu::UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
+		    UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
 		    folia::KWargs args;
 		    args["id"] = p->id() + "." + kid;
 		    args["class"] = classname;
@@ -989,16 +1001,18 @@ void solveBook( const string& altoFile, const string& id,
 				 ocr_text.length(),
 				 classname );
 		    ocr_text += " " + subc;
-		    folia::Alignment *h =
-		      new folia::Alignment( folia::getArgs("href='" + urn + "'" ));
+		    args.clear();
+		    args["href"] = urn;
+		    folia::Alignment *h = new folia::Alignment( args );
 		    s->append( h );
+		    args.clear();
+		    args["id"] = kid;
+		    args["type"] = "str";
 		    folia::AlignReference *a = 0;
-		    a = new folia::AlignReference( folia::getArgs("id='" + kid
-								  + "', type='str'" ) );
+		    a = new folia::AlignReference( args );
 		    h->append( a );
-		    a = new folia::AlignReference( folia::getArgs( "id='" +
-								   TiCC::getAttribute( pnt, "ID" )
-								   + "', type='str'" ) );
+		    args["id"] = TiCC::getAttribute( pnt, "ID" );
+		    a = new folia::AlignReference( args );
 		    h->append( a );
 		    keepPart1 = 0;
 		  }
@@ -1190,7 +1204,9 @@ void solveDirectAlto( const string& full_file,
   folia::Document doc( "id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
-  folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"  ) );
+  folia::KWargs args;
+  args["id"] =  docid + ".text";
+  folia::Text *text = new folia::Text( args );
   doc.append( text );
   createFile( text, xmldoc, "", texts );
   string outName = outDir + docid + ".folia.xml";

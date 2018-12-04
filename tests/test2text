@@ -6,14 +6,18 @@ $my_bin/FoLiA-2text > test2text.out 2>&1
 $my_bin/FoLiA-2text -V >> test2text.out 2>&1
 $my_bin/FoLiA-2text --help >> test2text.out 2>&1
 
-$my_bin/FoLiA-2text -o out data/folia.xml
+$my_bin/FoLiA-2text -o out/data data/folia.xml
 cat out/data/folia.xml.txt >> test2text.out
 
-$my_bin/FoLiA-2text -o out --class=anders data/folia.xml
+$my_bin/FoLiA-2text -o out/data --class=anders data/folia.xml
 cat out/data/folia.xml.txt >> test2text.out
 
-$my_bin/FoLiA-2text -o out data/folia-head.xml
+$my_bin/FoLiA-2text -o out/data ../tests/data/folia-head.xml
 cat out/data/folia-head.xml.txt >> test2text.out
 
-$my_bin/FoLiA-2text -o out --class=anders data/folia-head.xml
+$my_bin/FoLiA-2text -o out/data --class=anders data/folia-head.xml
 cat out/data/folia-head.xml.txt >> test2text.out
+
+rm -rf data/folia-head.xml.txt
+$my_bin/FoLiA-2text --class=anders data/folia-head.xml
+cat data/folia-head.xml.txt >> test2text.out

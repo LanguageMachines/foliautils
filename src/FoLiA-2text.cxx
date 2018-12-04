@@ -40,6 +40,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 void usage( const string& name ){
@@ -83,10 +84,10 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   if ( opts.extract( 'o', outputPrefix ) ){
-    if ( outputPrefix.empty() ){
-      cerr << "an output filename prefix is required. (-o option) " << endl;
-      exit(EXIT_FAILURE);
-    }
+    // if ( outputPrefix.empty() ){
+    //   cerr << "an output filename prefix is required. (-o option) " << endl;
+    //   exit(EXIT_FAILURE);
+    // }
   }
   bool retaintok = opts.extract( "retaintok" );
   if ( opts.extract('t', value ) ){
@@ -134,6 +135,9 @@ int main( int argc, char *argv[] ){
       cerr << "Output to '" << outputPrefix << "' is impossible" << endl;
     }
   }
+  else {
+    outputPrefix = TiCC::dirname( fileNames[0] ) + "/";
+  }
 
   if ( toDo > 1 ){
     cout << "start processing of " << toDo << " files " << endl;
@@ -154,7 +158,7 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    string outname = outputPrefix + docName + ".txt";
+    string outname = outputPrefix + TiCC::basename(docName) + ".txt";
     if ( !TiCC::createPath( outname ) ){
 #pragma omp critical
       {
@@ -163,7 +167,7 @@ int main( int argc, char *argv[] ){
     }
     else {
       ofstream os( outname );
-      icu::UnicodeString us = d->text( class_name,retaintok);
+      UnicodeString us = d->text( class_name,retaintok);
       os << us << endl;
 #pragma omp critical
       {

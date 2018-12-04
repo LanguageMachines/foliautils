@@ -49,11 +49,12 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 const string INT_LEMMAIDSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmaid_withcompounds.foliaset.ttl";
 const string INT_LEMMATEXTSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl";
-const icu::UnicodeString NBSP = TiCC::UnicodeFromUTF8(" ");//THIS IS NOT A NORMAL SPACE BUT A narrow no-break space (0x202F), this is a fairly ugly patch that will be propagated to the end-result because Frog can't deal with spaces in tokens at this stage
+const UnicodeString NBSP = TiCC::UnicodeFromUTF8(" ");//THIS IS NOT A NORMAL SPACE BUT A narrow no-break space (0x202F), this is a fairly ugly patch that will be propagated to the end-result because Frog can't deal with spaces in tokens at this stage
 
 void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
@@ -78,9 +79,9 @@ namespace std
 {
   // needed to make unordered_[set|map] work
   template<>
-  class hash<icu::UnicodeString> {
+  class hash<UnicodeString> {
   public:
-    size_t operator()(const icu::UnicodeString &s) const
+    size_t operator()(const UnicodeString &s) const
     {
       return (size_t) s.hashCode();
     }
@@ -88,23 +89,23 @@ namespace std
 }
 
 
-typedef unordered_map<icu::UnicodeString,icu::UnicodeString> t_dictionary;
-typedef unordered_set<icu::UnicodeString> t_lexicon;
-typedef vector<pair<icu::UnicodeString,icu::UnicodeString>> t_rules;
-typedef unordered_map<icu::UnicodeString,unordered_map<icu::UnicodeString,int>> t_histdictionary; //dictionary from historical lexicon,    form => lemma => freq
-typedef unordered_map<icu::UnicodeString,unordered_map<icu::UnicodeString,int>> t_lemmamap; //lemma => src:lemma_id => freq
+typedef unordered_map<UnicodeString,UnicodeString> t_dictionary;
+typedef unordered_set<UnicodeString> t_lexicon;
+typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
+typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_histdictionary; //dictionary from historical lexicon,    form => lemma => freq
+typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_lemmamap; //lemma => src:lemma_id => freq
 
-icu::UnicodeString applyRules( const icu::UnicodeString& orig_source, const t_rules& rules) {
-  icu::UnicodeString source = orig_source;
-  icu::UnicodeString target = source;
+UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
+  UnicodeString source = orig_source;
+  UnicodeString target = source;
   for ( const auto& iter : rules ) {
-    icu::UnicodeString pattern = iter.first;
-    icu::UnicodeString replacement = iter.second;
+    UnicodeString pattern = iter.first;
+    UnicodeString replacement = iter.second;
     // cerr << "source =" << source << endl;
     // cerr << "pattern=" << pattern << endl;
     // cerr << "replace=" << replacement << endl;
     UErrorCode u_stat = U_ZERO_ERROR;
-    RegexMatcher * matcher = new RegexMatcher(pattern, source, 0, u_stat);
+    RegexMatcher *matcher = new RegexMatcher(pattern, source, 0, u_stat);
     if ( U_FAILURE(u_stat) ){
       throw runtime_error( "failed to create a regexp matcher with '" + TiCC::UnicodeToUTF8(pattern) + "'" );
     }
@@ -119,17 +120,17 @@ icu::UnicodeString applyRules( const icu::UnicodeString& orig_source, const t_ru
   return target;
 }
 
-icu::UnicodeString lemmatiser( Word *word,
-			  const icu::UnicodeString& target,
+UnicodeString lemmatiser( Word *word,
+			  const UnicodeString& target,
 			  const t_lemmamap &lemmamap) {
-  icu::UnicodeString target_flat = target;
+  UnicodeString target_flat = target;
   target_flat.toLower();
   if (lemmamap.empty()) return target_flat;
   const auto& lemmamap_iter = lemmamap.find(target_flat);
   if (lemmamap_iter != lemmamap.end()) {
     //resolve ambiguity by majority vote: just select the most frequent lemma->id pair (lexicon contains multiple occurrences)
     int max = 0;
-    icu::UnicodeString lemma_id;
+    UnicodeString lemma_id;
     for ( const auto& iter2 : lemmamap_iter->second ){
       if (iter2.second >= max) {
 	max = iter2.second;
@@ -145,7 +146,7 @@ icu::UnicodeString lemmatiser( Word *word,
     }
     {
       KWargs args;
-      icu::UnicodeString lemmatextclass = target;
+      UnicodeString lemmatextclass = target;
       lemmatextclass = lemmatextclass.findAndReplace(" ", "_"); //use underscores instead of spaces for multiword lemmas (does not affect ⊕!)
       args["class"] = TiCC::UnicodeToUTF8(lemmatextclass);
       args["set"] = INT_LEMMATEXTSET;
@@ -158,7 +159,7 @@ icu::UnicodeString lemmatiser( Word *word,
   target_flat = target_flat.findAndReplace(TiCC::UnicodeFromUTF8("⊕"), NBSP);
   //we can't deal with pipes for multiple options, just choose the first one:
   int pipeindex;
-  const icu::UnicodeString emptystr = "";
+  const UnicodeString emptystr = "";
   do {
     pipeindex = target_flat.indexOf("|");
     if (pipeindex != -1) {
@@ -185,13 +186,13 @@ bool translateDoc( Document *doc,
   bool changed = false;
   vector<Word*> words = doc->doc()->select<Word>();
   for (const auto& word : words) {
-    const icu::UnicodeString source = word->text(inputclass);
+    const UnicodeString source = word->text(inputclass);
     cerr << "Processing word " << word->id() << ": " << TiCC::UnicodeToUTF8(source);
-    icu::UnicodeString source_flat = source;
+    UnicodeString source_flat = source;
     source_flat = source_flat.toLower();
     const bool recase = (source_flat != source);
     string modernisationsource = "none";
-    icu::UnicodeString target = source_flat;
+    UnicodeString target = source_flat;
     //check if word is in dictionary
     const auto& entry = dictionary.find(source_flat);
     const auto& histentry = histdictionary.find(source_flat);
@@ -256,7 +257,7 @@ bool translateDoc( Document *doc,
 	}
       }
       if (allcaps || initialcap) {
-	icu::UnicodeString target_u = target;
+	UnicodeString target_u = target;
 	if (allcaps) {
 	  target_u = target_u.toUpper();
 	}
@@ -272,8 +273,9 @@ bool translateDoc( Document *doc,
     args["value"] = TiCC::UnicodeToUTF8(target);
     TextContent * translatedtext = new TextContent( args );
     word->append(translatedtext);
-
-    Metric * metric = new Metric( getArgs( "class='modernisationsource', value='"  +  modernisationsource + "'" ), doc );
+    args["class"] = "modernisationsource";
+    args["value"] =  modernisationsource;
+    Metric *metric = new Metric( args, doc );
     word->append(metric);
   }
   return changed;
@@ -287,8 +289,8 @@ int loadDictionary(const string & filename, t_dictionary & dictionary) {
   while (getline(is, line)) {
     linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
-      vector<string> parts;
-      if (TiCC::split_at(line, parts, "\t") == 2) {
+      vector<string> parts = TiCC::split_at( line, "\t" );
+      if ( parts.size() == 2) {
 	added++;
 	dictionary[TiCC::UnicodeFromUTF8(parts[0])] = TiCC::UnicodeFromUTF8(parts[1]);
       }
@@ -309,14 +311,14 @@ int loadHistoricalLexicon(const string & filename, t_histdictionary & dictionary
   while (getline(is, line)) {
     linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
-      vector<string> parts;
-      if (TiCC::split_at(line, parts, "\t") == 9) {
+      vector<string> parts = TiCC::split_at( line, "\t" );
+      if ( parts.size() == 9) {
         if (parts[0] != "multiple") { //ignore many=>one
-            added++;
-            const icu::UnicodeString lemma = TiCC::UnicodeFromUTF8(parts[4]).toLower();
-            dictionary[TiCC::UnicodeFromUTF8(parts[6])][lemma]++;
-            const icu::UnicodeString lemma_id = TiCC::UnicodeFromUTF8(parts[1]) + TiCC::UnicodeFromUTF8(":") + TiCC::UnicodeFromUTF8(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
-            lemmamap[lemma][lemma_id]++;
+	  added++;
+	  const UnicodeString lemma = TiCC::UnicodeFromUTF8(parts[4]).toLower();
+	  dictionary[TiCC::UnicodeFromUTF8(parts[6])][lemma]++;
+	  const UnicodeString lemma_id = TiCC::UnicodeFromUTF8(parts[1]) + TiCC::UnicodeFromUTF8(":") + TiCC::UnicodeFromUTF8(parts[3]); //e.g: WNT:M078848  or clitics like MNW:57244⊕40508
+	  lemmamap[lemma][lemma_id]++;
         }
       } else {
 	cerr << "WARNING: loadHistoricalLexicon: error in line " << linenum << ": " << line << endl;
@@ -334,8 +336,7 @@ int loadLexicon(const string & filename, t_lexicon & lexicon) {
   while (getline(is, line)) {
     linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
-      vector<string> parts;
-      TiCC::split_at(line, parts, "\t");
+      vector<string> parts = TiCC::split_at( line, "\t" );
       added++;
       lexicon.insert(TiCC::UnicodeFromUTF8(parts[0]));
     }
@@ -351,15 +352,15 @@ int loadRules( const string& filename,
   int linenum = 0;
   while (getline(is, line)) {
     linenum++;
-    vector<string> parts;
     if ((!line.empty()) && (line[0] != '#')) {
-      if (TiCC::split_at(line, parts, " ") == 5) {
+      vector<string> parts = TiCC::split_at( line, " " );
+      if ( parts.size() == 5) {
 	// example expected line format: 222 0.996 aen => aan
 	added++;
 	rules.push_back(make_pair(TiCC::UnicodeFromUTF8(parts[2]),
 				  TiCC::UnicodeFromUTF8(parts[4])));
       }
-      else if (TiCC::split_at(line, parts, " ") == 2) {
+      else if ( parts.size() == 2 ) {
 	// simplified format: aen aan
 	added++;
 	rules.push_back(make_pair(TiCC::UnicodeFromUTF8(parts[0]),

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 #
 
 $my_bin/FoLiA-collect > testcollect.out 2>&1

@@ -59,8 +59,7 @@ void setlang( FoliaElement* e, const string& lan ){
   KWargs args;
   args["class"] = lan;
   args["set"] = ISO_SET;
-  LangAnnotation *node = new LangAnnotation( e->doc() );
-  node->setAttributes( args );
+  LangAnnotation *node = new LangAnnotation( args, e->doc() );
   e->replace( node );
 }
 
@@ -264,8 +263,7 @@ int main( int argc, char *argv[] ){
   string tagsstring;
   opts.extract( "tags", tagsstring );
   if ( !tagsstring.empty() ){
-    vector<string> parts;
-    TiCC::split_at( tagsstring, parts, "," );
+    vector<string> parts = TiCC::split_at( tagsstring, "," );
     for( const auto& t : parts ){
       tags.insert( t );
     }

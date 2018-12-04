@@ -43,6 +43,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 bool verbose = false;
@@ -75,7 +76,7 @@ size_t words_inventory( const Document *doc,
     string word;
     try {
       if ( lowercase ){
-	icu::UnicodeString uword = TiCC::UnicodeFromUTF8( folia_word->str(classname) );
+	UnicodeString uword = TiCC::UnicodeFromUTF8( folia_word->str(classname) );
 	uword.toLower();
 	word = TiCC::UnicodeToUTF8( uword );
       }
@@ -110,7 +111,7 @@ size_t strings_inventory( const Document *doc,
   for ( auto const& folia_word : words ){
     string word;
     try {
-      icu::UnicodeString uword = folia_word->text(classname);
+      UnicodeString uword = folia_word->text(classname);
       if ( lowercase ){
 	uword.toLower();
       }

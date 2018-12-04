@@ -47,6 +47,7 @@
 #endif
 
 using namespace	std;
+using namespace	icu;
 using namespace	folia;
 
 bool verbose = false;
@@ -231,6 +232,75 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
   }
 }
 
+void create_collected_wf_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
+			       const string& filename,
+			       unsigned int clip, int min_ng, int max_ng,
+			       map<string,vector<unsigned int>>& totals_per_n,
+			       bool doperc,
+			       const string& lang ){
+  string ext;
+  if ( lang != "none" ){
+    ext += "." + lang;
+  }
+  ext += "." + TiCC::toString( min_ng ) + "to"
+    + TiCC::toString( max_ng ) + ".tsv";
+  string ofilename = filename + ext;
+  if ( !TiCC::createPath( ofilename ) ){
+    cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+    exit(EXIT_FAILURE);
+  }
+  ofstream os( ofilename );
+  map<unsigned int, set<string>> wf;
+  size_t grand_total = 0;
+  size_t grand_total_clipped = 0;
+  for ( const auto& wc0 : wcv ){
+    for ( int ng=min_ng; ng <= max_ng; ++ng ){
+      grand_total += totals_per_n[lang][ng];
+      unsigned int total_n = totals_per_n[lang][ng];
+      if ( total_n > 0 ){
+	auto cit = wc0.second[ng].begin();
+	while( cit != wc0.second[ng].end()  ){
+	  if ( cit->second <= clip ){
+	    total_n -= cit->second;
+	  }
+	  else {
+	    wf[cit->second].insert( cit->first );
+	  }
+	  ++cit;
+	}
+	grand_total_clipped += total_n;
+      }
+    }
+  }
+  unsigned int sum=0;
+  unsigned int types=0;
+  map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
+  while ( wit != wf.rend() ){
+    for ( const auto sit : wit->second ){
+      sum += wit->first;
+      os << sit << "\t" << wit->first;
+      if ( doperc ){
+	os << "\t" << sum << "\t" << 100 * double(sum)/grand_total_clipped;
+      }
+      os << endl;
+      ++types;
+    }
+    ++wit;
+  }
+#pragma omp critical
+  {
+    cout << "created collected WordFreq list '" << ofilename << "'";
+    cout << ". Stored " << sum << " tokens and "
+	 << types << " types, TTR= " << (double)types/sum
+	 << ", the angle is " << atan((double)types/sum)*180/M_PI
+	 << " degrees";
+    if ( clip > 0 ){
+      cout << " ("<< grand_total - grand_total_clipped << " were clipped.)";
+    }
+    cout << endl;
+  }
+}
+
 struct rec {
   unsigned int count;
   map<string,unsigned int> pc;
@@ -312,6 +382,75 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
   }
 }
 
+void create_collected_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
+			       const string& filename,
+			       unsigned int clip,
+			       int min_ng,
+			       int max_ng,
+			       map<string,vector<unsigned int>>& totals_per_n,
+			       bool doperc,
+			       const string& lang ){
+  string ext;
+  if ( lang != "none" ){
+    ext += "." + lang;
+  }
+  ext += "." + TiCC::toString( min_ng ) + "to"
+    + TiCC::toString( max_ng ) + ".tsv";
+  string ofilename = filename + ext;
+  if ( !TiCC::createPath( ofilename ) ){
+    cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+    exit(EXIT_FAILURE);
+  }
+  ofstream os( ofilename );
+  map<unsigned int, set<string>> lf;
+  size_t grand_total = 0;
+  size_t grand_total_clipped = 0;
+  for ( const auto& lc0 : lcv ){
+    for ( int ng=min_ng; ng <= max_ng; ++ng ){
+      grand_total += totals_per_n[lang][ng];
+      unsigned int total_n = totals_per_n[lang][ng];
+      if ( total_n > 0 ){
+	for ( const auto& cit : lc0.second[ng] ){
+	  if ( cit.second <= clip ){
+	    total_n -= cit.second;
+	  }
+	  else {
+	    lf[cit.second].insert( cit.first );
+	  }
+	}
+	grand_total_clipped += total_n;
+      }
+    }
+  }
+  unsigned int sum=0;
+  unsigned int types=0;
+  map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
+  while ( wit != lf.rend() ){
+    for ( const auto& sit : wit->second ){
+      sum += wit->first;
+      os << sit << "\t" << wit->first;
+      if ( doperc ){
+	os << "\t" << sum << "\t" << 100* double(sum)/grand_total_clipped;
+      }
+      os << endl;
+      ++types;
+    }
+    ++wit;
+  }
+#pragma omp critical
+  {
+    cout << "created LemmaFreq list '" << ofilename << "'";
+    cout << ". Stored " << sum
+	 << " tokens and " << types << " types. TTR= " << (double)types/sum
+	 << ", the angle is " << atan((double)types/sum)*180/M_PI
+	 << " degrees";
+    if ( clip > 0 ){
+      cout << " ("<< grand_total - grand_total_clipped << " lemmas were clipped.)";
+    }
+    cout << endl;
+  }
+}
+
 void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 		      const string& filename,
 		      unsigned int clip,
@@ -387,6 +526,77 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
     }
   }
 }
+
+void create_collected_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
+				const string& filename,
+				unsigned int clip,
+				int min_ng,
+				int max_ng,
+				map<string,vector<unsigned int>>& totals_per_n,
+				bool doperc,
+				const string& lang ){
+  string ext;
+  if ( lang != "none" ){
+    ext += "." + lang;
+  }
+  ext += "." + TiCC::toString( min_ng ) + "to"
+    + TiCC::toString( max_ng ) + ".tsv";
+  string ofilename = filename + ext;
+  if ( !TiCC::createPath( ofilename ) ){
+    cerr << "FoLiA-stats: failed to create outputfile '" << ofilename << "'" << endl;
+    exit(EXIT_FAILURE);
+  }
+  ofstream os( ofilename );
+  multimap<unsigned int, pair<string,string> > lpf;
+  size_t grand_total = 0;
+  size_t grand_total_clipped = 0;
+  for ( const auto& lpc0 : lpcv ){
+    for( int ng=min_ng; ng <= max_ng; ++ng ){
+      grand_total += totals_per_n[lang][ng];
+      unsigned int total_n = totals_per_n[lang][ng];
+      if ( total_n > 0 ){
+	for ( const auto& cit : lpc0.second[ng] ){
+	  for ( const auto& pit : cit.second.pc ){
+	    if ( pit.second <= clip ){
+	      total_n -= pit.second;
+	    }
+	    else {
+	      lpf.insert( make_pair( pit.second,
+				     make_pair( cit.first, pit.first ) ) );
+	    }
+	  }
+	}
+	grand_total_clipped += total_n;
+      }
+    }
+  }
+  unsigned int sum =0;
+  unsigned int types =0;
+  multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+  while ( wit != lpf.rend() ){
+    sum += wit->first;
+    os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
+    if ( doperc ){
+      os << "\t" << sum << "\t" << 100 * double(sum)/grand_total_clipped;
+    }
+    os << endl;
+    ++types;
+    ++wit;
+  }
+#pragma omp critical
+  {
+    cout << "created LemmaPosFreq list '" << ofilename << "'";
+    cout << ". Stored " << sum
+	 << " tokens and " << types << " types. TTR= " << (double)types/sum
+	 << ", the angle is " << atan((double)types/sum)*180/M_PI
+	 << " degrees";
+    if ( clip > 0 ){
+      cout << " ("<< grand_total - grand_total_clipped << " were clipped.)";
+    }
+    cout << endl;
+  }
+}
+
 struct wlp_rec {
   string word;
   string lemma;
@@ -497,7 +707,8 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 				map<string,vector<map<string,unsigned int>>>& lcv,
 				map<string,vector<multimap<string, rec>>>& lpcv,
 				set<string>& emph,
-				const string& sep ){
+				const string& sep,
+				bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -547,7 +758,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     for ( const auto& w : words ){
       wlp_rec rec;
       try {
-	icu::UnicodeString uword = w->text(classname);
+	UnicodeString uword = w->text(classname,detokenize==false);
 	if ( lowercase ){
 	  uword.toLower();
 	}
@@ -698,7 +909,8 @@ size_t doc_str_inventory( const Document *d,
 			  const set<string>& languages,
 			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
-			  const string& sep ){
+			  const string& sep,
+			  bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -725,9 +937,9 @@ size_t doc_str_inventory( const Document *d,
   }
   vector<string> data;
   for ( const auto& s : strings ){
-    icu::UnicodeString us;
+    UnicodeString us;
     try {
-      us = s->text(classname);
+      us = s->text(classname,detokenize==false);
       if ( lowercase ){
 	us.toLower();
       }
@@ -764,7 +976,8 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  const set<string>& languages,
 			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 			  set<string>& emph,
-			  const string& sep ){
+			  const string& sep,
+			  bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -793,9 +1006,9 @@ size_t par_str_inventory( const Document *d, const string& docName,
     }
     vector<string> data;
     for ( const auto& s : strings ){
-      icu::UnicodeString us;
+      UnicodeString us;
       try {
-	us = s->text(classname);
+	us = s->text(classname,detokenize==false);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -862,7 +1075,8 @@ size_t text_inventory( const Document *d, const string& docName,
 		       const set<string>& tags,
 		       map<string,vector<unordered_map<string,unsigned int>>>& wcv,
 		       set<string>& emph,
-		       const string& sep ){
+		       const string& sep,
+		       bool detokenize ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -883,9 +1097,9 @@ size_t text_inventory( const Document *d, const string& docName,
       }
     }
     string s;
-    icu::UnicodeString us;
+    UnicodeString us;
     try {
-      us = node->text(classname);
+      us = node->text(classname,detokenize==false);
       if ( lowercase ){
 	us.toLower();
       }
@@ -953,8 +1167,10 @@ void usage( const string& name ){
   cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
   cerr << "\t\t (default is 'current')" << endl;
+  cerr << "\t --collect\t collect all n-gram values in one file." << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t (words consisting of single, space separated letters)" << endl;
+  cerr << "\t--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
@@ -970,7 +1186,8 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:RsS",
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"
-			 "mode:,verbose,aggregate,tags:,threads:" );
+			 "mode:,verbose,collect,aggregate,tags:,threads:,"
+			 "detokenize" );
   try {
     opts.init(argc,argv);
   }
@@ -1008,6 +1225,7 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: --aggregate and -p conflict." << endl;
     return EXIT_FAILURE;
   }
+  bool detokenize = opts.extract( "detokenize" );
   set<string> tags;
   string tagsstring;
   opts.extract( "tags", tagsstring );
@@ -1096,12 +1314,12 @@ int main( int argc, char *argv[] ){
   else if ( max_NG < min_NG ){
     max_NG = min_NG;
   }
-  int numThreads=1;
   value = "1";
   if ( !opts.extract( 't', value ) ){
     opts.extract( "threads", value );
   }
 #ifdef HAVE_OPENMP
+  int numThreads=1;
   if ( TiCC::lowercase(value) == "max" ){
     numThreads = omp_get_max_threads() - 2;
   }
@@ -1140,8 +1358,13 @@ int main( int argc, char *argv[] ){
       languages.insert( value );
     }
   }
+  bool collect = opts.extract("collect");
   if ( languages.empty() ){
-    default_language = "none"; // don't care, any language wiil do
+    default_language = "none"; // don't care, any language will do
+  }
+  else if ( collect ){
+    cerr << "--collect cannot be combined with --languages" << endl;
+    exit( EXIT_FAILURE );
   }
   opts.extract('e', expression );
   opts.extract( "class", classname );
@@ -1223,20 +1446,20 @@ int main( int argc, char *argv[] ){
 					    lowercase,
 					    default_language, languages,
 					    wcv, lcv, lpcv,
-					    emph, sep );
+					    emph, sep, detokenize );
       break;
     case S_IN_D:
       word_count = doc_str_inventory( d, docName, min_NG, max_NG,
 				      wordTotals, lowercase,
 				      default_language, languages,
-				      wcv, emph, sep );
+				      wcv, emph, sep, detokenize );
       break;
     default:
       if ( !tags.empty() ){
 	word_count = text_inventory( d, docName, min_NG, max_NG,
 				     wordTotals, lowercase,
 				     default_language, languages, tags,
-				     wcv, emph, sep );
+				     wcv, emph, sep, detokenize );
       }
       else {
 	cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
@@ -1258,7 +1481,7 @@ int main( int argc, char *argv[] ){
     cout << "done processsing directory '" << dir_name << "'" << endl;
   }
   if ( fail_docs == toDo ){
-    cerr << "no documents were successfull handled!" << endl;
+    cerr << "no documents were successfully handled!" << endl;
     return EXIT_FAILURE;
   }
   if ( !hempName.empty() ){
@@ -1289,16 +1512,30 @@ int main( int argc, char *argv[] ){
       {
 	string filename;
 	filename = outputPrefix + ".wordfreqlist";
-	create_wf_list( wcv, filename, clip, min_NG, max_NG,
-			wordTotals, dopercentage );
+	if ( collect ){
+	  create_collected_wf_list( wcv, filename, clip, min_NG, max_NG,
+				    wordTotals, dopercentage,
+				    default_language );
+	}
+	else {
+	  create_wf_list( wcv, filename, clip, min_NG, max_NG,
+			  wordTotals, dopercentage );
+	}
       }
 #pragma omp section
       {
 	if ( mode == L_P ){
 	  string filename;
 	  filename = outputPrefix + ".lemmafreqlist";
-	  create_lf_list( lcv, filename, clip, min_NG, max_NG,
-			  lemmaTotals, dopercentage );
+	  if ( collect ){
+	    create_collected_lf_list( lcv, filename, clip, min_NG, max_NG,
+				      lemmaTotals, dopercentage,
+				      default_language );
+	  }
+	  else {
+	    create_lf_list( lcv, filename, clip, min_NG, max_NG,
+			    lemmaTotals, dopercentage );
+	  }
 	}
       }
 #pragma omp section
@@ -1306,8 +1543,15 @@ int main( int argc, char *argv[] ){
 	if ( mode == L_P ){
 	  string filename;
 	  filename = outputPrefix + ".lemmaposfreqlist";
-	  create_lpf_list( lpcv, filename, clip, min_NG, max_NG,
-			   posTotals, dopercentage );
+	  if ( collect ){
+	    create_collected_lpf_list( lpcv, filename, clip, min_NG, max_NG,
+				       posTotals, dopercentage,
+				       default_language );
+	  }
+	  else {
+	    create_lpf_list( lpcv, filename, clip, min_NG, max_NG,
+			     posTotals, dopercentage );
+	  }
 	}
       }
     }

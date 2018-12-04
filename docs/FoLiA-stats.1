@@ -1,4 +1,4 @@
-.TH FoLiA-stats 1 "2014 sep 03"
+.TH FoLiA-stats 1 "2018 jun 04"
 
 .SH NAME
 FoLiA-stats - gather n-gram statistics from FoLiA files
@@ -57,28 +57,105 @@ Also output accumulated counts and percentages
 Lowercase all words.
 .RE
 
+.B --separator
+sep
+.RS
+Define a separator value to connect ngrams. Default is a space.
+.RE
+
+.B --underscore
+.RS
+Backward compatibility. Preferably use --separator=_
+.RE
+
+.B --languages
+Lan1,Lan2,...LanN
+.RS
+specify which languages to consider, based on the language tag as inserted
+in the FoLiA xml by the programmes Ucto, Frog or FoLiA-langcat.
+
+Lan1 is the default language. Text that is not assigned to Lan1,Lan2,... is
+counted as Lan1 (the default language), except when Lan1 equals 'skip'.
+In the latter case, undetected language is skipped.
+When Lan1 equals 'all', all languages are collected separately.
+When Lan1 equals 'none', language information is ignored.
+.RE
+
 .B --lang
 language
 .RS
-only process nodes with the desired language tag. This would have been inserted
-in the FoLiA xml by the programmes Ucto, Frog or FoLiA-langcat.
-Default is 'nld', 'none' is also possible to avoid this check.
+backward compatibility. Equals
+.B --languages=language
 .RE
 
 .B --ngram
 count
 .RS
-The n-gram value to process
+Construct all n-grams of length 'count'
+.RE
+
+.B --max-ngram
+max
+.RS
+Construct all n-grams up to and including lenght 'max'
+When --ngram is specified too, that is used as the minimum n-gram length.
+.RE
+
+.B --mode
+value
+.RS
+Do special actions:
+
+.B string_in_doc
+.RS
+Collect ALL <str> nodes from the document and handle them as one long Sentence.
+.RE
+.B lemma_pos
+.RS
+When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+.RE
+.RE
+
+.B --tags
+tagset
+.RS
+ collect text from all nodes in the list 'tagset'
 .RE
 
 .B -s
 .RS
-Process FoLiA <str> nodes for every <p> node. (instead of the default <w> nodes)
+backward compatibility. equals --tags=p
 .RE
 
 .B -S
 .RS
-Process FoLiA <str> nodes for the whole document. (instead of the default <w> nodes)
+backward compatibility. equals --mode=string_in_doc
+.RE
+
+.B --class
+class
+.RS
+use 'class' as the folia text class of the text nodes to process.
+(default is 'current'). You may provide an empty string.
+
+.RE
+
+.B --collect
+.RS
+collect all n-gram values in one output file.
+.RE
+
+.B --hemp
+file
+.RS
+Create a historical emphasis file. This based on words consisting of singe space
+separated letters.
+.RE
+
+.B --detokenize
+.RS
+When processing FoLiA with ucto tokenizer information, UNDO that tokenization.
+(default is to keep it)
 .RE
 
 .B -t
@@ -88,6 +165,8 @@ Number of concurrent threads to be used by the programme
 .RE
 
 .B -V
+or
+.B --version
 .RS
 Show VERSION
 .RE
@@ -106,17 +185,6 @@ will only considers files that match with the expression 'expr' which may contai
 when a DIR is provided,
 .B FoLiA-stats
 will recurse through this DIR and its subdirs to find files.
-.RE
-
-.B --class
-= name
-.RS
-When processing <str> nodes,
-.B FoLiA-stats
-will only search for text in the named setname. The default is
-.B OCR
-and you may provide an empty string.
-This option is NOT used for processing <w> nodes!
 .RE
 
 .SH BUGS

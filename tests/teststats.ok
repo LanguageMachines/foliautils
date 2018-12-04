@@ -29,16 +29,21 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
+	 --collect	 collect all n-gram values in one file.
 	--hemp=<file>	 Create a historical emphasis file. 
 		 (words consisting of single, space separated letters)
-	-t	 number_of_threads
+	--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-v or --verbose	 very verbose output.
 	-V or --version	 show version 
 	-e	 expr: specify the expression all input files should match with.
 	-o	 name of the output file(s) prefix.
 	-R	 search the dirs recursively (when appropriate).
-FoLiA-stats from foliautils 0.9
+FoLiA-stats from foliautils 0.11
 Usage: FoLiA-stats [options] file/dir
 
 FoLiA-stats will produce ngram statistics for a FoLiA file, 
@@ -70,9 +75,14 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	-S	 equal to --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
+	 --collect	 collect all n-gram values in one file.
 	--hemp=<file>	 Create a historical emphasis file. 
 		 (words consisting of single, space separated letters)
-	-t	 number_of_threads
+	--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-v or --verbose	 very verbose output.
 	-V or --version	 show version 

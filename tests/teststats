@@ -77,7 +77,7 @@ diff stats11.wordfreqlist.nld.tsv stats11-nld.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.2-gram.tsv stats11-nld-2.ok >> teststats.out 2>&1
 diff stats11.wordfreqlist.nld.3-gram.tsv stats11-nld-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --mode=lemma_pos --max-ngram=4 -o stats12 data/sonar*.xml > out17 2>&1
+$my_bin/FoLiA-stats --mode=lemma_pos --max-ngram=4 -o stats12 data/sonar*.xml > out17 --separator=_ 2>&1
 diff stats12.wordfreqlist.tsv stats-words-son.ok >> teststats.out 2>&1
 diff stats12.lemmafreqlist.tsv stats-lemmas-son.ok >> teststats.out 2>&1
 diff stats12.lemmaposfreqlist.tsv stats-lempos-son.ok >> teststats.out 2>&1
@@ -85,3 +85,23 @@ diff stats12.wordfreqlist.4-gram.tsv stats-words-son-4.ok >> teststats.out 2>&1
 diff stats12.lemmafreqlist.4-gram.tsv stats-lemmas-son-4.ok >> teststats.out 2>&1
 diff stats12.lemmaposfreqlist.4-gram.tsv stats-lempos-son-4.ok >> teststats.out 2>&1
 cat out17 >> teststats.out
+
+$my_bin/FoLiA-stats --mode=text_in_par --class=OCR -o stats13 -p --max-ngram=3 --collect data/statstest.xml --separator=_ > out18 2>&1
+diff stats13.wordfreqlist.1to3.tsv stats13.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=lemma_pos -o stats14 -p --max-ngram=4 --collect data/sonar*.xml --separator=_ > out19 2>&1
+diff stats14.wordfreqlist.1to4.tsv stats14.word.ok >> teststats.out 2>&1
+diff stats14.lemmafreqlist.1to4.tsv stats14.lemma.ok >> teststats.out 2>&1
+diff stats14.lemmaposfreqlist.1to4.tsv stats14.lemmapos.ok >> teststats.out 2>&1
+
+if [ "$NO_TICCL" = "" ]
+then
+    $my_bin/TICCL-mergelex -p -o BLA stats12.wordfreqlist.tsv stats12.wordfreqlist.2-gram.tsv stats12.wordfreqlist.3-gram.tsv stats12.wordfreqlist.4-gram.tsv > out20 2>&1
+    diff  BLA.wordfreqlist.tsv stats14.word.ok >> teststats.out 2>&1
+fi
+
+$my_bin/FoLiA-stats --mode=text_in_par -o stats15 -p data/folia2.xml --detokenize --max-ngram=4 --collect > out21 2>&1
+diff stats15.wordfreqlist.1to4.tsv stats15.word.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --mode=text_in_par -o stats16 -p data/folia2.xml --max-ngram=4 --collect > out22 2>&1
+diff stats16.wordfreqlist.1to4.tsv stats16.word.ok >> teststats.out 2>&1

@@ -184,7 +184,9 @@ int main( int argc, char *argv[] ){
     }
     d->declare( folia::AnnotationType::STRING, setname,
 		"annotator='FoLiA-txt', datetime='now()'" );
-    folia::Text *text = new folia::Text( folia::getArgs("id='" + docid + ".text'"), d );
+    folia::KWargs args;
+    args["id"] = docid + ".text";
+    folia::Text *text = new folia::Text( args );
     d->addText( text );
     int parCount = 0;
     int wrdCnt = 0;
@@ -225,10 +227,10 @@ int main( int argc, char *argv[] ){
 	}
       }
     }
-    if ( !par ){
+    if ( parCount == 0 ){
 #pragma omp critical
       {
-	cerr << "nu useful data found in document:'" << docid << "'" << endl;
+	cerr << "no useful data found in document:'" << docid << "'" << endl;
 	cerr << "skipped!" << endl;
 	++failed_docs;
 	--to_do;
@@ -249,7 +251,7 @@ int main( int argc, char *argv[] ){
     }
     delete d;
   }
-  if ( failed_docs == to_do ){
+  if ( failed_docs > 0 && failed_docs == to_do ){
     cerr << "No documents could be handled successfully!" << endl;
     return EXIT_SUCCESS;
   }
