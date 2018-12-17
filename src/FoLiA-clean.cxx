@@ -34,6 +34,7 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -141,6 +142,76 @@ void clean_anno( FoliaElement *node,
   }
 }
 
+void clean_tokens( FoliaElement *node, const string& setname ){
+  if ( debug ){
+#pragma omp critical( debugging )
+    {
+      cerr << "clean tokens: bekijk " << node << " voor set=" << setname << endl;
+    }
+  }
+  if ( node->xmltag() == "p"
+       || node->xmltag() == "s" ){
+    UnicodeString s1;
+    try {
+      s1 = node->text();
+    }
+    catch (...){
+    }
+    if ( s1.isEmpty() ){
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "S1 is leeg " << endl;
+	}
+      }
+      try {
+	s1 = node->text( "", false, false ); // no retain tokenization, no strict
+      }
+      catch (...){
+      }
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "S1= " << s1 << endl;
+	}
+      }
+    }
+    else {
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "S1= " << s1 << endl;
+	}
+      }
+    }
+    for ( size_t i=0; i < node->size(); ++i ){
+      FoliaElement *p = node->index(i);
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "clean tokens: verwijder " << p << endl;
+	}
+      }
+      //      node->remove(int(0),true);
+    }
+    if ( !s1.isEmpty() ) {
+      node->settext( TiCC::UnicodeToUTF8(s1), setname );
+    }
+  }
+  else {
+    for ( size_t i=0; i < node->size(); ++i ){
+      FoliaElement *p = node->index(i);
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "clean tokens: bekijk " << p << endl;
+	}
+      }
+      clean_tokens( p, setname );
+    }
+  }
+}
+
 void clean_doc( Document *d,
 		const string& outname,
 		const string& textclass,
@@ -148,6 +219,13 @@ void clean_doc( Document *d,
 		unordered_map< AnnotationType::AnnotationType,
 		unordered_set<string>>& anno_setname ){
   FoliaElement *root = d->doc();
+  if ( anno_setname.find(AnnotationType::TOKEN) != anno_setname.end() ){
+    // first clean token annotation
+    for ( const auto& set : anno_setname[AnnotationType::TOKEN] ){
+      clean_tokens( root, set );
+    }
+    anno_setname.erase(AnnotationType::TOKEN);
+  }
   for( const auto& it : anno_setname ){
     for ( const auto& set : it.second ){
       clean_anno( root, it.first, set );
@@ -240,10 +318,10 @@ int main( int argc, char *argv[] ){
       type = line.substr( 0, bs_pos );
       setname = line.substr( bs_pos+1 );
     }
-    if ( type == "token" ){
-      cerr << "deleting token annotation is not supported yet." << endl;
-      exit( EXIT_FAILURE );
-    }
+    // if ( type == "token" ){
+    //   cerr << "deleting token annotation is not supported yet." << endl;
+    //   exit( EXIT_FAILURE );
+    // }
     AnnotationType::AnnotationType at;
     try {
       at = TiCC::stringTo<AnnotationType::AnnotationType>( type );
