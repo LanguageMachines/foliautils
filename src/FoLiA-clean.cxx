@@ -66,6 +66,22 @@ int debug = 0;
 void clean_text( FoliaElement *node,
 		 const string& textclass,
 		 bool current ){
+  if ( node->xmltag() == "w" ){
+    // for Word nodes, we don't want te remove the last text present!
+    vector<TextContent*> v = node->select<TextContent>();
+    if ( v.size() <= 1 ){
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "clean text: keep last text of " << node << endl;
+	}
+      }
+      if ( current ){
+	v[0]->set_to_current();
+      }
+      return;
+    }
+  }
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
     if ( p->element_id() == TextContent_t ) {
@@ -171,38 +187,42 @@ void clean_tokens( FoliaElement *node,
       }
       catch (...){
       }
+    }
+    if ( debug ){
+#pragma omp critical( debugging )
+      {
+	cerr << "S1= " << s1 << endl;
+      }
+    }
+    if ( s1.isEmpty() ){
+      // refuse to remove structure when in different textclass
       if ( debug ){
 #pragma omp critical( debugging )
 	{
-	  cerr << "S1= " << s1 << endl;
+	  cerr << "keep " << node << " with textclass=" << node->cls() << endl;
+	  cerr << "met tekst: " <<  node->text( "current", false, false ) << endl;
 	}
       }
     }
     else {
-      if ( debug ){
+      for ( size_t i=0; i < node->size(); ++i ){
+	FoliaElement *p = node->index(i);
+	if ( p->xmltag() == "w"
+	     || p->xmltag() == "s" ){
+	  if ( debug ){
 #pragma omp critical( debugging )
-	{
-	  cerr << "S1= " << s1 << endl;
-	}
-      }
-    }
-    for ( size_t i=0; i < node->size(); ++i ){
-      FoliaElement *p = node->index(i);
-      if ( p->xmltag() == "w"
-	   || p->xmltag() == "s" ){
-	if ( debug ){
-#pragma omp critical( debugging )
-	  {
-	    cerr << "clean tokens: verwijder " << p << endl;
+	    {
+	      cerr << "clean tokens: verwijder " << p << endl;
+	    }
 	  }
+	  node->remove(p,true);
+	  --i;
 	}
-	node->remove(p,true);
-	--i;
       }
-    }
-    //    cerr << "na remove, node.size=" << node->size() << endl;
-    if ( !s1.isEmpty() ) {
-      node->settext( TiCC::UnicodeToUTF8(s1), textclass );
+      //    cerr << "na remove, node.size=" << node->size() << endl;
+      if ( !s1.isEmpty() ) {
+	node->settext( TiCC::UnicodeToUTF8(s1), textclass );
+      }
     }
   }
   else {
