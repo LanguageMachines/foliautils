@@ -142,18 +142,20 @@ void clean_anno( FoliaElement *node,
   }
 }
 
-void clean_tokens( FoliaElement *node, const string& setname ){
+void clean_tokens( FoliaElement *node,
+		   const string& textclass ){
   if ( debug ){
 #pragma omp critical( debugging )
     {
-      cerr << "clean tokens: bekijk " << node << " voor set=" << setname << endl;
+      cerr << "clean tokens, bekijk "
+	   << node << ", textclass='" << textclass << "'" << endl;
     }
   }
   if ( node->xmltag() == "p"
        || node->xmltag() == "s" ){
     UnicodeString s1;
     try {
-      s1 = node->text();
+      s1 = node->text(textclass);
     }
     catch (...){
     }
@@ -161,11 +163,11 @@ void clean_tokens( FoliaElement *node, const string& setname ){
       if ( debug ){
 #pragma omp critical( debugging )
 	{
-	  cerr << "S1 is leeg " << endl;
+	  cerr << "S1 is leeg, dieper kijken " << endl;
 	}
       }
       try {
-	s1 = node->text( "", false, false ); // no retain tokenization, no strict
+	s1 = node->text( textclass, false, false ); // no retain tokenization, no strict
       }
       catch (...){
       }
@@ -186,16 +188,21 @@ void clean_tokens( FoliaElement *node, const string& setname ){
     }
     for ( size_t i=0; i < node->size(); ++i ){
       FoliaElement *p = node->index(i);
-      if ( debug ){
+      if ( p->xmltag() == "w"
+	   || p->xmltag() == "s" ){
+	if ( debug ){
 #pragma omp critical( debugging )
-	{
-	  cerr << "clean tokens: verwijder " << p << endl;
+	  {
+	    cerr << "clean tokens: verwijder " << p << endl;
+	  }
 	}
+	node->remove(p,true);
+	--i;
       }
-      //      node->remove(int(0),true);
     }
+    //    cerr << "na remove, node.size=" << node->size() << endl;
     if ( !s1.isEmpty() ) {
-      node->settext( TiCC::UnicodeToUTF8(s1), setname );
+      node->settext( TiCC::UnicodeToUTF8(s1), textclass );
     }
   }
   else {
@@ -207,7 +214,7 @@ void clean_tokens( FoliaElement *node, const string& setname ){
 	  cerr << "clean tokens: bekijk " << p << endl;
 	}
       }
-      clean_tokens( p, setname );
+      clean_tokens( p, textclass );
     }
   }
 }
@@ -221,10 +228,9 @@ void clean_doc( Document *d,
   FoliaElement *root = d->doc();
   if ( anno_setname.find(AnnotationType::TOKEN) != anno_setname.end() ){
     // first clean token annotation
-    for ( const auto& set : anno_setname[AnnotationType::TOKEN] ){
-      clean_tokens( root, set );
-    }
+    clean_tokens( root, textclass );
     anno_setname.erase(AnnotationType::TOKEN);
+    d->un_declare( AnnotationType::TOKEN, "" );
   }
   for( const auto& it : anno_setname ){
     for ( const auto& set : it.second ){
@@ -236,7 +242,9 @@ void clean_doc( Document *d,
       d->un_declare( it.first, set );
     }
   }
-  clean_text( root, textclass, current );
+  if ( textclass != "current" ){
+    clean_text( root, textclass, current );
+  }
   d->save( outname );
 }
 
@@ -293,7 +301,7 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
-  string class_name;
+  string class_name = "current";
   opts.extract( "textclass", class_name );
   if ( opts.extract( "debug" ) ){
     debug = 1;
