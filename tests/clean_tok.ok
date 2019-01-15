@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.16" version="1.4.0">
+  <metadata type="native">
+    <annotations>
+      <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
+    </annotations>
+    <meta id="genre">artikel</meta>
+    <meta id="language">nld</meta>
+  </metadata>
+  <text xml:id="dirty.text">
+    <p xml:id="dirty.text.p.2">
+      <t class="OCR">Beursoverzicht.</t>
+      <lang class="deu"/>
+    </p>
+    <p xml:id="dirty.text.p.3">
+      <t class="OCR">Berichten omtrent fondsen voorkomende op de officiële lijst.</t>
+    </p>
+  </text>
+</FoLiA>

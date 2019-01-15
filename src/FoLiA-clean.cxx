@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2014 - 2018
+  Copyright (c) 2014 - 2019
   CLST  - Radboud University
   ILK   - Tilburg University
 
@@ -34,6 +34,7 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -65,6 +66,22 @@ int debug = 0;
 void clean_text( FoliaElement *node,
 		 const string& textclass,
 		 bool current ){
+  if ( node->xmltag() == "w" ){
+    // for Word nodes, we don't want te remove the last text present!
+    vector<TextContent*> v = node->select<TextContent>();
+    if ( v.size() <= 1 ){
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "clean text: keep last text of " << node << endl;
+	}
+      }
+      if ( current ){
+	v[0]->set_to_current();
+      }
+      return;
+    }
+  }
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
     if ( p->element_id() == TextContent_t ) {
@@ -141,6 +158,87 @@ void clean_anno( FoliaElement *node,
   }
 }
 
+void clean_tokens( FoliaElement *node,
+		   const string& textclass ){
+  if ( debug ){
+#pragma omp critical( debugging )
+    {
+      cerr << "clean tokens, bekijk "
+	   << node << ", textclass='" << textclass << "'" << endl;
+    }
+  }
+  if ( node->xmltag() == "p"
+       || node->xmltag() == "s" ){
+    UnicodeString s1;
+    try {
+      s1 = node->text(textclass);
+    }
+    catch (...){
+    }
+    if ( s1.isEmpty() ){
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "S1 is leeg, dieper kijken " << endl;
+	}
+      }
+      try {
+	s1 = node->text( textclass, false, false ); // no retain tokenization, no strict
+      }
+      catch (...){
+      }
+    }
+    if ( debug ){
+#pragma omp critical( debugging )
+      {
+	cerr << "S1= " << s1 << endl;
+      }
+    }
+    if ( s1.isEmpty() ){
+      // refuse to remove structure when in different textclass
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "keep " << node << " with textclass=" << node->cls() << endl;
+	  cerr << "met tekst: " <<  node->text( "current", false, false ) << endl;
+	}
+      }
+    }
+    else {
+      for ( size_t i=0; i < node->size(); ++i ){
+	FoliaElement *p = node->index(i);
+	if ( p->xmltag() == "w"
+	     || p->xmltag() == "s" ){
+	  if ( debug ){
+#pragma omp critical( debugging )
+	    {
+	      cerr << "clean tokens: verwijder " << p << endl;
+	    }
+	  }
+	  node->remove(p,true);
+	  --i;
+	}
+      }
+      //    cerr << "na remove, node.size=" << node->size() << endl;
+      if ( !s1.isEmpty() ) {
+	node->settext( TiCC::UnicodeToUTF8(s1), textclass );
+      }
+    }
+  }
+  else {
+    for ( size_t i=0; i < node->size(); ++i ){
+      FoliaElement *p = node->index(i);
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "clean tokens: bekijk " << p << endl;
+	}
+      }
+      clean_tokens( p, textclass );
+    }
+  }
+}
+
 void clean_doc( Document *d,
 		const string& outname,
 		const string& textclass,
@@ -148,6 +246,12 @@ void clean_doc( Document *d,
 		unordered_map< AnnotationType::AnnotationType,
 		unordered_set<string>>& anno_setname ){
   FoliaElement *root = d->doc();
+  if ( anno_setname.find(AnnotationType::TOKEN) != anno_setname.end() ){
+    // first clean token annotation
+    clean_tokens( root, textclass );
+    anno_setname.erase(AnnotationType::TOKEN);
+    d->un_declare( AnnotationType::TOKEN, "" );
+  }
   for( const auto& it : anno_setname ){
     for ( const auto& set : it.second ){
       clean_anno( root, it.first, set );
@@ -158,7 +262,9 @@ void clean_doc( Document *d,
       d->un_declare( it.first, set );
     }
   }
-  clean_text( root, textclass, current );
+  if ( textclass != "current" ){
+    clean_text( root, textclass, current );
+  }
   d->save( outname );
 }
 
@@ -215,7 +321,7 @@ int main( int argc, char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
-  string class_name;
+  string class_name = "current";
   opts.extract( "textclass", class_name );
   if ( opts.extract( "debug" ) ){
     debug = 1;
@@ -240,10 +346,10 @@ int main( int argc, char *argv[] ){
       type = line.substr( 0, bs_pos );
       setname = line.substr( bs_pos+1 );
     }
-    if ( type == "token" ){
-      cerr << "deleting token annotation is not supported yet." << endl;
-      exit( EXIT_FAILURE );
-    }
+    // if ( type == "token" ){
+    //   cerr << "deleting token annotation is not supported yet." << endl;
+    //   exit( EXIT_FAILURE );
+    // }
     AnnotationType::AnnotationType at;
     try {
       at = TiCC::stringTo<AnnotationType::AnnotationType>( type );
