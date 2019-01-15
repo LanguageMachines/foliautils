@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/36356660.svg)](https://zenodo.org/badge/latestdoi/36356660)
+
 FoliAutils (c) CLST/TiCC/CLiPS 2018
   https://github.com/LanguageMachines/foliautils
 
