@@ -36,7 +36,7 @@
     </div>
     <div>
       <head>
-	<s id="apart">
+	<s xml:id="apart">
 	  <t>Dit is hoofdstuk 2.</t>
 	</s>
       </head>
