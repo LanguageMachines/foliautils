@@ -166,7 +166,7 @@ void add_note( Note *root, xmlNode *p ){
     }
   }
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   root->append( par );
   TextContent *tc = new TextContent();
@@ -304,7 +304,7 @@ void add_stage_direction( TextContent *tc, xmlNode *p ){
 
 void add_notes( Paragraph *par, const list<Note*>& notes ){
   KWargs args;
-  args["id"] = par->id() + ".d.1";
+  args["_id"] = par->id() + ".d.1";
   args["class"] = "notes";
   Division *div = new Division( args, par->doc() );
   par->parent()->append( div );
@@ -322,7 +322,7 @@ void add_par( Division *root, xmlNode *p ){
     }
   }
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   TextContent *tc = new TextContent();
   list<Note*> notes;
@@ -366,7 +366,7 @@ void add_par( Division *root, xmlNode *p ){
 	}
 	Note *note = 0;
 	if ( ref.empty() ){
-	  args["id"] = id;
+	  args["_id"] = id;
 	  note = new Note( args );
 	}
 	else {
@@ -382,7 +382,7 @@ void add_par( Division *root, xmlNode *p ){
 	  Reference *rf = new Reference( args );
 	  par->append( rf );
 	  args.clear();
-	  args["id"] = ref;
+	  args["_id"] = ref;
 	  note = new Note( args );
 	}
 	//	par->append( note );
@@ -506,7 +506,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	}
 	args.clear();
 	args["class"] = "member";
-	args["id"] = id;
+	args["_id"] = id;
 	Entity *ent = new Entity( args, root->doc() );
 	root->append(ent);
 	args.clear();
@@ -563,7 +563,7 @@ void process_speech( Division *root, xmlNode *speech ){
   }
   string type = atts["type"];
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   Division *div = new Division( args, root->doc() );
   root->append( div );
@@ -873,7 +873,7 @@ void process_scene( Division *root, xmlNode *scene ){
   }
   string type = atts["type"];
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   Division *div = new Division( args, root->doc() );
   root->append( div );
@@ -957,7 +957,7 @@ void add_h_c_t( FoliaElement *root, xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   Division *div = new Division( args, doc );
   xmlNode *p = block->children;
@@ -991,7 +991,7 @@ void process_stage( Division *root, xmlNode *_stage ){
       cerr << "process_stage: " << type << " ID=" << id << endl;
     }
   }
-  args["id"] = id;
+  args["_id"] = id;
   if ( type.empty() ){
     args["class"] = "stage-direction";
   }
@@ -1076,7 +1076,7 @@ void process_stage( Division *root, xmlNode *_stage ){
 folia::Document *create_basedoc( const string& docid,
 				 xmlNode *metadata = 0,
 				 xmlNode *docinfo = 0 ){
-  Document *doc = new Document( "id='" + docid + "'" );
+  Document *doc = new Document( "_id='" + docid + "'" );
   doc->declare( folia::AnnotationType::DIVISION,
 		"polmash",
 		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
@@ -1122,13 +1122,13 @@ void process_topic( const string& outDir,
   else {
     id = prefix + id;
     doc = create_basedoc( id );
-    args["id"] = id + ".text";
+    args["_id"] = id + ".text";
     Text *txt = new Text( args, doc );
     doc->append( txt );
     root = txt;
   }
   args.clear();
-  args["id"] = id + ".div";
+  args["_id"] = id + ".div";
   args["class"] = "topic";
   Division *div = new Division( args, doc );
   root->append( div );
@@ -1168,7 +1168,7 @@ void process_topic( const string& outDir,
     }
 
     args.clear();
-    args["id"] = id;
+    args["_id"] = id;
     args["src"] = id + ".folia.xml";
     args["include"] = "no";
     folia::External *ext = new External( args );
@@ -1200,7 +1200,7 @@ void add_signed( FoliaElement *root, xmlNode* block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   Document *doc = root->doc();
   Division *div = new Division( args, doc );
@@ -1234,7 +1234,7 @@ void add_section( FoliaElement *root, xmlNode* block ){
   string section_id = TiCC::getAttribute( block, "section-identifier" );
   string section_path =TiCC::getAttribute( block, "section-path" );
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   if ( !section_id.empty() ){
     args["n"] = section_id;
@@ -1255,7 +1255,7 @@ void add_block( FoliaElement *root, xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   Division *div = new Division( args, root->doc() );
   process_sub_block( div, block );
@@ -1338,7 +1338,7 @@ void process_block( Text* base_text,
   KWargs args;
   Document *doc = 0;
   doc = base_text->doc();
-  args["id"] = id;
+  args["_id"] = id;
   args["class"] = type;
   Division *root = new Division( args, doc );
   base_text->append( root );
@@ -1392,7 +1392,7 @@ void convert_to_folia( const string& file,
 	docid = docid.substr(0,pos);
       }
       folia::KWargs args;
-      args["id"] = docid + ".text";
+      args["_id"] = docid + ".text";
       folia::Text *text = new folia::Text( args );
       doc->append( text );
       try {

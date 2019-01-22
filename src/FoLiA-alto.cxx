@@ -198,7 +198,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     else {
       arg += "String_" + TiCC::toString(cnt);
     }
-    args["id"] = arg;
+    args["_id"] = arg;
     folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
     UnicodeString uc = TiCC::UnicodeFromUTF8( content );
@@ -227,7 +227,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       else {
 	arg += "String_" + TiCC::toString(i);
       }
-      args["id"] = arg;
+      args["_id"] = arg;
 
       folia::String *s = new folia::String( args, par->doc() );
       par->append( s );
@@ -276,7 +276,7 @@ void createFile( folia::FoliaElement *text,
       arg += altoFile + ".";
     }
     arg += id;
-    args["id"] = arg;
+    args["_id"] = arg;
     folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
     text->append( p );
     UnicodeString ocr_text;
@@ -311,7 +311,7 @@ void createFile( folia::FoliaElement *text,
 		  else {
 		    arg += "String_" + TiCC::toString(++cnt);
 		  }
-		  args["id"] = arg;
+		  args["_id"] = arg;
 		  args["class"] = classname;
 		  folia::String *s = new folia::String( args, text->doc() );
 		  p->append( s );
@@ -427,12 +427,12 @@ void processArticle( const string& f,
     }
   }
   string docid = replaceColon(f,'.');
-  folia::Document doc( "id='" + docid + "'" );
+  folia::Document doc( "_id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
   doc.set_metadata( "genre", subject );
   folia::KWargs args;
-  args["id"] = docid + ".text";
+  args["_id"] = docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
 
@@ -931,12 +931,12 @@ void solveBook( const string& altoFile, const string& id,
   xmlDoc *xmldoc = getXml( altoFile, inputType );
   if ( xmldoc ){
     string docid = replaceColon( id, '.' );
-    folia::Document doc( "id='" + docid + "'" );
+    folia::Document doc( "_id='" + docid + "'" );
     doc.declare( folia::AnnotationType::STRING, setname,
 		 "annotator='alto', datetime='now()'" );
     //    doc.set_metadata( "genre", subject );
     folia::KWargs args;
-    args["id"] =  docid + ".text";
+    args["_id"] =  docid + ".text";
     folia::Text *text = new folia::Text( args );
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
@@ -966,7 +966,7 @@ void solveBook( const string& altoFile, const string& id,
 	ids.insert(id);
       }
       folia::KWargs args;
-      args["id"] = text->id() + ".p." + id;
+      args["_id"] = text->id() + ".p." + id;
       folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
       text->append( p );
       UnicodeString ocr_text;
@@ -993,7 +993,7 @@ void solveBook( const string& altoFile, const string& id,
 		    string sub = atts["SUBS_CONTENT"];
 		    UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
 		    folia::KWargs args;
-		    args["id"] = p->id() + "." + kid;
+		    args["_id"] = p->id() + "." + kid;
 		    args["class"] = classname;
 		    folia::String *s = new folia::String( args, text->doc() );
 		    p->append( s );
@@ -1201,11 +1201,11 @@ void solveDirectAlto( const string& full_file,
   string filename = TiCC::basename( full_file );
   string docid = replaceColon(filename,'.');
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
-  folia::Document doc( "id='" + docid + "'" );
+  folia::Document doc( "_id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='alto', datetime='now()'" );
   folia::KWargs args;
-  args["id"] =  docid + ".text";
+  args["_id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   createFile( text, xmldoc, "", texts );

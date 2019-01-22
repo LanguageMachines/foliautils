@@ -144,7 +144,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     }
     string p_id = TiCC::getAttribute( p, "id" );
     folia::KWargs args;
-    args["id"] = out->id() + "." + p_id;
+    args["_id"] = out->id() + "." + p_id;
     folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     UnicodeString txt;
     for ( const auto& line : lines ){
@@ -167,7 +167,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	content = TiCC::trim( content );
 	if ( !content.empty() ){
 	  folia::KWargs args;
-	  args["id"] = par->id() + "." + w_id;
+	  args["_id"] = par->id() + "." + w_id;
 	  folia::String *str = new folia::String( args, out->doc() );
 	  par->append( str );
 	  UnicodeString uc = TiCC::UnicodeFromUTF8( content );
@@ -259,11 +259,11 @@ void convert_hocr( const string& fileName,
     exit(EXIT_FAILURE);
   }
   string docid = getDocId( title, prefix );
-  folia::Document doc( "id='" + docid + "'" );
+  folia::Document doc( "_id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-hocr', datetime='now()'" );
   folia::KWargs args;
-  args["id"] = docid + ".text";
+  args["_id"] = docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   processParagraphs( root, text, TiCC::basename(fileName) );

@@ -162,7 +162,7 @@ bool process_par( folia::FoliaElement *root,
   bool didit = false;
   if ( !lemma.empty() ){
     folia::KWargs args;
-    args["id"] = root->id() + ".lemma";
+    args["_id"] = root->id() + ".lemma";
     folia::Part *part = new folia::Part( args );
     root->append( part );
     part->settext( lemma, classname );
@@ -170,7 +170,7 @@ bool process_par( folia::FoliaElement *root,
   }
   if ( !entry.empty() ){
     folia::KWargs args;
-    args["id"] = root->id() + ".entry";
+    args["_id"] = root->id() + ".entry";
     folia::Part *part = new folia::Part( args );
     root->append( part );
     part->settext( entry, classname );
@@ -192,7 +192,7 @@ bool process_page( folia::FoliaElement *root,
   bool didit = false;
   for ( const auto& par_node : paragraphs ){
     folia::KWargs args;
-    args["id"] = root->id() + ".p" + TiCC::toString(++i);
+    args["_id"] = root->id() + ".p" + TiCC::toString(++i);
     folia::Paragraph *paragraph = new folia::Paragraph( args );
     if ( process_par( paragraph, par_node ) ){
       root->append( paragraph );
@@ -237,18 +237,18 @@ bool convert_abbyxml( const string& fileName,
   }
   string orgFile = TiCC::basename( fileName );
   string docid = prefix + orgFile;
-  folia::Document doc( "id='" + docid + "'" );
+  folia::Document doc( "_id='" + docid + "'" );
   // doc.declare( folia::AnnotationType::STRING, setname,
   // 	       "annotator='folia-abby', datetime='now()'" );
   doc.set_metadata( "abby_file", orgFile );
   folia::KWargs args;
-  args["id"] =  docid + ".text";
+  args["_id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   int i = 0;
   for ( const auto& page : pages ){
     folia::KWargs args;
-    args["id"] = text->id() + ".div" + TiCC::toString(++i);
+    args["_id"] = text->id() + ".div" + TiCC::toString(++i);
     folia::Division *div = new folia::Division( args );
     text->append( div );
     process_page( div, page );

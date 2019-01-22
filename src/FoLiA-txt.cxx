@@ -170,7 +170,7 @@ int main( int argc, char *argv[] ){
     }
     Document *d = 0;
     try {
-      d = new Document( "id='"+ docid + "'" );
+      d = new Document( "_id='"+ docid + "'" );
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -185,7 +185,7 @@ int main( int argc, char *argv[] ){
     d->declare( folia::AnnotationType::STRING, setname,
 		"annotator='FoLiA-txt', datetime='now()'" );
     folia::KWargs args;
-    args["id"] = docid + ".text";
+    args["_id"] = docid + ".text";
     folia::Text *text = new folia::Text( args );
     d->addText( text );
     int parCount = 0;
@@ -211,7 +211,7 @@ int main( int argc, char *argv[] ){
 	if ( par == 0 ){
 	  folia::KWargs args;
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
-	  args["id"] = parId;
+	  args["_id"] = parId;
 	  par = new folia::Paragraph( args, d );
 	  wrdCnt = 0;
 	}
@@ -219,7 +219,7 @@ int main( int argc, char *argv[] ){
 	content = TiCC::trim( content);
 	if ( !content.empty() ){
 	  folia::KWargs args;
-	  args["id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
+	  args["_id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = new folia::String( args, d );
 	  str->settext( content, classname );
 	  parTxt += " " + content;

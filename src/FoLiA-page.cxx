@@ -87,7 +87,7 @@ void appendStr( folia::FoliaElement *par, int& pos,
 		const string& file ){
   if ( !val.isEmpty() ){
     folia::KWargs args;
-    args["id"] = par->id() + "." + id;
+    args["_id"] = par->id() + "." + id;
     folia::String *str = new folia::String( args, par->doc() );
     par->append( str );
     str->setutext( val, pos, classname );
@@ -119,7 +119,7 @@ void process( folia::FoliaElement *out,
       }
     }
     folia::KWargs args;
-    args["id"] = out->id() + "." + refs[i];
+    args["_id"] = out->id() + "." + refs[i];
     folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
@@ -146,7 +146,7 @@ void process( folia::FoliaElement *out,
       }
     }
     folia::KWargs args;
-    args["id"] = out->id() + "." + labels.at(value.first);
+    args["_id"] = out->id() + "." + labels.at(value.first);
     folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     par->settext( parTxt, classname );
     out->append( par );
@@ -328,12 +328,12 @@ bool convert_pagexml( const string& fileName,
   xmlFreeDoc( xdoc );
 
   string docid = prefix + orgFile;
-  folia::Document doc( "id='" + docid + "'" );
+  folia::Document doc( "_id='" + docid + "'" );
   doc.declare( folia::AnnotationType::STRING, setname,
 	       "annotator='folia-page', datetime='now()'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
   folia::KWargs args;
-  args["id"] =  docid + ".text";
+  args["_id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   process( text, specials, specialRefs, TiCC::basename(fileName) );
