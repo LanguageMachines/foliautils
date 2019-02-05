@@ -27,7 +27,6 @@
 #include <cmath>
 #include <string>
 #include <map>
-#include <unordered_map>
 #include <vector>
 #include <exception>
 #include <iostream>
@@ -67,7 +66,7 @@ Mode stringToMode( const string& ms ){
   return UNKNOWN;
 }
 
-void create_agg_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
+void create_agg_list( const map<string,vector<map<UnicodeString, unsigned int>>>& wcv,
 		      const string& filename,
 		      unsigned int clip, int min_ng, int max_ng ){
   for ( int ng=min_ng; ng <= max_ng; ++ng ){
@@ -90,7 +89,7 @@ void create_agg_list( const map<string,vector<unordered_map<string, unsigned int
       srt.push_back( wc0.first );
     }
     os << endl;
-    map<string,map<string,unsigned int>> totals;
+    map<UnicodeString,map<string,unsigned int>> totals;
     for ( const auto& wc0 : wcv ){
       string lang = wc0.first;
       auto cit = wc0.second[ng].begin();
@@ -108,10 +107,10 @@ void create_agg_list( const map<string,vector<unordered_map<string, unsigned int
     unsigned int grand_total = 0;
     for ( const auto& it : totals ){
       os << it.first;
-      if ( it.first.size() < 8 ){
+      if ( it.first.length() < 8 ){
 	os << "\t\t\t";
       }
-      else if ( it.first.size() < 16 ){
+      else if ( it.first.length() < 16 ){
 	os << "\t\t";
       }
       else {
@@ -157,7 +156,7 @@ void create_agg_list( const map<string,vector<unordered_map<string, unsigned int
   }
 }
 
-void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
+void create_wf_list( const map<string,vector<map<UnicodeString, unsigned int>>>& wcv,
 		     const string& filename,
 		     unsigned int clip, int min_ng, int max_ng,
 		     map<string,vector<unsigned int>>& totals_per_n,
@@ -182,7 +181,7 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
 	  exit(EXIT_FAILURE);
 	}
 	ofstream os( ofilename );
-	map<unsigned int, set<string>> wf;
+	map<unsigned int, set<UnicodeString>> wf;
 	auto cit = wc0.second[ng].begin();
 	while( cit != wc0.second[ng].end()  ){
 	  if ( cit->second <= clip ){
@@ -195,7 +194,7 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
 	}
 	unsigned int sum=0;
 	unsigned int types=0;
-	map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
+	map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = wf.rbegin();
 	while ( wit != wf.rend() ){
 	  for ( const auto sit : wit->second ){
 	    sum += wit->first;
@@ -232,7 +231,7 @@ void create_wf_list( const map<string,vector<unordered_map<string, unsigned int>
   }
 }
 
-void create_collected_wf_list( const map<string,vector<unordered_map<string, unsigned int>>>& wcv,
+void create_collected_wf_list( const map<string,vector<map<UnicodeString, unsigned int>>>& wcv,
 			       const string& filename,
 			       unsigned int clip, int min_ng, int max_ng,
 			       map<string,vector<unsigned int>>& totals_per_n,
@@ -250,7 +249,7 @@ void create_collected_wf_list( const map<string,vector<unordered_map<string, uns
     exit(EXIT_FAILURE);
   }
   ofstream os( ofilename );
-  map<unsigned int, set<string>> wf;
+  map<unsigned int, set<UnicodeString>> wf;
   size_t grand_total = 0;
   size_t grand_total_clipped = 0;
   for ( const auto& wc0 : wcv ){
@@ -274,7 +273,7 @@ void create_collected_wf_list( const map<string,vector<unordered_map<string, uns
   }
   unsigned int sum=0;
   unsigned int types=0;
-  map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
+  map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = wf.rbegin();
   while ( wit != wf.rend() ){
     for ( const auto sit : wit->second ){
       sum += wit->first;
@@ -306,7 +305,7 @@ struct rec {
   map<string,unsigned int> pc;
 };
 
-void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
+void create_lf_list( const map<string,vector<map<UnicodeString, unsigned int>>>& lcv,
 		     const string& filename,
 		     unsigned int clip,
 		     int min_ng,
@@ -333,7 +332,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 	  exit(EXIT_FAILURE);
 	}
 	ofstream os( ofilename );
-	map<unsigned int, set<string> > lf;
+	map<unsigned int, set<UnicodeString> > lf;
 	for ( const auto& cit : lc0.second[ng] ){
 	  if ( cit.second <= clip ){
 	    total_n -= cit.second;
@@ -345,7 +344,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
 
 	unsigned int sum=0;
 	unsigned int types=0;
-	map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
+	map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = lf.rbegin();
 	while ( wit != lf.rend() ){
 	  for ( const auto& sit : wit->second ){
 	    sum += wit->first;
@@ -382,7 +381,7 @@ void create_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
   }
 }
 
-void create_collected_lf_list( const map<string,vector<map<string, unsigned int>>>& lcv,
+void create_collected_lf_list( const map<string,vector<map<UnicodeString, unsigned int>>>& lcv,
 			       const string& filename,
 			       unsigned int clip,
 			       int min_ng,
@@ -402,7 +401,7 @@ void create_collected_lf_list( const map<string,vector<map<string, unsigned int>
     exit(EXIT_FAILURE);
   }
   ofstream os( ofilename );
-  map<unsigned int, set<string>> lf;
+  map<unsigned int, set<UnicodeString>> lf;
   size_t grand_total = 0;
   size_t grand_total_clipped = 0;
   for ( const auto& lc0 : lcv ){
@@ -424,7 +423,7 @@ void create_collected_lf_list( const map<string,vector<map<string, unsigned int>
   }
   unsigned int sum=0;
   unsigned int types=0;
-  map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
+  map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = lf.rbegin();
   while ( wit != lf.rend() ){
     for ( const auto& sit : wit->second ){
       sum += wit->first;
@@ -451,7 +450,7 @@ void create_collected_lf_list( const map<string,vector<map<string, unsigned int>
   }
 }
 
-void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
+void create_lpf_list( const map<string,vector<multimap<UnicodeString, rec>>>& lpcv,
 		      const string& filename,
 		      unsigned int clip,
 		      int min_ng,
@@ -478,7 +477,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 	  exit(EXIT_FAILURE);
 	}
 	ofstream os( ofilename );
-	multimap<unsigned int, pair<string,string> > lpf;
+	multimap<unsigned int, pair<UnicodeString,string> > lpf;
 	for ( const auto& cit : lpc0.second[ng] ){
 	  for ( const auto& pit : cit.second.pc ){
 	    if ( pit.second <= clip ){
@@ -492,7 +491,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
 	}
 	unsigned int sum =0;
 	unsigned int types =0;
-	multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+	multimap<unsigned int, pair<UnicodeString,string> >::const_reverse_iterator wit = lpf.rbegin();
 	while ( wit != lpf.rend() ){
 	  sum += wit->first;
 	  os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
@@ -527,7 +526,7 @@ void create_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
   }
 }
 
-void create_collected_lpf_list( const map<string,vector<multimap<string, rec>>>& lpcv,
+void create_collected_lpf_list( const map<string,vector<multimap<UnicodeString, rec>>>& lpcv,
 				const string& filename,
 				unsigned int clip,
 				int min_ng,
@@ -547,7 +546,7 @@ void create_collected_lpf_list( const map<string,vector<multimap<string, rec>>>&
     exit(EXIT_FAILURE);
   }
   ofstream os( ofilename );
-  multimap<unsigned int, pair<string,string> > lpf;
+  multimap<unsigned int, pair<UnicodeString,string> > lpf;
   size_t grand_total = 0;
   size_t grand_total_clipped = 0;
   for ( const auto& lpc0 : lpcv ){
@@ -572,7 +571,7 @@ void create_collected_lpf_list( const map<string,vector<multimap<string, rec>>>&
   }
   unsigned int sum =0;
   unsigned int types =0;
-  multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+  multimap<unsigned int, pair<UnicodeString,string> >::const_reverse_iterator wit = lpf.rbegin();
   while ( wit != lpf.rend() ){
     sum += wit->first;
     os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
@@ -598,20 +597,31 @@ void create_collected_lpf_list( const map<string,vector<multimap<string, rec>>>&
 }
 
 struct wlp_rec {
-  string word;
-  string lemma;
+  UnicodeString word;
+  UnicodeString lemma;
   string pos;
 };
 
 const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
-bool is_emph( const string& data ){
-  return (data.size() < 2) && isalnum(data[0]);
+inline bool isalnum( int8_t charT ){
+  return ( charT == U_LOWERCASE_LETTER ||
+	   charT == U_UPPERCASE_LETTER ||
+	   charT == U_DECIMAL_DIGIT_NUMBER );
 }
 
-void add_emph_inventory( const vector<string>& data,
-			 set<string>& emph ){
+inline bool isalnum( UChar uc ){
+  int8_t charT =  u_charType( uc );
+  return isalnum( charT );
+}
+
+bool is_emph( const UnicodeString& data ){
+  return (data.length() < 2) && isalnum(data[0]);
+}
+
+void add_emph_inventory( const vector<UnicodeString>& data,
+			 set<UnicodeString>& emph ){
   for ( unsigned int i=0; i < data.size(); ++i ){
     bool done = false;
     for ( unsigned int j=i; j < data.size() && !done; ++j ){
@@ -620,14 +630,14 @@ void add_emph_inventory( const vector<string>& data,
 	if ( j + 1 < data.size()
 	     && is_emph( data[j+1] ) ){
 	  // yes a second short word
-	  string mw = data[j] + "_" + data[j+1];
+	  UnicodeString mw = data[j] + "_" + data[j+1];
 	  for ( unsigned int k=j+2; k < data.size(); ++k ){
 	    if ( is_emph(data[k]) ){
 	      mw += "_" + data[k];
 	    }
 	    else {
 	      emph.insert(mw);
-	      mw.clear();
+	      mw.remove();
 	      i = k; // restart i loop there
 	      done = true; // get out of j loop
 	      break; // k loop
@@ -639,12 +649,12 @@ void add_emph_inventory( const vector<string>& data,
   }
 }
 
-void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
+void add_emph_inventory( vector<wlp_rec>& data, set<UnicodeString>& emph ){
   for ( unsigned int i=0; i < data.size(); ++i ){
-    string mw;
+    UnicodeString mw;
     bool first = true;
     for ( unsigned int j=i; j < data.size(); ++j ){
-      if ( data[j].word.size() < 2 ){
+      if ( data[j].word.length() < 2 ){
 	if ( !first ){
 	  mw += "_";
 	}
@@ -653,19 +663,19 @@ void add_emph_inventory( vector<wlp_rec>& data, set<string>& emph ){
       }
       else {
 	emph.insert(mw);
-	mw.clear();
+	mw.remove();
 	first = true;
       }
     }
   }
 }
 
-size_t add_word_inventory( const vector<string>& data,
-			   vector<unordered_map<string,unsigned int>>& wc,
+size_t add_word_inventory( const vector<UnicodeString>& data,
+			   vector<map<UnicodeString,unsigned int>>& wc,
 			   int min_ng,
 			   int max_ng,
 			   vector<unsigned int>& totals_per_n,
-			   const string& sep ){
+			   const UnicodeString& sep ){
 #pragma omp critical
   {
     wc.resize(max_ng+1);
@@ -674,7 +684,7 @@ size_t add_word_inventory( const vector<string>& data,
   size_t count = 0;
   for( int ng=min_ng; ng <= max_ng; ++ng ){
     for ( int i=0; i <= int(data.size()) - ng ; ++i ){
-      string multiw;
+      UnicodeString multiw;
       for ( int j=0; j < ng; ++j ){
 	multiw += data[i+j];
 	if ( j < ng-1 ){
@@ -703,11 +713,11 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 				bool lowercase,
 				const string& default_language,
 				const set<string>& languages,
-				map<string,vector<unordered_map<string,unsigned int>>>& wcv,
-				map<string,vector<map<string,unsigned int>>>& lcv,
-				map<string,vector<multimap<string, rec>>>& lpcv,
-				set<string>& emph,
-				const string& sep,
+				map<string,vector<map<UnicodeString,unsigned int>>>& wcv,
+				map<string,vector<map<UnicodeString,unsigned int>>>& lcv,
+				map<string,vector<multimap<UnicodeString, rec>>>& lpcv,
+				set<UnicodeString>& emph,
+				const UnicodeString& sep,
 				bool detokenize ){
   if ( verbose ){
 #pragma omp critical
@@ -718,6 +728,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
   unsigned int grand_total = 0;
   unsigned int mis_lem = 0;
   unsigned int mis_pos = 0;
+  string sep8 = TiCC::UnicodeToUTF8(sep);
   vector<Sentence *> sents = d->sentences();
   if ( verbose ){
 #pragma omp critical
@@ -762,7 +773,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	if ( lowercase ){
 	  uword.toLower();
 	}
-	rec.word = TiCC::UnicodeToUTF8( uword );
+	rec.word = uword;
       }
       catch(...){
 #pragma omp critical
@@ -772,11 +783,11 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	break;
       }
       try {
-	rec.lemma = w->lemma(frog_mblemtagset);
+	rec.lemma = TiCC::UnicodeFromUTF8(w->lemma(frog_mblemtagset));
       }
       catch(...){
 	try {
-	  rec.lemma = w->lemma();
+	  rec.lemma = TiCC::UnicodeFromUTF8(w->lemma());
 	}
 	catch(...){
 	  rec.lemma = "";
@@ -808,14 +819,14 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	break;
       }
       for ( unsigned int i=0; i <= data.size() - ng ; ++i ){
-	string multiw;
-	string multil;
+	UnicodeString multiw;
+	UnicodeString multil;
 	string multip;
 	bool lem_mis = false;
 	bool pos_mis = false;
 	for ( unsigned int j=0; j < ng; ++j ){
 	  multiw += data[i+j].word;
-	  if ( data[i+j].lemma.empty() ){
+	  if ( data[i+j].lemma.isEmpty() ){
 	    lem_mis = true;
 	  }
 	  else if ( !lem_mis ){
@@ -832,7 +843,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	    if ( !lem_mis )
 	      multil += sep;
 	    if ( !pos_mis )
-	      multip += sep;
+	      multip += sep8;
 	  }
 	}
 	++grand_total;
@@ -856,7 +867,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 	  ++wcv[lang][ng][multiw];
 	}
 
-	if ( !multil.empty() ){
+	if ( !multil.isEmpty() ){
 #pragma omp critical
 	  {
 	    ++lcv[lang][ng][multil];
@@ -866,7 +877,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 #pragma omp critical
 	  {
 	    auto& lpc0 = lpcv[lang][ng];
-	    multimap<string, rec >::iterator it = lpc0.find(multil);
+	    multimap<UnicodeString, rec >::iterator it = lpc0.find(multil);
 	    if ( it == lpc0.end() ){
 	      rec tmp;
 	      tmp.count = 1;
@@ -907,9 +918,9 @@ size_t doc_str_inventory( const Document *d,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
-			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
-			  set<string>& emph,
-			  const string& sep,
+			  map<string,vector<map<UnicodeString,unsigned int>>>& wcv,
+			  set<UnicodeString>& emph,
+			  const UnicodeString& sep,
 			  bool detokenize ){
   if ( verbose ){
 #pragma omp critical
@@ -935,7 +946,7 @@ size_t doc_str_inventory( const Document *d,
       lang = default_language;
     }
   }
-  vector<string> data;
+  vector<UnicodeString> data;
   for ( const auto& s : strings ){
     UnicodeString us;
     try {
@@ -951,8 +962,7 @@ size_t doc_str_inventory( const Document *d,
       }
       break;
     }
-    string w = TiCC::UnicodeToUTF8( us );
-    data.push_back( w );
+    data.push_back( us );
   }
   if ( data.size() != strings.size() ) {
 #pragma omp critical
@@ -974,9 +984,9 @@ size_t par_str_inventory( const Document *d, const string& docName,
 			  bool lowercase,
 			  const string& default_language,
 			  const set<string>& languages,
-			  map<string,vector<unordered_map<string,unsigned int>>>& wcv,
-			  set<string>& emph,
-			  const string& sep,
+			  map<string,vector<map<UnicodeString,unsigned int>>>& wcv,
+			  set<UnicodeString>& emph,
+			  const UnicodeString& sep,
 			  bool detokenize ){
   if ( verbose ){
 #pragma omp critical
@@ -1004,7 +1014,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	lang = default_language;
       }
     }
-    vector<string> data;
+    vector<UnicodeString> data;
     for ( const auto& s : strings ){
       UnicodeString us;
       try {
@@ -1020,8 +1030,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
 	}
 	  break;
       }
-      string w = TiCC::UnicodeToUTF8( us );
-      data.push_back( w );
+      data.push_back( us );
     }
     if ( data.size() != strings.size() ) {
 #pragma omp critical
@@ -1073,9 +1082,9 @@ size_t text_inventory( const Document *d, const string& docName,
 		       const string& default_language,
 		       const set<string>& languages,
 		       const set<string>& tags,
-		       map<string,vector<unordered_map<string,unsigned int>>>& wcv,
-		       set<string>& emph,
-		       const string& sep,
+		       map<string,vector<map<UnicodeString,unsigned int>>>& wcv,
+		       set<UnicodeString>& emph,
+		       const UnicodeString& sep,
 		       bool detokenize ){
   if ( verbose ){
 #pragma omp critical
@@ -1096,18 +1105,16 @@ size_t text_inventory( const Document *d, const string& docName,
 	lang = default_language;
       }
     }
-    string s;
     UnicodeString us;
     try {
       us = node->text(classname,detokenize==false);
       if ( lowercase ){
 	us.toLower();
       }
-      s = TiCC::UnicodeToUTF8( us );
     }
     catch(...){
     }
-    if ( s.empty() ){
+    if ( us.isEmpty() ){
       if ( verbose ){
 #pragma omp critical
 	{
@@ -1116,11 +1123,11 @@ size_t text_inventory( const Document *d, const string& docName,
       }
       continue;
     }
-    vector<string> data = TiCC::split( s );
+    vector<UnicodeString> data = TiCC::split( us );
     if ( verbose ){
 #pragma omp critical
       {
-	cout << "found string: '" << s << "'" << endl;
+	cout << "found string: '" << us << "'" << endl;
 	if ( data.size() <= 1 ){
 	  cout << "with no substrings" << endl;
 	}
@@ -1275,13 +1282,13 @@ int main( int argc, char *argv[] ){
       mode = S_IN_D;
     }
   }
-  string sep = " ";
+  UnicodeString sep = " ";
   if( opts.extract( "separator", value ) ){
-    sep = value;
+    sep = TiCC::UnicodeFromUTF8(value);
   }
   if ( opts.extract( "underscore" ) ){
     if ( sep != " " ){
-      cerr << "--searator and --underscore conflict!" << endl;
+      cerr << "--separator and --underscore conflict!" << endl;
       exit(EXIT_FAILURE);
     }
     sep = "_";
@@ -1408,14 +1415,14 @@ int main( int argc, char *argv[] ){
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-  map<string,vector<unordered_map<string,unsigned int>>> wcv; // word-freq list per language
-  map<string,vector<map<string,unsigned int>>> lcv; // lemma-freq list per language
-  map<string,vector<multimap<string, rec>>> lpcv; // lemma-pos freq list per language
+  map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
+  map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
+  map<string,vector<multimap<UnicodeString, rec>>> lpcv; // lemma-pos freq list per language
   unsigned int wordTotal =0;
   map<string,vector<unsigned int>> wordTotals;  // totals per language
   map<string,vector<unsigned int>> lemmaTotals; // totals per language
   map<string,vector<unsigned int>> posTotals;   // totals per language
-  set<string> emph;
+  set<UnicodeString> emph;
   int doc_counter = toDo;
   unsigned int fail_docs = 0;
 #pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
