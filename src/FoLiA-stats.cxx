@@ -48,6 +48,7 @@
 using namespace	std;
 using namespace	icu;
 using namespace	folia;
+using TiCC::operator<<;
 
 bool verbose = false;
 string classname = "current";
@@ -605,19 +606,41 @@ struct wlp_rec {
 const string frog_cgntagset = "http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn";
 const string frog_mblemtagset = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl";
 
-inline bool isalnum( int8_t charT ){
+inline bool isalnum( UChar uc ){
+  int8_t charT =  u_charType( uc );
   return ( charT == U_LOWERCASE_LETTER ||
 	   charT == U_UPPERCASE_LETTER ||
 	   charT == U_DECIMAL_DIGIT_NUMBER );
 }
 
-inline bool isalnum( UChar uc ){
-  int8_t charT =  u_charType( uc );
-  return isalnum( charT );
+inline bool isalpha( UChar uc ){
+  return u_isalpha( uc );
 }
 
-bool is_emph( const UnicodeString& data ){
-  return (data.length() < 2) && isalnum(data[0]);
+inline bool ispunct( UChar uc ){
+  return u_ispunct( uc );
+}
+
+int is_emph_part( const UnicodeString& data ){
+  int result = 0;
+  if (data.length() < 2 ){
+    if ( isalnum(data[0]) ){
+      result = 1;
+    }
+    //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
+  }
+  else if (data.length() < 3){
+    UnicodeString low = data;
+    low.toLower();
+    if ( low == "ij" ){
+      result = 1;
+    }
+    else if ( isalpha(data[0]) && ispunct(data[1]) ){
+      result = 2;
+    }
+    //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
+  }
+  return result;
 }
 
 void add_emph_inventory( const vector<UnicodeString>& data,
@@ -625,23 +648,34 @@ void add_emph_inventory( const vector<UnicodeString>& data,
   for ( unsigned int i=0; i < data.size(); ++i ){
     bool done = false;
     for ( unsigned int j=i; j < data.size() && !done; ++j ){
-      if ( is_emph( data[j] ) ){
+      if ( is_emph_part( data[j] ) == 1 ){
 	// a candidate?
-	if ( j + 1 < data.size()
-	     && is_emph( data[j+1] ) ){
-	  // yes a second short word
-	  UnicodeString mw = data[j] + "_" + data[j+1];
-	  for ( unsigned int k=j+2; k < data.size(); ++k ){
-	    if ( is_emph(data[k]) ){
-	      mw += "_" + data[k];
-	    }
-	    else {
+	if ( j + 1 < data.size() ){
+	  if ( is_emph_part( data[j+1] ) == 1 ){
+	    // yes a second short word, not punctuated
+	    UnicodeString mw = data[j] + "_" + data[j+1];
+	    for ( unsigned int k=j+2; k < data.size(); ++k ){
+	      if ( is_emph_part(data[k]) == 1 ){
+		mw += "_" + data[k];
+		continue;
+	      }
+	      else if ( is_emph_part(data[k]) == 2 ){
+		// puncted is allowed als last only
+		mw += "_" + data[k];
+	      }
 	      emph.insert(mw);
 	      mw.remove();
-	      i = k; // restart i loop there
+	      i = k; // restart outer i loop there
 	      done = true; // get out of j loop
-	      break; // k loop
+	      break; // and k loop
 	    }
+	  }
+	  else if ( is_emph_part( data[j+1] ) == 2 ){
+	    // punctuated. must be the last
+	    UnicodeString mw = data[j] + "_" + data[j+1];
+	    emph.insert(mw);
+	    ++i; // restart outer i one position further there
+	    done = true; // get out of j loop
 	  }
 	}
       }
