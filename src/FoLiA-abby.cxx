@@ -83,16 +83,81 @@ string setname = "FoLiA-abby-set";
 string classname = "OCR";
 
 string get_line( xmlNode *line ){
-  list<xmlNode*> chars = TiCC::FindNodes( line, "*:charParams" );
-  if ( verbose ){
+  UnicodeString result;
+  list<xmlNode*> variants = TiCC::FindNodes( line, "*:wordRecVariants" );
+  if ( !variants.empty() ){
+    if ( verbose ){
 #pragma omp critical
-    {
-      cout << "\t\t\t\tfound " << chars.size() << " chars" << endl;
+      {
+	cout << "\t\t\tfound " << variants.size() << " wordRecVariants nodes" << endl;
+      }
+    }
+    for ( const auto& var : variants ){
+      list<xmlNode*> recs = TiCC::FindNodes( var, "*:wordRecVariant" );
+      if ( recs.empty() ){
+	// hapens sometimes, just skip..
+      }
+      else {
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "\t\t\t\tfound " << recs.size() << " wordRecVariant nodes" << endl;
+	  }
+	}
+	list<xmlNode*> text = TiCC::FindNodes( recs.front(), "*:variantText" );
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "\t\t\t\tfound " << text.size() << " text nodes" << endl;
+	  }
+	}
+	UnicodeString bla = TiCC::UnicodeFromUTF8(TiCC::XmlContent(text.front()));
+	UnicodeString tmp;
+	for ( int i=0; i < bla.length(); ++i ){
+	  UChar c = bla[i];
+	  switch ( c ){
+	  case ' ':
+	    // fallthrough
+	  case '\t':
+	    // fallthrough
+	  case '\n':
+	    // fallthrough
+	  case '\r':
+	    break;
+	  default:
+	    tmp += c;
+	  }
+	}
+	if ( tmp.endsWith( "¬" ) ){
+	  tmp.remove(tmp.length()-1);
+	}
+	else if ( tmp.endsWith( "-" ) ){
+	  tmp.remove(tmp.length()-1);
+	}
+	else if ( tmp.endsWith( "\n" ) || tmp.endsWith( "\r" ) ){
+	  tmp.remove(tmp.length()-1);
+	  if ( !tmp.endsWith( " " ) ){
+	    tmp += " ";
+	  }
+	}
+	else if ( !tmp.endsWith( " " ) ){
+	  tmp += " ";
+	}
+	result += tmp;
+      }
     }
   }
-  UnicodeString result;
-  for ( const auto& ch : chars ){
-    result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
+  else {
+    list<xmlNode*> chars = TiCC::FindNodes( line, "*:charParams" );
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "\t\t\t\tfound " << chars.size() << " chars" << endl;
+      }
+    }
+    for ( const auto& ch : chars ){
+      result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
+    }
   }
   if ( result.endsWith( "¬" ) ){
     result.remove(result.length()-1);
@@ -100,8 +165,20 @@ string get_line( xmlNode *line ){
   else if ( result.endsWith( "-" ) ){
     result.remove(result.length()-1);
   }
+  else if ( result.endsWith( "\n" ) ){
+    result.remove(result.length()-1);
+    if ( !result.endsWith( " " ) ){
+      result += " ";
+    }
+  }
   else if ( !result.endsWith( " " ) ){
     result += " ";
+  }
+  if ( verbose ){
+#pragma omp critical
+    {
+      cout << "Word text = '" << result << "'" << endl;
+    }
   }
   return TiCC::UnicodeToUTF8(result);
 }
