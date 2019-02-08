@@ -10,3 +10,4 @@ $my_bin/FoLiA-abby --help >> testabby.out 2>&1
 $my_bin/FoLiA-abby -O out data/abby >> testabby.out 2>&1
 
 ./foliadiff.sh out/morse_OCR_perletter.folia.xml morse.ok  >> testabby.out 2>&1
+./foliadiff.sh out/levi010geil01_01_Deel500.folia.xml levi.ok  >> testabby.out 2>&1
