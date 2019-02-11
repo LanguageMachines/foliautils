@@ -112,6 +112,12 @@ string get_line( xmlNode *line ){
 	  }
 	}
 	UnicodeString bla = TiCC::UnicodeFromUTF8(TiCC::XmlContent(text.front()));
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "\t\t\t\t\traw text: '" << bla << "'" << endl;
+	  }
+	}
 	UnicodeString tmp;
 	for ( int i=0; i < bla.length(); ++i ){
 	  UChar c = bla[i];
@@ -126,6 +132,12 @@ string get_line( xmlNode *line ){
 	    break;
 	  default:
 	    tmp += c;
+	  }
+	}
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "\t\t\t\t\tintermediate text: '" << tmp << "'" << endl;
 	  }
 	}
 	if ( tmp.endsWith( "¬" ) ){
@@ -143,6 +155,12 @@ string get_line( xmlNode *line ){
 	else if ( !tmp.endsWith( " " ) ){
 	  tmp += " ";
 	}
+	if ( verbose ){
+#pragma omp critical
+	  {
+	    cout << "\t\t\t\t\tfinal text: '" << tmp << "'" << endl;
+	  }
+	}
 	result += tmp;
       }
     }
@@ -158,21 +176,21 @@ string get_line( xmlNode *line ){
     for ( const auto& ch : chars ){
       result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
     }
-  }
-  if ( result.endsWith( "¬" ) ){
-    result.remove(result.length()-1);
-  }
-  else if ( result.endsWith( "-" ) ){
-    result.remove(result.length()-1);
-  }
-  else if ( result.endsWith( "\n" ) ){
-    result.remove(result.length()-1);
-    if ( !result.endsWith( " " ) ){
+    if ( result.endsWith( "¬" ) ){
+      result.remove(result.length()-1);
+    }
+    else if ( result.endsWith( "-" ) ){
+      result.remove(result.length()-1);
+    }
+    else if ( result.endsWith( "\n" ) ){
+      result.remove(result.length()-1);
+      if ( !result.endsWith( " " ) ){
+	result += " ";
+      }
+    }
+    else if ( !result.endsWith( " " ) ){
       result += " ";
     }
-  }
-  else if ( !result.endsWith( " " ) ){
-    result += " ";
   }
   if ( verbose ){
 #pragma omp critical
