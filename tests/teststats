@@ -108,3 +108,6 @@ diff stats16.wordfreqlist.1to4.tsv stats16.word.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --max-ngram=4 --separator='_' --collect --tags=div --hemp=hemp1.txt -o stats17 -p data/hemp/hemptest.xml > out23 2>&1
 diff hemp1.txt hemp1.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --tags=p --skiptags=note -o stats18 data/p_note_test.xml > out24 2>&1
+diff stats18.wordfreqlist.tsv stats-p_note.ok >> teststats.out 2>&1
