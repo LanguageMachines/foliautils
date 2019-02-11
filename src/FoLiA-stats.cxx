@@ -39,6 +39,7 @@
 #include "ticcutils/PrettyPrint.h"
 #include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
+#include "libfolia/folia_properties.h" // for default_ignore set
 
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -1080,10 +1081,12 @@ size_t par_str_inventory( const Document *d, const string& docName,
   return grand_total;
 }
 
-vector<FoliaElement*> gather_nodes( const Document *doc, const string& docName,
-				    const set<string>& tags ){
-  vector<FoliaElement*> result;
-  for ( const auto& tag : tags ){
+vector<FoliaElement*> gather_nodes( const Document *doc,
+				    const string& docName,
+				    const set<string>& tags_v,
+				    const set<string>& skiptags_v ){
+  set<ElementType> tags;
+  for ( const auto& tag : tags_v ){
     ElementType et;
     try {
       et = stringToET( tag );
@@ -1096,7 +1099,28 @@ vector<FoliaElement*> gather_nodes( const Document *doc, const string& docName,
 	exit(EXIT_FAILURE);
       }
     }
-    vector<FoliaElement*> v = doc->doc()->select( et, true );
+    tags.insert( et );
+  }
+  set<ElementType> skiptags = default_ignore;
+  for ( const auto& tag : skiptags_v ){
+    ElementType et;
+    try {
+      et = stringToET( tag );
+    }
+    catch ( ... ){
+#pragma omp critical (logging)
+      {
+	cerr << "the string '" << tag
+	     << "' doesn't represent a known FoLiA tag" << endl;
+	exit(EXIT_FAILURE);
+      }
+    }
+    skiptags.insert( et );
+  }
+  cout << "so ignore: " << skiptags << endl;
+  vector<FoliaElement*> result;
+  for ( const auto& tag : tags ){
+    vector<FoliaElement*> v = doc->doc()->select( tag, skiptags, true );
 #pragma omp critical (logging)
     {
       cout << "document '" << docName << "' has " << v.size() << " "
@@ -1107,7 +1131,6 @@ vector<FoliaElement*> gather_nodes( const Document *doc, const string& docName,
   return result;
 }
 
-
 size_t text_inventory( const Document *d, const string& docName,
 		       int min_ng,
 		       int max_ng,
@@ -1116,6 +1139,7 @@ size_t text_inventory( const Document *d, const string& docName,
 		       const string& default_language,
 		       const set<string>& languages,
 		       const set<string>& tags,
+		       const set<string>& skiptags,
 		       map<string,vector<map<UnicodeString,unsigned int>>>& wcv,
 		       set<UnicodeString>& emph,
 		       const UnicodeString& sep,
@@ -1127,7 +1151,7 @@ size_t text_inventory( const Document *d, const string& docName,
     }
   }
   size_t grand_total = 0;
-  vector<FoliaElement *> nodes = gather_nodes( d, docName, tags );
+  vector<FoliaElement *> nodes = gather_nodes( d, docName, tags, skiptags );
   for ( const auto& node : nodes ){
     string lang = node->language(); // get the language the node is in
     if ( default_language != "all" ){
@@ -1204,6 +1228,7 @@ void usage( const string& name ){
   cerr << "\t\t 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence." << endl;
   cerr << "\t\t 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s" << endl;
   cerr << "\t--tags='tags' collect text from all nodes in the list 'tags'" << endl;
+  cerr << "\t--skiptags='tags' skip all nodes in the list 'tags'" << endl;
   cerr << "\t-s\t equal to --tags=p" << endl;
   cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
@@ -1228,7 +1253,7 @@ int main( int argc, char *argv[] ){
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"
 			 "mode:,verbose,collect,aggregate,tags:,threads:,"
-			 "detokenize" );
+			 "skiptags:,detokenize" );
   try {
     opts.init(argc,argv);
   }
@@ -1268,12 +1293,20 @@ int main( int argc, char *argv[] ){
   }
   bool detokenize = opts.extract( "detokenize" );
   set<string> tags;
+  set<string> skiptags;
   string tagsstring;
   opts.extract( "tags", tagsstring );
   if ( !tagsstring.empty() ){
     vector<string> parts = TiCC::split_at( tagsstring, "," );
     for( const auto& t : parts ){
       tags.insert( t );
+    }
+  }
+  opts.extract( "skiptags", tagsstring );
+  if ( !tagsstring.empty() ){
+    vector<string> parts = TiCC::split_at( tagsstring, "," );
+    for( const auto& t : parts ){
+      skiptags.insert( t );
     }
   }
   string modes;
@@ -1499,7 +1532,8 @@ int main( int argc, char *argv[] ){
       if ( !tags.empty() ){
 	word_count = text_inventory( d, docName, min_NG, max_NG,
 				     wordTotals, lowercase,
-				     default_language, languages, tags,
+				     default_language, languages,
+				     tags, skiptags,
 				     wcv, emph, sep, detokenize );
       }
       else {
