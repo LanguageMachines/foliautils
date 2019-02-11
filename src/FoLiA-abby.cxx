@@ -146,12 +146,6 @@ string get_line( xmlNode *line ){
 	else if ( tmp.endsWith( "-" ) ){
 	  tmp.remove(tmp.length()-1);
 	}
-	else if ( tmp.endsWith( "\n" ) || tmp.endsWith( "\r" ) ){
-	  tmp.remove(tmp.length()-1);
-	  if ( !tmp.endsWith( " " ) ){
-	    tmp += " ";
-	  }
-	}
 	else if ( !tmp.endsWith( " " ) ){
 	  tmp += " ";
 	}
