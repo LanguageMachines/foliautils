@@ -47,6 +47,7 @@
 using namespace	std;
 using namespace	icu;
 using namespace	folia;
+using TiCC::operator<<;
 
 const char SEPCHAR = '_';
 const string SEPARATOR = "_";
@@ -553,6 +554,138 @@ string correct_trigrams( const vector<string>& trigrams,
   }
 }
 
+int is_emph_part( const string& data ){
+  int result = 0;
+  if (data.length() < 2 ){
+    if ( isalnum(data[0]) ){
+      result = 1;
+    }
+    //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
+  }
+  else if (data.length() < 3){
+    string low = TiCC::lowercase(data);
+    if ( low == "ij" ){
+      result = 1;
+    }
+    else if ( isalpha(data[0]) && ispunct(data[1]) ){
+      result = 2;
+    }
+    //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
+  }
+  return result;
+}
+
+//#define HEMP_DEBUG
+
+
+vector<string> replace_hemps( vector<string>& unigrams,
+			      const unordered_map<string,string>puncts ){
+  vector<string> result;
+  for ( unsigned int i=0; i < unigrams.size(); ++i ){
+#ifdef HEMP_DEBUG
+    cerr << "i=" << i << endl;
+#endif
+    bool done = false;
+    for ( unsigned int j=i; j < unigrams.size() && !done; ++j ){
+#ifdef HEMP_DEBUG
+      cerr << "\tj=" << j << " uni=" << unigrams[j] << endl;
+#endif
+      if ( is_emph_part( unigrams[j] ) == 1 ){
+#ifdef HEMP_DEBUG
+	cerr << unigrams[j] << " IS an emph candidate" << endl;
+#endif
+	// a candidate?
+	if ( j + 1 < unigrams.size() ){
+	  if ( is_emph_part( unigrams[j+1] ) == 1 ){
+	    // yes a second short word, not punctuated
+#ifdef HEMP_DEBUG
+	    cerr << unigrams[j+1] << " IS an emph candidate" << endl;
+#endif
+	    string mw = unigrams[j] + "_" + unigrams[j+1];
+	    for ( unsigned int k=j+2; k < unigrams.size(); ++k ){
+#ifdef HEMP_DEBUG
+	      cerr << "\t\tk=" << k << " uni=" << unigrams[k]
+		   << " current hemp=" << mw << endl;
+#endif
+	      int emph_result = is_emph_part(unigrams[k]);
+	      if ( emph_result == 1 ){
+		mw += "_" + unigrams[k];
+		continue;
+	      }
+	      else if ( emph_result == 2 ){
+		// puncted is allowed als last only
+		mw += "_" + unigrams[k];
+	      }
+#ifdef HEMP_DEBUG
+	      cerr << "LOOKUP: current hemp=" << mw << endl;
+#endif
+	      const auto& it = puncts.find( mw );
+	      if ( it != puncts.end() ){
+#ifdef HEMP_DEBUG
+		cerr << "FOUND: " << it->second << endl;
+#endif
+		result.push_back( it->second );
+		if ( emph_result == 0 ){
+		  i = k-1; // restart outer i loop there
+		}
+		else {
+		  i = k; // restart outer i loop there
+		}
+#ifdef HEMP_DEBUG
+		cerr << "set i=" << k << endl;
+#endif
+	      }
+	      else {
+		for ( unsigned int l=j; l < k+1; ++l ){
+		  result.push_back( unigrams[l] );
+		}
+		i = k; // restart outer i loop there
+	      }
+	      mw.clear();
+	      done = true; // get out of j loop
+	      break; // and k loop
+	    }
+	  }
+	  else if ( is_emph_part( unigrams[j+1] ) == 2 ){
+#ifdef HEMP_DEBUG
+	    cerr << unigrams[j+1] << " IS an PUNCTUATED emph candidate" << endl;
+#endif
+	    // second parts is punctuated. must be the last
+	    string mw = unigrams[j] + "_" + unigrams[j+1];
+	    const auto& it = puncts.find( mw );
+#ifdef HEMP_DEBUG
+	    cerr << "LOOKUP: current hemp=" << mw << endl;
+#endif
+	    if ( it != puncts.end() ){
+#ifdef HEMP_DEBUG
+	      cerr << "FOUND: " << it->second << endl;
+#endif
+	      result.push_back( it->second );
+	      ++i; // restart outer i loop there
+	    }
+	    else {
+	      result.push_back( unigrams[j] );
+	      result.push_back( unigrams[j+1] );
+	    }
+	    ++i; // restart outer i one position further there
+	    done = true; // get out of j loop
+	  }
+	}
+	else {
+	  result.push_back( unigrams[j] );
+	  result.push_back( unigrams[j+1] );
+	  ++i;
+	}
+      }
+      else {
+	result.push_back( unigrams[j] );
+	++i;
+      }
+    }
+  }
+  return result;
+}
+
 void correctNgrams( Paragraph* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
 		    const unordered_set<string>& unknowns,
@@ -585,6 +718,15 @@ void correctNgrams( Paragraph* par,
     }
     filter( content, SEPCHAR ); // HACK
     vector<string> unigrams = TiCC::split( content );
+#ifdef TEST_HEMP
+    unigrams = {"Als","N","A","P","O","L","E","O","N","gelijk",
+		"aan","N","A","P","O","L","E","O","N","EX",
+		"voor","N","A","P","O","L","E","O","toch?",
+		"tegen","P","Q.","zeker"};
+#endif
+    //    cerr << "old_uni: " << unigrams << endl;
+    unigrams = replace_hemps( unigrams, puncts );
+    //    cerr << "new_uni: " << unigrams << endl;
     vector<string> bigrams;
     vector<string> trigrams;
     counts["TOKENS"] += unigrams.size();
@@ -969,6 +1111,11 @@ int main( int argc, const char *argv[] ){
   unordered_map<string,vector<word_conf> > variants;
   unordered_set<string> unknowns;
   unordered_map<string,string> puncts;
+#ifdef TEST_HEMP
+  puncts["N_A_P_O_L_E_O_N"] = "napoleon";
+  puncts["N_A_P_O_L_E_O_N."] = "napoleon";
+  puncts["P_Q."] = "PQRST";
+#endif
 
 #pragma omp parallel sections
   {
