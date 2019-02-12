@@ -637,6 +637,9 @@ vector<string> replace_hemps( vector<string>& unigrams,
 	      }
 	      else {
 		for ( unsigned int l=j; l < k+1; ++l ){
+#ifdef HEMP_DEBUG
+		  cerr << "k-loop not found, add: " << unigrams[l] << endl;
+#endif
 		  result.push_back( unigrams[l] );
 		}
 		i = k; // restart outer i loop there
@@ -661,9 +664,12 @@ vector<string> replace_hemps( vector<string>& unigrams,
 	      cerr << "FOUND: " << it->second << endl;
 #endif
 	      result.push_back( it->second );
-	      ++i; // restart outer i loop there
 	    }
 	    else {
+#ifdef HEMP_DEBUG
+	      cerr << "bigram not found, add: " << unigrams[j]
+		   << " and " << unigrams[j+1] << endl;
+#endif
 	      result.push_back( unigrams[j] );
 	      result.push_back( unigrams[j+1] );
 	    }
@@ -672,12 +678,16 @@ vector<string> replace_hemps( vector<string>& unigrams,
 	  }
 	}
 	else {
+#ifdef HEMP_DEBUG
+	  cerr << "WTF not found, add: " << unigrams[j] << endl;
+#endif
 	  result.push_back( unigrams[j] );
-	  result.push_back( unigrams[j+1] );
-	  ++i;
 	}
       }
       else {
+#ifdef HEMP_DEBUG
+	cerr << "?? not found, add: " << unigrams[j] << endl;
+#endif
 	result.push_back( unigrams[j] );
 	++i;
       }
@@ -685,6 +695,8 @@ vector<string> replace_hemps( vector<string>& unigrams,
   }
   return result;
 }
+
+//#define TEST_HEMP
 
 void correctNgrams( Paragraph* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
@@ -723,10 +735,13 @@ void correctNgrams( Paragraph* par,
 		"aan","N","A","P","O","L","E","O","N","EX",
 		"voor","N","A","P","O","L","E","O","toch?",
 		"tegen","P","Q.","zeker"};
+    cerr << "old_uni: " << unigrams << endl;
 #endif
-    //    cerr << "old_uni: " << unigrams << endl;
     unigrams = replace_hemps( unigrams, puncts );
-    //    cerr << "new_uni: " << unigrams << endl;
+#ifdef TEST_HEMP
+    cerr << "new_uni: " << unigrams << endl;
+    exit(1);
+#endif
     vector<string> bigrams;
     vector<string> trigrams;
     counts["TOKENS"] += unigrams.size();
