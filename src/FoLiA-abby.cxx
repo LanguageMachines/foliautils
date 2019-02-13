@@ -443,6 +443,7 @@ int main( int argc, char *argv[] ){
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
+    usage();
     exit(EXIT_FAILURE);
   }
   else if ( fileNames.size() > 1 ){
@@ -473,7 +474,7 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    // name is a directory
+    // we know name is a directory
     if ( name.back() == '/' ){
       name.pop_back();
     }
