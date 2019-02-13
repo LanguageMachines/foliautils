@@ -330,8 +330,11 @@ bool convert_abbyxml( const string& fileName,
   // doc.declare( folia::AnnotationType::STRING, setname,
   // 	       "annotator='folia-abby', datetime='now()'" );
   doc.set_metadata( "abby_file", orgFile );
+  string root_id = docid;
+  string::size_type pos = root_id.find( ".xml" );
+  root_id = root_id.erase( pos );
   folia::KWargs args;
-  args["_id"] =  docid + ".text";
+  args["_id"] =  root_id + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   int i = 0;
@@ -347,8 +350,8 @@ bool convert_abbyxml( const string& fileName,
   if ( !outputDir.empty() ){
     outName = outputDir + "/";
   }
-  string::size_type pos = orgFile.find(".xml");
-  orgFile.erase( pos );
+  string::size_type pos2 = orgFile.find( ".xml" );
+  orgFile = orgFile.erase( pos2 );
   outName += orgFile + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
@@ -470,6 +473,11 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
+    // name is a directory
+    if ( name.back() == '/' ){
+      name.pop_back();
+    }
+
     fileNames = TiCC::searchFilesMatch( name, ".xml($|.gz$|.bz2$)", false );
   }
   size_t toDo = fileNames.size();

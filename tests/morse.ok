@@ -1,377 +1,377 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-morse_OCR_perletter.xml" generator="libfolia-v1.14" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-morse_OCR_perletter.xml" generator="libfolia-v1.16" version="1.5.1">
   <metadata type="native">
     <annotations/>
     <meta id="abby_file">morse_OCR_perletter.xml</meta>
   </metadata>
-  <text xml:id="FA-morse_OCR_perletter.xml.text">
-    <div xml:id="FA-morse_OCR_perletter.xml.text.div1">
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p1">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p1.entry">
+  <text xml:id="FA-morse_OCR_perletter.text">
+    <div xml:id="FA-morse_OCR_perletter.text.div1">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p1">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p1.entry">
           <t class="OCR">AMU</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p2">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p2.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p2">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p2.entry">
           <t class="OCR">AND</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p3">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p3.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p3">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p3.entry">
           <t class="OCR">fide of the White Mountains. It falls into the Connecticut juft above the town of Haverhill, in Lower Coos, by a mouth 100 yards wide About two miles from its mouth it receives Wild A moncosuck , 40 yards wide, from Franconia and Lincoln Mountains. Two or three hours rain raises the water in this last mentioned river several feet, and occasions a current so furious as to put in motion stones of a foot in diameter, but its violence soon subsides.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p4">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p4.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p4">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p4.lemma">
           <t class="OCR">Am ota pe,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p4.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p4.entry">
           <t class="OCR">a town near Tumbez, lying near the shore of the South Sea, in the empire of Peru. Being near a river of fine water, the adjacent country is highly improved. Lat. 4.15.43.8.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p5">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p5.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p5">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p5.lemma">
           <t class="OCR">Am palla,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p5.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p5.entry">
           <t class="OCR">by some authors called Ampalia , a city and seaport in GuatimaJa Gulf, in that of Mexico, 350 miles S. E. of the city of Guatimala, and carries on a brisk trade in cochineal, cocoa, hides, indigo, See.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p6">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p6.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p6">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p6.lemma">
           <t class="OCR">Ampares,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p6.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p6.entry">
           <t class="OCR">a jurisdiction under the archbishop of Plata, eastward of that city, in the empire of Peru. It abounds in grain and cattle.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p7">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p7.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p7">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p7.lemma">
           <t class="OCR">Amsterdam, New,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p7.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p7.entry">
           <t class="OCR">was the name originally given by the Dutch to the city of New-York. Also, an Island in the South-Sea, S. 8. W. of the Friendly Islands, and not far distant from them.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p8">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p8.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p8">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p8.lemma">
           <t class="OCR">Amsterdam,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p8.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p8.entry">
           <t class="OCR">a new township in Montgomery county, New-York. It contains 235 inhabitants, who are electors.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p9">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p9.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p9">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p9.lemma">
           <t class="OCR">Am ac</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p9.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p9.entry">
           <t class="OCR">us KE Falls,  in New-Hampihire, are on Merrimack River, sixteen miles below Concord, and seven below Hookset Falls. It con lifts of three pitches, one below the other, so that the water falls about 80 feet in the course of half a mile. The second pitch, which may be seen from the road, on the W. fidej is truly majestic. In the middle of the upper part of the fall is a high rocky island, on the top of which are a number of pits, made exactly round, like barrels or hogsheads, some of which are capable of holding several tons ; formed by the circular motion of small ftoncs, impelled by the force of the descending water. There is a bridge across the falls 556 feet in Itrnetb, and 20 in breadth, consisting of loco tons of timber, and made passable for travellers 57 days after it was be£un. N. lat. 42.59.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p10">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p10.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p10">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p10.entry">
           <t class="OCR">»</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p11">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p11.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p11">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p11.lemma">
           <t class="OCR">Anahuac,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p11.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p11.entry">
           <t class="OCR">the ancient Indian name of New-Spain, or Mexico.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p12">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p12.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p12">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p12.lemma">
           <t class="OCR">Anastatia, St.</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p12.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p12.entry">
           <t class="OCR">a small island close to the coast of Eaft-Florida, situated 8. of Mañanees Inlet, where the river Mañanees forms two islands of the fame name at its mouth. St. Anastatia island is bounded on the N. by St. Augustine’s bar. Here is a quany of fine stone for building.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p13">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p13.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p13">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p13.lemma">
           <t class="OCR">Anclote</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p13.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p13.entry">
           <t class="OCR">Point ,  on the peninsula of California, and coast of the North Pacific Ocean, lies in the 30th deg. of N. lat. and 116th of W. long, southerly from the town of Velicata, and N. E, from the small island of Gaudaloupe.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p14">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p14.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p14">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p14.lemma">
           <t class="OCR">Ancocus</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p14.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p14.entry">
           <t class="OCR">Creek,  in New-Jerley, a water of the Delaware, 6 miles 8. W. from Burlington. It is navigable 16 miles ; and considerable quantities of lumber are exported from it.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p15">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p15.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p15">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p15.lemma">
           <t class="OCR">Anco,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p15.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p15.entry">
           <t class="OCR">a small town of SouthAmerica, 3 leagues from the city of Guamanga.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p16">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p16.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p16">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p16.lemma">
           <t class="OCR">Andaguaylas,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p16.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p16.entry">
           <t class="OCR">a jurisdiction in South-America, in the empire of Peru, subject to the archbishop of Lima ; lying E. by 8. of the city of Guamanga. It abounds in sugar plantations, grain yf most forts, and fruits.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p17">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p17.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p17">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p17.lemma">
           <t class="OCR">Andalusia, New,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p17.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p17.entry">
           <t class="OCR">a province of Terra Firma, on the coaft of .the Atlantic, opposite the Leeward Islands.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p18">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p18.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p18">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p18.lemma">
           <t class="OCR">Andastes,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p18.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p18.entry">
           <t class="OCR">an Indian nation in Canada.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div1.p19">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p19.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div1.p19">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p19.lemma">
           <t class="OCR">Andes.</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div1.p19.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div1.p19.entry">
           <t class="OCR">The principal mountains on this western continent are the Cor dillera de los Andes , or Great Chain of Andes, in South-America. They stretch along the Pacific Ocean from the straits of Magellan to the isthmus of Darien or Panama, upwards of 4000 miles \  thence they run through the extensive kingdom of New-Spain, till they lose themselves in the unexplored countries of the north. In New : Spain, the most considerable part of this chain is called Sierra Madre , particularly in Cinaloa and Tarahumery, provinces iaoo miles distant from the capital. Further N. they have been called, from their bright appearance, the Shining Mountains.  The height of Chimborazo, the most elevated point of this vast chain, is 20,280 feet above the level of the sea ; which is 7102 feet higher than any other mountain in the known world. The Andes commonly form two ridges as they run, the one higher</t>
         </part>
       </p>
     </div>
-    <div xml:id="FA-morse_OCR_perletter.xml.text.div2">
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p1">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p1.entry">
+    <div xml:id="FA-morse_OCR_perletter.text.div2">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p1">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p1.entry">
           <t class="OCR">CON</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p2">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p2.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p2">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p2.entry">
           <t class="OCR">pould the fruit come to maturity. This city has a church and fix very famous monasteries; but the dwelling houses make no great appearance. Here the women go out in the night to the shops, to buy such necessaries as they want for their families, it being contrary to the custom of this country for women of any character, to go abroad in the daytime on such affairs. It is an open town ; and the few batteries it has, are kept ir, very indifferent order.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p3">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p3.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p3">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p3.lemma">
           <t class="OCR">Conch</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p3.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p3.entry">
           <t class="OCR">ucos, a jurisdiction in the empire of Peru, in 8. America, under the archbiihop of Lima ; it begins 40 leagues N. N. E. of the metropolis, and runs along the center of the Cordillera It produces fruits, grain, See. and affords extensive pasture for cattle of all kinds. Several branches of the woollen manufactory are carried on here, which constitute its greatest commerce with the other provinces.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p4">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p4.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p4">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p4.lemma">
           <t class="OCR">Concord,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p4.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p4.entry">
           <t class="OCR">a post town of NewHampihire, very flourishing, and pleasantly situated on the XV. bank of Merrimack river, in Rockingham co. 8 miles above Hookfet falls. The legislature, of late, have commonly held their sessions here ; and from its central situation, and a thriving back country, it will probably become tlie permanent feat of government. Much of the trade of the upper country centers here. A handsome toll bridge across the Merrimack, connects this town with Pembroke. It has 1747 inhabitants, and Was incorporated in 1765. The Indian name was Peneuook.  It was granted by Massachusetts, and called Rumford . The compact part of the town contains about 170 houses, a congregational church, and an academy, which yvas incorporated in 1790. It is 55 miles XV. N. W. of Portsmouth, 58 8. W. os Dartmouth college, and 70 northward from Boston. N. lat. 43. 11.  W. long. 71. 29.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p5">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p5.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p5">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p5.lemma">
           <t class="OCR">Concord,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p5.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p5.entry">
           <t class="OCR">in Essex co. Vermont, lies on Connecticut river, opposite a part of the 15-mile falls.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p6">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p6.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p6">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p6.lemma">
           <t class="OCR">Concord,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p6.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p6.entry">
           <t class="OCR">in Massachusetts, a post town, one of the most considerable towns in Middlesex co. fituated on Concord river, in a healthy and pleasant spot, nearly in the center of the county, and 18 miles N. W. of Boston, ind 17 E. of Lancaster. Its Indian came was Muiquetequid ; and it owes</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p7">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p7.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p7">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p7.entry">
           <t class="OCR">CON</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p8">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p8.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p8">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p8.entry">
           <t class="OCR">its present name to the peaceable manner in which it was obtained from the natives. The first settlers, among whom were the Rev. Messrs» Buckley and Jones, having fettled the purchase, obtained an act of incorporation, Sept. 3, 1635 ;  and this was the most distant settlement from the sea-ihore of NewEngland at that time. -The settlers never had any contest with the Indians 5. and only three persons were ever killed by them within the limits of the town. In 1791, there were in this township 225 dwelling houses, and 1590 inhabitants z of the latter there were 80 persons upwards of 70 years old. For 13 years previous to 1791, the average number of deaths was 17 ; one in four 0/ whom were 70 years old and upwards. The public buildings are, a Congregational church, a spacious stone gaol, the best in New-£ngiand, and a vejy handsome county court-houlb. The town is accommodated with three convenient bridges over the river ; one of which is 208 feet long, and 18 feet wide, supported by 12 piers, built after the manner of Charles river bridge. This town is famous in the history of the revolution, having been the feat of the provincial congress in 1774, and the spot where the first opposition was made to the British troops, on the memorable 19th of April, 1775. The general court have frequently held their sessions here when contagious diseases have prevailed in the capital. N. lat. 42. 25.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p9">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p9.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p9">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p9.lemma">
           <t class="OCR">Concord,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p9.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p9.entry">
           <t class="OCR">a small river of Massachusetts, formed of two branches, which unite near the center of the town of Concprd, whence it takes its course in N. £. and N. direction through Bedford and Billerica, and empties itself into Merrimack R. at Tewksbury. Concord R. is remarkable for the gentleness of its current, which is scarcely perceivable by the eye. At low water mark it is from 100 to 200 feet wide, and from z to ir feet deep. During floods, Concord R. is near a mile in breadth ; and when viewed from the town of Concord, makes a fine appearance.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p10">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p10.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p10">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p10.lemma">
           <t class="OCR">Concord,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p10.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p10.entry">
           <t class="OCR">a township in Delaware co. Pennsylvania.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p11">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p11.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p11">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p11.lemma">
           <t class="OCR">Concord,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p11.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p11.entry">
           <t class="OCR">a settlement in Georgia, on the E. bank of the Missifippi, about a mile from the 8. line of Tennessee, 108 miles N. from the mouth' of Yazoo R.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div2.p12">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div2.p12.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div2.p12">
+        <part xml:id="FA-morse_OCR_perletter.text.div2.p12.entry">
           <t class="OCR">and</t>
         </part>
       </p>
     </div>
-    <div xml:id="FA-morse_OCR_perletter.xml.text.div3">
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p1">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p1.entry">
+    <div xml:id="FA-morse_OCR_perletter.text.div3">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p1">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p1.entry">
           <t class="OCR">SPA</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p2">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p2.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p2">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p2.entry">
           <t class="OCR">SPA</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p3">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p3.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p3">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p3.entry">
           <t class="OCR">been discovered by navigators. 8. Lit. 59 34,■  W. long, a? 45-    .    . „</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p4">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p4.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p4">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p4.lemma">
           <t class="OCR">South wick,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p4.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p4.entry">
           <t class="OCR">a townimp ot Matiachufetts, in die S. W. part of Hampshire co. no miles 8. W. by W. of Boston, and rr 8. W. of Springfield. It was incorporated in 1770, and contains 841 inhabitants.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p5">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p5.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p5">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p5.lemma">
           <t class="OCR">South West</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p5.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p5.entry">
           <t class="OCR">Pointy  in Tennessee, ts formed by the confluence of Clinch with Tennessee river, where a blockhouse is erected.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p6">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p6.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p6">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p6.lemma">
           <t class="OCR">South Washington,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p6.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p6.entry">
           <t class="OCR">a town of N. Carolina, on the N. E. branch of Cape Fear river, which is navigable thus far for boats. It is 23 miles from Cross Roads near Duplin court-house, and 36 front Wilmington.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p7">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p7.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p7">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p7.entry">
           <t class="OCR">SouToux, an Indian village ii&gt; Louisiana, on the west fide of Mtdifippi river, opposite to the Nine Mile Rapids, 4z miles below Wiefpincan river, and r8 above Riviere a la Roche. N. Jau 41 50.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p8">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p8.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p8">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p8.entry">
           <t class="OCR">Sow ami  Pics, a number of large rocks lying off the south-west end ot Catahunk island, one of the Elizabeth Islands, on the coals of Massachusetts.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p9">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p9.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p9">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p9.lemma">
           <t class="OCR">Spain, A Vac.</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p9.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p9.entry">
           <t class="OCR">See Mexico.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p10">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p10.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p10">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p10.lemma">
           <t class="OCR">Spaniards’</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p10.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p10.entry">
           <t class="OCR">Bay,  On the east coast of Cape Breton Island, is round the point of the south entrance into Port Dauphin, to the southward of which is Cape Charbon. Its mouth is narrow, but it is wider within till it branches into two arms, both of which are navigable 3 leagues, and afford secure harbouring. N. lat. 46 2C, W. long. j8 29.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p11">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p11.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p11">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p11.lemma">
           <t class="OCR">Spanish America</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p11.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p11.entry">
           <t class="OCR">contains im* men fe provinces, most of which are very fertile. 1. In Alert h-America,  Louisiana, California, Old Mexico or New Spain, New Mexico, both the Floridas. 2. In the IVest-bJcftes,  the island of Cuba, Porto Rico, Trinidad, Margaretta, Tortuga, See.  3. In South-America, Terra Firma, Peru, Chili, Tucuman, Paraguay, and Patagonia. These exten live countries arc described under their proper heads. All the exports of Spain, molt articles of which no other European country can supply, arc estimated at only 80,000,000 livres, or 3,333,333b steal. The molt important trade of Spain is that which it carries en with its American provinces. The chief imports from these extensive countries consist of gold, silver, pnrious stones, pearls, cotton, cocoa, cod 3  .eal, red-wood, ikins, rice, medicinal herbs</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p12">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p12.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p12">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p12.entry">
           <t class="OCR">and barks, as sassafras, Peruvian bark* &amp;c. Vanilla, Vicunna wool, sugar, and tobacco. In 1784, the total amount of the value of Spanish goods exported ttf America, was 195,000,000 reales de vellón ; foreign commodities, 238,000,000 r. d.- v. The imports from America were valued at 900,000,000 r. d. v. int gold, iilver, and precious stones ; and upwards of 300,000,000 in goods. In the Gazeta, de Madrid, i787,'(Ecb. 20) it Was stated, tliat the exports to America (the Indies) from the following n harbours, Cadiz, Corunna, Malaga. Seville, St. Lucar, Santander, Canarias, Alicante, Barcelona, Tortola, Gipon, St. Sebastian, amounted, in 1785, ter 767,249,787 r.d. V. the duties paiden these exports amounted to 28,543,70* r. d. v. The imports, both in goods and money, from America and the Vf. India islands, amounted in the fame year .to    6^,071^67 r. d. v. and the</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p13">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p13.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p13">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p13.entry">
           <t class="OCR">duties to 65,472,195 r. d. v. The profits of the merchants from the whole mei icati trade was valued at f,ooQ,ooo dollars.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p14">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p14.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p14">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.lemma">
           <t class="OCR">Spanish</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p14.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.entry">
           <t class="OCR">Creek,  is at the head of St* Mary’s river in Florida.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p15">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p15.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p15">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p15.lemma">
           <t class="OCR">Spanish</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p15.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p15.entry">
           <t class="OCR">Main,  that part of the coast of America, which extends from the Mosquito shore,- along the* northern coast of Darien, Carthagena, and Venezuela,-to the Leeward Isles.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p16">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p16.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p16">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p16.lemma">
           <t class="OCR">Spanish</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p16.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p16.entry">
           <t class="OCR">River,  a river and settlement in Cape Breton Island, and the present seat of government.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p17">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p17.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p17">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.lemma">
           <t class="OCR">Spanish town,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p17.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.entry">
           <t class="OCR">ccSt. Jago de la Vega,  in the count v of Middlesex, is die capital of the island of Jamaica. It is situated on the banks of the river Cobre, about 6 miles from the sea, and contains about 5 or 600 houses, and about 5,000 inhabitants, including free people of colour. It is the residence of the governor or commander in chics, who is accommodated with a magnificent palace. Here the legislature fits, and the court of chancery and the supreme judicial courts are held. See Jago de I la Vega.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p18">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p18.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p18">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p18.lemma">
           <t class="OCR">Sparhawk’s</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p18.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p18.entry">
           <t class="OCR">I Point , on the northern shore of Pifcataqua river, abreast of which ships can anchor in 9 fathoms.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p19">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p19.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p19">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p19.lemma">
           <t class="OCR">Sparta,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p19.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p19.entry">
           <t class="OCR">a post-town of New-Jei fey, Sussex co. 1 1 7 miles from Philadelphia.</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p20">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p20.lemma">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p20">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p20.lemma">
           <t class="OCR">Spartanburg H,</t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p20.entry">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p20.entry">
           <t class="OCR">a county ol Pinckney district, formerly in that of NinetySix, S. Carolina, containing 8,800 inhabitants, of who in  7,907 are whites,</t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.xml.text.div3.p21">
-        <part xml:id="FA-morse_OCR_perletter.xml.text.div3.p21.entry">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p21">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.entry">
           <t class="OCR">and</t>
         </part>
       </p>

@@ -13,7 +13,7 @@ Usage: FoLiA-abby [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 3 files 
-	converted data/abby/morse_OCR_perletter.xml
 	converted data/abby/morse_OCR_perletter2.xml.gz
 	converted data/abby/levi010geil01_01_Deel500.xml
+	converted data/abby/morse_OCR_perletter.xml
 done
