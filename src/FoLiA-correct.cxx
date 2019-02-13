@@ -716,7 +716,7 @@ vector<string> replace_hemps( vector<string>& unigrams,
   return result;
 }
 
-#define TEST_HEMP
+//#define TEST_HEMP
 
 void correctNgrams( Paragraph* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
