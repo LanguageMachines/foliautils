@@ -639,6 +639,9 @@ int is_emph_part( const UnicodeString& data ){
     else if ( isalpha(data[0]) && ispunct(data[1]) ){
       result = 2;
     }
+    else if ( isalpha(data[1]) && ispunct(data[0]) ){
+      result = 3;
+    }
     //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
   }
   return result;
@@ -649,7 +652,8 @@ void add_emph_inventory( const vector<UnicodeString>& data,
   for ( unsigned int i=0; i < data.size(); ++i ){
     bool done = false;
     for ( unsigned int j=i; j < data.size() && !done; ++j ){
-      if ( is_emph_part( data[j] ) == 1 ){
+      if ( is_emph_part( data[j] ) == 1
+	   || is_emph_part( data[j] ) == 3 ){
 	// a candidate?
 	if ( j + 1 < data.size() ){
 	  if ( is_emph_part( data[j+1] ) == 1 ){
@@ -678,6 +682,7 @@ void add_emph_inventory( const vector<UnicodeString>& data,
 	    ++i; // restart outer i one position further there
 	    done = true; // get out of j loop
 	  }
+	  // else end the hemp
 	}
       }
     }
