@@ -570,6 +570,9 @@ int is_emph_part( const string& data ){
     else if ( isalpha(data[0]) && ispunct(data[1]) ){
       result = 2;
     }
+    if ( isalpha(data[1]) && ispunct(data[0]) ){
+      result = 3;
+    }
     //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
   }
   return result;
@@ -590,16 +593,19 @@ vector<string> replace_hemps( vector<string>& unigrams,
 #ifdef HEMP_DEBUG
       cerr << "\tj=" << j << " uni=" << unigrams[j] << endl;
 #endif
-      if ( is_emph_part( unigrams[j] ) == 1 ){
+      if ( is_emph_part( unigrams[j] ) == 1
+	   || is_emph_part( unigrams[j] ) == 3 ){
 #ifdef HEMP_DEBUG
-	cerr << unigrams[j] << " IS an emph candidate" << endl;
+	cerr << unigrams[j] << " IS an emph candidate, status="
+	     << is_emph_part( unigrams[j] ) << endl;
 #endif
 	// a candidate?
 	if ( j + 1 < unigrams.size() ){
 	  if ( is_emph_part( unigrams[j+1] ) == 1 ){
 	    // yes a second short word, not punctuated
 #ifdef HEMP_DEBUG
-	    cerr << unigrams[j+1] << " IS an emph candidate" << endl;
+	    cerr << " next: " << unigrams[j+1] << " IS an emph candidate, stat="
+		 << is_emph_part( unigrams[j] ) << endl;
 #endif
 	    string mw = unigrams[j] + "_" + unigrams[j+1];
 	    for ( unsigned int k=j+2; k < unigrams.size(); ++k ){
@@ -616,6 +622,9 @@ vector<string> replace_hemps( vector<string>& unigrams,
 		// puncted is allowed als last only
 		mw += "_" + unigrams[k];
 	      }
+	      if ( emph_result == 3 ){
+		// stop here
+	      }
 #ifdef HEMP_DEBUG
 	      cerr << "LOOKUP: current hemp=" << mw << endl;
 #endif
@@ -625,7 +634,8 @@ vector<string> replace_hemps( vector<string>& unigrams,
 		cerr << "FOUND: " << it->second << endl;
 #endif
 		result.push_back( it->second );
-		if ( emph_result == 0 ){
+		if ( emph_result == 0
+		     || emph_result == 3 ){
 		  i = k-1; // restart outer i loop there
 		}
 		else {
@@ -636,6 +646,10 @@ vector<string> replace_hemps( vector<string>& unigrams,
 #endif
 	      }
 	      else {
+		unsigned int limit = k+1;
+		if ( emph_result == 3 ){
+		  --limit;
+		}
 		for ( unsigned int l=j; l < k+1; ++l ){
 #ifdef HEMP_DEBUG
 		  cerr << "k-loop not found, add: " << unigrams[l] << endl;
@@ -676,6 +690,12 @@ vector<string> replace_hemps( vector<string>& unigrams,
 	    ++i; // restart outer i one position further there
 	    done = true; // get out of j loop
 	  }
+	  else {
+#ifdef HEMP_DEBUG
+	    cerr << "status 3 found, add: " << unigrams[j] << endl;
+#endif
+	    result.push_back( unigrams[j] );
+	  }
 	}
 	else {
 #ifdef HEMP_DEBUG
@@ -696,7 +716,7 @@ vector<string> replace_hemps( vector<string>& unigrams,
   return result;
 }
 
-//#define TEST_HEMP
+#define TEST_HEMP
 
 void correctNgrams( Paragraph* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
@@ -731,8 +751,8 @@ void correctNgrams( Paragraph* par,
     filter( content, SEPCHAR ); // HACK
     vector<string> unigrams = TiCC::split( content );
 #ifdef TEST_HEMP
-    unigrams = {"Als","N","A","P","O","L","E","O","N","gelijk",
-		"aan","N","A","P","O","L","E","O","N","EX",
+    unigrams = {"Als","N","A","P","O","L","E","O","N",")A",
+		"aan","(N","A","P","O","L","E","O","N)","EX",
 		"voor","N","A","P","O","L","E","O","toch?",
 		"tegen","P","Q.","zeker"};
     cerr << "old_uni: " << unigrams << endl;
@@ -1129,6 +1149,7 @@ int main( int argc, const char *argv[] ){
 #ifdef TEST_HEMP
   puncts["N_A_P_O_L_E_O_N"] = "napoleon";
   puncts["N_A_P_O_L_E_O_N."] = "napoleon";
+  puncts["(N_A_P_O_L_E_O_N)"] = "(napoleon)";
   puncts["P_Q."] = "PQRST";
 #endif
 
