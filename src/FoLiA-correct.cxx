@@ -37,6 +37,8 @@
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/PrettyPrint.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/Unicode.h"
+#include "ticcutils/Timer.h"
 #include "libfolia/folia.h"
 
 #include "config.h"
@@ -554,165 +556,205 @@ string correct_trigrams( const vector<string>& trigrams,
   }
 }
 
-int is_emph_part( const string& data ){
-  int result = 0;
+inline bool isalnum( UChar uc ){
+  int8_t charT =  u_charType( uc );
+  return ( charT == U_LOWERCASE_LETTER ||
+	   charT == U_UPPERCASE_LETTER ||
+	   charT == U_DECIMAL_DIGIT_NUMBER );
+}
+
+inline bool isalpha( UChar uc ){
+  return u_isalpha( uc );
+}
+
+inline bool ispunct( UChar uc ){
+  return u_ispunct( uc );
+}
+
+enum hemp_status {NO_HEMP,START_PUNCT_HEMP, NORMAL_HEMP, END_PUNCT_HEMP };
+
+hemp_status is_emph_part( const UnicodeString& data ){
+  hemp_status result = NO_HEMP;
   if (data.length() < 2 ){
     if ( isalnum(data[0]) ){
-      result = 1;
+      result = NORMAL_HEMP;
     }
     //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
   }
   else if (data.length() < 3){
-    string low = TiCC::lowercase(data);
+    UnicodeString low = data;
+    low.toLower();
     if ( low == "ij" ){
-      result = 1;
+      result = NORMAL_HEMP;
     }
     else if ( isalpha(data[0]) && ispunct(data[1]) ){
-      result = 2;
+      result = END_PUNCT_HEMP;
     }
-    if ( isalpha(data[1]) && ispunct(data[0]) ){
-      result = 3;
+    else if ( isalpha(data[1]) && ispunct(data[0]) ){
+      result = START_PUNCT_HEMP;
     }
     //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
   }
   return result;
 }
 
-//#define HEMP_DEBUG
-
-
-vector<string> replace_hemps( vector<string>& unigrams,
-			      const unordered_map<string,string>puncts ){
-  vector<string> result;
-  for ( unsigned int i=0; i < unigrams.size(); ++i ){
-#ifdef HEMP_DEBUG
-    cerr << "i=" << i << endl;
-#endif
-    bool done = false;
-    for ( unsigned int j=i; j < unigrams.size() && !done; ++j ){
-#ifdef HEMP_DEBUG
-      cerr << "\tj=" << j << " uni=" << unigrams[j] << endl;
-#endif
-      if ( is_emph_part( unigrams[j] ) == 1
-	   || is_emph_part( unigrams[j] ) == 3 ){
-#ifdef HEMP_DEBUG
-	cerr << unigrams[j] << " IS an emph candidate, status="
-	     << is_emph_part( unigrams[j] ) << endl;
-#endif
-	// a candidate?
-	if ( j + 1 < unigrams.size() ){
-	  if ( is_emph_part( unigrams[j+1] ) == 1 ){
-	    // yes a second short word, not punctuated
-#ifdef HEMP_DEBUG
-	    cerr << " next: " << unigrams[j+1] << " IS an emph candidate, stat="
-		 << is_emph_part( unigrams[j] ) << endl;
-#endif
-	    string mw = unigrams[j] + "_" + unigrams[j+1];
-	    for ( unsigned int k=j+2; k < unigrams.size(); ++k ){
-#ifdef HEMP_DEBUG
-	      cerr << "\t\tk=" << k << " uni=" << unigrams[k]
-		   << " current hemp=" << mw << endl;
-#endif
-	      int emph_result = is_emph_part(unigrams[k]);
-	      if ( emph_result == 1 ){
-		mw += "_" + unigrams[k];
-		continue;
-	      }
-	      else if ( emph_result == 2 ){
-		// puncted is allowed als last only
-		mw += "_" + unigrams[k];
-	      }
-	      if ( emph_result == 3 ){
-		// stop here
-	      }
-#ifdef HEMP_DEBUG
-	      cerr << "LOOKUP: current hemp=" << mw << endl;
-#endif
-	      const auto& it = puncts.find( mw );
-	      if ( it != puncts.end() ){
-#ifdef HEMP_DEBUG
-		cerr << "FOUND: " << it->second << endl;
-#endif
-		result.push_back( it->second );
-		if ( emph_result == 0
-		     || emph_result == 3 ){
-		  i = k-1; // restart outer i loop there
-		}
-		else {
-		  i = k; // restart outer i loop there
-		}
-#ifdef HEMP_DEBUG
-		cerr << "set i=" << k << endl;
-#endif
-	      }
-	      else {
-		unsigned int limit = k+1;
-		if ( emph_result == 3 ){
-		  --limit;
-		}
-		for ( unsigned int l=j; l < k+1; ++l ){
-#ifdef HEMP_DEBUG
-		  cerr << "k-loop not found, add: " << unigrams[l] << endl;
-#endif
-		  result.push_back( unigrams[l] );
-		}
-		i = k; // restart outer i loop there
-	      }
-	      mw.clear();
-	      done = true; // get out of j loop
-	      break; // and k loop
-	    }
-	  }
-	  else if ( is_emph_part( unigrams[j+1] ) == 2 ){
-#ifdef HEMP_DEBUG
-	    cerr << unigrams[j+1] << " IS an PUNCTUATED emph candidate" << endl;
-#endif
-	    // second parts is punctuated. must be the last
-	    string mw = unigrams[j] + "_" + unigrams[j+1];
-	    const auto& it = puncts.find( mw );
-#ifdef HEMP_DEBUG
-	    cerr << "LOOKUP: current hemp=" << mw << endl;
-#endif
-	    if ( it != puncts.end() ){
-#ifdef HEMP_DEBUG
-	      cerr << "FOUND: " << it->second << endl;
-#endif
-	      result.push_back( it->second );
-	    }
-	    else {
-#ifdef HEMP_DEBUG
-	      cerr << "bigram not found, add: " << unigrams[j]
-		   << " and " << unigrams[j+1] << endl;
-#endif
-	      result.push_back( unigrams[j] );
-	      result.push_back( unigrams[j+1] );
-	    }
-	    ++i; // restart outer i one position further there
-	    done = true; // get out of j loop
-	  }
-	  else {
-#ifdef HEMP_DEBUG
-	    cerr << "status 3 found, add: " << unigrams[j] << endl;
-#endif
-	    result.push_back( unigrams[j] );
-	  }
-	}
-	else {
-#ifdef HEMP_DEBUG
-	  cerr << "WTF not found, add: " << unigrams[j] << endl;
-#endif
-	  result.push_back( unigrams[j] );
-	}
+vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
+  vector<hemp_status> inventory(data.size(),NO_HEMP);
+  hemp_status prev = NO_HEMP;
+  int length = 0;
+  for ( unsigned int i=0; i < data.size(); ++i ){
+    hemp_status status = is_emph_part( data[i] );
+    // cerr << "i=" << i << " INV=" << inventory << " ADD=" << status << endl;
+    if ( status == NO_HEMP ){
+      // no hemp. ends previous, if any
+      if ( length == 1 ){
+	// no loose hemps;
+	inventory[i-1] = NO_HEMP;
+      }
+      length = 0;
+      inventory[i] = status;
+      prev = status;
+    }
+    else if ( status == START_PUNCT_HEMP ){
+      if ( prev == START_PUNCT_HEMP ){
+	// clear previous start
+	inventory[i-1] = NO_HEMP;
+	length = 0;
+      }
+      else if ( length == 1 ){
+	// short before, clear
+	inventory[i-1] = NO_HEMP;
+	length = 0;
+      }
+      // normal hemp part
+      ++length;
+      inventory[i] = status;
+      prev = status;
+    }
+    else if ( status == NORMAL_HEMP ){
+      // end_punct
+      if ( prev == END_PUNCT_HEMP ){
+	status = NO_HEMP;
+      }
+      inventory[i] = status;
+      ++length;
+      prev = status;
+    }
+    else if ( status == END_PUNCT_HEMP ){
+      // an end punct
+      if ( length == 0 ){
+	// no hemp yet, forget this one
+	status = NO_HEMP;
       }
       else {
-#ifdef HEMP_DEBUG
-	cerr << "?? not found, add: " << unigrams[j] << endl;
-#endif
-	result.push_back( unigrams[j] );
-	++i;
+	// ends current hemp
+	length = 0;
+      }
+      inventory[i] = status;
+    }
+    if ( length == 1 && i == data.size()-1 ){
+      // so we seem to end with a singe emph_candidate. reject it
+      inventory[i] = NO_HEMP;
+    }
+  }
+  return inventory;
+}
+
+//#define HEMP_DEBUG
+
+vector<string> replace_hemps( const vector<string>& unigrams,
+			      vector<hemp_status> inventory,
+			      const unordered_map<string,string>puncts ){
+  vector<string> result;
+  string mw;
+  for ( size_t i=0; i < unigrams.size(); ++i ){
+    if ( inventory[i] == NO_HEMP ){
+      if ( !mw.empty() ){
+	mw.pop_back(); // remove last '_'
+	const auto& it = puncts.find( mw );
+	if ( it != puncts.end() ){
+	  result.push_back( it->second );
+	}
+	else {
+	  vector<string> parts = TiCC::split_at( mw, "_" );
+	  for ( const auto& p :parts ){
+	    result.push_back( p );
+	  }
+	}
+	mw = "";
+      }
+      result.push_back(unigrams[i]);
+    }
+    else if ( inventory[i] == END_PUNCT_HEMP ){
+      mw += unigrams[i];
+      const auto& it = puncts.find( mw );
+      if ( it != puncts.end() ){
+	result.push_back( it->second );
+      }
+      else {
+	vector<string> parts = TiCC::split_at( mw, "_" );
+	for ( const auto& p :parts ){
+	  result.push_back( p );
+	}
+      }
+      mw = "";
+    }
+    else if ( inventory[i] == START_PUNCT_HEMP ){
+      if ( !mw.empty() ){
+	mw.pop_back(); //  remove last '_'
+	const auto& it = puncts.find( mw );
+	if ( it != puncts.end() ){
+	  result.push_back( it->second );
+	}
+	else {
+	  vector<string> parts = TiCC::split_at( mw, "_" );
+	  for ( const auto& p :parts ){
+	    result.push_back( p );
+	  }
+	}
+	mw = "";
+      }
+      mw = unigrams[i] + "_";
+    }
+    else if ( inventory[i] == NORMAL_HEMP ){
+      mw += unigrams[i] + "_";
+    }
+  }
+  if ( !mw.empty() ){
+    // leftovers
+    mw.pop_back(); //  remove last '_'
+    const auto& it = puncts.find( mw );
+    if ( it != puncts.end() ){
+      result.push_back( it->second );
+    }
+    else {
+      vector<string> parts = TiCC::split_at( mw, "_" );
+      for ( const auto& p :parts ){
+	result.push_back( p );
       }
     }
   }
+  return result;
+}
+
+TiCC::Timer init_t;
+TiCC::Timer invent_t;
+TiCC::Timer repl_t;
+
+vector<string> replace_hemps( const vector<string>& unigrams,
+			      const unordered_map<string,string>puncts ){
+  init_t.start();
+  vector<UnicodeString> u_uni( unigrams.size() );
+  for ( size_t i=0; i < unigrams.size(); ++i ){
+    u_uni[i] = TiCC::UnicodeFromUTF8(unigrams[i]);
+  }
+  init_t.stop();
+  invent_t.start();
+  vector<hemp_status> inventory = create_emph_inventory( u_uni );
+  invent_t.stop();
+  repl_t.start();
+  vector<string> result = replace_hemps( unigrams, inventory, puncts );
+  repl_t.stop();
   return result;
 }
 
@@ -1305,5 +1347,8 @@ int main( int argc, const char *argv[] ){
       cout << "\t" << it.first << "\t" << it.second << endl;
     }
   }
+  cerr << "init timer " << init_t << endl;
+  cerr << "invent timer " << invent_t << endl;
+  cerr << "replace timer " << repl_t << endl;
   return EXIT_SUCCESS;
 }
