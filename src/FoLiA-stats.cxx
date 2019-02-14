@@ -25,6 +25,7 @@
 */
 
 #include <cmath>
+#include <cassert>
 #include <string>
 #include <map>
 #include <vector>
@@ -622,11 +623,13 @@ inline bool ispunct( UChar uc ){
   return u_ispunct( uc );
 }
 
-int is_emph_part( const UnicodeString& data ){
-  int result = 0;
+enum hemp_status {NO_HEMP,START_PUNCT_HEMP, NORMAL_HEMP, END_PUNCT_HEMP };
+
+hemp_status is_emph_part( const UnicodeString& data ){
+  hemp_status result = NO_HEMP;
   if (data.length() < 2 ){
     if ( isalnum(data[0]) ){
-      result = 1;
+      result = NORMAL_HEMP;
     }
     //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
   }
@@ -634,59 +637,125 @@ int is_emph_part( const UnicodeString& data ){
     UnicodeString low = data;
     low.toLower();
     if ( low == "ij" ){
-      result = 1;
+      result = NORMAL_HEMP;
     }
     else if ( isalpha(data[0]) && ispunct(data[1]) ){
-      result = 2;
+      result = END_PUNCT_HEMP;
     }
     else if ( isalpha(data[1]) && ispunct(data[0]) ){
-      result = 3;
+      result = START_PUNCT_HEMP;
     }
     //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
   }
   return result;
 }
 
-void add_emph_inventory( const vector<UnicodeString>& data,
-			 set<UnicodeString>& emph ){
+vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
+  vector<hemp_status> inventory(data.size(),NO_HEMP);
+  hemp_status prev = NO_HEMP;
+  int length = 0;
   for ( unsigned int i=0; i < data.size(); ++i ){
-    bool done = false;
-    for ( unsigned int j=i; j < data.size() && !done; ++j ){
-      if ( is_emph_part( data[j] ) == 1
-	   || is_emph_part( data[j] ) == 3 ){
-	// a candidate?
-	if ( j + 1 < data.size() ){
-	  if ( is_emph_part( data[j+1] ) == 1 ){
-	    // yes a second short word, not punctuated
-	    UnicodeString mw = data[j] + "_" + data[j+1];
-	    for ( unsigned int k=j+2; k < data.size(); ++k ){
-	      if ( is_emph_part(data[k]) == 1 ){
-		mw += "_" + data[k];
-		continue;
-	      }
-	      else if ( is_emph_part(data[k]) == 2 ){
-		// puncted is allowed als last only
-		mw += "_" + data[k];
-	      }
-	      emph.insert(mw);
-	      mw.remove();
-	      i = k; // restart outer i loop there
-	      done = true; // get out of j loop
-	      break; // and k loop
-	    }
-	  }
-	  else if ( is_emph_part( data[j+1] ) == 2 ){
-	    // punctuated. must be the last
-	    UnicodeString mw = data[j] + "_" + data[j+1];
-	    emph.insert(mw);
-	    ++i; // restart outer i one position further there
-	    done = true; // get out of j loop
-	  }
-	  // else end the hemp
-	}
+    hemp_status status = is_emph_part( data[i] );
+    // cerr << "i=" << i << " INV=" << inventory << " ADD=" << status << endl;
+    if ( status == NO_HEMP ){
+      // no hemp. ends previous, if any
+      if ( length == 1 ){
+	// no loose hemps;
+	inventory[i-1] = NO_HEMP;
       }
+      length = 0;
+      inventory[i] = status;
+      prev = status;
+    }
+    else if ( status == START_PUNCT_HEMP ){
+      if ( prev == START_PUNCT_HEMP ){
+	// clear previous start
+	inventory[i-1] = NO_HEMP;
+	length = 0;
+      }
+      else if ( length == 1 ){
+	// short before, clear
+	inventory[i-1] = NO_HEMP;
+	length = 0;
+      }
+      // normal hemp part
+      ++length;
+      inventory[i] = status;
+      prev = status;
+    }
+    else if ( status == NORMAL_HEMP ){
+      // end_punct
+      if ( prev == END_PUNCT_HEMP ){
+	status = NO_HEMP;
+      }
+      inventory[i] = status;
+      ++length;
+      prev = status;
+    }
+    else if ( status == END_PUNCT_HEMP ){
+      // an end punct
+      if ( length == 0 ){
+	// no hemp yet, forget this one
+	status = NO_HEMP;
+      }
+      else {
+	// ends current hemp
+	length = 0;
+      }
+      inventory[i] = status;
+    }
+    if ( length == 1 && i == data.size()-1 ){
+      // so we seem to end with a singe emph_candidate. reject it
+      inventory[i] = NO_HEMP;
     }
   }
+  return inventory;
+}
+
+set<UnicodeString> extract_hemps( const vector<UnicodeString>& data,
+				  const vector<hemp_status>& inventory ){
+  set<UnicodeString> hemps;
+  UnicodeString mw;
+  for ( size_t i=0; i < data.size(); ++i ){
+    if ( inventory[i] == NO_HEMP ){
+      if ( !mw.isEmpty() ){
+	mw.remove(mw.length()-1); //  remove last '_'
+	hemps.insert( mw );
+	mw = "";
+      }
+    }
+    else if ( inventory[i] == END_PUNCT_HEMP ){
+      mw += data[i];
+      hemps.insert( mw );
+      mw = "";
+    }
+    else if ( inventory[i] == START_PUNCT_HEMP ){
+      if ( !mw.isEmpty() ){
+	mw.remove(mw.length()-1); //  remove last '_'
+	hemps.insert( mw );
+	mw = "";
+      }
+      mw = data[i] + "_";
+    }
+    else if ( inventory[i] == NORMAL_HEMP ){
+      mw += data[i] + "_";
+    }
+  }
+  if ( !mw.isEmpty() ){
+    mw.remove(mw.length()-1); //  remove last '_'
+    hemps.insert( mw );
+  }
+  return hemps;
+}
+
+void add_emph_inventory( const vector<UnicodeString>& data,
+			 set<UnicodeString>& emps ){
+  //  cerr << "DATA=" << data << endl;
+  vector<hemp_status> inventory = create_emph_inventory( data );
+  //  cerr << "got inventory:" << inventory << endl;
+  set<UnicodeString> local_emps = extract_hemps( data, inventory );
+  //  cerr << "EMPS=" << local_emps << endl;
+  emps.insert(local_emps.begin(),local_emps.end());
 }
 
 void add_emph_inventory( vector<wlp_rec>& data, set<UnicodeString>& emph ){
@@ -1122,7 +1191,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc,
     }
     skiptags.insert( et );
   }
-  cout << "so ignore: " << skiptags << endl;
+  //  cout << "so ignore: " << skiptags << endl;
   vector<FoliaElement*> result;
   for ( const auto& tag : tags ){
     vector<FoliaElement*> v = doc->doc()->select( tag, skiptags, true );
@@ -1195,7 +1264,6 @@ size_t text_inventory( const Document *d, const string& docName,
 	  cout << "with no substrings" << endl;
 	}
 	else {
-	  using TiCC::operator<<;
 	  cout << "with " << data.size() << " substrings: " << data << endl;
 	}
       }
@@ -1204,6 +1272,98 @@ size_t text_inventory( const Document *d, const string& docName,
     grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n[lang], sep );
   }
   return grand_total;
+}
+
+void internal_tests(){
+  vector<UnicodeString> test = {"aap","N","A","P","noot" };
+  vector<hemp_status> inventory;
+  set<UnicodeString> emps;
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"N_A_P"}) );
+
+  test = {"aap","N","A","P.","noot" };
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"N_A_P."}) );
+
+  test = {"aap","N","(A","P)","noot" };
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"(A_P)"}) );
+
+  test = {"aap","N.","A","P","noot" };
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"A_P"}) );
+
+  test = {"aap","N","A.","P.","noot" };
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"N_A."}) );
+
+  test = {"aap","(N","(A","P)","noot" };
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"(A_P)"}) );
+
+  test = {"aap","(N","(A",".P","noot" };
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>() );
+
+  test = {"1","2","van","J.","Brouwer"};
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"1_2"}) );
+
+  test = {"1","2","van","J."};
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"1_2"}) );
+
+  test = {"diamanthandel.","8"};
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>() );
+
+  test = {"een","F","1","o","r","e","n","t","ij","n","e","r,","is"};
+  cerr << "test data: " << test << endl;
+  inventory = create_emph_inventory( test );
+  cerr << "inventory: " << inventory << endl;
+  emps = extract_hemps( test, inventory );
+  cerr << "HEMPS: " << emps << endl;
+  assert ( emps == set<UnicodeString>({"F_1_o_r_e_n_t_ij_n_e_r,"}) );
 }
 
 void usage( const string& name ){
@@ -1258,7 +1418,7 @@ int main( int argc, char *argv[] ){
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"
 			 "mode:,verbose,collect,aggregate,tags:,threads:,"
-			 "skiptags:,detokenize" );
+			 "skiptags:,detokenize,INTERNAL_TEST" );
   try {
     opts.init(argc,argv);
   }
@@ -1266,6 +1426,10 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: " << e.what() << endl;
     usage(argv[0]);
     exit( EXIT_FAILURE );
+  }
+  if ( opts.extract("INTERNAL_TEST") ){
+    internal_tests();
+    exit(1);
   }
   string progname = opts.prog_name();
   if ( argc < 2 ){
@@ -1307,6 +1471,7 @@ int main( int argc, char *argv[] ){
       tags.insert( t );
     }
   }
+  tagsstring.clear();
   opts.extract( "skiptags", tagsstring );
   if ( !tagsstring.empty() ){
     vector<string> parts = TiCC::split_at( tagsstring, "," );
