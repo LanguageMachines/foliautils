@@ -664,10 +664,12 @@ vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
 
 vector<string> replace_hemps( const vector<string>& unigrams,
 			      vector<hemp_status> inventory,
-			      const unordered_map<string,string>puncts ){
+			      const unordered_map<string,string>& puncts ){
   vector<string> result;
+  result.reserve(unigrams.size() );
   string mw;
   for ( size_t i=0; i < unigrams.size(); ++i ){
+    //    cerr << "i=" << i << "/" << unigrams.size()-1 << " status = " << inventory[i] << " MW='" << mw << "'" << endl;
     if ( inventory[i] == NO_HEMP ){
       if ( !mw.empty() ){
 	mw.pop_back(); // remove last '_'
@@ -719,6 +721,7 @@ vector<string> replace_hemps( const vector<string>& unigrams,
     else if ( inventory[i] == NORMAL_HEMP ){
       mw += unigrams[i] + "_";
     }
+    //    cerr << "   result=" << result << endl;
   }
   if ( !mw.empty() ){
     // leftovers
@@ -730,31 +733,21 @@ vector<string> replace_hemps( const vector<string>& unigrams,
     else {
       vector<string> parts = TiCC::split_at( mw, "_" );
       for ( const auto& p :parts ){
-	result.push_back( p );
+       	result.push_back( p );
       }
     }
   }
   return result;
 }
 
-TiCC::Timer init_t;
-TiCC::Timer invent_t;
-TiCC::Timer repl_t;
-
 vector<string> replace_hemps( const vector<string>& unigrams,
-			      const unordered_map<string,string>puncts ){
-  init_t.start();
+			      const unordered_map<string,string>& puncts ){
   vector<UnicodeString> u_uni( unigrams.size() );
   for ( size_t i=0; i < unigrams.size(); ++i ){
     u_uni[i] = TiCC::UnicodeFromUTF8(unigrams[i]);
   }
-  init_t.stop();
-  invent_t.start();
   vector<hemp_status> inventory = create_emph_inventory( u_uni );
-  invent_t.stop();
-  repl_t.start();
   vector<string> result = replace_hemps( unigrams, inventory, puncts );
-  repl_t.stop();
   return result;
 }
 
@@ -1347,8 +1340,5 @@ int main( int argc, const char *argv[] ){
       cout << "\t" << it.first << "\t" << it.second << endl;
     }
   }
-  cerr << "init timer " << init_t << endl;
-  cerr << "invent timer " << invent_t << endl;
-  cerr << "replace timer " << repl_t << endl;
   return EXIT_SUCCESS;
 }
