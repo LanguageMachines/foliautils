@@ -99,11 +99,12 @@ PKG_CHECK_MODULES([folia], [folia >= 1.16] )
 CXXFLAGS="$folia_CFLAGS $CXXFLAGS"
 LIBS="$folia_LIBS $LIBS"
 
-AC_CONFIG_FILES([
+AC_OUTPUT([
   Makefile
   m4/Makefile
   src/Makefile
+  include/Makefile
+  include/foliautils/Makefile
   docs/Makefile
   tests/Makefile
 ])
-AC_OUTPUT

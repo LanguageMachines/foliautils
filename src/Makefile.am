@@ -1,3 +1,4 @@
+AM_CPPFLAGS = -I ../include/
 AM_CXXFLAGS = -std=c++11 -W -Wall -pedantic -g
 
 bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
@@ -8,7 +9,7 @@ LDADD = libfoliautils.la
 lib_LTLIBRARIES = libfoliautils.la
 libfoliautils_la_LDFLAGS = -version-info 1:0:0
 
-libfoliautils_la_SOURCES = # nothing yet
+libfoliautils_la_SOURCES = common_code.cxx # nothing yet
 
 FoLiA_stats_SOURCES = FoLiA-stats.cxx
 FoLiA_collect_SOURCES = FoLiA-collect.cxx

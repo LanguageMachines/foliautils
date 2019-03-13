@@ -39,6 +39,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/Unicode.h"
 #include "ticcutils/CommandLine.h"
+#include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -48,36 +49,6 @@ using namespace	std;
 using namespace	icu;
 
 bool verbose = false;
-
-enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
-
-xmlDoc *getXml( const string& file, zipType& type ){
-  type = UNKNOWN;
-  if ( TiCC::match_back( file, ".xml" ) ){
-    type = NORMAL;
-  }
-  else if ( TiCC::match_back( file, ".xml.gz" ) ){
-    type = GZ;
-  }
-  else if ( TiCC::match_back( file, ".xml.bz2" ) ){
-    type = BZ2;
-  }
-  else {
-    return 0;
-  }
-  if ( type == NORMAL ){
-    return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
-  }
-  string buffer;
-  if ( type == GZ ){
-    buffer = TiCC::gzReadFile( file );
-  }
-  else if ( type == BZ2 ){
-    buffer = TiCC::bz2ReadFile( file );
-  }
-  return xmlReadMemory( buffer.c_str(), buffer.length(),
-			0, 0, XML_PARSE_NOBLANKS );
-}
 
 string setname = "FoLiA-abby-set";
 string classname = "OCR";

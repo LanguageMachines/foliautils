@@ -40,6 +40,8 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/Unicode.h"
 #include "ticcutils/zipper.h"
+#include "foliautils/common_code.h"
+
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -54,8 +56,6 @@ string setname = "FoLia-alto-set";
 string classname = "OCR";
 
 const int XML_PARSER_OPTIONS = XML_PARSE_NOBLANKS|XML_PARSE_HUGE;
-
-enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
 class docCache {
 public:
@@ -728,35 +728,6 @@ void clear_files( const unordered_set<string>& files ){
       }
     }
   }
-}
-
-xmlDoc *getXml( const string& file, zipType& type ){
-  type = UNKNOWN;
-  if ( TiCC::match_back( file, ".xml" ) ){
-    type = NORMAL;
-  }
-  else if ( TiCC::match_back( file, ".xml.gz" ) ){
-    type = GZ;
-  }
-  else if ( TiCC::match_back( file, ".xml.bz2" ) ){
-    type = BZ2;
-  }
-  if ( type == UNKNOWN ){
-    cerr << "problem detecting type of file: " << file << endl;
-    return 0;
-  }
-  if ( type == NORMAL ){
-    return xmlReadFile( file.c_str(), 0, XML_PARSER_OPTIONS );
-  }
-  string buffer;
-  if ( type == GZ ){
-    buffer = TiCC::gzReadFile( file );
-  }
-  else if ( type == BZ2 ){
-    buffer = TiCC::bz2ReadFile( file );
-  }
-  return xmlReadMemory( buffer.c_str(), buffer.length(),
-			0, 0, XML_PARSER_OPTIONS );
 }
 
 void solveArtAlto( const string& alto_cache,
