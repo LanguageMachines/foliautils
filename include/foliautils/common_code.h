@@ -43,7 +43,7 @@ bool ispunct( UChar uc );
 
 enum hemp_status {NO_HEMP,START_PUNCT_HEMP, NORMAL_HEMP, END_PUNCT_HEMP };
 
-hemp_status is_emph_part( const UnicodeString& );
-std::vector<hemp_status> create_emph_inventory( const std::vector<UnicodeString>& );
+hemp_status is_emph_part( const icu::UnicodeString& );
+std::vector<hemp_status> create_emph_inventory( const std::vector<icu::UnicodeString>& );
 
 #endif // COMMON_CODE_H
