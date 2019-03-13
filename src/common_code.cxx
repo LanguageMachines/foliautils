@@ -29,8 +29,10 @@
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
+#include "ticcutils/Unicode.h"
 
 using namespace std;
+using namespace icu;
 
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
@@ -59,4 +61,106 @@ xmlDoc *getXml( const string& file, zipType& type ){
   }
   return xmlReadMemory( buffer.c_str(), buffer.length(),
 			0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+}
+
+bool isalnum( UChar uc ){
+  int8_t charT =  u_charType( uc );
+  return ( charT == U_LOWERCASE_LETTER ||
+	   charT == U_UPPERCASE_LETTER ||
+	   charT == U_DECIMAL_DIGIT_NUMBER );
+}
+
+bool isalpha( UChar uc ){
+  return u_isalpha( uc );
+}
+
+bool ispunct( UChar uc ){
+  return u_ispunct( uc );
+}
+
+hemp_status is_emph_part( const UnicodeString& data ){
+  hemp_status result = NO_HEMP;
+  if (data.length() < 2 ){
+    if ( isalnum(data[0]) ){
+      result = NORMAL_HEMP;
+    }
+    //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
+  }
+  else if (data.length() < 3){
+    UnicodeString low = data;
+    low.toLower();
+    if ( low == "ij" ){
+      result = NORMAL_HEMP;
+    }
+    else if ( isalpha(data[0]) && ispunct(data[1]) ){
+      result = END_PUNCT_HEMP;
+    }
+    else if ( isalpha(data[1]) && ispunct(data[0]) ){
+      result = START_PUNCT_HEMP;
+    }
+    //    cerr << "test: '" << data << "' ==> " << (result?"OK":"nee dus") << endl;
+  }
+  return result;
+}
+
+vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
+  vector<hemp_status> inventory(data.size(),NO_HEMP);
+  hemp_status prev = NO_HEMP;
+  int length = 0;
+  for ( unsigned int i=0; i < data.size(); ++i ){
+    hemp_status status = is_emph_part( data[i] );
+    // cerr << "i=" << i << " INV=" << inventory << " ADD=" << status << endl;
+    if ( status == NO_HEMP ){
+      // no hemp. ends previous, if any
+      if ( length == 1 ){
+	// no loose hemps;
+	inventory[i-1] = NO_HEMP;
+      }
+      length = 0;
+      inventory[i] = status;
+      prev = status;
+    }
+    else if ( status == START_PUNCT_HEMP ){
+      if ( prev == START_PUNCT_HEMP ){
+	// clear previous start
+	inventory[i-1] = NO_HEMP;
+	length = 0;
+      }
+      else if ( length == 1 ){
+	// short before, clear
+	inventory[i-1] = NO_HEMP;
+	length = 0;
+      }
+      // normal hemp part
+      ++length;
+      inventory[i] = status;
+      prev = status;
+    }
+    else if ( status == NORMAL_HEMP ){
+      // end_punct
+      if ( prev == END_PUNCT_HEMP ){
+	status = NO_HEMP;
+      }
+      inventory[i] = status;
+      ++length;
+      prev = status;
+    }
+    else if ( status == END_PUNCT_HEMP ){
+      // an end punct
+      if ( length == 0 ){
+	// no hemp yet, forget this one
+	status = NO_HEMP;
+      }
+      else {
+	// ends current hemp
+	length = 0;
+      }
+      inventory[i] = status;
+    }
+    if ( length == 1 && i == data.size()-1 ){
+      // so we seem to end with a singe emph_candidate. reject it
+      inventory[i] = NO_HEMP;
+    }
+  }
+  return inventory;
 }

@@ -26,14 +26,24 @@
 
 */
 
-#ifndef FOLIAUTILS_H
-#define FOLIAUTILS_H
+#ifndef COMMON_CODE_H
+#define COMMON_CODE_H
 
 #include "ticcutils/XMLtools.h"
+#include "ticcutils/Unicode.h"
 #include <string>
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
 xmlDoc *getXml( const std::string& file, zipType& type );
 
-#endif // FOLIAUTILS_H
+bool isalnum( UChar uc );
+bool isalpha( UChar uc );
+bool ispunct( UChar uc );
+
+enum hemp_status {NO_HEMP,START_PUNCT_HEMP, NORMAL_HEMP, END_PUNCT_HEMP };
+
+hemp_status is_emph_part( const UnicodeString& );
+std::vector<hemp_status> create_emph_inventory( const std::vector<UnicodeString>& );
+
+#endif // COMMON_CODE_H
