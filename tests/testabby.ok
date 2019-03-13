@@ -1,4 +1,16 @@
 missing input file(s)
+Usage: FoLiA-abby [options] file/dir
+	-t		 number_of_threads
+	-h or --help	 this messages 
+	-O		 output directory 
+	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-abby-set')
+	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
+	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
+			 use 'none' for an empty prefix. (can be dangerous)
+	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
+				 with 'c'=g create gzip files (.gz)
+	-v		 verbose output 
+	-V or --version	 show version 
 FoLiA-abby [foliautils 0.11]
 Usage: FoLiA-abby [options] file/dir
 	-t		 number_of_threads
@@ -6,7 +18,7 @@ Usage: FoLiA-abby [options] file/dir
 	-O		 output directory 
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-abby-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
+	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 				 with 'c'=g create gzip files (.gz)
