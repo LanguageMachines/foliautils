@@ -1315,7 +1315,7 @@ int main( int argc, char *argv[] ){
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"
 			 "mode:,verbose,collect,aggregate,tags:,threads:,"
-			 "skiptags:,detokenize,INTERNAL_TEST" );
+			 "skiptags:,detokenize,INTERNAL_TEST,inputfiles:" );
   try {
     opts.init(argc,argv);
   }
@@ -1545,154 +1545,165 @@ int main( int argc, char *argv[] ){
     // outputname ends with a /
     outputPrefix += "foliastats";
   }
-
+  map<string,vector<string>> out_in_files;
+  for ( const auto& f : fileNames ){
+    out_in_files[outputPrefix].push_back(f);
+  }
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-  map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
-  map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
-  map<string,vector<multimap<UnicodeString, rec>>> lpcv; // lemma-pos freq list per language
-  unsigned int wordTotal =0;
-  map<string,vector<unsigned int>> wordTotals;  // totals per language
-  map<string,vector<unsigned int>> lemmaTotals; // totals per language
-  map<string,vector<unsigned int>> posTotals;   // totals per language
-  set<UnicodeString> emph;
-  int doc_counter = toDo;
-  unsigned int fail_docs = 0;
-#pragma omp parallel for shared(fileNames,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
-  for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    string docName = fileNames[fn];
-    Document *d = 0;
-    try {
-      d = new Document( "file='"+ docName + "'" );
-    }
-    catch ( exception& e ){
+  for ( const auto& files : out_in_files ){
+    string local_prefix = files.first;
+    cout << "processing into : " << local_prefix << endl;
+    map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
+    map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
+    map<string,vector<multimap<UnicodeString, rec>>> lpcv; // lemma-pos freq list per language
+    unsigned int wordTotal =0;
+    map<string,vector<unsigned int>> wordTotals;  // totals per language
+    map<string,vector<unsigned int>> lemmaTotals; // totals per language
+    map<string,vector<unsigned int>> posTotals;   // totals per language
+    set<UnicodeString> emph;
+    int doc_counter = toDo;
+    unsigned int fail_docs = 0;
+    vector<string> file_names = files.second;
+#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
+    for ( size_t fn=0; fn < file_names.size(); ++fn ){
+      string docName = file_names[fn];
+      Document *d = 0;
+      try {
+	d = new Document( "file='"+ docName + "'" );
+      }
+      catch ( exception& e ){
 #pragma omp critical
-      {
-	cerr << "FoLiA-stats: failed to load document '" << docName << "'" << endl;
-	cerr << "FoLiA-stats: reason: " << e.what() << endl;
-	--doc_counter;
-	++fail_docs;
+	{
+	  cerr << "FoLiA-stats: failed to load document '" << docName << "'" << endl;
+	  cerr << "FoLiA-stats: reason: " << e.what() << endl;
+	  --doc_counter;
+	  ++fail_docs;
+	}
+	continue;
       }
-      continue;
-    }
-    unsigned int word_count = 0;
-    unsigned int lem_count = 0;
-    unsigned int pos_count = 0;
-    switch ( mode ){
-    case L_P:
-      word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG,
-					    wordTotals, lemmaTotals, posTotals,
-					    lem_count, pos_count,
-					    lowercase,
-					    default_language, languages,
-					    wcv, lcv, lpcv,
-					    emph, sep, detokenize );
-      break;
-    case S_IN_D:
-      word_count = doc_str_inventory( d, docName, min_NG, max_NG,
-				      wordTotals, lowercase,
-				      default_language, languages,
-				      wcv, emph, sep, detokenize );
-      break;
-    default:
-      if ( !tags.empty() ){
-	word_count = text_inventory( d, docName, min_NG, max_NG,
-				     wordTotals, lowercase,
-				     default_language, languages,
-				     tags, skiptags,
-				     wcv, emph, sep, detokenize );
-      }
-      else {
-	cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
-	exit( EXIT_FAILURE );
-      }
-    }
-#pragma omp critical
-    {
-      wordTotal += word_count;
-      cout << "Processed :" << docName << " with " << word_count << " "
-	   << "n-grams,"
-	   << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
-	   << " still " << --doc_counter << " files to go." << endl;
-    }
-    delete d;
-  }
-
-  if ( toDo ){
-    cout << "done processsing directory '" << dir_name << "'" << endl;
-  }
-  if ( fail_docs == toDo ){
-    cerr << "no documents were successfully handled!" << endl;
-    return EXIT_FAILURE;
-  }
-  if ( !hempName.empty() ){
-    if (!TiCC::createPath( hempName ) ){
-      cerr << "FoLiA-stats: unable to create historical emphasis file: " << hempName << endl;
-    }
-    ofstream out( hempName );
-    for( auto const& it : emph ){
-      out << it << endl;
-    }
-    cout << "historical emphasis stored in: " << hempName << endl;
-  }
-  cout << "start calculating the results" << endl;
-  cout << "in total " << wordTotal << " " << "n-grams were found.";
-  if ( toDo > 1 ){
-    cout << "in " << toDo << " FoLiA documents.";
-  }
-  cout << endl;
-  if ( aggregate ){
-    string filename;
-    filename = outputPrefix + ".agg.freqlist";
-    create_agg_list( wcv, filename, clip, min_NG, max_NG );
-  }
-  else {
-#pragma omp parallel sections
-    {
-#pragma omp section
-      {
-	string filename;
-	filename = outputPrefix + ".wordfreqlist";
-	if ( collect ){
-	  create_collected_wf_list( wcv, filename, clip, min_NG, max_NG,
-				    wordTotals, dopercentage,
-				    default_language );
+      unsigned int word_count = 0;
+      unsigned int lem_count = 0;
+      unsigned int pos_count = 0;
+      switch ( mode ){
+      case L_P:
+	word_count = doc_sent_word_inventory( d, docName, min_NG, max_NG,
+					      wordTotals, lemmaTotals, posTotals,
+					      lem_count, pos_count,
+					      lowercase,
+					      default_language, languages,
+					      wcv, lcv, lpcv,
+					      emph, sep, detokenize );
+	break;
+      case S_IN_D:
+	word_count = doc_str_inventory( d, docName, min_NG, max_NG,
+					wordTotals, lowercase,
+					default_language, languages,
+					wcv, emph, sep, detokenize );
+	break;
+      default:
+	if ( !tags.empty() ){
+	  word_count = text_inventory( d, docName, min_NG, max_NG,
+				       wordTotals, lowercase,
+				       default_language, languages,
+				       tags, skiptags,
+				       wcv, emph, sep, detokenize );
 	}
 	else {
-	  create_wf_list( wcv, filename, clip, min_NG, max_NG,
-			  wordTotals, dopercentage );
+	  cerr << "FoLiA-stats: not yet implemented mode: " << modes << endl;
+	  exit( EXIT_FAILURE );
 	}
       }
-#pragma omp section
+#pragma omp critical
       {
-	if ( mode == L_P ){
+	wordTotal += word_count;
+	cout << "Processed :" << docName << " with " << word_count << " "
+	     << "n-grams,"
+	     << " " << lem_count << " lemmas, and " << pos_count << " POS tags."
+	     << " still " << --doc_counter << " files to go." << endl;
+      }
+      delete d;
+    }
+
+    if ( toDo ){
+      cout << "done processsing directory '" << dir_name << "'" << endl;
+    }
+    if ( fail_docs == toDo ){
+      cerr << "no documents were successfully handled!" << endl;
+      return EXIT_FAILURE;
+    }
+    if ( !hempName.empty() ){
+      string filename = local_prefix + hempName;
+      if (!TiCC::createPath( filename ) ){
+	cerr << "FoLiA-stats: unable to create historical emphasis file: " << filename << endl;
+      }
+      else {
+	ofstream out( filename );
+	for( auto const& it : emph ){
+	  out << it << endl;
+	}
+	cout << "historical emphasis stored in: " << filename << endl;
+      }
+    }
+    cout << "start calculating the results" << endl;
+    cout << "in total " << wordTotal << " " << "n-grams were found.";
+    if ( toDo > 1 ){
+      cout << "in " << toDo << " FoLiA documents.";
+    }
+    cout << endl;
+    if ( aggregate ){
+      string filename;
+      filename = local_prefix + ".agg.freqlist";
+      create_agg_list( wcv, filename, clip, min_NG, max_NG );
+    }
+    else {
+#pragma omp parallel sections
+      {
+#pragma omp section
+	{
 	  string filename;
-	  filename = outputPrefix + ".lemmafreqlist";
+	  filename = local_prefix + ".wordfreqlist";
 	  if ( collect ){
-	    create_collected_lf_list( lcv, filename, clip, min_NG, max_NG,
-				      lemmaTotals, dopercentage,
+	    create_collected_wf_list( wcv, filename, clip, min_NG, max_NG,
+				      wordTotals, dopercentage,
 				      default_language );
 	  }
 	  else {
-	    create_lf_list( lcv, filename, clip, min_NG, max_NG,
-			    lemmaTotals, dopercentage );
+	    create_wf_list( wcv, filename, clip, min_NG, max_NG,
+			    wordTotals, dopercentage );
 	  }
 	}
-      }
 #pragma omp section
-      {
-	if ( mode == L_P ){
-	  string filename;
-	  filename = outputPrefix + ".lemmaposfreqlist";
-	  if ( collect ){
-	    create_collected_lpf_list( lpcv, filename, clip, min_NG, max_NG,
-				       posTotals, dopercentage,
-				       default_language );
+	{
+	  if ( mode == L_P ){
+	    string filename;
+	    filename = local_prefix + ".lemmafreqlist";
+	    if ( collect ){
+	      create_collected_lf_list( lcv, filename, clip, min_NG, max_NG,
+					lemmaTotals, dopercentage,
+					default_language );
+	    }
+	    else {
+	      create_lf_list( lcv, filename, clip, min_NG, max_NG,
+			      lemmaTotals, dopercentage );
+	    }
 	  }
-	  else {
-	    create_lpf_list( lpcv, filename, clip, min_NG, max_NG,
-			     posTotals, dopercentage );
+	}
+#pragma omp section
+	{
+	  if ( mode == L_P ){
+	    string filename;
+	    filename = local_prefix + ".lemmaposfreqlist";
+	    if ( collect ){
+	      create_collected_lpf_list( lpcv, filename, clip, min_NG, max_NG,
+					 posTotals, dopercentage,
+					 default_language );
+	    }
+	    else {
+	      create_lpf_list( lpcv, filename, clip, min_NG, max_NG,
+			       posTotals, dopercentage );
+	    }
 	  }
 	}
       }
