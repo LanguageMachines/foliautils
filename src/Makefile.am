@@ -4,6 +4,12 @@ bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
 	FoLiA-alto FoLiA-langcat FoLiA-hocr FoLiA-page FoLiA-txt FoLiA-2text \
 	FoLiA-pm FoLiA-clean FoLiA-wordtranslate FoLiA-abby
 
+LDADD = libfoliautils.la
+lib_LTLIBRARIES = libfoliautils.la
+libfoliautils_la_LDFLAGS = -version-info 1:0:0
+
+libfoliautils_la_SOURCES = # nothing yet
+
 FoLiA_stats_SOURCES = FoLiA-stats.cxx
 FoLiA_collect_SOURCES = FoLiA-collect.cxx
 FoLiA_idf_SOURCES = FoLiA-idf.cxx
