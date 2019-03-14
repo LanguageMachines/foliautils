@@ -1171,6 +1171,35 @@ size_t text_inventory( const Document *d, const string& docName,
   return grand_total;
 }
 
+size_t fill( const string& input_files,
+	     map<string,vector<string>>& out_in_files ){
+  size_t count = 0;
+  ifstream is(input_files);
+  if ( !is ){
+    cerr << "unable to read information from: '" << input_files << "'" << endl;
+    exit( EXIT_FAILURE );
+  }
+  string line;
+  while( getline( is, line ) ){
+    if ( line.empty() || line[0] == '#' ){
+      continue;
+    }
+    vector<string> parts = TiCC::split( line );
+    if ( parts.size() != 2 ){
+      cerr << "invalid line in: '" << input_files << "'" << endl;
+      cerr << "'" << line << "' (expected 2 TAB separated values.)" << endl;
+      exit( EXIT_FAILURE );
+    }
+    string label = parts[1];
+    if ( label.back() != '/' ){
+      label += '/';
+    }
+    out_in_files[label].push_back( parts[0] );
+    ++count;
+  }
+  return count;
+}
+
 void internal_tests(){
   vector<UnicodeString> test = {"aap","N","A","P","noot" };
   vector<hemp_status> inventory;
@@ -1427,10 +1456,6 @@ int main( int argc, char *argv[] ){
     }
     sep = "_";
   }
-  if ( !opts.extract( 'o', outputPrefix ) ){
-    cerr << "FoLiA-stats: an output filename prefix is required. (-o option) " << endl;
-    exit(EXIT_FAILURE);
-  }
   if ( opts.extract("clip", value ) ){
     if ( !TiCC::stringTo(value, clip ) ){
   cerr << "FoLiA-stats: illegal value for --clip (" << value << ")" << endl;
@@ -1509,6 +1534,29 @@ int main( int argc, char *argv[] ){
   }
   opts.extract('e', expression );
   opts.extract( "class", classname );
+
+  map<string,vector<string>> out_in_files;
+  string input_files;
+  size_t toDo = 0;
+  if ( opts.extract( "inputfiles", input_files ) ){
+    toDo = fill( input_files, out_in_files );
+  }
+  if ( !opts.extract( 'o', outputPrefix ) && out_in_files.empty() ){
+    cerr << "FoLiA-stats: an output filename prefix is required. (-o option) " << endl;
+    exit(EXIT_FAILURE);
+  }
+  if (!outputPrefix.empty() ){
+    string::size_type pos = outputPrefix.find( "." );
+    if ( pos != string::npos && pos == outputPrefix.length()-1 ){
+      // outputname ends with a .
+      outputPrefix = outputPrefix.substr(0,pos);
+    }
+    pos = outputPrefix.find( "/" );
+    if ( pos != string::npos && pos == outputPrefix.length()-1 ){
+      // outputname ends with a /
+      outputPrefix += "foliastats";
+    }
+  }
   if ( !opts.empty() ){
     cerr << "FoLiA-stats: unsupported options : " << opts.toString() << endl;
     usage(progname);
@@ -1516,44 +1564,41 @@ int main( int argc, char *argv[] ){
   }
 
   vector<string> massOpts = opts.getMassOpts();
-  if ( massOpts.empty() ){
+  if ( massOpts.empty() && out_in_files.empty() ){
     cerr << "FoLiA-stats: no file or dir specified!" << endl;
     exit(EXIT_FAILURE);
   }
-  string dir_name;
-  vector<string> fileNames;
-  if ( massOpts.size() > 1 ){
-    fileNames = massOpts;
+  if ( !massOpts.empty() && !out_in_files.empty() ){
+    cerr << "both '--inputfiles' specified AND some file arguments" << endl;
+    exit(EXIT_FAILURE);
   }
-  else {
-    dir_name = massOpts[0];
-    fileNames = TiCC::searchFilesMatch( dir_name, expression, recursiveDirs );
-  }
-  size_t toDo = fileNames.size();
-  if ( toDo == 0 ){
-    cerr << "FoLiA-stats: no matching files found" << endl;
-    exit(EXIT_SUCCESS);
-  }
-
-  string::size_type pos = outputPrefix.find( "." );
-  if ( pos != string::npos && pos == outputPrefix.length()-1 ){
-    // outputname ends with a .
-    outputPrefix = outputPrefix.substr(0,pos);
-  }
-  pos = outputPrefix.find( "/" );
-  if ( pos != string::npos && pos == outputPrefix.length()-1 ){
-    // outputname ends with a /
-    outputPrefix += "foliastats";
-  }
-  map<string,vector<string>> out_in_files;
-  for ( const auto& f : fileNames ){
-    out_in_files[outputPrefix].push_back(f);
+  if ( out_in_files.empty() ){
+    string dir_name;
+    vector<string> fileNames;
+    if ( massOpts.size() > 1 ){
+      fileNames = massOpts;
+    }
+    else {
+      dir_name = massOpts[0];
+      fileNames = TiCC::searchFilesMatch( dir_name, expression, recursiveDirs );
+    }
+    toDo = fileNames.size();
+    if ( toDo == 0 ){
+      cerr << "FoLiA-stats: no matching files found" << endl;
+      exit(EXIT_SUCCESS);
+    }
+    for ( const auto& f : fileNames ){
+      out_in_files[outputPrefix].push_back(f);
+    }
   }
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
   for ( const auto& files : out_in_files ){
     string local_prefix = files.first;
+    if ( local_prefix.back() != '/' ){
+      local_prefix != ".";
+    }
     cout << "processing into : " << local_prefix << endl;
     map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
     map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
@@ -1627,7 +1672,7 @@ int main( int argc, char *argv[] ){
     }
 
     if ( toDo ){
-      cout << "done processsing directory '" << dir_name << "'" << endl;
+      cout << "done processsing into directory '" << local_prefix << "'" << endl;
     }
     if ( fail_docs == toDo ){
       cerr << "no documents were successfully handled!" << endl;
@@ -1654,7 +1699,7 @@ int main( int argc, char *argv[] ){
     cout << endl;
     if ( aggregate ){
       string filename;
-      filename = local_prefix + ".agg.freqlist";
+      filename = local_prefix + "agg.freqlist";
       create_agg_list( wcv, filename, clip, min_NG, max_NG );
     }
     else {
@@ -1663,7 +1708,7 @@ int main( int argc, char *argv[] ){
 #pragma omp section
 	{
 	  string filename;
-	  filename = local_prefix + ".wordfreqlist";
+	  filename = local_prefix + "wordfreqlist";
 	  if ( collect ){
 	    create_collected_wf_list( wcv, filename, clip, min_NG, max_NG,
 				      wordTotals, dopercentage,
@@ -1678,7 +1723,7 @@ int main( int argc, char *argv[] ){
 	{
 	  if ( mode == L_P ){
 	    string filename;
-	    filename = local_prefix + ".lemmafreqlist";
+	    filename = local_prefix + "lemmafreqlist";
 	    if ( collect ){
 	      create_collected_lf_list( lcv, filename, clip, min_NG, max_NG,
 					lemmaTotals, dopercentage,
@@ -1694,7 +1739,7 @@ int main( int argc, char *argv[] ){
 	{
 	  if ( mode == L_P ){
 	    string filename;
-	    filename = local_prefix + ".lemmaposfreqlist";
+	    filename = local_prefix + "lemmaposfreqlist";
 	    if ( collect ){
 	      create_collected_lpf_list( lpcv, filename, clip, min_NG, max_NG,
 					 posTotals, dopercentage,
