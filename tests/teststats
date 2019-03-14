@@ -113,4 +113,4 @@ $my_bin/FoLiA-stats --tags=p --skiptags=note -o stats18 data/p_note_test.xml > o
 diff stats18.wordfreqlist.tsv stats-p_note.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats -s --class=OCR --lang="none" --inputfiles=dpo.lst -e dpo > out25 2>&1
-diff DPO/foliastats.wordfreqlist.tsv stats-1.ok >> teststats.out 2>&1
+diff DPO2/wordfreqlist.tsv dpo.ok >> teststats.out 2>&1

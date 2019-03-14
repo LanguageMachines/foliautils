@@ -96,19 +96,19 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 ---
 > démoli,		1	0	0	1	0
 start processing of 2 files 
-processing into : stats8
+processing using prefix: stats8.
 Processed :data/frog.xml with 11 n-grams, 11 lemmas, and 11 POS tags. still 1 files to go.
 Processed :data/frog2.xml with 11 n-grams, 11 lemmas, and 11 POS tags. still 0 files to go.
-done processsing directory ''
+done processsing with prefix 'stats8.'
 start calculating the results
 in total 22 n-grams were found.in 2 FoLiA documents.
 created WordFreq list 'stats8.wordfreqlist.tsv' for 1-grams. Stored 22 tokens and 8 types, TTR= 0.363636, the angle is 19.9831 degrees
 created LemmaFreq list 'stats8.lemmafreqlist.tsv' for 1-gram lemmas. Stored 22 tokens and 7 types. TTR= 0.318182, the angle is 17.6501 degrees
 created LemmaPosFreq list 'stats8.lemmaposfreqlist.tsv' for 1-gram Lemma-Pos pairs. Stored 22 tokens and 7 types. TTR= 0.318182, the angle is 17.6501 degrees
 start processing of 1 files 
-processing into : stats12
+processing using prefix: stats12.
 Processed :data/sonar.xml with 998 n-grams, 998 lemmas, and 998 POS tags. still 0 files to go.
-done processsing directory 'data/sonar.xml'
+done processsing with prefix 'stats12.'
 start calculating the results
 in total 998 n-grams were found.
 created WordFreq list 'stats12.wordfreqlist.tsv' for 1-grams. Stored 274 tokens and 153 types, TTR= 0.558394, the angle is 29.1787 degrees
