@@ -1545,18 +1545,13 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: an output filename prefix is required. (-o option) " << endl;
     exit(EXIT_FAILURE);
   }
-  if (!outputPrefix.empty() ){
-    string::size_type pos = outputPrefix.find( "." );
-    if ( pos != string::npos && pos == outputPrefix.length()-1 ){
-      // outputname ends with a .
-      outputPrefix = outputPrefix.substr(0,pos);
-    }
-    pos = outputPrefix.find( "/" );
-    if ( pos != string::npos && pos == outputPrefix.length()-1 ){
-      // outputname ends with a /
-      outputPrefix += "foliastats";
-    }
-  }
+  // if (!outputPrefix.empty() ){
+  //   pos = outputPrefix.find( "/" );
+  //   if ( pos != string::npos && pos == outputPrefix.length()-1 ){
+  //     // outputname ends with a /
+  //     outputPrefix += "foliastats";
+  //   }
+  // }
   if ( !opts.empty() ){
     cerr << "FoLiA-stats: unsupported options : " << opts.toString() << endl;
     usage(progname);
@@ -1597,9 +1592,12 @@ int main( int argc, char *argv[] ){
   for ( const auto& files : out_in_files ){
     string local_prefix = files.first;
     if ( local_prefix.back() != '/' ){
-      local_prefix != ".";
+      local_prefix += ".";
+      cout << "processing using prefix: " << local_prefix << endl;
     }
-    cout << "processing into : " << local_prefix << endl;
+    else {
+      cout << "processing into : " << local_prefix << endl;
+    }
     map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
     map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
     map<string,vector<multimap<UnicodeString, rec>>> lpcv; // lemma-pos freq list per language
@@ -1672,7 +1670,14 @@ int main( int argc, char *argv[] ){
     }
 
     if ( toDo ){
-      cout << "done processsing into directory '" << local_prefix << "'" << endl;
+      if ( local_prefix.back() == '/' ){
+	cout << "done processsing into directory '"
+	     << local_prefix << "'" << endl;
+      }
+      else {
+	cout << "done processsing with prefix '"
+	     << local_prefix << "'" << endl;
+      }
     }
     if ( fail_docs == toDo ){
       cerr << "no documents were successfully handled!" << endl;
