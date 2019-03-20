@@ -1592,22 +1592,24 @@ int main( int argc, char *argv[] ){
     }
   }
 
-#ifdef HAVE_OPENMP
-  int numt = numThreads / 2;
-  if ( numt == 0 ){
-    numt = numThreads;
-  }
-#else
-  int numt = 1;
-#endif
-
   vector<pair<string,vector<string>>> omp_hack;
   for ( const auto& it : out_in_files ){
     omp_hack.push_back( make_pair( it.first, it.second ) );
   }
+#ifdef HAVE_OPENMP
+  int out_numt = numThreads/omp_hack.size();
+  ++out_numt;
+  out_numt *=4;
+  int in_numt = numThreads/out_numt;
+  ++in_numt;
+#else
+  int out_numt = 1;
+  int in_numt = 1;
+#endif
+
   unsigned int fail_docs = 0;
   int doc_counter = toDo;
-#pragma omp parallel for shared(omp_hack,doc_counter) schedule(dynamic) num_threads(numt)
+#pragma omp parallel for shared(omp_hack,doc_counter) schedule(dynamic) num_threads(out_numt)
   for ( size_t omp_i=0; omp_i < omp_hack.size(); ++omp_i ) {
     const auto& files = omp_hack[omp_i];
     string local_prefix = files.first;
@@ -1631,7 +1633,7 @@ int main( int argc, char *argv[] ){
     set<UnicodeString> emph;
     vector<string> file_names = files.second;
     size_t local_toDo = file_names.size();
-#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs,local_toDo) schedule(dynamic)
+#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs,local_toDo) schedule(dynamic) num_threads(in_numt)
     for ( size_t fn=0; fn < file_names.size(); ++fn ){
       string docName = file_names[fn];
       Document *d = 0;
