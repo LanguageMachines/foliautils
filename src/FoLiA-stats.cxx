@@ -1484,6 +1484,7 @@ int main( int argc, char *argv[] ){
   if ( !opts.extract( 't', value ) ){
     opts.extract( "threads", value );
   }
+
 #ifdef HAVE_OPENMP
   int numThreads=1;
   if ( TiCC::lowercase(value) == "max" ){
@@ -1504,6 +1505,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
 #endif
+
   if ( opts.extract("languages", value ) ){
     vector<string> parts = TiCC::split_at( value, "," );
     if ( parts.size() < 1 ){
@@ -1583,30 +1585,35 @@ int main( int argc, char *argv[] ){
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-#ifdef HAVE_OPENMP
-  int numt = numThreads / 2;
-  if ( numt == 0 ){
-    numt = numThreads;
-  }
-#else
-  int numt = 1;
-#endif
+
+// #ifdef HAVE_OPENMP
+//   int numt = numThreads / 2;
+//   if ( numt == 0 ){
+//     numt = numThreads;
+//   }
+// #else
+//   int numt = 1;
+// #endif
 
   vector<pair<string,vector<string>>> omp_hack;
   for ( const auto& it : out_in_files ){
     omp_hack.push_back( make_pair( it.first, it.second ) );
   }
   unsigned int fail_docs = 0;
-#pragma omp parallel for shared(omp_hack) schedule(dynamic) num_threads(numt)
+  int doc_counter = toDo;
+#pragma omp parallel for shared(omp_hack,doc_counter) schedule(dynamic)
   for ( size_t omp_i=0; omp_i < omp_hack.size(); ++omp_i ) {
     const auto& files = omp_hack[omp_i];
     string local_prefix = files.first;
-    if ( local_prefix.back() != '/' ){
-      local_prefix += ".";
-      cout << "processing using prefix: " << local_prefix << endl;
-    }
-    else {
-      cout << "processing into : " << local_prefix << endl;
+#pragma omp critical
+    {
+      if ( local_prefix.back() != '/' ){
+	local_prefix += ".";
+	cout << "processing using prefix: " << local_prefix << endl;
+      }
+      else {
+	cout << "processing into : " << local_prefix << endl;
+      }
     }
     map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
     map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
@@ -1616,9 +1623,8 @@ int main( int argc, char *argv[] ){
     map<string,vector<unsigned int>> lemmaTotals; // totals per language
     map<string,vector<unsigned int>> posTotals;   // totals per language
     set<UnicodeString> emph;
-    int doc_counter = toDo;
     vector<string> file_names = files.second;
-#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic) num_threads(numt)
+#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
     for ( size_t fn=0; fn < file_names.size(); ++fn ){
       string docName = file_names[fn];
       Document *d = 0;
@@ -1679,13 +1685,16 @@ int main( int argc, char *argv[] ){
     }
 
     if ( toDo ){
-      if ( local_prefix.back() == '/' ){
-	cout << "done processsing into directory '"
-	     << local_prefix << "'" << endl;
-      }
-      else {
-	cout << "done processsing with prefix '"
-	     << local_prefix << "'" << endl;
+#pragma omp critical
+      {
+	if ( local_prefix.back() == '/' ){
+	  cout << "done processsing into directory '"
+	       << local_prefix << "'" << endl;
+	}
+	else {
+	  cout << "done processsing with prefix '"
+	       << local_prefix << "'" << endl;
+	}
       }
     }
     if ( !hempName.empty() ){
