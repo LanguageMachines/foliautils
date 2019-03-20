@@ -1496,6 +1496,7 @@ int main( int argc, char *argv[] ){
     }
   }
   omp_set_num_threads( numThreads );
+  omp_set_nested(1); // enables nested parallelism
 #else
   if ( value != "1" ){
     cerr << "unable to set number of threads!.\nNo OpenMP support available!"
@@ -1607,9 +1608,13 @@ int main( int argc, char *argv[] ){
     map<string,vector<unsigned int>> posTotals;   // totals per language
     set<UnicodeString> emph;
     int doc_counter = toDo;
+    int numt = numThreads / 2;
+    if ( numt == 0 ){
+      numt = numThreads;
+    }
     unsigned int fail_docs = 0;
     vector<string> file_names = files.second;
-#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
+#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic) num_threads(numt)
     for ( size_t fn=0; fn < file_names.size(); ++fn ){
       string docName = file_names[fn];
       Document *d = 0;
