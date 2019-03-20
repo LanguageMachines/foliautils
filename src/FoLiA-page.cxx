@@ -95,12 +95,12 @@ void appendStr( folia::FoliaElement *par, int& pos,
     args.clear();
     args["href"] = file;
     args["format"] = "text/page+xml";
-    folia::Alignment *h = new folia::Alignment( args );
+    folia::Relation *h = new folia::Relation( args );
     str->append( h );
     args.clear();
     args["id"] = id;
     args["type"] = "str";
-    folia::AlignReference *a = new folia::AlignReference( args );
+    folia::LinkReference *a = new folia::LinkReference( args );
     h->append( a );
   }
 }

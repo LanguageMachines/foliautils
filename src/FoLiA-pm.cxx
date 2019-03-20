@@ -942,7 +942,7 @@ void process_break( Division *root, xmlNode *brk ){
   args["class"] = "page";
   args["format"] = "image/jpeg";
   args["href"] = TiCC::getAttribute( brk, "source");
-  Alignment *align = new Alignment( args, root->doc() );
+  Relation *align = new Relation( args, root->doc() );
   pb->append( align );
 }
 
@@ -1080,7 +1080,7 @@ folia::Document *create_basedoc( const string& docid,
   doc->declare( folia::AnnotationType::DIVISION,
 		"polmash",
 		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
-  doc->declare( folia::AnnotationType::ALIGNMENT,
+  doc->declare( folia::AnnotationType::RELATION,
 		"polmash",
 		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
   if ( metadata ){

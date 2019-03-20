@@ -208,12 +208,12 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       // direct mode has no altofile
       args.clear();
       args["href"] = altoFile;
-      folia::Alignment *h = new folia::Alignment( args );
+      folia::Relation *h = new folia::Relation( args );
       s->append( h );
       args.clear();
       args["id"] = kid;
       args["type"] = "str";
-      folia::AlignReference *a = new folia::AlignReference( args );
+      folia::LinkReference *a = new folia::LinkReference( args );
       h->append( a );
     }
   }
@@ -237,12 +237,12 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       if ( !altoFile.empty() ){
 	args.clear();
 	args["href"] = altoFile;
-	folia::Alignment *h = new folia::Alignment( args );
+	folia::Relation *h = new folia::Relation( args );
 	s->append( h );
 	args.clear();
 	args["id"] = kid;
 	args["type"] = "str";
-	folia::AlignReference *a = new folia::AlignReference( args );
+	folia::LinkReference *a = new folia::LinkReference( args );
 	h->append( a );
       }
     }
@@ -322,16 +322,15 @@ void createFile( folia::FoliaElement *text,
 		  if ( !altoFile.empty() ){
 		    args.clear();
 		    args["href"] = altoFile;
-		    folia::Alignment *h = new folia::Alignment( args );
+		    folia::Relation *h = new folia::Relation( args );
 		    s->append( h );
 		    args.clear();
 		    args["id"] = kid;
 		    args["type"] = "str";
-		    folia::AlignReference *a
-		      = new folia::AlignReference( args );
+		    folia::LinkReference *a = new folia::LinkReference( args );
 		    h->append( a );
 		    args["id"] = TiCC::getAttribute( pnt, "ID" );
-		    a = new folia::AlignReference( args );
+		    a = new folia::LinkReference( args );
 		    h->append( a );
 		  }
 		  keepPart1 = 0;
@@ -974,16 +973,16 @@ void solveBook( const string& altoFile, const string& id,
 		    ocr_text += " " + subc;
 		    args.clear();
 		    args["href"] = urn;
-		    folia::Alignment *h = new folia::Alignment( args );
+		    folia::Relation *h = new folia::Relation( args );
 		    s->append( h );
 		    args.clear();
 		    args["id"] = kid;
 		    args["type"] = "str";
-		    folia::AlignReference *a = 0;
-		    a = new folia::AlignReference( args );
+		    folia::LinkReference *a = 0;
+		    a = new folia::LinkReference( args );
 		    h->append( a );
 		    args["id"] = TiCC::getAttribute( pnt, "ID" );
-		    a = new folia::AlignReference( args );
+		    a = new folia::LinkReference( args );
 		    h->append( a );
 		    keepPart1 = 0;
 		  }

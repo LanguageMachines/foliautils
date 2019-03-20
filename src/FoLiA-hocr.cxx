@@ -176,12 +176,12 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  args.clear();
 	  args["href"] = file;
 	  args["format"] = "text/hocr+xml";
-	  folia::Alignment *h = new folia::Alignment( args );
+	  folia::Relation *h = new folia::Relation( args );
 	  str->append( h );
 	  args.clear();
 	  args["id"] = w_id;
 	  args["type"] = "str";
-	  folia::AlignReference *a = new folia::AlignReference( args );
+	  folia::LinkReference *a = new folia::LinkReference( args );
 	  h->append( a );
 	}
       }
