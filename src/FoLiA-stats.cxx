@@ -1583,17 +1583,23 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( toDo ){
-    cout << "start processing of " << toDo << " files " << endl;
+    if ( out_in_files.size() == 1 ){
+      cout << "start processing of " << toDo << " files " << endl;
+    }
+    else {
+      cout << "start processing of " << toDo << " files in "
+	   << out_in_files.size() << " directories." << endl;
+    }
   }
 
-// #ifdef HAVE_OPENMP
-//   int numt = numThreads / 2;
-//   if ( numt == 0 ){
-//     numt = numThreads;
-//   }
-// #else
-//   int numt = 1;
-// #endif
+#ifdef HAVE_OPENMP
+  int numt = numThreads / 2;
+  if ( numt == 0 ){
+    numt = numThreads;
+  }
+#else
+  int numt = 1;
+#endif
 
   vector<pair<string,vector<string>>> omp_hack;
   for ( const auto& it : out_in_files ){
@@ -1601,7 +1607,7 @@ int main( int argc, char *argv[] ){
   }
   unsigned int fail_docs = 0;
   int doc_counter = toDo;
-#pragma omp parallel for shared(omp_hack,doc_counter) schedule(dynamic)
+#pragma omp parallel for shared(omp_hack,doc_counter) schedule(dynamic) num_threads(numt)
   for ( size_t omp_i=0; omp_i < omp_hack.size(); ++omp_i ) {
     const auto& files = omp_hack[omp_i];
     string local_prefix = files.first;
