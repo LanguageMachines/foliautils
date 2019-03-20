@@ -1624,7 +1624,8 @@ int main( int argc, char *argv[] ){
     map<string,vector<unsigned int>> posTotals;   // totals per language
     set<UnicodeString> emph;
     vector<string> file_names = files.second;
-#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
+    size_t local_toDo = file_names.size();
+#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs,local_toDo) schedule(dynamic)
     for ( size_t fn=0; fn < file_names.size(); ++fn ){
       string docName = file_names[fn];
       Document *d = 0;
@@ -1712,8 +1713,8 @@ int main( int argc, char *argv[] ){
     }
     cout << "start calculating the results" << endl;
     cout << "in total " << wordTotal << " " << "n-grams were found.";
-    if ( toDo > 1 ){
-      cout << "in " << toDo << " FoLiA documents.";
+    if ( local_toDo > 1 ){
+      cout << "in " << local_toDo << " FoLiA documents.";
     }
     cout << endl;
     if ( aggregate ){
