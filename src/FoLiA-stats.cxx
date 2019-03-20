@@ -1546,13 +1546,6 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: an output filename prefix is required. (-o option) " << endl;
     exit(EXIT_FAILURE);
   }
-  // if (!outputPrefix.empty() ){
-  //   pos = outputPrefix.find( "/" );
-  //   if ( pos != string::npos && pos == outputPrefix.length()-1 ){
-  //     // outputname ends with a /
-  //     outputPrefix += "foliastats";
-  //   }
-  // }
   if ( !opts.empty() ){
     cerr << "FoLiA-stats: unsupported options : " << opts.toString() << endl;
     usage(progname);
@@ -1590,7 +1583,23 @@ int main( int argc, char *argv[] ){
   if ( toDo ){
     cout << "start processing of " << toDo << " files " << endl;
   }
-  for ( const auto& files : out_in_files ){
+#ifdef HAVE_OPENMP
+  int numt = numThreads / 2;
+  if ( numt == 0 ){
+    numt = numThreads;
+  }
+#else
+  int numt = 1;
+#endif
+
+  vector<pair<string,vector<string>>> omp_hack;
+  for ( const auto& it : out_in_files ){
+    omp_hack.push_back( make_pair( it.first, it.second ) );
+  }
+  unsigned int fail_docs = 0;
+#pragma omp parallel for shared(omp_hack) schedule(dynamic) num_threads(numt)
+  for ( size_t omp_i=0; omp_i < omp_hack.size(); ++omp_i ) {
+    const auto& files = omp_hack[omp_i];
     string local_prefix = files.first;
     if ( local_prefix.back() != '/' ){
       local_prefix += ".";
@@ -1608,11 +1617,6 @@ int main( int argc, char *argv[] ){
     map<string,vector<unsigned int>> posTotals;   // totals per language
     set<UnicodeString> emph;
     int doc_counter = toDo;
-    int numt = numThreads / 2;
-    if ( numt == 0 ){
-      numt = numThreads;
-    }
-    unsigned int fail_docs = 0;
     vector<string> file_names = files.second;
 #pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic) num_threads(numt)
     for ( size_t fn=0; fn < file_names.size(); ++fn ){
@@ -1683,10 +1687,6 @@ int main( int argc, char *argv[] ){
 	cout << "done processsing with prefix '"
 	     << local_prefix << "'" << endl;
       }
-    }
-    if ( fail_docs == toDo ){
-      cerr << "no documents were successfully handled!" << endl;
-      return EXIT_FAILURE;
     }
     if ( !hempName.empty() ){
       string filename = local_prefix + hempName;
@@ -1763,6 +1763,10 @@ int main( int argc, char *argv[] ){
 	}
       }
     }
+  }
+  if ( fail_docs == toDo ){
+    cerr << "no documents were successfully handled!" << endl;
+    return EXIT_FAILURE;
   }
   return EXIT_SUCCESS;
 }
