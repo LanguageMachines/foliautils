@@ -1484,6 +1484,7 @@ int main( int argc, char *argv[] ){
   if ( !opts.extract( 't', value ) ){
     opts.extract( "threads", value );
   }
+
 #ifdef HAVE_OPENMP
   int numThreads=1;
   if ( TiCC::lowercase(value) == "max" ){
@@ -1496,6 +1497,7 @@ int main( int argc, char *argv[] ){
     }
   }
   omp_set_num_threads( numThreads );
+  omp_set_nested(1); // enables nested parallelism
 #else
   if ( value != "1" ){
     cerr << "unable to set number of threads!.\nNo OpenMP support available!"
@@ -1503,6 +1505,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
 #endif
+
   if ( opts.extract("languages", value ) ){
     vector<string> parts = TiCC::split_at( value, "," );
     if ( parts.size() < 1 ){
@@ -1545,13 +1548,6 @@ int main( int argc, char *argv[] ){
     cerr << "FoLiA-stats: an output filename prefix is required. (-o option) " << endl;
     exit(EXIT_FAILURE);
   }
-  // if (!outputPrefix.empty() ){
-  //   pos = outputPrefix.find( "/" );
-  //   if ( pos != string::npos && pos == outputPrefix.length()-1 ){
-  //     // outputname ends with a /
-  //     outputPrefix += "foliastats";
-  //   }
-  // }
   if ( !opts.empty() ){
     cerr << "FoLiA-stats: unsupported options : " << opts.toString() << endl;
     usage(progname);
@@ -1587,16 +1583,45 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( toDo ){
-    cout << "start processing of " << toDo << " files " << endl;
-  }
-  for ( const auto& files : out_in_files ){
-    string local_prefix = files.first;
-    if ( local_prefix.back() != '/' ){
-      local_prefix += ".";
-      cout << "processing using prefix: " << local_prefix << endl;
+    if ( out_in_files.size() == 1 ){
+      cout << "start processing of " << toDo << " files " << endl;
     }
     else {
-      cout << "processing into : " << local_prefix << endl;
+      cout << "start processing of " << toDo << " files in "
+	   << out_in_files.size() << " directories." << endl;
+    }
+  }
+
+  vector<pair<string,vector<string>>> omp_hack;
+  for ( const auto& it : out_in_files ){
+    omp_hack.push_back( make_pair( it.first, it.second ) );
+  }
+#ifdef HAVE_OPENMP
+  int out_numt = numThreads/omp_hack.size();
+  ++out_numt;
+  out_numt *=4;
+  int in_numt = numThreads/out_numt;
+  ++in_numt;
+#else
+  int out_numt = 1;
+  int in_numt = 1;
+#endif
+
+  unsigned int fail_docs = 0;
+  int doc_counter = toDo;
+#pragma omp parallel for shared(omp_hack,doc_counter) schedule(dynamic) num_threads(out_numt)
+  for ( size_t omp_i=0; omp_i < omp_hack.size(); ++omp_i ) {
+    const auto& files = omp_hack[omp_i];
+    string local_prefix = files.first;
+#pragma omp critical
+    {
+      if ( local_prefix.back() != '/' ){
+	local_prefix += ".";
+	cout << "processing using prefix: " << local_prefix << endl;
+      }
+      else {
+	cout << "processing into : " << local_prefix << endl;
+      }
     }
     map<string,vector<map<UnicodeString,unsigned int>>> wcv; // word-freq list per language
     map<string,vector<map<UnicodeString,unsigned int>>> lcv; // lemma-freq list per language
@@ -1606,10 +1631,9 @@ int main( int argc, char *argv[] ){
     map<string,vector<unsigned int>> lemmaTotals; // totals per language
     map<string,vector<unsigned int>> posTotals;   // totals per language
     set<UnicodeString> emph;
-    int doc_counter = toDo;
-    unsigned int fail_docs = 0;
     vector<string> file_names = files.second;
-#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs) schedule(dynamic)
+    size_t local_toDo = file_names.size();
+#pragma omp parallel for shared(file_names,wordTotal,wordTotals,posTotals,lemmaTotals,wcv,lcv,lpcv,emph,doc_counter,fail_docs,local_toDo) schedule(dynamic) num_threads(in_numt)
     for ( size_t fn=0; fn < file_names.size(); ++fn ){
       string docName = file_names[fn];
       Document *d = 0;
@@ -1670,18 +1694,17 @@ int main( int argc, char *argv[] ){
     }
 
     if ( toDo ){
-      if ( local_prefix.back() == '/' ){
-	cout << "done processsing into directory '"
-	     << local_prefix << "'" << endl;
+#pragma omp critical
+      {
+	if ( local_prefix.back() == '/' ){
+	  cout << "done processsing into directory '"
+	       << local_prefix << "'" << endl;
+	}
+	else {
+	  cout << "done processsing with prefix '"
+	       << local_prefix << "'" << endl;
+	}
       }
-      else {
-	cout << "done processsing with prefix '"
-	     << local_prefix << "'" << endl;
-      }
-    }
-    if ( fail_docs == toDo ){
-      cerr << "no documents were successfully handled!" << endl;
-      return EXIT_FAILURE;
     }
     if ( !hempName.empty() ){
       string filename = local_prefix + hempName;
@@ -1698,8 +1721,8 @@ int main( int argc, char *argv[] ){
     }
     cout << "start calculating the results" << endl;
     cout << "in total " << wordTotal << " " << "n-grams were found.";
-    if ( toDo > 1 ){
-      cout << "in " << toDo << " FoLiA documents.";
+    if ( local_toDo > 1 ){
+      cout << "in " << local_toDo << " FoLiA documents.";
     }
     cout << endl;
     if ( aggregate ){
@@ -1758,6 +1781,10 @@ int main( int argc, char *argv[] ){
 	}
       }
     }
+  }
+  if ( fail_docs == toDo ){
+    cerr << "no documents were successfully handled!" << endl;
+    return EXIT_FAILURE;
   }
   return EXIT_SUCCESS;
 }
