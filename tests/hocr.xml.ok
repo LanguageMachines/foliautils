@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FH-dpo_35_0302_master.tif" generator="libfolia-v1.14" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FH-dpo_35_0302_master.tif" generator="libfolia-v1.20" version="2.0.1">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="folia-hocr" datetime="2018-11-22T12:38:29" set="FoLiA-hocr-set"/>
+      <string-annotation annotator="folia-hocr" datetime="2019-04-04T12:21:22" set="FoLiA-hocr-set"/>
     </annotations>
   </metadata>
   <text xml:id="FH-dpo_35_0302_master.tif.text">
@@ -10,1167 +10,1167 @@
       <t class="OCR">wILLeM De ll.</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_3.word_1_4">
         <t class="OCR" offset="0">wILLeM</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_4" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_3.word_1_5">
         <t class="OCR" offset="7">De</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_5" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_5" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_3.word_1_6">
         <t class="OCR" offset="10">ll.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_6" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_6" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_4">
       <t class="OCR">gen genomen werden, om dar zy anders gemel- den, dzm fommfgem 137 V. War meer?</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_7">
         <t class="OCR" offset="0">gen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_7" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_7" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_8">
         <t class="OCR" offset="4">genomen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_8" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_8" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_9">
         <t class="OCR" offset="12">werden,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_9" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_9" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_10">
         <t class="OCR" offset="20">om</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_10" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_10" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_11">
         <t class="OCR" offset="23">dar</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_11" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_11" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_12">
         <t class="OCR" offset="27">zy</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_12" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_12" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_13">
         <t class="OCR" offset="30">anders</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_13" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_13" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_14">
         <t class="OCR" offset="37">gemel-</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_14" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_14" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_15">
         <t class="OCR" offset="44">den,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_15" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_15" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_16">
         <t class="OCR" offset="49">dzm</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_16" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_16" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_17">
         <t class="OCR" offset="53">fommfgem</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_17" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_17" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_18">
         <t class="OCR" offset="62">137</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_18" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_18" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_19">
         <t class="OCR" offset="66">V.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_19" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_19" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_20">
         <t class="OCR" offset="69">War</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_20" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_20" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_4.word_1_21">
         <t class="OCR" offset="73">meer?</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_21" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_21" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_5">
       <t class="OCR">A. Een aanllag, door den stadhoudek WILLEM den II op ’r kegenstreeng EIN-Mem gemeakt , liep dook een onweder en tegenweer te nier.</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_22">
         <t class="OCR" offset="0">A.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_22" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_22" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_23">
         <t class="OCR" offset="3">Een</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_23" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_23" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_24">
         <t class="OCR" offset="7">aanllag,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_24" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_24" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_25">
         <t class="OCR" offset="16">door</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_25" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_25" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_26">
         <t class="OCR" offset="21">den</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_26" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_26" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_27">
         <t class="OCR" offset="25">stadhoudek</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_27" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_27" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_28">
         <t class="OCR" offset="36">WILLEM</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_28" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_28" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_29">
         <t class="OCR" offset="43">den</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_29" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_29" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_30">
         <t class="OCR" offset="47">II</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_30" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_30" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_31">
         <t class="OCR" offset="50">op</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_31" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_31" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_32">
         <t class="OCR" offset="53">’r</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_32" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_32" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_33">
         <t class="OCR" offset="56">kegenstreeng</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_33" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_33" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_34">
         <t class="OCR" offset="69">EIN-Mem</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_34" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_34" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_35">
         <t class="OCR" offset="77">gemeakt</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_35" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_35" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_36">
         <t class="OCR" offset="85">,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_36" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_36" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_37">
         <t class="OCR" offset="87">liep</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_37" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_37" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_38">
         <t class="OCR" offset="92">dook</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_38" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_38" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_39">
         <t class="OCR" offset="97">een</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_39" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_39" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_40">
         <t class="OCR" offset="101">onweder</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_40" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_40" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_41">
         <t class="OCR" offset="109">en</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_41" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_41" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_42">
         <t class="OCR" offset="112">tegenweer</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_42" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_42" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_43">
         <t class="OCR" offset="122">te</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_43" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_43" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_5.word_1_44">
         <t class="OCR" offset="125">nier.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_44" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_44" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_6">
       <t class="OCR">138 v. War vernam men dagrnaP</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_45">
         <t class="OCR" offset="0">138</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_45" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_45" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_46">
         <t class="OCR" offset="4">v.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_46" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_46" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_47">
         <t class="OCR" offset="7">War</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_47" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_47" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_48">
         <t class="OCR" offset="11">vernam</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_48" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_48" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_49">
         <t class="OCR" offset="18">men</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_49" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_49" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_6.word_1_50">
         <t class="OCR" offset="22">dagrnaP</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_50" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_50" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_7">
       <t class="OCR">A. Den vroegen dood van WtLLtM den Il. Opvolger van Fiuzoeanc HENDR1K, zynen Va-</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_51">
         <t class="OCR" offset="0">A.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_51" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_51" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_52">
         <t class="OCR" offset="3">Den</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_52" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_52" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_53">
         <t class="OCR" offset="7">vroegen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_53" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_53" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_54">
         <t class="OCR" offset="15">dood</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_54" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_54" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_55">
         <t class="OCR" offset="20">van</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_55" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_55" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_56">
         <t class="OCR" offset="24">WtLLtM</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_56" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_56" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_57">
         <t class="OCR" offset="31">den</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_57" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_57" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_58">
         <t class="OCR" offset="35">Il.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_58" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_58" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_59">
         <t class="OCR" offset="39">Opvolger</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_59" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_59" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_60">
         <t class="OCR" offset="48">van</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_60" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_60" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_61">
         <t class="OCR" offset="52">Fiuzoeanc</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_61" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_61" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_62">
         <t class="OCR" offset="62">HENDR1K,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_62" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_62" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_63">
         <t class="OCR" offset="71">zynen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_63" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_63" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_7.word_1_64">
         <t class="OCR" offset="77">Va-</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_64" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_64" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_8">
       <t class="OCR">d-er, die wegens groote hoedanigheden uitblonk. Agt Hagen na zynen dood werde hem een Zoon geboos ken, die daarna genoemd is WILLEM de Ill.</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_65">
         <t class="OCR" offset="0">d-er,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_65" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_65" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_66">
         <t class="OCR" offset="6">die</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_66" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_66" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_67">
         <t class="OCR" offset="10">wegens</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_67" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_67" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_68">
         <t class="OCR" offset="17">groote</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_68" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_68" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_69">
         <t class="OCR" offset="24">hoedanigheden</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_69" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_69" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_70">
         <t class="OCR" offset="38">uitblonk.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_70" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_70" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_71">
         <t class="OCR" offset="48">Agt</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_71" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_71" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_72">
         <t class="OCR" offset="52">Hagen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_72" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_72" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_73">
         <t class="OCR" offset="58">na</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_73" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_73" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_74">
         <t class="OCR" offset="61">zynen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_74" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_74" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_75">
         <t class="OCR" offset="67">dood</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_75" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_75" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_76">
         <t class="OCR" offset="72">werde</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_76" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_76" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_77">
         <t class="OCR" offset="78">hem</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_77" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_77" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_78">
         <t class="OCR" offset="82">een</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_78" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_78" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_79">
         <t class="OCR" offset="86">Zoon</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_79" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_79" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_80">
         <t class="OCR" offset="91">geboos</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_80" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_80" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_81">
         <t class="OCR" offset="98">ken,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_81" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_81" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_82">
         <t class="OCR" offset="103">die</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_82" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_82" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_83">
         <t class="OCR" offset="107">daarna</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_83" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_83" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_84">
         <t class="OCR" offset="114">genoemd</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_84" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_84" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_85">
         <t class="OCR" offset="122">is</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_85" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_85" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_86">
         <t class="OCR" offset="125">WILLEM</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_86" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_86" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_87">
         <t class="OCR" offset="132">de</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_87" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_87" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_8.word_1_88">
         <t class="OCR" offset="135">Ill.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_88" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_88" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_9">
       <t class="OCR">-139 V· Welk bestier volgde daar0p?</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_89">
         <t class="OCR" offset="0">-139</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_89" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_89" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_90">
         <t class="OCR" offset="5">V·</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_90" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_90" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_91">
         <t class="OCR" offset="8">Welk</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_91" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_91" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_92">
         <t class="OCR" offset="13">bestier</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_92" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_92" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_93">
         <t class="OCR" offset="21">volgde</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_93" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_93" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_9.word_1_94">
         <t class="OCR" offset="28">daar0p?</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_94" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_94" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_10">
       <t class="OCR">A. De sTAATnN van alle Provintien (Gmm««gm en Frieden-i uitgezonderd) bellooten geenen stati- houder meer aan te stellen: zy hielden eene Grooss te Vergadering in den jaiuse 1651 over gewigtjge zaakem en raakren in 00110g met OLIVJER cRoM w1·:1., die, als P-«»tet?m-. Engeln-M regeerde.</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_95">
         <t class="OCR" offset="0">A.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_95" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_95" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_96">
         <t class="OCR" offset="3">De</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_96" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_96" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_97">
         <t class="OCR" offset="6">sTAATnN</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_97" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_97" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_98">
         <t class="OCR" offset="14">van</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_98" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_98" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_99">
         <t class="OCR" offset="18">alle</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_99" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_99" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_100">
         <t class="OCR" offset="23">Provintien</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_100" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_100" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_101">
         <t class="OCR" offset="34">(Gmm««gm</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_101" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_101" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_102">
         <t class="OCR" offset="43">en</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_102" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_102" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_103">
         <t class="OCR" offset="46">Frieden-i</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_103" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_103" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_104">
         <t class="OCR" offset="56">uitgezonderd)</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_104" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_104" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_105">
         <t class="OCR" offset="70">bellooten</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_105" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_105" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_106">
         <t class="OCR" offset="80">geenen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_106" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_106" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_107">
         <t class="OCR" offset="87">stati-</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_107" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_107" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_108">
         <t class="OCR" offset="94">houder</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_108" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_108" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_109">
         <t class="OCR" offset="101">meer</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_109" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_109" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_110">
         <t class="OCR" offset="106">aan</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_110" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_110" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_111">
         <t class="OCR" offset="110">te</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_111" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_111" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_112">
         <t class="OCR" offset="113">stellen:</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_112" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_112" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_113">
         <t class="OCR" offset="122">zy</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_113" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_113" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_114">
         <t class="OCR" offset="125">hielden</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_114" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_114" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_115">
         <t class="OCR" offset="133">eene</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_115" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_115" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_116">
         <t class="OCR" offset="138">Grooss</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_116" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_116" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_117">
         <t class="OCR" offset="145">te</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_117" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_117" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_118">
         <t class="OCR" offset="148">Vergadering</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_118" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_118" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_119">
         <t class="OCR" offset="160">in</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_119" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_119" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_120">
         <t class="OCR" offset="163">den</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_120" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_120" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_121">
         <t class="OCR" offset="167">jaiuse</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_121" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_121" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_122">
         <t class="OCR" offset="174">1651</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_122" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_122" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_123">
         <t class="OCR" offset="179">over</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_123" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_123" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_124">
         <t class="OCR" offset="184">gewigtjge</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_124" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_124" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_125">
         <t class="OCR" offset="194">zaakem</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_125" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_125" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_126">
         <t class="OCR" offset="201">en</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_126" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_126" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_127">
         <t class="OCR" offset="204">raakren</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_127" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_127" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_128">
         <t class="OCR" offset="212">in</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_128" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_128" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_129">
         <t class="OCR" offset="215">00110g</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_129" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_129" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_130">
         <t class="OCR" offset="222">met</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_130" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_130" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_131">
         <t class="OCR" offset="226">OLIVJER</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_131" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_131" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_132">
         <t class="OCR" offset="234">cRoM</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_132" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_132" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_133">
         <t class="OCR" offset="239">w1·:1.,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_133" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_133" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_134">
         <t class="OCR" offset="247">die,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_134" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_134" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_135">
         <t class="OCR" offset="252">als</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_135" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_135" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_136">
         <t class="OCR" offset="256">P-«»tet?m-.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_136" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_136" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_137">
         <t class="OCR" offset="268">Engeln-M</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_137" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_137" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_10.word_1_138">
         <t class="OCR" offset="277">regeerde.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_138" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_138" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_11">
       <t class="OCR">140 V. Hoe ging her in dfen 00r10g2</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_139">
         <t class="OCR" offset="0">140</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_139" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_139" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_140">
         <t class="OCR" offset="4">V.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_140" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_140" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_141">
         <t class="OCR" offset="7">Hoe</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_141" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_141" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_142">
         <t class="OCR" offset="11">ging</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_142" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_142" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_143">
         <t class="OCR" offset="16">her</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_143" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_143" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_144">
         <t class="OCR" offset="20">in</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_144" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_144" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_145">
         <t class="OCR" offset="23">dfen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_145" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_145" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_11.word_1_146">
         <t class="OCR" offset="28">00r10g2</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_146" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_146" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_12">
       <t class="OCR">A. MARTZN HARPEnTszooN TIoMp en MkcHIEL ADRUANZ DE sRulTER behaalden grooten roem in Zeeslagen, daarna van eenen we- de gevolgd.</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_147">
         <t class="OCR" offset="0">A.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_147" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_147" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_148">
         <t class="OCR" offset="3">MARTZN</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_148" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_148" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_149">
         <t class="OCR" offset="10">HARPEnTszooN</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_149" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_149" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_150">
         <t class="OCR" offset="23">TIoMp</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_150" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_150" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_151">
         <t class="OCR" offset="29">en</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_151" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_151" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_152">
         <t class="OCR" offset="32">MkcHIEL</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_152" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_152" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_153">
         <t class="OCR" offset="40">ADRUANZ</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_153" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_153" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_154">
         <t class="OCR" offset="48">DE</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_154" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_154" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_155">
         <t class="OCR" offset="51">sRulTER</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_155" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_155" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_156">
         <t class="OCR" offset="59">behaalden</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_156" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_156" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_157">
         <t class="OCR" offset="69">grooten</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_157" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_157" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_158">
         <t class="OCR" offset="77">roem</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_158" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_158" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_159">
         <t class="OCR" offset="82">in</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_159" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_159" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_160">
         <t class="OCR" offset="85">Zeeslagen,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_160" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_160" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_161">
         <t class="OCR" offset="96">daarna</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_161" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_161" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_162">
         <t class="OCR" offset="103">van</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_162" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_162" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_163">
         <t class="OCR" offset="107">eenen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_163" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_163" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_164">
         <t class="OCR" offset="113">we-</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_164" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_164" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_165">
         <t class="OCR" offset="117">de</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_165" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_165" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_12.word_1_166">
         <t class="OCR" offset="120">gevolgd.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_166" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_166" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_13">
       <t class="OCR">141 V. Op welke voorwaarde?</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_167">
         <t class="OCR" offset="0">141</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_167" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_167" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_168">
         <t class="OCR" offset="4">V.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_168" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_168" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_169">
         <t class="OCR" offset="7">Op</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_169" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_169" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_170">
         <t class="OCR" offset="10">welke</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_170" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_170" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_13.word_1_171">
         <t class="OCR" offset="16">voorwaarde?</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_171" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_171" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_14">
       <t class="OCR">A. De Enge-Mker drongen ons eene Ehaadelyke Löf- wz quigavie op, dar is, dar wy Met onze</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_172">
         <t class="OCR" offset="0">A.</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_172" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_172" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_173">
         <t class="OCR" offset="3">De</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_173" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_173" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_174">
         <t class="OCR" offset="6">Enge-Mker</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_174" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_174" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_175">
         <t class="OCR" offset="16">drongen</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_175" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_175" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_176">
         <t class="OCR" offset="24">ons</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_176" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_176" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_177">
         <t class="OCR" offset="28">eene</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_177" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_177" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_178">
         <t class="OCR" offset="33">Ehaadelyke</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_178" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_178" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_179">
         <t class="OCR" offset="44">Löf-</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_179" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_179" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_180">
         <t class="OCR" offset="49">wz</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_180" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_180" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_181">
         <t class="OCR" offset="52">quigavie</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_181" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_181" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_182">
         <t class="OCR" offset="61">op,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_182" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_182" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_183">
         <t class="OCR" offset="65">dar</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_183" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_183" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_184">
         <t class="OCR" offset="69">is,</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_184" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_184" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_185">
         <t class="OCR" offset="73">dar</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_185" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_185" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_186">
         <t class="OCR" offset="77">wy</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_186" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_186" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_187">
         <t class="OCR" offset="80">Met</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_187" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_187" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_14.word_1_188">
         <t class="OCR" offset="84">onze</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_188" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_188" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FH-dpo_35_0302_master.tif.text.par_1_15">
       <t class="OCR">« « sche-</t>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_15.word_1_189">
         <t class="OCR" offset="0">«</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_189" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_189" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_15.word_1_190">
         <t class="OCR" offset="2">«</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_190" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_190" type="str"/>
+        </relation>
       </str>
       <str xml:id="FH-dpo_35_0302_master.tif.text.par_1_15.word_1_191">
         <t class="OCR" offset="4">sche-</t>
-        <alignment format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
-          <aref id="word_1_191" type="str"/>
-        </alignment>
+        <relation format="text/hocr+xml" xlink:href="demo.hocr" xlink:type="simple">
+          <xref id="word_1_191" type="str"/>
+        </relation>
       </str>
     </p>
   </text>
