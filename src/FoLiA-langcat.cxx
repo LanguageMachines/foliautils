@@ -89,7 +89,7 @@ vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
   for ( const auto& tag : tags ){
     ElementType et;
     try {
-      et = stringToET( tag );
+      et = TiCC::stringTo<ElementType>( tag );
     }
     catch ( ... ){
 #pragma omp critical (logging)

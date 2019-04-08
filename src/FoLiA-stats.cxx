@@ -1060,7 +1060,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc,
   for ( const auto& tag : tags_v ){
     ElementType et;
     try {
-      et = stringToET( tag );
+      et = TiCC::stringTo<ElementType>( tag );
     }
     catch ( ... ){
 #pragma omp critical (logging)
@@ -1076,7 +1076,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc,
   for ( const auto& tag : skiptags_v ){
     ElementType et;
     try {
-      et = stringToET( tag );
+      et = TiCC::stringTo<ElementType>( tag );
     }
     catch ( ... ){
 #pragma omp critical (logging)
