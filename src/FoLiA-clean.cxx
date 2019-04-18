@@ -183,7 +183,7 @@ void clean_tokens( FoliaElement *node,
 	}
       }
       try {
-	s1 = node->text( textclass, false, false ); // no retain tokenization, no strict
+	s1 = node->text( textclass ); // no retain tokenization, no strict
       }
       catch (...){
       }
@@ -200,7 +200,7 @@ void clean_tokens( FoliaElement *node,
 #pragma omp critical( debugging )
 	{
 	  cerr << "keep " << node << " with textclass=" << node->cls() << endl;
-	  cerr << "met tekst: " <<  node->text( "current", false, false ) << endl;
+	  cerr << "met tekst: " <<  node->text( "current" ) << endl;
 	}
       }
     }
