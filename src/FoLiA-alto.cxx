@@ -198,7 +198,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     else {
       arg += "String_" + TiCC::toString(cnt);
     }
-    args["_id"] = arg;
+    args["xml:id"] = arg;
     folia::String *s = new folia::String( args, par->doc() );
     par->append( s );
     UnicodeString uc = TiCC::UnicodeFromUTF8( content );
@@ -227,7 +227,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       else {
 	arg += "String_" + TiCC::toString(i);
       }
-      args["_id"] = arg;
+      args["xml:id"] = arg;
 
       folia::String *s = new folia::String( args, par->doc() );
       par->append( s );
@@ -276,7 +276,7 @@ void createFile( folia::FoliaElement *text,
       arg += altoFile + ".";
     }
     arg += id;
-    args["_id"] = arg;
+    args["xml:id"] = arg;
     folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
     text->append( p );
     UnicodeString ocr_text;
@@ -311,7 +311,7 @@ void createFile( folia::FoliaElement *text,
 		  else {
 		    arg += "String_" + TiCC::toString(++cnt);
 		  }
-		  args["_id"] = arg;
+		  args["xml:id"] = arg;
 		  args["class"] = classname;
 		  folia::String *s = new folia::String( args, text->doc() );
 		  p->append( s );
@@ -418,7 +418,8 @@ void processArticle( const string& f,
 		     const docCache& cache,
 		     const string& outDir,
 		     const zipType inputType,
-		     const zipType outputType ){
+		     const zipType outputType,
+		     const string& command ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -426,12 +427,14 @@ void processArticle( const string& f,
     }
   }
   string docid = replaceColon(f,'.');
-  folia::Document doc( "_id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, setname,
-	       "annotator='alto', datetime='now()'" );
-  doc.set_metadata( "genre", subject );
+  folia::Document doc( "xml:id='" + docid + "'" );
+  folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   folia::KWargs args;
-  args["_id"] = docid + ".text";
+  args["processor"] = proc->id();
+  doc.declare( folia::AnnotationType::STRING, setname, args );
+  doc.set_metadata( "genre", subject );
+  args.clear();
+  args["xml:id"] = docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
 
@@ -485,10 +488,18 @@ void processZone( const string& id,
 		  const docCache& cache,
 		  const string& outDir,
 		  const zipType inputType,
-		  const zipType outputType ){
+		  const zipType outputType,
+		  const string& command ){
   list<xmlNode *> parts =  TiCC::FindNodes( zone, "dcx:article-part" );
   if ( !parts.empty() ){
-    processArticle( id, subject, parts, cache, outDir, inputType, outputType );
+    processArticle( id,
+		    subject,
+		    parts,
+		    cache,
+		    outDir,
+		    inputType,
+		    outputType,
+		    command );
   }
 }
 
@@ -732,7 +743,8 @@ void clear_files( const unordered_set<string>& files ){
 void solveArtAlto( const string& alto_cache,
 		   const string& file,
 		   const string& outDir,
-		   zipType outputType ){
+		   zipType outputType,
+		   const string& command ){
   bool succes = true;
 #pragma omp critical
   {
@@ -822,9 +834,14 @@ void solveArtAlto( const string& alto_cache,
 		  if ( comps.size() == 1 ){
 		    list<xmlNode*> zones = TiCC::FindNodes( comps.front(), "didl:Resource/dcx:zoning" );
 		    if ( zones.size() == 1 ){
-		      processZone( art, subject,
-				   zones.front(), cache, outDir,
-				   inputType, outputType );
+		      processZone( art,
+				   subject,
+				   zones.front(),
+				   cache,
+				   outDir,
+				   inputType,
+				   outputType,
+				   command );
 		    }
 		    else {
 #pragma omp critical
@@ -890,7 +907,8 @@ void solveArtAlto( const string& alto_cache,
 void solveBook( const string& altoFile, const string& id,
 		const string& urn,
 		const string& outDir,
-		zipType outputType ){
+		zipType outputType,
+		const string& command ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -901,12 +919,13 @@ void solveBook( const string& altoFile, const string& id,
   xmlDoc *xmldoc = getXml( altoFile, inputType );
   if ( xmldoc ){
     string docid = replaceColon( id, '.' );
-    folia::Document doc( "_id='" + docid + "'" );
-    doc.declare( folia::AnnotationType::STRING, setname,
-		 "annotator='alto', datetime='now()'" );
-    //    doc.set_metadata( "genre", subject );
+    folia::Document doc( "xml:id='" + docid + "'" );
+    folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
     folia::KWargs args;
-    args["_id"] =  docid + ".text";
+    args["processor"] = proc->id();
+    doc.declare( folia::AnnotationType::STRING, setname, args );
+    args.clear();
+    args["xml:id"] =  docid + ".text";
     folia::Text *text = new folia::Text( args );
     doc.append( text );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
@@ -936,7 +955,7 @@ void solveBook( const string& altoFile, const string& id,
 	ids.insert(id);
       }
       folia::KWargs args;
-      args["_id"] = text->id() + ".p." + id;
+      args["xml:id"] = text->id() + ".p." + id;
       folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
       text->append( p );
       UnicodeString ocr_text;
@@ -963,7 +982,7 @@ void solveBook( const string& altoFile, const string& id,
 		    string sub = atts["SUBS_CONTENT"];
 		    UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
 		    folia::KWargs args;
-		    args["_id"] = p->id() + "." + kid;
+		    args["xml:id"] = p->id() + "." + kid;
 		    args["class"] = classname;
 		    folia::String *s = new folia::String( args, text->doc() );
 		    p->append( s );
@@ -1069,7 +1088,8 @@ void solveBook( const string& altoFile, const string& id,
 void solveBookAlto( const string& alto_cache,
 		    const string& file,
 		    const string& outDir,
-		    zipType outputType ){
+		    zipType outputType,
+		    const string& command ){
   bool succes = true;
 #pragma omp critical
   {
@@ -1112,7 +1132,8 @@ void solveBookAlto( const string& alto_cache,
 		  const auto it = downloaded_files.find( id );
 		  if ( it != downloaded_files.end() ){
 		    solveBook( it->second, id, urns[id], outDir,
-			       outputType );
+			       outputType,
+			       command );
 		  }
 		}
 	      }
@@ -1160,8 +1181,8 @@ void solveBookAlto( const string& alto_cache,
 
 void solveDirectAlto( const string& full_file,
 		      const string& outDir,
-		      zipType outputType ){
-
+		      zipType outputType,
+		      const string& command ){
 #pragma omp critical
   {
     cout << "resolving direct on " << full_file << endl;
@@ -1171,11 +1192,13 @@ void solveDirectAlto( const string& full_file,
   string filename = TiCC::basename( full_file );
   string docid = replaceColon(filename,'.');
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
-  folia::Document doc( "_id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, setname,
-	       "annotator='alto', datetime='now()'" );
+  folia::Document doc( "xml:id='" + docid + "'" );
+  folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   folia::KWargs args;
-  args["_id"] =  docid + ".text";
+  args["processor"] = proc->id();
+  doc.declare( folia::AnnotationType::STRING, setname, args );
+  args.clear();
+  args["xml:id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   createFile( text, xmldoc, "", texts );
@@ -1251,6 +1274,7 @@ int main( int argc, char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+  string orig_command = "FoLiA-alto " + opts.toString();
   verbose = opts.extract( 'v' );
   do_direct = opts.extract("direct");
   if ( !do_direct ){
@@ -1377,13 +1401,13 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( do_direct ){
-      solveDirectAlto( fileNames[fn], outputDir, outputType );
+      solveDirectAlto( fileNames[fn], outputDir, outputType, orig_command );
     }
     else {
       if ( kind == "krant" )
-	solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType );
+	solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType, orig_command );
       else
-	solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType );
+	solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType, orig_command );
     }
   }
   cout << "done" << endl;

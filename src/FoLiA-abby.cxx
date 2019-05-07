@@ -299,10 +299,8 @@ bool convert_abbyxml( const string& fileName,
   string orgFile = TiCC::basename( fileName );
   string docid = prefix + orgFile;
   folia::Document doc( "_id='" + docid + "'" );
-  // doc.declare( folia::AnnotationType::STRING, setname,
-  // 	       "annotator='folia-abby', datetime='now()'" );
   doc.set_metadata( "abby_file", orgFile );
-  init_provenance( doc, "FoLiA-abby", command );
+  add_provenance( doc, "FoLiA-abby", command );
   string root_id = docid;
   string::size_type pos = root_id.find( ".xml" );
   root_id = root_id.erase( pos );

@@ -167,9 +167,9 @@ vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
   return inventory;
 }
 
-folia::processor *init_provenance( folia::Document& doc,
-				   const string& label,
-				   const string& command ) {
+folia::processor *add_provenance( folia::Document& doc,
+				  const string& label,
+				  const string& command ) {
   folia::processor *proc = doc.get_processor( label );
   folia::KWargs args;
   args["name"] = label;
