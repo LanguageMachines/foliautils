@@ -9,6 +9,8 @@ $my_bin/FoLiA-stats -V >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --help >> teststats.out 2>&1
 
+$my_bin/FoLiA-stats --INTERNAL_TEST >> teststats.out 2>&1
+
 $my_bin/FoLiA-stats -s --class=OCR --lang="none" -o stats -e dpo out/ > out1 2>&1
 diff stats.wordfreqlist.tsv stats-1.ok >> teststats.out 2>&1
 
@@ -107,7 +109,7 @@ $my_bin/FoLiA-stats --mode=text_in_par -o stats16 -p data/folia2.xml --max-ngram
 diff stats16.wordfreqlist.1to4.tsv stats16.word.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --max-ngram=4 --separator='_' --collect --tags=div --hemp=hemp1.txt -o stats17 -p data/hemp/hemptest.xml > out23 2>&1
-diff hemp1.txt hemp1.ok >> teststats.out 2>&1
+diff stats17.hemp1.txt hemp1.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --tags=p --skiptags=note -o stats18 data/p_note_test.xml > out24 2>&1
 diff stats18.wordfreqlist.tsv stats-p_note.ok >> teststats.out 2>&1
