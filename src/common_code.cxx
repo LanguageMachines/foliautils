@@ -25,11 +25,13 @@
 */
 
 #include <string>
+#include "libfolia/folia.h"
 #include "foliautils/common_code.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/Unicode.h"
+#include "config.h"
 
 using namespace std;
 using namespace icu;
@@ -163,4 +165,20 @@ vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
     }
   }
   return inventory;
+}
+
+folia::processor *init_provenance( folia::Document& doc,
+				   const string& label,
+				   const string& command ) {
+  folia::processor *proc = doc.get_processor( label );
+  folia::KWargs args;
+  args["name"] = label;
+  args["id"] = label + ".1";
+  args["version"] = PACKAGE_VERSION;
+  args["command"] = command;
+  args["begindatetime"] = "now()";
+  args["generator"] = "yes";
+  proc = doc.add_processor( args );
+  proc->get_system_defaults();
+  return proc;
 }

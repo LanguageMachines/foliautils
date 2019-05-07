@@ -269,7 +269,8 @@ bool process_page( folia::FoliaElement *root,
 bool convert_abbyxml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType,
-		      const string& prefix ){
+		      const string& prefix,
+		      const string& command ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -301,6 +302,7 @@ bool convert_abbyxml( const string& fileName,
   // doc.declare( folia::AnnotationType::STRING, setname,
   // 	       "annotator='folia-abby', datetime='now()'" );
   doc.set_metadata( "abby_file", orgFile );
+  init_provenance( doc, "FoLiA-abby", command );
   string root_id = docid;
   string::size_type pos = root_id.find( ".xml" );
   root_id = root_id.erase( pos );
@@ -384,6 +386,7 @@ int main( int argc, char *argv[] ){
     cerr << opts.prog_name() << " [" << PACKAGE_STRING << "]"<< endl;
     exit(EXIT_SUCCESS);
   }
+  string orig_command = "FoLiA-abby " + opts.toString();
   if ( opts.extract( "compress", value ) ){
     if ( value == "b" )
       outputType = BZ2;
@@ -469,7 +472,11 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    if ( !convert_abbyxml( fileNames[fn], outputDir, outputType, prefix ) )
+    if ( !convert_abbyxml( fileNames[fn],
+			   outputDir,
+			   outputType,
+			   prefix,
+			   orig_command ) )
 #pragma omp critical
       {
 	cerr << "failure on " << fileNames[fn] << endl;
