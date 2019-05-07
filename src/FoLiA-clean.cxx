@@ -36,6 +36,7 @@
 #include "ticcutils/StringOps.h"
 #include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
+#include "foliautils/common_code.h"
 
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -310,6 +311,7 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
+  string command = "FoLiA-clean " + opts.toString();
   string expression = ".folia.xml";
   opts.extract( 'e', expression );
   string output_dir;
@@ -421,6 +423,7 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
+    add_provenance( *d, "FoLia-clean", command );
     string outname ;
     string::size_type pos = docName.find( expression );
     if ( pos != string::npos ){
