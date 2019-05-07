@@ -16,4 +16,4 @@ ls /tmp/cache >> testalto.out
 
 ls out/dpo.*.folia.xml >> testalto.out
 
-cat out/dpo.1880.mpeg21.0006.alto.folia.xml >> testalto.out
+./foliadiff.sh out/dpo.1880.mpeg21.0006.alto.folia.xml dpo-alto.ok >> testalto.out
