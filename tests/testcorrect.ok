@@ -58,17 +58,6 @@ edit statistics:
 	12	1
 	TOKENS	30
 	UNK 	1
-18,19c18,19
-<           <t>40ste vergadering?</t>
-<           <t class="Ticcl">40ste vergadering ?</t>
----
->           <t>40ste vergadering</t>
->           <t class="Ticcl">40ste vergadering</t>
-24c24
-<             <t>vergadering?</t>
----
->             <t>vergadering</t>
-corr_str.ticcl.xml and corr_str.ticcl.1.ok are different
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -77,19 +66,6 @@ start reading puncts
 read 11 punctuated words 
 verbosity = 2
 finished data/corr_str.xml
-18,19c18,19
-<           <t>40ste vergadering?</t>
-<           <t class="Ticcl">40ste vergadering ?</t>
----
->           <t>40ste vergadering</t>
->           <t class="Ticcl">40ste vergadering</t>
-25,26c25,26
-<             <t>vergadering?</t>
-<             <t class="Ticcl" offset="6">vergadering ?</t>
----
->             <t>vergadering</t>
->             <t class="Ticcl" offset="6">vergadering</t>
-corr_str.ticcl.xml and corr_str.ticcl.2.ok are different
 start reading variants 
 read 4 variants 
 start reading unknowns 

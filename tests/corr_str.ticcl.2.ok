@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.8" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.20" version="1.2.0">
   <metadata type="native">
     <annotations>
-      <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
+      <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
-      <correction-annotation annotator="TICCL" annotatortype="auto" datetime="2017-04-12T17:32:51" set="Ticcl-set"/>
+      <correction-annotation annotator="TICCL" datetime="2019-05-07T17:05:18" set="Ticcl-set"/>
     </annotations>
     <meta id="language">dut</meta>
   </metadata>
@@ -15,16 +15,16 @@
       </head>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2" class="intro">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1">
-          <t>40ste vergadering</t>
-          <t class="Ticcl">40ste vergadering</t>
+          <t>40ste vergadering?</t>
+          <t class="Ticcl">40ste vergadering ?</t>
           <lang class="dut"/>
           <str xml:id="p1.1">
             <t>40ste</t>
             <t class="Ticcl" offset="0">40ste</t>
           </str>
           <str xml:id="p1.2">
-            <t>vergadering</t>
-            <t class="Ticcl" offset="6">vergadering</t>
+            <t>vergadering?</t>
+            <t class="Ticcl" offset="6">vergadering ?</t>
           </str>
         </p>
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.2">
