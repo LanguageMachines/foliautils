@@ -26,6 +26,7 @@
 
 #include <string>
 #include "libfolia/folia.h"
+#include "libxml/HTMLparser.h"
 #include "foliautils/common_code.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
@@ -36,17 +37,9 @@
 using namespace std;
 using namespace icu;
 
+#ifdef OLD
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
-  if ( TiCC::match_back( file, ".xml" ) ){
-    type = NORMAL;
-  }
-  else if ( TiCC::match_back( file, ".xml.gz" ) ){
-    type = GZ;
-  }
-  else if ( TiCC::match_back( file, ".xml.bz2" ) ){
-    type = BZ2;
-  }
   if ( type == UNKNOWN ){
     cerr << "problem detecting type of file: " << file << endl;
     return 0;
@@ -64,6 +57,84 @@ xmlDoc *getXml( const string& file, zipType& type ){
   return xmlReadMemory( buffer.c_str(), buffer.length(),
 			0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
 }
+#else
+xmlDoc *getXml( const string& file, zipType& type ){
+  type = UNKNOWN;
+  bool isHtml = false;
+  if ( TiCC::match_back( file, ".xml" ) ){
+    type = NORMAL;
+  }
+  else if ( TiCC::match_back( file, ".xml.gz" ) ){
+    type = GZ;
+  }
+  else if ( TiCC::match_back( file, ".xml.bz2" ) ){
+    type = BZ2;
+  }
+  else if ( TiCC::match_back( file, ".xhtml" ) ){
+    type = NORMAL;
+    isHtml = false;
+  }
+  else if ( TiCC::match_back( file, ".html" ) ){
+    type = NORMAL;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".hocr" ) ){
+    type = NORMAL;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".xhtml.gz" ) ){
+    type = GZ;
+    isHtml = false;
+  }
+  else if ( TiCC::match_back( file, ".html.gz" ) ){
+    type = GZ;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".hocr.gz" ) ){
+    type = GZ;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".xhtml.bz2" ) ){
+    type = BZ2;
+    isHtml = false;
+  }
+  else if ( TiCC::match_back( file, ".html.bz2" ) ){
+    type = BZ2;
+    isHtml = true;
+  }
+  else {
+    return 0;
+  }
+  if ( isHtml ){
+    if ( type == NORMAL ){
+      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+    }
+    string buffer;
+    if ( type == GZ ){
+      buffer = TiCC::gzReadFile( file );
+    }
+    else if ( type == BZ2 ){
+      buffer = TiCC::bz2ReadFile( file );
+    }
+    return htmlReadMemory( buffer.c_str(), buffer.length(),
+			   0, 0, XML_PARSE_NOBLANKS );
+  }
+  else {
+    if ( type == NORMAL ){
+      return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+    }
+    string buffer;
+    if ( type == GZ ){
+      buffer = TiCC::gzReadFile( file );
+    }
+    else if ( type == BZ2 ){
+      buffer = TiCC::bz2ReadFile( file );
+    }
+    return xmlReadMemory( buffer.c_str(), buffer.length(),
+			  0, 0, XML_PARSE_NOBLANKS );
+  }
+}
+#endif
 
 bool isalnum( UChar uc ){
   int8_t charT =  u_charType( uc );
