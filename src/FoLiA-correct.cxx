@@ -882,13 +882,16 @@ bool correctDoc( Document *doc,
 		 int ngrams,
 		 bool string_nodes,
 		 bool word_nodes,
-		 unordered_map<string,size_t>& counts ){
+		 unordered_map<string,size_t>& counts,
+		 const string& command ){
   if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
 			setname ) ){
     return false;
   }
-  doc->declare( folia::AnnotationType::CORRECTION, setname,
-		"annotator='TICCL', annotatortype='auto', datetime='now()'");
+  processor *proc = add_provenance( *doc, "FoLiA-correct", command );
+  KWargs args;
+  args["processor"] = proc->id();
+  doc->declare( folia::AnnotationType::CORRECTION, setname, args );
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( const auto& par : pv ){
     try {
@@ -978,6 +981,7 @@ int main( int argc, const char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+  string orig_command = "FoLiA-correct " + opts.toString();
   while ( opts.extract( 'v' ) ){
     ++verbose;
   }
@@ -1197,7 +1201,8 @@ int main( int argc, const char *argv[] ){
       }
       unordered_map<string,size_t> counts;
       if ( correctDoc( doc, variants, unknowns, puncts,
-		       ngram, string_nodes, word_nodes, counts ) ){
+		       ngram, string_nodes, word_nodes, counts,
+		       orig_command ) ){
 	doc->save( outName );
 #pragma omp critical
 	{
