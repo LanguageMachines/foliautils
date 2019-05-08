@@ -37,27 +37,6 @@
 using namespace std;
 using namespace icu;
 
-#ifdef OLD
-xmlDoc *getXml( const string& file, zipType& type ){
-  type = UNKNOWN;
-  if ( type == UNKNOWN ){
-    cerr << "problem detecting type of file: " << file << endl;
-    return 0;
-  }
-  if ( type == NORMAL ){
-    return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
-  }
-  string buffer;
-  if ( type == GZ ){
-    buffer = TiCC::gzReadFile( file );
-  }
-  else if ( type == BZ2 ){
-    buffer = TiCC::bz2ReadFile( file );
-  }
-  return xmlReadMemory( buffer.c_str(), buffer.length(),
-			0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
-}
-#else
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
   bool isHtml = false;
@@ -106,35 +85,26 @@ xmlDoc *getXml( const string& file, zipType& type ){
     return 0;
   }
   if ( isHtml ){
-    if ( type == NORMAL ){
-      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+    if ( type == BZ2 ){
+      string buffer = TiCC::bz2ReadFile( file );
+      return htmlReadMemory( buffer.c_str(), buffer.length(),
+			     0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
     }
-    string buffer;
-    if ( type == GZ ){
-      buffer = TiCC::gzReadFile( file );
+    else {
+      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
     }
-    else if ( type == BZ2 ){
-      buffer = TiCC::bz2ReadFile( file );
-    }
-    return htmlReadMemory( buffer.c_str(), buffer.length(),
-			   0, 0, XML_PARSE_NOBLANKS );
   }
   else {
-    if ( type == NORMAL ){
-      return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
+    if ( type == BZ2 ){
+      string buffer = TiCC::bz2ReadFile( file );
+      return xmlReadMemory( buffer.c_str(), buffer.length(),
+			    0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
     }
-    string buffer;
-    if ( type == GZ ){
-      buffer = TiCC::gzReadFile( file );
+    else {
+      return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
     }
-    else if ( type == BZ2 ){
-      buffer = TiCC::bz2ReadFile( file );
-    }
-    return xmlReadMemory( buffer.c_str(), buffer.length(),
-			  0, 0, XML_PARSE_NOBLANKS );
   }
 }
-#endif
 
 bool isalnum( UChar uc ){
   int8_t charT =  u_charType( uc );
@@ -242,6 +212,10 @@ folia::processor *add_provenance( folia::Document& doc,
 				  const string& label,
 				  const string& command ) {
   folia::processor *proc = doc.get_processor( label );
+  if ( proc ){
+    throw logic_error( "add_provenance() failed, label: '" + label
+		       + "' already exists." );
+  }
   folia::KWargs args;
   args["name"] = label;
   args["id"] = label + ".1";
