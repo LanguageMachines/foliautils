@@ -39,6 +39,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/Unicode.h"
 #include "ticcutils/CommandLine.h"
+#include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -48,36 +49,6 @@ using namespace	std;
 using namespace	icu;
 
 bool verbose = false;
-
-enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
-
-xmlDoc *getXml( const string& file, zipType& type ){
-  type = UNKNOWN;
-  if ( TiCC::match_back( file, ".xml" ) ){
-    type = NORMAL;
-  }
-  else if ( TiCC::match_back( file, ".xml.gz" ) ){
-    type = GZ;
-  }
-  else if ( TiCC::match_back( file, ".xml.bz2" ) ){
-    type = BZ2;
-  }
-  else {
-    return 0;
-  }
-  if ( type == NORMAL ){
-    return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
-  }
-  string buffer;
-  if ( type == GZ ){
-    buffer = TiCC::gzReadFile( file );
-  }
-  else if ( type == BZ2 ){
-    buffer = TiCC::bz2ReadFile( file );
-  }
-  return xmlReadMemory( buffer.c_str(), buffer.length(),
-			0, 0, XML_PARSE_NOBLANKS );
-}
 
 string setname = "FoLiA-page-set";
 string classname = "OCR";
@@ -186,7 +157,8 @@ string stripDir( const string& name ){
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType,
-		      const string& prefix ){
+		      const string& prefix,
+		      const string& command ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -329,10 +301,12 @@ bool convert_pagexml( const string& fileName,
 
   string docid = prefix + orgFile;
   folia::Document doc( "_id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, setname,
-	       "annotator='folia-page', datetime='now()'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
+  folia::processor *proc = add_provenance( doc, "FoLiA-page", command );
   folia::KWargs args;
+  args["processor"] = proc->id();
+  doc.declare( folia::AnnotationType::STRING, setname, args );
+  args.clear();
   args["_id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
@@ -414,6 +388,7 @@ int main( int argc, char *argv[] ){
     cerr << opts.prog_name() << " [" << PACKAGE_STRING << "]"<< endl;
     exit(EXIT_SUCCESS);
   }
+  string command = "FoLiA-page " + opts.toString();
   if ( opts.extract( "compress", value ) ){
     if ( value == "b" )
       outputType = BZ2;
@@ -494,7 +469,11 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    if ( !convert_pagexml( fileNames[fn], outputDir, outputType, prefix ) )
+    if ( !convert_pagexml( fileNames[fn],
+			   outputDir,
+			   outputType,
+			   prefix,
+			   command ) )
 #pragma omp critical
       {
 	cerr << "failure on " << fileNames[fn] << endl;

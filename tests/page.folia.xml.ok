@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-00539791a.tif" generator="libfolia-v1.20" version="2.0.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-00539791a.tif" generator="libfolia-v1.20" version="2.0.3">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="folia-page" datetime="2019-04-04T12:21:22" set="FoLiA-page-set"/>
+      <string-annotation set="FoLiA-page-set">
+        <annotator processor="FoLiA-page.1"/>
+      </string-annotation>
     </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-page.1" begindatetime="2019-05-08T14:24:16" command="FoLiA-page -O out/page" host="bonus" name="FoLiA-page" user="sloot" version="0.11">
+        <processor xml:id="FoLiA-page.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      </processor>
+    </provenance>
     <meta id="page_file">00667463.xml</meta>
   </metadata>
   <text xml:id="FP-00539791a.tif.text">
