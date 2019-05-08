@@ -29,9 +29,14 @@ m4/lt~obsolete.m4
 m4/pkg.m4
 missing
 src/.deps/
+src/.libs/
 src/FoLiA-2text
 src/*.o
+src/*.la
+src/*.lo
+src/FoLiA-abby
 src/FoLiA-alto
+src/FoLiA-clean
 src/FoLiA-collect
 src/FoLiA-correct
 src/FoLiA-hocr
@@ -41,6 +46,8 @@ src/FoLiA-page
 src/FoLiA-stats
 src/FoLiA-txt
 src/FoLiA-pm
+src/FoLiA-wordtranslate
 src/Makefile
 src/Makefile.in
 stamp-h1
+test-driver
