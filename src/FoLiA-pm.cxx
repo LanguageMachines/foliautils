@@ -40,6 +40,7 @@
 #include "ticcutils/zipper.h"
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
+#include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -1074,15 +1075,15 @@ void process_stage( Division *root, xmlNode *_stage ){
 }
 
 folia::Document *create_basedoc( const string& docid,
+				 const string& command,
 				 xmlNode *metadata = 0,
 				 xmlNode *docinfo = 0 ){
   Document *doc = new Document( "_id='" + docid + "'" );
-  doc->declare( folia::AnnotationType::DIVISION,
-		"polmash",
-		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
-  doc->declare( folia::AnnotationType::RELATION,
-		"polmash",
-		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+  processor *proc = add_provenance( *doc, "FoLiA-pm", command );
+  KWargs args;
+  args["processor"] = proc->id();
+  doc->declare( folia::AnnotationType::DIVISION, "polmash", args );
+  doc->declare( folia::AnnotationType::RELATION, "polmash", args );
   if ( metadata ){
     if ( metadata->nsDef == 0 ){
       xmlNewNs( metadata,
@@ -1099,6 +1100,7 @@ folia::Document *create_basedoc( const string& docid,
 
 void process_topic( const string& outDir,
 		    const string& prefix,
+		    const string& command,
 		    Text* base_text,
 		    xmlNode *topic,
 		    bool no_split ){
@@ -1121,7 +1123,7 @@ void process_topic( const string& outDir,
   }
   else {
     id = prefix + id;
-    doc = create_basedoc( id );
+    doc = create_basedoc( id, command );
     args["_id"] = id + ".text";
     Text *txt = new Text( args, doc );
     doc->append( txt );
@@ -1178,6 +1180,7 @@ void process_topic( const string& outDir,
 
 void process_proceeding( const string& outDir,
 			 const string& prefix,
+			 const string& command,
 			 Text *root,
 			 xmlNode *proceed,
 			 bool no_split ){
@@ -1190,7 +1193,7 @@ void process_proceeding( const string& outDir,
   }
   list<xmlNode*> topics = TiCC::FindNodes( proceed, "*:topic" );
   for ( const auto& topic : topics ){
-    process_topic( outDir, prefix, root, topic, no_split );
+    process_topic( outDir, prefix, command, root, topic, no_split );
   }
 }
 
@@ -1363,6 +1366,7 @@ void process_parldoc( Text *root,
 void convert_to_folia( const string& file,
 		       const string& outDir,
 		       const string& prefix,
+		       const string& command,
 		       bool no_split ){
   bool succes = true;
 #pragma omp critical
@@ -1386,7 +1390,7 @@ void convert_to_folia( const string& file,
     else {
       string base = TiCC::basename( file );
       string docid = prefix + base;
-      Document *doc = create_basedoc( docid, metadata, docinfo );
+      Document *doc = create_basedoc( docid, command, metadata, docinfo );
       string::size_type pos = docid.rfind( ".xml" );
       if ( pos != string::npos ){
 	docid = docid.substr(0,pos);
@@ -1399,7 +1403,7 @@ void convert_to_folia( const string& file,
 	xmlNode *p = root->children;
 	while ( p ){
 	  if ( TiCC::Name( p ) == "proceedings" ){
-	    process_proceeding( outDir, prefix, text, p, no_split );
+	    process_proceeding( outDir, prefix, command, text, p, no_split );
 	  }
 	  else if ( TiCC::Name( p ) == "parliamentary-document" ){
 	    process_parldoc( text, p );
@@ -1480,6 +1484,7 @@ int main( int argc, char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+  const string command = "FoLiA-pm " + opts.toString();
   verbose = opts.extract( 'v' );
   string value;
   if ( opts.extract( 't', value ) ){
@@ -1549,7 +1554,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_to_folia( fileNames[fn], outputDir, prefix, no_split );
+    convert_to_folia( fileNames[fn], outputDir, prefix, command, no_split );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);
