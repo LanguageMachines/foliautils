@@ -41,6 +41,7 @@
 #include "libfolia/folia.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
+#include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -116,7 +117,8 @@ void procesFile( const TextCat& tc,
 		 const string& default_lang,
 		 set<string> tags,
 		 bool doAll,
-		 const string& cls ){
+		 const string& cls,
+		 const string& command ){
 #pragma omp critical (logging)
   {
     cout << "process " << docName << endl;
@@ -133,7 +135,12 @@ void procesFile( const TextCat& tc,
     return;
   }
   doc->set_metadata( "language", default_lang );
-  doc->declare( AnnotationType::LANG, ISO_SET );
+  processor *proc = add_provenance( *doc, "FoLiA-langcat", command );
+  if ( !doc->declared(  AnnotationType::LANG, ISO_SET ) ){
+    KWargs args;
+    args["processor"] = proc->id();
+    doc->declare( AnnotationType::LANG, ISO_SET, args );
+  }
   string outName;
   if ( !outDir.empty() ){
     outName = outDir + "/";
@@ -285,6 +292,7 @@ int main( int argc, char *argv[] ){
     usage();
     exit(EXIT_FAILURE);
   }
+  string command = "FoLiA-langcat " + opts.toString();
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;
@@ -313,7 +321,7 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for firstprivate(TC) shared(fileNames,toDo) schedule(dynamic)
   for ( size_t fn=0; fn < toDo; ++fn ){
     string docName = fileNames[fn];
-    procesFile( TC, outDir, docName, lang, tags, doAll, cls );
+    procesFile( TC, outDir, docName, lang, tags, doAll, cls, command );
   }
   return EXIT_SUCCESS;
 }

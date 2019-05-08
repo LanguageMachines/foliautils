@@ -17,7 +17,7 @@ do if test -x $file
        \rm -f $file.out
        echo -n "testing $file "
        ./$file > $file.err 2>&1
-       diff -w --ignore-matching-lines=".?*-annotation .?*" --ignore-matching-lines=".*generator=.*"  --ignore-matching-lines=".*FOLIA_TEXT_CHECK.*"  $file.out $file.ok >& $file.diff
+       diff -w --ignore-matching-lines=".?*-annotation .?*" --ignore-matching-lines=".*generator=.*"  --ignore-matching-lines=".*FOLIA_TEXT_CHECK.*" --ignore-matching-lines=".*begindatetime.*" $file.out $file.ok >& $file.diff
        if [ $? -ne 0 ];
        then
            diff -w $file.diff $file.diff.known >& /dev/null
