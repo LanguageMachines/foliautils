@@ -742,9 +742,9 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
       cout << docName <<  ": " << sents.size() << " sentences" << endl;
     }
   }
-  TEXT_FLAGS flags = NONE;
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
   if ( !detokenize ){
-    flags = flags | RETAIN;
+    flags = flags | TEXT_FLAGS::RETAIN;
   }
   for ( unsigned int s=0; s < sents.size(); ++s ){
     vector<Word*> words = sents[s]->words();
@@ -938,9 +938,9 @@ size_t doc_str_inventory( const Document *d,
       cout << "make a str inventory on:" << docName << endl;
     }
   }
-  TEXT_FLAGS flags = NONE;
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
   if ( !detokenize ){
-    flags = flags | RETAIN;
+    flags = flags | TEXT_FLAGS::RETAIN;
   }
   size_t grand_total = 0;
   vector<String*> strings = d->doc()->select<String>();
@@ -1008,9 +1008,9 @@ size_t par_str_inventory( const Document *d, const string& docName,
       cout << "make a par_str inventory on:" << docName << endl;
     }
   }
-  TEXT_FLAGS flags = NONE;
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
   if ( !detokenize ){
-    flags = flags | RETAIN;
+    flags = flags | TEXT_FLAGS::RETAIN;
   }
   size_t grand_total = 0;
   vector<Paragraph*> pars = d->paragraphs();
@@ -1133,9 +1133,9 @@ size_t text_inventory( const Document *d, const string& docName,
       cout << "make a text inventory on:" << docName << endl;
     }
   }
-  TEXT_FLAGS flags = NONE;
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
   if ( !detokenize ){
-    flags = flags | RETAIN;
+    flags = flags | TEXT_FLAGS::RETAIN;
   }
   size_t grand_total = 0;
   vector<FoliaElement *> nodes = gather_nodes( d, docName, tags, skiptags );
