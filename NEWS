@@ -1,3 +1,25 @@
+foliautils 0.11  15-05-2019
+[Ko vd Sloot]
+Stabilizing release for pre FoLiA 2.0
+
+* Updated and added some tests
+* started moving common code to a separate file and build a library
+  (libfoliautils)
+  - hemp detection is one of them
+
+* FoLiA-stats:
+  - added possibility to read a list of directories + file-names to process
+    into seperate output directories. (could be generalized to other programs)
+  - better hemp detection
+* FoLiA-correct:
+  - use same hempo detections as FoLiA-stats
+* FoLiA-abby:
+  - support more flavors
+* FoLiA-clean:
+  - avoid removing the last remaining tekt on <w> nodes
+  - cleaning of tokenization now works
+
+
 foliautils 0.10  29-11-2018
 [Ko vd Sloot]
   * fixed icu:namespace issues
