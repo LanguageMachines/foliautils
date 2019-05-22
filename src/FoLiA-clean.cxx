@@ -98,15 +98,28 @@ void clean_text( FoliaElement *node,
 	  if ( debug ){
 #pragma omp critical( debugging )
 	    {
-	      cerr << "remove" << p << endl;
+	      cerr << "different textclass: " <<  p->cls()
+		   << "remove " << p << endl;
 	    }
 	  }
 	  node->remove(p,true);
 	  --i;
 	}
 	else {
+	  if ( debug ){
+#pragma omp critical( debugging )
+	    {
+	      cerr << "same textclass: " <<  p->cls() << " keep" << endl;
+	    }
+	  }
 	  if ( current ){
 	    p->set_to_current();
+	    if ( debug ){
+#pragma omp critical( debugging )
+	      {
+		cerr << "set texclass to current: " << p << endl;
+	      }
+	    }
 	  }
 	  clean_text( p, textclass, current );
 	}
@@ -161,33 +174,35 @@ void clean_anno( FoliaElement *node,
 
 void clean_tokens( FoliaElement *node,
 		   const string& textclass ){
-  if ( debug ){
-#pragma omp critical( debugging )
-    {
-      cerr << "clean tokens, bekijk "
-	   << node << ", textclass='" << textclass << "'" << endl;
-    }
-  }
   if ( node->xmltag() == "p"
        || node->xmltag() == "s" ){
+    if ( debug ){
+#pragma omp critical( debugging )
+      {
+	cerr << "clean tokens, bekijk "
+	     << node << ", textclass='" << textclass << "'" << endl;
+      }
+    }
     UnicodeString s1;
     try {
-      s1 = node->text(textclass);
+      s1 = node->text(textclass,TEXT_FLAGS::STRICT );
     }
     catch (...){
     }
-    if ( s1.isEmpty() ){
-      if ( debug ){
+    if ( !s1.isEmpty() ){
+      // So a STRICT text in the right class. We are done then
+      return;
+    }
+    if ( debug ){
 #pragma omp critical( debugging )
-	{
-	  cerr << "S1 is leeg, dieper kijken " << endl;
-	}
+      {
+	cerr << "S1 is leeg, dieper kijken " << endl;
       }
-      try {
-	s1 = node->text( textclass ); // no retain tokenization, no strict
-      }
-      catch (...){
-      }
+    }
+    try {
+      s1 = node->text( textclass ); // no retain tokenization, no strict
+    }
+    catch (...){
     }
     if ( debug ){
 #pragma omp critical( debugging )
@@ -206,8 +221,21 @@ void clean_tokens( FoliaElement *node,
       }
     }
     else {
+      if ( debug ){
+#pragma omp critical( debugging )
+	{
+	  cerr << "loop over " << node->xmltag() << " met "
+	       << node->size() << " subnodes" << endl;
+	}
+      }
       for ( size_t i=0; i < node->size(); ++i ){
 	FoliaElement *p = node->index(i);
+	if ( debug ){
+#pragma omp critical( debugging )
+	  {
+	    cerr << "bekijk " << p << endl;
+	  }
+	}
 	if ( p->xmltag() == "w"
 	     || p->xmltag() == "s" ){
 	  if ( debug ){
@@ -222,19 +250,26 @@ void clean_tokens( FoliaElement *node,
       }
       //    cerr << "na remove, node.size=" << node->size() << endl;
       if ( !s1.isEmpty() ) {
+	if ( debug ){
+#pragma omp critical( debugging )
+	  {
+	    cerr << "nu zet de tekst: " << s1 << " (" << textclass << ")"
+		 << endl;
+	  }
+	}
 	node->settext( TiCC::UnicodeToUTF8(s1), textclass );
       }
     }
   }
   else {
+    if ( debug ){
+#pragma omp critical( debugging )
+      {
+	cerr << "recurse clean tokens, bekijk " << node << endl;
+      }
+    }
     for ( size_t i=0; i < node->size(); ++i ){
       FoliaElement *p = node->index(i);
-      if ( debug ){
-#pragma omp critical( debugging )
-	{
-	  cerr << "clean tokens: bekijk " << p << endl;
-	}
-      }
       clean_tokens( p, textclass );
     }
   }

@@ -884,8 +884,8 @@ bool correctDoc( Document *doc,
 		 bool word_nodes,
 		 unordered_map<string,size_t>& counts,
 		 const string& command ){
-  if ( doc->isDeclared( folia::AnnotationType::CORRECTION,
-			setname ) ){
+  if ( doc->declared( folia::AnnotationType::CORRECTION,
+		      setname ) ){
     return false;
   }
   processor *proc = add_provenance( *doc, "FoLiA-correct", command );

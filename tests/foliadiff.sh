@@ -8,6 +8,10 @@ then
 	if [ ! -f $exe ]
 	then
 	    exe="/usr/local/bin/folialint"
+	    if [ ! -f $exe ]
+	    then
+		exe="/usr/bin/folialint"
+	    fi
 	fi
     fi
 fi
@@ -26,12 +30,12 @@ fi
 
 t1=/tmp/${1##*/}.s1
 t2=/tmp/${2##*/}.s2
-$exe --strip "$1" > $t1
-$exe --strip "$2" > $t2
+$exe --strip --KANON "$1" --output $t1
+$exe --strip --KANON "$2" --output $t2
 diff $t1 $t2
 if [ $? -ne 0 ]
 then
-    echo "$1 and $2 are different"
+    echo "foliadiff.sh: differences in: $1 $2"
     exit 1
 fi
 

@@ -171,7 +171,7 @@ void procesFile( const TextCat& tc,
     string id = "NO ID";
     try {
       id = node->id();
-      t = node->textcontent(cls);
+      t = node->text_content(cls);
     }
     catch (...){
     }
