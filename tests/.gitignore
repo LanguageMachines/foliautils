@@ -5,7 +5,11 @@ out*
 corr.ticcl.xml
 corr_str.ticcl.xml
 corr_word.ticcl.xml
+corr.ticcl.folia.xml
 *.tsv
 test/
 test1/
 test2/
+clean/
+morse/
+translate/

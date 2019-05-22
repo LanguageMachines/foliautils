@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-00539791a.tif" generator="libfolia-v1.14" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-00539791a.tif" generator="libfolia-v1.20" version="2.0.3">
   <metadata type="native">
     <annotations>
-      <string-annotation annotator="folia-page" datetime="2018-11-22T12:51:12" set="FoLiA-page-set"/>
+      <string-annotation set="FoLiA-page-set">
+        <annotator processor="FoLiA-page.1"/>
+      </string-annotation>
     </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-page.1" begindatetime="2019-05-08T14:24:16" command="FoLiA-page -O out/page" host="bonus" name="FoLiA-page" user="sloot" version="0.11">
+        <processor xml:id="FoLiA-page.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      </processor>
+    </provenance>
     <meta id="page_file">00667463.xml</meta>
   </metadata>
   <text xml:id="FP-00539791a.tif.text">
@@ -11,648 +18,648 @@
       <t class="OCR">82</t>
       <str xml:id="FP-00539791a.tif.text.r15.word_0">
         <t class="OCR" offset="0">82</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r17">
       <t class="OCR">16DE VERGADERING. — 12 JANUARIJ 1815.</t>
       <str xml:id="FP-00539791a.tif.text.r17.word_0">
         <t class="OCR" offset="0">16DE</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r17.word_1">
         <t class="OCR" offset="5">VERGADERING.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r17.word_2">
         <t class="OCR" offset="18">—</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r17.word_3">
         <t class="OCR" offset="20">12</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_3" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_3" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r17.word_4">
         <t class="OCR" offset="23">JANUARIJ</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_4" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r17.word_5">
         <t class="OCR" offset="32">1815.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_5" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_5" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r18">
       <t class="OCR">Bijlagen der concept‑wet op de nationale militie.</t>
       <str xml:id="FP-00539791a.tif.text.r18.word_0">
         <t class="OCR" offset="0">Bijlagen</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r18.word_1">
         <t class="OCR" offset="9">der</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r18.word_2">
         <t class="OCR" offset="13">concept‑wet</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r18.word_3">
         <t class="OCR" offset="25">op</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_3" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_3" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r18.word_4">
         <t class="OCR" offset="28">de</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_4" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r18.word_5">
         <t class="OCR" offset="31">nationale</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_5" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_5" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r18.word_6">
         <t class="OCR" offset="41">militie.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_6" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_6" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r20">
       <t class="OCR">MODEL LITT. E.</t>
       <str xml:id="FP-00539791a.tif.text.r20.word_0">
         <t class="OCR" offset="0">MODEL</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r20.word_1">
         <t class="OCR" offset="6">LITT.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r20.word_2">
         <t class="OCR" offset="12">E.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r22">
       <t class="OCR">LOTINGS‑LIJST voor de nationale militie van het</t>
       <str xml:id="FP-00539791a.tif.text.r22.word_0">
         <t class="OCR" offset="0">LOTINGS‑LIJST</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r22.word_1">
         <t class="OCR" offset="14">voor</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r22.word_2">
         <t class="OCR" offset="19">de</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r22.word_3">
         <t class="OCR" offset="22">nationale</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_3" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_3" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r22.word_4">
         <t class="OCR" offset="32">militie</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_4" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r22.word_5">
         <t class="OCR" offset="40">van</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_5" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_5" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r22.word_6">
         <t class="OCR" offset="44">het</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_6" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_6" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r24">
       <t class="OCR">NB. Na het laatste numero zal deze lijst door den militie‑commissaris gesloten en met den gecommitteerde van het</t>
       <str xml:id="FP-00539791a.tif.text.r24.word_0">
         <t class="OCR" offset="0">NB.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_1">
         <t class="OCR" offset="4">Na</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_2">
         <t class="OCR" offset="7">het</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_3">
         <t class="OCR" offset="11">laatste</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_3" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_3" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_4">
         <t class="OCR" offset="19">numero</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_4" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_5">
         <t class="OCR" offset="26">zal</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_5" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_5" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_6">
         <t class="OCR" offset="30">deze</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_6" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_6" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_7">
         <t class="OCR" offset="35">lijst</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_7" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_7" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_8">
         <t class="OCR" offset="41">door</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_8" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_8" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_9">
         <t class="OCR" offset="46">den</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_9" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_9" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_10">
         <t class="OCR" offset="50">militie‑commissaris</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_10" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_10" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_11">
         <t class="OCR" offset="70">gesloten</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_11" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_11" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_12">
         <t class="OCR" offset="79">en</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_12" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_12" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_13">
         <t class="OCR" offset="82">met</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_13" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_13" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_14">
         <t class="OCR" offset="86">den</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_14" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_14" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_15">
         <t class="OCR" offset="90">gecommitteerde</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_15" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_15" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_16">
         <t class="OCR" offset="105">van</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_16" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_16" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r24.word_17">
         <t class="OCR" offset="109">het</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_17" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_17" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r25">
       <t class="OCR">MODEL LITT. F.</t>
       <str xml:id="FP-00539791a.tif.text.r25.word_0">
         <t class="OCR" offset="0">MODEL</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r25.word_1">
         <t class="OCR" offset="6">LITT.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r25.word_2">
         <t class="OCR" offset="12">F.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r27">
       <t class="OCR">MILITIE‑DISTRICT.</t>
       <str xml:id="FP-00539791a.tif.text.r27.word_0">
         <t class="OCR" offset="0">MILITIE‑DISTRICT.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r28">
       <t class="OCR">MILITIE‑KANTON.</t>
       <str xml:id="FP-00539791a.tif.text.r28.word_0">
         <t class="OCR" offset="0">MILITIE‑KANTON.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r29">
       <t class="OCR">GEMEENTE.</t>
       <str xml:id="FP-00539791a.tif.text.r29.word_0">
         <t class="OCR" offset="0">GEMEENTE.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r42">
       <t class="OCR">Het plaatselijk bestuur van verklaart dat N. N. zich als bij de gemeente in bevindt, alwaar bij op den als zoodanig is beroepen of aangesteld. Van wege het plaatselijk bestuur,</t>
       <str xml:id="FP-00539791a.tif.text.r42.word_0">
         <t class="OCR" offset="0">Het</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_1">
         <t class="OCR" offset="4">plaatselijk</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_2">
         <t class="OCR" offset="16">bestuur</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_3">
         <t class="OCR" offset="24">van</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_3" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_3" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_4">
         <t class="OCR" offset="28">verklaart</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_4" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_5">
         <t class="OCR" offset="38">dat</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_5" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_5" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_6">
         <t class="OCR" offset="42">N.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_6" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_6" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_7">
         <t class="OCR" offset="45">N.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_7" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_7" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_8">
         <t class="OCR" offset="48">zich</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_8" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_8" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_9">
         <t class="OCR" offset="53">als</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_9" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_9" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_10">
         <t class="OCR" offset="57">bij</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_10" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_10" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_11">
         <t class="OCR" offset="61">de</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_11" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_11" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_12">
         <t class="OCR" offset="64">gemeente</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_12" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_12" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_13">
         <t class="OCR" offset="73">in</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_13" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_13" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_14">
         <t class="OCR" offset="76">bevindt,</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_14" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_14" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_15">
         <t class="OCR" offset="85">alwaar</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_15" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_15" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_16">
         <t class="OCR" offset="92">bij</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_16" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_16" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_17">
         <t class="OCR" offset="96">op</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_17" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_17" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_18">
         <t class="OCR" offset="99">den</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_18" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_18" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_19">
         <t class="OCR" offset="103">als</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_19" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_19" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_20">
         <t class="OCR" offset="107">zoodanig</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_20" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_20" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_21">
         <t class="OCR" offset="116">is</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_21" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_21" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_22">
         <t class="OCR" offset="119">beroepen</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_22" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_22" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_23">
         <t class="OCR" offset="128">of</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_23" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_23" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_24">
         <t class="OCR" offset="131">aangesteld.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_24" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_24" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_25">
         <t class="OCR" offset="143">Van</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_25" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_25" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_26">
         <t class="OCR" offset="147">wege</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_26" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_26" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_27">
         <t class="OCR" offset="152">het</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_27" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_27" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_28">
         <t class="OCR" offset="156">plaatselijk</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_28" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_28" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r42.word_29">
         <t class="OCR" offset="168">bestuur,</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_29" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_29" type="str"/>
+        </relation>
       </str>
     </p>
     <p xml:id="FP-00539791a.tif.text.r41">
       <t class="OCR">NB. Indien de geestelijke slechts proponent is en geene vaste woonplaats heeft, moet dit in de verklaring gemeld, en dezelve in zooverre veranderd word�n.</t>
       <str xml:id="FP-00539791a.tif.text.r41.word_0">
         <t class="OCR" offset="0">NB.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_0" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_0" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_1">
         <t class="OCR" offset="4">Indien</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_1" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_1" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_2">
         <t class="OCR" offset="11">de</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_2" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_2" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_3">
         <t class="OCR" offset="14">geestelijke</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_3" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_3" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_4">
         <t class="OCR" offset="26">slechts</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_4" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_4" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_5">
         <t class="OCR" offset="34">proponent</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_5" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_5" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_6">
         <t class="OCR" offset="44">is</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_6" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_6" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_7">
         <t class="OCR" offset="47">en</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_7" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_7" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_8">
         <t class="OCR" offset="50">geene</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_8" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_8" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_9">
         <t class="OCR" offset="56">vaste</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_9" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_9" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_10">
         <t class="OCR" offset="62">woonplaats</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_10" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_10" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_11">
         <t class="OCR" offset="73">heeft,</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_11" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_11" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_12">
         <t class="OCR" offset="80">moet</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_12" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_12" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_13">
         <t class="OCR" offset="85">dit</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_13" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_13" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_14">
         <t class="OCR" offset="89">in</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_14" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_14" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_15">
         <t class="OCR" offset="92">de</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_15" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_15" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_16">
         <t class="OCR" offset="95">verklaring</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_16" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_16" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_17">
         <t class="OCR" offset="106">gemeld,</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_17" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_17" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_18">
         <t class="OCR" offset="114">en</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_18" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_18" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_19">
         <t class="OCR" offset="117">dezelve</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_19" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_19" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_20">
         <t class="OCR" offset="125">in</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_20" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_20" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_21">
         <t class="OCR" offset="128">zooverre</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_21" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_21" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_22">
         <t class="OCR" offset="137">veranderd</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_22" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_22" type="str"/>
+        </relation>
       </str>
       <str xml:id="FP-00539791a.tif.text.r41.word_23">
         <t class="OCR" offset="147">word�n.</t>
-        <alignment format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
-          <aref id="word_23" type="str"/>
-        </alignment>
+        <relation format="text/page+xml" xlink:href="00667463.xml" xlink:type="simple">
+          <xref id="word_23" type="str"/>
+        </relation>
       </str>
     </p>
   </text>

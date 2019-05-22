@@ -31,13 +31,13 @@
 #include <fstream>
 #include "ticcutils/StringOps.h"
 #include "libfolia/folia.h"
-#include "libxml/HTMLparser.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/Unicode.h"
 #include "ticcutils/CommandLine.h"
+#include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -49,76 +49,6 @@ using namespace	icu;
 bool verbose = false;
 string setname = "FoLiA-hocr-set";
 string classname = "OCR";
-
-enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
-
-xmlDoc *getXml( const string& file, zipType& type ){
-  type = UNKNOWN;
-  bool isHtml;
-  if ( TiCC::match_back( file, ".xhtml" ) ){
-    type = NORMAL;
-    isHtml = false;
-  }
-  else if ( TiCC::match_back( file, ".html" ) ){
-    type = NORMAL;
-    isHtml = true;
-  }
-  else if ( TiCC::match_back( file, ".hocr" ) ){
-    type = NORMAL;
-    isHtml = true;
-  }
-  else if ( TiCC::match_back( file, ".xhtml.gz" ) ){
-    type = GZ;
-    isHtml = false;
-  }
-  else if ( TiCC::match_back( file, ".html.gz" ) ){
-    type = GZ;
-    isHtml = true;
-  }
-  else if ( TiCC::match_back( file, ".hocr.gz" ) ){
-    type = GZ;
-    isHtml = true;
-  }
-  else if ( TiCC::match_back( file, ".xhtml.bz2" ) ){
-    type = BZ2;
-    isHtml = false;
-  }
-  else if ( TiCC::match_back( file, ".html.bz2" ) ){
-    type = BZ2;
-    isHtml = true;
-  }
-  else {
-    return 0;
-  }
-  if ( isHtml ){
-    if ( type == NORMAL ){
-      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
-    }
-    string buffer;
-    if ( type == GZ ){
-      buffer = TiCC::gzReadFile( file );
-    }
-    else if ( type == BZ2 ){
-      buffer = TiCC::bz2ReadFile( file );
-    }
-    return htmlReadMemory( buffer.c_str(), buffer.length(),
-			   0, 0, XML_PARSE_NOBLANKS );
-  }
-  else {
-    if ( type == NORMAL ){
-      return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS );
-    }
-    string buffer;
-    if ( type == GZ ){
-      buffer = TiCC::gzReadFile( file );
-    }
-    else if ( type == BZ2 ){
-      buffer = TiCC::bz2ReadFile( file );
-    }
-    return xmlReadMemory( buffer.c_str(), buffer.length(),
-			  0, 0, XML_PARSE_NOBLANKS );
-  }
-}
 
 string extractContent( xmlNode* pnt ) {
   string result;
@@ -176,12 +106,12 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  args.clear();
 	  args["href"] = file;
 	  args["format"] = "text/hocr+xml";
-	  folia::Alignment *h = new folia::Alignment( args );
+	  folia::Relation *h = new folia::Relation( args );
 	  str->append( h );
 	  args.clear();
 	  args["id"] = w_id;
 	  args["type"] = "str";
-	  folia::AlignReference *a = new folia::AlignReference( args );
+	  folia::LinkReference *a = new folia::LinkReference( args );
 	  h->append( a );
 	}
       }
@@ -217,7 +147,8 @@ string getDocId( const string& title, const string& prefix ){
 void convert_hocr( const string& fileName,
 		   const string& outputDir,
 		   const zipType outputType,
-		   const string& prefix ){
+		   const string& prefix,
+		   const string& command ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -260,9 +191,11 @@ void convert_hocr( const string& fileName,
   }
   string docid = getDocId( title, prefix );
   folia::Document doc( "_id='" + docid + "'" );
-  doc.declare( folia::AnnotationType::STRING, setname,
-	       "annotator='folia-hocr', datetime='now()'" );
+  folia::processor *proc = add_provenance( doc, "FoLiA-hocr", command );
   folia::KWargs args;
+  args["processor"] = proc->id();
+  doc.declare( folia::AnnotationType::STRING, setname,  args );
+  args.clear();
   args["_id"] = docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
@@ -344,6 +277,7 @@ int main( int argc, char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+  string orig_command = "FoLiA-hocr " + opts.toString();
   verbose = opts.extract( 'v', value );
   if ( opts.extract( "compress", value ) ){
     if ( value == "b" )
@@ -425,7 +359,7 @@ int main( int argc, char *argv[] ){
 
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
-    convert_hocr( fileNames[fn], outputDir, outputType, prefix );
+    convert_hocr( fileNames[fn], outputDir, outputType, prefix, orig_command );
   }
   cout << "done" << endl;
   exit(EXIT_SUCCESS);

@@ -33,6 +33,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
 #include "libfolia/folia.h"
+#include "foliautils/common_code.h"
 
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -99,6 +100,7 @@ int main( int argc, char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+  string command = "FoLiA-txt " + opts.toString();
   if ( opts.extract( 't', value ) ){
     numThreads = TiCC::stringTo<int>( value );
   }
@@ -182,9 +184,11 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    d->declare( folia::AnnotationType::STRING, setname,
-		"annotator='FoLiA-txt', datetime='now()'" );
-    folia::KWargs args;
+    processor *proc = add_provenance( *d, "FoLiA-txt", command );
+    KWargs args;
+    args["processor"] = proc->id();
+    d->declare( folia::AnnotationType::STRING, setname, args );
+    args.clear();
     args["_id"] = docid + ".text";
     folia::Text *text = new folia::Text( args );
     d->addText( text );

@@ -42,6 +42,7 @@
 #include "ticcutils/StringOps.h"
 #include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
+#include "foliautils/common_code.h"
 
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -54,6 +55,8 @@ using namespace	folia;
 
 const string INT_LEMMAIDSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmaid_withcompounds.foliaset.ttl";
 const string INT_LEMMATEXTSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl";
+const string INT_METRICSET = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/nederlab-metrics.foliaset.ttl";
+
 const UnicodeString NBSP = TiCC::UnicodeFromUTF8(" ");//THIS IS NOT A NORMAL SPACE BUT A narrow no-break space (0x202F), this is a fairly ugly patch that will be propagated to the end-result because Frog can't deal with spaces in tokens at this stage
 
 void usage( const string& name ){
@@ -407,6 +410,7 @@ int main( int argc, const char *argv[] ) {
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+  string command = "FoLiA-wordtranslate " + opts.toString();
   recursiveDirs = opts.extract( 'R' );
   opts.extract( 'O', outPrefix );
   if ( opts.extract( 't', value ) ){
@@ -506,10 +510,19 @@ int main( int argc, const char *argv[] ) {
       }
       continue;
     }
-    doc->declare( folia::AnnotationType::METRIC, "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/nederlab-metrics.foliaset.ttl", "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
+    processor *proc = add_provenance( *doc, "FoLiA-wordtranslate", command );
+    KWargs args;
+    args["processor"] = proc->id();
+    doc->declare( folia::AnnotationType::METRIC,
+		  INT_METRICSET,
+		  args );
     if (!lemmamap.empty()) {
-        doc->declare( folia::AnnotationType::LEMMA, INT_LEMMAIDSET, "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
-        doc->declare( folia::AnnotationType::LEMMA, INT_LEMMATEXTSET, "annotator='FoLiA-wordtranslate',annotatortype='auto'" );
+        doc->declare( folia::AnnotationType::LEMMA,
+		      INT_LEMMAIDSET,
+		      args );
+        doc->declare( folia::AnnotationType::LEMMA,
+		      INT_LEMMATEXTSET,
+		      args );
     }
     string outName = outPrefix;
     string::size_type pos = docName.rfind("/");

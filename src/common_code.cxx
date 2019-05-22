@@ -25,17 +25,21 @@
 */
 
 #include <string>
+#include "libfolia/folia.h"
+#include "libxml/HTMLparser.h"
 #include "foliautils/common_code.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/Unicode.h"
+#include "config.h"
 
 using namespace std;
 using namespace icu;
 
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
+  bool isHtml = false;
   if ( TiCC::match_back( file, ".xml" ) ){
     type = NORMAL;
   }
@@ -45,22 +49,61 @@ xmlDoc *getXml( const string& file, zipType& type ){
   else if ( TiCC::match_back( file, ".xml.bz2" ) ){
     type = BZ2;
   }
-  if ( type == UNKNOWN ){
-    cerr << "problem detecting type of file: " << file << endl;
+  else if ( TiCC::match_back( file, ".xhtml" ) ){
+    type = NORMAL;
+    isHtml = false;
+  }
+  else if ( TiCC::match_back( file, ".html" ) ){
+    type = NORMAL;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".hocr" ) ){
+    type = NORMAL;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".xhtml.gz" ) ){
+    type = GZ;
+    isHtml = false;
+  }
+  else if ( TiCC::match_back( file, ".html.gz" ) ){
+    type = GZ;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".hocr.gz" ) ){
+    type = GZ;
+    isHtml = true;
+  }
+  else if ( TiCC::match_back( file, ".xhtml.bz2" ) ){
+    type = BZ2;
+    isHtml = false;
+  }
+  else if ( TiCC::match_back( file, ".html.bz2" ) ){
+    type = BZ2;
+    isHtml = true;
+  }
+  else {
     return 0;
   }
-  if ( type == NORMAL ){
-    return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+  if ( isHtml ){
+    if ( type == BZ2 ){
+      string buffer = TiCC::bz2ReadFile( file );
+      return htmlReadMemory( buffer.c_str(), buffer.length(),
+			     0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+    }
+    else {
+      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+    }
   }
-  string buffer;
-  if ( type == GZ ){
-    buffer = TiCC::gzReadFile( file );
+  else {
+    if ( type == BZ2 ){
+      string buffer = TiCC::bz2ReadFile( file );
+      return xmlReadMemory( buffer.c_str(), buffer.length(),
+			    0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+    }
+    else {
+      return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+    }
   }
-  else if ( type == BZ2 ){
-    buffer = TiCC::bz2ReadFile( file );
-  }
-  return xmlReadMemory( buffer.c_str(), buffer.length(),
-			0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
 }
 
 bool isalnum( UChar uc ){
@@ -163,4 +206,24 @@ vector<hemp_status> create_emph_inventory( const vector<UnicodeString>& data ){
     }
   }
   return inventory;
+}
+
+folia::processor *add_provenance( folia::Document& doc,
+				  const string& label,
+				  const string& command ) {
+  folia::processor *proc = doc.get_processor( label );
+  if ( proc ){
+    throw logic_error( "add_provenance() failed, label: '" + label
+		       + "' already exists." );
+  }
+  folia::KWargs args;
+  args["name"] = label;
+  args["id"] = label + ".1";
+  args["version"] = PACKAGE_VERSION;
+  args["command"] = command;
+  args["begindatetime"] = "now()";
+  args["generator"] = "yes";
+  proc = doc.add_processor( args );
+  proc->get_system_defaults();
+  return proc;
 }

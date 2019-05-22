@@ -14,13 +14,13 @@ Usage: FoLiA-page [options] file/dir
 	-V or --version	 show version 
 start processing of 9 files 
 done
-   164    389   7069 out/page/00539789b.tif.folia.xml
-   647   1565  28362 out/page/00539790a.tif.folia.xml
-   290    697  12702 out/page/00539790b.tif.folia.xml
-   659   1602  29041 out/page/00539791a.tif.folia.xml
-   539   1302  23674 out/page/00539791b.tif.folia.xml
-   632   1538  27884 out/page/00539792a.tif.folia.xml
-   593   1437  26076 out/page/00539792b.tif.folia.xml
-   686   1666  30273 out/page/00539795a.tif.folia.xml
-   353    851  15428 out/page/00539795b.tif.folia.xml
-  4563  11047 200509 total
+   172    411   7505 out/page/00539789b.tif.folia.xml
+   655   1587  28646 out/page/00539790a.tif.folia.xml
+   298    719  13098 out/page/00539790b.tif.folia.xml
+   667   1624  29319 out/page/00539791a.tif.folia.xml
+   547   1324  23992 out/page/00539791b.tif.folia.xml
+   640   1560  28170 out/page/00539792a.tif.folia.xml
+   601   1459  26376 out/page/00539792b.tif.folia.xml
+   694   1688  30543 out/page/00539795a.tif.folia.xml
+   361    873  15804 out/page/00539795b.tif.folia.xml
+  4635  11245 203453 total

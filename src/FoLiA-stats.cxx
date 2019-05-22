@@ -742,6 +742,10 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
       cout << docName <<  ": " << sents.size() << " sentences" << endl;
     }
   }
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
+  if ( !detokenize ){
+    flags = flags | TEXT_FLAGS::RETAIN;
+  }
   for ( unsigned int s=0; s < sents.size(); ++s ){
     vector<Word*> words = sents[s]->words();
     if ( verbose ){
@@ -775,7 +779,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
     for ( const auto& w : words ){
       wlp_rec rec;
       try {
-	UnicodeString uword = w->text(classname,detokenize==false);
+	UnicodeString uword = w->text(classname,flags);
 	if ( lowercase ){
 	  uword.toLower();
 	}
@@ -934,6 +938,10 @@ size_t doc_str_inventory( const Document *d,
       cout << "make a str inventory on:" << docName << endl;
     }
   }
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
+  if ( !detokenize ){
+    flags = flags | TEXT_FLAGS::RETAIN;
+  }
   size_t grand_total = 0;
   vector<String*> strings = d->doc()->select<String>();
   if ( verbose ){
@@ -956,7 +964,7 @@ size_t doc_str_inventory( const Document *d,
   for ( const auto& s : strings ){
     UnicodeString us;
     try {
-      us = s->text(classname,detokenize==false);
+      us = s->text(classname,flags);
       if ( lowercase ){
 	us.toLower();
       }
@@ -1000,6 +1008,10 @@ size_t par_str_inventory( const Document *d, const string& docName,
       cout << "make a par_str inventory on:" << docName << endl;
     }
   }
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
+  if ( !detokenize ){
+    flags = flags | TEXT_FLAGS::RETAIN;
+  }
   size_t grand_total = 0;
   vector<Paragraph*> pars = d->paragraphs();
   for ( const auto& p : pars ){
@@ -1024,7 +1036,7 @@ size_t par_str_inventory( const Document *d, const string& docName,
     for ( const auto& s : strings ){
       UnicodeString us;
       try {
-	us = s->text(classname,detokenize==false);
+	us = s->text(classname,flags);
 	if ( lowercase ){
 	  us.toLower();
 	}
@@ -1060,7 +1072,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc,
   for ( const auto& tag : tags_v ){
     ElementType et;
     try {
-      et = stringToET( tag );
+      et = TiCC::stringTo<ElementType>( tag );
     }
     catch ( ... ){
 #pragma omp critical (logging)
@@ -1076,7 +1088,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc,
   for ( const auto& tag : skiptags_v ){
     ElementType et;
     try {
-      et = stringToET( tag );
+      et = TiCC::stringTo<ElementType>( tag );
     }
     catch ( ... ){
 #pragma omp critical (logging)
@@ -1121,6 +1133,10 @@ size_t text_inventory( const Document *d, const string& docName,
       cout << "make a text inventory on:" << docName << endl;
     }
   }
+  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
+  if ( !detokenize ){
+    flags = flags | TEXT_FLAGS::RETAIN;
+  }
   size_t grand_total = 0;
   vector<FoliaElement *> nodes = gather_nodes( d, docName, tags, skiptags );
   for ( const auto& node : nodes ){
@@ -1136,7 +1152,7 @@ size_t text_inventory( const Document *d, const string& docName,
     }
     UnicodeString us;
     try {
-      us = node->text(classname,detokenize==false);
+      us = node->text(classname,flags);
       if ( lowercase ){
 	us.toLower();
       }

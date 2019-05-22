@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-levi010geil01_01_Deel500.xml" generator="libfolia-v1.16" version="1.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-levi010geil01_01_Deel500.xml" generator="libfolia-v1.20" version="2.0.3">
   <metadata type="native">
     <annotations/>
+    <provenance>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2019-05-07T15:51:34" command="FoLiA-abby -O out" host="bonus" name="FoLiA-abby" user="sloot" version="0.11">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      </processor>
+    </provenance>
     <meta id="abby_file">levi010geil01_01_Deel500.xml</meta>
   </metadata>
   <text xml:id="FA-levi010geil01_01_Deel500.text">
