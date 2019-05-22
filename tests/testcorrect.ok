@@ -1,5 +1,5 @@
 missing '--punct' option
-foliautils 0.11
+foliautils 0.12
 Usage: [options] file/dir
 	--setname	 FoLiA setname. (default 'Ticcl-set')
 	--inputclass	 classname. (default 'current')

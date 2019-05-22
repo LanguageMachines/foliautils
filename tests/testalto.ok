@@ -14,7 +14,7 @@ Usage: alto [options] file/dir
 			 'c'=g creates gzip files (.gz)
 	-v	 verbose output 
 	-V or --version	 show version 
-foliautils 0.11
+foliautils 0.12
 Usage: alto [options] file/dir
 	--cache	 alto cache directory 
 	--clear	 clear cached Alto files at start

@@ -7,7 +7,7 @@ Usage: [options] file/dir
 	-O	 output directory 
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
-foliautils 0.11
+foliautils 0.12
 Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.
@@ -18,16 +18,17 @@ Usage: [options] file/dir
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.20" version="2.0.3">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.0" version="2.1.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="FoLiA-txt-set">
         <annotator processor="FoLiA-txt.1"/>
       </string-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2019-05-08T14:41:22" command="FoLiA-txt -O out" host="bonus" name="FoLiA-txt" user="sloot" version="0.11">
-        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2019-05-22T17:10:21" command="FoLiA-txt -O out" host="bonus" name="FoLiA-txt" user="sloot" version="0.12">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.0"/>
       </processor>
     </provenance>
   </metadata>
@@ -104,16 +105,17 @@ Usage: [options] file/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.20" version="2.0.3">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.0" version="2.1.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="FoLiA-txt-set">
         <annotator processor="FoLiA-txt.1"/>
       </string-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2019-05-08T14:41:22" command="FoLiA-txt --class=foobar -O out" host="bonus" name="FoLiA-txt" user="sloot" version="0.11">
-        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2019-05-22T17:10:21" command="FoLiA-txt --class=foobar -O out" host="bonus" name="FoLiA-txt" user="sloot" version="0.12">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.0"/>
       </processor>
     </provenance>
   </metadata>
@@ -190,16 +192,17 @@ Usage: [options] file/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v1.20" version="2.0.3">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.0" version="2.1.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="foo">
         <annotator processor="FoLiA-txt.1"/>
       </string-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2019-05-08T14:41:22" command="FoLiA-txt --class=bar --setname=foo -O out" host="bonus" name="FoLiA-txt" user="sloot" version="0.11">
-        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2019-05-22T17:10:21" command="FoLiA-txt --class=bar --setname=foo -O out" host="bonus" name="FoLiA-txt" user="sloot" version="0.12">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.0"/>
       </processor>
     </provenance>
   </metadata>
