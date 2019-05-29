@@ -64,7 +64,7 @@ void appendStr( folia::FoliaElement *par, int& pos,
     str->setutext( val, pos, classname );
     pos += val.length() +1;
     args.clear();
-    args["href"] = file;
+    args["xlink:href"] = file;
     args["format"] = "text/page+xml";
     folia::Relation *h = new folia::Relation( args );
     str->append( h );

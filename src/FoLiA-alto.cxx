@@ -207,7 +207,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     if ( !altoFile.empty() ){
       // direct mode has no altofile
       args.clear();
-      args["href"] = altoFile;
+      args["xlink:href"] = altoFile;
       folia::Relation *h = new folia::Relation( args );
       s->append( h );
       args.clear();
@@ -236,7 +236,7 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       txt += " " + uc;
       if ( !altoFile.empty() ){
 	args.clear();
-	args["href"] = altoFile;
+	args["xlink:href"] = altoFile;
 	folia::Relation *h = new folia::Relation( args );
 	s->append( h );
 	args.clear();
@@ -321,7 +321,7 @@ void createFile( folia::FoliaElement *text,
 		  ocr_text += " " + subc;
 		  if ( !altoFile.empty() ){
 		    args.clear();
-		    args["href"] = altoFile;
+		    args["xlink:href"] = altoFile;
 		    folia::Relation *h = new folia::Relation( args );
 		    s->append( h );
 		    args.clear();
@@ -991,7 +991,7 @@ void solveBook( const string& altoFile, const string& id,
 				 classname );
 		    ocr_text += " " + subc;
 		    args.clear();
-		    args["href"] = urn;
+		    args["xlink:href"] = urn;
 		    folia::Relation *h = new folia::Relation( args );
 		    s->append( h );
 		    args.clear();

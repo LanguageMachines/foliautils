@@ -142,7 +142,7 @@ void add_reference( TextContent *tc, xmlNode *p ){
   }
   if ( !ref.empty() ){
     KWargs args;
-    args["href"] = ref;
+    args["xlink:href"] = ref;
     args["type"] = "locator";
     if ( !sub_type.empty() ){
       args["role"] = sub_type;
@@ -942,7 +942,7 @@ void process_break( Division *root, xmlNode *brk ){
   args.clear();
   args["class"] = "page";
   args["format"] = "image/jpeg";
-  args["href"] = TiCC::getAttribute( brk, "source");
+  args["xlink:href"] = TiCC::getAttribute( brk, "source");
   Relation *align = new Relation( args, root->doc() );
   pb->append( align );
 }

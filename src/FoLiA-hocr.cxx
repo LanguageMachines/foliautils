@@ -104,7 +104,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
 	  args.clear();
-	  args["href"] = file;
+	  args["xlink:href"] = file;
 	  args["format"] = "text/hocr+xml";
 	  folia::Relation *h = new folia::Relation( args );
 	  str->append( h );
