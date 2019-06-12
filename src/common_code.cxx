@@ -218,7 +218,7 @@ folia::processor *add_provenance( folia::Document& doc,
   }
   folia::KWargs args;
   args["name"] = label;
-  args["id"] = label + ".1";
+  args["generate_id"] = "auto()";
   args["version"] = PACKAGE_VERSION;
   args["command"] = command;
   args["begindatetime"] = "now()";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.20" version="1.4.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v2.1" version="1.4.0">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
@@ -7,10 +7,11 @@
       <pos-annotation annotator="frog-mbpos-1.0" datetime="2017-05-02T22:10:06" set="http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn"/>
       <lemma-annotation annotator="frog-mblem-1.1" datetime="2017-05-02T22:10:06" set="http://ilk.uvt.nl/folia/sets/frog-mblem-nl"/>
       <entity-annotation annotator="frog-ner-1.0" datetime="2017-05-02T22:10:06" set="http://ilk.uvt.nl/folia/sets/frog-ner-nl"/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLia-clean.1" begindatetime="2019-05-07T16:36:03" command="FoLiA-clean -O clean --fixtext --textclass=OCR" host="bonus" name="FoLia-clean" user="sloot" version="0.11">
-        <processor xml:id="FoLia-clean.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      <processor xml:id="FoLia-clean.1" begindatetime="2019-06-12T13:10:30" command="FoLiA-clean -O clean --fixtext --textclass=OCR" folia_version="2.1.0" host="bonus" name="FoLia-clean" user="sloot" version="0.13">
+        <processor xml:id="FoLia-clean.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.1"/>
       </processor>
     </provenance>
     <meta id="genre">artikel</meta>
@@ -42,7 +43,7 @@
         </w>
         <w xml:id="dirty.text.p.3.s.1.w.3" class="WORD">
           <t class="OCR">fondsen</t>
-          <pos class="N(soort,mv,basis)" confidence="1" head="N">
+          <pos class="N(soort,mv,basis)" confidence="1.000000" head="N">
             <feat class="soort" subset="ntype"/>
             <feat class="mv" subset="getal"/>
             <feat class="basis" subset="graad"/>
@@ -51,14 +52,14 @@
         </w>
         <w xml:id="dirty.text.p.3.s.1.w.4" class="WORD">
           <t class="OCR">voorkomende</t>
-          <pos class="SPEC(deeleigen)" confidence="1" head="SPEC">
+          <pos class="SPEC(deeleigen)" confidence="1.000000" head="SPEC">
             <feat class="deeleigen" subset="spectype"/>
           </pos>
           <lemma class="voorkomende"/>
         </w>
         <w xml:id="dirty.text.p.3.s.1.w.5" class="WORD">
           <t class="OCR">op</t>
-          <pos class="VZ" confidence="1" head="SPEC"/>
+          <pos class="VZ" confidence="1.000000" head="SPEC"/>
           <lemma class="op"/>
         </w>
         <w xml:id="dirty.text.p.3.s.1.w.6" class="WORD">
@@ -93,11 +94,11 @@
         </w>
         <w xml:id="dirty.text.p.3.s.1.w.9" class="PUNCTUATION">
           <t class="OCR">.</t>
-          <pos class="LET()" confidence="1" head="LET"/>
+          <pos class="LET()" confidence="1.000000" head="LET"/>
           <lemma class="."/>
         </w>
         <entities xml:id="dirty.text.p.3.s.1.entities.1">
-          <entity xml:id="dirty.text.p.3.s.1.entities.1.entity.1" class="pro" confidence="1">
+          <entity xml:id="dirty.text.p.3.s.1.entities.1.entity.1" class="pro" confidence="1.000000">
             <wref id="dirty.text.p.3.s.1.w.1"/>
           </entity>
           <entity xml:id="dirty.text.p.3.s.1.entities.1.entity.2" class="per" confidence="0.631398">

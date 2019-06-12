@@ -172,7 +172,7 @@ int main( int argc, char *argv[] ){
     }
     Document *d = 0;
     try {
-      d = new Document( "_id='"+ docid + "'" );
+      d = new Document( "xml:id='"+ docid + "'" );
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -189,7 +189,7 @@ int main( int argc, char *argv[] ){
     args["processor"] = proc->id();
     d->declare( folia::AnnotationType::STRING, setname, args );
     args.clear();
-    args["_id"] = docid + ".text";
+    args["xml:id"] = docid + ".text";
     folia::Text *text = new folia::Text( args );
     d->addText( text );
     int parCount = 0;
@@ -215,7 +215,7 @@ int main( int argc, char *argv[] ){
 	if ( par == 0 ){
 	  folia::KWargs args;
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
-	  args["_id"] = parId;
+	  args["xml:id"] = parId;
 	  par = new folia::Paragraph( args, d );
 	  wrdCnt = 0;
 	}
@@ -223,7 +223,7 @@ int main( int argc, char *argv[] ){
 	content = TiCC::trim( content);
 	if ( !content.empty() ){
 	  folia::KWargs args;
-	  args["_id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
+	  args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = new folia::String( args, d );
 	  str->settext( content, classname );
 	  parTxt += " " + content;

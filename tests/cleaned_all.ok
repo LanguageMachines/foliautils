@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v1.20" version="1.4.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dirty" generator="libfolia-v2.1" version="1.4.0">
   <metadata type="native">
     <annotations>
       <token-annotation annotator="ucto" datetime="2017-05-02T22:10:06" set="tokconfig-nld"/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLia-clean.1" begindatetime="2019-05-07T16:35:28" command="FoLiA-clean -O clean --cleanannoset=lang --cleanannoset=pos --cleanannoset=entity --cleanannoset=lemma --textclass=OCR --current" host="bonus" name="FoLia-clean" user="sloot" version="0.11">
-        <processor xml:id="FoLia-clean.1.generator" folia_version="2.0.3" name="libfolia" type="generator" version="1.20"/>
+      <processor xml:id="FoLia-clean.1" begindatetime="2019-06-12T13:10:11" command="FoLiA-clean -O clean --cleanannoset=lang --cleanannoset=pos --cleanannoset=entity --cleanannoset=lemma --textclass=OCR --current" folia_version="2.1.0" host="bonus" name="FoLia-clean" user="sloot" version="0.13">
+        <processor xml:id="FoLia-clean.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.1"/>
       </processor>
     </provenance>
     <meta id="genre">artikel</meta>

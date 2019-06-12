@@ -1,5 +1,5 @@
 missing input file(s)
-FoLiA-page [foliautils 0.12]
+FoLiA-page [foliautils 0.13]
 Usage: FoLiA-page [options] file/dir
 	-t		 number_of_threads
 	-h or --help	 this messages 
@@ -14,13 +14,13 @@ Usage: FoLiA-page [options] file/dir
 	-V or --version	 show version 
 start processing of 9 files 
 done
-   172    411   7503 out/page/00539789b.tif.folia.xml
-   655   1587  28644 out/page/00539790a.tif.folia.xml
-   298    719  13096 out/page/00539790b.tif.folia.xml
-   667   1624  29317 out/page/00539791a.tif.folia.xml
-   547   1324  23990 out/page/00539791b.tif.folia.xml
-   640   1560  28168 out/page/00539792a.tif.folia.xml
-   601   1459  26374 out/page/00539792b.tif.folia.xml
-   694   1688  30541 out/page/00539795a.tif.folia.xml
-   361    873  15802 out/page/00539795b.tif.folia.xml
-  4635  11245 203435 total
+   172    412   7525 out/page/00539789b.tif.folia.xml
+   655   1588  28666 out/page/00539790a.tif.folia.xml
+   298    720  13118 out/page/00539790b.tif.folia.xml
+   667   1625  29339 out/page/00539791a.tif.folia.xml
+   547   1325  24012 out/page/00539791b.tif.folia.xml
+   640   1561  28190 out/page/00539792a.tif.folia.xml
+   601   1460  26396 out/page/00539792b.tif.folia.xml
+   694   1689  30563 out/page/00539795a.tif.folia.xml
+   361    874  15824 out/page/00539795b.tif.folia.xml
+  4635  11254 203633 total
