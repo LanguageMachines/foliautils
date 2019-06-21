@@ -66,6 +66,7 @@ void usage( const string& name ){
   cerr << "\t-d\t dictionary_file (format: $source\\t$target\\n)" << endl;
   cerr << "\t-p\t lexicon_file (format: $word\\n); monolingual lexicon of words that are preserved as-is" << endl;
   cerr << "\t-H\t dictionary_file (format: INT historical lexicon dump)" << endl;
+  cerr << "\t-l\t language - constraint to language" << endl;
   cerr << "\t-r or --rules\t rules_file (format: $pattern\\s$replacement\\n)" << endl;
   cerr << "\t--inputclass\t class (default: current)" << endl;
   cerr << "\t--outputclass\t class (default: translated)" << endl;
@@ -177,6 +178,16 @@ UnicodeString lemmatiser( Word *word,
   return target_flat; //return variant more or less suitable for modernisation (whitespaces will be handled later still)
 }
 
+const string getlanguage(FoliaElement * e) {
+  if ( e->has_annotation<folia::LangAnnotation>() ){
+    return e->annotation<folia::LangAnnotation>()->cls();
+  } else if (e->parent() != NULL) {
+    return getlanguage(e->parent());
+  } else {
+    return "";
+  }
+}
+
 
 bool translateDoc( Document *doc,
 		   const t_dictionary& dictionary,
@@ -185,12 +196,19 @@ bool translateDoc( Document *doc,
 		   const t_lexicon& preserve_lexicon,
 		   const t_rules& rules,
                    const t_histdictionary& histdictionary,
-                   const t_lemmamap& lemmamap) {
+                   const t_lemmamap& lemmamap,
+                   const string& constrainlanguage) {
   bool changed = false;
   vector<Word*> words = doc->doc()->select<Word>();
   for (const auto& word : words) {
     const UnicodeString source = word->text(inputclass);
     cerr << "Processing word " << word->id() << ": " << TiCC::UnicodeToUTF8(source);
+    if (!constrainlanguage.empty()) {
+        if (getlanguage(word) != constrainlanguage) {
+            cerr << "(language constraint not satisfied)" << endl;
+            continue;
+        }
+    }
     UnicodeString source_flat = source;
     source_flat = source_flat.toLower();
     const bool recase = (source_flat != source);
@@ -456,6 +474,12 @@ int main( int argc, const char *argv[] ) {
     exit( EXIT_FAILURE );
   }
 
+  string constrainlanguage = "";
+  if ( opts.extract( 'l', constrainlanguage) ){
+    cerr << "Constraining language to " << constrainlanguage << endl;
+  }
+
+
   string inthistlexiconfile;
   if ( opts.extract( 'H', inthistlexiconfile) ){
     cerr << "Loading INT historical lexicon... ";
@@ -553,7 +577,7 @@ int main( int argc, const char *argv[] ) {
 	exit(EXIT_FAILURE);
       }
 
-      translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules, histdictionary, lemmamap);
+      translateDoc(doc, dictionary, inputclass, outputclass, preserve_lexicon, rules, histdictionary, lemmamap, constrainlanguage);
       doc->save(outName);
     }
 #pragma omp critical
