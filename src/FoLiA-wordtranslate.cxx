@@ -396,7 +396,7 @@ int loadRules( const string& filename,
 }
 
 int main( int argc, const char *argv[] ) {
-  TiCC::CL_Options opts( "d:e:p:r:vVt:O:RhH:",
+  TiCC::CL_Options opts( "d:e:p:r:vVt:O:RhH:l:",
 			 "inputclass:,outputclass:,version,help" );
   try {
     opts.init( argc, argv );
