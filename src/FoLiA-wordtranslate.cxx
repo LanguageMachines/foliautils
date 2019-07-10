@@ -258,9 +258,6 @@ bool translateDoc( Document *doc,
       }
     }
 
-    //Frog can't deal with spaces in the target, replace those with a narrow non-breaking space
-    //this is a bit of an ugly hack that will propagate to the final FoLiA
-    if (changed) target = target.findAndReplace(" ", NBSP);
     cerr << " -> " << TiCC::UnicodeToUTF8(target) << " [" << modernisationsource << "]" << endl;
 
 
