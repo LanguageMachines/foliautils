@@ -22,3 +22,17 @@ Usage: FoLiA-pm [options] files/dir
 	-O	 output directory 
 	-v	 verbose output 
 	-V	 show version 
+Validated successfully: test1/FPM-pm2.folia.xml
+Validated successfully: test1/FPM-pm4.folia.xml
+Validated successfully: test1/FPM-pm5.folia.xml
+Validated successfully: test1/FPM-pm7.folia.xml
+Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-1.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.181718180000030.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.181718180000032.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000111.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000112.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000112.2.folia.xml
+Validated successfully: test2/FPM-pm2.folia.xml
+Validated successfully: test2/FPM-pm4.folia.xml
+Validated successfully: test2/FPM-pm5.folia.xml
+Validated successfully: test2/FPM-pm7.folia.xml
