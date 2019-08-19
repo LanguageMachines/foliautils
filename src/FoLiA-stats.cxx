@@ -1103,7 +1103,7 @@ vector<FoliaElement*> gather_nodes( const Document *doc,
   //  cout << "so ignore: " << skiptags << endl;
   vector<FoliaElement*> result;
   for ( const auto& tag : tags ){
-    vector<FoliaElement*> v = doc->doc()->select( tag, skiptags, true );
+    vector<FoliaElement*> v = doc->doc()->select( tag, skiptags );
 #pragma omp critical (logging)
     {
       cout << "document '" << docName << "' has " << v.size() << " "
