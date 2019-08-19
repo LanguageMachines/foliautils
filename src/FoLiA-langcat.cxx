@@ -100,7 +100,7 @@ vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
 	exit(EXIT_FAILURE);
       }
     }
-    vector<FoliaElement*> v = doc->doc()->select( et, true );
+    vector<FoliaElement*> v = doc->doc()->select( et );
 #pragma omp critical (logging)
     {
       cout << "document '" << docName << "' has " << v.size() << " "
