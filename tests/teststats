@@ -116,3 +116,6 @@ diff stats18.wordfreqlist.tsv stats-p_note.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats -s --class=OCR --lang="none" --inputfiles=dpo.lst -e dpo > out25 2>&1
 diff DPO2/wordfreqlist.tsv dpo.ok >> teststats.out 2>&1
+
+$my_bin/FoLiA-stats --tags=div -o issue35 data/issue35.xml > out26 2>&1
+diff issue35.wordfreqlist.tsv issue35.ok >> teststats.out 2>&1

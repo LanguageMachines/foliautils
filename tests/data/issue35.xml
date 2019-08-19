@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="issue35" generator="manual" version="2.2.0">
+  <metadata>
+    <annotations>
+      <text-annotation/>
+      <division-annotation/>
+    </annotations>
+  </metadata>
+  <text>
+    <div>
+      <t>Tekst totaal</t>
+      <div>
+	<t>Tekst</t>
+      </div>
+      <div>
+	<t>totaal</t>
+	</div>
+    </div>
+  </text>
+</FoLiA>
