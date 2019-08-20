@@ -57,11 +57,37 @@ bool verbose = false;
 
 void setlang( FoliaElement* e, const string& lan ){
   // append a LangAnnotation child of class 'lan'
-  KWargs args;
-  args["class"] = lan;
-  args["set"] = ISO_SET;
-  LangAnnotation *node = new LangAnnotation( args, e->doc() );
-  e->replace( node );
+  vector<LangAnnotation*> lav;
+  try {
+    lav = e->annotations<LangAnnotation>(ISO_SET);
+  }
+  catch (...){
+  }
+  if ( lav.empty() ){
+    KWargs args;
+    args["class"] = lan;
+    args["set"] = ISO_SET;
+    LangAnnotation *node = new LangAnnotation( args, e->doc() );
+    e->append( node );
+  }
+  else {
+    bool present = false;
+    for ( const auto it : lav ){
+      if ( it->cls() == lan ){
+	present = true;
+	break;
+      }
+    }
+    if ( !present ){
+      KWargs args;
+      args["class"] = lan;
+      args["set"] = ISO_SET;
+      LangAnnotation *node = new LangAnnotation( args, e->doc() );
+      Alternative *a = new Alternative( );
+      a->append( node );
+      e->append( a );
+    }
+  }
 }
 
 void addLang( const TextContent *t,
@@ -72,15 +98,9 @@ void addLang( const TextContent *t,
   //
   string val;
   for ( const auto& l : lv ){
-    val += l;
+    setlang( t->parent(), l );
     if ( !doAll )
       break;
-    if ( &l != &lv.back() ){
-      val += "|";
-    }
-  }
-  if ( !val.empty() ){
-    setlang( t->parent(), val );
   }
 }
 
