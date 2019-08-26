@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-00539791a.tif" generator="libfolia-v2.1" version="2.1.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-00539791a.tif" generator="libfolia-v2.3" version="2.2.1">
   <metadata type="native">
     <annotations>
       <string-annotation set="FoLiA-page-set">
         <annotator processor="FoLiA-page.1"/>
       </string-annotation>
+      <paragraph-annotation/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <relation-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2019-06-12T12:58:11" command="FoLiA-page -O out/page" folia_version="2.1.0" host="bonus" name="FoLiA-page" user="sloot" version="0.13">
-        <processor xml:id="FoLiA-page.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.1"/>
+      <processor xml:id="FoLiA-page.1" begindatetime="2019-08-26T14:12:33" command="FoLiA-page -O out/page" folia_version="2.2.1" host="bonus" name="FoLiA-page" user="sloot" version="0.13">
+        <processor xml:id="FoLiA-page.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.3"/>
       </processor>
     </provenance>
     <meta id="page_file">00667463.xml</meta>
