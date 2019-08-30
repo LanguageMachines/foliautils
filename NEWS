@@ -5,6 +5,7 @@ bug fixes:
 * fix for https://github.com/LanguageMachines/foliautils/issues/36
 
 [Maarten van Gompel]
+new features:
 * FoLiA-wordtranslate.cxx: frog should be able to deal with
   spaces now, no need for ugly non-breaking space hack that now causes
   other problems in frog (LanguageMachines/frog#77)
