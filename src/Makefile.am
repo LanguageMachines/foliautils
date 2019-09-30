@@ -3,7 +3,7 @@ AM_CXXFLAGS = -std=c++11 -W -Wall -pedantic -g
 
 bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
 	FoLiA-alto FoLiA-langcat FoLiA-hocr FoLiA-page FoLiA-txt FoLiA-2text \
-	FoLiA-pm FoLiA-clean FoLiA-wordtranslate FoLiA-abby
+	FoLiA-pm FoLiA-clean FoLiA-wordtranslate FoLiA-abby FoLiA-benchmark
 
 LDADD = libfoliautils.la
 lib_LTLIBRARIES = libfoliautils.la
@@ -25,6 +25,7 @@ FoLiA_2text_SOURCES = FoLiA-2text.cxx
 FoLiA_pm_SOURCES = FoLiA-pm.cxx
 FoLiA_clean_SOURCES = FoLiA-clean.cxx
 FoLiA_wordtranslate_SOURCES = FoLiA-wordtranslate.cxx
+FoLiA_benchmark_SOURCES = FoLiA-benchmark.cxx
 
 TESTS = tst.sh
 EXTRA_DIST = tst.sh
