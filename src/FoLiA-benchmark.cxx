@@ -200,6 +200,14 @@ void test(const string & test_id, const string & filename) {
             Measurement m = begin();
             doc.xmlstring();
             end(m, test_id, filename, title);
+    } else if (test_id == "select") {
+            const string title = "Select and iterate over all words";
+            folia::Document doc( "file='"+ filename + "'" );
+            Measurement m = begin();
+            vector<folia::Word*> selection = doc.words();
+            for (int i = 0; i < selection.size(); i++) {
+            }
+            end(m, test_id, filename, title);
     } else {
             cerr << "ERROR: No such test: " << test_id << endl;
     }
