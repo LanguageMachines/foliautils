@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/36356660.svg)](https://zenodo.org/badge/latestdoi/36356660)
+[![Build Status](https://travis-ci.org/LanguageMachines/foliautils.svg?branch=master)](https://travis-ci.org/LanguageMachines/foliautils) [![Language Machines Badge](http://applejack.science.ru.nl/lamabadge.php/foliautils)](http://applejack.science.ru.nl/languagemachines/) [![DOI](https://zenodo.org/badge/36356660.svg)](https://zenodo.org/badge/latestdoi/36356660) [![GitHub release](https://img.shields.io/github/release/LanguageMachines/foliautils.svg)](https://GitHub.com/LanguageMachines/foliautils/releases/) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 # FoliAutils
 
