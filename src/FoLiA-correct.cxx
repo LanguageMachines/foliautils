@@ -81,7 +81,9 @@ bool fillVariants( const string& fn,
   vector<word_conf> vec;
   while ( getline( is, line ) ) {
     vector<string> parts = TiCC::split_at( line, "#" );
-    if ( parts.size() == 6 ){
+    if ( parts.size() == 6 // normal ranking
+	 || parts.size() == 7 // chained ranking
+	 ){
       string word = parts[0];
       if ( current_word.empty() )
 	current_word = word;
