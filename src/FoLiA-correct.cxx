@@ -1224,7 +1224,10 @@ int main( int argc, const char *argv[] ){
       else {
 #pragma omp critical
 	{
-	  cerr << "skipped " << docName << " seems to be already processed" << endl;
+	  cerr << "skipped " << docName
+	       << " seems to be already processed, (with setname="
+	       << setname
+	       << ")" << endl;
 	}
       }
     }
