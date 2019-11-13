@@ -166,9 +166,18 @@ int main( int argc, char *argv[] ){
       }
     }
     else {
-      ofstream os( outname );
-      UnicodeString us = d->text( class_name,retaintok);
-      os << us << endl;
+      UnicodeString us;
+      try {
+	UnicodeString us = d->text( class_name, retaintok);
+      }
+      catch( ... ){
+	cout << "document '" << docName << "' contains no text in class="
+	     << class_name << endl;
+      }
+      if ( !us.isEmpty() ){
+	ofstream os( outname );
+	os << us << endl;
+      }
 #pragma omp critical
       {
 	cout << "Processed :" << docName << " into " << outname
