@@ -168,7 +168,7 @@ int main( int argc, char *argv[] ){
     else {
       UnicodeString us;
       try {
-	UnicodeString us = d->text( class_name, retaintok);
+	us = d->text( class_name, retaintok);
       }
       catch( ... ){
 	cout << "document '" << docName << "' contains no text in class="
