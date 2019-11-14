@@ -98,7 +98,7 @@ bool fillVariants( const string& fn,
 	current_word = word;
       }
       string trans = parts[2];
-      string confS = parts[5];
+      string confS = parts[5]; // WILL FAIL for chained rank files
       vec.push_back( word_conf( trans, confS ) );
     }
     else {
@@ -679,7 +679,8 @@ void correctNgrams( Paragraph* par,
     if ( verbose > 1 ){
 #pragma omp critical
       {
-	cerr << "correct ngrams in: '" << content << "'" << endl;
+	cerr << "correct ngrams in: '" << content << "' (" << input_classname
+	     << ")" << endl;
       }
     }
     filter( content, SEPCHAR ); // HACK
@@ -885,9 +886,17 @@ bool correctDoc( Document *doc,
 		 bool string_nodes,
 		 bool word_nodes,
 		 unordered_map<string,size_t>& counts,
-		 const string& command ){
+		 const string& command,
+		 const string& outName ){
   if ( doc->declared( folia::AnnotationType::CORRECTION,
 		      setname ) ){
+#pragma omp critical
+    {
+      cerr << "skipped " << doc->filename()
+	   << " seems to be already processed, (with setname="
+	   << setname
+	   << ")" << endl;
+    }
     return false;
   }
   processor *proc = add_provenance( *doc, "FoLiA-correct", command );
@@ -910,9 +919,11 @@ bool correctDoc( Document *doc,
 	cerr << "FoLiA error in paragraph " << par->id() << " of document " << doc->id() << endl;
 	cerr << e.what() << endl;
       }
+      remove( outName.c_str() );
       return false;
     }
   }
+  doc->save( outName );
   return true;
 }
 
@@ -1204,8 +1215,7 @@ int main( int argc, const char *argv[] ){
       unordered_map<string,size_t> counts;
       if ( correctDoc( doc, variants, unknowns, puncts,
 		       ngram, string_nodes, word_nodes, counts,
-		       orig_command ) ){
-	doc->save( outName );
+		       orig_command, outName ) ){
 #pragma omp critical
 	{
 	  if (!counts.empty() ){
@@ -1219,15 +1229,6 @@ int main( int argc, const char *argv[] ){
 	    cout << "Processed :" << docName << " into " << outName
 		 << " still " << --toDo << " files to go." << endl;
 	  }
-	}
-      }
-      else {
-#pragma omp critical
-	{
-	  cerr << "skipped " << docName
-	       << " seems to be already processed, (with setname="
-	       << setname
-	       << ")" << endl;
 	}
       }
     }
