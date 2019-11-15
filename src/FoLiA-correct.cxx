@@ -875,7 +875,9 @@ void correctParagraph( Paragraph* par,
     }
   }
   corrected = TiCC::trim( corrected );
-  par->settext( corrected, output_classname );
+  if ( !corrected.empty() ){
+    par->settext( corrected, output_classname );
+  }
 }
 
 bool correctDoc( Document *doc,
@@ -1204,15 +1206,23 @@ int main( int argc, const char *argv[] ){
     }
     if ( TiCC::isFile( outName ) ){
 #pragma omp critical
-      cerr << "skipping already done file: " << outName << endl;
+      {
+	cerr << "skipping already done file: " << outName << endl;
+      }
     }
     else {
       if ( !TiCC::createPath( outName ) ){
 #pragma omp critical
-	cerr << "unable to create output file! " << outName << endl;
+	{
+	  cerr << "unable to create output file! " << outName << endl;
+	}
 	exit(EXIT_FAILURE);
       }
       unordered_map<string,size_t> counts;
+#pragma omp critical
+      {
+	cerr << "start correcting file: " << doc->filename() << endl;
+      }
       if ( correctDoc( doc, variants, unknowns, puncts,
 		       ngram, string_nodes, word_nodes, counts,
 		       orig_command, outName ) ){
