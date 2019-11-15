@@ -196,7 +196,7 @@ void procesFile( const TextCat& tc,
     catch (...){
     }
     if ( t ){
-      string para = t->str();
+      string para = t->str(cls);
       para = TiCC::trim( para );
       if ( para.empty() ){
 	if ( verbose )
