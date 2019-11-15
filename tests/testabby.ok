@@ -11,7 +11,7 @@ Usage: FoLiA-abby [options] file/dir
 				 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-FoLiA-abby [foliautils 0.13]
+FoLiA-abby [foliautils 0.14]
 Usage: FoLiA-abby [options] file/dir
 	-t		 number_of_threads
 	-h or --help	 this messages 
@@ -25,7 +25,7 @@ Usage: FoLiA-abby [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 3 files 
+	converted data/abby/morse_OCR_perletter.xml
 	converted data/abby/morse_OCR_perletter2.xml.gz
 	converted data/abby/levi010geil01_01_Deel500.xml
-	converted data/abby/morse_OCR_perletter.xml
 done

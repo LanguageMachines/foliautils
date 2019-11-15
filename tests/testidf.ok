@@ -11,7 +11,7 @@ Usage: [options] file/dir
 	-e	 expr: specify the expression all files should match with.
 	-O	 output prefix
 	-R	 search the dirs recursively (when appropriate).
-foliautils 0.13
+foliautils 0.14
 Usage: [options] file/dir
 	 FoLiA-idf will produce IDF statistics for a directory of FoLiA files 
 	--clip	 clipping factor. 
