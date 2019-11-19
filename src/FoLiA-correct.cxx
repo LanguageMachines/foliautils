@@ -59,6 +59,7 @@ int verbose = 0;
 string input_classname = "current";
 string output_classname = "Ticcl";
 string setname = "Ticcl-set";
+string out_sep = " "; // **";
 
 struct word_conf {
   word_conf(){};
@@ -70,6 +71,15 @@ struct word_conf {
 ostream& operator<<( ostream& os, const word_conf& wc ){
   os << wc.word << " [" << wc.conf << "]";
   return os;
+}
+
+void strip_out_sep( string& in ){
+  string::size_type pos = in.rfind( out_sep );
+  if ( pos != string::npos ){
+    if ( pos == in.length() - out_sep.length() ){
+      in = in.substr( 0, pos );
+    }
+  }
 }
 
 bool fillVariants( const string& fn,
@@ -199,12 +209,12 @@ bool correct_one_unigram( const string& w,
     vector<string> parts = TiCC::split_at( edit, SEPARATOR );
     // edit might be seperatable!
     for ( const auto& p : parts ){
-      result += p + " ";
+      result += p + out_sep;
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      result += final_punct + " ";
+      result += final_punct + out_sep;
     }
     string ed;
     switch ( ed_size ){
@@ -247,9 +257,9 @@ bool correct_one_unigram( const string& w,
     }
     else {
       // just use the word
-      result = word + " ";
+      result = word + out_sep;
       if ( !final_punct.empty() ){
-	result += final_punct + " ";
+	result += final_punct + out_sep;
 	did_edit = true;
       }
     }
@@ -305,12 +315,12 @@ int correct_one_bigram( const string& bi,
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     for ( const auto& p : parts ){
-      result += p + " ";
+      result += p + out_sep;
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      result += final_punct + " ";
+      result += final_punct + out_sep;
     }
     string ed;
     switch ( ed_size ){
@@ -427,12 +437,12 @@ int correct_one_trigram( const string& tri,
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     for ( const auto& p : parts ){
-      result += p + " ";
+      result += p + out_sep;
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      result += final_punct + " ";
+      result += final_punct + out_sep;
     }
     string ed;
     switch ( ed_size ){
@@ -737,6 +747,7 @@ void correctNgrams( Paragraph* par,
 				    puncts, unigrams, counts );
     }
     corrected = TiCC::trim( corrected );
+    strip_out_sep( corrected );
     if ( verbose > 1 ){
 #pragma omp critical
       {
@@ -749,7 +760,7 @@ void correctNgrams( Paragraph* par,
 	partext = corrected;
       }
       else {
-	partext += " " + corrected;
+	partext += out_sep + corrected;
       }
     }
   }
@@ -810,9 +821,9 @@ void correctParagraph( Paragraph* par,
       args["offset"] = TiCC::toString(offset);
       args["value"] = edit;
       TextContent *newT = new TextContent( args );
-      corrected += edit + " ";
+      corrected += edit + out_sep;
       if ( !final_punct.empty() ){
-	corrected += final_punct + " ";
+	corrected += final_punct + out_sep;
       }
       offset = corrected.size();
       nV.push_back( newT );
@@ -847,9 +858,9 @@ void correctParagraph( Paragraph* par,
 	args["offset"] = TiCC::toString(offset);
 	args["value"] = edit;
 	TextContent *newT = new TextContent( args );
-	corrected += edit + " ";
+	corrected += edit + out_sep;
 	if ( !final_punct.empty() ){
-	  corrected += final_punct + " ";
+	  corrected += final_punct + out_sep;
 	}
 	offset = corrected.size();
 	nV.push_back( newT );
@@ -863,18 +874,19 @@ void correctParagraph( Paragraph* par,
 	//	word = orig_word;
 	string my_word = word;
 	if ( !final_punct.empty() ){
-	  my_word += " " + final_punct;
+	  my_word += out_sep + final_punct;
 	}
 	s->settext( my_word, offset, output_classname );
-	corrected += word + " ";
+	corrected += word + out_sep;
 	if ( !final_punct.empty() ){
-	  corrected += final_punct + " ";
+	  corrected += final_punct + out_sep;
 	}
 	offset = corrected.size();
       }
     }
   }
   corrected = TiCC::trim( corrected );
+  strip_out_sep( corrected );
   if ( !corrected.empty() ){
     par->settext( corrected, output_classname );
   }
@@ -965,7 +977,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,inputclass:,outputclass:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes" );
+			 "class:,inputclass:,outputclass:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes,outputseparator:" );
   try {
     opts.init( argc, argv );
   }
@@ -1010,6 +1022,7 @@ int main( int argc, const char *argv[] ){
     cerr << "inputclass and outputclass are the same" << endl;
     exit( EXIT_FAILURE );
   }
+  opts.extract( "outputseparator", out_sep );
   clear = opts.extract( "clear" );
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
