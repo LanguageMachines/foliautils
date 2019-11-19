@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.1" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.4" version="1.2.0">
   <metadata type="native">
     <annotations>
       <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
@@ -10,8 +10,8 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-06-12T12:48:04" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple --word-nodes -v  -v " folia_version="2.1.0" host="bonus" name="FoLiA-correct" user="sloot" version="0.13">
-        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.1"/>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-11-19T19:49:27" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple --word-nodes -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
     <meta id="language">dut</meta>
@@ -57,7 +57,7 @@
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3" class="subject">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1">
           <t>Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.</t>
-          <t class="Apple">Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op_de omzetbelasting 1998.</t>
+          <t class="Apple">Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op_de omzetbelasting 1998 .</t>
           <lang class="dut"/>
           <w xml:id="p4.1">
             <t>Aan</t>
@@ -139,7 +139,7 @@
           </w>
           <w xml:id="p4.16">
             <t>1998.</t>
-            <t class="Apple" offset="94">1998.</t>
+            <t class="Apple" offset="94">1998 .</t>
           </w>
         </p>
       </div>

@@ -25,7 +25,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_str.xml
 correct ngrams in: '40ste vergadering?' (current)
@@ -64,7 +64,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_str.xml
 finished data/corr_str.xml
@@ -73,7 +73,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word.xml
 finished data/corr_word.xml
@@ -83,7 +83,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr.xml
 correct ngrams in: '40ste vergadering' (current)
@@ -141,7 +141,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr.xml
 correct ngrams in: '40ste vergadering' (current)
@@ -198,7 +198,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr.folia.xml
 correct ngrams in: '40ste vergadering' (current)
@@ -255,7 +255,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
 finished data/corr_word_T.xml
@@ -264,7 +264,7 @@ read 4 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 11 punctuated words 
+read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
 finished data/corr_word_T.xml
