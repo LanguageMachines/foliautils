@@ -212,19 +212,19 @@ bool correct_one_unigram( const string& w,
     string ed;
     switch ( ed_size ){
     case 1:
-      ed ="11";
+      ed ="1-1";
       break;
     case 2:
-      ed = "12";
+      ed = "1-2";
       break;
     case 3:
-      ed = "13";
+      ed = "1-3";
       break;
     case 4:
-      ed = "14";
+      ed = "1-4";
       break;
     case 5:
-      ed = "15";
+      ed = "1-5";
       break;
     default:
       break;
@@ -321,19 +321,19 @@ int correct_one_bigram( const string& bi,
     string ed;
     switch ( ed_size ){
     case 1:
-      ed ="21";
+      ed ="2-1";
       break;
     case 2:
-      ed = "22";
+      ed = "2-2";
       break;
     case 3:
-      ed = "23";
+      ed = "2-3";
       break;
     case 4:
-      ed = "24";
+      ed = "2-4";
       break;
     case 5:
-      ed = "25";
+      ed = "2-5";
       break;
     default:
       break;
@@ -445,19 +445,19 @@ int correct_one_trigram( const string& tri,
     string ed;
     switch ( ed_size ){
     case 1:
-      ed ="31";
+      ed ="3-1";
       break;
     case 2:
-      ed = "32";
+      ed = "3-2";
       break;
     case 3:
-      ed = "33";
+      ed = "3-3";
       break;
     case 4:
-      ed = "34";
+      ed = "3-4";
       break;
     case 5:
-      ed = "35";
+      ed = "3-5";
       break;
     default:
       break;
@@ -1069,13 +1069,9 @@ int main( int argc, const char *argv[] ){
     cerr << "--string-nodes and --word-nodes conflict" << endl;
     exit(EXIT_FAILURE);
   }
-  vector<string> fileNames = opts.getMassOpts();
-  if ( fileNames.size() == 0 ){
+  vector<string> file_names = opts.getMassOpts();
+  if ( file_names.size() == 0 ){
     cerr << "missing input file or directory" << endl;
-    exit( EXIT_FAILURE );
-  }
-  else if ( fileNames.size() > 1 ){
-    cerr << "currently only 1 file or directory is supported" << endl;
     exit( EXIT_FAILURE );
   }
 
@@ -1097,14 +1093,16 @@ int main( int argc, const char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
 #endif
 
-  string name = fileNames[0];
-  fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
+  vector<string> fileNames;
+  for ( const auto& fn : file_names ){
+    vector<string> fns = TiCC::searchFilesMatch( fn, expression, recursiveDirs );
+    fileNames.insert( fileNames.end(), fns.begin(), fns.end() );
+  }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
     cerr << "no matching files found" << endl;
     exit(EXIT_SUCCESS);
   }
-  bool doDir = ( toDo > 1 );
 
   unordered_map<string,vector<word_conf> > variants;
   unordered_set<string> unknowns;
@@ -1174,7 +1172,7 @@ int main( int argc, const char *argv[] ){
 
   cout << "verbosity = " << verbose << endl;
 
-  if ( doDir ){
+  if ( fileNames.size() > 1  ){
     cout << "start processing of " << toDo << " files " << endl;
   }
 
@@ -1255,14 +1253,12 @@ int main( int argc, const char *argv[] ){
       }
     }
     delete doc;
+#pragma omp critical
+    {
+      cout << "finished " << fileNames[fn] << endl;
+    }
   }
 
-  if ( doDir ){
-    cout << "done processsing directory '" << name << "'" << endl;
-  }
-  else {
-    cout << "finished " << name << endl;
-  }
   if ( !total_counts.empty() ){
     cout << "edit statistics: " << endl;
     cout << "\tedit\t count" << endl;
