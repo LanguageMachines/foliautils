@@ -41,8 +41,8 @@ correct unigrams
  corrected ngrams: '40'
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  ' (current)
 correct unigrams
-behándeling = 11 => behandeling 
-opde = 12 => op de 
+behándeling = 1-1 => behandeling 
+opde = 1-2 => op de 
 unigram corrections:
 behándeling : behandeling 
 opde : op de 
@@ -55,8 +55,8 @@ s4s67621 : UNK
 finished data/corr_str.xml
 edit statistics: 
 	edit	 count
-	11	1
-	12	1
+	1-1	1
+	1-2	1
 	TOKENS	30
 	UNK 	1
 start reading variants 
@@ -103,16 +103,16 @@ correct bigrams
  = 2 => orde 
  = 2 => is 
  = 2 => de 
-behándeling = 11 => behandeling 
+behándeling = 1-1 => behandeling 
  = 2 => behandeling 
  = 2 => van: 
  = 2 => het 
  = 2 => wetsvoorstel 
-Wijsiging_van = 22 => Wijziging van 
+Wijsiging_van = 2-2 => Wijziging van 
  = 2 => Wijziging van 
  = 2 => de 
  = 2 => Wet 
-opde = 12 => op de 
+opde = 1-2 => op de 
  = 2 => op de 
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
@@ -131,9 +131,9 @@ correct bigrams
 finished data/corr.xml
 edit statistics: 
 	edit	 count
-	11	1
-	12	1
-	22	1
+	1-1	1
+	1-2	1
+	2-2	1
 	TOKENS	30
 	UNK 	1
 start reading variants 
@@ -161,16 +161,16 @@ correct trigrams
  = 2 => orde 
  = 2 => is 
  = 2 => de 
-behándeling = 11 => behandeling 
+behándeling = 1-1 => behandeling 
  = 2 => behandeling 
  = 2 => van: 
  = 2 => het 
  = 2 => wetsvoorstel 
-Wijsiging_van = 22 => Wijziging van 
+Wijsiging_van = 2-2 => Wijziging van 
  = 2 => Wijziging van 
  = 2 => de 
  = 2 => Wet 
-opde = 12 => op de 
+opde = 1-2 => op de 
  = 2 => op de 
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
@@ -182,15 +182,15 @@ correct trigrams
  = 2 => zonder 
  = 2 => UNK 
  = 2 => en 
-zonder_steming_aangenomen = 33 => zonder stemming aangenomen 
+zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.xml
 edit statistics: 
 	edit	 count
-	11	1
-	12	1
-	22	1
-	33	1
+	1-1	1
+	1-2	1
+	2-2	1
+	3-3	1
 	TOKENS	30
 	UNK 	1
 start reading variants 
@@ -218,16 +218,16 @@ correct trigrams
  = 2 => orde 
  = 2 => is 
  = 2 => de 
-behándeling = 11 => behandeling 
+behándeling = 1-1 => behandeling 
  = 2 => behandeling 
  = 2 => van: 
  = 2 => het 
  = 2 => wetsvoorstel 
-Wijsiging_van = 22 => Wijziging van 
+Wijsiging_van = 2-2 => Wijziging van 
  = 2 => Wijziging van 
  = 2 => de 
  = 2 => Wet 
-opde = 12 => op de 
+opde = 1-2 => op de 
  = 2 => op de 
  = 2 => omzetbelasting 
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
@@ -239,15 +239,15 @@ correct trigrams
  = 2 => zonder 
  = 2 => UNK 
  = 2 => en 
-zonder_steming_aangenomen = 33 => zonder stemming aangenomen 
+zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen 
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.folia.xml
 edit statistics: 
 	edit	 count
-	11	1
-	12	1
-	22	1
-	33	1
+	1-1	1
+	1-2	1
+	2-2	1
+	3-3	1
 	TOKENS	30
 	UNK 	1
 start reading variants 
