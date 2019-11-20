@@ -11,7 +11,10 @@ Usage: [options] dir/filename
 --all		 assign ALL detected languages to the result. (default is to assign the most probable).
 --class=<cls>	 use 'cls' as the FoLiA classname for searching text. 
 			 (default 'OCR')
--t		 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 -O path		 output path
 -V or --version	 show version info.
 -v		 verbose
@@ -26,7 +29,7 @@ document 'data/langcat.test.xml' has 3 p nodes
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-15T16:12:19" command="FoLiA-langcat " folia_version="2.2.1" host="kokos" name="FoLiA-langcat" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-20T17:08:58" command="FoLiA-langcat " folia_version="2.2.1" host="bonus" name="FoLiA-langcat" user="sloot" version="0.14">
         <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -57,7 +60,7 @@ document 'data/lc.xml.gz' has 3 p nodes
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-15T16:12:19" command="FoLiA-langcat " folia_version="2.2.1" host="kokos" name="FoLiA-langcat" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-20T17:08:58" command="FoLiA-langcat " folia_version="2.2.1" host="bonus" name="FoLiA-langcat" user="sloot" version="0.14">
         <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -88,7 +91,7 @@ document 'data/langcat.test2.xml' has 1 p nodes
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-15T16:12:19" command="FoLiA-langcat " folia_version="2.2.1" host="kokos" name="FoLiA-langcat" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-20T17:08:58" command="FoLiA-langcat " folia_version="2.2.1" host="bonus" name="FoLiA-langcat" user="sloot" version="0.14">
         <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -114,7 +117,7 @@ document 'data/langcat.test-str.folia.xml' has 2 str nodes
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-15T16:12:19" command="FoLiA-langcat " folia_version="2.2.1" host="kokos" name="FoLiA-langcat" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-20T17:08:58" command="FoLiA-langcat " folia_version="2.2.1" host="bonus" name="FoLiA-langcat" user="sloot" version="0.14">
         <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -141,7 +144,7 @@ document 'data/langcat.test-str.folia.xml' has 2 str nodes
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-15T16:12:19" command="FoLiA-langcat " folia_version="2.2.1" host="kokos" name="FoLiA-langcat" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2019-11-20T17:08:58" command="FoLiA-langcat " folia_version="2.2.1" host="bonus" name="FoLiA-langcat" user="sloot" version="0.14">
         <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>

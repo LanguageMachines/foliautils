@@ -8,7 +8,10 @@ Usage: FoLiA-clean [options] file/dir
 	--cleanannoset='type\\setname'	 remove annotations with 'type' and 'setname'. NOTE: use a double '\' !. The setname can be empty. This option can be repeated for different annotations.
 	-e	 expr: specify the expression all input files should match with. (default .folia.xml)
 	--debug Set dubugging
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-O	 name of the output dir.
@@ -23,7 +26,10 @@ Usage: FoLiA-clean [options] file/dir
 	--cleanannoset='type\\setname'	 remove annotations with 'type' and 'setname'. NOTE: use a double '\' !. The setname can be empty. This option can be repeated for different annotations.
 	-e	 expr: specify the expression all input files should match with. (default .folia.xml)
 	--debug Set dubugging
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-O	 name of the output dir.

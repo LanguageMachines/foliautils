@@ -5,7 +5,10 @@ Usage: [options] file/dir
 	--lower	 Lowercase all words
 	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
 	--strings	 search for String nodes (default is Word)
-	-t	 number of threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
 	-V or --version	 show version 
 	-e	 expr: specify the expression all files should match with.
@@ -19,7 +22,10 @@ Usage: [options] file/dir
 	--lower	 Lowercase all words
 	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
 	--strings	 search for String nodes (default is Word)
-	-t	 number of threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
 	-V or --version	 show version 
 	-e	 expr: specify the expression all files should match with.

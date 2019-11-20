@@ -3,7 +3,10 @@ Usage: FoLiA-2text [options] file/dir
 	 or a whole directory of FoLiA files 
 	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
 	--retaintok	 retain tokenization. Default is attempt to remove.
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-e	 expr: specify the expression all input files should match with.
@@ -14,7 +17,10 @@ Usage: FoLiA-2text [options] file/dir
 	 or a whole directory of FoLiA files 
 	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
 	--retaintok	 retain tokenization. Default is attempt to remove.
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-e	 expr: specify the expression all input files should match with.

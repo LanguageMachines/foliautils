@@ -1,5 +1,8 @@
 Usage: FoLiA-hocr [options] file/dir
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
 	-O	 output directory 
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
@@ -12,7 +15,10 @@ Usage: FoLiA-hocr [options] file/dir
 	-V or --version	 show version 
 foliautils 0.14
 Usage: FoLiA-hocr [options] file/dir
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
 	-O	 output directory 
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 

@@ -2,7 +2,10 @@ missing input file(s)
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-nosplit	 don't create separate topic files
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 			 use 'none' for an empty prefix. (can be dangerous)
@@ -14,7 +17,10 @@ foliautils 0.14
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	-nosplit	 don't create separate topic files
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 			 use 'none' for an empty prefix. (can be dangerous)

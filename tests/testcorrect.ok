@@ -4,7 +4,10 @@ Usage: [options] file/dir
 	--setname	 FoLiA setname. (default 'Ticcl-set')
 	--inputclass	 classname. (default 'current')
 	--outputclass	 classname. (default 'Ticcl')
-	-t	 number_of_threads
+	-t <threads>
+	--threads <threads> Number of threads to run on.
+			 If 'threads' has the value "max", the number of threads is set to a
+			 reasonable value. (OMP_NUM_TREADS - 2)
 	--nums	 max number_of_suggestions. (default 10)
 	--ngram	 n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes
 	--string-nodes	 Only for UNIGRAMS: descend into <str> nodes. 
