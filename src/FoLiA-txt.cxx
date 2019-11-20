@@ -50,7 +50,9 @@ void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t FoLiA-txt will produce FoLiA files from text files " << endl;
   cerr << "\t The output will only contain <p> and <str> nodes." << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-O\t output directory " << endl;
@@ -75,7 +77,7 @@ string filterMeuck( const string& s ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVt:O:", "class:,setname:,help,version" );
+  TiCC::CL_Options opts( "hVt:O:", "class:,setname:,help,version,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -101,12 +103,22 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   string command = "FoLiA-txt " + opts.toString();
-  if ( opts.extract( 't', value ) ){
-    numThreads = TiCC::stringTo<int>( value );
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   opts.extract( 'O', outputDir );
-  if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' )
+  if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' ){
     outputDir += "/";
+  }
   opts.extract( "class", classname );
   opts.extract( "setname", setname );
   if ( !outputDir.empty() ){

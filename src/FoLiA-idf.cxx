@@ -144,7 +144,9 @@ void usage(){
   cerr << "\t--lower\t Lowercase all words" << endl;
   cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--strings\t search for String nodes (default is Word)" << endl;
-  cerr << "\t-t\t number of threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
@@ -155,7 +157,7 @@ void usage(){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:Rhe:",
-			 "class:,clip:,lower,help,strings,version" );
+			 "class:,clip:,lower,help,strings,version,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -189,10 +191,17 @@ int main( int argc, char *argv[] ){
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
   opts.extract( 'O', outPrefix );
-  if ( opts.extract( 't', value ) ){
-    if ( !TiCC::stringTo( value, numThreads ) ){
-      cerr << "unsupported value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);  }
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   if ( opts.extract( "clip", value ) ){
     if ( !TiCC::stringTo( value, clip ) ){

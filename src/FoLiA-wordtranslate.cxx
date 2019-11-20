@@ -71,8 +71,9 @@ void usage( const string& name ){
   cerr << "\t--inputclass\t class (default: current)" << endl;
   cerr << "\t--outputclass\t class (default: translated)" << endl;
   cerr << "\t-e 'expr': specify the pattern matching expression all files should match with (default: *.folia.xml)" << endl;
-
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
@@ -394,7 +395,7 @@ int loadRules( const string& filename,
 
 int main( int argc, const char *argv[] ) {
   TiCC::CL_Options opts( "d:e:p:r:vVt:O:RhH:l:",
-			 "inputclass:,outputclass:,version,help" );
+			 "inputclass:,outputclass:,version,help,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -428,10 +429,18 @@ int main( int argc, const char *argv[] ) {
   string command = "FoLiA-wordtranslate " + opts.toString();
   recursiveDirs = opts.extract( 'R' );
   opts.extract( 'O', outPrefix );
-  if ( opts.extract( 't', value ) ){
-    numThreads = TiCC::stringTo<int>( value );
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
-
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){
     cerr << "missing input file or directory" << endl;

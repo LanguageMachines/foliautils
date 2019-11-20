@@ -49,7 +49,9 @@ void usage( const string& name ){
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--retaintok\t retain tokenization. Default is attempt to remove." << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
@@ -57,7 +59,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVvpe:t:o:", "class:,help,version,retaintok" );
+  TiCC::CL_Options opts( "hVvpe:t:o:", "class:,help,version,retaintok,threads:" );
   try {
     opts.init(argc,argv);
   }
@@ -90,11 +92,16 @@ int main( int argc, char *argv[] ){
     // }
   }
   bool retaintok = opts.extract( "retaintok" );
-  if ( opts.extract('t', value ) ){
-    if ( !TiCC::stringTo(value, numThreads ) ){
-      cerr << "illegal value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);
+  if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
     }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   opts.extract('e', expression );
   string class_name = "current";

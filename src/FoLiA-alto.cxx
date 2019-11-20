@@ -1232,7 +1232,9 @@ void usage(){
   cerr << "\t--cache\t alto cache directory " << endl;
   cerr << "\t--clear\t clear cached Alto files at start" << endl;
   cerr << "\t--direct\t read alto files directly. (so NO Didl)" << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
@@ -1251,7 +1253,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,type:,help,version" );
+    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,type:,help,version,threads:" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1297,8 +1299,17 @@ int main( int argc, char *argv[] ){
       exit( EXIT_FAILURE );
     }
   }
-  if ( opts.extract( 't', value ) ){
-    numThreads = TiCC::stringTo<int>( value );
+  if ( opts.extract('t', value )
+       || opts.extract("threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   opts.extract( "setname", setname );
   opts.extract( "class", classname );

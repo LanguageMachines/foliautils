@@ -236,7 +236,9 @@ void usage(){
   cerr << "--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
        << endl;
   cerr << "\t\t\t (default 'OCR')" << endl;
-  cerr << "-t\t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "-O path\t\t output path" << endl;
   cerr << "-V or --version\t show version info." << endl;
   cerr << "-v\t\t verbose" << endl;
@@ -244,7 +246,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "svVhO:t:", "all,lang:,class:,config:,help,version,tags:" );
+  TiCC::CL_Options opts( "svVhO:t:", "all,lang:,class:,config:,help,version,tags:,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -267,16 +269,20 @@ int main( int argc, char *argv[] ){
   string cls = "OCR";
   verbose = opts.extract( 'v' );
   string value;
-  if ( opts.extract('t', value ) ){
+  int numThreads = 1;
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
-    int numThreads;
-    if ( !TiCC::stringTo(value, numThreads ) ){
-      cerr << "FoLiA-stats: illegal value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
     }
     omp_set_num_threads( numThreads );
 #else
-    cerr << "FoLiA-stats: OpenMP support is missing. -t option is not supported" << endl;
+    cerr << "FoLiA-langcat: OpenMP support is missing. -t option is not supported" << endl;
     exit( EXIT_FAILURE );
 #endif
   }

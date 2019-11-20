@@ -348,7 +348,9 @@ bool convert_pagexml( const string& fileName,
 
 void usage(){
   cerr << "Usage: FoLiA-page [options] file/dir" << endl;
-  cerr << "\t-t\t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t\t output directory " << endl;
   cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes. "
@@ -365,7 +367,7 @@ void usage(){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
-			 "compress:,class:,setname:,help,version,prefix:" );
+			 "compress:,class:,setname:,help,version,prefix:,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -399,9 +401,16 @@ int main( int argc, char *argv[] ){
       exit( EXIT_FAILURE );
     }
   }
-  if ( opts.extract( 't', value ) ){
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
-    numThreads = TiCC::stringTo<int>( value );
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
 #else
     cerr << "OpenMP support is missing. -t options not supported!" << endl;
     exit( EXIT_FAILURE );

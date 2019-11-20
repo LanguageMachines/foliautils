@@ -1450,7 +1450,9 @@ void usage(){
   cerr << "\t convert Political Mashup XML files to FoLiA" << endl;
   cerr << "\t when a dir is given, all '.xml' files in that dir are processed"
        << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-nosplit\t don't create separate topic files" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FPM-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
@@ -1464,7 +1466,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "nosplit,help,version,prefix:" );
+    opts.set_long_options( "nosplit,help,version,prefix:,threads:" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1487,8 +1489,17 @@ int main( int argc, char *argv[] ){
   const string command = "FoLiA-pm " + opts.toString();
   verbose = opts.extract( 'v' );
   string value;
-  if ( opts.extract( 't', value ) ){
-    numThreads = TiCC::stringTo<int>( value );
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   opts.extract( 'O', outputDir );
   if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' )

@@ -945,7 +945,9 @@ void usage( const string& name ){
   cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
   cerr << "\t--inputclass\t classname. (default '" << input_classname << "')" << endl;
   cerr << "\t--outputclass\t classname. (default '" << output_classname << "')" << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t--ngram\t n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes" << endl;
   cerr << "\t--string-nodes\t Only for UNIGRAMS: descend into <str> nodes. " << endl;
@@ -976,7 +978,9 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,inputclass:,outputclass:,setname:,clear,unk:,rank:,punct:,nums:,version,help,ngram:,string-nodes,word-nodes,punctseparator:" );
+			 "class:,inputclass:,outputclass:,setname:,clear,unk:,"
+			 "rank:,punct:,nums:,version,help,ngram:,string-nodes,"
+			 "word-nodes,punctseparator:,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -1050,10 +1054,17 @@ int main( int argc, const char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
-  if ( opts.extract( 't', value ) ){
-    if ( !TiCC::stringTo( value, numThreads ) ){
-      cerr << "unsupported value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);  }
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
+    }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   if ( opts.extract( "ngram", value ) ){
     if ( !TiCC::stringTo( value, ngram )

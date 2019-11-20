@@ -315,14 +315,16 @@ void usage( const string& name ){
   cerr << "\t--cleanannoset='type\\\\setname'\t remove annotations with 'type' and 'setname'. NOTE: use a double '\\' !. The setname can be empty. This option can be repeated for different annotations." << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with. (default .folia.xml)" << endl;
   cerr << "\t--debug Set dubugging" << endl;
-  cerr << "\t-t\t number_of_threads" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
   cerr << "\t-O\t name of the output dir." << endl;
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok,fixtext,debug" );
+  TiCC::CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok,fixtext,debug,threads:" );
   try {
     opts.init(argc,argv);
   }
@@ -352,11 +354,17 @@ int main( int argc, char *argv[] ){
   string output_dir;
   opts.extract( 'O', output_dir );
   bool make_current = opts.extract( "current" );
-  if ( opts.extract('t', value ) ){
-    if ( !TiCC::stringTo(value, numThreads ) ){
-      cerr << "illegal value for -t (" << value << ")" << endl;
-      exit(EXIT_FAILURE);
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
+#ifdef HAVE_OPENMP
+    if ( TiCC::lowercase(value) == "max" ){
+      numThreads = omp_get_max_threads() - 2;
     }
+    else if ( !TiCC::stringTo(value,numThreads) ) {
+      cerr << "illegal value for -t (" << value << ")" << endl;
+      exit( EXIT_FAILURE );
+    }
+#endif
   }
   string class_name = "current";
   opts.extract( "textclass", class_name );
