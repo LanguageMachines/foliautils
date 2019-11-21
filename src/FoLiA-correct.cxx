@@ -692,13 +692,15 @@ void correctNgrams( Paragraph* par,
       }
     }
     filter( content, SEPCHAR ); // HACK
-    vector<string> unigrams = TiCC::split( content );
+    vector<string> unigrams;
 #ifdef TEST_HEMP
     unigrams = {"Als","N","A","P","O","L","E","O","N",")A",
 		"aan","(N","A","P","O","L","E","O","N)","EX",
 		"voor","N","A","P","O","L","E","O","toch?",
 		"tegen","P","Q.","zeker"};
     cerr << "old_uni: " << unigrams << endl;
+#else
+    unigrams = TiCC::split( content );
 #endif
     unigrams = replace_hemps( unigrams, puncts );
 #ifdef TEST_HEMP
@@ -901,17 +903,20 @@ bool correctDoc( Document *doc,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
 		 const string& outName ){
-  if ( doc->declared( folia::AnnotationType::CORRECTION,
-		      setname ) ){
-#pragma omp critical
-    {
-      cerr << "skipped " << doc->filename()
-	   << " seems to be already processed, (with setname="
-	   << setname
-	   << ")" << endl;
-    }
-    return false;
-  }
+  //
+  // Code commented out, enabling 'cascading' of FoliA-correct runs
+  //
+//   if ( doc->declared( folia::AnnotationType::CORRECTION,
+// 		      setname ) ){
+// #pragma omp critical
+//     {
+//       cerr << "skipped " << doc->filename()
+// 	   << " seems to be already processed, (with setname="
+// 	   << setname
+// 	   << ")" << endl;
+//     }
+//     return false;
+//   }
   processor *proc = add_provenance( *doc, "FoLiA-correct", command );
   KWargs args;
   args["processor"] = proc->id();
