@@ -351,9 +351,7 @@ int loadLexicon(const string & filename, t_lexicon & lexicon) {
   ifstream is(filename);
   string line;
   int added = 0;
-  int linenum = 0;
   while (getline(is, line)) {
-    linenum++;
     if ((!line.empty()) && (line[0] != '#')) {
       vector<string> parts = TiCC::split_at( line, "\t" );
       added++;
