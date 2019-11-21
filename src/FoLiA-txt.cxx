@@ -62,20 +62,6 @@ void usage(){
        << classname << "')"<< endl;
 }
 
-string filterMeuck( const string& s ){
-  string result;
-  for( size_t i=0; i < s.size(); ++i ){
-    int val = int(s[i]);
-    //    cerr << s[i] << "-" << val << endl;
-    if ( val == 31 || val == 12 ){
-      result += ' ';
-    }
-    else
-      result += s[i];
-  }
-  return result;
-}
-
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:", "class:,setname:,help,version,threads:" );
   try {
