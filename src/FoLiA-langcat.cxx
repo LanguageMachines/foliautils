@@ -135,7 +135,7 @@ vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
 void procesFile( const TextCat& tc,
 		 const string& outDir, const string& docName,
 		 const string& default_lang,
-		 set<string> tags,
+		 const set<string>& tags,
 		 bool doAll,
 		 const string& cls,
 		 const string& command ){
