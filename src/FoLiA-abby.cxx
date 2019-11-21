@@ -201,7 +201,6 @@ bool process_par( folia::FoliaElement *root,
     process_line( line, parts );
   }
 
-  string head;
   string lemma;
   string entry;
   for ( const auto& it : parts ){
