@@ -321,7 +321,7 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 	vector<FoliaElement*> nV;
 	KWargs args;
 	args["class"] = output_classname;
-	args["offset"] = TiCC::toString(offset);
+	args["offset"] = TiCC::toString(uni._words[0]->text_content()->offset());
 	args["value"] = cor.text();
 	TextContent *newT = new TextContent( args );
 	nV.push_back( newT );
@@ -984,7 +984,6 @@ bool correctDoc( Document *doc,
 		 const unordered_map<string,string>& puncts,
 		 int ngrams,
 		 bool string_nodes,
-		 bool word_nodes,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
 		 const string& outName ){
@@ -1335,7 +1334,7 @@ int main( int argc, const char *argv[] ){
 	cerr << "start correcting file: " << doc->filename() << endl;
       }
       if ( correctDoc( doc, variants, unknowns, puncts,
-		       ngram, string_nodes, word_nodes, counts,
+		       ngram, string_nodes, counts,
 		       orig_command, outName ) ){
 #pragma omp critical
 	{
