@@ -4,6 +4,10 @@
     <annotations>
       <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
+      <head-annotation set="kop"/>
+      <text-annotation />
+      <string-annotation />
+      <paragraph-annotation />
     </annotations>
     <meta id="language">dut</meta>
   </metadata>
