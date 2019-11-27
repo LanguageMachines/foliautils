@@ -3,33 +3,34 @@
 
 \rm *.ticcl.xml
 
-$my_bin/FoLiA-correct > testcorrect.out 2>&1
+#$my_bin/FoLiA-correct > testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct -V >> testcorrect.out 2>&1
+#$my_bin/FoLiA-correct -V >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --help >> testcorrect.out 2>&1
+#$my_bin/FoLiA-correct --help >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v -v data/corr_str.xml >> testcorrect.out  2>&1
+#$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v -v data/corr_str.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.1.ok  >> testcorrect.out 2>&1
+#./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.1.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v -v data/corr_str.xml >> testcorrect.out  2>&1
+#$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v -v data/corr_str.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
+#./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
+#$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_word.ticcl.xml corr_word.ticcl.1.ok  >> testcorrect.out 2>&1
+#./foliadiff.sh corr_word.ticcl.xml corr_word.ticcl.1.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=current --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
+#$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=current --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr.xml >> testcorrect.out  2>&1
+#$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1
+#./foliadiff.sh corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr.xml >> testcorrect.out  2>&1
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v -v -v -v data/corr.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr.ticcl.xml corr.ticcl.3.ok  >> testcorrect.out 2>&1
+exit
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr.folia.xml >> testcorrect.out  2>&1
 

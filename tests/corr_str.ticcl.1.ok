@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.1" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.4" version="2.0">
   <metadata type="native">
     <annotations>
       <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
+      <head-annotation set="kop"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <string-annotation/>
+      <paragraph-annotation/>
       <correction-annotation set="Ticcl-set">
         <annotator processor="FoLiA-correct.1"/>
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-06-12T12:51:19" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.1.0" host="bonus" name="FoLiA-correct" user="sloot" version="0.13">
-        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.1"/>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-11-27T14:33:46" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
     <meta id="language">dut</meta>
@@ -101,7 +104,7 @@
             <t>omzetbelasting</t>
           </str>
           <str xml:id="p4.16">
-            <t>1998.</t>
+            <t>1968.</t>
           </str>
         </p>
       </div>
