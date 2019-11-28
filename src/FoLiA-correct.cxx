@@ -75,7 +75,7 @@ ostream& operator<<( ostream& os, const word_conf& wc ){
 }
 
 struct gram_r {
-  gram_r(){};
+  gram_r():_suggestions(0){};
   gram_r( const string&, FoliaElement* );
   gram_r( FoliaElement*, const string& = "current" );
   void append( const gram_r&, const string& = " " );
@@ -83,9 +83,12 @@ struct gram_r {
   void clear(){ _text.clear(); _words.clear(); };
   string _text;
   vector<FoliaElement*> _words;
+  const vector<word_conf>* _suggestions;
 };
 
-gram_r::gram_r( FoliaElement *el, const string& text_cls ){
+gram_r::gram_r( FoliaElement *el, const string& text_cls ):
+  _suggestions(0)
+{
   _text = el->str(text_cls);
   _words.push_back( el );
 }
@@ -100,7 +103,9 @@ void gram_r::append( const gram_r& add, const string& sep ){
   }
 }
 
-gram_r::gram_r( const string& val, FoliaElement *el ){
+gram_r::gram_r( const string& val, FoliaElement *el ) :
+  _suggestions(0)
+{
   _text = val;
   _words.push_back( el );
 }
@@ -238,6 +243,7 @@ bool correct_one_unigram( const gram_r& uni,
     // edit might be seperatable!
     for ( const auto& p : parts ){
       gram_r add( p, uni._words[0] );
+      add._suggestions = &vit->second;
       result.append( add );
     }
     size_t ed_size = parts.size();
@@ -298,7 +304,10 @@ bool correct_one_unigram( const gram_r& uni,
   return did_edit;
 }
 
-Correction *split_word( FoliaElement *orig, const vector<string>& parts ){
+Correction *split_word( FoliaElement *orig,
+			const vector<string>& parts,
+			size_t& offset,
+			const vector<word_conf> *suggestions ){
   vector<FoliaElement*> sV;
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
@@ -306,17 +315,31 @@ Correction *split_word( FoliaElement *orig, const vector<string>& parts ){
   oV.push_back( orig );
   for ( const auto& p : parts ){
     KWargs args;
-    args["text"] = p;
-    args["textclass"] = output_classname;
     args["xml:id"] = orig->generateId( "split" );
     Word *w = new Word( args, orig->doc() );
+    w->settext( p, offset, output_classname );
+    offset += p.size() + 1;
     nV.push_back( w );
+  }
+  if ( suggestions ){
+    size_t limit = suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
   }
   KWargs no_args;
   return orig->parent()->correct( oV, cV, nV, sV, no_args );
 }
 
-Correction *replace_uni_word( FoliaElement *orig, const string& part ){
+Correction *replace_unigram( FoliaElement *orig,
+			     const string& part,
+			     size_t& offset,
+			     const vector<word_conf> *suggestions ){
   vector<FoliaElement*> sV;
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
@@ -325,45 +348,63 @@ Correction *replace_uni_word( FoliaElement *orig, const string& part ){
   oV.push_back( tc );
   KWargs args;
   args["value"] = part;
+  args["offset"] = TiCC::toString(offset);
+  offset += part.size() + 1;
   args["class"] = output_classname;
   TextContent *t = new TextContent( args );
   nV.push_back( t );
+  if ( suggestions ){
+    size_t limit = suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
   args.clear();
   return orig->correct( oV, cV, nV, sV, args );
 }
 
-Correction *replace_uni_string( FoliaElement *orig, string& part ){
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
-  oV.push_back( tc );
-  KWargs args;
-  args["value"] = part;
-  args["class"] = output_classname;
-  TextContent *t = new TextContent( args );
-  nV.push_back( t );
-  args.clear();
-  return orig->correct( oV, cV, nV, sV, args );
-}
-
-Correction *split_string( FoliaElement *orig, const vector<string>& parts ){
+Correction *split_string( FoliaElement *orig,
+			  const vector<string>& parts,
+			  size_t& offset,
+			  const vector<word_conf> *suggestions ){
   vector<FoliaElement*> sV;
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
   oV.push_back( orig );
+  cout << "split word: " << orig->str() << endl;
+  cout << "      into: " << parts << endl;
+  cout << "     offset=" << offset << endl;
   for ( const auto& p : parts ){
     KWargs args;
     args["xml:id"] = orig->generateId( "split" );
     String *s = new String( args, orig->doc() );
     args.clear();
     args["value"] = p;
+    args["offset"] = TiCC::toString(offset);
     args["class"] = output_classname;
+    cout << "args =" << args << endl;
+    offset += p.size() + 1;
+    cout << "new offset=" << offset << endl;
     TextContent *t = new TextContent( args );
     s->append( t );
     nV.push_back( s );
+  }
+  if ( suggestions ){
+    size_t limit = suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
   }
   KWargs no_args;
   return orig->parent()->correct( oV, cV, nV, sV, no_args );
@@ -380,7 +421,7 @@ string correct_unigrams( const vector<gram_r>& unigrams,
     cout << "correct unigrams" << endl;
   }
   string result;
-  int offset = 0;
+  size_t offset = 0;
   for ( const auto& uni : unigrams ){
     gram_r cor;
     if ( correct_one_unigram( uni, variants, unknowns,
@@ -395,13 +436,19 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 	if ( doStrings ){
 	  vector<string> parts = TiCC::split( cor.text() );
 	  if ( parts.size() == 1 ){
-	    Correction *c = replace_uni_string( uni._words[0], parts[0] );
+	    Correction *c = replace_unigram( uni._words[0],
+					     parts[0],
+					     offset,
+					     cor._suggestions );
 	    if ( verbose > 4 ){
 	      cerr << "created: " << c << endl;
 	    }
 	  }
 	  else {
-	    Correction *c = split_string( uni._words[0], parts );
+	    Correction *c = split_string( uni._words[0],
+					  parts,
+					  offset,
+					  cor._suggestions );
 	    if ( verbose > 4 ){
 	      cerr << "created: " << c << endl;
 	    }
@@ -410,13 +457,19 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 	else {
 	  vector<string> parts = TiCC::split( cor.text() );
 	  if ( parts.size() == 1 ){
-	    Correction *c = replace_uni_word( uni._words[0], parts[0] );
+	    Correction *c = replace_unigram( uni._words[0],
+					     parts[0],
+					     offset,
+					     cor._suggestions );
 	    if ( verbose > 4 ){
 	      cerr << "created: " << c << endl;
 	    }
 	  }
 	  else {
-	    Correction *c = split_word( uni._words[0], parts );
+	    Correction *c = split_word( uni._words[0],
+					parts,
+					offset,
+					cor._suggestions );
 	    if ( verbose > 4 ){
 	      cerr << "created: " << c << endl;
 	    }
@@ -424,7 +477,7 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 	}
       }
       else {
-	// nothing
+	offset += uni.text().size() + 1;
       }
     }
     else {
@@ -432,9 +485,9 @@ string correct_unigrams( const vector<gram_r>& unigrams,
       if ( uni._words[0] ){
 	uni._words[0]->settext( uni.text(), offset, output_classname );
       }
+      offset += uni.text().size() + 1;
     }
     result += cor.text() + " ";
-    offset = result.size();
   }
   return result;
 }
@@ -466,6 +519,7 @@ int correct_one_bigram( const gram_r& bi,
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     for ( const auto& p : parts ){
       gram_r add( p, bi._words[0] );
+      add._suggestions = &vit->second;
       result.append( add );
     }
     size_t ed_size = parts.size();
@@ -595,6 +649,7 @@ int correct_one_trigram( const gram_r& tri,
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     for ( const auto& p : parts ){
       gram_r add( p, tri._words[0] );
+      add._suggestions = &vit->second;
       result.append( add );
     }
     size_t ed_size = parts.size();
