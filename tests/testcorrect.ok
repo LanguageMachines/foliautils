@@ -34,7 +34,7 @@ start correcting file: data/corr_str.xml
 correct ngrams in: '40ste vergadering?' (current)
 correct unigrams
 unigram corrections:
-vergadering? : vergadering ? 
+vergadering? : vergadering ?
  corrected ngrams: '40ste vergadering ?'
 correct ngrams in: '2003-2004' (current)
 correct unigrams
@@ -42,18 +42,19 @@ correct unigrams
 correct ngrams in: '40' (current)
 correct unigrams
  corrected ngrams: '40'
-correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  ' (current)
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct unigrams
-behándeling = 1-1 => behandeling 
-opde = 1-2 => op de 
+behándeling = 1-1 => behandeling
 unigram corrections:
-behándeling : behandeling 
-opde : op de 
+behándeling : behandeling
+opde = 1-2 => op de
+unigram corrections:
+opde : op de
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct unigrams
 unigram corrections:
-s4s67621 : UNK 
+s4s67621 : UNK
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_str.xml
 edit statistics: 
@@ -61,7 +62,7 @@ edit statistics:
 	1-1	1
 	1-2	1
 	TOKENS	30
-	UNK 	1
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -70,7 +71,52 @@ start reading puncts
 read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_str.xml
+correct ngrams in: '40ste vergadering?' (current)
+correct unigrams
+unigram corrections:
+vergadering? : vergadering ?
+split word: vergadering?
+      into: [vergadering,?]
+     offset=6
+args =class='Ticcl',offset='6',value='vergadering'
+new offset=18
+args =class='Ticcl',offset='18',value='?'
+new offset=20
+ corrected ngrams: '40ste vergadering ?'
+correct ngrams in: '2003-2004' (current)
+correct unigrams
+ corrected ngrams: '2003-2004'
+correct ngrams in: '40' (current)
+correct unigrams
+ corrected ngrams: '40'
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de wet opde omzetbelasting 1968.' (current)
+correct unigrams
+behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+opde = 1-2 => op de
+unigram corrections:
+opde : op de
+split word: opde
+      into: [op,de]
+     offset=73
+args =class='Ticcl',offset='73',value='op'
+new offset=76
+args =class='Ticcl',offset='76',value='de'
+new offset=79
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet op de omzetbelasting 1968.'
+correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
+correct unigrams
+unigram corrections:
+s4s67621 : UNK
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_str.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	1-2	1
+	TOKENS	30
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -79,7 +125,38 @@ start reading puncts
 read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word.xml
+correct ngrams in: '40ste vergadering' (current)
+correct unigrams
+ corrected ngrams: '40ste vergadering'
+correct ngrams in: '2003-2004' (current)
+correct unigrams
+ corrected ngrams: '2003-2004'
+correct ngrams in: '40' (current)
+correct unigrams
+ corrected ngrams: '40'
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (current)
+correct unigrams
+behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+opde = 1-2 => op de
+unigram corrections:
+opde : op de
+unigram corrections:
+1998. : 1998 .
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998 .'
+correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
+correct unigrams
+unigram corrections:
+s4s67621 : UNK
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	1-2	1
+	TOKENS	30
+	UNK	1
 inputclass and outputclass are the same
 start reading variants 
 read 4 variants 
@@ -91,7 +168,8 @@ verbosity = 2
 start correcting file: data/corr.xml
 correct ngrams in: '40ste vergadering' (current)
 correct bigrams
- = 2 => 40ste 
+bigram is: '40ste_vergadering'
+ = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (current)
 correct unigrams
@@ -99,37 +177,61 @@ correct unigrams
 correct ngrams in: '40' (current)
 correct unigrams
  corrected ngrams: '40'
-correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  ' (current)
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct bigrams
- = 2 => Aan 
- = 2 => de 
- = 2 => orde 
- = 2 => is 
- = 2 => de 
-behándeling = 1-1 => behandeling 
- = 2 => behandeling 
- = 2 => van: 
- = 2 => het 
- = 2 => wetsvoorstel 
-Wijsiging_van = 2-2 => Wijziging van 
- = 2 => Wijziging van 
- = 2 => de 
- = 2 => Wet 
-opde = 1-2 => op de 
- = 2 => op de 
- = 2 => omzetbelasting 
+bigram is: 'Aan_de'
+ = 2 => Aan
+bigram is: 'de_orde'
+ = 2 => de
+bigram is: 'orde_is'
+ = 2 => orde
+bigram is: 'is_de'
+ = 2 => is
+bigram is: 'de_behándeling'
+ = 2 => de
+bigram is: 'behándeling_van:'
+behándeling = 1-1 => behandeling
+ = 2 => behandeling
+bigram is: 'van:_het'
+ = 2 => van:
+bigram is: 'het_wetsvoorstel'
+ = 2 => het
+bigram is: 'wetsvoorstel_Wijsiging'
+ = 2 => wetsvoorstel
+bigram is: 'Wijsiging_van'
+Wijsiging_van = 2-2 => Wijziging van
+ = 2 => Wijziging van
+bigram is: 'van_de'
+bigram is: 'de_Wet'
+ = 2 => de
+bigram is: 'Wet_opde'
+ = 2 => Wet
+bigram is: 'opde_omzetbelasting'
+opde = 1-2 => op de
+ = 2 => op de
+bigram is: 'omzetbelasting_1968.'
+ = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct bigrams
- = 2 => Deze 
- = 2 => wetsvoorstellen 
- = 2 => worden 
- = 2 => zonder 
- = 2 => UNK 
- = 2 => en 
- = 2 => zonder 
- = 2 => steming 
- = 2 => aangenomen 
+bigram is: 'Deze_wetsvoorstellen'
+ = 2 => Deze
+bigram is: 'wetsvoorstellen_worden'
+ = 2 => wetsvoorstellen
+bigram is: 'worden_zonder'
+ = 2 => worden
+bigram is: 'zonder_s4s67621'
+ = 2 => zonder
+bigram is: 's4s67621_en'
+ = 2 => UNK
+bigram is: 'en_zonder'
+ = 2 => en
+bigram is: 'zonder_steming'
+ = 2 => zonder
+bigram is: 'steming_aangenomen'
+ = 2 => steming
+bigram is: 'aangenomen_.'
+ = 2 => aangenomen
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr.xml
 edit statistics: 
@@ -138,7 +240,7 @@ edit statistics:
 	1-2	1
 	2-2	1
 	TOKENS	30
-	UNK 	1
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -149,7 +251,8 @@ verbosity = 2
 start correcting file: data/corr.xml
 correct ngrams in: '40ste vergadering' (current)
 correct bigrams
- = 2 => 40ste 
+bigram is: '40ste_vergadering'
+ = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (current)
 correct unigrams
@@ -157,35 +260,77 @@ correct unigrams
 correct ngrams in: '40' (current)
 correct unigrams
  corrected ngrams: '40'
-correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  ' (current)
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct trigrams
- = 2 => Aan 
- = 2 => de 
- = 2 => orde 
- = 2 => is 
- = 2 => de 
-behándeling = 1-1 => behandeling 
- = 2 => behandeling 
- = 2 => van: 
- = 2 => het 
- = 2 => wetsvoorstel 
-Wijsiging_van = 2-2 => Wijziging van 
- = 2 => Wijziging van 
- = 2 => de 
- = 2 => Wet 
-opde = 1-2 => op de 
- = 2 => op de 
- = 2 => omzetbelasting 
+trigram is: 'Aan_de_orde'
+ = 2 => Aan
+ = 3 => Aan extra_skip=0
+trigram is: 'de_orde_is'
+ = 2 => de
+ = 3 => de extra_skip=0
+trigram is: 'orde_is_de'
+ = 2 => orde
+ = 3 => orde extra_skip=0
+trigram is: 'is_de_behándeling'
+ = 2 => is
+ = 3 => is extra_skip=0
+trigram is: 'de_behándeling_van:'
+ = 2 => de
+ = 3 => de extra_skip=0
+trigram is: 'behándeling_van:_het'
+behándeling = 1-1 => behandeling
+ = 2 => behandeling
+ = 3 => behandeling extra_skip=0
+trigram is: 'van:_het_wetsvoorstel'
+ = 2 => van:
+ = 3 => van: extra_skip=0
+trigram is: 'het_wetsvoorstel_Wijsiging'
+ = 2 => het
+ = 3 => het extra_skip=0
+trigram is: 'wetsvoorstel_Wijsiging_van'
+ = 2 => wetsvoorstel
+ = 3 => wetsvoorstel extra_skip=0
+trigram is: 'Wijsiging_van_de'
+Wijsiging_van = 2-2 => Wijziging van
+ = 2 => Wijziging van
+ = 3 => Wijziging van extra_skip=1
+trigram is: 'van_de_Wet'
+trigram is: 'de_Wet_opde'
+ = 2 => de
+ = 3 => de extra_skip=0
+trigram is: 'Wet_opde_omzetbelasting'
+ = 2 => Wet
+ = 3 => Wet extra_skip=0
+trigram is: 'opde_omzetbelasting_1968.'
+opde = 1-2 => op de
+ = 2 => op de
+ = 3 => op de extra_skip=0
+ = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct trigrams
- = 2 => Deze 
- = 2 => wetsvoorstellen 
- = 2 => worden 
- = 2 => zonder 
- = 2 => UNK 
- = 2 => en 
-zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen 
+trigram is: 'Deze_wetsvoorstellen_worden'
+ = 2 => Deze
+ = 3 => Deze extra_skip=0
+trigram is: 'wetsvoorstellen_worden_zonder'
+ = 2 => wetsvoorstellen
+ = 3 => wetsvoorstellen extra_skip=0
+trigram is: 'worden_zonder_s4s67621'
+ = 2 => worden
+ = 3 => worden extra_skip=0
+trigram is: 'zonder_s4s67621_en'
+ = 2 => zonder
+ = 3 => zonder extra_skip=0
+trigram is: 's4s67621_en_zonder'
+ = 2 => UNK
+ = 3 => UNK extra_skip=0
+trigram is: 'en_zonder_steming'
+ = 2 => en
+ = 3 => en extra_skip=0
+trigram is: 'zonder_steming_aangenomen'
+zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
+ = 3 => zonder stemming aangenomen extra_skip=2
+trigram is: 'steming_aangenomen_.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.xml
 edit statistics: 
@@ -195,7 +340,7 @@ edit statistics:
 	2-2	1
 	3-3	1
 	TOKENS	30
-	UNK 	1
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -206,7 +351,8 @@ verbosity = 2
 start correcting file: data/corr.folia.xml
 correct ngrams in: '40ste vergadering' (current)
 correct bigrams
- = 2 => 40ste 
+bigram is: '40ste_vergadering'
+ = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (current)
 correct unigrams
@@ -214,35 +360,77 @@ correct unigrams
 correct ngrams in: '40' (current)
 correct unigrams
  corrected ngrams: '40'
-correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  ' (current)
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct trigrams
- = 2 => Aan 
- = 2 => de 
- = 2 => orde 
- = 2 => is 
- = 2 => de 
-behándeling = 1-1 => behandeling 
- = 2 => behandeling 
- = 2 => van: 
- = 2 => het 
- = 2 => wetsvoorstel 
-Wijsiging_van = 2-2 => Wijziging van 
- = 2 => Wijziging van 
- = 2 => de 
- = 2 => Wet 
-opde = 1-2 => op de 
- = 2 => op de 
- = 2 => omzetbelasting 
+trigram is: 'Aan_de_orde'
+ = 2 => Aan
+ = 3 => Aan extra_skip=0
+trigram is: 'de_orde_is'
+ = 2 => de
+ = 3 => de extra_skip=0
+trigram is: 'orde_is_de'
+ = 2 => orde
+ = 3 => orde extra_skip=0
+trigram is: 'is_de_behándeling'
+ = 2 => is
+ = 3 => is extra_skip=0
+trigram is: 'de_behándeling_van:'
+ = 2 => de
+ = 3 => de extra_skip=0
+trigram is: 'behándeling_van:_het'
+behándeling = 1-1 => behandeling
+ = 2 => behandeling
+ = 3 => behandeling extra_skip=0
+trigram is: 'van:_het_wetsvoorstel'
+ = 2 => van:
+ = 3 => van: extra_skip=0
+trigram is: 'het_wetsvoorstel_Wijsiging'
+ = 2 => het
+ = 3 => het extra_skip=0
+trigram is: 'wetsvoorstel_Wijsiging_van'
+ = 2 => wetsvoorstel
+ = 3 => wetsvoorstel extra_skip=0
+trigram is: 'Wijsiging_van_de'
+Wijsiging_van = 2-2 => Wijziging van
+ = 2 => Wijziging van
+ = 3 => Wijziging van extra_skip=1
+trigram is: 'van_de_Wet'
+trigram is: 'de_Wet_opde'
+ = 2 => de
+ = 3 => de extra_skip=0
+trigram is: 'Wet_opde_omzetbelasting'
+ = 2 => Wet
+ = 3 => Wet extra_skip=0
+trigram is: 'opde_omzetbelasting_1968.'
+opde = 1-2 => op de
+ = 2 => op de
+ = 3 => op de extra_skip=0
+ = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct trigrams
- = 2 => Deze 
- = 2 => wetsvoorstellen 
- = 2 => worden 
- = 2 => zonder 
- = 2 => UNK 
- = 2 => en 
-zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen 
+trigram is: 'Deze_wetsvoorstellen_worden'
+ = 2 => Deze
+ = 3 => Deze extra_skip=0
+trigram is: 'wetsvoorstellen_worden_zonder'
+ = 2 => wetsvoorstellen
+ = 3 => wetsvoorstellen extra_skip=0
+trigram is: 'worden_zonder_s4s67621'
+ = 2 => worden
+ = 3 => worden extra_skip=0
+trigram is: 'zonder_s4s67621_en'
+ = 2 => zonder
+ = 3 => zonder extra_skip=0
+trigram is: 's4s67621_en_zonder'
+ = 2 => UNK
+ = 3 => UNK extra_skip=0
+trigram is: 'en_zonder_steming'
+ = 2 => en
+ = 3 => en extra_skip=0
+trigram is: 'zonder_steming_aangenomen'
+zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
+ = 3 => zonder stemming aangenomen extra_skip=2
+trigram is: 'steming_aangenomen_.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.folia.xml
 edit statistics: 
@@ -252,7 +440,7 @@ edit statistics:
 	2-2	1
 	3-3	1
 	TOKENS	30
-	UNK 	1
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -261,7 +449,38 @@ start reading puncts
 read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
+correct ngrams in: '40ste vergadering' (Test)
+correct unigrams
+ corrected ngrams: '40ste vergadering'
+correct ngrams in: '2003-2004' (Test)
+correct unigrams
+ corrected ngrams: '2003-2004'
+correct ngrams in: '40' (Test)
+correct unigrams
+ corrected ngrams: '40'
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Test)
+correct unigrams
+behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+opde = 1-2 => op de
+unigram corrections:
+opde : op de
+unigram corrections:
+1998. : 1998 .
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998 .'
+correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct unigrams
+unigram corrections:
+s4s67621 : UNK
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word_T.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	1-2	1
+	TOKENS	30
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -270,4 +489,35 @@ start reading puncts
 read 12 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
+correct ngrams in: '40ste vergadering' (Test)
+correct unigrams
+ corrected ngrams: '40ste vergadering'
+correct ngrams in: '2003-2004' (Test)
+correct unigrams
+ corrected ngrams: '2003-2004'
+correct ngrams in: '40' (Test)
+correct unigrams
+ corrected ngrams: '40'
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Test)
+correct unigrams
+behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+opde = 1-2 => op de
+unigram corrections:
+opde : op de
+unigram corrections:
+1998. : 1998±.
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998±.'
+correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct unigrams
+unigram corrections:
+s4s67621 : UNK
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word_T.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	1-2	1
+	TOKENS	30
+	UNK	1
