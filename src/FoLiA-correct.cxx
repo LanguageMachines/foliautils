@@ -321,15 +321,31 @@ Correction *replace_uni_word( FoliaElement *orig, const string& part ){
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
-  oV.push_back( orig );
+  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
+  oV.push_back( tc );
   KWargs args;
-  args["text"] = part;
-  args["textclass"] = output_classname;
-  args["xml:id"] = orig->generateId( "edit" );
-  Word *w = new Word( args, orig->doc() );
-  nV.push_back( w );
+  args["value"] = part;
+  args["class"] = output_classname;
+  TextContent *t = new TextContent( args );
+  nV.push_back( t );
   args.clear();
-  return orig->parent()->correct( oV, cV, nV, sV, args );
+  return orig->correct( oV, cV, nV, sV, args );
+}
+
+Correction *replace_uni_string( FoliaElement *orig, string& part ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
+  oV.push_back( tc );
+  KWargs args;
+  args["value"] = part;
+  args["class"] = output_classname;
+  TextContent *t = new TextContent( args );
+  nV.push_back( t );
+  args.clear();
+  return orig->correct( oV, cV, nV, sV, args );
 }
 
 Correction *split_string( FoliaElement *orig, const vector<string>& parts ){
@@ -353,22 +369,6 @@ Correction *split_string( FoliaElement *orig, const vector<string>& parts ){
   return orig->parent()->correct( oV, cV, nV, sV, no_args );
 }
 
-Correction *replace_uni_string( FoliaElement *orig, string& part ){
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
-  oV.push_back( tc );
-  KWargs args;
-  args["value"] = part;
-  args["class"] = output_classname;
-  TextContent *t = new TextContent( args );
-  nV.push_back( t );
-  args.clear();
-  return orig->correct( oV, cV, nV, sV, args );
-}
-
 string correct_unigrams( const vector<gram_r>& unigrams,
 			 const unordered_map<string,vector<word_conf> >& variants,
 			 const unordered_set<string>& unknowns,
@@ -387,6 +387,10 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 			      puncts, cor, counts ) ){
       //      cerr << "IN=" << uni << endl;
       //      cerr << "er is een correctie: " << cor << endl;
+      if ( verbose ){
+	cout << "unigram corrections:" << endl;
+	cout << uni.text() << " : " << cor.text() << endl;
+      }
       if ( uni._words[0] ){
 	if ( doStrings ){
 	  vector<string> parts = TiCC::split( cor.text() );
@@ -558,7 +562,7 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   correct_one_unigram( last, variants, unknowns,
 		       puncts, corr, counts );
   if ( verbose > 2 ){
-    cout << "handled last word: " << corr << endl;
+    cout << "1 handled last word: " << corr << endl;
   }
   result += corr.text();
   return result;
@@ -651,7 +655,7 @@ int correct_one_trigram( const gram_r& tri,
     }
   }
   if ( verbose > 1 ){
-    cout << " = 3 => " << result.text() << endl;
+    cout << " = 3 => " << result.text() << " extra_skip=" << extra_skip << endl;
   }
   return extra_skip;
 }
@@ -695,7 +699,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     correct_one_unigram( last, variants, unknowns,
 			 puncts, corr, counts );
     if ( verbose > 2 ){
-      cout << "handled last word: " << corr << endl;
+      cout << "2 handled last word: " << corr << endl;
     }
     result += corr.text();
     return result;
@@ -703,7 +707,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   else {
     gram_r last = unigrams[unigrams.size()-1];
     gram_r last_bi = unigrams[unigrams.size()-2];
-    last_bi.append( last );
+    last_bi.append( last, "_" );
     gram_r corr;
     if ( verbose > 2 ){
       cout << "correct last bigram: " << last_bi << endl;
@@ -722,9 +726,9 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       correct_one_unigram( last, variants, unknowns,
 			   puncts, uni_corr, counts );
       if ( verbose > 2 ){
-	cout << "handled last word: " << uni_corr << endl;
+	cout << "3 handled last word: " << uni_corr << endl;
       }
-      result += uni_corr.text();
+      result += " " + uni_corr.text();
     }
     return result;
   }
@@ -927,12 +931,6 @@ void correctNgrams( Paragraph* par,
       corrected = correct_unigrams( unigrams, variants, unknowns,
 				    puncts, corrections, counts,
 				    doStrings );
-      if ( verbose && !corrections.empty() ){
-	cout << "unigram corrections:" << endl;
-	for ( const auto& p : corrections ) {
-	  cout << p.first.text() << " : " << p.second.text() << endl;
-	}
-      }
     }
     else {
       corrected = correct_bigrams( bigrams, variants, unknowns,
