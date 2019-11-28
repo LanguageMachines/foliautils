@@ -414,7 +414,6 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 			 const unordered_map<string,vector<word_conf> >& variants,
 			 const unordered_set<string>& unknowns,
 			 const unordered_map<string,string>& puncts,
-			 vector<pair<gram_r,gram_r>>& corrections,
 			 unordered_map<string,size_t>& counts,
 			 bool doStrings ){
   if ( verbose > 1 ){
@@ -433,47 +432,28 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 	cout << uni.text() << " : " << cor.text() << endl;
       }
       if ( uni._words[0] ){
-	if ( doStrings ){
-	  vector<string> parts = TiCC::split( cor.text() );
-	  if ( parts.size() == 1 ){
-	    Correction *c = replace_unigram( uni._words[0],
-					     parts[0],
-					     offset,
-					     cor._suggestions );
-	    if ( verbose > 4 ){
-	      cerr << "created: " << c << endl;
-	    }
-	  }
-	  else {
-	    Correction *c = split_string( uni._words[0],
-					  parts,
-					  offset,
-					  cor._suggestions );
-	    if ( verbose > 4 ){
-	      cerr << "created: " << c << endl;
-	    }
-	  }
+	vector<string> parts = TiCC::split( cor.text() );
+	Correction *c = 0;
+	if ( parts.size() == 1 ){
+	  c = replace_unigram( uni._words[0],
+			       parts[0],
+			       offset,
+			       cor._suggestions );
+	}
+	else if ( doStrings ){
+	  c = split_string( uni._words[0],
+			    parts,
+			    offset,
+			    cor._suggestions );
 	}
 	else {
-	  vector<string> parts = TiCC::split( cor.text() );
-	  if ( parts.size() == 1 ){
-	    Correction *c = replace_unigram( uni._words[0],
-					     parts[0],
-					     offset,
-					     cor._suggestions );
-	    if ( verbose > 4 ){
-	      cerr << "created: " << c << endl;
-	    }
-	  }
-	  else {
-	    Correction *c = split_word( uni._words[0],
-					parts,
-					offset,
-					cor._suggestions );
-	    if ( verbose > 4 ){
-	      cerr << "created: " << c << endl;
-	    }
-	  }
+	  c = split_word( uni._words[0],
+			  parts,
+			  offset,
+			  cor._suggestions );
+	}
+	if ( verbose > 4 ){
+	  cerr << "created: " << c << endl;
 	}
       }
       else {
@@ -915,11 +895,17 @@ void correctNgrams( Paragraph* par,
   if ( ev.size() == 0 ){
     vector<TextContent *> origV = par->select<TextContent>(false);
     if ( origV.empty() ){
+      // OK, no text directly
+      // look deeper then
+      origV = par->select<TextContent>();
+      if ( origV.empty() ){
+	// still nothing...
 #pragma omp critical
-      {
-	cerr << "no text Words or Strings in : " << par->id() << " skipping" << endl;
+	{
+	  cerr << "no text Words or Strings in : " << par->id() << " skipping" << endl;
+	}
+	return;
       }
-      return;
     }
 
     for( const auto& it : origV ){
@@ -984,7 +970,7 @@ void correctNgrams( Paragraph* par,
     if ( bigrams.empty() ){
       vector<pair<gram_r,gram_r>> corrections;
       corrected = correct_unigrams( unigrams, variants, unknowns,
-				    puncts, corrections, counts,
+				    puncts, counts,
 				    doStrings );
     }
     else {
