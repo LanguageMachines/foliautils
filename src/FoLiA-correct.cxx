@@ -994,131 +994,6 @@ void correctNgrams( Paragraph* par,
   }
 }
 
-void correctParagraph( Paragraph* par,
-		       const unordered_map<string,vector<word_conf> >& variants,
-		       const unordered_set<string>& unknowns,
-		       const unordered_map<string,string>& puncts,
-		       bool doStrings ){
-  vector<FoliaElement*> ev;
-  if ( doStrings ){
-    vector<String*> sv = par->select<String>();
-    ev.resize(sv.size());
-    copy( sv.begin(), sv.end(), ev.begin() );
-  }
-  else {
-    vector<Word*> sv = par->select<Word>();
-    ev.resize(sv.size());
-    copy( sv.begin(), sv.end(), ev.begin() );
-  }
-  if ( ev.size() == 0 )
-    return;
-  int offset = 0;
-  string corrected;
-  for ( const auto& s : ev ){
-    vector<TextContent *> origV = s->select<TextContent>();
-    if ( origV.empty() ){
-      if ( verbose > 1 ){
-#pragma omp critical
-	{
-	  cerr << "no text text in : " << s->id() << " skipping" << endl;
-	}
-      }
-      continue;
-    }
-    string word = origV[0]->str(input_classname);
-    filter(word);
-    string orig_word = word;
-    string final_punct;
-    const auto pit = puncts.find( word );
-    if ( pit != puncts.end() ){
-      final_punct = test_final_punct( word, pit->second );
-      word = pit->second;
-    }
-    const auto vit = variants.find( word );
-    if ( vit != variants.end() ){
-      // 1 or more edits found
-      string edit = vit->second[0].word;
-      vector<FoliaElement*> oV;
-      oV.push_back( origV[0] );
-      vector<FoliaElement*> nV;
-      KWargs args;
-      args["class"] = output_classname;
-      args["offset"] = TiCC::toString(offset);
-      args["value"] = edit;
-      TextContent *newT = new TextContent( args );
-      corrected += edit;
-      if ( !final_punct.empty() ){
-	corrected += punct_sep + final_punct;
-      }
-      corrected += " ";
-      offset = corrected.size();
-      nV.push_back( newT );
-      vector<FoliaElement*> sV;
-      size_t limit = vit->second.size();
-      for( size_t j=0; j < limit; ++j ){
-	KWargs sargs;
-	sargs["confidence"] = vit->second[j].conf;
-	sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
-	Suggestion *sug = new Suggestion( sargs );
-	sug->settext( vit->second[j].word, output_classname );
-	sV.push_back( sug );
-      }
-      vector<FoliaElement*> cV;
-      args.clear();
-      s->correct( oV, cV, nV, sV, args );
-    }
-    else {
-      // a word with no suggested variants
-      auto uit = unknowns.find( word );
-      if ( uit == unknowns.end() ){
-	uit = unknowns.find( orig_word );
-      }
-      if ( uit != unknowns.end() ){
-	// ok it is a registrated garbage word
-	string edit = "UNK";
-	vector<FoliaElement*> oV;
-	oV.push_back( origV[0] );
-	vector<FoliaElement*> nV;
-	KWargs args;
-	args["class"] = output_classname;
-	args["offset"] = TiCC::toString(offset);
-	args["value"] = edit;
-	TextContent *newT = new TextContent( args );
-	corrected += edit;
-	if ( !final_punct.empty() ){
-	  corrected += punct_sep + final_punct;
-	}
-	corrected += " ";
-	offset = corrected.size();
-	nV.push_back( newT );
-	vector<FoliaElement*> sV;
-	vector<FoliaElement*> cV;
-	args.clear();
-	s->correct( oV, cV, nV, sV, args );
-      }
-      else {
-	// just use the ORIGINAL word
-	//	word = orig_word;
-	string my_word = word;
-	if ( !final_punct.empty() ){
-	  my_word += punct_sep + final_punct;
-	}
-	s->settext( my_word, offset, output_classname );
-	corrected += word;
-	if ( !final_punct.empty() ){
-	  corrected += punct_sep + final_punct;
-	}
-	corrected += " ";
-	offset = corrected.size();
-      }
-    }
-  }
-  corrected = TiCC::trim( corrected );
-  if ( !corrected.empty() ){
-    par->settext( corrected, output_classname );
-  }
-}
-
 bool correctDoc( Document *doc,
 		 const unordered_map<string,vector<word_conf> >& variants,
 		 const unordered_set<string>& unknowns,
@@ -1149,12 +1024,7 @@ bool correctDoc( Document *doc,
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( const auto& par : pv ){
     try {
-      // if ( ngrams == 1 && ( string_nodes || word_nodes ) ){
-      // 	correctParagraph( par, variants, unknowns, puncts, string_nodes );
-      // }
-      // else {
-	correctNgrams( par, variants, unknowns, puncts, ngrams, counts, string_nodes );
-	//      }
+      correctNgrams( par, variants, unknowns, puncts, ngrams, counts, string_nodes );
     }
     catch ( exception& e ){
 #pragma omp critical
