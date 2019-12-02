@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-11-28T13:31:33" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-02T17:52:09" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -164,54 +164,58 @@
       </div>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
-          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .</t>
+          <t>Deze wet svoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <t class="Ticcl">Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .</t>
           <lang class="dut"/>
           <str xml:id="p5.1">
             <t>Deze</t>
             <t class="Ticcl" offset="0">Deze</t>
           </str>
           <str xml:id="p5.2">
-            <t>wetsvoorstellen</t>
-            <t class="Ticcl" offset="5">wetsvoorstellen</t>
+            <t>wets</t>
+            <t class="Ticcl" offset="5">wets</t>
           </str>
           <str xml:id="p5.3">
-            <t>worden</t>
-            <t class="Ticcl" offset="21">worden</t>
+            <t>voorstellen</t>
+            <t class="Ticcl" offset="10">voorstellen</t>
           </str>
           <str xml:id="p5.4">
-            <t>zonder</t>
-            <t class="Ticcl" offset="28">zonder</t>
+            <t>worden</t>
+            <t class="Ticcl" offset="22">worden</t>
           </str>
           <str xml:id="p5.5">
-            <correction xml:id="p5.5.correction.1">
+            <t>zonder</t>
+            <t class="Ticcl" offset="29">zonder</t>
+          </str>
+          <str xml:id="p5.6">
+            <correction xml:id="p5.6.correction.1">
               <new>
-                <t class="Ticcl" offset="35">UNK</t>
+                <t class="Ticcl" offset="36">UNK</t>
               </new>
               <original auth="no">
                 <t>s4s67621</t>
               </original>
             </correction>
           </str>
-          <str xml:id="p5.6">
-            <t>en</t>
-            <t class="Ticcl" offset="39">en</t>
-          </str>
           <str xml:id="p5.7">
-            <t>zonder</t>
-            <t class="Ticcl" offset="42">zonder</t>
+            <t>en</t>
+            <t class="Ticcl" offset="40">en</t>
           </str>
           <str xml:id="p5.8">
-            <t>stemming</t>
-            <t class="Ticcl" offset="49">stemming</t>
+            <t>zonder</t>
+            <t class="Ticcl" offset="43">zonder</t>
           </str>
           <str xml:id="p5.9">
-            <t>aangenomen</t>
-            <t class="Ticcl" offset="58">aangenomen</t>
+            <t>stemming</t>
+            <t class="Ticcl" offset="50">stemming</t>
           </str>
           <str xml:id="p5.10">
+            <t>aangenomen</t>
+            <t class="Ticcl" offset="59">aangenomen</t>
+          </str>
+          <str xml:id="p5.11">
             <t>.</t>
-            <t class="Ticcl" offset="69">.</t>
+            <t class="Ticcl" offset="70">.</t>
           </str>
         </p>
       </div>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.1" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.4" version="1.2.0">
   <metadata type="native">
     <annotations>
       <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
@@ -10,8 +10,8 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-06-12T12:26:27" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v  -v " folia_version="2.1.0" host="bonus" name="FoLiA-correct" user="sloot" version="0.13">
-        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.1.0" name="libfolia" type="generator" version="2.1"/>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-02T17:55:56" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
     <meta id="language">dut</meta>
@@ -48,7 +48,7 @@
       </div>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <t>Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
           <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .</t>
           <lang class="dut"/>
         </p>

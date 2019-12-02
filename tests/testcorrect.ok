@@ -24,7 +24,7 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -51,20 +51,20 @@ opde = 1-2 => op de
 unigram corrections:
 opde : op de
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
+correct ngrams in: 'Deze wet svoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
- corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
+ corrected ngrams: 'Deze wet svoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_str.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -105,20 +105,20 @@ new offset=76
 args =class='Ticcl',offset='76',value='de'
 new offset=79
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet op de omzetbelasting 1968.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
- corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
+ corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_str.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -145,21 +145,21 @@ opde : op de
 unigram corrections:
 1998. : 1998 .
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998 .'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
- corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
+ corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 inputclass and outputclass are the same
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -212,12 +212,14 @@ opde = 1-2 => op de
 bigram is: 'omzetbelasting_1968.'
  = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct bigrams
-bigram is: 'Deze_wetsvoorstellen'
+bigram is: 'Deze_wets'
  = 2 => Deze
-bigram is: 'wetsvoorstellen_worden'
+bigram is: 'wets_voorstellen'
+wets_voorstellen = 2-1 => wetsvoorstellen
  = 2 => wetsvoorstellen
+bigram is: 'voorstellen_worden'
 bigram is: 'worden_zonder'
  = 2 => worden
 bigram is: 'zonder_s4s67621'
@@ -238,11 +240,12 @@ edit statistics:
 	edit	 count
 	1-1	1
 	1-2	1
+	2-1	1
 	2-2	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -307,14 +310,16 @@ opde = 1-2 => op de
  = 3 => op de extra_skip=0
  = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct trigrams
-trigram is: 'Deze_wetsvoorstellen_worden'
+trigram is: 'Deze_wets_voorstellen'
  = 2 => Deze
  = 3 => Deze extra_skip=0
-trigram is: 'wetsvoorstellen_worden_zonder'
+trigram is: 'wets_voorstellen_worden'
+wets_voorstellen = 2-1 => wetsvoorstellen
  = 2 => wetsvoorstellen
- = 3 => wetsvoorstellen extra_skip=0
+ = 3 => wetsvoorstellen extra_skip=1
+trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
  = 2 => worden
  = 3 => worden extra_skip=0
@@ -337,12 +342,13 @@ edit statistics:
 	edit	 count
 	1-1	1
 	1-2	1
+	2-1	1
 	2-2	1
 	3-3	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -407,14 +413,16 @@ opde = 1-2 => op de
  = 3 => op de extra_skip=0
  = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct trigrams
-trigram is: 'Deze_wetsvoorstellen_worden'
+trigram is: 'Deze_wets_voorstellen'
  = 2 => Deze
  = 3 => Deze extra_skip=0
-trigram is: 'wetsvoorstellen_worden_zonder'
+trigram is: 'wets_voorstellen_worden'
+wets_voorstellen = 2-1 => wetsvoorstellen
  = 2 => wetsvoorstellen
- = 3 => wetsvoorstellen extra_skip=0
+ = 3 => wetsvoorstellen extra_skip=1
+trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
  = 2 => worden
  = 3 => worden extra_skip=0
@@ -437,12 +445,13 @@ edit statistics:
 	edit	 count
 	1-1	1
 	1-2	1
+	2-1	1
 	2-2	1
 	3-3	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -469,20 +478,20 @@ opde : op de
 unigram corrections:
 1998. : 1998 .
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998 .'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
- corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
+ corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1
 start reading variants 
-read 4 variants 
+read 5 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -509,15 +518,15 @@ opde : op de
 unigram corrections:
 1998. : 1998±.
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998±.'
-correct ngrams in: 'Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
- corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
+ corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	TOKENS	30
+	TOKENS	31
 	UNK	1

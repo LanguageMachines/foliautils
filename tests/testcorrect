@@ -38,7 +38,6 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngr
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.1.ok  >> testcorrect.out 2>&1
-
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v -v data/corr_word_T.xml --punctseparator=± >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.2.ok  >> testcorrect.out 2>&1
