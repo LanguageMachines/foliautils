@@ -142,6 +142,10 @@ bool fillVariants( const string& fn,
       }
       string trans = parts[2];
       string confS = parts[5]; // WILL FAIL for chained rank files
+      double d;
+      if ( !TiCC::stringTo<double>( confS, d ) ){
+	confS = "1.0";
+      }
       vec.push_back( word_conf( trans, confS ) );
     }
     else {
@@ -479,9 +483,9 @@ int correct_one_bigram( const gram_r& bi,
 			gram_r& result,
 			unordered_map<string,size_t>& counts ){
   int extra_skip = 0;
-  result .clear();
-  if ( verbose > 2 ){
-    cout << "correct bigram " << bi.text() << endl;
+  result.clear();
+  if ( verbose > 1 ){
+    cout << "correct bigram " << bi << endl;
   }
   string word = bi.text();
   filter(word);
@@ -496,17 +500,15 @@ int correct_one_bigram( const gram_r& bi,
   if ( vit != variants.end() ){
     // edits found
     string edit = vit->second[0].word;
-    vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
+    vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can be unseperated!
+    result._words = bi._words;
     for ( const auto& p : parts ){
-      gram_r add( p, bi._words[0] );
-      add._suggestions = &vit->second;
-      result.append( add );
+      result._text += " " + p;
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      gram_r add( final_punct, bi._words[0] );
-      result.append( add, punct_sep );
+      result._text += punct_sep + final_punct;
     }
     string ed;
     switch ( ed_size ){
@@ -568,6 +570,112 @@ int correct_one_bigram( const gram_r& bi,
   return extra_skip;
 }
 
+Correction *merge_bigram( const gram_r& corr,
+			  const vector<string>& parts,
+			  size_t& offset ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  cerr << "Step 1 " << endl;
+  cerr << "BIGRAM=" << corr << endl;
+  for( const auto& it : corr._words ){
+    cerr << "store OV: " << it << endl;
+    oV.push_back( it );
+  }
+  cerr << "Step 2 " << endl;
+  for ( const auto& p : parts ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "merge" );
+    cerr << "KWargs " << args << endl;
+    Word *w = new Word( args, corr._words[0]->doc() );
+    w->settext( p, offset, output_classname );
+    offset += p.size() + 1;
+    nV.push_back( w );
+  }
+  cerr << "Step 4 " << endl;
+  if ( corr._suggestions ){
+    size_t limit = corr._suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*corr._suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  cerr << "voor correct op: " << corr._words[0]->parent() << endl;
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
+Correction *split_bigram( const gram_r& corr,
+			  const vector<string>& parts,
+			  size_t& offset ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  for( const auto& it : corr._words ){
+    oV.push_back( it );
+  }
+  for ( const auto& p : parts ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    Word *w = new Word( args, corr._words[0]->doc() );
+    w->settext( p, offset, output_classname );
+    offset += p.size() + 1;
+    nV.push_back( w );
+  }
+  if ( corr._suggestions ){
+    size_t limit = corr._suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*corr._suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
+Correction *replace_bigram( const gram_r& corr,
+			    vector<string>& parts,
+			    size_t& offset ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  for( const auto& it : corr._words ){
+    oV.push_back( it );
+  }
+  for ( const auto& p : parts ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "replace" );
+    Word *w = new Word( args, corr._words[0]->doc() );
+    w->settext( p, offset, output_classname );
+    offset += p.size() + 1;
+    nV.push_back( w );
+  }
+  if ( corr._suggestions ){
+    size_t limit = corr._suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*corr._suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
 string correct_bigrams( const vector<gram_r>& bigrams,
 			const unordered_map<string,vector<word_conf> >& variants,
 			const unordered_set<string>& unknowns,
@@ -579,9 +687,10 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   }
   string result;
   int skip = 0;
+  size_t offset = 0;
   for ( const auto& bi : bigrams ){
     if ( verbose > 1 ){
-      cout << "bigram is: '" << bi.text() << "'" << endl;
+      cout << "bigram is: '" << bi << "'" << endl;
     }
     if ( skip > 0 ){
       --skip;
@@ -590,6 +699,26 @@ string correct_bigrams( const vector<gram_r>& bigrams,
     gram_r cor;
     skip = correct_one_bigram( bi, variants, unknowns,
 			       puncts, cor, counts );
+    cerr << "After correct_one_bi: cor=" << cor << endl;
+    vector<string> parts = TiCC::split_at( cor.text(), SEPARATOR );
+    if ( cor._words[0] ){
+      if ( cor._words.size() != parts.size() ){
+	if ( cor._words.size() > parts.size() ){
+	  // must be 2-1
+	  cerr << "AHA! 2-1" << endl;
+	  Correction *c = merge_bigram( cor, parts, offset );
+	}
+	else if ( cor._words.size() < parts.size() ){
+	  // must be 1-2
+	  cerr << "AHA! 1-2" << endl;
+	  Correction *c = split_bigram( cor, parts, offset );
+	}
+	else {
+	  cerr << "AHA! 2-2" << endl;
+	  Correction *c = replace_bigram( cor, parts, offset );
+	}
+      }
+    }
     result += cor.text() + " ";
   }
   gram_r corr;
@@ -915,6 +1044,7 @@ void correctNgrams( Paragraph* par,
       vector<string> parts = TiCC::split( content );
       for ( const auto& p : parts ){
 	unigrams.push_back(gram_r(p,(FoliaElement*)0));
+	//unigrams.push_back(gram_r(p,(FoliaElement*)it->parent()));
       }
     }
   }
