@@ -523,6 +523,7 @@ int correct_one_bigram( const gram_r& bi,
   }
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
+    result._orig = bi._orig;
     // edits found
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can be unseperated!
@@ -593,7 +594,7 @@ int correct_one_bigram( const gram_r& bi,
     }
   }
   if ( verbose > 1 ){
-    cout << " = 2 => " << result.result_text() << endl;
+    cout << result.orig_text() << " = 2 => " << result.result_text() << endl;
   }
   return extra_skip;
 }
@@ -645,6 +646,8 @@ Correction *split_bigram( const gram_r& corr,
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
+  cerr << "split_bigram Step 1 " << endl;
+  cerr << "BIGRAM=" << corr << endl;
   for( const auto& it : corr._words ){
     oV.push_back( it );
   }
@@ -678,12 +681,14 @@ Correction *replace_bigram( const gram_r& corr,
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
+  cerr << "replace_bigram Step 1 " << endl;
+  cerr << "BIGRAM=" << corr << endl;
   for( const auto& it : corr._words ){
     oV.push_back( it );
   }
   for ( const auto& p : parts ){
     KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "replace" );
+    args["xml:id"] = corr._words[0]->generateId( "edit" );
     Word *w = new Word( args, corr._words[0]->doc() );
     w->settext( p, offset, output_classname );
     offset += p.size() + 1;
@@ -733,7 +738,7 @@ string correct_bigrams( const vector<gram_r>& bigrams,
     if ( verbose > 2 ){
       cout << "After correct_one_bi: cor=" << cor << endl;
     }
-    vector<string> parts = TiCC::split_at( cor.orig_text(), SEPARATOR );
+    vector<string> parts = TiCC::split_at( cor.result_text(), " " );
     if ( cor._words[0] ){
       if ( cor._words.size() != parts.size() ){
 	Correction *c = 0;
@@ -747,10 +752,19 @@ string correct_bigrams( const vector<gram_r>& bigrams,
 	  cerr << "AHA! 1-2" << endl;
 	  c = split_bigram( cor, parts, offset );
 	}
-	else {
-	  cerr << "AHA! 2-2" << endl;
-	  c = replace_bigram( cor, parts, offset );
+	if ( verbose > 1 ){
+	  cerr << "created: " << c << endl;
 	}
+      }
+      else if ( parts.size() == 1 && cor._orig[0] == parts[0] ){
+      }
+      else if ( parts.size() == 2
+		&& cor._orig[0] == parts[0]
+		&& cor._orig[1] == parts[1] ){
+      }
+      else {
+	cerr << "AHA! 2-2" << endl;
+	Correction *c = replace_bigram( cor, parts, offset );
 	if ( verbose > 1 ){
 	  cerr << "created: " << c << endl;
 	}
