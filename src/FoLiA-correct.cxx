@@ -78,40 +78,63 @@ struct gram_r {
   gram_r():_suggestions(0){};
   gram_r( const string&, FoliaElement* );
   gram_r( FoliaElement*, const string& = "current" );
-  void append( const gram_r&, const string& = " " );
-  string text() const { return _text; };
-  void clear(){ _text.clear(); _words.clear(); };
-  string _text;
+  string orig_text() const;
+  string result_text() const;
+  void clear(){ _orig.clear(); _result.clear();_words.clear(); };
+  string _final_punct;
+  vector<string> _orig;
+  vector<string> _result;
   vector<FoliaElement*> _words;
   const vector<word_conf>* _suggestions;
 };
 
+string gram_r::orig_text() const {
+  string result;
+  for ( const auto& s : _orig ){
+    result += s;
+    if ( &s != &_orig.back() ){
+      result += "_";
+    }
+  }
+  return result;
+}
+
+string gram_r::result_text() const {
+  string result;
+  for ( const auto& s : _result ){
+    result += s;
+    if ( &s != &_result.back() ){
+      result += " ";
+    }
+  }
+  if ( !_final_punct.empty() ){
+    result += punct_sep + _final_punct;
+  }
+  return result;
+}
+
 gram_r::gram_r( FoliaElement *el, const string& text_cls ):
   _suggestions(0)
 {
-  _text = el->str(text_cls);
+  _orig.push_back( el->str(text_cls) );
   _words.push_back( el );
-}
-
-void gram_r::append( const gram_r& add, const string& sep ){
-  if ( _words.empty() ){
-    *this = add;
-  }
-  else {
-    _text += sep + add._text;
-    _words.push_back( add._words[0] );
-  }
 }
 
 gram_r::gram_r( const string& val, FoliaElement *el ) :
   _suggestions(0)
 {
-  _text = val;
+  _orig.push_back( val );
   _words.push_back( el );
 }
 
 ostream& operator<<( ostream& os, const gram_r& rec ){
-  os << rec._text << " " << rec._words;
+  os << rec.orig_text();
+  if ( !rec._result.empty() ){
+    os << " ==> " << rec.result_text();
+  }
+  if ( !rec._words.empty() && rec._words[0] != 0 ){
+    os << " " << rec._words;
+  }
   return os;
 }
 
@@ -229,9 +252,9 @@ bool correct_one_unigram( const gram_r& uni,
 			  unordered_map<string,size_t>& counts ){
   bool did_edit = false;
   if ( verbose > 2 ){
-    cout << "correct unigram " << uni.text() << endl;
+    cout << "correct unigram " << uni << endl;
   }
-  string word = uni.text();
+  string word = uni.orig_text();
   string orig_word = word;
   string final_punct;
   const auto pit = puncts.find( word );
@@ -242,19 +265,19 @@ bool correct_one_unigram( const gram_r& uni,
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
     // 1 or more edits found
+    result._words.push_back( uni._words[0] );
+    result._orig.push_back( uni._orig[0] );
+    // edit might be seperatable!
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR );
-    // edit might be seperatable!
     for ( const auto& p : parts ){
-      gram_r add( p, uni._words[0] );
-      add._suggestions = &vit->second;
-      result.append( add );
+      result._suggestions = &vit->second;
+      result._result.push_back( p );
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      gram_r add( final_punct, uni._words[0] );
-      result.append( add, punct_sep );
+      result._final_punct = final_punct;
     }
     string ed;
     switch ( ed_size ){
@@ -279,7 +302,7 @@ bool correct_one_unigram( const gram_r& uni,
     }
     ++counts[ed];
     if ( verbose > 1 ){
-      cout << word << " = " << ed << " => " << result.text() << endl;
+      cout << word << " = " << ed << " => " << result.result_text() << endl;
     }
     did_edit = true;
   }
@@ -291,16 +314,17 @@ bool correct_one_unigram( const gram_r& uni,
     }
     if ( uit != unknowns.end() ){
       // ok it is a registrated garbage word
-      result = gram_r( "UNK", uni._words[0] );
+      result = uni;
+      result._result.push_back( "UNK" );
       ++counts["UNK"];
       did_edit = true;
     }
     else {
       // just use the word
-      result = gram_r( word, uni._words[0] );
+      result = uni;
+      result._result.push_back( word );
       if ( !final_punct.empty() ){
-	gram_r add( final_punct, uni._words[0] );
-	result.append( add, punct_sep );
+	result._final_punct = final_punct;
 	did_edit = true;
       }
     }
@@ -429,14 +453,14 @@ string correct_unigrams( const vector<gram_r>& unigrams,
     gram_r cor;
     if ( correct_one_unigram( uni, variants, unknowns,
 			      puncts, cor, counts ) ){
-      //      cerr << "IN=" << uni << endl;
-      //      cerr << "er is een correctie: " << cor << endl;
+      // cerr << "IN=" << uni << endl;
+      // cerr << "er is een correctie: " << cor << endl;
       if ( verbose ){
 	cout << "unigram corrections:" << endl;
-	cout << uni.text() << " : " << cor.text() << endl;
+	cout << uni.orig_text() << " : " << cor.result_text() << endl;
       }
       if ( uni._words[0] ){
-	vector<string> parts = TiCC::split( cor.text() );
+	vector<string> parts = TiCC::split( cor.result_text() );
 	Correction *c = 0;
 	if ( parts.size() == 1 ){
 	  c = replace_unigram( uni._words[0],
@@ -456,22 +480,23 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 			  offset,
 			  cor._suggestions );
 	}
-	if ( verbose > 4 ){
+	if ( verbose > 1 ){
 	  cerr << "created: " << c << endl;
 	}
       }
       else {
-	offset += uni.text().size() + 1;
+	offset += cor.result_text().size() + 1;
       }
+      result += cor.result_text() + " ";
     }
     else {
       // no edit
       if ( uni._words[0] ){
-	uni._words[0]->settext( uni.text(), offset, output_classname );
+	uni._words[0]->settext( uni.orig_text(), offset, output_classname );
       }
-      offset += uni.text().size() + 1;
+      result += uni.orig_text() + " ";
+      offset += uni.orig_text().size() + 1;
     }
-    result += cor.text() + " ";
   }
   return result;
 }
@@ -484,10 +509,10 @@ int correct_one_bigram( const gram_r& bi,
 			unordered_map<string,size_t>& counts ){
   int extra_skip = 0;
   result.clear();
-  if ( verbose > 1 ){
+  if ( verbose > 2 ){
     cout << "correct bigram " << bi << endl;
   }
-  string word = bi.text();
+  string word = bi.orig_text();
   filter(word);
   string orig_word = word;
   string final_punct;
@@ -503,12 +528,12 @@ int correct_one_bigram( const gram_r& bi,
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can be unseperated!
     result._words = bi._words;
     for ( const auto& p : parts ){
-      result._text += " " + p;
+      result._result.push_back( p );
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      result._text += punct_sep + final_punct;
+      result._final_punct = final_punct;
     }
     string ed;
     switch ( ed_size ){
@@ -533,12 +558,12 @@ int correct_one_bigram( const gram_r& bi,
     }
     ++counts[ed];
     if ( verbose > 1 ){
-      cout << word << " = " << ed << " => " << result.text() << endl;
+      cout << word << " = " << ed << " => " << result.result_text() << endl;
     }
     extra_skip = 1;
   }
   else {
-    // a word with no suggested variants
+    // a bigram with no suggested variants
     auto uit = unknowns.find( word );
     if ( uit == unknowns.end() ){
       uit = unknowns.find( orig_word );
@@ -546,26 +571,29 @@ int correct_one_bigram( const gram_r& bi,
     if ( uit != unknowns.end() ){
       // ok it is a registrated garbage bigram
       result = bi;
-      result._text = "UNK UNK";
+      result._result.push_back( "UNK" );
+      result._result.push_back( "UNK" );
       ++counts["UNK UNK"];
       if ( verbose > 2 ){
-	cout << " = 2 => " << result.text() << endl;
+	cout << result.orig_text() << " ==> " << result.result_text() << endl;
       }
       extra_skip = 1;
     }
     else {
-      // just use the ORIGINAL word and handle the first part like unigram
-      vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
-      gram_r tmp( parts[0], bi._words[0] );
+      // just use the ORIGINAL bigram and handle the first part like unigram
+      gram_r tmp;
+      tmp._orig.push_back( bi._orig[0] );
+      tmp._words.push_back( bi._words[0] );
       correct_one_unigram( tmp, variants, unknowns,
 			   puncts, result, counts );
       if ( verbose > 2 ){
-	cout << " = 2 => " << result.text() << endl;
+	cout << "unigram correction on first part of bigram " << tmp
+	     << " yields " << result << endl;
       }
     }
   }
   if ( verbose > 1 ){
-    cout << " = 2 => " << result.text() << endl;
+    cout << " = 2 => " << result.result_text() << endl;
   }
   return extra_skip;
 }
@@ -577,7 +605,7 @@ Correction *merge_bigram( const gram_r& corr,
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
-  cerr << "Step 1 " << endl;
+  cerr << "merge_bigram Step 1 " << endl;
   cerr << "BIGRAM=" << corr << endl;
   for( const auto& it : corr._words ){
     cerr << "store OV: " << it << endl;
@@ -697,29 +725,38 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       continue;
     }
     gram_r cor;
+    if ( verbose > 2 ){
+      cout << "before correct_one_bi: bi=" << bi << endl;
+    }
     skip = correct_one_bigram( bi, variants, unknowns,
 			       puncts, cor, counts );
-    cerr << "After correct_one_bi: cor=" << cor << endl;
-    vector<string> parts = TiCC::split_at( cor.text(), SEPARATOR );
+    if ( verbose > 2 ){
+      cout << "After correct_one_bi: cor=" << cor << endl;
+    }
+    vector<string> parts = TiCC::split_at( cor.orig_text(), SEPARATOR );
     if ( cor._words[0] ){
       if ( cor._words.size() != parts.size() ){
+	Correction *c = 0;
 	if ( cor._words.size() > parts.size() ){
 	  // must be 2-1
 	  cerr << "AHA! 2-1" << endl;
-	  Correction *c = merge_bigram( cor, parts, offset );
+	  c = merge_bigram( cor, parts, offset );
 	}
 	else if ( cor._words.size() < parts.size() ){
 	  // must be 1-2
 	  cerr << "AHA! 1-2" << endl;
-	  Correction *c = split_bigram( cor, parts, offset );
+	  c = split_bigram( cor, parts, offset );
 	}
 	else {
 	  cerr << "AHA! 2-2" << endl;
-	  Correction *c = replace_bigram( cor, parts, offset );
+	  c = replace_bigram( cor, parts, offset );
+	}
+	if ( verbose > 1 ){
+	  cerr << "created: " << c << endl;
 	}
       }
     }
-    result += cor.text() + " ";
+    result += cor.result_text() + " ";
   }
   gram_r corr;
   correct_one_unigram( last, variants, unknowns,
@@ -727,7 +764,7 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   if ( verbose > 2 ){
     cout << "1 handled last word: " << corr << endl;
   }
-  result += corr.text();
+  result += corr.result_text();
   return result;
 }
 
@@ -740,9 +777,9 @@ int correct_one_trigram( const gram_r& tri,
   int extra_skip = 0;
   result.clear();
   if ( verbose > 2 ){
-    cout << "correct trigram " << tri.text() << endl;
+    cout << "correct trigram " << tri.orig_text() << endl;
   }
-  string word = tri.text();
+  string word = tri.orig_text();
   filter(word);
   string orig_word = word;
   string final_punct;
@@ -756,16 +793,15 @@ int correct_one_trigram( const gram_r& tri,
     // edits found
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
+    result._words = tri._words;
     for ( const auto& p : parts ){
-      gram_r add( p, tri._words[0] );
-      add._suggestions = &vit->second;
-      result.append( add );
+      result._result.push_back( p );
+      result._suggestions = &vit->second;
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){
       ++ed_size;
-      gram_r add( final_punct, tri._words[0] );
-      result.append( add, punct_sep );
+      result._final_punct = final_punct;
     }
     string ed;
     switch ( ed_size ){
@@ -790,7 +826,7 @@ int correct_one_trigram( const gram_r& tri,
     }
     ++counts[ed];
     if ( verbose > 1 ){
-      cout << word << " = " << ed << " => " << result.text() << endl;
+      cout << word << " = " << ed << " => " << result.result_text() << endl;
     }
     extra_skip = 2;
   }
@@ -803,7 +839,9 @@ int correct_one_trigram( const gram_r& tri,
     if ( uit != unknowns.end() ){
       // ok it is a registrated garbage trigram
       result = tri;
-      result._text = "UNK UNK UNK";
+      result._result.push_back("UNK" );
+      result._result.push_back("UNK" );
+      result._result.push_back("UNK" );
       ++counts["UNK UNK UNK"];
       extra_skip = 2;
     }
@@ -811,7 +849,8 @@ int correct_one_trigram( const gram_r& tri,
       // just use the ORIGINAL word so handle the first part like bigram
       vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
       gram_r tmp;
-      tmp._text = parts[0] + SEPARATOR + parts[1];
+      tmp._orig.push_back( parts[0] );
+      tmp._orig.push_back( parts[1] );
       tmp._words.push_back( tri._words[0] );
       tmp._words.push_back( tri._words[1] );
       extra_skip = correct_one_bigram( tmp, variants, unknowns,
@@ -819,7 +858,8 @@ int correct_one_trigram( const gram_r& tri,
     }
   }
   if ( verbose > 1 ){
-    cout << " = 3 => " << result.text() << " extra_skip=" << extra_skip << endl;
+    cout << result.orig_text() << " = 3 => " << result.result_text()
+	 << " extra_skip=" << extra_skip << endl;
   }
   return extra_skip;
 }
@@ -837,7 +877,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   int skip = 0;
   for ( const auto& tri : trigrams ){
     if ( verbose > 1 ){
-      cout << "trigram is: '" << tri.text() << "'" << endl;
+      cout << "trigram is: '" << tri.orig_text() << "'" << endl;
     }
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " TRI: " << tri << endl;
@@ -849,7 +889,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     gram_r cor;
     skip = correct_one_trigram( tri, variants, unknowns,
 				puncts, cor, counts );
-    result += cor.text() + " ";
+    result += cor.result_text() + " ";
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
     }
@@ -865,13 +905,14 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     if ( verbose > 2 ){
       cout << "2 handled last word: " << corr << endl;
     }
-    result += corr.text();
+    result += corr.result_text();
     return result;
   }
   else {
     gram_r last = unigrams[unigrams.size()-1];
     gram_r last_bi = unigrams[unigrams.size()-2];
-    last_bi.append( last, "_" );
+    last_bi._orig.push_back( last.orig_text() );
+    last_bi._words.push_back( last._words[0] );
     gram_r corr;
     if ( verbose > 2 ){
       cout << "correct last bigram: " << last_bi << endl;
@@ -881,7 +922,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     if ( verbose > 2 ){
       cout << "handled last bigram: " << corr << endl;
     }
-    result += corr.text();
+    result += corr.result_text();
     if ( skip == 0 ){
       if ( verbose > 2 ){
 	cout << "correct last word: " << last << endl;
@@ -892,7 +933,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       if ( verbose > 2 ){
 	cout << "3 handled last word: " << uni_corr << endl;
       }
-      result += " " + uni_corr.text();
+      result += " " + uni_corr.result_text();
     }
     return result;
   }
@@ -926,7 +967,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
       result.push_back( unigrams[i] );
     }
     else if ( inventory[i] == END_PUNCT_HEMP ){
-      mw += unigrams[i].text();
+      mw += unigrams[i].orig_text();
       const auto& it = puncts.find( mw );
       if ( it != puncts.end() ){
 	result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
@@ -954,10 +995,10 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	}
 	mw = "";
       }
-      mw = unigrams[i].text() + "_";
+      mw = unigrams[i].orig_text() + "_";
     }
     else if ( inventory[i] == NORMAL_HEMP ){
-      mw += unigrams[i].text() + "_";
+      mw += unigrams[i].orig_text() + "_";
     }
     //    cerr << "   result=" << result << endl;
   }
@@ -982,7 +1023,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 			      const unordered_map<string,string>& puncts ){
   vector<UnicodeString> u_uni( unigrams.size() );
   for ( size_t i=0; i < unigrams.size(); ++i ){
-    u_uni[i] = TiCC::UnicodeFromUTF8(unigrams[i].text());
+    u_uni[i] = TiCC::UnicodeFromUTF8(unigrams[i].orig_text());
   }
   vector<hemp_status> inventory = create_emph_inventory( u_uni );
   vector<gram_r> result = replace_hemps( unigrams, inventory, puncts );
@@ -1077,7 +1118,8 @@ void correctNgrams( Paragraph* par,
     bigrams = unigrams;
     bigrams.pop_back();
     for ( size_t i=0; i < unigrams.size()-1; ++i ){
-      bigrams[i].append( unigrams[i+1], SEPARATOR );
+      bigrams[i]._words.push_back( unigrams[i+1]._words[0] );
+      bigrams[i]._orig.push_back( unigrams[i+1].orig_text() );
     }
     if ( verbose > 5 ){
       cerr << "BIGRAMS:\n" << bigrams << endl;
@@ -1088,8 +1130,10 @@ void correctNgrams( Paragraph* par,
     trigrams.pop_back();
     trigrams.pop_back();
     for ( size_t i=0; i < unigrams.size()-2; ++i ){
-      trigrams[i].append( unigrams[i+1], SEPARATOR );
-      trigrams[i].append( unigrams[i+2], SEPARATOR );
+      trigrams[i]._words.push_back( unigrams[i+1]._words[0] );
+      trigrams[i]._orig.push_back( unigrams[i+1].orig_text() );
+      trigrams[i]._words.push_back( unigrams[i+2]._words[0] );
+      trigrams[i]._orig.push_back( unigrams[i+2].orig_text() );
     }
     if ( verbose > 5 ){
       cerr << "TRIGRAMS:\n" << trigrams << endl;
