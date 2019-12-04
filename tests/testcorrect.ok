@@ -328,7 +328,7 @@ en = 2 => en
 en = 3 => en extra_skip=0
 trigram is: 'zonder_steming_aangenomen'
 zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
- = 3 => zonder stemming aangenomen extra_skip=2
+zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
 trigram is: 'steming_aangenomen_.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.xml
@@ -431,7 +431,7 @@ en = 2 => en
 en = 3 => en extra_skip=0
 trigram is: 'zonder_steming_aangenomen'
 zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
- = 3 => zonder stemming aangenomen extra_skip=2
+zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
 trigram is: 'steming_aangenomen_.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr.folia.xml
@@ -475,12 +475,12 @@ unigram corrections:
 1998. : 1998 .
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.2" > {<new>,<original>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998 .'
-correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (Test)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
 created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
- corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .'
+ corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -519,12 +519,12 @@ unigram corrections:
 1998. : 1998±.
 created:  <correction xml:id='p4.16.correction.1" > {<new>,<original>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998±.'
-correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (Test)
 correct unigrams
 unigram corrections:
 s4s67621 : UNK
 created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
- corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .'
+ corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -601,7 +601,7 @@ unigram corrections:
 1998. : 1998 .
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.4" > {<new>,<original>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1998 .'
-correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (Test)
 correct bigrams
 bigram is: 'Deze_wets [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]'
 Deze = 2 => Deze
@@ -625,12 +625,114 @@ BIGRAM=s4s67621 ==> UNK [ <w xml:id='p5.6" > {<t>,}]
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.2" > {<new>,<original>,}
 bigram is: 'en_zonder [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]'
 en = 2 => en
-bigram is: 'zonder_stemming [ <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]'
+bigram is: 'zonder_steming [ <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]'
 zonder = 2 => zonder
-bigram is: 'stemming_aangenomen [ <w xml:id='p5.9" > {<t>,}, <w xml:id='p5.10" > {<t>,}]'
-stemming = 2 => stemming
+bigram is: 'steming_aangenomen [ <w xml:id='p5.9" > {<t>,}, <w xml:id='p5.10" > {<t>,}]'
+steming = 2 => steming
 bigram is: 'aangenomen_. [ <w xml:id='p5.10" > {<t>,}, <w xml:id='p5.11" > {<t>,}]'
 aangenomen = 2 => aangenomen
+ corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
+finished data/corr_word_T.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	1-2	1
+	2-1	1
+	2-2	1
+	TOKENS	31
+	UNK	1
+start reading variants 
+read 5 variants 
+start reading unknowns 
+read 2 unknown words 
+start reading puncts 
+read 12 punctuated words 
+verbosity = 2
+start correcting file: data/corr_word_T.xml
+correct ngrams in: '40ste vergadering' (Test)
+correct bigrams
+bigram is: '40ste_vergadering [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]'
+40ste = 2 => 40ste
+ corrected ngrams: '40ste vergadering'
+correct ngrams in: '2003-2004' (Test)
+correct unigrams
+ corrected ngrams: '2003-2004'
+correct ngrams in: '40' (Test)
+correct unigrams
+ corrected ngrams: '40'
+correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Test)
+correct trigrams
+trigram is: 'Aan_de_orde'
+Aan = 2 => Aan
+Aan = 3 => Aan extra_skip=0
+trigram is: 'de_orde_is'
+de = 2 => de
+de = 3 => de extra_skip=0
+trigram is: 'orde_is_de'
+orde = 2 => orde
+orde = 3 => orde extra_skip=0
+trigram is: 'is_de_behándeling'
+is = 2 => is
+is = 3 => is extra_skip=0
+trigram is: 'de_behándeling_van:'
+de = 2 => de
+de = 3 => de extra_skip=0
+trigram is: 'behándeling_van:_het'
+behándeling = 1-1 => behandeling
+behándeling = 2 => behandeling
+behándeling = 3 => behandeling extra_skip=0
+trigram is: 'van:_het_wetsvoorstel'
+van: = 2 => van:
+van: = 3 => van: extra_skip=0
+trigram is: 'het_wetsvoorstel_Wijsiging'
+het = 2 => het
+het = 3 => het extra_skip=0
+trigram is: 'wetsvoorstel_Wijsiging_van'
+wetsvoorstel = 2 => wetsvoorstel
+wetsvoorstel = 3 => wetsvoorstel extra_skip=0
+trigram is: 'Wijsiging_van_de'
+Wijsiging_van = 2-2 => Wijziging van
+Wijsiging_van = 2 => Wijziging van
+Wijsiging_van = 3 => Wijziging van extra_skip=1
+trigram is: 'van_de_Wet'
+trigram is: 'de_Wet_opde'
+de = 2 => de
+de = 3 => de extra_skip=0
+trigram is: 'Wet_opde_omzetbelasting'
+Wet = 2 => Wet
+Wet = 3 => Wet extra_skip=0
+trigram is: 'opde_omzetbelasting_1998.'
+opde = 1-2 => op de
+opde = 2 => op de
+opde = 3 => op de extra_skip=0
+omzetbelasting = 2 => omzetbelasting
+ corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1998 .'
+correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (Test)
+correct trigrams
+trigram is: 'Deze_wets_voorstellen'
+Deze = 2 => Deze
+Deze = 3 => Deze extra_skip=0
+trigram is: 'wets_voorstellen_worden'
+wets_voorstellen = 2-1 => wetsvoorstellen
+wets_voorstellen = 2 => wetsvoorstellen
+wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
+trigram is: 'voorstellen_worden_zonder'
+trigram is: 'worden_zonder_s4s67621'
+worden = 2 => worden
+worden = 3 => worden extra_skip=0
+trigram is: 'zonder_s4s67621_en'
+zonder = 2 => zonder
+zonder = 3 => zonder extra_skip=0
+trigram is: 's4s67621_en_zonder'
+s4s67621 = 2 => UNK
+s4s67621 = 3 => UNK extra_skip=0
+trigram is: 'en_zonder_steming'
+en = 2 => en
+en = 3 => en extra_skip=0
+trigram is: 'zonder_steming_aangenomen'
+zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
+zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
+trigram is: 'steming_aangenomen_.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
 finished data/corr_word_T.xml
 edit statistics: 
@@ -639,5 +741,6 @@ edit statistics:
 	1-2	1
 	2-1	1
 	2-2	1
+	3-3	1
 	TOKENS	31
 	UNK	1

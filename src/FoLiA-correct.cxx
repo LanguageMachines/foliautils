@@ -815,13 +815,14 @@ int correct_one_trigram( const gram_r& tri,
   }
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
+    result._orig = tri._orig;
     // edits found
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     result._words = tri._words;
+    result._suggestions = &vit->second;
     for ( const auto& p : parts ){
       result._result.push_back( p );
-      result._suggestions = &vit->second;
     }
     size_t ed_size = parts.size();
     if ( !final_punct.empty() ){

@@ -10,7 +10,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-02T17:43:48" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v  --punctseparator=±" folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-04T16:49:40" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v  --punctseparator=±" folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -156,8 +156,8 @@
       </div>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .</t>
-          <t class="Apple">Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .</t>
+          <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <t class="Apple">Deze wets voorstellen worden zonder UNK en zonder steming aangenomen .</t>
           <lang class="dut"/>
           <w xml:id="p5.1">
             <t class="Test">Deze</t>
@@ -198,16 +198,16 @@
             <t class="Apple" offset="43">zonder</t>
           </w>
           <w xml:id="p5.9">
-            <t class="Test">stemming</t>
-            <t class="Apple" offset="50">stemming</t>
+            <t class="Test">steming</t>
+            <t class="Apple" offset="50">steming</t>
           </w>
           <w xml:id="p5.10">
             <t class="Test">aangenomen</t>
-            <t class="Apple" offset="59">aangenomen</t>
+            <t class="Apple" offset="58">aangenomen</t>
           </w>
           <w xml:id="p5.11">
             <t class="Test">.</t>
-            <t class="Apple" offset="70">.</t>
+            <t class="Apple" offset="69">.</t>
           </w>
         </p>
       </div>

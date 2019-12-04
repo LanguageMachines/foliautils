@@ -54,7 +54,7 @@
       </div>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .</t>
+          <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
           <lang class="dut"/>
 	  <w xml:id="p5.1"><t class="Test">Deze</t></w>
 	  <w xml:id="p5.2"><t class="Test">wets</t></w>
@@ -64,7 +64,7 @@
 	  <w xml:id="p5.6"><t class="Test">s4s67621</t></w>
 	  <w xml:id="p5.7"><t class="Test">en</t></w>
 	  <w xml:id="p5.8"><t class="Test">zonder</t></w>
-	  <w xml:id="p5.9"><t class="Test">stemming</t></w>
+	  <w xml:id="p5.9"><t class="Test">steming</t></w>
 	  <w xml:id="p5.10"><t class="Test">aangenomen</t></w>
 	  <w xml:id="p5.11"><t class="Test">.</t></w>
         </p>
