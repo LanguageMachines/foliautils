@@ -890,17 +890,28 @@ int correct_one_trigram( const gram_r& tri,
   return extra_skip;
 }
 
+void apply_tri_correction( const gram_r& corr,
+			   size_t& offset,
+			   bool doStrings ){
+  // NO correction in the XML yet
+  if ( corr._words[0] ){
+    corr._words[0]->settext( corr._orig.front(), offset, output_classname );
+  }
+}
+
 string correct_trigrams( const vector<gram_r>& trigrams,
 			 const unordered_map<string,vector<word_conf> >& variants,
 			 const unordered_set<string>& unknowns,
 			 const unordered_map<string,string>& puncts,
 			 const vector<gram_r>& unigrams,
-			 unordered_map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts,
+			 bool doStrings ){
   if ( verbose > 1 ){
     cout << "correct trigrams" << endl;
   }
   string result;
   int skip = 0;
+  size_t offset = 0;
   for ( const auto& tri : trigrams ){
     if ( verbose > 1 ){
       cout << "trigram is: '" << tri.orig_text() << "'" << endl;
@@ -912,10 +923,11 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       --skip;
       continue;
     }
-    gram_r cor;
+    gram_r corr;
     skip = correct_one_trigram( tri, variants, unknowns,
-				puncts, cor, counts );
-    result += cor.result_text() + " ";
+				puncts, corr, counts );
+    apply_tri_correction( corr, offset, doStrings );
+    result += corr.result_text() + " ";
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
     }
@@ -1181,7 +1193,8 @@ void correctNgrams( Paragraph* par,
   }
   else {
     corrected = correct_trigrams( trigrams, variants, unknowns,
-				  puncts, unigrams, counts );
+				  puncts, unigrams, counts,
+				  doStrings );
   }
   corrected = TiCC::trim( corrected );
   if ( verbose > 1 ){
