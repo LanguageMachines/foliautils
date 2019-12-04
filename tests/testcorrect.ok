@@ -75,13 +75,6 @@ correct ngrams in: '40ste vergadering?' (current)
 correct unigrams
 unigram corrections:
 vergadering? : vergadering ?
-split word: vergadering?
-      into: [vergadering,?]
-     offset=6
-args =class='Ticcl',offset='6',value='vergadering'
-new offset=18
-args =class='Ticcl',offset='18',value='?'
-new offset=20
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1.correction.1" > {<new>,<original>,}
  corrected ngrams: '40ste vergadering ?'
 correct ngrams in: '2003-2004' (current)
@@ -99,13 +92,6 @@ created:  <correction xml:id='p4.6.correction.1" > {<new>,<original>,<suggestion
 opde = 1-2 => op de
 unigram corrections:
 opde : op de
-split word: opde
-      into: [op,de]
-     offset=73
-args =class='Ticcl',offset='73',value='op'
-new offset=76
-args =class='Ticcl',offset='76',value='de'
-new offset=79
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,<suggestion>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
@@ -611,6 +597,9 @@ BIGRAM=opde ==> op de [ <w xml:id='p4.14" > {<t>,}]
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.3" > {<new>,<original>,<suggestion>,}
 bigram is: 'omzetbelasting_1998. [ <w xml:id='p4.15" > {<t>,}, <w xml:id='p4.16" > {<t>,}]'
 omzetbelasting = 2 => omzetbelasting
+unigram corrections:
+1998. : 1998 .
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.4" > {<new>,<original>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1998 .'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (Test)
 correct bigrams
@@ -620,14 +609,8 @@ bigram is: 'wets_voorstellen [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t
 wets_voorstellen = 2-1 => wetsvoorstellen
 wets_voorstellen = 2 => wetsvoorstellen
 AHA! 2-1
-merge_bigram Step 1 
-BIGRAM=wets_voorstellen ==> wetsvoorstellen [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]
 store OV:  <w xml:id='p5.2" > {<t>,}
 store OV:  <w xml:id='p5.3" > {<t>,}
-Step 2 
-KWargs xml:id='p5.2.merge.1'
-Step 4 
-voor correct op:  <p xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1" > {<t>,<lang>,<w>,<w>,<w>,<w>,<w>,<w>,<w>,<w>,<w>,<w>,<w>,}
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 bigram is: 'voorstellen_worden [ <w xml:id='p5.3" > {<t>,}, <w xml:id='p5.4" > {<t>,}]'
 bigram is: 'worden_zonder [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]'
@@ -658,77 +641,3 @@ edit statistics:
 	2-2	1
 	TOKENS	31
 	UNK	1
-73a74,76
->           <w xml:id="p4.6">
->             <t class="Test">behándeling</t>
->           </w>
-88a92,94
->           <w xml:id="p4.14">
->             <t class="Test">opde</t>
->           </w>
-97,111d102
-<             <suggestion auth="no" confidence="0.870370" n="1/1">
-<               <t class="Ticcl">behandeling</t>
-<             </suggestion>
-<             <original auth="no">
-<               <w xml:id="p4.6">
-<                 <t class="Test">behándeling</t>
-<               </w>
-<             </original>
-<             <new>
-<               <w xml:id="p4.6.edit.1">
-<                 <t class="Ticcl" offset="0">behandeling</t>
-<               </w>
-<             </new>
-<           </correction>
-<           <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.2">
-120,145d110
-<             <new>
-<               <w xml:id="p4.10.edit.1">
-<                 <t class="Ticcl" offset="12">Wijziging</t>
-<               </w>
-<               <w xml:id="p4.10.edit.2">
-<                 <t class="Ticcl" offset="22">van</t>
-<               </w>
-<             </new>
-<           </correction>
-<           <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.3">
-<             <suggestion auth="no" confidence="1.000000" n="1/1">
-<               <t class="Ticcl">op_de</t>
-<             </suggestion>
-<             <original auth="no">
-<               <w xml:id="p4.14">
-<                 <t class="Test">opde</t>
-<               </w>
-<             </original>
-<             <new>
-<               <w xml:id="p4.14.split.1">
-<                 <t class="Ticcl" offset="26">op</t>
-<               </w>
-<               <w xml:id="p4.14.split.2">
-<                 <t class="Ticcl" offset="29">de</t>
-<               </w>
-<             </new>
-161a127,129
->           <w xml:id="p5.6">
->             <t class="Test">s4s67621</t>
->           </w>
-187,203d154
-<             <new>
-<               <w xml:id="p5.2.merge.1">
-<                 <t class="Ticcl" offset="0">wetsvoorstellen</t>
-<               </w>
-<             </new>
-<           </correction>
-<           <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.2">
-<             <original auth="no">
-<               <w xml:id="p5.6">
-<                 <t class="Test">s4s67621</t>
-<               </w>
-<             </original>
-<             <new>
-<               <w xml:id="p5.6.edit.1">
-<                 <t class="Ticcl" offset="16">UNK</t>
-<               </w>
-<             </new>
-foliadiff.sh: differences in: corr_word_T.ticcl.xml corr_word_T.ticcl.3.ok
