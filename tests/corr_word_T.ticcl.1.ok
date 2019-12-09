@@ -10,7 +10,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-04T16:48:57" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-09T10:57:03" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -213,6 +213,44 @@
           <w xml:id="p5.11">
             <t class="Test">.</t>
             <t class="Apple" offset="69">.</t>
+          </w>
+        </p>
+        <p xml:id="p6">
+          <t class="Test">Deze runonvanwoorden is oplosbaar.</t>
+          <t class="Apple">Deze runon van woorden is oplosbaar.</t>
+          <lang class="dut"/>
+          <w xml:id="p6.1">
+            <t class="Test">Deze</t>
+            <t class="Apple" offset="0">Deze</t>
+          </w>
+          <correction xml:id="p6.correction.1">
+            <new>
+              <w xml:id="p6.2.split.1">
+                <t class="Apple" offset="5">runon</t>
+              </w>
+              <w xml:id="p6.2.split.2">
+                <t class="Apple" offset="11">van</t>
+              </w>
+              <w xml:id="p6.2.split.3">
+                <t class="Apple" offset="15">woorden</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p6.2">
+                <t class="Test">runonvanwoorden</t>
+              </w>
+            </original>
+            <suggestion auth="no" confidence="1.000000" n="1/1">
+              <t class="Apple">runon_van_woorden</t>
+            </suggestion>
+          </correction>
+          <w xml:id="p6.3">
+            <t class="Test">is</t>
+            <t class="Apple" offset="23">is</t>
+          </w>
+          <w xml:id="p6.4">
+            <t class="Test">oplosbaar.</t>
+            <t class="Apple" offset="26">oplosbaar.</t>
           </w>
         </p>
       </div>
