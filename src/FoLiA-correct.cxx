@@ -244,12 +244,134 @@ string test_final_punct( const string& word, const string& dep ){
   return result;
 }
 
+Correction *replace_unigram( FoliaElement *orig,
+			     const string& part,
+			     size_t& offset,
+			     const vector<word_conf> *suggestions ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
+  oV.push_back( tc );
+  KWargs args;
+  args["value"] = part;
+  args["offset"] = TiCC::toString(offset);
+  offset += part.size() + 1;
+  args["class"] = output_classname;
+  TextContent *t = new TextContent( args );
+  nV.push_back( t );
+  if ( suggestions ){
+    size_t limit = suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  args.clear();
+  return orig->correct( oV, cV, nV, sV, args );
+}
+
+Correction *split_unigram( const gram_r& corr,
+			   size_t& offset,
+			   const vector<word_conf> *suggestions,
+			   bool doStrings ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  oV.push_back( corr._words[0] );
+  for ( const auto& p : corr._result ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( p, offset, output_classname );
+    offset += p.length() + 1;
+    nV.push_back( el );
+  }
+  if ( !corr._final_punct.empty() ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( corr._final_punct, offset, output_classname );
+    offset += corr._final_punct.length() + 1;
+    nV.push_back( el );
+  }
+  if ( suggestions ){
+    size_t limit = suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
+void apply_uni_correction( const gram_r& cor,
+			   size_t& offset,
+			   bool doStrings ){
+  // cerr << "IN=" << uni << endl;
+  // cerr << "er is een correctie: " << cor << endl;
+  if ( verbose ){
+    cout << "unigram corrections:" << endl;
+    cout << cor.orig_text() << " : " << cor.result_text() << endl;
+  }
+  if ( cor._words[0] ){
+    vector<string> parts = TiCC::split( cor.result_text() );
+    Correction *c = 0;
+    if ( parts.size() == 1 ){
+      c = replace_unigram( cor._words[0],
+			   parts[0],
+			   offset,
+			   cor._suggestions );
+    }
+    else {
+      c = split_unigram( cor,
+			 offset,
+			 cor._suggestions,
+			 doStrings );
+    }
+    if ( verbose > 3 ){
+      cerr << "created: " << c->xmlstring() << endl;
+    }
+    else if ( verbose > 1 ){
+      cerr << "created: " << c << endl;
+    }
+  }
+  else {
+    offset += cor.result_text().size() + 1;
+  }
+}
+
 bool correct_one_unigram( const gram_r& uni,
 			  const unordered_map<string,vector<word_conf> >& variants,
 			  const unordered_set<string>& unknowns,
 			  const unordered_map<string,string>& puncts,
 			  gram_r& result,
-			  unordered_map<string,size_t>& counts ){
+			  unordered_map<string,size_t>& counts,
+			  size_t& offset,
+			  bool doStrings ){
   bool did_edit = false;
   if ( verbose > 2 ){
     cout << "correct unigram " << uni << endl;
@@ -329,124 +451,17 @@ bool correct_one_unigram( const gram_r& uni,
       }
     }
   }
-  return did_edit;
-}
-
-Correction *replace_unigram( FoliaElement *orig,
-			     const string& part,
-			     size_t& offset,
-			     const vector<word_conf> *suggestions ){
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
-  oV.push_back( tc );
-  KWargs args;
-  args["value"] = part;
-  args["offset"] = TiCC::toString(offset);
-  offset += part.size() + 1;
-  args["class"] = output_classname;
-  TextContent *t = new TextContent( args );
-  nV.push_back( t );
-  if ( suggestions ){
-    size_t limit = suggestions->size();
-    for( size_t j=0; j < limit; ++j ){
-      KWargs sargs;
-      sargs["confidence"] = (*suggestions)[j].conf;
-      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
-      Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*suggestions)[j].word, output_classname );
-      sV.push_back( sug );
-    }
-  }
-  args.clear();
-  return orig->correct( oV, cV, nV, sV, args );
-}
-
-Correction *split_unigram( const gram_r& corr,
-			   size_t& offset,
-			   const vector<word_conf> *suggestions,
-			   bool doString ){
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  oV.push_back( corr._words[0] );
-  for ( const auto& p : corr._result ){
-    KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "split" );
-    FoliaElement *el = 0;
-    if ( doString ){
-      el = new String( args, corr._words[0]->doc() );
-    }
-    else {
-      el = new Word( args, corr._words[0]->doc() );
-    }
-    el->settext( p, offset, output_classname );
-    offset += p.length() + 1;
-    nV.push_back( el );
-  }
-  if ( !corr._final_punct.empty() ){
-    KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "split" );
-    FoliaElement *el = 0;
-    if ( doString ){
-      el = new String( args, corr._words[0]->doc() );
-    }
-    else {
-      el = new Word( args, corr._words[0]->doc() );
-    }
-    el->settext( corr._final_punct, offset, output_classname );
-    offset += corr._final_punct.length() + 1;
-    nV.push_back( el );
-  }
-  if ( suggestions ){
-    size_t limit = suggestions->size();
-    for( size_t j=0; j < limit; ++j ){
-      KWargs sargs;
-      sargs["confidence"] = (*suggestions)[j].conf;
-      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
-      Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*suggestions)[j].word, output_classname );
-      sV.push_back( sug );
-    }
-  }
-  KWargs no_args;
-  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
-}
-
-void apply_uni_correction( const gram_r& cor,
-			   size_t& offset,
-			   bool doStrings ){
-  // cerr << "IN=" << uni << endl;
-  // cerr << "er is een correctie: " << cor << endl;
-  if ( verbose ){
-    cout << "unigram corrections:" << endl;
-    cout << cor.orig_text() << " : " << cor.result_text() << endl;
-  }
-  if ( cor._words[0] ){
-    vector<string> parts = TiCC::split( cor.result_text() );
-    Correction *c = 0;
-    if ( parts.size() == 1 ){
-      c = replace_unigram( cor._words[0],
-			   parts[0],
-			   offset,
-			   cor._suggestions );
-    }
-    else {
-      c = split_unigram( cor,
-			 offset,
-			 cor._suggestions,
-			 doStrings );
-    }
-    if ( verbose > 1 ){
-      cerr << "created: " << c << endl;
-    }
+  if ( did_edit ){
+    apply_uni_correction( result, offset, doStrings );
   }
   else {
-    offset += cor.result_text().size() + 1;
+    // NO edit just take the string
+    if ( uni._words[0] ){
+      uni._words[0]->settext( uni.orig_text(), offset, output_classname );
+      offset += uni.orig_text().size() + 1;
+    }
   }
+  return did_edit;
 }
 
 string correct_unigrams( const vector<gram_r>& unigrams,
@@ -462,29 +477,190 @@ string correct_unigrams( const vector<gram_r>& unigrams,
   size_t offset = 0;
   for ( const auto& uni : unigrams ){
     gram_r cor;
-    if ( correct_one_unigram( uni, variants, unknowns,
-			      puncts, cor, counts ) ){
-      apply_uni_correction( cor, offset, doStrings );
-      result += cor.result_text() + " ";
-    }
-    else {
-      // no edit
-      if ( uni._words[0] ){
-	uni._words[0]->settext( uni.orig_text(), offset, output_classname );
-      }
-      result += uni.orig_text() + " ";
-      offset += uni.orig_text().size() + 1;
-    }
+    correct_one_unigram( uni, variants, unknowns,
+			 puncts, cor, counts, offset, doStrings );
+    result += cor.result_text() + " ";
+  }
+  if ( verbose > 2 ){
+    cout << "corrected=" << result << endl;
   }
   return result;
 }
+
+Correction *merge_bigram( const gram_r& corr,
+			  size_t& offset,
+			  bool doStrings ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  for( const auto& it : corr._words ){
+    cerr << "store OV: " << it << endl;
+    oV.push_back( it );
+  }
+  for ( const auto& p : corr._result ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "merge" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( p, offset, output_classname );
+    offset += p.size() + 1;
+    nV.push_back( el );
+  }
+  if ( corr._suggestions ){
+    size_t limit = corr._suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*corr._suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
+Correction *split_bigram( const gram_r& corr,
+			  size_t& offset,
+			  bool doStrings ){
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  cerr << "split_bigram Step 1 " << endl;
+  cerr << "BIGRAM=" << corr << endl;
+  for( const auto& it : corr._words ){
+    oV.push_back( it );
+  }
+  for ( const auto& p : corr._result ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( p, offset, output_classname );
+    offset += p.size() + 1;
+    nV.push_back( el );
+  }
+  if ( corr._suggestions ){
+    size_t limit = corr._suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*corr._suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
+Correction *replace_bigram( const gram_r& corr_in,
+			    size_t& offset,
+			    bool doStrings ){
+  cerr << "replace_bigram Step 1 " << endl;
+  cerr << "BIGRAM=" << corr_in << endl;
+  bool skip_last = corr_in._orig.back() == corr_in._result.back();
+  gram_r corr = corr_in;
+  if ( skip_last ){
+    corr._words.pop_back();
+    corr._result.pop_back();
+  }
+  vector<FoliaElement*> sV;
+  vector<FoliaElement*> cV;
+  vector<FoliaElement*> oV;
+  vector<FoliaElement*> nV;
+  for( const auto& it : corr._words ){
+    oV.push_back( it );
+  }
+  for ( const auto& p : corr._result ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "edit" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( p, offset, output_classname );
+    offset += p.size() + 1;
+    nV.push_back( el );
+  }
+  if ( corr._suggestions ){
+    size_t limit = corr._suggestions->size();
+    for( size_t j=0; j < limit; ++j ){
+      KWargs sargs;
+      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
+      Suggestion *sug = new Suggestion( sargs );
+      sug->settext( (*corr._suggestions)[j].word, output_classname );
+      sV.push_back( sug );
+    }
+  }
+  KWargs no_args;
+  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+}
+
+
+void apply_bi_correction( const gram_r& corr,
+			  size_t& offset,
+			  bool doStrings ){
+  if ( corr._orig.front() == corr._result.front() ){
+    // NO correction
+    if ( corr._words[0] ){
+      corr._words[0]->settext( corr._orig.front(), offset, output_classname );
+    }
+  }
+  else {
+    if ( corr._words[0] ){
+      Correction *c = 0;
+      size_t org_size = corr._orig.size();
+      size_t new_size = corr._result.size();
+      cerr << "AHA! " << org_size << "-" << new_size << endl;
+      if ( org_size != new_size ){
+	if ( org_size > new_size ){
+	  c = merge_bigram( corr, offset, doStrings );
+	}
+	else if ( org_size < new_size ){
+	  c = split_bigram( corr, offset, doStrings );
+	}
+	if ( verbose > 1 ){
+	  cerr << "created: " << c << endl;
+	}
+      }
+      else {
+	Correction *c = replace_bigram( corr, offset, doStrings );
+	if ( verbose > 1 ){
+	  cerr << "created: " << c << endl;
+	}
+      }
+    }
+  }
+}
+
 
 int correct_one_bigram( const gram_r& bi,
 			const unordered_map<string,vector<word_conf> >& variants,
 			const unordered_set<string>& unknowns,
 			const unordered_map<string,string>& puncts,
 			gram_r& result,
-			unordered_map<string,size_t>& counts ){
+			unordered_map<string,size_t>& counts,
+			size_t& offset,
+			bool doStrings ){
   int extra_skip = 0;
   result.clear();
   if ( verbose > 2 ){
@@ -560,188 +736,24 @@ int correct_one_bigram( const gram_r& bi,
     }
     else {
       // just use the ORIGINAL bigram and handle the first part like unigram
-      gram_r tmp;
-      tmp._orig.push_back( bi._orig[0] );
-      tmp._words.push_back( bi._words[0] );
-      correct_one_unigram( tmp, variants, unknowns,
-			   puncts, result, counts );
-      if ( verbose > 2 ){
-	cout << "unigram correction on first part of bigram " << tmp
-	     << " yields " << result << endl;
+      gram_r uni;
+      uni._orig.push_back( bi._orig[0] );
+      uni._words.push_back( bi._words[0] );
+      if ( verbose > 1 ){
+	cout << "no correction for bigram: " << bi << endl;
+	cout << "try unigramm: " << uni << endl;
       }
+      correct_one_unigram( uni, variants, unknowns,
+			   puncts, result, counts, offset, doStrings );
     }
+  }
+  if ( extra_skip > 0 ){
+    apply_bi_correction( result, offset, doStrings );
   }
   if ( verbose > 1 ){
     cout << result.orig_text() << " = 2 => " << result.result_text() << endl;
   }
   return extra_skip;
-}
-
-Correction *merge_bigram( const gram_r& corr,
-			  size_t& offset,
-			  bool doString ){
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  for( const auto& it : corr._words ){
-    cerr << "store OV: " << it << endl;
-    oV.push_back( it );
-  }
-  for ( const auto& p : corr._result ){
-    KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "merge" );
-    FoliaElement *el = 0;
-    if ( doString ){
-      el = new String( args, corr._words[0]->doc() );
-    }
-    else {
-      el = new Word( args, corr._words[0]->doc() );
-    }
-    el->settext( p, offset, output_classname );
-    offset += p.size() + 1;
-    nV.push_back( el );
-  }
-  if ( corr._suggestions ){
-    size_t limit = corr._suggestions->size();
-    for( size_t j=0; j < limit; ++j ){
-      KWargs sargs;
-      sargs["confidence"] = (*corr._suggestions)[j].conf;
-      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
-      Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*corr._suggestions)[j].word, output_classname );
-      sV.push_back( sug );
-    }
-  }
-  KWargs no_args;
-  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
-}
-
-Correction *split_bigram( const gram_r& corr,
-			  size_t& offset,
-			  bool doString ){
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  cerr << "split_bigram Step 1 " << endl;
-  cerr << "BIGRAM=" << corr << endl;
-  for( const auto& it : corr._words ){
-    oV.push_back( it );
-  }
-  for ( const auto& p : corr._result ){
-    KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "split" );
-    FoliaElement *el = 0;
-    if ( doString ){
-      el = new String( args, corr._words[0]->doc() );
-    }
-    else {
-      el = new Word( args, corr._words[0]->doc() );
-    }
-    el->settext( p, offset, output_classname );
-    offset += p.size() + 1;
-    nV.push_back( el );
-  }
-  if ( corr._suggestions ){
-    size_t limit = corr._suggestions->size();
-    for( size_t j=0; j < limit; ++j ){
-      KWargs sargs;
-      sargs["confidence"] = (*corr._suggestions)[j].conf;
-      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
-      Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*corr._suggestions)[j].word, output_classname );
-      sV.push_back( sug );
-    }
-  }
-  KWargs no_args;
-  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
-}
-
-Correction *replace_bigram( const gram_r& corr_in,
-			    size_t& offset,
-			    bool doString ){
-  cerr << "replace_bigram Step 1 " << endl;
-  cerr << "BIGRAM=" << corr_in << endl;
-  bool skip_last = corr_in._orig.back() == corr_in._result.back();
-  gram_r corr = corr_in;
-  if ( skip_last ){
-    corr._words.pop_back();
-    corr._result.pop_back();
-  }
-  vector<FoliaElement*> sV;
-  vector<FoliaElement*> cV;
-  vector<FoliaElement*> oV;
-  vector<FoliaElement*> nV;
-  for( const auto& it : corr._words ){
-    oV.push_back( it );
-  }
-  for ( const auto& p : corr._result ){
-    KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "edit" );
-    FoliaElement *el = 0;
-    if ( doString ){
-      el = new String( args, corr._words[0]->doc() );
-    }
-    else {
-      el = new Word( args, corr._words[0]->doc() );
-    }
-    el->settext( p, offset, output_classname );
-    offset += p.size() + 1;
-    nV.push_back( el );
-  }
-  if ( corr._suggestions ){
-    size_t limit = corr._suggestions->size();
-    for( size_t j=0; j < limit; ++j ){
-      KWargs sargs;
-      sargs["confidence"] = (*corr._suggestions)[j].conf;
-      sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
-      Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*corr._suggestions)[j].word, output_classname );
-      sV.push_back( sug );
-    }
-  }
-  KWargs no_args;
-  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
-}
-
-
-void apply_bi_correction( const gram_r& corr,
-			  size_t& offset,
-			  bool doStrings ){
-  if ( corr._orig.front() == corr._result.front() ){
-    // NO correction
-    if ( corr._words[0] ){
-      corr._words[0]->settext( corr._orig.front(), offset, output_classname );
-    }
-  }
-  else {
-    if ( corr._words[0] ){
-      Correction *c = 0;
-      if ( corr._orig.size() != corr._result.size() ){
-	if ( corr._orig.size() > corr._result.size() ){
-	  // must be 2-1
-	  cerr << "AHA! 2-1" << endl;
-	  c = merge_bigram( corr, offset, doStrings );
-	}
-	else if ( corr._orig.size() < corr._result.size() ){
-	  // must be 1-2
-	  cerr << "AHA! 1-2" << endl;
-	  c = split_bigram( corr, offset, doStrings );
-	}
-	if ( verbose > 1 ){
-	  cerr << "created: " << c << endl;
-	}
-      }
-      else {
-	cerr << "AHA! 2-2" << endl;
-	Correction *c = replace_bigram( corr, offset, doStrings );
-	if ( verbose > 1 ){
-	  cerr << "created: " << c << endl;
-	}
-      }
-    }
-  }
 }
 
 string correct_bigrams( const vector<gram_r>& bigrams,
@@ -770,22 +782,16 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       cout << "before correct_one_bi: bi=" << bi << endl;
     }
     skip = correct_one_bigram( bi, variants, unknowns,
-			       puncts, cor, counts );
+			       puncts, cor, counts, offset, doStrings );
     if ( verbose > 2 ){
       cout << "After correct_one_bi: cor=" << cor << endl;
     }
-    apply_bi_correction( cor, offset, doStrings );
     result += cor.result_text() + " ";
-    offset = result.length() + 1;
+    //    offset = result.length() + 1;
   }
   gram_r corr;
-  if ( correct_one_unigram( last, variants, unknowns,
-			    puncts, corr, counts ) ){
-    apply_uni_correction( corr, offset, doStrings );
-  }
-  else if ( corr._words[0] ){
-    corr._words[0]->settext( corr._orig.front(), offset, output_classname );
-  }
+  correct_one_unigram( last, variants, unknowns,
+		       puncts, corr, counts, offset, doStrings );
   if ( verbose > 2 ){
     cout << "1 handled last word: " << corr << endl;
   }
@@ -793,12 +799,23 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   return result;
 }
 
+void apply_tri_correction( const gram_r& corr,
+			   size_t& offset,
+			   bool doStrings ){
+  // NO correction in the XML yet
+  if ( corr._words[0] ){
+    corr._words[0]->settext( corr._orig.front(), offset, output_classname );
+  }
+}
+
 int correct_one_trigram( const gram_r& tri,
 			 const unordered_map<string,vector<word_conf> >& variants,
 			 const unordered_set<string>& unknowns,
 			 const unordered_map<string,string>& puncts,
 			 gram_r& result,
-			 unordered_map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts,
+			 size_t& offset,
+			 bool doStrings ){
   int extra_skip = 0;
   result.clear();
   if ( verbose > 2 ){
@@ -855,6 +872,7 @@ int correct_one_trigram( const gram_r& tri,
       cout << word << " = " << ed << " => " << result.result_text() << endl;
     }
     extra_skip = 2;
+    apply_tri_correction( result, offset, doStrings );
   }
   else {
     // a word with no suggested variants
@@ -874,13 +892,18 @@ int correct_one_trigram( const gram_r& tri,
     else {
       // just use the ORIGINAL word so handle the first part like bigram
       vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
-      gram_r tmp;
-      tmp._orig.push_back( parts[0] );
-      tmp._orig.push_back( parts[1] );
-      tmp._words.push_back( tri._words[0] );
-      tmp._words.push_back( tri._words[1] );
-      extra_skip = correct_one_bigram( tmp, variants, unknowns,
-				       puncts, result, counts );
+      gram_r bi;
+      bi._orig.push_back( parts[0] );
+      bi._orig.push_back( parts[1] );
+      bi._words.push_back( tri._words[0] );
+      bi._words.push_back( tri._words[1] );
+      if ( verbose > 1 ){
+	cout << "no correction for trigram: " << tri << endl;
+	cout << "try bi: " << bi << endl;
+      }
+      extra_skip = correct_one_bigram( bi, variants, unknowns,
+				       puncts, result, counts,
+				       offset, doStrings );
     }
   }
   if ( verbose > 1 ){
@@ -888,15 +911,6 @@ int correct_one_trigram( const gram_r& tri,
 	 << " extra_skip=" << extra_skip << endl;
   }
   return extra_skip;
-}
-
-void apply_tri_correction( const gram_r& corr,
-			   size_t& offset,
-			   bool doStrings ){
-  // NO correction in the XML yet
-  if ( corr._words[0] ){
-    corr._words[0]->settext( corr._orig.front(), offset, output_classname );
-  }
 }
 
 string correct_trigrams( const vector<gram_r>& trigrams,
@@ -925,8 +939,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     }
     gram_r corr;
     skip = correct_one_trigram( tri, variants, unknowns,
-				puncts, corr, counts );
-    apply_tri_correction( corr, offset, doStrings );
+				puncts, corr, counts, offset, doStrings );
     result += corr.result_text() + " ";
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
@@ -939,7 +952,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     gram_r last = unigrams[unigrams.size()-1];
     gram_r corr;
     correct_one_unigram( last, variants, unknowns,
-			 puncts, corr, counts );
+			 puncts, corr, counts, offset, doStrings );
     if ( verbose > 2 ){
       cout << "2 handled last word: " << corr << endl;
     }
@@ -956,7 +969,8 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       cout << "correct last bigram: " << last_bi << endl;
     }
     int skip = correct_one_bigram( last_bi, variants, unknowns,
-				   puncts, corr, counts );
+				   puncts, corr, counts,
+				   offset, doStrings );
     if ( verbose > 2 ){
       cout << "handled last bigram: " << corr << endl;
     }
@@ -967,7 +981,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       }
       gram_r uni_corr;
       correct_one_unigram( last, variants, unknowns,
-			   puncts, uni_corr, counts );
+			   puncts, uni_corr, counts, offset, doStrings );
       if ( verbose > 2 ){
 	cout << "3 handled last word: " << uni_corr << endl;
       }
@@ -1180,7 +1194,6 @@ void correctNgrams( Paragraph* par,
   string corrected;
   if ( trigrams.empty() ){
     if ( bigrams.empty() ){
-      vector<pair<gram_r,gram_r>> corrections;
       corrected = correct_unigrams( unigrams, variants, unknowns,
 				    puncts, counts,
 				    doStrings );
