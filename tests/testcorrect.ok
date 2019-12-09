@@ -833,9 +833,8 @@ try unigramm: wetsvoorstel [ <w xml:id='p4.9" > {<t>,}]
 wetsvoorstel = 2 => wetsvoorstel
 bigram is: 'Wijsiging_van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]'
 Wijsiging_van = 2-2 => Wijziging van
-AHA! 2-2
 replace_bigram Step 1 
-BIGRAM=Wijsiging_van ==> Wijziging van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
+BIGRAM=Wijsiging_van (2-2) ==> Wijziging van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,}
 Wijsiging_van = 2 => Wijziging van
 bigram is: 'van_de [ <w xml:id='p4.11" > {<t>,}, <w xml:id='p4.12" > {<t>,}]'
@@ -871,7 +870,6 @@ try unigramm: Deze [ <w xml:id='p5.1" > {<t>,}]
 Deze = 2 => Deze
 bigram is: 'wets_voorstellen [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]'
 wets_voorstellen = 2-1 => wetsvoorstellen
-AHA! 2-1
 store OV:  <w xml:id='p5.2" > {<t>,}
 store OV:  <w xml:id='p5.3" > {<t>,}
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
@@ -1051,9 +1049,8 @@ trigram is: 'Wijsiging_van_de'
 no correction for trigram: Wijsiging_van_de [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}, <w xml:id='p4.12" > {<t>,}]
 try bi: Wijsiging_van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
 Wijsiging_van = 2-2 => Wijziging van
-AHA! 2-2
 replace_bigram Step 1 
-BIGRAM=Wijsiging_van ==> Wijziging van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
+BIGRAM=Wijsiging_van (2-2) ==> Wijziging van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,}
 Wijsiging_van = 2 => Wijziging van
 Wijsiging_van = 3 => Wijziging van extra_skip=1
@@ -1103,7 +1100,6 @@ trigram is: 'wets_voorstellen_worden'
 no correction for trigram: wets_voorstellen_worden [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}, <w xml:id='p5.4" > {<t>,}]
 try bi: wets_voorstellen [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]
 wets_voorstellen = 2-1 => wetsvoorstellen
-AHA! 2-1
 store OV:  <w xml:id='p5.2" > {<t>,}
 store OV:  <w xml:id='p5.3" > {<t>,}
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
@@ -1143,6 +1139,9 @@ en = 2 => en
 en = 3 => en extra_skip=0
 trigram is: 'zonder_steming_aangenomen'
 zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
+STEP 1 steming_aangenomen (2-2) ==> stemming aangenomen [ <w xml:id='p5.9" > {<t>,}, <w xml:id='p5.10" > {<t>,}]
+STEP 2 steming (1-1) ==> stemming [ <w xml:id='p5.9" > {<t>,}]
+created:  <correction xml:id='p5.9.correction.1" > {<new>,<original>,<suggestion>,}
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
 trigram is: 'steming_aangenomen_.'
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .'
@@ -1181,6 +1180,10 @@ Een = 2 => Een
 Een = 3 => Een extra_skip=0
 trigram is: 'ge_splet_en'
 ge_splet_en = 3-1 => gespleten
+store OV:  <w xml:id='p7.2" > {<t>,}
+store OV:  <w xml:id='p7.3" > {<t>,}
+store OV:  <w xml:id='p7.4" > {<t>,}
+created:  <correction xml:id='p7.correction.1" > {<new>,<original>,<suggestion>,}
 ge_splet_en = 3 => gespleten extra_skip=2
 trigram is: 'splet_en_trigram.'
  corrected ngrams: 'Een gespleten trigram.'
