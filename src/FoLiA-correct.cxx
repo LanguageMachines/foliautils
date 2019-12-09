@@ -82,6 +82,7 @@ struct gram_r {
   string result_text() const;
   void clear(){ _orig.clear(); _result.clear();_words.clear(); };
   string get_ed_type() const;
+  mutable string _ed_type;
   string _final_punct;
   vector<string> _orig;
   vector<string> _result;
@@ -131,7 +132,7 @@ gram_r::gram_r( const string& val, FoliaElement *el ) :
 ostream& operator<<( ostream& os, const gram_r& rec ){
   os << rec.orig_text();
   if ( !rec._result.empty() ){
-    os << " ==> " << rec.result_text();
+    os << " (" << rec._ed_type << ") ==> " << rec.result_text();
   }
   if ( !rec._words.empty() && rec._words[0] != 0 ){
     os << " " << rec._words;
@@ -245,36 +246,40 @@ string test_final_punct( const string& word, const string& dep ){
   return result;
 }
 
-Correction *replace_unigram( FoliaElement *orig,
-			     const string& part,
+Correction *replace_unigram( const gram_r& cor,
 			     size_t& offset,
-			     const vector<word_conf> *suggestions ){
+			     bool ){
   vector<FoliaElement*> sV;
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
-  FoliaElement *tc = (FoliaElement*)(orig->text_content(input_classname));
+  FoliaElement *tc = (FoliaElement*)(cor._words[0]->text_content(input_classname));
   oV.push_back( tc );
+  string value = cor._result[0];
+  if ( punct_sep != " "
+       && !cor._final_punct.empty() ){
+    value += punct_sep + cor._final_punct;
+  }
   KWargs args;
-  args["value"] = part;
+  args["value"] = value;
   args["offset"] = TiCC::toString(offset);
-  offset += part.size() + 1;
+  offset += value.size() + 1;
   args["class"] = output_classname;
   TextContent *t = new TextContent( args );
   nV.push_back( t );
-  if ( suggestions ){
-    size_t limit = suggestions->size();
+  if ( cor._suggestions ){
+    size_t limit = cor._suggestions->size();
     for( size_t j=0; j < limit; ++j ){
       KWargs sargs;
-      sargs["confidence"] = (*suggestions)[j].conf;
+      sargs["confidence"] = (*cor._suggestions)[j].conf;
       sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
       Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*suggestions)[j].word, output_classname );
+      sug->settext( (*cor._suggestions)[j].word, output_classname );
       sV.push_back( sug );
     }
   }
   args.clear();
-  return orig->correct( oV, cV, nV, sV, args );
+  return cor._words[0]->correct( oV, cV, nV, sV, args );
 }
 
 Correction *split_unigram( const gram_r& corr,
@@ -342,10 +347,9 @@ void apply_uni_correction( const gram_r& cor,
     vector<string> parts = TiCC::split( cor.result_text() );
     Correction *c = 0;
     if ( parts.size() == 1 ){
-      c = replace_unigram( cor._words[0],
-			   parts[0],
+      c = replace_unigram( cor,
 			   offset,
-			   cor._suggestions );
+			   doStrings );
     }
     else {
       c = split_unigram( cor,
@@ -366,10 +370,12 @@ void apply_uni_correction( const gram_r& cor,
 }
 
 string gram_r::get_ed_type() const {
-  size_t o_s = _orig.size();
-  size_t r_s = _result.size();
-  string result = TiCC::toString(o_s) + "-" + TiCC::toString(r_s);
-  return result;
+  if ( _ed_type.empty() ){
+    size_t o_s = _orig.size();
+    size_t r_s = _result.size();
+    _ed_type = TiCC::toString(o_s) + "-" + TiCC::toString(r_s);
+  }
+  return _ed_type;
 }
 
 gram_r correct_one_unigram( const gram_r& uni,
@@ -600,34 +606,24 @@ Correction *replace_bigram( const gram_r& corr_in,
 void apply_bi_correction( const gram_r& corr,
 			  size_t& offset,
 			  bool doStrings ){
-  if ( corr._orig.front() == corr._result.front() ){
-    // NO correction
-    if ( corr._words[0] ){
+  if ( corr._words[0] ){
+    if ( corr._ed_type.empty() ){
+      // NO correction
       corr._words[0]->settext( corr._orig.front(), offset, output_classname );
     }
-  }
-  else {
-    if ( corr._words[0] ){
+    else {
       Correction *c = 0;
-      size_t org_size = corr._orig.size();
-      size_t new_size = corr._result.size();
-      cerr << "AHA! " << org_size << "-" << new_size << endl;
-      if ( org_size != new_size ){
-	if ( org_size > new_size ){
-	  c = merge_bigram( corr, offset, doStrings );
-	}
-	else if ( org_size < new_size ){
-	  c = split_bigram( corr, offset, doStrings );
-	}
-	if ( verbose > 1 ){
-	  cerr << "created: " << c << endl;
-	}
+      if ( corr._ed_type == "2-3" ){
+	c = split_bigram( corr, offset, doStrings );
       }
-      else {
-	Correction *c = replace_bigram( corr, offset, doStrings );
-	if ( verbose > 1 ){
-	  cerr << "created: " << c << endl;
-	}
+      else if ( corr._ed_type == "2-1" ){
+	c = merge_bigram( corr, offset, doStrings );
+      }
+      else if ( corr._ed_type == "2-2" ){
+	c = replace_bigram( corr, offset, doStrings );
+      }
+      if ( verbose > 1 ){
+	cerr << "created: " << c << endl;
       }
     }
   }
@@ -760,39 +756,54 @@ string correct_bigrams( const vector<gram_r>& bigrams,
 void apply_tri_correction( const gram_r& corr,
 			   size_t& offset,
 			   bool doStrings ){
-  // NO correction yet
   if ( corr._words[0] ){
-    corr._words[0]->settext( corr._orig.front(), offset, output_classname );
-  }
-  return;
-  if ( corr._orig.front() == corr._result.front() ){
-    // NO correction
-    if ( corr._words[0] ){
+    if ( corr._ed_type.empty() ){
+      // NO correction
       corr._words[0]->settext( corr._orig.front(), offset, output_classname );
     }
-  }
-  else {
-    if ( corr._words[0] ){
+    else {
       Correction *c = 0;
-      size_t org_size = corr._orig.size();
-      size_t new_size = corr._result.size();
-      cerr << "AHA! " << org_size << "-" << new_size << endl;
-      if ( org_size != new_size ){
-	if ( org_size > new_size ){
-	  c = merge_bigram( corr, offset, doStrings );
+      if ( corr._ed_type == "3-4"
+	   || corr._ed_type == "3-5" ){
+	c = split_bigram( corr, offset, doStrings );
+      }
+      else if ( corr._ed_type == "3-1"
+		|| corr._ed_type == "3-2" ){
+	c = merge_bigram( corr, offset, doStrings );
+      }
+      else if ( corr._ed_type == "3-3" ){
+	gram_r tmp = corr;
+	if ( corr._orig[0] == corr._result[0] ){
+	  tmp._orig.erase(tmp._orig.begin());
+	  tmp._result.erase(tmp._result.begin());
+	  tmp._words.erase(tmp._words.begin());
+	  tmp._ed_type = "2-2";
+	  corr._words[0]->settext( corr._orig.front(),
+				   offset,
+				   output_classname );
+	  offset += corr._orig.front().size() + 1;
 	}
-	else if ( org_size < new_size ){
-	  c = split_bigram( corr, offset, doStrings );
+	cerr << "STEP 1 " << tmp << endl;
+	if ( corr._orig[2] == corr._result[2] ){
+	  tmp._orig.pop_back();
+	  tmp._result.pop_back();
+	  tmp._words.pop_back();
+	  tmp._ed_type = "1-1";
 	}
-	if ( verbose > 1 ){
-	  cerr << "created: " << c << endl;
+	cerr << "STEP 2 " << tmp << endl;
+	if ( tmp._ed_type == "1-1" ){
+	  c = replace_unigram( tmp, offset, doStrings );
+	  corr._words[2]->settext( corr._orig.back(),
+				   offset,
+				   output_classname );
+	  offset += corr._orig.back().size() + 1;
+	}
+	else {
+	  c = replace_bigram( tmp, offset, doStrings );
 	}
       }
-      else {
-	Correction *c = replace_bigram( corr, offset, doStrings );
-	if ( verbose > 1 ){
-	  cerr << "created: " << c << endl;
-	}
+      if ( verbose > 1 ){
+	cerr << "created: " << c << endl;
       }
     }
   }
