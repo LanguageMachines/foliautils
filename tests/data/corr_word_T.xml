@@ -76,6 +76,15 @@
 	  <w xml:id="p6.3"><t class="Test">is</t></w>
 	  <w xml:id="p6.4"><t class="Test">oplosbaar.</t></w>
         </p>
+        <p xml:id="p7">
+          <t class="Test">Een ge splet en trigram.</t>
+          <lang class="dut"/>
+	  <w xml:id="p7.1"><t class="Test">Een</t></w>
+	  <w xml:id="p7.2"><t class="Test">ge</t></w>
+	  <w xml:id="p7.3"><t class="Test">splet</t></w>
+	  <w xml:id="p7.4"><t class="Test">en</t></w>
+	  <w xml:id="p7.5"><t class="Test">trigram.</t></w>
+        </p>
       </div>
     </div>
   </text>
