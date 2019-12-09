@@ -24,7 +24,7 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -64,7 +64,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -108,7 +108,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -153,7 +153,7 @@ edit statistics:
 	UNK	1
 inputclass and outputclass are the same
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -163,6 +163,8 @@ start correcting file: data/corr.xml
 correct ngrams in: '40ste vergadering' (current)
 correct bigrams
 bigram is: '40ste_vergadering'
+no correction for bigram: 40ste_vergadering
+try unigramm: 40ste
 40ste = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (current)
@@ -174,59 +176,107 @@ correct unigrams
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct bigrams
 bigram is: 'Aan_de'
+no correction for bigram: Aan_de
+try unigramm: Aan
 Aan = 2 => Aan
 bigram is: 'de_orde'
+no correction for bigram: de_orde
+try unigramm: de
 de = 2 => de
 bigram is: 'orde_is'
+no correction for bigram: orde_is
+try unigramm: orde
 orde = 2 => orde
 bigram is: 'is_de'
+no correction for bigram: is_de
+try unigramm: is
 is = 2 => is
 bigram is: 'de_behándeling'
+no correction for bigram: de_behándeling
+try unigramm: de
 de = 2 => de
 bigram is: 'behándeling_van:'
+no correction for bigram: behándeling_van:
+try unigramm: behándeling
 behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
 behándeling = 2 => behandeling
 bigram is: 'van:_het'
+no correction for bigram: van:_het
+try unigramm: van:
 van: = 2 => van:
 bigram is: 'het_wetsvoorstel'
+no correction for bigram: het_wetsvoorstel
+try unigramm: het
 het = 2 => het
 bigram is: 'wetsvoorstel_Wijsiging'
+no correction for bigram: wetsvoorstel_Wijsiging
+try unigramm: wetsvoorstel
 wetsvoorstel = 2 => wetsvoorstel
 bigram is: 'Wijsiging_van'
 Wijsiging_van = 2-2 => Wijziging van
 Wijsiging_van = 2 => Wijziging van
 bigram is: 'van_de'
 bigram is: 'de_Wet'
+no correction for bigram: de_Wet
+try unigramm: de
 de = 2 => de
 bigram is: 'Wet_opde'
+no correction for bigram: Wet_opde
+try unigramm: Wet
 Wet = 2 => Wet
 bigram is: 'opde_omzetbelasting'
+no correction for bigram: opde_omzetbelasting
+try unigramm: opde
 opde = 1-2 => op de
+unigram corrections:
+opde : op de
 opde = 2 => op de
 bigram is: 'omzetbelasting_1968.'
+no correction for bigram: omzetbelasting_1968.
+try unigramm: omzetbelasting
 omzetbelasting = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct bigrams
 bigram is: 'Deze_wets'
+no correction for bigram: Deze_wets
+try unigramm: Deze
 Deze = 2 => Deze
 bigram is: 'wets_voorstellen'
 wets_voorstellen = 2-1 => wetsvoorstellen
 wets_voorstellen = 2 => wetsvoorstellen
 bigram is: 'voorstellen_worden'
 bigram is: 'worden_zonder'
+no correction for bigram: worden_zonder
+try unigramm: worden
 worden = 2 => worden
 bigram is: 'zonder_s4s67621'
+no correction for bigram: zonder_s4s67621
+try unigramm: zonder
 zonder = 2 => zonder
 bigram is: 's4s67621_en'
+no correction for bigram: s4s67621_en
+try unigramm: s4s67621
+unigram corrections:
+s4s67621 : UNK
 s4s67621 = 2 => UNK
 bigram is: 'en_zonder'
+no correction for bigram: en_zonder
+try unigramm: en
 en = 2 => en
 bigram is: 'zonder_steming'
+no correction for bigram: zonder_steming
+try unigramm: zonder
 zonder = 2 => zonder
 bigram is: 'steming_aangenomen'
+no correction for bigram: steming_aangenomen
+try unigramm: steming
 steming = 2 => steming
 bigram is: 'aangenomen_.'
+no correction for bigram: aangenomen_.
+try unigramm: aangenomen
 aangenomen = 2 => aangenomen
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 finished data/corr.xml
@@ -239,7 +289,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -249,6 +299,8 @@ start correcting file: data/corr.xml
 correct ngrams in: '40ste vergadering' (current)
 correct bigrams
 bigram is: '40ste_vergadering'
+no correction for bigram: 40ste_vergadering
+try unigramm: 40ste
 40ste = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (current)
@@ -260,70 +312,150 @@ correct unigrams
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct trigrams
 trigram is: 'Aan_de_orde'
+no correction for trigram: Aan_de_orde
+try bi: Aan_de
+no correction for bigram: Aan_de
+try unigramm: Aan
 Aan = 2 => Aan
 Aan = 3 => Aan extra_skip=0
 trigram is: 'de_orde_is'
+no correction for trigram: de_orde_is
+try bi: de_orde
+no correction for bigram: de_orde
+try unigramm: de
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'orde_is_de'
+no correction for trigram: orde_is_de
+try bi: orde_is
+no correction for bigram: orde_is
+try unigramm: orde
 orde = 2 => orde
 orde = 3 => orde extra_skip=0
 trigram is: 'is_de_behándeling'
+no correction for trigram: is_de_behándeling
+try bi: is_de
+no correction for bigram: is_de
+try unigramm: is
 is = 2 => is
 is = 3 => is extra_skip=0
 trigram is: 'de_behándeling_van:'
+no correction for trigram: de_behándeling_van:
+try bi: de_behándeling
+no correction for bigram: de_behándeling
+try unigramm: de
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'behándeling_van:_het'
+no correction for trigram: behándeling_van:_het
+try bi: behándeling_van:
+no correction for bigram: behándeling_van:
+try unigramm: behándeling
 behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
 behándeling = 2 => behandeling
 behándeling = 3 => behandeling extra_skip=0
 trigram is: 'van:_het_wetsvoorstel'
+no correction for trigram: van:_het_wetsvoorstel
+try bi: van:_het
+no correction for bigram: van:_het
+try unigramm: van:
 van: = 2 => van:
 van: = 3 => van: extra_skip=0
 trigram is: 'het_wetsvoorstel_Wijsiging'
+no correction for trigram: het_wetsvoorstel_Wijsiging
+try bi: het_wetsvoorstel
+no correction for bigram: het_wetsvoorstel
+try unigramm: het
 het = 2 => het
 het = 3 => het extra_skip=0
 trigram is: 'wetsvoorstel_Wijsiging_van'
+no correction for trigram: wetsvoorstel_Wijsiging_van
+try bi: wetsvoorstel_Wijsiging
+no correction for bigram: wetsvoorstel_Wijsiging
+try unigramm: wetsvoorstel
 wetsvoorstel = 2 => wetsvoorstel
 wetsvoorstel = 3 => wetsvoorstel extra_skip=0
 trigram is: 'Wijsiging_van_de'
+no correction for trigram: Wijsiging_van_de
+try bi: Wijsiging_van
 Wijsiging_van = 2-2 => Wijziging van
 Wijsiging_van = 2 => Wijziging van
 Wijsiging_van = 3 => Wijziging van extra_skip=1
 trigram is: 'van_de_Wet'
 trigram is: 'de_Wet_opde'
+no correction for trigram: de_Wet_opde
+try bi: de_Wet
+no correction for bigram: de_Wet
+try unigramm: de
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'Wet_opde_omzetbelasting'
+no correction for trigram: Wet_opde_omzetbelasting
+try bi: Wet_opde
+no correction for bigram: Wet_opde
+try unigramm: Wet
 Wet = 2 => Wet
 Wet = 3 => Wet extra_skip=0
 trigram is: 'opde_omzetbelasting_1968.'
+no correction for trigram: opde_omzetbelasting_1968.
+try bi: opde_omzetbelasting
+no correction for bigram: opde_omzetbelasting
+try unigramm: opde
 opde = 1-2 => op de
+unigram corrections:
+opde : op de
 opde = 2 => op de
 opde = 3 => op de extra_skip=0
+no correction for bigram: omzetbelasting_1968.
+try unigramm: omzetbelasting
 omzetbelasting = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct trigrams
 trigram is: 'Deze_wets_voorstellen'
+no correction for trigram: Deze_wets_voorstellen
+try bi: Deze_wets
+no correction for bigram: Deze_wets
+try unigramm: Deze
 Deze = 2 => Deze
 Deze = 3 => Deze extra_skip=0
 trigram is: 'wets_voorstellen_worden'
+no correction for trigram: wets_voorstellen_worden
+try bi: wets_voorstellen
 wets_voorstellen = 2-1 => wetsvoorstellen
 wets_voorstellen = 2 => wetsvoorstellen
 wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
 trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
+no correction for trigram: worden_zonder_s4s67621
+try bi: worden_zonder
+no correction for bigram: worden_zonder
+try unigramm: worden
 worden = 2 => worden
 worden = 3 => worden extra_skip=0
 trigram is: 'zonder_s4s67621_en'
+no correction for trigram: zonder_s4s67621_en
+try bi: zonder_s4s67621
+no correction for bigram: zonder_s4s67621
+try unigramm: zonder
 zonder = 2 => zonder
 zonder = 3 => zonder extra_skip=0
 trigram is: 's4s67621_en_zonder'
+no correction for trigram: s4s67621_en_zonder
+try bi: s4s67621_en
+no correction for bigram: s4s67621_en
+try unigramm: s4s67621
+unigram corrections:
+s4s67621 : UNK
 s4s67621 = 2 => UNK
 s4s67621 = 3 => UNK extra_skip=0
 trigram is: 'en_zonder_steming'
+no correction for trigram: en_zonder_steming
+try bi: en_zonder
+no correction for bigram: en_zonder
+try unigramm: en
 en = 2 => en
 en = 3 => en extra_skip=0
 trigram is: 'zonder_steming_aangenomen'
@@ -342,7 +474,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -352,6 +484,8 @@ start correcting file: data/corr.folia.xml
 correct ngrams in: '40ste vergadering' (current)
 correct bigrams
 bigram is: '40ste_vergadering'
+no correction for bigram: 40ste_vergadering
+try unigramm: 40ste
 40ste = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (current)
@@ -363,70 +497,150 @@ correct unigrams
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
 correct trigrams
 trigram is: 'Aan_de_orde'
+no correction for trigram: Aan_de_orde
+try bi: Aan_de
+no correction for bigram: Aan_de
+try unigramm: Aan
 Aan = 2 => Aan
 Aan = 3 => Aan extra_skip=0
 trigram is: 'de_orde_is'
+no correction for trigram: de_orde_is
+try bi: de_orde
+no correction for bigram: de_orde
+try unigramm: de
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'orde_is_de'
+no correction for trigram: orde_is_de
+try bi: orde_is
+no correction for bigram: orde_is
+try unigramm: orde
 orde = 2 => orde
 orde = 3 => orde extra_skip=0
 trigram is: 'is_de_behándeling'
+no correction for trigram: is_de_behándeling
+try bi: is_de
+no correction for bigram: is_de
+try unigramm: is
 is = 2 => is
 is = 3 => is extra_skip=0
 trigram is: 'de_behándeling_van:'
+no correction for trigram: de_behándeling_van:
+try bi: de_behándeling
+no correction for bigram: de_behándeling
+try unigramm: de
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'behándeling_van:_het'
+no correction for trigram: behándeling_van:_het
+try bi: behándeling_van:
+no correction for bigram: behándeling_van:
+try unigramm: behándeling
 behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
 behándeling = 2 => behandeling
 behándeling = 3 => behandeling extra_skip=0
 trigram is: 'van:_het_wetsvoorstel'
+no correction for trigram: van:_het_wetsvoorstel
+try bi: van:_het
+no correction for bigram: van:_het
+try unigramm: van:
 van: = 2 => van:
 van: = 3 => van: extra_skip=0
 trigram is: 'het_wetsvoorstel_Wijsiging'
+no correction for trigram: het_wetsvoorstel_Wijsiging
+try bi: het_wetsvoorstel
+no correction for bigram: het_wetsvoorstel
+try unigramm: het
 het = 2 => het
 het = 3 => het extra_skip=0
 trigram is: 'wetsvoorstel_Wijsiging_van'
+no correction for trigram: wetsvoorstel_Wijsiging_van
+try bi: wetsvoorstel_Wijsiging
+no correction for bigram: wetsvoorstel_Wijsiging
+try unigramm: wetsvoorstel
 wetsvoorstel = 2 => wetsvoorstel
 wetsvoorstel = 3 => wetsvoorstel extra_skip=0
 trigram is: 'Wijsiging_van_de'
+no correction for trigram: Wijsiging_van_de
+try bi: Wijsiging_van
 Wijsiging_van = 2-2 => Wijziging van
 Wijsiging_van = 2 => Wijziging van
 Wijsiging_van = 3 => Wijziging van extra_skip=1
 trigram is: 'van_de_Wet'
 trigram is: 'de_Wet_opde'
+no correction for trigram: de_Wet_opde
+try bi: de_Wet
+no correction for bigram: de_Wet
+try unigramm: de
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'Wet_opde_omzetbelasting'
+no correction for trigram: Wet_opde_omzetbelasting
+try bi: Wet_opde
+no correction for bigram: Wet_opde
+try unigramm: Wet
 Wet = 2 => Wet
 Wet = 3 => Wet extra_skip=0
 trigram is: 'opde_omzetbelasting_1968.'
+no correction for trigram: opde_omzetbelasting_1968.
+try bi: opde_omzetbelasting
+no correction for bigram: opde_omzetbelasting
+try unigramm: opde
 opde = 1-2 => op de
+unigram corrections:
+opde : op de
 opde = 2 => op de
 opde = 3 => op de extra_skip=0
+no correction for bigram: omzetbelasting_1968.
+try unigramm: omzetbelasting
 omzetbelasting = 2 => omzetbelasting
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
 correct trigrams
 trigram is: 'Deze_wets_voorstellen'
+no correction for trigram: Deze_wets_voorstellen
+try bi: Deze_wets
+no correction for bigram: Deze_wets
+try unigramm: Deze
 Deze = 2 => Deze
 Deze = 3 => Deze extra_skip=0
 trigram is: 'wets_voorstellen_worden'
+no correction for trigram: wets_voorstellen_worden
+try bi: wets_voorstellen
 wets_voorstellen = 2-1 => wetsvoorstellen
 wets_voorstellen = 2 => wetsvoorstellen
 wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
 trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
+no correction for trigram: worden_zonder_s4s67621
+try bi: worden_zonder
+no correction for bigram: worden_zonder
+try unigramm: worden
 worden = 2 => worden
 worden = 3 => worden extra_skip=0
 trigram is: 'zonder_s4s67621_en'
+no correction for trigram: zonder_s4s67621_en
+try bi: zonder_s4s67621
+no correction for bigram: zonder_s4s67621
+try unigramm: zonder
 zonder = 2 => zonder
 zonder = 3 => zonder extra_skip=0
 trigram is: 's4s67621_en_zonder'
+no correction for trigram: s4s67621_en_zonder
+try bi: s4s67621_en
+no correction for bigram: s4s67621_en
+try unigramm: s4s67621
+unigram corrections:
+s4s67621 : UNK
 s4s67621 = 2 => UNK
 s4s67621 = 3 => UNK extra_skip=0
 trigram is: 'en_zonder_steming'
+no correction for trigram: en_zonder_steming
+try bi: en_zonder
+no correction for bigram: en_zonder
+try unigramm: en
 en = 2 => en
 en = 3 => en extra_skip=0
 trigram is: 'zonder_steming_aangenomen'
@@ -445,7 +659,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -483,16 +697,21 @@ created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
  corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder steming aangenomen .'
 correct ngrams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
 correct unigrams
- corrected ngrams: 'Deze runonvanwoorden is oplosbaar.'
+runonvanwoorden = 1-3 => runon van woorden
+unigram corrections:
+runonvanwoorden : runon van woorden
+created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
+ corrected ngrams: 'Deze runon van woorden is oplosbaar.'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
+	1-3	1
 	TOKENS	35
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -530,16 +749,21 @@ created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
  corrected ngrams: 'Deze wets voorstellen worden zonder UNK en zonder steming aangenomen .'
 correct ngrams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
 correct unigrams
- corrected ngrams: 'Deze runonvanwoorden is oplosbaar.'
+runonvanwoorden = 1-3 => runon van woorden
+unigram corrections:
+runonvanwoorden : runon van woorden
+created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
+ corrected ngrams: 'Deze runon van woorden is oplosbaar.'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
+	1-3	1
 	TOKENS	35
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -549,6 +773,8 @@ start correcting file: data/corr_word_T.xml
 correct ngrams in: '40ste vergadering' (Test)
 correct bigrams
 bigram is: '40ste_vergadering [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]'
+no correction for bigram: 40ste_vergadering [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]
+try unigramm: 40ste [ <w xml:id='p1.1" > {<t>,}]
 40ste = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (Test)
@@ -560,104 +786,154 @@ correct unigrams
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Test)
 correct bigrams
 bigram is: 'Aan_de [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}]'
+no correction for bigram: Aan_de [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}]
+try unigramm: Aan [ <w xml:id='p4.1" > {<t>,}]
 Aan = 2 => Aan
 bigram is: 'de_orde [ <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}]'
+no correction for bigram: de_orde [ <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}]
+try unigramm: de [ <w xml:id='p4.2" > {<t>,}]
 de = 2 => de
 bigram is: 'orde_is [ <w xml:id='p4.3" > {<t>,}, <w xml:id='p4.4" > {<t>,}]'
+no correction for bigram: orde_is [ <w xml:id='p4.3" > {<t>,}, <w xml:id='p4.4" > {<t>,}]
+try unigramm: orde [ <w xml:id='p4.3" > {<t>,}]
 orde = 2 => orde
 bigram is: 'is_de [ <w xml:id='p4.4" > {<t>,}, <w xml:id='p4.5" > {<t>,}]'
+no correction for bigram: is_de [ <w xml:id='p4.4" > {<t>,}, <w xml:id='p4.5" > {<t>,}]
+try unigramm: is [ <w xml:id='p4.4" > {<t>,}]
 is = 2 => is
 bigram is: 'de_behándeling [ <w xml:id='p4.5" > {<t>,}, <w xml:id='p4.6" > {<t>,}]'
+no correction for bigram: de_behándeling [ <w xml:id='p4.5" > {<t>,}, <w xml:id='p4.6" > {<t>,}]
+try unigramm: de [ <w xml:id='p4.5" > {<t>,}]
 de = 2 => de
 bigram is: 'behándeling_van: [ <w xml:id='p4.6" > {<t>,}, <w xml:id='p4.7" > {<t>,}]'
+no correction for bigram: behándeling_van: [ <w xml:id='p4.6" > {<t>,}, <w xml:id='p4.7" > {<t>,}]
+try unigramm: behándeling [ <w xml:id='p4.6" > {<t>,}]
 behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+created:  <correction xml:id='p4.6.correction.1" > {<new>,<original>,<suggestion>,}
 behándeling = 2 => behandeling
-AHA! 2-2
-replace_bigram Step 1 
-BIGRAM=behándeling ==> behandeling [ <w xml:id='p4.6" > {<t>,}]
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,<suggestion>,}
 bigram is: 'van:_het [ <w xml:id='p4.7" > {<t>,}, <w xml:id='p4.8" > {<t>,}]'
+no correction for bigram: van:_het [ <w xml:id='p4.7" > {<t>,}, <w xml:id='p4.8" > {<t>,}]
+try unigramm: van: [ <w xml:id='p4.7" > {<t>,}]
 van: = 2 => van:
 bigram is: 'het_wetsvoorstel [ <w xml:id='p4.8" > {<t>,}, <w xml:id='p4.9" > {<t>,}]'
+no correction for bigram: het_wetsvoorstel [ <w xml:id='p4.8" > {<t>,}, <w xml:id='p4.9" > {<t>,}]
+try unigramm: het [ <w xml:id='p4.8" > {<t>,}]
 het = 2 => het
 bigram is: 'wetsvoorstel_Wijsiging [ <w xml:id='p4.9" > {<t>,}, <w xml:id='p4.10" > {<t>,}]'
+no correction for bigram: wetsvoorstel_Wijsiging [ <w xml:id='p4.9" > {<t>,}, <w xml:id='p4.10" > {<t>,}]
+try unigramm: wetsvoorstel [ <w xml:id='p4.9" > {<t>,}]
 wetsvoorstel = 2 => wetsvoorstel
 bigram is: 'Wijsiging_van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]'
 Wijsiging_van = 2-2 => Wijziging van
-Wijsiging_van = 2 => Wijziging van
 AHA! 2-2
 replace_bigram Step 1 
 BIGRAM=Wijsiging_van ==> Wijziging van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.2" > {<new>,<original>,}
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,}
+Wijsiging_van = 2 => Wijziging van
 bigram is: 'van_de [ <w xml:id='p4.11" > {<t>,}, <w xml:id='p4.12" > {<t>,}]'
 bigram is: 'de_Wet [ <w xml:id='p4.12" > {<t>,}, <w xml:id='p4.13" > {<t>,}]'
+no correction for bigram: de_Wet [ <w xml:id='p4.12" > {<t>,}, <w xml:id='p4.13" > {<t>,}]
+try unigramm: de [ <w xml:id='p4.12" > {<t>,}]
 de = 2 => de
 bigram is: 'Wet_opde [ <w xml:id='p4.13" > {<t>,}, <w xml:id='p4.14" > {<t>,}]'
+no correction for bigram: Wet_opde [ <w xml:id='p4.13" > {<t>,}, <w xml:id='p4.14" > {<t>,}]
+try unigramm: Wet [ <w xml:id='p4.13" > {<t>,}]
 Wet = 2 => Wet
 bigram is: 'opde_omzetbelasting [ <w xml:id='p4.14" > {<t>,}, <w xml:id='p4.15" > {<t>,}]'
+no correction for bigram: opde_omzetbelasting [ <w xml:id='p4.14" > {<t>,}, <w xml:id='p4.15" > {<t>,}]
+try unigramm: opde [ <w xml:id='p4.14" > {<t>,}]
 opde = 1-2 => op de
+unigram corrections:
+opde : op de
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.2" > {<new>,<original>,<suggestion>,}
 opde = 2 => op de
-AHA! 1-2
-split_bigram Step 1 
-BIGRAM=opde ==> op de [ <w xml:id='p4.14" > {<t>,}]
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.3" > {<new>,<original>,<suggestion>,}
 bigram is: 'omzetbelasting_1998. [ <w xml:id='p4.15" > {<t>,}, <w xml:id='p4.16" > {<t>,}]'
+no correction for bigram: omzetbelasting_1998. [ <w xml:id='p4.15" > {<t>,}, <w xml:id='p4.16" > {<t>,}]
+try unigramm: omzetbelasting [ <w xml:id='p4.15" > {<t>,}]
 omzetbelasting = 2 => omzetbelasting
 unigram corrections:
 1998. : 1998 .
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.4" > {<new>,<original>,}
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.3" > {<new>,<original>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1998 .'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (Test)
 correct bigrams
 bigram is: 'Deze_wets [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]'
+no correction for bigram: Deze_wets [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]
+try unigramm: Deze [ <w xml:id='p5.1" > {<t>,}]
 Deze = 2 => Deze
 bigram is: 'wets_voorstellen [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]'
 wets_voorstellen = 2-1 => wetsvoorstellen
-wets_voorstellen = 2 => wetsvoorstellen
 AHA! 2-1
 store OV:  <w xml:id='p5.2" > {<t>,}
 store OV:  <w xml:id='p5.3" > {<t>,}
 created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
+wets_voorstellen = 2 => wetsvoorstellen
 bigram is: 'voorstellen_worden [ <w xml:id='p5.3" > {<t>,}, <w xml:id='p5.4" > {<t>,}]'
 bigram is: 'worden_zonder [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]'
+no correction for bigram: worden_zonder [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]
+try unigramm: worden [ <w xml:id='p5.4" > {<t>,}]
 worden = 2 => worden
 bigram is: 'zonder_s4s67621 [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]'
+no correction for bigram: zonder_s4s67621 [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]
+try unigramm: zonder [ <w xml:id='p5.5" > {<t>,}]
 zonder = 2 => zonder
 bigram is: 's4s67621_en [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]'
+no correction for bigram: s4s67621_en [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]
+try unigramm: s4s67621 [ <w xml:id='p5.6" > {<t>,}]
+unigram corrections:
+s4s67621 : UNK
+created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
 s4s67621 = 2 => UNK
-AHA! 2-2
-replace_bigram Step 1 
-BIGRAM=s4s67621 ==> UNK [ <w xml:id='p5.6" > {<t>,}]
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.2" > {<new>,<original>,}
 bigram is: 'en_zonder [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]'
+no correction for bigram: en_zonder [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]
+try unigramm: en [ <w xml:id='p5.7" > {<t>,}]
 en = 2 => en
 bigram is: 'zonder_steming [ <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]'
+no correction for bigram: zonder_steming [ <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]
+try unigramm: zonder [ <w xml:id='p5.8" > {<t>,}]
 zonder = 2 => zonder
 bigram is: 'steming_aangenomen [ <w xml:id='p5.9" > {<t>,}, <w xml:id='p5.10" > {<t>,}]'
+no correction for bigram: steming_aangenomen [ <w xml:id='p5.9" > {<t>,}, <w xml:id='p5.10" > {<t>,}]
+try unigramm: steming [ <w xml:id='p5.9" > {<t>,}]
 steming = 2 => steming
 bigram is: 'aangenomen_. [ <w xml:id='p5.10" > {<t>,}, <w xml:id='p5.11" > {<t>,}]'
+no correction for bigram: aangenomen_. [ <w xml:id='p5.10" > {<t>,}, <w xml:id='p5.11" > {<t>,}]
+try unigramm: aangenomen [ <w xml:id='p5.10" > {<t>,}]
 aangenomen = 2 => aangenomen
  corrected ngrams: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .'
 correct ngrams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
 correct bigrams
 bigram is: 'Deze_runonvanwoorden [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}]'
+no correction for bigram: Deze_runonvanwoorden [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}]
+try unigramm: Deze [ <w xml:id='p6.1" > {<t>,}]
 Deze = 2 => Deze
 bigram is: 'runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]'
-runonvanwoorden = 2 => runonvanwoorden
+no correction for bigram: runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]
+try unigramm: runonvanwoorden [ <w xml:id='p6.2" > {<t>,}]
+runonvanwoorden = 1-3 => runon van woorden
+unigram corrections:
+runonvanwoorden : runon van woorden
+created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
+runonvanwoorden = 2 => runon van woorden
 bigram is: 'is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]'
+no correction for bigram: is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]
+try unigramm: is [ <w xml:id='p6.3" > {<t>,}]
 is = 2 => is
- corrected ngrams: 'Deze runonvanwoorden is oplosbaar.'
+ corrected ngrams: 'Deze runon van woorden is oplosbaar.'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
+	1-3	1
 	2-1	1
 	2-2	1
 	TOKENS	35
 	UNK	1
 start reading variants 
-read 5 variants 
+read 6 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -667,6 +943,8 @@ start correcting file: data/corr_word_T.xml
 correct ngrams in: '40ste vergadering' (Test)
 correct bigrams
 bigram is: '40ste_vergadering [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]'
+no correction for bigram: 40ste_vergadering [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]
+try unigramm: 40ste [ <w xml:id='p1.1" > {<t>,}]
 40ste = 2 => 40ste
  corrected ngrams: '40ste vergadering'
 correct ngrams in: '2003-2004' (Test)
@@ -678,70 +956,164 @@ correct unigrams
 correct ngrams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Test)
 correct trigrams
 trigram is: 'Aan_de_orde'
+no correction for trigram: Aan_de_orde [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}]
+try bi: Aan_de [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}]
+no correction for bigram: Aan_de [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}]
+try unigramm: Aan [ <w xml:id='p4.1" > {<t>,}]
 Aan = 2 => Aan
 Aan = 3 => Aan extra_skip=0
 trigram is: 'de_orde_is'
+no correction for trigram: de_orde_is [ <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}, <w xml:id='p4.4" > {<t>,}]
+try bi: de_orde [ <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}]
+no correction for bigram: de_orde [ <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}]
+try unigramm: de [ <w xml:id='p4.2" > {<t>,}]
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'orde_is_de'
+no correction for trigram: orde_is_de [ <w xml:id='p4.3" > {<t>,}, <w xml:id='p4.4" > {<t>,}, <w xml:id='p4.5" > {<t>,}]
+try bi: orde_is [ <w xml:id='p4.3" > {<t>,}, <w xml:id='p4.4" > {<t>,}]
+no correction for bigram: orde_is [ <w xml:id='p4.3" > {<t>,}, <w xml:id='p4.4" > {<t>,}]
+try unigramm: orde [ <w xml:id='p4.3" > {<t>,}]
 orde = 2 => orde
 orde = 3 => orde extra_skip=0
 trigram is: 'is_de_behándeling'
+no correction for trigram: is_de_behándeling [ <w xml:id='p4.4" > {<t>,}, <w xml:id='p4.5" > {<t>,}, <w xml:id='p4.6" > {<t>,}]
+try bi: is_de [ <w xml:id='p4.4" > {<t>,}, <w xml:id='p4.5" > {<t>,}]
+no correction for bigram: is_de [ <w xml:id='p4.4" > {<t>,}, <w xml:id='p4.5" > {<t>,}]
+try unigramm: is [ <w xml:id='p4.4" > {<t>,}]
 is = 2 => is
 is = 3 => is extra_skip=0
 trigram is: 'de_behándeling_van:'
+no correction for trigram: de_behándeling_van: [ <w xml:id='p4.5" > {<t>,}, <w xml:id='p4.6" > {<t>,}, <w xml:id='p4.7" > {<t>,}]
+try bi: de_behándeling [ <w xml:id='p4.5" > {<t>,}, <w xml:id='p4.6" > {<t>,}]
+no correction for bigram: de_behándeling [ <w xml:id='p4.5" > {<t>,}, <w xml:id='p4.6" > {<t>,}]
+try unigramm: de [ <w xml:id='p4.5" > {<t>,}]
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'behándeling_van:_het'
+no correction for trigram: behándeling_van:_het [ <w xml:id='p4.6" > {<t>,}, <w xml:id='p4.7" > {<t>,}, <w xml:id='p4.8" > {<t>,}]
+try bi: behándeling_van: [ <w xml:id='p4.6" > {<t>,}, <w xml:id='p4.7" > {<t>,}]
+no correction for bigram: behándeling_van: [ <w xml:id='p4.6" > {<t>,}, <w xml:id='p4.7" > {<t>,}]
+try unigramm: behándeling [ <w xml:id='p4.6" > {<t>,}]
 behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+created:  <correction xml:id='p4.6.correction.1" > {<new>,<original>,<suggestion>,}
 behándeling = 2 => behandeling
 behándeling = 3 => behandeling extra_skip=0
 trigram is: 'van:_het_wetsvoorstel'
+no correction for trigram: van:_het_wetsvoorstel [ <w xml:id='p4.7" > {<t>,}, <w xml:id='p4.8" > {<t>,}, <w xml:id='p4.9" > {<t>,}]
+try bi: van:_het [ <w xml:id='p4.7" > {<t>,}, <w xml:id='p4.8" > {<t>,}]
+no correction for bigram: van:_het [ <w xml:id='p4.7" > {<t>,}, <w xml:id='p4.8" > {<t>,}]
+try unigramm: van: [ <w xml:id='p4.7" > {<t>,}]
 van: = 2 => van:
 van: = 3 => van: extra_skip=0
 trigram is: 'het_wetsvoorstel_Wijsiging'
+no correction for trigram: het_wetsvoorstel_Wijsiging [ <w xml:id='p4.8" > {<t>,}, <w xml:id='p4.9" > {<t>,}, <w xml:id='p4.10" > {<t>,}]
+try bi: het_wetsvoorstel [ <w xml:id='p4.8" > {<t>,}, <w xml:id='p4.9" > {<t>,}]
+no correction for bigram: het_wetsvoorstel [ <w xml:id='p4.8" > {<t>,}, <w xml:id='p4.9" > {<t>,}]
+try unigramm: het [ <w xml:id='p4.8" > {<t>,}]
 het = 2 => het
 het = 3 => het extra_skip=0
 trigram is: 'wetsvoorstel_Wijsiging_van'
+no correction for trigram: wetsvoorstel_Wijsiging_van [ <w xml:id='p4.9" > {<t>,}, <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
+try bi: wetsvoorstel_Wijsiging [ <w xml:id='p4.9" > {<t>,}, <w xml:id='p4.10" > {<t>,}]
+no correction for bigram: wetsvoorstel_Wijsiging [ <w xml:id='p4.9" > {<t>,}, <w xml:id='p4.10" > {<t>,}]
+try unigramm: wetsvoorstel [ <w xml:id='p4.9" > {<t>,}]
 wetsvoorstel = 2 => wetsvoorstel
 wetsvoorstel = 3 => wetsvoorstel extra_skip=0
 trigram is: 'Wijsiging_van_de'
+no correction for trigram: Wijsiging_van_de [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}, <w xml:id='p4.12" > {<t>,}]
+try bi: Wijsiging_van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
 Wijsiging_van = 2-2 => Wijziging van
+AHA! 2-2
+replace_bigram Step 1 
+BIGRAM=Wijsiging_van ==> Wijziging van [ <w xml:id='p4.10" > {<t>,}, <w xml:id='p4.11" > {<t>,}]
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,}
 Wijsiging_van = 2 => Wijziging van
 Wijsiging_van = 3 => Wijziging van extra_skip=1
 trigram is: 'van_de_Wet'
 trigram is: 'de_Wet_opde'
+no correction for trigram: de_Wet_opde [ <w xml:id='p4.12" > {<t>,}, <w xml:id='p4.13" > {<t>,}, <w xml:id='p4.14" > {<t>,}]
+try bi: de_Wet [ <w xml:id='p4.12" > {<t>,}, <w xml:id='p4.13" > {<t>,}]
+no correction for bigram: de_Wet [ <w xml:id='p4.12" > {<t>,}, <w xml:id='p4.13" > {<t>,}]
+try unigramm: de [ <w xml:id='p4.12" > {<t>,}]
 de = 2 => de
 de = 3 => de extra_skip=0
 trigram is: 'Wet_opde_omzetbelasting'
+no correction for trigram: Wet_opde_omzetbelasting [ <w xml:id='p4.13" > {<t>,}, <w xml:id='p4.14" > {<t>,}, <w xml:id='p4.15" > {<t>,}]
+try bi: Wet_opde [ <w xml:id='p4.13" > {<t>,}, <w xml:id='p4.14" > {<t>,}]
+no correction for bigram: Wet_opde [ <w xml:id='p4.13" > {<t>,}, <w xml:id='p4.14" > {<t>,}]
+try unigramm: Wet [ <w xml:id='p4.13" > {<t>,}]
 Wet = 2 => Wet
 Wet = 3 => Wet extra_skip=0
 trigram is: 'opde_omzetbelasting_1998.'
+no correction for trigram: opde_omzetbelasting_1998. [ <w xml:id='p4.14" > {<t>,}, <w xml:id='p4.15" > {<t>,}, <w xml:id='p4.16" > {<t>,}]
+try bi: opde_omzetbelasting [ <w xml:id='p4.14" > {<t>,}, <w xml:id='p4.15" > {<t>,}]
+no correction for bigram: opde_omzetbelasting [ <w xml:id='p4.14" > {<t>,}, <w xml:id='p4.15" > {<t>,}]
+try unigramm: opde [ <w xml:id='p4.14" > {<t>,}]
 opde = 1-2 => op de
+unigram corrections:
+opde : op de
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.2" > {<new>,<original>,<suggestion>,}
 opde = 2 => op de
 opde = 3 => op de extra_skip=0
+no correction for bigram: omzetbelasting_1998. [ <w xml:id='p4.15" > {<t>,}, <w xml:id='p4.16" > {<t>,}]
+try unigramm: omzetbelasting [ <w xml:id='p4.15" > {<t>,}]
 omzetbelasting = 2 => omzetbelasting
+unigram corrections:
+1998. : 1998 .
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.3" > {<new>,<original>,}
  corrected ngrams: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1998 .'
 correct ngrams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (Test)
 correct trigrams
 trigram is: 'Deze_wets_voorstellen'
+no correction for trigram: Deze_wets_voorstellen [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]
+try bi: Deze_wets [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]
+no correction for bigram: Deze_wets [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]
+try unigramm: Deze [ <w xml:id='p5.1" > {<t>,}]
 Deze = 2 => Deze
 Deze = 3 => Deze extra_skip=0
 trigram is: 'wets_voorstellen_worden'
+no correction for trigram: wets_voorstellen_worden [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}, <w xml:id='p5.4" > {<t>,}]
+try bi: wets_voorstellen [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]
 wets_voorstellen = 2-1 => wetsvoorstellen
+AHA! 2-1
+store OV:  <w xml:id='p5.2" > {<t>,}
+store OV:  <w xml:id='p5.3" > {<t>,}
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 wets_voorstellen = 2 => wetsvoorstellen
 wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
 trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
+no correction for trigram: worden_zonder_s4s67621 [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]
+try bi: worden_zonder [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]
+no correction for bigram: worden_zonder [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]
+try unigramm: worden [ <w xml:id='p5.4" > {<t>,}]
 worden = 2 => worden
 worden = 3 => worden extra_skip=0
 trigram is: 'zonder_s4s67621_en'
+no correction for trigram: zonder_s4s67621_en [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]
+try bi: zonder_s4s67621 [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]
+no correction for bigram: zonder_s4s67621 [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]
+try unigramm: zonder [ <w xml:id='p5.5" > {<t>,}]
 zonder = 2 => zonder
 zonder = 3 => zonder extra_skip=0
 trigram is: 's4s67621_en_zonder'
+no correction for trigram: s4s67621_en_zonder [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]
+try bi: s4s67621_en [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]
+no correction for bigram: s4s67621_en [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]
+try unigramm: s4s67621 [ <w xml:id='p5.6" > {<t>,}]
+unigram corrections:
+s4s67621 : UNK
+created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
 s4s67621 = 2 => UNK
 s4s67621 = 3 => UNK extra_skip=0
 trigram is: 'en_zonder_steming'
+no correction for trigram: en_zonder_steming [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]
+try bi: en_zonder [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]
+no correction for bigram: en_zonder [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]
+try unigramm: en [ <w xml:id='p5.7" > {<t>,}]
 en = 2 => en
 en = 3 => en extra_skip=0
 trigram is: 'zonder_steming_aangenomen'
@@ -752,18 +1124,33 @@ trigram is: 'steming_aangenomen_.'
 correct ngrams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
 correct trigrams
 trigram is: 'Deze_runonvanwoorden_is'
+no correction for trigram: Deze_runonvanwoorden_is [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]
+try bi: Deze_runonvanwoorden [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}]
+no correction for bigram: Deze_runonvanwoorden [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}]
+try unigramm: Deze [ <w xml:id='p6.1" > {<t>,}]
 Deze = 2 => Deze
 Deze = 3 => Deze extra_skip=0
 trigram is: 'runonvanwoorden_is_oplosbaar.'
-runonvanwoorden = 2 => runonvanwoorden
-runonvanwoorden = 3 => runonvanwoorden extra_skip=0
+no correction for trigram: runonvanwoorden_is_oplosbaar. [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]
+try bi: runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]
+no correction for bigram: runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]
+try unigramm: runonvanwoorden [ <w xml:id='p6.2" > {<t>,}]
+runonvanwoorden = 1-3 => runon van woorden
+unigram corrections:
+runonvanwoorden : runon van woorden
+created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
+runonvanwoorden = 2 => runon van woorden
+runonvanwoorden = 3 => runon van woorden extra_skip=0
+no correction for bigram: is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]
+try unigramm: is [ <w xml:id='p6.3" > {<t>,}]
 is = 2 => is
- corrected ngrams: 'Deze runonvanwoorden is oplosbaar.'
+ corrected ngrams: 'Deze runon van woorden is oplosbaar.'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
+	1-3	1
 	2-1	1
 	2-2	1
 	3-3	1

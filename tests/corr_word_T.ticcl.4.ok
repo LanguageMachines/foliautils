@@ -10,7 +10,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-09T13:05:22" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-09T13:12:20" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -169,7 +169,7 @@
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
           <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
-          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .</t>
+          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .</t>
           <lang class="dut"/>
           <w xml:id="p5.1">
             <t class="Test">Deze</t>
@@ -218,15 +218,13 @@
           </w>
           <w xml:id="p5.9">
             <t class="Test">steming</t>
-            <t class="Ticcl" offset="49">steming</t>
           </w>
           <w xml:id="p5.10">
             <t class="Test">aangenomen</t>
-            <t class="Ticcl" offset="57">aangenomen</t>
           </w>
           <w xml:id="p5.11">
             <t class="Test">.</t>
-            <t class="Ticcl" offset="68">.</t>
+            <t class="Ticcl" offset="42">.</t>
           </w>
         </p>
         <p xml:id="p6">
