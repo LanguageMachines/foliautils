@@ -95,6 +95,15 @@
 	  <w xml:id="p8.5"><t class="Test">I</t></w>
 	  <w xml:id="p8.6"><t class="Test">Land</t></w>
         </p>
+        <p xml:id="p9">
+          <t class="Test">Een 2-3 geval: He groenehuis</t>
+          <lang class="dut"/>
+	  <w xml:id="p9.1"><t class="Test">Een</t></w>
+	  <w xml:id="p9.2"><t class="Test">2-3</t></w>
+	  <w xml:id="p9.3"><t class="Test">geval:</t></w>
+	  <w xml:id="p9.4"><t class="Test">He</t></w>
+	  <w xml:id="p9.5"><t class="Test">groenehuis</t></w>
+        </p>
       </div>
     </div>
   </text>

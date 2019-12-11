@@ -24,7 +24,7 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -64,7 +64,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -108,7 +108,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -153,7 +153,7 @@ edit statistics:
 	UNK	1
 inputclass and outputclass are the same
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -289,7 +289,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -474,7 +474,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -659,7 +659,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -717,7 +717,7 @@ edit statistics:
 	TOKENS	46
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -775,7 +775,7 @@ edit statistics:
 	TOKENS	46
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -985,7 +985,7 @@ edit statistics:
 	TOKENS	46
 	UNK	1
 start reading variants 
-read 8 variants 
+read 9 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
