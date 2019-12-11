@@ -10,7 +10,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T12:51:35" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T13:02:51" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -128,59 +128,68 @@
         </p>
       </div>
       <div xml:id="testdoc.4" class="other">
-        <p xml:id="p5">
-          <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
-          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .</t>
+        <p xml:id="p4">
+          <t class="Test">Deze wets voorstellen</t>
+          <t class="Ticcl">Deze wetsvoorstellen</t>
           <lang class="dut"/>
-          <w xml:id="p5.1">
+          <w xml:id="p4.1">
             <t class="Test">Deze</t>
             <t class="Ticcl" offset="0">Deze</t>
           </w>
-          <correction xml:id="p5.correction.1">
+          <correction xml:id="p4.correction.1">
             <new>
-              <w xml:id="p5.2.merge.1">
+              <w xml:id="p4.2.merge.1">
                 <t class="Ticcl" offset="5">wetsvoorstellen</t>
               </w>
             </new>
             <original auth="no">
-              <w xml:id="p5.2">
+              <w xml:id="p4.2">
                 <t class="Test">wets</t>
               </w>
-              <w xml:id="p5.3">
+              <w xml:id="p4.3">
                 <t class="Test">voorstellen</t>
               </w>
             </original>
           </correction>
-          <w xml:id="p5.4">
+        </p>
+        <p xml:id="p5">
+          <t class="Test">ze worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <t class="Ticcl">ze worden zonder UNK en zonder stemming aangenomen .</t>
+          <lang class="dut"/>
+          <w xml:id="p5.1">
+            <t class="Test">ze</t>
+            <t class="Ticcl" offset="0">ze</t>
+          </w>
+          <w xml:id="p5.2">
             <t class="Test">worden</t>
-            <t class="Ticcl" offset="21">worden</t>
+            <t class="Ticcl" offset="3">worden</t>
           </w>
-          <w xml:id="p5.5">
+          <w xml:id="p5.3">
             <t class="Test">zonder</t>
-            <t class="Ticcl" offset="28">zonder</t>
+            <t class="Ticcl" offset="10">zonder</t>
           </w>
-          <w xml:id="p5.6">
-            <correction xml:id="p5.6.correction.1">
+          <w xml:id="p5.4">
+            <correction xml:id="p5.4.correction.1">
               <new>
-                <t class="Ticcl" offset="35">UNK</t>
+                <t class="Ticcl" offset="17">UNK</t>
               </new>
               <original auth="no">
                 <t class="Test">s4s67621</t>
               </original>
             </correction>
           </w>
-          <w xml:id="p5.7">
+          <w xml:id="p5.5">
             <t class="Test">en</t>
-            <t class="Ticcl" offset="39">en</t>
+            <t class="Ticcl" offset="21">en</t>
           </w>
-          <w xml:id="p5.8">
+          <w xml:id="p5.6">
             <t class="Test">zonder</t>
-            <t class="Ticcl" offset="42">zonder</t>
+            <t class="Ticcl" offset="24">zonder</t>
           </w>
-          <w xml:id="p5.9">
-            <correction xml:id="p5.9.correction.1">
+          <w xml:id="p5.7">
+            <correction xml:id="p5.7.correction.1">
               <new>
-                <t class="Ticcl" offset="49">stemming</t>
+                <t class="Ticcl" offset="31">stemming</t>
               </new>
               <original auth="no">
                 <t class="Test">steming</t>
@@ -190,13 +199,13 @@
               </suggestion>
             </correction>
           </w>
-          <w xml:id="p5.10">
+          <w xml:id="p5.8">
             <t class="Test">aangenomen</t>
-            <t class="Ticcl" offset="58">aangenomen</t>
+            <t class="Ticcl" offset="40">aangenomen</t>
           </w>
-          <w xml:id="p5.11">
+          <w xml:id="p5.9">
             <t class="Test">.</t>
-            <t class="Ticcl" offset="69">.</t>
+            <t class="Ticcl" offset="51">.</t>
           </w>
         </p>
         <p xml:id="p6">

@@ -39,20 +39,25 @@
         </p>
       </div>
       <div xml:id="testdoc.4" class="other">
-        <p xml:id="p5">
-          <t class="Test">Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+        <p xml:id="p4">
+          <t class="Test">Deze wets voorstellen</t>
           <lang class="dut"/>
-	  <w xml:id="p5.1"><t class="Test">Deze</t></w>
-	  <w xml:id="p5.2"><t class="Test">wets</t></w>
-	  <w xml:id="p5.3"><t class="Test">voorstellen</t></w>
-	  <w xml:id="p5.4"><t class="Test">worden</t></w>
-	  <w xml:id="p5.5"><t class="Test">zonder</t></w>
-	  <w xml:id="p5.6"><t class="Test">s4s67621</t></w>
-	  <w xml:id="p5.7"><t class="Test">en</t></w>
-	  <w xml:id="p5.8"><t class="Test">zonder</t></w>
-	  <w xml:id="p5.9"><t class="Test">steming</t></w>
-	  <w xml:id="p5.10"><t class="Test">aangenomen</t></w>
-	  <w xml:id="p5.11"><t class="Test">.</t></w>
+	  <w xml:id="p4.1"><t class="Test">Deze</t></w>
+	  <w xml:id="p4.2"><t class="Test">wets</t></w>
+	  <w xml:id="p4.3"><t class="Test">voorstellen</t></w>
+        </p>
+        <p xml:id="p5">
+          <t class="Test">ze worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <lang class="dut"/>
+	  <w xml:id="p5.1"><t class="Test">ze</t></w>
+	  <w xml:id="p5.2"><t class="Test">worden</t></w>
+	  <w xml:id="p5.3"><t class="Test">zonder</t></w>
+	  <w xml:id="p5.4"><t class="Test">s4s67621</t></w>
+	  <w xml:id="p5.5"><t class="Test">en</t></w>
+	  <w xml:id="p5.6"><t class="Test">zonder</t></w>
+	  <w xml:id="p5.7"><t class="Test">steming</t></w>
+	  <w xml:id="p5.8"><t class="Test">aangenomen</t></w>
+	  <w xml:id="p5.9"><t class="Test">.</t></w>
         </p>
         <p xml:id="p6">
           <t class="Test">Deze runonvanwoorden is oplosbaar.</t>
