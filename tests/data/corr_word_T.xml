@@ -13,25 +13,29 @@
         <t class="Test">Diverse wetsvoorstellen</t>
       </head>
       <div xml:id="testdoc.3" class="subject">
-        <p xml:id="p4">
-          <t class="Test">Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.</t>
+        <p xml:id="p1">
+          <t class="Test">de behándeling van:</t>
           <lang class="dut"/>
-	  <w xml:id="p4.1"><t class="Test">Aan</t></w>
-	  <w xml:id="p4.2"><t class="Test">de</t></w>
-	  <w xml:id="p4.3"><t class="Test">orde</t></w>
-	  <w xml:id="p4.4"><t class="Test">is</t></w>
-	  <w xml:id="p4.5"><t class="Test">de</t></w>
-	  <w xml:id="p4.6"><t class="Test">behándeling</t></w>
-	  <w xml:id="p4.7"><t class="Test">van:</t></w>
-	  <w xml:id="p4.8"><t class="Test">het</t></w>
-	  <w xml:id="p4.9"><t class="Test">wetsvoorstel</t></w>
-	  <w xml:id="p4.10"><t class="Test">Wijsiging</t></w>
-	  <w xml:id="p4.11"><t class="Test">van</t></w>
-	  <w xml:id="p4.12"><t class="Test">de</t></w>
-	  <w xml:id="p4.13"><t class="Test">Wet</t></w>
-	  <w xml:id="p4.14"><t class="Test">opde</t></w>
-	  <w xml:id="p4.15"><t class="Test">omzetbelasting</t></w>
-	  <w xml:id="p4.16"><t class="Test">1998.</t></w>
+	  <w xml:id="p1.1"><t class="Test">de</t></w>
+	  <w xml:id="p1.2"><t class="Test">behándeling</t></w>
+	  <w xml:id="p1.3"><t class="Test">van:</t></w>
+        </p>
+        <p xml:id="p2">
+          <t class="Test">het wetsvoorstel Wijsiging van de</t>
+          <lang class="dut"/>
+	  <w xml:id="p2.1"><t class="Test">het</t></w>
+	  <w xml:id="p2.2"><t class="Test">wetsvoorstel</t></w>
+	  <w xml:id="p2.3"><t class="Test">Wijsiging</t></w>
+	  <w xml:id="p2.4"><t class="Test">van</t></w>
+	  <w xml:id="p2.5"><t class="Test">de</t></w>
+        </p>
+        <p xml:id="p3">
+          <t class="Test">Wet opde omzetbelasting 1998.</t>
+          <lang class="dut"/>
+	  <w xml:id="p3.1"><t class="Test">Wet</t></w>
+	  <w xml:id="p3.2"><t class="Test">opde</t></w>
+	  <w xml:id="p3.3"><t class="Test">omzetbelasting</t></w>
+	  <w xml:id="p3.4"><t class="Test">1998.</t></w>
         </p>
       </div>
       <div xml:id="testdoc.4" class="other">
