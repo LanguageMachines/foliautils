@@ -574,10 +574,14 @@ Correction *replace_bigram( const gram_r& corr_in,
 			    bool doStrings ){
   // cerr << "replace_bigram Step 1 " << endl;
   // cerr << "BIGRAM=" << corr_in << endl;
-  bool skip_last = corr_in._orig.back() == corr_in._result.back();
   gram_r corr = corr_in;
+  bool skip_last = corr_in._orig.back() == corr_in._result.back();
+  FoliaElement *last = 0;
+  string last_w;
   if ( skip_last ){
+    last = corr._words.back();
     corr._words.pop_back();
+    last_w = corr._result.back();
     corr._result.pop_back();
   }
   vector<FoliaElement*> sV;
@@ -613,7 +617,12 @@ Correction *replace_bigram( const gram_r& corr_in,
     }
   }
   KWargs no_args;
-  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+  Correction *c = corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+  if ( last ){
+    last->settext( last_w, offset, output_classname );
+    offset += last_w.size() + 1;
+  }
+  return c;
 }
 
 
