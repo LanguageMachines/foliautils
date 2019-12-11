@@ -10,7 +10,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T11:27:43" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T12:16:58" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -352,8 +352,8 @@
           </correction>
         </p>
         <p xml:id="p9">
-          <t class="Test">Een 2-3 geval: He groenehuis</t>
-          <t class="Ticcl">Een 2-3 geval: Het groene huis</t>
+          <t class="Test">Een 2-3 geval: He groenehuis.</t>
+          <t class="Ticcl">Een 2-3 geval: Het groene huis .</t>
           <lang class="dut"/>
           <w xml:id="p9.1">
             <t class="Test">Een</t>
@@ -378,13 +378,16 @@
               <w xml:id="p9.4.split.3">
                 <t class="Ticcl" offset="26">huis</t>
               </w>
+              <w xml:id="p9.4.split.4">
+                <t class="Ticcl" offset="31">.</t>
+              </w>
             </new>
             <original auth="no">
               <w xml:id="p9.4">
                 <t class="Test">He</t>
               </w>
               <w xml:id="p9.5">
-                <t class="Test">groenehuis</t>
+                <t class="Test">groenehuis.</t>
               </w>
             </original>
           </correction>

@@ -28,7 +28,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_str.xml
 
@@ -73,7 +73,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_str.xml
 
@@ -122,7 +122,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word.xml
 
@@ -172,7 +172,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr.xml
 
@@ -313,7 +313,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr.xml
 
@@ -503,7 +503,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr.folia.xml
 
@@ -693,7 +693,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
 
@@ -747,9 +747,12 @@ corrected 1-grams uit: 'Een ge splet en trigram.' (Apple)
 correct unigrams
 corrected 1-grams uit: 'Een 3-2 geval: Rhode I Land' (Apple)
 
-   correct 1-grams in: 'Een 2-3 geval: He groenehuis' (Test)
+   correct 1-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
 correct unigrams
-corrected 1-grams uit: 'Een 2-3 geval: He groenehuis' (Apple)
+unigram corrections:
+groenehuis. : groenehuis .
+created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Een 2-3 geval: He groenehuis .' (Apple)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -763,7 +766,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
 
@@ -817,9 +820,12 @@ corrected 1-grams uit: 'Een ge splet en trigram.' (Apple)
 correct unigrams
 corrected 1-grams uit: 'Een 3-2 geval: Rhode I Land' (Apple)
 
-   correct 1-grams in: 'Een 2-3 geval: He groenehuis' (Test)
+   correct 1-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
 correct unigrams
-corrected 1-grams uit: 'Een 2-3 geval: He groenehuis' (Apple)
+unigram corrections:
+groenehuis. : groenehuis±.
+created:  <correction xml:id='p9.5.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Een 2-3 geval: He groenehuis±.' (Apple)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -833,7 +839,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
 
@@ -1037,7 +1043,7 @@ try unigramm: I [ <w xml:id='p8.5" > {<t>,}]
 I = 2 => I
 corrected 2-grams uit: 'Een 3-2 geval: Rhode I Land' (Ticcl)
 
-   correct 2-grams in: 'Een 2-3 geval: He groenehuis' (Test)
+   correct 2-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
 correct bigrams
 bigram is: 'Een_2-3 [ <w xml:id='p9.1" > {<t>,}, <w xml:id='p9.2" > {<t>,}]'
 no correction for bigram: Een_2-3 [ <w xml:id='p9.1" > {<t>,}, <w xml:id='p9.2" > {<t>,}]
@@ -1051,13 +1057,15 @@ bigram is: 'geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}]'
 no correction for bigram: geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}]
 try unigramm: geval: [ <w xml:id='p9.3" > {<t>,}]
 geval: = 2 => geval:
-bigram is: 'He_groenehuis [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]'
-He_groenehuis = 2-3 => Het groene huis
+bigram is: 'He_groenehuis. [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]'
+final punct found: .
+depuncted word   : He_groenehuis
+He_groenehuis = 2-3 => Het groene huis .
 split_bigram Step 1 
-BIGRAM=He_groenehuis (2-3) ==> Het groene huis [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
+BIGRAM=He_groenehuis. (2-3) ==> Het groene huis . [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
 created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
-He_groenehuis = 2 => Het groene huis
-corrected 2-grams uit: 'Een 2-3 geval: Het groene huis' (Ticcl)
+He_groenehuis. = 2 => Het groene huis .
+corrected 2-grams uit: 'Een 2-3 geval: Het groene huis .' (Ticcl)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1074,7 +1082,7 @@ read 9 variants
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
-read 12 punctuated words 
+read 14 punctuated words 
 verbosity = 2
 start correcting file: data/corr_word_T.xml
 
@@ -1341,7 +1349,7 @@ created:  <correction xml:id='p8.correction.1" > {<new>,<original>,<suggestion>,
 Rhode_I_Land = 3 => Rhode Island extra_skip=2
 corrected 3-grams uit: 'Een 3-2 geval: Rhode Island' (Ticcl)
 
-   correct 3-grams in: 'Een 2-3 geval: He groenehuis' (Test)
+   correct 3-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
 correct trigrams
 trigram is: 'Een_2-3_geval:'
 no correction for trigram: Een_2-3_geval: [ <w xml:id='p9.1" > {<t>,}, <w xml:id='p9.2" > {<t>,}, <w xml:id='p9.3" > {<t>,}]
@@ -1357,19 +1365,21 @@ no correction for bigram: 2-3_geval: [ <w xml:id='p9.2" > {<t>,}, <w xml:id='p9.
 try unigramm: 2-3 [ <w xml:id='p9.2" > {<t>,}]
 2-3 = 2 => 2-3
 2-3 = 3 => 2-3 extra_skip=0
-trigram is: 'geval:_He_groenehuis'
-no correction for trigram: geval:_He_groenehuis [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
+trigram is: 'geval:_He_groenehuis.'
+no correction for trigram: geval:_He_groenehuis. [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
 try bi: geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}]
 no correction for bigram: geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}]
 try unigramm: geval: [ <w xml:id='p9.3" > {<t>,}]
 geval: = 2 => geval:
 geval: = 3 => geval: extra_skip=0
-He_groenehuis = 2-3 => Het groene huis
+final punct found: .
+depuncted word   : He_groenehuis
+He_groenehuis = 2-3 => Het groene huis .
 split_bigram Step 1 
-BIGRAM=He_groenehuis (2-3) ==> Het groene huis [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
+BIGRAM=He_groenehuis. (2-3) ==> Het groene huis . [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
 created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
-He_groenehuis = 2 => Het groene huis
-corrected 3-grams uit: 'Een 2-3 geval: Het groene huis' (Ticcl)
+He_groenehuis. = 2 => Het groene huis .
+corrected 3-grams uit: 'Een 2-3 geval: Het groene huis .' (Ticcl)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
