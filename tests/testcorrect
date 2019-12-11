@@ -46,7 +46,7 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --cle
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.3.ok  >> testcorrect.out 2>&1
-
+exit
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok  >> testcorrect.out 2>&1

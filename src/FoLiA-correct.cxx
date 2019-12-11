@@ -1129,7 +1129,8 @@ void correctNgrams( Paragraph* par,
   inval = TiCC::trim( inval );
 #pragma omp critical
   {
-    cerr << "correct ngrams in: '" << inval << "' (" << input_classname
+    cerr << "\n   correct " << ngrams << "-grams in: '" << inval
+	 << "' (" << input_classname
 	 << ")" << endl;
   }
 
@@ -1190,7 +1191,8 @@ void correctNgrams( Paragraph* par,
   if ( verbose > 1 ){
 #pragma omp critical
     {
-      cerr << " corrected ngrams: '" << corrected << "'" << endl;
+      cerr << "corrected " << ngrams << "-grams uit: '"
+	   << corrected << "' (" << output_classname << ")" << endl;
     }
   }
   if ( !corrected.empty() ){
