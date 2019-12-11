@@ -482,7 +482,7 @@ Correction *merge_bigram( const gram_r& corr,
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
   for( const auto& it : corr._words ){
-    cerr << "store OV: " << it << endl;
+    //    cerr << "store OV: " << it << endl;
     oV.push_back( it );
   }
   for ( const auto& p : corr._result ){
@@ -521,8 +521,8 @@ Correction *split_bigram( const gram_r& corr,
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
-  cerr << "split_bigram Step 1 " << endl;
-  cerr << "BIGRAM=" << corr << endl;
+  // cerr << "split_bigram Step 1 " << endl;
+  // cerr << "BIGRAM=" << corr << endl;
   for( const auto& it : corr._words ){
     oV.push_back( it );
   }
@@ -572,8 +572,8 @@ Correction *split_bigram( const gram_r& corr,
 Correction *replace_bigram( const gram_r& corr_in,
 			    size_t& offset,
 			    bool doStrings ){
-  cerr << "replace_bigram Step 1 " << endl;
-  cerr << "BIGRAM=" << corr_in << endl;
+  // cerr << "replace_bigram Step 1 " << endl;
+  // cerr << "BIGRAM=" << corr_in << endl;
   bool skip_last = corr_in._orig.back() == corr_in._result.back();
   gram_r corr = corr_in;
   if ( skip_last ){
@@ -637,7 +637,7 @@ void apply_bi_correction( const gram_r& corr,
 	c = replace_bigram( corr, offset, doStrings );
       }
       if ( verbose > 1 ){
-	cerr << "created: " << c << endl;
+	cout << "created: " << c << endl;
       }
     }
   }
@@ -714,7 +714,7 @@ int correct_one_bigram( const gram_r& bi,
       uni._words.push_back( bi._words[0] );
       if ( verbose > 1 ){
 	cout << "no correction for bigram: " << bi << endl;
-	cout << "try unigramm: " << uni << endl;
+	cout << "try unigram: " << uni << endl;
       }
       result = correct_one_unigram( uni, variants, unknowns,
 				    puncts, counts, offset, doStrings );
@@ -802,14 +802,14 @@ void apply_tri_correction( const gram_r& corr,
 				   output_classname );
 	  offset += corr._orig.front().size() + 1;
 	}
-	cerr << "STEP 1 " << tmp << endl;
+	//	cerr << "STEP 1 " << tmp << endl;
 	if ( corr._orig[2] == corr._result[2] ){
 	  tmp._orig.pop_back();
 	  tmp._result.pop_back();
 	  tmp._words.pop_back();
 	  tmp._ed_type = "1-1";
 	}
-	cerr << "STEP 2 " << tmp << endl;
+	//	cerr << "STEP 2 " << tmp << endl;
 	if ( tmp._ed_type == "1-1" ){
 	  c = replace_unigram( tmp, offset, doStrings );
 	  corr._words[2]->settext( corr._orig.back(),
@@ -822,7 +822,7 @@ void apply_tri_correction( const gram_r& corr,
 	}
       }
       if ( verbose > 1 ){
-	cerr << "created: " << c << endl;
+	cout << "created: " << c << endl;
       }
     }
   }
@@ -897,7 +897,7 @@ int correct_one_trigram( const gram_r& tri,
       bi._words.push_back( tri._words[1] );
       if ( verbose > 1 ){
 	cout << "no correction for trigram: " << tri << endl;
-	cout << "try bi: " << bi << endl;
+	cout << "try bigram: " << bi << endl;
       }
       extra_skip = correct_one_bigram( bi, variants, unknowns,
 				       puncts, result, counts,
@@ -1107,7 +1107,7 @@ void correctNgrams( Paragraph* par,
   for( const auto& gr : grams ){
     unigrams.push_back(gram_r(gr,(FoliaElement*)0));
   }
-  cerr << "old_uni: " << unigrams << endl;
+  cout << "old_uni: " << unigrams << endl;
 #else
   string inval;
   if ( ev.size() == 0 ){
@@ -1146,18 +1146,19 @@ void correctNgrams( Paragraph* par,
     }
   }
   inval = TiCC::trim( inval );
+  if ( verbose > 1 ){
 #pragma omp critical
-  {
-    cerr << "\n   correct " << ngrams << "-grams in: '" << inval
-	 << "' (" << input_classname
-	 << ")" << endl;
+    {
+      cout << "\n   correct " << ngrams << "-grams in: '" << inval
+	   << "' (" << input_classname
+	   << ")" << endl;
+    }
   }
-
 #endif
 
   unigrams = replace_hemps( unigrams, puncts );
   if ( verbose > 5 ){
-    cerr << "UNIGRAMS:\n" << unigrams << endl;
+    cout << "UNIGRAMS:\n" << unigrams << endl;
   }
   string partext;
   vector<gram_r> bigrams;
@@ -1171,7 +1172,7 @@ void correctNgrams( Paragraph* par,
       bigrams[i]._orig.push_back( unigrams[i+1].orig_text() );
     }
     if ( verbose > 5 ){
-      cerr << "BIGRAMS:\n" << bigrams << endl;
+      cout << "BIGRAMS:\n" << bigrams << endl;
     }
   }
   if ( ngrams > 2 && unigrams.size() > 2 ){
@@ -1185,7 +1186,7 @@ void correctNgrams( Paragraph* par,
       trigrams[i]._orig.push_back( unigrams[i+2].orig_text() );
     }
     if ( verbose > 5 ){
-      cerr << "TRIGRAMS:\n" << trigrams << endl;
+      cout << "TRIGRAMS:\n" << trigrams << endl;
     }
   }
   string corrected;
@@ -1210,7 +1211,7 @@ void correctNgrams( Paragraph* par,
   if ( verbose > 1 ){
 #pragma omp critical
     {
-      cerr << "corrected " << ngrams << "-grams uit: '"
+      cout << "corrected " << ngrams << "-grams uit: '"
 	   << corrected << "' (" << output_classname << ")" << endl;
     }
   }
