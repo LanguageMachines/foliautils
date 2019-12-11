@@ -540,6 +540,20 @@ Correction *split_bigram( const gram_r& corr,
     offset += p.size() + 1;
     nV.push_back( el );
   }
+  if ( !corr._final_punct.empty() ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( corr._final_punct, offset, output_classname );
+    offset += corr._final_punct.size() + 1;
+    nV.push_back( el );
+  }
   if ( corr._suggestions ){
     size_t limit = corr._suggestions->size();
     for( size_t j=0; j < limit; ++j ){
@@ -651,6 +665,10 @@ int correct_one_bigram( const gram_r& bi,
   if ( pit != puncts.end() ){
     final_punct = test_final_punct( word, pit->second );
     word = pit->second;
+    if ( verbose > 2 ){
+      cout << "final punct found: " << final_punct << endl;
+      cout << "depuncted word   : " << word << endl;
+    }
   }
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
