@@ -699,7 +699,7 @@ int correct_one_bigram( const gram_r& bi,
 	cout << "try unigramm: " << uni << endl;
       }
       result = correct_one_unigram( uni, variants, unknowns,
-				   puncts, counts, offset, doStrings );
+				    puncts, counts, offset, doStrings );
     }
   }
   if ( extra_skip > 0 ){
@@ -742,14 +742,15 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       cout << "After correct_one_bi: cor=" << cor << endl;
     }
     result += cor.result_text() + " ";
-    //    offset = result.length() + 1;
   }
-  gram_r corr = correct_one_unigram( last, variants, unknowns,
-				     puncts, counts, offset, doStrings );
-  if ( verbose > 2 ){
-    cout << "1 handled last word: " << corr << endl;
+  if ( skip == 0 ){
+    gram_r corr = correct_one_unigram( last, variants, unknowns,
+				       puncts, counts, offset, doStrings );
+    if ( verbose > 2 ){
+      cout << "handled last word: " << corr << endl;
+    }
+    result += corr.result_text();
   }
-  result += corr.result_text();
   return result;
 }
 
