@@ -10,7 +10,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-09T15:55:16" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T10:20:11" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -276,6 +276,35 @@
           <w xml:id="p7.5">
             <t class="Test">trigram.</t>
             <t class="Apple" offset="16">trigram.</t>
+          </w>
+        </p>
+        <p xml:id="p8">
+          <t class="Test">Een 3-2 geval: Rhode I Land</t>
+          <t class="Apple">Een 3-2 geval: Rhode I Land</t>
+          <lang class="dut"/>
+          <w xml:id="p8.1">
+            <t class="Test">Een</t>
+            <t class="Apple" offset="0">Een</t>
+          </w>
+          <w xml:id="p8.2">
+            <t class="Test">3-2</t>
+            <t class="Apple" offset="4">3-2</t>
+          </w>
+          <w xml:id="p8.3">
+            <t class="Test">geval:</t>
+            <t class="Apple" offset="8">geval:</t>
+          </w>
+          <w xml:id="p8.4">
+            <t class="Test">Rhode</t>
+            <t class="Apple" offset="15">Rhode</t>
+          </w>
+          <w xml:id="p8.5">
+            <t class="Test">I</t>
+            <t class="Apple" offset="21">I</t>
+          </w>
+          <w xml:id="p8.6">
+            <t class="Test">Land</t>
+            <t class="Apple" offset="23">Land</t>
           </w>
         </p>
       </div>

@@ -24,7 +24,7 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -64,7 +64,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -108,7 +108,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -153,7 +153,7 @@ edit statistics:
 	UNK	1
 inputclass and outputclass are the same
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -289,7 +289,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -474,7 +474,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -659,7 +659,7 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -705,16 +705,19 @@ created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,
 correct ngrams in: 'Een ge splet en trigram.' (Test)
 correct unigrams
  corrected ngrams: 'Een ge splet en trigram.'
+correct ngrams in: 'Een 3-2 geval: Rhode I Land' (Test)
+correct unigrams
+ corrected ngrams: 'Een 3-2 geval: Rhode I Land'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
 	1-3	1
-	TOKENS	40
+	TOKENS	46
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -760,16 +763,19 @@ created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,
 correct ngrams in: 'Een ge splet en trigram.' (Test)
 correct unigrams
  corrected ngrams: 'Een ge splet en trigram.'
+correct ngrams in: 'Een 3-2 geval: Rhode I Land' (Test)
+correct unigrams
+ corrected ngrams: 'Een 3-2 geval: Rhode I Land'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
 	1-3	1
-	TOKENS	40
+	TOKENS	46
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -945,6 +951,29 @@ no correction for bigram: en_trigram. [ <w xml:id='p7.4" > {<t>,}, <w xml:id='p7
 try unigramm: en [ <w xml:id='p7.4" > {<t>,}]
 en = 2 => en
  corrected ngrams: 'Een ge splet en trigram.'
+correct ngrams in: 'Een 3-2 geval: Rhode I Land' (Test)
+correct bigrams
+bigram is: 'Een_3-2 [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}]'
+no correction for bigram: Een_3-2 [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}]
+try unigramm: Een [ <w xml:id='p8.1" > {<t>,}]
+Een = 2 => Een
+bigram is: '3-2_geval: [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]'
+no correction for bigram: 3-2_geval: [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]
+try unigramm: 3-2 [ <w xml:id='p8.2" > {<t>,}]
+3-2 = 2 => 3-2
+bigram is: 'geval:_Rhode [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]'
+no correction for bigram: geval:_Rhode [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]
+try unigramm: geval: [ <w xml:id='p8.3" > {<t>,}]
+geval: = 2 => geval:
+bigram is: 'Rhode_I [ <w xml:id='p8.4" > {<t>,}, <w xml:id='p8.5" > {<t>,}]'
+no correction for bigram: Rhode_I [ <w xml:id='p8.4" > {<t>,}, <w xml:id='p8.5" > {<t>,}]
+try unigramm: Rhode [ <w xml:id='p8.4" > {<t>,}]
+Rhode = 2 => Rhode
+bigram is: 'I_Land [ <w xml:id='p8.5" > {<t>,}, <w xml:id='p8.6" > {<t>,}]'
+no correction for bigram: I_Land [ <w xml:id='p8.5" > {<t>,}, <w xml:id='p8.6" > {<t>,}]
+try unigramm: I [ <w xml:id='p8.5" > {<t>,}]
+I = 2 => I
+ corrected ngrams: 'Een 3-2 geval: Rhode I Land'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -953,10 +982,10 @@ edit statistics:
 	1-3	1
 	2-1	1
 	2-2	1
-	TOKENS	40
+	TOKENS	46
 	UNK	1
 start reading variants 
-read 7 variants 
+read 8 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
@@ -1187,6 +1216,37 @@ created:  <correction xml:id='p7.correction.1" > {<new>,<original>,<suggestion>,
 ge_splet_en = 3 => gespleten extra_skip=2
 trigram is: 'splet_en_trigram.'
  corrected ngrams: 'Een gespleten trigram.'
+correct ngrams in: 'Een 3-2 geval: Rhode I Land' (Test)
+correct trigrams
+trigram is: 'Een_3-2_geval:'
+no correction for trigram: Een_3-2_geval: [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]
+try bi: Een_3-2 [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}]
+no correction for bigram: Een_3-2 [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}]
+try unigramm: Een [ <w xml:id='p8.1" > {<t>,}]
+Een = 2 => Een
+Een = 3 => Een extra_skip=0
+trigram is: '3-2_geval:_Rhode'
+no correction for trigram: 3-2_geval:_Rhode [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]
+try bi: 3-2_geval: [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]
+no correction for bigram: 3-2_geval: [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]
+try unigramm: 3-2 [ <w xml:id='p8.2" > {<t>,}]
+3-2 = 2 => 3-2
+3-2 = 3 => 3-2 extra_skip=0
+trigram is: 'geval:_Rhode_I'
+no correction for trigram: geval:_Rhode_I [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}, <w xml:id='p8.5" > {<t>,}]
+try bi: geval:_Rhode [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]
+no correction for bigram: geval:_Rhode [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]
+try unigramm: geval: [ <w xml:id='p8.3" > {<t>,}]
+geval: = 2 => geval:
+geval: = 3 => geval: extra_skip=0
+trigram is: 'Rhode_I_Land'
+Rhode_I_Land = 3-2 => Rhode Island
+store OV:  <w xml:id='p8.4" > {<t>,}
+store OV:  <w xml:id='p8.5" > {<t>,}
+store OV:  <w xml:id='p8.6" > {<t>,}
+created:  <correction xml:id='p8.correction.1" > {<new>,<original>,<suggestion>,}
+Rhode_I_Land = 3 => Rhode Island extra_skip=2
+ corrected ngrams: 'Een 3-2 geval: Rhode Island'
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1196,6 +1256,7 @@ edit statistics:
 	2-1	1
 	2-2	1
 	3-1	1
+	3-2	1
 	3-3	1
-	TOKENS	40
+	TOKENS	46
 	UNK	1

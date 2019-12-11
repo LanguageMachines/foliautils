@@ -85,6 +85,16 @@
 	  <w xml:id="p7.4"><t class="Test">en</t></w>
 	  <w xml:id="p7.5"><t class="Test">trigram.</t></w>
         </p>
+        <p xml:id="p8">
+          <t class="Test">Een 3-2 geval: Rhode I Land</t>
+          <lang class="dut"/>
+	  <w xml:id="p8.1"><t class="Test">Een</t></w>
+	  <w xml:id="p8.2"><t class="Test">3-2</t></w>
+	  <w xml:id="p8.3"><t class="Test">geval:</t></w>
+	  <w xml:id="p8.4"><t class="Test">Rhode</t></w>
+	  <w xml:id="p8.5"><t class="Test">I</t></w>
+	  <w xml:id="p8.6"><t class="Test">Land</t></w>
+        </p>
       </div>
     </div>
   </text>
