@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="testdoc" generator="libfolia-v1.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="testdoc" generator="libfolia-v1.4" version="2.2.0">
   <metadata type="native">
     <annotations>
+      <head-annotation/>
+      <paragraph-annotation/>
+      <token-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
     </annotations>

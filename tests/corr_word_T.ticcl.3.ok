@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="testdoc" generator="libfolia-v2.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="testdoc" generator="libfolia-v2.4" version="2.2.0">
   <metadata type="native">
     <annotations>
+      <head-annotation/>
+      <paragraph-annotation/>
+      <token-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <correction-annotation set="Ticcl-set">
         <annotator processor="FoLiA-correct.1"/>
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T13:01:39" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T13:52:47" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -74,10 +77,11 @@
           </correction>
           <w xml:id="p2.4">
             <t class="Test">van</t>
+            <t class="Ticcl" offset="27">van</t>
           </w>
           <w xml:id="p2.5">
             <t class="Test">de</t>
-            <t class="Ticcl" offset="27">de</t>
+            <t class="Ticcl" offset="31">de</t>
           </w>
         </p>
         <p xml:id="p3">

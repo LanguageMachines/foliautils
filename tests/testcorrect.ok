@@ -873,7 +873,7 @@ bigram is: 'Wijsiging_van [ <w xml:id='p2.3" > {<t>,}, <w xml:id='p2.4" > {<t>,}
 Wijsiging_van = 2-2 => Wijziging van
 created:  <correction xml:id='p2.correction.1" > {<new>,<original>,}
 Wijsiging_van = 2 => Wijziging van
-bigram is: 'van_de [ <w xml:id='p2.4" > {<t>,}, <w xml:id='p2.5" > {<t>,}]'
+bigram is: 'van_de [ <w xml:id='p2.4" > {<t>,<t>,}, <w xml:id='p2.5" > {<t>,}]'
 corrected 2-grams uit: 'het wetsvoorstel Wijziging van de' (Ticcl)
 
    correct 2-grams in: 'Wet opde omzetbelasting 1998.' (Test)
