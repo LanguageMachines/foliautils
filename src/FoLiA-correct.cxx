@@ -814,12 +814,28 @@ void apply_tri_correction( const gram_r& corr,
     else {
       Correction *c = 0;
       if ( corr._ed_type == "3-4"
-	   || corr._ed_type == "3-5" ){
+	   || corr._ed_type == "3-5" ){ // ????
 	c = split_bigram( corr, offset, doStrings );
       }
-      else if ( corr._ed_type == "3-1"
-		|| corr._ed_type == "3-2" ){
+      else if ( corr._ed_type == "3-1" ){
 	c = merge_bigram( corr, offset, doStrings );
+      }
+      else if ( corr._ed_type == "3-2" ){
+	if ( corr._orig[0] == corr._result[0] ){
+	  gram_r tmp = corr;
+	  tmp._orig.erase(tmp._orig.begin());
+	  tmp._result.erase(tmp._result.begin());
+	  tmp._words.erase(tmp._words.begin());
+	  tmp._ed_type = "2-1";
+	  corr._words[0]->settext( corr._orig.front(),
+				   offset,
+				   output_classname );
+	  offset += corr._orig.front().size() + 1;
+	  c = merge_bigram( tmp, offset, doStrings );
+	}
+	else {
+	  c = merge_bigram( corr, offset, doStrings );
+	}
       }
       else if ( corr._ed_type == "3-3" ){
 	gram_r tmp = corr;
