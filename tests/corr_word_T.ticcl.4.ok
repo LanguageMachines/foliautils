@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T13:53:50" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-18T17:13:19" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=3 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -300,19 +300,17 @@
             <t class="Test">geval:</t>
             <t class="Ticcl" offset="8">geval:</t>
           </w>
+          <w xml:id="p8.4">
+            <t class="Test">Rhode</t>
+            <t class="Ticcl" offset="15">Rhode</t>
+          </w>
           <correction xml:id="p8.correction.1">
             <new>
-              <w xml:id="p8.4.merge.1">
-                <t class="Ticcl" offset="15">Rhode</t>
-              </w>
-              <w xml:id="p8.4.merge.2">
+              <w xml:id="p8.5.merge.1">
                 <t class="Ticcl" offset="21">Island</t>
               </w>
             </new>
             <original auth="no">
-              <w xml:id="p8.4">
-                <t class="Test">Rhode</t>
-              </w>
               <w xml:id="p8.5">
                 <t class="Test">I</t>
               </w>
