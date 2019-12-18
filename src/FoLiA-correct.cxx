@@ -1117,12 +1117,12 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 
 //#define TEST_HEMP
 
-void correctNgrams( Paragraph* par,
+void correctNgrams( FoliaElement* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
 		    const unordered_set<string>& unknowns,
 		    const unordered_map<string,string>& puncts,
-		    unordered_map<string,size_t>& counts,
-		    bool doStrings ){
+		    unordered_map<string,size_t>& counts ){
+  bool doStrings = false;
   vector<FoliaElement*> ev;
   vector<Word*> sv = par->select<Word>();
   if ( sv.size() > 0 ){
@@ -1264,7 +1264,7 @@ bool correctDoc( Document *doc,
 		 const unordered_map<string,vector<word_conf> >& variants,
 		 const unordered_set<string>& unknowns,
 		 const unordered_map<string,string>& puncts,
-		 bool string_nodes,
+		 list<ElementType>& tag_list,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
 		 const string& outName ){
@@ -1286,10 +1286,17 @@ bool correctDoc( Document *doc,
   KWargs args;
   args["processor"] = proc->id();
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
-  vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
-  for( const auto& par : pv ){
+  vector<FoliaElement*> ev;
+  for ( const auto& et : tag_list ){
+    vector<FoliaElement*> v1 = doc->doc()->select( et );
+    if ( !v1.empty() ){
+      ev = v1;
+      break;
+    }
+  }
+  for( const auto& par : ev ){
     try {
-      correctNgrams( par, variants, unknowns, puncts, counts, string_nodes );
+      correctNgrams( par, variants, unknowns, puncts, counts );
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -1307,18 +1314,14 @@ bool correctDoc( Document *doc,
 
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
-  cerr << "\t--inputclass\t classname. (default '" << input_classname << "')" << endl;
-  cerr << "\t--outputclass\t classname. (default '" << output_classname << "')" << endl;
-  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
-  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
-  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
-  cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
-  cerr << "\t--ngram\t n analyse upto n N-grams." << endl;
-  cerr << "\t-h or --help\t this message " << endl;
-  cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
+  cerr << "\t--inputclass\t classname. (default '" << input_classname << "')" << endl;
+  cerr << "\t--outputclass\t classname. (default '" << output_classname << "')" << endl;
+  cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
+  cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
+  cerr << "\t--ngram\t n analyse upto n N-grams." << endl;
+  cerr << "\t--tags='tags' correct word/string nodes under all nodes in the list 'tags' (default='p')" << endl;
   cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t--unk 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
@@ -1326,6 +1329,11 @@ void usage( const string& name ){
   cerr << "\t--rank 'vname'\t name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean" << endl;
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
+  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
+  cerr << "\t-h or --help\t this message " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
 }
 
 void checkFile( const string& what, const string& name, const string& ext ){
@@ -1343,7 +1351,7 @@ int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
 			 "class:,inputclass:,outputclass:,setname:,clear,unk:,"
 			 "rank:,punct:,nums:,version,help,ngram:,string-nodes,"
-			 "word-nodes,punctseparator:,threads:" );
+			 "word-nodes,punctseparator:,threads:,tags:" );
   try {
     opts.init( argc, argv );
   }
@@ -1444,6 +1452,29 @@ int main( int argc, const char *argv[] ){
   if ( word_nodes ){
     cerr << "--word-nodes no longer needed" << endl;
   }
+
+  list<ElementType> tag_list;
+  string tagsstring;
+  opts.extract( "tags", tagsstring );
+  if ( !tagsstring.empty() ){
+    vector<string> parts = TiCC::split_at( tagsstring, "," );
+    for( const auto& t : parts ){
+      ElementType et;
+      try {
+	et = TiCC::stringTo<ElementType>( t );
+      }
+      catch ( ... ){
+	cerr << "in option --tags, the string '" << t
+	     << "' doesn't represent a known FoLiA tag" << endl;
+	exit(EXIT_FAILURE);
+      }
+      tag_list.push_back( et );
+    }
+  }
+  else {
+    tag_list.push_back(Paragraph_t);
+  }
+
   vector<string> file_names = opts.getMassOpts();
   if ( file_names.size() == 0 ){
     cerr << "missing input file or directory" << endl;
@@ -1610,7 +1641,7 @@ int main( int argc, const char *argv[] ){
 	     << doc->filename() << endl;
       }
       if ( correctDoc( doc, variants, unknowns, puncts,
-		       string_nodes, counts,
+		       tag_list, counts,
 		       orig_command, outName ) ){
 #pragma omp critical
 	{
