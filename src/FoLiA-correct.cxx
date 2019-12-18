@@ -27,6 +27,7 @@
 #include <cstdio>
 #include <cassert>
 #include <string>
+#include <algorithm>
 #include <map>
 #include <unordered_map>
 #include <unordered_set>
@@ -61,6 +62,7 @@ string input_classname = "current";
 string output_classname = "Ticcl";
 string setname = "Ticcl-set";
 string punct_sep = " ";
+size_t ngram_size = 1;
 
 struct word_conf {
   word_conf(){};
@@ -153,19 +155,31 @@ bool fillVariants( const string& fn,
 	 || parts.size() == 7 // chained ranking
 	 ){
       string word = parts[0];
+      size_t seps = count(word.begin(),word.end(),SEPCHAR);
+      if ( seps >= ngram_size ){
+	// skip 'too long' n-gram words
+	continue;
+      }
       if ( current_word.empty() )
 	current_word = word;
 
       if ( word != current_word ){
 	// finish previous word
-	if ( vec.size() > numSugg ){
-	  vec.resize( numSugg );
+	if ( vec.size() > 0 ){
+	  if ( vec.size() > numSugg ){
+	    vec.resize( numSugg );
+	  }
+	  variants[current_word] = vec;
+	  vec.clear();
 	}
-	variants[current_word] = vec;
-	vec.clear();
 	current_word = word;
       }
       string trans = parts[2];
+      seps = count(trans.begin(),trans.end(),SEPCHAR);
+      if ( seps >= ngram_size ){
+	// skip 'too long' n-gram variants
+	continue;
+      }
       string confS = parts[5]; // WILL FAIL for chained rank files
       double d;
       if ( !TiCC::stringTo<double>( confS, d ) ){
@@ -182,7 +196,6 @@ bool fillVariants( const string& fn,
       vec.resize( numSugg );
     }
     variants[current_word] = vec;
-    vec.clear();
   }
   return !variants.empty();
 }
@@ -290,6 +303,7 @@ Correction *split_unigram( const gram_r& corr,
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
+  doStrings = false;
   oV.push_back( corr._words[0] );
   for ( const auto& p : corr._result ){
     KWargs args;
@@ -393,10 +407,16 @@ gram_r correct_one_unigram( const gram_r& uni,
   string word = uni.orig_text();
   string orig_word = word;
   string final_punct;
-  const auto pit = puncts.find( word );
-  if ( pit != puncts.end() ){
-    final_punct = test_final_punct( word, pit->second );
-    word = pit->second;
+  if ( ngram_size > 1 ){
+    const auto pit = puncts.find( word );
+    if ( pit != puncts.end() ){
+      final_punct = test_final_punct( word, pit->second );
+      word = pit->second;
+      if ( verbose > 2 ){
+	cout << "final punct found: " << final_punct << endl;
+	cout << "depuncted word   : " << word << endl;
+      }
+    }
   }
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
@@ -670,13 +690,15 @@ int correct_one_bigram( const gram_r& bi,
   filter(word);
   string orig_word = word;
   string final_punct;
-  const auto pit = puncts.find( word );
-  if ( pit != puncts.end() ){
-    final_punct = test_final_punct( word, pit->second );
-    word = pit->second;
-    if ( verbose > 2 ){
-      cout << "final punct found: " << final_punct << endl;
-      cout << "depuncted word   : " << word << endl;
+  if ( ngram_size > 1 ){
+    const auto pit = puncts.find( word );
+    if ( pit != puncts.end() ){
+      final_punct = test_final_punct( word, pit->second );
+      word = pit->second;
+      if ( verbose > 2 ){
+	cout << "final punct found: " << final_punct << endl;
+	cout << "depuncted word   : " << word << endl;
+      }
     }
   }
   const auto vit = variants.find( word );
@@ -854,10 +876,16 @@ int correct_one_trigram( const gram_r& tri,
   filter(word);
   string orig_word = word;
   string final_punct;
-  const auto pit = puncts.find( word );
-  if ( pit != puncts.end() ){
-    final_punct = test_final_punct( word, pit->second );
-    word = pit->second;
+  if ( ngram_size > 1 ){
+    const auto pit = puncts.find( word );
+    if ( pit != puncts.end() ){
+      final_punct = test_final_punct( word, pit->second );
+      word = pit->second;
+      if ( verbose > 2 ){
+	cout << "final punct found: " << final_punct << endl;
+	cout << "depuncted word   : " << word << endl;
+      }
+    }
   }
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
@@ -1093,20 +1121,23 @@ void correctNgrams( Paragraph* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
 		    const unordered_set<string>& unknowns,
 		    const unordered_map<string,string>& puncts,
-		    int ngrams,
 		    unordered_map<string,size_t>& counts,
 		    bool doStrings ){
   vector<FoliaElement*> ev;
-  if ( doStrings ){
-    vector<String*> sv = par->select<String>();
+  vector<Word*> sv = par->select<Word>();
+  if ( sv.size() > 0 ){
     ev.resize(sv.size());
     copy( sv.begin(), sv.end(), ev.begin() );
   }
   else {
-    vector<Word*> sv = par->select<Word>();
-    ev.resize(sv.size());
-    copy( sv.begin(), sv.end(), ev.begin() );
+    vector<String*> sv = par->select<String>();
+    if ( sv.size() > 0 ){
+      doStrings = true;
+      ev.resize(sv.size());
+      copy( sv.begin(), sv.end(), ev.begin() );
+    }
   }
+
   vector<gram_r> unigrams;
 #ifdef TEST_HEMP
   vector<string> grams = {"Als","N","A","P","O","L","E","O","N",")A",
@@ -1158,7 +1189,7 @@ void correctNgrams( Paragraph* par,
   if ( verbose > 1 ){
 #pragma omp critical
     {
-      cout << "\n   correct " << ngrams << "-grams in: '" << inval
+      cout << "\n   correct " << ngram_size << "-grams in: '" << inval
 	   << "' (" << input_classname
 	   << ")" << endl;
     }
@@ -1173,7 +1204,7 @@ void correctNgrams( Paragraph* par,
   vector<gram_r> bigrams;
   vector<gram_r> trigrams;
   counts["TOKENS"] += unigrams.size();
-  if ( ngrams > 1  && unigrams.size() > 1 ){
+  if ( ngram_size > 1  && unigrams.size() > 1 ){
     bigrams = unigrams;
     bigrams.pop_back();
     for ( size_t i=0; i < unigrams.size()-1; ++i ){
@@ -1184,7 +1215,7 @@ void correctNgrams( Paragraph* par,
       cout << "BIGRAMS:\n" << bigrams << endl;
     }
   }
-  if ( ngrams > 2 && unigrams.size() > 2 ){
+  if ( ngram_size > 2 && unigrams.size() > 2 ){
     trigrams = unigrams;
     trigrams.pop_back();
     trigrams.pop_back();
@@ -1220,7 +1251,7 @@ void correctNgrams( Paragraph* par,
   if ( verbose > 1 ){
 #pragma omp critical
     {
-      cout << "corrected " << ngrams << "-grams uit: '"
+      cout << "corrected " << ngram_size << "-grams uit: '"
 	   << corrected << "' (" << output_classname << ")" << endl;
     }
   }
@@ -1233,7 +1264,6 @@ bool correctDoc( Document *doc,
 		 const unordered_map<string,vector<word_conf> >& variants,
 		 const unordered_set<string>& unknowns,
 		 const unordered_map<string,string>& puncts,
-		 int ngrams,
 		 bool string_nodes,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
@@ -1259,7 +1289,7 @@ bool correctDoc( Document *doc,
   vector<Paragraph*> pv = doc->doc()->select<Paragraph>();
   for( const auto& par : pv ){
     try {
-      correctNgrams( par, variants, unknowns, puncts, ngrams, counts, string_nodes );
+      correctNgrams( par, variants, unknowns, puncts, counts, string_nodes );
     }
     catch ( exception& e ){
 #pragma omp critical
@@ -1284,9 +1314,7 @@ void usage( const string& name ){
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
-  cerr << "\t--ngram\t n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes" << endl;
-  cerr << "\t--string-nodes\t Only for UNIGRAMS: descend into <str> nodes. " << endl;
-  cerr << "\t--word-nodes\t Only for UNIGRAMS: descend into <w> nodes. " << endl;
+  cerr << "\t--ngram\t n analyse upto n N-grams." << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
@@ -1327,7 +1355,6 @@ int main( int argc, const char *argv[] ){
   string progname = opts.prog_name();
   int numThreads = 1;
   size_t numSugg = 10;
-  int ngram = 1;
   bool recursiveDirs = false;
   bool clear = false;
   bool string_nodes = false;
@@ -1402,18 +1429,20 @@ int main( int argc, const char *argv[] ){
 #endif
   }
   if ( opts.extract( "ngram", value ) ){
-    if ( !TiCC::stringTo( value, ngram )
-	 || ngram > 3
-	 || ngram < 0 ){
+    if ( !TiCC::stringTo( value, ngram_size )
+	 || ngram_size > 3
+	 || ngram_size < 1 ){
       cerr << "unsupported value for --ngram (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
   }
   string_nodes = opts.extract( "string-nodes" );
+  if ( string_nodes ){
+    cerr << "--string-nodes no longer needed" << endl;
+  }
   word_nodes = opts.extract( "word-nodes" );
-  if ( string_nodes && word_nodes ){
-    cerr << "--string-nodes and --word-nodes conflict" << endl;
-    exit(EXIT_FAILURE);
+  if ( word_nodes ){
+    cerr << "--word-nodes no longer needed" << endl;
   }
   vector<string> file_names = opts.getMassOpts();
   if ( file_names.size() == 0 ){
@@ -1577,10 +1606,11 @@ int main( int argc, const char *argv[] ){
       unordered_map<string,size_t> counts;
 #pragma omp critical
       {
-	cerr << "start correcting file: " << doc->filename() << endl;
+	cerr << "start " << ngram_size << "-gram correcting in file: "
+	     << doc->filename() << endl;
       }
       if ( correctDoc( doc, variants, unknowns, puncts,
-		       ngram, string_nodes, counts,
+		       string_nodes, counts,
 		       orig_command, outName ) ){
 #pragma omp critical
 	{
