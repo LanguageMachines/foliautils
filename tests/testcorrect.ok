@@ -9,9 +9,7 @@ Usage: [options] file/dir
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	--nums	 max number_of_suggestions. (default 10)
-	--ngram	 n analyse upto n N-grams. for n=1 see --string-nodes/--word-nodes
-	--string-nodes	 Only for UNIGRAMS: descend into <str> nodes. 
-	--word-nodes	 Only for UNIGRAMS: descend into <w> nodes. 
+	--ngram	 n analyse upto n N-grams.
 	-h or --help	 this message 
 	-V or --version	 show version 
 	 FoLiA-correct will correct FoLiA files 
@@ -24,65 +22,17 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 start reading variants 
-read 9 variants 
+read 1 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr_str.xml
+start 1-gram correcting in file: data/corr_str.xml
 
    correct 1-grams in: '40ste vergadering?' (current)
 correct unigrams
-unigram corrections:
-vergadering? : vergadering ?
-corrected 1-grams uit: '40ste vergadering ?' (Ticcl)
-
-   correct 1-grams in: '2003-2004' (current)
-correct unigrams
-corrected 1-grams uit: '2003-2004' (Ticcl)
-
-   correct 1-grams in: '40' (current)
-correct unigrams
-corrected 1-grams uit: '40' (Ticcl)
-
-   correct 1-grams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
-correct unigrams
-behándeling = 1-1 => behandeling
-unigram corrections:
-behándeling : behandeling
-opde = 1-2 => op de
-unigram corrections:
-opde : op de
-corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1968.' (Ticcl)
-
-   correct 1-grams in: 'Deze wet svoorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
-correct unigrams
-unigram corrections:
-s4s67621 : UNK
-corrected 1-grams uit: 'Deze wet svoorstellen worden zonder UNK en zonder steming aangenomen .' (Ticcl)
-finished data/corr_str.xml
-edit statistics: 
-	edit	 count
-	1-1	1
-	1-2	1
-	TOKENS	31
-	UNK	1
-start reading variants 
-read 9 variants 
-start reading unknowns 
-read 2 unknown words 
-start reading puncts 
-read 14 punctuated words 
-verbosity = 2
-start correcting file: data/corr_str.xml
-
-   correct 1-grams in: '40ste vergadering?' (current)
-correct unigrams
-unigram corrections:
-vergadering? : vergadering ?
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1.correction.1" > {<new>,<original>,}
-corrected 1-grams uit: '40ste vergadering ?' (Ticcl)
+corrected 1-grams uit: '40ste vergadering?' (Ticcl)
 
    correct 1-grams in: '2003-2004' (current)
 correct unigrams
@@ -98,11 +48,7 @@ behándeling = 1-1 => behandeling
 unigram corrections:
 behándeling : behandeling
 created:  <correction xml:id='p4.6.correction.1" > {<new>,<original>,<suggestion>,}
-opde = 1-2 => op de
-unigram corrections:
-opde : op de
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,<suggestion>,}
-corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet op de omzetbelasting 1968.' (Ticcl)
+corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet opde omzetbelasting 1968.' (Ticcl)
 
    correct 1-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
 correct unigrams
@@ -114,17 +60,59 @@ finished data/corr_str.xml
 edit statistics: 
 	edit	 count
 	1-1	1
-	1-2	1
 	TOKENS	31
 	UNK	1
+--string-nodes no longer needed
 start reading variants 
-read 9 variants 
+read 1 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr_word.xml
+start 1-gram correcting in file: data/corr_str.xml
+
+   correct 1-grams in: '40ste vergadering?' (current)
+correct unigrams
+corrected 1-grams uit: '40ste vergadering?' (Ticcl)
+
+   correct 1-grams in: '2003-2004' (current)
+correct unigrams
+corrected 1-grams uit: '2003-2004' (Ticcl)
+
+   correct 1-grams in: '40' (current)
+correct unigrams
+corrected 1-grams uit: '40' (Ticcl)
+
+   correct 1-grams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de wet opde omzetbelasting 1968.' (current)
+correct unigrams
+behándeling = 1-1 => behandeling
+unigram corrections:
+behándeling : behandeling
+created:  <correction xml:id='p4.6.correction.1" > {<new>,<original>,<suggestion>,}
+corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet opde omzetbelasting 1968.' (Ticcl)
+
+   correct 1-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
+correct unigrams
+unigram corrections:
+s4s67621 : UNK
+created:  <correction xml:id='p5.6.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
+finished data/corr_str.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	TOKENS	31
+	UNK	1
+--word-nodes no longer needed
+start reading variants 
+read 1 variants 
+start reading unknowns 
+read 2 unknown words 
+start reading puncts 
+read 14 punctuated words 
+verbosity = 2
+start 1-gram correcting in file: data/corr_word.xml
 
    correct 1-grams in: '40ste vergadering' (current)
 correct unigrams
@@ -144,14 +132,7 @@ behándeling = 1-1 => behandeling
 unigram corrections:
 behándeling : behandeling
 created:  <correction xml:id='p4.6.correction.1" > {<new>,<original>,<suggestion>,}
-opde = 1-2 => op de
-unigram corrections:
-opde : op de
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,<suggestion>,}
-unigram corrections:
-1998. : 1998 .
-created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.2" > {<new>,<original>,}
-corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet op de omzetbelasting 1998 .' (Apple)
+corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Apple)
 
    correct 1-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
 correct unigrams
@@ -163,18 +144,17 @@ finished data/corr_word.xml
 edit statistics: 
 	edit	 count
 	1-1	1
-	1-2	1
 	TOKENS	31
 	UNK	1
 inputclass and outputclass are the same
 start reading variants 
-read 9 variants 
+read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr.xml
+start 2-gram correcting in file: data/corr.xml
 
    correct 2-grams in: '40ste vergadering' (current)
 correct bigrams
@@ -315,7 +295,7 @@ read 2 unknown words
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr.xml
+start 3-gram correcting in file: data/corr.xml
 
    correct 3-grams in: '40ste vergadering' (current)
 correct bigrams
@@ -505,7 +485,7 @@ read 2 unknown words
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr.folia.xml
+start 3-gram correcting in file: data/corr.folia.xml
 
    correct 3-grams in: '40ste vergadering' (current)
 correct bigrams
@@ -688,14 +668,15 @@ edit statistics:
 	3-3	1
 	TOKENS	31
 	UNK	1
+--word-nodes no longer needed
 start reading variants 
-read 9 variants 
+read 1 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr_word_T.xml
+start 1-gram correcting in file: data/corr_word_T.xml
 
    correct 1-grams in: 'de behándeling van:' (Test)
 correct unigrams
@@ -711,14 +692,7 @@ corrected 1-grams uit: 'het wetsvoorstel Wijsiging van de' (Apple)
 
    correct 1-grams in: 'Wet opde omzetbelasting 1998.' (Test)
 correct unigrams
-opde = 1-2 => op de
-unigram corrections:
-opde : op de
-created:  <correction xml:id='p3.correction.1" > {<new>,<original>,<suggestion>,}
-unigram corrections:
-1998. : 1998 .
-created:  <correction xml:id='p3.correction.2" > {<new>,<original>,}
-corrected 1-grams uit: 'Wet op de omzetbelasting 1998 .' (Apple)
+corrected 1-grams uit: 'Wet opde omzetbelasting 1998.' (Apple)
 
    correct 1-grams in: 'Deze wets voorstellen' (Test)
 correct unigrams
@@ -733,11 +707,7 @@ corrected 1-grams uit: 'ze worden zonder UNK en zonder steming aangenomen .' (Ap
 
    correct 1-grams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
 correct unigrams
-runonvanwoorden = 1-3 => runon van woorden
-unigram corrections:
-runonvanwoorden : runon van woorden
-created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
-corrected 1-grams uit: 'Deze runon van woorden is oplosbaar.' (Apple)
+corrected 1-grams uit: 'Deze runonvanwoorden is oplosbaar.' (Apple)
 
    correct 1-grams in: 'Een ge splet en trigram.' (Test)
 correct unigrams
@@ -749,99 +719,229 @@ corrected 1-grams uit: 'Een 3-2 geval: Rhode I Land' (Apple)
 
    correct 1-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
 correct unigrams
-unigram corrections:
-groenehuis. : groenehuis .
-created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
-corrected 1-grams uit: 'Een 2-3 geval: He groenehuis .' (Apple)
+corrected 1-grams uit: 'Een 2-3 geval: He groenehuis.' (Apple)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
-	1-2	1
-	1-3	1
 	TOKENS	44
 	UNK	1
 start reading variants 
-read 9 variants 
+read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr_word_T.xml
+start 2-gram correcting in file: data/corr_word_T.xml
 
-   correct 1-grams in: 'de behándeling van:' (Test)
-correct unigrams
+   correct 2-grams in: 'de behándeling van:' (Test)
+correct bigrams
+bigram is: 'de_behándeling [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]'
+no correction for bigram: de_behándeling [ <w xml:id='p1.1" > {<t>,}, <w xml:id='p1.2" > {<t>,}]
+try unigram: de [ <w xml:id='p1.1" > {<t>,}]
+de = 2 => de
+bigram is: 'behándeling_van: [ <w xml:id='p1.2" > {<t>,}, <w xml:id='p1.3" > {<t>,}]'
+no correction for bigram: behándeling_van: [ <w xml:id='p1.2" > {<t>,}, <w xml:id='p1.3" > {<t>,}]
+try unigram: behándeling [ <w xml:id='p1.2" > {<t>,}]
 behándeling = 1-1 => behandeling
 unigram corrections:
 behándeling : behandeling
 created:  <correction xml:id='p1.2.correction.1" > {<new>,<original>,<suggestion>,}
-corrected 1-grams uit: 'de behandeling van:' (Apple)
+behándeling = 2 => behandeling
+corrected 2-grams uit: 'de behandeling van:' (Apple)
 
-   correct 1-grams in: 'het wetsvoorstel Wijsiging van de' (Test)
-correct unigrams
-corrected 1-grams uit: 'het wetsvoorstel Wijsiging van de' (Apple)
+   correct 2-grams in: 'het wetsvoorstel Wijsiging van de' (Test)
+correct bigrams
+bigram is: 'het_wetsvoorstel [ <w xml:id='p2.1" > {<t>,}, <w xml:id='p2.2" > {<t>,}]'
+no correction for bigram: het_wetsvoorstel [ <w xml:id='p2.1" > {<t>,}, <w xml:id='p2.2" > {<t>,}]
+try unigram: het [ <w xml:id='p2.1" > {<t>,}]
+het = 2 => het
+bigram is: 'wetsvoorstel_Wijsiging [ <w xml:id='p2.2" > {<t>,}, <w xml:id='p2.3" > {<t>,}]'
+no correction for bigram: wetsvoorstel_Wijsiging [ <w xml:id='p2.2" > {<t>,}, <w xml:id='p2.3" > {<t>,}]
+try unigram: wetsvoorstel [ <w xml:id='p2.2" > {<t>,}]
+wetsvoorstel = 2 => wetsvoorstel
+bigram is: 'Wijsiging_van [ <w xml:id='p2.3" > {<t>,}, <w xml:id='p2.4" > {<t>,}]'
+Wijsiging_van = 2-2 => Wijziging van
+created:  <correction xml:id='p2.correction.1" > {<new>,<original>,}
+Wijsiging_van = 2 => Wijziging van
+bigram is: 'van_de [ <w xml:id='p2.4" > {<t>,<t>,}, <w xml:id='p2.5" > {<t>,}]'
+corrected 2-grams uit: 'het wetsvoorstel Wijziging van de' (Apple)
 
-   correct 1-grams in: 'Wet opde omzetbelasting 1998.' (Test)
-correct unigrams
+   correct 2-grams in: 'Wet opde omzetbelasting 1998.' (Test)
+correct bigrams
+bigram is: 'Wet_opde [ <w xml:id='p3.1" > {<t>,}, <w xml:id='p3.2" > {<t>,}]'
+no correction for bigram: Wet_opde [ <w xml:id='p3.1" > {<t>,}, <w xml:id='p3.2" > {<t>,}]
+try unigram: Wet [ <w xml:id='p3.1" > {<t>,}]
+Wet = 2 => Wet
+bigram is: 'opde_omzetbelasting [ <w xml:id='p3.2" > {<t>,}, <w xml:id='p3.3" > {<t>,}]'
+no correction for bigram: opde_omzetbelasting [ <w xml:id='p3.2" > {<t>,}, <w xml:id='p3.3" > {<t>,}]
+try unigram: opde [ <w xml:id='p3.2" > {<t>,}]
 opde = 1-2 => op de
 unigram corrections:
 opde : op de
 created:  <correction xml:id='p3.correction.1" > {<new>,<original>,<suggestion>,}
+opde = 2 => op de
+bigram is: 'omzetbelasting_1998. [ <w xml:id='p3.3" > {<t>,}, <w xml:id='p3.4" > {<t>,}]'
+no correction for bigram: omzetbelasting_1998. [ <w xml:id='p3.3" > {<t>,}, <w xml:id='p3.4" > {<t>,}]
+try unigram: omzetbelasting [ <w xml:id='p3.3" > {<t>,}]
+omzetbelasting = 2 => omzetbelasting
 unigram corrections:
 1998. : 1998±.
 created:  <correction xml:id='p3.4.correction.1" > {<new>,<original>,}
-corrected 1-grams uit: 'Wet op de omzetbelasting 1998±.' (Apple)
+corrected 2-grams uit: 'Wet op de omzetbelasting 1998±.' (Apple)
 
-   correct 1-grams in: 'Deze wets voorstellen' (Test)
-correct unigrams
-corrected 1-grams uit: 'Deze wets voorstellen' (Apple)
+   correct 2-grams in: 'Deze wets voorstellen' (Test)
+correct bigrams
+bigram is: 'Deze_wets [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}]'
+no correction for bigram: Deze_wets [ <w xml:id='p4.1" > {<t>,}, <w xml:id='p4.2" > {<t>,}]
+try unigram: Deze [ <w xml:id='p4.1" > {<t>,}]
+Deze = 2 => Deze
+bigram is: 'wets_voorstellen [ <w xml:id='p4.2" > {<t>,}, <w xml:id='p4.3" > {<t>,}]'
+wets_voorstellen = 2-1 => wetsvoorstellen
+created:  <correction xml:id='p4.correction.1" > {<new>,<original>,}
+wets_voorstellen = 2 => wetsvoorstellen
+corrected 2-grams uit: 'Deze wetsvoorstellen' (Apple)
 
-   correct 1-grams in: 'ze worden zonder s4s67621 en zonder steming aangenomen .' (Test)
-correct unigrams
+   correct 2-grams in: 'ze worden zonder s4s67621 en zonder steming aangenomen .' (Test)
+correct bigrams
+bigram is: 'ze_worden [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]'
+no correction for bigram: ze_worden [ <w xml:id='p5.1" > {<t>,}, <w xml:id='p5.2" > {<t>,}]
+try unigram: ze [ <w xml:id='p5.1" > {<t>,}]
+ze = 2 => ze
+bigram is: 'worden_zonder [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]'
+no correction for bigram: worden_zonder [ <w xml:id='p5.2" > {<t>,}, <w xml:id='p5.3" > {<t>,}]
+try unigram: worden [ <w xml:id='p5.2" > {<t>,}]
+worden = 2 => worden
+bigram is: 'zonder_s4s67621 [ <w xml:id='p5.3" > {<t>,}, <w xml:id='p5.4" > {<t>,}]'
+no correction for bigram: zonder_s4s67621 [ <w xml:id='p5.3" > {<t>,}, <w xml:id='p5.4" > {<t>,}]
+try unigram: zonder [ <w xml:id='p5.3" > {<t>,}]
+zonder = 2 => zonder
+bigram is: 's4s67621_en [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]'
+no correction for bigram: s4s67621_en [ <w xml:id='p5.4" > {<t>,}, <w xml:id='p5.5" > {<t>,}]
+try unigram: s4s67621 [ <w xml:id='p5.4" > {<t>,}]
 unigram corrections:
 s4s67621 : UNK
 created:  <correction xml:id='p5.4.correction.1" > {<new>,<original>,}
-corrected 1-grams uit: 'ze worden zonder UNK en zonder steming aangenomen .' (Apple)
+s4s67621 = 2 => UNK
+bigram is: 'en_zonder [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]'
+no correction for bigram: en_zonder [ <w xml:id='p5.5" > {<t>,}, <w xml:id='p5.6" > {<t>,}]
+try unigram: en [ <w xml:id='p5.5" > {<t>,}]
+en = 2 => en
+bigram is: 'zonder_steming [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]'
+no correction for bigram: zonder_steming [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}]
+try unigram: zonder [ <w xml:id='p5.6" > {<t>,}]
+zonder = 2 => zonder
+bigram is: 'steming_aangenomen [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]'
+no correction for bigram: steming_aangenomen [ <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]
+try unigram: steming [ <w xml:id='p5.7" > {<t>,}]
+steming = 2 => steming
+bigram is: 'aangenomen_. [ <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]'
+no correction for bigram: aangenomen_. [ <w xml:id='p5.8" > {<t>,}, <w xml:id='p5.9" > {<t>,}]
+try unigram: aangenomen [ <w xml:id='p5.8" > {<t>,}]
+aangenomen = 2 => aangenomen
+corrected 2-grams uit: 'ze worden zonder UNK en zonder steming aangenomen .' (Apple)
 
-   correct 1-grams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
-correct unigrams
-runonvanwoorden = 1-3 => runon van woorden
-unigram corrections:
-runonvanwoorden : runon van woorden
-created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
-corrected 1-grams uit: 'Deze runon van woorden is oplosbaar.' (Apple)
+   correct 2-grams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
+correct bigrams
+bigram is: 'Deze_runonvanwoorden [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}]'
+no correction for bigram: Deze_runonvanwoorden [ <w xml:id='p6.1" > {<t>,}, <w xml:id='p6.2" > {<t>,}]
+try unigram: Deze [ <w xml:id='p6.1" > {<t>,}]
+Deze = 2 => Deze
+bigram is: 'runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]'
+no correction for bigram: runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]
+try unigram: runonvanwoorden [ <w xml:id='p6.2" > {<t>,}]
+runonvanwoorden = 2 => runonvanwoorden
+bigram is: 'is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]'
+no correction for bigram: is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]
+try unigram: is [ <w xml:id='p6.3" > {<t>,}]
+is = 2 => is
+corrected 2-grams uit: 'Deze runonvanwoorden is oplosbaar.' (Apple)
 
-   correct 1-grams in: 'Een ge splet en trigram.' (Test)
-correct unigrams
-corrected 1-grams uit: 'Een ge splet en trigram.' (Apple)
+   correct 2-grams in: 'Een ge splet en trigram.' (Test)
+correct bigrams
+bigram is: 'Een_ge [ <w xml:id='p7.1" > {<t>,}, <w xml:id='p7.2" > {<t>,}]'
+no correction for bigram: Een_ge [ <w xml:id='p7.1" > {<t>,}, <w xml:id='p7.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p7.1" > {<t>,}]
+Een = 2 => Een
+bigram is: 'ge_splet [ <w xml:id='p7.2" > {<t>,}, <w xml:id='p7.3" > {<t>,}]'
+no correction for bigram: ge_splet [ <w xml:id='p7.2" > {<t>,}, <w xml:id='p7.3" > {<t>,}]
+try unigram: ge [ <w xml:id='p7.2" > {<t>,}]
+ge = 2 => ge
+bigram is: 'splet_en [ <w xml:id='p7.3" > {<t>,}, <w xml:id='p7.4" > {<t>,}]'
+no correction for bigram: splet_en [ <w xml:id='p7.3" > {<t>,}, <w xml:id='p7.4" > {<t>,}]
+try unigram: splet [ <w xml:id='p7.3" > {<t>,}]
+splet = 2 => splet
+bigram is: 'en_trigram. [ <w xml:id='p7.4" > {<t>,}, <w xml:id='p7.5" > {<t>,}]'
+no correction for bigram: en_trigram. [ <w xml:id='p7.4" > {<t>,}, <w xml:id='p7.5" > {<t>,}]
+try unigram: en [ <w xml:id='p7.4" > {<t>,}]
+en = 2 => en
+corrected 2-grams uit: 'Een ge splet en trigram.' (Apple)
 
-   correct 1-grams in: 'Een 3-2 geval: Rhode I Land' (Test)
-correct unigrams
-corrected 1-grams uit: 'Een 3-2 geval: Rhode I Land' (Apple)
+   correct 2-grams in: 'Een 3-2 geval: Rhode I Land' (Test)
+correct bigrams
+bigram is: 'Een_3-2 [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}]'
+no correction for bigram: Een_3-2 [ <w xml:id='p8.1" > {<t>,}, <w xml:id='p8.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p8.1" > {<t>,}]
+Een = 2 => Een
+bigram is: '3-2_geval: [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]'
+no correction for bigram: 3-2_geval: [ <w xml:id='p8.2" > {<t>,}, <w xml:id='p8.3" > {<t>,}]
+try unigram: 3-2 [ <w xml:id='p8.2" > {<t>,}]
+3-2 = 2 => 3-2
+bigram is: 'geval:_Rhode [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]'
+no correction for bigram: geval:_Rhode [ <w xml:id='p8.3" > {<t>,}, <w xml:id='p8.4" > {<t>,}]
+try unigram: geval: [ <w xml:id='p8.3" > {<t>,}]
+geval: = 2 => geval:
+bigram is: 'Rhode_I [ <w xml:id='p8.4" > {<t>,}, <w xml:id='p8.5" > {<t>,}]'
+no correction for bigram: Rhode_I [ <w xml:id='p8.4" > {<t>,}, <w xml:id='p8.5" > {<t>,}]
+try unigram: Rhode [ <w xml:id='p8.4" > {<t>,}]
+Rhode = 2 => Rhode
+bigram is: 'I_Land [ <w xml:id='p8.5" > {<t>,}, <w xml:id='p8.6" > {<t>,}]'
+no correction for bigram: I_Land [ <w xml:id='p8.5" > {<t>,}, <w xml:id='p8.6" > {<t>,}]
+try unigram: I [ <w xml:id='p8.5" > {<t>,}]
+I = 2 => I
+corrected 2-grams uit: 'Een 3-2 geval: Rhode I Land' (Apple)
 
-   correct 1-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
-correct unigrams
+   correct 2-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
+correct bigrams
+bigram is: 'Een_2-3 [ <w xml:id='p9.1" > {<t>,}, <w xml:id='p9.2" > {<t>,}]'
+no correction for bigram: Een_2-3 [ <w xml:id='p9.1" > {<t>,}, <w xml:id='p9.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p9.1" > {<t>,}]
+Een = 2 => Een
+bigram is: '2-3_geval: [ <w xml:id='p9.2" > {<t>,}, <w xml:id='p9.3" > {<t>,}]'
+no correction for bigram: 2-3_geval: [ <w xml:id='p9.2" > {<t>,}, <w xml:id='p9.3" > {<t>,}]
+try unigram: 2-3 [ <w xml:id='p9.2" > {<t>,}]
+2-3 = 2 => 2-3
+bigram is: 'geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}]'
+no correction for bigram: geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4" > {<t>,}]
+try unigram: geval: [ <w xml:id='p9.3" > {<t>,}]
+geval: = 2 => geval:
+bigram is: 'He_groenehuis. [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]'
+no correction for bigram: He_groenehuis. [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
+try unigram: He [ <w xml:id='p9.4" > {<t>,}]
+He = 2 => He
 unigram corrections:
 groenehuis. : groenehuis±.
 created:  <correction xml:id='p9.5.correction.1" > {<new>,<original>,}
-corrected 1-grams uit: 'Een 2-3 geval: He groenehuis±.' (Apple)
+corrected 2-grams uit: 'Een 2-3 geval: He groenehuis±.' (Apple)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	1-3	1
+	2-1	1
+	2-2	1
 	TOKENS	44
 	UNK	1
+--word-nodes no longer needed
 start reading variants 
-read 9 variants 
+read 4 variants 
 start reading unknowns 
 read 2 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr_word_T.xml
+start 2-gram correcting in file: data/corr_word_T.xml
 
    correct 2-grams in: 'de behándeling van:' (Test)
 correct bigrams
@@ -959,16 +1059,12 @@ Deze = 2 => Deze
 bigram is: 'runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]'
 no correction for bigram: runonvanwoorden_is [ <w xml:id='p6.2" > {<t>,}, <w xml:id='p6.3" > {<t>,}]
 try unigram: runonvanwoorden [ <w xml:id='p6.2" > {<t>,}]
-runonvanwoorden = 1-3 => runon van woorden
-unigram corrections:
-runonvanwoorden : runon van woorden
-created:  <correction xml:id='p6.correction.1" > {<new>,<original>,<suggestion>,}
-runonvanwoorden = 2 => runon van woorden
+runonvanwoorden = 2 => runonvanwoorden
 bigram is: 'is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]'
 no correction for bigram: is_oplosbaar. [ <w xml:id='p6.3" > {<t>,}, <w xml:id='p6.4" > {<t>,}]
 try unigram: is [ <w xml:id='p6.3" > {<t>,}]
 is = 2 => is
-corrected 2-grams uit: 'Deze runon van woorden is oplosbaar.' (Ticcl)
+corrected 2-grams uit: 'Deze runonvanwoorden is oplosbaar.' (Ticcl)
 
    correct 2-grams in: 'Een ge splet en trigram.' (Test)
 correct bigrams
@@ -1029,21 +1125,23 @@ no correction for bigram: geval:_He [ <w xml:id='p9.3" > {<t>,}, <w xml:id='p9.4
 try unigram: geval: [ <w xml:id='p9.3" > {<t>,}]
 geval: = 2 => geval:
 bigram is: 'He_groenehuis. [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]'
-He_groenehuis = 2-3 => Het groene huis .
+no correction for bigram: He_groenehuis. [ <w xml:id='p9.4" > {<t>,}, <w xml:id='p9.5" > {<t>,}]
+try unigram: He [ <w xml:id='p9.4" > {<t>,}]
+He = 2 => He
+unigram corrections:
+groenehuis. : groenehuis .
 created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
-He_groenehuis. = 2 => Het groene huis .
-corrected 2-grams uit: 'Een 2-3 geval: Het groene huis .' (Ticcl)
+corrected 2-grams uit: 'Een 2-3 geval: He groenehuis .' (Ticcl)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
 	1-2	1
-	1-3	1
 	2-1	1
 	2-2	1
-	2-3	1
 	TOKENS	44
 	UNK	1
+--word-nodes no longer needed
 start reading variants 
 read 9 variants 
 start reading unknowns 
@@ -1051,7 +1149,7 @@ read 2 unknown words
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
-start correcting file: data/corr_word_T.xml
+start 3-gram correcting in file: data/corr_word_T.xml
 
    correct 3-grams in: 'de behándeling van:' (Test)
 correct trigrams

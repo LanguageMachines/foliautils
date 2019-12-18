@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-02T17:52:09" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-18T11:38:02" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -27,27 +27,16 @@
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2" class="intro">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1">
           <t>40ste vergadering?</t>
-          <t class="Ticcl">40ste vergadering ?</t>
+          <t class="Ticcl">40ste vergadering?</t>
           <lang class="dut"/>
           <str xml:id="p1.1">
             <t>40ste</t>
             <t class="Ticcl" offset="0">40ste</t>
           </str>
-          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1.correction.1">
-            <new>
-              <str xml:id="p1.2.split.1">
-                <t class="Ticcl" offset="6">vergadering</t>
-              </str>
-              <str xml:id="p1.2.split.2">
-                <t class="Ticcl" offset="18">?</t>
-              </str>
-            </new>
-            <original auth="no">
-              <str xml:id="p1.2">
-                <t>vergadering?</t>
-              </str>
-            </original>
-          </correction>
+          <str xml:id="p1.2">
+            <t>vergadering?</t>
+            <t class="Ticcl" offset="6">vergadering?</t>
+          </str>
         </p>
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.2">
           <t>2003-2004</t>
@@ -71,7 +60,7 @@
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3" class="subject">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1">
           <t>Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  </t>
-          <t class="Ticcl">Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet op de omzetbelasting 1968.</t>
+          <t class="Ticcl">Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de wet opde omzetbelasting 1968.</t>
           <lang class="dut"/>
           <str xml:id="p4.1">
             <t>Aan</t>
@@ -134,31 +123,17 @@
             <t>wet</t>
             <t class="Ticcl" offset="69">wet</t>
           </str>
-          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1">
-            <new>
-              <str xml:id="p4.14.split.1">
-                <t class="Ticcl" offset="73">op</t>
-              </str>
-              <str xml:id="p4.14.split.2">
-                <t class="Ticcl" offset="76">de</t>
-              </str>
-            </new>
-            <original auth="no">
-              <str xml:id="p4.14">
-                <t>opde</t>
-              </str>
-            </original>
-            <suggestion auth="no" confidence="1.000000" n="1/1">
-              <t class="Ticcl">op_de</t>
-            </suggestion>
-          </correction>
+          <str xml:id="p4.14">
+            <t>opde</t>
+            <t class="Ticcl" offset="73">opde</t>
+          </str>
           <str xml:id="p4.15">
             <t>omzetbelasting</t>
-            <t class="Ticcl" offset="79">omzetbelasting</t>
+            <t class="Ticcl" offset="78">omzetbelasting</t>
           </str>
           <str xml:id="p4.16">
             <t>1968.</t>
-            <t class="Ticcl" offset="94">1968.</t>
+            <t class="Ticcl" offset="93">1968.</t>
           </str>
         </p>
       </div>

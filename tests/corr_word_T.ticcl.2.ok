@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-11T13:30:02" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v  -v  --punctseparator=±" folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-18T11:53:10" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --ngram=2 -v  -v  --punctseparator=±" folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -53,7 +53,7 @@
         </p>
         <p xml:id="p2">
           <t class="Test">het wetsvoorstel Wijsiging van de</t>
-          <t class="Apple">het wetsvoorstel Wijsiging van de</t>
+          <t class="Apple">het wetsvoorstel Wijziging van de</t>
           <lang class="dut"/>
           <w xml:id="p2.1">
             <t class="Test">het</t>
@@ -63,10 +63,18 @@
             <t class="Test">wetsvoorstel</t>
             <t class="Apple" offset="4">wetsvoorstel</t>
           </w>
-          <w xml:id="p2.3">
-            <t class="Test">Wijsiging</t>
-            <t class="Apple" offset="17">Wijsiging</t>
-          </w>
+          <correction xml:id="p2.correction.1">
+            <new>
+              <w xml:id="p2.3.edit.1">
+                <t class="Apple" offset="17">Wijziging</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p2.3">
+                <t class="Test">Wijsiging</t>
+              </w>
+            </original>
+          </correction>
           <w xml:id="p2.4">
             <t class="Test">van</t>
             <t class="Apple" offset="27">van</t>
@@ -121,20 +129,27 @@
       <div xml:id="testdoc.4" class="other">
         <p xml:id="p4">
           <t class="Test">Deze wets voorstellen</t>
-          <t class="Apple">Deze wets voorstellen</t>
+          <t class="Apple">Deze wetsvoorstellen</t>
           <lang class="dut"/>
           <w xml:id="p4.1">
             <t class="Test">Deze</t>
             <t class="Apple" offset="0">Deze</t>
           </w>
-          <w xml:id="p4.2">
-            <t class="Test">wets</t>
-            <t class="Apple" offset="5">wets</t>
-          </w>
-          <w xml:id="p4.3">
-            <t class="Test">voorstellen</t>
-            <t class="Apple" offset="10">voorstellen</t>
-          </w>
+          <correction xml:id="p4.correction.1">
+            <new>
+              <w xml:id="p4.2.merge.1">
+                <t class="Apple" offset="5">wetsvoorstellen</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p4.2">
+                <t class="Test">wets</t>
+              </w>
+              <w xml:id="p4.3">
+                <t class="Test">voorstellen</t>
+              </w>
+            </original>
+          </correction>
         </p>
         <p xml:id="p5">
           <t class="Test">ze worden zonder s4s67621 en zonder steming aangenomen .</t>
@@ -185,40 +200,23 @@
         </p>
         <p xml:id="p6">
           <t class="Test">Deze runonvanwoorden is oplosbaar.</t>
-          <t class="Apple">Deze runon van woorden is oplosbaar.</t>
+          <t class="Apple">Deze runonvanwoorden is oplosbaar.</t>
           <lang class="dut"/>
           <w xml:id="p6.1">
             <t class="Test">Deze</t>
             <t class="Apple" offset="0">Deze</t>
           </w>
-          <correction xml:id="p6.correction.1">
-            <new>
-              <w xml:id="p6.2.split.1">
-                <t class="Apple" offset="5">runon</t>
-              </w>
-              <w xml:id="p6.2.split.2">
-                <t class="Apple" offset="11">van</t>
-              </w>
-              <w xml:id="p6.2.split.3">
-                <t class="Apple" offset="15">woorden</t>
-              </w>
-            </new>
-            <original auth="no">
-              <w xml:id="p6.2">
-                <t class="Test">runonvanwoorden</t>
-              </w>
-            </original>
-            <suggestion auth="no" confidence="1.000000" n="1/1">
-              <t class="Apple">runon_van_woorden</t>
-            </suggestion>
-          </correction>
+          <w xml:id="p6.2">
+            <t class="Test">runonvanwoorden</t>
+            <t class="Apple" offset="5">runonvanwoorden</t>
+          </w>
           <w xml:id="p6.3">
             <t class="Test">is</t>
-            <t class="Apple" offset="23">is</t>
+            <t class="Apple" offset="21">is</t>
           </w>
           <w xml:id="p6.4">
             <t class="Test">oplosbaar.</t>
-            <t class="Apple" offset="26">oplosbaar.</t>
+            <t class="Apple" offset="24">oplosbaar.</t>
           </w>
         </p>
         <p xml:id="p7">
