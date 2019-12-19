@@ -1,0 +1,2284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="NL-0400410000_26_001009_000099.xml" generator="libfolia-v2.4" version="2.2.1">
+  <metadata type="native">
+    <annotations>
+      <string-annotation set="FoLia-alto-set">
+        <annotator processor="FoLiA-alto.1"/>
+      </string-annotation>
+      <paragraph-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-alto.1" begindatetime="2019-11-01T11:14:38" command="FoLiA-alto -t 120 --direct -O /reddata/NA/proto/FOLIA/NAK/ --class=HTR" folia_version="2.2.1" host="violet.uvt.nl" name="FoLiA-alto" user="reynaert" version="0.14">
+        <processor xml:id="FoLiA-alto.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
+      </processor>
+    </provenance>
+  </metadata>
+  <text xml:id="NL-0400410000_26_001009_000099.xml.text">
+    <p xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1">
+      <t class="HTR">No aan handen en ten huize van den hear Verhuurder, deszelf regt verkrijgen: den of de wettige houders van de grosse dezer, in goeden en alhier gangba ren geldmeinte, tot haur zal moeten betalen eene Som van drie honderd drie en twintig gulden zes en veertig cent Nederlandsch Corrcant; in zesegale termijnen, telkens van drie tot drie maanden, bij wege van vooruitbetaling, waar van het eerste zal verschijnen bij de aanvaarding Voor of op den twaalfden Mei achttien honderd zeven en dertig, het tweede op den twaalfden Augustus achttien honderd zeven en dertig, het derde op den twaalfden November achttien honderd zeven en dertig, het vierde op den twaalfden Februarij chttien honderd acht en dertig, het vijfde op den twaalfden Mei achttien honderd acht en dertig en het zesde of laatste op den twaalfden Reegerstees achttien honderd acht en dertig, ieder termijn ten bedrage van dree en vjftig gulden een en negentig cent, terwijl bij nalatigheid of wanneer uiterlijk binnen eene maand na den verschijntijd, ieder verschuldigd termijn niet is voldaan, de huurder dadelijk van zijn huveregt vervallen en verstoken zal zijn in het gehuurde drie maanden na zoodanigen verschijn tijd moeten ontreeimen, zonder dat tot inmerastelling eenige sommatie noodzakelyk zal wezen, als wordende de huurder gehouden in gebreke te zijn door het enceel verloop van den bepaalden tijd. Dat de huurder daar en beven voor zijne rekeening zal hebben en moeten voldoen alle lands-en plaatselijke belastingen, gedurende den huurtermijn, van het gehuwede geheven wordende, met uitzondering alleen van de grondbelasting, die voor rekening van den heer Verhuurder blijft. Dat de huweder de voormelde huizinge en herberg zelf, als een goed huisvader, zal moeten beoonen en gebreiken, zonder dezelve van bestemming te doen veranderen, en noch voor het geheel, noch ten deele aan een ander te mogen verheeren of in gebruik overeoen, dan met schriftelijke toestemming van den Heer Verhuurder en voorts voor zijne rekening moeten nemen de reparatien van gering onder heed, volgens plaatse. lijse gebruik, ten einde het gehuurde, bij het verlaten glasdigt en behoorlijk aan den heer Verhuweder op te leveren. Dat de huurder deze huizinge zal moeten hoeden en noeden voor allen hee ook vervorzaakten Crand en de daar door te ontstane schaden aan den heer Verhuurder moeten vergoeden en te dien einde verpligt zijn dezelve in eede A See</t>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_1">
+        <t class="HTR" offset="0">No</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_2">
+        <t class="HTR" offset="3">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_3">
+        <t class="HTR" offset="7">handen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_4">
+        <t class="HTR" offset="14">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_5">
+        <t class="HTR" offset="17">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_6">
+        <t class="HTR" offset="21">huize</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_7">
+        <t class="HTR" offset="27">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_8">
+        <t class="HTR" offset="31">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_9">
+        <t class="HTR" offset="35">hear</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_10">
+        <t class="HTR" offset="40">Verhuurder,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_11">
+        <t class="HTR" offset="52">deszelf</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_12">
+        <t class="HTR" offset="60">regt</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_13">
+        <t class="HTR" offset="65">verkrijgen:</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_14">
+        <t class="HTR" offset="77">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_15">
+        <t class="HTR" offset="81">of</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_16">
+        <t class="HTR" offset="84">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_17">
+        <t class="HTR" offset="87">wettige</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_18">
+        <t class="HTR" offset="95">houders</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_19">
+        <t class="HTR" offset="103">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_20">
+        <t class="HTR" offset="107">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_21">
+        <t class="HTR" offset="110">grosse</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_22">
+        <t class="HTR" offset="117">dezer,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_23">
+        <t class="HTR" offset="124">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_24">
+        <t class="HTR" offset="127">goeden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_25">
+        <t class="HTR" offset="134">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_26">
+        <t class="HTR" offset="137">alhier</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_27">
+        <t class="HTR" offset="144">gangba</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_28">
+        <t class="HTR" offset="151">ren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_29">
+        <t class="HTR" offset="155">geldmeinte,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_30">
+        <t class="HTR" offset="167">tot</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_31">
+        <t class="HTR" offset="171">haur</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_32">
+        <t class="HTR" offset="176">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_33">
+        <t class="HTR" offset="180">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_34">
+        <t class="HTR" offset="187">betalen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_35">
+        <t class="HTR" offset="195">eene</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_36">
+        <t class="HTR" offset="200">Som</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_37">
+        <t class="HTR" offset="204">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_38">
+        <t class="HTR" offset="208">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_39">
+        <t class="HTR" offset="213">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_40">
+        <t class="HTR" offset="221">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_41">
+        <t class="HTR" offset="226">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_42">
+        <t class="HTR" offset="229">twintig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_43">
+        <t class="HTR" offset="237">gulden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_44">
+        <t class="HTR" offset="244">zes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_45">
+        <t class="HTR" offset="248">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_46">
+        <t class="HTR" offset="251">veertig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_47">
+        <t class="HTR" offset="259">cent</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_48">
+        <t class="HTR" offset="264">Nederlandsch</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_49">
+        <t class="HTR" offset="277">Corrcant;</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_50">
+        <t class="HTR" offset="287">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_51">
+        <t class="HTR" offset="290">zesegale</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_52">
+        <t class="HTR" offset="299">termijnen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_53">
+        <t class="HTR" offset="310">telkens</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_54">
+        <t class="HTR" offset="318">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_55">
+        <t class="HTR" offset="322">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_56">
+        <t class="HTR" offset="327">tot</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_57">
+        <t class="HTR" offset="331">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_58">
+        <t class="HTR" offset="336">maanden,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_59">
+        <t class="HTR" offset="345">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_60">
+        <t class="HTR" offset="349">wege</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_61">
+        <t class="HTR" offset="354">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_62">
+        <t class="HTR" offset="358">vooruitbetaling,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_63">
+        <t class="HTR" offset="375">waar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_64">
+        <t class="HTR" offset="380">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_65">
+        <t class="HTR" offset="384">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_66">
+        <t class="HTR" offset="388">eerste</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_67">
+        <t class="HTR" offset="395">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_68">
+        <t class="HTR" offset="399">verschijnen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_69">
+        <t class="HTR" offset="411">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_70">
+        <t class="HTR" offset="415">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_71">
+        <t class="HTR" offset="418">aanvaarding</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_72">
+        <t class="HTR" offset="430">Voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_73">
+        <t class="HTR" offset="435">of</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_74">
+        <t class="HTR" offset="438">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_75">
+        <t class="HTR" offset="441">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_76">
+        <t class="HTR" offset="445">twaalfden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_77">
+        <t class="HTR" offset="455">Mei</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_78">
+        <t class="HTR" offset="459">achttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_79">
+        <t class="HTR" offset="468">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_80">
+        <t class="HTR" offset="476">zeven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_81">
+        <t class="HTR" offset="482">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_82">
+        <t class="HTR" offset="485">dertig,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_83">
+        <t class="HTR" offset="493">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_84">
+        <t class="HTR" offset="497">tweede</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_85">
+        <t class="HTR" offset="504">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_86">
+        <t class="HTR" offset="507">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_87">
+        <t class="HTR" offset="511">twaalfden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_88">
+        <t class="HTR" offset="521">Augustus</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_89">
+        <t class="HTR" offset="530">achttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_90">
+        <t class="HTR" offset="539">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_91">
+        <t class="HTR" offset="547">zeven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_92">
+        <t class="HTR" offset="553">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_93">
+        <t class="HTR" offset="556">dertig,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_94">
+        <t class="HTR" offset="564">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_95">
+        <t class="HTR" offset="568">derde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_96">
+        <t class="HTR" offset="574">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_97">
+        <t class="HTR" offset="577">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_98">
+        <t class="HTR" offset="581">twaalfden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_99">
+        <t class="HTR" offset="591">November</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_100">
+        <t class="HTR" offset="600">achttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_101">
+        <t class="HTR" offset="609">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_102">
+        <t class="HTR" offset="617">zeven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_103">
+        <t class="HTR" offset="623">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_104">
+        <t class="HTR" offset="626">dertig,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_105">
+        <t class="HTR" offset="634">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_106">
+        <t class="HTR" offset="638">vierde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_107">
+        <t class="HTR" offset="645">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_108">
+        <t class="HTR" offset="648">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_109">
+        <t class="HTR" offset="652">twaalfden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_110">
+        <t class="HTR" offset="662">Februarij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_111">
+        <t class="HTR" offset="672">chttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_112">
+        <t class="HTR" offset="680">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_113">
+        <t class="HTR" offset="688">acht</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_114">
+        <t class="HTR" offset="693">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_115">
+        <t class="HTR" offset="696">dertig,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_116">
+        <t class="HTR" offset="704">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_117">
+        <t class="HTR" offset="708">vijfde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_118">
+        <t class="HTR" offset="715">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_119">
+        <t class="HTR" offset="718">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_120">
+        <t class="HTR" offset="722">twaalfden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_121">
+        <t class="HTR" offset="732">Mei</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_122">
+        <t class="HTR" offset="736">achttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_123">
+        <t class="HTR" offset="745">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_124">
+        <t class="HTR" offset="753">acht</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_125">
+        <t class="HTR" offset="758">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_126">
+        <t class="HTR" offset="761">dertig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_127">
+        <t class="HTR" offset="768">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_128">
+        <t class="HTR" offset="771">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_129">
+        <t class="HTR" offset="775">zesde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_130">
+        <t class="HTR" offset="781">of</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_131">
+        <t class="HTR" offset="784">laatste</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_132">
+        <t class="HTR" offset="792">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_133">
+        <t class="HTR" offset="795">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_134">
+        <t class="HTR" offset="799">twaalfden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_135">
+        <t class="HTR" offset="809">Reegerstees</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_136">
+        <t class="HTR" offset="821">achttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_137">
+        <t class="HTR" offset="830">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_138">
+        <t class="HTR" offset="838">acht</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_139">
+        <t class="HTR" offset="843">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_140">
+        <t class="HTR" offset="846">dertig,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_141">
+        <t class="HTR" offset="854">ieder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_142">
+        <t class="HTR" offset="860">termijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_143">
+        <t class="HTR" offset="868">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_144">
+        <t class="HTR" offset="872">bedrage</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_145">
+        <t class="HTR" offset="880">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_146">
+        <t class="HTR" offset="884">dree</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_147">
+        <t class="HTR" offset="889">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_148">
+        <t class="HTR" offset="892">vjftig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_149">
+        <t class="HTR" offset="899">gulden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_150">
+        <t class="HTR" offset="906">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_151">
+        <t class="HTR" offset="910">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_152">
+        <t class="HTR" offset="913">negentig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_153">
+        <t class="HTR" offset="922">cent,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_154">
+        <t class="HTR" offset="928">terwijl</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_155">
+        <t class="HTR" offset="936">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_156">
+        <t class="HTR" offset="940">nalatigheid</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_157">
+        <t class="HTR" offset="952">of</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_158">
+        <t class="HTR" offset="955">wanneer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_159">
+        <t class="HTR" offset="963">uiterlijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_160">
+        <t class="HTR" offset="973">binnen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_161">
+        <t class="HTR" offset="980">eene</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_162">
+        <t class="HTR" offset="985">maand</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_163">
+        <t class="HTR" offset="991">na</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_164">
+        <t class="HTR" offset="994">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_165" class="HTR">
+        <t class="HTR" offset="998">verschijntijd,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_166">
+        <t class="HTR" offset="1013">ieder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_167">
+        <t class="HTR" offset="1019">verschuldigd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_168">
+        <t class="HTR" offset="1032">termijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_169">
+        <t class="HTR" offset="1040">niet</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_170">
+        <t class="HTR" offset="1045">is</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_171">
+        <t class="HTR" offset="1048">voldaan,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_172">
+        <t class="HTR" offset="1057">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_173">
+        <t class="HTR" offset="1060">huurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_174">
+        <t class="HTR" offset="1068">dadelijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_175">
+        <t class="HTR" offset="1077">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_176">
+        <t class="HTR" offset="1081">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_177">
+        <t class="HTR" offset="1086">huveregt</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_178">
+        <t class="HTR" offset="1095">vervallen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_179">
+        <t class="HTR" offset="1105">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_180">
+        <t class="HTR" offset="1108">verstoken</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_181">
+        <t class="HTR" offset="1118">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_182">
+        <t class="HTR" offset="1122">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_183">
+        <t class="HTR" offset="1127">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_184">
+        <t class="HTR" offset="1130">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_185">
+        <t class="HTR" offset="1134">gehuurde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_186">
+        <t class="HTR" offset="1143">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_187">
+        <t class="HTR" offset="1148">maanden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_188">
+        <t class="HTR" offset="1156">na</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_189">
+        <t class="HTR" offset="1159">zoodanigen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_190">
+        <t class="HTR" offset="1170">verschijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_191">
+        <t class="HTR" offset="1180">tijd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_192">
+        <t class="HTR" offset="1185">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_193">
+        <t class="HTR" offset="1192">ontreeimen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_194">
+        <t class="HTR" offset="1204">zonder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_195">
+        <t class="HTR" offset="1211">dat</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_196">
+        <t class="HTR" offset="1215">tot</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_197">
+        <t class="HTR" offset="1219">inmerastelling</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_198">
+        <t class="HTR" offset="1234">eenige</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_199">
+        <t class="HTR" offset="1241">sommatie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_200">
+        <t class="HTR" offset="1250">noodzakelyk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_201">
+        <t class="HTR" offset="1262">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_202">
+        <t class="HTR" offset="1266">wezen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_203">
+        <t class="HTR" offset="1273">als</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_204" class="HTR">
+        <t class="HTR" offset="1277">wordende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_205">
+        <t class="HTR" offset="1286">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_206">
+        <t class="HTR" offset="1289">huurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_207">
+        <t class="HTR" offset="1297">gehouden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_208">
+        <t class="HTR" offset="1306">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_209">
+        <t class="HTR" offset="1309">gebreke</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_210">
+        <t class="HTR" offset="1317">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_211">
+        <t class="HTR" offset="1320">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_212">
+        <t class="HTR" offset="1325">door</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_213">
+        <t class="HTR" offset="1330">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_214">
+        <t class="HTR" offset="1334">enceel</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_215">
+        <t class="HTR" offset="1341">verloop</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_216">
+        <t class="HTR" offset="1349">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_217">
+        <t class="HTR" offset="1353">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_218">
+        <t class="HTR" offset="1357">bepaalden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_219">
+        <t class="HTR" offset="1367">tijd.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_220">
+        <t class="HTR" offset="1373">Dat</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_221">
+        <t class="HTR" offset="1377">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_222">
+        <t class="HTR" offset="1380">huurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_223">
+        <t class="HTR" offset="1388">daar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_224">
+        <t class="HTR" offset="1393">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_225">
+        <t class="HTR" offset="1396">beven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_226">
+        <t class="HTR" offset="1402">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_227">
+        <t class="HTR" offset="1407">zijne</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_228">
+        <t class="HTR" offset="1413">rekeening</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_229">
+        <t class="HTR" offset="1423">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_230">
+        <t class="HTR" offset="1427">hebben</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_231">
+        <t class="HTR" offset="1434">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_232">
+        <t class="HTR" offset="1437">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_233">
+        <t class="HTR" offset="1444">voldoen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_234">
+        <t class="HTR" offset="1452">alle</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_235">
+        <t class="HTR" offset="1457">lands-en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_236">
+        <t class="HTR" offset="1466">plaatselijke</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_237">
+        <t class="HTR" offset="1479">belastingen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_238">
+        <t class="HTR" offset="1492">gedurende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_239">
+        <t class="HTR" offset="1502">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_240">
+        <t class="HTR" offset="1506">huurtermijn,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_241">
+        <t class="HTR" offset="1519">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_242">
+        <t class="HTR" offset="1523">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_243">
+        <t class="HTR" offset="1527">gehuwede</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_244">
+        <t class="HTR" offset="1536">geheven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_245">
+        <t class="HTR" offset="1544">wordende,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_246">
+        <t class="HTR" offset="1554">met</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_247">
+        <t class="HTR" offset="1558">uitzondering</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_248">
+        <t class="HTR" offset="1571">alleen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_249">
+        <t class="HTR" offset="1578">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_250">
+        <t class="HTR" offset="1582">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_251">
+        <t class="HTR" offset="1585">grondbelasting,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_252">
+        <t class="HTR" offset="1601">die</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_253">
+        <t class="HTR" offset="1605">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_254">
+        <t class="HTR" offset="1610">rekening</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_255">
+        <t class="HTR" offset="1619">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_256">
+        <t class="HTR" offset="1623">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_257">
+        <t class="HTR" offset="1627">heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_258" class="HTR">
+        <t class="HTR" offset="1632">Verhuurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_259">
+        <t class="HTR" offset="1643">blijft.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_260">
+        <t class="HTR" offset="1651">Dat</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_261">
+        <t class="HTR" offset="1655">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_262">
+        <t class="HTR" offset="1658">huweder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_263">
+        <t class="HTR" offset="1666">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_264">
+        <t class="HTR" offset="1669">voormelde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_265">
+        <t class="HTR" offset="1679">huizinge</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_266">
+        <t class="HTR" offset="1688">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_267">
+        <t class="HTR" offset="1691">herberg</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_268">
+        <t class="HTR" offset="1699">zelf,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_269">
+        <t class="HTR" offset="1705">als</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_270">
+        <t class="HTR" offset="1709">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_271">
+        <t class="HTR" offset="1713">goed</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_272">
+        <t class="HTR" offset="1718">huisvader,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_273">
+        <t class="HTR" offset="1729">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_274">
+        <t class="HTR" offset="1733">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_275">
+        <t class="HTR" offset="1740">beoonen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_276">
+        <t class="HTR" offset="1748">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_277">
+        <t class="HTR" offset="1751">gebreiken,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_278">
+        <t class="HTR" offset="1762">zonder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_279">
+        <t class="HTR" offset="1769">dezelve</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_280">
+        <t class="HTR" offset="1777">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_281" class="HTR">
+        <t class="HTR" offset="1781">bestemming</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_282">
+        <t class="HTR" offset="1792">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_283">
+        <t class="HTR" offset="1795">doen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_284">
+        <t class="HTR" offset="1800">veranderen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_285">
+        <t class="HTR" offset="1812">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_286">
+        <t class="HTR" offset="1815">noch</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_287">
+        <t class="HTR" offset="1820">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_288">
+        <t class="HTR" offset="1825">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_289">
+        <t class="HTR" offset="1829">geheel,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_290">
+        <t class="HTR" offset="1837">noch</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_291">
+        <t class="HTR" offset="1842">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_292">
+        <t class="HTR" offset="1846">deele</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_293">
+        <t class="HTR" offset="1852">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_294">
+        <t class="HTR" offset="1856">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_295">
+        <t class="HTR" offset="1860">ander</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_296">
+        <t class="HTR" offset="1866">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_297">
+        <t class="HTR" offset="1869">mogen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_298">
+        <t class="HTR" offset="1875">verheeren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_299">
+        <t class="HTR" offset="1885">of</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_300">
+        <t class="HTR" offset="1888">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_301">
+        <t class="HTR" offset="1891">gebruik</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_302">
+        <t class="HTR" offset="1899">overeoen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_303">
+        <t class="HTR" offset="1909">dan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_304">
+        <t class="HTR" offset="1913">met</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_305" class="HTR">
+        <t class="HTR" offset="1917">schriftelijke</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_306">
+        <t class="HTR" offset="1931">toestemming</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_307">
+        <t class="HTR" offset="1943">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_308">
+        <t class="HTR" offset="1947">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_309">
+        <t class="HTR" offset="1951">Heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_310">
+        <t class="HTR" offset="1956">Verhuurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_311">
+        <t class="HTR" offset="1967">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_312">
+        <t class="HTR" offset="1970">voorts</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_313">
+        <t class="HTR" offset="1977">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_314">
+        <t class="HTR" offset="1982">zijne</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_315" class="HTR">
+        <t class="HTR" offset="1988">rekening</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_316">
+        <t class="HTR" offset="1997">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_317">
+        <t class="HTR" offset="2004">nemen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_318">
+        <t class="HTR" offset="2010">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_319">
+        <t class="HTR" offset="2013">reparatien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_320">
+        <t class="HTR" offset="2024">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_321">
+        <t class="HTR" offset="2028">gering</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_322">
+        <t class="HTR" offset="2035">onder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_323">
+        <t class="HTR" offset="2041">heed,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_324">
+        <t class="HTR" offset="2047">volgens</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_325">
+        <t class="HTR" offset="2055">plaatse.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_326">
+        <t class="HTR" offset="2064">lijse</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_327">
+        <t class="HTR" offset="2070">gebruik,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_328">
+        <t class="HTR" offset="2079">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_329">
+        <t class="HTR" offset="2083">einde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_330">
+        <t class="HTR" offset="2089">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_331">
+        <t class="HTR" offset="2093">gehuurde,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_332">
+        <t class="HTR" offset="2103">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_333">
+        <t class="HTR" offset="2107">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_334">
+        <t class="HTR" offset="2111">verlaten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_335">
+        <t class="HTR" offset="2120">glasdigt</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_336">
+        <t class="HTR" offset="2129">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_337">
+        <t class="HTR" offset="2132">behoorlijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_338">
+        <t class="HTR" offset="2143">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_339">
+        <t class="HTR" offset="2147">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_340">
+        <t class="HTR" offset="2151">heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_341">
+        <t class="HTR" offset="2156">Verhuweder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_342">
+        <t class="HTR" offset="2167">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_343">
+        <t class="HTR" offset="2170">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_344">
+        <t class="HTR" offset="2173">leveren.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_345">
+        <t class="HTR" offset="2182">Dat</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_346">
+        <t class="HTR" offset="2186">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_347">
+        <t class="HTR" offset="2189">huurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_348">
+        <t class="HTR" offset="2197">deze</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_349">
+        <t class="HTR" offset="2202">huizinge</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_350">
+        <t class="HTR" offset="2211">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_351">
+        <t class="HTR" offset="2215">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_352">
+        <t class="HTR" offset="2222">hoeden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_353">
+        <t class="HTR" offset="2229">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_354">
+        <t class="HTR" offset="2232">noeden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_355">
+        <t class="HTR" offset="2239">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_356">
+        <t class="HTR" offset="2244">allen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_357">
+        <t class="HTR" offset="2250">hee</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_358">
+        <t class="HTR" offset="2254">ook</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_359">
+        <t class="HTR" offset="2258">vervorzaakten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_360">
+        <t class="HTR" offset="2272">Crand</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_361">
+        <t class="HTR" offset="2278">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_362">
+        <t class="HTR" offset="2281">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_363">
+        <t class="HTR" offset="2284">daar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_364">
+        <t class="HTR" offset="2289">door</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_365">
+        <t class="HTR" offset="2294">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_366">
+        <t class="HTR" offset="2297">ontstane</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_367">
+        <t class="HTR" offset="2306">schaden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_368">
+        <t class="HTR" offset="2314">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_369">
+        <t class="HTR" offset="2318">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_370">
+        <t class="HTR" offset="2322">heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_371">
+        <t class="HTR" offset="2327">Verhuurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_372">
+        <t class="HTR" offset="2338">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_373">
+        <t class="HTR" offset="2345">vergoeden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_374">
+        <t class="HTR" offset="2355">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_375">
+        <t class="HTR" offset="2358">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_376">
+        <t class="HTR" offset="2361">dien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_377">
+        <t class="HTR" offset="2366">einde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_378">
+        <t class="HTR" offset="2372">verpligt</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_379">
+        <t class="HTR" offset="2381">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_380">
+        <t class="HTR" offset="2386">dezelve</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_381">
+        <t class="HTR" offset="2394">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_382">
+        <t class="HTR" offset="2397">eede</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_383">
+        <t class="HTR" offset="2402">A</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r1.String_384">
+        <t class="HTR" offset="2404">See</t>
+      </str>
+    </p>
+    <p xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2">
+      <t class="HTR">100 eene solide brandwaarborg maatschappij te verzekeren en, gedurende den huurtermijn, verzeteerd te hereden, ten zijnen teeste. Dat, daaren tegen, de Verhuurder deze huizinge behoorlijk zal moeten onderhouden en den huurder daar van het rustig bezit te verzekeren en doen toekomen. Alles wederseriglijk onder verbanden bedwang als naar regten. En is ten dezen mede voor ens Notaris en getuigen gecompareerd Cornelisje Jans Plasse, tappersche, Weduwe van Klaas Leuten Krikckie, wonende te Heerenveen. Welke, na dat het vorenstaande Haur Contract door ons Notaris aan haar was voorgelezen, bij deze, verklaarde zich, ten behoeve van den heer Verhuurder, die zulks accepteert, aansprakelijk te stellen voor de getreuowe nakeming en uitvoering der verbintenissen door haren voor, den huurder, bij dit Contract aan gegaan en te allen tijde te zullen presteren dat het zelve door hem ten uitvoer worde gelegd en betrachtigd, te dien einde zich persoonlijk aan sprakelijk stellende en den heer Verhuurder garanderinde voor alle schaden die hij, uit welken hoofde ook, bij de tegenwoordige verhuring mog te komen te lijden, onder afstand aan het voorregt van uitwinning en onder verband van haar persern en goederen ingevolge de over Daar van Acte. Gedaan en gepasseerd te Heerenwal onder Nijehaske en ten huize van Reel Wijbes Offringa kastitien taldaar, op heden den dertienden P Leer: meester bakker in ste. de van het doorgehaalde woord Mei achttien honderd zeven en dertig, in bij zijn van evengenoemden Gffringa kastelein en van Evert Sjirks Westra Scheenmaker te Heer enveen woonachtig goedgekeurd: als ten dezen vereischte getuigen welke de tegenwoordige minuut, na TT J F H gedane voorlezing met de Comparanten en ons Notaris geteekend C:JD R: We hebben. PS W OL : P Tacony Jan J Jnkke, Cn Ju Plosse op Pewospinger PS westn A imuis. coota Geregistreerd met twee blade een renvoij te Heeren van den zestienden Mei : 1800 zeven en dertig deel dertig fob honderd en drie ƒ247 en zeventig versovak twee en drie Ontvangen voor Boog 123. regt van derhiering twee gulden zeven en veertig een 3 7 tweede cents en doord borg een gulden rie en twintig en 237. 85 een halve cents makende te zamen met de3opcenten vier gulden zes en vijftig een tweede cents ƒ456 De Ontvanger Pn</t>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_1">
+        <t class="HTR" offset="0">100</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_2">
+        <t class="HTR" offset="4">eene</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_3">
+        <t class="HTR" offset="9">solide</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_4">
+        <t class="HTR" offset="16">brandwaarborg</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_5">
+        <t class="HTR" offset="30">maatschappij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_6">
+        <t class="HTR" offset="43">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_7">
+        <t class="HTR" offset="46">verzekeren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_8">
+        <t class="HTR" offset="57">en,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_9">
+        <t class="HTR" offset="61">gedurende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_10">
+        <t class="HTR" offset="71">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_11">
+        <t class="HTR" offset="75">huurtermijn,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_12">
+        <t class="HTR" offset="88">verzeteerd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_13">
+        <t class="HTR" offset="99">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_14">
+        <t class="HTR" offset="102">hereden,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_15">
+        <t class="HTR" offset="111">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_16">
+        <t class="HTR" offset="115">zijnen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_17">
+        <t class="HTR" offset="122">teeste.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_18">
+        <t class="HTR" offset="130">Dat,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_19">
+        <t class="HTR" offset="135">daaren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_20">
+        <t class="HTR" offset="142">tegen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_21">
+        <t class="HTR" offset="149">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_22">
+        <t class="HTR" offset="152">Verhuurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_23">
+        <t class="HTR" offset="163">deze</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_24">
+        <t class="HTR" offset="168">huizinge</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_25">
+        <t class="HTR" offset="177">behoorlijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_26">
+        <t class="HTR" offset="188">zal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_27">
+        <t class="HTR" offset="192">moeten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_28">
+        <t class="HTR" offset="199">onderhouden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_29">
+        <t class="HTR" offset="211">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_30">
+        <t class="HTR" offset="214">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_31">
+        <t class="HTR" offset="218">huurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_32">
+        <t class="HTR" offset="226">daar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_33">
+        <t class="HTR" offset="231">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_34">
+        <t class="HTR" offset="235">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_35">
+        <t class="HTR" offset="239">rustig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_36">
+        <t class="HTR" offset="246">bezit</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_37">
+        <t class="HTR" offset="252">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_38" class="HTR">
+        <t class="HTR" offset="255">verzekeren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_39">
+        <t class="HTR" offset="266">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_40">
+        <t class="HTR" offset="269">doen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_41">
+        <t class="HTR" offset="274">toekomen.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_42">
+        <t class="HTR" offset="284">Alles</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_43">
+        <t class="HTR" offset="290">wederseriglijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_44">
+        <t class="HTR" offset="305">onder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_45">
+        <t class="HTR" offset="311">verbanden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_46">
+        <t class="HTR" offset="321">bedwang</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_47">
+        <t class="HTR" offset="329">als</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_48">
+        <t class="HTR" offset="333">naar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_49">
+        <t class="HTR" offset="338">regten.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_50">
+        <t class="HTR" offset="346">En</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_51">
+        <t class="HTR" offset="349">is</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_52">
+        <t class="HTR" offset="352">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_53">
+        <t class="HTR" offset="356">dezen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_54">
+        <t class="HTR" offset="362">mede</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_55">
+        <t class="HTR" offset="367">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_56">
+        <t class="HTR" offset="372">ens</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_57">
+        <t class="HTR" offset="376">Notaris</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_58">
+        <t class="HTR" offset="384">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_59">
+        <t class="HTR" offset="387">getuigen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_60">
+        <t class="HTR" offset="396">gecompareerd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_61">
+        <t class="HTR" offset="409">Cornelisje</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_62">
+        <t class="HTR" offset="420">Jans</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_63">
+        <t class="HTR" offset="425">Plasse,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_64">
+        <t class="HTR" offset="433">tappersche,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_65">
+        <t class="HTR" offset="445">Weduwe</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_66">
+        <t class="HTR" offset="452">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_67">
+        <t class="HTR" offset="456">Klaas</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_68">
+        <t class="HTR" offset="462">Leuten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_69">
+        <t class="HTR" offset="469">Krikckie,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_70">
+        <t class="HTR" offset="479">wonende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_71">
+        <t class="HTR" offset="487">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_72">
+        <t class="HTR" offset="490">Heerenveen.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_73">
+        <t class="HTR" offset="502">Welke,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_74">
+        <t class="HTR" offset="509">na</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_75">
+        <t class="HTR" offset="512">dat</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_76">
+        <t class="HTR" offset="516">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_77">
+        <t class="HTR" offset="520">vorenstaande</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_78">
+        <t class="HTR" offset="533">Haur</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_79">
+        <t class="HTR" offset="538">Contract</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_80">
+        <t class="HTR" offset="547">door</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_81">
+        <t class="HTR" offset="552">ons</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_82">
+        <t class="HTR" offset="556">Notaris</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_83">
+        <t class="HTR" offset="564">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_84">
+        <t class="HTR" offset="568">haar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_85">
+        <t class="HTR" offset="573">was</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_86">
+        <t class="HTR" offset="577">voorgelezen,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_87">
+        <t class="HTR" offset="590">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_88">
+        <t class="HTR" offset="594">deze,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_89">
+        <t class="HTR" offset="600">verklaarde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_90">
+        <t class="HTR" offset="611">zich,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_91">
+        <t class="HTR" offset="617">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_92">
+        <t class="HTR" offset="621">behoeve</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_93">
+        <t class="HTR" offset="629">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_94">
+        <t class="HTR" offset="633">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_95">
+        <t class="HTR" offset="637">heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_96">
+        <t class="HTR" offset="642">Verhuurder,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_97">
+        <t class="HTR" offset="654">die</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_98">
+        <t class="HTR" offset="658">zulks</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_99" class="HTR">
+        <t class="HTR" offset="664">accepteert,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_100">
+        <t class="HTR" offset="676">aansprakelijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_101">
+        <t class="HTR" offset="690">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_102">
+        <t class="HTR" offset="693">stellen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_103">
+        <t class="HTR" offset="701">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_104">
+        <t class="HTR" offset="706">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_105">
+        <t class="HTR" offset="709">getreuowe</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_106">
+        <t class="HTR" offset="719">nakeming</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_107">
+        <t class="HTR" offset="728">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_108">
+        <t class="HTR" offset="731">uitvoering</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_109">
+        <t class="HTR" offset="742">der</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_110">
+        <t class="HTR" offset="746">verbintenissen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_111">
+        <t class="HTR" offset="761">door</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_112">
+        <t class="HTR" offset="766">haren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_113">
+        <t class="HTR" offset="772">voor,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_114">
+        <t class="HTR" offset="778">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_115">
+        <t class="HTR" offset="782">huurder,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_116">
+        <t class="HTR" offset="791">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_117">
+        <t class="HTR" offset="795">dit</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_118">
+        <t class="HTR" offset="799">Contract</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_119">
+        <t class="HTR" offset="808">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_120">
+        <t class="HTR" offset="812">gegaan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_121">
+        <t class="HTR" offset="819">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_122">
+        <t class="HTR" offset="822">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_123">
+        <t class="HTR" offset="825">allen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_124">
+        <t class="HTR" offset="831">tijde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_125">
+        <t class="HTR" offset="837">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_126">
+        <t class="HTR" offset="840">zullen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_127">
+        <t class="HTR" offset="847">presteren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_128">
+        <t class="HTR" offset="857">dat</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_129">
+        <t class="HTR" offset="861">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_130">
+        <t class="HTR" offset="865">zelve</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_131">
+        <t class="HTR" offset="871">door</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_132">
+        <t class="HTR" offset="876">hem</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_133">
+        <t class="HTR" offset="880">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_134">
+        <t class="HTR" offset="884">uitvoer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_135">
+        <t class="HTR" offset="892">worde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_136">
+        <t class="HTR" offset="898">gelegd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_137">
+        <t class="HTR" offset="905">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_138">
+        <t class="HTR" offset="908">betrachtigd,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_139">
+        <t class="HTR" offset="921">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_140">
+        <t class="HTR" offset="924">dien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_141">
+        <t class="HTR" offset="929">einde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_142">
+        <t class="HTR" offset="935">zich</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_143">
+        <t class="HTR" offset="940">persoonlijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_144">
+        <t class="HTR" offset="952">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_145">
+        <t class="HTR" offset="956">sprakelijk</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_146">
+        <t class="HTR" offset="967">stellende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_147">
+        <t class="HTR" offset="977">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_148">
+        <t class="HTR" offset="980">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_149">
+        <t class="HTR" offset="984">heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_150">
+        <t class="HTR" offset="989">Verhuurder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_151">
+        <t class="HTR" offset="1000">garanderinde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_152">
+        <t class="HTR" offset="1013">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_153">
+        <t class="HTR" offset="1018">alle</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_154" class="HTR">
+        <t class="HTR" offset="1023">schaden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_155">
+        <t class="HTR" offset="1031">die</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_156">
+        <t class="HTR" offset="1035">hij,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_157">
+        <t class="HTR" offset="1040">uit</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_158">
+        <t class="HTR" offset="1044">welken</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_159">
+        <t class="HTR" offset="1051">hoofde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_160">
+        <t class="HTR" offset="1058">ook,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_161">
+        <t class="HTR" offset="1063">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_162">
+        <t class="HTR" offset="1067">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_163">
+        <t class="HTR" offset="1070">tegenwoordige</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_164">
+        <t class="HTR" offset="1084">verhuring</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_165">
+        <t class="HTR" offset="1094">mog</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_166">
+        <t class="HTR" offset="1098">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_167">
+        <t class="HTR" offset="1101">komen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_168">
+        <t class="HTR" offset="1107">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_169">
+        <t class="HTR" offset="1110">lijden,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_170">
+        <t class="HTR" offset="1118">onder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_171">
+        <t class="HTR" offset="1124">afstand</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_172">
+        <t class="HTR" offset="1132">aan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_173">
+        <t class="HTR" offset="1136">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_174">
+        <t class="HTR" offset="1140">voorregt</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_175">
+        <t class="HTR" offset="1149">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_176">
+        <t class="HTR" offset="1153">uitwinning</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_177">
+        <t class="HTR" offset="1164">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_178">
+        <t class="HTR" offset="1167">onder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_179">
+        <t class="HTR" offset="1173">verband</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_180">
+        <t class="HTR" offset="1181">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_181">
+        <t class="HTR" offset="1185">haar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_182">
+        <t class="HTR" offset="1190">persern</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_183">
+        <t class="HTR" offset="1198">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_184">
+        <t class="HTR" offset="1201">goederen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_185">
+        <t class="HTR" offset="1210">ingevolge</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_186">
+        <t class="HTR" offset="1220">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_187">
+        <t class="HTR" offset="1223">over</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_188">
+        <t class="HTR" offset="1228">Daar</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_189">
+        <t class="HTR" offset="1233">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_190">
+        <t class="HTR" offset="1237">Acte.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_191">
+        <t class="HTR" offset="1243">Gedaan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_192">
+        <t class="HTR" offset="1250">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_193">
+        <t class="HTR" offset="1253">gepasseerd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_194">
+        <t class="HTR" offset="1264">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_195">
+        <t class="HTR" offset="1267">Heerenwal</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_196">
+        <t class="HTR" offset="1277">onder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_197">
+        <t class="HTR" offset="1283">Nijehaske</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_198">
+        <t class="HTR" offset="1293">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_199">
+        <t class="HTR" offset="1296">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_200">
+        <t class="HTR" offset="1300">huize</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_201">
+        <t class="HTR" offset="1306">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_202">
+        <t class="HTR" offset="1310">Reel</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_203">
+        <t class="HTR" offset="1315">Wijbes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_204">
+        <t class="HTR" offset="1322">Offringa</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_205">
+        <t class="HTR" offset="1331">kastitien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_206">
+        <t class="HTR" offset="1341">taldaar,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_207">
+        <t class="HTR" offset="1350">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_208">
+        <t class="HTR" offset="1353">heden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_209">
+        <t class="HTR" offset="1359">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_210">
+        <t class="HTR" offset="1363">dertienden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_211">
+        <t class="HTR" offset="1374">P</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_212">
+        <t class="HTR" offset="1376">Leer:</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_213">
+        <t class="HTR" offset="1382">meester</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_214">
+        <t class="HTR" offset="1390">bakker</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_215">
+        <t class="HTR" offset="1397">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_216">
+        <t class="HTR" offset="1400">ste.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_217">
+        <t class="HTR" offset="1405">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_218">
+        <t class="HTR" offset="1408">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_219">
+        <t class="HTR" offset="1412">het</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_220">
+        <t class="HTR" offset="1416">doorgehaalde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_221">
+        <t class="HTR" offset="1429">woord</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_222">
+        <t class="HTR" offset="1435">Mei</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_223">
+        <t class="HTR" offset="1439">achttien</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_224">
+        <t class="HTR" offset="1448">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_225">
+        <t class="HTR" offset="1456">zeven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_226">
+        <t class="HTR" offset="1462">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_227">
+        <t class="HTR" offset="1465">dertig,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_228">
+        <t class="HTR" offset="1473">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_229">
+        <t class="HTR" offset="1476">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_230">
+        <t class="HTR" offset="1480">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_231">
+        <t class="HTR" offset="1485">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_232">
+        <t class="HTR" offset="1489">evengenoemden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_233">
+        <t class="HTR" offset="1503">Gffringa</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_234">
+        <t class="HTR" offset="1512">kastelein</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_235">
+        <t class="HTR" offset="1522">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_236">
+        <t class="HTR" offset="1525">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_237">
+        <t class="HTR" offset="1529">Evert</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_238">
+        <t class="HTR" offset="1535">Sjirks</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_239">
+        <t class="HTR" offset="1542">Westra</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_240">
+        <t class="HTR" offset="1549">Scheenmaker</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_241">
+        <t class="HTR" offset="1561">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_242">
+        <t class="HTR" offset="1564">Heer</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_243">
+        <t class="HTR" offset="1569">enveen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_244">
+        <t class="HTR" offset="1576">woonachtig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_245">
+        <t class="HTR" offset="1587">goedgekeurd:</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_246">
+        <t class="HTR" offset="1600">als</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_247">
+        <t class="HTR" offset="1604">ten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_248">
+        <t class="HTR" offset="1608">dezen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_249">
+        <t class="HTR" offset="1614">vereischte</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_250">
+        <t class="HTR" offset="1625">getuigen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_251">
+        <t class="HTR" offset="1634">welke</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_252">
+        <t class="HTR" offset="1640">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_253">
+        <t class="HTR" offset="1643">tegenwoordige</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_254">
+        <t class="HTR" offset="1657">minuut,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_255">
+        <t class="HTR" offset="1665">na</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_256">
+        <t class="HTR" offset="1668">TT</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_257">
+        <t class="HTR" offset="1671">J</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_258">
+        <t class="HTR" offset="1673">F</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_259">
+        <t class="HTR" offset="1675">H</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_260">
+        <t class="HTR" offset="1677">gedane</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_261">
+        <t class="HTR" offset="1684">voorlezing</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_262">
+        <t class="HTR" offset="1695">met</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_263">
+        <t class="HTR" offset="1699">de</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_264">
+        <t class="HTR" offset="1702">Comparanten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_265">
+        <t class="HTR" offset="1714">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_266">
+        <t class="HTR" offset="1717">ons</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_267">
+        <t class="HTR" offset="1721">Notaris</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_268">
+        <t class="HTR" offset="1729">geteekend</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_269">
+        <t class="HTR" offset="1739">C:JD</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_270">
+        <t class="HTR" offset="1744">R:</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_271">
+        <t class="HTR" offset="1747">We</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_272">
+        <t class="HTR" offset="1750">hebben.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_273">
+        <t class="HTR" offset="1758">PS</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_274">
+        <t class="HTR" offset="1761">W</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_275">
+        <t class="HTR" offset="1763">OL</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_276">
+        <t class="HTR" offset="1766">:</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_277">
+        <t class="HTR" offset="1768">P</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_278">
+        <t class="HTR" offset="1770">Tacony</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_279">
+        <t class="HTR" offset="1777">Jan</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_280">
+        <t class="HTR" offset="1781">J</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_281">
+        <t class="HTR" offset="1783">Jnkke,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_282">
+        <t class="HTR" offset="1790">Cn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_283">
+        <t class="HTR" offset="1793">Ju</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_284">
+        <t class="HTR" offset="1796">Plosse</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_286">
+        <t class="HTR" offset="1803">op</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_288">
+        <t class="HTR" offset="1806">Pewospinger</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_289">
+        <t class="HTR" offset="1818">PS</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_290">
+        <t class="HTR" offset="1821">westn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_291">
+        <t class="HTR" offset="1827">A</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_292">
+        <t class="HTR" offset="1829">imuis.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_293">
+        <t class="HTR" offset="1836">coota</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_296">
+        <t class="HTR" offset="1842">Geregistreerd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_297">
+        <t class="HTR" offset="1856">met</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_298">
+        <t class="HTR" offset="1860">twee</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_299">
+        <t class="HTR" offset="1865">blade</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_300">
+        <t class="HTR" offset="1871">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_301">
+        <t class="HTR" offset="1875">renvoij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_302">
+        <t class="HTR" offset="1883">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_303">
+        <t class="HTR" offset="1886">Heeren</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_304">
+        <t class="HTR" offset="1893">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_305">
+        <t class="HTR" offset="1897">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_306">
+        <t class="HTR" offset="1901">zestienden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_307">
+        <t class="HTR" offset="1912">Mei</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_308">
+        <t class="HTR" offset="1916">:</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_309">
+        <t class="HTR" offset="1918">1800</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_310">
+        <t class="HTR" offset="1923">zeven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_311">
+        <t class="HTR" offset="1929">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_312">
+        <t class="HTR" offset="1932">dertig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_313">
+        <t class="HTR" offset="1939">deel</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_314">
+        <t class="HTR" offset="1944">dertig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_315">
+        <t class="HTR" offset="1951">fob</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_316">
+        <t class="HTR" offset="1955">honderd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_317">
+        <t class="HTR" offset="1963">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_318">
+        <t class="HTR" offset="1966">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_320">
+        <t class="HTR" offset="1971">ƒ247</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_321">
+        <t class="HTR" offset="1976">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_322">
+        <t class="HTR" offset="1979">zeventig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_323">
+        <t class="HTR" offset="1988">versovak</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_324">
+        <t class="HTR" offset="1997">twee</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_325">
+        <t class="HTR" offset="2002">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_326">
+        <t class="HTR" offset="2005">drie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_327">
+        <t class="HTR" offset="2010">Ontvangen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_328">
+        <t class="HTR" offset="2020">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_329">
+        <t class="HTR" offset="2025">Boog</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_330">
+        <t class="HTR" offset="2030">123.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_331">
+        <t class="HTR" offset="2035">regt</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_332">
+        <t class="HTR" offset="2040">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_333">
+        <t class="HTR" offset="2044">derhiering</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_334">
+        <t class="HTR" offset="2055">twee</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_335">
+        <t class="HTR" offset="2060">gulden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_336">
+        <t class="HTR" offset="2067">zeven</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_337">
+        <t class="HTR" offset="2073">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_338">
+        <t class="HTR" offset="2076">veertig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_339">
+        <t class="HTR" offset="2084">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_340">
+        <t class="HTR" offset="2088">3</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_341">
+        <t class="HTR" offset="2090">7</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_342">
+        <t class="HTR" offset="2092">tweede</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_343">
+        <t class="HTR" offset="2099">cents</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_344">
+        <t class="HTR" offset="2105">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_345">
+        <t class="HTR" offset="2108">doord</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_346">
+        <t class="HTR" offset="2114">borg</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_347">
+        <t class="HTR" offset="2119">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_348">
+        <t class="HTR" offset="2123">gulden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_349">
+        <t class="HTR" offset="2130">rie</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_350">
+        <t class="HTR" offset="2134">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_351">
+        <t class="HTR" offset="2137">twintig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_352">
+        <t class="HTR" offset="2145">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_353">
+        <t class="HTR" offset="2148">237.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_354">
+        <t class="HTR" offset="2153">85</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_355">
+        <t class="HTR" offset="2156">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_356">
+        <t class="HTR" offset="2160">halve</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_357">
+        <t class="HTR" offset="2166">cents</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_358">
+        <t class="HTR" offset="2172">makende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_359">
+        <t class="HTR" offset="2180">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_360">
+        <t class="HTR" offset="2183">zamen</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_361">
+        <t class="HTR" offset="2189">met</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_362">
+        <t class="HTR" offset="2193">de3opcenten</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_363">
+        <t class="HTR" offset="2205">vier</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_364">
+        <t class="HTR" offset="2210">gulden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_365">
+        <t class="HTR" offset="2217">zes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_366">
+        <t class="HTR" offset="2221">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_367">
+        <t class="HTR" offset="2224">vijftig</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_368">
+        <t class="HTR" offset="2232">een</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_369">
+        <t class="HTR" offset="2236">tweede</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_370">
+        <t class="HTR" offset="2243">cents</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_371">
+        <t class="HTR" offset="2249">ƒ456</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_372">
+        <t class="HTR" offset="2254">De</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_373">
+        <t class="HTR" offset="2257">Ontvanger</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000099.xml.text.p.r2.String_374">
+        <t class="HTR" offset="2267">Pn</t>
+      </str>
+    </p>
+  </text>
+</FoLiA>

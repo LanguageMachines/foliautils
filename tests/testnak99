@@ -1,0 +1,6 @@
+#!/bin/sh -v
+#
+
+\rm *.ticcl.xml
+
+$my_bin/FoLiA-correct --ngram 2 --punct=manypunct.punct --unk=manyunk.unk --rank=NAK/rank.chained --clear --inputclass=HTR --outputclass=Ticcl -O nakout -v -v -v NAK/NAK99.xml > testnak99.out  2>&1
