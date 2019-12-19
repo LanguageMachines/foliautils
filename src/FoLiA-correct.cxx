@@ -180,10 +180,16 @@ bool fillVariants( const string& fn,
 	// skip 'too long' n-gram variants
 	continue;
       }
-      string confS = parts[5]; // WILL FAIL for chained rank files
-      double d;
-      if ( !TiCC::stringTo<double>( confS, d ) ){
+      string confS;
+      if ( parts.size() == 7 ){
 	confS = "1.0";
+      }
+      else {
+	confS = parts[5];
+	double d;
+	if ( !TiCC::stringTo<double>( confS, d ) ){
+	  confS = "1.0";
+	}
       }
       vec.push_back( word_conf( trans, confS ) );
     }
@@ -303,7 +309,6 @@ Correction *split_unigram( const gram_r& corr,
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
-  doStrings = false;
   oV.push_back( corr._words[0] );
   for ( const auto& p : corr._result ){
     KWargs args;
@@ -354,7 +359,7 @@ void apply_uni_correction( const gram_r& cor,
   // cerr << "IN=" << uni << endl;
   // cerr << "er is een correctie: " << cor << endl;
   if ( verbose ){
-    cout << "unigram corrections:" << endl;
+    cout << "unigram corrections: " << endl;
     cout << cor.orig_text() << " : " << cor.result_text() << endl;
   }
   if ( cor._words[0] ){
@@ -1042,15 +1047,43 @@ string correct_trigrams( const vector<gram_r>& trigrams,
 
 //#define HEMP_DEBUG
 
+void add_to_result( vector<gram_r>& result,
+		    const string mw,
+		    const vector<pair<hemp_status,FoliaElement*>>& inventory,
+		    const size_t last ){
+  vector<string> parts = TiCC::split_at( mw, "_" );
+  size_t j = parts.size();
+  size_t index = last+1-j;
+  if ( verbose > 4 ){
+    cerr << "add to result: " << parts << endl;
+    cerr << "LAST=" << last << endl;
+    cerr << "index=" << index << endl;
+    cerr << "IN result: " << result << endl;
+  }
+  for ( const auto& p :parts ){
+    if ( verbose > 4 ){
+      cerr << "index=" << index << endl;
+      cerr << "inventory[" << index << "]= " << inventory[index] << endl;
+    }
+    result.push_back( gram_r(p,inventory[index].second) );
+    ++index;
+  }
+  if ( verbose > 4 ){
+    cerr << "OUT result: " << result << endl;
+  }
+}
+
 vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
-			      vector<hemp_status> inventory,
+			      vector<pair<hemp_status,FoliaElement*>> inventory,
 			      const unordered_map<string,string>& puncts ){
   vector<gram_r> result;
   result.reserve(unigrams.size() );
   string mw;
   for ( size_t i=0; i < unigrams.size(); ++i ){
-    //    cerr << "i=" << i << "/" << unigrams.size()-1 << " status = " << inventory[i] << " MW='" << mw << "'" << endl;
-    if ( inventory[i] == NO_HEMP ){
+    if ( verbose > 2 ){
+      cerr << "i=" << i << "/" << unigrams.size()-1 << " status = " << inventory[i] << " MW='" << mw << "'" << endl;
+    }
+    if ( inventory[i].first == NO_HEMP ){
       if ( !mw.empty() ){
 	mw.pop_back(); // remove last '_'
 	const auto& it = puncts.find( mw );
@@ -1058,30 +1091,30 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	  result.push_back( gram_r(it->second, unigrams[i]._words[0] ) );
 	}
 	else {
-	  vector<string> parts = TiCC::split_at( mw, "_" );
-	  for ( const auto& p :parts ){
-	    result.push_back( gram_r(p,unigrams[i]._words[0]) );
+	  if ( verbose > 2 ){
+	    cerr << "VOOR add to result: 1" << inventory[i] << endl;
 	  }
+	  add_to_result( result, mw, inventory, i-1 );
 	}
 	mw = "";
       }
       result.push_back( unigrams[i] );
     }
-    else if ( inventory[i] == END_PUNCT_HEMP ){
+    else if ( inventory[i].first == END_PUNCT_HEMP ){
       mw += unigrams[i].orig_text();
       const auto& it = puncts.find( mw );
       if ( it != puncts.end() ){
 	result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
       }
       else {
-	vector<string> parts = TiCC::split_at( mw, "_" );
-	for ( const auto& p :parts ){
-	  result.push_back( gram_r(p,unigrams[i]._words[0]) );
+	if ( verbose > 2 ){
+	  cerr << "VOOR add to result: 2" << inventory[i] << endl;
 	}
+	add_to_result( result, mw, inventory, i );
       }
       mw = "";
     }
-    else if ( inventory[i] == START_PUNCT_HEMP ){
+    else if ( inventory[i].first == START_PUNCT_HEMP ){
       if ( !mw.empty() ){
 	mw.pop_back(); //  remove last '_'
 	const auto& it = puncts.find( mw );
@@ -1089,19 +1122,21 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	  result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
 	}
 	else {
-	  vector<string> parts = TiCC::split_at( mw, "_" );
-	  for ( const auto& p :parts ){
-	    result.push_back( gram_r(p,unigrams[i]._words[0]) );
+	  if ( verbose > 2 ){
+	    cerr << "VOOR add to result: 3" << inventory[i] << endl;
 	  }
+	  add_to_result( result, mw, inventory, i );
 	}
 	mw = "";
       }
       mw = unigrams[i].orig_text() + "_";
     }
-    else if ( inventory[i] == NORMAL_HEMP ){
+    else if ( inventory[i].first == NORMAL_HEMP ){
       mw += unigrams[i].orig_text() + "_";
     }
-    //    cerr << "   result=" << result << endl;
+    if ( verbose > 2 ){
+      cerr << "   result=" << result << endl;
+    }
   }
   if ( !mw.empty() ){
     // leftovers
@@ -1111,23 +1146,44 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
       result.push_back( gram_r(it->second,unigrams.back()._words[0]) );
     }
     else {
-      vector<string> parts = TiCC::split_at( mw, "_" );
-      for ( const auto& p :parts ){
-       	result.push_back( gram_r(p,unigrams.back()._words[0] ) );
+      if ( verbose > 2 ){
+	cerr << "VOOR add to result: 4" << inventory[unigrams.size()-1] << endl;
       }
+      add_to_result( result, mw, inventory, unigrams.size()-1 );
     }
+  }
+  if ( verbose > 2 ){
+    cerr << " FINAL result=" << result << endl;
   }
   return result;
 }
 
 vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 			      const unordered_map<string,string>& puncts ){
+  if ( verbose > 2 ){
+    cout << "replace HEMS in UNIGRAMS:\n" << unigrams << endl;
+  }
   vector<UnicodeString> u_uni( unigrams.size() );
   for ( size_t i=0; i < unigrams.size(); ++i ){
     u_uni[i] = TiCC::UnicodeFromUTF8(unigrams[i].orig_text());
   }
-  vector<hemp_status> inventory = create_emph_inventory( u_uni );
+  vector<hemp_status> hemp_inventory = create_emph_inventory( u_uni );
+  if ( verbose > 2 ){
+    cerr << "unigrams, size=" << unigrams.size() << endl;
+    cerr << "hemp inventory, size=" << hemp_inventory.size() << endl;
+    cerr << "hemp inventory: " << hemp_inventory << endl;
+  }
+  vector<pair<hemp_status,FoliaElement*>> inventory;
+  for ( size_t i=0; i < unigrams.size(); ++i ){
+    inventory.push_back(make_pair(hemp_inventory[i],unigrams[i]._words[0]) );
+  }
+  if ( verbose > 2 ){
+    cerr << "PAIRED inventory " << inventory << endl;
+  }
   vector<gram_r> result = replace_hemps( unigrams, inventory, puncts );
+  if ( verbose > 2 ){
+    cout << "replace HEMS out UNIGRAMS:\n" << result << endl;
+  }
   return result;
 }
 
@@ -1211,11 +1267,8 @@ void correctNgrams( FoliaElement* par,
     }
   }
 #endif
-
   unigrams = replace_hemps( unigrams, puncts );
-  if ( verbose > 5 ){
-    cout << "UNIGRAMS:\n" << unigrams << endl;
-  }
+
   string partext;
   vector<gram_r> bigrams;
   vector<gram_r> trigrams;
@@ -1227,7 +1280,7 @@ void correctNgrams( FoliaElement* par,
       bigrams[i]._words.push_back( unigrams[i+1]._words[0] );
       bigrams[i]._orig.push_back( unigrams[i+1].orig_text() );
     }
-    if ( verbose > 5 ){
+    if ( verbose > 3 ){
       cout << "BIGRAMS:\n" << bigrams << endl;
     }
   }
@@ -1272,6 +1325,11 @@ void correctNgrams( FoliaElement* par,
     }
   }
   if ( !corrected.empty() ){
+    //    cerr << "set text on " << par << endl;
+    //    cerr << par->str(output_classname) << endl;
+    // cerr << par->data()[1]->str(output_classname) << endl;
+    // cerr << par->data()[8]->str(output_classname) << endl;
+    // cerr << par->data()[88]->str(output_classname) << endl;
     par->settext( corrected, output_classname );
   }
 }

@@ -121,6 +121,25 @@ bool ispunct( UChar uc ){
   return u_ispunct( uc );
 }
 
+string toString( const hemp_status& h ){
+  switch ( h ){
+  case NO_HEMP:
+    return "NO HEMP";
+    break;
+  case NORMAL_HEMP:
+    return "NORMAL HEMP";
+    break;
+  case START_PUNCT_HEMP:
+    return "START PUNCT HEMP";
+    break;
+  case END_PUNCT_HEMP:
+    return "END PUNCT HEMP";
+    break;
+  default:
+    return "no clue about hemp value";
+  }
+}
+
 hemp_status is_emph_part( const UnicodeString& data ){
   hemp_status result = NO_HEMP;
   if (data.length() < 2 ){
