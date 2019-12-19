@@ -3,4 +3,4 @@
 
 \rm *.ticcl.xml
 
-$my_bin/FoLiA-correct --ngram 2 --punct=manypunct.punct --unk=manyunk.unk --rank=NAK/rank.chained --clear --inputclass=HTR --outputclass=Ticcl -O nakout -v -v -v -v -v NAK/NAK.folia.xml > testnak.out  2>&1
+$my_bin/FoLiA-correct --ngram 2 --punct=manypunct.punct --unk=manyunk.unk --rank=NAK/rank.chained --clear --inputclass=HTR --outputclass=Ticcl -O nakout -v -v -v NAK/NAK.folia.xml > testnak.out  2>&1

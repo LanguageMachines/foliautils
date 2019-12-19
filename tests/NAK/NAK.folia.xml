@@ -15,8 +15,41 @@
     </provenance>
   </metadata>
   <text xml:id="NL-0400410000_26_001009_000088.xml.text">
+    <p xml:id="NL-0400410000_26_001009_000088.xml.text.p.r1">
+      <t class="HTR">l6</t>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r1.String_1">
+        <t class="HTR" offset="0">l6</t>
+      </str>
+    </p>
+    <p xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2">
+      <t class="HTR">K 8 Mei 1837. N 39</t>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2.String_1">
+        <t class="HTR" offset="0">K</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2.String_2">
+        <t class="HTR" offset="2">8</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2.String_3">
+        <t class="HTR" offset="4">Mei</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2.String_4">
+        <t class="HTR" offset="8">1837.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2.String_5">
+        <t class="HTR" offset="14">N</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r2.String_6">
+        <t class="HTR" offset="16">39</t>
+      </str>
+    </p>
+    <p xml:id="NL-0400410000_26_001009_000088.xml.text.p.r3">
+      <t class="HTR">90</t>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r3.String_1">
+        <t class="HTR" offset="0">90</t>
+      </str>
+    </p>
     <p xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4">
-      <t class="HTR">10 Voor ons Arjen Binnerts, Openbaar Notaris in het Kanton Akkrum, residerende op de hoofdplaats van hetzelve, zijnde het Dorp van dien naam, Arrondissement Heerenveen, Provincie Friesland en ten bij zijn van na te noemene getuigen. zijn gecompareerd.— Jan Bannes Koopmans, boer-en sijmen Sijtzes van Ronden, Smid, beide, wonende te Echten, in qualiteit als Armvoogden van den Dorpe Echten; en als zoodanig in alimentatie hebbende Ian Geesje en Johanna Jans Verbeek, nagelatene minderjarige kinderen van Harmke Liebes Bok, overleden, in huwelijk verwekt bij Jan Verbeek, - en Siebe en Jan Rinkes. Bok, minderjarige na gelatene kinderen van Rinke Siebes Bok. Iantje Siebes Bok, zonder bedrijf huisvrouw van Jan Hendriks Karsten, arbeider, te Tjallebird, tot het verlijden dezes verklaarde te zijn mondeling gemagtigd speciaal en geautoriseerd: Wieger Siebes Bok, timmermante Langezdagen, — Jan Jans van der Werf, boerenarbeider, te Echten, in huwelijk hebbende Tjitske Siebes Bok, zonder bedrijf bij hem inwonende en door haar tot het passeren dezes monde ling gemagtigd, Welke Harmke -Jantje -Rrinke- ieger en Tilske Siebes Boks</t>
+      <t class="HTR">10 Voor ons Arjen Binnerts, Openbaar Notaris in het Kanton Akkrum, residerende op de hoofdplaats van hetzelve, zijnde het Dorp van dien naam, Arrondissement Heerenveen, Provincie Friesland en ten bij zijn van na te noemene getuigen. zijn gecompareerd.— Jan Bannes Koopmans, boer-en sijmen Sijtzes van Ronden, Smid, beide, wonende te Echten, in qualiteit als Armvoogden van den Dorpe Echten; en als zoodanig in alimentatie hebbende Ian Geesje en Johanna Jans Verbeek, nagelatene minderjarige kinderen van Harmke Liebes Bok, overleden, in huwelijk verwekt bij Jan Verbeek, - en Siebe en Jan Rinkes. Bok, minderjarige na gelatene kinderen van Rinke Siebes Bok. Iantje Siebes Bok, zonder bedrijf huisvrouw van Jan Hendriks Karsten, arbeider, te Tjallebird, tot het verlijden dezes verklaarde te zijn mondeling gemagtigd speciaal en geautoriseerd: Wieger Siebes Bok, timmermante Langezdagen, — Jan Jans van der Werf, boerenarbeider, te Echten, in huwelijk hebbende Tjitske Siebes Bok, zonder bedrijf bij hem inwonende en door haar tot het passeren dezes monde ling gemagtigd, Welke Harmke -Jantje -Rrinke- ieger en Tilske Siebes Boks, halfbroeders en zusters zijn of zijn geweest van den na te melden sijbe Sijbes Bok. Anne Siebes Bok, boerenarbeider te uitwellingergazoo voor zich als in qualiteit van mondelinge gemagtigde en instaande en caverende voor primo Annigje Geerts Geele, weduwe van Siebe Rinkes Bok, zonder bedrijf, bij hem inwinende, sereo van Klaas Sietes Bok, Schipperstinecht, gedomicilieerd te Thiel, werd van Haaije Siebes Bok, boerenknecht</t>
       <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_1">
         <t class="HTR" offset="0">10</t>
       </str>
@@ -522,7 +555,196 @@
         <t class="HTR" offset="1117">Siebes</t>
       </str>
       <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_169">
-        <t class="HTR" offset="1124">Boks</t>
+        <t class="HTR" offset="1124">Boks,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_170">
+        <t class="HTR" offset="1130">halfbroeders</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_171">
+        <t class="HTR" offset="1143">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_172">
+        <t class="HTR" offset="1146">zusters</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_173">
+        <t class="HTR" offset="1154">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_174">
+        <t class="HTR" offset="1159">of</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_175">
+        <t class="HTR" offset="1162">zijn</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_176">
+        <t class="HTR" offset="1167">geweest</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_177">
+        <t class="HTR" offset="1175">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_178">
+        <t class="HTR" offset="1179">den</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_179">
+        <t class="HTR" offset="1183">na</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_180">
+        <t class="HTR" offset="1186">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_181">
+        <t class="HTR" offset="1189">melden</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_182">
+        <t class="HTR" offset="1196">sijbe</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_183">
+        <t class="HTR" offset="1202">Sijbes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_184">
+        <t class="HTR" offset="1209">Bok.</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_185">
+        <t class="HTR" offset="1214">Anne</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_186">
+        <t class="HTR" offset="1219">Siebes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_187">
+        <t class="HTR" offset="1226">Bok,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_188">
+        <t class="HTR" offset="1231">boerenarbeider</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_189">
+        <t class="HTR" offset="1246">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_190" class="HTR">
+        <t class="HTR" offset="1249">uitwellingergazoo</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_191">
+        <t class="HTR" offset="1267">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_192">
+        <t class="HTR" offset="1272">zich</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_193">
+        <t class="HTR" offset="1277">als</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_194">
+        <t class="HTR" offset="1281">in</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_195">
+        <t class="HTR" offset="1284">qualiteit</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_196">
+        <t class="HTR" offset="1294">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_197">
+        <t class="HTR" offset="1298">mondelinge</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_198">
+        <t class="HTR" offset="1309">gemagtigde</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_199">
+        <t class="HTR" offset="1320">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_200">
+        <t class="HTR" offset="1323">instaande</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_201">
+        <t class="HTR" offset="1333">en</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_202">
+        <t class="HTR" offset="1336">caverende</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_203">
+        <t class="HTR" offset="1346">voor</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_204">
+        <t class="HTR" offset="1351">primo</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_205">
+        <t class="HTR" offset="1357">Annigje</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_206">
+        <t class="HTR" offset="1365">Geerts</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_207">
+        <t class="HTR" offset="1372">Geele,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_208">
+        <t class="HTR" offset="1379">weduwe</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_209">
+        <t class="HTR" offset="1386">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_210">
+        <t class="HTR" offset="1390">Siebe</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_211">
+        <t class="HTR" offset="1396">Rinkes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_212">
+        <t class="HTR" offset="1403">Bok,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_213">
+        <t class="HTR" offset="1408">zonder</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_214">
+        <t class="HTR" offset="1415">bedrijf,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_215">
+        <t class="HTR" offset="1424">bij</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_216">
+        <t class="HTR" offset="1428">hem</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_217" class="HTR">
+        <t class="HTR" offset="1432">inwinende,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_218">
+        <t class="HTR" offset="1443">sereo</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_219">
+        <t class="HTR" offset="1449">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_220">
+        <t class="HTR" offset="1453">Klaas</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_221">
+        <t class="HTR" offset="1459">Sietes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_222">
+        <t class="HTR" offset="1466">Bok,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_223">
+        <t class="HTR" offset="1471">Schipperstinecht,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_224" class="HTR">
+        <t class="HTR" offset="1489">gedomicilieerd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_225">
+        <t class="HTR" offset="1504">te</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_226">
+        <t class="HTR" offset="1507">Thiel,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_227">
+        <t class="HTR" offset="1514">werd</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_228">
+        <t class="HTR" offset="1519">van</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_229">
+        <t class="HTR" offset="1523">Haaije</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_230">
+        <t class="HTR" offset="1530">Siebes</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_231">
+        <t class="HTR" offset="1537">Bok,</t>
+      </str>
+      <str xml:id="NL-0400410000_26_001009_000088.xml.text.p.r4.String_232">
+        <t class="HTR" offset="1542">boerenknecht</t>
       </str>
     </p>
   </text>
