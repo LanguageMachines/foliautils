@@ -265,6 +265,11 @@ string test_final_punct( const string& word, const string& dep ){
   return result;
 }
 
+size_t unicode_size( const string& value ){
+  UnicodeString us = TiCC::UnicodeFromUTF8(value);
+  return us.length();
+}
+
 Correction *replace_unigram( const gram_r& cor,
 			     size_t& offset,
 			     bool ){
@@ -282,7 +287,7 @@ Correction *replace_unigram( const gram_r& cor,
   KWargs args;
   args["value"] = value;
   args["offset"] = TiCC::toString(offset);
-  offset += value.size() + 1;
+  offset += unicode_size( value ) + 1;
   args["class"] = output_classname;
   TextContent *t = new TextContent( args );
   nV.push_back( t );
@@ -321,7 +326,7 @@ Correction *split_unigram( const gram_r& corr,
       el = new Word( args, corr._words[0]->doc() );
     }
     el->settext( p, offset, output_classname );
-    offset += p.length() + 1;
+    offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
   if ( !corr._final_punct.empty() ){
@@ -335,7 +340,7 @@ Correction *split_unigram( const gram_r& corr,
       el = new Word( args, corr._words[0]->doc() );
     }
     el->settext( corr._final_punct, offset, output_classname );
-    offset += corr._final_punct.length() + 1;
+    offset += unicode_size(corr._final_punct) + 1;
     nV.push_back( el );
   }
   if ( suggestions ){
@@ -384,7 +389,7 @@ void apply_uni_correction( const gram_r& cor,
     }
   }
   else {
-    offset += cor.result_text().size() + 1;
+    offset += unicode_size(cor.result_text()) + 1;
   }
 }
 
@@ -471,7 +476,7 @@ gram_r correct_one_unigram( const gram_r& uni,
     // NO edit just take the string
     if ( uni._words[0] ){
       uni._words[0]->settext( uni.orig_text(), offset, output_classname );
-      offset += uni.orig_text().size() + 1;
+      offset += unicode_size(uni.orig_text()) + 1;
     }
   }
   return result;
@@ -521,7 +526,7 @@ Correction *merge_bigram( const gram_r& corr,
       el = new Word( args, corr._words[0]->doc() );
     }
     el->settext( p, offset, output_classname );
-    offset += p.size() + 1;
+    offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
   if ( corr._suggestions ){
@@ -562,7 +567,7 @@ Correction *split_bigram( const gram_r& corr,
       el = new Word( args, corr._words[0]->doc() );
     }
     el->settext( p, offset, output_classname );
-    offset += p.size() + 1;
+    offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
   if ( !corr._final_punct.empty() ){
@@ -576,7 +581,7 @@ Correction *split_bigram( const gram_r& corr,
       el = new Word( args, corr._words[0]->doc() );
     }
     el->settext( corr._final_punct, offset, output_classname );
-    offset += corr._final_punct.size() + 1;
+    offset += unicode_size( corr._final_punct ) + 1;
     nV.push_back( el );
   }
   if ( corr._suggestions ){
@@ -627,7 +632,7 @@ Correction *replace_bigram( const gram_r& corr_in,
       el = new Word( args, corr._words[0]->doc() );
     }
     el->settext( p, offset, output_classname );
-    offset += p.size() + 1;
+    offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
   if ( corr._suggestions ){
@@ -645,7 +650,7 @@ Correction *replace_bigram( const gram_r& corr_in,
   Correction *c = corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
   if ( last ){
     last->settext( last_w, offset, output_classname );
-    offset += last_w.size() + 1;
+    offset += unicode_size(last_w) + 1;
   }
   return c;
 }
@@ -835,7 +840,7 @@ void apply_tri_correction( const gram_r& corr,
 	  corr._words[0]->settext( corr._orig.front(),
 				   offset,
 				   output_classname );
-	  offset += corr._orig.front().size() + 1;
+	  offset += unicode_size(corr._orig.front()) + 1;
 	  c = merge_bigram( tmp, offset, doStrings );
 	}
 	else {
@@ -852,7 +857,7 @@ void apply_tri_correction( const gram_r& corr,
 	  corr._words[0]->settext( corr._orig.front(),
 				   offset,
 				   output_classname );
-	  offset += corr._orig.front().size() + 1;
+	  offset += unicode_size(corr._orig.front()) + 1;
 	}
 	//	cerr << "STEP 1 " << tmp << endl;
 	if ( corr._orig[2] == corr._result[2] ){
@@ -867,7 +872,7 @@ void apply_tri_correction( const gram_r& corr,
 	  corr._words[2]->settext( corr._orig.back(),
 				   offset,
 				   output_classname );
-	  offset += corr._orig.back().size() + 1;
+	  offset += unicode_size(corr._orig.back()) + 1;
 	}
 	else {
 	  c = replace_bigram( tmp, offset, doStrings );
