@@ -3,4 +3,4 @@
 
 \rm *.ticcl.xml
 
-$my_bin/FoLiA-correct --ngram 3 --punct=manypunct.punct --unk=manyunk.unk --rank=manyrank.ranked --clear --tags=part --inputclass=OCR --outputclass=Ticcl -O morse -v -v data/Morse.xml > testcorbig.out  2>&1
+$my_bin/FoLiA-correct --ngram 3 --punct=manypunct.punct --unk=manyunk.unk --rank=manyrank.ranked --clear --tags=part --inputclass=OCR --outputclass=Ticcl -O morse -v data/Morse.xml > testcorbig.out  2>&1
