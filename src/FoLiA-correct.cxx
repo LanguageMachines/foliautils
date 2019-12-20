@@ -544,6 +544,20 @@ Correction *merge_bigram( const gram_r& corr,
     offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
+  if ( !corr._final_punct.empty() ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( corr._final_punct, offset, output_classname );
+    offset += unicode_size(corr._final_punct) + 1;
+    nV.push_back( el );
+  }
   if ( corr._suggestions ){
     size_t limit = corr._suggestions->size();
     for( size_t j=0; j < limit; ++j ){
@@ -650,6 +664,20 @@ Correction *replace_bigram( const gram_r& corr_in,
     offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
+  if ( !corr._final_punct.empty() ){
+    KWargs args;
+    args["xml:id"] = corr._words[0]->generateId( "split" );
+    FoliaElement *el = 0;
+    if ( doStrings ){
+      el = new String( args, corr._words[0]->doc() );
+    }
+    else {
+      el = new Word( args, corr._words[0]->doc() );
+    }
+    el->settext( corr._final_punct, offset, output_classname );
+    offset += unicode_size(corr._final_punct) + 1;
+    nV.push_back( el );
+  }
   if ( corr._suggestions ){
     size_t limit = corr._suggestions->size();
     for( size_t j=0; j < limit; ++j ){
@@ -741,7 +769,7 @@ int correct_one_bigram( const gram_r& bi,
     string ed = result.get_ed_type();
     ++counts[ed];
     if ( verbose > 1 ){
-      cout << word << " = " << ed << " => " << result.result_text() << endl;
+      cout << orig_word << " = " << ed << " => " << result.result_text() << endl;
     }
     extra_skip = 1;
   }
