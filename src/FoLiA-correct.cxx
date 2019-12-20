@@ -255,15 +255,27 @@ void filter( string& word ){
   filter( word, '#' );
 }
 
-string test_final_punct( const string& word, const string& dep ){
+bool solve_punctuation( string& word,
+			const unordered_map<string,string>& puncts,
+			string& final ){
   const string real_puncts = ".,;!?";
-  string result;
-  if ( real_puncts.find(word.back()) != string::npos
-       && dep.back() != word.back() ){
-    result = word.back();
+  final.clear();
+  const auto pit = puncts.find( word );
+  bool result = false;
+  if ( pit != puncts.end() ){
+    result = true;
+    string new_word = pit->second;
+    //    if ( word.find(new_word) != string::npos ){
+    if ( real_puncts.find(word.back()) != string::npos
+	 && new_word.back() != word.back() ){
+      final = word.back();
+    }
+    //    }
+    word = new_word;
   }
   return result;
 }
+
 
 size_t unicode_size( const string& value ){
   UnicodeString us = TiCC::UnicodeFromUTF8(value);
@@ -417,13 +429,12 @@ gram_r correct_one_unigram( const gram_r& uni,
   string word = uni.orig_text();
   string orig_word = word;
   string final_punct;
+  bool is_punct = false;
   if ( ngram_size > 1 ){
-    const auto pit = puncts.find( word );
-    if ( pit != puncts.end() ){
-      final_punct = test_final_punct( word, pit->second );
-      word = pit->second;
+    is_punct = solve_punctuation( word, puncts, final_punct );
+    if ( is_punct ){
       if ( verbose > 2 ){
-	cout << "final punct found: " << final_punct << endl;
+	cout << "punctuated word found, final='" << final_punct << "'" << endl;
 	cout << "depuncted word   : " << word << endl;
       }
     }
@@ -460,20 +471,24 @@ gram_r correct_one_unigram( const gram_r& uni,
       ++counts["UNK"];
       did_edit = true;
     }
-    else {
-      // just use the word
+    else if ( is_punct ){
       result._result.push_back( word );
       if ( !final_punct.empty() ){
 	result._final_punct = final_punct;
-	did_edit = true;
       }
+      did_edit = true;
+    }
+    else {
+      result._result.push_back( orig_word );
     }
   }
   if ( did_edit ){
+    //    cerr << "HIER ??" << endl;
     apply_uni_correction( result, offset, doStrings );
   }
   else {
     // NO edit just take the string
+    //    cerr << "WAAROM HIER!" << endl;
     if ( uni._words[0] ){
       uni._words[0]->settext( uni.orig_text(), offset, output_classname );
       offset += unicode_size(uni.orig_text()) + 1;
@@ -700,13 +715,12 @@ int correct_one_bigram( const gram_r& bi,
   filter(word);
   string orig_word = word;
   string final_punct;
+  bool is_punct = false;
   if ( ngram_size > 1 ){
-    const auto pit = puncts.find( word );
-    if ( pit != puncts.end() ){
-      final_punct = test_final_punct( word, pit->second );
-      word = pit->second;
+    is_punct = solve_punctuation( word, puncts, final_punct );
+    if ( is_punct ){
       if ( verbose > 2 ){
-	cout << "final punct found: " << final_punct << endl;
+	cout << "punctuated word found, final='" << final_punct << "'" << endl;
 	cout << "depuncted word   : " << word << endl;
       }
     }
@@ -902,13 +916,12 @@ int correct_one_trigram( const gram_r& tri,
   filter(word);
   string orig_word = word;
   string final_punct;
+  bool is_punct = false;
   if ( ngram_size > 1 ){
-    const auto pit = puncts.find( word );
-    if ( pit != puncts.end() ){
-      final_punct = test_final_punct( word, pit->second );
-      word = pit->second;
+    is_punct = solve_punctuation( word, puncts, final_punct );
+    if ( is_punct ){
       if ( verbose > 2 ){
-	cout << "final punct found: " << final_punct << endl;
+	cout << "punctuated word found, final='" << final_punct << "'" << endl;
 	cout << "depuncted word   : " << word << endl;
       }
     }
@@ -1085,7 +1098,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
   result.reserve(unigrams.size() );
   string mw;
   for ( size_t i=0; i < unigrams.size(); ++i ){
-    if ( verbose > 2 ){
+    if ( verbose > 4 ){
       cerr << "i=" << i << "/" << unigrams.size()-1 << " status = " << inventory[i] << " MW='" << mw << "'" << endl;
     }
     if ( inventory[i].first == NO_HEMP ){
@@ -1096,7 +1109,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	  result.push_back( gram_r(it->second, unigrams[i]._words[0] ) );
 	}
 	else {
-	  if ( verbose > 2 ){
+	  if ( verbose > 4 ){
 	    cerr << "VOOR add to result: 1" << inventory[i] << endl;
 	  }
 	  add_to_result( result, mw, inventory, i-1 );
@@ -1112,7 +1125,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
       }
       else {
-	if ( verbose > 2 ){
+	if ( verbose > 4 ){
 	  cerr << "VOOR add to result: 2" << inventory[i] << endl;
 	}
 	add_to_result( result, mw, inventory, i );
@@ -1127,7 +1140,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	  result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
 	}
 	else {
-	  if ( verbose > 2 ){
+	  if ( verbose > 4 ){
 	    cerr << "VOOR add to result: 3" << inventory[i] << endl;
 	  }
 	  add_to_result( result, mw, inventory, i );
@@ -1139,7 +1152,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     else if ( inventory[i].first == NORMAL_HEMP ){
       mw += unigrams[i].orig_text() + "_";
     }
-    if ( verbose > 2 ){
+    if ( verbose > 4 ){
       cerr << "   result=" << result << endl;
     }
   }
@@ -1151,13 +1164,13 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
       result.push_back( gram_r(it->second,unigrams.back()._words[0]) );
     }
     else {
-      if ( verbose > 2 ){
+      if ( verbose > 4 ){
 	cerr << "VOOR add to result: 4" << inventory[unigrams.size()-1] << endl;
       }
       add_to_result( result, mw, inventory, unigrams.size()-1 );
     }
   }
-  if ( verbose > 2 ){
+  if ( verbose > 4 ){
     cerr << " FINAL result=" << result << endl;
   }
   return result;
@@ -1165,7 +1178,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 
 vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 			      const unordered_map<string,string>& puncts ){
-  if ( verbose > 2 ){
+  if ( verbose > 4 ){
     cout << "replace HEMS in UNIGRAMS:\n" << unigrams << endl;
   }
   vector<UnicodeString> u_uni( unigrams.size() );
@@ -1173,7 +1186,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     u_uni[i] = TiCC::UnicodeFromUTF8(unigrams[i].orig_text());
   }
   vector<hemp_status> hemp_inventory = create_emph_inventory( u_uni );
-  if ( verbose > 2 ){
+  if ( verbose > 4 ){
     cerr << "unigrams, size=" << unigrams.size() << endl;
     cerr << "hemp inventory, size=" << hemp_inventory.size() << endl;
     cerr << "hemp inventory: " << hemp_inventory << endl;
@@ -1182,11 +1195,11 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
   for ( size_t i=0; i < unigrams.size(); ++i ){
     inventory.push_back(make_pair(hemp_inventory[i],unigrams[i]._words[0]) );
   }
-  if ( verbose > 2 ){
+  if ( verbose > 4 ){
     cerr << "PAIRED inventory " << inventory << endl;
   }
   vector<gram_r> result = replace_hemps( unigrams, inventory, puncts );
-  if ( verbose > 2 ){
+  if ( verbose > 4 ){
     cout << "replace HEMS out UNIGRAMS:\n" << result << endl;
   }
   return result;
