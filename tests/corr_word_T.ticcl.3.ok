@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2019-12-18T11:55:57" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-02T15:40:01" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -33,19 +33,21 @@
             <t class="Test">de</t>
             <t class="Ticcl" offset="0">de</t>
           </w>
-          <w xml:id="p1.2">
-            <correction xml:id="p1.2.correction.1">
-              <new>
+          <correction xml:id="p1.correction.1">
+            <new>
+              <w xml:id="p1.2.edit.1">
                 <t class="Ticcl" offset="3">behandeling</t>
-              </new>
-              <original auth="no">
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p1.2">
                 <t class="Test">behándeling</t>
-              </original>
-              <suggestion auth="no" confidence="0.870370" n="1/1">
-                <t class="Ticcl">behandeling</t>
-              </suggestion>
-            </correction>
-          </w>
+              </w>
+            </original>
+            <suggestion auth="no" confidence="0.870370" n="1/1">
+              <t class="Ticcl">behandeling</t>
+            </suggestion>
+          </correction>
           <w xml:id="p1.3">
             <t class="Test">van:</t>
             <t class="Ticcl" offset="15">van:</t>
@@ -68,17 +70,22 @@
               <w xml:id="p2.3.edit.1">
                 <t class="Ticcl" offset="17">Wijziging</t>
               </w>
+              <w xml:id="p2.3.edit.2">
+                <t class="Ticcl" offset="27">van</t>
+              </w>
             </new>
             <original auth="no">
               <w xml:id="p2.3">
                 <t class="Test">Wijsiging</t>
               </w>
+              <w xml:id="p2.4">
+                <t class="Test">van</t>
+              </w>
             </original>
+            <suggestion auth="no" confidence="0.870370" n="1/1">
+              <t class="Ticcl">Wijziging_van</t>
+            </suggestion>
           </correction>
-          <w xml:id="p2.4">
-            <t class="Test">van</t>
-            <t class="Ticcl" offset="27">van</t>
-          </w>
           <w xml:id="p2.5">
             <t class="Test">de</t>
             <t class="Ticcl" offset="31">de</t>
@@ -154,6 +161,9 @@
                 <t class="Test">voorstellen</t>
               </w>
             </original>
+            <suggestion auth="no" confidence="1.000000" n="1/1">
+              <t class="Ticcl">wetsvoorstellen</t>
+            </suggestion>
           </correction>
         </p>
         <p xml:id="p5">
@@ -172,16 +182,18 @@
             <t class="Test">zonder</t>
             <t class="Ticcl" offset="10">zonder</t>
           </w>
-          <w xml:id="p5.4">
-            <correction xml:id="p5.4.correction.1">
-              <new>
+          <correction xml:id="p5.correction.1">
+            <new>
+              <w xml:id="p5.4.edit.1">
                 <t class="Ticcl" offset="17">UNK</t>
-              </new>
-              <original auth="no">
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p5.4">
                 <t class="Test">s4s67621</t>
-              </original>
-            </correction>
-          </w>
+              </w>
+            </original>
+          </correction>
           <w xml:id="p5.5">
             <t class="Test">en</t>
             <t class="Ticcl" offset="21">en</t>
