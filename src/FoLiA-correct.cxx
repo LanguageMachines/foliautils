@@ -329,8 +329,22 @@ Correction *replace_ngram( const gram_r& corr,
       sargs["confidence"] = (*corr._suggestions)[j].conf;
       sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
       Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*corr._suggestions)[j].word, output_classname );
       sV.push_back( sug );
+      vector<string> parts = TiCC::split_at( (*corr._suggestions)[j].word,
+					     SEPARATOR );
+      for ( const auto& s : parts ){
+	KWargs wargs;
+	wargs["xml:id"] = corr._words[0]->generateId( "suggestion" );
+	FoliaElement *elt;
+	if ( doStrings ){
+	  elt = new String( wargs, corr._words[0]->doc() );
+	}
+	else {
+	  elt = new Word( wargs, corr._words[0]->doc() );
+	}
+	elt->settext( s, output_classname );
+	sug->append( elt );
+      }
     }
   }
   KWargs no_args;
@@ -385,8 +399,22 @@ Correction *split_ngram( const gram_r& corr,
       sargs["confidence"] = (*corr._suggestions)[j].conf;
       sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
       Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*corr._suggestions)[j].word, output_classname );
       sV.push_back( sug );
+      vector<string> parts = TiCC::split_at( (*corr._suggestions)[j].word,
+					     SEPARATOR );
+      for ( const auto& s : parts ){
+	KWargs wargs;
+	wargs["xml:id"] = corr._words[0]->generateId( "suggestion" );
+	FoliaElement *elt;
+	if ( doStrings ){
+	  elt = new String( wargs, corr._words[0]->doc() );
+	}
+	else {
+	  elt = new Word( wargs, corr._words[0]->doc() );
+	}
+	elt->settext( s, output_classname );
+	sug->append( elt );
+      }
     }
   }
   KWargs no_args;
@@ -586,8 +614,22 @@ Correction *merge_ngram( const gram_r& corr,
       sargs["confidence"] = (*corr._suggestions)[j].conf;
       sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
       Suggestion *sug = new Suggestion( sargs );
-      sug->settext( (*corr._suggestions)[j].word, output_classname );
       sV.push_back( sug );
+      vector<string> parts = TiCC::split_at( (*corr._suggestions)[j].word,
+					     SEPARATOR );
+      for ( const auto& s : parts ){
+	KWargs wargs;
+	wargs["xml:id"] = corr._words[0]->generateId( "suggestion" );
+	FoliaElement *elt;
+	if ( doStrings ){
+	  elt = new String( wargs, corr._words[0]->doc() );
+	}
+	else {
+	  elt = new Word( wargs, corr._words[0]->doc() );
+	}
+	elt->settext( s, output_classname );
+	sug->append( elt );
+      }
     }
   }
   KWargs no_args;
