@@ -348,9 +348,9 @@ correct unigram noemene [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p
 noemene = 1-1 => noemen
 unigram corrections: 
 noemene : noemen
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_35.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.1" > {<new>,<original>,}
 noemene = 2 => noemen
-After correct_one_bi: cor=noemene (1-1) ==> noemen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_35" > {<correction>,}]
+After correct_one_bi: cor=noemene (1-1) ==> noemen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_35" > {<t>,}]
 bigram is: 'getuigen._zijn [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_36" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_37" > {<t>,}]'
 before correct_one_bi: bi=getuigen._zijn [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_36" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_37" > {<t>,}]
 correct bigram getuigen._zijn [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_36" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_37" > {<t>,}]
@@ -408,9 +408,9 @@ correct unigram boer-en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p
 boer-en = 1-1 => Borgen
 unigram corrections: 
 boer-en : Borgen
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_42.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.2" > {<new>,<original>,}
 boer-en = 2 => Borgen
-After correct_one_bi: cor=boer-en (1-1) ==> Borgen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_42" > {<correction>,}]
+After correct_one_bi: cor=boer-en (1-1) ==> Borgen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_42" > {<t>,}]
 bigram is: 'sijmen_Sijtzes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_43" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_44" > {<t>,}]'
 before correct_one_bi: bi=sijmen_Sijtzes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_43" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_44" > {<t>,}]
 correct bigram sijmen_Sijtzes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_43" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_44" > {<t>,}]
@@ -420,9 +420,9 @@ correct unigram sijmen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.
 sijmen = 1-1 => mijnen
 unigram corrections: 
 sijmen : mijnen
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_43.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.3" > {<new>,<original>,}
 sijmen = 2 => mijnen
-After correct_one_bi: cor=sijmen (1-1) ==> mijnen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_43" > {<correction>,}]
+After correct_one_bi: cor=sijmen (1-1) ==> mijnen [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_43" > {<t>,}]
 bigram is: 'Sijtzes_van [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_44" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_45" > {<t>,}]'
 before correct_one_bi: bi=Sijtzes_van [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_44" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_45" > {<t>,}]
 correct bigram Sijtzes_van [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_44" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_45" > {<t>,}]
@@ -696,9 +696,9 @@ correct unigram Liebes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.
 Liebes = 1-1 => Siebes
 unigram corrections: 
 Liebes : Siebes
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_77.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.4" > {<new>,<original>,}
 Liebes = 2 => Siebes
-After correct_one_bi: cor=Liebes (1-1) ==> Siebes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_77" > {<correction>,}]
+After correct_one_bi: cor=Liebes (1-1) ==> Siebes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_77" > {<t>,}]
 bigram is: 'Bok,_overleden, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_78" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_79" > {<t>,}]'
 before correct_one_bi: bi=Bok,_overleden, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_78" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_79" > {<t>,}]
 correct bigram Bok,_overleden, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_78" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_79" > {<t>,}]
@@ -892,9 +892,9 @@ correct unigram Iantje [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.
 Iantje = 1-1 => Jantje
 unigram corrections: 
 Iantje : Jantje
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_101.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.5" > {<new>,<original>,}
 Iantje = 2 => Jantje
-After correct_one_bi: cor=Iantje (1-1) ==> Jantje [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_101" > {<correction>,}]
+After correct_one_bi: cor=Iantje (1-1) ==> Jantje [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_101" > {<t>,}]
 bigram is: 'Siebes_Bok, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_102" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_103" > {<t>,}]'
 before correct_one_bi: bi=Siebes_Bok, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_102" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_103" > {<t>,}]
 correct bigram Siebes_Bok, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_102" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_103" > {<t>,}]
@@ -1064,9 +1064,9 @@ correct unigram gemagtigd [ <str xml:id='NL-0400410000_26_001009_000088.xml.text
 gemagtigd = 1-1 => gemagtigde
 unigram corrections: 
 gemagtigd : gemagtigde
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_122.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.6" > {<new>,<original>,}
 gemagtigd = 2 => gemagtigde
-After correct_one_bi: cor=gemagtigd (1-1) ==> gemagtigde [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_122" > {<correction>,}]
+After correct_one_bi: cor=gemagtigd (1-1) ==> gemagtigde [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_122" > {<t>,}]
 bigram is: 'speciaal_en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_123" class='HTR' > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_124" > {<t>,}]'
 before correct_one_bi: bi=speciaal_en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_123" class='HTR' > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_124" > {<t>,}]
 correct bigram speciaal_en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_123" class='HTR' > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_124" > {<t>,}]
@@ -1124,9 +1124,9 @@ correct unigram timmermante [ <str xml:id='NL-0400410000_26_001009_000088.xml.te
 timmermante = 1-1 => timmerman
 unigram corrections: 
 timmermante : timmerman
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_129.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.7" > {<new>,<original>,}
 timmermante = 2 => timmerman
-After correct_one_bi: cor=timmermante (1-1) ==> timmerman [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_129" > {<correction>,}]
+After correct_one_bi: cor=timmermante (1-1) ==> timmerman [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_129" > {<t>,}]
 bigram is: 'Langezdagen,_— [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_130" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_131" > {<t>,}]'
 before correct_one_bi: bi=Langezdagen,_— [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_130" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_131" > {<t>,}]
 correct bigram Langezdagen,_— [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_130" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_131" > {<t>,}]
@@ -1400,7 +1400,7 @@ correct unigram -Jantje [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p
 -Jantje = 1-2 => - Antje
 unigram corrections: 
 -Jantje : - Antje
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.8" > {<new>,<original>,}
 -Jantje = 2 => - Antje
 After correct_one_bi: cor=-Jantje (1-2) ==> - Antje [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_163" > {<t>,}]
 bigram is: '-Rrinke-_ieger [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_164" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_165" > {<t>,}]'
@@ -1415,7 +1415,7 @@ bigram is: 'ieger_en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4
 before correct_one_bi: bi=ieger_en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_165" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_166" > {<t>,}]
 correct bigram ieger_en [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_165" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_166" > {<t>,}]
 ieger_en = 2-1 => Egeren
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.2" > {<new>,<original>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.9" > {<new>,<original>,}
 ieger_en = 2 => Egeren
 After correct_one_bi: cor=ieger_en (2-1) ==> Egeren [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_165" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_166" > {<t>,}]
 bigram is: 'en_Tilske [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_166" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_167" > {<t>,}]'
@@ -1428,9 +1428,9 @@ correct unigram Tilske [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.
 Tilske = 1-1 => Ritske
 unigram corrections: 
 Tilske : Ritske
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_167.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.10" > {<new>,<original>,}
 Tilske = 2 => Ritske
-After correct_one_bi: cor=Tilske (1-1) ==> Ritske [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_167" > {<correction>,}]
+After correct_one_bi: cor=Tilske (1-1) ==> Ritske [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_167" > {<t>,}]
 bigram is: 'Siebes_Boks, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_168" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_169" > {<t>,}]'
 before correct_one_bi: bi=Siebes_Boks, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_168" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_169" > {<t>,}]
 correct bigram Siebes_Boks, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_168" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_169" > {<t>,}]
@@ -1560,9 +1560,9 @@ correct unigram Sijbes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.
 Sijbes = 1-1 => Siebes
 unigram corrections: 
 Sijbes : Siebes
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_183.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.11" > {<new>,<original>,}
 Sijbes = 2 => Siebes
-After correct_one_bi: cor=Sijbes (1-1) ==> Siebes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_183" > {<correction>,}]
+After correct_one_bi: cor=Sijbes (1-1) ==> Siebes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_183" > {<t>,}]
 bigram is: 'Bok._Anne [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_184" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_185" > {<t>,}]'
 before correct_one_bi: bi=Bok._Anne [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_184" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_185" > {<t>,}]
 correct bigram Bok._Anne [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_184" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_185" > {<t>,}]
@@ -1716,9 +1716,9 @@ correct unigram caverende [ <str xml:id='NL-0400410000_26_001009_000088.xml.text
 caverende = 1-1 => caveren
 unigram corrections: 
 caverende : caveren
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_202.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.12" > {<new>,<original>,}
 caverende = 2 => caveren
-After correct_one_bi: cor=caverende (1-1) ==> caveren [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_202" > {<correction>,}]
+After correct_one_bi: cor=caverende (1-1) ==> caveren [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_202" > {<t>,}]
 bigram is: 'voor_primo [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_203" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_204" > {<t>,}]'
 before correct_one_bi: bi=voor_primo [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_203" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_204" > {<t>,}]
 correct bigram voor_primo [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_203" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_204" > {<t>,}]
@@ -1872,9 +1872,9 @@ correct unigram Sietes [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.
 Sietes = 1-1 => Pieters
 unigram corrections: 
 Sietes : Pieters
-created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_221.correction.1" > {<new>,<original>,<suggestion>,}
+created:  <correction xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.correction.13" > {<new>,<original>,}
 Sietes = 2 => Pieters
-After correct_one_bi: cor=Sietes (1-1) ==> Pieters [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_221" > {<correction>,}]
+After correct_one_bi: cor=Sietes (1-1) ==> Pieters [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_221" > {<t>,}]
 bigram is: 'Bok,_Schipperstinecht, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_222" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_223" > {<t>,}]'
 before correct_one_bi: bi=Bok,_Schipperstinecht, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_222" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_223" > {<t>,}]
 correct bigram Bok,_Schipperstinecht, [ <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_222" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000088.xml.text.p.r4.String_223" > {<t>,}]
