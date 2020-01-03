@@ -357,22 +357,20 @@ Correction *convert_ngram( const gram_r& corr,
   return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
 }
 
-void apply_uni_correction( const gram_r& cor,
+void apply_uni_correction( const gram_r& corr,
 			   size_t& offset,
 			   bool doStrings ){
-  //  cerr << "er is een correctie: " << cor << endl;
   if ( verbose ){
     cout << "unigram corrections: " << endl;
-    cout << cor.orig_text() << " : " << cor.result_text() << endl;
+    cout << corr.orig_text() << " : " << corr.result_text() << endl;
   }
-  if ( cor._words[0] ){
-    vector<string> parts = TiCC::split( cor.result_text() );
+  if ( corr._words[0] ){
     Correction *c = 0;
-    if ( parts.size() == 1 ){
-      c = convert_ngram( cor, offset, doStrings, "edit" );
+    if ( corr._ed_type == "1-1" ){
+      c = convert_ngram( corr, offset, doStrings, "edit" );
     }
     else {
-      c = convert_ngram( cor, offset, doStrings, "split" );
+      c = convert_ngram( corr, offset, doStrings, "split" );
     }
     if ( verbose > 3 ){
       cerr << "created: " << c->xmlstring() << endl;
@@ -382,7 +380,7 @@ void apply_uni_correction( const gram_r& cor,
     }
   }
   else {
-    offset += unicode_size(cor.result_text()) + 1;
+    offset += unicode_size(corr.result_text()) + 1;
   }
 }
 
@@ -449,6 +447,7 @@ gram_r correct_one_unigram( const gram_r& uni,
     if ( uit != unknowns.end() ){
       // ok it is a registrated garbage word
       result._result.push_back( "UNK" );
+      result.get_ed_type( );
       ++counts["UNK"];
       did_edit = true;
     }
@@ -587,6 +586,7 @@ int correct_one_bigram( const gram_r& bi,
       result._result.push_back( "UNK" );
       result._result.push_back( "UNK" );
       ++counts["UNK UNK"];
+      result.get_ed_type( );
       if ( verbose > 2 ){
 	cout << result.orig_text() << " ==> " << result.result_text() << endl;
       }
@@ -749,6 +749,7 @@ int correct_one_trigram( const gram_r& tri,
       result._result.push_back("UNK" );
       result._result.push_back("UNK" );
       ++counts["UNK UNK UNK"];
+      result.get_ed_type( );
       extra_skip = 2;
     }
     else {
