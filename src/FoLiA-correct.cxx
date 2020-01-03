@@ -327,7 +327,7 @@ Correction *convert_ngram( const gram_r& corr,
     offset += unicode_size(corr._final_punct) + 1;
     nV.push_back( el );
   }
-  if ( corr._suggestions ){
+  if ( corr._suggestions && corr._suggestions->size() > 1 ){
     // Suggestion elements
     size_t limit = corr._suggestions->size();
     for( size_t j=0; j < limit; ++j ){
@@ -1201,6 +1201,7 @@ void usage( const string& name ){
   cerr << "\t--outputclass\t classname. (default '" << output_classname << "')" << endl;
   cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
+  cerr << "\t\t suggestions are only added when there are more then 1." << endl;
   cerr << "\t--ngram\t n analyse upto n N-grams." << endl;
   cerr << "\t--tags='tags' correct word/string nodes under all nodes in the list 'tags' (default='p')" << endl;
   cerr << "\t-e 'expr': specify the expression all files should match with." << endl;
