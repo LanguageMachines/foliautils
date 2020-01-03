@@ -1300,7 +1300,8 @@ int main( int argc, const char *argv[] ){
     exit( EXIT_FAILURE );
   }
   if ( opts.extract( "nums", value ) ){
-    if ( !TiCC::stringTo( value, numSugg ) ){
+    if ( !TiCC::stringTo( value, numSugg )
+	 || numSugg < 1 ){
       cerr << "unsupported value for --nums (" << value << ")" << endl;
       exit(EXIT_FAILURE);
     }
