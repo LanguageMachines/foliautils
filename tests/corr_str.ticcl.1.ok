@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-02T23:06:36" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-03T14:41:47" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -93,11 +93,6 @@
                 <t>behándeling</t>
               </str>
             </original>
-            <suggestion auth="no" confidence="0.870370" n="1/1">
-              <str xml:id="p4.6.suggestion.1">
-                <t class="Ticcl">behandeling</t>
-              </str>
-            </suggestion>
           </correction>
           <str xml:id="p4.7">
             <t>van:</t>

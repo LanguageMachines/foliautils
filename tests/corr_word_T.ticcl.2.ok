@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-02T15:15:52" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --ngram=2 -v  -v  --punctseparator=±" folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-03T14:49:31" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank2.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -27,49 +27,48 @@
       <div xml:id="testdoc.3" class="subject">
         <p xml:id="p1">
           <t class="Test">de behándeling van:</t>
-          <t class="Apple">de behandeling van:</t>
+          <t class="Ticcl">de behandeling van:</t>
           <lang class="dut"/>
           <w xml:id="p1.1">
             <t class="Test">de</t>
-            <t class="Apple" offset="0">de</t>
+            <t class="Ticcl" offset="0">de</t>
           </w>
-          <w xml:id="p1.2">
-            <correction xml:id="p1.2.correction.1">
-              <new>
-                <t class="Apple" offset="3">behandeling</t>
-              </new>
-              <original auth="no">
+          <correction xml:id="p1.correction.1">
+            <new>
+              <w xml:id="p1.2.edit.1">
+                <t class="Ticcl" offset="3">behandeling</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p1.2">
                 <t class="Test">behándeling</t>
-              </original>
-              <suggestion auth="no" confidence="0.870370" n="1/1">
-                <t class="Apple">behandeling</t>
-              </suggestion>
-            </correction>
-          </w>
+              </w>
+            </original>
+          </correction>
           <w xml:id="p1.3">
             <t class="Test">van:</t>
-            <t class="Apple" offset="15">van:</t>
+            <t class="Ticcl" offset="15">van:</t>
           </w>
         </p>
         <p xml:id="p2">
           <t class="Test">het wetsvoorstel Wijsiging van de</t>
-          <t class="Apple">het wetsvoorstel Wijziging van de</t>
+          <t class="Ticcl">het wetsvoorstel Wijziging van de</t>
           <lang class="dut"/>
           <w xml:id="p2.1">
             <t class="Test">het</t>
-            <t class="Apple" offset="0">het</t>
+            <t class="Ticcl" offset="0">het</t>
           </w>
           <w xml:id="p2.2">
             <t class="Test">wetsvoorstel</t>
-            <t class="Apple" offset="4">wetsvoorstel</t>
+            <t class="Ticcl" offset="4">wetsvoorstel</t>
           </w>
           <correction xml:id="p2.correction.1">
             <new>
               <w xml:id="p2.3.edit.1">
-                <t class="Apple" offset="17">Wijziging</t>
+                <t class="Ticcl" offset="17">Wijziging</t>
               </w>
               <w xml:id="p2.3.edit.2">
-                <t class="Apple" offset="27">van</t>
+                <t class="Ticcl" offset="27">van</t>
               </w>
             </new>
             <original auth="no">
@@ -80,30 +79,43 @@
                 <t class="Test">van</t>
               </w>
             </original>
-            <suggestion auth="no" confidence="0.870370" n="1/1">
-              <t class="Apple">Wijziging_van</t>
+            <suggestion auth="no" confidence="0.870370" n="1/2">
+              <w xml:id="p2.3.suggestion.1">
+                <t class="Ticcl">Wijziging</t>
+              </w>
+              <w xml:id="p2.3.suggestion.2">
+                <t class="Ticcl">van</t>
+              </w>
+            </suggestion>
+            <suggestion auth="no" confidence="0.800000" n="2/2">
+              <w xml:id="p2.3.suggestion.3">
+                <t class="Ticcl">wijziging</t>
+              </w>
+              <w xml:id="p2.3.suggestion.4">
+                <t class="Ticcl">van</t>
+              </w>
             </suggestion>
           </correction>
           <w xml:id="p2.5">
             <t class="Test">de</t>
-            <t class="Apple" offset="31">de</t>
+            <t class="Ticcl" offset="31">de</t>
           </w>
         </p>
         <p xml:id="p3">
           <t class="Test">Wet opde omzetbelasting 1998.</t>
-          <t class="Apple">Wet op de omzetbelasting 1998±.</t>
+          <t class="Ticcl">Wet op de omzetbelasting 1998 .</t>
           <lang class="dut"/>
           <w xml:id="p3.1">
             <t class="Test">Wet</t>
-            <t class="Apple" offset="0">Wet</t>
+            <t class="Ticcl" offset="0">Wet</t>
           </w>
           <correction xml:id="p3.correction.1">
             <new>
               <w xml:id="p3.2.split.1">
-                <t class="Apple" offset="4">op</t>
+                <t class="Ticcl" offset="4">op</t>
               </w>
               <w xml:id="p3.2.split.2">
-                <t class="Apple" offset="7">de</t>
+                <t class="Ticcl" offset="7">de</t>
               </w>
             </new>
             <original auth="no">
@@ -111,39 +123,57 @@
                 <t class="Test">opde</t>
               </w>
             </original>
-            <suggestion auth="no" confidence="1.000000" n="1/1">
-              <t class="Apple">op_de</t>
+            <suggestion auth="no" confidence="1.000000" n="1/2">
+              <w xml:id="p3.2.suggestion.1">
+                <t class="Ticcl">op</t>
+              </w>
+              <w xml:id="p3.2.suggestion.2">
+                <t class="Ticcl">de</t>
+              </w>
+            </suggestion>
+            <suggestion auth="no" confidence="0.500000" n="2/2">
+              <w xml:id="p3.2.suggestion.3">
+                <t class="Ticcl">om</t>
+              </w>
+              <w xml:id="p3.2.suggestion.4">
+                <t class="Ticcl">de</t>
+              </w>
             </suggestion>
           </correction>
           <w xml:id="p3.3">
             <t class="Test">omzetbelasting</t>
-            <t class="Apple" offset="10">omzetbelasting</t>
+            <t class="Ticcl" offset="10">omzetbelasting</t>
           </w>
-          <w xml:id="p3.4">
-            <correction xml:id="p3.4.correction.1">
-              <new>
-                <t class="Apple" offset="25">1998±.</t>
-              </new>
-              <original auth="no">
+          <correction xml:id="p3.correction.2">
+            <new>
+              <w xml:id="p3.4.split.1">
+                <t class="Ticcl" offset="25">1998</t>
+              </w>
+              <w xml:id="p3.4.split.2">
+                <t class="Ticcl" offset="30">.</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p3.4">
                 <t class="Test">1998.</t>
-              </original>
-            </correction>
-          </w>
+              </w>
+            </original>
+          </correction>
         </p>
       </div>
       <div xml:id="testdoc.4" class="other">
         <p xml:id="p4">
           <t class="Test">Deze wets voorstellen</t>
-          <t class="Apple">Deze wetsvoorstellen</t>
+          <t class="Ticcl">Deze wetsvoorstellen</t>
           <lang class="dut"/>
           <w xml:id="p4.1">
             <t class="Test">Deze</t>
-            <t class="Apple" offset="0">Deze</t>
+            <t class="Ticcl" offset="0">Deze</t>
           </w>
           <correction xml:id="p4.correction.1">
             <new>
               <w xml:id="p4.2.merge.1">
-                <t class="Apple" offset="5">wetsvoorstellen</t>
+                <t class="Ticcl" offset="5">wetsvoorstellen</t>
               </w>
             </new>
             <original auth="no">
@@ -154,163 +184,167 @@
                 <t class="Test">voorstellen</t>
               </w>
             </original>
-            <suggestion auth="no" confidence="1.000000" n="1/1">
-              <t class="Apple">wetsvoorstellen</t>
-            </suggestion>
           </correction>
         </p>
         <p xml:id="p5">
           <t class="Test">ze worden zonder s4s67621 en zonder steming aangenomen .</t>
-          <t class="Apple">ze worden zonder UNK en zonder steming aangenomen .</t>
+          <t class="Ticcl">ze worden zonder UNK en zonder steming aangenomen .</t>
           <lang class="dut"/>
           <w xml:id="p5.1">
             <t class="Test">ze</t>
-            <t class="Apple" offset="0">ze</t>
+            <t class="Ticcl" offset="0">ze</t>
           </w>
           <w xml:id="p5.2">
             <t class="Test">worden</t>
-            <t class="Apple" offset="3">worden</t>
+            <t class="Ticcl" offset="3">worden</t>
           </w>
           <w xml:id="p5.3">
             <t class="Test">zonder</t>
-            <t class="Apple" offset="10">zonder</t>
+            <t class="Ticcl" offset="10">zonder</t>
           </w>
-          <w xml:id="p5.4">
-            <correction xml:id="p5.4.correction.1">
-              <new>
-                <t class="Apple" offset="17">UNK</t>
-              </new>
-              <original auth="no">
+          <correction xml:id="p5.correction.1">
+            <new>
+              <w xml:id="p5.4.edit.1">
+                <t class="Ticcl" offset="17">UNK</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p5.4">
                 <t class="Test">s4s67621</t>
-              </original>
-            </correction>
-          </w>
+              </w>
+            </original>
+          </correction>
           <w xml:id="p5.5">
             <t class="Test">en</t>
-            <t class="Apple" offset="21">en</t>
+            <t class="Ticcl" offset="21">en</t>
           </w>
           <w xml:id="p5.6">
             <t class="Test">zonder</t>
-            <t class="Apple" offset="24">zonder</t>
+            <t class="Ticcl" offset="24">zonder</t>
           </w>
           <w xml:id="p5.7">
             <t class="Test">steming</t>
-            <t class="Apple" offset="31">steming</t>
+            <t class="Ticcl" offset="31">steming</t>
           </w>
           <w xml:id="p5.8">
             <t class="Test">aangenomen</t>
-            <t class="Apple" offset="39">aangenomen</t>
+            <t class="Ticcl" offset="39">aangenomen</t>
           </w>
           <w xml:id="p5.9">
             <t class="Test">.</t>
-            <t class="Apple" offset="50">.</t>
+            <t class="Ticcl" offset="50">.</t>
           </w>
         </p>
         <p xml:id="p6">
           <t class="Test">Deze runonvanwoorden is oplosbaar.</t>
-          <t class="Apple">Deze runonvanwoorden is oplosbaar.</t>
+          <t class="Ticcl">Deze runonvanwoorden is oplosbaar.</t>
           <lang class="dut"/>
           <w xml:id="p6.1">
             <t class="Test">Deze</t>
-            <t class="Apple" offset="0">Deze</t>
+            <t class="Ticcl" offset="0">Deze</t>
           </w>
           <w xml:id="p6.2">
             <t class="Test">runonvanwoorden</t>
-            <t class="Apple" offset="5">runonvanwoorden</t>
+            <t class="Ticcl" offset="5">runonvanwoorden</t>
           </w>
           <w xml:id="p6.3">
             <t class="Test">is</t>
-            <t class="Apple" offset="21">is</t>
+            <t class="Ticcl" offset="21">is</t>
           </w>
           <w xml:id="p6.4">
             <t class="Test">oplosbaar.</t>
-            <t class="Apple" offset="24">oplosbaar.</t>
+            <t class="Ticcl" offset="24">oplosbaar.</t>
           </w>
         </p>
         <p xml:id="p7">
           <t class="Test">Een ge splet en trigram.</t>
-          <t class="Apple">Een ge splet en trigram.</t>
+          <t class="Ticcl">Een ge splet en trigram.</t>
           <lang class="dut"/>
           <w xml:id="p7.1">
             <t class="Test">Een</t>
-            <t class="Apple" offset="0">Een</t>
+            <t class="Ticcl" offset="0">Een</t>
           </w>
           <w xml:id="p7.2">
             <t class="Test">ge</t>
-            <t class="Apple" offset="4">ge</t>
+            <t class="Ticcl" offset="4">ge</t>
           </w>
           <w xml:id="p7.3">
             <t class="Test">splet</t>
-            <t class="Apple" offset="7">splet</t>
+            <t class="Ticcl" offset="7">splet</t>
           </w>
           <w xml:id="p7.4">
             <t class="Test">en</t>
-            <t class="Apple" offset="13">en</t>
+            <t class="Ticcl" offset="13">en</t>
           </w>
           <w xml:id="p7.5">
             <t class="Test">trigram.</t>
-            <t class="Apple" offset="16">trigram.</t>
+            <t class="Ticcl" offset="16">trigram.</t>
           </w>
         </p>
         <p xml:id="p8">
           <t class="Test">Een 3-2 geval: Rhode I Land</t>
-          <t class="Apple">Een 3-2 geval: Rhode I Land</t>
+          <t class="Ticcl">Een 3-2 geval: Rhode I Land</t>
           <lang class="dut"/>
           <w xml:id="p8.1">
             <t class="Test">Een</t>
-            <t class="Apple" offset="0">Een</t>
+            <t class="Ticcl" offset="0">Een</t>
           </w>
           <w xml:id="p8.2">
             <t class="Test">3-2</t>
-            <t class="Apple" offset="4">3-2</t>
+            <t class="Ticcl" offset="4">3-2</t>
           </w>
           <w xml:id="p8.3">
             <t class="Test">geval:</t>
-            <t class="Apple" offset="8">geval:</t>
+            <t class="Ticcl" offset="8">geval:</t>
           </w>
           <w xml:id="p8.4">
             <t class="Test">Rhode</t>
-            <t class="Apple" offset="15">Rhode</t>
+            <t class="Ticcl" offset="15">Rhode</t>
           </w>
           <w xml:id="p8.5">
             <t class="Test">I</t>
-            <t class="Apple" offset="21">I</t>
+            <t class="Ticcl" offset="21">I</t>
           </w>
           <w xml:id="p8.6">
             <t class="Test">Land</t>
-            <t class="Apple" offset="23">Land</t>
+            <t class="Ticcl" offset="23">Land</t>
           </w>
         </p>
         <p xml:id="p9">
           <t class="Test">Een 2-3 geval: He groenehuis.</t>
-          <t class="Apple">Een 2-3 geval: He groenehuis±.</t>
+          <t class="Ticcl">Een 2-3 geval: He groenehuis .</t>
           <lang class="dut"/>
           <w xml:id="p9.1">
             <t class="Test">Een</t>
-            <t class="Apple" offset="0">Een</t>
+            <t class="Ticcl" offset="0">Een</t>
           </w>
           <w xml:id="p9.2">
             <t class="Test">2-3</t>
-            <t class="Apple" offset="4">2-3</t>
+            <t class="Ticcl" offset="4">2-3</t>
           </w>
           <w xml:id="p9.3">
             <t class="Test">geval:</t>
-            <t class="Apple" offset="8">geval:</t>
+            <t class="Ticcl" offset="8">geval:</t>
           </w>
           <w xml:id="p9.4">
             <t class="Test">He</t>
-            <t class="Apple" offset="15">He</t>
+            <t class="Ticcl" offset="15">He</t>
           </w>
-          <w xml:id="p9.5">
-            <correction xml:id="p9.5.correction.1">
-              <new>
-                <t class="Apple" offset="18">groenehuis±.</t>
-              </new>
-              <original auth="no">
+          <correction xml:id="p9.correction.1">
+            <new>
+              <w xml:id="p9.5.split.1">
+                <t class="Ticcl" offset="18">groenehuis</t>
+              </w>
+              <w xml:id="p9.5.split.2">
+                <t class="Ticcl" offset="29">.</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p9.5">
                 <t class="Test">groenehuis.</t>
-              </original>
-            </correction>
-          </w>
+              </w>
+            </original>
+          </correction>
         </p>
       </div>
     </div>
