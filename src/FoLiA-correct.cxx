@@ -89,6 +89,11 @@ struct gram_r {
 			     bool doStrings ) const;
   bool has_folia() const { return (!_words.empty() && _words[0]); };
   void set_output_text( size_t& offset ) const;
+  int correct_one_trigram( const unordered_map<string,vector<word_conf> >&,
+			   const unordered_set<string>&,
+			   const unordered_map<string,string>&,
+			   unordered_map<string,size_t>&,
+			   size_t& );
   mutable string _ed_type;
   string _final_punct;
   vector<string> _orig;
@@ -641,19 +646,16 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   return result;
 }
 
-int correct_one_trigram( const gram_r& tri,
-			 const unordered_map<string,vector<word_conf> >& variants,
-			 const unordered_set<string>& unknowns,
-			 const unordered_map<string,string>& puncts,
-			 gram_r& result,
-			 unordered_map<string,size_t>& counts,
-			 size_t& offset ){
+int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >& variants,
+				 const unordered_set<string>& unknowns,
+				 const unordered_map<string,string>& puncts,
+				 unordered_map<string,size_t>& counts,
+				 size_t& offset ){
   int extra_skip = 0;
-  result.clear();
   if ( verbose > 2 ){
-    cout << "correct trigram " << tri.orig_text() << endl;
+    cout << "correct trigram " << orig_text() << endl;
   }
-  string word = tri.orig_text();
+  string word = orig_text();
   filter(word);
   string orig_word = word;
   string final_punct;
@@ -669,25 +671,24 @@ int correct_one_trigram( const gram_r& tri,
   }
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
-    result._orig = tri._orig;
-    result._words = tri._words;
     // edits found
+    _result.clear();
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
-    result._suggestions = &vit->second;
+    _suggestions = &vit->second;
     for ( const auto& p : parts ){
-      result._result.push_back( p );
+      _result.push_back( p );
     }
     if ( !final_punct.empty() ){
-      result._final_punct = final_punct;
+      _final_punct = final_punct;
     }
-    string ed = result.get_ed_type();
+    string ed = get_ed_type();
     ++counts[ed];
     if ( verbose > 1 ){
-      cout << word << " = " << ed << " => " << result.result_text() << endl;
+      cout << word << " = " << ed << " => " << result_text() << endl;
     }
     extra_skip = 2;
-    result.apply_correction( offset );
+    apply_correction( offset );
   }
   else {
     // a word with no suggested variants
@@ -697,12 +698,12 @@ int correct_one_trigram( const gram_r& tri,
     }
     if ( uit != unknowns.end() ){
       // ok it is a registrated garbage trigram
-      result = tri;
-      result._result.push_back("UNK" );
-      result._result.push_back("UNK" );
-      result._result.push_back("UNK" );
+      _result.clear();
+      _result.push_back("UNK" );
+      _result.push_back("UNK" );
+      _result.push_back("UNK" );
       ++counts["UNK UNK UNK"];
-      result.get_ed_type( );
+      get_ed_type( );
       extra_skip = 2;
     }
     else {
@@ -711,19 +712,21 @@ int correct_one_trigram( const gram_r& tri,
       gram_r bi;
       bi._orig.push_back( parts[0] );
       bi._orig.push_back( parts[1] );
-      bi._words.push_back( tri._words[0] );
-      bi._words.push_back( tri._words[1] );
+      bi._words.push_back( _words[0] );
+      bi._words.push_back( _words[1] );
       if ( verbose > 1 ){
-	cout << "no correction for trigram: " << tri << endl;
+	cout << "no correction for trigram: " << this << endl;
 	cout << "try bigram: " << bi << endl;
       }
+      gram_r bi_result;
       extra_skip = correct_one_bigram( bi, variants, unknowns,
-				       puncts, result, counts,
+				       puncts, bi_result, counts,
 				       offset );
+      *this = bi_result;
     }
   }
   if ( verbose > 1 ){
-    cout << result.orig_text() << " = 3 => " << result.result_text()
+    cout << orig_text() << " = 3 => " << result_text()
 	 << " extra_skip=" << extra_skip << endl;
   }
   return extra_skip;
@@ -741,7 +744,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   string result;
   int skip = 0;
   size_t offset = 0;
-  for ( const auto& tri : trigrams ){
+  for ( auto tri : trigrams ){
     if ( verbose > 1 ){
       cout << "trigram is: '" << tri.orig_text() << "'" << endl;
     }
@@ -752,10 +755,9 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       --skip;
       continue;
     }
-    gram_r corr;
-    skip = correct_one_trigram( tri, variants, unknowns,
-				puncts, corr, counts, offset );
-    result += corr.result_text() + " ";
+    skip = tri.correct_one_trigram( variants, unknowns,
+				    puncts, counts, offset );
+    result += tri.result_text() + " ";
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
     }
