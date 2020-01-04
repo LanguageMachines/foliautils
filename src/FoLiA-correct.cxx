@@ -84,6 +84,11 @@ struct gram_r {
   string result_text() const;
   void clear(){ _orig.clear(); _result.clear();_words.clear(); };
   string get_ed_type() const;
+  Correction *create_correction( size_t& offset,
+			     bool doStrings,
+			     const string& what ) const;
+  bool has_folia() const { return (!_words.empty() && _words[0]); };
+  void set_output_text( size_t& offset ) const;
   mutable string _ed_type;
   string _final_punct;
   vector<string> _orig;
@@ -129,6 +134,16 @@ gram_r::gram_r( const string& val, FoliaElement *el ) :
 {
   _orig.push_back( val );
   _words.push_back( el );
+}
+
+size_t unicode_size( const string& value ){
+  UnicodeString us = TiCC::UnicodeFromUTF8(value);
+  return us.length();
+}
+
+void gram_r::set_output_text( size_t& offset ) const {
+  _words[0]->settext( orig_text(), offset, output_classname );
+  offset += unicode_size(orig_text()) + 1;
 }
 
 ostream& operator<<( ostream& os, const gram_r& rec ){
@@ -276,77 +291,79 @@ bool solve_punctuation( string& word,
   return result;
 }
 
-
-size_t unicode_size( const string& value ){
-  UnicodeString us = TiCC::UnicodeFromUTF8(value);
-  return us.length();
+string gram_r::get_ed_type() const {
+  if ( _ed_type.empty() ){
+    size_t o_s = _orig.size();
+    size_t r_s = _result.size();
+    _ed_type = TiCC::toString(o_s) + "-" + TiCC::toString(r_s);
+  }
+  return _ed_type;
 }
 
-Correction *convert_ngram( const gram_r& corr,
-			   size_t& offset,
-			   bool doStrings,
-			   const string& what ){
+Correction *gram_r::create_correction( size_t& offset,
+				   bool doStrings,
+				   const string& what ) const {
   if ( verbose > 3 ){
-    cerr << what << " ngram: " << corr << endl;
+    cerr << what << " ngram: " << this << endl;
   }
   vector<FoliaElement*> sV;
   vector<FoliaElement*> cV;
   vector<FoliaElement*> oV;
   vector<FoliaElement*> nV;
-  for( const auto& it : corr._words ){
+  for( const auto& it : _words ){
     // Original elements
     oV.push_back( it );
   }
-  for ( const auto& p : corr._result ){
+  for ( const auto& p : _result ){
     // New elements
     KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( what );
+    args["xml:id"] = _words[0]->generateId( what );
     FoliaElement *el = 0;
     if ( doStrings ){
-      el = new String( args, corr._words[0]->doc() );
+      el = new String( args, _words[0]->doc() );
     }
     else {
-      el = new Word( args, corr._words[0]->doc() );
+      el = new Word( args, _words[0]->doc() );
     }
     el->settext( p, offset, output_classname );
     offset += unicode_size(p) + 1;
     nV.push_back( el );
   }
-  if ( !corr._final_punct.empty() ){
+  if ( !_final_punct.empty() ){
     // A final punct is an extra New element
     KWargs args;
-    args["xml:id"] = corr._words[0]->generateId( "split" );
+    args["xml:id"] = _words[0]->generateId( "split" );
     FoliaElement *el = 0;
     if ( doStrings ){
-      el = new String( args, corr._words[0]->doc() );
+      el = new String( args, _words[0]->doc() );
     }
     else {
-      el = new Word( args, corr._words[0]->doc() );
+      el = new Word( args, _words[0]->doc() );
     }
-    el->settext( corr._final_punct, offset, output_classname );
-    offset += unicode_size(corr._final_punct) + 1;
+    el->settext( _final_punct, offset, output_classname );
+    offset += unicode_size(_final_punct) + 1;
     nV.push_back( el );
   }
-  if ( corr._suggestions && corr._suggestions->size() > 1 ){
+  if ( _suggestions && _suggestions->size() > 1 ){
     // Suggestion elements
-    size_t limit = corr._suggestions->size();
+    size_t limit = _suggestions->size();
     for( size_t j=0; j < limit; ++j ){
       KWargs sargs;
-      sargs["confidence"] = (*corr._suggestions)[j].conf;
+      sargs["confidence"] = (*_suggestions)[j].conf;
       sargs["n"]= TiCC::toString(j+1) + "/" + TiCC::toString(limit);
       Suggestion *sug = new Suggestion( sargs );
       sV.push_back( sug );
-      vector<string> parts = TiCC::split_at( (*corr._suggestions)[j].word,
+      vector<string> parts = TiCC::split_at( (*_suggestions)[j].word,
 					     SEPARATOR );
       for ( const auto& s : parts ){
 	KWargs wargs;
-	wargs["xml:id"] = corr._words[0]->generateId( "suggestion" );
+	wargs["xml:id"] = _words[0]->generateId( "suggestion" );
 	FoliaElement *elt;
 	if ( doStrings ){
-	  elt = new String( wargs, corr._words[0]->doc() );
+	  elt = new String( wargs, _words[0]->doc() );
 	}
 	else {
-	  elt = new Word( wargs, corr._words[0]->doc() );
+	  elt = new Word( wargs, _words[0]->doc() );
 	}
 	elt->settext( s, output_classname );
 	sug->append( elt );
@@ -354,7 +371,7 @@ Correction *convert_ngram( const gram_r& corr,
     }
   }
   KWargs no_args;
-  return corr._words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+  return _words[0]->parent()->correct( oV, cV, nV, sV, no_args );
 }
 
 void apply_uni_correction( const gram_r& corr,
@@ -364,13 +381,13 @@ void apply_uni_correction( const gram_r& corr,
     cout << "unigram corrections: " << endl;
     cout << corr.orig_text() << " : " << corr.result_text() << endl;
   }
-  if ( corr._words[0] ){
+  if ( corr.has_folia() ){
     Correction *c = 0;
     if ( corr._ed_type == "1-1" ){
-      c = convert_ngram( corr, offset, doStrings, "edit" );
+      c = corr.create_correction( offset, doStrings, "edit" );
     }
     else {
-      c = convert_ngram( corr, offset, doStrings, "split" );
+      c = corr.create_correction( offset, doStrings, "split" );
     }
     if ( verbose > 3 ){
       cerr << "created: " << c->xmlstring() << endl;
@@ -379,18 +396,6 @@ void apply_uni_correction( const gram_r& corr,
       cerr << "created: " << c << endl;
     }
   }
-  else {
-    offset += unicode_size(corr.result_text()) + 1;
-  }
-}
-
-string gram_r::get_ed_type() const {
-  if ( _ed_type.empty() ){
-    size_t o_s = _orig.size();
-    size_t r_s = _result.size();
-    _ed_type = TiCC::toString(o_s) + "-" + TiCC::toString(r_s);
-  }
-  return _ed_type;
 }
 
 gram_r correct_one_unigram( const gram_r& uni,
@@ -469,9 +474,8 @@ gram_r correct_one_unigram( const gram_r& uni,
   else {
     // NO edit just take the string
     //    cerr << "WAAROM HIER!" << endl;
-    if ( uni._words[0] ){
-      uni._words[0]->settext( uni.orig_text(), offset, output_classname );
-      offset += unicode_size(uni.orig_text()) + 1;
+    if ( uni.has_folia() ){
+      uni.set_output_text( offset );
     }
   }
   return result;
@@ -502,29 +506,22 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 void apply_bi_correction( const gram_r& corr,
 			  size_t& offset,
 			  bool doStrings ){
-  if ( corr._words[0] ){
-    if ( corr._ed_type.empty() ){
-      // NO correction
-      corr._words[0]->settext( corr._orig.front(), offset, output_classname );
+  if ( corr.has_folia() ){
+    Correction *c = 0;
+    if ( corr._ed_type == "2-3" ){
+      c = corr.create_correction( offset, doStrings, "split" );
     }
-    else {
-      Correction *c = 0;
-      if ( corr._ed_type == "2-3" ){
-	c = convert_ngram( corr, offset, doStrings, "split" );
-      }
-      else if ( corr._ed_type == "2-1" ){
-	c = convert_ngram( corr, offset, doStrings, "merge" );
-      }
-      else if ( corr._ed_type == "2-2" ){
-	c = convert_ngram( corr, offset, doStrings, "edit" );
-      }
-      if ( verbose > 1 ){
-	cout << "created: " << c << endl;
-      }
+    else if ( corr._ed_type == "2-1" ){
+      c = corr.create_correction( offset, doStrings, "merge" );
+    }
+    else if ( corr._ed_type == "2-2" ){
+      c = corr.create_correction( offset, doStrings, "edit" );
+    }
+    if ( verbose > 1 ){
+      cout << "created: " << c << endl;
     }
   }
 }
-
 
 int correct_one_bigram( const gram_r& bi,
 			const unordered_map<string,vector<word_conf> >& variants,
@@ -660,29 +657,23 @@ string correct_bigrams( const vector<gram_r>& bigrams,
 void apply_tri_correction( const gram_r& corr,
 			   size_t& offset,
 			   bool doStrings ){
-  if ( corr._words[0] ){
-    if ( corr._ed_type.empty() ){
-      // NO correction
-      corr._words[0]->settext( corr._orig.front(), offset, output_classname );
+  if ( corr.has_folia() ){
+    Correction *c = 0;
+    if ( corr._ed_type == "3-4"
+	 || corr._ed_type == "3-5" ){ // ????
+      c = corr.create_correction( offset, doStrings, "split" );
     }
-    else {
-      Correction *c = 0;
-      if ( corr._ed_type == "3-4"
-	   || corr._ed_type == "3-5" ){ // ????
-	c = convert_ngram( corr, offset, doStrings, "split" );
-      }
-      else if ( corr._ed_type == "3-1" ){
-	c = convert_ngram( corr, offset, doStrings, "merge" );
-      }
-      else if ( corr._ed_type == "3-2" ){
-	c = convert_ngram( corr, offset, doStrings, "merge" );
-      }
-      else if ( corr._ed_type == "3-3" ){
-	c = convert_ngram( corr, offset, doStrings, "edit" );
-      }
-      if ( verbose > 1 ){
-	cout << "created: " << c << endl;
-      }
+    else if ( corr._ed_type == "3-1" ){
+      c = corr.create_correction( offset, doStrings, "merge" );
+    }
+    else if ( corr._ed_type == "3-2" ){
+      c = corr.create_correction( offset, doStrings, "merge" );
+    }
+    else if ( corr._ed_type == "3-3" ){
+      c = corr.create_correction( offset, doStrings, "edit" );
+    }
+    if ( verbose > 1 ){
+      cout << "created: " << c << endl;
     }
   }
 }
