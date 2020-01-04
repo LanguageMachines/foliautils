@@ -661,7 +661,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
   string final_punct;
   bool is_punct = false;
   if ( ngram_size > 1 ){
-    is_punct = solve_punctuation( word, puncts, final_punct );
+    is_punct = solve_punctuation( word, puncts, _final_punct );
     if ( is_punct ){
       if ( verbose > 2 ){
 	cout << "punctuated word found, final='" << final_punct << "'" << endl;
@@ -672,15 +672,12 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
   const auto vit = variants.find( word );
   if ( vit != variants.end() ){
     // edits found
-    _result.clear();
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     _suggestions = &vit->second;
+    _result.clear();
     for ( const auto& p : parts ){
       _result.push_back( p );
-    }
-    if ( !final_punct.empty() ){
-      _final_punct = final_punct;
     }
     string ed = get_ed_type();
     ++counts[ed];
@@ -707,19 +704,20 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       extra_skip = 2;
     }
     else {
-      // just use the ORIGINAL word so handle the first part like bigram
-      vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
-      gram_r bi;
-      bi._orig.push_back( parts[0] );
-      bi._orig.push_back( parts[1] );
-      bi._words.push_back( _words[0] );
-      bi._words.push_back( _words[1] );
       if ( verbose > 1 ){
 	cout << "no correction for trigram: " << this << endl;
-	cout << "try bigram: " << bi << endl;
+      }
+      // just use the ORIGINAL word so handle the first part like bigram
+      _orig.clear();
+      vector<string> parts = TiCC::split_at( orig_word, SEPARATOR );
+      _orig.push_back( parts[0] );
+      _orig.push_back( parts[1] );
+      _words.pop_back();
+      if ( verbose > 1 ){
+	cout << "try bigram: " << this << endl;
       }
       gram_r bi_result;
-      extra_skip = correct_one_bigram( bi, variants, unknowns,
+      extra_skip = correct_one_bigram( *this, variants, unknowns,
 				       puncts, bi_result, counts,
 				       offset );
       *this = bi_result;
