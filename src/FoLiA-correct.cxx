@@ -85,8 +85,7 @@ struct gram_r {
   void clear(){ _orig.clear(); _result.clear();_words.clear(); };
   string get_ed_type() const;
   Correction *create_correction( size_t& offset,
-			     bool doStrings,
-			     const string& what ) const;
+			     bool doStrings ) const;
   bool has_folia() const { return (!_words.empty() && _words[0]); };
   void set_output_text( size_t& offset ) const;
   mutable string _ed_type;
@@ -301,8 +300,21 @@ string gram_r::get_ed_type() const {
 }
 
 Correction *gram_r::create_correction( size_t& offset,
-				   bool doStrings,
-				   const string& what ) const {
+				       bool doStrings ) const {
+  string what;
+  if ( _ed_type == "1-1"
+       || _ed_type == "2-2"
+       || _ed_type == "3-3" ){
+    what = "edit";
+  }
+  else if ( _ed_type == "2-1"
+	    || _ed_type == "3-1"
+	    || _ed_type == "3-2" ){
+    what = "merge";
+  }
+  else {
+    what = "split";
+  }
   if ( verbose > 3 ){
     cerr << what << " ngram: " << this << endl;
   }
@@ -374,21 +386,15 @@ Correction *gram_r::create_correction( size_t& offset,
   return _words[0]->parent()->correct( oV, cV, nV, sV, no_args );
 }
 
-void apply_uni_correction( const gram_r& corr,
+void apply_correction( const gram_r& corr,
 			   size_t& offset,
 			   bool doStrings ){
   if ( verbose ){
-    cout << "unigram corrections: " << endl;
-    cout << corr.orig_text() << " : " << corr.result_text() << endl;
+    cout << "correction: " << endl;
+    cout << corr << endl;
   }
   if ( corr.has_folia() ){
-    Correction *c = 0;
-    if ( corr._ed_type == "1-1" ){
-      c = corr.create_correction( offset, doStrings, "edit" );
-    }
-    else {
-      c = corr.create_correction( offset, doStrings, "split" );
-    }
+    Correction *c = corr.create_correction( offset, doStrings );
     if ( verbose > 3 ){
       cerr << "created: " << c->xmlstring() << endl;
     }
@@ -469,7 +475,7 @@ gram_r correct_one_unigram( const gram_r& uni,
   }
   if ( did_edit ){
     //    cerr << "HIER ??" << endl;
-    apply_uni_correction( result, offset, doStrings );
+    apply_correction( result, offset, doStrings );
   }
   else {
     // NO edit just take the string
@@ -501,26 +507,6 @@ string correct_unigrams( const vector<gram_r>& unigrams,
     cout << "corrected=" << result << endl;
   }
   return result;
-}
-
-void apply_bi_correction( const gram_r& corr,
-			  size_t& offset,
-			  bool doStrings ){
-  if ( corr.has_folia() ){
-    Correction *c = 0;
-    if ( corr._ed_type == "2-3" ){
-      c = corr.create_correction( offset, doStrings, "split" );
-    }
-    else if ( corr._ed_type == "2-1" ){
-      c = corr.create_correction( offset, doStrings, "merge" );
-    }
-    else if ( corr._ed_type == "2-2" ){
-      c = corr.create_correction( offset, doStrings, "edit" );
-    }
-    if ( verbose > 1 ){
-      cout << "created: " << c << endl;
-    }
-  }
 }
 
 int correct_one_bigram( const gram_r& bi,
@@ -603,7 +589,7 @@ int correct_one_bigram( const gram_r& bi,
     }
   }
   if ( extra_skip > 0 ){
-    apply_bi_correction( result, offset, doStrings );
+    apply_correction( result, offset, doStrings );
   }
   if ( verbose > 1 ){
     cout << result.orig_text() << " = 2 => " << result.result_text() << endl;
@@ -654,30 +640,6 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   return result;
 }
 
-void apply_tri_correction( const gram_r& corr,
-			   size_t& offset,
-			   bool doStrings ){
-  if ( corr.has_folia() ){
-    Correction *c = 0;
-    if ( corr._ed_type == "3-4"
-	 || corr._ed_type == "3-5" ){ // ????
-      c = corr.create_correction( offset, doStrings, "split" );
-    }
-    else if ( corr._ed_type == "3-1" ){
-      c = corr.create_correction( offset, doStrings, "merge" );
-    }
-    else if ( corr._ed_type == "3-2" ){
-      c = corr.create_correction( offset, doStrings, "merge" );
-    }
-    else if ( corr._ed_type == "3-3" ){
-      c = corr.create_correction( offset, doStrings, "edit" );
-    }
-    if ( verbose > 1 ){
-      cout << "created: " << c << endl;
-    }
-  }
-}
-
 int correct_one_trigram( const gram_r& tri,
 			 const unordered_map<string,vector<word_conf> >& variants,
 			 const unordered_set<string>& unknowns,
@@ -725,7 +687,7 @@ int correct_one_trigram( const gram_r& tri,
       cout << word << " = " << ed << " => " << result.result_text() << endl;
     }
     extra_skip = 2;
-    apply_tri_correction( result, offset, doStrings );
+    apply_correction( result, offset, doStrings );
   }
   else {
     // a word with no suggested variants
