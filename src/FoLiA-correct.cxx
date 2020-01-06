@@ -753,6 +753,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       ++counts["UNK UNK UNK"];
       get_ed_type( );
       extra_skip = 2;
+      apply_correction( offset );
     }
     else {
       if ( verbose > 1 ){
