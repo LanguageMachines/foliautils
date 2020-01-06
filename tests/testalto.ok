@@ -10,7 +10,9 @@ Usage: alto [options] file/dir
 	-h or --help	 this messages 
 	-O	 output directory 
 	--type	 Type of document ('krant' or 'boek' Default: 'krant')
-	--setname=<set>	 the FoLiA setname of the string nodes. (default 'FoLia-alto-set')
+	--oldstrings	 Fall back to old version that creates <str> nodes
+			 The default is to create <w> nodes.
+	--setname=<set>	 the FoLiA setname of the string or word nodes. (default 'FoLia-alto-set')
 	--class=<cls>	 the FoLiA class of the string nodes. (default 'OCR')
 	--compress=<c>	 create zipped files.
 			 'c'=b creates bzip2 files (.bz2)
@@ -29,7 +31,9 @@ Usage: alto [options] file/dir
 	-h or --help	 this messages 
 	-O	 output directory 
 	--type	 Type of document ('krant' or 'boek' Default: 'krant')
-	--setname=<set>	 the FoLiA setname of the string nodes. (default 'FoLia-alto-set')
+	--oldstrings	 Fall back to old version that creates <str> nodes
+			 The default is to create <w> nodes.
+	--setname=<set>	 the FoLiA setname of the string or word nodes. (default 'FoLia-alto-set')
 	--class=<cls>	 the FoLiA class of the string nodes. (default 'OCR')
 	--compress=<c>	 create zipped files.
 			 'c'=b creates bzip2 files (.bz2)
@@ -54,6 +58,21 @@ dpo_1880_0007_alto.xml
 dpo_1880_0008_alto.xml
 dpo_1880_0009_alto.xml
 dpo_1880_0010_alto.xml
+out/dpo.1880.mpeg21.0003.alto.folia.xml
+out/dpo.1880.mpeg21.0005.alto.folia.xml
+out/dpo.1880.mpeg21.0006.alto.folia.xml
+out/dpo.1880.mpeg21.0007.alto.folia.xml
+out/dpo.1880.mpeg21.0008.alto.folia.xml
+out/dpo.1880.mpeg21.0009.alto.folia.xml
+out/dpo.1880.mpeg21.0010.alto.folia.xml
+start processing of 1 files 
+resolving BOEK data/test:mpeg21.xml
+Downloaded files 
+found no textblocks in /tmp/cache/dpo_1880_0001_alto.xml
+found no textblocks in /tmp/cache/dpo_1880_0002_alto.xml
+found no textblocks in /tmp/cache/dpo_1880_0004_alto.xml
+resolved data/test:mpeg21.xml
+done
 out/dpo.1880.mpeg21.0003.alto.folia.xml
 out/dpo.1880.mpeg21.0005.alto.folia.xml
 out/dpo.1880.mpeg21.0006.alto.folia.xml

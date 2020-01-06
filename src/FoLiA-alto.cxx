@@ -181,6 +181,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
 
 void addStr( folia::Paragraph *par, UnicodeString& txt,
 	     const xmlNode *pnt, const string& altoFile,
+	     bool do_strings,
 	     int cnt = 1 ){
   folia::KWargs atts = folia::getAttributes( pnt );
   string kid = atts["ID"];
@@ -199,7 +200,13 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       arg += "String_" + TiCC::toString(cnt);
     }
     args["xml:id"] = arg;
-    folia::String *s = new folia::String( args, par->doc() );
+    folia::FoliaElement *s;
+    if ( do_strings ){
+      s = new folia::String( args, par->doc() );
+    }
+    else {
+      s = new folia::Word( args, par->doc() );
+    }
     par->append( s );
     UnicodeString uc = TiCC::UnicodeFromUTF8( content );
     s->setutext( uc, txt.length(), classname );
@@ -229,7 +236,13 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       }
       args["xml:id"] = arg;
 
-      folia::String *s = new folia::String( args, par->doc() );
+      folia::FoliaElement *s;
+      if ( do_strings ){
+	s = new folia::String( args, par->doc() );
+      }
+      else {
+	s = new folia::Word( args, par->doc() );
+      }
       par->append( s );
       UnicodeString uc = TiCC::UnicodeFromUTF8( parts[i] );
       s->setutext( uc, txt.length(), classname );
@@ -252,7 +265,8 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 void createFile( folia::FoliaElement *text,
 		 xmlDoc *alt_doc,
 		 const string& altoFile,
-		 const list<xmlNode*>& textblocks ){
+		 const list<xmlNode*>& textblocks,
+		 bool do_strings ){
   xmlNode *root = xmlDocGetRootElement( alt_doc );
   xmlNode *keepPart1 = 0;
   set<string> ids;
@@ -296,7 +310,7 @@ void createFile( folia::FoliaElement *text,
 	      string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 	      if ( sub == "HypPart2" ){
 		if ( keepPart1 == 0 ){
-		  addStr( p, ocr_text, pnt, altoFile, ++cnt );
+		  addStr( p, ocr_text, pnt, altoFile, do_strings, ++cnt );
 		}
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
@@ -313,7 +327,13 @@ void createFile( folia::FoliaElement *text,
 		  }
 		  args["xml:id"] = arg;
 		  args["class"] = classname;
-		  folia::String *s = new folia::String( args, text->doc() );
+		  folia::FoliaElement *s;
+		  if ( do_strings ){
+		    s = new folia::String( args, text->doc() );
+		  }
+		  else {
+		    s = new folia::Word( args, text->doc() );
+		  }
 		  p->append( s );
 		  s->setutext( subc,
 			       ocr_text.length(),
@@ -350,7 +370,7 @@ void createFile( folia::FoliaElement *text,
 		  part2 = findPart2Block( node );
 		  if ( !part2 ){
 		    // Ok. Just ignore this and take the CONTENT
-		    addStr( p, ocr_text, pnt, altoFile );
+		    addStr( p, ocr_text, pnt, altoFile, do_strings );
 		  }
 		  else {
 		    keepPart1 = pnt;
@@ -360,7 +380,7 @@ void createFile( folia::FoliaElement *text,
 		}
 	      }
 	      else {
-		addStr( p, ocr_text, pnt, altoFile, ++cnt );
+		addStr( p, ocr_text, pnt, altoFile, do_strings, ++cnt );
 	      }
 	    }
 	  }
@@ -386,13 +406,14 @@ void createFile( folia::FoliaElement *text,
 
 void processBlocks( folia::FoliaElement *text,
 		    const list<xmlNode*>& blocks,
-		    const docCache& cache ){
+		    const docCache& cache,
+		    bool do_strings ){
   for ( const auto& it : blocks ){
     string alt = TiCC::getAttribute( it, "alto" );
     xmlDoc *alt_doc = cache.find( alt );
     if ( alt_doc ){
       list<xmlNode*> texts = TiCC::FindNodes( it, "dcx:TextBlock" );
-      createFile( text, alt_doc, alt, texts );
+      createFile( text, alt_doc, alt, texts, do_strings );
     }
     else {
 #pragma omp critical
@@ -419,7 +440,8 @@ void processArticle( const string& f,
 		     const string& outDir,
 		     const zipType inputType,
 		     const zipType outputType,
-		     const string& command ){
+		     const string& command,
+		     bool do_strings ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -431,7 +453,12 @@ void processArticle( const string& f,
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   folia::KWargs args;
   args["processor"] = proc->id();
-  doc.declare( folia::AnnotationType::STRING, setname, args );
+  if ( do_strings ){
+    doc.declare( folia::AnnotationType::STRING, setname, args );
+  }
+  else {
+    doc.declare( folia::AnnotationType::TOKEN, setname, args );
+  }
   doc.set_metadata( "genre", subject );
   args.clear();
   args["xml:id"] = docid + ".text";
@@ -446,7 +473,7 @@ void processArticle( const string& f,
 	cerr << "found no blocks" << endl;
       }
     }
-    processBlocks( text, blocks, cache );
+    processBlocks( text, blocks, cache, do_strings );
   }
 
   string outName = outDir;
@@ -489,7 +516,8 @@ void processZone( const string& id,
 		  const string& outDir,
 		  const zipType inputType,
 		  const zipType outputType,
-		  const string& command ){
+		  const string& command,
+		  bool do_strings ){
   list<xmlNode *> parts =  TiCC::FindNodes( zone, "dcx:article-part" );
   if ( !parts.empty() ){
     processArticle( id,
@@ -499,7 +527,8 @@ void processZone( const string& id,
 		    outDir,
 		    inputType,
 		    outputType,
-		    command );
+		    command,
+		    do_strings );
   }
 }
 
@@ -744,7 +773,8 @@ void solveArtAlto( const string& alto_cache,
 		   const string& file,
 		   const string& outDir,
 		   zipType outputType,
-		   const string& command ){
+		   const string& command,
+		   bool do_strings ){
   bool succes = true;
 #pragma omp critical
   {
@@ -841,7 +871,8 @@ void solveArtAlto( const string& alto_cache,
 				   outDir,
 				   inputType,
 				   outputType,
-				   command );
+				   command,
+				   do_strings );
 		    }
 		    else {
 #pragma omp critical
@@ -908,7 +939,8 @@ void solveBook( const string& altoFile, const string& id,
 		const string& urn,
 		const string& outDir,
 		zipType outputType,
-		const string& command ){
+		const string& command,
+		bool do_strings ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -923,7 +955,12 @@ void solveBook( const string& altoFile, const string& id,
     folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
     folia::KWargs args;
     args["processor"] = proc->id();
-    doc.declare( folia::AnnotationType::STRING, setname, args );
+    if ( do_strings ){
+      doc.declare( folia::AnnotationType::STRING, setname, args );
+    }
+    else {
+      doc.declare( folia::AnnotationType::TOKEN, setname, args );
+    }
     args.clear();
     args["xml:id"] =  docid + ".text";
     folia::Text *text = new folia::Text( args );
@@ -974,7 +1011,7 @@ void solveBook( const string& altoFile, const string& id,
 		string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
 		if ( sub == "HypPart2" ){
 		  if ( keepPart1 == 0 ){
-		    addStr( p, ocr_text, pnt, urn );
+		    addStr( p, ocr_text, pnt, urn, do_strings );
 		  }
 		  else {
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
@@ -984,7 +1021,13 @@ void solveBook( const string& altoFile, const string& id,
 		    folia::KWargs args;
 		    args["xml:id"] = p->id() + "." + kid;
 		    args["class"] = classname;
-		    folia::String *s = new folia::String( args, text->doc() );
+		    folia::FoliaElement *s;
+		    if ( do_strings ){
+		      s = new folia::String( args, text->doc() );
+		    }
+		    else {
+		      s = new folia::Word( args, text->doc() );
+		    }
 		    p->append( s );
 		    s->setutext( subc,
 				 ocr_text.length(),
@@ -1020,7 +1063,7 @@ void solveBook( const string& altoFile, const string& id,
 		    part2 = findPart2Block( node );
 		    if ( !part2 ){
 		      // Ok. Just ignore this and take the CONTENT
-		      addStr( p, ocr_text, pnt, urn );
+		      addStr( p, ocr_text, pnt, urn, do_strings );
 		    }
 		    else {
 		      keepPart1 = pnt;
@@ -1030,7 +1073,7 @@ void solveBook( const string& altoFile, const string& id,
 		  }
 		}
 		else {
-		  addStr( p, ocr_text, pnt, urn );
+		  addStr( p, ocr_text, pnt, urn, do_strings );
 		}
 	      }
 	    }
@@ -1089,7 +1132,8 @@ void solveBookAlto( const string& alto_cache,
 		    const string& file,
 		    const string& outDir,
 		    zipType outputType,
-		    const string& command ){
+		    const string& command,
+		    bool do_strings ){
   bool succes = true;
 #pragma omp critical
   {
@@ -1133,7 +1177,8 @@ void solveBookAlto( const string& alto_cache,
 		  if ( it != downloaded_files.end() ){
 		    solveBook( it->second, id, urns[id], outDir,
 			       outputType,
-			       command );
+			       command,
+			       do_strings );
 		  }
 		}
 	      }
@@ -1182,7 +1227,8 @@ void solveBookAlto( const string& alto_cache,
 void solveDirectAlto( const string& full_file,
 		      const string& outDir,
 		      zipType outputType,
-		      const string& command ){
+		      const string& command,
+		      bool do_strings ){
 #pragma omp critical
   {
     cout << "resolving direct on " << full_file << endl;
@@ -1196,12 +1242,17 @@ void solveDirectAlto( const string& full_file,
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   folia::KWargs args;
   args["processor"] = proc->id();
-  doc.declare( folia::AnnotationType::STRING, setname, args );
+  if ( do_strings ){
+    doc.declare( folia::AnnotationType::STRING, setname, args );
+  }
+  else {
+    doc.declare( folia::AnnotationType::TOKEN, setname, args );
+  }
   args.clear();
   args["xml:id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
-  createFile( text, xmldoc, "", texts );
+  createFile( text, xmldoc, "", texts, do_strings );
   string outName = outDir + docid + ".folia.xml";
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
@@ -1238,7 +1289,9 @@ void usage(){
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
-  cerr << "\t--setname=<set>\t the FoLiA setname of the string nodes. "
+  cerr << "\t--oldstrings\t Fall back to old version that creates <str> nodes" << endl;
+  cerr << "\t\t\t The default is to create <w> nodes." << endl;
+  cerr << "\t--setname=<set>\t the FoLiA setname of the string or word nodes. "
     "(default '" << setname << "')" << endl;
   cerr << "\t--class=<cls>\t the FoLiA class of the string nodes. "
     "(default '" << classname << "')" << endl;
@@ -1253,7 +1306,7 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,type:,help,version,threads:" );
+    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,type:,help,version,threads:,oldstrings" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1279,6 +1332,7 @@ int main( int argc, char *argv[] ){
   string orig_command = "FoLiA-alto " + opts.toString();
   verbose = opts.extract( 'v' );
   do_direct = opts.extract("direct");
+  bool do_strings = opts.extract("oldstrings");
   if ( !do_direct ){
     clearCachedFiles = opts.extract( "clear" );
     opts.extract( "cache", alto_cache );
@@ -1412,13 +1466,16 @@ int main( int argc, char *argv[] ){
 #pragma omp parallel for shared(fileNames) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( do_direct ){
-      solveDirectAlto( fileNames[fn], outputDir, outputType, orig_command );
+      solveDirectAlto( fileNames[fn], outputDir, outputType, orig_command,
+		       do_strings );
     }
     else {
       if ( kind == "krant" )
-	solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType, orig_command );
+	solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType,
+		      orig_command, do_strings );
       else
-	solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType, orig_command );
+	solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType,
+		       orig_command, do_strings );
     }
   }
   cout << "done" << endl;
