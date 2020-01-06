@@ -621,6 +621,7 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
       }
       _orig.pop_back();
       _words.pop_back();
+      _final_punct.clear();
       if ( verbose > 1 ){
 	cout << "try unigram: " << this << endl;
       }
@@ -746,6 +747,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       _orig.push_back( parts[0] );
       _orig.push_back( parts[1] );
       _words.pop_back();
+      _final_punct.clear();
       if ( verbose > 1 ){
 	cout << "try bigram: " << this << endl;
       }
