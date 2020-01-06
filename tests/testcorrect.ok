@@ -394,7 +394,6 @@ correction:
 Wijsiging_van (2-2) ==> Wijziging van
 Wijsiging_van = 2 => Wijziging van
 Wijsiging_van = 3 => Wijziging van extra_skip=1
-trigram is: 'van_de_Wet'
 trigram is: 'de_Wet_opde'
 no correction for trigram: de_Wet_opde
 try bigram: de_Wet
@@ -441,7 +440,6 @@ correction:
 wets_voorstellen (2-1) ==> wetsvoorstellen
 wets_voorstellen = 2 => wetsvoorstellen
 wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
-trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
 no correction for trigram: worden_zonder_s4s67621
 try bigram: worden_zonder
@@ -477,7 +475,6 @@ zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
 correction: 
 zonder_steming_aangenomen (3-3) ==> zonder stemming aangenomen
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
-trigram is: 'steming_aangenomen_.'
 corrected 3-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
 finished data/corr.xml
 edit statistics: 
@@ -590,7 +587,6 @@ correction:
 Wijsiging_van (2-2) ==> Wijziging van
 Wijsiging_van = 2 => Wijziging van
 Wijsiging_van = 3 => Wijziging van extra_skip=1
-trigram is: 'van_de_Wet'
 trigram is: 'de_Wet_opde'
 no correction for trigram: de_Wet_opde
 try bigram: de_Wet
@@ -637,7 +633,6 @@ correction:
 wets_voorstellen (2-1) ==> wetsvoorstellen
 wets_voorstellen = 2 => wetsvoorstellen
 wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
-trigram is: 'voorstellen_worden_zonder'
 trigram is: 'worden_zonder_s4s67621'
 no correction for trigram: worden_zonder_s4s67621
 try bigram: worden_zonder
@@ -673,7 +668,6 @@ zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
 correction: 
 zonder_steming_aangenomen (3-3) ==> zonder stemming aangenomen
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
-trigram is: 'steming_aangenomen_.'
 corrected 3-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
 finished data/corr.folia.xml
 edit statistics: 
@@ -1409,7 +1403,6 @@ correction:
 zonder_steming_aangenomen (3-3) ==> zonder stemming aangenomen [ <w xml:id='p5.6" > {<t>,}, <w xml:id='p5.7" > {<t>,}, <w xml:id='p5.8" > {<t>,}]
 created:  <correction xml:id='p5.correction.2" > {<new>,<original>,}
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
-trigram is: 'steming_aangenomen_.'
 corrected 3-grams uit: 'ze worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
 
    correct 3-grams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
@@ -1452,7 +1445,6 @@ correction:
 ge_splet_en (3-1) ==> gespleten [ <w xml:id='p7.2" > {<t>,}, <w xml:id='p7.3" > {<t>,}, <w xml:id='p7.4" > {<t>,}]
 created:  <correction xml:id='p7.correction.1" > {<new>,<original>,}
 ge_splet_en = 3 => gespleten extra_skip=2
-trigram is: 'splet_en_trigram.'
 corrected 3-grams uit: 'Een gespleten trigram.' (Ticcl)
 
    correct 3-grams in: 'Een 3-2 geval: Rhode I Land' (Test)

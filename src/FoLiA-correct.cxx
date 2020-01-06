@@ -791,15 +791,12 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   int skip = 0;
   size_t offset = 0;
   for ( auto tri : trigrams ){
-    if ( verbose > 1 ){
-      cout << "trigram is: '" << tri.orig_text() << "'" << endl;
-    }
-    if ( verbose > 2 ){
-      cout << "skip=" << skip  << " TRI: " << tri << endl;
-    }
     if ( skip > 0 ){
       --skip;
       continue;
+    }
+    if ( verbose > 1 ){
+      cout << "trigram is: '" << tri.orig_text() << "'" << endl;
     }
     skip = tri.correct_one_trigram( variants, unknowns,
 				    puncts, counts, offset );
@@ -812,7 +809,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     return result;
   }
   else if ( skip == 1 ){
-    gram_r last = unigrams[unigrams.size()-1];
+    gram_r last = unigrams.back();
     last.correct_one_unigram( variants, unknowns,
 			      puncts, counts, offset );
     if ( verbose > 2 ){
