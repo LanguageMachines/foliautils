@@ -76,13 +76,22 @@ ostream& operator<<( ostream& os, const word_conf& wc ){
   return os;
 }
 
-struct gram_r {
+class gram_r {
+  friend vector<gram_r> extract_bigrams( const vector<gram_r>&  );
+  friend vector<gram_r> extract_trigrams( const vector<gram_r>&  );
+  friend gram_r extract_last_bigram( const vector<gram_r>&  );
+  friend ostream& operator<<( ostream& os, const gram_r& );
+  friend ostream& operator<<( ostream& os, const gram_r* );
+public:
   gram_r():_suggestions(0){};
   gram_r( const string&, FoliaElement* );
   gram_r( FoliaElement*, const string& = "current" );
   string orig_text() const;
   string result_text() const;
   void clear(){ _orig.clear(); _result.clear();_words.clear(); };
+  FoliaElement *word( size_t index ) const {
+    return _words[index];
+  }
   string get_ed_type() const;
   void apply_correction( size_t& offset ) const;
   Correction *create_correction( size_t& offset,
@@ -104,6 +113,7 @@ struct gram_r {
 			    const unordered_map<string,string>&,
 			    unordered_map<string,size_t>&,
 			    size_t& );
+private:
   mutable string _ed_type;
   string _final_punct;
   vector<string> _orig;
@@ -175,6 +185,37 @@ ostream& operator<<( ostream& os, const gram_r& rec ){
 ostream& operator<<( ostream& os, const gram_r *rec ){
   os << *rec;
   return os;
+}
+
+vector<gram_r> extract_bigrams( const vector<gram_r>& unigrams ){
+  vector<gram_r> result = unigrams;
+  result.pop_back();
+  for ( size_t i=0; i < unigrams.size()-1; ++i ){
+    result[i]._words.push_back( unigrams[i+1]._words[0] );
+    result[i]._orig.push_back( unigrams[i+1].orig_text() );
+  }
+  return result;
+}
+
+vector<gram_r> extract_trigrams( const vector<gram_r>& unigrams ){
+  vector<gram_r> result = unigrams;
+  result.pop_back();
+  result.pop_back();
+  for ( size_t i=0; i < unigrams.size()-2; ++i ){
+    result[i]._words.push_back( unigrams[i+1]._words[0] );
+    result[i]._orig.push_back( unigrams[i+1].orig_text() );
+    result[i]._words.push_back( unigrams[i+2]._words[0] );
+    result[i]._orig.push_back( unigrams[i+2].orig_text() );
+  }
+  return result;
+}
+
+gram_r extract_last_bigram( const vector<gram_r>& unigrams ){
+  gram_r result = unigrams[unigrams.size()-2];
+  gram_r last = unigrams[unigrams.size()-1];
+  result._orig.push_back( last.orig_text() );
+  result._words.push_back( last._words[0] );
+  return result;
 }
 
 bool fillVariants( const string& fn,
@@ -783,9 +824,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   }
   else {
     gram_r last = unigrams[unigrams.size()-1];
-    gram_r last_bi = unigrams[unigrams.size()-2];
-    last_bi._orig.push_back( last.orig_text() );
-    last_bi._words.push_back( last._words[0] );
+    gram_r last_bi = extract_last_bigram( unigrams );
     if ( verbose > 2 ){
       cout << "correct last bigram: " << last_bi << endl;
     }
@@ -854,7 +893,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	mw.pop_back(); // remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
-	  result.push_back( gram_r(it->second, unigrams[i]._words[0] ) );
+	  result.push_back( gram_r(it->second, unigrams[i].word(0) ) );
 	}
 	else {
 	  if ( verbose > 4 ){
@@ -870,7 +909,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
       mw += unigrams[i].orig_text();
       const auto& it = puncts.find( mw );
       if ( it != puncts.end() ){
-	result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
+	result.push_back( gram_r(it->second,unigrams[i].word(0) ) );
       }
       else {
 	if ( verbose > 4 ){
@@ -885,7 +924,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	mw.pop_back(); //  remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
-	  result.push_back( gram_r(it->second,unigrams[i]._words[0]) );
+	  result.push_back( gram_r(it->second,unigrams[i].word(0) ) );
 	}
 	else {
 	  if ( verbose > 4 ){
@@ -909,7 +948,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     mw.pop_back(); //  remove last '_'
     const auto& it = puncts.find( mw );
     if ( it != puncts.end() ){
-      result.push_back( gram_r(it->second,unigrams.back()._words[0]) );
+      result.push_back( gram_r(it->second,unigrams.back().word(0)) );
     }
     else {
       if ( verbose > 4 ){
@@ -941,7 +980,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
   }
   vector<pair<hemp_status,FoliaElement*>> inventory;
   for ( size_t i=0; i < unigrams.size(); ++i ){
-    inventory.push_back(make_pair(hemp_inventory[i],unigrams[i]._words[0]) );
+    inventory.push_back(make_pair(hemp_inventory[i],unigrams[i].word(0)));
   }
   if ( verbose > 4 ){
     cerr << "PAIRED inventory " << inventory << endl;
@@ -1038,26 +1077,13 @@ void correctNgrams( FoliaElement* par,
   vector<gram_r> trigrams;
   counts["TOKENS"] += unigrams.size();
   if ( ngram_size > 1  && unigrams.size() > 1 ){
-    bigrams = unigrams;
-    bigrams.pop_back();
-    for ( size_t i=0; i < unigrams.size()-1; ++i ){
-      bigrams[i]._words.push_back( unigrams[i+1]._words[0] );
-      bigrams[i]._orig.push_back( unigrams[i+1].orig_text() );
-    }
+    bigrams = extract_bigrams( unigrams );
     if ( verbose > 3 ){
       cout << "BIGRAMS:\n" << bigrams << endl;
     }
   }
   if ( ngram_size > 2 && unigrams.size() > 2 ){
-    trigrams = unigrams;
-    trigrams.pop_back();
-    trigrams.pop_back();
-    for ( size_t i=0; i < unigrams.size()-2; ++i ){
-      trigrams[i]._words.push_back( unigrams[i+1]._words[0] );
-      trigrams[i]._orig.push_back( unigrams[i+1].orig_text() );
-      trigrams[i]._words.push_back( unigrams[i+2]._words[0] );
-      trigrams[i]._orig.push_back( unigrams[i+2].orig_text() );
-    }
+    trigrams = extract_trigrams( unigrams );
     if ( verbose > 5 ){
       cout << "TRIGRAMS:\n" << trigrams << endl;
     }
