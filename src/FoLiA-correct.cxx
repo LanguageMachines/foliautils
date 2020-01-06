@@ -92,7 +92,7 @@ public:
   FoliaElement *word( size_t index ) const {
     return _words[index];
   }
-  string get_ed_type() const;
+  string set_ed_type();
   void apply_correction( size_t& offset ) const;
   Correction *create_correction( size_t& offset,
 			     bool doStrings ) const;
@@ -114,7 +114,7 @@ public:
 			    unordered_map<string,size_t>&,
 			    size_t& );
 private:
-  mutable string _ed_type;
+  string _ed_type;
   string _final_punct;
   vector<string> _orig;
   vector<string> _result;
@@ -352,12 +352,10 @@ bool solve_punctuation( string& word,
   return result;
 }
 
-string gram_r::get_ed_type() const {
-  if ( _ed_type.empty() ){
-    size_t o_s = _orig.size();
-    size_t r_s = _result.size();
-    _ed_type = TiCC::toString(o_s) + "-" + TiCC::toString(r_s);
-  }
+string gram_r::set_ed_type() {
+  size_t o_s = _orig.size();
+  size_t r_s = _result.size();
+  _ed_type = TiCC::toString(o_s) + "-" + TiCC::toString(r_s);
   return _ed_type;
 }
 
@@ -495,7 +493,7 @@ void gram_r::correct_one_unigram( const unordered_map<string,vector<word_conf> >
       _result.push_back( p );
     }
     _final_punct = final_punct;
-    string ed = get_ed_type( );
+    string ed = set_ed_type( );
     ++counts[ed];
     if ( verbose > 1 ){
       cout << word << " = " << ed << " => " << result_text() << endl;
@@ -512,7 +510,7 @@ void gram_r::correct_one_unigram( const unordered_map<string,vector<word_conf> >
     if ( uit != unknowns.end() ){
       // ok it is a registrated garbage word
       _result.push_back( "UNK" );
-      get_ed_type( );
+      set_ed_type( );
       ++counts["UNK"];
       did_edit = true;
     }
@@ -596,7 +594,7 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
       _result.push_back( p );
     }
     _final_punct = final_punct;
-    string ed = get_ed_type();
+    string ed = set_ed_type();
     ++counts[ed];
     if ( verbose > 1 ){
       cout << orig_word << " = " << ed << " => " << result_text() << endl;
@@ -622,7 +620,7 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
       _result.push_back( "UNK" );
       _result.push_back( "UNK" );
       ++counts["UNK UNK"];
-      get_ed_type( );
+      set_ed_type( );
       if ( verbose > 2 ){
 	cout << orig_text() << " ==> " << result_text() << endl;
       }
@@ -635,16 +633,16 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
     }
     else {
       // just use the ORIGINAL bigram and handle the first part like unigram
-      gram_r uni;
-      uni._orig.push_back( _orig[0] );
-      uni._words.push_back( _words[0] );
       if ( verbose > 1 ){
 	cout << "no correction for bigram: " << this << endl;
-	cout << "try unigram: " << uni << endl;
       }
-      uni.correct_one_unigram( variants, unknowns,
-			       puncts, counts, offset );
-      *this = uni;
+      _orig.pop_back();
+      _words.pop_back();
+      if ( verbose > 1 ){
+	cout << "try unigram: " << this << endl;
+      }
+      correct_one_unigram( variants, unknowns,
+			   puncts, counts, offset );
     }
   }
   if ( verbose > 1 ){
@@ -726,7 +724,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
     for ( const auto& p : parts ){
       _result.push_back( p );
     }
-    string ed = get_ed_type();
+    string ed = set_ed_type();
     ++counts[ed];
     if ( verbose > 1 ){
       cout << word << " = " << ed << " => " << result_text() << endl;
@@ -751,7 +749,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       _result.push_back("UNK" );
       _result.push_back("UNK" );
       ++counts["UNK UNK UNK"];
-      get_ed_type( );
+      set_ed_type( );
       extra_skip = 2;
       apply_correction( offset );
     }
@@ -818,13 +816,12 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     last.correct_one_unigram( variants, unknowns,
 			      puncts, counts, offset );
     if ( verbose > 2 ){
-      cout << "2 handled last word: " << last << endl;
+      cout << "handled last word: " << last << endl;
     }
     result += last.result_text();
     return result;
   }
   else {
-    gram_r last = unigrams[unigrams.size()-1];
     gram_r last_bi = extract_last_bigram( unigrams );
     if ( verbose > 2 ){
       cout << "correct last bigram: " << last_bi << endl;
@@ -837,13 +834,14 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     }
     result += last_bi.result_text();
     if ( skip == 0 ){
+      gram_r last = unigrams[unigrams.size()-1];
       if ( verbose > 2 ){
 	cout << "correct last word: " << last << endl;
       }
       last.correct_one_unigram( variants, unknowns,
 				puncts, counts, offset );
       if ( verbose > 2 ){
-	cout << "3 handled last word: " << last << endl;
+	cout << "handled last unigram: " << last << endl;
       }
       result += " " + last.result_text();
     }
