@@ -26,7 +26,7 @@ Usage: [options] file/dir
 start reading variants 
 read 1 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -68,7 +68,7 @@ edit statistics:
 start reading variants 
 read 1 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -109,7 +109,7 @@ edit statistics:
 start reading variants 
 read 1 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -151,7 +151,7 @@ inputclass and outputclass are the same
 start reading variants 
 read 4 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -296,7 +296,7 @@ edit statistics:
 start reading variants 
 read 9 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -492,7 +492,7 @@ edit statistics:
 start reading variants 
 read 9 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -689,7 +689,7 @@ edit statistics:
 start reading variants 
 read 1 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -737,16 +737,24 @@ corrected 1-grams uit: 'Een 3-2 geval: Rhode I Land' (Apple)
    correct 1-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
 correct unigrams
 corrected 1-grams uit: 'Een 2-3 geval: He groenehuis.' (Apple)
+
+   correct 1-grams in: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Test)
+correct unigrams
+corrected 1-grams uit: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Apple)
+
+   correct 1-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
+correct unigrams
+corrected 1-grams uit: 'Een triple unknown: Argle bargle, glop-glyf!' (Apple)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
 	1-1	1
-	TOKENS	44
+	TOKENS	55
 	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -945,6 +953,51 @@ correction:
 groenehuis. () ==> groenehuis . [ <w xml:id='p9.5" > {<t>,}]
 created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
 corrected 2-grams uit: 'Een 2-3 geval: He groenehuis .' (Ticcl)
+
+   correct 2-grams in: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Test)
+correct bigrams
+bigram is: 'Een_dubbele [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}]'
+no correction for bigram: Een_dubbele [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p10.1" > {<t>,}]
+Een = 2 => Een
+bigram is: 'dubbele_unknown: [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]'
+no correction for bigram: dubbele_unknown: [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]
+try unigram: dubbele [ <w xml:id='p10.2" > {<t>,}]
+dubbele = 2 => dubbele
+bigram is: 'unknown:_Arglebargle, [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]'
+no correction for bigram: unknown:_Arglebargle, [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]
+try unigram: unknown: [ <w xml:id='p10.3" > {<t>,}]
+unknown: = 2 => unknown:
+bigram is: 'Arglebargle,_glop-glyf! [ <w xml:id='p10.4" > {<t>,}, <w xml:id='p10.5" > {<t>,}]'
+correction: 
+Arglebargle,_glop-glyf! (2-2) ==> UNK UNK [ <w xml:id='p10.4" > {<t>,}, <w xml:id='p10.5" > {<t>,}]
+created:  <correction xml:id='p10.correction.1" > {<new>,<original>,}
+Arglebargle,_glop-glyf! = 2 => UNK UNK
+corrected 2-grams uit: 'Een dubbele unknown: UNK UNK' (Ticcl)
+
+   correct 2-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
+correct bigrams
+bigram is: 'Een_triple [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}]'
+no correction for bigram: Een_triple [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p11.1" > {<t>,}]
+Een = 2 => Een
+bigram is: 'triple_unknown: [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]'
+no correction for bigram: triple_unknown: [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]
+try unigram: triple [ <w xml:id='p11.2" > {<t>,}]
+triple = 2 => triple
+bigram is: 'unknown:_Argle [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]'
+no correction for bigram: unknown:_Argle [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]
+try unigram: unknown: [ <w xml:id='p11.3" > {<t>,}]
+unknown: = 2 => unknown:
+bigram is: 'Argle_bargle, [ <w xml:id='p11.4" > {<t>,}, <w xml:id='p11.5" > {<t>,}]'
+no correction for bigram: Argle_bargle, [ <w xml:id='p11.4" > {<t>,}, <w xml:id='p11.5" > {<t>,}]
+try unigram: Argle [ <w xml:id='p11.4" > {<t>,}]
+Argle = 2 => Argle
+bigram is: 'bargle,_glop-glyf! [ <w xml:id='p11.5" > {<t>,}, <w xml:id='p11.6" > {<t>,}]'
+no correction for bigram: bargle,_glop-glyf! [ <w xml:id='p11.5" > {<t>,}, <w xml:id='p11.6" > {<t>,}]
+try unigram: bargle, [ <w xml:id='p11.5" > {<t>,}]
+bargle, = 2 => bargle,
+corrected 2-grams uit: 'Een triple unknown: Argle bargle, glop-glyf!' (Ticcl)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -952,12 +1005,13 @@ edit statistics:
 	1-2	1
 	2-1	1
 	2-2	1
-	TOKENS	44
+	TOKENS	55
 	UNK	1
+	UNK UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -1156,6 +1210,51 @@ correction:
 groenehuis. () ==> groenehuis . [ <w xml:id='p9.5" > {<t>,}]
 created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
 corrected 2-grams uit: 'Een 2-3 geval: He groenehuis .' (Ticcl)
+
+   correct 2-grams in: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Test)
+correct bigrams
+bigram is: 'Een_dubbele [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}]'
+no correction for bigram: Een_dubbele [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p10.1" > {<t>,}]
+Een = 2 => Een
+bigram is: 'dubbele_unknown: [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]'
+no correction for bigram: dubbele_unknown: [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]
+try unigram: dubbele [ <w xml:id='p10.2" > {<t>,}]
+dubbele = 2 => dubbele
+bigram is: 'unknown:_Arglebargle, [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]'
+no correction for bigram: unknown:_Arglebargle, [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]
+try unigram: unknown: [ <w xml:id='p10.3" > {<t>,}]
+unknown: = 2 => unknown:
+bigram is: 'Arglebargle,_glop-glyf! [ <w xml:id='p10.4" > {<t>,}, <w xml:id='p10.5" > {<t>,}]'
+correction: 
+Arglebargle,_glop-glyf! (2-2) ==> UNK UNK [ <w xml:id='p10.4" > {<t>,}, <w xml:id='p10.5" > {<t>,}]
+created:  <correction xml:id='p10.correction.1" > {<new>,<original>,}
+Arglebargle,_glop-glyf! = 2 => UNK UNK
+corrected 2-grams uit: 'Een dubbele unknown: UNK UNK' (Ticcl)
+
+   correct 2-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
+correct bigrams
+bigram is: 'Een_triple [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}]'
+no correction for bigram: Een_triple [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p11.1" > {<t>,}]
+Een = 2 => Een
+bigram is: 'triple_unknown: [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]'
+no correction for bigram: triple_unknown: [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]
+try unigram: triple [ <w xml:id='p11.2" > {<t>,}]
+triple = 2 => triple
+bigram is: 'unknown:_Argle [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]'
+no correction for bigram: unknown:_Argle [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]
+try unigram: unknown: [ <w xml:id='p11.3" > {<t>,}]
+unknown: = 2 => unknown:
+bigram is: 'Argle_bargle, [ <w xml:id='p11.4" > {<t>,}, <w xml:id='p11.5" > {<t>,}]'
+no correction for bigram: Argle_bargle, [ <w xml:id='p11.4" > {<t>,}, <w xml:id='p11.5" > {<t>,}]
+try unigram: Argle [ <w xml:id='p11.4" > {<t>,}]
+Argle = 2 => Argle
+bigram is: 'bargle,_glop-glyf! [ <w xml:id='p11.5" > {<t>,}, <w xml:id='p11.6" > {<t>,}]'
+no correction for bigram: bargle,_glop-glyf! [ <w xml:id='p11.5" > {<t>,}, <w xml:id='p11.6" > {<t>,}]
+try unigram: bargle, [ <w xml:id='p11.5" > {<t>,}]
+bargle, = 2 => bargle,
+corrected 2-grams uit: 'Een triple unknown: Argle bargle, glop-glyf!' (Ticcl)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1163,12 +1262,13 @@ edit statistics:
 	1-2	1
 	2-1	1
 	2-2	1
-	TOKENS	44
+	TOKENS	55
 	UNK	1
+	UNK UNK	1
 start reading variants 
 read 9 variants 
 start reading unknowns 
-read 2 unknown words 
+read 4 unknown words 
 start reading puncts 
 read 14 punctuated words 
 verbosity = 2
@@ -1415,6 +1515,63 @@ He_groenehuis. (2-3) ==> Het groene huis . [ <w xml:id='p9.4" > {<t>,}, <w xml:i
 created:  <correction xml:id='p9.correction.1" > {<new>,<original>,}
 He_groenehuis. = 2 => Het groene huis .
 corrected 3-grams uit: 'Een 2-3 geval: Het groene huis .' (Ticcl)
+
+   correct 3-grams in: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Test)
+correct trigrams
+trigram is: 'Een_dubbele_unknown:'
+no correction for trigram: Een_dubbele_unknown: [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]
+try bigram: Een_dubbele [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}]
+no correction for bigram: Een_dubbele [ <w xml:id='p10.1" > {<t>,}, <w xml:id='p10.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p10.1" > {<t>,}]
+Een = 2 => Een
+Een = 3 => Een extra_skip=0
+trigram is: 'dubbele_unknown:_Arglebargle,'
+no correction for trigram: dubbele_unknown:_Arglebargle, [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]
+try bigram: dubbele_unknown: [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]
+no correction for bigram: dubbele_unknown: [ <w xml:id='p10.2" > {<t>,}, <w xml:id='p10.3" > {<t>,}]
+try unigram: dubbele [ <w xml:id='p10.2" > {<t>,}]
+dubbele = 2 => dubbele
+dubbele = 3 => dubbele extra_skip=0
+trigram is: 'unknown:_Arglebargle,_glop-glyf!'
+no correction for trigram: unknown:_Arglebargle,_glop-glyf! [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}, <w xml:id='p10.5" > {<t>,}]
+try bigram: unknown:_Arglebargle, [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]
+no correction for bigram: unknown:_Arglebargle, [ <w xml:id='p10.3" > {<t>,}, <w xml:id='p10.4" > {<t>,}]
+try unigram: unknown: [ <w xml:id='p10.3" > {<t>,}]
+unknown: = 2 => unknown:
+unknown: = 3 => unknown: extra_skip=0
+correction: 
+Arglebargle,_glop-glyf! (2-2) ==> UNK UNK [ <w xml:id='p10.4" > {<t>,}, <w xml:id='p10.5" > {<t>,}]
+created:  <correction xml:id='p10.correction.1" > {<new>,<original>,}
+Arglebargle,_glop-glyf! = 2 => UNK UNK
+corrected 3-grams uit: 'Een dubbele unknown: UNK UNK' (Ticcl)
+
+   correct 3-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
+correct trigrams
+trigram is: 'Een_triple_unknown:'
+no correction for trigram: Een_triple_unknown: [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]
+try bigram: Een_triple [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}]
+no correction for bigram: Een_triple [ <w xml:id='p11.1" > {<t>,}, <w xml:id='p11.2" > {<t>,}]
+try unigram: Een [ <w xml:id='p11.1" > {<t>,}]
+Een = 2 => Een
+Een = 3 => Een extra_skip=0
+trigram is: 'triple_unknown:_Argle'
+no correction for trigram: triple_unknown:_Argle [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]
+try bigram: triple_unknown: [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]
+no correction for bigram: triple_unknown: [ <w xml:id='p11.2" > {<t>,}, <w xml:id='p11.3" > {<t>,}]
+try unigram: triple [ <w xml:id='p11.2" > {<t>,}]
+triple = 2 => triple
+triple = 3 => triple extra_skip=0
+trigram is: 'unknown:_Argle_bargle,'
+no correction for trigram: unknown:_Argle_bargle, [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}, <w xml:id='p11.5" > {<t>,}]
+try bigram: unknown:_Argle [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]
+no correction for bigram: unknown:_Argle [ <w xml:id='p11.3" > {<t>,}, <w xml:id='p11.4" > {<t>,}]
+try unigram: unknown: [ <w xml:id='p11.3" > {<t>,}]
+unknown: = 2 => unknown:
+unknown: = 3 => unknown: extra_skip=0
+trigram is: 'Argle_bargle,_glop-glyf!'
+created:  <correction xml:id='p11.correction.1" > {<new>,<original>,}
+Argle_bargle,_glop-glyf! = 3 => UNK UNK UNK extra_skip=2
+corrected 3-grams uit: 'Een triple unknown: UNK UNK UNK' (Ticcl)
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1427,5 +1584,7 @@ edit statistics:
 	3-1	1
 	3-2	1
 	3-3	1
-	TOKENS	44
+	TOKENS	55
 	UNK	1
+	UNK UNK	1
+	UNK UNK UNK	1

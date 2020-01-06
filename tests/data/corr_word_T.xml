@@ -99,6 +99,25 @@
 	  <w xml:id="p9.4"><t class="Test">He</t></w>
 	  <w xml:id="p9.5"><t class="Test">groenehuis.</t></w>
         </p>
+        <p xml:id="p10">
+          <t class="Test">Een dubbele unknown: Arglebargle, glop-glyf!</t>
+          <lang class="dut"/>
+	  <w xml:id="p10.1"><t class="Test">Een</t></w>
+	  <w xml:id="p10.2"><t class="Test">dubbele</t></w>
+	  <w xml:id="p10.3"><t class="Test">unknown:</t></w>
+	  <w xml:id="p10.4"><t class="Test">Arglebargle,</t></w>
+	  <w xml:id="p10.5"><t class="Test">glop-glyf!</t></w>
+        </p>
+        <p xml:id="p11">
+          <t class="Test">Een triple unknown: Argle bargle, glop-glyf!</t>
+          <lang class="dut"/>
+	  <w xml:id="p11.1"><t class="Test">Een</t></w>
+	  <w xml:id="p11.2"><t class="Test">triple</t></w>
+	  <w xml:id="p11.3"><t class="Test">unknown:</t></w>
+	  <w xml:id="p11.4"><t class="Test">Argle</t></w>
+	  <w xml:id="p11.5"><t class="Test">bargle,</t></w>
+	  <w xml:id="p11.6"><t class="Test">glop-glyf!</t></w>
+        </p>
       </div>
     </div>
   </text>

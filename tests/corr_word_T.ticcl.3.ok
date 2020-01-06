@@ -13,7 +13,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-03T14:43:27" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --word-nodes --ngram=2 -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-06T11:58:04" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --ngram=2 -v  -v " folia_version="2.2.1" host="bonus" name="FoLiA-correct" user="sloot" version="0.14">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
       </processor>
     </provenance>
@@ -313,6 +313,70 @@
               </w>
             </original>
           </correction>
+        </p>
+        <p xml:id="p10">
+          <t class="Test">Een dubbele unknown: Arglebargle, glop-glyf!</t>
+          <t class="Ticcl">Een dubbele unknown: UNK UNK</t>
+          <lang class="dut"/>
+          <w xml:id="p10.1">
+            <t class="Test">Een</t>
+            <t class="Ticcl" offset="0">Een</t>
+          </w>
+          <w xml:id="p10.2">
+            <t class="Test">dubbele</t>
+            <t class="Ticcl" offset="4">dubbele</t>
+          </w>
+          <w xml:id="p10.3">
+            <t class="Test">unknown:</t>
+            <t class="Ticcl" offset="12">unknown:</t>
+          </w>
+          <correction xml:id="p10.correction.1">
+            <new>
+              <w xml:id="p10.4.edit.1">
+                <t class="Ticcl" offset="21">UNK</t>
+              </w>
+              <w xml:id="p10.4.edit.2">
+                <t class="Ticcl" offset="25">UNK</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p10.4">
+                <t class="Test">Arglebargle,</t>
+              </w>
+              <w xml:id="p10.5">
+                <t class="Test">glop-glyf!</t>
+              </w>
+            </original>
+          </correction>
+        </p>
+        <p xml:id="p11">
+          <t class="Test">Een triple unknown: Argle bargle, glop-glyf!</t>
+          <t class="Ticcl">Een triple unknown: Argle bargle, glop-glyf!</t>
+          <lang class="dut"/>
+          <w xml:id="p11.1">
+            <t class="Test">Een</t>
+            <t class="Ticcl" offset="0">Een</t>
+          </w>
+          <w xml:id="p11.2">
+            <t class="Test">triple</t>
+            <t class="Ticcl" offset="4">triple</t>
+          </w>
+          <w xml:id="p11.3">
+            <t class="Test">unknown:</t>
+            <t class="Ticcl" offset="11">unknown:</t>
+          </w>
+          <w xml:id="p11.4">
+            <t class="Test">Argle</t>
+            <t class="Ticcl" offset="20">Argle</t>
+          </w>
+          <w xml:id="p11.5">
+            <t class="Test">bargle,</t>
+            <t class="Ticcl" offset="26">bargle,</t>
+          </w>
+          <w xml:id="p11.6">
+            <t class="Test">glop-glyf!</t>
+            <t class="Ticcl" offset="34">glop-glyf!</t>
+          </w>
         </p>
       </div>
     </div>
