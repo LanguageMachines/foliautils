@@ -17,15 +17,15 @@ diff stats.wordfreqlist.tsv stats-1.ok >> teststats.out 2>&1
 $my_bin/FoLiA-stats --ngram=3 -s --class=OCR --lang="none" -o stats -e dpo out/ > out2 2>&1
 diff stats.wordfreqlist.3-gram.tsv stats-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --ngram=3 -S --class=OCR --lang="none" -o statS -e dpo out/ > out3 2>&1
+$my_bin/FoLiA-stats --ngram=3 --tags=p --class=OCR --lang="none" -o statS -e dpo out/ > out3 2>&1
 diff statS.wordfreqlist.3-gram.tsv statS-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --max-ngram=3 -S --class=OCR --lang="none" -o statS1 -e dpo out/ > out4 2>&1
+$my_bin/FoLiA-stats --max-ngram=3 --tags=p --class=OCR --lang="none" -o statS1 -e dpo out/ > out4 2>&1
 diff statS1.wordfreqlist.tsv statS1.ok >> teststats.out 2>&1
 diff statS1.wordfreqlist.2-gram.tsv statS1-2.ok >> teststats.out 2>&1
 diff statS1.wordfreqlist.3-gram.tsv statS1-3.ok >> teststats.out 2>&1
 
-$my_bin/FoLiA-stats --ngram=3 --max-ngram=3 -S --class=OCR --lang="none" -o statS2 -e dpo out/ > out5 2>&1
+$my_bin/FoLiA-stats --ngram=3 --max-ngram=3 --mode=word_in_doc --class=OCR --lang="none" -o statS2 -e dpo out/ > out5 2>&1
 diff statS2.wordfreqlist.3-gram.tsv statS2-3.ok >> teststats.out 2>&1
 
 $my_bin/FoLiA-stats --tags=p --class=OCR --languages="skip,eng" -o stats1 out/langcat.test.lang.xml > out6 2>&1
