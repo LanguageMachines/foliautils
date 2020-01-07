@@ -23,6 +23,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Special actions:
 		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
+		 'word_in_doc' Collect ALL <w> nodes from the document and handle them as one long Sentence.
 		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
 	--tags='tags' collect text from all nodes in the list 'tags'
 	--skiptags='tags' skip all nodes in the list 'tags'
@@ -70,6 +71,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Special actions:
 		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
+		 'word_in_doc' Collect ALL <w> nodes from the document and handle them as one long Sentence.
 		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
 	--tags='tags' collect text from all nodes in the list 'tags'
 	--skiptags='tags' skip all nodes in the list 'tags'
@@ -92,37 +94,37 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	-o	 name of the output file(s) prefix.
 	-R	 search the dirs recursively (when appropriate).
 test data: [aap,N,A,P,noot]
-inventory: [0,2,2,2,0]
+inventory: [NO HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NO HEMP]
 HEMPS: {N_A_P}
 test data: [aap,N,A,P.,noot]
-inventory: [0,2,2,3,0]
+inventory: [NO HEMP,NORMAL HEMP,NORMAL HEMP,END PUNCT HEMP,NO HEMP]
 HEMPS: {N_A_P.}
 test data: [aap,N,(A,P),noot]
-inventory: [0,0,1,3,0]
+inventory: [NO HEMP,NO HEMP,START PUNCT HEMP,END PUNCT HEMP,NO HEMP]
 HEMPS: {(A_P)}
 test data: [aap,N.,A,P,noot]
-inventory: [0,0,2,2,0]
+inventory: [NO HEMP,NO HEMP,NORMAL HEMP,NORMAL HEMP,NO HEMP]
 HEMPS: {A_P}
 test data: [aap,N,A.,P.,noot]
-inventory: [0,2,3,0,0]
+inventory: [NO HEMP,NORMAL HEMP,END PUNCT HEMP,NO HEMP,NO HEMP]
 HEMPS: {N_A.}
 test data: [aap,(N,(A,P),noot]
-inventory: [0,0,1,3,0]
+inventory: [NO HEMP,NO HEMP,START PUNCT HEMP,END PUNCT HEMP,NO HEMP]
 HEMPS: {(A_P)}
 test data: [aap,(N,(A,.P,noot]
-inventory: [0,0,0,0,0]
+inventory: [NO HEMP,NO HEMP,NO HEMP,NO HEMP,NO HEMP]
 HEMPS: {}
 test data: [1,2,van,J.,Brouwer]
-inventory: [2,2,0,0,0]
+inventory: [NORMAL HEMP,NORMAL HEMP,NO HEMP,NO HEMP,NO HEMP]
 HEMPS: {1_2}
 test data: [1,2,van,J.]
-inventory: [2,2,0,0]
+inventory: [NORMAL HEMP,NORMAL HEMP,NO HEMP,NO HEMP]
 HEMPS: {1_2}
 test data: [diamanthandel.,8]
-inventory: [0,0]
+inventory: [NO HEMP,NO HEMP]
 HEMPS: {}
 test data: [een,F,1,o,r,e,n,t,ij,n,e,r,,is]
-inventory: [0,2,2,2,2,2,2,2,2,2,2,3,0]
+inventory: [NO HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,END PUNCT HEMP,NO HEMP]
 HEMPS: {F_1_o_r_e_n_t_ij_n_e_r,}
 13c13
 < démoli,			1	0	0	1	0
