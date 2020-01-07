@@ -58,16 +58,36 @@ string classname = "current";
 
 enum Mode { UNKNOWN_MODE,
 	    S_IN_D,
+	    W_IN_D,
 	    L_P };
 
 Mode stringToMode( const string& ms ){
   if ( ms == "string_in_doc" ){
     return S_IN_D;
   }
+  else if ( ms == "word_in_doc" ){
+    return W_IN_D;
+  }
   else if ( ms == "lemma_pos" ){
     return L_P;
   }
   return UNKNOWN_MODE;
+}
+
+string toString( Mode mode ){
+  switch( mode ){
+  case S_IN_D:
+      return "string_in_doc";
+    break;
+  case W_IN_D:
+    return "ord_in_doc";
+    break;
+  case L_P:
+    return "lemma_pos";
+    break;
+  default:
+    throw logic_error( "unknown mode" );
+  }
 }
 
 void create_agg_list( const map<string,vector<map<UnicodeString, unsigned int>>>& wcv,
@@ -920,7 +940,8 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
   return grand_total;
 }
 
-size_t doc_str_inventory( const Document *d,
+size_t doc_str_inventory( Mode mode,
+			  const Document *d,
 			  const string& docName,
 			  int min_ng,
 			  int max_ng,
@@ -935,7 +956,8 @@ size_t doc_str_inventory( const Document *d,
   if ( verbose ){
 #pragma omp critical
     {
-      cout << "make a str inventory on:" << docName << endl;
+      cout << "make a " << toString(mode) << " inventory on:"
+	   << docName << endl;
     }
   }
   TEXT_FLAGS flags = TEXT_FLAGS::NONE;
@@ -943,7 +965,20 @@ size_t doc_str_inventory( const Document *d,
     flags = flags | TEXT_FLAGS::RETAIN;
   }
   size_t grand_total = 0;
-  vector<String*> strings = d->doc()->select<String>();
+  vector<FoliaElement*> strings;
+  if ( mode == S_IN_D ){
+    vector<String*> sv = d->doc()->select<String>();
+    strings.resize(sv.size());
+    copy( sv.begin(), sv.end(), strings.begin() );
+  }
+  else if ( mode == W_IN_D ){
+    vector<Word*> sv = d->doc()->select<Word>();
+    strings.resize(sv.size());
+    copy( sv.begin(), sv.end(), strings.begin() );
+  }
+  else {
+    throw logic_error( "unsupported mode" );
+  }
   if ( verbose ){
 #pragma omp critical
     {
@@ -1335,6 +1370,7 @@ void usage( const string& name ){
   cerr << "\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
   cerr << "\t--mode='mode' Special actions:" << endl;
   cerr << "\t\t 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence." << endl;
+  cerr << "\t\t 'word_in_doc' Collect ALL <w> nodes from the document and handle them as one long Sentence." << endl;
   cerr << "\t\t 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s" << endl;
   cerr << "\t--tags='tags' collect text from all nodes in the list 'tags'" << endl;
   cerr << "\t--skiptags='tags' skip all nodes in the list 'tags'" << endl;
@@ -1682,7 +1718,8 @@ int main( int argc, char *argv[] ){
 					      emph, sep, detokenize );
 	break;
       case S_IN_D:
-	word_count = doc_str_inventory( d, docName, min_NG, max_NG,
+      case W_IN_D:
+	word_count = doc_str_inventory( mode, d, docName, min_NG, max_NG,
 					wordTotals, lowercase,
 					default_language, languages,
 					wcv, emph, sep, detokenize );
