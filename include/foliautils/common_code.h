@@ -43,6 +43,14 @@ bool ispunct( UChar uc );
 
 enum hemp_status {NO_HEMP,START_PUNCT_HEMP, NORMAL_HEMP, END_PUNCT_HEMP };
 
+std::string toString( const hemp_status& );
+
+inline std::ostream& operator<<( std::ostream& os,
+				 const hemp_status& h){
+  os << toString( h );
+  return os;
+}
+
 hemp_status is_emph_part( const icu::UnicodeString& );
 std::vector<hemp_status> create_emph_inventory( const std::vector<icu::UnicodeString>& );
 
