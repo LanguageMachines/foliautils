@@ -35,7 +35,7 @@
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
-xmlDoc *getXml( const std::string& file, zipType& type );
+xmlDoc *getXml( const std::string& , zipType& );
 
 bool isalnum( UChar uc );
 bool isalpha( UChar uc );
