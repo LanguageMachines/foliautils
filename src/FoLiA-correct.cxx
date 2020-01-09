@@ -324,7 +324,7 @@ void filter( string& word ){
 bool solve_punctuation( string& word,
 			const unordered_map<string,string>& puncts,
 			string& final ){
-  const string real_puncts = ".,;!?";
+  const string real_puncts = ".,;!?:";
   final.clear();
   const auto pit = puncts.find( word );
   bool result = false;
