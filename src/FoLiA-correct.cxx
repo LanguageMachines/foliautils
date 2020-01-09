@@ -94,23 +94,26 @@ public:
 			   const unordered_set<string>&,
 			   const unordered_map<string,string>&,
 			   unordered_map<string,size_t>&,
-			   size_t& );
+			   size_t&,
+			   const processor *);
   int correct_one_bigram( const unordered_map<string,vector<word_conf> >&,
 			  const unordered_set<string>&,
 			  const unordered_map<string,string>&,
 			  unordered_map<string,size_t>&,
-			  size_t& );
+			  size_t&,
+			  const processor * );
   void correct_one_unigram( const unordered_map<string,vector<word_conf> >&,
 			    const unordered_set<string>&,
 			    const unordered_map<string,string>&,
 			    unordered_map<string,size_t>&,
-			    size_t& );
+			    size_t&,
+			    const processor * );
 private:
   void clear(){ _orig.clear(); _result.clear();_words.clear(); };
   bool has_folia() const { return (!_words.empty() && _words[0]); };
   string set_ed_type();
-  void apply_folia_correction( size_t& offset ) const;
-  void set_output_text( size_t& offset ) const;
+  void apply_folia_correction( size_t&, const processor * ) const;
+  void set_output_text( size_t& ) const;
   string _ed_type;
   string _final_punct;
   vector<string> _orig;
@@ -349,7 +352,8 @@ string gram_r::set_ed_type() {
   return _ed_type;
 }
 
-void gram_r::apply_folia_correction( size_t& offset ) const {
+void gram_r::apply_folia_correction( size_t& offset,
+				     const processor *proc ) const {
   if ( has_folia() ){
     bool doStrings = _words[0]->xmltag() == "str";
     string what;
@@ -433,8 +437,9 @@ void gram_r::apply_folia_correction( size_t& offset ) const {
 	}
       }
     }
-    KWargs no_args;
-    Correction *c = _words[0]->parent()->correct( oV, cV, nV, sV, no_args );
+    KWargs cor_args;
+    cor_args["processor"] = proc->id();
+    Correction *c = _words[0]->parent()->correct( oV, cV, nV, sV, cor_args );
     if ( verbose > 3 ){
       cerr << "created: " << c->xmlstring() << endl;
     }
@@ -448,7 +453,8 @@ void gram_r::correct_one_unigram( const unordered_map<string,vector<word_conf> >
 				  const unordered_set<string>& unknowns,
 				  const unordered_map<string,string>& puncts,
 				  unordered_map<string,size_t>& counts,
-				  size_t& offset ){
+				  size_t& offset,
+				  const processor *proc ){
   bool did_edit = false;
   if ( verbose > 2 ){
     cout << "correct unigram " << this << endl;
@@ -513,7 +519,7 @@ void gram_r::correct_one_unigram( const unordered_map<string,vector<word_conf> >
       cout << "correction: " << endl;
       cout << this << endl;
     }
-    apply_folia_correction( offset );
+    apply_folia_correction( offset, proc );
   }
   else {
     // NO edit just take the string
@@ -527,7 +533,8 @@ string correct_unigrams( const vector<gram_r>& unigrams,
 			 const unordered_map<string,vector<word_conf> >& variants,
 			 const unordered_set<string>& unknowns,
 			 const unordered_map<string,string>& puncts,
-			 unordered_map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts,
+			 const processor *proc ){
   if ( verbose > 1 ){
     cout << "correct unigrams" << endl;
   }
@@ -535,7 +542,7 @@ string correct_unigrams( const vector<gram_r>& unigrams,
   size_t offset = 0;
   for ( auto uni : unigrams ){
     uni.correct_one_unigram( variants, unknowns,
-			     puncts, counts, offset );
+			     puncts, counts, offset, proc );
     result += uni.result_text() + " ";
   }
   if ( verbose > 2 ){
@@ -548,7 +555,8 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
 				const unordered_set<string>& unknowns,
 				const unordered_map<string,string>& puncts,
 				unordered_map<string,size_t>& counts,
-				size_t& offset ){
+				size_t& offset,
+				const processor *proc ){
   int extra_skip = 0;
   if ( verbose > 2 ){
     cout << "correct bigram " << this << endl;
@@ -588,7 +596,7 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
 	cout << "correction: " << endl;
 	cout << this << endl;
       }
-      apply_folia_correction( offset );
+      apply_folia_correction( offset, proc );
     }
   }
   else {
@@ -612,7 +620,7 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
 	cout << "correction: " << endl;
 	cout << this << endl;
       }
-      apply_folia_correction( offset );
+      apply_folia_correction( offset, proc );
     }
     else {
       // just use the ORIGINAL bigram and handle the first part like unigram
@@ -626,7 +634,8 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
 	cout << "try unigram: " << this << endl;
       }
       correct_one_unigram( variants, unknowns,
-			   puncts, counts, offset );
+			   puncts, counts, offset,
+			   proc );
     }
   }
   if ( verbose > 1 ){
@@ -640,7 +649,8 @@ string correct_bigrams( const vector<gram_r>& bigrams,
 			const unordered_set<string>& unknowns,
 			const unordered_map<string,string>& puncts,
 			gram_r& last,
-			unordered_map<string,size_t>& counts ){
+			unordered_map<string,size_t>& counts,
+			const processor *proc ){
   if ( verbose > 1 ){
     cout << "correct bigrams" << endl;
   }
@@ -659,7 +669,7 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       cout << "before correct_one_bi: bi=" << bi << endl;
     }
     skip = bi.correct_one_bigram( variants, unknowns,
-				  puncts, counts, offset );
+				  puncts, counts, offset, proc );
     if ( verbose > 2 ){
       cout << "After correct_one_bi: cor=" << bi << endl;
     }
@@ -667,7 +677,7 @@ string correct_bigrams( const vector<gram_r>& bigrams,
   }
   if ( skip == 0 ){
     last.correct_one_unigram( variants, unknowns,
-			      puncts, counts, offset );
+			      puncts, counts, offset, proc );
     if ( verbose > 2 ){
       cout << "handled last word: " << last << endl;
     }
@@ -680,7 +690,8 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
 				 const unordered_set<string>& unknowns,
 				 const unordered_map<string,string>& puncts,
 				 unordered_map<string,size_t>& counts,
-				 size_t& offset ){
+				 size_t& offset,
+				 const processor *proc ){
   int extra_skip = 0;
   if ( verbose > 2 ){
     cout << "correct trigram " << orig_text() << endl;
@@ -718,7 +729,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       cout << "correction: " << endl;
       cout << this << endl;
     }
-    apply_folia_correction( offset );
+    apply_folia_correction( offset, proc );
   }
   else {
     // a word with no suggested variants
@@ -735,7 +746,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       ++counts["UNK UNK UNK"];
       set_ed_type( );
       extra_skip = 2;
-      apply_folia_correction( offset );
+      apply_folia_correction( offset, proc );
     }
     else {
       if ( verbose > 1 ){
@@ -753,7 +764,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
       }
       extra_skip = correct_one_bigram( variants, unknowns,
 				       puncts, counts,
-				       offset );
+				       offset, proc );
     }
   }
   if ( verbose > 1 ){
@@ -768,7 +779,8 @@ string correct_trigrams( const vector<gram_r>& trigrams,
 			 const unordered_set<string>& unknowns,
 			 const unordered_map<string,string>& puncts,
 			 const vector<gram_r>& unigrams,
-			 unordered_map<string,size_t>& counts ){
+			 unordered_map<string,size_t>& counts,
+			 const processor *proc ){
   if ( verbose > 1 ){
     cout << "correct trigrams" << endl;
   }
@@ -784,7 +796,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       cout << "trigram is: '" << tri.orig_text() << "'" << endl;
     }
     skip = tri.correct_one_trigram( variants, unknowns,
-				    puncts, counts, offset );
+				    puncts, counts, offset, proc );
     result += tri.result_text() + " ";
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
@@ -796,7 +808,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   else if ( skip == 1 ){
     gram_r last = unigrams.back();
     last.correct_one_unigram( variants, unknowns,
-			      puncts, counts, offset );
+			      puncts, counts, offset, proc );
     if ( verbose > 2 ){
       cout << "handled last word: " << last << endl;
     }
@@ -810,7 +822,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     }
     int skip = last_bi.correct_one_bigram( variants, unknowns,
 					   puncts, counts,
-					   offset );
+					   offset, proc );
     if ( verbose > 2 ){
       cout << "handled last bigram: " << last_bi << endl;
     }
@@ -821,7 +833,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
 	cout << "correct last word: " << last << endl;
       }
       last.correct_one_unigram( variants, unknowns,
-				puncts, counts, offset );
+				puncts, counts, offset, proc );
       if ( verbose > 2 ){
 	cout << "handled last unigram: " << last << endl;
       }
@@ -979,7 +991,8 @@ void correctNgrams( FoliaElement* par,
 		    const unordered_map<string,vector<word_conf> >& variants,
 		    const unordered_set<string>& unknowns,
 		    const unordered_map<string,string>& puncts,
-		    unordered_map<string,size_t>& counts ){
+		    unordered_map<string,size_t>& counts,
+		    processor *proc ){
   vector<FoliaElement*> ev;
   vector<Word*> sv = par->select<Word>();
   if ( sv.size() > 0 ){
@@ -1072,16 +1085,16 @@ void correctNgrams( FoliaElement* par,
   if ( trigrams.empty() ){
     if ( bigrams.empty() ){
       corrected = correct_unigrams( unigrams, variants, unknowns,
-				    puncts, counts );
+				    puncts, counts, proc );
     }
     else {
       corrected = correct_bigrams( bigrams, variants, unknowns,
-				   puncts, unigrams.back(), counts );
+				   puncts, unigrams.back(), counts, proc );
     }
   }
   else {
     corrected = correct_trigrams( trigrams, variants, unknowns,
-				  puncts, unigrams, counts );
+				  puncts, unigrams, counts, proc );
   }
   corrected = TiCC::trim( corrected );
   if ( verbose > 1 ){
@@ -1137,7 +1150,7 @@ bool correctDoc( Document *doc,
   }
   for( const auto& par : ev ){
     try {
-      correctNgrams( par, variants, unknowns, puncts, counts );
+      correctNgrams( par, variants, unknowns, puncts, counts, proc );
     }
     catch ( exception& e ){
 #pragma omp critical
