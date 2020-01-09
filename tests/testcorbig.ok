@@ -127,7 +127,7 @@ correction:
 correction: 
 Lu<\ () ==> Lu
 correction: 
-eme: () ==> eme
+eme: () ==> eme :
 correction: 
 GrXJ (1-1) ==> Gray
 correction: 
@@ -147,7 +147,7 @@ Tfdrm^r^^££dfoufhe (1-1) ==> UNK
 correction: 
 UPmos (1-2) ==> up most
 correction: 
-W'f: (1-1) ==> wife
+W'f: (1-1) ==> wife :
 correction: 
 Irs (1-1) ==> Sir
 correction: 
@@ -1735,7 +1735,7 @@ correction:
 correction: 
 MfLw (1-1) ==> flow
 correction: 
--J: () ==> -J
+-J: () ==> -J :
 correction: 
 ........ (1-1) ==> UNK
 correction: 
@@ -3631,7 +3631,7 @@ St. () ==> St .
 correction: 
 St. () ==> St .
 correction: 
-first: () ==> first
+first: () ==> first :
 correction: 
 tract, () ==> tract ,
 correction: 
@@ -4105,7 +4105,7 @@ wolves. () ==> wolves .
 correction: 
 Agamenticus, () ==> Agamenticus ,
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 Maine, () ==> Maine ,
 correction: 
@@ -7621,7 +7621,7 @@ places, () ==> places ,
 correction: 
 height. () ==> height .
 correction: 
-District: () ==> District
+District: () ==> District :
 correction: 
 Georgia, () ==> Georgia ,
 correction: 
@@ -9007,7 +9007,7 @@ bottlts (1-1) ==> bottles
 correction: 
 distance. () ==> distance .
 correction: 
-individuals: () ==> individuals
+individuals: () ==> individuals :
 correction: 
 springs, () ==> springs ,
 correction: 
@@ -9043,7 +9043,7 @@ sit- (1-1) ==> its
 correction: 
 tiensf (1-1) ==> tens
 correction: 
-iiff: (1-1) ==> off
+iiff: (1-1) ==> off :
 correction: 
 but' () ==> but
 correction: 
@@ -9605,7 +9605,7 @@ Bridgetown, () ==> Bridgetown ,
 correction: 
 cannon, () ==> cannon ,
 correction: 
-the:: () ==> the
+the:: () ==> the :
 correction: 
 lat. () ==> lat .
 correction: 
@@ -11827,7 +11827,7 @@ rivers, () ==> rivers ,
 correction: 
 here, () ==> here ,
 correction: 
-apart: () ==> apart
+apart: () ==> apart :
 correction: 
 co. () ==> co .
 correction: 
@@ -12011,7 +12011,7 @@ inhabitants, () ==> inhabitants ,
 correction: 
 llaves. () ==> llaves .
 correction: 
-Calvinist: () ==> Calvinist
+Calvinist: () ==> Calvinist :
 correction: 
 churches, () ==> churches ,
 correction: 
@@ -12527,7 +12527,7 @@ privateer, () ==> privateer ,
 correction: 
 Boston, () ==> Boston ,
 correction: 
-board: () ==> board
+board: () ==> board :
 correction: 
 truce, () ==> truce ,
 correction: 
@@ -16043,7 +16043,7 @@ serpentines, (1-1) ==> serpentine ,
 correction: 
 negroes’ () ==> negroes
 correction: 
-shoulders: () ==> shoulders
+shoulders: () ==> shoulders :
 correction: 
 India. () ==> India .
 correction: 
@@ -17535,7 +17535,7 @@ head. () ==> head .
 correction: 
 St. () ==> St .
 correction: 
-th: () ==> th
+th: () ==> th :
 correction: 
 although, () ==> although ,
 correction: 
@@ -17661,7 +17661,7 @@ wheat, () ==> wheat ,
 correction: 
 flour, () ==> flour ,
 correction: 
-expect: () ==> expect
+expect: () ==> expect :
 correction: 
 Nova-Scotia (1-2) ==> Nova Scotia
 correction: 
@@ -18435,7 +18435,7 @@ Wales, () ==> Wales ,
 correction: 
 Ayres, () ==> Ayres ,
 correction: 
-most: () ==> most
+most: () ==> most :
 correction: 
 South-America, (1-2) ==> South America ,
 correction: 
@@ -18971,7 +18971,7 @@ co. () ==> co .
 correction: 
 Vermont, () ==> Vermont ,
 correction: 
-on: () ==> on
+on: () ==> on :
 correction: 
 Champlain. () ==> Champlain .
 correction: 
@@ -29477,7 +29477,7 @@ correction:
 correction: 
 more) () ==> more
 correction: 
-feet: () ==> feet
+feet: () ==> feet :
 correction: 
 height, () ==> height ,
 correction: 
@@ -30557,7 +30557,7 @@ Boston, () ==> Boston ,
 correction: 
 Lancaster. () ==> Lancaster .
 correction: 
-bams: () ==> bams
+bams: () ==> bams :
 correction: 
 Mufquetequid (1-1) ==> Musquetaquid
 correction: 
@@ -32829,7 +32829,7 @@ inhabitants. () ==> inhabitants .
 correction: 
 Cornwall» () ==> Cornwall
 correction: 
-cot: () ==> cot
+cot: () ==> cot :
 correction: 
 Cornwall, () ==> Cornwall ,
 correction: 
@@ -35013,7 +35013,7 @@ goods. () ==> goods .
 correction: 
 beef, () ==> beef ,
 correction: 
-cut: () ==> cut
+cut: () ==> cut :
 correction: 
 cus (1-1) ==> use
 correction: 
@@ -35599,7 +35599,7 @@ inhabitants, () ==> inhabitants ,
 correction: 
 mbit (1-1) ==> bit
 correction: 
-compact: () ==> compact
+compact: () ==> compact :
 correction: 
 it, () ==> it ,
 correction: 
@@ -36815,7 +36815,7 @@ iltaals, (1-2) ==> ILTA is ,
 correction: 
 marfiles, () ==> marfiles ,
 correction: 
-Delaware: () ==> Delaware
+Delaware: () ==> Delaware :
 correction: 
 state, () ==> state ,
 correction: 
@@ -37425,7 +37425,7 @@ Methodists, () ==> Methodists ,
 correction: 
 number, () ==> number ,
 correction: 
-Sussex: () ==> Sussex
+Sussex: () ==> Sussex :
 correction: 
 ascertained. () ==> ascertained .
 correction: 
@@ -38977,7 +38977,7 @@ Spaniih (1-1) ==> Spanish
 correction: 
 frontiers, () ==> frontiers ,
 correction: 
-coast: () ==> coast
+coast: () ==> coast :
 correction: 
 narrows, () ==> narrows ,
 correction: 
@@ -39917,7 +39917,7 @@ bus, () ==> bus ,
 correction: 
 begun, () ==> begun ,
 correction: 
-ftone.: (1-1) ==> stone
+ftone.: (1-1) ==> stone :
 correction: 
 remaining, () ==> remaining ,
 correction: 
@@ -40085,7 +40085,7 @@ rivers, () ==> rivers ,
 correction: 
 Nifai (1-1) ==> Sinai
 correction: 
-Neybe,: (1-1) ==> Nye
+Neybe,: (1-1) ==> Nye :
 correction: 
 -streams. (1-1) ==> streams .
 correction: 
@@ -42261,7 +42261,7 @@ Ea.st (1-1) ==> East
 correction: 
 Hartford, () ==> Hartford ,
 correction: 
-co: () ==> co
+co: () ==> co :
 correction: 
 Connecticut, () ==> Connecticut ,
 correction: 
@@ -42365,7 +42365,7 @@ academy. () ==> academy .
 correction: 
 Bethlehem, () ==> Bethlehem ,
 correction: 
-Philadelphia: () ==> Philadelphia
+Philadelphia: () ==> Philadelphia :
 correction: 
 Easton, () ==> Easton ,
 correction: 
@@ -46545,7 +46545,7 @@ Mr. () ==> Mr .
 correction: 
 Melford’s (1-1) ==> Melford
 correction: 
-account: () ==> account
+account: () ==> account :
 correction: 
 St. () ==> St .
 correction: 
@@ -47145,7 +47145,7 @@ Concord. () ==> Concord .
 correction: 
 co. () ==> co .
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 Maine, () ==> Maine ,
 correction: 
@@ -48989,7 +48989,7 @@ long, () ==> long ,
 correction: 
 broad. () ==> broad .
 correction: 
-them: () ==> them
+them: () ==> them :
 correction: 
 Norfolk, () ==> Norfolk ,
 correction: 
@@ -49835,7 +49835,7 @@ brig, () ==> brig ,
 correction: 
 schooners, () ==> schooners ,
 correction: 
-(loops: () ==> loops
+(loops: () ==> loops :
 correction: 
 tops. () ==> tops .
 correction: 
@@ -53105,7 +53105,7 @@ lers (1-1) ==> less
 correction: 
 Tennessee, () ==> Tennessee ,
 correction: 
-highest: () ==> highest
+highest: () ==> highest :
 correction: 
 commendation. () ==> commendation .
 correction: 
@@ -53599,7 +53599,7 @@ country, () ==> country ,
 correction: 
 it, () ==> it ,
 correction: 
-establishment: () ==> establishment
+establishment: () ==> establishment :
 correction: 
 inhabi_itants. (2-1) ==> inhabitants .
 correction: 
@@ -56479,7 +56479,7 @@ thither, () ==> thither ,
 correction: 
 colony, () ==> colony ,
 correction: 
-bestowed: () ==> bestowed
+bestowed: () ==> bestowed :
 correction: 
 Graenland (1-1) ==> Greenland
 correction: 
@@ -56921,7 +56921,7 @@ August, () ==> August ,
 correction: 
 Bay, () ==> Bay ,
 correction: 
-La: () ==> La
+La: () ==> La :
 correction: 
 eaft (1-1) ==> East
 correction: 
@@ -58589,7 +58589,7 @@ suppsies (1-1) ==> supplies
 correction: 
 trade-winds (1-1) ==> Tradewinds
 correction: 
-coast: () ==> coast
+coast: () ==> coast :
 correction: 
 west, () ==> west ,
 correction: 
@@ -58873,7 +58873,7 @@ Panvaivs, (1-1) ==> Panais ,
 correction: 
 noises, () ==> noises ,
 correction: 
-first: () ==> first
+first: () ==> first :
 correction: 
 settlers, () ==> settlers ,
 correction: 
@@ -61991,7 +61991,7 @@ Hem. () ==> Hem .
 correction: 
 Gate, () ==> Gate ,
 correction: 
-st: () ==> st
+st: () ==> st :
 correction: 
 ait (1-1) ==> its
 correction: 
@@ -66307,7 +66307,7 @@ common- (1-1) ==> common
 correction: 
 Gun-men. (1-1) ==> gunmen .
 correction: 
-Total: () ==> Total
+Total: () ==> Total :
 correction: 
 Shactaws (1-1) ==> Choctaws
 correction: 
@@ -66339,7 +66339,7 @@ States, () ==> States ,
 correction: 
 Dec. () ==> Dec .
 correction: 
-order: () ==> order
+order: () ==> order :
 correction: 
 Wyandots, (1-1) ==> Wyandot ,
 correction: 
@@ -68911,7 +68911,7 @@ place, () ==> place ,
 correction: 
 and. () ==> and .
 correction: 
-unload: () ==> unload
+unload: () ==> unload :
 correction: 
 town. () ==> town .
 correction: 
@@ -71701,7 +71701,7 @@ subiilt (1-1) ==> submit
 correction: 
 fodder. () ==> fodder .
 correction: 
-States: () ==> States
+States: () ==> States :
 correction: 
 Fahrenheit’s (1-1) ==> Fahrenheit
 correction: 
@@ -72607,7 +72607,7 @@ I’ittTburg. () ==> I’ittTburg .
 correction: 
 Mountains, () ==> Mountains ,
 correction: 
-wl: () ==> wl
+wl: () ==> wl :
 correction: 
 butchers’ () ==> butchers
 correction: 
@@ -73079,7 +73079,7 @@ le, () ==> le ,
 correction: 
 Vermont. () ==> Vermont .
 correction: 
-westerly: () ==> westerly
+westerly: () ==> westerly :
 correction: 
 miles, () ==> miles ,
 correction: 
@@ -73197,7 +73197,7 @@ which, () ==> which ,
 correction: 
 erected. () ==> erected .
 correction: 
-about.: () ==> about
+about.: () ==> about :
 correction: 
 bar-iron (1-2) ==> bar iron
 correction: 
@@ -78149,7 +78149,7 @@ Georgia, () ==> Georgia ,
 correction: 
 county, () ==> county ,
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 State, () ==> State ,
 correction: 
@@ -78679,7 +78679,7 @@ slaves. () ==> slaves .
 correction: 
 Lunenburg, () ==> Lunenburg ,
 correction: 
-Essex: () ==> Essex
+Essex: () ==> Essex :
 correction: 
 county, () ==> county ,
 correction: 
@@ -78835,7 +78835,7 @@ fettled (1-1) ==> settled
 correction: 
 Ñew-England (1-2) ==> New England
 correction: 
-others: () ==> others
+others: () ==> others :
 correction: 
 miles. () ==> miles .
 correction: 
@@ -79885,7 +79885,7 @@ south. () ==> south .
 correction: 
 lat. () ==> lat .
 correction: 
-north: () ==> north
+north: () ==> north :
 correction: 
 general'course (1-2) ==> general course
 correction: 
@@ -81213,7 +81213,7 @@ mantas-., (1-1) ==> Manta ,
 correction: 
 inhabitants. () ==> inhabitants .
 correction: 
-follows: () ==> follows
+follows: () ==> follows :
 correction: 
 wood, () ==> wood ,
 correction: 
@@ -81447,7 +81447,7 @@ harbour. () ==> harbour .
 correction: 
 access, () ==> access ,
 correction: 
-it: () ==> it
+it: () ==> it :
 correction: 
 it. () ==> it .
 correction: 
@@ -81475,7 +81475,7 @@ middle; () ==> middle ;
 correction: 
 timber, () ==> timber ,
 correction: 
-leaves: () ==> leaves
+leaves: () ==> leaves :
 correction: 
 persons. () ==> persons .
 correction: 
@@ -81997,7 +81997,7 @@ pilots. () ==> pilots .
 correction: 
 ftraits (1-1) ==> fruits
 correction: 
-world: () ==> world
+world: () ==> world :
 correction: 
 left, () ==> left ,
 correction: 
@@ -83099,7 +83099,7 @@ Pennsylvania; () ==> Pennsylvania ;
 correction: 
 State, () ==> State ,
 correction: 
-Virginia: () ==> Virginia
+Virginia: () ==> Virginia :
 correction: 
 counties, () ==> counties ,
 correction: 
@@ -83135,7 +83135,7 @@ St. () ==> St .
 correction: 
 Mary’s, () ==> Mary’s ,
 correction: 
-inhabitants: () ==> inhabitants
+inhabitants: () ==> inhabitants :
 correction: 
 Eajiern (1-1) ==> eastern
 correction: 
@@ -83951,7 +83951,7 @@ Il|l (1-1) ==> ill
 correction: 
 Duke’s (1-1) ==> Duke
 correction: 
-JO: () ==> JO
+JO: () ==> JO :
 correction: 
 :io£ (1-1) ==> Rio
 correction: 
@@ -86123,7 +86123,7 @@ sorts, () ==> sorts ,
 correction: 
 it. () ==> it .
 correction: 
-mile: () ==> mile
+mile: () ==> mile :
 correction: 
 Maracaybo, (1-1) ==> Maracaibo ,
 correction: 
@@ -88175,7 +88175,7 @@ joo° () ==> joo
 correction: 
 instances, () ==> instances ,
 correction: 
-extreme: () ==> extreme
+extreme: () ==> extreme :
 correction: 
 aá_the (2-1) ==> Agathe
 correction: 
@@ -88871,7 +88871,7 @@ rivers. () ==> rivers .
 correction: 
 tract, () ==> tract ,
 correction: 
-follow: () ==> follow
+follow: () ==> follow :
 correction: 
 long, () ==> long ,
 correction: 
@@ -89079,7 +89079,7 @@ county, () ==> county ,
 correction: 
 Vermont, () ==> Vermont ,
 correction: 
-east: () ==> east
+east: () ==> east :
 correction: 
 Champlain, () ==> Champlain ,
 correction: 
@@ -89733,7 +89733,7 @@ is, () ==> is ,
 correction: 
 maps, () ==> maps ,
 correction: 
-miles: () ==> miles
+miles: () ==> miles :
 correction: 
 miles, () ==> miles ,
 correction: 
@@ -91019,7 +91019,7 @@ America, () ==> America ,
 correction: 
 river, () ==> river ,
 correction: 
-lat: () ==> lat
+lat: () ==> lat :
 correction: 
 Ayres, () ==> Ayres ,
 correction: 
@@ -91197,7 +91197,7 @@ courthouse, () ==> courthouse ,
 correction: 
 court-house, (1-1) ==> courthouse ,
 correction: 
-Salisbury: () ==> Salisbury
+Salisbury: () ==> Salisbury :
 correction: 
 Kentucky. () ==> Kentucky .
 correction: 
@@ -91843,7 +91843,7 @@ entrance. () ==> entrance .
 correction: 
 River, () ==> River ,
 correction: 
-west: () ==> west
+west: () ==> west :
 correction: 
 Morant. () ==> Morant .
 correction: 
@@ -92485,7 +92485,7 @@ Virginia. () ==> Virginia .
 correction: 
 Country, () ==> Country ,
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 Mexico, () ==> Mexico ,
 correction: 
@@ -93589,7 +93589,7 @@ proved, () ==> proved ,
 correction: 
 seacoast. () ==> seacoast .
 correction: 
-Indian: () ==> Indian
+Indian: () ==> Indian :
 correction: 
 Michigan, () ==> Michigan ,
 correction: 
@@ -94357,7 +94357,7 @@ north-nerth-east. (1-1) ==> north-northeast .
 correction: 
 Nashville, () ==> Nashville ,
 correction: 
-District: () ==> District
+District: () ==> District :
 correction: 
 Tennessee, () ==> Tennessee ,
 correction: 
@@ -96457,7 +96457,7 @@ electors, () ==> electors ,
 correction: 
 (laves.. () ==> laves .
 correction: 
-compact: () ==> compact
+compact: () ==> compact :
 correction: 
 built, () ==> built ,
 correction: 
@@ -96833,7 +96833,7 @@ Ipswich, () ==> Ipswich ,
 correction: 
 Philadelphia. () ==> Philadelphia .
 correction: 
-water: () ==> water
+water: () ==> water :
 correction: 
 o’clock. (1-1) ==> o'clock .
 correction: 
@@ -98021,7 +98021,7 @@ avista, () ==> avista ,
 correction: 
 St. () ==> St .
 correction: 
-John’s: () ==> John’s
+John’s: () ==> John’s :
 correction: 
 winter. () ==> winter .
 correction: 
@@ -98599,7 +98599,7 @@ distant, () ==> distant ,
 correction: 
 clufter (1-1) ==> cluster
 correction: 
-Massachusetts: () ==> Massachusetts
+Massachusetts: () ==> Massachusetts :
 correction: 
 months; () ==> months ;
 correction: 
@@ -100795,7 +100795,7 @@ Mr.- () ==> Mr
 correction: 
 Coddington, () ==> Coddington ,
 correction: 
-afterward: () ==> afterward
+afterward: () ==> afterward :
 correction: 
 governor, () ==> governor ,
 correction: 
@@ -100967,7 +100967,7 @@ Block-I/land. (1-2) ==> Block Island .
 correction: 
 Ew-S (1-1) ==> was
 correction: 
-Entrarte: (1-1) ==> entrant
+Entrarte: (1-1) ==> entrant :
 correction: 
 Mofkito (1-1) ==> Miskito
 correction: 
@@ -101361,7 +101361,7 @@ townships, () ==> townships ,
 correction: 
 electors. () ==> electors .
 correction: 
-classes: () ==> classes
+classes: () ==> classes :
 correction: 
 Do. () ==> Do .
 correction: 
@@ -101899,7 +101899,7 @@ apparatus, () ==> apparatus ,
 correction: 
 grounds, () ==> grounds ,
 correction: 
-college: () ==> college
+college: () ==> college :
 correction: 
 Alió (1-1) ==> Ali
 correction: 
@@ -103417,7 +103417,7 @@ persons, () ==> persons ,
 correction: 
 colour. () ==> colour .
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 South-Carolina, (1-2) ==> South Carolina ,
 correction: 
@@ -109185,7 +109185,7 @@ Oronoko, () ==> Oronoko ,
 correction: 
 Little. () ==> Little .
 correction: 
-Mocomocó: (1-1) ==> Mocomoco
+Mocomocó: (1-1) ==> Mocomoco :
 correction: 
 Plata, () ==> Plata ,
 correction: 
@@ -109881,7 +109881,7 @@ gesture. () ==> gesture .
 correction: 
 lively, () ==> lively ,
 correction: 
-permanent: () ==> permanent
+permanent: () ==> permanent :
 correction: 
 hour, () ==> hour ,
 correction: 
@@ -109987,7 +109987,7 @@ lat. () ==> lat .
 correction: 
 long. () ==> long .
 correction: 
-coast: () ==> coast
+coast: () ==> coast :
 correction: 
 America, () ==> America ,
 correction: 
@@ -112185,7 +112185,7 @@ Cattanco, (1-1) ==> Caetano ,
 correction: 
 river, () ==> river ,
 correction: 
-it: () ==> it
+it: () ==> it :
 correction: 
 Europe, () ==> Europe ,
 correction: 
@@ -112287,7 +112287,7 @@ pleasant, () ==> pleasant ,
 correction: 
 temperate. () ==> temperate .
 correction: 
-built: () ==> built
+built: () ==> built :
 correction: 
 inhah. (1-1) ==> Shah .
 correction: 
@@ -112809,7 +112809,7 @@ Hilton’s (1-1) ==> Hilton
 correction: 
 Point, () ==> Point ,
 correction: 
-it: () ==> it
+it: () ==> it :
 correction: 
 sea, () ==> sea ,
 correction: 
@@ -113289,7 +113289,7 @@ baibn (1-1) ==> brain
 correction: 
 Baltimore. () ==> Baltimore .
 correction: 
-first: () ==> first
+first: () ==> first :
 correction: 
 river, () ==> river ,
 correction: 
@@ -115101,7 +115101,7 @@ confiable. (1-1) ==> Constable .
 correction: 
 inhabitants, () ==> inhabitants ,
 correction: 
-slaves: () ==> slaves
+slaves: () ==> slaves :
 correction: 
 considerable, () ==> considerable ,
 correction: 
@@ -116111,11 +116111,11 @@ rye-meal, (1-2) ==> rye meal ,
 correction: 
 lumber, () ==> lumber ,
 correction: 
-bloomery: () ==> bloomery
+bloomery: () ==> bloomery :
 correction: 
 Brandywine, () ==> Brandywine ,
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 bay, () ==> bay ,
 correction: 
@@ -116297,7 +116297,7 @@ these, () ==> these ,
 correction: 
 character. () ==> character .
 correction: 
-follows: () ==> follows
+follows: () ==> follows :
 correction: 
 Presbyterians, () ==> Presbyterians ,
 correction: 
@@ -118495,7 +118495,7 @@ confluence. () ==> confluence .
 correction: 
 settlement, () ==> settlement ,
 correction: 
-first: () ==> first
+first: () ==> first :
 correction: 
 navigation, () ==> navigation ,
 correction: 
@@ -118947,7 +118947,7 @@ animals, () ==> animals ,
 correction: 
 8cc. (1-1) ==> Act .
 correction: 
-library: () ==> library
+library: () ==> library :
 correction: 
 square. () ==> square .
 correction: 
@@ -119361,7 +119361,7 @@ correction:
 correction: 
 hours, () ==> hours ,
 correction: 
-road: () ==> road
+road: () ==> road :
 correction: 
 miles. () ==> miles .
 correction: 
@@ -119489,7 +119489,7 @@ and, () ==> and ,
 correction: 
 Schuylkill, () ==> Schuylkill ,
 correction: 
-th: () ==> th
+th: () ==> th :
 correction: 
 city, () ==> city ,
 correction: 
@@ -122913,7 +122913,7 @@ coaft (1-1) ==> coast
 correction: 
 co. () ==> co .
 correction: 
-District: () ==> District
+District: () ==> District :
 correction: 
 Maine, () ==> Maine ,
 correction: 
@@ -123657,7 +123657,7 @@ slaves. () ==> slaves .
 correction: 
 island, () ==> island ,
 correction: 
-cattle: () ==> cattle
+cattle: () ==> cattle :
 correction: 
 plantations, () ==> plantations ,
 correction: 
@@ -124975,7 +124975,7 @@ inhabitants. () ==> inhabitants .
 correction: 
 excellent; () ==> excellent ;
 correction: 
-indifferent: () ==> indifferent
+indifferent: () ==> indifferent :
 correction: 
 abundance. () ==> abundance .
 correction: 
@@ -128627,7 +128627,7 @@ viz. () ==> viz .
 correction: 
 May, () ==> May ,
 correction: 
-last: () ==> last
+last: () ==> last :
 correction: 
 October. () ==> October .
 correction: 
@@ -129403,7 +129403,7 @@ name. () ==> name .
 correction: 
 ex'cel (1-1) ==> excel
 correction: 
-Peru: () ==> Peru
+Peru: () ==> Peru :
 correction: 
 silver. () ==> silver .
 correction: 
@@ -130513,7 +130513,7 @@ land, () ==> land ,
 correction: 
 pasturage, () ==> pasturage ,
 correction: 
-cotton: () ==> cotton
+cotton: () ==> cotton :
 correction: 
 Ferry, () ==> Ferry ,
 correction: 
@@ -133369,7 +133369,7 @@ river, () ==> river ,
 correction: 
 feeing (1-1) ==> feeling
 correction: 
-falls: () ==> falls
+falls: () ==> falls :
 correction: 
 morning, () ==> morning ,
 correction: 
@@ -134867,7 +134867,7 @@ Maine, () ==> Maine ,
 correction: 
 name, () ==> name ,
 correction: 
-inhabitant: () ==> inhabitant
+inhabitant: () ==> inhabitant :
 correction: 
 No. () ==> No .
 correction: 
@@ -135891,7 +135891,7 @@ river, () ==> river ,
 correction: 
 Albany. () ==> Albany .
 correction: 
-compact: () ==> compact
+compact: () ==> compact :
 correction: 
 .state. () ==> state .
 correction: 
@@ -136393,7 +136393,7 @@ mountains, () ==> mountains ,
 correction: 
 Savannah, () ==> Savannah ,
 correction: 
-north-well: (1-1) ==> north-west
+north-well: (1-1) ==> north-west :
 correction: 
 co. () ==> co .
 correction: 
@@ -141261,7 +141261,7 @@ Holland, () ==> Holland ,
 correction: 
 Aborigines, () ==> Aborigines ,
 correction: 
-follows: () ==> follows
+follows: () ==> follows :
 correction: 
 Firma, () ==> Firma ,
 correction: 
@@ -141779,7 +141779,7 @@ islands, () ==> islands ,
 correction: 
 note, () ==> note ,
 correction: 
-St: () ==> St
+St: () ==> St :
 correction: 
 parish. () ==> parish .
 correction: 
@@ -142551,7 +142551,7 @@ centre, () ==> centre ,
 correction: 
 oil, () ==> oil ,
 correction: 
-kernel: () ==> kernel
+kernel: () ==> kernel :
 correction: 
 tins, () ==> tins ,
 correction: 
@@ -142815,7 +142815,7 @@ regretted, () ==> regretted ,
 correction: 
 trade, () ==> trade ,
 correction: 
-first: () ==> first
+first: () ==> first :
 correction: 
 quality, () ==> quality ,
 correction: 
@@ -143009,7 +143009,7 @@ numbers, () ==> numbers ,
 correction: 
 sol- (1-1) ==> solo
 correction: 
-lows: () ==> lows
+lows: () ==> lows :
 correction: 
 Presbyterians, () ==> Presbyterians ,
 correction: 
@@ -143551,7 +143551,7 @@ State, () ==> State ,
 correction: 
 Massachusetts; () ==> Massachusetts ;
 correction: 
-south-west: () ==> south-west
+south-west: () ==> south-west :
 correction: 
 Portsmouth, () ==> Portsmouth ,
 correction: 
@@ -145543,7 +145543,7 @@ north-westerly (1-1) ==> northwesterly
 correction: 
 river, () ==> river ,
 correction: 
-north-east: () ==> north-east
+north-east: () ==> north-east :
 correction: 
 Nashville. () ==> Nashville .
 correction: 
@@ -145649,7 +145649,7 @@ higher, () ==> higher ,
 correction: 
 vales; () ==> vales ;
 correction: 
-overiiowed: (1-1) ==> overflowed
+overiiowed: (1-1) ==> overflowed :
 correction: 
 fides (1-1) ==> side
 correction: 
@@ -146469,7 +146469,7 @@ Sullivan, () ==> Sullivan ,
 correction: 
 post-town (1-2) ==> post town
 correction: 
-District: () ==> District
+District: () ==> District :
 correction: 
 Maine, () ==> Maine ,
 correction: 
@@ -146671,7 +146671,7 @@ St. () ==> St .
 correction: 
 Catherine’s (1-1) ==> Catherines
 correction: 
-found: () ==> found
+found: () ==> found :
 correction: 
 safe, () ==> safe ,
 correction: 
@@ -146845,7 +146845,7 @@ one-tenth (1-2) ==> one tenth
 correction: 
 receives, () ==> receives ,
 correction: 
-strait: () ==> strait
+strait: () ==> strait :
 correction: 
 aters (1-1) ==> waters
 correction: 
@@ -146949,7 +146949,7 @@ reason, () ==> reason ,
 correction: 
 others, () ==> others ,
 correction: 
-prepared: () ==> prepared
+prepared: () ==> prepared :
 correction: 
 experience, () ==> experience ,
 correction: 
@@ -147339,7 +147339,7 @@ Wyoming, () ==> Wyoming ,
 correction: 
 falls, () ==> falls ,
 correction: 
-southwest: () ==> southwest
+southwest: () ==> southwest :
 correction: 
 falls, () ==> falls ,
 correction: 
@@ -147671,7 +147671,7 @@ curiosity. () ==> curiosity .
 correction: 
 June, () ==> June ,
 correction: 
-south..: () ==> south
+south..: () ==> south :
 correction: 
 IJland (1-1) ==> Island
 correction: 
@@ -149123,7 +149123,7 @@ here, () ==> here ,
 correction: 
 colour. () ==> colour .
 correction: 
-District: () ==> District
+District: () ==> District :
 correction: 
 Maine, () ==> Maine ,
 correction: 
@@ -149891,7 +149891,7 @@ cat-fish (1-1) ==> catfish
 correction: 
 ioo (1-1) ==> too
 correction: 
-pounds: () ==> pounds
+pounds: () ==> pounds :
 correction: 
 west» () ==> west
 correction: 
@@ -150715,7 +150715,7 @@ extinguished, () ==> extinguished ,
 correction: 
 States, () ==> States ,
 correction: 
-follows: () ==> follows
+follows: () ==> follows :
 correction: 
 Counties. () ==> Counties .
 correction: 
@@ -151193,7 +151193,7 @@ found, () ==> found ,
 correction: 
 experiments, () ==> experiments ,
 correction: 
-great: () ==> great
+great: () ==> great :
 correction: 
 observation, () ==> observation ,
 correction: 
@@ -151215,7 +151215,7 @@ country, () ==> country ,
 correction: 
 ecs (1-1) ==> ice
 correction: 
-ma: () ==> ma
+ma: () ==> ma :
 correction: 
 r.lcation, (1-1) ==> relation ,
 correction: 
@@ -151335,7 +151335,7 @@ Ohio, () ==> Ohio ,
 correction: 
 Pennsylvania, () ==> Pennsylvania ,
 correction: 
-line: () ==> line
+line: () ==> line :
 correction: 
 however, () ==> however ,
 correction: 
@@ -152133,7 +152133,7 @@ so, () ==> so ,
 correction: 
 frequented, () ==> frequented ,
 correction: 
-best: () ==> best
+best: () ==> best :
 correction: 
 expectation. () ==> expectation .
 correction: 
@@ -153127,7 +153127,7 @@ grafs, () ==> grafs ,
 correction: 
 country, () ==> country ,
 correction: 
-Lchu: (1-1) ==> Chu
+Lchu: (1-1) ==> Chu :
 correction: 
 os' () ==> os
 correction: 
@@ -153283,7 +153283,7 @@ Dutch, () ==> Dutch ,
 correction: 
 Nevj (1-1) ==> never
 correction: 
-Id: () ==> Id
+Id: () ==> Id :
 correction: 
 eren, (1-1) ==> seen ,
 correction: 
@@ -153509,7 +153509,7 @@ Chickaiaws. (1-1) ==> Chickasaw .
 correction: 
 Bvitiib, (1-1) ==> British ,
 correction: 
-Mobile: () ==> Mobile
+Mobile: () ==> Mobile :
 correction: 
 fettled (1-1) ==> settled
 correction: 
@@ -157463,7 +157463,7 @@ America, () ==> America ,
 correction: 
 Tongaey (1-1) ==> tongue
 correction: 
-well: () ==> well
+well: () ==> well :
 correction: 
 ward. () ==> ward .
 correction: 
@@ -158203,7 +158203,7 @@ Islands. () ==> Islands .
 correction: 
 lat. () ==> lat .
 correction: 
-long: () ==> long
+long: () ==> long :
 correction: 
 Verde, () ==> Verde ,
 correction: 
@@ -158391,7 +158391,7 @@ ocean. () ==> ocean .
 correction: 
 latitudes, () ==> latitudes ,
 correction: 
-miles: () ==> miles
+miles: () ==> miles :
 correction: 
 water. () ==> water .
 correction: 
@@ -161019,7 +161019,7 @@ Raleigh. () ==> Raleigh .
 correction: 
 Wakefield, () ==> Wakefield ,
 correction: 
-co: () ==> co
+co: () ==> co :
 correction: 
 New-Hampshire, (1-2) ==> New- Hampshire ,
 correction: 
@@ -162105,7 +162105,7 @@ correction:
 correction: 
 inhabitants, () ==> inhabitants ,
 correction: 
-includi: (1-1) ==> include
+includi: (1-1) ==> include :
 correction: 
 slaves. () ==> slaves .
 correction: 
@@ -162311,7 +162311,7 @@ Hardin, () ==> Hardin ,
 correction: 
 Washington, () ==> Washington ,
 correction: 
-district: () ==> district
+district: () ==> district :
 correction: 
 Tennessee, () ==> Tennessee ,
 correction: 
@@ -162799,7 +162799,7 @@ built, () ==> built ,
 correction: 
 improved, () ==> improved ,
 correction: 
-enterprise: () ==> enterprise
+enterprise: () ==> enterprise :
 correction: 
 States, () ==> States ,
 correction: 
@@ -164339,7 +164339,7 @@ Cannaveml (1-1) ==> Canaveral
 correction: 
 Mifrilsippi (1-1) ==> Missisippi
 correction: 
-Da: () ==> Da
+Da: () ==> Da :
 correction: 
 arlos (1-1) ==> Carlos
 correction: 
@@ -164373,7 +164373,7 @@ Thrki (1-1) ==> Turk
 correction: 
 ^Bglabarui () ==> Bglabarui
 correction: 
-f.S‘Antomo<2í: () ==> f.S‘Antomo<2í
+f.S‘Antomo<2í: () ==> f.S‘Antomo<2í :
 correction: 
 \Tuspu (1-1) ==> Tupi
 correction: 
@@ -169361,7 +169361,7 @@ Worcester, () ==> Worcester ,
 correction: 
 south, () ==> south ,
 correction: 
-most: () ==> most
+most: () ==> most :
 correction: 
 Maryland, () ==> Maryland ,
 correction: 
@@ -169415,7 +169415,7 @@ co. () ==> co .
 correction: 
 Northampton, () ==> Northampton ,
 correction: 
-east: () ==> east
+east: () ==> east :
 correction: 
 New-Lebanon, (1-2) ==> New Lebanon ,
 correction: 
@@ -169649,7 +169649,7 @@ correction:
 correction: 
 provisions, () ==> provisions ,
 correction: 
-the: () ==> the
+the: () ==> the :
 correction: 
 month, () ==> month ,
 correction: 
@@ -172005,7 +172005,7 @@ here. () ==> here .
 correction: 
 OSHEN, (1-1) ==> she ,
 correction: 
-District: () ==> District
+District: () ==> District :
 correction: 
 vjr (1-1) ==> over
 correction: 
@@ -173067,7 +173067,7 @@ industrious, () ==> industrious ,
 correction: 
 enterpnzing (1-1) ==> enterprising
 correction: 
-gone: () ==> gone
+gone: () ==> gone :
 correction: 
 revived; () ==> revived ;
 correction: 

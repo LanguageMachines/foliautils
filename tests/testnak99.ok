@@ -69,6 +69,8 @@ bigram is: 'den_hear [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 before correct_one_bi: bi=den_hear [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_8" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_9" > {<t>,}]
 correct bigram den_hear [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_8" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_9" > {<t>,}]
 den_hear = 2-1 => beheer
+correction: 
+den_hear (2-1) ==> beheer [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_8" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_9" > {<t>,}]
 created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.1" > {<new>,<original>,}
 den_hear = 2 => beheer
 After correct_one_bi: cor=den_hear (2-1) ==> beheer [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_8" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_9" > {<t>,}]
@@ -83,8 +85,8 @@ try unigram: Verhuurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 correct unigram Verhuurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_10" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : Verhuurder
-unigram corrections: 
-Verhuurder, : Verhuurder ,
+correction: 
+Verhuurder, () ==> Verhuurder , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_10" > {<t>,}]
 created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.2" > {<new>,<original>,}
 Verhuurder, = 2 => Verhuurder ,
 After correct_one_bi: cor=Verhuurder, () ==> Verhuurder , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_10" > {<t>,}]
@@ -95,15 +97,15 @@ no correction for bigram: deszelf_regt [ <str xml:id='NL-0400410000_26_001009_00
 try unigram: deszelf [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_11" > {<t>,}]
 correct unigram deszelf [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_11" > {<t>,}]
 deszelf = 1-1 => deszelfs
-unigram corrections: 
-deszelf : deszelfs
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_11.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+deszelf (1-1) ==> deszelfs [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_11" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.3" > {<new>,<original>,}
 deszelf = 2 => deszelfs
-After correct_one_bi: cor=deszelf (1-1) ==> deszelfs [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_11" > {<correction>,}]
+After correct_one_bi: cor=deszelf (1-1) ==> deszelfs [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_11" > {<t>,}]
 bigram is: 'regt_verkrijgen: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_12" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]'
 before correct_one_bi: bi=regt_verkrijgen: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_12" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
 correct bigram regt_verkrijgen: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_12" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
-punctuated word found, final=''
+punctuated word found, final=':'
 depuncted word   : regt_verkrijgen
 no correction for bigram: regt_verkrijgen: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_12" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
 try unigram: regt [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_12" > {<t>,}]
@@ -118,13 +120,13 @@ depuncted word   : verkrijgen_den
 no correction for bigram: verkrijgen:_den [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_14" > {<t>,}]
 try unigram: verkrijgen: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
 correct unigram verkrijgen: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
-punctuated word found, final=''
+punctuated word found, final=':'
 depuncted word   : verkrijgen
-unigram corrections: 
-verkrijgen: : verkrijgen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13.correction.1" > {<new>,<original>,}
-verkrijgen: = 2 => verkrijgen
-After correct_one_bi: cor=verkrijgen: () ==> verkrijgen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<correction>,}]
+correction: 
+verkrijgen: () ==> verkrijgen : [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.4" > {<new>,<original>,}
+verkrijgen: = 2 => verkrijgen :
+After correct_one_bi: cor=verkrijgen: () ==> verkrijgen : [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_13" > {<t>,}]
 bigram is: 'den_of [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_14" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_15" > {<t>,}]'
 before correct_one_bi: bi=den_of [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_14" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_15" > {<t>,}]
 correct bigram den_of [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_14" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_15" > {<t>,}]
@@ -201,9 +203,9 @@ try unigram: dezer, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.
 correct unigram dezer, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_22" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dezer
-unigram corrections: 
-dezer, : dezer ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.3" > {<new>,<original>,}
+correction: 
+dezer, () ==> dezer , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_22" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.5" > {<new>,<original>,}
 dezer, = 2 => dezer ,
 After correct_one_bi: cor=dezer, () ==> dezer , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_22" > {<t>,}]
 bigram is: 'in_goeden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_23" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_24" > {<t>,}]'
@@ -245,11 +247,11 @@ no correction for bigram: gangba_ren [ <str xml:id='NL-0400410000_26_001009_0000
 try unigram: gangba [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_27" > {<t>,}]
 correct unigram gangba [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_27" > {<t>,}]
 gangba = 1-1 => gangbaar
-unigram corrections: 
-gangba : gangbaar
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_27.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+gangba (1-1) ==> gangbaar [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_27" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.6" > {<new>,<original>,}
 gangba = 2 => gangbaar
-After correct_one_bi: cor=gangba (1-1) ==> gangbaar [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_27" > {<correction>,}]
+After correct_one_bi: cor=gangba (1-1) ==> gangbaar [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_27" > {<t>,}]
 bigram is: 'ren_geldmeinte, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_28" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_29" > {<t>,}]'
 before correct_one_bi: bi=ren_geldmeinte, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_28" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_29" > {<t>,}]
 correct bigram ren_geldmeinte, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_28" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_29" > {<t>,}]
@@ -271,9 +273,9 @@ correct unigram geldmeinte, [ <str xml:id='NL-0400410000_26_001009_000099.xml.te
 punctuated word found, final=','
 depuncted word   : geldmeinte
 geldmeinte = 1-1 => gemunte ,
-unigram corrections: 
-geldmeinte, : gemunte ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.4" > {<new>,<original>,<suggestion>,}
+correction: 
+geldmeinte, (1-1) ==> gemunte , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_29" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.7" > {<new>,<original>,}
 geldmeinte, = 2 => gemunte ,
 After correct_one_bi: cor=geldmeinte, (1-1) ==> gemunte , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_29" > {<t>,}]
 bigram is: 'tot_haur [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_30" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_31" > {<t>,}]'
@@ -441,9 +443,9 @@ correct unigram Corrcant; [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 punctuated word found, final=';'
 depuncted word   : Corrcant
 Corrcant = 1-1 => Courant ;
-unigram corrections: 
-Corrcant; : Courant ;
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.5" > {<new>,<original>,<suggestion>,}
+correction: 
+Corrcant; (1-1) ==> Courant ; [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_49" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.8" > {<new>,<original>,}
 Corrcant; = 2 => Courant ;
 After correct_one_bi: cor=Corrcant; (1-1) ==> Courant ; [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_49" > {<t>,}]
 bigram is: 'in_zesegale [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_50" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_51" > {<t>,}]'
@@ -463,9 +465,9 @@ no correction for bigram: zesegale_termijnen, [ <str xml:id='NL-0400410000_26_00
 try unigram: zesegale [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_51" > {<t>,}]
 correct unigram zesegale [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_51" > {<t>,}]
 zesegale = 1-2 => Zes egale
-unigram corrections: 
-zesegale : Zes egale
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.6" > {<new>,<original>,<suggestion>,}
+correction: 
+zesegale (1-2) ==> Zes egale [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_51" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.9" > {<new>,<original>,}
 zesegale = 2 => Zes egale
 After correct_one_bi: cor=zesegale (1-2) ==> Zes egale [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_51" > {<t>,}]
 bigram is: 'termijnen,_telkens [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_52" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_53" > {<t>,}]'
@@ -478,9 +480,9 @@ try unigram: termijnen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p
 correct unigram termijnen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_52" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : termijnen
-unigram corrections: 
-termijnen, : termijnen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.7" > {<new>,<original>,}
+correction: 
+termijnen, () ==> termijnen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_52" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.10" > {<new>,<original>,}
 termijnen, = 2 => termijnen ,
 After correct_one_bi: cor=termijnen, () ==> termijnen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_52" > {<t>,}]
 bigram is: 'telkens_van [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_53" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_54" > {<t>,}]'
@@ -535,9 +537,9 @@ try unigram: maanden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r
 correct unigram maanden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_58" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : maanden
-unigram corrections: 
-maanden, : maanden ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.8" > {<new>,<original>,}
+correction: 
+maanden, () ==> maanden , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_58" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.11" > {<new>,<original>,}
 maanden, = 2 => maanden ,
 After correct_one_bi: cor=maanden, () ==> maanden , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_58" > {<t>,}]
 bigram is: 'bij_wege [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_59" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_60" > {<t>,}]'
@@ -576,9 +578,9 @@ try unigram: vooruitbetaling, [ <str xml:id='NL-0400410000_26_001009_000099.xml.
 correct unigram vooruitbetaling, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_62" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : vooruitbetaling
-unigram corrections: 
-vooruitbetaling, : vooruitbetaling ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.9" > {<new>,<original>,}
+correction: 
+vooruitbetaling, () ==> vooruitbetaling , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_62" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.12" > {<new>,<original>,}
 vooruitbetaling, = 2 => vooruitbetaling ,
 After correct_one_bi: cor=vooruitbetaling, () ==> vooruitbetaling , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_62" > {<t>,}]
 bigram is: 'waar_van [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_63" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_64" > {<t>,}]'
@@ -745,9 +747,9 @@ try unigram: dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_82" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dertig
-unigram corrections: 
-dertig, : dertig ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.10" > {<new>,<original>,}
+correction: 
+dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_82" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.13" > {<new>,<original>,}
 dertig, = 2 => dertig ,
 After correct_one_bi: cor=dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_82" > {<t>,}]
 bigram is: 'het_tweede [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_83" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_84" > {<t>,}]'
@@ -842,9 +844,9 @@ try unigram: dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_93" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dertig
-unigram corrections: 
-dertig, : dertig ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.11" > {<new>,<original>,}
+correction: 
+dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_93" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.14" > {<new>,<original>,}
 dertig, = 2 => dertig ,
 After correct_one_bi: cor=dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_93" > {<t>,}]
 bigram is: 'het_derde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_94" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_95" > {<t>,}]'
@@ -939,9 +941,9 @@ try unigram: dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_104" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dertig
-unigram corrections: 
-dertig, : dertig ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.12" > {<new>,<original>,}
+correction: 
+dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_104" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.15" > {<new>,<original>,}
 dertig, = 2 => dertig ,
 After correct_one_bi: cor=dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_104" > {<t>,}]
 bigram is: 'het_vierde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_105" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_106" > {<t>,}]'
@@ -999,11 +1001,11 @@ no correction for bigram: chttien_honderd [ <str xml:id='NL-0400410000_26_001009
 try unigram: chttien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_111" > {<t>,}]
 correct unigram chttien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_111" > {<t>,}]
 chttien = 1-1 => achttien
-unigram corrections: 
-chttien : achttien
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_111.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+chttien (1-1) ==> achttien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_111" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.16" > {<new>,<original>,}
 chttien = 2 => achttien
-After correct_one_bi: cor=chttien (1-1) ==> achttien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_111" > {<correction>,}]
+After correct_one_bi: cor=chttien (1-1) ==> achttien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_111" > {<t>,}]
 bigram is: 'honderd_acht [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_112" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_113" > {<t>,}]'
 before correct_one_bi: bi=honderd_acht [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_112" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_113" > {<t>,}]
 correct bigram honderd_acht [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_112" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_113" > {<t>,}]
@@ -1040,9 +1042,9 @@ try unigram: dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_115" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dertig
-unigram corrections: 
-dertig, : dertig ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.13" > {<new>,<original>,}
+correction: 
+dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_115" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.17" > {<new>,<original>,}
 dertig, = 2 => dertig ,
 After correct_one_bi: cor=dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_115" > {<t>,}]
 bigram is: 'het_vijfde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_116" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_117" > {<t>,}]'
@@ -1204,11 +1206,11 @@ no correction for bigram: Reegerstees_achttien [ <str xml:id='NL-0400410000_26_0
 try unigram: Reegerstees [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_135" > {<t>,}]
 correct unigram Reegerstees [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_135" > {<t>,}]
 Reegerstees = 1-1 => Reegeesties
-unigram corrections: 
-Reegerstees : Reegeesties
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_135.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Reegerstees (1-1) ==> Reegeesties [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_135" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.18" > {<new>,<original>,}
 Reegerstees = 2 => Reegeesties
-After correct_one_bi: cor=Reegerstees (1-1) ==> Reegeesties [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_135" > {<correction>,}]
+After correct_one_bi: cor=Reegerstees (1-1) ==> Reegeesties [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_135" > {<t>,}]
 bigram is: 'achttien_honderd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_136" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_137" > {<t>,}]'
 before correct_one_bi: bi=achttien_honderd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_136" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_137" > {<t>,}]
 correct bigram achttien_honderd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_136" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_137" > {<t>,}]
@@ -1253,9 +1255,9 @@ try unigram: dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_140" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dertig
-unigram corrections: 
-dertig, : dertig ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.14" > {<new>,<original>,}
+correction: 
+dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_140" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.19" > {<new>,<original>,}
 dertig, = 2 => dertig ,
 After correct_one_bi: cor=dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_140" > {<t>,}]
 bigram is: 'ieder_termijn [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_141" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_142" > {<t>,}]'
@@ -1321,11 +1323,11 @@ no correction for bigram: vjftig_gulden [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: vjftig [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_148" > {<t>,}]
 correct unigram vjftig [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_148" > {<t>,}]
 vjftig = 1-1 => vijftig
-unigram corrections: 
-vjftig : vijftig
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_148.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+vjftig (1-1) ==> vijftig [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_148" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.20" > {<new>,<original>,}
 vjftig = 2 => vijftig
-After correct_one_bi: cor=vjftig (1-1) ==> vijftig [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_148" > {<correction>,}]
+After correct_one_bi: cor=vjftig (1-1) ==> vijftig [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_148" > {<t>,}]
 bigram is: 'gulden_een [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_149" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_150" > {<t>,}]'
 before correct_one_bi: bi=gulden_een [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_149" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_150" > {<t>,}]
 correct bigram gulden_een [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_149" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_150" > {<t>,}]
@@ -1370,9 +1372,9 @@ try unigram: cent, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.S
 correct unigram cent, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_153" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : cent
-unigram corrections: 
-cent, : cent ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.15" > {<new>,<original>,}
+correction: 
+cent, () ==> cent , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_153" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.21" > {<new>,<original>,}
 cent, = 2 => cent ,
 After correct_one_bi: cor=cent, () ==> cent , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_153" > {<t>,}]
 bigram is: 'terwijl_bij [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_154" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_155" > {<t>,}]'
@@ -1475,9 +1477,9 @@ try unigram: verschijntijd, [ <str xml:id='NL-0400410000_26_001009_000099.xml.te
 correct unigram verschijntijd, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_165" class='HTR' > {<t>,}]
 punctuated word found, final=','
 depuncted word   : verschijntijd
-unigram corrections: 
-verschijntijd, : verschijntijd ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.16" > {<new>,<original>,}
+correction: 
+verschijntijd, () ==> verschijntijd , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_165" class='HTR' > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.22" > {<new>,<original>,}
 verschijntijd, = 2 => verschijntijd ,
 After correct_one_bi: cor=verschijntijd, () ==> verschijntijd , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_165" class='HTR' > {<t>,}]
 bigram is: 'ieder_verschuldigd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_166" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_167" > {<t>,}]'
@@ -1532,9 +1534,9 @@ try unigram: voldaan, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r
 correct unigram voldaan, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_171" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : voldaan
-unigram corrections: 
-voldaan, : voldaan ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.17" > {<new>,<original>,}
+correction: 
+voldaan, () ==> voldaan , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_171" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.23" > {<new>,<original>,}
 voldaan, = 2 => voldaan ,
 After correct_one_bi: cor=voldaan, () ==> voldaan , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_171" > {<t>,}]
 bigram is: 'de_huurder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_172" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_173" > {<t>,}]'
@@ -1584,9 +1586,9 @@ no correction for bigram: huveregt_vervallen [ <str xml:id='NL-0400410000_26_001
 try unigram: huveregt [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_177" > {<t>,}]
 correct unigram huveregt [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_177" > {<t>,}]
 huveregt = 1-2 => hune regt
-unigram corrections: 
-huveregt : hune regt
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.18" > {<new>,<original>,<suggestion>,}
+correction: 
+huveregt (1-2) ==> hune regt [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_177" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.24" > {<new>,<original>,}
 huveregt = 2 => hune regt
 After correct_one_bi: cor=huveregt (1-2) ==> hune regt [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_177" > {<t>,}]
 bigram is: 'vervallen_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_178" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_179" > {<t>,}]'
@@ -1722,9 +1724,9 @@ correct unigram ontreeimen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.te
 punctuated word found, final=','
 depuncted word   : ontreeimen
 ontreeimen = 1-1 => ontruimen ,
-unigram corrections: 
-ontreeimen, : ontruimen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.19" > {<new>,<original>,<suggestion>,}
+correction: 
+ontreeimen, (1-1) ==> ontruimen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_193" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.25" > {<new>,<original>,}
 ontreeimen, = 2 => ontruimen ,
 After correct_one_bi: cor=ontreeimen, (1-1) ==> ontruimen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_193" > {<t>,}]
 bigram is: 'zonder_dat [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_194" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_195" > {<t>,}]'
@@ -1758,11 +1760,11 @@ no correction for bigram: inmerastelling_eenige [ <str xml:id='NL-0400410000_26_
 try unigram: inmerastelling [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_197" > {<t>,}]
 correct unigram inmerastelling [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_197" > {<t>,}]
 inmerastelling = 1-1 => borgstelling
-unigram corrections: 
-inmerastelling : borgstelling
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_197.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+inmerastelling (1-1) ==> borgstelling [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_197" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.26" > {<new>,<original>,}
 inmerastelling = 2 => borgstelling
-After correct_one_bi: cor=inmerastelling (1-1) ==> borgstelling [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_197" > {<correction>,}]
+After correct_one_bi: cor=inmerastelling (1-1) ==> borgstelling [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_197" > {<t>,}]
 bigram is: 'eenige_sommatie [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_198" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_199" > {<t>,}]'
 before correct_one_bi: bi=eenige_sommatie [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_198" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_199" > {<t>,}]
 correct bigram eenige_sommatie [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_198" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_199" > {<t>,}]
@@ -1807,9 +1809,9 @@ try unigram: wezen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.
 correct unigram wezen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_202" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : wezen
-unigram corrections: 
-wezen, : wezen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.20" > {<new>,<original>,}
+correction: 
+wezen, () ==> wezen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_202" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.27" > {<new>,<original>,}
 wezen, = 2 => wezen ,
 After correct_one_bi: cor=wezen, () ==> wezen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_202" > {<t>,}]
 bigram is: 'als_wordende [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_203" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_204" class='HTR' > {<t>,}]'
@@ -1907,11 +1909,11 @@ no correction for bigram: enceel_verloop [ <str xml:id='NL-0400410000_26_001009_
 try unigram: enceel [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_214" > {<t>,}]
 correct unigram enceel [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_214" > {<t>,}]
 enceel = 1-1 => penceel
-unigram corrections: 
-enceel : penceel
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_214.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+enceel (1-1) ==> penceel [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_214" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.28" > {<new>,<original>,}
 enceel = 2 => penceel
-After correct_one_bi: cor=enceel (1-1) ==> penceel [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_214" > {<correction>,}]
+After correct_one_bi: cor=enceel (1-1) ==> penceel [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_214" > {<t>,}]
 bigram is: 'verloop_van [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_215" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_216" > {<t>,}]'
 before correct_one_bi: bi=verloop_van [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_215" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_216" > {<t>,}]
 correct bigram verloop_van [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_215" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_216" > {<t>,}]
@@ -1956,9 +1958,9 @@ try unigram: tijd. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.S
 correct unigram tijd. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_219" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : tijd
-unigram corrections: 
-tijd. : tijd .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.21" > {<new>,<original>,}
+correction: 
+tijd. () ==> tijd . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_219" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.29" > {<new>,<original>,}
 tijd. = 2 => tijd .
 After correct_one_bi: cor=tijd. () ==> tijd . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_219" > {<t>,}]
 bigram is: 'Dat_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_220" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_221" > {<t>,}]'
@@ -2032,11 +2034,11 @@ no correction for bigram: rekeening_zal [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: rekeening [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_228" > {<t>,}]
 correct unigram rekeening [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_228" > {<t>,}]
 rekeening = 1-1 => rekening
-unigram corrections: 
-rekeening : rekening
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_228.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+rekeening (1-1) ==> rekening [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_228" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.30" > {<new>,<original>,}
 rekeening = 2 => rekening
-After correct_one_bi: cor=rekeening (1-1) ==> rekening [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_228" > {<correction>,}]
+After correct_one_bi: cor=rekeening (1-1) ==> rekening [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_228" > {<t>,}]
 bigram is: 'zal_hebben [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_229" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_230" > {<t>,}]'
 before correct_one_bi: bi=zal_hebben [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_229" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_230" > {<t>,}]
 correct bigram zal_hebben [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_229" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_230" > {<t>,}]
@@ -2092,11 +2094,11 @@ no correction for bigram: lands-en_plaatselijke [ <str xml:id='NL-0400410000_26_
 try unigram: lands-en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_235" > {<t>,}]
 correct unigram lands-en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_235" > {<t>,}]
 lands-en = 1-1 => landen
-unigram corrections: 
-lands-en : landen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_235.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+lands-en (1-1) ==> landen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_235" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.31" > {<new>,<original>,}
 lands-en = 2 => landen
-After correct_one_bi: cor=lands-en (1-1) ==> landen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_235" > {<correction>,}]
+After correct_one_bi: cor=lands-en (1-1) ==> landen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_235" > {<t>,}]
 bigram is: 'plaatselijke_belastingen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_236" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_237" > {<t>,}]'
 before correct_one_bi: bi=plaatselijke_belastingen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_236" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_237" > {<t>,}]
 correct bigram plaatselijke_belastingen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_236" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_237" > {<t>,}]
@@ -2117,9 +2119,9 @@ try unigram: belastingen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 correct unigram belastingen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_237" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : belastingen
-unigram corrections: 
-belastingen, : belastingen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.22" > {<new>,<original>,}
+correction: 
+belastingen, () ==> belastingen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_237" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.32" > {<new>,<original>,}
 belastingen, = 2 => belastingen ,
 After correct_one_bi: cor=belastingen, () ==> belastingen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_237" > {<t>,}]
 bigram is: 'gedurende_den [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_238" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_239" > {<t>,}]'
@@ -2150,9 +2152,9 @@ try unigram: huurtermijn, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 correct unigram huurtermijn, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_240" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : huurtermijn
-unigram corrections: 
-huurtermijn, : huurtermijn ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.23" > {<new>,<original>,}
+correction: 
+huurtermijn, () ==> huurtermijn , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_240" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.33" > {<new>,<original>,}
 huurtermijn, = 2 => huurtermijn ,
 After correct_one_bi: cor=huurtermijn, () ==> huurtermijn , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_240" > {<t>,}]
 bigram is: 'van_het [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_241" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_242" > {<t>,}]'
@@ -2178,11 +2180,11 @@ no correction for bigram: gehuwede_geheven [ <str xml:id='NL-0400410000_26_00100
 try unigram: gehuwede [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_243" > {<t>,}]
 correct unigram gehuwede [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_243" > {<t>,}]
 gehuwede = 1-1 => gehuwde
-unigram corrections: 
-gehuwede : gehuwde
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_243.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+gehuwede (1-1) ==> gehuwde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_243" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.34" > {<new>,<original>,}
 gehuwede = 2 => gehuwde
-After correct_one_bi: cor=gehuwede (1-1) ==> gehuwde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_243" > {<correction>,}]
+After correct_one_bi: cor=gehuwede (1-1) ==> gehuwde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_243" > {<t>,}]
 bigram is: 'geheven_wordende, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_245" > {<t>,}]'
 before correct_one_bi: bi=geheven_wordende, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_245" > {<t>,}]
 correct bigram geheven_wordende, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_245" > {<t>,}]
@@ -2203,9 +2205,9 @@ try unigram: wordende, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.
 correct unigram wordende, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_245" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : wordende
-unigram corrections: 
-wordende, : wordende ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.24" > {<new>,<original>,}
+correction: 
+wordende, () ==> wordende , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_245" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.35" > {<new>,<original>,}
 wordende, = 2 => wordende ,
 After correct_one_bi: cor=wordende, () ==> wordende , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_245" > {<t>,}]
 bigram is: 'met_uitzondering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_246" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_247" > {<t>,}]'
@@ -2260,9 +2262,9 @@ try unigram: grondbelasting, [ <str xml:id='NL-0400410000_26_001009_000099.xml.t
 correct unigram grondbelasting, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_251" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : grondbelasting
-unigram corrections: 
-grondbelasting, : grondbelasting ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.25" > {<new>,<original>,}
+correction: 
+grondbelasting, () ==> grondbelasting , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_251" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.36" > {<new>,<original>,}
 grondbelasting, = 2 => grondbelasting ,
 After correct_one_bi: cor=grondbelasting, () ==> grondbelasting , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_251" > {<t>,}]
 bigram is: 'die_voor [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_252" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_253" > {<t>,}]'
@@ -2333,9 +2335,9 @@ try unigram: blijft. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram blijft. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_259" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : blijft
-unigram corrections: 
-blijft. : blijft .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.26" > {<new>,<original>,}
+correction: 
+blijft. () ==> blijft . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_259" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.37" > {<new>,<original>,}
 blijft. = 2 => blijft .
 After correct_one_bi: cor=blijft. () ==> blijft . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_259" > {<t>,}]
 bigram is: 'Dat_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_260" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_261" > {<t>,}]'
@@ -2361,11 +2363,11 @@ no correction for bigram: huweder_de [ <str xml:id='NL-0400410000_26_001009_0000
 try unigram: huweder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_262" > {<t>,}]
 correct unigram huweder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_262" > {<t>,}]
 huweder = 1-1 => hunder
-unigram corrections: 
-huweder : hunder
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_262.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+huweder (1-1) ==> hunder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_262" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.38" > {<new>,<original>,}
 huweder = 2 => hunder
-After correct_one_bi: cor=huweder (1-1) ==> hunder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_262" > {<correction>,}]
+After correct_one_bi: cor=huweder (1-1) ==> hunder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_262" > {<t>,}]
 bigram is: 'de_voormelde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_263" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_264" > {<t>,}]'
 before correct_one_bi: bi=de_voormelde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_263" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_264" > {<t>,}]
 correct bigram de_voormelde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_263" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_264" > {<t>,}]
@@ -2418,9 +2420,9 @@ try unigram: zelf, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.S
 correct unigram zelf, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_268" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : zelf
-unigram corrections: 
-zelf, : zelf ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.27" > {<new>,<original>,}
+correction: 
+zelf, () ==> zelf , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_268" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.39" > {<new>,<original>,}
 zelf, = 2 => zelf ,
 After correct_one_bi: cor=zelf, () ==> zelf , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_268" > {<t>,}]
 bigram is: 'als_een [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_269" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_270" > {<t>,}]'
@@ -2459,9 +2461,9 @@ try unigram: huisvader, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p
 correct unigram huisvader, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_272" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : huisvader
-unigram corrections: 
-huisvader, : huisvader ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.28" > {<new>,<original>,}
+correction: 
+huisvader, () ==> huisvader , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_272" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.40" > {<new>,<original>,}
 huisvader, = 2 => huisvader ,
 After correct_one_bi: cor=huisvader, () ==> huisvader , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_272" > {<t>,}]
 bigram is: 'zal_moeten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_273" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_274" > {<t>,}]'
@@ -2487,11 +2489,11 @@ no correction for bigram: beoonen_en [ <str xml:id='NL-0400410000_26_001009_0000
 try unigram: beoonen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_275" > {<t>,}]
 correct unigram beoonen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_275" > {<t>,}]
 beoonen = 1-1 => boonen
-unigram corrections: 
-beoonen : boonen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_275.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+beoonen (1-1) ==> boonen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_275" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.41" > {<new>,<original>,}
 beoonen = 2 => boonen
-After correct_one_bi: cor=beoonen (1-1) ==> boonen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_275" > {<correction>,}]
+After correct_one_bi: cor=beoonen (1-1) ==> boonen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_275" > {<t>,}]
 bigram is: 'en_gebreiken, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_276" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_277" > {<t>,}]'
 before correct_one_bi: bi=en_gebreiken, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_276" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_277" > {<t>,}]
 correct bigram en_gebreiken, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_276" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_277" > {<t>,}]
@@ -2513,9 +2515,9 @@ correct unigram gebreiken, [ <str xml:id='NL-0400410000_26_001009_000099.xml.tex
 punctuated word found, final=','
 depuncted word   : gebreiken
 gebreiken = 1-1 => gebruiken ,
-unigram corrections: 
-gebreiken, : gebruiken ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.29" > {<new>,<original>,<suggestion>,}
+correction: 
+gebreiken, (1-1) ==> gebruiken , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_277" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.42" > {<new>,<original>,}
 gebreiken, = 2 => gebruiken ,
 After correct_one_bi: cor=gebreiken, (1-1) ==> gebruiken , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_277" > {<t>,}]
 bigram is: 'zonder_dezelve [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_278" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_279" > {<t>,}]'
@@ -2578,9 +2580,9 @@ try unigram: veranderen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 correct unigram veranderen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_284" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : veranderen
-unigram corrections: 
-veranderen, : veranderen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.30" > {<new>,<original>,}
+correction: 
+veranderen, () ==> veranderen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_284" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.43" > {<new>,<original>,}
 veranderen, = 2 => veranderen ,
 After correct_one_bi: cor=veranderen, () ==> veranderen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_284" > {<t>,}]
 bigram is: 'en_noch [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_285" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_286" > {<t>,}]'
@@ -2627,9 +2629,9 @@ try unigram: geheel, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1
 correct unigram geheel, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_289" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : geheel
-unigram corrections: 
-geheel, : geheel ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.31" > {<new>,<original>,}
+correction: 
+geheel, () ==> geheel , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_289" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.44" > {<new>,<original>,}
 geheel, = 2 => geheel ,
 After correct_one_bi: cor=geheel, () ==> geheel , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_289" > {<t>,}]
 bigram is: 'noch_ten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_290" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_291" > {<t>,}]'
@@ -2741,9 +2743,9 @@ correct unigram overeoen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 punctuated word found, final=','
 depuncted word   : overeoen
 overeoen = 1-1 => overeen ,
-unigram corrections: 
-overeoen, : overeen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.32" > {<new>,<original>,<suggestion>,}
+correction: 
+overeoen, (1-1) ==> overeen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_302" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.45" > {<new>,<original>,}
 overeoen, = 2 => overeen ,
 After correct_one_bi: cor=overeoen, (1-1) ==> overeen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_302" > {<t>,}]
 bigram is: 'dan_met [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_303" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_304" > {<t>,}]'
@@ -2918,9 +2920,9 @@ try unigram: heed, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.S
 correct unigram heed, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_323" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : heed
-unigram corrections: 
-heed, : heed ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.33" > {<new>,<original>,}
+correction: 
+heed, () ==> heed , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_323" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.46" > {<new>,<original>,}
 heed, = 2 => heed ,
 After correct_one_bi: cor=heed, () ==> heed , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_323" > {<t>,}]
 bigram is: 'volgens_plaatse. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_324" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_325" > {<t>,}]'
@@ -2943,9 +2945,9 @@ try unigram: plaatse. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r
 correct unigram plaatse. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_325" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : plaatse
-unigram corrections: 
-plaatse. : plaatse .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.34" > {<new>,<original>,}
+correction: 
+plaatse. () ==> plaatse . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_325" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.47" > {<new>,<original>,}
 plaatse. = 2 => plaatse .
 After correct_one_bi: cor=plaatse. () ==> plaatse . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_325" > {<t>,}]
 bigram is: 'lijse_gebruik, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_326" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_327" > {<t>,}]'
@@ -2968,9 +2970,9 @@ try unigram: gebruik, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r
 correct unigram gebruik, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_327" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : gebruik
-unigram corrections: 
-gebruik, : gebruik ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.35" > {<new>,<original>,}
+correction: 
+gebruik, () ==> gebruik , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_327" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.48" > {<new>,<original>,}
 gebruik, = 2 => gebruik ,
 After correct_one_bi: cor=gebruik, () ==> gebruik , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_327" > {<t>,}]
 bigram is: 'ten_einde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_328" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_329" > {<t>,}]'
@@ -3009,9 +3011,9 @@ try unigram: gehuurde, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.
 correct unigram gehuurde, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_331" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : gehuurde
-unigram corrections: 
-gehuurde, : gehuurde ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.36" > {<new>,<original>,}
+correction: 
+gehuurde, () ==> gehuurde , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_331" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.49" > {<new>,<original>,}
 gehuurde, = 2 => gehuurde ,
 After correct_one_bi: cor=gehuurde, () ==> gehuurde , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_331" > {<t>,}]
 bigram is: 'bij_het [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_332" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_333" > {<t>,}]'
@@ -3093,11 +3095,11 @@ no correction for bigram: Verhuweder_op [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: Verhuweder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_341" > {<t>,}]
 correct unigram Verhuweder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_341" > {<t>,}]
 Verhuweder = 1-1 => verhuurder
-unigram corrections: 
-Verhuweder : verhuurder
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_341.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Verhuweder (1-1) ==> verhuurder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_341" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.50" > {<new>,<original>,}
 Verhuweder = 2 => verhuurder
-After correct_one_bi: cor=Verhuweder (1-1) ==> verhuurder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_341" > {<correction>,}]
+After correct_one_bi: cor=Verhuweder (1-1) ==> verhuurder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_341" > {<t>,}]
 bigram is: 'op_te [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_342" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_343" > {<t>,}]'
 before correct_one_bi: bi=op_te [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_342" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_343" > {<t>,}]
 correct bigram op_te [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_342" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_343" > {<t>,}]
@@ -3126,9 +3128,9 @@ try unigram: leveren. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r
 correct unigram leveren. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_344" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : leveren
-unigram corrections: 
-leveren. : leveren .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.37" > {<new>,<original>,}
+correction: 
+leveren. () ==> leveren . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_344" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.51" > {<new>,<original>,}
 leveren. = 2 => leveren .
 After correct_one_bi: cor=leveren. () ==> leveren . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_344" > {<t>,}]
 bigram is: 'Dat_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_345" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_346" > {<t>,}]'
@@ -3210,11 +3212,11 @@ no correction for bigram: noeden_voor [ <str xml:id='NL-0400410000_26_001009_000
 try unigram: noeden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_354" > {<t>,}]
 correct unigram noeden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_354" > {<t>,}]
 noeden = 1-1 => roeden
-unigram corrections: 
-noeden : roeden
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_354.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+noeden (1-1) ==> roeden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_354" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.52" > {<new>,<original>,}
 noeden = 2 => roeden
-After correct_one_bi: cor=noeden (1-1) ==> roeden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_354" > {<correction>,}]
+After correct_one_bi: cor=noeden (1-1) ==> roeden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_354" > {<t>,}]
 bigram is: 'voor_allen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_355" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_356" > {<t>,}]'
 before correct_one_bi: bi=voor_allen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_355" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_356" > {<t>,}]
 correct bigram voor_allen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_355" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_356" > {<t>,}]
@@ -3254,16 +3256,18 @@ no correction for bigram: vervorzaakten_Crand [ <str xml:id='NL-0400410000_26_00
 try unigram: vervorzaakten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_359" > {<t>,}]
 correct unigram vervorzaakten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_359" > {<t>,}]
 vervorzaakten = 1-1 => veroorzaakten
-unigram corrections: 
-vervorzaakten : veroorzaakten
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_359.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+vervorzaakten (1-1) ==> veroorzaakten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_359" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.53" > {<new>,<original>,}
 vervorzaakten = 2 => veroorzaakten
-After correct_one_bi: cor=vervorzaakten (1-1) ==> veroorzaakten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_359" > {<correction>,}]
+After correct_one_bi: cor=vervorzaakten (1-1) ==> veroorzaakten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_359" > {<t>,}]
 bigram is: 'Crand_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_360" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_361" > {<t>,}]'
 before correct_one_bi: bi=Crand_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_360" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_361" > {<t>,}]
 correct bigram Crand_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_360" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_361" > {<t>,}]
 Crand_en = 2-1 => Cranen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.38" > {<new>,<original>,}
+correction: 
+Crand_en (2-1) ==> Cranen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_360" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_361" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.correction.54" > {<new>,<original>,}
 Crand_en = 2 => Cranen
 After correct_one_bi: cor=Crand_en (2-1) ==> Cranen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_360" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_361" > {<t>,}]
 bigram is: 'en_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_361" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_362" > {<t>,}]'
@@ -3445,7 +3449,7 @@ A = 2 => A
 After correct_one_bi: cor=A () ==> A [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_383" > {<t>,<t>,}]
 correct unigram See [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_384" > {<t>,}]
 handled last word: See () ==> See [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r1.String_384" > {<t>,<t>,}]
-corrected 2-grams uit: 'No aan handen en ten huize van beheer Verhuurder , deszelfs regt verkrijgen den of de wettige houders van de grosse dezer , in goeden en alhier gangbaar ren gemunte , tot haur zal moeten betalen eene Som van drie honderd drie en twintig gulden zes en veertig cent Nederlandsch Courant ; in Zes egale termijnen , telkens van drie tot drie maanden , bij wege van vooruitbetaling , waar van het eerste zal verschijnen bij de aanvaarding Voor of op den twaalfden Mei achttien honderd zeven en dertig , het tweede op den twaalfden Augustus achttien honderd zeven en dertig , het derde op den twaalfden November achttien honderd zeven en dertig , het vierde op den twaalfden Februarij achttien honderd acht en dertig , het vijfde op den twaalfden Mei achttien honderd acht en dertig en het zesde of laatste op den twaalfden Reegeesties achttien honderd acht en dertig , ieder termijn ten bedrage van dree en vijftig gulden een en negentig cent , terwijl bij nalatigheid of wanneer uiterlijk binnen eene maand na den verschijntijd , ieder verschuldigd termijn niet is voldaan , de huurder dadelijk van zijn hune regt vervallen en verstoken zal zijn in het gehuurde drie maanden na zoodanigen verschijn tijd moeten ontruimen , zonder dat tot borgstelling eenige sommatie noodzakelyk zal wezen , als wordende de huurder gehouden in gebreke te zijn door het penceel verloop van den bepaalden tijd . Dat de huurder daar en beven voor zijne rekening zal hebben en moeten voldoen alle landen plaatselijke belastingen , gedurende den huurtermijn , van het gehuwde geheven wordende , met uitzondering alleen van de grondbelasting , die voor rekening van den heer Verhuurder blijft . Dat de hunder de voormelde huizinge en herberg zelf , als een goed huisvader , zal moeten boonen en gebruiken , zonder dezelve van bestemming te doen veranderen , en noch voor het geheel , noch ten deele aan een ander te mogen verheeren of in gebruik overeen , dan met schriftelijke toestemming van den Heer Verhuurder en voorts voor zijne rekening moeten nemen de reparatien van gering onder heed , volgens plaatse . lijse gebruik , ten einde het gehuurde , bij het verlaten glasdigt en behoorlijk aan den heer verhuurder op te leveren . Dat de huurder deze huizinge zal moeten hoeden en roeden voor allen hee ook veroorzaakten Cranen de daar door te ontstane schaden aan den heer Verhuurder moeten vergoeden en te dien einde verpligt zijn dezelve in eede A See' (Ticcl)
+corrected 2-grams uit: 'No aan handen en ten huize van beheer Verhuurder , deszelfs regt verkrijgen : den of de wettige houders van de grosse dezer , in goeden en alhier gangbaar ren gemunte , tot haur zal moeten betalen eene Som van drie honderd drie en twintig gulden zes en veertig cent Nederlandsch Courant ; in Zes egale termijnen , telkens van drie tot drie maanden , bij wege van vooruitbetaling , waar van het eerste zal verschijnen bij de aanvaarding Voor of op den twaalfden Mei achttien honderd zeven en dertig , het tweede op den twaalfden Augustus achttien honderd zeven en dertig , het derde op den twaalfden November achttien honderd zeven en dertig , het vierde op den twaalfden Februarij achttien honderd acht en dertig , het vijfde op den twaalfden Mei achttien honderd acht en dertig en het zesde of laatste op den twaalfden Reegeesties achttien honderd acht en dertig , ieder termijn ten bedrage van dree en vijftig gulden een en negentig cent , terwijl bij nalatigheid of wanneer uiterlijk binnen eene maand na den verschijntijd , ieder verschuldigd termijn niet is voldaan , de huurder dadelijk van zijn hune regt vervallen en verstoken zal zijn in het gehuurde drie maanden na zoodanigen verschijn tijd moeten ontruimen , zonder dat tot borgstelling eenige sommatie noodzakelyk zal wezen , als wordende de huurder gehouden in gebreke te zijn door het penceel verloop van den bepaalden tijd . Dat de huurder daar en beven voor zijne rekening zal hebben en moeten voldoen alle landen plaatselijke belastingen , gedurende den huurtermijn , van het gehuwde geheven wordende , met uitzondering alleen van de grondbelasting , die voor rekening van den heer Verhuurder blijft . Dat de hunder de voormelde huizinge en herberg zelf , als een goed huisvader , zal moeten boonen en gebruiken , zonder dezelve van bestemming te doen veranderen , en noch voor het geheel , noch ten deele aan een ander te mogen verheeren of in gebruik overeen , dan met schriftelijke toestemming van den Heer Verhuurder en voorts voor zijne rekening moeten nemen de reparatien van gering onder heed , volgens plaatse . lijse gebruik , ten einde het gehuurde , bij het verlaten glasdigt en behoorlijk aan den heer verhuurder op te leveren . Dat de huurder deze huizinge zal moeten hoeden en roeden voor allen hee ook veroorzaakten Cranen de daar door te ontstane schaden aan den heer Verhuurder moeten vergoeden en te dien einde verpligt zijn dezelve in eede A See' (Ticcl)
 
    correct 2-grams in: '100 eene solide brandwaarborg maatschappij te verzekeren en, gedurende den huurtermijn, verzeteerd te hereden, ten zijnen teeste. Dat, daaren tegen, de Verhuurder deze huizinge behoorlijk zal moeten onderhouden en den huurder daar van het rustig bezit te verzekeren en doen toekomen. Alles wederseriglijk onder verbanden bedwang als naar regten. En is ten dezen mede voor ens Notaris en getuigen gecompareerd Cornelisje Jans Plasse, tappersche, Weduwe van Klaas Leuten Krikckie, wonende te Heerenveen. Welke, na dat het vorenstaande Haur Contract door ons Notaris aan haar was voorgelezen, bij deze, verklaarde zich, ten behoeve van den heer Verhuurder, die zulks accepteert, aansprakelijk te stellen voor de getreuowe nakeming en uitvoering der verbintenissen door haren voor, den huurder, bij dit Contract aan gegaan en te allen tijde te zullen presteren dat het zelve door hem ten uitvoer worde gelegd en betrachtigd, te dien einde zich persoonlijk aan sprakelijk stellende en den heer Verhuurder garanderinde voor alle schaden die hij, uit welken hoofde ook, bij de tegenwoordige verhuring mog te komen te lijden, onder afstand aan het voorregt van uitwinning en onder verband van haar persern en goederen ingevolge de over Daar van Acte. Gedaan en gepasseerd te Heerenwal onder Nijehaske en ten huize van Reel Wijbes Offringa kastitien taldaar, op heden den dertienden P Leer: meester bakker in ste. de van het doorgehaalde woord Mei achttien honderd zeven en dertig, in bij zijn van evengenoemden Gffringa kastelein en van Evert Sjirks Westra Scheenmaker te Heer enveen woonachtig goedgekeurd: als ten dezen vereischte getuigen welke de tegenwoordige minuut, na TT J F H gedane voorlezing met de Comparanten en ons Notaris geteekend C:JD R: We hebben. PS W OL : P Tacony Jan J Jnkke, Cn Ju Plosse op Pewospinger PS westn A imuis. coota Geregistreerd met twee blade een renvoij te Heeren van den zestienden Mei : 1800 zeven en dertig deel dertig fob honderd en drie ƒ247 en zeventig versovak twee en drie Ontvangen voor Boog 123. regt van derhiering twee gulden zeven en veertig een 3 7 tweede cents en doord borg een gulden rie en twintig en 237. 85 een halve cents makende te zamen met de3opcenten vier gulden zes en vijftig een tweede cents ƒ456 De Ontvanger Pn' (HTR)
 correct bigrams
@@ -3517,8 +3521,8 @@ try unigram: en, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.Str
 correct unigram en, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_8" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : en
-unigram corrections: 
-en, : en ,
+correction: 
+en, () ==> en , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_8" > {<t>,}]
 created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.1" > {<new>,<original>,}
 en, = 2 => en ,
 After correct_one_bi: cor=en, () ==> en , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_8" > {<t>,}]
@@ -3550,8 +3554,8 @@ try unigram: huurtermijn, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 correct unigram huurtermijn, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_11" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : huurtermijn
-unigram corrections: 
-huurtermijn, : huurtermijn ,
+correction: 
+huurtermijn, () ==> huurtermijn , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_11" > {<t>,}]
 created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.2" > {<new>,<original>,}
 huurtermijn, = 2 => huurtermijn ,
 After correct_one_bi: cor=huurtermijn, () ==> huurtermijn , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_11" > {<t>,}]
@@ -3562,11 +3566,11 @@ no correction for bigram: verzeteerd_te [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: verzeteerd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_12" > {<t>,}]
 correct unigram verzeteerd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_12" > {<t>,}]
 verzeteerd = 1-1 => verzeekerd
-unigram corrections: 
-verzeteerd : verzeekerd
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_12.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+verzeteerd (1-1) ==> verzeekerd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_12" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.3" > {<new>,<original>,}
 verzeteerd = 2 => verzeekerd
-After correct_one_bi: cor=verzeteerd (1-1) ==> verzeekerd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_12" > {<correction>,}]
+After correct_one_bi: cor=verzeteerd (1-1) ==> verzeekerd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_12" > {<t>,}]
 bigram is: 'te_hereden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_13" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_14" > {<t>,}]'
 before correct_one_bi: bi=te_hereden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_13" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_14" > {<t>,}]
 correct bigram te_hereden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_13" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_14" > {<t>,}]
@@ -3588,9 +3592,9 @@ correct unigram hereden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 punctuated word found, final=','
 depuncted word   : hereden
 hereden = 1-1 => heeden ,
-unigram corrections: 
-hereden, : heeden ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.3" > {<new>,<original>,<suggestion>,}
+correction: 
+hereden, (1-1) ==> heeden , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_14" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.4" > {<new>,<original>,}
 hereden, = 2 => heeden ,
 After correct_one_bi: cor=hereden, (1-1) ==> heeden , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_14" > {<t>,}]
 bigram is: 'ten_zijnen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_15" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_16" > {<t>,}]'
@@ -3621,9 +3625,9 @@ try unigram: teeste. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram teeste. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_17" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : teeste
-unigram corrections: 
-teeste. : teeste .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.4" > {<new>,<original>,}
+correction: 
+teeste. () ==> teeste . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_17" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.5" > {<new>,<original>,}
 teeste. = 2 => teeste .
 After correct_one_bi: cor=teeste. () ==> teeste . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_17" > {<t>,}]
 bigram is: 'Dat,_daaren [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_18" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<t>,}]'
@@ -3636,9 +3640,9 @@ try unigram: Dat, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.St
 correct unigram Dat, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_18" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : Dat
-unigram corrections: 
-Dat, : Dat ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.5" > {<new>,<original>,}
+correction: 
+Dat, () ==> Dat , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_18" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.6" > {<new>,<original>,}
 Dat, = 2 => Dat ,
 After correct_one_bi: cor=Dat, () ==> Dat , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_18" > {<t>,}]
 bigram is: 'daaren_tegen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}]'
@@ -3650,11 +3654,11 @@ no correction for bigram: daaren_tegen, [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: daaren [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<t>,}]
 correct unigram daaren [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<t>,}]
 daaren = 1-1 => daarin
-unigram corrections: 
-daaren : daarin
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+daaren (1-1) ==> daarin [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.7" > {<new>,<original>,}
 daaren = 2 => daarin
-After correct_one_bi: cor=daaren (1-1) ==> daarin [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<correction>,}]
+After correct_one_bi: cor=daaren (1-1) ==> daarin [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_19" > {<t>,}]
 bigram is: 'tegen,_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_21" > {<t>,}]'
 before correct_one_bi: bi=tegen,_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_21" > {<t>,}]
 correct bigram tegen,_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_21" > {<t>,}]
@@ -3665,9 +3669,9 @@ try unigram: tegen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.
 correct unigram tegen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : tegen
-unigram corrections: 
-tegen, : tegen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.6" > {<new>,<original>,}
+correction: 
+tegen, () ==> tegen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.8" > {<new>,<original>,}
 tegen, = 2 => tegen ,
 After correct_one_bi: cor=tegen, () ==> tegen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_20" > {<t>,}]
 bigram is: 'de_Verhuurder [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_21" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_22" > {<t>,}]'
@@ -3842,9 +3846,9 @@ try unigram: toekomen. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.
 correct unigram toekomen. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_41" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : toekomen
-unigram corrections: 
-toekomen. : toekomen .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.7" > {<new>,<original>,}
+correction: 
+toekomen. () ==> toekomen . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_41" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.9" > {<new>,<original>,}
 toekomen. = 2 => toekomen .
 After correct_one_bi: cor=toekomen. () ==> toekomen . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_41" > {<t>,}]
 bigram is: 'Alles_wederseriglijk [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_42" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43" > {<t>,}]'
@@ -3862,11 +3866,11 @@ no correction for bigram: wederseriglijk_onder [ <str xml:id='NL-0400410000_26_0
 try unigram: wederseriglijk [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43" > {<t>,}]
 correct unigram wederseriglijk [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43" > {<t>,}]
 wederseriglijk = 1-1 => wederkeeriglijk
-unigram corrections: 
-wederseriglijk : wederkeeriglijk
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+wederseriglijk (1-1) ==> wederkeeriglijk [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.10" > {<new>,<original>,}
 wederseriglijk = 2 => wederkeeriglijk
-After correct_one_bi: cor=wederseriglijk (1-1) ==> wederkeeriglijk [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43" > {<correction>,}]
+After correct_one_bi: cor=wederseriglijk (1-1) ==> wederkeeriglijk [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_43" > {<t>,}]
 bigram is: 'onder_verbanden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_44" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_45" > {<t>,}]'
 before correct_one_bi: bi=onder_verbanden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_44" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_45" > {<t>,}]
 correct bigram onder_verbanden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_44" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_45" > {<t>,}]
@@ -3919,9 +3923,9 @@ try unigram: regten. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram regten. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_49" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : regten
-unigram corrections: 
-regten. : regten .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.8" > {<new>,<original>,}
+correction: 
+regten. () ==> regten . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_49" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.11" > {<new>,<original>,}
 regten. = 2 => regten .
 After correct_one_bi: cor=regten. () ==> regten . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_49" > {<t>,}]
 bigram is: 'En_is [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_50" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_51" > {<t>,}]'
@@ -4019,11 +4023,11 @@ no correction for bigram: Cornelisje_Jans [ <str xml:id='NL-0400410000_26_001009
 try unigram: Cornelisje [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_61" > {<t>,}]
 correct unigram Cornelisje [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_61" > {<t>,}]
 Cornelisje = 1-1 => Cornelisse
-unigram corrections: 
-Cornelisje : Cornelisse
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_61.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Cornelisje (1-1) ==> Cornelisse [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_61" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.12" > {<new>,<original>,}
 Cornelisje = 2 => Cornelisse
-After correct_one_bi: cor=Cornelisje (1-1) ==> Cornelisse [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_61" > {<correction>,}]
+After correct_one_bi: cor=Cornelisje (1-1) ==> Cornelisse [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_61" > {<t>,}]
 bigram is: 'Jans_Plasse, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_62" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_63" > {<t>,}]'
 before correct_one_bi: bi=Jans_Plasse, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_62" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_63" > {<t>,}]
 correct bigram Jans_Plasse, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_62" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_63" > {<t>,}]
@@ -4044,9 +4048,9 @@ try unigram: Plasse, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram Plasse, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_63" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : Plasse
-unigram corrections: 
-Plasse, : Plasse ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.9" > {<new>,<original>,}
+correction: 
+Plasse, () ==> Plasse , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_63" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.13" > {<new>,<original>,}
 Plasse, = 2 => Plasse ,
 After correct_one_bi: cor=Plasse, () ==> Plasse , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_63" > {<t>,}]
 bigram is: 'tappersche,_Weduwe [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_64" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_65" > {<t>,}]'
@@ -4060,9 +4064,9 @@ correct unigram tappersche, [ <str xml:id='NL-0400410000_26_001009_000099.xml.te
 punctuated word found, final=','
 depuncted word   : tappersche
 tappersche = 1-1 => Appelsche ,
-unigram corrections: 
-tappersche, : Appelsche ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.10" > {<new>,<original>,<suggestion>,}
+correction: 
+tappersche, (1-1) ==> Appelsche , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_64" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.14" > {<new>,<original>,}
 tappersche, = 2 => Appelsche ,
 After correct_one_bi: cor=tappersche, (1-1) ==> Appelsche , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_64" > {<t>,}]
 bigram is: 'Weduwe_van [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_65" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_66" > {<t>,}]'
@@ -4110,9 +4114,9 @@ correct unigram Krikckie, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 punctuated word found, final=','
 depuncted word   : Krikckie
 Krikckie = 1-1 => Krikke ,
-unigram corrections: 
-Krikckie, : Krikke ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.11" > {<new>,<original>,<suggestion>,}
+correction: 
+Krikckie, (1-1) ==> Krikke , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_69" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.15" > {<new>,<original>,}
 Krikckie, = 2 => Krikke ,
 After correct_one_bi: cor=Krikckie, (1-1) ==> Krikke , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_69" > {<t>,}]
 bigram is: 'wonende_te [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_70" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_71" > {<t>,}]'
@@ -4143,9 +4147,9 @@ try unigram: Heerenveen. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 correct unigram Heerenveen. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_72" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : Heerenveen
-unigram corrections: 
-Heerenveen. : Heerenveen .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.12" > {<new>,<original>,}
+correction: 
+Heerenveen. () ==> Heerenveen . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_72" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.16" > {<new>,<original>,}
 Heerenveen. = 2 => Heerenveen .
 After correct_one_bi: cor=Heerenveen. () ==> Heerenveen . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_72" > {<t>,}]
 bigram is: 'Welke,_na [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_73" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_74" > {<t>,}]'
@@ -4158,9 +4162,9 @@ try unigram: Welke, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.
 correct unigram Welke, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_73" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : Welke
-unigram corrections: 
-Welke, : Welke ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.13" > {<new>,<original>,}
+correction: 
+Welke, () ==> Welke , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_73" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.17" > {<new>,<original>,}
 Welke, = 2 => Welke ,
 After correct_one_bi: cor=Welke, () ==> Welke , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_73" > {<t>,}]
 bigram is: 'na_dat [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_74" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_75" > {<t>,}]'
@@ -4191,7 +4195,9 @@ bigram is: 'vorenstaande_Haur [ <str xml:id='NL-0400410000_26_001009_000099.xml.
 before correct_one_bi: bi=vorenstaande_Haur [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_77" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_78" > {<t>,}]
 correct bigram vorenstaande_Haur [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_77" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_78" > {<t>,}]
 vorenstaande_Haur = 2-2 => vorenstaande haar
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.14" > {<new>,<original>,}
+correction: 
+vorenstaande_Haur (2-2) ==> vorenstaande haar [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_77" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_78" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.18" > {<new>,<original>,}
 vorenstaande_Haur = 2 => vorenstaande haar
 After correct_one_bi: cor=vorenstaande_Haur (2-2) ==> vorenstaande haar [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_77" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_78" > {<t>,}]
 bigram is: 'Haur_Contract [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_78" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_79" > {<t>,}]'
@@ -4263,9 +4269,9 @@ try unigram: voorgelezen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text
 correct unigram voorgelezen, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_86" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : voorgelezen
-unigram corrections: 
-voorgelezen, : voorgelezen ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.15" > {<new>,<original>,}
+correction: 
+voorgelezen, () ==> voorgelezen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_86" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.19" > {<new>,<original>,}
 voorgelezen, = 2 => voorgelezen ,
 After correct_one_bi: cor=voorgelezen, () ==> voorgelezen , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_86" > {<t>,}]
 bigram is: 'bij_deze, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_87" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_88" > {<t>,}]'
@@ -4288,9 +4294,9 @@ try unigram: deze, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.S
 correct unigram deze, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_88" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : deze
-unigram corrections: 
-deze, : deze ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.16" > {<new>,<original>,}
+correction: 
+deze, () ==> deze , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_88" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.20" > {<new>,<original>,}
 deze, = 2 => deze ,
 After correct_one_bi: cor=deze, () ==> deze , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_88" > {<t>,}]
 bigram is: 'verklaarde_zich, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_89" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_90" > {<t>,}]'
@@ -4313,9 +4319,9 @@ try unigram: zich, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.S
 correct unigram zich, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_90" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : zich
-unigram corrections: 
-zich, : zich ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.17" > {<new>,<original>,}
+correction: 
+zich, () ==> zich , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_90" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.21" > {<new>,<original>,}
 zich, = 2 => zich ,
 After correct_one_bi: cor=zich, () ==> zich , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_90" > {<t>,}]
 bigram is: 'ten_behoeve [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_91" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_92" > {<t>,}]'
@@ -4370,9 +4376,9 @@ try unigram: Verhuurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 correct unigram Verhuurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_96" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : Verhuurder
-unigram corrections: 
-Verhuurder, : Verhuurder ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.18" > {<new>,<original>,}
+correction: 
+Verhuurder, () ==> Verhuurder , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_96" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.22" > {<new>,<original>,}
 Verhuurder, = 2 => Verhuurder ,
 After correct_one_bi: cor=Verhuurder, () ==> Verhuurder , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_96" > {<t>,}]
 bigram is: 'die_zulks [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_97" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_98" > {<t>,}]'
@@ -4403,9 +4409,9 @@ try unigram: accepteert, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 correct unigram accepteert, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_99" class='HTR' > {<t>,}]
 punctuated word found, final=','
 depuncted word   : accepteert
-unigram corrections: 
-accepteert, : accepteert ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.19" > {<new>,<original>,}
+correction: 
+accepteert, () ==> accepteert , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_99" class='HTR' > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.23" > {<new>,<original>,}
 accepteert, = 2 => accepteert ,
 After correct_one_bi: cor=accepteert, () ==> accepteert , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_99" class='HTR' > {<t>,}]
 bigram is: 'aansprakelijk_te [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_100" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_101" > {<t>,}]'
@@ -4455,11 +4461,11 @@ no correction for bigram: getreuowe_nakeming [ <str xml:id='NL-0400410000_26_001
 try unigram: getreuowe [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_105" > {<t>,}]
 correct unigram getreuowe [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_105" > {<t>,}]
 getreuowe = 1-1 => getrouwe
-unigram corrections: 
-getreuowe : getrouwe
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_105.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+getreuowe (1-1) ==> getrouwe [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_105" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.24" > {<new>,<original>,}
 getreuowe = 2 => getrouwe
-After correct_one_bi: cor=getreuowe (1-1) ==> getrouwe [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_105" > {<correction>,}]
+After correct_one_bi: cor=getreuowe (1-1) ==> getrouwe [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_105" > {<t>,}]
 bigram is: 'nakeming_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_107" > {<t>,}]'
 before correct_one_bi: bi=nakeming_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_107" > {<t>,}]
 correct bigram nakeming_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_107" > {<t>,}]
@@ -4467,11 +4473,11 @@ no correction for bigram: nakeming_en [ <str xml:id='NL-0400410000_26_001009_000
 try unigram: nakeming [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}]
 correct unigram nakeming [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}]
 nakeming = 1-1 => nakoming
-unigram corrections: 
-nakeming : nakoming
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+nakeming (1-1) ==> nakoming [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.25" > {<new>,<original>,}
 nakeming = 2 => nakoming
-After correct_one_bi: cor=nakeming (1-1) ==> nakoming [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<correction>,}]
+After correct_one_bi: cor=nakeming (1-1) ==> nakoming [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_106" > {<t>,}]
 bigram is: 'en_uitvoering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_107" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_108" > {<t>,}]'
 before correct_one_bi: bi=en_uitvoering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_107" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_108" > {<t>,}]
 correct bigram en_uitvoering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_107" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_108" > {<t>,}]
@@ -4532,9 +4538,9 @@ try unigram: voor, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.S
 correct unigram voor, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_113" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : voor
-unigram corrections: 
-voor, : voor ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.20" > {<new>,<original>,}
+correction: 
+voor, () ==> voor , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_113" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.26" > {<new>,<original>,}
 voor, = 2 => voor ,
 After correct_one_bi: cor=voor, () ==> voor , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_113" > {<t>,}]
 bigram is: 'den_huurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_114" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_115" > {<t>,}]'
@@ -4557,9 +4563,9 @@ try unigram: huurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r
 correct unigram huurder, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_115" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : huurder
-unigram corrections: 
-huurder, : huurder ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.21" > {<new>,<original>,}
+correction: 
+huurder, () ==> huurder , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_115" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.27" > {<new>,<original>,}
 huurder, = 2 => huurder ,
 After correct_one_bi: cor=huurder, () ==> huurder , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_115" > {<t>,}]
 bigram is: 'bij_dit [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_116" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_117" > {<t>,}]'
@@ -4751,9 +4757,9 @@ correct unigram betrachtigd, [ <str xml:id='NL-0400410000_26_001009_000099.xml.t
 punctuated word found, final=','
 depuncted word   : betrachtigd
 betrachtigd = 1-1 => bekrachtigd ,
-unigram corrections: 
-betrachtigd, : bekrachtigd ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.22" > {<new>,<original>,<suggestion>,}
+correction: 
+betrachtigd, (1-1) ==> bekrachtigd , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_138" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.28" > {<new>,<original>,}
 betrachtigd, = 2 => bekrachtigd ,
 After correct_one_bi: cor=betrachtigd, (1-1) ==> bekrachtigd , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_138" > {<t>,}]
 bigram is: 'te_dien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_139" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_140" > {<t>,}]'
@@ -4859,11 +4865,11 @@ no correction for bigram: garanderinde_voor [ <str xml:id='NL-0400410000_26_0010
 try unigram: garanderinde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_151" > {<t>,}]
 correct unigram garanderinde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_151" > {<t>,}]
 garanderinde = 1-1 => garanderende
-unigram corrections: 
-garanderinde : garanderende
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_151.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+garanderinde (1-1) ==> garanderende [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_151" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.29" > {<new>,<original>,}
 garanderinde = 2 => garanderende
-After correct_one_bi: cor=garanderinde (1-1) ==> garanderende [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_151" > {<correction>,}]
+After correct_one_bi: cor=garanderinde (1-1) ==> garanderende [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_151" > {<t>,}]
 bigram is: 'voor_alle [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_152" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_153" > {<t>,}]'
 before correct_one_bi: bi=voor_alle [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_152" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_153" > {<t>,}]
 correct bigram voor_alle [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_152" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_153" > {<t>,}]
@@ -4908,9 +4914,9 @@ try unigram: hij, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.St
 correct unigram hij, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_156" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : hij
-unigram corrections: 
-hij, : hij ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.23" > {<new>,<original>,}
+correction: 
+hij, () ==> hij , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_156" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.30" > {<new>,<original>,}
 hij, = 2 => hij ,
 After correct_one_bi: cor=hij, () ==> hij , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_156" > {<t>,}]
 bigram is: 'uit_welken [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_157" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_158" > {<t>,}]'
@@ -4949,9 +4955,9 @@ try unigram: ook, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.St
 correct unigram ook, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_160" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : ook
-unigram corrections: 
-ook, : ook ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.24" > {<new>,<original>,}
+correction: 
+ook, () ==> ook , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_160" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.31" > {<new>,<original>,}
 ook, = 2 => ook ,
 After correct_one_bi: cor=ook, () ==> ook , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_160" > {<t>,}]
 bigram is: 'bij_de [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_161" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_162" > {<t>,}]'
@@ -5030,9 +5036,9 @@ try unigram: lijden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram lijden, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_169" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : lijden
-unigram corrections: 
-lijden, : lijden ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.25" > {<new>,<original>,}
+correction: 
+lijden, () ==> lijden , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_169" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.32" > {<new>,<original>,}
 lijden, = 2 => lijden ,
 After correct_one_bi: cor=lijden, () ==> lijden , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_169" > {<t>,}]
 bigram is: 'onder_afstand [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_170" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_171" > {<t>,}]'
@@ -5138,11 +5144,11 @@ no correction for bigram: persern_en [ <str xml:id='NL-0400410000_26_001009_0000
 try unigram: persern [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_182" > {<t>,}]
 correct unigram persern [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_182" > {<t>,}]
 persern = 1-1 => persen
-unigram corrections: 
-persern : persen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_182.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+persern (1-1) ==> persen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_182" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.33" > {<new>,<original>,}
 persern = 2 => persen
-After correct_one_bi: cor=persern (1-1) ==> persen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_182" > {<correction>,}]
+After correct_one_bi: cor=persern (1-1) ==> persen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_182" > {<t>,}]
 bigram is: 'en_goederen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_183" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_184" > {<t>,}]'
 before correct_one_bi: bi=en_goederen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_183" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_184" > {<t>,}]
 correct bigram en_goederen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_183" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_184" > {<t>,}]
@@ -5211,9 +5217,9 @@ try unigram: Acte. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.S
 correct unigram Acte. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_190" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : Acte
-unigram corrections: 
-Acte. : Acte .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.26" > {<new>,<original>,}
+correction: 
+Acte. () ==> Acte . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_190" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.34" > {<new>,<original>,}
 Acte. = 2 => Acte .
 After correct_one_bi: cor=Acte. () ==> Acte . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_190" > {<t>,}]
 bigram is: 'Gedaan_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_191" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_192" > {<t>,}]'
@@ -5255,11 +5261,11 @@ no correction for bigram: Heerenwal_onder [ <str xml:id='NL-0400410000_26_001009
 try unigram: Heerenwal [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_195" > {<t>,}]
 correct unigram Heerenwal [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_195" > {<t>,}]
 Heerenwal = 1-1 => Heerenweg
-unigram corrections: 
-Heerenwal : Heerenweg
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_195.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Heerenwal (1-1) ==> Heerenweg [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_195" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.35" > {<new>,<original>,}
 Heerenwal = 2 => Heerenweg
-After correct_one_bi: cor=Heerenwal (1-1) ==> Heerenweg [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_195" > {<correction>,}]
+After correct_one_bi: cor=Heerenwal (1-1) ==> Heerenweg [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_195" > {<t>,}]
 bigram is: 'onder_Nijehaske [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_196" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_197" > {<t>,}]'
 before correct_one_bi: bi=onder_Nijehaske [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_196" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_197" > {<t>,}]
 correct bigram onder_Nijehaske [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_196" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_197" > {<t>,}]
@@ -5341,9 +5347,9 @@ no correction for bigram: kastitien_taldaar, [ <str xml:id='NL-0400410000_26_001
 try unigram: kastitien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_205" > {<t>,}]
 correct unigram kastitien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_205" > {<t>,}]
 kastitien = 1-2 => kast tien
-unigram corrections: 
-kastitien : kast tien
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.27" > {<new>,<original>,<suggestion>,}
+correction: 
+kastitien (1-2) ==> kast tien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_205" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.36" > {<new>,<original>,}
 kastitien = 2 => kast tien
 After correct_one_bi: cor=kastitien (1-2) ==> kast tien [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_205" > {<t>,}]
 bigram is: 'taldaar,_op [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_206" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_207" > {<t>,}]'
@@ -5357,9 +5363,9 @@ correct unigram taldaar, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 punctuated word found, final=','
 depuncted word   : taldaar
 taldaar = 1-1 => aldaar ,
-unigram corrections: 
-taldaar, : aldaar ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.28" > {<new>,<original>,<suggestion>,}
+correction: 
+taldaar, (1-1) ==> aldaar , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_206" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.37" > {<new>,<original>,}
 taldaar, = 2 => aldaar ,
 After correct_one_bi: cor=taldaar, (1-1) ==> aldaar , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_206" > {<t>,}]
 bigram is: 'op_heden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_207" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_208" > {<t>,}]'
@@ -5397,7 +5403,7 @@ After correct_one_bi: cor=dertienden () ==> dertienden [ <str xml:id='NL-0400410
 bigram is: 'P_Leer: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_211" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]'
 before correct_one_bi: bi=P_Leer: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_211" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
 correct bigram P_Leer: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_211" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
-punctuated word found, final=''
+punctuated word found, final=':'
 depuncted word   : P_Leer
 no correction for bigram: P_Leer: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_211" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
 try unigram: P [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_211" > {<t>,}]
@@ -5412,13 +5418,13 @@ depuncted word   : Leer_meester
 no correction for bigram: Leer:_meester [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_213" > {<t>,}]
 try unigram: Leer: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
 correct unigram Leer: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
-punctuated word found, final=''
+punctuated word found, final=':'
 depuncted word   : Leer
-unigram corrections: 
-Leer: : Leer
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212.correction.1" > {<new>,<original>,}
-Leer: = 2 => Leer
-After correct_one_bi: cor=Leer: () ==> Leer [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<correction>,}]
+correction: 
+Leer: () ==> Leer : [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.38" > {<new>,<original>,}
+Leer: = 2 => Leer :
+After correct_one_bi: cor=Leer: () ==> Leer : [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_212" > {<t>,}]
 bigram is: 'meester_bakker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_213" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_214" > {<t>,}]'
 before correct_one_bi: bi=meester_bakker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_213" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_214" > {<t>,}]
 correct bigram meester_bakker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_213" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_214" > {<t>,}]
@@ -5543,9 +5549,9 @@ try unigram: dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram dertig, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_227" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : dertig
-unigram corrections: 
-dertig, : dertig ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.29" > {<new>,<original>,}
+correction: 
+dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_227" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.39" > {<new>,<original>,}
 dertig, = 2 => dertig ,
 After correct_one_bi: cor=dertig, () ==> dertig , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_227" > {<t>,}]
 bigram is: 'in_bij [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_228" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_229" > {<t>,}]'
@@ -5587,11 +5593,11 @@ no correction for bigram: evengenoemden_Gffringa [ <str xml:id='NL-0400410000_26
 try unigram: evengenoemden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_232" > {<t>,}]
 correct unigram evengenoemden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_232" > {<t>,}]
 evengenoemden = 1-1 => evengenoemde
-unigram corrections: 
-evengenoemden : evengenoemde
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_232.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+evengenoemden (1-1) ==> evengenoemde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_232" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.40" > {<new>,<original>,}
 evengenoemden = 2 => evengenoemde
-After correct_one_bi: cor=evengenoemden (1-1) ==> evengenoemde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_232" > {<correction>,}]
+After correct_one_bi: cor=evengenoemden (1-1) ==> evengenoemde [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_232" > {<t>,}]
 bigram is: 'Gffringa_kastelein [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_234" > {<t>,}]'
 before correct_one_bi: bi=Gffringa_kastelein [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_234" > {<t>,}]
 correct bigram Gffringa_kastelein [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_234" > {<t>,}]
@@ -5599,11 +5605,11 @@ no correction for bigram: Gffringa_kastelein [ <str xml:id='NL-0400410000_26_001
 try unigram: Gffringa [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}]
 correct unigram Gffringa [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}]
 Gffringa = 1-1 => Offringa
-unigram corrections: 
-Gffringa : Offringa
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Gffringa (1-1) ==> Offringa [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.41" > {<new>,<original>,}
 Gffringa = 2 => Offringa
-After correct_one_bi: cor=Gffringa (1-1) ==> Offringa [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<correction>,}]
+After correct_one_bi: cor=Gffringa (1-1) ==> Offringa [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_233" > {<t>,}]
 bigram is: 'kastelein_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_234" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_235" > {<t>,}]'
 before correct_one_bi: bi=kastelein_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_234" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_235" > {<t>,}]
 correct bigram kastelein_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_234" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_235" > {<t>,}]
@@ -5643,11 +5649,11 @@ no correction for bigram: Sjirks_Westra [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: Sjirks [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_238" > {<t>,}]
 correct unigram Sjirks [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_238" > {<t>,}]
 Sjirks = 1-1 => Sierks
-unigram corrections: 
-Sjirks : Sierks
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_238.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Sjirks (1-1) ==> Sierks [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_238" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.42" > {<new>,<original>,}
 Sjirks = 2 => Sierks
-After correct_one_bi: cor=Sjirks (1-1) ==> Sierks [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_238" > {<correction>,}]
+After correct_one_bi: cor=Sjirks (1-1) ==> Sierks [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_238" > {<t>,}]
 bigram is: 'Westra_Scheenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_239" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]'
 before correct_one_bi: bi=Westra_Scheenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_239" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]
 correct bigram Westra_Scheenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_239" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]
@@ -5663,11 +5669,11 @@ no correction for bigram: Scheenmaker_te [ <str xml:id='NL-0400410000_26_001009_
 try unigram: Scheenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]
 correct unigram Scheenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]
 Scheenmaker = 1-1 => Schoenmaker
-unigram corrections: 
-Scheenmaker : Schoenmaker
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Scheenmaker (1-1) ==> Schoenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.43" > {<new>,<original>,}
 Scheenmaker = 2 => Schoenmaker
-After correct_one_bi: cor=Scheenmaker (1-1) ==> Schoenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<correction>,}]
+After correct_one_bi: cor=Scheenmaker (1-1) ==> Schoenmaker [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_240" > {<t>,}]
 bigram is: 'te_Heer [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_241" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_242" > {<t>,}]'
 before correct_one_bi: bi=te_Heer [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_241" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_242" > {<t>,}]
 correct bigram te_Heer [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_241" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_242" > {<t>,}]
@@ -5691,15 +5697,15 @@ no correction for bigram: enveen_woonachtig [ <str xml:id='NL-0400410000_26_0010
 try unigram: enveen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_243" > {<t>,}]
 correct unigram enveen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_243" > {<t>,}]
 enveen = 1-1 => Evelen
-unigram corrections: 
-enveen : Evelen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_243.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+enveen (1-1) ==> Evelen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_243" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.44" > {<new>,<original>,}
 enveen = 2 => Evelen
-After correct_one_bi: cor=enveen (1-1) ==> Evelen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_243" > {<correction>,}]
+After correct_one_bi: cor=enveen (1-1) ==> Evelen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_243" > {<t>,}]
 bigram is: 'woonachtig_goedgekeurd: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]'
 before correct_one_bi: bi=woonachtig_goedgekeurd: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
 correct bigram woonachtig_goedgekeurd: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
-punctuated word found, final=''
+punctuated word found, final=':'
 depuncted word   : woonachtig_goedgekeurd
 no correction for bigram: woonachtig_goedgekeurd: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_244" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
 try unigram: woonachtig [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_244" > {<t>,}]
@@ -5714,13 +5720,13 @@ depuncted word   : goedgekeurd_als
 no correction for bigram: goedgekeurd:_als [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_246" > {<t>,}]
 try unigram: goedgekeurd: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
 correct unigram goedgekeurd: [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
-punctuated word found, final=''
+punctuated word found, final=':'
 depuncted word   : goedgekeurd
-unigram corrections: 
-goedgekeurd: : goedgekeurd
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245.correction.1" > {<new>,<original>,}
-goedgekeurd: = 2 => goedgekeurd
-After correct_one_bi: cor=goedgekeurd: () ==> goedgekeurd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<correction>,}]
+correction: 
+goedgekeurd: () ==> goedgekeurd : [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.45" > {<new>,<original>,}
+goedgekeurd: = 2 => goedgekeurd :
+After correct_one_bi: cor=goedgekeurd: () ==> goedgekeurd : [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_245" > {<t>,}]
 bigram is: 'als_ten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_246" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_247" > {<t>,}]'
 before correct_one_bi: bi=als_ten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_246" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_247" > {<t>,}]
 correct bigram als_ten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_246" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_247" > {<t>,}]
@@ -5797,9 +5803,9 @@ try unigram: minuut, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram minuut, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_254" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : minuut
-unigram corrections: 
-minuut, : minuut ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.30" > {<new>,<original>,}
+correction: 
+minuut, () ==> minuut , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_254" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.46" > {<new>,<original>,}
 minuut, = 2 => minuut ,
 After correct_one_bi: cor=minuut, () ==> minuut , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_254" > {<t>,}]
 bigram is: 'na_TT [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_255" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_256" > {<t>,}]'
@@ -5950,9 +5956,9 @@ try unigram: hebben. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 correct unigram hebben. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_272" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : hebben
-unigram corrections: 
-hebben. : hebben .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.31" > {<new>,<original>,}
+correction: 
+hebben. () ==> hebben . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_272" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.47" > {<new>,<original>,}
 hebben. = 2 => hebben .
 After correct_one_bi: cor=hebben. () ==> hebben . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_272" > {<t>,}]
 bigram is: 'PS_W [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_273" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_274" > {<t>,}]'
@@ -5991,7 +5997,9 @@ bigram is: 'P_Tacony [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 before correct_one_bi: bi=P_Tacony [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_277" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_278" > {<t>,}]
 correct bigram P_Tacony [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_277" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_278" > {<t>,}]
 P_Tacony = 2-1 => patacon
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.32" > {<new>,<original>,}
+correction: 
+P_Tacony (2-1) ==> patacon [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_277" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_278" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.48" > {<new>,<original>,}
 P_Tacony = 2 => patacon
 After correct_one_bi: cor=P_Tacony (2-1) ==> patacon [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_277" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_278" > {<t>,}]
 bigram is: 'Tacony_Jan [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_278" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_279" > {<t>,}]'
@@ -6023,9 +6031,9 @@ try unigram: Jnkke, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.
 correct unigram Jnkke, [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_281" > {<t>,}]
 punctuated word found, final=','
 depuncted word   : Jnkke
-unigram corrections: 
-Jnkke, : Jnkke ,
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.33" > {<new>,<original>,}
+correction: 
+Jnkke, () ==> Jnkke , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_281" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.49" > {<new>,<original>,}
 Jnkke, = 2 => Jnkke ,
 After correct_one_bi: cor=Jnkke, () ==> Jnkke , [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_281" > {<t>,}]
 bigram is: 'Cn_Ju [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_282" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_283" > {<t>,}]'
@@ -6051,11 +6059,11 @@ no correction for bigram: Plosse_op [ <str xml:id='NL-0400410000_26_001009_00009
 try unigram: Plosse [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_284" > {<t>,}]
 correct unigram Plosse [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_284" > {<t>,}]
 Plosse = 1-1 => lossen
-unigram corrections: 
-Plosse : lossen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_284.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+Plosse (1-1) ==> lossen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_284" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.50" > {<new>,<original>,}
 Plosse = 2 => lossen
-After correct_one_bi: cor=Plosse (1-1) ==> lossen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_284" > {<correction>,}]
+After correct_one_bi: cor=Plosse (1-1) ==> lossen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_284" > {<t>,}]
 bigram is: 'op_Pewospinger [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_286" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_288" > {<t>,}]'
 before correct_one_bi: bi=op_Pewospinger [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_286" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_288" > {<t>,}]
 correct bigram op_Pewospinger [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_286" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_288" > {<t>,}]
@@ -6084,7 +6092,9 @@ bigram is: 'westn_A [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.
 before correct_one_bi: bi=westn_A [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_290" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_291" > {<t>,}]
 correct bigram westn_A [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_290" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_291" > {<t>,}]
 westn_A = 2-1 => Westra
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.34" > {<new>,<original>,}
+correction: 
+westn_A (2-1) ==> Westra [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_290" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_291" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.51" > {<new>,<original>,}
 westn_A = 2 => Westra
 After correct_one_bi: cor=westn_A (2-1) ==> Westra [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_290" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_291" > {<t>,}]
 bigram is: 'A_imuis. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_291" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_292" > {<t>,}]'
@@ -6098,9 +6108,9 @@ try unigram: imuis. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.
 correct unigram imuis. [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_292" > {<t>,}]
 punctuated word found, final='.'
 depuncted word   : imuis
-unigram corrections: 
-imuis. : imuis .
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.35" > {<new>,<original>,}
+correction: 
+imuis. () ==> imuis . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_292" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.52" > {<new>,<original>,}
 imuis. = 2 => imuis .
 After correct_one_bi: cor=imuis. () ==> imuis . [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_292" > {<t>,}]
 bigram is: 'coota_Geregistreerd [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_293" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_296" > {<t>,}]'
@@ -6131,7 +6141,9 @@ bigram is: 'twee_blade [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.
 before correct_one_bi: bi=twee_blade [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_298" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_299" > {<t>,}]
 correct bigram twee_blade [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_298" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_299" > {<t>,}]
 twee_blade = 2-1 => Tweeblad
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.36" > {<new>,<original>,}
+correction: 
+twee_blade (2-1) ==> Tweeblad [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_298" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_299" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.53" > {<new>,<original>,}
 twee_blade = 2 => Tweeblad
 After correct_one_bi: cor=twee_blade (2-1) ==> Tweeblad [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_298" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_299" > {<t>,}]
 bigram is: 'blade_een [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_299" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_300" > {<t>,}]'
@@ -6318,11 +6330,11 @@ no correction for bigram: versovak_twee [ <str xml:id='NL-0400410000_26_001009_0
 try unigram: versovak [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_323" > {<t>,}]
 correct unigram versovak [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_323" > {<t>,}]
 versovak = 1-1 => versoek
-unigram corrections: 
-versovak : versoek
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_323.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+versovak (1-1) ==> versoek [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_323" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.54" > {<new>,<original>,}
 versovak = 2 => versoek
-After correct_one_bi: cor=versovak (1-1) ==> versoek [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_323" > {<correction>,}]
+After correct_one_bi: cor=versovak (1-1) ==> versoek [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_323" > {<t>,}]
 bigram is: 'twee_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_324" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_325" > {<t>,}]'
 before correct_one_bi: bi=twee_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_324" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_325" > {<t>,}]
 correct bigram twee_en [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_324" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_325" > {<t>,}]
@@ -6402,11 +6414,11 @@ no correction for bigram: derhiering_twee [ <str xml:id='NL-0400410000_26_001009
 try unigram: derhiering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_333" > {<t>,}]
 correct unigram derhiering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_333" > {<t>,}]
 derhiering = 1-1 => verheering
-unigram corrections: 
-derhiering : verheering
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_333.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+derhiering (1-1) ==> verheering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_333" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.55" > {<new>,<original>,}
 derhiering = 2 => verheering
-After correct_one_bi: cor=derhiering (1-1) ==> verheering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_333" > {<correction>,}]
+After correct_one_bi: cor=derhiering (1-1) ==> verheering [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_333" > {<t>,}]
 bigram is: 'twee_gulden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_334" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_335" > {<t>,}]'
 before correct_one_bi: bi=twee_gulden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_334" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_335" > {<t>,}]
 correct bigram twee_gulden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_334" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_335" > {<t>,}]
@@ -6491,7 +6503,9 @@ bigram is: 'en_doord [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2
 before correct_one_bi: bi=en_doord [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_344" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_345" > {<t>,}]
 correct bigram en_doord [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_344" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_345" > {<t>,}]
 en_doord = 2-1 => indoor
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.37" > {<new>,<original>,}
+correction: 
+en_doord (2-1) ==> indoor [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_344" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_345" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.56" > {<new>,<original>,}
 en_doord = 2 => indoor
 After correct_one_bi: cor=en_doord (2-1) ==> indoor [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_344" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_345" > {<t>,}]
 bigram is: 'doord_borg [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_345" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_346" > {<t>,}]'
@@ -6630,11 +6644,11 @@ no correction for bigram: de3opcenten_vier [ <str xml:id='NL-0400410000_26_00100
 try unigram: de3opcenten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_362" > {<t>,}]
 correct unigram de3opcenten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_362" > {<t>,}]
 de3opcenten = 1-1 => opcenten
-unigram corrections: 
-de3opcenten : opcenten
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_362.correction.1" > {<new>,<original>,<suggestion>,}
+correction: 
+de3opcenten (1-1) ==> opcenten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_362" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.57" > {<new>,<original>,}
 de3opcenten = 2 => opcenten
-After correct_one_bi: cor=de3opcenten (1-1) ==> opcenten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_362" > {<correction>,}]
+After correct_one_bi: cor=de3opcenten (1-1) ==> opcenten [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_362" > {<t>,}]
 bigram is: 'vier_gulden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_363" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_364" > {<t>,}]'
 before correct_one_bi: bi=vier_gulden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_363" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_364" > {<t>,}]
 correct bigram vier_gulden [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_363" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_364" > {<t>,}]
@@ -6719,10 +6733,12 @@ bigram is: 'Ontvanger_Pn [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.
 before correct_one_bi: bi=Ontvanger_Pn [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_373" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_374" > {<t>,}]
 correct bigram Ontvanger_Pn [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_373" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_374" > {<t>,}]
 Ontvanger_Pn = 2-1 => ontvangen
-created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.38" > {<new>,<original>,}
+correction: 
+Ontvanger_Pn (2-1) ==> ontvangen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_373" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_374" > {<t>,}]
+created:  <correction xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.correction.58" > {<new>,<original>,}
 Ontvanger_Pn = 2 => ontvangen
 After correct_one_bi: cor=Ontvanger_Pn (2-1) ==> ontvangen [ <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_373" > {<t>,}, <str xml:id='NL-0400410000_26_001009_000099.xml.text.p.r2.String_374" > {<t>,}]
-corrected 2-grams uit: '100 eene solide brandwaarborg maatschappij te verzekeren en , gedurende den huurtermijn , verzeekerd te heeden , ten zijnen teeste . Dat , daarin tegen , de Verhuurder deze huizinge behoorlijk zal moeten onderhouden en den huurder daar van het rustig bezit te verzekeren en doen toekomen . Alles wederkeeriglijk onder verbanden bedwang als naar regten . En is ten dezen mede voor ens Notaris en getuigen gecompareerd Cornelisse Jans Plasse , Appelsche , Weduwe van Klaas Leuten Krikke , wonende te Heerenveen . Welke , na dat het vorenstaande haar Contract door ons Notaris aan haar was voorgelezen , bij deze , verklaarde zich , ten behoeve van den heer Verhuurder , die zulks accepteert , aansprakelijk te stellen voor de getrouwe nakoming en uitvoering der verbintenissen door haren voor , den huurder , bij dit Contract aan gegaan en te allen tijde te zullen presteren dat het zelve door hem ten uitvoer worde gelegd en bekrachtigd , te dien einde zich persoonlijk aan sprakelijk stellende en den heer Verhuurder garanderende voor alle schaden die hij , uit welken hoofde ook , bij de tegenwoordige verhuring mog te komen te lijden , onder afstand aan het voorregt van uitwinning en onder verband van haar persen en goederen ingevolge de over Daar van Acte . Gedaan en gepasseerd te Heerenweg onder Nijehaske en ten huize van Reel Wijbes Offringa kast tien aldaar , op heden den dertienden P Leer meester bakker in ste. de van het doorgehaalde woord Mei achttien honderd zeven en dertig , in bij zijn van evengenoemde Offringa kastelein en van Evert Sierks Westra Schoenmaker te Heer Evelen woonachtig goedgekeurd als ten dezen vereischte getuigen welke de tegenwoordige minuut , na TT J F H gedane voorlezing met de Comparanten en ons Notaris geteekend C:JD R: We hebben . PS W OL : patacon Jan J Jnkke , Cn Ju lossen op Pewospinger PS Westra imuis . coota Geregistreerd met Tweeblad een renvoij te Heeren van den zestienden Mei : 1800 zeven en dertig deel dertig fob honderd en drie ƒ247 en zeventig versoek twee en drie Ontvangen voor Boog 123. regt van verheering twee gulden zeven en veertig een 3 7 tweede cents indoor borg een gulden rie en twintig en 237. 85 een halve cents makende te zamen met opcenten vier gulden zes en vijftig een tweede cents ƒ456 De ontvangen' (Ticcl)
+corrected 2-grams uit: '100 eene solide brandwaarborg maatschappij te verzekeren en , gedurende den huurtermijn , verzeekerd te heeden , ten zijnen teeste . Dat , daarin tegen , de Verhuurder deze huizinge behoorlijk zal moeten onderhouden en den huurder daar van het rustig bezit te verzekeren en doen toekomen . Alles wederkeeriglijk onder verbanden bedwang als naar regten . En is ten dezen mede voor ens Notaris en getuigen gecompareerd Cornelisse Jans Plasse , Appelsche , Weduwe van Klaas Leuten Krikke , wonende te Heerenveen . Welke , na dat het vorenstaande haar Contract door ons Notaris aan haar was voorgelezen , bij deze , verklaarde zich , ten behoeve van den heer Verhuurder , die zulks accepteert , aansprakelijk te stellen voor de getrouwe nakoming en uitvoering der verbintenissen door haren voor , den huurder , bij dit Contract aan gegaan en te allen tijde te zullen presteren dat het zelve door hem ten uitvoer worde gelegd en bekrachtigd , te dien einde zich persoonlijk aan sprakelijk stellende en den heer Verhuurder garanderende voor alle schaden die hij , uit welken hoofde ook , bij de tegenwoordige verhuring mog te komen te lijden , onder afstand aan het voorregt van uitwinning en onder verband van haar persen en goederen ingevolge de over Daar van Acte . Gedaan en gepasseerd te Heerenweg onder Nijehaske en ten huize van Reel Wijbes Offringa kast tien aldaar , op heden den dertienden P Leer : meester bakker in ste. de van het doorgehaalde woord Mei achttien honderd zeven en dertig , in bij zijn van evengenoemde Offringa kastelein en van Evert Sierks Westra Schoenmaker te Heer Evelen woonachtig goedgekeurd : als ten dezen vereischte getuigen welke de tegenwoordige minuut , na TT J F H gedane voorlezing met de Comparanten en ons Notaris geteekend C:JD R: We hebben . PS W OL : patacon Jan J Jnkke , Cn Ju lossen op Pewospinger PS Westra imuis . coota Geregistreerd met Tweeblad een renvoij te Heeren van den zestienden Mei : 1800 zeven en dertig deel dertig fob honderd en drie ƒ247 en zeventig versoek twee en drie Ontvangen voor Boog 123. regt van verheering twee gulden zeven en veertig een 3 7 tweede cents indoor borg een gulden rie en twintig en 237. 85 een halve cents makende te zamen met opcenten vier gulden zes en vijftig een tweede cents ƒ456 De ontvangen' (Ticcl)
 finished NAK/NAK99.xml
 edit statistics: 
 	edit	 count
