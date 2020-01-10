@@ -1463,11 +1463,21 @@ int main( int argc, char *argv[] ){
 #endif
   }
 
-#pragma omp parallel for shared(fileNames) schedule(dynamic)
+  int fail_count = 0;
+#pragma omp parallel for shared(fileNames,fail_count) schedule(dynamic)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     if ( do_direct ){
-      solveDirectAlto( fileNames[fn], outputDir, outputType, orig_command,
-		       do_strings );
+      try {
+	solveDirectAlto( fileNames[fn], outputDir, outputType, orig_command,
+			 do_strings );
+      }
+      catch ( const exception& e ){
+	cerr << fileNames[fn] << " failed: " << e.what() << endl;
+	if ( ++fail_count > 5 ){
+	  cerr << "more then 5 failures. Temnitaed" << endl;
+	  exit(EXIT_FAILURE);
+	}
+      }
     }
     else {
       if ( kind == "krant" )
