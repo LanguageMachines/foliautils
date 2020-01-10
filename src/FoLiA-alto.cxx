@@ -1474,18 +1474,37 @@ int main( int argc, char *argv[] ){
       catch ( const exception& e ){
 	cerr << fileNames[fn] << " failed: " << e.what() << endl;
 	if ( ++fail_count > 5 ){
-	  cerr << "more then 5 failures. Temnitaed" << endl;
+	  cerr << "more then 5 failures. Terminated" << endl;
 	  exit(EXIT_FAILURE);
 	}
       }
     }
     else {
       if ( kind == "krant" )
-	solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType,
-		      orig_command, do_strings );
-      else
-	solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType,
-		       orig_command, do_strings );
+	try {
+	  solveArtAlto( alto_cache, fileNames[fn], outputDir, outputType,
+			orig_command, do_strings );
+	}
+	catch ( const exception& e ){
+	  cerr << fileNames[fn] << " failed: " << e.what() << endl;
+	  if ( ++fail_count > 5 ){
+	    cerr << "more then 5 failures. Terminated" << endl;
+	    exit(EXIT_FAILURE);
+	  }
+	}
+
+      else {
+	try {
+	  solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType,
+			 orig_command, do_strings );
+	}
+	catch ( const exception& e ){
+	  cerr << fileNames[fn] << " failed: " << e.what() << endl;
+	  if ( ++fail_count > 5 ){
+	    cerr << "more then 5 failures. Terminated" << endl;
+	    exit(EXIT_FAILURE);
+	  }
+	}
     }
   }
   cout << "done" << endl;

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="2.0">
   <metadata type="native">
     <annotations>
       <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
+      <head-annotation set="kop"/>
+      <text-annotation />
+      <string-annotation />
+      <paragraph-annotation />
     </annotations>
     <meta id="language">dut</meta>
   </metadata>
@@ -49,23 +53,24 @@
 	  <str xml:id="p4.13"><t>wet</t></str>
 	  <str xml:id="p4.14"><t>opde</t></str>
 	  <str xml:id="p4.15"><t>omzetbelasting</t></str>
-	  <str xml:id="p4.16"><t>1998.</t></str>
+	  <str xml:id="p4.16"><t>1968.</t></str>
         </p>
       </div>
       <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
         <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t>Deze wetsvoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <t>Deze wet svoorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
           <lang class="dut"/>
 	  <str xml:id="p5.1"><t>Deze</t></str>
-	  <str xml:id="p5.2"><t>wetsvoorstellen</t></str>
-	  <str xml:id="p5.3"><t>worden</t></str>
-	  <str xml:id="p5.4"><t>zonder</t></str>
-	  <str xml:id="p5.5"><t>s4s67621</t></str>
-	  <str xml:id="p5.6"><t>en</t></str>
-	  <str xml:id="p5.7"><t>zonder</t></str>
-	  <str xml:id="p5.8"><t>stemming</t></str>
-	  <str xml:id="p5.9"><t>aangenomen</t></str>
-	  <str xml:id="p5.10"><t>.</t></str>
+	  <str xml:id="p5.2"><t>wets</t></str>
+	  <str xml:id="p5.3"><t>voorstellen</t></str>
+	  <str xml:id="p5.4"><t>worden</t></str>
+	  <str xml:id="p5.5"><t>zonder</t></str>
+	  <str xml:id="p5.6"><t>s4s67621</t></str>
+	  <str xml:id="p5.7"><t>en</t></str>
+	  <str xml:id="p5.8"><t>zonder</t></str>
+	  <str xml:id="p5.9"><t>stemming</t></str>
+	  <str xml:id="p5.10"><t>aangenomen</t></str>
+	  <str xml:id="p5.11"><t>.</t></str>
         </p>
       </div>
     </div>

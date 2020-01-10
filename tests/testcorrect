@@ -17,7 +17,7 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --cle
 
 ./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple -v -v data/corr_word.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word.ticcl.xml corr_word.ticcl.1.ok  >> testcorrect.out 2>&1
 
@@ -33,12 +33,20 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngr
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr.folia.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr.ticcl.folia.xml corr.ticcl.3.ok  >> testcorrect.out 2>&1
+./foliadiff.sh corr.ticcl.folia.xml corr.ticcl.folia.1.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.1.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v -v data/corr_word_T.xml --punctseparator=± >> testcorrect.out  2>&1
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --ngram=2 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
+
+./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.3.ok  >> testcorrect.out 2>&1
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank2.ranked --clear --inputclass=Test --ngram=2 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.2.ok  >> testcorrect.out 2>&1
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --ngram=3 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
+
+./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok  >> testcorrect.out 2>&1

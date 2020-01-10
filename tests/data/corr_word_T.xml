@@ -1,71 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v1.4" version="1.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="testdoc" generator="libfolia-v1.4" version="2.2.0">
   <metadata type="native">
     <annotations>
+      <head-annotation/>
+      <paragraph-annotation/>
+      <token-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <division-annotation annotator="FoLiA-pm" annotatortype="auto" datetime="2016-08-07T16:24:59" set="polmash"/>
       <lang-annotation set="iso"/>
     </annotations>
     <meta id="language">dut</meta>
   </metadata>
-  <text xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.text">
-    <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.div" class="topic">
+  <text xml:id="testdoc.text">
+    <div xml:id="testdoc.div" class="topic">
       <head>
         <t class="Test">Diverse wetsvoorstellen</t>
       </head>
-      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2" class="intro">
-        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1">
-          <t class="Test">40ste vergadering</t>
+      <div xml:id="testdoc.3" class="subject">
+        <p xml:id="p1">
+          <t class="Test">de behándeling van:</t>
           <lang class="dut"/>
-	  <w xml:id="p1.1"><t class="Test">40ste</t></w>
-	  <w xml:id="p1.2"><t class="Test">vergadering</t></w>
+	  <w xml:id="p1.1"><t class="Test">de</t></w>
+	  <w xml:id="p1.2"><t class="Test">behándeling</t></w>
+	  <w xml:id="p1.3"><t class="Test">van:</t></w>
         </p>
-        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.2">
-          <t class="Test">2003-2004</t>
-          <lang class="fre"/>
-	  <w xml:id="p2.1"><t class="Test">2003-2004</t></w>
+        <p xml:id="p2">
+          <t class="Test">het wetsvoorstel Wijsiging van de</t>
+          <lang class="dut"/>
+	  <w xml:id="p2.1"><t class="Test">het</t></w>
+	  <w xml:id="p2.2"><t class="Test">wetsvoorstel</t></w>
+	  <w xml:id="p2.3"><t class="Test">Wijsiging</t></w>
+	  <w xml:id="p2.4"><t class="Test">van</t></w>
+	  <w xml:id="p2.5"><t class="Test">de</t></w>
         </p>
-        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.3">
-          <t class="Test">40</t>
-          <lang class="UNKNOWN"/>
-	  <w xml:id="p3.1"><t class="Test">40</t></w>
+        <p xml:id="p3">
+          <t class="Test">Wet opde omzetbelasting 1998.</t>
+          <lang class="dut"/>
+	  <w xml:id="p3.1"><t class="Test">Wet</t></w>
+	  <w xml:id="p3.2"><t class="Test">opde</t></w>
+	  <w xml:id="p3.3"><t class="Test">omzetbelasting</t></w>
+	  <w xml:id="p3.4"><t class="Test">1998.</t></w>
         </p>
       </div>
-      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3" class="subject">
-        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1">
-          <t class="Test">Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.</t>
+      <div xml:id="testdoc.4" class="other">
+        <p xml:id="p4">
+          <t class="Test">Deze wets voorstellen</t>
           <lang class="dut"/>
-	  <w xml:id="p4.1"><t class="Test">Aan</t></w>
-	  <w xml:id="p4.2"><t class="Test">de</t></w>
-	  <w xml:id="p4.3"><t class="Test">orde</t></w>
-	  <w xml:id="p4.4"><t class="Test">is</t></w>
-	  <w xml:id="p4.5"><t class="Test">de</t></w>
-	  <w xml:id="p4.6"><t class="Test">behándeling</t></w>
-	  <w xml:id="p4.7"><t class="Test">van:</t></w>
-	  <w xml:id="p4.8"><t class="Test">het</t></w>
-	  <w xml:id="p4.9"><t class="Test">wetsvoorstel</t></w>
-	  <w xml:id="p4.10"><t class="Test">Wijsiging</t></w>
-	  <w xml:id="p4.11"><t class="Test">van</t></w>
-	  <w xml:id="p4.12"><t class="Test">de</t></w>
-	  <w xml:id="p4.13"><t class="Test">Wet</t></w>
-	  <w xml:id="p4.14"><t class="Test">opde</t></w>
-	  <w xml:id="p4.15"><t class="Test">omzetbelasting</t></w>
-	  <w xml:id="p4.16"><t class="Test">1998.</t></w>
+	  <w xml:id="p4.1"><t class="Test">Deze</t></w>
+	  <w xml:id="p4.2"><t class="Test">wets</t></w>
+	  <w xml:id="p4.3"><t class="Test">voorstellen</t></w>
         </p>
-      </div>
-      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
-        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t class="Test">Deze wetsvoorstellen worden zonder s4s67621 en zonder stemming aangenomen .</t>
+        <p xml:id="p5">
+          <t class="Test">ze worden zonder s4s67621 en zonder steming aangenomen .</t>
           <lang class="dut"/>
-	  <w xml:id="p5.1"><t class="Test">Deze</t></w>
-	  <w xml:id="p5.2"><t class="Test">wetsvoorstellen</t></w>
-	  <w xml:id="p5.3"><t class="Test">worden</t></w>
-	  <w xml:id="p5.4"><t class="Test">zonder</t></w>
-	  <w xml:id="p5.5"><t class="Test">s4s67621</t></w>
-	  <w xml:id="p5.6"><t class="Test">en</t></w>
-	  <w xml:id="p5.7"><t class="Test">zonder</t></w>
-	  <w xml:id="p5.8"><t class="Test">stemming</t></w>
-	  <w xml:id="p5.9"><t class="Test">aangenomen</t></w>
-	  <w xml:id="p5.10"><t class="Test">.</t></w>
+	  <w xml:id="p5.1"><t class="Test">ze</t></w>
+	  <w xml:id="p5.2"><t class="Test">worden</t></w>
+	  <w xml:id="p5.3"><t class="Test">zonder</t></w>
+	  <w xml:id="p5.4"><t class="Test">s4s67621</t></w>
+	  <w xml:id="p5.5"><t class="Test">en</t></w>
+	  <w xml:id="p5.6"><t class="Test">zonder</t></w>
+	  <w xml:id="p5.7"><t class="Test">steming</t></w>
+	  <w xml:id="p5.8"><t class="Test">aangenomen</t></w>
+	  <w xml:id="p5.9"><t class="Test">.</t></w>
+        </p>
+        <p xml:id="p6">
+          <t class="Test">Deze runonvanwoorden is oplosbaar.</t>
+          <lang class="dut"/>
+	  <w xml:id="p6.1"><t class="Test">Deze</t></w>
+	  <w xml:id="p6.2"><t class="Test">runonvanwoorden</t></w>
+	  <w xml:id="p6.3"><t class="Test">is</t></w>
+	  <w xml:id="p6.4"><t class="Test">oplosbaar.</t></w>
+        </p>
+        <p xml:id="p7">
+          <t class="Test">Een ge splet en trigram.</t>
+          <lang class="dut"/>
+	  <w xml:id="p7.1"><t class="Test">Een</t></w>
+	  <w xml:id="p7.2"><t class="Test">ge</t></w>
+	  <w xml:id="p7.3"><t class="Test">splet</t></w>
+	  <w xml:id="p7.4"><t class="Test">en</t></w>
+	  <w xml:id="p7.5"><t class="Test">trigram.</t></w>
+        </p>
+        <p xml:id="p8">
+          <t class="Test">Een 3-2 geval: Rhode I Land</t>
+          <lang class="dut"/>
+	  <w xml:id="p8.1"><t class="Test">Een</t></w>
+	  <w xml:id="p8.2"><t class="Test">3-2</t></w>
+	  <w xml:id="p8.3"><t class="Test">geval:</t></w>
+	  <w xml:id="p8.4"><t class="Test">Rhode</t></w>
+	  <w xml:id="p8.5"><t class="Test">I</t></w>
+	  <w xml:id="p8.6"><t class="Test">Land</t></w>
+        </p>
+        <p xml:id="p9">
+          <t class="Test">Een 2-3 geval: He groenehuis.</t>
+          <lang class="dut"/>
+	  <w xml:id="p9.1"><t class="Test">Een</t></w>
+	  <w xml:id="p9.2"><t class="Test">2-3</t></w>
+	  <w xml:id="p9.3"><t class="Test">geval:</t></w>
+	  <w xml:id="p9.4"><t class="Test">He</t></w>
+	  <w xml:id="p9.5"><t class="Test">groenehuis.</t></w>
+        </p>
+        <p xml:id="p10">
+          <t class="Test">Een dubbele unknown: Arglebargle, glop-glyf!</t>
+          <lang class="dut"/>
+	  <w xml:id="p10.1"><t class="Test">Een</t></w>
+	  <w xml:id="p10.2"><t class="Test">dubbele</t></w>
+	  <w xml:id="p10.3"><t class="Test">unknown:</t></w>
+	  <w xml:id="p10.4"><t class="Test">Arglebargle,</t></w>
+	  <w xml:id="p10.5"><t class="Test">glop-glyf!</t></w>
+        </p>
+        <p xml:id="p11">
+          <t class="Test">Een triple unknown: Argle bargle, glop-glyf!</t>
+          <lang class="dut"/>
+	  <w xml:id="p11.1"><t class="Test">Een</t></w>
+	  <w xml:id="p11.2"><t class="Test">triple</t></w>
+	  <w xml:id="p11.3"><t class="Test">unknown:</t></w>
+	  <w xml:id="p11.4"><t class="Test">Argle</t></w>
+	  <w xml:id="p11.5"><t class="Test">bargle,</t></w>
+	  <w xml:id="p11.6"><t class="Test">glop-glyf!</t></w>
         </p>
       </div>
     </div>
