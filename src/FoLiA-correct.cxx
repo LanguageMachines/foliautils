@@ -1439,7 +1439,9 @@ int main( int argc, const char *argv[] ){
 
   map<string,size_t> total_counts;
 
-#pragma omp parallel for shared(fileNames,toDo) schedule(dynamic,1)
+  int fail_count = 0;
+
+#pragma omp parallel for shared(fileNames,toDo,fail_count) schedule(dynamic,1)
   for ( size_t fn=0; fn < fileNames.size(); ++fn ){
     string docName = fileNames[fn];
     Document *doc = 0;
@@ -1495,21 +1497,33 @@ int main( int argc, const char *argv[] ){
 	cerr << "start " << ngram_size << "-gram correcting in file: "
 	     << doc->filename() << endl;
       }
-      if ( correctDoc( doc, variants, unknowns, puncts,
-		       tag_list, counts,
-		       orig_command, outName ) ){
+      try {
+	if ( correctDoc( doc, variants, unknowns, puncts,
+			 tag_list, counts,
+			 orig_command, outName ) ){
 #pragma omp critical
-	{
-	  if (!counts.empty() ){
-	    //	    cout << "edits for: " << docName << endl;
-	    for ( const auto& it : counts ){
-	      //	      cout << it.first << ":" << it.second << endl;
-	      total_counts[it.first] += it.second;
+	  {
+	    if (!counts.empty() ){
+	      //	    cout << "edits for: " << docName << endl;
+	      for ( const auto& it : counts ){
+		//	      cout << it.first << ":" << it.second << endl;
+		total_counts[it.first] += it.second;
+	      }
+	    }
+	    if ( toDo > 1 ){
+	      cout << "Processed :" << docName << " into " << outName
+		   << " still " << --toDo << " files to go." << endl;
 	    }
 	  }
-	  if ( toDo > 1 ){
-	    cout << "Processed :" << docName << " into " << outName
-		 << " still " << --toDo << " files to go." << endl;
+	}
+      }
+      catch ( const exception& e ){
+#pragma omp critical
+	{
+	  cerr << docName << " failed: " << e.what() << endl;
+	  if ( ++fail_count > 10 ){
+	    cerr << "more then 10 failures. Terminated" << endl;
+	    exit(EXIT_FAILURE);
 	  }
 	}
       }
