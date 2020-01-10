@@ -1416,7 +1416,7 @@ int main( int argc, char *argv[] ){
 	  cerr << "outputdir '" << name
 	       << "' doesn't exist and can't be created" << endl;
 	  exit(EXIT_FAILURE);
-      }
+	}
       }
     }
   }
@@ -1492,7 +1492,6 @@ int main( int argc, char *argv[] ){
 	    exit(EXIT_FAILURE);
 	  }
 	}
-
       else {
 	try {
 	  solveBookAlto( alto_cache, fileNames[fn], outputDir, outputType,
@@ -1505,6 +1504,7 @@ int main( int argc, char *argv[] ){
 	    exit(EXIT_FAILURE);
 	  }
 	}
+      }
     }
   }
   cout << "done" << endl;
