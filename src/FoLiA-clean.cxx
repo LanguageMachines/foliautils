@@ -52,9 +52,9 @@ namespace std
   // when uses old gcc includes)
   // This is a defect in de C++ standard and fixed in more recent compilers
   template<>
-  class hash<folia::AnnotationType::AnnotationType> {
+  class hash<folia::AnnotationType> {
   public:
-    size_t operator()(const folia::AnnotationType::AnnotationType &t) const
+    size_t operator()(const folia::AnnotationType &t) const
     {
       return static_cast<size_t>(t);
     }
@@ -132,7 +132,7 @@ void clean_text( FoliaElement *node,
 }
 
 void clean_anno( FoliaElement *node,
-		 const AnnotationType::AnnotationType anno_type,
+		 const AnnotationType anno_type,
 		 const string& setname ){
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
@@ -143,7 +143,7 @@ void clean_anno( FoliaElement *node,
       }
     }
     string set = p->sett();
-    AnnotationType::AnnotationType at = p->annotation_type();
+    AnnotationType at = p->annotation_type();
     if ( debug ){
 #pragma omp critical( debugging )
       {
@@ -279,7 +279,7 @@ void clean_doc( Document *d,
 		const string& outname,
 		const string& textclass,
 		bool current,
-		unordered_map< AnnotationType::AnnotationType,
+		unordered_map< AnnotationType,
 		unordered_set<string>>& anno_setname ){
   FoliaElement *root = d->doc();
   if ( anno_setname.find(AnnotationType::TOKEN) != anno_setname.end() ){
@@ -376,7 +376,7 @@ int main( int argc, char *argv[] ){
     cerr << "cannot combine --fixtext and --current" << endl;
     exit( EXIT_FAILURE );
   }
-  unordered_map<AnnotationType::AnnotationType,
+  unordered_map<AnnotationType,
 		unordered_set<string>> clean_sets;
   string line;
   while ( opts.extract( "cleanannoset", line ) ){
@@ -395,9 +395,9 @@ int main( int argc, char *argv[] ){
     //   cerr << "deleting token annotation is not supported yet." << endl;
     //   exit( EXIT_FAILURE );
     // }
-    AnnotationType::AnnotationType at;
+    AnnotationType at;
     try {
-      at = TiCC::stringTo<AnnotationType::AnnotationType>( type );
+      at = TiCC::stringTo<AnnotationType>( type );
     }
     catch ( exception& e){
       cerr << e.what() << endl;
