@@ -63,14 +63,27 @@ string extractContent( xmlNode* pnt ) {
 
 void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& file ){
   list<xmlNode*> pars = TiCC::FindNodes( div, "//p" );
+  if ( verbose ){
+#pragma omp critical
+    {
+      cout << "processParagraphs: number=" << pars.size() << endl;
+    }
+  }
   for ( const auto& p : pars ){
     list<xmlNode*> lines = TiCC::FindNodes( p, ".//span[@class='ocr_line']" );
     if ( lines.empty() ){
 #pragma omp critical
       {
-	cerr << "found no OCR_LINE nodes in " << file << endl;
+	cerr << "found no 'ocr_line' nodes in paragraph id="
+	     << TiCC::getAttribute( p, "id" ) << " (continuing)" << endl;
       }
-      return;
+      continue;
+    }
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "\thandling 'ocr_line' total=" << lines.size() << endl;
+      }
     }
     string p_id = TiCC::getAttribute( p, "id" );
     folia::KWargs args;
@@ -89,6 +102,12 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	    cerr << "found no OCRX_WORD or OCR_WORD nodes in " << file << endl;
 	  }
 	  return;
+	}
+      }
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cout << "\t\thandling 'ocr_word' total=" << words.size() << endl;
 	}
       }
       for ( const auto& word : words ){
