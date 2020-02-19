@@ -8,7 +8,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 		(entries with frequency <= 'factor' will be ignored). 
 	-p	 output percentages too. 
 	--lower	 Lowercase all words
-	--separator='sep' 	connect all n-grams with 'sep' (default is a space)
+	--separator='sep' 	connect all n-grams with 'sep' (default is an underscore)
 	--underscore	 Obsolete. Equals to --separator='_'
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 		 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
@@ -56,7 +56,7 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 		(entries with frequency <= 'factor' will be ignored). 
 	-p	 output percentages too. 
 	--lower	 Lowercase all words
-	--separator='sep' 	connect all n-grams with 'sep' (default is a space)
+	--separator='sep' 	connect all n-grams with 'sep' (default is an underscore)
 	--underscore	 Obsolete. Equals to --separator='_'
 	--languages	 Lan1,Lan2,Lan3. (default='Lan1').
 		 languages that are not assigned to Lan1,Lan2,... are counted as Lan1
@@ -126,10 +126,6 @@ HEMPS: {}
 test data: [een,F,1,o,r,e,n,t,ij,n,e,r,,is]
 inventory: [NO HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,NORMAL HEMP,END PUNCT HEMP,NO HEMP]
 HEMPS: {F_1_o_r_e_n_t_ij_n_e_r,}
-13c13
-< démoli,			1	0	0	1	0
----
-> démoli,		1	0	0	1	0
 start processing of 2 files 
 processing using prefix: stats8.
 Processed :data/frog.xml with 11 n-grams, 11 lemmas, and 11 POS tags. still 1 files to go.

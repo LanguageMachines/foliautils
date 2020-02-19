@@ -1355,7 +1355,7 @@ void usage( const string& name ){
   cerr << "\t\t(entries with frequency <= 'factor' will be ignored). " << endl;
   cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
-  cerr << "\t--separator='sep' \tconnect all n-grams with 'sep' (default is a space)" << endl;
+  cerr << "\t--separator='sep' \tconnect all n-grams with 'sep' (default is an underscore)" << endl;
   cerr << "\t--underscore\t Obsolete. Equals to --separator='_'" << endl;
   cerr << "\t--languages\t Lan1,Lan2,Lan3. (default='Lan1')." << endl;
   cerr << "\t\t languages that are not assigned to Lan1,Lan2,... are counted as Lan1" << endl;
@@ -1499,12 +1499,12 @@ int main( int argc, char *argv[] ){
       mode = S_IN_D;
     }
   }
-  UnicodeString sep = " ";
+  UnicodeString sep = "_";
   if( opts.extract( "separator", value ) ){
     sep = TiCC::UnicodeFromUTF8(value);
   }
   if ( opts.extract( "underscore" ) ){
-    if ( sep != " " ){
+    if ( sep != "_" ){
       cerr << "--separator and --underscore conflict!" << endl;
       exit(EXIT_FAILURE);
     }
