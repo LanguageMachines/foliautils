@@ -1450,16 +1450,16 @@ void usage(){
   cerr << "\t convert Political Mashup XML files to FoLiA" << endl;
   cerr << "\t when a dir is given, all '.xml' files in that dir are processed"
        << endl;
-  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t-t or --threads <threads>\t Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
-  cerr << "\t-nosplit\t don't create separate topic files" << endl;
+  cerr << "\t--nosplit\t don't create separate topic files" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FPM-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
-  cerr << "\t-h\t this messages " << endl;
-  cerr << "\t-O\t output directory " << endl;
-  cerr << "\t-v\t verbose output " << endl;
-  cerr << "\t-V\t show version " << endl;
+  cerr << "\t-O\t\t output directory " << endl;
+  cerr << "\t-v\t\t verbose output " << endl;
+  cerr << "\t-V or --version\t show version " << endl;
+  cerr << "\t-h or --help \t this messages " << endl;
 }
 
 int main( int argc, char *argv[] ){
