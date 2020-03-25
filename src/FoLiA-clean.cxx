@@ -311,7 +311,6 @@ void usage( const string& name ){
   cerr << "\t--textclass='name', retain only text nodes with this class. (default is to retain all)" << endl;
   cerr << "\t--current\t Make the textclass 'current'. (default is to keep 'name')" << endl;
   cerr << "\t--fixtext\t Fixup problems in structured text. " << endl;
-  cerr << "\t\t Replaces on structure nodes the text class 'textclass' by what is found on deeper levels." << endl;
   cerr << "\t--cleanannoset='type\\\\setname'\t remove annotations with 'type' and 'setname'. NOTE: use a double '\\' !. The setname can be empty. This option can be repeated for different annotations." << endl;
   cerr << "\t-e\t expr: specify the expression all input files should match with. (default .folia.xml)" << endl;
   cerr << "\t--debug Set dubugging" << endl;
@@ -324,7 +323,7 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,retaintok,fixtext,debug,threads:" );
+  TiCC::CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,fixtext,debug,threads:" );
   try {
     opts.init(argc,argv);
   }

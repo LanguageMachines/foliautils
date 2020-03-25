@@ -36,6 +36,27 @@ classname
 retain only text in this classname. The default is to keep text in all classes.
 .RE
 
+.B --current
+.RS
+make the textclass mentioned in --testclass to get the 'current' value.
+.RE
+
+.B --fixtext
+.RS
+try to fixup text problems like wrong offset values or mismatches between
+several layers.
+.RE
+
+.B --cleanannoset
+type\\\\setname
+.RS
+remove annotations of this type with this setname. use a double \\ !
+
+When setname is empty, ALL annotations of 'type' are removed.
+
+This option may be repeated to clear more annotations.
+.RE
+
 .B -t
 or
 .B --threads
@@ -58,7 +79,7 @@ Show VERSION
 
 .B -h
 or
->B --help
+.B --help
 .RS
 Show some help
 .RE
