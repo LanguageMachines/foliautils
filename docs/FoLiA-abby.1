@@ -1,0 +1,97 @@
+.TH FoLiA-abby 1 "2020 mar 25"
+
+.SH NAME
+FoLiA-abby - Convert ABBY files into FoLiA.
+
+.SH SYNOPSIS
+FoLiA-abby [options] FILE
+
+FoLiA-abby [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-abby
+will process all files in DIR and store the result in DIR, or in
+the directory provided with
+.B -O
+
+When a FILE is provided,
+.B FoLiA-abby
+will process that file and store its result in the directory where FILE is
+found or in the directory provided with
+.B -O
+
+All files should be in ABBY XML format or BZIP2 or GZ versions thereof.
+When the input file(s) are zipped, the output will be too.
+
+.SH OPTIONS
+.B --compress
+kind
+.RS
+Use BZIP2 compression (kind=b) or GZIP compression (kind=g)
+.RE
+
+.B -O
+outdir
+.RS
+use 'outdir' as a directory name to store the abby-ed files in.
+.RE
+
+.B --prefix
+prefix
+.RS
+use 'prefix' as a prefix for ALL xml:id's created. Default is FA-. Use 'none'
+for no prefix. A prefix may be needed for files with non NCname characters in
+their names.
+.RE
+
+.B --setname
+set
+.RS
+The FoLiA set of the <str> nodes that are created. (default FoLiA-abby-set).
+.RE
+
+.B --class
+classname
+.RS
+The FoLiA classname of the <str> nodes that are created. (default OCR).
+.RE
+
+.B -t
+or
+.B --threads
+number
+.RS
+Number of concurrent threads to be used by the program.
+.RE
+
+.B -v
+.RS
+be more verbose.
+.RE
+
+.B -V
+or
+.B
+--version
+.RS
+Show VERSION
+.RE
+
+.B -h
+or
+.B --help
+.RS
+Show some help
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot
+
+Martin Reynaert
+
+e\-mail: lamasoftware@science.ru.nl

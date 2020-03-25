@@ -355,7 +355,7 @@ void usage(){
   cerr << "\t--prefix='pre'\t add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
-  cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
+  cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }

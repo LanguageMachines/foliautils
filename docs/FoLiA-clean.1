@@ -1,0 +1,74 @@
+.TH FoLiA-clean 1 "2020 mar 25"
+
+.SH NAME
+FoLiA-clean - Cleanup FoLiA files
+
+.SH SYNOPSIS
+FoLiA-clean [options] FILE(s)
+
+FoLiA-clean [options] DIR
+
+.SH DESCRIPTION
+
+When a DIR is provided,
+.B FoLiA-clean
+will process all files in DIR and store the result in DIR, or in
+the directory provided with
+.B -O
+
+When a FILE is provided,
+.B FoLiA-clean
+will process that file and store its result in the directory where FILE is
+found or in the directory provided with
+.B -O
+
+.SH OPTIONS
+
+.B -O
+outdir
+.RS
+use 'outdir' as a directory name to store the cleaned files in.
+.RE
+
+.B --textclass
+classname
+.RS
+retain only text in this classname. The default is to keep text in all classes.
+.RE
+
+.B -t
+or
+.B --threads
+number
+.RS
+Number of concurrent threads to be used by the program.
+.RE
+
+.B -v
+.RS
+be more verbose.
+.RE
+
+.B -V
+or
+.B --version
+.RS
+Show VERSION
+.RE
+
+.B -h
+or
+>B --help
+.RS
+Show some help
+.RE
+
+.SH BUGS
+possible
+
+.SH AUTHORS
+Ko van der Sloot
+
+Martin Reynaert
+
+e\-mail: lamasoftware@science.ru.nl
