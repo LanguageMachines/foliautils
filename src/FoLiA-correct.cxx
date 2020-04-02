@@ -1181,7 +1181,8 @@ void usage( const string& name ){
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t--unk 'uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
   cerr << "\t--punct 'pname'\t name of punct words file, the *punct file produced by TICCL-unk" << endl;
-  cerr << "\t--rank 'vname'\t name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean" << endl;
+  cerr << "\t--rank 'vname'\t name of variants file. This can be a file produced by TICCL-rank, TICCL-chain " << endl;
+  cerr << "\t\t\t or TICCL-chainclean" << endl;
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
@@ -1242,7 +1243,10 @@ int main( int argc, const char *argv[] ){
   }
   opts.extract( "setname", setname );
   // backward compatibility
-  opts.extract( "class", output_classname );
+  if ( opts.extract( "class", output_classname ) ){
+    cerr << "WARNING: '--class' is deprecated. Please use '--outputclass'."
+	 << endl;
+  }
   // prefer newer variant, if both present.
   opts.extract( "outputclass", output_classname );
   opts.extract( "inputclass", input_classname );
