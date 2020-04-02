@@ -80,7 +80,7 @@ string toString( Mode mode ){
       return "string_in_doc";
     break;
   case W_IN_D:
-    return "ord_in_doc";
+    return "word_in_doc";
     break;
   case L_P:
     return "lemma_pos";
@@ -1351,7 +1351,7 @@ void usage( const string& name ){
   cerr << "or a whole directory of FoLiA files " << endl;
   cerr << "The output will be a 2 or 4 columned tab separated file, extension: *tsv " << endl;
   cerr << "\t (4 columns when -p is specified)" << endl;
-  cerr << "\t--clip='factor'\t\t clipping factor. " << endl;
+  cerr << "\t--clip='factor'\t clipping factor. " << endl;
   cerr << "\t\t(entries with frequency <= 'factor' will be ignored). " << endl;
   cerr << "\t-p\t output percentages too. " << endl;
   cerr << "\t--lower\t Lowercase all words" << endl;
@@ -1369,16 +1369,20 @@ void usage( const string& name ){
   cerr << "\t--max-ngram='max'\t construct ALL n-grams upto a length of 'max'" << endl;
   cerr << "\t\t If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created" << endl;
   cerr << "\t--mode='mode' Special actions:" << endl;
-  cerr << "\t\t 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence." << endl;
-  cerr << "\t\t 'word_in_doc' Collect ALL <w> nodes from the document and handle them as one long Sentence." << endl;
-  cerr << "\t\t 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s" << endl;
+  cerr << "\t\t 'string_in_doc' Collect ALL <str> nodes from the document and handle them " << endl;
+  cerr << "\t\t\tas one long Sentence." << endl;
+  cerr << "\t\t 'word_in_doc' Collect ALL <w> nodes from the document and handle them " << endl;
+  cerr << "\t\t\tas one long Sentence." << endl;
+  cerr << "\t\t 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. " << endl;
+  cerr << "\t\t\t this implies --tags=s" << endl;
   cerr << "\t--tags='tags' collect text from all nodes in the list 'tags'" << endl;
   cerr << "\t--skiptags='tags' skip all nodes in the list 'tags'" << endl;
-  cerr << "\t-s\t equal to --tags=p" << endl;
-  cerr << "\t-S\t equal to --mode=string_in_doc" << endl;
+  cerr << "\t-s\t obsolete, equals --tags=p" << endl;
+  cerr << "\t-S\t obsolete, equals --mode=string_in_doc" << endl;
   cerr << "\t--class='name'\t When processing <str> nodes, use 'name' as the folia class for <t> nodes." << endl;
   cerr << "\t\t (default is 'current')" << endl;
-  cerr << "\t --collect\t collect all n-gram values in one file." << endl;
+  cerr << "\t--collect\t collect all n-gram values in one file." << endl;
+  cerr << "\t--aggregate create per n-gram a combined frequency table list for ALL languages detected." << endl;
   cerr << "\t--hemp=<file>\t Create a historical emphasis file. " << endl;
   cerr << "\t\t (words consisting of single, space separated letters)" << endl;
   cerr << "\t--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)" << endl;
