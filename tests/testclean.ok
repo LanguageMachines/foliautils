@@ -4,7 +4,6 @@ Usage: FoLiA-clean [options] file/dir
 	--textclass='name', retain only text nodes with this class. (default is to retain all)
 	--current	 Make the textclass 'current'. (default is to keep 'name')
 	--fixtext	 Fixup problems in structured text. 
-		 Replaces on structure nodes the text class 'textclass' by what is found on deeper levels.
 	--cleanannoset='type\\setname'	 remove annotations with 'type' and 'setname'. NOTE: use a double '\' !. The setname can be empty. This option can be repeated for different annotations.
 	-e	 expr: specify the expression all input files should match with. (default .folia.xml)
 	--debug Set dubugging
@@ -22,7 +21,6 @@ Usage: FoLiA-clean [options] file/dir
 	--textclass='name', retain only text nodes with this class. (default is to retain all)
 	--current	 Make the textclass 'current'. (default is to keep 'name')
 	--fixtext	 Fixup problems in structured text. 
-		 Replaces on structure nodes the text class 'textclass' by what is found on deeper levels.
 	--cleanannoset='type\\setname'	 remove annotations with 'type' and 'setname'. NOTE: use a double '\' !. The setname can be empty. This option can be repeated for different annotations.
 	-e	 expr: specify the expression all input files should match with. (default .folia.xml)
 	--debug Set dubugging

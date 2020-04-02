@@ -4,7 +4,7 @@ FoLiA-stats will produce ngram statistics for a FoLiA file,
 or a whole directory of FoLiA files 
 The output will be a 2 or 4 columned tab separated file, extension: *tsv 
 	 (4 columns when -p is specified)
-	--clip='factor'		 clipping factor. 
+	--clip='factor'	 clipping factor. 
 		(entries with frequency <= 'factor' will be ignored). 
 	-p	 output percentages too. 
 	--lower	 Lowercase all words
@@ -22,16 +22,20 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
 		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Special actions:
-		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
-		 'word_in_doc' Collect ALL <w> nodes from the document and handle them as one long Sentence.
-		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+		 'string_in_doc' Collect ALL <str> nodes from the document and handle them 
+			as one long Sentence.
+		 'word_in_doc' Collect ALL <w> nodes from the document and handle them 
+			as one long Sentence.
+		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. 
+			 this implies --tags=s
 	--tags='tags' collect text from all nodes in the list 'tags'
 	--skiptags='tags' skip all nodes in the list 'tags'
-	-s	 equal to --tags=p
-	-S	 equal to --mode=string_in_doc
+	-s	 obsolete, equals --tags=p
+	-S	 obsolete, equals --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
-	 --collect	 collect all n-gram values in one file.
+	--collect	 collect all n-gram values in one file.
+	--aggregate create per n-gram a combined frequency table list for ALL languages detected.
 	--hemp=<file>	 Create a historical emphasis file. 
 		 (words consisting of single, space separated letters)
 	--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)
@@ -52,7 +56,7 @@ FoLiA-stats will produce ngram statistics for a FoLiA file,
 or a whole directory of FoLiA files 
 The output will be a 2 or 4 columned tab separated file, extension: *tsv 
 	 (4 columns when -p is specified)
-	--clip='factor'		 clipping factor. 
+	--clip='factor'	 clipping factor. 
 		(entries with frequency <= 'factor' will be ignored). 
 	-p	 output percentages too. 
 	--lower	 Lowercase all words
@@ -70,16 +74,20 @@ The output will be a 2 or 4 columned tab separated file, extension: *tsv
 	--max-ngram='max'	 construct ALL n-grams upto a length of 'max'
 		 If --ngram='min' is specified too, ALL n-grams from 'min' upto 'max' are created
 	--mode='mode' Special actions:
-		 'string_in_doc' Collect ALL <str> nodes from the document and handle them as one long Sentence.
-		 'word_in_doc' Collect ALL <w> nodes from the document and handle them as one long Sentence.
-		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. THIS implies --tags=s
+		 'string_in_doc' Collect ALL <str> nodes from the document and handle them 
+			as one long Sentence.
+		 'word_in_doc' Collect ALL <w> nodes from the document and handle them 
+			as one long Sentence.
+		 'lemma_pos' When processsing nodes, also collect lemma and POS tag information. 
+			 this implies --tags=s
 	--tags='tags' collect text from all nodes in the list 'tags'
 	--skiptags='tags' skip all nodes in the list 'tags'
-	-s	 equal to --tags=p
-	-S	 equal to --mode=string_in_doc
+	-s	 obsolete, equals --tags=p
+	-S	 obsolete, equals --mode=string_in_doc
 	--class='name'	 When processing <str> nodes, use 'name' as the folia class for <t> nodes.
 		 (default is 'current')
-	 --collect	 collect all n-gram values in one file.
+	--collect	 collect all n-gram values in one file.
+	--aggregate create per n-gram a combined frequency table list for ALL languages detected.
 	--hemp=<file>	 Create a historical emphasis file. 
 		 (words consisting of single, space separated letters)
 	--detokenize when processing FoLiA with ucto tokenizer info, UNDO that tokenization. (default is to keep it)

@@ -14,7 +14,8 @@ Usage: [options] file/dir
 	-O	 output prefix
 	--unk 'uname'	 name of unknown words file, the *unk file produced by TICCL-unk
 	--punct 'pname'	 name of punct words file, the *punct file produced by TICCL-unk
-	--rank 'vname'	 name of variants file. This can be a file produced by TICCL-rank, TICCL-chain or TICCL-chainclean
+	--rank 'vname'	 name of variants file. This can be a file produced by TICCL-rank, TICCL-chain 
+			 or TICCL-chainclean
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 	-t <threads>
@@ -106,6 +107,7 @@ edit statistics:
 	1-1	1
 	TOKENS	31
 	UNK	1
+WARNING: '--class' is deprecated. Please use '--outputclass'.
 start reading variants 
 read 1 variants 
 start reading unknowns 
@@ -147,6 +149,7 @@ edit statistics:
 	1-1	1
 	TOKENS	31
 	UNK	1
+WARNING: '--class' is deprecated. Please use '--outputclass'.
 inputclass and outputclass are the same
 start reading variants 
 read 4 variants 

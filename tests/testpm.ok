@@ -2,32 +2,30 @@ missing input file(s)
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed
-	-t <threads>
-	--threads <threads> Number of threads to run on.
+	-t or --threads <threads>	 Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
-	-nosplit	 don't create separate topic files
+	--nosplit	 don't create separate topic files
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 			 use 'none' for an empty prefix. (can be dangerous)
-	-h	 this messages 
-	-O	 output directory 
-	-v	 verbose output 
-	-V	 show version 
+	-O		 output directory 
+	-v		 verbose output 
+	-V or --version	 show version 
+	-h or --help 	 this messages 
 foliautils 0.14
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed
-	-t <threads>
-	--threads <threads> Number of threads to run on.
+	-t or --threads <threads>	 Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
-	-nosplit	 don't create separate topic files
+	--nosplit	 don't create separate topic files
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 			 use 'none' for an empty prefix. (can be dangerous)
-	-h	 this messages 
-	-O	 output directory 
-	-v	 verbose output 
-	-V	 show version 
+	-O		 output directory 
+	-v		 verbose output 
+	-V or --version	 show version 
+	-h or --help 	 this messages 
 Validated successfully: test1/FPM-pm2.folia.xml
 Validated successfully: test1/FPM-pm4.folia.xml
 Validated successfully: test1/FPM-pm5.folia.xml
