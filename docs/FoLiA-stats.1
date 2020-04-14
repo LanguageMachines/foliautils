@@ -25,10 +25,10 @@ The output format will be 2 or 4 <tab> separated columns (depending on the
 option)
 
 First column:
-the 'word', 'lemma' or POS tag at hand.
+the 'word', 'lemma' or 'POS tag' at hand.
 
 Second colum:
-the Frequency of the 'word', 'lemma' or 'tag'
+the Frequency of the 'word', 'lemma' or 'POS tag'
 
 when -p is provided:
 
@@ -43,7 +43,7 @@ entry belong to?
 .B --clip
 number
 .RS
-clipping factor. When an item's frequency is lower than 'number', it will not be stored.
+clipping factor or frequnecy cut-off. When an item's frequency is lower than 'number', it will not be stored.
 .RE
 
 .B -p
@@ -72,11 +72,11 @@ Backward compatibility. Preferably use --separator=_
 Lan1,Lan2,...LanN
 .RS
 specify which languages to consider, based on the language tag as inserted
-in the FoLiA xml by the programmes Ucto, Frog or FoLiA-langcat.
+in the FoLiA xml by the programs Ucto, Frog or FoLiA-langcat.
 
 Lan1 is the default language. Text that is not assigned to Lan1,Lan2,... is
 counted as Lan1 (the default language), except when Lan1 equals 'skip'.
-In the latter case, undetected language is skipped.
+In the latter case, text in an undetected language is skipped.
 When Lan1 equals 'all', all languages are collected separately.
 When Lan1 equals 'none', language information is ignored.
 .RE
@@ -104,7 +104,7 @@ extract all n-grams of length 'count' using the separator
 .B --max-ngram
 max
 .RS
-Construct all n-grams up to and including lenght 'max'
+Construct all n-grams up to and including length 'max'
 When --ngram is specified too, that is used as the minimum n-gram length.
 .RE
 
@@ -159,14 +159,14 @@ use 'class' as the folia text class of the text nodes to process.
 
 .B --collect
 .RS
-collect all n-gram values in one output file.
+collect all n-gram values in one output file. If not specified, the specific n-grams will be gathered in separate files.
 .RE
 
 .B --hemp
 file
 .RS
-Create a historical emphasis file. This based on words consisting of singe space
-separated letters.
+Create a historical emphasis file. This is based on words consisting of singe space
+separated letters. Printers in the past might print-set a name such as 'CAESAR' as 'C A E S A R', for emphasis.
 .RE
 
 .B --detokenize
@@ -206,7 +206,7 @@ expr
 when searching for files,
 .B
 FoLiA-stats
-will only considers files that match with the expression 'expr' which may contain wildcards. The 'expr' is only matched against the file part. Not against paths.
+will only considers files that match with the expression 'expr', which may contain wildcards. The 'expr' is only matched against the file part. Not against paths.
 .RE
 
 .B -o
