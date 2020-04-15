@@ -1,3 +1,21 @@
+foliautils 0.14  15-04-2020
+[Martin Reynaert]
+* updated man pages
+
+[Ko vd Sloot]
+* added man pages
+* revised usage() in many modules
+* the default seperator in FoLiA-stats is '_' now
+* fix for: https://github.com/LanguageMachines/foliautils/issues/37
+* fix for: https://github.com/LanguageMachines/foliautils/issues/41
+* adapted to changes in libfolia
+* many small code refactorings
+* FoLiA-correct is improved a lot, allowing ngram corrections in FoLiA
+* FoLiA-stats accepts a 'word_in_doc' mode now
+* FoLiA-alto by default ceated <w> nodes now. use --oldstring to get <str>
+* improved a lot in tests/
+* many small fixes
+
 foliautils 0.13  30-08-2019
 [Ko vd Sloot]
 bug fixes:
