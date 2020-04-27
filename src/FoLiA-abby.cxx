@@ -324,12 +324,15 @@ bool convert_abbyxml( const string& fileName,
   orgFile = orgFile.erase( pos2 );
   outName += orgFile + ".folia.xml";
   zipType type = inputType;
-  if ( outputType != NORMAL )
+  if ( outputType != NORMAL ){
     type = outputType;
-  if ( type == BZ2 )
+  }
+  if ( type == BZ2 ){
     outName += ".bz2";
-  else if ( type == GZ )
+  }
+  else if ( type == GZ ){
     outName += ".gz";
+  }
 
   doc.save( outName );
   if ( verbose ){
@@ -387,10 +390,12 @@ int main( int argc, char *argv[] ){
   }
   string orig_command = "FoLiA-abby " + opts.toString();
   if ( opts.extract( "compress", value ) ){
-    if ( value == "b" )
+    if ( value == "b" ){
       outputType = BZ2;
-    else if ( value == "g" )
+    }
+    else if ( value == "g" ) {
       outputType = GZ;
+    }
     else {
       cerr << "unknown compression: use 'b' or 'g'" << endl;
       exit( EXIT_FAILURE );
