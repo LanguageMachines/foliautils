@@ -406,7 +406,9 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
-    numThreads = TiCC::stringTo<int>( value );
+    else {
+      numThreads = TiCC::stringTo<int>( value );
+    }
 #else
     cerr << "OpenMP support is missing. -t options not supported!" << endl;
     exit( EXIT_FAILURE );
