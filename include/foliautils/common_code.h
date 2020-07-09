@@ -33,6 +33,8 @@
 #include "ticcutils/Unicode.h"
 #include <string>
 
+extern const int XML_PARSER_OPTIONS;
+
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
 xmlDoc *getXml( const std::string& , zipType& );

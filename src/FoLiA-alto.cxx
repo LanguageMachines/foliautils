@@ -55,8 +55,6 @@ bool clearCachedFiles = false;
 string setname = "FoLia-alto-set";
 string classname = "OCR";
 
-const int XML_PARSER_OPTIONS = XML_PARSE_NOBLANKS|XML_PARSE_HUGE;
-
 class docCache {
 public:
   ~docCache() { clear(); };

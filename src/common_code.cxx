@@ -37,6 +37,8 @@
 using namespace std;
 using namespace icu;
 
+const int XML_PARSER_OPTIONS = XML_PARSE_NOBLANKS|XML_PARSE_HUGE;
+
 xmlDoc *getXml( const string& file, zipType& type ){
   type = UNKNOWN;
   bool isHtml = false;
@@ -88,20 +90,20 @@ xmlDoc *getXml( const string& file, zipType& type ){
     if ( type == BZ2 ){
       string buffer = TiCC::bz2ReadFile( file );
       return htmlReadMemory( buffer.c_str(), buffer.length(),
-			     0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+			     0, 0, XML_PARSER_OPTIONS );
     }
     else {
-      return htmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+      return htmlReadFile( file.c_str(), 0, XML_PARSER_OPTIONS );
     }
   }
   else {
     if ( type == BZ2 ){
       string buffer = TiCC::bz2ReadFile( file );
       return xmlReadMemory( buffer.c_str(), buffer.length(),
-			    0, 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+			    0, 0, XML_PARSER_OPTIONS );
     }
     else {
-      return xmlReadFile( file.c_str(), 0, XML_PARSE_NOBLANKS|XML_PARSE_HUGE );
+      return xmlReadFile( file.c_str(), 0, XML_PARSER_OPTIONS );
     }
   }
 }
