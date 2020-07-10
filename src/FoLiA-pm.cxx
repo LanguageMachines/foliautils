@@ -1375,7 +1375,7 @@ void convert_to_folia( const string& file,
   }
   xmlDoc *xmldoc = xmlReadFile( file.c_str(),
 				0,
-				XML_PARSER_OPTIONS );
+				::XML_PARSER_OPTIONS );
   if ( xmldoc ){
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     xmlNode *metadata = TiCC::xPath( root, "//meta" );
