@@ -199,8 +199,8 @@ int main( int argc, char *argv[] ){
     while ( getline( is, line ) ){
       line = TiCC::trim(line);
       if ( line.empty() ){
-	TiCC::trim( parTxt );
-	if ( par && !parTxt.empty() ){
+	parTxt = TiCC::trim( parTxt );
+	if ( par && !is_norm_empty(parTxt) ){
 	  par->settext( parTxt, classname );
 	  text->append( par );
 	  parTxt = "";
@@ -219,7 +219,7 @@ int main( int argc, char *argv[] ){
 	}
 	string content = w;
 	content = TiCC::trim( content);
-	if ( !content.empty() ){
+	if ( !is_norm_empty(content) ){
 	  folia::KWargs args;
 	  args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = new folia::String( args, d );
@@ -240,7 +240,7 @@ int main( int argc, char *argv[] ){
       continue;
     }
     parTxt = TiCC::trim( parTxt );
-    if ( !parTxt.empty() ){
+    if ( !is_norm_empty(parTxt) ){
       par->settext( parTxt, classname );
       text->append( par );
     }
