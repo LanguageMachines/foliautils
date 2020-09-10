@@ -1186,8 +1186,9 @@ void usage( const string& name ){
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
-  cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
-  cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
+  cerr << "\t\t If 'threads' has the value \"max\", the number of threads is set" << endl;
+  cerr << "\t\t to a reasonable value. (OMP_NUM_TREADS - 2)" << endl;
+  cerr << "\t-v increase verbosity level. Repeat for even more output." << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }
