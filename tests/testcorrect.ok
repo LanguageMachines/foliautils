@@ -20,8 +20,9 @@ Usage: [options] file/dir
 	-R	 search the dirs recursively (when appropriate)
 	-t <threads>
 	--threads <threads> Number of threads to run on.
-			 If 'threads' has the value "max", the number of threads is set to a
-			 reasonable value. (OMP_NUM_TREADS - 2)
+		 If 'threads' has the value "max", the number of threads is set
+		 to a reasonable value. (OMP_NUM_TREADS - 2)
+	-v increase verbosity level. Repeat for even more output.
 	-h or --help	 this message 
 	-V or --version	 show version 
 start reading variants 
