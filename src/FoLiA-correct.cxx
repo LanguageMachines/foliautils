@@ -151,6 +151,7 @@ gram_r::gram_r( const string& val, FoliaElement *el ) :
   _suggestions(0)
 {
   _orig.push_back( val );
+  //  cerr << "create gram_r: " << el->xmlstring() << endl;
   _words.push_back( el );
 }
 
@@ -160,6 +161,9 @@ size_t unicode_size( const string& value ){
 }
 
 void gram_r::set_output_text( size_t& offset ) const {
+  // cerr << "SET TEXT on: " << _words[0]->xmlstring() << endl;
+  // cerr << "SET TEXT: " << orig_text() << endl;
+  // cerr << "SET TEXT class: " << output_classname << endl;
   _words[0]->settext( orig_text(), offset, output_classname );
   offset += unicode_size(orig_text()) + 1;
 }
@@ -890,7 +894,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	}
 	else {
 	  if ( verbose > 4 ){
-	    cerr << "VOOR add to result: 1" << inventory[i] << endl;
+	    cerr << "VOOR add to result 1: " << inventory[i] << endl;
 	  }
 	  add_to_result( result, mw, inventory, i-1 );
 	}
@@ -906,7 +910,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
       }
       else {
 	if ( verbose > 4 ){
-	  cerr << "VOOR add to result: 2" << inventory[i] << endl;
+	  cerr << "VOOR add to result 2: " << inventory[i] << endl;
 	}
 	add_to_result( result, mw, inventory, i );
       }
@@ -921,9 +925,9 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	}
 	else {
 	  if ( verbose > 4 ){
-	    cerr << "VOOR add to result: 3" << inventory[i] << endl;
+	    cerr << "VOOR add to result 3: " << inventory[i] << endl;
 	  }
-	  add_to_result( result, mw, inventory, i );
+	  add_to_result( result, mw, inventory, i-1 );
 	}
 	mw = "";
       }
@@ -945,7 +949,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     }
     else {
       if ( verbose > 4 ){
-	cerr << "VOOR add to result: 4" << inventory[unigrams.size()-1] << endl;
+	cerr << "VOOR add to result 4: " << inventory[unigrams.size()-1] << endl;
       }
       add_to_result( result, mw, inventory, unigrams.size()-1 );
     }
@@ -959,7 +963,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 			      const unordered_map<string,string>& puncts ){
   if ( verbose > 4 ){
-    cout << "replace HEMS in UNIGRAMS:\n" << unigrams << endl;
+    cout << "replace HEMPS in UNIGRAMS:\n" << unigrams << endl;
   }
   vector<UnicodeString> u_uni( unigrams.size() );
   for ( size_t i=0; i < unigrams.size(); ++i ){
@@ -980,7 +984,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
   }
   vector<gram_r> result = replace_hemps( unigrams, inventory, puncts );
   if ( verbose > 4 ){
-    cout << "replace HEMS out UNIGRAMS:\n" << result << endl;
+    cout << "replace HEMPS out UNIGRAMS:\n" << result << endl;
   }
   return result;
 }
