@@ -6,7 +6,7 @@
     "@type": "SoftwareSourceCode",
     "identifier": "foliautils",
     "name": "foliautils",
-    "version": "0.15",
+    "version": "0.16",
     "description": "Command-line utilities for working with the Format for Linguistic Annotation (FoLiA).",
     "license": "https://spdx.org/licenses/GPL-3.0",
 	"url": "https://github.com/LanguageMachines/foliautils",
