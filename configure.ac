@@ -95,7 +95,7 @@ PKG_CHECK_MODULES([ucto], [ucto >= 0.9.4] )
 CXXFLAGS="$ucto_CFLAGS $CXXFLAGS"
 LIBS="$ucto_LIBS $LIBS"
 
-PKG_CHECK_MODULES([folia], [folia >= 2.4] )
+PKG_CHECK_MODULES([folia], [folia >= 2.5.1] )
 CXXFLAGS="$folia_CFLAGS $CXXFLAGS"
 LIBS="$folia_LIBS $LIBS"
 
