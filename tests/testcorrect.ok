@@ -726,6 +726,199 @@ edit statistics:
 	3-3	1
 	TOKENS	31
 	UNK	1
+start reading variants 
+read 9 variants 
+start reading unknowns 
+read 4 unknown words 
+start reading puncts 
+read 14 punctuated words 
+verbosity = 2
+start 3-gram correcting in file: data/corr.folia.xml
+
+   correct 3-grams in: '40ste vergadering' (rebased)
+correct bigrams
+bigram is: '40ste_vergadering'
+no correction for bigram: 40ste_vergadering
+try unigram: 40ste
+40ste = 2 => 40ste
+corrected 3-grams uit: '40ste vergadering' (current)
+
+   correct 3-grams in: '2003-2004' (rebased)
+correct unigrams
+corrected 3-grams uit: '2003-2004' (current)
+
+   correct 3-grams in: '40' (rebased)
+correct unigrams
+corrected 3-grams uit: '40' (current)
+
+   correct 3-grams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (rebased)
+correct trigrams
+trigram is: 'Aan_de_orde'
+no correction for trigram: Aan_de_orde
+try bigram: Aan_de
+no correction for bigram: Aan_de
+try unigram: Aan
+Aan = 2 => Aan
+Aan = 3 => Aan extra_skip=0
+trigram is: 'de_orde_is'
+no correction for trigram: de_orde_is
+try bigram: de_orde
+no correction for bigram: de_orde
+try unigram: de
+de = 2 => de
+de = 3 => de extra_skip=0
+trigram is: 'orde_is_de'
+no correction for trigram: orde_is_de
+try bigram: orde_is
+no correction for bigram: orde_is
+try unigram: orde
+orde = 2 => orde
+orde = 3 => orde extra_skip=0
+trigram is: 'is_de_behándeling'
+no correction for trigram: is_de_behándeling
+try bigram: is_de
+no correction for bigram: is_de
+try unigram: is
+is = 2 => is
+is = 3 => is extra_skip=0
+trigram is: 'de_behándeling_van:'
+no correction for trigram: de_behándeling_van:
+try bigram: de_behándeling
+no correction for bigram: de_behándeling
+try unigram: de
+de = 2 => de
+de = 3 => de extra_skip=0
+trigram is: 'behándeling_van:_het'
+no correction for trigram: behándeling_van:_het
+try bigram: behándeling_van:
+no correction for bigram: behándeling_van:
+try unigram: behándeling
+behándeling = 1-1 => behandeling
+correction: 
+behándeling (1-1) ==> behandeling
+behándeling = 2 => behandeling
+behándeling = 3 => behandeling extra_skip=0
+trigram is: 'van:_het_wetsvoorstel'
+no correction for trigram: van:_het_wetsvoorstel
+try bigram: van:_het
+no correction for bigram: van:_het
+try unigram: van:
+van: = 2 => van:
+van: = 3 => van: extra_skip=0
+trigram is: 'het_wetsvoorstel_Wijsiging'
+no correction for trigram: het_wetsvoorstel_Wijsiging
+try bigram: het_wetsvoorstel
+no correction for bigram: het_wetsvoorstel
+try unigram: het
+het = 2 => het
+het = 3 => het extra_skip=0
+trigram is: 'wetsvoorstel_Wijsiging_van'
+no correction for trigram: wetsvoorstel_Wijsiging_van
+try bigram: wetsvoorstel_Wijsiging
+no correction for bigram: wetsvoorstel_Wijsiging
+try unigram: wetsvoorstel
+wetsvoorstel = 2 => wetsvoorstel
+wetsvoorstel = 3 => wetsvoorstel extra_skip=0
+trigram is: 'Wijsiging_van_de'
+no correction for trigram: Wijsiging_van_de
+try bigram: Wijsiging_van
+Wijsiging_van = 2-2 => Wijziging van
+correction: 
+Wijsiging_van (2-2) ==> Wijziging van
+Wijsiging_van = 2 => Wijziging van
+Wijsiging_van = 3 => Wijziging van extra_skip=1
+trigram is: 'de_Wet_opde'
+no correction for trigram: de_Wet_opde
+try bigram: de_Wet
+no correction for bigram: de_Wet
+try unigram: de
+de = 2 => de
+de = 3 => de extra_skip=0
+trigram is: 'Wet_opde_omzetbelasting'
+no correction for trigram: Wet_opde_omzetbelasting
+try bigram: Wet_opde
+no correction for bigram: Wet_opde
+try unigram: Wet
+Wet = 2 => Wet
+Wet = 3 => Wet extra_skip=0
+trigram is: 'opde_omzetbelasting_1968.'
+no correction for trigram: opde_omzetbelasting_1968.
+try bigram: opde_omzetbelasting
+no correction for bigram: opde_omzetbelasting
+try unigram: opde
+opde = 1-2 => op de
+correction: 
+opde (1-2) ==> op de
+opde = 2 => op de
+opde = 3 => op de extra_skip=0
+no correction for bigram: omzetbelasting_1968.
+try unigram: omzetbelasting
+omzetbelasting = 2 => omzetbelasting
+corrected 3-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.' (current)
+
+   correct 3-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (rebased)
+correct trigrams
+trigram is: 'Deze_wets_voorstellen'
+no correction for trigram: Deze_wets_voorstellen
+try bigram: Deze_wets
+no correction for bigram: Deze_wets
+try unigram: Deze
+Deze = 2 => Deze
+Deze = 3 => Deze extra_skip=0
+trigram is: 'wets_voorstellen_worden'
+no correction for trigram: wets_voorstellen_worden
+try bigram: wets_voorstellen
+wets_voorstellen = 2-1 => wetsvoorstellen
+correction: 
+wets_voorstellen (2-1) ==> wetsvoorstellen
+wets_voorstellen = 2 => wetsvoorstellen
+wets_voorstellen = 3 => wetsvoorstellen extra_skip=1
+trigram is: 'worden_zonder_s4s67621'
+no correction for trigram: worden_zonder_s4s67621
+try bigram: worden_zonder
+no correction for bigram: worden_zonder
+try unigram: worden
+worden = 2 => worden
+worden = 3 => worden extra_skip=0
+trigram is: 'zonder_s4s67621_en'
+no correction for trigram: zonder_s4s67621_en
+try bigram: zonder_s4s67621
+no correction for bigram: zonder_s4s67621
+try unigram: zonder
+zonder = 2 => zonder
+zonder = 3 => zonder extra_skip=0
+trigram is: 's4s67621_en_zonder'
+no correction for trigram: s4s67621_en_zonder
+try bigram: s4s67621_en
+no correction for bigram: s4s67621_en
+try unigram: s4s67621
+correction: 
+s4s67621 (1-1) ==> UNK
+s4s67621 = 2 => UNK
+s4s67621 = 3 => UNK extra_skip=0
+trigram is: 'en_zonder_steming'
+no correction for trigram: en_zonder_steming
+try bigram: en_zonder
+no correction for bigram: en_zonder
+try unigram: en
+en = 2 => en
+en = 3 => en extra_skip=0
+trigram is: 'zonder_steming_aangenomen'
+zonder_steming_aangenomen = 3-3 => zonder stemming aangenomen
+correction: 
+zonder_steming_aangenomen (3-3) ==> zonder stemming aangenomen
+zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
+corrected 3-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .' (current)
+finished data/corr.folia.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	1-2	1
+	2-1	1
+	2-2	1
+	3-3	1
+	TOKENS	31
+	UNK	1
 --word-nodes no longer needed
 start reading variants 
 read 1 variants 

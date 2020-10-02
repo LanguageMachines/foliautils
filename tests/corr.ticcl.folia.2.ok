@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.5.2" version="2.2.0">
+  <metadata type="native">
+    <annotations>
+      <head-annotation/>
+      <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
+      <lang-annotation set="iso"/>
+      <paragraph-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <correction-annotation set="Ticcl-set">
+        <annotator processor="FoLiA-correct.1"/>
+      </correction-annotation>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2020-10-02T15:31:37" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --outputclass=current --rebase_inputclass=rebased --clear -v  -v " folia_version="2.3.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.3.0" name="libfolia" type="generator" version="2.5.2"/>
+      </processor>
+    </provenance>
+    <meta id="language">dut</meta>
+  </metadata>
+  <text xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.text">
+    <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.div" class="topic">
+      <head>
+        <t class="rebased">Diverse wetsvoorstellen</t>
+      </head>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.1" class="chair"/>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2" class="intro">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1">
+          <t>40ste vergadering</t>
+          <t class="rebased">40ste vergadering</t>
+          <lang class="dut"/>
+        </p>
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.2">
+          <t>2003-2004</t>
+          <t class="rebased">2003-2004</t>
+          <lang class="fre"/>
+        </p>
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.3">
+          <t>40</t>
+          <t class="rebased">40</t>
+          <lang class="UNKNOWN"/>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3" class="subject">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1">
+          <t>Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.</t>
+          <t class="rebased">Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.  </t>
+          <lang class="dut"/>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
+          <t>Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .</t>
+          <t class="rebased">Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .</t>
+          <lang class="dut"/>
+        </p>
+      </div>
+    </div>
+  </text>
+</FoLiA>
