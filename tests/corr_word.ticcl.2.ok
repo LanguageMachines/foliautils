@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.5.2" version="2.2.0">
+  <metadata type="native">
+    <annotations>
+      <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
+      <lang-annotation set="iso"/>
+      <head-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <paragraph-annotation/>
+      <token-annotation/>
+      <correction-annotation set="Ticcl-set">
+        <annotator processor="FoLiA-correct.1"/>
+      </correction-annotation>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2020-10-02T15:23:07" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --rebase_inputclass=original --outputclass=current --word-nodes -v  -v " folia_version="2.3.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.3.0" name="libfolia" type="generator" version="2.5.2"/>
+      </processor>
+    </provenance>
+    <meta id="language">dut</meta>
+  </metadata>
+  <text xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.text">
+    <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.div" class="topic">
+      <head>
+        <t class="original">Diverse wetsvoorstellen</t>
+      </head>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2" class="intro">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.1">
+          <t>40ste vergadering</t>
+          <t class="original">40ste vergadering</t>
+          <lang class="dut"/>
+          <w xml:id="p1.1">
+            <t offset="0">40ste</t>
+            <t class="original">40ste</t>
+          </w>
+          <w xml:id="p1.2">
+            <t offset="6">vergadering</t>
+            <t class="original">vergadering</t>
+          </w>
+        </p>
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.2">
+          <t>2003-2004</t>
+          <t class="original">2003-2004</t>
+          <lang class="fre"/>
+          <w xml:id="p2.1">
+            <t offset="0">2003-2004</t>
+            <t class="original">2003-2004</t>
+          </w>
+        </p>
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.2.3">
+          <t>40</t>
+          <t class="original">40</t>
+          <lang class="UNKNOWN"/>
+          <w xml:id="p3.1">
+            <t offset="0">40</t>
+            <t class="original">40</t>
+          </w>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3" class="subject">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1">
+          <t>Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.</t>
+          <t class="original">Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.</t>
+          <lang class="dut"/>
+          <w xml:id="p4.1">
+            <t offset="0">Aan</t>
+            <t class="original">Aan</t>
+          </w>
+          <w xml:id="p4.2">
+            <t offset="4">de</t>
+            <t class="original">de</t>
+          </w>
+          <w xml:id="p4.3">
+            <t offset="7">orde</t>
+            <t class="original">orde</t>
+          </w>
+          <w xml:id="p4.4">
+            <t offset="12">is</t>
+            <t class="original">is</t>
+          </w>
+          <w xml:id="p4.5">
+            <t offset="15">de</t>
+            <t class="original">de</t>
+          </w>
+          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1">
+            <new>
+              <w xml:id="p4.6.edit.1">
+                <t offset="18">behandeling</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p4.6">
+                <t class="original">behándeling</t>
+              </w>
+            </original>
+          </correction>
+          <w xml:id="p4.7">
+            <t offset="30">van:</t>
+            <t class="original">van:</t>
+          </w>
+          <w xml:id="p4.8">
+            <t offset="35">het</t>
+            <t class="original">het</t>
+          </w>
+          <w xml:id="p4.9">
+            <t offset="39">wetsvoorstel</t>
+            <t class="original">wetsvoorstel</t>
+          </w>
+          <w xml:id="p4.10">
+            <t offset="52">Wijsiging</t>
+            <t class="original">Wijsiging</t>
+          </w>
+          <w xml:id="p4.11">
+            <t offset="62">van</t>
+            <t class="original">van</t>
+          </w>
+          <w xml:id="p4.12">
+            <t offset="66">de</t>
+            <t class="original">de</t>
+          </w>
+          <w xml:id="p4.13">
+            <t offset="69">Wet</t>
+            <t class="original">Wet</t>
+          </w>
+          <w xml:id="p4.14">
+            <t offset="73">opde</t>
+            <t class="original">opde</t>
+          </w>
+          <w xml:id="p4.15">
+            <t offset="78">omzetbelasting</t>
+            <t class="original">omzetbelasting</t>
+          </w>
+          <w xml:id="p4.16">
+            <t offset="93">1998.</t>
+            <t class="original">1998.</t>
+          </w>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
+          <t>Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .</t>
+          <t class="original">Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .</t>
+          <lang class="dut"/>
+          <w xml:id="p5.1">
+            <t offset="0">Deze</t>
+            <t class="original">Deze</t>
+          </w>
+          <w xml:id="p5.2">
+            <t offset="5">wets</t>
+            <t class="original">wets</t>
+          </w>
+          <w xml:id="p5.3">
+            <t offset="10">voorstellen</t>
+            <t class="original">voorstellen</t>
+          </w>
+          <w xml:id="p5.4">
+            <t offset="22">worden</t>
+            <t class="original">worden</t>
+          </w>
+          <w xml:id="p5.5">
+            <t offset="29">zonder</t>
+            <t class="original">zonder</t>
+          </w>
+          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1">
+            <new>
+              <w xml:id="p5.6.edit.1">
+                <t offset="36">UNK</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p5.6">
+                <t class="original">s4s67621</t>
+              </w>
+            </original>
+          </correction>
+          <w xml:id="p5.7">
+            <t offset="40">en</t>
+            <t class="original">en</t>
+          </w>
+          <w xml:id="p5.8">
+            <t offset="43">zonder</t>
+            <t class="original">zonder</t>
+          </w>
+          <w xml:id="p5.9">
+            <t offset="50">stemming</t>
+            <t class="original">stemming</t>
+          </w>
+          <w xml:id="p5.10">
+            <t offset="59">aangenomen</t>
+            <t class="original">aangenomen</t>
+          </w>
+          <w xml:id="p5.11">
+            <t offset="70">.</t>
+            <t class="original">.</t>
+          </w>
+        </p>
+      </div>
+    </div>
+  </text>
+</FoLiA>

@@ -1,10 +1,12 @@
 missing '--punct' option
-foliautils 0.14
+foliautils 0.16
 Usage: [options] file/dir
 	 FoLiA-correct will correct FoLiA files 
 	 or a whole directory of FoLiA files 
-	--inputclass	 classname. (default 'current')
-	--outputclass	 classname. (default 'Ticcl')
+	--inputclass 'classname'.	 (default 'current')
+	--outputclass 'classname'.	 (default 'Ticcl')
+	--rebase_inputclass 'classname'.	 (default "")
+		 rename the text with classname 'inputclass' to class 'classname'.
 	--setname	 FoLiA setname. (default 'Ticcl-set')
 	--nums	 max number_of_suggestions. (default 10)
 		 suggestions are only added when there are more then 1.
@@ -151,7 +153,48 @@ edit statistics:
 	TOKENS	31
 	UNK	1
 WARNING: '--class' is deprecated. Please use '--outputclass'.
-inputclass and outputclass are the same
+inputclass and outputclass are the same, and rebase_inputclass not set
+start reading variants 
+read 1 variants 
+start reading unknowns 
+read 4 unknown words 
+start reading puncts 
+read 14 punctuated words 
+verbosity = 2
+start 1-gram correcting in file: data/corr_word.xml
+
+   correct 1-grams in: '40ste vergadering' (original)
+correct unigrams
+corrected 1-grams uit: '40ste vergadering' (current)
+
+   correct 1-grams in: '2003-2004' (original)
+correct unigrams
+corrected 1-grams uit: '2003-2004' (current)
+
+   correct 1-grams in: '40' (original)
+correct unigrams
+corrected 1-grams uit: '40' (current)
+
+   correct 1-grams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (original)
+correct unigrams
+behándeling = 1-1 => behandeling
+correction: 
+behándeling (1-1) ==> behandeling [ <w xml:id='p4.6" > {<t>,}]
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (current)
+
+   correct 1-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (original)
+correct unigrams
+correction: 
+s4s67621 (1-1) ==> UNK [ <w xml:id='p5.6" > {<t>,}]
+created:  <correction xml:id='nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (current)
+finished data/corr_word.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	TOKENS	31
+	UNK	1
 start reading variants 
 read 4 variants 
 start reading unknowns 

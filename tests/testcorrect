@@ -23,6 +23,10 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --cle
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=current --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
 
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --rebase_inputclass=original --outputclass=current -v -v data/corr_word.xml >> testcorrect.out  2>&1
+
+./foliadiff.sh corr_word.ticcl.xml corr_word.ticcl.2.ok  >> testcorrect.out 2>&1
+
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr.xml >> testcorrect.out  2>&1
 
 ./foliadiff.sh corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1
