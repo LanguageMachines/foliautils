@@ -13,7 +13,7 @@ Usage: FoLiA-hocr [options] file/dir
 			 use 'none' for an empty prefix. (can be dangerous)
 	-v	 verbose output 
 	-V or --version	 show version 
-foliautils 0.14
+foliautils 0.16
 Usage: FoLiA-hocr [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.

@@ -1,5 +1,5 @@
 missing input file(s)
-FoLiA-page [foliautils 0.14]
+FoLiA-page [foliautils 0.16]
 Usage: FoLiA-page [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.

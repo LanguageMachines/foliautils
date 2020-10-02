@@ -11,10 +11,10 @@ Usage: FoLiA-abby [options] file/dir
 	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
-				 with 'c'=g create gzip files (.gz)
+			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-FoLiA-abby [foliautils 0.14]
+FoLiA-abby [foliautils 0.16]
 Usage: FoLiA-abby [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.
@@ -27,11 +27,11 @@ Usage: FoLiA-abby [options] file/dir
 	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
-				 with 'c'=g create gzip files (.gz)
+			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 3 files 
+	converted data/abby/morse_OCR_perletter.xml
 	converted data/abby/morse_OCR_perletter2.xml.gz
 	converted data/abby/levi010geil01_01_Deel500.xml
-	converted data/abby/morse_OCR_perletter.xml
 done

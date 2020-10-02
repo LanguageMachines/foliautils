@@ -10,7 +10,7 @@ Usage: [options] file/dir
 	-O	 output directory 
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
-foliautils 0.14
+foliautils 0.16
 Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.
@@ -24,7 +24,7 @@ Usage: [options] file/dir
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.4" version="2.2.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.5.2" version="2.3.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="FoLiA-txt-set">
@@ -34,14 +34,14 @@ Usage: [options] file/dir
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2019-11-20T17:08:52" command="FoLiA-txt -O out" folia_version="2.2.1" host="bonus" name="FoLiA-txt" user="sloot" version="0.14">
-        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2020-09-29T11:18:01" command="FoLiA-txt -O out" folia_version="2.3.0" host="kokos" name="FoLiA-txt" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.3.0" name="libfolia" type="generator" version="2.5.2"/>
       </processor>
     </provenance>
   </metadata>
   <text xml:id="test.text">
     <p xml:id="test.p.1">
-      <t class="FoLiA-txt"> Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
+      <t class="FoLiA-txt">Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
       <str xml:id="test.p.1.str.1">
         <t class="FoLiA-txt">Dit</t>
       </str>
@@ -112,7 +112,7 @@ Usage: [options] file/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.4" version="2.2.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.5.2" version="2.3.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="FoLiA-txt-set">
@@ -122,14 +122,14 @@ Usage: [options] file/dir
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2019-11-20T17:08:52" command="FoLiA-txt --class=foobar -O out" folia_version="2.2.1" host="bonus" name="FoLiA-txt" user="sloot" version="0.14">
-        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2020-09-29T11:18:01" command="FoLiA-txt --class=foobar -O out" folia_version="2.3.0" host="kokos" name="FoLiA-txt" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.3.0" name="libfolia" type="generator" version="2.5.2"/>
       </processor>
     </provenance>
   </metadata>
   <text xml:id="test.text">
     <p xml:id="test.p.1">
-      <t class="foobar"> Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
+      <t class="foobar">Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
       <str xml:id="test.p.1.str.1">
         <t class="foobar">Dit</t>
       </str>
@@ -200,7 +200,7 @@ Usage: [options] file/dir
   </text>
 </FoLiA>
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.4" version="2.2.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.5.2" version="2.3.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="foo">
@@ -210,14 +210,14 @@ Usage: [options] file/dir
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2019-11-20T17:08:52" command="FoLiA-txt --class=bar --setname=foo -O out" folia_version="2.2.1" host="bonus" name="FoLiA-txt" user="sloot" version="0.14">
-        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2020-09-29T11:18:01" command="FoLiA-txt --class=bar --setname=foo -O out" folia_version="2.3.0" host="kokos" name="FoLiA-txt" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.3.0" name="libfolia" type="generator" version="2.5.2"/>
       </processor>
     </provenance>
   </metadata>
   <text xml:id="test.text">
     <p xml:id="test.p.1">
-      <t class="bar"> Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
+      <t class="bar">Dit is een test. Met enkele paragrafen. Dit is de eerste.</t>
       <str xml:id="test.p.1.str.1">
         <t class="bar">Dit</t>
       </str>
