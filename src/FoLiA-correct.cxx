@@ -59,7 +59,9 @@ const string SEPARATOR = "_";
 
 int verbose = 0;
 string input_classname = "current";
+string safe_inputclass = input_classname;
 string output_classname = "Ticcl";
+string rebase_inputclass;
 string setname = "Ticcl-set";
 string punct_sep = " ";
 size_t ngram_size = 1;
@@ -1170,12 +1172,26 @@ bool correctDoc( Document *doc,
   return true;
 }
 
+void rebase_text( Document *doc,
+		  const string& inputclass,
+		  const string& rebase_input ){
+
+  vector<TextContent*> tv = doc->doc()->select<TextContent>();
+  for ( const auto& t : tv ){
+    if ( t->cls() == inputclass ){
+      t->update_cls( rebase_input );
+    }
+  }
+}
+
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t " << name << " will correct FoLiA files " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t--inputclass\t classname. (default '" << input_classname << "')" << endl;
-  cerr << "\t--outputclass\t classname. (default '" << output_classname << "')" << endl;
+  cerr << "\t--inputclass 'classname'.\t (default '" << input_classname << "')" << endl;
+  cerr << "\t--outputclass 'classname'.\t (default '" << output_classname << "')" << endl;
+  cerr << "\t--rebase_inputclass 'classname'.\t (default \"\")" << endl;
+  cerr << "\t\t rename the text with classname 'inputclass' to class 'classname'." << endl;
   cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t\t suggestions are only added when there are more then 1." << endl;
@@ -1210,7 +1226,8 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,inputclass:,outputclass:,setname:,clear,unk:,"
+			 "class:,inputclass:,outputclass:,rebase_inputclass:,"
+			 "setname:,clear,unk:,"
 			 "rank:,punct:,nums:,version,help,ngram:,string-nodes,"
 			 "word-nodes,threads:,tags:" );
   try {
@@ -1255,9 +1272,19 @@ int main( int argc, const char *argv[] ){
   // prefer newer variant, if both present.
   opts.extract( "outputclass", output_classname );
   opts.extract( "inputclass", input_classname );
-  if ( input_classname == output_classname ){
-    cerr << "inputclass and outputclass are the same" << endl;
+  opts.extract( "rebase_inputclass", rebase_inputclass );
+  if ( input_classname == output_classname
+       && rebase_inputclass.empty() ){
+    cerr << "inputclass and outputclass are the same, and rebase_inputclass not set" << endl;
     exit( EXIT_FAILURE );
+  }
+  if ( rebase_inputclass == output_classname ){
+    cerr << "rebase_inputclass and outputclass are the same" << endl;
+    exit( EXIT_FAILURE );
+  }
+  if ( !rebase_inputclass.empty() ){
+    safe_inputclass = input_classname;
+    input_classname = rebase_inputclass;
   }
   clear = opts.extract( "clear" );
   opts.extract( 'e', expression );
@@ -1505,6 +1532,9 @@ int main( int argc, const char *argv[] ){
       {
 	cerr << "start " << ngram_size << "-gram correcting in file: "
 	     << doc->filename() << endl;
+      }
+      if ( !rebase_inputclass.empty() ){
+	rebase_text( doc, safe_inputclass, rebase_inputclass );
       }
       try {
 	if ( correctDoc( doc, variants, unknowns, puncts,
