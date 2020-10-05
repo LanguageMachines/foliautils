@@ -269,10 +269,10 @@ int main( int argc, char *argv[] ){
   string cls = "OCR";
   verbose = opts.extract( 'v' );
   string value;
-  int numThreads = 1;
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }

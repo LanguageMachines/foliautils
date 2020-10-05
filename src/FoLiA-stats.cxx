@@ -1660,9 +1660,9 @@ int main( int argc, char *argv[] ){
   out_numt *=4;
   int in_numt = numThreads/out_numt;
   ++in_numt;
-#else
-  int out_numt = 1;
-  int in_numt = 1;
+// #else
+//   int out_numt = 1;
+//   int in_numt = 1;
 #endif
 
   unsigned int fail_docs = 0;
