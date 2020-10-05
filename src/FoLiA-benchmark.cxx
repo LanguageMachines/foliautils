@@ -205,6 +205,7 @@ void test(const string & test_id, const string & filename) {
             folia::Document doc( "file='"+ filename + "'" );
             Measurement m = begin();
             vector<folia::Word*> selection = doc.words();
+            cerr << "found " << selection.size() << " words" << endl;
             end(m, test_id, filename, title);
     } else {
             cerr << "ERROR: No such test: " << test_id << endl;
