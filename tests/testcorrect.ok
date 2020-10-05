@@ -21,7 +21,7 @@ Usage: [options] file/dir
 	--clear	 redo ALL corrections. (default is to skip already processed file)
 	-R	 search the dirs recursively (when appropriate)
 	-t <threads>
-	--threads <threads> Number of threads to run on.
+	--threads <threads> Number of threads to run on. (Default 1)
 		 If 'threads' has the value "max", the number of threads is set
 		 to a reasonable value. (OMP_NUM_TREADS - 2)
 	-v increase verbosity level. Repeat for even more output.

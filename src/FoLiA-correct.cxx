@@ -597,13 +597,11 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
       cout << orig_word << " = " << ed << " => " << result_text() << endl;
     }
     extra_skip = 1;
-    if ( extra_skip > 0 ){
-      if ( verbose ){
-	cout << "correction: " << endl;
-	cout << this << endl;
-      }
-      apply_folia_correction( offset, proc );
+    if ( verbose ){
+      cout << "correction: " << endl;
+      cout << this << endl;
     }
+    apply_folia_correction( offset, proc );
   }
   else {
     // a bigram with no suggested variants
@@ -1205,7 +1203,8 @@ void usage( const string& name ){
   cerr << "\t\t\t or TICCL-chainclean" << endl;
   cerr << "\t--clear\t redo ALL corrections. (default is to skip already processed file)" << endl;
   cerr << "\t-R\t search the dirs recursively (when appropriate)" << endl;
-  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on. "
+       << "(Default 1)" << endl;
   cerr << "\t\t If 'threads' has the value \"max\", the number of threads is set" << endl;
   cerr << "\t\t to a reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-v increase verbosity level. Repeat for even more output." << endl;
@@ -1314,10 +1313,10 @@ int main( int argc, const char *argv[] ){
       exit(EXIT_FAILURE);
     }
   }
+#ifdef HAVE_OPENMP
+  int numThreads = 1;
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
-#ifdef HAVE_OPENMP
-    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -1325,12 +1324,15 @@ int main( int argc, const char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
-    omp_set_num_threads( numThreads );
+  }
+  omp_set_num_threads( numThreads );
 #else
+  if ( opts.extract( 't', value )
+       || opts.extract( "threads", value ) ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
     exit( EXIT_FAILURE );
-#endif
   }
+#endif
   if ( opts.extract( "ngram", value ) ){
     if ( !TiCC::stringTo( value, ngram_size )
 	 || ngram_size > 3
