@@ -441,7 +441,6 @@ int main( int argc, const char *argv[] ) {
 #else
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
     exit( EXIT_FAILURE );
-  }
 #endif
   }
   vector<string> fileNames = opts.getMassOpts();
