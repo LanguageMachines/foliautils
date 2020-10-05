@@ -73,7 +73,6 @@ int main( int argc, char *argv[] ){
     usage( progname );
     exit(EXIT_FAILURE);
   }
-  int numThreads = 1;
   string expression;
   string outputPrefix;
   string value;
@@ -94,6 +93,7 @@ int main( int argc, char *argv[] ){
   bool retaintok = opts.extract( "retaintok" );
   if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -101,19 +101,15 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit(EXIT_FAILURE);
 #endif
   }
   opts.extract('e', expression );
   string class_name = "current";
   opts.extract( "class", class_name );
-
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 ){
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-  }
-#endif
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){

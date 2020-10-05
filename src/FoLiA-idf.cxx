@@ -167,7 +167,6 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
   int clip = 0;
-  int numThreads = 1;
   bool recursiveDirs = false;
   bool lowercase = false;
   string expression;
@@ -194,6 +193,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -201,6 +201,10 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit( EXIT_FAILURE );
 #endif
   }
   if ( opts.extract( "clip", value ) ){
@@ -211,13 +215,6 @@ int main( int argc, char *argv[] ){
   }
   lowercase = opts.extract( "lower" );
   opts.extract( "class", classname );
-#ifdef HAVE_OPENMP
-  if ( numThreads != 1 )
-    omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 )
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-#endif
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.size() == 0 ){

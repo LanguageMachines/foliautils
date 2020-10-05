@@ -1026,79 +1026,6 @@ size_t doc_str_inventory( Mode mode,
   return grand_total;
 }
 
-size_t par_str_inventory( const Document *d, const string& docName,
-			  int min_ng,
-			  int max_ng,
-			  map<string,vector<unsigned int>>& totals_per_n,
-			  bool lowercase,
-			  const string& default_language,
-			  const set<string>& languages,
-			  map<string,vector<map<UnicodeString,unsigned int>>>& wcv,
-			  set<UnicodeString>& emph,
-			  const UnicodeString& sep,
-			  bool detokenize ){
-  if ( verbose ){
-#pragma omp critical
-    {
-      cout << "make a par_str inventory on:" << docName << endl;
-    }
-  }
-  TEXT_FLAGS flags = TEXT_FLAGS::NONE;
-  if ( !detokenize ){
-    flags = flags | TEXT_FLAGS::RETAIN;
-  }
-  size_t grand_total = 0;
-  vector<Paragraph*> pars = d->paragraphs();
-  for ( const auto& p : pars ){
-    vector<String*> strings = p->select<String>();
-    if ( verbose ){
-#pragma omp critical
-      {
-	cout << "found " << strings.size() << " strings" << endl;
-      }
-    }
-    string lang = p->language();
-    if ( default_language != "all" ){
-      if ( languages.find( lang ) == languages.end() ){
-	// lang is 'unwanted', just add to the default
-	if ( default_language == "skip" ){
-	  continue;
-	}
-	lang = default_language;
-      }
-    }
-    vector<UnicodeString> data;
-    for ( const auto& s : strings ){
-      UnicodeString us;
-      try {
-	us = s->text(classname,flags);
-	if ( lowercase ){
-	  us.toLower();
-	}
-      }
-      catch(...){
-#pragma omp critical
-	{
-	  cerr << "FoLiA-stats: missing text for word " << s->id() << endl;
-	}
-	  break;
-      }
-      data.push_back( us );
-    }
-    if ( data.size() != strings.size() ) {
-#pragma omp critical
-      {
-	cerr << "FoLiA-stats: Missing words! skipped paragraph " << p->id() << " in " << docName << endl;
-      }
-      return 0;
-    }
-
-    add_emph_inventory( data, emph );
-    grand_total += add_word_inventory( data, wcv[lang], min_ng, max_ng, totals_per_n[lang], sep );
-  }
-  return grand_total;
-}
-
 vector<FoliaElement*> gather_nodes( const Document *doc,
 				    const string& docName,
 				    const set<string>& tags_v,
@@ -1660,9 +1587,6 @@ int main( int argc, char *argv[] ){
   out_numt *=4;
   int in_numt = numThreads/out_numt;
   ++in_numt;
-// #else
-//   int out_numt = 1;
-//   int in_numt = 1;
 #endif
 
   unsigned int fail_docs = 0;

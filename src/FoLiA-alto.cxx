@@ -1312,7 +1312,6 @@ int main( int argc, char *argv[] ){
     usage();
     exit( EXIT_FAILURE );
   }
-  int numThreads=1;
   string alto_cache = "/tmp/altocache/";
   bool do_direct;
   string outputDir;
@@ -1354,6 +1353,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract('t', value )
        || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads=1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -1361,6 +1361,9 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit(EXIT_FAILURE);
 #endif
   }
   opts.extract( "setname", setname );
@@ -1455,11 +1458,6 @@ int main( int argc, char *argv[] ){
   }
   size_t toDo = fileNames.size();
   cout << "start processing of " << toDo << " files " << endl;
-  if ( numThreads >= 1 ){
-#ifdef HAVE_OPENMP
-    omp_set_num_threads( numThreads );
-#endif
-  }
 
   int fail_count = 0;
 #pragma omp parallel for shared(fileNames,fail_count) schedule(dynamic)

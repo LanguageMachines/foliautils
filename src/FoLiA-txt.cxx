@@ -72,7 +72,6 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   string outputDir;
-  int numThreads = 1;
   string value;
   if ( opts.empty() ){
     usage();
@@ -92,6 +91,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -99,8 +99,13 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit( EXIT_FAILURE );
 #endif
   }
+
   opts.extract( 'O', outputDir );
   if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' ){
     outputDir += "/";
@@ -135,13 +140,6 @@ int main( int argc, char *argv[] ){
   if ( to_do > 1 ){
     cout << "start processing of " << to_do << " files " << endl;
   }
-
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 )
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-#endif
 
   size_t failed_docs = 0;
 #pragma omp parallel for shared(file_names) schedule(dynamic)

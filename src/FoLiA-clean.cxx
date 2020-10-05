@@ -337,7 +337,6 @@ int main( int argc, char *argv[] ){
     usage( progname );
     exit(EXIT_FAILURE);
   }
-  int numThreads = 1;
   string value;
   if ( opts.extract('V') || opts.extract("version") ){
     cerr << PACKAGE_STRING << endl;
@@ -356,6 +355,7 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -363,6 +363,10 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit( EXIT_FAILURE );
 #endif
   }
   string class_name = "current";
@@ -404,14 +408,6 @@ int main( int argc, char *argv[] ){
     }
     clean_sets[at].insert(setname);
   }
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 ){
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-  }
-#endif
-
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){

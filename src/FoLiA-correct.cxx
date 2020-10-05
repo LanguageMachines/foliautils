@@ -86,7 +86,7 @@ class gram_r {
   friend ostream& operator<<( ostream& os, const gram_r* );
 public:
   gram_r( const string&, FoliaElement* );
-  gram_r( const string& s ): gram_r(s,0){};
+  explicit gram_r( const string& s ): gram_r(s,0){};
   FoliaElement *word( size_t index ) const {
     return _words[index];
   }
@@ -852,7 +852,7 @@ string correct_trigrams( const vector<gram_r>& trigrams,
 //#define HEMP_DEBUG
 
 void add_to_result( vector<gram_r>& result,
-		    const string mw,
+		    const string& mw,
 		    const vector<pair<hemp_status,FoliaElement*>>& inventory,
 		    const size_t last ){
   vector<string> parts = TiCC::split_at( mw, "_" );
@@ -1239,7 +1239,6 @@ int main( int argc, const char *argv[] ){
     exit( EXIT_FAILURE );
   }
   string progname = opts.prog_name();
-  int numThreads = 1;
   size_t numSugg = 10;
   bool recursiveDirs = false;
   bool clear = false;
@@ -1318,6 +1317,7 @@ int main( int argc, const char *argv[] ){
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -1325,6 +1325,10 @@ int main( int argc, const char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit( EXIT_FAILURE );
 #endif
   }
   if ( opts.extract( "ngram", value ) ){
@@ -1382,13 +1386,6 @@ int main( int argc, const char *argv[] ){
       }
     }
   }
-
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 )
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-#endif
 
   vector<string> fileNames;
   for ( const auto& fn : file_names ){

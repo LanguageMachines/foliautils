@@ -406,7 +406,6 @@ int main( int argc, const char *argv[] ) {
   string inputclass = "current";
   string outputclass = "translated";
   string expression = "*.folia.xml";
-  int numThreads = 1;
   bool recursiveDirs = false;
   string outPrefix;
   string value;
@@ -430,6 +429,7 @@ int main( int argc, const char *argv[] ) {
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
+    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -437,6 +437,11 @@ int main( int argc, const char *argv[] ) {
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
+#else
+    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
+    exit( EXIT_FAILURE );
+  }
 #endif
   }
   vector<string> fileNames = opts.getMassOpts();
@@ -504,15 +509,6 @@ int main( int argc, const char *argv[] ) {
     int cnt = loadRules(rulefile, rules);
     cerr << cnt << " entries" << endl;
   }
-
-#ifdef HAVE_OPENMP
-  omp_set_num_threads( numThreads );
-#else
-  if ( numThreads != 1 ) {
-    cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
-    exit( EXIT_FAILURE );
-  }
-#endif
 
   string name = fileNames[0];
   fileNames = TiCC::searchFilesMatch( name, expression, recursiveDirs );
