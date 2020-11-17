@@ -143,12 +143,12 @@ void add_reference( TextContent *tc, xmlNode *p ){
   if ( !ref.empty() ){
     KWargs args;
     args["xlink:href"] = ref;
-    args["type"] = "locator";
+    args["xlink:type"] = "locator";
     if ( !sub_type.empty() ){
-      args["role"] = sub_type;
+      args["xlink:role"] = sub_type;
     }
     if ( !status.empty() ){
-      args["label"] = status;
+      args["xlink:label"] = status;
     }
     if ( !text_part.empty() ){
       args["text"] = text_part;
@@ -1172,7 +1172,6 @@ void process_topic( const string& outDir,
     args.clear();
     args["xml:id"] = id;
     args["src"] = id + ".folia.xml";
-    args["include"] = "no";
     folia::External *ext = new External( args );
     base_text->append( ext );
   }
