@@ -130,8 +130,16 @@ void process( folia::FoliaElement *out,
 }
 
 string getOrg( xmlNode *root ){
-  xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
   string result;
+  xmlNode* page = TiCC::xPath( root, "*:Page" );
+  if ( page ){
+    string ref = TiCC::getAttribute( page, "imageFilename" );
+    if ( !ref.empty() ) {
+      result = ref;
+      return result;
+    }
+  }
+  xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
   if ( comment ){
     xmlNode *node = comment->children;
     if ( node->type == XML_CDATA_SECTION_NODE ){
@@ -145,7 +153,7 @@ string getOrg( xmlNode *root ){
       }
     }
   }
-  return result;
+ return result;
 }
 
 string stripDir( const string& name ){
