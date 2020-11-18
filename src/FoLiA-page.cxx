@@ -129,16 +129,20 @@ void process( folia::FoliaElement *out,
   }
 }
 
-string getOrg( xmlNode *node ){
+string getOrg( xmlNode *root ){
+  xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
   string result;
-  if ( node->type == XML_CDATA_SECTION_NODE ){
-    string cdata = (char*)node->content;
-    string::size_type pos = cdata.find("Original.Path");
-    if ( pos != string::npos ){
-      string::size_type epos = cdata.find( "/meta", pos );
-      string longName = cdata.substr( pos+15, epos - pos - 16 );
-      pos = longName.rfind( "/" );
-      result = longName.substr( pos+1 );
+  if ( comment ){
+    xmlNode *node = comment->children;
+    if ( node->type == XML_CDATA_SECTION_NODE ){
+      string cdata = (char*)node->content;
+      string::size_type pos = cdata.find("Original.Path");
+      if ( pos != string::npos ){
+	string::size_type epos = cdata.find( "/meta", pos );
+	string longName = cdata.substr( pos+15, epos - pos - 16 );
+	pos = longName.rfind( "/" );
+	result = longName.substr( pos+1 );
+      }
     }
   }
   return result;
@@ -176,11 +180,7 @@ bool convert_pagexml( const string& fileName,
     return false;
   }
   xmlNode *root = xmlDocGetRootElement( xdoc );
-  xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
-  string orgFile;
-  if ( comment ){
-    orgFile = getOrg( comment->children );
-  }
+  string orgFile = getOrg( root );
   if ( orgFile.empty() ) {
 #pragma omp critical
     {
