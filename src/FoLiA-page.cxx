@@ -286,20 +286,25 @@ bool convert_pagexml( const string& fileName,
       type.clear();
     }
     if ( !type.empty() ){
-      xmlNode *unicode = TiCC::xPath( region, ".//*:Unicode" );
-      if ( !unicode ){
+      list<xmlNode*> unicodes = TiCC::FindNodes( region, "./*:TextEquiv/*:Unicode" );
+      if ( unicodes.empty() ){
 #pragma omp critical
 	{
-	  cerr << "missing Unicode node in " << TiCC::Name(*it) << " of " << fileName << endl;
+	  cerr << "missing Unicode node in " << TiCC::Name(region) << " of " << fileName << endl;
 	}
       }
       else {
-	string value = TiCC::XmlContent( unicode );
+	string full_line;
+	for ( const auto& unicode : unicodes ){
+	  string value = TiCC::XmlContent( unicode );
+	  //	  cerr << "string: '" << value << endl;
+	  full_line += value + " ";
+	}
 	if ( key >= 0 ){
-	  regionStrings[key] = value;
+	  regionStrings[key] = full_line;
 	}
 	else if ( type == "page-number" || type == "header"){
-	  specials[type] = value;
+	  specials[type] = full_line;
 	  specialRefs[type] = index;
 	}
       }
