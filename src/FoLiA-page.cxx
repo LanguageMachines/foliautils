@@ -166,6 +166,85 @@ string stripDir( const string& name ){
   }
 }
 
+void handle_one_region( xmlNode *region,
+			const string& fileName,
+			vector<string>& regionStrings,
+			map<string,int>& refs,
+			map<string,string>& specials,
+			map<string,string>& specialRefs ){
+  list<xmlNode*> lines = TiCC::FindNodes( region, ".//*:TextLine" );
+  if ( !lines.empty() ){
+    cout << "found textlines" << endl;
+  }
+  string index = TiCC::getAttribute( region, "id" );
+  string type = TiCC::getAttribute( region, "type" );
+  int key = -1;
+  if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
+       || type == "catch-word" || type == "drop-capital" ){
+    if ( refs.size() > 0 ){
+      map<string,int>::const_iterator mit = refs.find(index);
+      if ( mit == refs.end() ){
+#pragma omp critical
+	{
+	  cerr << "ignoring paragraph index=" << index
+	       << ", not found in ReadingOrder of " << fileName << endl;
+	}
+      }
+      else {
+	key = mit->second;
+      }
+    }
+    else {
+      key = -2;
+    }
+  }
+  else if ( type == "page-number" || type == "header" ){
+    //
+  }
+  else  if ( type == "signature-mark" ){
+    if ( verbose ) {
+#pragma omp critical
+      {
+	cerr << "ignoring " << type << " in " << fileName << endl;
+      }
+    }
+    type.clear();
+  }
+  else {
+#pragma omp critical
+    {
+      cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
+    }
+    type.clear();
+  }
+  if ( !type.empty() ){
+    list<xmlNode*> unicodes = TiCC::FindNodes( region, "./*:TextEquiv/*:Unicode" );
+    if ( unicodes.empty() ){
+#pragma omp critical
+      {
+	cerr << "missing Unicode node in " << TiCC::Name(region) << " of " << fileName << endl;
+      }
+    }
+    else {
+      string full_line;
+      for ( const auto& unicode : unicodes ){
+	string value = TiCC::XmlContent( unicode );
+	//	  cerr << "string: '" << value << endl;
+	full_line += value + " ";
+      }
+      if ( key >= 0 ){
+	regionStrings[key] = full_line;
+      }
+      if ( key == -2 ){
+      }
+      else if ( type == "page-number" || type == "header"){
+	specials[type] = full_line;
+	specialRefs[type] = index;
+      }
+    }
+  }
+}
+
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType,
@@ -203,13 +282,13 @@ bool convert_pagexml( const string& fileName,
     }
   }
   list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
-  if ( order.empty() ){
-#pragma omp critical
-    {
-      cerr << "Problem finding ReadingOrder node in " << fileName << endl;
-    }
-    return false;
-  }
+//   if ( order.empty() ){
+// #pragma omp critical
+//     {
+//       cerr << "Problem finding ReadingOrder node in " << fileName << endl;
+//     }
+//     //    return false;
+//   }
   if ( order.size() > 1 ){
 #pragma omp critical
     {
@@ -218,26 +297,28 @@ bool convert_pagexml( const string& fileName,
     }
     return false;
   }
-  list<xmlNode*>::const_iterator it = order.begin();
-  order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
-  if ( order.empty() ){
-#pragma omp critical
-    {
-      cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
-    }
-    return false;
-  }
   map<string,int> refs;
-  vector<string> backrefs( order.size() );
-  for ( const auto& ord : order ){
-    string ref = TiCC::getAttribute( ord, "regionRef" );
-    string index = TiCC::getAttribute( ord, "index" );
-    int id = TiCC::stringTo<int>( index );
-    refs[ref] = id;
-    backrefs[id] = ref;
+  vector<string> backrefs;
+  vector<string> regionStrings;
+  if ( !order.empty() ){
+    order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
+    if ( order.empty() ){
+#pragma omp critical
+      {
+	cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
+      }
+      return false;
+    }
+    backrefs.resize( order.size() );
+    regionStrings.resize( order.size() );
+    for ( const auto& ord : order ){
+      string ref = TiCC::getAttribute( ord, "regionRef" );
+      string index = TiCC::getAttribute( ord, "index" );
+      int id = TiCC::stringTo<int>( index );
+      refs[ref] = id;
+      backrefs[id] = ref;
+    }
   }
-
-  vector<string> regionStrings( refs.size() );
   map<string,string> specials;
   map<string,string> specialRefs;
   list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
@@ -248,67 +329,12 @@ bool convert_pagexml( const string& fileName,
     }
     return false;
   }
+
   for ( const auto& region : regions ){
-    string index = TiCC::getAttribute( region, "id" );
-    string type = TiCC::getAttribute( region, "type" );
-    int key = -1;
-    if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
-	 || type == "catch-word" || type == "drop-capital" ){
-      map<string,int>::const_iterator mit = refs.find(index);
-      if ( mit == refs.end() ){
-#pragma omp critical
-	{
-	  cerr << "ignoring paragraph index=" << index
-	       << ", not found in ReadingOrder of " << fileName << endl;
-	}
-      }
-      else {
-	key = mit->second;
-      }
-    }
-    else if ( type == "page-number" || type == "header" ){
-      //
-    }
-    else  if ( type == "signature-mark" ){
-      if ( verbose ) {
-#pragma omp critical
-	{
-	  cerr << "ignoring " << type << " in " << fileName << endl;
-	}
-      }
-      type.clear();
-    }
-    else {
-#pragma omp critical
-      {
-	  cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
-      }
-      type.clear();
-    }
-    if ( !type.empty() ){
-      list<xmlNode*> unicodes = TiCC::FindNodes( region, "./*:TextEquiv/*:Unicode" );
-      if ( unicodes.empty() ){
-#pragma omp critical
-	{
-	  cerr << "missing Unicode node in " << TiCC::Name(region) << " of " << fileName << endl;
-	}
-      }
-      else {
-	string full_line;
-	for ( const auto& unicode : unicodes ){
-	  string value = TiCC::XmlContent( unicode );
-	  //	  cerr << "string: '" << value << endl;
-	  full_line += value + " ";
-	}
-	if ( key >= 0 ){
-	  regionStrings[key] = full_line;
-	}
-	else if ( type == "page-number" || type == "header"){
-	  specials[type] = full_line;
-	  specialRefs[type] = index;
-	}
-      }
-    }
+    handle_one_region( region, fileName,
+		       regionStrings, refs,
+		       specials, specialRefs );
+
   }
   xmlFreeDoc( xdoc );
 
