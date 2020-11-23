@@ -140,7 +140,6 @@ int main( int argc, char *argv[] ){
   if ( to_do > 1 ){
     cout << "start processing of " << to_do << " files " << endl;
   }
-
   size_t failed_docs = 0;
 #pragma omp parallel for shared(file_names) schedule(dynamic)
   for ( size_t fn=0; fn < file_names.size(); ++fn ){
@@ -165,6 +164,13 @@ int main( int argc, char *argv[] ){
     }
     if ( !outputDir.empty() ){
       nameNoExt = docid;
+    }
+    if ( !isNCName( docid ) ){
+      docid = "doc-" + docid;
+      if ( !isNCName( docid ) ){
+	throw ( "unable to generate a Document ID from the filename: '"
+		+ fileName + "'" );
+      }
     }
     Document *d = 0;
     try {
