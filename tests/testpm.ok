@@ -26,17 +26,36 @@ Usage: FoLiA-pm [options] files/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 	-h or --help 	 this messages 
+Validated successfully: test1/FPM-pm1.folia.xml
+Validated successfully: test1/FPM-pm10.folia.xml
 Validated successfully: test1/FPM-pm2.folia.xml
+Validated successfully: test1/FPM-pm3.folia.xml
 Validated successfully: test1/FPM-pm4.folia.xml
 Validated successfully: test1/FPM-pm5.folia.xml
+Validated successfully: test1/FPM-pm6.folia.xml
 Validated successfully: test1/FPM-pm7.folia.xml
+Validated successfully: test1/FPM-pm8.folia.xml
+Validated successfully: test1/FPM-pm9.folia.xml
+Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-33-7.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-1.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-16.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.181718180000030.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.181718180000032.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000111.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000111.2.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000112.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.189818990000112.2.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000088.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000471.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000479.1.folia.xml
+Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000479.2.folia.xml
+Validated successfully: test2/FPM-pm1.folia.xml
+Validated successfully: test2/FPM-pm10.folia.xml
 Validated successfully: test2/FPM-pm2.folia.xml
+Validated successfully: test2/FPM-pm3.folia.xml
 Validated successfully: test2/FPM-pm4.folia.xml
 Validated successfully: test2/FPM-pm5.folia.xml
+Validated successfully: test2/FPM-pm6.folia.xml
 Validated successfully: test2/FPM-pm7.folia.xml
+Validated successfully: test2/FPM-pm8.folia.xml
+Validated successfully: test2/FPM-pm9.folia.xml
