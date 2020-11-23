@@ -32,6 +32,7 @@
 #include <iostream>
 #include <fstream>
 #include "ticcutils/StringOps.h"
+#include "ticcutils/PrettyPrint.h"
 #include "libfolia/folia.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
@@ -47,6 +48,7 @@
 
 using namespace	std;
 using namespace	icu;
+using TiCC::operator<<;
 
 bool verbose = false;
 
@@ -166,6 +168,82 @@ string stripDir( const string& name ){
   }
 }
 
+bool handle_flat_document( folia::FoliaElement *text,
+			   xmlNode* document_root,
+			   const string& fileName ){
+  cerr << "flat document: " << fileName << endl;
+  vector<string> blocks;
+  vector<string> refs;
+  map<string,string> specials;
+  map<string,string> specialRefs;
+  list<xmlNode*> regions = TiCC::FindNodes( document_root, "//*:TextRegion" );
+  if ( regions.empty() ){
+#pragma omp critical
+    {
+      cerr << "missing TextRegion nodes in " << fileName << endl;
+    }
+    return false;
+  }
+  for ( const auto& region : regions ){
+    string index = TiCC::getAttribute( region, "id" );
+    string type = TiCC::getAttribute( region, "type" );
+    if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
+	 || type == "catch-word" || type == "drop-capital" ){
+    }
+    else if ( type == "page-number" || type == "header" ){
+      //
+    }
+    else  if ( type == "signature-mark" ){
+      if ( verbose ) {
+#pragma omp critical
+	{
+	  cerr << "ignoring " << type << " in " << fileName << endl;
+	}
+      }
+      type.clear();
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
+      }
+      type.clear();
+    }
+    if ( !type.empty() ){
+      list<xmlNode*> lines = TiCC::FindNodes( region, ".//*:TextLine" );
+      if ( lines.empty() ){
+	cout << "NO textlines" << endl;
+	return false;
+      }
+      string block;
+      for ( const auto& line : lines ){
+	list<xmlNode*> unicodes = TiCC::FindNodes( line, "./*:TextEquiv/*:Unicode" );
+	if ( unicodes.empty() ){
+#pragma omp critical
+	  {
+	    cerr << "missing Unicode node in " << TiCC::Name(line) << " of " << fileName << endl;
+	  }
+	}
+	else {
+	  string full_line;
+	  for ( const auto& unicode : unicodes ){
+	    string value = TiCC::XmlContent( unicode );
+	    //	  cerr << "string: '" << value << endl;
+	    full_line += value + " ";
+	  }
+	  block += full_line;
+	}
+      }
+      blocks.push_back( block );
+      refs.push_back( index );
+    }
+  }
+  cerr << "BLOCKS:" << endl << blocks << endl;
+  cerr << "REFS:" << endl << refs << endl;
+  process( text, blocks, refs, TiCC::basename(fileName) );
+  return true;
+}
+
 void handle_one_region( xmlNode *region,
 			const string& fileName,
 			vector<string>& regionStrings,
@@ -181,21 +259,16 @@ void handle_one_region( xmlNode *region,
   int key = -1;
   if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
        || type == "catch-word" || type == "drop-capital" ){
-    if ( refs.size() > 0 ){
-      map<string,int>::const_iterator mit = refs.find(index);
-      if ( mit == refs.end() ){
+    map<string,int>::const_iterator mit = refs.find(index);
+    if ( mit == refs.end() ){
 #pragma omp critical
-	{
-	  cerr << "ignoring paragraph index=" << index
-	       << ", not found in ReadingOrder of " << fileName << endl;
-	}
-      }
-      else {
-	key = mit->second;
+      {
+	cerr << "ignoring paragraph index=" << index
+	     << ", not found in ReadingOrder of " << fileName << endl;
       }
     }
     else {
-      key = -2;
+      key = mit->second;
     }
   }
   else if ( type == "page-number" || type == "header" ){
@@ -235,14 +308,61 @@ void handle_one_region( xmlNode *region,
       if ( key >= 0 ){
 	regionStrings[key] = full_line;
       }
-      if ( key == -2 ){
-      }
-      else if ( type == "page-number" || type == "header"){
+      if ( type == "page-number" || type == "header"){
 	specials[type] = full_line;
 	specialRefs[type] = index;
       }
     }
   }
+}
+
+bool handle_ordered_document( folia::FoliaElement *textroot,
+			      xmlNode* document_root,
+			      list<xmlNode*>& order,
+			      const string& fileName ){
+  map<string,int> refs;
+  vector<string> backrefs;
+  vector<string> regionStrings;
+  if ( !order.empty() ){
+    order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
+    if ( order.empty() ){
+#pragma omp critical
+      {
+	cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
+      }
+      return false;
+    }
+    backrefs.resize( order.size() );
+    regionStrings.resize( order.size() );
+    for ( const auto& ord : order ){
+      string ref = TiCC::getAttribute( ord, "regionRef" );
+      string index = TiCC::getAttribute( ord, "index" );
+      int id = TiCC::stringTo<int>( index );
+      refs[ref] = id;
+      backrefs[id] = ref;
+    }
+  }
+  map<string,string> specials;
+  map<string,string> specialRefs;
+  list<xmlNode*> regions = TiCC::FindNodes( document_root, "//*:TextRegion" );
+  if ( regions.empty() ){
+#pragma omp critical
+    {
+      cerr << "missing TextRegion nodes in " << fileName << endl;
+    }
+    return false;
+  }
+
+  for ( const auto& region : regions ){
+    handle_one_region( region, fileName,
+		       regionStrings, refs,
+		       specials, specialRefs );
+
+  }
+
+  process( textroot, specials, specialRefs, TiCC::basename(fileName) );
+  process( textroot, regionStrings, backrefs, TiCC::basename(fileName) );
+  return true;
 }
 
 bool convert_pagexml( const string& fileName,
@@ -305,52 +425,18 @@ bool convert_pagexml( const string& fileName,
   }
   if ( order.empty() ){
     // No reading order. So a 'flat' document
-  }
-  else {
-    map<string,int> refs;
-    vector<string> backrefs;
-    vector<string> regionStrings;
-    if ( !order.empty() ){
-      order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
-      if ( order.empty() ){
-#pragma omp critical
-	{
-	  cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
-	}
-	xmlFreeDoc( xdoc );
-	return false;
-      }
-      backrefs.resize( order.size() );
-      regionStrings.resize( order.size() );
-      for ( const auto& ord : order ){
-	string ref = TiCC::getAttribute( ord, "regionRef" );
-	string index = TiCC::getAttribute( ord, "index" );
-	int id = TiCC::stringTo<int>( index );
-	refs[ref] = id;
-	backrefs[id] = ref;
-      }
-    }
-    map<string,string> specials;
-    map<string,string> specialRefs;
-    list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
-    if ( regions.empty() ){
-#pragma omp critical
-      {
-	cerr << "missing TextRegion nodes in " << fileName << endl;
-      }
+    bool ok = handle_flat_document( text, root, fileName );
+    if ( !ok ){
       xmlFreeDoc( xdoc );
       return false;
     }
-
-    for ( const auto& region : regions ){
-      handle_one_region( region, fileName,
-			 regionStrings, refs,
-			 specials, specialRefs );
-
+  }
+  else {
+    bool ok = handle_ordered_document( text, root, order, fileName );
+    if ( !ok ){
+      xmlFreeDoc( xdoc );
+      return false;
     }
-
-    process( text, specials, specialRefs, TiCC::basename(fileName) );
-    process( text, regionStrings, backrefs, TiCC::basename(fileName) );
   }
   xmlFreeDoc( xdoc );
 
