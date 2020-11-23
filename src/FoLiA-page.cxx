@@ -104,6 +104,36 @@ void process( folia::FoliaElement *out,
   }
 }
 
+void process_lines( folia::FoliaElement *out,
+		    const vector<string>& vec,
+		    const vector<string>& refs,
+		    const string& file ){
+  folia::KWargs args;
+  //  args["xml:id"] = out->id() + "." + refs[i];
+  folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
+  out->append( par );
+  for ( size_t i=0; i < vec.size(); ++i ){
+    vector<string> parts = TiCC::split( vec[i] );
+    string parTxt;
+    for ( auto const& p : parts ){
+      parTxt += p;
+      if ( &p != &parts.back() ){
+	parTxt += " ";
+      }
+    }
+    folia::KWargs args;
+    args["xml:id"] = out->id() + "." + refs[i];
+    folia::Sentence *sent = new folia::Sentence( args, out->doc() );
+    sent->settext( parTxt, classname );
+    par->append( sent );
+    // int pos = 0;
+    // for ( size_t j=0; j< parts.size(); ++j ){
+    //   string id = "word_" + TiCC::toString(j);
+    //   appendStr( sent, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
+    // }
+  }
+}
+
 void process( folia::FoliaElement *out,
 	      const map<string,string>& values,
 	      const map<string,string>& labels,
@@ -215,9 +245,9 @@ bool handle_flat_document( folia::FoliaElement *text,
 	cout << "NO textlines" << endl;
 	return false;
       }
-      string block;
       for ( const auto& line : lines ){
 	list<xmlNode*> unicodes = TiCC::FindNodes( line, "./*:TextEquiv/*:Unicode" );
+	string index = TiCC::getAttribute( line, "id" );
 	if ( unicodes.empty() ){
 #pragma omp critical
 	  {
@@ -231,16 +261,15 @@ bool handle_flat_document( folia::FoliaElement *text,
 	    //	  cerr << "string: '" << value << endl;
 	    full_line += value + " ";
 	  }
-	  block += full_line;
+	  blocks.push_back(full_line);
+	  refs.push_back( index );
 	}
       }
-      blocks.push_back( block );
-      refs.push_back( index );
     }
   }
   cerr << "BLOCKS:" << endl << blocks << endl;
   cerr << "REFS:" << endl << refs << endl;
-  process( text, blocks, refs, TiCC::basename(fileName) );
+  process_lines( text, blocks, refs, TiCC::basename(fileName) );
   return true;
 }
 
