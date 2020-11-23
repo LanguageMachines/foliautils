@@ -281,63 +281,6 @@ bool convert_pagexml( const string& fileName,
       cout << "original file: " << orgFile << endl;
     }
   }
-  list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
-//   if ( order.empty() ){
-// #pragma omp critical
-//     {
-//       cerr << "Problem finding ReadingOrder node in " << fileName << endl;
-//     }
-//     //    return false;
-//   }
-  if ( order.size() > 1 ){
-#pragma omp critical
-    {
-      cerr << "Found more then 1 ReadingOrder node in " << fileName << endl;
-      cerr << "This is not supported." << endl;
-    }
-    return false;
-  }
-  map<string,int> refs;
-  vector<string> backrefs;
-  vector<string> regionStrings;
-  if ( !order.empty() ){
-    order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
-    if ( order.empty() ){
-#pragma omp critical
-      {
-	cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
-      }
-      return false;
-    }
-    backrefs.resize( order.size() );
-    regionStrings.resize( order.size() );
-    for ( const auto& ord : order ){
-      string ref = TiCC::getAttribute( ord, "regionRef" );
-      string index = TiCC::getAttribute( ord, "index" );
-      int id = TiCC::stringTo<int>( index );
-      refs[ref] = id;
-      backrefs[id] = ref;
-    }
-  }
-  map<string,string> specials;
-  map<string,string> specialRefs;
-  list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
-  if ( regions.empty() ){
-#pragma omp critical
-    {
-      cerr << "missing TextRegion nodes in " << fileName << endl;
-    }
-    return false;
-  }
-
-  for ( const auto& region : regions ){
-    handle_one_region( region, fileName,
-		       regionStrings, refs,
-		       specials, specialRefs );
-
-  }
-  xmlFreeDoc( xdoc );
-
   string docid = prefix + orgFile;
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
@@ -349,8 +292,67 @@ bool convert_pagexml( const string& fileName,
   args["xml:id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
-  process( text, specials, specialRefs, TiCC::basename(fileName) );
-  process( text, regionStrings, backrefs, TiCC::basename(fileName) );
+
+  list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
+  if ( order.size() > 1 ){
+#pragma omp critical
+    {
+      cerr << "Found more then 1 ReadingOrder node in " << fileName << endl;
+      cerr << "This is not supported." << endl;
+    }
+    xmlFreeDoc( xdoc );
+    return false;
+  }
+  if ( order.empty() ){
+    // No reading order. So a 'flat' document
+  }
+  else {
+    map<string,int> refs;
+    vector<string> backrefs;
+    vector<string> regionStrings;
+    if ( !order.empty() ){
+      order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
+      if ( order.empty() ){
+#pragma omp critical
+	{
+	  cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
+	}
+	xmlFreeDoc( xdoc );
+	return false;
+      }
+      backrefs.resize( order.size() );
+      regionStrings.resize( order.size() );
+      for ( const auto& ord : order ){
+	string ref = TiCC::getAttribute( ord, "regionRef" );
+	string index = TiCC::getAttribute( ord, "index" );
+	int id = TiCC::stringTo<int>( index );
+	refs[ref] = id;
+	backrefs[id] = ref;
+      }
+    }
+    map<string,string> specials;
+    map<string,string> specialRefs;
+    list<xmlNode*> regions = TiCC::FindNodes( root, "//*:TextRegion" );
+    if ( regions.empty() ){
+#pragma omp critical
+      {
+	cerr << "missing TextRegion nodes in " << fileName << endl;
+      }
+      xmlFreeDoc( xdoc );
+      return false;
+    }
+
+    for ( const auto& region : regions ){
+      handle_one_region( region, fileName,
+			 regionStrings, refs,
+			 specials, specialRefs );
+
+    }
+
+    process( text, specials, specialRefs, TiCC::basename(fileName) );
+    process( text, regionStrings, backrefs, TiCC::basename(fileName) );
+  }
+  xmlFreeDoc( xdoc );
 
   string outName;
   if ( !outputDir.empty() ){
@@ -358,12 +360,15 @@ bool convert_pagexml( const string& fileName,
   }
   outName += orgFile + ".folia.xml";
   zipType type = inputType;
-  if ( outputType != NORMAL )
+  if ( outputType != NORMAL ){
     type = outputType;
-  if ( type == BZ2 )
+  }
+  if ( type == BZ2 ){
     outName += ".bz2";
-  else if ( type == GZ )
+  }
+  else if ( type == GZ ){
     outName += ".gz";
+  }
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
        ( pv.size() == 1 && pv[0]->size() == 0 ) ){
