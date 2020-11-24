@@ -107,31 +107,32 @@ void process( folia::FoliaElement *out,
 void process_lines( folia::FoliaElement *out,
 		    const vector<string>& vec,
 		    const vector<string>& refs,
+		    const string& par_id,
 		    const string& file ){
   folia::KWargs args;
-  //  args["xml:id"] = out->id() + "." + refs[i];
+  args["xml:id"] = out->id() + "." + par_id;
   folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
   out->append( par );
+  string parTxt;
   for ( size_t i=0; i < vec.size(); ++i ){
-    vector<string> parts = TiCC::split( vec[i] );
-    string parTxt;
-    for ( auto const& p : parts ){
-      parTxt += p;
-      if ( &p != &parts.back() ){
-	parTxt += " ";
-      }
-    }
+    parTxt += vec[i];
     folia::KWargs args;
-    args["xml:id"] = out->id() + "." + refs[i];
-    folia::Sentence *sent = new folia::Sentence( args, out->doc() );
-    sent->settext( parTxt, classname );
-    par->append( sent );
-    // int pos = 0;
-    // for ( size_t j=0; j< parts.size(); ++j ){
-    //   string id = "word_" + TiCC::toString(j);
-    //   appendStr( sent, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
-    // }
+    args["xml:id"] = out->id() + ".str." + refs[i];
+    folia::String *str = new folia::String( args, out->doc() );
+    str->settext( vec[i], classname );
+    par->append( str );
+    args.clear();
+    args["xlink:href"] = file;
+    args["format"] = "text/page+xml";
+    folia::Relation *h = new folia::Relation( args );
+    str->append( h );
+    args.clear();
+    args["id"] = refs[i];
+    args["type"] = "str";
+    folia::LinkReference *a = new folia::LinkReference( args );
+    h->append( a );
   }
+  //  par->setutext( par->text(classname) );
 }
 
 void process( folia::FoliaElement *out,
@@ -258,18 +259,20 @@ bool handle_flat_document( folia::FoliaElement *text,
 	  string full_line;
 	  for ( const auto& unicode : unicodes ){
 	    string value = TiCC::XmlContent( unicode );
-	    //	  cerr << "string: '" << value << endl;
-	    full_line += value + " ";
+	    if ( !value.empty() ){
+	      full_line += value;
+	      if ( &unicode != &unicodes.back() ){
+		full_line += " ";
+	      }
+	    }
 	  }
 	  blocks.push_back(full_line);
 	  refs.push_back( index );
 	}
       }
     }
+    process_lines( text, blocks, refs, index, TiCC::basename(fileName) );
   }
-  cerr << "BLOCKS:" << endl << blocks << endl;
-  cerr << "REFS:" << endl << refs << endl;
-  process_lines( text, blocks, refs, TiCC::basename(fileName) );
   return true;
 }
 
