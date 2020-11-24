@@ -16,6 +16,15 @@ Usage: FoLiA-page [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 9 files 
+converted: data/page/00667461.xml into:out/page/00667461.tif.folia.xml
+converted: data/page/00667462.xml into:out/page/00667462.tif.folia.xml
+converted: data/page/00667463.xml into:out/page/00667463.tif.folia.xml
+converted: data/page/00667464.xml into:out/page/00667464.tif.folia.xml
+converted: data/page/00667465.xml into:out/page/00667465.tif.folia.xml
+converted: data/page/00667466.xml into:out/page/00667466.tif.folia.xml
+converted: data/page/00667467.xml into:out/page/00667467.tif.folia.xml
+converted: data/page/00667468.xml into:out/page/00667468.tif.folia.xml
+converted: data/page/00667460.xml into:out/page/00667460.tif.folia.xml
 done
    174    414   7558 out/page/00667460.tif.folia.xml
    657   1590  28614 out/page/00667461.tif.folia.xml
