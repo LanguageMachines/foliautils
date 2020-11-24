@@ -202,7 +202,6 @@ string stripDir( const string& name ){
 bool handle_flat_document( folia::FoliaElement *text,
 			   xmlNode* document_root,
 			   const string& fileName ){
-  cerr << "flat document: " << fileName << endl;
   vector<string> blocks;
   vector<string> refs;
   map<string,string> specials;
@@ -498,11 +497,9 @@ bool convert_pagexml( const string& fileName,
   }
   else {
     doc.save( outName );
-    if ( verbose ){
 #pragma omp critical
-      {
-	cout << "created " << outName << endl;
-      }
+    {
+      cout << "converted: " << fileName << " into: "  << outName << endl;
     }
   }
   return true;
