@@ -275,16 +275,51 @@ bool handle_flat_document( folia::FoliaElement *text,
   return true;
 }
 
+void handle_one_line( xmlNode *line,
+			const string& fileName,
+			vector<string>& regionStrings,
+		      map<string,int>& refs ){
+  string index = TiCC::getAttribute( line, "id" );
+  int key = -1;
+  map<string,int>::const_iterator mit = refs.find(index);
+  if ( mit == refs.end() ){
+#pragma omp critical
+    {
+      cerr << "ignoring line index=" << index
+	   << ", not found in ReadingOrder of " << fileName << endl;
+    }
+  }
+  else {
+    key = mit->second;
+  }
+
+  list<xmlNode*> unicodes = TiCC::FindNodes( line, "./*:TextEquiv/*:Unicode" );
+  if ( unicodes.empty() ){
+#pragma omp critical
+    {
+      cerr << "missing Unicode node in line " << TiCC::Name(line)
+	   << " of " << fileName << endl;
+    }
+  }
+  else {
+    string full_line;
+    for ( const auto& unicode : unicodes ){
+      string value = TiCC::XmlContent( unicode );
+      //	  cerr << "string: '" << value << endl;
+      full_line += value + " ";
+    }
+    if ( key >= 0 ){
+      regionStrings[key] = full_line;
+    }
+  }
+}
+
 void handle_one_region( xmlNode *region,
 			const string& fileName,
 			vector<string>& regionStrings,
 			map<string,int>& refs,
 			map<string,string>& specials,
 			map<string,string>& specialRefs ){
-  list<xmlNode*> lines = TiCC::FindNodes( region, ".//*:TextLine" );
-  if ( !lines.empty() ){
-    cout << "found textlines" << endl;
-  }
   string index = TiCC::getAttribute( region, "id" );
   string type = TiCC::getAttribute( region, "type" );
   int key = -1;
@@ -384,15 +419,40 @@ bool handle_ordered_document( folia::FoliaElement *textroot,
     return false;
   }
 
-  for ( const auto& region : regions ){
-    handle_one_region( region, fileName,
-		       regionStrings, refs,
-		       specials, specialRefs );
-
+  xmlNode* tmp = TiCC::xPath( regions.front() , "*:TextLine" );
+  bool has_lines = ( tmp != NULL );
+  bool has_words = false;
+  if ( has_lines ){
+    tmp = TiCC::xPath( tmp, "*:Word" );
+    has_words = ( tmp != NULL );
   }
 
-  process( textroot, specials, specialRefs, TiCC::basename(fileName) );
-  process( textroot, regionStrings, backrefs, TiCC::basename(fileName) );
+  // cerr << (has_lines?"HAS LINES!":"NO LINES :{") << endl;
+  // cerr << (has_words?"HAS WORDS!":"NO WORDS :{") << endl;
+
+  if ( has_lines ){
+    for ( const auto& region : regions ){
+      list<xmlNode*> lines = TiCC::FindNodes( region, "*:TextLine" );
+      if ( !has_words ){
+      }
+      else {
+	for ( const auto& line : lines ){
+	  handle_one_line( line, fileName,
+			   regionStrings, refs );
+	}
+	process( textroot, regionStrings, backrefs, TiCC::basename(fileName) );
+      }
+    }
+  }
+  else {
+    for ( const auto& region : regions ){
+      handle_one_region( region, fileName,
+			 regionStrings, refs,
+			 specials, specialRefs );
+    }
+    process( textroot, specials, specialRefs, TiCC::basename(fileName) );
+    process( textroot, regionStrings, backrefs, TiCC::basename(fileName) );
+  }
   return true;
 }
 
