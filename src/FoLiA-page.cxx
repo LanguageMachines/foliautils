@@ -64,7 +64,7 @@ void appendStr( folia::FoliaElement *par, int& pos,
     folia::String *str = new folia::String( args, par->doc() );
     par->append( str );
     str->setutext( val, pos, classname );
-    pos += val.length() +1;
+    pos += val.length();
     args.clear();
     args["xlink:href"] = file;
     args["format"] = "text/page+xml";
@@ -170,7 +170,10 @@ void handle_one_region( xmlNode *region,
       for ( const auto& unicode : unicodes ){
 	string value = TiCC::XmlContent( unicode );
 	//	  cerr << "string: '" << value << endl;
-	full_line += value + " ";
+	full_line += value;
+	if ( &unicode != &unicodes.back() ){
+	  full_line += " ";
+	}
       }
       if ( key >= 0 ){
 	regionStrings[key] = full_line;
@@ -224,27 +227,27 @@ void handle_uni_lines( folia::FoliaElement *root,
     }
     return;
   }
-
   string full_line;
+  int pos = 0;
+  int j = 0;
   for ( const auto& unicode : unicodes ){
     string value = TiCC::XmlContent( unicode );
     if ( !value.empty() ){
       //      cerr << "string: '" << value << endl;
-      full_line += value + " ";
+      string id = "str_" + TiCC::toString(j++);
+      appendStr( root, pos, TiCC::UnicodeFromUTF8(value), id, fileName );
+      full_line += value;
+      if ( &unicode != &unicodes.back() ){
+	full_line += " ";
+	++pos;
+      }
     }
   }
-
-  vector<string> parts = TiCC::split( full_line );
-  string ind = TiCC::getAttribute( parent, "id" );
-  folia::KWargs args;
-  int pos = 0;
-  for ( size_t j=0; j< parts.size(); ++j ){
-    string id = "str_" + TiCC::toString(j);
-    appendStr( root, pos, TiCC::UnicodeFromUTF8(parts[j]), id, fileName );
-  }
+  root->settext( full_line, classname );
 }
 
 string handle_one_line( folia::FoliaElement *par,
+			int& pos,
 			xmlNode *line,
 			const string& fileName ){
   string result;
@@ -252,6 +255,7 @@ string handle_one_line( folia::FoliaElement *par,
   //  cerr << "handle line " << lid << endl;
   list<xmlNode*> words = TiCC::FindNodes( line, "./*:Word" );
   if ( !words.empty() ){
+    // We have Word!. So we assume we are able to create Sentences too.
     folia::KWargs args;
     args["xml:id"] = par->id() + "." + lid;
     folia::Sentence *sent = new folia::Sentence( args, par->doc() );
@@ -273,16 +277,12 @@ string handle_one_line( folia::FoliaElement *par,
       return "";
     }
 
-    int pos = 0;
     for ( const auto& unicode : unicodes ){
       string value = TiCC::XmlContent( unicode );
-      string id = lid + ".str_" + TiCC::toString(pos+1);
-      appendStr( par, pos, TiCC::UnicodeFromUTF8(value), id, fileName );
       if ( !value.empty() ){
-	result += value;
-      }
-      if( &unicode != &unicodes.back() ){
-	result += " ";
+	appendStr( par, pos, TiCC::UnicodeFromUTF8(value), lid, fileName );
+	result = value;
+	break; // We assume only 1 non-empty Unicode string
       }
     }
   }
@@ -303,11 +303,14 @@ void handle_one_region( folia::FoliaElement *root,
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
   if ( !lines.empty() ){
     string par_txt;
+    int pos = 0;
     for ( const auto& line : lines ){
-      string value  = handle_one_line( par, line,
+      string value  = handle_one_line( par, pos,
+				       line,
 				       fileName );
       par_txt += value;
       if ( &line != &lines.back() ){
+	++pos;
 	par_txt += " ";
       }
     }
