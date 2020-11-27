@@ -183,12 +183,34 @@ void handle_one_region( xmlNode *region,
   }
 }
 
-void handle_one_word( folia::FoliaElement *root,
-		      xmlNode *word,
-		      map<string,int>& region_refs,
-		      vector<string>& back_refs,
-		      const string& fileName ){
-  cerr << "handle word " << TiCC::getAttribute( word, "id" ) << endl;
+string handle_one_word( folia::FoliaElement *sent,
+			xmlNode *word,
+			const string& fileName ){
+  string result;
+  string wid = TiCC::getAttribute( word, "id" );
+  //  cerr << "handle word " << wid << endl;
+  list<xmlNode*> unicodes = TiCC::FindNodes( word, "./*:TextEquiv/*:Unicode" );
+  if ( unicodes.size() != 1 ){
+    throw runtime_error( "expected only 1 unicode entry in Word: " + wid );
+  }
+  result = TiCC::XmlContent( unicodes.front() );
+  folia::KWargs args;
+  args["xml:id"] = sent->id() + "." + wid;
+  args["text"] = result;
+  args["textclass"] = classname;
+  folia::Word *w = new folia::Word( args, sent->doc() );
+  sent->append( w );
+  args.clear();
+  args["xlink:href"] = fileName;
+  args["format"] = "text/page+xml";
+  folia::Relation *h = new folia::Relation( args );
+  w->append( h );
+  args.clear();
+  args["id"] = wid;
+  args["type"] = "w";
+  folia::LinkReference *a = new folia::LinkReference( args );
+  h->append( a );
+  return result;
 }
 
 void handle_uni_lines( folia::FoliaElement *root,
@@ -224,17 +246,21 @@ void handle_uni_lines( folia::FoliaElement *root,
 
 string handle_one_line( folia::FoliaElement *par,
 			xmlNode *line,
-			map<string,int>& region_refs,
-			vector<string>& back_refs,
 			const string& fileName ){
   string result;
   string lid = TiCC::getAttribute( line, "id" );
   //  cerr << "handle line " << lid << endl;
-  list<xmlNode*> words = TiCC::FindNodes( line, "./*:TextEquiv/*:Word" );
+  list<xmlNode*> words = TiCC::FindNodes( line, "./*:Word" );
   if ( !words.empty() ){
+    folia::KWargs args;
+    args["xml:id"] = par->id() + "." + lid;
+    folia::Sentence *sent = new folia::Sentence( args, par->doc() );
+    par->append( sent );
     for ( const auto& w :words ){
-      handle_one_word( par, w, region_refs, back_refs, fileName );
+      handle_one_word( sent, w, fileName );
     }
+    result = sent->str();
+    sent->settext( result, classname );
   }
   else {
     // lines without words.
@@ -279,7 +305,6 @@ void handle_one_region( folia::FoliaElement *root,
     string par_txt;
     for ( const auto& line : lines ){
       string value  = handle_one_line( par, line,
-				       region_refs, back_refs,
 				       fileName );
       par_txt += value;
       if ( &line != &lines.back() ){
@@ -419,11 +444,11 @@ bool convert_pagexml( const string& fileName,
     //   cerr << " lees " << TiCC::getAttribute( no, "id" ) << " ("
     //   	   << TiCC::getAttribute( no, "type" ) << ")" << endl;
     // }
-    for( const auto& sp : specials ){
-       cerr << " special "
-	    << TiCC::getAttribute( sp, "id" ) << " ("
-	    << TiCC::getAttribute( sp, "type" ) << ")" << endl;
-    }
+    // for( const auto& sp : specials ){
+    //    cerr << " special "
+    // 	    << TiCC::getAttribute( sp, "id" ) << " ("
+    // 	    << TiCC::getAttribute( sp, "type" ) << ")" << endl;
+    // }
     for ( const auto& no : new_order ){
       handle_one_region( text, no, region_refs, back_refs, fileName );
     }
