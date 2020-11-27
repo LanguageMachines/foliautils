@@ -15,24 +15,26 @@ Usage: FoLiA-page [options] file/dir
 				 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-start processing of 9 files 
-converted: data/page/00667461.xml into:out/page/00667461.tif.folia.xml
-converted: data/page/00667462.xml into:out/page/00667462.tif.folia.xml
-converted: data/page/00667463.xml into:out/page/00667463.tif.folia.xml
-converted: data/page/00667464.xml into:out/page/00667464.tif.folia.xml
-converted: data/page/00667465.xml into:out/page/00667465.tif.folia.xml
-converted: data/page/00667466.xml into:out/page/00667466.tif.folia.xml
-converted: data/page/00667467.xml into:out/page/00667467.tif.folia.xml
-converted: data/page/00667468.xml into:out/page/00667468.tif.folia.xml
-converted: data/page/00667460.xml into:out/page/00667460.tif.folia.xml
+start processing of 11 files 
+converted: data/page/00667461.xml into: out/page/00667461.tif.folia.xml
+converted: data/page/00667462.xml into: out/page/00667462.tif.folia.xml
+converted: data/page/00667463.xml into: out/page/00667463.tif.folia.xml
+converted: data/page/00667464.xml into: out/page/00667464.tif.folia.xml
+converted: data/page/00667465.xml into: out/page/00667465.tif.folia.xml
+converted: data/page/00667466.xml into: out/page/00667466.tif.folia.xml
+converted: data/page/00667467.xml into: out/page/00667467.tif.folia.xml
+converted: data/page/00667468.xml into: out/page/00667468.tif.folia.xml
+converted: data/page/00667460.xml into: out/page/00667460.tif.folia.xml
+converted: data/page/piros.xml into: out/page/0001.png.folia.xml
+converted: data/page/piroska.xml into: out/page/roemische_1pg.png.folia.xml
 done
-   174    414   7558 out/page/00667460.tif.folia.xml
-   657   1590  28614 out/page/00667461.tif.folia.xml
-   300    722  13129 out/page/00667462.tif.folia.xml
-   669   1627  29286 out/page/00667463.tif.folia.xml
-   549   1327  23979 out/page/00667464.tif.folia.xml
-   642   1563  28142 out/page/00667465.tif.folia.xml
-   603   1462  26354 out/page/00667466.tif.folia.xml
-   696   1691  30505 out/page/00667467.tif.folia.xml
-   363    876  15824 out/page/00667468.tif.folia.xml
-  4653  11272 203391 total
+   66   180  3029 out/page/00667460.tif.folia.xml
+  151   485  7034 out/page/00667461.tif.folia.xml
+   84   254  4027 out/page/00667462.tif.folia.xml
+  137   457  6426 out/page/00667463.tif.folia.xml
+  135   417  6202 out/page/00667464.tif.folia.xml
+  126   432  5991 out/page/00667465.tif.folia.xml
+  135   435  6272 out/page/00667466.tif.folia.xml
+  164   482  6865 out/page/00667467.tif.folia.xml
+   95   291  4444 out/page/00667468.tif.folia.xml
+ 1093  3433 50290 total

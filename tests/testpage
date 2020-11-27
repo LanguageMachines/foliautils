@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 
+/rm out/page/*.folia.xml
+
 $my_bin/FoLiA-page > testpage.out 2>&1
 
 $my_bin/FoLiA-page -V >> testpage.out 2>&1
@@ -10,4 +12,6 @@ $my_bin/FoLiA-page --help >> testpage.out 2>&1
 $my_bin/FoLiA-page -O out/page data/page >> testpage.out 2>&1
 
 wc out/page/00*.tif.folia.xml >> testpage.out
-$my_bin/foliadiff.sh out/page/00539791a.tif.folia.xml page.folia.xml.ok >> testpage.out
+$my_bin/foliadiff.sh out/page/00667464.tif.folia.xml page1.folia.xml.ok >> testpage.out
+$my_bin/foliadiff.sh out/page/0001.png.folia.xml page2.folia.xml.ok >> testpage.out
+$my_bin/foliadiff.sh out/page/roemische_1pg.png.folia.xml page3.folia.xml.ok >> testpage.out
