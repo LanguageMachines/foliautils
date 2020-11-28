@@ -220,13 +220,11 @@ string handle_one_line( folia::FoliaElement *par,
 
 void handle_one_region( folia::FoliaElement *root,
 			xmlNode *region,
-			map<string,int>& region_refs,
-			vector<string>& back_refs,
 			const string& fileName ){
   string ind = TiCC::getAttribute( region, "id" );
   //  cerr << "handle region " << ind << endl;
   folia::KWargs args;
-  args["xml:id"] = root->id() + "." + back_refs[region_refs[ind]];
+  args["xml:id"] = root->id() + "." + ind;
   folia::Paragraph *par = new folia::Paragraph( args, root->doc() );
   root->append( par );
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
@@ -318,18 +316,14 @@ bool convert_pagexml( const string& fileName,
       return false;
     }
     int index = 0;
-    map<string,int> region_refs;
-    vector<string> back_refs( regions.size() );
     vector<xmlNode*> new_order;
     for ( const auto& r : regions ){
       string ref = TiCC::getAttribute( r, "id" );
-      region_refs[ref] = index;
-      back_refs[index] = ref;
       new_order.push_back( r );
       ++index;
     }
     for ( const auto& no : new_order ){
-      handle_one_region( text, no, region_refs, back_refs, fileName );
+      handle_one_region( text, no, fileName );
     }
   }
   else {
@@ -348,19 +342,14 @@ bool convert_pagexml( const string& fileName,
     // }
     list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
     map<string,int> region_refs;
-    vector<string> back_refs( order.size() );
     for ( const auto& ord : order ){
       string ref = TiCC::getAttribute( ord, "regionRef" );
       string index = TiCC::getAttribute( ord, "index" );
       int id = TiCC::stringTo<int>( index );
       region_refs[ref] = id;
-      back_refs[id] = ref;
     }
     vector<xmlNode*> new_order( order.size() );
     vector<xmlNode*> specials;
-    map<string,int> special_refs;
-    vector<string> special_back_refs;
-    int spc_cnt = 0;
     for ( const auto& region : regions ){
       string ref = TiCC::getAttribute( region, "id" );
       if ( region_refs.find(ref) != region_refs.end() ){
@@ -368,8 +357,6 @@ bool convert_pagexml( const string& fileName,
       }
       else {
 	specials.push_back( region );
-	special_refs[ref] = spc_cnt++;
-	special_back_refs.push_back( ref );
       }
     }
     // for( const auto& no : new_order ){
@@ -382,10 +369,10 @@ bool convert_pagexml( const string& fileName,
     // 	    << TiCC::getAttribute( sp, "type" ) << ")" << endl;
     // }
     for ( const auto& no : new_order ){
-      handle_one_region( text, no, region_refs, back_refs, fileName );
+      handle_one_region( text, no, fileName );
     }
     for ( const auto& no : specials ){
-      handle_one_region( text, no, special_refs, special_back_refs, fileName );
+      handle_one_region( text, no, fileName );
     }
   }
   xmlFreeDoc( xdoc );
