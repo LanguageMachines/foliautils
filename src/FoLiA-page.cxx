@@ -250,6 +250,53 @@ void handle_one_region( folia::FoliaElement *root,
   }
 }
 
+vector<xmlNode*> extract_regions( xmlNode *root ){
+  vector<xmlNode*> result;
+  list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
+  if ( regions.empty() ){
+    cerr << "NO textRegion nodes found in flat document" << endl;
+    return result;
+  }
+  for ( const auto& r : regions ){
+    string ref = TiCC::getAttribute( r, "id" );
+    result.push_back( r );
+  }
+  return result;
+}
+
+vector<xmlNode *> extract_regions( xmlNode *root,
+				   vector<xmlNode*>& specials ){
+  vector<xmlNode*> result;
+  specials.clear();
+  list<xmlNode*> order = TiCC::FindNodes( root, ".//*:RegionRefIndexed" );
+  if ( order.empty() ){
+#pragma omp critical
+    {
+      cerr << "missing RegionRefIndexed nodes." << endl;
+    }
+    return result;
+  }
+  list<xmlNode*> regions = TiCC::FindNodes( root->parent, ".//*:TextRegion" );
+  map<string,int> region_refs;
+  for ( const auto& ord : order ){
+    string ref = TiCC::getAttribute( ord, "regionRef" );
+    string index = TiCC::getAttribute( ord, "index" );
+    int id = TiCC::stringTo<int>( index );
+    region_refs[ref] = id;
+  }
+  result.resize( region_refs.size() );
+  for ( const auto& region : regions ){
+    string ref = TiCC::getAttribute( region, "id" );
+    if ( region_refs.find(ref) != region_refs.end() ){
+      result[region_refs[ref]] = region;
+    }
+    else {
+      specials.push_back( region );
+    }
+  }
+  return result;
+}
+
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType,
@@ -300,57 +347,11 @@ bool convert_pagexml( const string& fileName,
   vector<xmlNode*> specials;
   if ( order.empty() ){
     // No reading order. So a 'flat' document
-    list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
-    if ( regions.empty() ){
-      cerr << "NO textRegion nodes found in flat document" << endl;
-      return false;
-    }
-    for ( const auto& r : regions ){
-      string ref = TiCC::getAttribute( r, "id" );
-      new_order.push_back( r );
-    }
+    new_order = extract_regions( root );
   }
   else {
-    order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
-    if ( order.empty() ){
-#pragma omp critical
-      {
-	cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
-      }
-      return false;
-    }
-    // for( const auto& no : order ){
-    //   cerr << " index "
-    // 	   << TiCC::getAttribute( no, "index" ) << " "
-    // 	   << TiCC::getAttribute( no, "regionRef" ) << endl;
-    // }
-    list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
-    map<string,int> region_refs;
-    for ( const auto& ord : order ){
-      string ref = TiCC::getAttribute( ord, "regionRef" );
-      string index = TiCC::getAttribute( ord, "index" );
-      int id = TiCC::stringTo<int>( index );
-      region_refs[ref] = id;
-    }
-    new_order.resize( order.size() );
-    for ( const auto& region : regions ){
-      string ref = TiCC::getAttribute( region, "id" );
-      if ( region_refs.find(ref) != region_refs.end() ){
-	new_order[region_refs[ref]] = region;
-      }
-      else {
-	specials.push_back( region );
-      }
-    }
-    // for( const auto& no : new_order ){
-    //   cerr << " lees " << TiCC::getAttribute( no, "id" ) << " ("
-    //   	   << TiCC::getAttribute( no, "type" ) << ")" << endl;
-    // }
-    // for( const auto& sp : specials ){
-    //    cerr << " special "
-    // 	    << TiCC::getAttribute( sp, "id" ) << " ("
-    // 	    << TiCC::getAttribute( sp, "type" ) << ")" << endl;
-    // }
+    // A reading order
+    new_order = extract_regions( order.front(), specials );
   }
   if ( new_order.empty() && specials.empty() ){
     cerr << "no usable data in file:" << fileName << endl;
