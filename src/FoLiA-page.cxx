@@ -56,8 +56,10 @@ bool do_refs = true;
 string setname = "FoLiA-page-set";
 string classname = "OCR";
 
-void appendStr( folia::FoliaElement *par, int& pos,
-		const UnicodeString& val, const string& id,
+void appendStr( folia::FoliaElement *par,
+		int& pos,
+		const UnicodeString& val,
+		const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
     folia::KWargs args;
@@ -161,29 +163,31 @@ void handle_uni_lines( folia::FoliaElement *root,
     }
     return;
   }
-  string full_line;
+  UnicodeString full_line;
   int pos = 0;
   int j = 0;
   for ( const auto& unicode : unicodes ){
     string value = TiCC::XmlContent( unicode );
     if ( !value.empty() ){
       //      cerr << "string: '" << value << endl;
+      UnicodeString uval = TiCC::UnicodeFromUTF8(value);
       string id = "str_" + TiCC::toString(j++);
-      appendStr( root, pos, TiCC::UnicodeFromUTF8(value), id, fileName );
-      full_line += value;
+      appendStr( root, pos, uval, id, fileName );
+      full_line += uval;
       if ( &unicode != &unicodes.back() ){
 	full_line += " ";
 	++pos;
       }
     }
   }
-  root->settext( full_line, classname );
+  root->setutext( full_line, classname );
 }
 
 string handle_one_line( folia::FoliaElement *par,
 			int& pos,
 			xmlNode *line,
 			const string& fileName ){
+  static TiCC::UnicodeNormalizer UN;
   string result;
   string lid = TiCC::getAttribute( line, "id" );
   //  cerr << "handle line " << lid << endl;
@@ -210,11 +214,12 @@ string handle_one_line( folia::FoliaElement *par,
       }
       return "";
     }
-
     for ( const auto& unicode : unicodes ){
       string value = TiCC::XmlContent( unicode );
       if ( !value.empty() ){
-	appendStr( par, pos, TiCC::UnicodeFromUTF8(value), lid, fileName );
+	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+	uval = UN.normalize(uval);
+	appendStr( par, pos, uval, lid, fileName );
 	result = value;
 	break; // We assume only 1 non-empty Unicode string
       }
@@ -439,7 +444,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "--norefs,threads:" );
+			 "norefs,threads:" );
   try {
     opts.init( argc, argv );
   }
