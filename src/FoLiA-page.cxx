@@ -286,18 +286,6 @@ bool convert_pagexml( const string& fileName,
       cout << "original file: " << orgFile << endl;
     }
   }
-  string docid = prefix + orgFile;
-  folia::Document doc( "xml:id='" + docid + "'" );
-  doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::processor *proc = add_provenance( doc, "FoLiA-page", command );
-  folia::KWargs args;
-  args["processor"] = proc->id();
-  doc.declare( folia::AnnotationType::STRING, setname, args );
-  args.clear();
-  args["xml:id"] =  docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
-
   list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
   if ( order.size() > 1 ){
 #pragma omp critical
@@ -308,6 +296,8 @@ bool convert_pagexml( const string& fileName,
     xmlFreeDoc( xdoc );
     return false;
   }
+  vector<xmlNode*> new_order;
+  vector<xmlNode*> specials;
   if ( order.empty() ){
     // No reading order. So a 'flat' document
     list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
@@ -315,15 +305,9 @@ bool convert_pagexml( const string& fileName,
       cerr << "NO textRegion nodes found in flat document" << endl;
       return false;
     }
-    int index = 0;
-    vector<xmlNode*> new_order;
     for ( const auto& r : regions ){
       string ref = TiCC::getAttribute( r, "id" );
       new_order.push_back( r );
-      ++index;
-    }
-    for ( const auto& no : new_order ){
-      handle_one_region( text, no, fileName );
     }
   }
   else {
@@ -348,8 +332,7 @@ bool convert_pagexml( const string& fileName,
       int id = TiCC::stringTo<int>( index );
       region_refs[ref] = id;
     }
-    vector<xmlNode*> new_order( order.size() );
-    vector<xmlNode*> specials;
+    new_order.resize( order.size() );
     for ( const auto& region : regions ){
       string ref = TiCC::getAttribute( region, "id" );
       if ( region_refs.find(ref) != region_refs.end() ){
@@ -368,12 +351,28 @@ bool convert_pagexml( const string& fileName,
     // 	    << TiCC::getAttribute( sp, "id" ) << " ("
     // 	    << TiCC::getAttribute( sp, "type" ) << ")" << endl;
     // }
-    for ( const auto& no : new_order ){
-      handle_one_region( text, no, fileName );
-    }
-    for ( const auto& no : specials ){
-      handle_one_region( text, no, fileName );
-    }
+  }
+  if ( new_order.empty() && specials.empty() ){
+    cerr << "no usable data in file:" << fileName << endl;
+    xmlFreeDoc( xdoc );
+    return false;
+  }
+  string docid = prefix + orgFile;
+  folia::Document doc( "xml:id='" + docid + "'" );
+  doc.set_metadata( "page_file", stripDir( fileName ) );
+  folia::processor *proc = add_provenance( doc, "FoLiA-page", command );
+  folia::KWargs args;
+  args["processor"] = proc->id();
+  doc.declare( folia::AnnotationType::STRING, setname, args );
+  args.clear();
+  args["xml:id"] =  docid + ".text";
+  folia::Text *text = new folia::Text( args );
+  doc.append( text );
+  for ( const auto& no : new_order ){
+    handle_one_region( text, no, fileName );
+  }
+  for ( const auto& no : specials ){
+    handle_one_region( text, no, fileName );
   }
   xmlFreeDoc( xdoc );
 
