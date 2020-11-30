@@ -51,6 +51,7 @@ using namespace	icu;
 using TiCC::operator<<;
 
 bool verbose = false;
+bool do_refs = true;
 
 string setname = "FoLiA-page-set";
 string classname = "OCR";
@@ -66,15 +67,17 @@ void appendStr( folia::FoliaElement *par, int& pos,
     str->setutext( val, pos, classname );
     pos += val.length();
     args.clear();
-    args["xlink:href"] = file;
-    args["format"] = "text/page+xml";
-    folia::Relation *h = new folia::Relation( args );
-    str->append( h );
-    args.clear();
-    args["id"] = id;
-    args["type"] = "str";
-    folia::LinkReference *a = new folia::LinkReference( args );
-    h->append( a );
+    if ( do_refs ){
+      args["xlink:href"] = file;
+      args["format"] = "text/page+xml";
+      folia::Relation *h = new folia::Relation( args );
+      str->append( h );
+      args.clear();
+      args["id"] = id;
+      args["type"] = "str";
+      folia::LinkReference *a = new folia::LinkReference( args );
+      h->append( a );
+    }
   }
 }
 
@@ -132,16 +135,18 @@ string handle_one_word( folia::FoliaElement *sent,
   args["textclass"] = classname;
   folia::Word *w = new folia::Word( args, sent->doc() );
   sent->append( w );
-  args.clear();
-  args["xlink:href"] = fileName;
-  args["format"] = "text/page+xml";
-  folia::Relation *h = new folia::Relation( args );
-  w->append( h );
-  args.clear();
-  args["id"] = wid;
-  args["type"] = "w";
-  folia::LinkReference *a = new folia::LinkReference( args );
-  h->append( a );
+  if ( do_refs ){
+    args.clear();
+    args["xlink:href"] = fileName;
+    args["format"] = "text/page+xml";
+    folia::Relation *h = new folia::Relation( args );
+    w->append( h );
+    args.clear();
+    args["id"] = wid;
+    args["type"] = "w";
+    folia::LinkReference *a = new folia::LinkReference( args );
+    h->append( a );
+  }
   return result;
 }
 
@@ -422,7 +427,8 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
-  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FP-') " << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default: 'FP-') " << endl;
+  cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
@@ -432,7 +438,8 @@ void usage(){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
-			 "compress:,class:,setname:,help,version,prefix:,threads:" );
+			 "compress:,class:,setname:,help,version,prefix:,"
+			 "--norefs,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -482,6 +489,7 @@ int main( int argc, char *argv[] ){
 #endif
   }
   verbose = opts.extract( 'v' );
+  do_refs = !opts.extract( "norefs" );
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
