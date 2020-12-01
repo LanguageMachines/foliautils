@@ -15,3 +15,9 @@ wc out/page/00*.tif.folia.xml >> testpage.out
 $my_bin/foliadiff.sh out/page/00667464.tif.folia.xml page1.folia.xml.ok >> testpage.out
 $my_bin/foliadiff.sh out/page/0001.png.folia.xml page2.folia.xml.ok >> testpage.out
 $my_bin/foliadiff.sh out/page/roemische_1pg.png.folia.xml page3.folia.xml.ok >> testpage.out
+
+$my_bin/FoLiA-page --trusttokens -O out/page data/page/piroska.xml >> testpage.out 2>&1
+$my_bin/foliadiff.sh out/page/roemische_1pg.png.folia.xml page4.folia.xml.ok >> testpage.out
+
+$my_bin/FoLiA-page --norefs -O out/page data/page/piros.xml >> testpage.out 2>&1
+$my_bin/foliadiff.sh out/page/0001.png.folia.xml page5.folia.xml.ok >> testpage.out

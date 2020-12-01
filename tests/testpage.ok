@@ -11,6 +11,7 @@ Usage: FoLiA-page [options] file/dir
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--prefix='pre'	 add this prefix to ALL created files. (default: 'FP-') 
 	--norefs	 do not add references nodes to the original document. (default: Add References)
+	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
 			 use 'none' for an empty prefix. (can be dangerous)
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 				 with 'c'=g create gzip files (.gz)
@@ -39,3 +40,7 @@ done
   164   482  6865 out/page/00667467.tif.folia.xml
    95   291  4444 out/page/00667468.tif.folia.xml
  1093  3433 50290 total
+converted: data/page/piroska.xml into: out/page/roemische_1pg.png.folia.xml
+done
+converted: data/page/piros.xml into: out/page/0001.png.folia.xml
+done
