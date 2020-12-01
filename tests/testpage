@@ -21,3 +21,5 @@ $my_bin/foliadiff.sh out/page/roemische_1pg.png.folia.xml page4.folia.xml.ok >> 
 
 $my_bin/FoLiA-page --norefs -O out/page data/page/piros.xml >> testpage.out 2>&1
 $my_bin/foliadiff.sh out/page/0001.png.folia.xml page5.folia.xml.ok >> testpage.out
+
+$my_bin/folialint --nooutput out/page/*.xml >> testpage.out 2>&1

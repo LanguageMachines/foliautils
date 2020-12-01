@@ -17,7 +17,7 @@ Usage: FoLiA-page [options] file/dir
 				 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-start processing of 11 files 
+start processing of 12 files 
 converted: data/page/00667461.xml into: out/page/00667461.tif.folia.xml
 converted: data/page/00667462.xml into: out/page/00667462.tif.folia.xml
 converted: data/page/00667463.xml into: out/page/00667463.tif.folia.xml
@@ -29,6 +29,7 @@ converted: data/page/00667468.xml into: out/page/00667468.tif.folia.xml
 converted: data/page/00667460.xml into: out/page/00667460.tif.folia.xml
 converted: data/page/piros.xml into: out/page/0001.png.folia.xml
 converted: data/page/piroska.xml into: out/page/roemische_1pg.png.folia.xml
+converted: data/page/martin.xml into: out/page/NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
 done
    66   180  3029 out/page/00667460.tif.folia.xml
   151   485  7034 out/page/00667461.tif.folia.xml
@@ -44,3 +45,15 @@ converted: data/page/piroska.xml into: out/page/roemische_1pg.png.folia.xml
 done
 converted: data/page/piros.xml into: out/page/0001.png.folia.xml
 done
+Validated successfully: out/page/0001.png.folia.xml
+Validated successfully: out/page/00667460.tif.folia.xml
+Validated successfully: out/page/00667461.tif.folia.xml
+Validated successfully: out/page/00667462.tif.folia.xml
+Validated successfully: out/page/00667463.tif.folia.xml
+Validated successfully: out/page/00667464.tif.folia.xml
+Validated successfully: out/page/00667465.tif.folia.xml
+Validated successfully: out/page/00667466.tif.folia.xml
+Validated successfully: out/page/00667467.tif.folia.xml
+Validated successfully: out/page/00667468.tif.folia.xml
+Validated successfully: out/page/NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
+Validated successfully: out/page/roemische_1pg.png.folia.xml
