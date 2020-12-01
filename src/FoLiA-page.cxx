@@ -52,9 +52,12 @@ using TiCC::operator<<;
 
 bool verbose = false;
 bool do_refs = true;
+bool trust_tokenization = false;
 
 string setname = "FoLiA-page-set";
 string classname = "OCR";
+
+folia::processor *page_processor = 0;
 
 void appendStr( folia::FoliaElement *par,
 		int& pos,
@@ -132,6 +135,9 @@ string handle_one_word( folia::FoliaElement *sent,
   }
   result = TiCC::XmlContent( unicodes.front() );
   folia::KWargs args;
+  args["processor"] = page_processor->id();
+  sent->doc()->declare( folia::AnnotationType::TOKEN, setname, args );
+  args.clear();
   args["xml:id"] = sent->id() + "." + wid;
   args["text"] = result;
   args["textclass"] = classname;
@@ -193,16 +199,54 @@ string handle_one_line( folia::FoliaElement *par,
   //  cerr << "handle line " << lid << endl;
   list<xmlNode*> words = TiCC::FindNodes( line, "./*:Word" );
   if ( !words.empty() ){
-    // We have Word!. So we assume we are able to create Sentences too.
-    folia::KWargs args;
-    args["xml:id"] = par->id() + "." + lid;
-    folia::Sentence *sent = new folia::Sentence( args, par->doc() );
-    par->append( sent );
-    for ( const auto& w :words ){
-      handle_one_word( sent, w, fileName );
+    // We have Words!.
+    if ( trust_tokenization ){
+      // trust the tokenization and create Sentences too.
+      folia::KWargs args;
+      args["processor"] = page_processor->id();
+      par->doc()->declare( folia::AnnotationType::SENTENCE, setname, args );
+      args.clear();
+      args["xml:id"] = par->id() + "." + lid;
+      folia::Sentence *sent = new folia::Sentence( args, par->doc() );
+      par->append( sent );
+      for ( const auto& w :words ){
+	handle_one_word( sent, w, fileName );
+      }
+      result = sent->str();
+      sent->settext( result, classname );
     }
-    result = sent->str();
-    sent->settext( result, classname );
+    else {
+      // we add the text as strings, enabling external tokenizations
+      map<xmlNode*,string> word_ids;
+      list<xmlNode*> unicodes;
+      for ( const auto& w : words ){
+	list<xmlNode*> tmp = TiCC::FindNodes( w, "./*:TextEquiv/*:Unicode" );
+	string wid = TiCC::getAttribute( w, "id" );
+	for ( const auto& it : tmp ){
+	  string value = TiCC::XmlContent( it );
+	  if ( !value.empty() ){
+	    unicodes.push_back( it );
+	    word_ids[it] = wid;
+	    break;  // We assume only 1 non-empty Unicode string
+	  }
+	}
+      }
+      if ( unicodes.empty() ){
+#pragma omp critical
+	{
+	  cerr << "missing Unicode node in " << TiCC::Name(line) << " of " << fileName << endl;
+	}
+	return "";
+      }
+      for ( const auto& unicode : unicodes ){
+	string value = TiCC::XmlContent( unicode );
+	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+	uval = UN.normalize(uval);
+	appendStr( par, pos, uval, word_ids[unicode], fileName );
+	result = value;
+	break; // We assume only 1 non-empty Unicode string
+      }
+    }
   }
   else {
     // lines without words.
@@ -371,9 +415,9 @@ bool convert_pagexml( const string& fileName,
   string docid = prefix + orgFile;
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::processor *proc = add_provenance( doc, "FoLiA-page", command );
+  page_processor = add_provenance( doc, "FoLiA-page", command );
   folia::KWargs args;
-  args["processor"] = proc->id();
+  args["processor"] = page_processor->id();
   doc.declare( folia::AnnotationType::STRING, setname, args );
   args.clear();
   args["xml:id"] =  docid + ".text";
@@ -434,6 +478,7 @@ void usage(){
     "(default '" << classname << "')" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default: 'FP-') " << endl;
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
+  cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
@@ -444,7 +489,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "norefs,threads:" );
+			 "norefs,threads:,trusttokens" );
   try {
     opts.init( argc, argv );
   }
@@ -495,6 +540,7 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   do_refs = !opts.extract( "norefs" );
+  trust_tokenization = opts.extract( "trusttokens" );
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
