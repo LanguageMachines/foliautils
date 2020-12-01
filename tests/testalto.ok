@@ -10,6 +10,7 @@ Usage: alto [options] file/dir
 	-h or --help	 this messages 
 	-O	 output directory 
 	--type	 Type of document ('krant' or 'boek' Default: 'krant')
+	--prefix='pre'	 add this prefix to document ID's when an invalid xml:id would be created. (default: 'FA-') 
 	--oldstrings	 Fall back to old version that creates <str> nodes
 			 The default is to create <w> nodes.
 	--setname=<set>	 the FoLiA setname of the string or word nodes. (default 'FoLia-alto-set')
@@ -31,6 +32,7 @@ Usage: alto [options] file/dir
 	-h or --help	 this messages 
 	-O	 output directory 
 	--type	 Type of document ('krant' or 'boek' Default: 'krant')
+	--prefix='pre'	 add this prefix to document ID's when an invalid xml:id would be created. (default: 'FA-') 
 	--oldstrings	 Fall back to old version that creates <str> nodes
 			 The default is to create <w> nodes.
 	--setname=<set>	 the FoLiA setname of the string or word nodes. (default 'FoLia-alto-set')
