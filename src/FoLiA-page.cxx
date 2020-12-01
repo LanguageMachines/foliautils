@@ -127,7 +127,6 @@ void handle_one_word( folia::FoliaElement *sent,
 		      xmlNode *word,
 		      const string& fileName ){
   string wid = TiCC::getAttribute( word, "id" );
-  //  cerr << "handle word " << wid << endl;
   list<xmlNode*> unicodes = TiCC::FindNodes( word, "./*:TextEquiv/*:Unicode" );
   if ( unicodes.size() != 1 ){
     throw runtime_error( "expected only 1 unicode entry in Word: " + wid );
@@ -174,7 +173,6 @@ void handle_uni_lines( folia::FoliaElement *root,
   for ( const auto& unicode : unicodes ){
     string value = TiCC::XmlContent( unicode );
     if ( !value.empty() ){
-      //      cerr << "string: '" << value << endl;
       UnicodeString uval = TiCC::UnicodeFromUTF8(value);
       uval = UN.normalize(uval);
       string id = "str_" + TiCC::toString(j++);
@@ -196,7 +194,6 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
   static TiCC::UnicodeNormalizer UN;
   UnicodeString result;
   string lid = TiCC::getAttribute( line, "id" );
-  //  cerr << "handle line " << lid << endl;
   list<xmlNode*> words = TiCC::FindNodes( line, "./*:Word" );
   if ( !words.empty() ){
     // We have Words!.
@@ -276,7 +273,6 @@ void handle_one_region( folia::FoliaElement *root,
 			xmlNode *region,
 			const string& fileName ){
   string ind = TiCC::getAttribute( region, "id" );
-  //  cerr << "handle region " << ind << endl;
   folia::KWargs args;
   args["xml:id"] = root->id() + "." + ind;
   folia::Paragraph *par = new folia::Paragraph( args, root->doc() );
@@ -299,7 +295,6 @@ void handle_one_region( folia::FoliaElement *root,
   }
   else {
     // No TextLine's use unicode nodes directly
-    //    cerr << "only unicode" << endl;
     handle_uni_lines( par, region, fileName );
   }
 }
@@ -308,7 +303,10 @@ vector<xmlNode*> extract_regions( xmlNode *root ){
   vector<xmlNode*> result;
   list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
   if ( regions.empty() ){
-    cerr << "NO textRegion nodes found in flat document" << endl;
+#pragma omp critical
+    {
+      cerr << "NO textRegion nodes found in flat document" << endl;
+    }
     return result;
   }
   for ( const auto& r : regions ){
@@ -408,7 +406,10 @@ bool convert_pagexml( const string& fileName,
     new_order = extract_regions( order.front(), specials );
   }
   if ( new_order.empty() && specials.empty() ){
-    cerr << "no usable data in file:" << fileName << endl;
+#pragma omp critical
+    {
+      cerr << "no usable data in file:" << fileName << endl;
+    }
     xmlFreeDoc( xdoc );
     return false;
   }
