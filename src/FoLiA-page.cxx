@@ -413,7 +413,10 @@ bool convert_pagexml( const string& fileName,
     xmlFreeDoc( xdoc );
     return false;
   }
-  string docid = prefix + orgFile;
+  string docid = orgFile;
+  if ( !folia::isNCName( docid ) ){
+    docid = prefix + docid;
+  }
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
   page_processor = add_provenance( doc, "FoLiA-page", command );
@@ -477,10 +480,9 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
-  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default: 'FP-') " << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to document ID's when an invalid xml:id would be created. (default: 'FP-') " << endl;
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
-  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
@@ -547,9 +549,6 @@ int main( int argc, char *argv[] ){
   opts.extract( "class", classname );
   string prefix = "FP-";
   opts.extract( "prefix", prefix );
-  if ( prefix == "none" ){
-    prefix.clear();
-  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;

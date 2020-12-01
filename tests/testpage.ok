@@ -9,10 +9,9 @@ Usage: FoLiA-page [options] file/dir
 	-O		 output directory 
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-page-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
-	--prefix='pre'	 add this prefix to ALL created files. (default: 'FP-') 
+	--prefix='pre'	 add this prefix to document ID's when an invalid xml:id would be created. (default: 'FP-') 
 	--norefs	 do not add references nodes to the original document. (default: Add References)
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
-			 use 'none' for an empty prefix. (can be dangerous)
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 				 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
