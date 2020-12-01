@@ -123,23 +123,22 @@ string stripDir( const string& name ){
   }
 }
 
-string handle_one_word( folia::FoliaElement *sent,
-			xmlNode *word,
-			const string& fileName ){
-  string result;
+void handle_one_word( folia::FoliaElement *sent,
+		      xmlNode *word,
+		      const string& fileName ){
   string wid = TiCC::getAttribute( word, "id" );
   //  cerr << "handle word " << wid << endl;
   list<xmlNode*> unicodes = TiCC::FindNodes( word, "./*:TextEquiv/*:Unicode" );
   if ( unicodes.size() != 1 ){
     throw runtime_error( "expected only 1 unicode entry in Word: " + wid );
   }
-  result = TiCC::XmlContent( unicodes.front() );
+  string value = TiCC::XmlContent( unicodes.front() );
   folia::KWargs args;
   args["processor"] = page_processor->id();
   sent->doc()->declare( folia::AnnotationType::TOKEN, setname, args );
   args.clear();
   args["xml:id"] = sent->id() + "." + wid;
-  args["text"] = result;
+  args["text"] = value;
   args["textclass"] = classname;
   folia::Word *w = new folia::Word( args, sent->doc() );
   sent->append( w );
@@ -155,12 +154,12 @@ string handle_one_word( folia::FoliaElement *sent,
     folia::LinkReference *a = new folia::LinkReference( args );
     h->append( a );
   }
-  return result;
 }
 
 void handle_uni_lines( folia::FoliaElement *root,
 		       xmlNode *parent,
 		       const string& fileName ){
+  static TiCC::UnicodeNormalizer UN;
   list<xmlNode*> unicodes = TiCC::FindNodes( parent, "./*:TextEquiv/*:Unicode" );
   if ( unicodes.empty() ){
 #pragma omp critical
@@ -177,6 +176,7 @@ void handle_uni_lines( folia::FoliaElement *root,
     if ( !value.empty() ){
       //      cerr << "string: '" << value << endl;
       UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+      uval = UN.normalize(uval);
       string id = "str_" + TiCC::toString(j++);
       appendStr( root, pos, uval, id, fileName );
       full_line += uval;
@@ -189,12 +189,12 @@ void handle_uni_lines( folia::FoliaElement *root,
   root->setutext( full_line, classname );
 }
 
-string handle_one_line( folia::FoliaElement *par,
-			int& pos,
-			xmlNode *line,
-			const string& fileName ){
+UnicodeString handle_one_line( folia::FoliaElement *par,
+			       int& pos,
+			       xmlNode *line,
+			       const string& fileName ){
   static TiCC::UnicodeNormalizer UN;
-  string result;
+  UnicodeString result;
   string lid = TiCC::getAttribute( line, "id" );
   //  cerr << "handle line " << lid << endl;
   list<xmlNode*> words = TiCC::FindNodes( line, "./*:Word" );
@@ -212,8 +212,8 @@ string handle_one_line( folia::FoliaElement *par,
       for ( const auto& w :words ){
 	handle_one_word( sent, w, fileName );
       }
-      result = sent->str();
-      sent->settext( result, classname );
+      result = sent->text();
+      sent->setutext( result, classname );
     }
     else {
       // we add the text as strings, enabling external tokenizations
@@ -243,7 +243,7 @@ string handle_one_line( folia::FoliaElement *par,
 	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
 	uval = UN.normalize(uval);
 	appendStr( par, pos, uval, word_ids[unicode], fileName );
-	result = value;
+	result = uval;
 	break; // We assume only 1 non-empty Unicode string
       }
     }
@@ -264,7 +264,7 @@ string handle_one_line( folia::FoliaElement *par,
 	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
 	uval = UN.normalize(uval);
 	appendStr( par, pos, uval, lid, fileName );
-	result = value;
+	result = uval;
 	break; // We assume only 1 non-empty Unicode string
       }
     }
@@ -283,19 +283,19 @@ void handle_one_region( folia::FoliaElement *root,
   root->append( par );
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
   if ( !lines.empty() ){
-    string par_txt;
+    UnicodeString par_txt;
     int pos = 0;
     for ( const auto& line : lines ){
-      string value  = handle_one_line( par, pos,
-				       line,
-				       fileName );
+      UnicodeString value  = handle_one_line( par, pos,
+					      line,
+					      fileName );
       par_txt += value;
       if ( &line != &lines.back() ){
 	++pos;
 	par_txt += " ";
       }
     }
-    par->settext( par_txt, classname );
+    par->setutext( par_txt, classname );
   }
   else {
     // No TextLine's use unicode nodes directly
