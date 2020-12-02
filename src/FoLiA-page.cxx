@@ -299,6 +299,34 @@ void handle_one_region( folia::FoliaElement *root,
   }
 }
 
+map<string,map<string, xmlNode*>> extract_typed_regions( xmlNode *root ){
+  map<string,map<string,xmlNode*>> result;
+  list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
+  if ( regions.empty() ){
+#pragma omp critical
+    {
+      cerr << "NO textRegion nodes found in flat document" << endl;
+    }
+    return result;
+  }
+  for ( const auto& r : regions ){
+    string id = TiCC::getAttribute( r, "id" );
+    if ( id.empty() ){
+      cerr << "NO ID: " << TiCC::getAttributes(r) << endl;
+    }
+    else {
+      string type = TiCC::getAttribute( r, "type" );
+      if ( type.empty() ){
+	cerr << "some problem: " << TiCC::getAttributes(r) << endl;
+      }
+      else {
+	result[type][id] = r;
+      }
+    }
+  }
+  return result;
+}
+
 vector<xmlNode*> extract_regions( xmlNode *root ){
   vector<xmlNode*> result;
   list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
@@ -394,6 +422,12 @@ bool convert_pagexml( const string& fileName,
     }
     xmlFreeDoc( xdoc );
     return false;
+  }
+  map<string,map<string,xmlNode*>> regions = extract_typed_regions( root );
+  for ( const auto& t : regions ){
+    for ( const auto& i : t.second ){
+      cerr << t.first << " " << i.first << endl;
+    }
   }
   vector<xmlNode*> new_order;
   vector<xmlNode*> specials;
