@@ -299,34 +299,6 @@ void handle_one_region( folia::FoliaElement *root,
   }
 }
 
-map<string,map<string, xmlNode*>> extract_typed_regions( xmlNode *root ){
-  map<string,map<string,xmlNode*>> result;
-  list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
-  if ( regions.empty() ){
-#pragma omp critical
-    {
-      cerr << "NO textRegion nodes found in flat document" << endl;
-    }
-    return result;
-  }
-  for ( const auto& r : regions ){
-    string id = TiCC::getAttribute( r, "id" );
-    if ( id.empty() ){
-      cerr << "NO ID: " << TiCC::getAttributes(r) << endl;
-    }
-    else {
-      string type = TiCC::getAttribute( r, "type" );
-      if ( type.empty() ){
-	cerr << "some problem: " << TiCC::getAttributes(r) << endl;
-      }
-      else {
-	result[type][id] = r;
-      }
-    }
-  }
-  return result;
-}
-
 vector<xmlNode*> extract_regions( xmlNode *root ){
   vector<xmlNode*> result;
   list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
@@ -338,7 +310,6 @@ vector<xmlNode*> extract_regions( xmlNode *root ){
     return result;
   }
   for ( const auto& r : regions ){
-    string ref = TiCC::getAttribute( r, "id" );
     result.push_back( r );
   }
   return result;
@@ -377,6 +348,55 @@ vector<xmlNode *> extract_regions( xmlNode *root,
   return result;
 }
 
+list<xmlNode*> sort_regions( list<xmlNode*>& all_regions,
+			     list<xmlNode*>& my_order ){
+  if ( my_order.empty() ){
+    return all_regions;
+  }
+  else {
+    map<string,xmlNode*> sn;
+    list<pair<string,xmlNode*>> dl;
+    for ( const auto& r : all_regions ){
+      string id = TiCC::getAttribute( r, "id" );
+      dl.push_back( make_pair( id, r ) );
+      sn[id] = r;
+    }
+    map<string,xmlNode*> region_refs;
+    list<xmlNode*> order = TiCC::FindNodes( my_order.front(),
+					    ".//*:RegionRefIndexed" );
+    vector<string> id_order( order.size() );
+    set<string> in_order;
+    for ( const auto& ord : order ){
+      string ref = TiCC::getAttribute( ord, "regionRef" );
+      string index = TiCC::getAttribute( ord, "index" );
+      int id = TiCC::stringTo<int>( index );
+      region_refs[ref] = sn[ref];
+      id_order[id] = ref;
+      in_order.insert( ref );
+    }
+    list<xmlNode*> result;
+    set<string> handled;
+    for( const auto& it : dl ){
+      if ( handled.find( it.first ) != handled.end() ){
+	continue;
+      }
+      if ( in_order.find(it.first) != in_order.end() ){
+	// id in reading order, handle those first
+	for ( auto const& i : id_order ){
+	  result.push_back( region_refs[i] );
+	  handled.insert( i );
+	}
+	in_order.erase(it.first);
+      }
+      else {
+	handled.insert( it.first );
+	result.push_back( it.second );
+      }
+    }
+    return result;
+  }
+}
+
 bool convert_pagexml( const string& fileName,
 		      const string& outputDir,
 		      const zipType outputType,
@@ -413,6 +433,7 @@ bool convert_pagexml( const string& fileName,
       cout << "original file: " << orgFile << endl;
     }
   }
+  list<xmlNode*> all_regions =  TiCC::FindNodes( root, ".//*:TextRegion" );
   list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
   if ( order.size() > 1 ){
 #pragma omp critical
@@ -423,12 +444,13 @@ bool convert_pagexml( const string& fileName,
     xmlFreeDoc( xdoc );
     return false;
   }
-  map<string,map<string,xmlNode*>> regions = extract_typed_regions( root );
-  for ( const auto& t : regions ){
-    for ( const auto& i : t.second ){
-      cerr << t.first << " " << i.first << endl;
-    }
+  list<xmlNode*> ordered_regions = sort_regions( all_regions, order );
+  cerr << "NEW ORDERD REGIONS: " << endl;
+  int i = 0;
+  for ( const auto& t : ordered_regions ){
+    cerr << i++ << " " << TiCC::getAttribute( t, "id" ) << endl;
   }
+
   vector<xmlNode*> new_order;
   vector<xmlNode*> specials;
   if ( order.empty() ){
