@@ -273,16 +273,36 @@ void handle_one_region( folia::FoliaElement *root,
 			xmlNode *region,
 			const string& fileName ){
   string ind = TiCC::getAttribute( region, "id" );
-  folia::KWargs args;
-  args["xml:id"] = root->id() + "." + ind;
-  folia::Paragraph *par = new folia::Paragraph( args, root->doc() );
-  root->append( par );
+  string type = TiCC::getAttribute( region, "type" );
+  folia::FoliaElement *res;
+  if ( type.empty() || type == "paragraph" ){
+    folia::KWargs args;
+    args["xml:id"] = root->id() + "." + ind;
+    res = new folia::Paragraph( args, root->doc() );
+    root->append( res );
+  }
+  else if ( type == "heading" || type == "header" || type == "page-number" ){
+    folia::KWargs args;
+    args["xml:id"] = root->id() + "." + ind;
+    res = new folia::Paragraph( args, root->doc() );
+    root->append( res );
+    args.clear();
+    args["xml:id"] = root->id() + ".head.." + ind;
+    args["class"] = type;
+    folia::FoliaElement *hd = new folia::Head( args, root->doc() );
+    res->append( hd );
+    res = hd;
+  }
+  else {
+    cerr << "ignore TYPE: " << type << endl;
+    return;
+  }
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
   if ( !lines.empty() ){
     UnicodeString par_txt;
     int pos = 0;
     for ( const auto& line : lines ){
-      UnicodeString value  = handle_one_line( par, pos,
+      UnicodeString value  = handle_one_line( res, pos,
 					      line,
 					      fileName );
       par_txt += value;
@@ -291,11 +311,11 @@ void handle_one_region( folia::FoliaElement *root,
 	par_txt += " ";
       }
     }
-    par->setutext( par_txt, classname );
+    res->setutext( par_txt, classname );
   }
   else {
     // No TextLine's use unicode nodes directly
-    handle_uni_lines( par, region, fileName );
+    handle_uni_lines( res, region, fileName );
   }
 }
 

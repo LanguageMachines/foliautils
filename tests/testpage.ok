@@ -30,16 +30,16 @@ converted: data/page/piros.xml into: out/page/0001.png.folia.xml
 converted: data/page/piroska.xml into: out/page/roemische_1pg.png.folia.xml
 converted: data/page/martin.xml into: out/page/NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
 done
-   66   180  3029 out/page/00667460.tif.folia.xml
-  151   485  7034 out/page/00667461.tif.folia.xml
-   84   254  4027 out/page/00667462.tif.folia.xml
-  137   457  6426 out/page/00667463.tif.folia.xml
-  135   417  6202 out/page/00667464.tif.folia.xml
-  126   432  5991 out/page/00667465.tif.folia.xml
-  135   435  6272 out/page/00667466.tif.folia.xml
-  164   482  6865 out/page/00667467.tif.folia.xml
-   95   291  4444 out/page/00667468.tif.folia.xml
- 1093  3433 50290 total
+   73   193  3367 out/page/00667460.tif.folia.xml
+  158   498  7372 out/page/00667461.tif.folia.xml
+   93   271  4465 out/page/00667462.tif.folia.xml
+  144   470  6764 out/page/00667463.tif.folia.xml
+  142   430  6540 out/page/00667464.tif.folia.xml
+  133   445  6329 out/page/00667465.tif.folia.xml
+  144   452  6712 out/page/00667466.tif.folia.xml
+  171   495  7203 out/page/00667467.tif.folia.xml
+  104   308  4884 out/page/00667468.tif.folia.xml
+ 1162  3562 53636 total
 converted: data/page/piroska.xml into: out/page/roemische_1pg.png.folia.xml
 done
 converted: data/page/piros.xml into: out/page/0001.png.folia.xml
