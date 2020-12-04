@@ -274,24 +274,32 @@ void handle_one_region( folia::FoliaElement *root,
 			const string& fileName ){
   string ind = TiCC::getAttribute( region, "id" );
   string type = TiCC::getAttribute( region, "type" );
-  folia::FoliaElement *res;
+  folia::KWargs args;
+  args["xml:id"] = root->id() + "." + ind;
+  folia::FoliaElement *par = new folia::Paragraph( args, root->doc() );
+  root->append( par );
   if ( type.empty() || type == "paragraph" ){
-    folia::KWargs args;
-    args["xml:id"] = root->id() + "." + ind;
-    res = new folia::Paragraph( args, root->doc() );
-    root->append( res );
   }
-  else if ( type == "heading" || type == "header" || type == "page-number" ){
-    folia::KWargs args;
-    args["xml:id"] = root->id() + "." + ind;
-    res = new folia::Paragraph( args, root->doc() );
-    root->append( res );
-    args.clear();
-    args["xml:id"] = root->id() + ".head.." + ind;
+  else if ( type == "page-number" ){
+    xmlNode* unicode = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
+    if ( unicode ){
+      string value = TiCC::XmlContent( unicode );
+      folia::KWargs args;
+      args["pagenr"] = value;
+      folia::FoliaElement *hd = new folia::Linebreak( args, root->doc() );
+      par->append( hd );
+      return;
+    }
+    else {
+      cerr << "NOT FOUND" << endl;
+    }
+  }
+  else if ( type == "heading" || type == "header" ){
+    args["xml:id"] = root->id() + ".head." + ind;
     args["class"] = type;
     folia::FoliaElement *hd = new folia::Head( args, root->doc() );
-    res->append( hd );
-    res = hd;
+    par->append( hd );
+    par = hd;
   }
   else {
     cerr << "ignore TYPE: " << type << endl;
@@ -302,7 +310,7 @@ void handle_one_region( folia::FoliaElement *root,
     UnicodeString par_txt;
     int pos = 0;
     for ( const auto& line : lines ){
-      UnicodeString value  = handle_one_line( res, pos,
+      UnicodeString value  = handle_one_line( par, pos,
 					      line,
 					      fileName );
       par_txt += value;
@@ -311,11 +319,11 @@ void handle_one_region( folia::FoliaElement *root,
 	par_txt += " ";
       }
     }
-    res->setutext( par_txt, classname );
+    par->setutext( par_txt, classname );
   }
   else {
     // No TextLine's use unicode nodes directly
-    handle_uni_lines( res, region, fileName );
+    handle_uni_lines( par, region, fileName );
   }
 }
 
