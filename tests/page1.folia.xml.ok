@@ -12,10 +12,11 @@
       <relation-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-04T17:31:23" command="FoLiA-page -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-04T17:34:25" command="FoLiA-page -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
+    <meta id="page-number">83</meta>
     <meta id="page_file">00667464.xml</meta>
   </metadata>
   <text xml:id="FP-00667464.tif.text">

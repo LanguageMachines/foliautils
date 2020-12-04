@@ -288,6 +288,7 @@ void handle_one_region( folia::FoliaElement *root,
       args["pagenr"] = value;
       folia::FoliaElement *hd = new folia::Linebreak( args, root->doc() );
       par->append( hd );
+      root->doc()->set_metadata( "page-number", value );
       return;
     }
     else {
