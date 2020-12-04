@@ -299,55 +299,6 @@ void handle_one_region( folia::FoliaElement *root,
   }
 }
 
-vector<xmlNode*> extract_regions( xmlNode *root ){
-  vector<xmlNode*> result;
-  list<xmlNode*> regions = TiCC::FindNodes( root, ".//*:TextRegion" );
-  if ( regions.empty() ){
-#pragma omp critical
-    {
-      cerr << "NO textRegion nodes found in flat document" << endl;
-    }
-    return result;
-  }
-  for ( const auto& r : regions ){
-    result.push_back( r );
-  }
-  return result;
-}
-
-vector<xmlNode *> extract_regions( xmlNode *root,
-				   vector<xmlNode*>& specials ){
-  vector<xmlNode*> result;
-  specials.clear();
-  list<xmlNode*> order = TiCC::FindNodes( root, ".//*:RegionRefIndexed" );
-  if ( order.empty() ){
-#pragma omp critical
-    {
-      cerr << "missing RegionRefIndexed nodes." << endl;
-    }
-    return result;
-  }
-  list<xmlNode*> regions = TiCC::FindNodes( root->parent, ".//*:TextRegion" );
-  map<string,int> region_refs;
-  for ( const auto& ord : order ){
-    string ref = TiCC::getAttribute( ord, "regionRef" );
-    string index = TiCC::getAttribute( ord, "index" );
-    int id = TiCC::stringTo<int>( index );
-    region_refs[ref] = id;
-  }
-  result.resize( region_refs.size() );
-  for ( const auto& region : regions ){
-    string ref = TiCC::getAttribute( region, "id" );
-    if ( region_refs.find(ref) != region_refs.end() ){
-      result[region_refs[ref]] = region;
-    }
-    else {
-      specials.push_back( region );
-    }
-  }
-  return result;
-}
-
 list<xmlNode*> sort_regions( list<xmlNode*>& all_regions,
 			     list<xmlNode*>& my_order ){
   if ( my_order.empty() ){
@@ -445,23 +396,13 @@ bool convert_pagexml( const string& fileName,
     return false;
   }
   list<xmlNode*> ordered_regions = sort_regions( all_regions, order );
-  cerr << "NEW ORDERD REGIONS: " << endl;
-  int i = 0;
-  for ( const auto& t : ordered_regions ){
-    cerr << i++ << " " << TiCC::getAttribute( t, "id" ) << endl;
-  }
+  //  cerr << "NEW ORDERD REGIONS: " << endl;
+  // int i = 0;
+  // for ( const auto& t : ordered_regions ){
+  //   cerr << i++ << " " << TiCC::getAttribute( t, "id" ) << endl;
+  // }
 
-  vector<xmlNode*> new_order;
-  vector<xmlNode*> specials;
-  if ( order.empty() ){
-    // No reading order. So a 'flat' document
-    new_order = extract_regions( root );
-  }
-  else {
-    // A reading order
-    new_order = extract_regions( order.front(), specials );
-  }
-  if ( new_order.empty() && specials.empty() ){
+  if ( ordered_regions.empty() ){
 #pragma omp critical
     {
       cerr << "no usable data in file:" << fileName << endl;
@@ -483,10 +424,7 @@ bool convert_pagexml( const string& fileName,
   args["xml:id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
-  for ( const auto& no : new_order ){
-    handle_one_region( text, no, fileName );
-  }
-  for ( const auto& no : specials ){
+  for ( const auto& no : ordered_regions ){
     handle_one_region( text, no, fileName );
   }
   xmlFreeDoc( xdoc );
