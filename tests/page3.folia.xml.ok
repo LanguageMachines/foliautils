@@ -5,12 +5,14 @@
       <string-annotation set="FoLiA-page-set">
         <annotator processor="FoLiA-page.1"/>
       </string-annotation>
-      <paragraph-annotation/>
+      <paragraph-annotation set="FoLiA-page-set">
+        <annotator processor="FoLiA-page.1"/>
+      </paragraph-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <relation-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-01T17:14:21" command="FoLiA-page -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-05T12:59:09" command="FoLiA-page -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>

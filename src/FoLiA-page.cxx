@@ -275,6 +275,9 @@ void handle_one_region( folia::FoliaElement *root,
   string ind = TiCC::getAttribute( region, "id" );
   string type = TiCC::getAttribute( region, "type" );
   folia::KWargs args;
+  args["processor"] = page_processor->id();
+  root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+  args.clear();
   args["xml:id"] = root->id() + "." + ind;
   folia::FoliaElement *par = new folia::Paragraph( args, root->doc() );
   root->append( par );
@@ -285,6 +288,9 @@ void handle_one_region( folia::FoliaElement *root,
     if ( unicode ){
       string value = TiCC::XmlContent( unicode );
       folia::KWargs args;
+      args["processor"] = page_processor->id();
+      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+      args.clear();
       args["pagenr"] = value;
       folia::FoliaElement *hd = new folia::Linebreak( args, root->doc() );
       par->append( hd );
@@ -303,7 +309,7 @@ void handle_one_region( folia::FoliaElement *root,
     par = hd;
   }
   else {
-    cerr << "ignore TYPE: " << type << endl;
+    cerr << "ignore not implemented region TYPE: " << type << endl;
     return;
   }
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
