@@ -53,11 +53,11 @@ using TiCC::operator<<;
 bool verbose = false;
 bool do_refs = true;
 bool trust_tokenization = false;
+const string processor_label = "FoLiA-page";
 
 string setname = "FoLiA-page-set";
 string classname = "OCR";
-
-folia::processor *page_processor = 0;
+string processor_id;
 
 void appendStr( folia::FoliaElement *par,
 		int& pos,
@@ -66,6 +66,9 @@ void appendStr( folia::FoliaElement *par,
 		const string& file ){
   if ( !val.isEmpty() ){
     folia::KWargs args;
+    args["processor"] = processor_id;
+    par->doc()->declare( folia::AnnotationType::STRING, setname, args );
+    args.clear();
     args["xml:id"] = par->id() + "." + id;
     folia::String *str = new folia::String( args, par->doc() );
     par->append( str );
@@ -74,7 +77,7 @@ void appendStr( folia::FoliaElement *par,
     args.clear();
     if ( do_refs ){
       folia::KWargs args;
-      args["processor"] = page_processor->id();
+      args["processor"] = processor_id;
       par->doc()->declare( folia::AnnotationType::RELATION, setname, args );
       args.clear();
       args["xlink:href"] = file;
@@ -137,7 +140,7 @@ void handle_one_word( folia::FoliaElement *sent,
   }
   string value = TiCC::XmlContent( unicodes.front() );
   folia::KWargs args;
-  args["processor"] = page_processor->id();
+  args["processor"] = processor_id;
   sent->doc()->declare( folia::AnnotationType::TOKEN, setname, args );
   args.clear();
   args["xml:id"] = sent->id() + "." + wid;
@@ -147,7 +150,7 @@ void handle_one_word( folia::FoliaElement *sent,
   sent->append( w );
   if ( do_refs ){
     folia::KWargs args;
-    args["processor"] = page_processor->id();
+    args["processor"] = processor_id;
     sent->doc()->declare( folia::AnnotationType::RELATION, setname, args );
     args.clear();
     args["xlink:href"] = fileName;
@@ -207,7 +210,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
     if ( trust_tokenization ){
       // trust the tokenization and create Sentences too.
       folia::KWargs args;
-      args["processor"] = page_processor->id();
+      args["processor"] = processor_id;
       par->doc()->declare( folia::AnnotationType::SENTENCE, setname, args );
       args.clear();
       args["xml:id"] = par->id() + "." + lid;
@@ -282,7 +285,7 @@ void handle_one_region( folia::FoliaElement *root,
   string ind = TiCC::getAttribute( region, "id" );
   string type = TiCC::getAttribute( region, "type" );
   folia::KWargs args;
-  args["processor"] = page_processor->id();
+  args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
   args.clear();
   args["xml:id"] = root->id() + "." + ind;
@@ -295,7 +298,7 @@ void handle_one_region( folia::FoliaElement *root,
     if ( unicode ){
       string value = TiCC::XmlContent( unicode );
       folia::KWargs args;
-      args["processor"] = page_processor->id();
+      args["processor"] = processor_id;
       root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
       args.clear();
       args["pagenr"] = value;
@@ -310,7 +313,7 @@ void handle_one_region( folia::FoliaElement *root,
   }
   else if ( type == "heading" || type == "header" ){
     folia::KWargs args;
-    args["processor"] = page_processor->id();
+    args["processor"] = processor_id;
     root->doc()->declare( folia::AnnotationType::HEAD, setname, args );
     args.clear();
     args["xml:id"] = root->id() + ".head." + ind;
@@ -462,11 +465,9 @@ bool convert_pagexml( const string& fileName,
   }
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
-  page_processor = add_provenance( doc, "FoLiA-page", command );
+  folia::processor *proc = add_provenance( doc, processor_label, command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["processor"] = page_processor->id();
-  doc.declare( folia::AnnotationType::STRING, setname, args );
-  args.clear();
   args["xml:id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );

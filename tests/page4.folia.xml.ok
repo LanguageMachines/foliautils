@@ -2,9 +2,6 @@
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="roemische_1pg.png" generator="libfolia-v2.6.1" version="2.4.0">
   <metadata type="native">
     <annotations>
-      <string-annotation set="FoLiA-page-set">
-        <annotator processor="FoLiA-page.1"/>
-      </string-annotation>
       <paragraph-annotation set="FoLiA-page-set">
         <annotator processor="FoLiA-page.1"/>
       </paragraph-annotation>
@@ -20,7 +17,7 @@
       </relation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-06T11:02:12" command="FoLiA-page --trusttokens -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-06T12:30:28" command="FoLiA-page --trusttokens -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
