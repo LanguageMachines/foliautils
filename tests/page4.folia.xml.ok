@@ -15,10 +15,12 @@
         <annotator processor="FoLiA-page.1"/>
       </token-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <relation-annotation/>
+      <relation-annotation set="FoLiA-page-set">
+        <annotator processor="FoLiA-page.1"/>
+      </relation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-05T13:00:22" command="FoLiA-page --trusttokens -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-06T11:02:12" command="FoLiA-page --trusttokens -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>

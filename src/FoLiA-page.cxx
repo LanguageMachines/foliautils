@@ -73,6 +73,10 @@ void appendStr( folia::FoliaElement *par,
     pos += val.length();
     args.clear();
     if ( do_refs ){
+      folia::KWargs args;
+      args["processor"] = page_processor->id();
+      par->doc()->declare( folia::AnnotationType::RELATION, setname, args );
+      args.clear();
       args["xlink:href"] = file;
       args["format"] = "text/page+xml";
       folia::Relation *h = new folia::Relation( args );
@@ -142,6 +146,9 @@ void handle_one_word( folia::FoliaElement *sent,
   folia::Word *w = new folia::Word( args, sent->doc() );
   sent->append( w );
   if ( do_refs ){
+    folia::KWargs args;
+    args["processor"] = page_processor->id();
+    sent->doc()->declare( folia::AnnotationType::RELATION, setname, args );
     args.clear();
     args["xlink:href"] = fileName;
     args["format"] = "text/page+xml";
@@ -302,6 +309,10 @@ void handle_one_region( folia::FoliaElement *root,
     }
   }
   else if ( type == "heading" || type == "header" ){
+    folia::KWargs args;
+    args["processor"] = page_processor->id();
+    root->doc()->declare( folia::AnnotationType::HEAD, setname, args );
+    args.clear();
     args["xml:id"] = root->id() + ".head." + ind;
     args["class"] = type;
     folia::FoliaElement *hd = new folia::Head( args, root->doc() );
