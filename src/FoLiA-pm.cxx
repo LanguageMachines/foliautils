@@ -49,6 +49,7 @@
 
 using namespace	std;
 using namespace	folia;
+using TiCC::operator<<;
 
 bool verbose = false;
 string setname = "polmash";
@@ -162,6 +163,7 @@ void add_reference( TextContent *tc, xmlNode *p ){
 }
 
 void add_note( Note *root, xmlNode *p ){
+  //  cerr << "add note: " << TiCC::getAttributes( p ) << endl;
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -367,9 +369,16 @@ void add_par( Division *root, xmlNode *p ){
 	add_stage_direction( tc, p );
       }
       else if ( tag == "note" ){
+	//	cerr << "found Note: " << TiCC::getAttributes( p ) << endl;
 	KWargs args;
 	string id = TiCC::getAttribute( p, "id" );
 	string ref = TiCC::getAttribute( p, "ref" );
+#pragma omp critical
+	{
+	  cerr << "paragraph: " << id << ", unhandled Note, id=" << id
+	       << " ref=" << ref << endl;
+	}
+#ifdef NONOTE
 	if ( verbose ){
 #pragma omp critical
 	  {
@@ -413,6 +422,7 @@ void add_par( Division *root, xmlNode *p ){
 	  }
 	  pnt = pnt->next;
 	}
+#endif
       }
       else {
 #pragma omp critical

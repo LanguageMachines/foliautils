@@ -28,6 +28,7 @@ Usage: FoLiA-pm [options] files/dir
 	-h or --help 	 this messages 
 Validated successfully: test1/FPM-pm1.folia.xml
 Validated successfully: test1/FPM-pm10.folia.xml
+Validated successfully: test1/FPM-pm11.folia.xml
 Validated successfully: test1/FPM-pm2.folia.xml
 Validated successfully: test1/FPM-pm3.folia.xml
 Validated successfully: test1/FPM-pm4.folia.xml
@@ -51,6 +52,7 @@ Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000479.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000479.2.folia.xml
 Validated successfully: test2/FPM-pm1.folia.xml
 Validated successfully: test2/FPM-pm10.folia.xml
+Validated successfully: test2/FPM-pm11.folia.xml
 Validated successfully: test2/FPM-pm2.folia.xml
 Validated successfully: test2/FPM-pm3.folia.xml
 Validated successfully: test2/FPM-pm4.folia.xml
