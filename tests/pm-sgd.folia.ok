@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FPM-nl.proc.sgd.d.189818990000112.2" generator="libfolia-v2.3" version="2.2.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FPM-nl.proc.sgd.d.189818990000112.2" generator="libfolia-v2.6.1" version="2.4.0">
   <metadata type="native">
     <annotations>
       <division-annotation set="polmash">
@@ -8,14 +8,18 @@
       <relation-annotation set="polmash">
         <annotator processor="FoLiA-pm.1"/>
       </relation-annotation>
-      <head-annotation/>
-      <paragraph-annotation/>
+      <head-annotation set="polmash">
+        <annotator processor="FoLiA-pm.1"/>
+      </head-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <paragraph-annotation set="polmash">
+        <annotator processor="FoLiA-pm.1"/>
+      </paragraph-annotation>
       <linebreak-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-pm.1" begindatetime="2019-08-26T14:09:27" command="FoLiA-pm -O test2" folia_version="2.2.1" host="bonus" name="FoLiA-pm" user="sloot" version="0.13">
-        <processor xml:id="FoLiA-pm.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.3"/>
+      <processor xml:id="FoLiA-pm.1" begindatetime="2020-12-07T13:46:50" command="FoLiA-pm -O test2" folia_version="2.4.0" host="kokos" name="FoLiA-pm" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-pm.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
   </metadata>
