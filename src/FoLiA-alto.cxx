@@ -55,6 +55,7 @@ bool clearCachedFiles = false;
 string setname = "FoLia-alto-set";
 string classname = "OCR";
 string prefix = "FA-";
+string processor_id;
 
 class docCache {
 public:
@@ -213,6 +214,10 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     if ( !altoFile.empty() ){
       // direct mode has no altofile
       args.clear();
+      args["processor"] = processor_id;
+      par->doc()->declare( folia::AnnotationType::RELATION,
+			   setname, args );
+      args.clear();
       args["xlink:href"] = altoFile;
       folia::Relation *h = new folia::Relation( args );
       s->append( h );
@@ -247,6 +252,10 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       s->setutext( uc, txt.length(), classname );
       txt += " " + uc;
       if ( !altoFile.empty() ){
+	args.clear();
+	args["processor"] = processor_id;
+	par->doc()->declare( folia::AnnotationType::RELATION,
+			     setname, args );
 	args.clear();
 	args["xlink:href"] = altoFile;
 	folia::Relation *h = new folia::Relation( args );
@@ -284,6 +293,9 @@ void createFile( folia::FoliaElement *text,
       ids.insert(id);
     }
     folia::KWargs args;
+    args["processor"] = processor_id;
+    text->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+    args.clear();
     string arg = text->id() + ".p.";
     if ( !altoFile.empty() ){
       arg += altoFile + ".";
@@ -339,6 +351,10 @@ void createFile( folia::FoliaElement *text,
 			       classname );
 		  ocr_text += " " + subc;
 		  if ( !altoFile.empty() ){
+		    args.clear();
+		    args["processor"] = processor_id;
+		    text->doc()->declare( folia::AnnotationType::RELATION,
+		    			  setname, args );
 		    args.clear();
 		    args["xlink:href"] = altoFile;
 		    folia::Relation *h = new folia::Relation( args );
@@ -461,8 +477,9 @@ void processArticle( const string& f,
   }
   folia::Document doc( "xml:id='" + docid + "'" );
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["processor"] = proc->id();
+  args["processor"] = processor_id;
   if ( do_strings ){
     doc.declare( folia::AnnotationType::STRING, setname, args );
   }
@@ -961,8 +978,9 @@ void solveBook( const string& altoFile, const string& id,
     }
     folia::Document doc( "xml:id='" + docid + "'" );
     folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+    processor_id = proc->id();
     folia::KWargs args;
-    args["processor"] = proc->id();
+    args["processor"] = processor_id;
     if ( do_strings ){
       doc.declare( folia::AnnotationType::STRING, setname, args );
     }
@@ -1000,6 +1018,9 @@ void solveBook( const string& altoFile, const string& id,
 	ids.insert(id);
       }
       folia::KWargs args;
+      args["processor"] = processor_id;
+      doc.declare( folia::AnnotationType::PARAGRAPH, setname, args );
+      args.clear();
       args["xml:id"] = text->id() + ".p." + id;
       folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
       text->append( p );
@@ -1041,6 +1062,10 @@ void solveBook( const string& altoFile, const string& id,
 				 ocr_text.length(),
 				 classname );
 		    ocr_text += " " + subc;
+		    args.clear();
+		    args["processor"] = processor_id;
+		    text->doc()->declare( folia::AnnotationType::RELATION,
+		    			  setname, args );
 		    args.clear();
 		    args["xlink:href"] = urn;
 		    folia::Relation *h = new folia::Relation( args );
@@ -1243,7 +1268,8 @@ void solveDirectAlto( const string& full_file,
   zipType type;
   xmlDoc *xmldoc = getXml( full_file, type );
   string filename = TiCC::basename( full_file );
-  string docid = replaceColon(filename,'.');
+  string docid = filename.substr( 0, filename.find(".") );
+  docid = replaceColon(docid,'.');
   string outName = outDir + docid + ".folia.xml";
   if ( !folia::isNCName( docid ) ){
     docid = prefix + docid;
@@ -1251,8 +1277,9 @@ void solveDirectAlto( const string& full_file,
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
   folia::Document doc( "xml:id='" + docid + "'" );
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["processor"] = proc->id();
+  args["processor"] = processor_id;
   if ( do_strings ){
     doc.declare( folia::AnnotationType::STRING, setname, args );
   }

@@ -224,7 +224,7 @@ bool process_par( folia::FoliaElement *root,
   if ( !lemma.empty() ){
     folia::KWargs args;
     args["processor"] = processor_id;
-    //    root->doc()->declare( folia::AnnotationType::PART, setname, args );
+    root->doc()->declare( folia::AnnotationType::PART, setname, args );
     args.clear();
     args["xml:id"] = root->id() + ".lemma";
     folia::Part *part = new folia::Part( args );
