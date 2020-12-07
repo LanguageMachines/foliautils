@@ -51,112 +51,44 @@ using namespace	icu;
 using TiCC::operator<<;
 
 bool verbose = false;
+bool do_refs = true;
+bool trust_tokenization = false;
+const string processor_label = "FoLiA-page";
 
 string setname = "FoLiA-page-set";
 string classname = "OCR";
+string processor_id;
 
-void appendStr( folia::FoliaElement *par, int& pos,
-		const UnicodeString& val, const string& id,
+void appendStr( folia::FoliaElement *par,
+		int& pos,
+		const UnicodeString& val,
+		const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
     folia::KWargs args;
+    args["processor"] = processor_id;
+    par->doc()->declare( folia::AnnotationType::STRING, setname, args );
+    args.clear();
     args["xml:id"] = par->id() + "." + id;
     folia::String *str = new folia::String( args, par->doc() );
     par->append( str );
     str->setutext( val, pos, classname );
-    pos += val.length() +1;
+    pos += val.length();
     args.clear();
-    args["xlink:href"] = file;
-    args["format"] = "text/page+xml";
-    folia::Relation *h = new folia::Relation( args );
-    str->append( h );
-    args.clear();
-    args["id"] = id;
-    args["type"] = "str";
-    folia::LinkReference *a = new folia::LinkReference( args );
-    h->append( a );
-  }
-}
-
-void process( folia::FoliaElement *out,
-	      const vector<string>& vec,
-	      const vector<string>& refs,
-	      const string& file ){
-  for ( size_t i=0; i < vec.size(); ++i ){
-    vector<string> parts = TiCC::split( vec[i] );
-    string parTxt;
-    for ( auto const& p : parts ){
-      parTxt += p;
-      if ( &p != &parts.back() ){
-	parTxt += " ";
-      }
-    }
-    folia::KWargs args;
-    args["xml:id"] = out->id() + "." + refs[i];
-    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
-    par->settext( parTxt, classname );
-    out->append( par );
-    int pos = 0;
-    for ( size_t j=0; j< parts.size(); ++j ){
-      string id = "word_" + TiCC::toString(j);
-      appendStr( par, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
-    }
-  }
-}
-
-void process_lines( folia::FoliaElement *out,
-		    const vector<string>& vec,
-		    const vector<string>& refs,
-		    const string& file ){
-  folia::KWargs args;
-  //  args["xml:id"] = out->id() + "." + refs[i];
-  folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
-  out->append( par );
-  for ( size_t i=0; i < vec.size(); ++i ){
-    vector<string> parts = TiCC::split( vec[i] );
-    string parTxt;
-    for ( auto const& p : parts ){
-      parTxt += p;
-      if ( &p != &parts.back() ){
-	parTxt += " ";
-      }
-    }
-    folia::KWargs args;
-    args["xml:id"] = out->id() + "." + refs[i];
-    folia::Sentence *sent = new folia::Sentence( args, out->doc() );
-    sent->settext( parTxt, classname );
-    par->append( sent );
-    // int pos = 0;
-    // for ( size_t j=0; j< parts.size(); ++j ){
-    //   string id = "word_" + TiCC::toString(j);
-    //   appendStr( sent, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
-    // }
-  }
-}
-
-void process( folia::FoliaElement *out,
-	      const map<string,string>& values,
-	      const map<string,string>& labels,
-	      const string& file ){
-  for ( const auto& value : values ){
-    string line = value.second;
-    vector<string> parts = TiCC::split( line );
-    string parTxt;
-    for ( const auto& p : parts ){
-      parTxt += p;
-      if ( &p != &parts.back() ){
-	parTxt += " ";
-      }
-    }
-    folia::KWargs args;
-    args["xml:id"] = out->id() + "." + labels.at(value.first);
-    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
-    par->settext( parTxt, classname );
-    out->append( par );
-    int pos = 0;
-    for ( size_t j=0; j< parts.size(); ++j ){
-      string id = "word_" + TiCC::toString(j);
-      appendStr( par, pos, TiCC::UnicodeFromUTF8(parts[j]), id, file );
+    if ( do_refs ){
+      folia::KWargs args;
+      args["processor"] = processor_id;
+      par->doc()->declare( folia::AnnotationType::RELATION, setname, args );
+      args.clear();
+      args["xlink:href"] = file;
+      args["format"] = "text/page+xml";
+      folia::Relation *h = new folia::Relation( args );
+      str->append( h );
+      args.clear();
+      args["id"] = id;
+      args["type"] = "str";
+      folia::LinkReference *a = new folia::LinkReference( args );
+      h->append( a );
     }
   }
 }
@@ -198,200 +130,271 @@ string stripDir( const string& name ){
   }
 }
 
-bool handle_flat_document( folia::FoliaElement *text,
-			   xmlNode* document_root,
-			   const string& fileName ){
-  cerr << "flat document: " << fileName << endl;
-  vector<string> blocks;
-  vector<string> refs;
-  map<string,string> specials;
-  map<string,string> specialRefs;
-  list<xmlNode*> regions = TiCC::FindNodes( document_root, "//*:TextRegion" );
-  if ( regions.empty() ){
-#pragma omp critical
-    {
-      cerr << "missing TextRegion nodes in " << fileName << endl;
-    }
-    return false;
+void handle_one_word( folia::FoliaElement *sent,
+		      xmlNode *word,
+		      const string& fileName ){
+  string wid = TiCC::getAttribute( word, "id" );
+  list<xmlNode*> unicodes = TiCC::FindNodes( word, "./*:TextEquiv/*:Unicode" );
+  if ( unicodes.size() != 1 ){
+    throw runtime_error( "expected only 1 unicode entry in Word: " + wid );
   }
-  for ( const auto& region : regions ){
-    string index = TiCC::getAttribute( region, "id" );
-    string type = TiCC::getAttribute( region, "type" );
-    if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
-	 || type == "catch-word" || type == "drop-capital" ){
-    }
-    else if ( type == "page-number" || type == "header" ){
-      //
-    }
-    else  if ( type == "signature-mark" ){
-      if ( verbose ) {
-#pragma omp critical
-	{
-	  cerr << "ignoring " << type << " in " << fileName << endl;
-	}
-      }
-      type.clear();
-    }
-    else {
-#pragma omp critical
-      {
-	cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
-      }
-      type.clear();
-    }
-    if ( !type.empty() ){
-      list<xmlNode*> lines = TiCC::FindNodes( region, ".//*:TextLine" );
-      if ( lines.empty() ){
-	cout << "NO textlines" << endl;
-	return false;
-      }
-      for ( const auto& line : lines ){
-	list<xmlNode*> unicodes = TiCC::FindNodes( line, "./*:TextEquiv/*:Unicode" );
-	string index = TiCC::getAttribute( line, "id" );
-	if ( unicodes.empty() ){
-#pragma omp critical
-	  {
-	    cerr << "missing Unicode node in " << TiCC::Name(line) << " of " << fileName << endl;
-	  }
-	}
-	else {
-	  string full_line;
-	  for ( const auto& unicode : unicodes ){
-	    string value = TiCC::XmlContent( unicode );
-	    //	  cerr << "string: '" << value << endl;
-	    full_line += value + " ";
-	  }
-	  blocks.push_back(full_line);
-	  refs.push_back( index );
-	}
-      }
-    }
+  string value = TiCC::XmlContent( unicodes.front() );
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  sent->doc()->declare( folia::AnnotationType::TOKEN, setname, args );
+  args.clear();
+  args["xml:id"] = sent->id() + "." + wid;
+  args["text"] = value;
+  args["textclass"] = classname;
+  folia::Word *w = new folia::Word( args, sent->doc() );
+  sent->append( w );
+  if ( do_refs ){
+    folia::KWargs args;
+    args["processor"] = processor_id;
+    sent->doc()->declare( folia::AnnotationType::RELATION, setname, args );
+    args.clear();
+    args["xlink:href"] = fileName;
+    args["format"] = "text/page+xml";
+    folia::Relation *h = new folia::Relation( args );
+    w->append( h );
+    args.clear();
+    args["id"] = wid;
+    args["type"] = "w";
+    folia::LinkReference *a = new folia::LinkReference( args );
+    h->append( a );
   }
-  cerr << "BLOCKS:" << endl << blocks << endl;
-  cerr << "REFS:" << endl << refs << endl;
-  process_lines( text, blocks, refs, TiCC::basename(fileName) );
-  return true;
 }
 
-void handle_one_region( xmlNode *region,
-			const string& fileName,
-			vector<string>& regionStrings,
-			map<string,int>& refs,
-			map<string,string>& specials,
-			map<string,string>& specialRefs ){
-  list<xmlNode*> lines = TiCC::FindNodes( region, ".//*:TextLine" );
-  if ( !lines.empty() ){
-    cout << "found textlines" << endl;
-  }
-  string index = TiCC::getAttribute( region, "id" );
-  string type = TiCC::getAttribute( region, "type" );
-  int key = -1;
-  if ( type == "paragraph" || type == "heading" || type == "TOC-entry"
-       || type == "catch-word" || type == "drop-capital" ){
-    map<string,int>::const_iterator mit = refs.find(index);
-    if ( mit == refs.end() ){
-#pragma omp critical
-      {
-	cerr << "ignoring paragraph index=" << index
-	     << ", not found in ReadingOrder of " << fileName << endl;
-      }
-    }
-    else {
-      key = mit->second;
-    }
-  }
-  else if ( type == "page-number" || type == "header" ){
-    //
-  }
-  else  if ( type == "signature-mark" ){
-    if ( verbose ) {
-#pragma omp critical
-      {
-	cerr << "ignoring " << type << " in " << fileName << endl;
-      }
-    }
-    type.clear();
-  }
-  else {
+void handle_uni_lines( folia::FoliaElement *root,
+		       xmlNode *parent,
+		       const string& fileName ){
+  static TiCC::UnicodeNormalizer UN;
+  list<xmlNode*> unicodes = TiCC::FindNodes( parent, "./*:TextEquiv/*:Unicode" );
+  if ( unicodes.empty() ){
 #pragma omp critical
     {
-      cerr << "ignoring unsupported type=" << type << " in " << fileName << endl;
+      cerr << "missing Unicode node in " << TiCC::Name(parent) << " of " << fileName << endl;
     }
-    type.clear();
+    return;
   }
-  if ( !type.empty() ){
-    list<xmlNode*> unicodes = TiCC::FindNodes( region, "./*:TextEquiv/*:Unicode" );
+  UnicodeString full_line;
+  int pos = 0;
+  int j = 0;
+  for ( const auto& unicode : unicodes ){
+    string value = TiCC::XmlContent( unicode );
+    if ( !value.empty() ){
+      UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+      uval = UN.normalize(uval);
+      string id = "str_" + TiCC::toString(j++);
+      appendStr( root, pos, uval, id, fileName );
+      full_line += uval;
+      if ( &unicode != &unicodes.back() ){
+	full_line += " ";
+	++pos;
+      }
+    }
+  }
+  root->setutext( full_line, classname );
+}
+
+UnicodeString handle_one_line( folia::FoliaElement *par,
+			       int& pos,
+			       xmlNode *line,
+			       const string& fileName ){
+  static TiCC::UnicodeNormalizer UN;
+  UnicodeString result;
+  string lid = TiCC::getAttribute( line, "id" );
+  list<xmlNode*> words = TiCC::FindNodes( line, "./*:Word" );
+  if ( !words.empty() ){
+    // We have Words!.
+    if ( trust_tokenization ){
+      // trust the tokenization and create Sentences too.
+      folia::KWargs args;
+      args["processor"] = processor_id;
+      par->doc()->declare( folia::AnnotationType::SENTENCE, setname, args );
+      args.clear();
+      args["xml:id"] = par->id() + "." + lid;
+      folia::Sentence *sent = new folia::Sentence( args, par->doc() );
+      par->append( sent );
+      for ( const auto& w :words ){
+	handle_one_word( sent, w, fileName );
+      }
+      result = sent->text();
+      sent->setutext( result, classname );
+    }
+    else {
+      // we add the text as strings, enabling external tokenizations
+      map<xmlNode*,string> word_ids;
+      list<xmlNode*> unicodes;
+      for ( const auto& w : words ){
+	list<xmlNode*> tmp = TiCC::FindNodes( w, "./*:TextEquiv/*:Unicode" );
+	string wid = TiCC::getAttribute( w, "id" );
+	for ( const auto& it : tmp ){
+	  string value = TiCC::XmlContent( it );
+	  if ( !value.empty() ){
+	    unicodes.push_back( it );
+	    word_ids[it] = wid;
+	    break;  // We assume only 1 non-empty Unicode string
+	  }
+	}
+      }
+      if ( unicodes.empty() ){
+#pragma omp critical
+	{
+	  cerr << "missing Unicode node in " << TiCC::Name(line) << " of " << fileName << endl;
+	}
+	return "";
+      }
+      for ( const auto& unicode : unicodes ){
+	string value = TiCC::XmlContent( unicode );
+	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+	uval = UN.normalize(uval);
+	appendStr( par, pos, uval, word_ids[unicode], fileName );
+	result = uval;
+	break; // We assume only 1 non-empty Unicode string
+      }
+    }
+  }
+  else {
+    // lines without words.
+    list<xmlNode*> unicodes = TiCC::FindNodes( line, "./*:TextEquiv/*:Unicode" );
     if ( unicodes.empty() ){
 #pragma omp critical
       {
-	cerr << "missing Unicode node in " << TiCC::Name(region) << " of " << fileName << endl;
+	cerr << "missing Unicode node in " << TiCC::Name(line) << " of " << fileName << endl;
       }
+      return "";
     }
-    else {
-      string full_line;
-      for ( const auto& unicode : unicodes ){
-	string value = TiCC::XmlContent( unicode );
-	//	  cerr << "string: '" << value << endl;
-	full_line += value + " ";
-      }
-      if ( key >= 0 ){
-	regionStrings[key] = full_line;
-      }
-      if ( type == "page-number" || type == "header"){
-	specials[type] = full_line;
-	specialRefs[type] = index;
+    for ( const auto& unicode : unicodes ){
+      string value = TiCC::XmlContent( unicode );
+      if ( !value.empty() ){
+	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+	uval = UN.normalize(uval);
+	appendStr( par, pos, uval, lid, fileName );
+	result = uval;
+	break; // We assume only 1 non-empty Unicode string
       }
     }
   }
+  return result;
 }
 
-bool handle_ordered_document( folia::FoliaElement *textroot,
-			      xmlNode* document_root,
-			      list<xmlNode*>& order,
-			      const string& fileName ){
-  map<string,int> refs;
-  vector<string> backrefs;
-  vector<string> regionStrings;
-  if ( !order.empty() ){
-    order = TiCC::FindNodes( order.front(), ".//*:RegionRefIndexed" );
-    if ( order.empty() ){
-#pragma omp critical
-      {
-	cerr << "missing RegionRefIndexed nodes in " << fileName << endl;
-      }
-      return false;
+void handle_one_region( folia::FoliaElement *root,
+			xmlNode *region,
+			const string& fileName ){
+  string ind = TiCC::getAttribute( region, "id" );
+  string type = TiCC::getAttribute( region, "type" );
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+  args.clear();
+  args["xml:id"] = root->id() + "." + ind;
+  folia::FoliaElement *par = new folia::Paragraph( args, root->doc() );
+  root->append( par );
+  if ( type.empty() || type == "paragraph" ){
+  }
+  else if ( type == "page-number" ){
+    xmlNode* unicode = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
+    if ( unicode ){
+      string value = TiCC::XmlContent( unicode );
+      folia::KWargs args;
+      args["processor"] = processor_id;
+      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+      args.clear();
+      args["pagenr"] = value;
+      folia::FoliaElement *hd = new folia::Linebreak( args, root->doc() );
+      par->append( hd );
+      root->doc()->set_metadata( "page-number", value );
+      return;
     }
-    backrefs.resize( order.size() );
-    regionStrings.resize( order.size() );
+    else {
+      cerr << "NOT FOUND" << endl;
+    }
+  }
+  else if ( type == "heading" || type == "header" ){
+    folia::KWargs args;
+    args["processor"] = processor_id;
+    root->doc()->declare( folia::AnnotationType::HEAD, setname, args );
+    args.clear();
+    args["xml:id"] = root->id() + ".head." + ind;
+    args["class"] = type;
+    folia::FoliaElement *hd = new folia::Head( args, root->doc() );
+    par->append( hd );
+    par = hd;
+  }
+  else {
+    cerr << "ignore not implemented region TYPE: " << type << endl;
+    return;
+  }
+  list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
+  if ( !lines.empty() ){
+    UnicodeString par_txt;
+    int pos = 0;
+    for ( const auto& line : lines ){
+      UnicodeString value  = handle_one_line( par, pos,
+					      line,
+					      fileName );
+      par_txt += value;
+      if ( &line != &lines.back() ){
+	++pos;
+	par_txt += " ";
+      }
+    }
+    par->setutext( par_txt, classname );
+  }
+  else {
+    // No TextLine's use unicode nodes directly
+    handle_uni_lines( par, region, fileName );
+  }
+}
+
+list<xmlNode*> sort_regions( list<xmlNode*>& all_regions,
+			     list<xmlNode*>& my_order ){
+  if ( my_order.empty() ){
+    return all_regions;
+  }
+  else {
+    map<string,xmlNode*> sn;
+    list<pair<string,xmlNode*>> dl;
+    for ( const auto& r : all_regions ){
+      string id = TiCC::getAttribute( r, "id" );
+      dl.push_back( make_pair( id, r ) );
+      sn[id] = r;
+    }
+    map<string,xmlNode*> region_refs;
+    list<xmlNode*> order = TiCC::FindNodes( my_order.front(),
+					    ".//*:RegionRefIndexed" );
+    vector<string> id_order( order.size() );
+    set<string> in_order;
     for ( const auto& ord : order ){
       string ref = TiCC::getAttribute( ord, "regionRef" );
       string index = TiCC::getAttribute( ord, "index" );
       int id = TiCC::stringTo<int>( index );
-      refs[ref] = id;
-      backrefs[id] = ref;
+      region_refs[ref] = sn[ref];
+      id_order[id] = ref;
+      in_order.insert( ref );
     }
-  }
-  map<string,string> specials;
-  map<string,string> specialRefs;
-  list<xmlNode*> regions = TiCC::FindNodes( document_root, "//*:TextRegion" );
-  if ( regions.empty() ){
-#pragma omp critical
-    {
-      cerr << "missing TextRegion nodes in " << fileName << endl;
+    list<xmlNode*> result;
+    set<string> handled;
+    for( const auto& it : dl ){
+      if ( handled.find( it.first ) != handled.end() ){
+	continue;
+      }
+      if ( in_order.find(it.first) != in_order.end() ){
+	// id in reading order, handle those first
+	for ( auto const& i : id_order ){
+	  result.push_back( region_refs[i] );
+	  handled.insert( i );
+	}
+	in_order.erase(it.first);
+      }
+      else {
+	handled.insert( it.first );
+	result.push_back( it.second );
+      }
     }
-    return false;
+    return result;
   }
-
-  for ( const auto& region : regions ){
-    handle_one_region( region, fileName,
-		       regionStrings, refs,
-		       specials, specialRefs );
-
-  }
-
-  process( textroot, specials, specialRefs, TiCC::basename(fileName) );
-  process( textroot, regionStrings, backrefs, TiCC::basename(fileName) );
-  return true;
 }
 
 bool convert_pagexml( const string& fileName,
@@ -430,18 +433,7 @@ bool convert_pagexml( const string& fileName,
       cout << "original file: " << orgFile << endl;
     }
   }
-  string docid = prefix + orgFile;
-  folia::Document doc( "xml:id='" + docid + "'" );
-  doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::processor *proc = add_provenance( doc, "FoLiA-page", command );
-  folia::KWargs args;
-  args["processor"] = proc->id();
-  doc.declare( folia::AnnotationType::STRING, setname, args );
-  args.clear();
-  args["xml:id"] =  docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
-
+  list<xmlNode*> all_regions =  TiCC::FindNodes( root, ".//*:TextRegion" );
   list<xmlNode*> order = TiCC::FindNodes( root, ".//*:ReadingOrder" );
   if ( order.size() > 1 ){
 #pragma omp critical
@@ -452,20 +444,35 @@ bool convert_pagexml( const string& fileName,
     xmlFreeDoc( xdoc );
     return false;
   }
-  if ( order.empty() ){
-    // No reading order. So a 'flat' document
-    bool ok = handle_flat_document( text, root, fileName );
-    if ( !ok ){
-      xmlFreeDoc( xdoc );
-      return false;
+  list<xmlNode*> ordered_regions = sort_regions( all_regions, order );
+  //  cerr << "NEW ORDERD REGIONS: " << endl;
+  // int i = 0;
+  // for ( const auto& t : ordered_regions ){
+  //   cerr << i++ << " " << TiCC::getAttribute( t, "id" ) << endl;
+  // }
+
+  if ( ordered_regions.empty() ){
+#pragma omp critical
+    {
+      cerr << "no usable data in file:" << fileName << endl;
     }
+    xmlFreeDoc( xdoc );
+    return false;
   }
-  else {
-    bool ok = handle_ordered_document( text, root, order, fileName );
-    if ( !ok ){
-      xmlFreeDoc( xdoc );
-      return false;
-    }
+  string docid = orgFile.substr( 0, orgFile.find(".") );
+  if ( !folia::isNCName( docid ) ){
+    docid = prefix + docid;
+  }
+  folia::Document doc( "xml:id='" + docid + "'" );
+  doc.set_metadata( "page_file", stripDir( fileName ) );
+  folia::processor *proc = add_provenance( doc, processor_label, command );
+  processor_id = proc->id();
+  folia::KWargs args;
+  args["xml:id"] =  docid + ".text";
+  folia::Text *text = new folia::Text( args );
+  doc.append( text );
+  for ( const auto& no : ordered_regions ){
+    handle_one_region( text, no, fileName );
   }
   xmlFreeDoc( xdoc );
 
@@ -495,11 +502,9 @@ bool convert_pagexml( const string& fileName,
   }
   else {
     doc.save( outName );
-    if ( verbose ){
 #pragma omp critical
-      {
-	cout << "created " << outName << endl;
-      }
+    {
+      cout << "converted: " << fileName << " into: "  << outName << endl;
     }
   }
   return true;
@@ -516,8 +521,9 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
-  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FP-') " << endl;
-  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to document ID's when an invalid xml:id would be created. (default: 'FP-') " << endl;
+  cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
+  cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
@@ -526,7 +532,8 @@ void usage(){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
-			 "compress:,class:,setname:,help,version,prefix:,threads:" );
+			 "compress:,class:,setname:,help,version,prefix:,"
+			 "norefs,threads:,trusttokens" );
   try {
     opts.init( argc, argv );
   }
@@ -576,14 +583,13 @@ int main( int argc, char *argv[] ){
 #endif
   }
   verbose = opts.extract( 'v' );
+  do_refs = !opts.extract( "norefs" );
+  trust_tokenization = opts.extract( "trusttokens" );
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
   string prefix = "FP-";
   opts.extract( "prefix", prefix );
-  if ( prefix == "none" ){
-    prefix.clear();
-  }
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "missing input file(s)" << endl;

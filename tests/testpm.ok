@@ -6,12 +6,12 @@ Usage: FoLiA-pm [options] files/dir
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	--nosplit	 don't create separate topic files
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-')
 			 use 'none' for an empty prefix. (can be dangerous)
-	-O		 output directory 
-	-v		 verbose output 
-	-V or --version	 show version 
-	-h or --help 	 this messages 
+	-O		 output directory
+	-v		 verbose output
+	-V or --version	 show version
+	-h or --help 	 this messages
 foliautils 0.16
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
@@ -20,14 +20,15 @@ Usage: FoLiA-pm [options] files/dir
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	--nosplit	 don't create separate topic files
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-')
 			 use 'none' for an empty prefix. (can be dangerous)
-	-O		 output directory 
-	-v		 verbose output 
-	-V or --version	 show version 
-	-h or --help 	 this messages 
+	-O		 output directory
+	-v		 verbose output
+	-V or --version	 show version
+	-h or --help 	 this messages
 Validated successfully: test1/FPM-pm1.folia.xml
 Validated successfully: test1/FPM-pm10.folia.xml
+Validated successfully: test1/FPM-pm11.folia.xml
 Validated successfully: test1/FPM-pm2.folia.xml
 Validated successfully: test1/FPM-pm3.folia.xml
 Validated successfully: test1/FPM-pm4.folia.xml
@@ -51,6 +52,10 @@ Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000479.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.sgd.d.191719180000479.2.folia.xml
 Validated successfully: test2/FPM-pm1.folia.xml
 Validated successfully: test2/FPM-pm10.folia.xml
+<<<<<<< HEAD
+=======
+Validated successfully: test2/FPM-pm11.folia.xml
+>>>>>>> page-fix
 Validated successfully: test2/FPM-pm2.folia.xml
 Validated successfully: test2/FPM-pm3.folia.xml
 Validated successfully: test2/FPM-pm4.folia.xml

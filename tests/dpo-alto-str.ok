@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dpo.1880.mpeg21.0006.alto" generator="libfolia-v2.3" version="2.2.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="dpo.1880.mpeg21.0006.alto" generator="libfolia-v2.6.1" version="2.4.0">
   <metadata type="native">
     <annotations>
       <string-annotation set="FoLia-alto-set">
         <annotator processor="FoLiA-alto.1"/>
       </string-annotation>
-      <paragraph-annotation/>
+      <paragraph-annotation set="FoLia-alto-set">
+        <annotator processor="FoLiA-alto.1"/>
+      </paragraph-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <relation-annotation/>
+      <relation-annotation set="FoLia-alto-set">
+        <annotator processor="FoLiA-alto.1"/>
+      </relation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-alto.1" begindatetime="2019-08-26T15:00:24" command="FoLiA-alto --cache=/tmp/cache -O out --type=boek" folia_version="2.2.1" host="bonus" name="FoLiA-alto" user="sloot" version="0.13">
-        <processor xml:id="FoLiA-alto.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.3"/>
+      <processor xml:id="FoLiA-alto.1" begindatetime="2020-12-07T12:52:02" command="FoLiA-alto --oldstrings --cache=/tmp/cache -O out --type=boek" folia_version="2.4.0" host="kokos" name="FoLiA-alto" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-alto.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
   </metadata>

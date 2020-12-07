@@ -45,6 +45,7 @@ using namespace	folia;
 
 string setname = "FoLiA-txt-set";
 string classname = "FoLiA-txt";
+string processor_id;
 
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
@@ -187,8 +188,9 @@ int main( int argc, char *argv[] ){
       continue;
     }
     processor *proc = add_provenance( *d, "FoLiA-txt", command );
+    processor_id = proc->id();
     KWargs args;
-    args["processor"] = proc->id();
+    args["processor"] = processor_id;
     d->declare( folia::AnnotationType::STRING, setname, args );
     args.clear();
     args["xml:id"] = docid + ".text";
@@ -216,6 +218,9 @@ int main( int argc, char *argv[] ){
       for ( const auto& w : words ){
 	if ( par == 0 ){
 	  folia::KWargs args;
+	  args["processor"] = processor_id;
+	  d->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+	  args.clear();
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
 	  args["xml:id"] = parId;
 	  par = new folia::Paragraph( args, d );

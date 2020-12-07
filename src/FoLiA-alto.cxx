@@ -54,6 +54,8 @@ bool verbose = false;
 bool clearCachedFiles = false;
 string setname = "FoLia-alto-set";
 string classname = "OCR";
+string prefix = "FA-";
+string processor_id;
 
 class docCache {
 public:
@@ -212,6 +214,10 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     if ( !altoFile.empty() ){
       // direct mode has no altofile
       args.clear();
+      args["processor"] = processor_id;
+      par->doc()->declare( folia::AnnotationType::RELATION,
+			   setname, args );
+      args.clear();
       args["xlink:href"] = altoFile;
       folia::Relation *h = new folia::Relation( args );
       s->append( h );
@@ -246,6 +252,10 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
       s->setutext( uc, txt.length(), classname );
       txt += " " + uc;
       if ( !altoFile.empty() ){
+	args.clear();
+	args["processor"] = processor_id;
+	par->doc()->declare( folia::AnnotationType::RELATION,
+			     setname, args );
 	args.clear();
 	args["xlink:href"] = altoFile;
 	folia::Relation *h = new folia::Relation( args );
@@ -283,6 +293,9 @@ void createFile( folia::FoliaElement *text,
       ids.insert(id);
     }
     folia::KWargs args;
+    args["processor"] = processor_id;
+    text->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+    args.clear();
     string arg = text->id() + ".p.";
     if ( !altoFile.empty() ){
       arg += altoFile + ".";
@@ -338,6 +351,10 @@ void createFile( folia::FoliaElement *text,
 			       classname );
 		  ocr_text += " " + subc;
 		  if ( !altoFile.empty() ){
+		    args.clear();
+		    args["processor"] = processor_id;
+		    text->doc()->declare( folia::AnnotationType::RELATION,
+		    			  setname, args );
 		    args.clear();
 		    args["xlink:href"] = altoFile;
 		    folia::Relation *h = new folia::Relation( args );
@@ -447,10 +464,22 @@ void processArticle( const string& f,
     }
   }
   string docid = replaceColon(f,'.');
+  string outName = outDir;
+  if ( subject == "artikel" ){
+    outName += "artikel/";
+  }
+  else {
+    outName += "overige/";
+  }
+  outName += docid + ".folia.xml";
+  if ( !folia::isNCName( docid ) ){
+    docid = prefix + docid;
+  }
   folia::Document doc( "xml:id='" + docid + "'" );
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["processor"] = proc->id();
+  args["processor"] = processor_id;
   if ( do_strings ){
     doc.declare( folia::AnnotationType::STRING, setname, args );
   }
@@ -474,12 +503,6 @@ void processArticle( const string& f,
     processBlocks( text, blocks, cache, do_strings );
   }
 
-  string outName = outDir;
-  if ( subject == "artikel" )
-    outName += "artikel/";
-  else
-    outName += "overige/";
-  outName += docid + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
     type = outputType;
@@ -949,10 +972,15 @@ void solveBook( const string& altoFile, const string& id,
   xmlDoc *xmldoc = getXml( altoFile, inputType );
   if ( xmldoc ){
     string docid = replaceColon( id, '.' );
+    string outName = outDir + docid + ".folia.xml";
+    if ( !folia::isNCName( docid ) ){
+      docid = prefix + docid;
+    }
     folia::Document doc( "xml:id='" + docid + "'" );
     folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+    processor_id = proc->id();
     folia::KWargs args;
-    args["processor"] = proc->id();
+    args["processor"] = processor_id;
     if ( do_strings ){
       doc.declare( folia::AnnotationType::STRING, setname, args );
     }
@@ -990,6 +1018,9 @@ void solveBook( const string& altoFile, const string& id,
 	ids.insert(id);
       }
       folia::KWargs args;
+      args["processor"] = processor_id;
+      doc.declare( folia::AnnotationType::PARAGRAPH, setname, args );
+      args.clear();
       args["xml:id"] = text->id() + ".p." + id;
       folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
       text->append( p );
@@ -1031,6 +1062,10 @@ void solveBook( const string& altoFile, const string& id,
 				 ocr_text.length(),
 				 classname );
 		    ocr_text += " " + subc;
+		    args.clear();
+		    args["processor"] = processor_id;
+		    text->doc()->declare( folia::AnnotationType::RELATION,
+		    			  setname, args );
 		    args.clear();
 		    args["xlink:href"] = urn;
 		    folia::Relation *h = new folia::Relation( args );
@@ -1094,7 +1129,6 @@ void solveBook( const string& altoFile, const string& id,
 	p->setutext( ocr_text.tempSubString(1), classname );
     }
     zipType type = inputType;
-    string outName = outDir + docid + ".folia.xml";
     if ( outputType != NORMAL )
       type = outputType;
     if ( type == BZ2 )
@@ -1234,12 +1268,18 @@ void solveDirectAlto( const string& full_file,
   zipType type;
   xmlDoc *xmldoc = getXml( full_file, type );
   string filename = TiCC::basename( full_file );
-  string docid = replaceColon(filename,'.');
+  string docid = filename.substr( 0, filename.find(".") );
+  docid = replaceColon(docid,'.');
+  string outName = outDir + docid + ".folia.xml";
+  if ( !folia::isNCName( docid ) ){
+    docid = prefix + docid;
+  }
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
   folia::Document doc( "xml:id='" + docid + "'" );
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["processor"] = proc->id();
+  args["processor"] = processor_id;
   if ( do_strings ){
     doc.declare( folia::AnnotationType::STRING, setname, args );
   }
@@ -1251,7 +1291,6 @@ void solveDirectAlto( const string& full_file,
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   createFile( text, xmldoc, "", texts, do_strings );
-  string outName = outDir + docid + ".folia.xml";
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
        ( pv.size() == 1 && pv[0]->size() == 0 ) ){
@@ -1262,10 +1301,12 @@ void solveDirectAlto( const string& full_file,
     }
   }
   else {
-    if ( outputType == BZ2 )
+    if ( outputType == BZ2 ){
       outName += ".bz2";
-    else if ( outputType == GZ )
+    }
+    else if ( outputType == GZ ){
       outName += ".gz";
+    }
     doc.save( outName );
     if ( verbose ){
 #pragma omp critical
@@ -1287,6 +1328,8 @@ void usage(){
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to document ID's when an invalid xml:id would be created. (default: 'FA-') " << endl;
+  //  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--oldstrings\t Fall back to old version that creates <str> nodes" << endl;
   cerr << "\t\t\t The default is to create <w> nodes." << endl;
   cerr << "\t--setname=<set>\t the FoLiA setname of the string or word nodes. "
@@ -1304,7 +1347,8 @@ int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,type:,help,version,threads:,oldstrings" );
+    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,"
+			   "type:,help,prefix:,version,threads:,oldstrings" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){
@@ -1317,6 +1361,10 @@ int main( int argc, char *argv[] ){
   string outputDir;
   string kind = "krant";
   zipType outputType = NORMAL;
+  opts.extract( "prefix", prefix );
+  // if ( prefix == "none" ){
+  //   prefix.clear();
+  // }
   string value;
   if ( opts.extract('h') || opts.extract("help") ){
     usage();

@@ -32,6 +32,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <cassert>
 #include "ticcutils/StringOps.h"
 #include "libfolia/folia.h"
 #include "ticcutils/XMLtools.h"
@@ -48,8 +49,11 @@
 
 using namespace	std;
 using namespace	folia;
+using TiCC::operator<<;
 
 bool verbose = false;
+string setname = "polmash";
+string processor_id;
 
 KWargs getAllAttributes( const xmlNode *node ){
   KWargs atts;
@@ -159,6 +163,7 @@ void add_reference( TextContent *tc, xmlNode *p ){
 }
 
 void add_note( Note *root, xmlNode *p ){
+  //  cerr << "add note: " << TiCC::getAttributes( p ) << endl;
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -167,6 +172,9 @@ void add_note( Note *root, xmlNode *p ){
     }
   }
   KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+  args.clear();
   args["xml:id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   root->append( par );
@@ -241,12 +249,13 @@ void add_entity( FoliaElement* root, xmlNode *p ){
     }
     t = t->next;
   }
+  KWargs args;
+  args["processor"] =  processor_id;
   root->doc()->declare( folia::AnnotationType::ENTITY,
-			"polmash",
-			"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
+			setname, args );
+  args.clear();
   EntitiesLayer *el = new EntitiesLayer();
   root->append( el );
-  KWargs args;
   args["class"] = "member";
   Entity *ent = new Entity( args, root->doc() );
   el->append(ent);
@@ -322,7 +331,11 @@ void add_par( Division *root, xmlNode *p ){
       cerr << "add_par: id=" << id << endl;
     }
   }
+  folia::Document *doc = root->doc();
   KWargs args;
+  args["processor"] = processor_id;
+  doc->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+  args.clear();
   args["xml:id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   TextContent *tc = new TextContent();
@@ -356,9 +369,16 @@ void add_par( Division *root, xmlNode *p ){
 	add_stage_direction( tc, p );
       }
       else if ( tag == "note" ){
+	//	cerr << "found Note: " << TiCC::getAttributes( p ) << endl;
 	KWargs args;
 	string id = TiCC::getAttribute( p, "id" );
 	string ref = TiCC::getAttribute( p, "ref" );
+#pragma omp critical
+	{
+	  cerr << "paragraph: " << id << ", unhandled Note, id=" << id
+	       << " ref=" << ref << endl;
+	}
+#ifdef NONOTE
 	if ( verbose ){
 #pragma omp critical
 	  {
@@ -368,7 +388,7 @@ void add_par( Division *root, xmlNode *p ){
 	Note *note = 0;
 	if ( ref.empty() ){
 	  args["xml:id"] = id;
-	  note = new Note( args );
+	  note = new Note( args, doc );
 	}
 	else {
 	  if ( !isNCName( ref ) ){
@@ -384,7 +404,7 @@ void add_par( Division *root, xmlNode *p ){
 	  par->append( rf );
 	  args.clear();
 	  args["xml:id"] = ref;
-	  note = new Note( args );
+	  note = new Note( args, doc );
 	}
 	//	par->append( note );
 	notes.push_back( note );
@@ -402,6 +422,7 @@ void add_par( Division *root, xmlNode *p ){
 	  }
 	  pnt = pnt->next;
 	}
+#endif
       }
       else {
 #pragma omp critical
@@ -935,6 +956,9 @@ void process_break( Division *root, xmlNode *brk ){
     }
   }
   KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+  args.clear();
   args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
   args["newpage"] = "yes";
   Linebreak *pb = new Linebreak( args );
@@ -1081,9 +1105,12 @@ folia::Document *create_basedoc( const string& docid,
   Document *doc = new Document( "xml:id='" + docid + "'" );
   processor *proc = add_provenance( *doc, "FoLiA-pm", command );
   KWargs args;
-  args["processor"] = proc->id();
-  doc->declare( folia::AnnotationType::DIVISION, "polmash", args );
-  doc->declare( folia::AnnotationType::RELATION, "polmash", args );
+  if ( processor_id.empty() ){
+    processor_id = proc->id();
+  }
+  args["processor"] = processor_id;
+  doc->declare( folia::AnnotationType::DIVISION, setname, args );
+  doc->declare( folia::AnnotationType::RELATION, setname, args );
   if ( metadata ){
     if ( metadata->nsDef == 0 ){
       xmlNewNs( metadata,
@@ -1136,6 +1163,11 @@ void process_topic( const string& outDir,
   root->append( div );
   string title = TiCC::getAttribute( topic, "title" );
   if ( !title.empty() ){
+    args.clear();
+    args["processor"] = processor_id;
+    doc->declare( folia::AnnotationType::HEAD,
+		  setname, args );
+    args.clear();
     Head *hd = new Head( );
     hd->settext( title );
     div->append( hd );
@@ -1201,14 +1233,15 @@ void process_sub_block( Division *, xmlNode * );
 void add_signed( FoliaElement *root, xmlNode* block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
+  Document *doc = root->doc();
   KWargs args;
+  args["processor"] = processor_id;
+  doc->declare( folia::AnnotationType::ENTITY,
+		setname, args );
+  args.clear();
   args["xml:id"] = id;
   args["class"] = type;
-  Document *doc = root->doc();
   Division *div = new Division( args, doc );
-  doc->declare( folia::AnnotationType::ENTITY,
-		"polmash",
-		"annotator='FoLiA-pm', annotatortype='auto', datetime='now()'");
   EntitiesLayer *el = new EntitiesLayer();
   div->append( el );
   xmlNode *p = block->children;
@@ -1396,7 +1429,7 @@ void convert_to_folia( const string& file,
       }
       folia::KWargs args;
       args["xml:id"] = docid + ".text";
-      folia::Text *text = new folia::Text( args );
+      folia::Text *text = new folia::Text( args, doc );
       doc->append( text );
       try {
 	xmlNode *p = root->children;

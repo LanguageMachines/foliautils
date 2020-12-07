@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+  <Metadata>
+    <Creator/>
+    <Created>2020-11-16T13:16:18</Created>
+    <LastChange>1970-01-01T00:00:00</LastChange>
+    <Comments/>
+  </Metadata>
+  <Page imageFilename="0001.png" imageHeight="2716" imageWidth="1830">
+    <TextRegion id="r1" orientation="0.0" type="paragraph">
+      <Coords points="1,1 1828,1 1828,2714 1,2714"/>
+      <TextLine id="l1">
+        <Coords points="356,310 1374,310 1374,353 356,353"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>IV. Die ro&#x308;mische Landwirtschaft und die</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l2">
+        <Coords points="1532,327 1616,327 1616,352 1532,352"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>A220</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l3">
+        <Coords points="435,377 1292,377 1292,420 435,420"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Grundherrschaften der Kaiserzeit&#x2018;</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l4">
+        <Coords points="228,684 1507,684 1507,728 228,728"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Entwickelungder Da in diesem Kapitel hauptsa&#x308;chlich eine Erschei-</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l5">
+        <Coords points="227,732 1507,732 1507,781 227,781"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Betiebsweise. nung der Kaiserzeit behandelt werden soll, so ist</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l6">
+        <Coords points="189,792 1506,792 1506,831 189,831"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>s der Ru&#x308;ckblick, den wir auf die a&#x308;lteren Verha&#x308;ltnisse der ro&#x308;mischen</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l7">
+        <Coords points="228,846 1506,846 1506,884 228,884"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver-</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l8">
+        <Coords points="228,899 1506,899 1506,942 228,942"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l9">
+        <Coords points="227,949 1506,949 1506,995 227,995"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Terremare2 und der geistvollen Untersuchungen Hehns2 und Hel-</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l10">
+        <Coords points="228,1003 1506,1003 1506,1049 228,1049"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>bigs eine allgemeine Entwickelungsgeschichte derselben von den</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l11">
+        <Coords points="177,1059 1506,1059 1506,1102 177,1102"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>o a&#x308;ltesten Besiedlungen an zu geben. In historischer Zeit bietet die</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l12">
+        <Coords points="228,1112 1506,1112 1506,1156 228,1156"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>ro&#x308;mische Landwirtschaft, wie sie uns die scriptores rei rusticae schil-</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l13">
+        <Coords points="228,1166 1506,1166 1506,1210 228,1210"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>dern, keinerlei besonders fremdartige Zu&#x308;ge dar. Wenn fru&#x308;her gele-</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l14">
+        <Coords points="227,1217 1506,1217 1506,1263 227,1263"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>gentlich2 behauptet worden ist, da&#xDF; die Ro&#x308;mer den Germanen die</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l15">
+        <Coords points="227,1273 1505,1273 1505,1316 227,1316"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Dreifelderwirtschaft gebracht ha&#x308;tten, so ist dies schon deshalb un-</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l16">
+        <Coords points="176,1327 1506,1327 1506,1366 176,1366"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>s versta&#x308;ndlich, weil die Dreifelderwirtschaft in der Art, wie sie fu&#x308;r die</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l17">
+        <Coords points="227,1380 1505,1380 1505,1423 227,1423"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>a&#x308;ltesten germanischen Verha&#x308;ltnisse in Frage kommen wu&#x308;rde, keine</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l18">
+        <Coords points="226,1434 1506,1434 1506,1477 226,1477"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l19">
+        <Coords points="227,1488 1505,1488 1505,1531 227,1531"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>und mit dem Flurzwang untrennbar zusammenha&#x308;ngt. Die ro&#x308;mischen</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l20">
+        <Coords points="227,1539 1505,1539 1505,1581 227,1581"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Schriftsteller aber kennen nur das, was Thu&#x308;nen &#x201E;freie Wirtschaft&#x201C;</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l21">
+        <Coords points="176,1590 1610,1590 1610,1638 176,1638"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>o nennen wu&#x308;rde1). Von Fruchtfolge sprechen sie u&#x308;berhaupt nur gele- A22t</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l22">
+        <Coords points="264,1704 1617,1704 1617,1742 264,1742"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>1) Cato, De r. r. 1482 bemerkt bei Besprechung des Verkaufs des &#x201E;pabulum hibernum&#x201C; A 220</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l23">
+        <Coords points="229,1830 1504,1830 1504,1862 229,1862"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>1 Zusammenfassende Wiedergabe gro&#x308;&#xDF;erer Teile des lnhalts dieses Kapitels bei Weber,</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l24">
+        <Coords points="229,1865 1504,1865 1504,1902 229,1902"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>Untergang der antiken Kultur, S. 6476; ders., Agrarerha&#x308;ltnisse im Altertum&#x2018;, S. 14&#x2014;18;</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l25">
+        <Coords points="228,1905 1507,1905 1507,1941 228,1941"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>dass.2, S. 80-84; dass.2, S. 165168. (n den folgenden Erla&#x308;uterungen wird darauf nur</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l26">
+        <Coords points="228,1950 742,1950 742,1981 228,1981"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>ausnahmsweise Bezug genommen.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l27">
+        <Coords points="227,1990 547,1990 547,2022 227,2022"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>2 Vgl. S. 142, Anm. 5.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l28">
+        <Coords points="227,2029 1197,2029 1197,2061 227,2061"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>3 Hehn, ulturpflanzen und Haustiere (vgl. Eileitung oben, S. 3f.).</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l29">
+        <Coords points="227,2069 704,2069 704,2102 227,2102"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>4 Helbig, ltaliker in der Poebene.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l30">
+        <Coords points="227,2108 1282,2108 1282,2141 227,2141"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>5 Gemeint offenbar: Hanssen, Agraristorische Abhandlungen 1, S. 153.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l31">
+        <Coords points="227,2146 850,2146 850,2182 227,2182"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>6 Vgl. v. Thu&#x308;nen, lsolierter Staat3 1, S. 35.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l32">
+        <Coords points="227,2189 1507,2189 1507,2222 227,2222"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>7 Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l33">
+        <Coords points="227,2229 1505,2229 1505,2261 227,2261"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>fru&#x308;her u&#x308;bichen Weise Catos Werk stets als r. r. (= De re rustica). Da der itel jedoch nach</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l34">
+        <Coords points="229,2269 1505,2269 1505,2302 229,2302"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erla&#x308;uterungen</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l35">
+        <Coords points="228,2310 661,2310 661,2342 228,2342"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>durchweg als &#x201A;de agric.&#x2018; zitiert.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextLine id="l36">
+        <Coords points="227,2345 888,2345 888,2382 227,2382"/>
+        <TextEquiv>
+          <Unicode/>
+        </TextEquiv>
+        <TextEquiv index="1">
+          <Unicode>8 Oie zitierte Stelle fndet sich ebd., Kap. 149.</Unicode>
+        </TextEquiv>
+      </TextLine>
+      <TextEquiv>
+        <Unicode/>
+      </TextEquiv>
+    </TextRegion>
+  </Page>
+</PcGts>
