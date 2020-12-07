@@ -459,7 +459,7 @@ bool convert_pagexml( const string& fileName,
     xmlFreeDoc( xdoc );
     return false;
   }
-  string docid = orgFile;
+  string docid = orgFile.substr( 0, orgFile.find(".") );
   if ( !folia::isNCName( docid ) ){
     docid = prefix + docid;
   }
