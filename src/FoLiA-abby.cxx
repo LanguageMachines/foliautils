@@ -52,6 +52,8 @@ bool verbose = false;
 
 string setname = "FoLiA-abby-set";
 string classname = "OCR";
+const string processor_name= "FoLiA-abby";
+string processor_id;
 
 string get_line( xmlNode *line ){
   UnicodeString result;
@@ -221,6 +223,9 @@ bool process_par( folia::FoliaElement *root,
   bool didit = false;
   if ( !lemma.empty() ){
     folia::KWargs args;
+    args["processor"] = processor_id;
+    //    root->doc()->declare( folia::AnnotationType::PART, setname, args );
+    args.clear();
     args["xml:id"] = root->id() + ".lemma";
     folia::Part *part = new folia::Part( args );
     root->append( part );
@@ -229,6 +234,9 @@ bool process_par( folia::FoliaElement *root,
   }
   if ( !entry.empty() ){
     folia::KWargs args;
+    args["processor"] = processor_id;
+    root->doc()->declare( folia::AnnotationType::PART, setname, args );
+    args.clear();
     args["xml:id"] = root->id() + ".entry";
     folia::Part *part = new folia::Part( args );
     root->append( part );
@@ -251,8 +259,11 @@ bool process_page( folia::FoliaElement *root,
   bool didit = false;
   for ( const auto& par_node : paragraphs ){
     folia::KWargs args;
+    args["processor"] = processor_id;
+    root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+    args.clear();
     args["xml:id"] = root->id() + ".p" + TiCC::toString(++i);
-    folia::Paragraph *paragraph = new folia::Paragraph( args );
+    folia::Paragraph *paragraph = new folia::Paragraph( args, root->doc() );
     if ( process_par( paragraph, par_node ) ){
       root->append( paragraph );
       didit = true;
@@ -296,20 +307,22 @@ bool convert_abbyxml( const string& fileName,
     return false;
   }
   string orgFile = TiCC::basename( fileName );
-  string docid = prefix + orgFile;
+  string docid = orgFile.substr( 0, orgFile.find(".") );
+  docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "abby_file", orgFile );
-  add_provenance( doc, "FoLiA-abby", command );
-  string root_id = docid;
-  string::size_type pos = root_id.find( ".xml" );
-  root_id = root_id.erase( pos );
+  folia::processor *proc = add_provenance( doc, processor_name, command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["xml:id"] =  root_id + ".text";
+  args["xml:id"] =  docid + ".text";
   folia::Text *text = new folia::Text( args );
   doc.append( text );
   int i = 0;
   for ( const auto& page : pages ){
     folia::KWargs args;
+    args["processor"] = processor_id;
+    doc.declare( folia::AnnotationType::DIVISION, setname, args );
+    args.clear();
     args["xml:id"] = text->id() + ".div" + TiCC::toString(++i);
     folia::Division *div = new folia::Division( args );
     text->append( div );
