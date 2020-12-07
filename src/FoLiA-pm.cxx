@@ -946,6 +946,9 @@ void process_break( Division *root, xmlNode *brk ){
     }
   }
   KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+  args.clear();
   args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
   args["newpage"] = "yes";
   Linebreak *pb = new Linebreak( args );
