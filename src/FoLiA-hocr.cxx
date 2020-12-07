@@ -49,6 +49,7 @@ using namespace	icu;
 bool verbose = false;
 string setname = "FoLiA-hocr-set";
 string classname = "OCR";
+string processor_id;
 
 string extractContent( xmlNode* pnt ) {
   string result;
@@ -87,6 +88,9 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     }
     string p_id = TiCC::getAttribute( p, "id" );
     folia::KWargs args;
+    args["processor"] = processor_id;
+    out->doc()->declare( folia::AnnotationType::PARAGRAPH, setname,  args );
+    args.clear();
     args["xml:id"] = out->id() + "." + p_id;
     folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
     UnicodeString txt;
@@ -125,6 +129,10 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
 	  args.clear();
+	  args["processor"] = processor_id;
+	  out->doc()->declare( folia::AnnotationType::RELATION,
+			       setname,  args );
+	  args.clear();
 	  args["xlink:href"] = file;
 	  args["format"] = "text/hocr+xml";
 	  folia::Relation *h = new folia::Relation( args );
@@ -147,7 +155,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
   }
 }
 
-string getDocId( const string& title, const string& prefix ){
+string getDocId( const string& title ){
   string result;
   vector<string> vec = TiCC::split_at( title, ";" );
   for ( const auto& part : vec ){
@@ -163,7 +171,7 @@ string getDocId( const string& title, const string& prefix ){
     }
   }
   result = TiCC::trim( result, " \t\"" );
-  return prefix + result;
+  return result;
 }
 
 void convert_hocr( const string& fileName,
@@ -211,11 +219,15 @@ void convert_hocr( const string& fileName,
     }
     exit(EXIT_FAILURE);
   }
-  string docid = getDocId( title, prefix );
+  title = getDocId( title );
+  string docid = title.substr( 0, title.find(".") );
+  docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
+  doc.set_metadata( "filename", title );
   folia::processor *proc = add_provenance( doc, "FoLiA-hocr", command );
+  processor_id = proc->id();
   folia::KWargs args;
-  args["processor"] = proc->id();
+  args["processor"] = processor_id;
   doc.declare( folia::AnnotationType::STRING, setname,  args );
   args.clear();
   args["xml:id"] = docid + ".text";
@@ -224,7 +236,7 @@ void convert_hocr( const string& fileName,
   processParagraphs( root, text, TiCC::basename(fileName) );
   xmlFreeDoc( xdoc );
 
-  string outName = outputDir + "/" + docid + ".folia.xml";
+  string outName = outputDir + "/" + title + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL )
     type = outputType;
@@ -370,8 +382,9 @@ int main( int argc, char *argv[] ){
   }
   else {
     fileNames = TiCC::searchFilesMatch( name, "*hocr" );
-    if ( fileNames.empty() )
+    if ( fileNames.empty() ){
       fileNames = TiCC::searchFilesMatch( name, "*html" );
+    }
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
