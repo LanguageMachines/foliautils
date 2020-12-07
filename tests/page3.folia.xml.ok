@@ -1,284 +1,284 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="roemische_1pg.png" generator="libfolia-v2.6.1" version="2.4.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="roemische_1pg" generator="libfolia-v2.6.1" version="2.4.0">
   <metadata type="native">
     <annotations>
-      <string-annotation set="FoLiA-page-set">
-        <annotator processor="FoLiA-page.1"/>
-      </string-annotation>
       <paragraph-annotation set="FoLiA-page-set">
         <annotator processor="FoLiA-page.1"/>
       </paragraph-annotation>
+      <string-annotation set="FoLiA-page-set">
+        <annotator processor="FoLiA-page.1"/>
+      </string-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <relation-annotation set="FoLiA-page-set">
         <annotator processor="FoLiA-page.1"/>
       </relation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-06T10:56:16" command="FoLiA-page -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-07T10:39:02" command="FoLiA-page -O out/page" folia_version="2.4.0" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.4.0" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
     <meta id="page_file">piroska.xml</meta>
   </metadata>
-  <text xml:id="roemische_1pg.png.text">
-    <p xml:id="roemische_1pg.png.text.r_1_1">
+  <text xml:id="roemische_1pg.text">
+    <p xml:id="roemische_1pg.text.r_1_1">
       <t class="OCR">Quellen</t>
-      <str xml:id="roemische_1pg.png.text.r_1_1.w_w2aab1b1b2b1b1ab1">
+      <str xml:id="roemische_1pg.text.r_1_1.w_w2aab1b1b2b1b1ab1">
         <t class="OCR" offset="0">Quellen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b1b2b1b1ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_2_1">
+    <p xml:id="roemische_1pg.text.r_2_1">
       <t class="OCR">105</t>
-      <str xml:id="roemische_1pg.png.text.r_2_1.w_w2aab1b3b2b1b1ab1">
+      <str xml:id="roemische_1pg.text.r_2_1.w_w2aab1b3b2b1b1ab1">
         <t class="OCR" offset="0">105</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b3b2b1b1ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_3_1">
+    <p xml:id="roemische_1pg.text.r_3_1">
       <t class="OCR">te können, rung vorhandenen sind, aber cher können und schen Gesichtspunkte wert</t>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1b1ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b1ab1">
         <t class="OCR" offset="0">te</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1b1ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1b3ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b3ab1">
         <t class="OCR" offset="3">können,</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1b3ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1b5ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b5ab1">
         <t class="OCR" offset="11">rung</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1b5ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1b7ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b7ab1">
         <t class="OCR" offset="16">vorhandenen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1b7ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1b9ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b9ab1">
         <t class="OCR" offset="28">sind,</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1b9ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c11ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c11ab1">
         <t class="OCR" offset="34">aber</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c11ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c13ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c13ab1">
         <t class="OCR" offset="39">cher</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c13ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c15ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c15ab1">
         <t class="OCR" offset="44">können</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c15ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c17ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c17ab1">
         <t class="OCR" offset="51">und</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c17ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c19ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c19ab1">
         <t class="OCR" offset="55">schen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c19ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c21ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c21ab1">
         <t class="OCR" offset="61">Gesichtspunkte</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c21ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_1.w_w2aab1b5b2b1c23ab1">
+      <str xml:id="roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c23ab1">
         <t class="OCR" offset="76">wert</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b1c23ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_3_2">
+    <p xml:id="roemische_1pg.text.r_3_2">
       <t class="OCR">Quellen</t>
-      <str xml:id="roemische_1pg.png.text.r_3_2.w_w2aab1b5b2b3b1ab1">
+      <str xml:id="roemische_1pg.text.r_3_2.w_w2aab1b5b2b3b1ab1">
         <t class="OCR" offset="0">Quellen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b3b1ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_3_3">
+    <p xml:id="roemische_1pg.text.r_3_3">
       <t class="OCR">te sehr besonders namentlich „Schriften haltend sorischer setzesfragmente ten schen chung, Landwirtschaft abgesehen, cherweise hinausgebracht xen und insofern stellers welche</t>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5b1ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b1ab1">
         <t class="OCR" offset="0">te</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5b1ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5b3ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b3ab1">
         <t class="OCR" offset="3">sehr</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5b3ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5b5ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b5ab1">
         <t class="OCR" offset="8">besonders</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5b5ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5b7ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b7ab1">
         <t class="OCR" offset="18">namentlich</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5b7ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5b9ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b9ab1">
         <t class="OCR" offset="29">„Schriften</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5b9ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c11ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c11ab1">
         <t class="OCR" offset="40">haltend</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c11ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c13ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c13ab1">
         <t class="OCR" offset="48">sorischer</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c13ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c15ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c15ab1">
         <t class="OCR" offset="58">setzesfragmente</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c15ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c17ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c17ab1">
         <t class="OCR" offset="74">ten</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c17ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c19ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c19ab1">
         <t class="OCR" offset="78">schen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c19ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c21ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c21ab1">
         <t class="OCR" offset="84">chung,</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c21ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c23ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c23ab1">
         <t class="OCR" offset="91">Landwirtschaft</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c23ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c25ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c25ab1">
         <t class="OCR" offset="106">abgesehen,</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c25ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c27ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c27ab1">
         <t class="OCR" offset="117">cherweise</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c27ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c29ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c29ab1">
         <t class="OCR" offset="127">hinausgebracht</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c29ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c31ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c31ab1">
         <t class="OCR" offset="142">xen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c31ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c33ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c33ab1">
         <t class="OCR" offset="146">und</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c33ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c35ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c35ab1">
         <t class="OCR" offset="150">insofern</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c35ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c37ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c37ab1">
         <t class="OCR" offset="159">stellers</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c37ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_3_3.w_w2aab1b5b2b5c39ab1">
+      <str xml:id="roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c39ab1">
         <t class="OCR" offset="168">welche</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b5b2b5c39ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_4_1">
+    <p xml:id="roemische_1pg.text.r_4_1">
       <t class="OCR">a</t>
-      <str xml:id="roemische_1pg.png.text.r_4_1.w_w2aab1b7b2b1b1ab1">
+      <str xml:id="roemische_1pg.text.r_4_1.w_w2aab1b7b2b1b1ab1">
         <t class="OCR" offset="0">a</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b7b2b1b1ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_4_2">
+    <p xml:id="roemische_1pg.text.r_4_2">
       <t class="OCR">17 von</t>
-      <str xml:id="roemische_1pg.png.text.r_4_2.w_w2aab1b7b2b3b1ab1">
+      <str xml:id="roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b1ab1">
         <t class="OCR" offset="0">17</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b7b2b3b1ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_4_2.w_w2aab1b7b2b3b3ab1">
+      <str xml:id="roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b3ab1">
         <t class="OCR" offset="3">von</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b7b2b3b3ab1" type="str"/>
         </relation>
       </str>
     </p>
-    <p xml:id="roemische_1pg.png.text.r_4_3">
+    <p xml:id="roemische_1pg.text.r_4_3">
       <t class="OCR">18 Editorischen</t>
-      <str xml:id="roemische_1pg.png.text.r_4_3.w_w2aab1b7b2b5b1ab1">
+      <str xml:id="roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b1ab1">
         <t class="OCR" offset="0">18</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b7b2b5b1ab1" type="str"/>
         </relation>
       </str>
-      <str xml:id="roemische_1pg.png.text.r_4_3.w_w2aab1b7b2b5b3ab1">
+      <str xml:id="roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b3ab1">
         <t class="OCR" offset="3">Editorischen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
           <xref id="w_w2aab1b7b2b5b3ab1" type="str"/>
