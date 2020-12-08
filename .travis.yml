@@ -33,6 +33,7 @@ matrix:
         - OPENMPFLAG=--disable-openmp
 
     - os: osx
+      osx_image xcode12
       compiler: clang++
       cache: ccache
       env:
