@@ -55,6 +55,62 @@ string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
 
+enum font_style { REGULAR=0, ITALIC=1, BOLD=2 };
+
+font_style stringToMode( const string& s ){
+  if ( s.empty() ){
+    return REGULAR;
+  }
+  else if ( s == "italic" ){
+    return ITALIC;
+  }
+  else if ( s == "bold" ) {
+    return BOLD;
+  }
+  else {
+    cerr << "FoLiA-abby: unsupported Font-Style " << s << " (ignored)" << endl;
+    return REGULAR;
+  }
+}
+
+string toString( font_style fs ){
+  switch( fs ){
+  case REGULAR:
+    return "";
+    break;
+  case ITALIC:
+    return "italic";
+    break;
+  case BOLD:
+    return "bold";
+    break;
+  default:
+    cerr << "FoLiA:abby unexpected Font-Style value: " << (int)fs << endl;
+  }
+  return "";
+}
+
+ostream& operator<<( ostream& os, const font_style& fs ){
+  os << toString( fs );
+  return os;
+}
+struct font_info {
+  font_info():
+    _fs(REGULAR)
+  {};
+  font_info( const string& ff, const font_style fs ):
+    _ff(ff),
+    _fs(fs)
+  {};
+  string _ff;
+  font_style _fs;
+};
+
+ostream& operator<<( ostream& os, const font_info& fi ){
+  os << fi._ff << " " << fi._fs;
+  return os;
+}
+
 string get_line( xmlNode *line ){
   UnicodeString result;
   list<xmlNode*> variants = TiCC::FindNodes( line, "*:wordRecVariants" );
@@ -168,7 +224,10 @@ string get_line( xmlNode *line ){
   return TiCC::UnicodeToUTF8(result);
 }
 
-void process_line( xmlNode *block, map<string,vector<string>>& parts ){
+void process_line( xmlNode *block,
+		   map<string,vector<string>>& parts,
+		   const font_info default_font,
+		   const map<string,font_info>& font_styles ){
   list<xmlNode*> formats = TiCC::FindNodes( block, "*:formatting" );
   if ( verbose ){
 #pragma omp critical
@@ -190,7 +249,13 @@ void process_line( xmlNode *block, map<string,vector<string>>& parts ){
 }
 
 bool process_par( folia::FoliaElement *root,
-		  xmlNode *par ){
+		  xmlNode *par,
+		  const map<string,font_info>& font_styles ){
+  string par_style = TiCC::getAttribute( par, "style" );
+  font_info par_font;
+  if ( !par_style.empty() ){
+    par_font = font_styles.at(par_style);
+  }
   list<xmlNode*> lines = TiCC::FindNodes( par, "*:line" );
   if ( verbose ){
 #pragma omp critical
@@ -200,7 +265,7 @@ bool process_par( folia::FoliaElement *root,
   }
   map<string,vector<string>> parts;
   for ( const auto& line : lines ){
-    process_line( line, parts );
+    process_line( line, parts, par_font, font_styles );
   }
 
   string lemma;
@@ -247,7 +312,8 @@ bool process_par( folia::FoliaElement *root,
 }
 
 bool process_page( folia::FoliaElement *root,
-		   xmlNode *block ){
+		   xmlNode *block,
+		   const map<string,font_info>& font_styles ){
   list<xmlNode*> paragraphs = TiCC::FindNodes( block, ".//*:par" );
   if ( verbose ){
 #pragma omp critical
@@ -264,7 +330,7 @@ bool process_page( folia::FoliaElement *root,
     args.clear();
     args["xml:id"] = root->id() + ".p" + TiCC::toString(++i);
     folia::Paragraph *paragraph = new folia::Paragraph( args, root->doc() );
-    if ( process_par( paragraph, par_node ) ){
+    if ( process_par( paragraph, par_node, font_styles ) ){
       root->append( paragraph );
       didit = true;
     }
@@ -274,6 +340,48 @@ bool process_page( folia::FoliaElement *root,
     }
   }
   return didit;
+}
+
+map<string,font_info> extract_font_info( xmlNode *root ){
+  map<string,font_info> result;
+  list<xmlNode*> par_styles =
+    TiCC::FindNodes( root, ".//*:paragraphStyles/*:paragraphStyle" );
+  //  cerr << "Found " << par_styles.size() << " paragraph style nodes" << endl;
+  map<string,string> main_font_styles;
+  for ( const auto& ps : par_styles ){
+    string pid = TiCC::getAttribute( ps, "id" );
+    string mf_id = TiCC::getAttribute( ps, "mainFontStyleId" );
+    main_font_styles[pid] = mf_id;
+    list<xmlNode*> font_styles =
+      TiCC::FindNodes( ps, ".//*:fontStyle" );
+    for ( const auto& fs : font_styles ){
+      string id = TiCC::getAttribute( fs, "id" );
+      string ff = TiCC::getAttribute( fs, "ff" );
+      string it = TiCC::getAttribute( fs, "italic" );
+      string bl = TiCC::getAttribute( fs, "bold" );
+      font_style f_s = REGULAR;
+      if ( it == "1" ){
+	f_s = ITALIC;
+      }
+      else if ( bl == "1" ){
+	f_s = BOLD;
+      }
+      font_info fi( ff, f_s );
+      result.insert( make_pair(id,fi) );
+    }
+  }
+  for ( const auto& mf : main_font_styles ){
+    auto it = result.find(mf.second);
+    if ( it != result.end() ){
+      auto const val = it->second;
+      result.insert( make_pair(mf.first,val) );
+      //      cerr << "\t\tLINK" << mf.first << " ==> "<< mf.second << endl;
+    }
+    else {
+      cerr << "surprise for " << mf.first << " ==> "<< mf.second << endl;
+    }
+  }
+  return result;
 }
 
 bool convert_abbyxml( const string& fileName,
@@ -306,6 +414,12 @@ bool convert_abbyxml( const string& fileName,
     }
     return false;
   }
+  map<string,font_info> font_styles = extract_font_info( root );
+
+  // for ( const auto& fs : font_styles ){
+  //   cerr << "fontstyle: " << fs.first << " " << fs.second << endl;
+  // }
+
   string orgFile = TiCC::basename( fileName );
   string docid = orgFile.substr( 0, orgFile.find(".") );
   docid = prefix + docid;
@@ -326,7 +440,7 @@ bool convert_abbyxml( const string& fileName,
     args["xml:id"] = text->id() + ".div" + TiCC::toString(++i);
     folia::Division *div = new folia::Division( args );
     text->append( div );
-    process_page( div, page );
+    process_page( div, page, font_styles );
   }
 
   string outName;
