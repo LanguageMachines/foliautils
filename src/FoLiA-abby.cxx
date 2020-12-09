@@ -55,7 +55,29 @@ string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
 
-enum font_style { REGULAR=0, ITALIC=1, BOLD=2 };
+enum font_style { REGULAR=0, ITALIC=1, BOLD=2, SMALLCAPS=4 };
+
+inline font_style operator~( font_style f ){
+  return (font_style)( ~(int)f );
+}
+
+inline font_style operator&( font_style f1, font_style f2 ){
+  return (font_style)((int)f1&(int)f2);
+}
+
+inline font_style& operator&=( font_style& f1, font_style f2 ){
+  f1 = (f1 & f2);
+  return f1;
+}
+
+inline font_style operator|( font_style f1, font_style f2 ){
+  return (font_style) ((int)f1|(int)f2);
+}
+
+inline font_style& operator|=( font_style& f1, font_style f2 ){
+  f1 = (f1 | f2);
+  return f1;
+}
 
 font_style stringToMode( const string& s ){
   if ( s.empty() ){
@@ -67,6 +89,9 @@ font_style stringToMode( const string& s ){
   else if ( s == "bold" ) {
     return BOLD;
   }
+  else if ( s == "smallcaps" ) {
+    return SMALLCAPS;
+  }
   else {
     cerr << "FoLiA-abby: unsupported Font-Style " << s << " (ignored)" << endl;
     return REGULAR;
@@ -74,20 +99,21 @@ font_style stringToMode( const string& s ){
 }
 
 string toString( font_style fs ){
-  switch( fs ){
-  case REGULAR:
+  if ( fs == REGULAR ){
     return "";
-    break;
-  case ITALIC:
-    return "italic";
-    break;
-  case BOLD:
-    return "bold";
-    break;
-  default:
-    cerr << "FoLiA:abby unexpected Font-Style value: " << (int)fs << endl;
   }
-  return "";
+  string result;
+  if ( fs & ITALIC ){
+    result += "italic|";
+  }
+  if ( fs & BOLD ){
+    result += "bold|";
+  }
+  if ( fs & SMALLCAPS ){
+    result += "smallcaps|";
+  }
+  result.pop_back();
+  return result;
 }
 
 ostream& operator<<( ostream& os, const font_style& fs ){
@@ -224,9 +250,50 @@ string get_line( xmlNode *line ){
   return TiCC::UnicodeToUTF8(result);
 }
 
+void update_font_info( font_info& line_font,
+		       xmlNode *node,
+		       const map<string,font_info>& font_styles ){
+  string style = TiCC::getAttribute( node, "style" );
+  if ( !style.empty() ){
+    line_font = font_styles.at( style );
+  }
+  string ff = TiCC::getAttribute( node, "ff" );
+  if ( !ff.empty() ){
+    line_font._ff = ff;
+  }
+  string bold = TiCC::getAttribute( node, "bold" );
+  if ( !bold.empty() ){
+    if ( bold == "1" ){
+      line_font._fs |= BOLD;
+    }
+    else {
+      line_font._fs &= ~BOLD;
+    }
+  }
+  string italic = TiCC::getAttribute( node, "italic" );
+  if ( !italic.empty() ){
+    if ( italic == "1" ){
+      line_font._fs |= ITALIC;
+    }
+    else {
+      line_font._fs &= ~ITALIC;
+    }
+  }
+  string small = TiCC::getAttribute( node, "smallcaps" );
+  if ( !small.empty() ){
+    if ( small == "1" ){
+      line_font._fs |= SMALLCAPS;
+    }
+    else {
+      line_font._fs &= ~SMALLCAPS;
+    }
+  }
+}
+
 void process_line( xmlNode *block,
 		   map<string,vector<string>>& parts,
-		   const font_info default_font,
+		   vector<pair<font_info,string>>& line_parts,
+		   const font_info& default_font,
 		   const map<string,font_info>& font_styles ){
   list<xmlNode*> formats = TiCC::FindNodes( block, "*:formatting" );
   if ( verbose ){
@@ -237,22 +304,52 @@ void process_line( xmlNode *block,
   }
 
   for ( const auto& form : formats ){
-    string small = TiCC::getAttribute( form, "smallcaps" );
+    font_info line_font = default_font;
+    update_font_info( line_font, form, font_styles );
     string result = get_line( form );
-    if ( !small.empty() ){
+    if ( line_font._fs & SMALLCAPS ){
       parts["lemma"].push_back(result);
     }
     else {
       parts["entry"].push_back(result);
     }
+    line_parts.push_back( make_pair( line_font, result ) );
+  }
+}
+
+void output_result( const string& line,
+		    const font_style& style,
+		    folia::FoliaElement *root ){
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::PART, setname, args );
+  args.clear();
+  //  args["xml:id"] = root->id() + ".entry";
+  args["generate_id"] = root->id();
+  folia::Part *part = new folia::Part( args, root->doc() );
+  root->append( part );
+  if ( style == REGULAR ){
+    part->settext( line, classname );
+  }
+  else {
+    folia::TextContent *tc = new folia::TextContent( root->doc() );
+    part->append( tc );
+    folia::KWargs args;
+    args["processor"] = processor_id;
+    root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
+    args.clear();
+    args["class"] = toString( style );
+    args["text"] = line;
+    folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, root->doc() );
+    tc->append( st );
   }
 }
 
 bool process_par( folia::FoliaElement *root,
 		  xmlNode *par,
 		  const map<string,font_info>& font_styles ){
-  string par_style = TiCC::getAttribute( par, "style" );
   font_info par_font;
+  string par_style = TiCC::getAttribute( par, "style" );
   if ( !par_style.empty() ){
     par_font = font_styles.at(par_style);
   }
@@ -264,10 +361,11 @@ bool process_par( folia::FoliaElement *root,
     }
   }
   map<string,vector<string>> parts;
+  vector<pair<font_info,string>> line_parts;
   for ( const auto& line : lines ){
-    process_line( line, parts, par_font, font_styles );
+    process_line( line, parts, line_parts, par_font, font_styles );
   }
-
+#ifdef OLD
   string lemma;
   string entry;
   for ( const auto& it : parts ){
@@ -306,6 +404,27 @@ bool process_par( folia::FoliaElement *root,
     folia::Part *part = new folia::Part( args );
     root->append( part );
     part->settext( entry, classname );
+    didit = true;
+  }
+#endif
+  bool didit = false;
+  string result;
+  font_style current_style = REGULAR;
+  for ( const auto& it : line_parts ){
+    //    cerr << "part: " << it.second << " (" << it.first._fs << ")" << endl;
+    if ( it.first._fs != current_style ){
+      if ( !result.empty() ){
+	output_result( result, current_style, root );
+	result.clear();
+      }
+      current_style = it.first._fs;
+    }
+    if ( !it.second.empty() ){
+      result += it.second;
+    }
+  }
+  if ( !result.empty() ){
+    output_result( result, current_style, root );
     didit = true;
   }
   return didit;

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-piroska" generator="libfolia-v2.6.1" version="2.4.1">
+  <metadata type="native">
+    <annotations>
+      <division-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </division-annotation>
+      <paragraph-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </paragraph-annotation>
+      <part-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </part-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <style-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </style-annotation>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-09T14:58:14" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
+      </processor>
+    </provenance>
+    <meta id="abby_file">piroska.abby.xml</meta>
+  </metadata>
+  <text xml:id="FA-piroska.text">
+    <div xml:id="FA-piroska.text.div1">
+      <p xml:id="FA-piroska.text.div1.p1">
+        <part xml:id="FA-piroska.text.div1.p1.part.1">
+          <t class="OCR">5 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p2">
+        <part xml:id="FA-piroska.text.div1.p2.part.1">
+          <t class="OCR">10 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p3">
+        <part xml:id="FA-piroska.text.div1.p3.part.1">
+          <t class="OCR">15 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p4">
+        <part xml:id="FA-piroska.text.div1.p4.part.1">
+          <t class="OCR">20 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p5">
+        <part xml:id="FA-piroska.text.div1.p5.part.1">
+          <t class="OCR">IV. Die römische Landwirtschaft und die A220 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p6">
+        <part xml:id="FA-piroska.text.div1.p6.part.1">
+          <t class="OCR">Grundherrschaften der Kaiserzeit * 1  </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p7">
+        <part xml:id="FA-piroska.text.div1.p7.part.1">
+          <t class="OCR">Entwickelung der Da in diesem Kapitel hauptsächlich eine ErscheiBetnebsweise. nung der Kaiserzeit behandelt werden soll, so ist der Rückblick, den wir auf die älteren Verhältnisse der römischen Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht versucht werden, an der Hand der Ergebnisse der Ausgrabungen in den Terremare 2  und der geistvollen Untersuchungen </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.2">
+          <t>
+            <t-style class="italic">Hehns 3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.3">
+          <t class="OCR"> und </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.4">
+          <t>
+            <t-style class="italic">Helbigs 4 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.5">
+          <t class="OCR"> eine allgemeine Entwickelungsgeschichte derselben von den ältesten Besiedlungen an zu geben. In historischer Zeit bietet die römische Landwirtschaft, wie sie uns die scriptores rei rusticae schildern, keinerlei besonders fremdartige Züge dar. Wenn früher gelegentlich 5 6  behauptet worden ist, daß die Römer den Germanen die Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb unverständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die ältesten germanischen Verhältnisse in Frage kommen würde, keine Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist und mit dem Flurzwang untrennbar zusammenhängt. Die römischen Schriftsteller aber kennen nur das, was </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.6">
+          <t>
+            <t-style class="italic">Thünen Q </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.7">
+          <t class="OCR"> „freie Wirtschaft“ nennen würde 1 ). | Von Fruchtfolge sprechen sie überhaupt nur gele- A 221 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p8">
+        <part xml:id="FA-piroska.text.div1.p8.part.1">
+          <t>
+            <t-style class="italic">’) Cato, </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.2">
+          <t class="OCR"> De r. r. 7  148 8  bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220 </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p9">
+        <part xml:id="FA-piroska.text.div1.p9.part.1">
+          <t>
+            <t-style class="bold">1 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.2">
+          <t class="OCR">Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber, Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum 1 , S. 14—18; dass. 2 , S. 80-84; dass. 3 , S. 165-168. In den folgenden Erläuterungen wird darauf nur ausnahmsweise Bezug genommen. </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p10">
+        <part xml:id="FA-piroska.text.div1.p10.part.1">
+          <t>
+            <t-style class="bold">2 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p10.part.2">
+          <t class="OCR">Vgl.S. 142, Anm.5. </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p11">
+        <part xml:id="FA-piroska.text.div1.p11.part.1">
+          <t>
+            <t-style class="bold">3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p11.part.2">
+          <t class="OCR">Hehn, Kulturpflanzen und Haustiere (vgl. Einleitung oben, S. 3f.). </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p12">
+        <part xml:id="FA-piroska.text.div1.p12.part.1">
+          <t>
+            <t-style class="bold">4 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p12.part.2">
+          <t class="OCR">Helbig, Italiker in der Poebene. </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p13">
+        <part xml:id="FA-piroska.text.div1.p13.part.1">
+          <t>
+            <t-style class="bold">5 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p13.part.2">
+          <t class="OCR">Gemeint offenbar: Hanssen, Agrarhistorische Abhandlungen 1, S. 153. </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p14">
+        <part xml:id="FA-piroska.text.div1.p14.part.1">
+          <t>
+            <t-style class="bold">6 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p14.part.2">
+          <t class="OCR">Vgl. v. Thünen, Isolierter Staat 3 1, S. 3-5. </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p15">
+        <part xml:id="FA-piroska.text.div1.p15.part.1">
+          <t>
+            <t-style class="bold">7 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p15.part.2">
+          <t class="OCR">Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der früher üblichen Weise Catos Werk stets als r. r. (= De re rustica). Da der Titel jedoch nach heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen durchweg als ,de agric.“ zitiert. </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p16">
+        <part xml:id="FA-piroska.text.div1.p16.part.1">
+          <t>
+            <t-style class="bold">8 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p16.part.2">
+          <t class="OCR">Die zitierte Stelle findet sich ebd., Kap. 149. </t>
+        </part>
+      </p>
+    </div>
+  </text>
+</FoLiA>
