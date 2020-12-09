@@ -291,7 +291,6 @@ void update_font_info( font_info& line_font,
 }
 
 void process_line( xmlNode *block,
-		   map<string,vector<string>>& parts,
 		   vector<pair<font_info,string>>& line_parts,
 		   const font_info& default_font,
 		   const map<string,font_info>& font_styles ){
@@ -307,12 +306,6 @@ void process_line( xmlNode *block,
     font_info line_font = default_font;
     update_font_info( line_font, form, font_styles );
     string result = get_line( form );
-    if ( line_font._fs & SMALLCAPS ){
-      parts["lemma"].push_back(result);
-    }
-    else {
-      parts["entry"].push_back(result);
-    }
     line_parts.push_back( make_pair( line_font, result ) );
   }
 }
@@ -360,59 +353,16 @@ bool process_par( folia::FoliaElement *root,
       cout << "\t\tfound " << lines.size() << " lines" << endl;
     }
   }
-  map<string,vector<string>> parts;
   vector<pair<font_info,string>> line_parts;
   for ( const auto& line : lines ){
-    process_line( line, parts, line_parts, par_font, font_styles );
+    process_line( line, line_parts, par_font, font_styles );
   }
-#ifdef OLD
-  string lemma;
-  string entry;
-  for ( const auto& it : parts ){
-    string result;
-    for ( const auto& s : it.second ){
-      result += s;
-    }
-    result = TiCC::trim(result);
-    if ( it.first == "lemma" ){
-      lemma += result;
-    }
-    else {
-      entry += result;
-    }
-  }
-  lemma = TiCC::trim(lemma);
-  entry = TiCC::trim(entry);
-  bool didit = false;
-  if ( !lemma.empty() ){
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    root->doc()->declare( folia::AnnotationType::PART, setname, args );
-    args.clear();
-    args["xml:id"] = root->id() + ".lemma";
-    folia::Part *part = new folia::Part( args );
-    root->append( part );
-    part->settext( lemma, classname );
-    didit = true;
-  }
-  if ( !entry.empty() ){
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    root->doc()->declare( folia::AnnotationType::PART, setname, args );
-    args.clear();
-    args["xml:id"] = root->id() + ".entry";
-    folia::Part *part = new folia::Part( args );
-    root->append( part );
-    part->settext( entry, classname );
-    didit = true;
-  }
-#endif
-  bool didit = false;
   string result;
   font_style current_style = REGULAR;
   for ( const auto& it : line_parts ){
     //    cerr << "part: " << it.second << " (" << it.first._fs << ")" << endl;
     if ( it.first._fs != current_style ){
+      result = TiCC::trim( result );
       if ( !result.empty() ){
 	output_result( result, current_style, root );
 	result.clear();
@@ -423,11 +373,12 @@ bool process_par( folia::FoliaElement *root,
       result += it.second;
     }
   }
+  result = TiCC::trim( result );
   if ( !result.empty() ){
     output_result( result, current_style, root );
-    didit = true;
+    return true;
   }
-  return didit;
+  return false;
 }
 
 bool process_page( folia::FoliaElement *root,
