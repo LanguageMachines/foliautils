@@ -57,7 +57,7 @@ string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
 
-enum font_style { REGULAR=0, ITALIC=1, BOLD=2, SMALLCAPS=4 };
+enum font_style { REGULAR=0, ITALIC=1, BOLD=2, SMALLCAPS=4, SUPERSCRIPT=8 };
 
 inline font_style operator~( font_style f ){
   return (font_style)( ~(int)f );
@@ -94,6 +94,9 @@ font_style stringToMode( const string& s ){
   else if ( s == "smallcaps" ) {
     return SMALLCAPS;
   }
+  else if ( s == "superscript" ) {
+    return SUPERSCRIPT;
+  }
   else {
     cerr << "FoLiA-abby: unsupported Font-Style " << s << " (ignored)" << endl;
     return REGULAR;
@@ -113,6 +116,9 @@ string toString( font_style fs ){
   }
   if ( fs & SMALLCAPS ){
     result += "smallcaps|";
+  }
+  if ( fs & SUPERSCRIPT ){
+    result += "superscript|";
   }
   result.pop_back();
   return result;
@@ -264,6 +270,15 @@ void update_font_info( font_info& line_font,
     }
     else {
       line_font._fs &= ~SMALLCAPS;
+    }
+  }
+  string super = TiCC::getAttribute( node, "superscript" );
+  if ( !super.empty() ){
+    if ( super == "1" ){
+      line_font._fs |= SUPERSCRIPT;
+    }
+    else {
+      line_font._fs &= ~SUPERSCRIPT;
     }
   }
 }
