@@ -1409,6 +1409,7 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
+    omp_set_num_threads( numThreads );
 #else
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
     exit(EXIT_FAILURE);
