@@ -366,25 +366,26 @@ bool process_par( folia::FoliaElement *root,
   args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
   args.clear();
-  bool result = false;
   font_style current_style = REGULAR;
   folia::TextContent *container = 0;
   folia::FoliaElement *content = 0;
   for ( const auto& it : line_parts ){
     if ( !container ){
+      // start with a fresh TextContent.
       current_style = it.first._fs;
       container = make_styled_container( current_style, content, root->doc() );
     }
-    bool hyphened = false;
     string value =  it.second;
     if ( it.first._fs != current_style ){
+      // a switch in font-syle. So end this Parts and start a new one
       current_style = it.first._fs;
       output_result( container, root );
       container = make_styled_container( current_style, content, root->doc() );
-      result = false;
     }
     if ( value.size() >=2
 	 && value.compare( value.size()-2, 2, "- " ) == 0 ){
+      // check if we have a hyphenation
+      // if so: add the value + <t-hbr/>
       value.pop_back();
       value.pop_back();
       add_content( content, value );
@@ -392,16 +393,14 @@ bool process_par( folia::FoliaElement *root,
       root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
       args.clear();
       content->append( new folia::Hyphbreak() );
-      hyphened = true;
-      result = true;
     }
-    if ( !hyphened && !value.empty() ){
-      result = true;
+    else if ( !value.empty() ){
       add_content( content, value );
     }
-  }
-  if ( result ){
-    output_result( container, root );
+    if ( &it == &line_parts.back() ){
+      // the remains
+      output_result( container, root );
+    }
   }
   return true;
 }
