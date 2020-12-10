@@ -20,7 +20,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-10T14:51:44" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-10T22:29:40" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
@@ -55,36 +55,80 @@
       </p>
       <p xml:id="FA-piroska.text.div1.p6">
         <part xml:id="FA-piroska.text.div1.p6.part.1">
-          <t class="OCR">Grundherrschaften der Kaiserzeit * 1 </t>
+          <t class="OCR">Grundherrschaften der Kaiserzeit </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p6.part.2">
+          <t class="OCR">
+            <t-style class="superscript">* 1 </t-style>
+          </t>
         </part>
       </p>
       <p xml:id="FA-piroska.text.div1.p7">
         <part xml:id="FA-piroska.text.div1.p7.part.1">
-          <t class="OCR">Entwickelung der Da in diesem Kapitel hauptsächlich eine Erschei<t-hbr/>Betnebsweise. nung der Kaiserzeit behandelt werden soll, so ist der Rückblick, den wir auf die älteren Verhältnisse der römischen Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht versucht werden, an der Hand der Ergebnisse der Ausgrabungen in den Terremare 2  und der geistvollen Untersuchungen </t>
+          <t class="OCR">Entwickelung der Da in diesem Kapitel hauptsächlich eine Erschei<t-hbr/>Betnebsweise. nung der Kaiserzeit behandelt werden soll, so ist der Rückblick, den wir auf die älteren Verhältnisse der römischen Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht versucht werden, an der Hand der Ergebnisse der Ausgrabungen in den Terremare </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.2">
           <t class="OCR">
-            <t-style class="italic">Hehns 3 </t-style>
+            <t-style class="superscript">2 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.3">
-          <t class="OCR"> und </t>
+          <t class="OCR"> und der geistvollen Untersuchungen </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.4">
           <t class="OCR">
-            <t-style class="italic">Hel<t-hbr/>bigs 4 </t-style>
+            <t-style class="italic">Hehns </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.5">
-          <t class="OCR"> eine allgemeine Entwickelungsgeschichte derselben von den ältesten Besiedlungen an zu geben. In historischer Zeit bietet die römische Landwirtschaft, wie sie uns die scriptores rei rusticae schildern, keinerlei besonders fremdartige Züge dar. Wenn früher gelegentlich 5 6  behauptet worden ist, daß die Römer den Germanen die Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb unverständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die ältesten germanischen Verhältnisse in Frage kommen würde, keine Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist und mit dem Flurzwang untrennbar zusammenhängt. Die römischen Schriftsteller aber kennen nur das, was </t>
-        </part>
-        <part xml:id="FA-piroska.text.div1.p7.part.6">
           <t class="OCR">
-            <t-style class="italic">Thünen Q </t-style>
+            <t-style class="italic|superscript">3 </t-style>
           </t>
         </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.6">
+          <t class="OCR"> und </t>
+        </part>
         <part xml:id="FA-piroska.text.div1.p7.part.7">
-          <t class="OCR"> „freie Wirtschaft“ nennen würde 1 ). | Von Fruchtfolge sprechen sie überhaupt nur gele<t-hbr/>A 221 </t>
+          <t class="OCR">
+            <t-style class="italic">Hel<t-hbr/>bigs </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.8">
+          <t class="OCR">
+            <t-style class="italic|superscript">4 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.9">
+          <t class="OCR"> eine allgemeine Entwickelungsgeschichte derselben von den ältesten Besiedlungen an zu geben. In historischer Zeit bietet die römische Landwirtschaft, wie sie uns die scriptores rei rusticae schildern, keinerlei besonders fremdartige Züge dar. Wenn früher gelegentlich </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.10">
+          <t class="OCR">
+            <t-style class="superscript">5 6 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.11">
+          <t class="OCR"> behauptet worden ist, daß die Römer den Germanen die Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb unverständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die ältesten germanischen Verhältnisse in Frage kommen würde, keine Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist und mit dem Flurzwang untrennbar zusammenhängt. Die römischen Schriftsteller aber kennen nur das, was </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.12">
+          <t class="OCR">
+            <t-style class="italic">Thünen </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.13">
+          <t class="OCR">
+            <t-style class="italic|superscript">Q </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.14">
+          <t class="OCR"> „freie Wirtschaft“ nennen würde </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.15">
+          <t class="OCR">
+            <t-style class="superscript">1 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.16">
+          <t class="OCR">). | Von Fruchtfolge sprechen sie überhaupt nur gele<t-hbr/>A 221 </t>
         </part>
       </p>
       <p xml:id="FA-piroska.text.div1.p8">
@@ -94,7 +138,23 @@
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.2">
-          <t class="OCR"> De r. r. 7  148 8  bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220 </t>
+          <t class="OCR"> De r. r. </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.3">
+          <t class="OCR">
+            <t-style class="superscript">7 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.4">
+          <t class="OCR"> 148 </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.5">
+          <t class="OCR">
+            <t-style class="superscript">8 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.6">
+          <t class="OCR"> bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220 </t>
         </part>
       </p>
       <p xml:id="FA-piroska.text.div1.p9">
@@ -104,7 +164,31 @@
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.2">
-          <t class="OCR">Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber, Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum 1 , S. 14—18; dass. 2 , S. 80-84; dass. 3 , S. 165-168. In den folgenden Erläuterungen wird darauf nur ausnahmsweise Bezug genommen. </t>
+          <t class="OCR">Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber, Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.3">
+          <t class="OCR">
+            <t-style class="superscript">1 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.4">
+          <t class="OCR">, S. 14—18; dass. </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.5">
+          <t class="OCR">
+            <t-style class="superscript">2 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.6">
+          <t class="OCR">, S. 80-84; dass. </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.7">
+          <t class="OCR">
+            <t-style class="superscript">3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.8">
+          <t class="OCR">, S. 165-168. In den folgenden Erläuterungen wird darauf nur ausnahmsweise Bezug genommen. </t>
         </part>
       </p>
       <p xml:id="FA-piroska.text.div1.p10">
@@ -154,7 +238,15 @@
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.2">
-          <t class="OCR">Vgl. v. Thünen, Isolierter Staat 3 1, S. 3-5. </t>
+          <t class="OCR">Vgl. v. Thünen, Isolierter Staat </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p14.part.3">
+          <t class="OCR">
+            <t-style class="superscript">3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p14.part.4">
+          <t class="OCR">1, S. 3-5. </t>
         </part>
       </p>
       <p xml:id="FA-piroska.text.div1.p15">

@@ -20,7 +20,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-10T14:52:27" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-10T22:43:46" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
@@ -843,7 +843,17 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.10">
           <t class="OCR">
-            <t-style class="bold">Terra Firma, Peru, Chili, Tucuman, Paraguay, and Patagonia. These ex<t-hbr/>ten live countries arc described under their proper heads. All the exports of Spain, molt articles of which no other European country can supply, arc estimated at only 80,000,000 livres, or 3,333,333b steal. The molt important trade of Spain is that which it carries en with its American provinces. The chief imports from these extensive countries consist of gold, silver, pnrious stones, pearls, cotton, cocoa, cod 3  .eal, red-wood, ikins, rice, medicinal herbs </t-style>
+            <t-style class="bold">Terra Firma, Peru, Chili, Tucuman, Paraguay, and Patagonia. These ex<t-hbr/>ten live countries arc described under their proper heads. All the exports of Spain, molt articles of which no other European country can supply, arc estimated at only 80,000,000 livres, or 3,333,333b steal. The molt important trade of Spain is that which it carries en with its American provinces. The chief imports from these extensive countries consist of gold, silver, pnrious stones, pearls, cotton, cocoa, cod </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.11">
+          <t class="OCR">
+            <t-style class="bold|superscript">3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.12">
+          <t class="OCR">
+            <t-style class="bold"> .eal, red-wood, ikins, rice, medicinal herbs </t-style>
           </t>
         </part>
       </p>
