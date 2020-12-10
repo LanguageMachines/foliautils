@@ -32,13 +32,14 @@
 #include <iostream>
 #include <fstream>
 #include "ticcutils/StringOps.h"
-#include "libfolia/folia.h"
+#include "ticcutils/PrettyPrint.h"
 #include "ticcutils/XMLtools.h"
 #include "ticcutils/StringOps.h"
 #include "ticcutils/zipper.h"
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/Unicode.h"
 #include "ticcutils/CommandLine.h"
+#include "libfolia/folia.h"
 #include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
@@ -47,6 +48,7 @@
 
 using namespace	std;
 using namespace	icu;
+using TiCC::operator<<;
 
 bool verbose = false;
 
@@ -137,7 +139,7 @@ ostream& operator<<( ostream& os, const font_info& fi ){
   return os;
 }
 
-string get_line( xmlNode *line ){
+UnicodeString get_line( xmlNode *line ){
   UnicodeString result;
   list<xmlNode*> variants = TiCC::FindNodes( line, "*:wordRecVariants" );
   if ( !variants.empty() ){
@@ -195,22 +197,13 @@ string get_line( xmlNode *line ){
 	    cout << "\t\t\t\t\tintermediate text: '" << tmp << "'" << endl;
 	  }
 	}
-	if ( tmp.endsWith( "¬" ) ){
-	  tmp.remove(tmp.length()-1);
-	}
-	else if ( tmp.endsWith( "-" ) ){
-	  tmp.remove(tmp.length()-1);
-	}
-	else if ( !tmp.endsWith( " " ) ){
-	  tmp += " ";
-	}
 	if ( verbose ){
 #pragma omp critical
 	  {
 	    cout << "\t\t\t\t\tfinal text: '" << tmp << "'" << endl;
 	  }
 	}
-	result += tmp;
+	result += tmp + " ";
       }
     }
   }
@@ -225,21 +218,6 @@ string get_line( xmlNode *line ){
     for ( const auto& ch : chars ){
       result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
     }
-    if ( result.endsWith( "¬" ) ){
-      result.remove(result.length()-1);
-    }
-    else if ( result.endsWith( "-" ) ){
-      result.remove(result.length()-1);
-    }
-    else if ( result.endsWith( "\n" ) ){
-      result.remove(result.length()-1);
-      if ( !result.endsWith( " " ) ){
-	result += " ";
-      }
-    }
-    else if ( !result.endsWith( " " ) ){
-      result += " ";
-    }
   }
   if ( verbose ){
 #pragma omp critical
@@ -247,7 +225,7 @@ string get_line( xmlNode *line ){
       cout << "Word text = '" << result << "'" << endl;
     }
   }
-  return TiCC::UnicodeToUTF8(result);
+  return result;
 }
 
 void update_font_info( font_info& line_font,
@@ -305,36 +283,63 @@ void process_line( xmlNode *block,
   for ( const auto& form : formats ){
     font_info line_font = default_font;
     update_font_info( line_font, form, font_styles );
-    string result = get_line( form );
-    line_parts.push_back( make_pair( line_font, result ) );
+    UnicodeString uresult = get_line( form );
+    if ( uresult.endsWith( "¬" ) ){
+      uresult.remove(uresult.length()-1);
+    }
+    else if ( uresult.endsWith( "\n" ) ){
+      uresult.remove(uresult.length()-1);
+      if ( !uresult.endsWith( " " ) ){
+	uresult += " ";
+      }
+    }
+    else if ( !uresult.endsWith( " " ) ){
+      uresult += " ";
+    }
+    string result = TiCC::UnicodeToUTF8( uresult );
+    if ( !TiCC::trim( result ).empty() ){
+      line_parts.push_back( make_pair( line_font, result ) );
+    }
   }
 }
 
-void output_result( const string& line,
-		    const font_style& style,
+void output_result( folia::TextContent *tc,
 		    folia::FoliaElement *root ){
   folia::KWargs args;
   args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PART, setname, args );
   args.clear();
-  //  args["xml:id"] = root->id() + ".entry";
   args["generate_id"] = root->id();
   folia::Part *part = new folia::Part( args, root->doc() );
+  part->append( tc );
   root->append( part );
+}
+
+folia::TextContent* make_styled_container( const font_style& style,
+					   folia::FoliaElement*& content,
+					   folia::Document *doc ){
+  folia::KWargs args;
+  args["class"] = classname;
+  folia::TextContent *tc = new folia::TextContent( args, doc );
   if ( style == REGULAR ){
-    part->settext( line, classname );
+    content = tc;
+    return tc;
   }
   else {
-    folia::TextContent *tc = new folia::TextContent( root->doc() );
-    part->append( tc );
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
-    args.clear();
     args["class"] = toString( style );
-    args["text"] = line;
-    folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, root->doc() );
+    folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
     tc->append( st );
+    content = st;
+  }
+  return tc;
+}
+
+void add_content( folia::FoliaElement *content,
+		  const string& value ){
+  if ( !value.empty() ){
+    folia::XmlText *t = new folia::XmlText();
+    t->setvalue( (const char*)value.c_str() );
+    content->append( t );
   }
 }
 
@@ -357,28 +362,48 @@ bool process_par( folia::FoliaElement *root,
   for ( const auto& line : lines ){
     process_line( line, line_parts, par_font, font_styles );
   }
-  string result;
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
+  args.clear();
+  bool result = false;
   font_style current_style = REGULAR;
+  folia::TextContent *container = 0;
+  folia::FoliaElement *content = 0;
   for ( const auto& it : line_parts ){
-    //    cerr << "part: " << it.second << " (" << it.first._fs << ")" << endl;
-    if ( it.first._fs != current_style ){
-      result = TiCC::trim( result );
-      if ( !result.empty() ){
-	output_result( result, current_style, root );
-	result.clear();
-      }
+    if ( !container ){
       current_style = it.first._fs;
+      container = make_styled_container( current_style, content, root->doc() );
     }
-    if ( !it.second.empty() ){
-      result += it.second;
+    bool hyphened = false;
+    string value =  it.second;
+    if ( it.first._fs != current_style ){
+      current_style = it.first._fs;
+      output_result( container, root );
+      container = make_styled_container( current_style, content, root->doc() );
+      result = false;
+    }
+    if ( value.size() >=2
+	 && value.compare( value.size()-2, 2, "- " ) == 0 ){
+      value.pop_back();
+      value.pop_back();
+      add_content( content, value );
+      args["processor"] = processor_id;
+      root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
+      args.clear();
+      content->append( new folia::Hyphbreak() );
+      hyphened = true;
+      result = true;
+    }
+    if ( !hyphened && !value.empty() ){
+      result = true;
+      add_content( content, value );
     }
   }
-  result = TiCC::trim( result );
-  if ( !result.empty() ){
-    output_result( result, current_style, root );
-    return true;
+  if ( result ){
+    output_result( container, root );
   }
-  return false;
+  return true;
 }
 
 bool process_page( folia::FoliaElement *root,
@@ -416,7 +441,6 @@ map<string,font_info> extract_font_info( xmlNode *root ){
   map<string,font_info> result;
   list<xmlNode*> par_styles =
     TiCC::FindNodes( root, ".//*:paragraphStyles/*:paragraphStyle" );
-  //  cerr << "Found " << par_styles.size() << " paragraph style nodes" << endl;
   map<string,string> main_font_styles;
   for ( const auto& ps : par_styles ){
     string pid = TiCC::getAttribute( ps, "id" );
@@ -445,7 +469,6 @@ map<string,font_info> extract_font_info( xmlNode *root ){
     if ( it != result.end() ){
       auto const val = it->second;
       result.insert( make_pair(mf.first,val) );
-      //      cerr << "\t\tLINK" << mf.first << " ==> "<< mf.second << endl;
     }
     else {
       cerr << "surprise for " << mf.first << " ==> "<< mf.second << endl;
@@ -485,10 +508,6 @@ bool convert_abbyxml( const string& fileName,
     return false;
   }
   map<string,font_info> font_styles = extract_font_info( root );
-
-  // for ( const auto& fs : font_styles ){
-  //   cerr << "fontstyle: " << fs.first << " " << fs.second << endl;
-  // }
 
   string orgFile = TiCC::basename( fileName );
   string docid = orgFile.substr( 0, orgFile.find(".") );

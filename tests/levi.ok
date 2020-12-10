@@ -8,16 +8,19 @@
       <paragraph-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </paragraph-annotation>
-      <part-annotation set="FoLiA-abby-set">
-        <annotator processor="FoLiA-abby.1"/>
-      </part-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <style-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </style-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <part-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </part-annotation>
+      <hyphenation-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-09T17:13:46" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-10T14:44:58" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
@@ -27,50 +30,50 @@
     <div xml:id="FA-levi010geil01_01_Deel500.text.div1">
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p1">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p1.part.1">
-          <t class="OCR">490</t>
+          <t class="OCR">490 </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p2">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.1">
-          <t class="OCR">uit te maken, tot wiens territorium deze behoorde. De Transvaalsche Republiek verklaarde, dat Klipdrift en omgeving haar domein was, zij kende zich het monopolie toe en verklaarde, dat zij het recht had, dit monopolie af te staan aan wien zij goed dacht. Doch hiermede waren de diggers niet tevreden ; zij meenden, dat op deze wijze van de zijde der Transvaalsche regeering inbreuk op hunne rechten werd gemaakt. Hadden zij, zooals wij reeds weten, een comité gekozen, om hun allereerste belangen te regelen, thans werd eene soort van republiek te Klipdrift gevormd, om tegenover de Transvaalsche regeering op te treden. Deze laatste, die dit niet duldde, wendde zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen wij later hooren.</t>
+          <t class="OCR">uit te maken, tot wiens territorium deze behoorde. De Trans<t-hbr/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar domein was, zij kende zich het monopolie toe en verklaarde, dat zij het recht had, dit monopolie af te staan aan wien zij goed dacht. Doch hiermede waren de diggers niet tevreden ; zij meenden, dat op deze wijze van de zijde der Trans<t-hbr/>vaalsche regeering inbreuk op hunne rechten werd gemaakt. Hadden zij, zooals wij reeds weten, een comité gekozen, om hun allereerste belangen te regelen, thans werd eene soort van republiek te Klipdrift gevormd, om tegenover de Transvaalsche regeering op te treden. Deze laatste, die dit niet duldde, wendde zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen wij later hooren. </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p3">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p3.part.1">
-          <t class="OCR">Zoo langzamerhand had men ingezien, dat dit gedeelte van</t>
+          <t class="OCR">Zoo langzamerhand had men ingezien, dat dit gedeelte van </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p4">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p4.part.1">
-          <t class="OCR">Zuid-Afrika iets geheel anders zou worden, dan een streek van</t>
+          <t class="OCR">Zuid-Afrika iets geheel anders zou worden, dan een streek van </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p5">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p5.part.1">
-          <t class="OCR">*</t>
+          <t class="OCR">* </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p6">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.1">
-          <t class="OCR">landbouw en veeteelt. Velen begrepen met het toenemen der vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat zij er een doel hadden gevonden, dat hen zou doen blijven. Weldra verdwenen dan ook vele tenten en maakten plaats voor vaste woningen van duurzamer constructie; voor het voornaamste bestanddeel dier woningen, de steenen, behoefde men niet ver te zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze er slechts wilde uithalen. Eene rij van woningen was weldra gebouwd, en de „Campbellstraat” was de eerste straat, die werd aangelegd.</t>
+          <t class="OCR">landbouw en veeteelt. Velen begrepen met het toenemen der vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat zij er een doel hadden gevonden, dat hen zou doen blijven. Weldra verdwenen dan ook vele tenten en maakten plaats voor vaste woningen van duurzamer constructie; voor het voornaamste bestanddeel dier woningen, de steenen, behoefde men niet ver te zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze er slechts wilde uithalen. Eene rij van woningen was weldra gebouwd, en de „Campbellstraat” was de eerste straat, die werd aangelegd. </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p7">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.1">
-          <t class="OCR">Het waren niet in hoofdzaak de diggers, die zich hier vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers, kruideniers een goed stuk brood zouden kunnen verdienen op de velden, hadden hier zaken opgericht, en het ging hun goed. Niet dat zij op buitengewoon hooge betaling hunner goederen en diensten konden rekenen ; de levensstandaard was niet hoog, voor omstreeks</t>
+          <t class="OCR">Het waren niet in hoofdzaak de diggers, die zich hier vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers, kruideniers een goed stuk brood zouden kunnen verdienen op de velden, hadden hier zaken opgericht, en het ging hun goed. Niet dat zij op buitengewoon hooge betaling hunner goederen en diensten konden rekenen ; de levensstandaard was niet hoog, voor omstreeks </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.2">
-          <t>
-            <t-style class="italic">f</t-style>
+          <t class="OCR">
+            <t-style class="italic">f </t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.3">
-          <t class="OCR">1.50 (frs. 3) per dag, per persoon kon men zich het noodige verschaffen.</t>
+          <t class="OCR">1.50 (frs. 3) per dag, per persoon kon men zich het noodige verschaffen. </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p8">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p8.part.1">
-          <t class="OCR">Nu begon ook de diamanthandel te leven; kooplieden en makelaars kwamen zich vestigen, betrekkingen met Europa</t>
+          <t class="OCR">Nu begon ook de diamanthandel te leven; kooplieden en makelaars kwamen zich vestigen, betrekkingen met Europa </t>
         </part>
       </p>
     </div>
