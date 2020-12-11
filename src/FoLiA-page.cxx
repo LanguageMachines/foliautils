@@ -194,7 +194,9 @@ void handle_uni_lines( folia::FoliaElement *root,
       }
     }
   }
-  root->setutext( full_line, classname );
+  if ( !full_line.isEmpty() ){
+    root->setutext( full_line, classname );
+  }
 }
 
 UnicodeString handle_one_line( folia::FoliaElement *par,
@@ -220,7 +222,9 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	handle_one_word( sent, w, fileName );
       }
       result = sent->text();
-      sent->setutext( result, classname );
+      if ( !result.isEmpty() ){
+	sent->setutext( result, classname );
+      }
     }
     else {
       // we add the text as strings, enabling external tokenizations
@@ -340,7 +344,9 @@ void handle_one_region( folia::FoliaElement *root,
 	par_txt += " ";
       }
     }
-    par->setutext( par_txt, classname );
+    if ( !par_txt.isEmpty() ){
+      par->setutext( par_txt, classname );
+    }
   }
   else {
     // No TextLine's use unicode nodes directly
