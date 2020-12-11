@@ -185,6 +185,7 @@ void handle_uni_lines( folia::FoliaElement *root,
     if ( !value.empty() ){
       UnicodeString uval = TiCC::UnicodeFromUTF8(value);
       uval = UN.normalize(uval);
+      uval = folia::ltrim( uval );
       string id = "str_" + TiCC::toString(j++);
       appendStr( root, pos, uval, id, fileName );
       full_line += uval;
@@ -194,6 +195,7 @@ void handle_uni_lines( folia::FoliaElement *root,
       }
     }
   }
+  full_line = folia::ltrim( full_line );
   if ( !full_line.isEmpty() ){
     root->setutext( full_line, classname );
   }
@@ -253,6 +255,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	string value = TiCC::XmlContent( unicode );
 	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
 	uval = UN.normalize(uval);
+	uval = folia::ltrim( uval );
 	appendStr( par, pos, uval, word_ids[unicode], fileName );
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
@@ -274,6 +277,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       if ( !value.empty() ){
 	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
 	uval = UN.normalize(uval);
+	uval = folia::ltrim( uval );
 	appendStr( par, pos, uval, lid, fileName );
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
@@ -335,15 +339,18 @@ void handle_one_region( folia::FoliaElement *root,
     UnicodeString par_txt;
     int pos = 0;
     for ( const auto& line : lines ){
-      UnicodeString value  = handle_one_line( par, pos,
-					      line,
-					      fileName );
+      UnicodeString value = handle_one_line( par, pos,
+					     line,
+					     fileName );
       par_txt += value;
       if ( &line != &lines.back() ){
-	++pos;
-	par_txt += " ";
+	if ( !par_txt.isEmpty() ){
+	  ++pos;
+	  par_txt += " ";
+	}
       }
     }
+    par_txt = folia::ltrim( par_txt );
     if ( !par_txt.isEmpty() ){
       par->setutext( par_txt, classname );
     }
