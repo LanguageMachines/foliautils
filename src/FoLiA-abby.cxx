@@ -57,7 +57,9 @@ string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
 
-enum font_style { REGULAR=0, ITALIC=1, BOLD=2, SMALLCAPS=4, SUPERSCRIPT=8 };
+enum font_style { REGULAR=0, ITALIC=1, BOLD=2, SMALLCAPS=4,
+		  SUPERSCRIPT=8, SUBSCRIPT=16, UNDERLINE=32,
+		  STRIKEOUT=64 };
 
 inline font_style operator~( font_style f ){
   return (font_style)( ~(int)f );
@@ -97,6 +99,15 @@ font_style stringToMode( const string& s ){
   else if ( s == "superscript" ) {
     return SUPERSCRIPT;
   }
+  else if ( s == "subscript" ) {
+    return SUBSCRIPT;
+  }
+  else if ( s == "underline" ) {
+    return UNDERLINE;
+  }
+  else if ( s == "strikeout" ) {
+    return STRIKEOUT;
+  }
   else {
     cerr << "FoLiA-abby: unsupported Font-Style " << s << " (ignored)" << endl;
     return REGULAR;
@@ -119,6 +130,15 @@ string toString( font_style fs ){
   }
   if ( fs & SUPERSCRIPT ){
     result += "superscript|";
+  }
+  if ( fs & SUBSCRIPT ){
+    result += "subscript|";
+  }
+  if ( fs & UNDERLINE ){
+    result += "underline|";
+  }
+  if ( fs & STRIKEOUT ){
+    result += "strikeout|";
   }
   result.pop_back();
   return result;
@@ -245,40 +265,67 @@ void update_font_info( font_info& line_font,
   if ( !ff.empty() ){
     line_font._ff = ff;
   }
-  string bold = TiCC::getAttribute( node, "bold" );
-  if ( !bold.empty() ){
-    if ( bold == "1" ){
+  string value = TiCC::getAttribute( node, "bold" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
       line_font._fs |= BOLD;
     }
     else {
       line_font._fs &= ~BOLD;
     }
   }
-  string italic = TiCC::getAttribute( node, "italic" );
-  if ( !italic.empty() ){
-    if ( italic == "1" ){
+  value = TiCC::getAttribute( node, "italic" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
       line_font._fs |= ITALIC;
     }
     else {
       line_font._fs &= ~ITALIC;
     }
   }
-  string small = TiCC::getAttribute( node, "smallcaps" );
-  if ( !small.empty() ){
-    if ( small == "1" ){
+  value = TiCC::getAttribute( node, "smallcaps" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
       line_font._fs |= SMALLCAPS;
     }
     else {
       line_font._fs &= ~SMALLCAPS;
     }
   }
-  string super = TiCC::getAttribute( node, "superscript" );
-  if ( !super.empty() ){
-    if ( super == "1" ){
+  value = TiCC::getAttribute( node, "superscript" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
       line_font._fs |= SUPERSCRIPT;
     }
     else {
       line_font._fs &= ~SUPERSCRIPT;
+    }
+  }
+  value = TiCC::getAttribute( node, "subscript" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
+      line_font._fs |= SUBSCRIPT;
+    }
+    else {
+      line_font._fs &= ~SUBSCRIPT;
+    }
+  }
+  value = TiCC::getAttribute( node, "strikeout" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
+      line_font._fs |= STRIKEOUT;
+    }
+    else {
+      line_font._fs &= ~STRIKEOUT;
+    }
+  }
+  value = TiCC::getAttribute( node, "underline" );
+  if ( !value.empty() ){
+    if ( value == "1" ){
+      line_font._fs |= UNDERLINE;
+    }
+    else {
+      line_font._fs &= ~UNDERLINE;
     }
   }
 }
