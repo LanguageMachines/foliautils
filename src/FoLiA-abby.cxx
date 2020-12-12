@@ -599,7 +599,7 @@ bool convert_abbyxml( const string& fileName,
   }
   string::size_type pos2 = orgFile.find( ".xml" );
   orgFile = orgFile.erase( pos2 );
-  outName += orgFile + ".folia.xml";
+  outName += prefix+ orgFile + ".folia.xml";
   zipType type = inputType;
   if ( outputType != NORMAL ){
     type = outputType;
