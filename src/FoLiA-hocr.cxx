@@ -236,14 +236,17 @@ void convert_hocr( const string& fileName,
   processParagraphs( root, text, TiCC::basename(fileName) );
   xmlFreeDoc( xdoc );
 
-  string outName = outputDir + "/" + title + ".folia.xml";
+  string outName = outputDir + "/" + prefix + title + ".folia.xml";
   zipType type = inputType;
-  if ( outputType != NORMAL )
+  if ( outputType != NORMAL ){
     type = outputType;
-  if ( type == BZ2 )
+  }
+  if ( type == BZ2 ){
     outName += ".bz2";
-  else if ( type == GZ )
+  }
+  else if ( type == GZ ){
     outName += ".gz";
+  }
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
        ( pv.size() == 1 && pv[0]->size() == 0 ) ){
