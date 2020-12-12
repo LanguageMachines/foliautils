@@ -464,6 +464,7 @@ void processArticle( const string& f,
     }
   }
   string docid = replaceColon(f,'.');
+  docid = prefix + docid;
   string outName = outDir;
   if ( subject == "artikel" ){
     outName += "artikel/";
@@ -472,9 +473,6 @@ void processArticle( const string& f,
     outName += "overige/";
   }
   outName += docid + ".folia.xml";
-  if ( !folia::isNCName( docid ) ){
-    docid = prefix + docid;
-  }
   folia::Document doc( "xml:id='" + docid + "'" );
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   processor_id = proc->id();
@@ -972,10 +970,8 @@ void solveBook( const string& altoFile, const string& id,
   xmlDoc *xmldoc = getXml( altoFile, inputType );
   if ( xmldoc ){
     string docid = replaceColon( id, '.' );
+    docid = prefix + docid;
     string outName = outDir + docid + ".folia.xml";
-    if ( !folia::isNCName( docid ) ){
-      docid = prefix + docid;
-    }
     folia::Document doc( "xml:id='" + docid + "'" );
     folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
     processor_id = proc->id();
@@ -1270,10 +1266,8 @@ void solveDirectAlto( const string& full_file,
   string filename = TiCC::basename( full_file );
   string docid = filename.substr( 0, filename.find(".") );
   docid = replaceColon(docid,'.');
+  docid = prefix + docid;
   string outName = outDir + docid + ".folia.xml";
-  if ( !folia::isNCName( docid ) ){
-    docid = prefix + docid;
-  }
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
   folia::Document doc( "xml:id='" + docid + "'" );
   folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
@@ -1328,8 +1322,8 @@ void usage(){
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t output directory " << endl;
   cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
-  cerr << "\t--prefix='pre'\t add this prefix to document ID's when an invalid xml:id would be created. (default: 'FA-') " << endl;
-  //  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
+  cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FA-') " << endl;
+  cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--oldstrings\t Fall back to old version that creates <str> nodes" << endl;
   cerr << "\t\t\t The default is to create <w> nodes." << endl;
   cerr << "\t--setname=<set>\t the FoLiA setname of the string or word nodes. "
@@ -1362,9 +1356,9 @@ int main( int argc, char *argv[] ){
   string kind = "krant";
   zipType outputType = NORMAL;
   opts.extract( "prefix", prefix );
-  // if ( prefix == "none" ){
-  //   prefix.clear();
-  // }
+  if ( prefix == "none" ){
+    prefix.clear();
+  }
   string value;
   if ( opts.extract('h') || opts.extract("help") ){
     usage();
