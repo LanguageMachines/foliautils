@@ -14,14 +14,14 @@ $my_bin/FoLiA-alto --oldstrings --cache=/tmp/cache -O out --type=boek data/test:
 
 ls /tmp/cache >> testalto.out
 
-ls out/dpo.*.folia.xml >> testalto.out
+ls out/FA-dpo.*.folia.xml >> testalto.out
 
-./foliadiff.sh out/dpo.1880.mpeg21.0006.alto.folia.xml dpo-alto-str.ok >> testalto.out
+./foliadiff.sh out/FA-dpo.1880.mpeg21.0006.alto.folia.xml dpo-alto-str.ok >> testalto.out
 
-rm -f out/dpo.*.folia.xml  >> testalto.out 2>&1
+rm -f out/FA-dpo.*.folia.xml  >> testalto.out 2>&1
 
 $my_bin/FoLiA-alto --cache=/tmp/cache -O out --type=boek data/test:mpeg21.xml >> testalto.out 2>&1
 
-ls out/dpo.*.folia.xml >> testalto.out
+ls out/FA-dpo.*.folia.xml >> testalto.out
 
-./foliadiff.sh out/dpo.1880.mpeg21.0006.alto.folia.xml dpo-alto-w.ok >> testalto.out
+./foliadiff.sh out/FA-dpo.1880.mpeg21.0006.alto.folia.xml dpo-alto-w.ok >> testalto.out
