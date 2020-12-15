@@ -37,11 +37,6 @@ Validated successfully: test1/FPM-pm6.folia.xml
 Validated successfully: test1/FPM-pm7.folia.xml
 Validated successfully: test1/FPM-pm8.folia.xml
 Validated successfully: test1/FPM-pm9.folia.xml
-160c160
-<         <t>AMENDEMENT VAN HET LID PECHTOLD C.S. TER VERVANGING VAN DAT GEDRUKT ONDER NR. 69 <t-ref xml:id="pm11.2.2.2" id="v1.1" type="note">1</t-ref> 
----
->         <t>AMENDEMENT VAN HET LID PECHTOLD C.S. TER VERVANGING VAN DAT GEDRUKT ONDER NR. 69<t-ref xml:id="pm11.2.2.2" id="v1.1" type="note">1</t-ref>
-foliadiff.sh: differences in: test1/FPM-pm11.folia.xml pm11.folia.ok
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-33-7.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-1.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-16.1.folia.xml

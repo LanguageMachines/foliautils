@@ -20,7 +20,7 @@
       </entity-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-pm.1" begindatetime="2020-12-15T13:35:37" command="FoLiA-pm --nosplit -O test1" folia_version="2.4.1" host="kokos" name="FoLiA-pm" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-pm.1" begindatetime="2020-12-15T16:16:14" command="FoLiA-pm --nosplit -O test1" folia_version="2.4.1" host="kokos" name="FoLiA-pm" user="sloot" version="0.16">
         <processor xml:id="FoLiA-pm.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
       </processor>
     </provenance>
@@ -157,7 +157,7 @@
         <t>Nr. 80</t>
       </p>
       <p xml:id="pm11.2.2">
-        <t>AMENDEMENT VAN HET LID PECHTOLD C.S. TER VERVANGING VAN DAT GEDRUKT ONDER NR. 69<t-ref xml:id="pm11.2.2.2" id="v1.1" type="note">1</t-ref>
+        <t>AMENDEMENT VAN HET LID PECHTOLD C.S. TER VERVANGING VAN DAT GEDRUKT ONDER NR. 69 <t-ref xml:id="pm11.2.2.2" id="v1.1" type="note">1</t-ref> 
             </t>
       </p>
       <p xml:id="pm11.2.3">
