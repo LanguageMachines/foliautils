@@ -6,12 +6,12 @@ Usage: FoLiA-pm [options] files/dir
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	--nosplit	 don't create separate topic files
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-')
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 			 use 'none' for an empty prefix. (can be dangerous)
-	-O		 output directory
-	-v		 verbose output
-	-V or --version	 show version
-	-h or --help 	 this messages
+	-O		 output directory 
+	-v		 verbose output 
+	-V or --version	 show version 
+	-h or --help 	 this messages 
 foliautils 0.16
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
@@ -20,12 +20,12 @@ Usage: FoLiA-pm [options] files/dir
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	--nosplit	 don't create separate topic files
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-')
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FPM-') 
 			 use 'none' for an empty prefix. (can be dangerous)
-	-O		 output directory
-	-v		 verbose output
-	-V or --version	 show version
-	-h or --help 	 this messages
+	-O		 output directory 
+	-v		 verbose output 
+	-V or --version	 show version 
+	-h or --help 	 this messages 
 Validated successfully: test1/FPM-pm1.folia.xml
 Validated successfully: test1/FPM-pm10.folia.xml
 Validated successfully: test1/FPM-pm11.folia.xml
@@ -37,6 +37,11 @@ Validated successfully: test1/FPM-pm6.folia.xml
 Validated successfully: test1/FPM-pm7.folia.xml
 Validated successfully: test1/FPM-pm8.folia.xml
 Validated successfully: test1/FPM-pm9.folia.xml
+160c160
+<         <t>AMENDEMENT VAN HET LID PECHTOLD C.S. TER VERVANGING VAN DAT GEDRUKT ONDER NR. 69 <t-ref xml:id="pm11.2.2.2" id="v1.1" type="note">1</t-ref> 
+---
+>         <t>AMENDEMENT VAN HET LID PECHTOLD C.S. TER VERVANGING VAN DAT GEDRUKT ONDER NR. 69<t-ref xml:id="pm11.2.2.2" id="v1.1" type="note">1</t-ref>
+foliadiff.sh: differences in: test1/FPM-pm11.folia.xml pm11.folia.ok
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-33-7.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-1.1.folia.xml
 Validated successfully: test2/FPM-nl.proc.ob.d.h-tk-20122013-7-16.1.folia.xml

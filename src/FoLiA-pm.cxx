@@ -391,6 +391,9 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  }
 	}
 	else {
+	  folia::XmlText *t = new folia::XmlText();
+	  t->setvalue( " " );
+	  tc->append( t );
 	  KWargs args;
 	  args["xml:id"] = id;
 	  args["id"] = ref;
@@ -398,6 +401,9 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  args["text"] = number;
 	  TextMarkupReference *txt = new TextMarkupReference( args );
 	  tc->append( txt );
+	  t = new folia::XmlText();
+	  t->setvalue( " " );
+	  tc->append( t );
 	}
 	if ( verbose ){
 #pragma omp critical
