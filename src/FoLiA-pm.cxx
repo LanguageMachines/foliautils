@@ -312,7 +312,7 @@ void add_stage_direction( TextContent *tc, xmlNode *p ){
   }
 }
 
-void add_notes( Paragraph *par, const list<Note*>& notes ){
+void add_notes( FoliaElement *par, const list<Note*>& notes ){
   KWargs args;
   args["xml:id"] = par->id() + ".d.1";
   args["class"] = "notes";
@@ -323,9 +323,7 @@ void add_notes( Paragraph *par, const list<Note*>& notes ){
   }
 }
 
-#define NONOTE
-
-void add_par( Division *root, xmlNode *p ){
+Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -341,7 +339,6 @@ void add_par( Division *root, xmlNode *p ){
   args["xml:id"] = id;
   Paragraph *par = new Paragraph( args, root->doc() );
   TextContent *tc = new TextContent();
-  list<Note*> notes;
   par->append( tc );
   root->append( par );
   p = p->children;
@@ -424,7 +421,6 @@ void add_par( Division *root, xmlNode *p ){
 	  args["xml:id"] = ref;
 	  note = new Note( args, doc );
 	}
-	//	par->append( note );
 	notes.push_back( note );
 	xmlNode *pnt = p->children;
 	while ( pnt ){
@@ -450,9 +446,7 @@ void add_par( Division *root, xmlNode *p ){
     }
     p = p->next;
   }
-  if ( !notes.empty() ){
-    add_notes( par, notes );
-  }
+  return par;
 }
 
 void process_chair( Division *root, xmlNode *chair ){
@@ -466,7 +460,11 @@ void process_chair( Division *root, xmlNode *chair ){
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
-      add_par( root, p );
+      list<Note*> notes;
+      Paragraph *par = add_par( root, p, notes );
+      if ( !notes.empty() ){
+	add_notes( par, notes );
+      }
     }
     else if ( label == "chair" ){
       string speaker = TiCC::getAttribute( p, "speaker" );
@@ -640,7 +638,11 @@ void process_speech( Division *root, xmlNode *speech ){
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
-      add_par( div, p );
+      list<Note*> notes;
+      Paragraph *par = add_par( div, p, notes );
+      if ( !notes.empty() ){
+	add_notes( par, notes );
+      }
     }
     else if ( label == "stage-direction" ){
       process_stage( div, p );
@@ -1006,7 +1008,11 @@ void add_h_c_t( FoliaElement *root, xmlNode *block ){
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
-      add_par( div, p );
+      list<Note*> notes;
+      Paragraph *par = add_par( div, p, notes );
+      if ( !notes.empty() ){
+	add_notes( par, notes );
+      }
     }
     else if ( label == "stage-direction" ){
       process_stage( div, p );
@@ -1085,7 +1091,11 @@ void process_stage( Division *root, xmlNode *_stage ){
 	process_stage( div, stage );
       }
       else if ( label == "p" ){
-	add_par( div, stage );
+	list<Note*> notes;
+	Paragraph *par = add_par( div, stage, notes );
+	if ( !notes.empty() ){
+	  add_notes( par, notes );
+	}
       }
       else if ( label == "pagebreak" ){
 	process_break( div, stage );
@@ -1335,6 +1345,7 @@ void add_heading( FoliaElement *root, xmlNode *block ){
 void process_sub_block( Division *root, xmlNode *_block ){
   KWargs args;
   xmlNode *block = _block->children;
+  list<Note*> notes;
   while ( block ){
     string id = TiCC::getAttribute( block, "id" );
     string type = TiCC::getAttribute( block, "type" );
@@ -1350,7 +1361,7 @@ void process_sub_block( Division *root, xmlNode *_block ){
       add_signed( root, block );
     }
     else if ( label == "p" ){
-      add_par( root, block );
+      add_par( root, block, notes );
     }
     else if ( label == "heading" ){
       add_heading( root, block );
@@ -1374,6 +1385,9 @@ void process_sub_block( Division *root, xmlNode *_block ){
       }
     }
     block = block->next;
+  }
+  if ( !notes.empty() ){
+    add_notes( root, notes );
   }
 }
 
