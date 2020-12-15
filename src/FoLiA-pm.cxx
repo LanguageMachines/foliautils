@@ -323,6 +323,8 @@ void add_notes( Paragraph *par, const list<Note*>& notes ){
   }
 }
 
+#define NONOTE
+
 void add_par( Division *root, xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
@@ -369,16 +371,37 @@ void add_par( Division *root, xmlNode *p ){
 	add_stage_direction( tc, p );
       }
       else if ( tag == "note" ){
-	//	cerr << "found Note: " << TiCC::getAttributes( p ) << endl;
 	KWargs args;
 	string id = TiCC::getAttribute( p, "id" );
 	string ref = TiCC::getAttribute( p, "ref" );
-#pragma omp critical
-	{
-	  cerr << "paragraph: " << id << ", unhandled Note, id=" << id
-	       << " ref=" << ref << endl;
+	string number;
+	string text;
+	xmlNode *pp = p->children;
+	while ( pp ){
+	  if ( number.empty() ){
+	    number = TiCC::XmlContent( pp );
+	  }
+	  else {
+	    text = TiCC::XmlContent( pp );
+	  }
+	  pp=pp->next;
 	}
-#ifdef NONOTE
+	if ( number.empty() || text.empty() ){
+#pragma omp critical
+	  {
+	    cerr << "problem with note id= " << id
+		 << " No index or text found? " << endl;
+	  }
+	}
+	else {
+	  KWargs args;
+	  args["xml:id"] = id;
+	  args["id"] = ref;
+	  args["type"] = "note";
+	  args["text"] = number;
+	  TextMarkupReference *txt = new TextMarkupReference( args );
+	  tc->append( txt );
+	}
 	if ( verbose ){
 #pragma omp critical
 	  {
@@ -397,11 +420,6 @@ void add_par( Division *root, xmlNode *p ){
 	      throw ( "the ref attribute in note cannot be converted to an ID" );
 	    }
 	  }
-	  args["xml:id"] = id;
-	  args["id"] = ref;
-	  args["type"] = "note";
-	  Reference *rf = new Reference( args );
-	  par->append( rf );
 	  args.clear();
 	  args["xml:id"] = ref;
 	  note = new Note( args, doc );
@@ -422,7 +440,6 @@ void add_par( Division *root, xmlNode *p ){
 	  }
 	  pnt = pnt->next;
 	}
-#endif
       }
       else {
 #pragma omp critical
