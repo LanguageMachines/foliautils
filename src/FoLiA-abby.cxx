@@ -57,9 +57,15 @@ string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
 
-enum font_style { REGULAR=0, ITALIC=1, BOLD=2, SMALLCAPS=4,
-		  SUPERSCRIPT=8, SUBSCRIPT=16, UNDERLINE=32,
-		  STRIKEOUT=64 };
+enum font_style { REGULAR=0,
+		  ITALIC=1,
+		  BOLD=2,
+		  SMALLCAPS=4,
+		  SUPERSCRIPT=8,
+		  SUBSCRIPT=16,
+		  UNDERLINE=32,
+		  STRIKEOUT=64
+};
 
 inline font_style operator~( font_style f ){
   return (font_style)( ~(int)f );
