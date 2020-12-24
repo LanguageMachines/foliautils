@@ -1,3 +1,4 @@
+---
 sudo: required
 dist: bionic
 group: edge
@@ -58,11 +59,11 @@ before_install:
       brew install cppcheck;
       brew install ccache;
       brew install libtextcat;
-#      brew install llvm;
-#      export PATH="/usr/local/opt/llvm/bin:$PATH";
-#      export LDFLAGS="-L/usr/local/opt/llvm/lib";
-#      export CXXFLAGS="-I/usr/local/opt/llvm/include";
     fi
+  #      brew install llvm;
+  #      export PATH="/usr/local/opt/llvm/bin:$PATH";
+  #      export LDFLAGS="-L/usr/local/opt/llvm/lib";
+  #      export CXXFLAGS="-I/usr/local/opt/llvm/include";
 
   - export PATH="/usr/lib/ccache/bin/:$PATH"
 
