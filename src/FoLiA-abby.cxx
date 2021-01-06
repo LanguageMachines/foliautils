@@ -402,7 +402,6 @@ folia::TextContent* make_styled_container( const font_info& info,
     tc->append( st );
     content = st;
     if ( !info._id.empty() ){
-      cerr << "should add " << info._id << endl;
       folia::KWargs args;
       args["subset"] = "font_id";
       args["class"] = info._id;
