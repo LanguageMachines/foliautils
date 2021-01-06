@@ -20,7 +20,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-06T12:22:34" command="FoLiA-abby -O out" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-06T13:59:20" command="FoLiA-abby -O out" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.7"/>
       </processor>
     </provenance>
@@ -105,7 +105,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p6.part.2">
           <t class="OCR">
-            <t-style class="superscript">* 1 </t-style>
+            <t-style class="superscript"><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_id"/>* 1 </t-style>
           </t>
         </part>
       </p>
@@ -115,7 +115,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.2">
           <t class="OCR">
-            <t-style class="superscript">2 </t-style>
+            <t-style class="superscript"><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_id"/>2 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.3">
@@ -123,12 +123,12 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.4">
           <t class="OCR">
-            <t-style class="italic">Hehns </t-style>
+            <t-style class="italic"><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_id"/>Hehns </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.5">
           <t class="OCR">
-            <t-style class="italic|superscript">3 </t-style>
+            <t-style class="italic|superscript"><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_id"/>3 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.6">
@@ -136,12 +136,12 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.7">
           <t class="OCR">
-            <t-style class="italic">Hel<t-hbr/>bigs </t-style>
+            <t-style class="italic"><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_id"/>Hel<t-hbr/>bigs </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.8">
           <t class="OCR">
-            <t-style class="italic|superscript">4 </t-style>
+            <t-style class="italic|superscript"><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_id"/>4 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.9">
@@ -149,7 +149,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.10">
           <t class="OCR">
-            <t-style class="superscript">5 6 </t-style>
+            <t-style class="superscript"><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_id"/>5 6 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.11">
@@ -157,12 +157,12 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.12">
           <t class="OCR">
-            <t-style class="italic">Thünen </t-style>
+            <t-style class="italic"><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_id"/>Thünen </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.13">
           <t class="OCR">
-            <t-style class="italic|superscript">Q </t-style>
+            <t-style class="italic|superscript"><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_id"/>Q </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.14">
@@ -170,7 +170,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.15">
           <t class="OCR">
-            <t-style class="superscript">1 </t-style>
+            <t-style class="superscript"><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_id"/>1 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.16">
@@ -180,7 +180,7 @@
       <p xml:id="FA-piroska.text.div1.p8">
         <part xml:id="FA-piroska.text.div1.p8.part.1">
           <t class="OCR">
-            <t-style class="italic">’) Cato, </t-style>
+            <t-style class="italic"><feat class="{827F89BD-07E2-4687-A1C9-3B073016727E}" subset="font_id"/>’) Cato, </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.2">
@@ -188,7 +188,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.3">
           <t class="OCR">
-            <t-style class="superscript">7 </t-style>
+            <t-style class="superscript"><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_id"/>7 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.4">
@@ -196,7 +196,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.5">
           <t class="OCR">
-            <t-style class="superscript">8 </t-style>
+            <t-style class="superscript"><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_id"/>8 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.6">
@@ -206,7 +206,7 @@
       <p xml:id="FA-piroska.text.div1.p9">
         <part xml:id="FA-piroska.text.div1.p9.part.1">
           <t class="OCR">
-            <t-style class="bold">1 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>1 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.2">
@@ -214,7 +214,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.3">
           <t class="OCR">
-            <t-style class="superscript">1 </t-style>
+            <t-style class="superscript"><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_id"/>1 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.4">
@@ -222,7 +222,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.5">
           <t class="OCR">
-            <t-style class="superscript">2 </t-style>
+            <t-style class="superscript"><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_id"/>2 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.6">
@@ -230,7 +230,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.7">
           <t class="OCR">
-            <t-style class="superscript">3 </t-style>
+            <t-style class="superscript"><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_id"/>3 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.8">
@@ -240,7 +240,7 @@
       <p xml:id="FA-piroska.text.div1.p10">
         <part xml:id="FA-piroska.text.div1.p10.part.1">
           <t class="OCR">
-            <t-style class="bold">2 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>2 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p10.part.2">
@@ -250,7 +250,7 @@
       <p xml:id="FA-piroska.text.div1.p11">
         <part xml:id="FA-piroska.text.div1.p11.part.1">
           <t class="OCR">
-            <t-style class="bold">3 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>3 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p11.part.2">
@@ -260,7 +260,7 @@
       <p xml:id="FA-piroska.text.div1.p12">
         <part xml:id="FA-piroska.text.div1.p12.part.1">
           <t class="OCR">
-            <t-style class="bold">4 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>4 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p12.part.2">
@@ -270,7 +270,7 @@
       <p xml:id="FA-piroska.text.div1.p13">
         <part xml:id="FA-piroska.text.div1.p13.part.1">
           <t class="OCR">
-            <t-style class="bold">5 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>5 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p13.part.2">
@@ -280,7 +280,7 @@
       <p xml:id="FA-piroska.text.div1.p14">
         <part xml:id="FA-piroska.text.div1.p14.part.1">
           <t class="OCR">
-            <t-style class="bold">6 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>6 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.2">
@@ -288,7 +288,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.3">
           <t class="OCR">
-            <t-style class="superscript">3 </t-style>
+            <t-style class="superscript"><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_id"/>3 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.4">
@@ -298,7 +298,7 @@
       <p xml:id="FA-piroska.text.div1.p15">
         <part xml:id="FA-piroska.text.div1.p15.part.1">
           <t class="OCR">
-            <t-style class="bold">7 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>7 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p15.part.2">
@@ -308,7 +308,7 @@
       <p xml:id="FA-piroska.text.div1.p16">
         <part xml:id="FA-piroska.text.div1.p16.part.1">
           <t class="OCR">
-            <t-style class="bold">8 </t-style>
+            <t-style class="bold"><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_id"/>8 </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p16.part.2">
