@@ -31,16 +31,16 @@ converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jp
 converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
-   75   194  3381 out/page/FP-00667460.tif.folia.xml
-  160   499  7314 out/page/FP-00667461.tif.folia.xml
-   95   272  4459 out/page/FP-00667462.tif.folia.xml
-  146   471  6722 out/page/FP-00667463.tif.folia.xml
-  144   431  6498 out/page/FP-00667464.tif.folia.xml
-  135   446  6295 out/page/FP-00667465.tif.folia.xml
-  146   453  6664 out/page/FP-00667466.tif.folia.xml
-  173   496  7153 out/page/FP-00667467.tif.folia.xml
-  106   309  4868 out/page/FP-00667468.tif.folia.xml
- 1180  3571 53354 total
+   75   194  3377 out/page/FP-00667460.tif.folia.xml
+  160   499  7310 out/page/FP-00667461.tif.folia.xml
+   95   272  4455 out/page/FP-00667462.tif.folia.xml
+  146   471  6718 out/page/FP-00667463.tif.folia.xml
+  144   431  6494 out/page/FP-00667464.tif.folia.xml
+  135   446  6291 out/page/FP-00667465.tif.folia.xml
+  146   453  6660 out/page/FP-00667466.tif.folia.xml
+  173   496  7149 out/page/FP-00667467.tif.folia.xml
+  106   309  4864 out/page/FP-00667468.tif.folia.xml
+ 1180  3571 53318 total
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
 converted: data/page/piros.xml into: out/FP-page/FP-0001.png.folia.xml
