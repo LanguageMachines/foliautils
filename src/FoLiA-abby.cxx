@@ -163,11 +163,12 @@ struct font_info {
     _fs(fs)
   {};
   string _ff;
+  string _id;
   font_style _fs;
 };
 
 ostream& operator<<( ostream& os, const font_info& fi ){
-  os << fi._ff << " " << fi._fs;
+  os << fi._ff << " " << fi._fs << " " << fi._id;
   return os;
 }
 
@@ -266,6 +267,7 @@ void update_font_info( font_info& line_font,
   string style = TiCC::getAttribute( node, "style" );
   if ( !style.empty() ){
     line_font = font_styles.at( style );
+    line_font._id = style;
   }
   string ff = TiCC::getAttribute( node, "ff" );
   if ( !ff.empty() ){
@@ -383,9 +385,10 @@ void output_result( folia::TextContent *tc,
   root->append( part );
 }
 
-folia::TextContent* make_styled_container( const font_style& style,
+folia::TextContent* make_styled_container( const font_info& info,
 					   folia::FoliaElement*& content,
 					   folia::Document *doc ){
+  font_style style = info._fs;
   folia::KWargs args;
   args["class"] = classname;
   folia::TextContent *tc = new folia::TextContent( args, doc );
@@ -398,6 +401,14 @@ folia::TextContent* make_styled_container( const font_style& style,
     folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
     tc->append( st );
     content = st;
+    if ( !info._id.empty() ){
+      cerr << "should add " << info._id << endl;
+      folia::KWargs args;
+      args["subset"] = "font_id";
+      args["class"] = info._id;
+      folia::Feature *f = new folia::Feature( args );
+      st->append(f);
+    }
   }
   return tc;
 }
@@ -441,14 +452,14 @@ bool process_par( folia::FoliaElement *root,
     if ( !container ){
       // start with a fresh TextContent.
       current_style = it.first._fs;
-      container = make_styled_container( current_style, content, root->doc() );
+      container = make_styled_container( it.first, content, root->doc() );
     }
     string value =  it.second;
     if ( it.first._fs != current_style ){
       // a switch in font-syle. So end this Parts and start a new one
       current_style = it.first._fs;
       output_result( container, root );
-      container = make_styled_container( current_style, content, root->doc() );
+      container = make_styled_container( it.first, content, root->doc() );
     }
     if ( value.size() >=2
 	 && value.compare( value.size()-2, 2, "- " ) == 0 ){
