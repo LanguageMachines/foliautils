@@ -580,10 +580,10 @@ bool convert_abbyxml( const string& fileName,
   string docid = orgFile.substr( 0, orgFile.find(".") );
   docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
-  // xmlNode *docinfo = TiCC::xPath( root, "//*:paragraphStyles" );
-  // if ( docinfo ){
-  //   doc.set_foreign_metadata( docinfo );
-  // }
+  xmlNode *docinfo = TiCC::xPath( root, "//*:paragraphStyles" );
+  if ( docinfo ){
+    doc.set_foreign_metadata( docinfo );
+  }
   doc.set_metadata( "abby_file", orgFile );
   folia::processor *proc = add_provenance( doc, processor_name, command );
   processor_id = proc->id();
