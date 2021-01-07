@@ -1188,7 +1188,7 @@ void usage( const string& name ){
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t--inputclass 'classname'.\t (default '" << input_classname << "')" << endl;
   cerr << "\t--outputclass 'classname'.\t (default '" << output_classname << "')" << endl;
-  cerr << "\t--rebase_inputclass 'classname'.\t (default \"\")" << endl;
+  cerr << "\t--rebase-inputclass 'classname'.\t (default \"\")" << endl;
   cerr << "\t\t rename the text with classname 'inputclass' to class 'classname'." << endl;
   cerr << "\t--setname\t FoLiA setname. (default '" << setname << "')" << endl;
   cerr << "\t--nums\t max number_of_suggestions. (default 10)" << endl;
@@ -1225,7 +1225,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "e:vVt:O:Rh",
-			 "class:,inputclass:,outputclass:,rebase_inputclass:,"
+			 "class:,inputclass:,outputclass:,rebase-inputclass:,"
 			 "setname:,clear,unk:,"
 			 "rank:,punct:,nums:,version,help,ngram:,string-nodes,"
 			 "word-nodes,threads:,tags:" );
@@ -1270,7 +1270,7 @@ int main( int argc, const char *argv[] ){
   // prefer newer variant, if both present.
   opts.extract( "outputclass", output_classname );
   opts.extract( "inputclass", input_classname );
-  opts.extract( "rebase_inputclass", rebase_inputclass );
+  opts.extract( "rebase-inputclass", rebase_inputclass );
   if ( input_classname == output_classname
        && rebase_inputclass.empty() ){
     cerr << "inputclass and outputclass are the same, and rebase_inputclass not set" << endl;
