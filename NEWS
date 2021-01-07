@@ -18,7 +18,7 @@ foliautils 0.16  07-01-2021
   - added a --norefs option to avoid adding references to the original texts
 * FoLiA-correct:
   - make sure that the default is to run on 1 thread
-  - added a --rebase_inputclass option
+  - added a --rebase-inputclass option
 
 * FoLiA-alto:
   - the -t option was not always handled correctly
