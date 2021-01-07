@@ -5,7 +5,7 @@ Usage: [options] file/dir
 	 or a whole directory of FoLiA files 
 	--inputclass 'classname'.	 (default 'current')
 	--outputclass 'classname'.	 (default 'Ticcl')
-	--rebase_inputclass 'classname'.	 (default "")
+	--rebase-inputclass 'classname'.	 (default "")
 		 rename the text with classname 'inputclass' to class 'classname'.
 	--setname	 FoLiA setname. (default 'Ticcl-set')
 	--nums	 max number_of_suggestions. (default 10)

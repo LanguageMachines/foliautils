@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-morse_OCR_perletter" generator="libfolia-v2.7" version="2.5.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-morse_OCR_perletter" generator="libfolia-v2.7" version="2.4.2">
   <metadata type="native">
     <annotations>
       <division-annotation set="FoLiA-abby-set">
@@ -20,8 +20,8 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-07T11:26:13" command="FoLiA-abby -O out" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
-        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.7"/>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-07T12:26:01" command="FoLiA-abby -O out" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.7"/>
       </processor>
     </provenance>
     <meta id="abby_file">morse_OCR_perletter.xml</meta>
