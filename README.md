@@ -2,7 +2,7 @@
 
 # FoliAutils
 
-  (c) CLST/TiCC/CLiPS 2020
+  (c) CLST/TiCC/CLiPS 2021
   https://github.com/LanguageMachines/foliautils
 
     Centre for Language and Speech Technology, Radboud University Nijmegen
