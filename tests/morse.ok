@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-morse_OCR_perletter" generator="libfolia-v2.6.1" version="2.4.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-morse_OCR_perletter" generator="libfolia-v2.7" version="2.5.0">
   <metadata type="native">
     <annotations>
       <division-annotation set="FoLiA-abby-set">
@@ -20,8 +20,8 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2020-12-12T16:06:44" command="FoLiA-abby -O out" folia_version="2.4.1" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
-        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-07T11:26:13" command="FoLiA-abby -O out" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.16">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.7"/>
       </processor>
     </provenance>
     <meta id="abby_file">morse_OCR_perletter.xml</meta>
@@ -31,329 +31,336 @@
       <p xml:id="FA-morse_OCR_perletter.text.div1.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p1.part.1">
           <t class="OCR">
-            <t-style class="bold">AMU </t-style>
+            <t-style class="bold"><feat class="13." subset="font_size"/>AMU </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p2.part.1">
           <t class="OCR">
-            <t-style class="bold">AND </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>AND </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p3">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p3.part.1">
           <t class="OCR">
-            <t-style class="bold">fide of the White Mountains. It falls into the Connecticut juft above the town of Haverhill, in Lower Coos, by a mouth 100 yards wide About two miles from its mouth it receives </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>fide of the White Mountains. It falls into the Connecticut juft above the town of Haverhill, in Lower Coos, by a mouth 100 yards wide About two miles from its mouth it receives </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p3.part.2">
           <t class="OCR">
-            <t-style class="italic">Wild A moncosuck </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Wild A moncosuck </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p3.part.3">
           <t class="OCR">
-            <t-style class="bold">, 40 yards wide, from Franconia and Lincoln Mountains. Two or three hours rain raises the water in this last mentioned river several feet, and occasions a current so furious as to put in motion stones of a foot in diameter, but its violence soon subsides. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>, 40 yards wide, from Fran<t-hbr/>conia and Lincoln Mountains. Two or three hours rain raises the water in this last mentioned river several feet, and occasions a current so furious as to put in motion stones of a foot in di<t-hbr/>ameter, but its violence soon subsides. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p4">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p4.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Am ota pe, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Am ota pe, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p4.part.2">
           <t class="OCR">
-            <t-style class="bold">a town near Tumbez, lying near the shore of the South Sea, in the empire of Peru. Being near a river of fine water, the adjacent country is highly improved. Lat. 4.15.43.8. </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>a town near Tumbez, lying near the shore of the South Sea, in the empire of Peru. Being near a river of fine water, the adjacent coun<t-hbr/>try is highly improved. Lat. 4.15.43.8. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p5">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Am palla, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Am palla, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.2">
           <t class="OCR">
-            <t-style class="bold">by some authors called </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>by some authors called </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.3">
           <t class="OCR">
-            <t-style class="italic">Ampalia </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Ampalia </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.4">
           <t class="OCR">
-            <t-style class="bold">, a city and seaport in Guati<t-hbr/>maJa Gulf, in that of Mexico, 350 miles S. E. of the city of Guatimala, and carries on a brisk trade in cochineal, cocoa, hides, indigo, </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>, a city and seaport in Guati<t-hbr/>maJa Gulf, in that of Mexico, 350 miles S. E. of the city of Guatimala, and carries on a brisk trade in cochi<t-hbr/>neal, cocoa, hides, indigo, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.5">
           <t class="OCR">
-            <t-style class="italic">See. </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>See. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p6">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p6.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Ampares, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Ampares, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p6.part.2">
           <t class="OCR">
-            <t-style class="bold">a jurisdiction under the archbishop of Plata, eastward of that city, in the empire of Peru. It abounds in grain and cattle. </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>a jurisdiction under the archbishop of Plata, eastward of that city, in the empire of Peru. It abounds in grain and cattle. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p7">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p7.part.1">
           <t class="OCR">
-            <t-style class="smallcaps">Amsterdam, New, </t-style>
+            <t-style class="smallcaps"><feat class="9.5" subset="font_size"/>Amsterdam, New, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p7.part.2">
           <t class="OCR">
-            <t-style class="bold">was the name originally given by the Dutch to the city of New-York. Also, an Island in the South-Sea, S. 8. W. of the Friendly Islands, and not far distant from them. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>was the name originally given by the Dutch to the city of New-York. Also, an Island in the South-Sea, S. 8. W. of the Friendly Islands, and not far distant from them. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p8">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p8.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Amsterdam, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Amsterdam, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p8.part.2">
           <t class="OCR">
-            <t-style class="bold">a new township in Montgomery county, New-York. It contains 235 inhabitants, who are electors. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a new township in Montgomery county, New-York. It contains 235 inhabitants, who are elec<t-hbr/>tors. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p9">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.1">
           <t class="OCR">
-            <t-style class="smallcaps">Am </t-style>
+            <t-style class="smallcaps"><feat class="9.5" subset="font_size"/>Am </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.2">
-          <t class="OCR">us KE </t>
+          <t class="OCR">
+            <t-style><feat class="9.5" subset="font_size"/>us KE </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.3">
           <t class="OCR">
-            <t-style class="smallcaps">ac </t-style>
+            <t-style class="smallcaps"><feat class="9.5" subset="font_size"/>ac </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.4">
           <t class="OCR">
-            <t-style class="italic">Falls, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Falls, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.5">
           <t class="OCR">
-            <t-style class="bold"> in New-Hamp<t-hbr/>ihire, are on Merrimack River, sixteen miles below Concord, and seven below Hookset Falls. It con lifts of three pitches, one below the other, so that the water falls about 80 feet in the course of half a mile. The second pitch, which may be seen from the road, on the W. fidej is truly majestic. In the middle of the upper part of the fall is a high rocky island, on the top of which are a number of pits, made exactly round, like barrels or hogsheads, some of which are capable of holding several tons ; formed by the circular motion of small ftoncs, impelled by the force of the descending water. There is a bridge across the falls 556 feet in Itrnetb, and 20 in breadth, consisting of loco tons of timber, and made passable for travellers 57 days after it was be<t-hbr/>£un. N. lat. 42.59. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> in New-Hamp<t-hbr/>ihire, are on Merrimack River, sixteen miles below Concord, and seven below Hookset Falls. It con lifts of three pitches, one below the other, so that the water falls about 80 feet in the course of half a mile. The second pitch, which may be seen from the road, on the W. fidej is truly majestic. In the middle of the upper part of the fall is a high rocky island, on the top of which are a number of pits, made ex<t-hbr/>actly round, like barrels or hogsheads, some of which are capable of holding several tons ; formed by the circular motion of small ftoncs, impelled by the force of the descending water. There is a bridge across the falls 556 feet in Itrnetb, and 20 in breadth, consisting of loco tons of timber, and made passable for travellers 57 days after it was be<t-hbr/>£un. N. lat. 42.59. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p10">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p10.part.1">
-          <t class="OCR">» </t>
+          <t class="OCR">
+            <t-style><feat class="7." subset="font_size"/>» </t-style>
+          </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p11">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p11.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Anahuac, </t-style>
+            <t-style class="bold|smallcaps"><feat class="9.5" subset="font_size"/>Anahuac, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p11.part.2">
           <t class="OCR">
-            <t-style class="bold"> the ancient Indian name of New-Spain, or Mexico. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> the ancient Indian name of New-Spain, or Mexico. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p12">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p12.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Anastatia, St. </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Anastatia, St. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p12.part.2">
           <t class="OCR">
-            <t-style class="bold">a small island close to the coast of Eaft-Florida, situated 8. of Mañanees Inlet, where the river Mañanees forms two islands of the fame name at its mouth. St. Anastatia island is bounded on the N. by St. Augustine’s bar. Here is a quany of fine stone for building. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a small island close to the coast of Eaft-Florida, situated 8. of Mañanees Inlet, where the river Mañanees forms two islands of the fame name at its mouth. St. Anastatia island is bounded on the N. by St. Au<t-hbr/>gustine’s bar. Here is a quany of fine stone for building. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p13">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Anclote </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Anclote </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.2">
           <t class="OCR">
-            <t-style class="italic">Point </t-style>
+            <t-style class="italic"><feat class="9.5" subset="font_size"/>Point </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.3">
           <t class="OCR">
-            <t-style class="italic|bold">, </t-style>
+            <t-style class="italic|bold"><feat class="10." subset="font_size"/>, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.4">
           <t class="OCR">
-            <t-style class="bold">on the peninsula of California, and coast of the North Pacific Ocean, lies in the 30th deg. of N. lat. and 116th of W. long, southerly from the town of Velicata, and N. E, from the small island of Gaudaloupe. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>on the peninsula of California, and coast of the North Pa<t-hbr/>cific Ocean, lies in the 30th deg. of N. lat. and 116th of W. long, southerly from the town of Velicata, and N. E, from the small island of Gaudaloupe. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p14">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p14.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Ancocus </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Ancocus </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p14.part.2">
           <t class="OCR">
-            <t-style class="italic">Creek, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Creek, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p14.part.3">
           <t class="OCR">
-            <t-style class="bold"> in New-Jerley, a water of the Delaware, 6 miles 8. W. from Burlington. It is navigable 16 miles ; and considerable quantities of lumber are exported from it. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> in New-Jerley, a water of the Delaware, 6 miles 8. W. from Burlington. It is navigable 16 miles ; and considerable quantities of lumber are exported from it. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p15">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Anco, </t-style>
+            <t-style class="bold|smallcaps"><feat class="9.5" subset="font_size"/>Anco, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.2">
           <t class="OCR">
-            <t-style class="bold">a small town of </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a small town of </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.3">
-          <t class="OCR">South<t-hbr/></t>
+          <t class="OCR">
+            <t-style><feat class="10." subset="font_size"/>South<t-hbr/></t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.4">
           <t class="OCR">
-            <t-style class="bold">America, 3 leagues from the city of Gua<t-hbr/>manga. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>Amer<t-hbr/>ica, 3 leagues from the city of Gua<t-hbr/>manga. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p16">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p16.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Andaguaylas, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Andaguaylas, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p16.part.2">
           <t class="OCR">
-            <t-style class="bold">a jurisdiction in South-America, in the empire of Peru, subject to the archbishop of Lima ; lying E. by 8. of the city of Guamanga. It abounds in sugar plantations, grain yf most forts, and fruits. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a jurisdiction in South-America, in the empire of Peru, subject to the archbishop of Lima ; ly<t-hbr/>ing E. by 8. of the city of Guamanga. It abounds in sugar plantations, grain yf most forts, and fruits. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p17">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p17.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Andalusia, New, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Andalusia, New, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p17.part.2">
           <t class="OCR">
-            <t-style class="bold"> a province of Terra Firma, on the coaft of .the Atlantic, opposite the Leeward Islands. </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/> a province of Terra Firma, on the coaft of .the At<t-hbr/>lantic, opposite the Leeward Islands. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p18">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p18.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Andastes, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Andastes, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p18.part.2">
           <t class="OCR">
-            <t-style class="bold">an Indian nation in Canada. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>an Indian nation in Can<t-hbr/>ada. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p19">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Andes. </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Andes. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.2">
           <t class="OCR">
-            <t-style class="bold">The principal mountains on this western continent are the </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>The principal mountains on this western continent are the </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.3">
           <t class="OCR">
-            <t-style class="italic">Cor </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Cor </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.4">
           <t class="OCR">
             <t-style class="bold">
+              <feat class="9.5" subset="font_size"/>
               <t-hbr/>
             </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.5">
           <t class="OCR">
-            <t-style class="italic">dillera de los Andes </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>dillera de los Andes </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.6">
           <t class="OCR">
-            <t-style class="bold">, or Great Chain of Andes, in South-America. They stretch along the Pacific Ocean from the straits of Magellan to the isthmus of Darien or Panama, upwards of 4000 miles </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>, or Great Chain of Andes, in South-America. They stretch along the Pacific Ocean from the straits of Magellan to the isthmus of Darien or Panama, upwards of 4000 miles </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.7">
           <t class="OCR">
-            <t-style class="italic">\ </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>\ </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.8">
           <t class="OCR">
-            <t-style class="bold"> thence they run through the extensive kingdom of New-Spain, till they lose themselves in the unexplored countries of the north. In New </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> thence they run through the extensive kingdom of New-Spain, till they lose themselves in the unexplored countries of the north. In New </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.9">
           <t class="OCR">
-            <t-style class="bold|subscript">: </t-style>
+            <t-style class="bold|subscript"><feat class="9.5" subset="font_size"/>: </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.10">
           <t class="OCR">
-            <t-style class="bold">Spain, the most considerable part of this chain is called </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>Spain, the most considerable part of this chain is called </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.11">
           <t class="OCR">
-            <t-style class="italic">Sierra Madre </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Sierra Madre </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.12">
           <t class="OCR">
-            <t-style class="bold">, particularly in Cinaloa and Tarahumery, provinces iaoo miles distant from the capital. Further N. they have been called, from their bright appearance, the </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>, particularly in Cinaloa and Tarahumery, provinces iaoo miles distant from the capital. Further N. they have been called, from their bright appearance, the </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.13">
           <t class="OCR">
-            <t-style class="italic">Shining Mountains. </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Shining Mountains. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.14">
           <t class="OCR">
-            <t-style class="bold"> The height of Chimborazo, the most elevated point of this vast chain, is 20,280 feet above the level of the sea ; which is 7102 feet higher than any other mountain in the known world. The Andes commonly form two ridges as they run, the one higher </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> The height of Chimbora<t-hbr/>zo, the most elevated point of this vast chain, is 20,280 feet above the level of the sea ; which is 7102 feet higher than any other mountain in the known world. The Andes commonly form two ridges as they run, the one higher </t-style>
           </t>
         </part>
       </p>
@@ -362,293 +369,329 @@
       <p xml:id="FA-morse_OCR_perletter.text.div2.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p1.part.1">
           <t class="OCR">
-            <t-style class="bold">CON </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>CON </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p2.part.1">
           <t class="OCR">
-            <t-style class="bold">pould the fruit come to maturity. This city has a church and fix very famous monasteries; but the dwelling houses make no great appearance. Here the women go out in the night to the shops, to buy such necessaries as they want for their families, it being contrary to the custom of this country for women of any character, to go abroad in the daytime on such affairs. It is an open town ; and the few batteries it has, are kept ir, very indifferent order. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>pould the fruit come to maturity. This city has a church and fix very famous monasteries; but the dwelling houses make no great appearance. Here the women go out in the night to the shops, to buy such necessaries as they want for their families, it being contrary to the custom of this country for women of any character, to go abroad in the day<t-hbr/>time on such affairs. It is an open town ; and the few batteries it has, are kept ir, very indifferent order. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p3">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Conch </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Conch </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.2">
           <t class="OCR">
-            <t-style class="bold">ucos, a jurisdiction in the empire of Peru, in 8. America, under the archbiihop of Lima ; it begins 40 leagues N. N. E. of the metropolis, and runs along the center of the Cordillera It produces fruits, grain, </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>ucos, a jurisdiction in the empire of Peru, in 8. America, under the archbiihop of Lima ; it begins 40 leagues N. N. E. of the metropolis, and runs along the center of the Cordillera It produces fruits, grain, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.3">
-          <t class="OCR">See. </t>
+          <t class="OCR">
+            <t-style><feat class="10." subset="font_size"/>See. </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.4">
           <t class="OCR">
-            <t-style class="bold">and affords extensive pasture for cattle of all kinds. Several branches of the woollen manufactory are carried on here, which constitute its greatest commerce with the other provinces. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>and af<t-hbr/>fords extensive pasture for cattle of all kinds. Several branches of the wool<t-hbr/>len manufactory are carried on here, which constitute its greatest commerce with the other provinces. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p4">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Concord, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Concord, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.2">
           <t class="OCR">
-            <t-style class="bold">a post town of New<t-hbr/>Hampihire, very flourishing, and pleasantly situated on the XV. bank of Merrimack river, in Rockingham co. 8 miles above Hookfet falls. The legislature, of late, have commonly held their sessions here ; and from its central situation, and a thriving back country, it will probably become tlie permanent feat of government. Much of the trade of the upper country centers here. A handsome toll bridge across the Merrimack, connects this town with Pembroke. It has 1747 inhabitants, and Was incorporated in 1765. The Indian name was </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a post town of New<t-hbr/>Hampihire, very flourishing, and pleas<t-hbr/>antly situated on the XV. bank of Mer<t-hbr/>rimack river, in Rockingham co. 8 miles above Hookfet falls. The legislature, of late, have commonly held their ses<t-hbr/>sions here ; and from its central situa<t-hbr/>tion, and a thriving back country, it will probably become tlie permanent feat of government. Much of the trade of the upper country centers here. A handsome toll bridge across the Merri<t-hbr/>mack, connects this town with Pem<t-hbr/>broke. It has 1747 inhabitants, and Was incorporated in 1765. The Indian name was </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.3">
           <t class="OCR">
-            <t-style class="italic">Peneuook. </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Peneuook. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.4">
           <t class="OCR">
-            <t-style class="bold"> It was granted by Massachusetts, and called </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> It was granted by Massachusetts, and called </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.5">
           <t class="OCR">
-            <t-style class="italic">Rumford </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Rumford </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.6">
           <t class="OCR">
-            <t-style class="bold">. The compact part of the town contains about 170 houses, a congregational church, and an academy, which yvas incorporated in 1790. It is 55 miles XV. N. W. of Portsmouth, 58 8. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>. The compact part of the town contains about 170 houses, a congregational church, and an academy, which yvas in<t-hbr/>corporated in 1790. It is 55 miles XV. N. W. of Portsmouth, 58 8. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.7">
-          <t class="OCR">W. </t>
+          <t class="OCR">
+            <t-style><feat class="10." subset="font_size"/>W. </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.8">
           <t class="OCR">
-            <t-style class="bold">os Dartmouth college, and 70 northward from Boston. N. lat. 43. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>os Dartmouth college, and 70 northward from Boston. N. lat. 43. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.9">
           <t class="OCR">
-            <t-style class="italic">11. </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>11. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.10">
           <t class="OCR">
-            <t-style class="bold"> W. long. 71. 29. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> W. long. 71. 29. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p5">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p5.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Concord, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Concord, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p5.part.2">
           <t class="OCR">
-            <t-style class="bold">in Essex co. Vermont, lies on Connecticut river, opposite a part of the 15-mile falls. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>in Essex co. Vermont, lies on Connecticut river, opposite a part of the 15-mile falls. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p6">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p6.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Concord, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Concord, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p6.part.2">
           <t class="OCR">
-            <t-style class="bold">in Massachusetts, a post town, one of the most considerable towns in Middlesex co. fituated on Concord river, in a healthy and pleasant spot, nearly in the center of the county, and 18 miles N. W. of Boston, ind 17 E. of Lancaster. Its Indian came was Muiquetequid ; and it owes </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>in Massachusetts, a post town, one of the most considerable towns in Middlesex co. fituated on Con<t-hbr/>cord river, in a healthy and pleasant spot, nearly in the center of the coun<t-hbr/>ty, and 18 miles N. W. of Boston, ind 17 E. of Lancaster. Its Indian came was Muiquetequid ; and it owes </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p7">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p7.part.1">
           <t class="OCR">
-            <t-style class="bold">CON </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>CON </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p8">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.1">
           <t class="OCR">
-            <t-style class="bold">its present name to the peaceable manner in which it was obtained from the natives. The first settlers, among whom were the Rev. Messrs» Buckley and Jones, having fettled the purchase, obtained an act of incorporation, Sept. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>its present name to the peaceable man<t-hbr/>ner in which it was obtained from the natives. The first settlers, among whom were the Rev. Messrs» Buckley and Jones, having fettled the purchase, ob<t-hbr/>tained an act of incorporation, Sept. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.2">
           <t class="OCR">
-            <t-style class="italic">3, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>3, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.3">
           <t class="OCR">
-            <t-style class="bold">1635 </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>1635 </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.4">
           <t class="OCR">
-            <t-style class="italic">; </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>; </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.5">
           <t class="OCR">
-            <t-style class="bold"> and this was the most distant settlement from the sea-ihore of New<t-hbr/>England at that time. -The settlers never had any contest with the Indians 5. and only three persons were ever killed by them within the limits of the town. In 1791, there were in this township 225 dwelling houses, and 1590 inhabitants z of the latter there were 80 persons upwards of 70 years old. For 13 years previous to 1791, the average number of deaths was 17 ; one in four 0/ whom were 70 years old and upwards. The public buildings are, a Congregational church, a spacious stone gaol, the best in New-£ngiand, and a vejy handsome county court-houlb. The town is accommodated with three convenient bridges over the river ; one of which is 208 feet long, and 18 feet wide, supported by 12 piers, built after the manner of Charles river bridge. This town is famous in the history of the revolution, having been the feat of the provincial congress in 1774, and the spot where the first opposition was made to the British troops, on the memorable 19th of April, 1775. The general court have frequently held their sessions here when contagious diseases have prevailed in the capital. N. lat. 42. 25. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> and this was the most distant settlement from the sea-ihore of New<t-hbr/>England at that time. -The settlers nev<t-hbr/>er had any contest with the Indians 5. and only three persons were ever killed by them within the limits of the town. In 1791, there were in this township 225 dwelling houses, and 1590 inhabit<t-hbr/>ants z of the latter there were 80 per<t-hbr/>sons upwards of 70 years old. For 13 years previous to 1791, the average number of deaths was 17 ; one in four 0/ whom were 70 years old and up<t-hbr/>wards. The public buildings are, a Congregational church, a spacious stone gaol, the best in New-£ngiand, and a vejy handsome county court-houlb. The town is accommodated with three convenient bridges over the river ; one of which is 208 feet long, and 18 feet wide, supported by 12 piers, built after the manner of Charles river bridge. This town is famous in the history of the revolution, having been the feat of the provincial congress in 1774, and the spot where the first opposition was made to the British troops, on the mem<t-hbr/>orable 19th of April, 1775. The gen<t-hbr/>eral court have frequently held their sessions here when contagious diseases have prevailed in the capital. N. lat. 42. 25. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p9">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Concord, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Concord, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.2">
-          <t class="OCR">a small </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>a small </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.3">
           <t class="OCR">
-            <t-style class="bold">river </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>river </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.4">
-          <t class="OCR">of Massachusetts, formed of two branches, which unite near the center of the town of Concprd, whence </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>of Massachu<t-hbr/>setts, formed of two branches, which unite near the center of the town of Concprd, whence </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.5">
           <t class="OCR">
-            <t-style class="bold">it </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>it </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.6">
-          <t class="OCR">takes its course </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>takes its course </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.7">
           <t class="OCR">
-            <t-style class="bold">in </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>in </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.8">
-          <t class="OCR">N. £. and N. direction through Bedford and Billerica, and empties itself into Merrimack R. at Tewksbury. Concord R. is remarkable for the gentleness of its current, which </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>N. £. and N. direction through Bed<t-hbr/>ford and Billerica, and empties itself in<t-hbr/>to Merrimack R. at Tewksbury. Con<t-hbr/>cord R. is remarkable for the gentleness of its current, which </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.9">
           <t class="OCR">
-            <t-style class="bold">is </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>is </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.10">
-          <t class="OCR">scarcely perceivable by the eye. </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>scarcely perceiv<t-hbr/>able by the eye. </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.11">
           <t class="OCR">
-            <t-style class="bold">At </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>At </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.12">
-          <t class="OCR">low water </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>low water </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.13">
           <t class="OCR">
-            <t-style class="bold">mark it is </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>mark it is </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.14">
-          <t class="OCR">from </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>from </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.15">
           <t class="OCR">
-            <t-style class="bold">100 </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>100 </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.16">
-          <t class="OCR">to </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>to </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.17">
           <t class="OCR">
-            <t-style class="bold">200 </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>200 </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.18">
-          <t class="OCR">feet wide, and </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>feet wide, and </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.19">
           <t class="OCR">
-            <t-style class="bold">from z </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>from z </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.20">
-          <t class="OCR">to </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>to </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.21">
           <t class="OCR">
-            <t-style class="bold">ir </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>ir </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.22">
-          <t class="OCR">feet deep. During floods, </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>feet deep. During floods, </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.23">
           <t class="OCR">
-            <t-style class="bold">Con</t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>Con<t-hbr/></t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.24">
-          <t class="OCR">cord </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>cord </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.25">
           <t class="OCR">
-            <t-style class="bold">R. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>R. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.26">
-          <t class="OCR">is near </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>is near </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.27">
           <t class="OCR">
-            <t-style class="bold">a </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.28">
-          <t class="OCR">mile in breadth ; and when viewed from the town of Concord, makes a fine appearance. </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>mile in breadth ; and when viewed from the town of Concord, makes a fine appearance. </t-style>
+          </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p10">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Concord, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Concord, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.2">
-          <t class="OCR">a </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>a </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.3">
           <t class="OCR">
-            <t-style class="bold">township in </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>township in </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.4">
-          <t class="OCR">Delaware co. Pennsylvania. </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>Delaware co. Pennsylvania. </t-style>
+          </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p11">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p11.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Concord, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Concord, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p11.part.2">
           <t class="OCR">
-            <t-style class="bold">a settlement in Georgia, on the E. bank of the Missifippi, about a mile from the 8. line of Tennessee, 108 miles N. from the mouth' of Yazoo R. </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>a settlement in Georgia, on the E. bank of the Missifippi, about a mile from the 8. line of Tennessee, 108 miles N. from the mouth' of Yazoo R. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p12">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p12.part.1">
           <t class="OCR">
-            <t-style class="bold">and </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>and </t-style>
           </t>
         </part>
       </p>
@@ -657,213 +700,217 @@
       <p xml:id="FA-morse_OCR_perletter.text.div3.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p1.part.1">
           <t class="OCR">
-            <t-style class="bold">SPA </t-style>
+            <t-style class="bold"><feat class="13." subset="font_size"/>SPA </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p2.part.1">
           <t class="OCR">
-            <t-style class="bold">SPA </t-style>
+            <t-style class="bold"><feat class="14." subset="font_size"/>SPA </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p3">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p3.part.1">
           <t class="OCR">
-            <t-style class="bold">been discovered by navigators. 8. Lit. 59 </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>been discovered by navigators. 8. Lit. 59 </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p3.part.2">
           <t class="OCR">
-            <t-style class="italic">34,■ </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>34,■ </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p3.part.3">
           <t class="OCR">
-            <t-style class="bold"> W. long, a? 45-    .    . „ </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> W. long, a? 45-    .    . „ </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p4">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p4.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">South </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>South </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p4.part.2">
           <t class="OCR">
-            <t-style class="smallcaps">wick, </t-style>
+            <t-style class="smallcaps"><feat class="9.5" subset="font_size"/>wick, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p4.part.3">
           <t class="OCR">
-            <t-style class="bold">a townimp ot Matia<t-hbr/>chufetts, in die S. W. part of Hampshire co. no miles 8. W. by W. of Boston, and rr 8. W. of Springfield. It was incorporated in 1770, and contains 841 inhabitants. </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/>a townimp ot Matia<t-hbr/>chufetts, in die S. W. part of Hamp<t-hbr/>shire co. no miles 8. W. by W. of Bos<t-hbr/>ton, and rr 8. W. of Springfield. It was incorporated in 1770, and contains 841 inhabitants. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p5">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p5.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">South West </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>South West </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p5.part.2">
           <t class="OCR">
-            <t-style class="italic">Pointy </t-style>
+            <t-style class="italic"><feat class="10.5" subset="font_size"/>Pointy </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p5.part.3">
           <t class="OCR">
-            <t-style class="bold">in Tennessee, ts formed by the confluence of Clinch with Tennessee river, where a blockhouse is erected. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>in Tennessee, ts formed by the confluence of Clinch with Tennessee river, where a block<t-hbr/>house is erected. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p6">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p6.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">South Washington, </t-style>
+            <t-style class="bold|smallcaps"><feat class="9.5" subset="font_size"/>South Washington, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p6.part.2">
           <t class="OCR">
-            <t-style class="bold">a town of N. Carolina, on the N. E. branch of Cape Fear river, which is navigable thus far for boats. It is 23 miles from Cross Roads near Duplin court-house, and 36 front Wilmington. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>a town of N. Carolina, on the N. E. branch of Cape Fear river, which is navigable thus far for boats. It is 23 miles from Cross Roads near Duplin court-house, and 36 front Wilmington. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p7">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p7.part.1">
           <t class="OCR">
-            <t-style class="bold">SouToux, an Indian village ii&gt; Louisiana, on the west fide of Mtdifippi river, opposite to the Nine Mile Rapids, 4z miles below Wiefpincan river, and r8 above Riviere a la Roche. N. Jau 41 50. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>SouToux, an Indian village ii&gt; Lou<t-hbr/>isiana, on the west fide of Mtdifippi riv<t-hbr/>er, opposite to the Nine Mile Rapids, 4z miles below Wiefpincan river, and r8 above Riviere a la Roche. N. Jau 41 50. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p8">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.1">
           <t class="OCR">
-            <t-style class="bold">Sow </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>Sow </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.2">
           <t class="OCR">
-            <t-style class="italic">ami </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>ami </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.3">
           <t class="OCR">
-            <t-style class="bold"> Pics, a number of large rocks lying off the south-west end ot </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> Pics, a number of large rocks lying off the south-west end ot </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.4">
-          <t class="OCR">Catahunk </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>Catahunk </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.5">
           <t class="OCR">
-            <t-style class="bold">island, one of the Elizabeth </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>island, one of the Elizabeth </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.6">
-          <t class="OCR">Islands, </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>Islands, </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.7">
           <t class="OCR">
-            <t-style class="bold">on the coals of Massachusetts. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>on the coals of Massachusetts. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p9">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p9.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spain, A Vac. </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Spain, A Vac. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p9.part.2">
           <t class="OCR">
-            <t-style class="bold"> See </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> See </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p9.part.3">
           <t class="OCR">
-            <t-style class="italic">Mexico. </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Mexico. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p10">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p10.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spaniards’ </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Spaniards’ </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p10.part.2">
           <t class="OCR">
-            <t-style class="italic|bold">Bay, </t-style>
+            <t-style class="italic|bold"><feat class="10." subset="font_size"/>Bay, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p10.part.3">
           <t class="OCR">
-            <t-style class="bold">On the east coast of Cape Breton Island, is round the point of the south entrance into Port Dauphin, to the southward of which is Cape Char<t-hbr/>bon. Its mouth is narrow, but it is wider within till it branches into two arms, both of which are navigable 3 leagues, and afford secure harbouring. N. lat. 46 2C, W. long. j8 29. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>On the east coast of Cape Breton Island, is round the point of the south entrance into Port Dauphin, to the southward of which is Cape Char<t-hbr/>bon. Its mouth is narrow, but it is wider within till it branches into two arms, both of which are navigable 3 leagues, and afford secure harbouring. N. lat. 46 2C, W. long. j8 29. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p11">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spanish America </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Spanish America </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.2">
           <t class="OCR">
-            <t-style class="bold">contains im<t-hbr/>* men fe provinces, most of which are very fertile. 1. In </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>contains im<t-hbr/>* men fe provinces, most of which are very fertile. 1. In </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.3">
           <t class="OCR">
-            <t-style class="italic">Alert h-America, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Alert h-America, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.4">
           <t class="OCR">
-            <t-style class="bold"> Louisiana, California, Old Mexico or New Spain, New Mexico, both the Floridas. 2. In the </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> Lou<t-hbr/>isiana, California, Old Mexico or New Spain, New Mexico, both the Floridas. 2. In the </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.5">
           <t class="OCR">
-            <t-style class="italic">IVest-bJcftes, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>IVest-bJcftes, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.6">
           <t class="OCR">
-            <t-style class="bold"> the island of Cuba, Porto Rico, Trinidad, Margaretta, Tortuga, </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> the island of Cu<t-hbr/>ba, Porto Rico, Trinidad, Margaretta, Tortuga, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.7">
           <t class="OCR">
-            <t-style class="italic">See. </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>See. </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.8">
           <t class="OCR">
-            <t-style class="bold"> 3. In </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> 3. In </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.9">
           <t class="OCR">
-            <t-style class="italic">South-America, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>South-America, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.10">
           <t class="OCR">
-            <t-style class="bold">Terra Firma, Peru, Chili, Tucuman, Paraguay, and Patagonia. These ex<t-hbr/>ten live countries arc described under their proper heads. All the exports of Spain, molt articles of which no other European country can supply, arc estimated at only 80,000,000 livres, or 3,333,333b steal. The molt important trade of Spain is that which it carries en with its American provinces. The chief imports from these extensive countries consist of gold, silver, pnrious stones, pearls, cotton, cocoa, cod </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>Terra Firma, Peru, Chili, Tucuman, Paraguay, and Patagonia. These ex<t-hbr/>ten live countries arc described under their proper heads. All the exports of Spain, molt articles of which no other European country can supply, arc esti<t-hbr/>mated at only 80,000,000 livres, or 3,333,333b steal. The molt important trade of Spain is that which it carries en with its American provinces. The chief imports from these extensive coun<t-hbr/>tries consist of gold, silver, pnrious stones, pearls, cotton, cocoa, cod </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.11">
           <t class="OCR">
-            <t-style class="bold|superscript">3 </t-style>
+            <t-style class="bold|superscript"><feat class="9.5" subset="font_size"/>3 </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.12">
           <t class="OCR">
-            <t-style class="bold"> .eal, red-wood, ikins, rice, medicinal herbs </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> .eal, red-wood, ikins, rice, medicinal herbs </t-style>
           </t>
         </part>
       </p>
@@ -871,197 +918,205 @@
       <p xml:id="FA-morse_OCR_perletter.text.div3.p13">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.1">
           <t class="OCR">
-            <t-style class="bold">and barks, as sassafras, Peruvian bark* &amp;c. Vanilla, Vicunna wool, sugar, and tobacco. In 1784, the total amount of the value of Spanish goods exported ttf America, was 195,000,000 reales de vellón ; foreign commodities, 238,000,000 r. d.- v. The imports from America were valued at 900,000,000 r. d. v. int gold, iilver, and precious stones ; and upwards of 300,000,000 in goods. In the Gazeta, de Madrid, i787,'(Ecb. 20) it Was stated, tliat the exports to America (the Indies) from the following </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>and barks, as sassafras, Peruvian bark* &amp;c. Vanilla, Vicunna wool, sugar, and tobacco. In 1784, the total amount of the value of Spanish goods exported ttf America, was 195,000,000 reales de vel<t-hbr/>lón ; foreign commodities, 238,000,000 r. d.- v. The imports from America were valued at 900,000,000 r. d. v. int gold, iilver, and precious stones ; and upwards of 300,000,000 in goods. In the Gazeta, de Madrid, i787,'(Ecb. 20) it Was stated, tliat the exports to Amer<t-hbr/>ica (the Indies) from the following </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.2">
           <t class="OCR">
-            <t-style class="italic">n </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>n </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.3">
           <t class="OCR">
-            <t-style class="bold">harbours, Cadiz, Corunna, Malaga. Seville, St. Lucar, Santander, Canarias, <t-hbr/>Alicante, Barcelona, Tortola, Gipon, St. Sebastian, amounted, in 1785, ter 767,249,787 r.d. V. the duties paid<t-hbr/>en these exports amounted to 28,543,70* r. d. v. The imports, both in goods and money, from America and the Vf. India islands, amounted in the fame year .to    6^,071^67 r. d. v. and the </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>harbours, Cadiz, Corunna, Malaga. Se<t-hbr/>ville, St. Lucar, Santander, Canarias, <t-hbr/>Alicante, Barcelona, Tortola, Gipon, St. Sebastian, amounted, in 1785, ter 767,249,787 r.d. V. the duties paid<t-hbr/>en these exports amounted to 28,543,70* r. d. v. The imports, both in goods and money, from America and the Vf. India islands, amounted in the fame year .to    6^,071^67 r. d. v. and the </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p14">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.1">
           <t class="OCR">
-            <t-style class="bold">duties to 65,472,195 r. d. v. The profits of the merchants from the whole mei icati trade was valued at f,ooQ,ooo dollars. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>duties to 65,472,195 r. d. v. The prof<t-hbr/>its of the merchants from the whole mei icati trade was valued at f,ooQ,ooo dollars. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p15">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.1">
           <t class="OCR">
-            <t-style class="smallcaps">Spanish </t-style>
+            <t-style class="smallcaps"><feat class="11." subset="font_size"/>Spanish </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.2">
           <t class="OCR">
-            <t-style class="italic">Creek, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Creek, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.3">
-          <t class="OCR">is at the head </t>
+          <t class="OCR">
+            <t-style><feat class="11." subset="font_size"/>is at the head </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.4">
           <t class="OCR">
-            <t-style class="bold">of </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>of </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.5">
-          <t class="OCR">St* </t>
+          <t class="OCR">
+            <t-style><feat class="11." subset="font_size"/>St* </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.6">
           <t class="OCR">
-            <t-style class="bold">Mary’s river in Florida. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>Mary’s river in Florida. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p16">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spanish </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Spanish </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.2">
           <t class="OCR">
-            <t-style class="italic">Main, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Main, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.3">
           <t class="OCR">
-            <t-style class="bold"> that part of the coast of America, which extends from the Mosquito shore,- along the* northern coast of Darien, Carthagena, and Venezuela,-to the Leeward Isles. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> that part of the coast of America, which extends from the Mosquito shore,- along the* northern coast of Darien, Carthagena, and Ve<t-hbr/>nezuela,-to the Leeward Isles. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p17">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spanish </t-style>
+            <t-style class="bold|smallcaps"><feat class="9.5" subset="font_size"/>Spanish </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.2">
           <t class="OCR">
-            <t-style class="italic">River, </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>River, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.3">
           <t class="OCR">
-            <t-style class="bold"> a river and settlement in Cape Breton Island, and the present seat of government. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> a river and settle<t-hbr/>ment in Cape Breton Island, and the present seat of government. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p18">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spanish town, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Spanish town, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.2">
           <t class="OCR">
-            <t-style class="italic|bold">ccSt. Jago de la Ve<t-hbr/>ga, </t-style>
+            <t-style class="italic|bold"><feat class="10." subset="font_size"/>ccSt. Jago de la Ve<t-hbr/>ga, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.3">
           <t class="OCR">
-            <t-style class="bold">in the count v of Middlesex, is die capital of the island of Jamaica. It is situated on the banks of the river Cobre, about 6 miles from the sea, and contains about 5 or 600 </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>in the count v of Middlesex, is die capital of the island of Jamaica. It is situated on the banks of the river Cobre, about 6 miles from the sea, and con<t-hbr/>tains about 5 or 600 </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.4">
-          <t class="OCR">houses, </t>
+          <t class="OCR">
+            <t-style><feat class="10.5" subset="font_size"/>houses, </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.5">
           <t class="OCR">
-            <t-style class="bold">and about 5,000 inhabitants, including free people of colour. It is the residence of the governor or commander in chics, who is accommodated with a magnificent palace. Here the legislature fits, and the court of chancery and the supreme judicial courts are held. See </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>and about 5,000 inhabitants, including free people of colour. It is the residence of the governor or commander in chics, who is accommodated with a magnificent palace. Here the legislature fits, and the court of chancery and the supreme judicial courts are held. See </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.6">
           <t class="OCR">
-            <t-style class="italic|bold">Jago de </t-style>
+            <t-style class="italic|bold"><feat class="10." subset="font_size"/>Jago de </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.7">
-          <t class="OCR">I </t>
+          <t class="OCR">
+            <t-style><feat class="10." subset="font_size"/>I </t-style>
+          </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.8">
           <t class="OCR">
-            <t-style class="italic|bold">la Vega. </t-style>
+            <t-style class="italic|bold"><feat class="10." subset="font_size"/>la Vega. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p19">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.1">
           <t class="OCR">
-            <t-style class="bold">I </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>I </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.2">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Sparhawk’s </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Sparhawk’s </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.3">
           <t class="OCR">
-            <t-style class="italic">Point </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>Point </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.4">
           <t class="OCR">
-            <t-style class="bold">, on the northern shore of Pifcataqua river, abreast </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>, on the northern shore of Pifcataqua river, abreast </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.5">
           <t class="OCR">
-            <t-style class="italic">of </t-style>
+            <t-style class="italic"><feat class="10." subset="font_size"/>of </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.6">
           <t class="OCR">
-            <t-style class="bold">which ships can anchor in 9 fathoms. </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>which ships can anchor in 9 fathoms. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p20">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Sparta, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Sparta, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.2">
           <t class="OCR">
-            <t-style class="bold"> a post-town of New-Jei fey, Sussex co. 1 1 7 miles from Philadelphia. </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/> a post-town of New-Jei fey, Sussex co. 1 1 7 miles from Philadelphia. </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p21">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.1">
           <t class="OCR">
-            <t-style class="bold|smallcaps">Spartanburg H, </t-style>
+            <t-style class="bold|smallcaps"><feat class="10." subset="font_size"/>Spartanburg H, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.2">
           <t class="OCR">
-            <t-style class="bold"> a county ol Pinckney district, formerly in that of Ninety<t-hbr/>Six, S. Carolina, containing 8,800 inhabitants, of who </t-style>
+            <t-style class="bold"><feat class="10." subset="font_size"/> a county ol Pinck<t-hbr/>ney district, formerly in that of Ninety<t-hbr/>Six, S. Carolina, containing 8,800 in<t-hbr/>habitants, of who </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.3">
           <t class="OCR">
-            <t-style class="italic|bold">in </t-style>
+            <t-style class="italic|bold"><feat class="11." subset="font_size"/>in </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.4">
           <t class="OCR">
-            <t-style class="bold"> 7,907 are whites, </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/> 7,907 are whites, </t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p22">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p22.part.1">
           <t class="OCR">
-            <t-style class="bold">and </t-style>
+            <t-style class="bold"><feat class="9.5" subset="font_size"/>and </t-style>
           </t>
         </part>
       </p>

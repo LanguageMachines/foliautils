@@ -156,19 +156,21 @@ ostream& operator<<( ostream& os, const font_style& fs ){
 }
 struct font_info {
   font_info():
-    _fs(REGULAR)
+    _fst(REGULAR)
   {};
-  font_info( const string& ff, const font_style fs ):
+  font_info( const string& ff, const string& fs, const font_style fst ):
     _ff(ff),
-    _fs(fs)
+    _fs(fs),
+    _fst(fst)
   {};
   string _ff;
+  string _fs;
   string _id;
-  font_style _fs;
+  font_style _fst;
 };
 
 ostream& operator<<( ostream& os, const font_info& fi ){
-  os << fi._ff << " " << fi._fs << " " << fi._id;
+  os << fi._ff << " (" << fi._fs << ") " << fi._fst << " " << fi._id;
   return os;
 }
 
@@ -269,6 +271,10 @@ void update_font_info( font_info& line_font,
     line_font = font_styles.at( style );
     line_font._id = style;
   }
+  string fs = TiCC::getAttribute( node, "fs" );
+  if ( !fs.empty() ){
+    line_font._fs = fs;
+  }
   string ff = TiCC::getAttribute( node, "ff" );
   if ( !ff.empty() ){
     line_font._ff = ff;
@@ -276,64 +282,64 @@ void update_font_info( font_info& line_font,
   string value = TiCC::getAttribute( node, "bold" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= BOLD;
+      line_font._fst |= BOLD;
     }
     else {
-      line_font._fs &= ~BOLD;
+      line_font._fst &= ~BOLD;
     }
   }
   value = TiCC::getAttribute( node, "italic" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= ITALIC;
+      line_font._fst |= ITALIC;
     }
     else {
-      line_font._fs &= ~ITALIC;
+      line_font._fst &= ~ITALIC;
     }
   }
   value = TiCC::getAttribute( node, "smallcaps" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= SMALLCAPS;
+      line_font._fst |= SMALLCAPS;
     }
     else {
-      line_font._fs &= ~SMALLCAPS;
+      line_font._fst &= ~SMALLCAPS;
     }
   }
   value = TiCC::getAttribute( node, "superscript" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= SUPERSCRIPT;
+      line_font._fst |= SUPERSCRIPT;
     }
     else {
-      line_font._fs &= ~SUPERSCRIPT;
+      line_font._fst &= ~SUPERSCRIPT;
     }
   }
   value = TiCC::getAttribute( node, "subscript" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= SUBSCRIPT;
+      line_font._fst |= SUBSCRIPT;
     }
     else {
-      line_font._fs &= ~SUBSCRIPT;
+      line_font._fst &= ~SUBSCRIPT;
     }
   }
   value = TiCC::getAttribute( node, "strikeout" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= STRIKEOUT;
+      line_font._fst |= STRIKEOUT;
     }
     else {
-      line_font._fs &= ~STRIKEOUT;
+      line_font._fst &= ~STRIKEOUT;
     }
   }
   value = TiCC::getAttribute( node, "underline" );
   if ( !value.empty() ){
     if ( value == "1" ){
-      line_font._fs |= UNDERLINE;
+      line_font._fst |= UNDERLINE;
     }
     else {
-      line_font._fs &= ~UNDERLINE;
+      line_font._fst &= ~UNDERLINE;
     }
   }
 }
@@ -356,6 +362,7 @@ void process_line( xmlNode *block,
     UnicodeString uresult = get_line( form );
     if ( uresult.endsWith( "¬" ) ){
       uresult.remove(uresult.length()-1);
+      uresult += "- ";
     }
     else if ( uresult.endsWith( "\n" ) ){
       uresult.remove(uresult.length()-1);
@@ -388,26 +395,32 @@ void output_result( folia::TextContent *tc,
 folia::TextContent* make_styled_container( const font_info& info,
 					   folia::FoliaElement*& content,
 					   folia::Document *doc ){
-  font_style style = info._fs;
+  font_style style = info._fst;
   folia::KWargs args;
   args["class"] = classname;
   folia::TextContent *tc = new folia::TextContent( args, doc );
-  if ( style == REGULAR ){
-    content = tc;
-    return tc;
+  if ( style != REGULAR ){
+    args["class"] = toString( style );
   }
   else {
-    args["class"] = toString( style );
-    folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
-    tc->append( st );
-    content = st;
-    if ( !info._id.empty() ){
-      folia::KWargs args;
-      args["subset"] = "font_id";
-      args["class"] = info._id;
-      folia::Feature *f = new folia::Feature( args );
-      st->append(f);
-    }
+    args.clear();
+  }
+  folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
+  tc->append( st );
+  content = st;
+  if ( !info._id.empty() ){
+    folia::KWargs args;
+    args["subset"] = "font_id";
+    args["class"] = info._id;
+    folia::Feature *f = new folia::Feature( args );
+    st->append(f);
+  }
+  if ( !info._fs.empty() ){
+    folia::KWargs args;
+    args["subset"] = "font_size";
+    args["class"] = info._fs;
+    folia::Feature *f = new folia::Feature( args );
+    st->append(f);
   }
   return tc;
 }
@@ -450,13 +463,13 @@ bool process_par( folia::FoliaElement *root,
   for ( const auto& it : line_parts ){
     if ( !container ){
       // start with a fresh TextContent.
-      current_style = it.first._fs;
+      current_style = it.first._fst;
       container = make_styled_container( it.first, content, root->doc() );
     }
     string value =  it.second;
-    if ( it.first._fs != current_style ){
+    if ( it.first._fst != current_style ){
       // a switch in font-syle. So end this Parts and start a new one
-      current_style = it.first._fs;
+      current_style = it.first._fst;
       output_result( container, root );
       container = make_styled_container( it.first, content, root->doc() );
     }
@@ -525,11 +538,12 @@ map<string,font_info> extract_font_info( xmlNode *root ){
     main_font_styles[pid] = mf_id;
     list<xmlNode*> font_styles =
       TiCC::FindNodes( ps, ".//*:fontStyle" );
-    for ( const auto& fs : font_styles ){
-      string id = TiCC::getAttribute( fs, "id" );
-      string ff = TiCC::getAttribute( fs, "ff" );
-      string it = TiCC::getAttribute( fs, "italic" );
-      string bl = TiCC::getAttribute( fs, "bold" );
+    for ( const auto& fst : font_styles ){
+      string id = TiCC::getAttribute( fst, "id" );
+      string ff = TiCC::getAttribute( fst, "ff" );
+      string fs = TiCC::getAttribute( fst, "fs" );
+      string it = TiCC::getAttribute( fst, "italic" );
+      string bl = TiCC::getAttribute( fst, "bold" );
       font_style f_s = REGULAR;
       if ( it == "1" ){
 	f_s = ITALIC;
@@ -537,7 +551,7 @@ map<string,font_info> extract_font_info( xmlNode *root ){
       else if ( bl == "1" ){
 	f_s = BOLD;
       }
-      font_info fi( ff, f_s );
+      font_info fi( ff, fs, f_s );
       result.insert( make_pair(id,fi) );
     }
   }
