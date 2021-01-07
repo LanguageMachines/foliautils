@@ -1,3 +1,40 @@
+foliautils 0.16  07-01-2021
+[Ko vd Sloot]
+* requires libfolia 2.7 or above
+* provenance data is better for a lot of modules
+* added better checking on invalid NCnames in some modules.
+* FoLiA-abby:
+  - a lot of refactoring and additions to handle font/style information
+* FoLiA-pm:
+  - Notes are handled correctly now
+  - fixed error in xlink attributes
+* FoLiA-page:
+  - more types of Page files are handled now
+  - fixed annotation declarations
+  - fixed offset calculation (due to change in FoLiA's opinion on those)
+  - page number is added as a <br> node and in the metadata
+  - added a --trusttokens option. This means that Word items in the Page file
+    are added as Word's in the FoLiA, embedded in Sentences.
+  - added a --norefs option to avoid adding references to the original texts
+* FoLiA-correct:
+  - make sure that the default is to run on 1 thread
+  - added a --rebase_inputclass option
+
+* FoLiA-alto:
+  - the -t option was not always handled correctly
+
+[Maarten van Gompel]
+* FoLiA-benchmark: guard against compiler optimisation #48
+
+foliautils 0.15  15-09-2020
+[Maarten van Gompel]
+* FoLiA-txt: check if a string is empty after normalisation (fix for #46)
+[Ko vd Sloot]
+* folia-correct: fix one-off error in hemp handling (when no hemp was found) #45
+* some refactoring
+  - centralized definition of XML_PARSER_OPTIONS
+* bugfix in threading
+
 foliautils 0.14  15-04-2020
 [Martin Reynaert]
 * updated man pages
