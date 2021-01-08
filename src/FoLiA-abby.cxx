@@ -515,6 +515,14 @@ bool process_page( folia::FoliaElement *root,
     args.clear();
     args["xml:id"] = root->id() + ".p" + TiCC::toString(++i);
     folia::Paragraph *paragraph = new folia::Paragraph( args, root->doc() );
+    string style = TiCC::getAttribute( par_node, "style" );
+    if ( !style.empty() ){
+      args.clear();
+      args["subset"] = "font_id";
+      args["class"] = style;
+      folia::Feature *f = new folia::Feature( args );
+      paragraph->append(f);
+    }
     if ( process_par( paragraph, par_node, font_styles ) ){
       root->append( paragraph );
       didit = true;
