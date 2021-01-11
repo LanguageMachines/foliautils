@@ -410,7 +410,7 @@ folia::TextContent* make_styled_container( const font_info& info,
   content = st;
   if ( !info._id.empty() ){
     folia::KWargs args;
-    args["subset"] = "font_id";
+    args["subset"] = "font_style";
     args["class"] = info._id;
     folia::Feature *f = new folia::Feature( args );
     st->append(f);
@@ -518,7 +518,7 @@ bool process_page( folia::FoliaElement *root,
     string style = TiCC::getAttribute( par_node, "style" );
     if ( !style.empty() ){
       args.clear();
-      args["subset"] = "font_id";
+      args["subset"] = "par_style";
       args["class"] = style;
       folia::Feature *f = new folia::Feature( args );
       paragraph->append(f);
