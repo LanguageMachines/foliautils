@@ -392,6 +392,59 @@ void output_result( folia::TextContent *tc,
   root->append( part );
 }
 
+void append_styles( folia::TextMarkupStyle* markup,
+		    const font_style& fs ){
+  if ( fs & BOLD ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "bold";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+  if ( fs & ITALIC ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "italic";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+  if ( fs & SMALLCAPS ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "smallcaps";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+  if ( fs & SUPERSCRIPT ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "superscript";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+  if ( fs & SUBSCRIPT ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "subscript";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+  if ( fs & UNDERLINE ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "underline";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+  if ( fs & STRIKEOUT ){
+    folia::KWargs args;
+    args["subset"] = "font_property";
+    args["class"] = "strikeout";
+    folia::Feature *f = new folia::Feature( args );
+    markup->append(f);
+  }
+}
+
 folia::TextContent* make_styled_container( const font_info& info,
 					   folia::FoliaElement*& content,
 					   folia::Document *doc ){
@@ -399,15 +452,19 @@ folia::TextContent* make_styled_container( const font_info& info,
   folia::KWargs args;
   args["class"] = classname;
   folia::TextContent *tc = new folia::TextContent( args, doc );
-  if ( style != REGULAR ){
-    args["class"] = toString( style );
-  }
-  else {
-    args.clear();
-  }
+  // if ( style != REGULAR ){
+  //   args["class"] = toString( style );
+  // }
+  // else {
+  //   args.clear();
+  // }
+  args.clear();
   folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
   tc->append( st );
   content = st;
+  if ( style != REGULAR ){
+    append_styles( st, style );
+  }
   if ( !info._id.empty() ){
     folia::KWargs args;
     args["subset"] = "font_style";
