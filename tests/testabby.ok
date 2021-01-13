@@ -31,8 +31,8 @@ Usage: FoLiA-abby [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 4 files 
-	converted data/abby/morse_OCR_perletter.xml
-	converted data/abby/morse_OCR_perletter2.xml.gz
-	converted data/abby/levi010geil01_01_Deel500.xml
-	converted data/abby/piroska.abby.xml
+	converted: data/abby/morse_OCR_perletter.xml into: out/FA-morse_OCR_perletter.folia.xml
+	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/FA-morse_OCR_perletter2.folia.xml.gz
+	converted: data/abby/levi010geil01_01_Deel500.xml into: out/FA-levi010geil01_01_Deel500.folia.xml
+	converted: data/abby/piroska.abby.xml into: out/FA-piroska.abby.folia.xml
 done

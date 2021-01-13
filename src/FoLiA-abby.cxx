@@ -722,7 +722,7 @@ bool convert_abbyxml( const string& fileName,
   doc.save( outName );
 #pragma omp critical
   {
-    cout << "\tconverted " << fileName << " into: " << outName << endl;
+    cout << "\tconverted: " << fileName << " into: " << outName << endl;
   }
   return true;
 }

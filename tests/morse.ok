@@ -20,7 +20,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-13T17:04:28" command="FoLiA-abby -O out" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-13T22:59:04" command="FoLiA-abby -O out" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -31,14 +31,14 @@
       <p xml:id="FA-morse_OCR_perletter.text.div1.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>AMU </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>AMU</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>AND </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>AND</t-style>
           </t>
         </part>
       </p>
@@ -60,7 +60,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p3.part.4">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>, 40 yards wide, from Fran<t-hbr/>conia and Lincoln Mountains. Two or three hours rain raises the water in this last mentioned river several feet, and occasions a current so furious as to put in motion stones of a foot in di<t-hbr/>ameter, but its violence soon subsides. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>, 40 yards wide, from Fran<t-hbr/>conia and Lincoln Mountains. Two or three hours rain raises the water in this last mentioned river several feet, and occasions a current so furious as to put in motion stones of a foot in di<t-hbr/>ameter, but its violence soon subsides.</t-style>
           </t>
         </part>
       </p>
@@ -77,7 +77,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p4.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>near Tumbez, lying near the shore of the South Sea, in the empire of Peru. Being near a river of fine water, the adjacent coun<t-hbr/>try is highly improved. Lat. 4.15.43.8. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>near Tumbez, lying near the shore of the South Sea, in the empire of Peru. Being near a river of fine water, the adjacent coun<t-hbr/>try is highly improved. Lat. 4.15.43.8.</t-style>
           </t>
         </part>
       </p>
@@ -159,7 +159,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.16">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>See. </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>See.</t-style>
           </t>
         </part>
       </p>
@@ -206,7 +206,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p6.part.9">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>cattle. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>cattle.</t-style>
           </t>
         </part>
       </p>
@@ -218,7 +218,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p7.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>was the name originally given by the Dutch to the city of New-York. Also, an Island in the South-Sea, S. 8. W. of the Friendly Islands, and not far distant from them. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>was the name originally given by the Dutch to the city of New-York. Also, an Island in the South-Sea, S. 8. W. of the Friendly Islands, and not far distant from them.</t-style>
           </t>
         </part>
       </p>
@@ -230,7 +230,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p8.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>a new township in Montgomery county, New-York. It contains 235 inhabitants, who are elec<t-hbr/>tors. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>a new township in Montgomery county, New-York. It contains 235 inhabitants, who are elec<t-hbr/>tors.</t-style>
           </t>
         </part>
       </p>
@@ -257,14 +257,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> in New-Hamp<t-hbr/>ihire, are on Merrimack River, sixteen miles below Concord, and seven below Hookset Falls. It con lifts of three pitches, one below the other, so that the water falls about 80 feet in the course of half a mile. The second pitch, which may be seen from the road, on the W. fidej is truly majestic. In the middle of the upper part of the fall is a high rocky island, on the top of which are a number of pits, made ex<t-hbr/>actly round, like barrels or hogsheads, some of which are capable of holding several tons ; formed by the circular motion of small ftoncs, impelled by the force of the descending water. There is a bridge across the falls 556 feet in Itrnetb, and 20 in breadth, consisting of loco tons of timber, and made passable for travellers 57 days after it was be<t-hbr/>£un. N. lat. 42.59. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> in New-Hamp<t-hbr/>ihire, are on Merrimack River, sixteen miles below Concord, and seven below Hookset Falls. It con lifts of three pitches, one below the other, so that the water falls about 80 feet in the course of half a mile. The second pitch, which may be seen from the road, on the W. fidej is truly majestic. In the middle of the upper part of the fall is a high rocky island, on the top of which are a number of pits, made ex<t-hbr/>actly round, like barrels or hogsheads, some of which are capable of holding several tons ; formed by the circular motion of small ftoncs, impelled by the force of the descending water. There is a bridge across the falls 556 feet in Itrnetb, and 20 in breadth, consisting of loco tons of timber, and made passable for travellers 57 days after it was be<t-hbr/>£un. N. lat. 42.59.</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p10">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p10.part.1">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="7." subset="font_size"/>» </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="7." subset="font_size"/>»</t-style>
           </t>
         </part>
       </p>
@@ -276,7 +276,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p11.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> the ancient Indian name of New-Spain, or Mexico. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> the ancient Indian name of New-Spain, or Mexico.</t-style>
           </t>
         </part>
       </p>
@@ -308,7 +308,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p12.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mañanees Inlet, where the river Mañanees forms two islands of the fame name at its mouth. St. Anastatia island is bounded on the N. by St. Au<t-hbr/>gustine’s bar. Here is a quany of fine stone for building. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mañanees Inlet, where the river Mañanees forms two islands of the fame name at its mouth. St. Anastatia island is bounded on the N. by St. Au<t-hbr/>gustine’s bar. Here is a quany of fine stone for building.</t-style>
           </t>
         </part>
       </p>
@@ -330,7 +330,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.4">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>on the peninsula of California, and coast of the North Pa<t-hbr/>cific Ocean, lies in the 30th deg. of N. lat. and 116th of W. long, southerly from the town of Velicata, and N. E, from the small island of Gaudaloupe. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>on the peninsula of California, and coast of the North Pa<t-hbr/>cific Ocean, lies in the 30th deg. of N. lat. and 116th of W. long, southerly from the town of Velicata, and N. E, from the small island of Gaudaloupe.</t-style>
           </t>
         </part>
       </p>
@@ -357,7 +357,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p14.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>water of the Delaware, 6 miles 8. W. from Burlington. It is navigable 16 miles ; and considerable quantities of lumber are exported from it. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>water of the Delaware, 6 miles 8. W. from Burlington. It is navigable 16 miles ; and considerable quantities of lumber are exported from it.</t-style>
           </t>
         </part>
       </p>
@@ -379,7 +379,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.4">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Amer<t-hbr/>ica, 3 leagues from the city of Gua<t-hbr/>manga. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Amer<t-hbr/>ica, 3 leagues from the city of Gua<t-hbr/>manga.</t-style>
           </t>
         </part>
       </p>
@@ -391,7 +391,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p16.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>a jurisdiction in South-America, in the empire of Peru, subject to the archbishop of Lima ; ly<t-hbr/>ing E. by 8. of the city of Guamanga. It abounds in sugar plantations, grain yf most forts, and fruits. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>a jurisdiction in South-America, in the empire of Peru, subject to the archbishop of Lima ; ly<t-hbr/>ing E. by 8. of the city of Guamanga. It abounds in sugar plantations, grain yf most forts, and fruits.</t-style>
           </t>
         </part>
       </p>
@@ -418,7 +418,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p17.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Terra Firma, on the coaft of .the At<t-hbr/>lantic, opposite the Leeward Islands. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Terra Firma, on the coaft of .the At<t-hbr/>lantic, opposite the Leeward Islands.</t-style>
           </t>
         </part>
       </p>
@@ -430,7 +430,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p18.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>an Indian nation in Can<t-hbr/>ada. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>an Indian nation in Can<t-hbr/>ada.</t-style>
           </t>
         </part>
       </p>
@@ -507,7 +507,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.14">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> The height of Chimbora<t-hbr/>zo, the most elevated point of this vast chain, is 20,280 feet above the level of the sea ; which is 7102 feet higher than any other mountain in the known world. The Andes commonly form two ridges as they run, the one higher </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> The height of Chimbora<t-hbr/>zo, the most elevated point of this vast chain, is 20,280 feet above the level of the sea ; which is 7102 feet higher than any other mountain in the known world. The Andes commonly form two ridges as they run, the one higher</t-style>
           </t>
         </part>
       </p>
@@ -516,14 +516,14 @@
       <p xml:id="FA-morse_OCR_perletter.text.div2.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>pould the fruit come to maturity. This city has a church and fix very famous monasteries; but the dwelling houses make no great appearance. Here the women go out in the night to the shops, to buy such necessaries as they want for their families, it being contrary to the custom of this country for women of any character, to go abroad in the day<t-hbr/>time on such affairs. It is an open town ; and the few batteries it has, are kept ir, very indifferent order. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>pould the fruit come to maturity. This city has a church and fix very famous monasteries; but the dwelling houses make no great appearance. Here the women go out in the night to the shops, to buy such necessaries as they want for their families, it being contrary to the custom of this country for women of any character, to go abroad in the day<t-hbr/>time on such affairs. It is an open town ; and the few batteries it has, are kept ir, very indifferent order.</t-style>
           </t>
         </part>
       </p>
@@ -555,7 +555,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and af<t-hbr/>fords extensive pasture for cattle of all kinds. Several branches of the wool<t-hbr/>len manufactory are carried on here, which constitute its greatest commerce with the other provinces. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and af<t-hbr/>fords extensive pasture for cattle of all kinds. Several branches of the wool<t-hbr/>len manufactory are carried on here, which constitute its greatest commerce with the other provinces.</t-style>
           </t>
         </part>
       </p>
@@ -607,7 +607,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.10">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> W. long. 71. 29. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> W. long. 71. 29.</t-style>
           </t>
         </part>
       </p>
@@ -619,7 +619,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p5.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in Essex co. Vermont, lies on Connecticut river, opposite a part of the 15-mile falls. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in Essex co. Vermont, lies on Connecticut river, opposite a part of the 15-mile falls.</t-style>
           </t>
         </part>
       </p>
@@ -631,14 +631,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p6.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in Massachusetts, a post town, one of the most considerable towns in Middlesex co. fituated on Con<t-hbr/>cord river, in a healthy and pleasant spot, nearly in the center of the coun<t-hbr/>ty, and 18 miles N. W. of Boston, ind 17 E. of Lancaster. Its Indian came was Muiquetequid ; and it owes </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in Massachusetts, a post town, one of the most considerable towns in Middlesex co. fituated on Con<t-hbr/>cord river, in a healthy and pleasant spot, nearly in the center of the coun<t-hbr/>ty, and 18 miles N. W. of Boston, ind 17 E. of Lancaster. Its Indian came was Muiquetequid ; and it owes</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p7">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p7.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON</t-style>
           </t>
         </part>
       </p>
@@ -665,7 +665,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> and this was the most distant settlement from the sea-ihore of New<t-hbr/>England at that time. -The settlers nev<t-hbr/>er had any contest with the Indians 5. and only three persons were ever killed by them within the limits of the town. In 1791, there were in this township 225 dwelling houses, and 1590 inhabit<t-hbr/>ants z of the latter there were 80 per<t-hbr/>sons upwards of 70 years old. For 13 years previous to 1791, the average number of deaths was 17 ; one in four 0/ whom were 70 years old and up<t-hbr/>wards. The public buildings are, a Congregational church, a spacious stone gaol, the best in New-£ngiand, and a vejy handsome county court-houlb. The town is accommodated with three convenient bridges over the river ; one of which is 208 feet long, and 18 feet wide, supported by 12 piers, built after the manner of Charles river bridge. This town is famous in the history of the revolution, having been the feat of the provincial congress in 1774, and the spot where the first opposition was made to the British troops, on the mem<t-hbr/>orable 19th of April, 1775. The gen<t-hbr/>eral court have frequently held their sessions here when contagious diseases have prevailed in the capital. N. lat. 42. 25. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> and this was the most distant settlement from the sea-ihore of New<t-hbr/>England at that time. -The settlers nev<t-hbr/>er had any contest with the Indians 5. and only three persons were ever killed by them within the limits of the town. In 1791, there were in this township 225 dwelling houses, and 1590 inhabit<t-hbr/>ants z of the latter there were 80 per<t-hbr/>sons upwards of 70 years old. For 13 years previous to 1791, the average number of deaths was 17 ; one in four 0/ whom were 70 years old and up<t-hbr/>wards. The public buildings are, a Congregational church, a spacious stone gaol, the best in New-£ngiand, and a vejy handsome county court-houlb. The town is accommodated with three convenient bridges over the river ; one of which is 208 feet long, and 18 feet wide, supported by 12 piers, built after the manner of Charles river bridge. This town is famous in the history of the revolution, having been the feat of the provincial congress in 1774, and the spot where the first opposition was made to the British troops, on the mem<t-hbr/>orable 19th of April, 1775. The gen<t-hbr/>eral court have frequently held their sessions here when contagious diseases have prevailed in the capital. N. lat. 42. 25.</t-style>
           </t>
         </part>
       </p>
@@ -807,7 +807,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.28">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>mile in breadth ; and when viewed from the town of Concord, makes a fine appearance. </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>mile in breadth ; and when viewed from the town of Concord, makes a fine appearance.</t-style>
           </t>
         </part>
       </p>
@@ -829,7 +829,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.4">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>Delaware co. Pennsylvania. </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>Delaware co. Pennsylvania.</t-style>
           </t>
         </part>
       </p>
@@ -846,14 +846,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p11.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>settlement in Georgia, on the E. bank of the Missifippi, about a mile from the 8. line of Tennessee, 108 miles N. from the mouth' of Yazoo R. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>settlement in Georgia, on the E. bank of the Missifippi, about a mile from the 8. line of Tennessee, 108 miles N. from the mouth' of Yazoo R.</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div2.p12">
         <part xml:id="FA-morse_OCR_perletter.text.div2.p12.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and</t-style>
           </t>
         </part>
       </p>
@@ -862,14 +862,14 @@
       <p xml:id="FA-morse_OCR_perletter.text.div3.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>SPA </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>SPA</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="14." subset="font_size"/>SPA </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="14." subset="font_size"/>SPA</t-style>
           </t>
         </part>
       </p>
@@ -886,7 +886,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p3.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> W. long, a? 45-    .    . „ </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> W. long, a? 45-    .    . „</t-style>
           </t>
         </part>
       </p>
@@ -908,7 +908,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p4.part.4">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>townimp ot Matia<t-hbr/>chufetts, in die S. W. part of Hamp<t-hbr/>shire co. no miles 8. W. by W. of Bos<t-hbr/>ton, and rr 8. W. of Springfield. It was incorporated in 1770, and contains 841 inhabitants. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>townimp ot Matia<t-hbr/>chufetts, in die S. W. part of Hamp<t-hbr/>shire co. no miles 8. W. by W. of Bos<t-hbr/>ton, and rr 8. W. of Springfield. It was incorporated in 1770, and contains 841 inhabitants.</t-style>
           </t>
         </part>
       </p>
@@ -925,7 +925,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p5.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in Tennessee, ts formed by the confluence of Clinch with Tennessee river, where a block<t-hbr/>house is erected. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in Tennessee, ts formed by the confluence of Clinch with Tennessee river, where a block<t-hbr/>house is erected.</t-style>
           </t>
         </part>
       </p>
@@ -942,14 +942,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p6.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>a town of N. Carolina, on the N. E. branch of Cape Fear river, which is navigable thus far for boats. It is 23 miles from Cross Roads near Duplin court-house, and 36 front Wilmington. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>a town of N. Carolina, on the N. E. branch of Cape Fear river, which is navigable thus far for boats. It is 23 miles from Cross Roads near Duplin court-house, and 36 front Wilmington.</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p7">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p7.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>SouToux, an Indian village ii&gt; Lou<t-hbr/>isiana, on the west fide of Mtdifippi riv<t-hbr/>er, opposite to the Nine Mile Rapids, 4z miles below Wiefpincan river, and r8 above Riviere a la Roche. N. Jau 41 50. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>SouToux, an Indian village ii&gt; Lou<t-hbr/>isiana, on the west fide of Mtdifippi riv<t-hbr/>er, opposite to the Nine Mile Rapids, 4z miles below Wiefpincan river, and r8 above Riviere a la Roche. N. Jau 41 50.</t-style>
           </t>
         </part>
       </p>
@@ -986,7 +986,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.7">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>on the coals of Massachusetts. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>on the coals of Massachusetts.</t-style>
           </t>
         </part>
       </p>
@@ -1008,7 +1008,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p9.part.4">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Mexico. </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Mexico.</t-style>
           </t>
         </part>
       </p>
@@ -1025,7 +1025,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p10.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>On the east coast of Cape Breton Island, is round the point of the south entrance into Port Dauphin, to the southward of which is Cape Char<t-hbr/>bon. Its mouth is narrow, but it is wider within till it branches into two arms, both of which are navigable 3 leagues, and afford secure harbouring. N. lat. 46 2C, W. long. j8 29. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>On the east coast of Cape Breton Island, is round the point of the south entrance into Port Dauphin, to the southward of which is Cape Char<t-hbr/>bon. Its mouth is narrow, but it is wider within till it branches into two arms, both of which are navigable 3 leagues, and afford secure harbouring. N. lat. 46 2C, W. long. j8 29.</t-style>
           </t>
         </part>
       </p>
@@ -1087,7 +1087,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.12">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> .eal, red-wood, ikins, rice, medicinal herbs </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> .eal, red-wood, ikins, rice, medicinal herbs</t-style>
           </t>
         </part>
       </p>
@@ -1105,14 +1105,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>harbours, Cadiz, Corunna, Malaga. Se<t-hbr/>ville, St. Lucar, Santander, Canarias, <t-hbr/>Alicante, Barcelona, Tortola, Gipon, St. Sebastian, amounted, in 1785, ter 767,249,787 r.d. V. the duties paid<t-hbr/>en these exports amounted to 28,543,70* r. d. v. The imports, both in goods and money, from America and the Vf. India islands, amounted in the fame year .to    6^,071^67 r. d. v. and the </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>harbours, Cadiz, Corunna, Malaga. Se<t-hbr/>ville, St. Lucar, Santander, Canarias, <t-hbr/>Alicante, Barcelona, Tortola, Gipon, St. Sebastian, amounted, in 1785, ter 767,249,787 r.d. V. the duties paid<t-hbr/>en these exports amounted to 28,543,70* r. d. v. The imports, both in goods and money, from America and the Vf. India islands, amounted in the fame year .to    6^,071^67 r. d. v. and the</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p14">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>duties to 65,472,195 r. d. v. The prof<t-hbr/>its of the merchants from the whole mei icati trade was valued at f,ooQ,ooo dollars. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>duties to 65,472,195 r. d. v. The prof<t-hbr/>its of the merchants from the whole mei icati trade was valued at f,ooQ,ooo dollars.</t-style>
           </t>
         </part>
       </p>
@@ -1144,7 +1144,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mary’s river in Florida. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mary’s river in Florida.</t-style>
           </t>
         </part>
       </p>
@@ -1161,7 +1161,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> that part of the coast of America, which extends from the Mosquito shore,- along the* northern coast of Darien, Carthagena, and Ve<t-hbr/>nezuela,-to the Leeward Isles. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> that part of the coast of America, which extends from the Mosquito shore,- along the* northern coast of Darien, Carthagena, and Ve<t-hbr/>nezuela,-to the Leeward Isles.</t-style>
           </t>
         </part>
       </p>
@@ -1178,7 +1178,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> a river and settle<t-hbr/>ment in Cape Breton Island, and the present seat of government. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> a river and settle<t-hbr/>ment in Cape Breton Island, and the present seat of government.</t-style>
           </t>
         </part>
       </p>
@@ -1220,7 +1220,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.8">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>la Vega. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>la Vega.</t-style>
           </t>
         </part>
       </p>
@@ -1252,7 +1252,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>which ships can anchor in 9 fathoms. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>which ships can anchor in 9 fathoms.</t-style>
           </t>
         </part>
       </p>
@@ -1269,7 +1269,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>post-town of New-Jei fey, Sussex co. 1 1 7 miles from Philadelphia. </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>post-town of New-Jei fey, Sussex co. 1 1 7 miles from Philadelphia.</t-style>
           </t>
         </part>
       </p>
@@ -1296,14 +1296,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> 7,907 are whites, </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> 7,907 are whites,</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p22">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p22.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and</t-style>
           </t>
         </part>
       </p>
