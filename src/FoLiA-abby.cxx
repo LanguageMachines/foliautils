@@ -547,7 +547,12 @@ bool process_par( folia::FoliaElement *root,
       content->append( new folia::Hyphbreak() );
     }
     else if ( !value.empty() ){
-      add_content( content, value );
+      if ( &it == &line_parts.back() && value.back() == ' ' ){
+	value.pop_back();
+      }
+      if ( !value.empty() ){
+	add_content( content, value );
+      }
     }
     if ( &it == &line_parts.back() ){
       // the remains
@@ -715,11 +720,9 @@ bool convert_abbyxml( const string& fileName,
   }
 
   doc.save( outName );
-  if ( verbose ){
 #pragma omp critical
-    {
-      cout << "created " << outName << endl;
-    }
+  {
+    cout << "\tconverted " << fileName << " into: " << outName << endl;
   }
   return true;
 }
@@ -874,11 +877,6 @@ int main( int argc, char *argv[] ){
 #pragma omp critical
       {
 	cerr << "failure on " << fileNames[fn] << endl;
-      }
-    else
-#pragma omp critical
-      {
-	cout << "\tconverted " << fileNames[fn] << endl;
       }
   }
   cout << "done" << endl;
