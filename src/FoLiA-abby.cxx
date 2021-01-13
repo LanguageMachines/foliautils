@@ -515,19 +515,22 @@ bool process_par( folia::FoliaElement *root,
   args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
   args.clear();
-  font_style current_style = REGULAR;
+  font_info current_font;
   folia::TextContent *container = 0;
   folia::FoliaElement *content = 0;
   for ( const auto& it : line_parts ){
     if ( !container ){
       // start with a fresh TextContent.
-      current_style = it.first._fst;
+      current_font = it.first;
       container = make_styled_container( it.first, content, root->doc() );
     }
     string value =  it.second;
-    if ( it.first._fst != current_style ){
+    if ( it.first._fst != current_font._fst
+	 //	 || it.first._fs != current_font._fs
+	 || it.first._id != current_font._id
+	 || it.first._ff != current_font._ff ){
       // a switch in font-syle. So end this Parts and start a new one
-      current_style = it.first._fst;
+      current_font = it.first;
       output_result( container, root );
       container = make_styled_container( it.first, content, root->doc() );
     }
