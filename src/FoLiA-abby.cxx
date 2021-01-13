@@ -526,7 +526,7 @@ bool process_par( folia::FoliaElement *root,
     }
     string value =  it.second;
     if ( it.first._fst != current_font._fst
-	 //	 || it.first._fs != current_font._fs
+	 || it.first._fs != current_font._fs
 	 || it.first._id != current_font._id
 	 || it.first._ff != current_font._ff ){
       // a switch in font-syle. So end this Parts and start a new one
