@@ -396,49 +396,49 @@ void append_styles( folia::TextMarkupStyle* markup,
 		    const font_style& fs ){
   if ( fs & BOLD ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "bold";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
   }
   if ( fs & ITALIC ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "italic";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
   }
   if ( fs & SMALLCAPS ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "smallcaps";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
   }
   if ( fs & SUPERSCRIPT ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "superscript";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
   }
   if ( fs & SUBSCRIPT ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "subscript";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
   }
   if ( fs & UNDERLINE ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "underline";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
   }
   if ( fs & STRIKEOUT ){
     folia::KWargs args;
-    args["subset"] = "font_property";
+    args["subset"] = "font_typeface";
     args["class"] = "strikeout";
     folia::Feature *f = new folia::Feature( args );
     markup->append(f);
@@ -452,12 +452,6 @@ folia::TextContent* make_styled_container( const font_info& info,
   folia::KWargs args;
   args["class"] = classname;
   folia::TextContent *tc = new folia::TextContent( args, doc );
-  // if ( style != REGULAR ){
-  //   args["class"] = toString( style );
-  // }
-  // else {
-  //   args.clear();
-  // }
   args.clear();
   folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
   tc->append( st );
@@ -465,10 +459,10 @@ folia::TextContent* make_styled_container( const font_info& info,
   if ( style != REGULAR ){
     append_styles( st, style );
   }
-  if ( !info._id.empty() ){
+  if ( !info._ff.empty() ){
     folia::KWargs args;
-    args["subset"] = "font_style";
-    args["class"] = info._id;
+    args["subset"] = "font_family";
+    args["class"] = info._ff;
     folia::Feature *f = new folia::Feature( args );
     st->append(f);
   }
@@ -476,6 +470,13 @@ folia::TextContent* make_styled_container( const font_info& info,
     folia::KWargs args;
     args["subset"] = "font_size";
     args["class"] = info._fs;
+    folia::Feature *f = new folia::Feature( args );
+    st->append(f);
+  }
+  if ( !info._id.empty() ){
+    folia::KWargs args;
+    args["subset"] = "font_style";
+    args["class"] = info._id;
     folia::Feature *f = new folia::Feature( args );
     st->append(f);
   }
