@@ -1,8 +1,7 @@
-.TH FoLiA-alto 1 "2014 sep 03"
+.TH FoLiA-alto 1 "2021 jan 19"
 
 .SH NAME
-FoLiA-alto - retrieve .alto files as specified in mpeg21.xml DIDL files,
-as provided by the KB in The Hague.
+FoLiA-alto - retrieve .alto files as specified in mpeg21.xml DIDL files.
 Then extract articles or books from them.
 
 .SH SYNOPSIS
@@ -46,6 +45,12 @@ kind
 Type of document ('krant' or 'boek' Default: 'krant')
 .RE
 
+.B --oldstrings
+.RS
+Fall back to old version that creates <str> nodes. The default is to create
+<w> nodes.
+.RE
+
 .B --compress
 type
 .RS
@@ -53,12 +58,16 @@ Create compressed files. type=b for .bz2 and type=g for .gz files.
 .RE
 
 .B -t
+or
+.B --threads
 number
 .RS
 Number of concurrent threads to be used by the programme
 .RE
 
 .B -V
+or
+.B --version
 .RS
 Show VERSION
 .RE
@@ -72,18 +81,18 @@ Place the output in 'outputdir'
 .B --setname
 set
 .RS
-When creating <str> nodes,
+When creating <str> or <w> nodes,
 .B FoLiA-alto
-will place them in the setname 'set. The default is
+will place them in the setname 'set'. The default is
 .B FoLiA-alto-set
 .RE
 
 .B --class
 name
 .RS
-When creating <str> nodes,
+When creating <t> nodes,
 .B FoLiA-alto
-will place them in the named classname. The default is
+will use this for the textclass name. The default is
 .B OCR
 .RE
 
@@ -91,6 +100,8 @@ will place them in the named classname. The default is
 possible
 
 .SH AUTHORS
-Ko van der Sloot: Timbl@uvt.nl
+Ko van der Sloot
 
-Martin Reynaert: reynaert@uvt.nl
+Martin Reynaert
+
+email: lamasoftare@science.ru.nl
