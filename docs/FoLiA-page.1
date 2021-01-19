@@ -1,4 +1,4 @@
-.TH FoLiA-page 1 "2014 sep 03"
+.TH FoLiA-page 1 "2021 jan 19"
 
 .SH NAME
 FoLiA-page - Convert PAGE files into FoLiA.
@@ -50,7 +50,20 @@ classname
 The FoLiA classname of the <str> nodes that are created. (default OCR).
 .RE
 
+.B --trusttokens
+.RS
+When the Page™ file contains Word items, assume these are correctly tokenized
+and transform them into FoLiA Word and Sentence nodes.
+.RE
+
+.B --norefs
+.RS
+Don't add reference nodes to the original document. (The default is to add).
+.RE
+
 .B -t
+or
+.B --threads
 number
 .RS
 Number of concurrent threads to be used by the program.
@@ -62,6 +75,8 @@ be more verbose.
 .RE
 
 .B -V
+or
+.B --version
 .RS
 Show VERSION
 .RE
@@ -75,6 +90,8 @@ Show some help
 possible
 
 .SH AUTHORS
-Ko van der Sloot: Timbl@uvt.nl
+Ko van der Sloot
 
-Martin Reynaert: reynaert@uvt.nl
+Martin Reynaert
+
+email: lamasoftware@science.ru.nl
