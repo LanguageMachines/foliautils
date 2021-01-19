@@ -537,7 +537,7 @@ void usage(){
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
-  cerr << "\t\t\t\t with 'c'=g create gzip files (.gz)" << endl;
+  cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t-v\t\t verbose output " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }
