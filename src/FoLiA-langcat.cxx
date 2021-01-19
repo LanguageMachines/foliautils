@@ -228,7 +228,7 @@ void usage(){
   cerr << "  add language information to a file or files in FoLiA XML format" << endl;
   cerr << "  The files must have extension '.folia.xml' or '.xml'" << endl;
   cerr << "  or their .gz or .bz2 variants" << endl;
-  cerr << "\t --config=<file>\t use LM config from 'file'" << endl;
+  cerr << "\t--config=<file>\t use LM config from 'file'" << endl;
   cerr << "\t--lang=<lan>\t use 'lan' for unindentified text. (default 'nld')" << endl;
   cerr << "\t--tags=t1,t2,..\t examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes)." << endl;
   cerr << "\t-s\t\t (obsolete) shorthand for --tags='str'" << endl;
