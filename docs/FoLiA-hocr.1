@@ -1,4 +1,4 @@
-.TH FoLiA-hocr 1 "2014 sep 03"
+.TH FoLiA-hocr 1 "2020 jan 19"
 
 .SH NAME
 FoLiA-hocr - Convert HOCR files into FoLiA.
@@ -42,7 +42,7 @@ The FoLiA setname of the <str> nodes that are created. (default FoLiA-hocr-set).
 .B --class
 classname
 .RS
-The FoLiA classname of the <str> nodes that are created. (default OCR).
+The FoLiA classname of the <t> nodes that are created. (default OCR).
 .RE
 
 .B -O
@@ -52,6 +52,8 @@ use 'prefix' as a directory name to store the hocr-ed files in.
 .RE
 
 .B -t
+or
+.B --threads
 number
 .RS
 Number of concurrent threads to be used by the program.
@@ -63,11 +65,15 @@ be more verbose.
 .RE
 
 .B -V
+or
+.B --version
 .RS
 Show VERSION
 .RE
 
 .B -h
+or
+.B --help
 .RS
 Show some help
 .RE
@@ -76,6 +82,8 @@ Show some help
 possible
 
 .SH AUTHORS
-Ko van der Sloot: Timbl@uvt.nl
+Ko van der Sloot
 
-Martin Reynaert: reynaert@uvt.nl
+Martin Reynaert
+
+email: lamasoftware@science.ru.nl
