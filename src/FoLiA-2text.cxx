@@ -47,15 +47,15 @@ void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t FoLiA-2text will produce a text from a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
+  cerr << "\t--class='name'\t use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--retaintok\t retain tokenization. Default is attempt to remove." << endl;
-  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t-t 'threads' or\n\t--threads='threads' Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
-  cerr << "\t-e\t expr: specify the expression all input files should match with." << endl;
-  cerr << "\t-o\t name of the output file(s) prefix." << endl;
+  cerr << "\t-e\t\t expr: specify the expression all input files should match with." << endl;
+  cerr << "\t-o\t\t name of the output file(s) prefix." << endl;
 }
 
 int main( int argc, char *argv[] ){
