@@ -1,4 +1,4 @@
-.TH FoLiA-langcat 1 "2014 apr 28"
+.TH FoLiA-langcat 1 "2020 jan 19"
 
 .SH NAME
 FoLiA-langcat - a FoLiA language detector
@@ -67,11 +67,33 @@ classname
 The FoLiA classname of the <str> nodes that are created. (default OCR).
 .RE
 
+.B --tags
+tag1,tag2,...,tagn
+.RS
+Process text in
+.B
+all
+nodes of type <tag1>...<tagn>.
+The default is to process text from <p> nodes.
+.RE
+
+.B -s
+.RS
+process FoLiA <str> nodes. OBSOLETE. Shorthand for --tags=s
 .RE
 
 .B -V
+or
+.B --version
 .RS
 Show VERSION
+.RE
+
+.B -h
+or
+.B --help
+.RS
+get help
 .RE
 
 .B -v
@@ -79,14 +101,12 @@ Show VERSION
 be more verbose
 .RE
 
-.B -s
-.RS
-process FoLiA <str> nodes. The default is to process <t> nodes in <p> nodes.
-
 .SH BUGS
 possibly
 
 .SH AUTHORS
-Ko van der Sloot Timbl@uvt.nl
+Ko van der Sloot
 
-Martin Reynaert reynaert@uvt.nl
+Martin Reynaert
+
+e\-mail: lamasoftware@science.ru.nl
