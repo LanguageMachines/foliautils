@@ -242,7 +242,7 @@ void usage(){
   cerr << "\t collect the ngram statistics of a directory containing" << endl;
   cerr << "\t files produced by FoLiA-stats." << endl;
   cerr << "\t--ngram\t Ngram count " << endl;
-  cerr << "\t--hapax also include HAPAXes (default is don't) " << endl;
+  cerr << "\t--hapax\t also include HAPAXes (default is don't) " << endl;
   cerr << "\t-O\t output directory." << endl;
   cerr << "\t-R\t recurse into the input directory." << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
