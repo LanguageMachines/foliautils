@@ -1313,15 +1313,15 @@ void solveDirectAlto( const string& full_file,
 
 void usage(){
   cerr << "Usage: alto [options] file/dir" << endl;
-  cerr << "\t--cache\t alto cache directory " << endl;
-  cerr << "\t--clear\t clear cached Alto files at start" << endl;
+  cerr << "\t--cache\t\t alto cache directory " << endl;
+  cerr << "\t--clear\t\t clear cached Alto files at start" << endl;
   cerr << "\t--direct\t read alto files directly. (so NO Didl)" << endl;
-  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t-t <threads> or\n\t--threads <threads> Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this messages " << endl;
-  cerr << "\t-O\t output directory " << endl;
-  cerr << "\t--type\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
+  cerr << "\t-O\t\t output directory " << endl;
+  cerr << "\t--type\t\t Type of document ('krant' or 'boek' Default: 'krant')" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--oldstrings\t Fall back to old version that creates <str> nodes" << endl;
@@ -1333,7 +1333,7 @@ void usage(){
   cerr << "\t--compress=<c>\t create zipped files." << endl;
   cerr << "\t\t\t 'c'=b creates bzip2 files (.bz2)" << endl;
   cerr << "\t\t\t 'c'=g creates gzip files (.gz)" << endl;
-  cerr << "\t-v\t verbose output " << endl;
+  cerr << "\t-v\t\t verbose output " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }
 
