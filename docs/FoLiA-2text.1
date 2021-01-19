@@ -1,4 +1,4 @@
-.TH FoLiA-2text 1 "2020 mar 25"
+.TH FoLiA-2text 1 "2021 jan 19"
 
 .SH NAME
 FoLiA-2text - extract text from FoLiA
@@ -33,9 +33,9 @@ use 'prefix' as a prefix for the output file(s)
 .RE
 
 .B -e
-extension
+expression
 .RS
-use 'extension' as a value to match at the end of all filenames to search in the
+use 'expression' as a value to match all filenames to for the search in the
 input DIR
 .RE
 
@@ -52,6 +52,8 @@ Keep the tokenization as stored in the FoLiA. Default is to remove it.
 .RE
 
 .B -t
+or
+.B --threads
 number
 .RS
 Number of concurrent threads to be used by the program.
