@@ -225,24 +225,24 @@ void procesFile( const TextCat& tc,
 
 void usage(){
   cerr << "Usage: [options] dir/filename " << endl;
-  cerr << "\t add language information to a file or files in FoLiA XML format" << endl;
-  cerr << "\t  The files must have extension '.folia.xml' or '.xml'" << endl;
-  cerr << "\t  or their .gz or .bz2 variants" << endl;
-  cerr << "--config=<file>\t use LM config from 'file'" << endl;
-  cerr << "--lang=<lan>\t use 'lan' for unindentified text. (default 'nld')" << endl;
-  cerr << "--tags=t1,t2,..\t examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes)." << endl;
-  cerr << "-s\t\t (obsolete) shorthand for --tags='str'" << endl;
-  cerr << "--all\t\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
-  cerr << "--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
+  cerr << "  add language information to a file or files in FoLiA XML format" << endl;
+  cerr << "  The files must have extension '.folia.xml' or '.xml'" << endl;
+  cerr << "  or their .gz or .bz2 variants" << endl;
+  cerr << "\t --config=<file>\t use LM config from 'file'" << endl;
+  cerr << "\t--lang=<lan>\t use 'lan' for unindentified text. (default 'nld')" << endl;
+  cerr << "\t--tags=t1,t2,..\t examine text in all <t1>, <t2> ...  nodes. (default is to use the <p> nodes)." << endl;
+  cerr << "\t-s\t\t (obsolete) shorthand for --tags='str'" << endl;
+  cerr << "\t--all\t\t assign ALL detected languages to the result. (default is to assign the most probable)." << endl;
+  cerr << "\t--class=<cls>\t use 'cls' as the FoLiA classname for searching text. "
        << endl;
   cerr << "\t\t\t (default 'OCR')" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
-  cerr << "-O path\t\t output path" << endl;
-  cerr << "-V or --version\t show version info." << endl;
-  cerr << "-v\t\t verbose" << endl;
-  cerr << "-h or --help\t this messages." << endl;
+  cerr << "\t-O path\t\t output path" << endl;
+  cerr << "\t-V or --version\t show version info." << endl;
+  cerr << "\t-v\t\t verbose" << endl;
+  cerr << "\t-h or --help\t this messages." << endl;
 }
 
 int main( int argc, char *argv[] ){
