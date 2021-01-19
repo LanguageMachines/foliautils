@@ -139,19 +139,19 @@ size_t strings_inventory( const Document *doc,
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t FoLiA-idf will produce IDF statistics for a directory of FoLiA files " << endl;
-  cerr << "\t--clip\t clipping factor. " << endl;
+  cerr << "\t--clip\t\t clipping factor. " << endl;
   cerr << "\t\t\t (entries with frequency <= this factor will be ignored). " << endl;
-  cerr << "\t--lower\t Lowercase all words" << endl;
-  cerr << "\t--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
+  cerr << "\t--lower\t\t lowercase all words" << endl;
+  cerr << "\t--class='name'\t use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--strings\t search for String nodes (default is Word)" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message " << endl;
   cerr << "\t-V or --version\t show version " << endl;
-  cerr << "\t-e\t expr: specify the expression all files should match with." << endl;
-  cerr << "\t-O\t output prefix" << endl;
-  cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
+  cerr << "\t-e\t\t expr: specify the expression all files should match with." << endl;
+  cerr << "\t-O\t\t output prefix" << endl;
+  cerr << "\t-R\t\t search the dirs recursively (when appropriate)." << endl;
   exit(EXIT_SUCCESS);
 }
 
