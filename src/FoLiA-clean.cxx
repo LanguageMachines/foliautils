@@ -308,18 +308,18 @@ void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t FoLiA-clean will produce a cleaned up version of a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t--textclass='name', retain only text nodes with this class. (default is to retain all)" << endl;
+  cerr << "\t--textclass='name' retain only text nodes with this class. (default is to retain all)" << endl;
   cerr << "\t--current\t Make the textclass 'current'. (default is to keep 'name')" << endl;
   cerr << "\t--fixtext\t Fixup problems in structured text. " << endl;
   cerr << "\t--cleanannoset='type\\\\setname'\t remove annotations with 'type' and 'setname'. NOTE: use a double '\\' !. The setname can be empty. This option can be repeated for different annotations." << endl;
-  cerr << "\t-e\t expr: specify the expression all input files should match with. (default .folia.xml)" << endl;
-  cerr << "\t--debug Set dubugging" << endl;
+  cerr << "\t-e expr\t\t specify the expression all input files should match with. (default .folia.xml)" << endl;
+  cerr << "\t--debug\t\t Set dubugging" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message" << endl;
-  cerr << "\t-V or --version \t show version " << endl;
-  cerr << "\t-O\t name of the output dir." << endl;
+  cerr << "\t-V or --version show version " << endl;
+  cerr << "\t-O\t\t name of the output dir." << endl;
 }
 
 int main( int argc, char *argv[] ){
