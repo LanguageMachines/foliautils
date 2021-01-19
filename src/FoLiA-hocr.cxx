@@ -269,11 +269,11 @@ void convert_hocr( const string& fileName,
 
 void usage(){
   cerr << "Usage: FoLiA-hocr [options] file/dir" << endl;
-  cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
+  cerr << "\t-t 'threads' or\n\t--threads='threads' Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this message " << endl;
-  cerr << "\t-O\t output directory " << endl;
+  cerr << "\t-O\t\t output directory " << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
   cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes. "
@@ -282,7 +282,7 @@ void usage(){
     "(default '" << classname << "')" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FH-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
-  cerr << "\t-v\t verbose output " << endl;
+  cerr << "\t-v\t\t verbose output " << endl;
   cerr << "\t-V or --version\t show version " << endl;
 }
 
