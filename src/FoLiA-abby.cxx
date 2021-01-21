@@ -56,6 +56,7 @@ string setname = "FoLiA-abby-set";
 string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
+bool add_breaks = false;
 
 enum font_style { REGULAR=0,
 		  ITALIC=1,
@@ -518,22 +519,24 @@ bool process_par( folia::FoliaElement *root,
   font_info current_font;
   folia::TextContent *container = 0;
   folia::FoliaElement *content = 0;
+  bool first = true;
   for ( const auto& it : line_parts ){
     if ( !container ){
       // start with a fresh TextContent.
       current_font = it.first;
       container = make_styled_container( it.first, content, root->doc() );
     }
-    string value =  it.second;
-    if ( it.first._fst != current_font._fst
-	 || it.first._fs != current_font._fs
-	 || it.first._id != current_font._id
-	 || it.first._ff != current_font._ff ){
+    else if ( it.first._fst != current_font._fst
+	      || it.first._fs != current_font._fs
+	      || it.first._id != current_font._id
+	      || it.first._ff != current_font._ff ){
       // a switch in font-syle. So end this Parts and start a new one
       current_font = it.first;
       output_result( container, root );
       container = make_styled_container( it.first, content, root->doc() );
+      first = true;
     }
+    string value = it.second;
     if ( value.size() >=2
 	 && value.compare( value.size()-2, 2, "- " ) == 0 ){
       // check if we have a hyphenation
@@ -545,14 +548,24 @@ bool process_par( folia::FoliaElement *root,
       root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
       args.clear();
       content->append( new folia::Hyphbreak() );
+      first = true;
+    }
+    else if ( add_breaks &&
+	      &it != &line_parts.back()
+	      && !first ){
+      // we are somewhere in the middle of a sequence. add a <br/>
+      args["processor"] = processor_id;
+      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+      args.clear();
+      content->append( new folia::Linebreak() );
+      add_content( content, value );
     }
     else if ( !value.empty() ){
       if ( &it == &line_parts.back() && value.back() == ' ' ){
 	value.pop_back();
       }
-      if ( !value.empty() ){
-	add_content( content, value );
-      }
+      add_content( content, value );
+      first = false;
     }
     if ( &it == &line_parts.back() ){
       // the remains
@@ -748,7 +761,8 @@ void usage(){
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
-			 "compress:,class:,setname:,help,version,prefix:,threads:" );
+			 "compress:,class:,setname:,help,version,prefix:,"
+			 "addbreaks,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -803,6 +817,7 @@ int main( int argc, char *argv[] ){
 #endif
   }
   verbose = opts.extract( 'v' );
+  add_breaks = opts.extract( "addbreaks" );
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
