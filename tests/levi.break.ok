@@ -18,9 +18,12 @@
       <hyphenation-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </hyphenation-annotation>
+      <linebreak-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </linebreak-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-21T15:09:51" command="FoLiA-abby -O out" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-21T15:00:07" command="FoLiA-abby -O out" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -38,7 +41,7 @@
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p2">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>uit te maken, tot wiens territorium deze behoorde. De Trans<t-hbr/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar domein was, zij kende zich het monopolie toe en verklaarde, dat zij het recht had, dit monopolie af te staan aan wien zij goed dacht. Doch hiermede waren de diggers niet tevreden ; zij meenden, dat op deze wijze van de zijde der Trans<t-hbr/>vaalsche regeering inbreuk op hunne rechten werd gemaakt. Hadden zij, zooals wij reeds weten, een comité gekozen, om hun allereerste belangen te regelen, thans werd eene soort van republiek te Klipdrift gevormd, om tegenover de Transvaalsche regeering op te treden. Deze laatste, die dit niet duldde, wendde zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen wij later hooren.</t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>uit te maken, tot wiens territorium deze behoorde. De Trans<t-hbr/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar <br/>domein was, zij kende zich het monopolie toe en verklaarde, <br/>dat zij het recht had, dit monopolie af te staan aan wien zij <br/>goed dacht. Doch hiermede waren de diggers niet tevreden ; zij meenden, dat op deze wijze van de zijde der Trans<t-hbr/>vaalsche regeering inbreuk op hunne rechten werd gemaakt. <br/>Hadden zij, zooals wij reeds weten, een comité gekozen, om <br/>hun allereerste belangen te regelen, thans werd eene soort van <br/>republiek te Klipdrift gevormd, om tegenover de Transvaalsche <br/>regeering op te treden. Deze laatste, die dit niet duldde, wendde <br/>zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen wij later hooren.</t-style>
           </t>
         </part>
       </p>
@@ -66,14 +69,14 @@
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p6">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.1">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>landbouw en veeteelt. Velen begrepen met het toenemen der vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat zij er een doel hadden gevonden, dat hen zou doen blijven. Weldra verdwenen dan ook vele tenten en maakten plaats voor vaste woningen van duurzamer constructie; voor het voornaamste bestanddeel dier woningen, de steenen, behoefde men niet ver te zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze er slechts wilde uithalen. Eene rij van woningen was weldra gebouwd, en de „Campbellstraat” was de eerste straat, die werd aangelegd.</t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>landbouw en veeteelt. Velen begrepen met het toenemen der <br/>vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat <br/>zij er een doel hadden gevonden, dat hen zou doen blijven. <br/>Weldra verdwenen dan ook vele tenten en maakten plaats voor <br/>vaste woningen van duurzamer constructie; voor het voornaamste <br/>bestanddeel dier woningen, de steenen, behoefde men niet ver te <br/>zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze <br/>er slechts wilde uithalen. Eene rij van woningen was weldra <br/>gebouwd, en de „Campbellstraat” was de eerste straat, die werd aangelegd.</t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p7">
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.1">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Het waren niet in hoofdzaak de diggers, die zich hier vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers, kruideniers een goed stuk brood zouden kunnen verdienen op de velden, hadden hier zaken opgericht, en het ging hun goed. Niet dat zij op buitengewoon hooge betaling hunner goederen en diensten konden rekenen ; de levensstandaard was niet hoog, voor omstreeks </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Het waren niet in hoofdzaak de diggers, die zich hier <br/>vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers, <br/>kruideniers een goed stuk brood zouden kunnen verdienen <br/>op de velden, hadden hier zaken opgericht, en het ging hun <br/>goed. Niet dat zij op buitengewoon hooge betaling hunner <br/>goederen en diensten konden rekenen ; de levensstandaard was <br/>niet hoog, voor omstreeks </t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.2">
