@@ -230,12 +230,6 @@ UnicodeString get_line( xmlNode *line ){
 	if ( verbose ){
 #pragma omp critical
 	  {
-	    cout << "\t\t\t\t\tintermediate text: '" << tmp << "'" << endl;
-	  }
-	}
-	if ( verbose ){
-#pragma omp critical
-	  {
 	    cout << "\t\t\t\t\tfinal text: '" << tmp << "'" << endl;
 	  }
 	}
@@ -363,7 +357,7 @@ void process_line( xmlNode *block,
     UnicodeString uresult = get_line( form );
     if ( uresult.endsWith( "¬" ) ){
       uresult.remove(uresult.length()-1);
-      uresult += "- ";
+      uresult += "-";
     }
     else if ( uresult.endsWith( "\n" ) ){
       uresult.remove(uresult.length()-1);
@@ -371,8 +365,11 @@ void process_line( xmlNode *block,
 	uresult += " ";
       }
     }
-    else if ( !uresult.endsWith( " " ) ){
+    if ( !uresult.endsWith( " " ) ){
       uresult += " ";
+    }
+    if ( uresult.endsWith( "- " ) ){
+      uresult.remove(uresult.length()-1);
     }
     string result = TiCC::UnicodeToUTF8( uresult );
     if ( !TiCC::trim( result ).empty() ){
@@ -537,11 +534,10 @@ bool process_par( folia::FoliaElement *root,
       first = true;
     }
     string value = it.second;
-    if ( value.size() >=2
-	 && value.compare( value.size()-2, 2, "- " ) == 0 ){
+    if ( !value.empty()
+	 && value.back() == '-' ){
       // check if we have a hyphenation
       // if so: add the value + <t-hbr/>
-      value.pop_back();
       value.pop_back();
       add_content( content, value );
       args["processor"] = processor_id;
