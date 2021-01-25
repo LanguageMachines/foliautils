@@ -593,6 +593,14 @@ bool process_page( folia::FoliaElement *root,
       folia::Feature *f = new folia::Feature( args );
       paragraph->append(f);
     }
+    string align = TiCC::getAttribute( par_node, "align" );
+    if ( !align.empty() ){
+      args.clear();
+      args["subset"] = "par_align";
+      args["class"] = align;
+      folia::Feature *f = new folia::Feature( args );
+      paragraph->append(f);
+    }
     if ( process_par( paragraph, par_node, font_styles ) ){
       root->append( paragraph );
       didit = true;
