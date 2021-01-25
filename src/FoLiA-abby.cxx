@@ -24,6 +24,7 @@
       lamasoftware (at ) science.ru.nl
 */
 
+#include <cassert>
 #include <string>
 #include <list>
 #include <map>
@@ -175,6 +176,21 @@ ostream& operator<<( ostream& os, const font_info& fi ){
   return os;
 }
 
+UnicodeString get_text( xmlNode *node ){
+  string result;
+  xmlNode *pnt = node->children;
+  while ( pnt ){
+    if ( pnt->type == XML_TEXT_NODE ){
+      xmlChar *tmp = xmlNodeGetContent( pnt );
+      if ( tmp ){
+	result = string( (char*)tmp );
+	xmlFree( tmp );
+      }
+      break;
+    }
+  }
+  return TiCC::UnicodeFromUTF8( result );
+}
 UnicodeString get_line( xmlNode *line ){
   UnicodeString result;
   list<xmlNode*> variants = TiCC::FindNodes( line, "*:wordRecVariants" );
@@ -204,33 +220,12 @@ UnicodeString get_line( xmlNode *line ){
 	    cout << "\t\t\t\tfound " << text.size() << " text nodes" << endl;
 	  }
 	}
-	UnicodeString bla = TiCC::UnicodeFromUTF8(TiCC::XmlContent(text.front()));
+	xmlNode *main = text.front();
+	UnicodeString tmp = get_text( main );
 	if ( verbose ){
 #pragma omp critical
 	  {
-	    cout << "\t\t\t\t\traw text: '" << bla << "'" << endl;
-	  }
-	}
-	UnicodeString tmp;
-	for ( int i=0; i < bla.length(); ++i ){
-	  UChar c = bla[i];
-	  switch ( c ){
-	  case ' ':
-	    // fallthrough
-	  case '\t':
-	    // fallthrough
-	  case '\n':
-	    // fallthrough
-	  case '\r':
-	    break;
-	  default:
-	    tmp += c;
-	  }
-	}
-	if ( verbose ){
-#pragma omp critical
-	  {
-	    cout << "\t\t\t\t\tfinal text: '" << tmp << "'" << endl;
+	    cout << "\t\t\t\t\traw text: '" << tmp << "'" << endl;
 	  }
 	}
 	result += tmp + " ";
