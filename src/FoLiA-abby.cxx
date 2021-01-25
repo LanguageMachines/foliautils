@@ -334,8 +334,14 @@ void update_font_info( font_info& line_font,
   }
 }
 
+struct line_info {
+  string _value;
+  font_info _fi;
+  xmlNode *_line;
+};
+
 void process_line( xmlNode *block,
-		   vector<pair<font_info,string>>& line_parts,
+		   vector<line_info>& line_parts,
 		   const font_info& default_font,
 		   const map<string,font_info>& font_styles ){
   list<xmlNode*> formats = TiCC::FindNodes( block, "*:formatting" );
@@ -345,7 +351,6 @@ void process_line( xmlNode *block,
       cout << "\t\t\tfound " << formats.size() << " formatting nodes" << endl;
     }
   }
-
   for ( const auto& form : formats ){
     font_info line_font = default_font;
     update_font_info( line_font, form, font_styles );
@@ -368,7 +373,11 @@ void process_line( xmlNode *block,
     }
     string result = TiCC::UnicodeToUTF8( uresult );
     if ( !TiCC::trim( result ).empty() ){
-      line_parts.push_back( make_pair( line_font, result ) );
+      line_info li;
+      li._value = result;
+      li._line = block;
+      li._fi = line_font;
+      line_parts.push_back( li );
     }
   }
 }
@@ -500,7 +509,8 @@ bool process_par( folia::FoliaElement *root,
       cout << "\t\tfound " << lines.size() << " lines" << endl;
     }
   }
-  vector<pair<font_info,string>> line_parts;
+  //  vector<pair<font_info,string>> line_parts;
+  vector<line_info> line_parts;
   for ( const auto& line : lines ){
     process_line( line, line_parts, par_font, font_styles );
   }
@@ -515,20 +525,21 @@ bool process_par( folia::FoliaElement *root,
   for ( const auto& it : line_parts ){
     if ( !container ){
       // start with a fresh TextContent.
-      current_font = it.first;
-      container = make_styled_container( it.first, content, root->doc() );
+      current_font = it._fi;
+      container = make_styled_container( it._fi, content, root->doc() );
     }
-    else if ( it.first._fst != current_font._fst
-	      || it.first._fs != current_font._fs
-	      || it.first._id != current_font._id
-	      || it.first._ff != current_font._ff ){
+    else if ( it._fi._fst != current_font._fst
+	      || it._fi._fs != current_font._fs
+	      || it._fi._id != current_font._id
+	      || it._fi._ff != current_font._ff ){
       // a switch in font-syle. So end this Parts and start a new one
-      current_font = it.first;
+      current_font = it._fi;
       output_result( container, root );
-      container = make_styled_container( it.first, content, root->doc() );
+      container = make_styled_container( it._fi, content, root->doc() );
       first = true;
     }
-    string value = it.second;
+    string value = it._value;
+    //    cerr << "VALUE= '" << value << "'" << endl;
     if ( !value.empty()
 	 && value.back() == '-' ){
       // check if we have a hyphenation
