@@ -791,6 +791,8 @@ void usage(){
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
+  cerr << "\t--addbreaks\t optionally add <br/> nodes for every newline in the input" << endl;
+  cerr << "\t--addmetrics\t optionally add Metric information about first and last characters in each <par> from the input" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
