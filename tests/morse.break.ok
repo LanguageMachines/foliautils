@@ -23,7 +23,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-25T12:07:12" command="FoLiA-abby --addbreaks -O outbreak" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T17:16:55" command="FoLiA-abby --addbreaks -O outbreak" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -1132,29 +1132,61 @@
           </t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.text.div3.p12"/>
-      <p xml:id="FA-morse_OCR_perletter.text.div3.p13">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p12">
         <feat class="Justified" subset="par_align"/>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.1">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p12.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and <br/>barks, <br/>as <br/>sassafras, <br/>Peruvian <br/>bark* <br/>&amp;c. Vanilla, Vicunna wool, sugar, and <br/>tobacco. In 1784, the total amount of <br/>the value of <br/>Spanish <br/>goods exported ttf <br/>America, was 195,000,000 reales de vel<t-hbr/>lón <br/>; foreign commodities, 238,000,000 <br/>r. d.- v. The imports from America <br/>were valued at 900,000,000 r. d. v. <br/>int <br/>gold, iilver, and precious stones ; and <br/>upwards of 300,000,000 in goods. In <br/>the Gazeta, <br/>de <br/>Madrid, i787,'(Ecb. 20) it Was stated, tliat the exports to Amer<t-hbr/>ica (the Indies) from the following </t-style>
           </t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.2">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p12.part.2">
           <t class="OCR">
             <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>n </t-style>
           </t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.3">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p12.part.3">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>harbours, Cadiz, Corunna, Malaga. Se<t-hbr/>ville, <br/>St. <br/>Lucar, Santander, <br/>Canarias, <t-hbr/>Alicante, Barcelona, Tortola, Gipon, <br/>St. <br/>Sebastian, amounted, in 1785, ter <br/>767,249,787 <br/>r.d. V. the duties paid<t-hbr/>en <br/>these exports amounted to 28,543,70* <br/>r. d. v. The imports, both in goods <br/>and money, from America and the Vf. <br/>India islands, amounted in the fame year .to    6^,071^67 r. d. v. and the</t-style>
           </t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.text.div3.p14">
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.1">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p13">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>duties to 65,472,195 r. d. v. The prof<t-hbr/>its of the merchants from the whole <br/>mei icati trade was valued at f,ooQ,ooo dollars.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p14">
+        <feat class="Justified" subset="par_align"/>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.1">
+          <t class="OCR">
+            <t-style><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>Spanish </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.2">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Creek, </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.3">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>is at the <br/>head </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.4">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>of </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.5">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>St* </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.6">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mary’s river in Florida.</t-style>
           </t>
         </part>
       </p>
@@ -1162,32 +1194,17 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.1">
           <t class="OCR">
-            <t-style><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>Spanish </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.2">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Creek, </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Main, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.3">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>is at the <br/>head </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.4">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>of </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.5">
-          <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>St* </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.6">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mary’s river in Florida.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> that part of the coast <br/>of America, which extends from the <br/>Mosquito shore,- along the* northern coast of Darien, Carthagena, and Ve<t-hbr/>nezuela,-to the Leeward Isles.</t-style>
           </t>
         </part>
       </p>
@@ -1195,17 +1212,17 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Spanish </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.2">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Main, </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>River, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> that part of the coast <br/>of America, which extends from the <br/>Mosquito shore,- along the* northern coast of Darien, Carthagena, and Ve<t-hbr/>nezuela,-to the Leeward Isles.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> a river and settle<t-hbr/>ment in Cape Breton Island, and the present seat of government.</t-style>
           </t>
         </part>
       </p>
@@ -1213,17 +1230,42 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Spanish </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish town, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.2">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>River, </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>ccSt. <br/>Jago de <br/>la Ve<t-hbr/>ga, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> a river and settle<t-hbr/>ment in Cape Breton Island, and the present seat of government.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in the count <br/>v <br/>of Middlesex, is die <br/>capital of the island of Jamaica. It is <br/>situated on the banks of the river <br/>Cobre, about 6 miles from the sea, and con<t-hbr/>tains about 5 or 600 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.4">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>houses, </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.5">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and about <br/>5,000 <br/>inhabitants, including free <br/>people <br/>of <br/>colour. <br/>It is the residence of the <br/>governor or commander in chics, <br/>who <br/>is accommodated with a magnificent <br/>palace. Here the <br/>legislature <br/>fits, and <br/>the court of chancery and the <br/>supreme <br/>judicial <br/>courts <br/>are held. <br/>See </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.6">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Jago de </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.7">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="10." subset="font_size"/>I </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.8">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>la Vega.</t-style>
           </t>
         </part>
       </p>
@@ -1231,42 +1273,32 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish town, </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>I </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>ccSt. <br/>Jago de <br/>la Ve<t-hbr/>ga, </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Sparhawk’s </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>in the count <br/>v <br/>of Middlesex, is die <br/>capital of the island of Jamaica. It is <br/>situated on the banks of the river <br/>Cobre, about 6 miles from the sea, and con<t-hbr/>tains about 5 or 600 </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Point </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.4">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>houses, </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>, on the northern <br/>shore <br/>of <br/>Pifcataqua <br/>river, abreast </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and about <br/>5,000 <br/>inhabitants, including free <br/>people <br/>of <br/>colour. <br/>It is the residence of the <br/>governor or commander in chics, <br/>who <br/>is accommodated with a magnificent <br/>palace. Here the <br/>legislature <br/>fits, and <br/>the court of chancery and the <br/>supreme <br/>judicial <br/>courts <br/>are held. <br/>See </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>of </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Jago de </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.7">
-          <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="10." subset="font_size"/>I </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.8">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>la Vega.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>which <br/>ships can anchor in 9 fathoms.</t-style>
           </t>
         </part>
       </p>
@@ -1274,32 +1306,17 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>I </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Sparta, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.2">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Sparhawk’s </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/> a </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.3">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Point </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.4">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>, on the northern <br/>shore <br/>of <br/>Pifcataqua <br/>river, abreast </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.5">
-          <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>of </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.6">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>which <br/>ships can anchor in 9 fathoms.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>post-town of New-Jei fey, <br/>Sussex <br/>co. <br/>1 <br/>1 <br/>7 miles from Philadelphia.</t-style>
           </t>
         </part>
       </p>
@@ -1307,7 +1324,7 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Sparta, </t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spartanburg <br/>H, </t-style>
           </t>
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.2">
@@ -1317,41 +1334,23 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>post-town of New-Jei fey, <br/>Sussex <br/>co. <br/>1 <br/>1 <br/>7 miles from Philadelphia.</t-style>
-          </t>
-        </part>
-      </p>
-      <p xml:id="FA-morse_OCR_perletter.text.div3.p21">
-        <feat class="Justified" subset="par_align"/>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.1">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spartanburg <br/>H, </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.2">
-          <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/> a </t-style>
-          </t>
-        </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.3">
-          <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>county ol Pinck<t-hbr/>ney <br/>district, formerly in that of Ninety<t-hbr/>Six, <br/>S. <br/>Carolina, <br/>containing 8,800 in<t-hbr/>habitants, <br/>of <br/>who </t-style>
           </t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.4">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.4">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>in </t-style>
           </t>
         </part>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.5">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.5">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> 7,907 are whites,</t-style>
           </t>
         </part>
       </p>
-      <p xml:id="FA-morse_OCR_perletter.text.div3.p22">
+      <p xml:id="FA-morse_OCR_perletter.text.div3.p21">
         <feat class="Right" subset="par_align"/>
-        <part xml:id="FA-morse_OCR_perletter.text.div3.p22.part.1">
+        <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and</t-style>
           </t>

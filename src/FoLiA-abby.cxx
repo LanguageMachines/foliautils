@@ -494,9 +494,9 @@ void add_content( folia::FoliaElement *content,
   }
 }
 
-bool process_par( folia::FoliaElement *root,
-		  xmlNode *par,
-		  const map<string,font_info>& font_styles ){
+bool process_paragraph( folia::Paragraph *root,
+			xmlNode *par,
+			const map<string,font_info>& font_styles ){
   font_info par_font;
   string par_style = TiCC::getAttribute( par, "style" );
   if ( !par_style.empty() ){
@@ -509,7 +509,9 @@ bool process_par( folia::FoliaElement *root,
       cout << "\t\tfound " << lines.size() << " lines" << endl;
     }
   }
-  //  vector<pair<font_info,string>> line_parts;
+  if ( lines.empty() ){
+    return false;
+  }
   vector<line_info> line_parts;
   for ( const auto& line : lines ){
     process_line( line, line_parts, par_font, font_styles );
@@ -612,7 +614,7 @@ bool process_page( folia::FoliaElement *root,
       folia::Feature *f = new folia::Feature( args );
       paragraph->append(f);
     }
-    if ( process_par( paragraph, par_node, font_styles ) ){
+    if ( process_paragraph( paragraph, par_node, font_styles ) ){
       root->append( paragraph );
       didit = true;
     }
