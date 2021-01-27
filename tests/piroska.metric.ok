@@ -23,7 +23,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T17:53:47" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T21:13:37" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -194,10 +194,10 @@
         <metric class="first_char_left" value="379"/>
         <metric class="first_char_right" value="409"/>
         <metric class="first_char_bottom" value="1197"/>
-        <metric class="last_char_top" value="1174"/>
-        <metric class="last_char_left" value="2493"/>
-        <metric class="last_char_right" value="2511"/>
-        <metric class="last_char_bottom" value="1180"/>
+        <metric class="last_char_top" value="2671"/>
+        <metric class="last_char_left" value="2670"/>
+        <metric class="last_char_right" value="2683"/>
+        <metric class="last_char_bottom" value="2711"/>
         <part xml:id="FA-piroska.text.div1.p7.part.1">
           <t class="OCR">
             <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Entwickelung der </t-style>
@@ -346,10 +346,10 @@
         <metric class="first_char_left" value="381"/>
         <metric class="first_char_right" value="399"/>
         <metric class="first_char_bottom" value="3092"/>
-        <metric class="last_char_top" value="3084"/>
-        <metric class="last_char_left" value="2501"/>
-        <metric class="last_char_right" value="2506"/>
-        <metric class="last_char_bottom" value="3096"/>
+        <metric class="last_char_top" value="3284"/>
+        <metric class="last_char_left" value="1232"/>
+        <metric class="last_char_right" value="1238"/>
+        <metric class="last_char_bottom" value="3291"/>
         <part xml:id="FA-piroska.text.div1.p9.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>1 </t-style>
@@ -513,10 +513,10 @@
         <metric class="first_char_left" value="378"/>
         <metric class="first_char_right" value="407"/>
         <metric class="first_char_bottom" value="3692"/>
-        <metric class="last_char_top" value="3660"/>
-        <metric class="last_char_left" value="2497"/>
-        <metric class="last_char_right" value="2511"/>
-        <metric class="last_char_bottom" value="3690"/>
+        <metric class="last_char_top" value="3885"/>
+        <metric class="last_char_left" value="1096"/>
+        <metric class="last_char_right" value="1102"/>
+        <metric class="last_char_bottom" value="3891"/>
         <part xml:id="FA-piroska.text.div1.p15.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>7 </t-style>

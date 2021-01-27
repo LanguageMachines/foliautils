@@ -23,7 +23,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T17:53:47" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T21:14:10" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -53,10 +53,10 @@
         <metric class="first_char_left" value="666"/>
         <metric class="first_char_right" value="689"/>
         <metric class="first_char_bottom" value="763"/>
-        <metric class="last_char_top" value="748"/>
-        <metric class="last_char_left" value="2040"/>
-        <metric class="last_char_right" value="2049"/>
-        <metric class="last_char_bottom" value="752"/>
+        <metric class="last_char_top" value="1512"/>
+        <metric class="last_char_left" value="1008"/>
+        <metric class="last_char_right" value="1012"/>
+        <metric class="last_char_bottom" value="1516"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.1">
           <t class="OCR">
             <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>uit te maken, tot wiens territorium deze behoorde. De Trans<t-hbr/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar domein was, zij kende zich het monopolie toe en verklaarde, dat zij het recht had, dit monopolie af te staan aan wien zij goed dacht. Doch hiermede waren de diggers niet tevreden ; zij meenden, dat op deze wijze van de zijde der Trans<t-hbr/>vaalsche regeering inbreuk op hunne rechten werd gemaakt. Hadden zij, zooals wij reeds weten, een comité gekozen, om hun allereerste belangen te regelen, thans werd eene soort van republiek te Klipdrift gevormd, om tegenover de Transvaalsche regeering op te treden. Deze laatste, die dit niet duldde, wendde zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen wij later hooren.</t-style>
@@ -116,10 +116,10 @@
         <metric class="first_char_left" value="661"/>
         <metric class="first_char_right" value="671"/>
         <metric class="first_char_bottom" value="1706"/>
-        <metric class="last_char_top" value="1680"/>
-        <metric class="last_char_left" value="2033"/>
-        <metric class="last_char_right" value="2051"/>
-        <metric class="last_char_bottom" value="1702"/>
+        <metric class="last_char_top" value="2262"/>
+        <metric class="last_char_left" value="870"/>
+        <metric class="last_char_right" value="877"/>
+        <metric class="last_char_bottom" value="2269"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.1">
           <t class="OCR">
             <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>landbouw en veeteelt. Velen begrepen met het toenemen der vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat zij er een doel hadden gevonden, dat hen zou doen blijven. Weldra verdwenen dan ook vele tenten en maakten plaats voor vaste woningen van duurzamer constructie; voor het voornaamste bestanddeel dier woningen, de steenen, behoefde men niet ver te zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze er slechts wilde uithalen. Eene rij van woningen was weldra gebouwd, en de „Campbellstraat” was de eerste straat, die werd aangelegd.</t-style>
@@ -132,10 +132,10 @@
         <metric class="first_char_left" value="771"/>
         <metric class="first_char_right" value="807"/>
         <metric class="first_char_bottom" value="2331"/>
-        <metric class="last_char_top" value="2304"/>
-        <metric class="last_char_left" value="2031"/>
-        <metric class="last_char_right" value="2048"/>
-        <metric class="last_char_bottom" value="2325"/>
+        <metric class="last_char_top" value="2763"/>
+        <metric class="last_char_left" value="1491"/>
+        <metric class="last_char_right" value="1497"/>
+        <metric class="last_char_bottom" value="2770"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.1">
           <t class="OCR">
             <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Het waren niet in hoofdzaak de diggers, die zich hier vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers, kruideniers een goed stuk brood zouden kunnen verdienen op de velden, hadden hier zaken opgericht, en het ging hun goed. Niet dat zij op buitengewoon hooge betaling hunner goederen en diensten konden rekenen ; de levensstandaard was niet hoog, voor omstreeks </t-style>
@@ -158,10 +158,10 @@
         <metric class="first_char_left" value="770"/>
         <metric class="first_char_right" value="806"/>
         <metric class="first_char_bottom" value="2833"/>
-        <metric class="last_char_top" value="2807"/>
-        <metric class="last_char_left" value="2025"/>
-        <metric class="last_char_right" value="2047"/>
-        <metric class="last_char_bottom" value="2830"/>
+        <metric class="last_char_top" value="2871"/>
+        <metric class="last_char_left" value="2027"/>
+        <metric class="last_char_right" value="2050"/>
+        <metric class="last_char_bottom" value="2895"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p8.part.1">
           <t class="OCR">
             <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Nu begon ook de diamanthandel te leven; kooplieden en makelaars kwamen zich vestigen, betrekkingen met Europa</t-style>

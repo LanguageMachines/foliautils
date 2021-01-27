@@ -23,7 +23,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T17:53:47" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T21:14:39" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -68,10 +68,10 @@
         <metric class="first_char_left" value="808"/>
         <metric class="first_char_right" value="840"/>
         <metric class="first_char_bottom" value="619"/>
-        <metric class="last_char_top" value="572"/>
-        <metric class="last_char_left" value="1885"/>
-        <metric class="last_char_right" value="1906"/>
-        <metric class="last_char_bottom" value="608"/>
+        <metric class="last_char_top" value="1376"/>
+        <metric class="last_char_left" value="1898"/>
+        <metric class="last_char_right" value="1914"/>
+        <metric class="last_char_bottom" value="1391"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p3.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>fide of the White Mountains. It falls into the Connecticut juft above the town of Haverhill, in Lower Coos, by a mouth 100 yards wide About two miles from its mouth it receives </t-style>
@@ -99,10 +99,10 @@
         <metric class="first_char_left" value="864"/>
         <metric class="first_char_right" value="899"/>
         <metric class="first_char_bottom" value="1465"/>
-        <metric class="last_char_top" value="1447"/>
-        <metric class="last_char_left" value="1897"/>
-        <metric class="last_char_right" value="1912"/>
-        <metric class="last_char_bottom" value="1471"/>
+        <metric class="last_char_top" value="1731"/>
+        <metric class="last_char_left" value="1901"/>
+        <metric class="last_char_right" value="1913"/>
+        <metric class="last_char_bottom" value="1746"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p4.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Am ota pe, </t-style>
@@ -125,10 +125,10 @@
         <metric class="first_char_left" value="864"/>
         <metric class="first_char_right" value="899"/>
         <metric class="first_char_bottom" value="1819"/>
-        <metric class="last_char_top" value="1767"/>
-        <metric class="last_char_left" value="1876"/>
-        <metric class="last_char_right" value="1911"/>
-        <metric class="last_char_bottom" value="1817"/>
+        <metric class="last_char_top" value="2159"/>
+        <metric class="last_char_left" value="1655"/>
+        <metric class="last_char_right" value="1669"/>
+        <metric class="last_char_bottom" value="2173"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Am palla, </t-style>
@@ -216,10 +216,10 @@
         <metric class="first_char_left" value="867"/>
         <metric class="first_char_right" value="903"/>
         <metric class="first_char_bottom" value="2243"/>
-        <metric class="last_char_top" value="2209"/>
-        <metric class="last_char_left" value="1885"/>
-        <metric class="last_char_right" value="1913"/>
-        <metric class="last_char_bottom" value="2244"/>
+        <metric class="last_char_top" value="2444"/>
+        <metric class="last_char_left" value="1317"/>
+        <metric class="last_char_right" value="1331"/>
+        <metric class="last_char_bottom" value="2457"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p6.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Ampares, </t-style>
@@ -272,10 +272,10 @@
         <metric class="first_char_left" value="872"/>
         <metric class="first_char_right" value="904"/>
         <metric class="first_char_bottom" value="2528"/>
-        <metric class="last_char_top" value="2494"/>
-        <metric class="last_char_left" value="1889"/>
-        <metric class="last_char_right" value="1916"/>
-        <metric class="last_char_bottom" value="2528"/>
+        <metric class="last_char_top" value="2869"/>
+        <metric class="last_char_left" value="1085"/>
+        <metric class="last_char_right" value="1099"/>
+        <metric class="last_char_bottom" value="2883"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p7.part.1">
           <t class="OCR">
             <t-style><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Amsterdam, New, </t-style>
@@ -293,10 +293,10 @@
         <metric class="first_char_left" value="873"/>
         <metric class="first_char_right" value="913"/>
         <metric class="first_char_bottom" value="2954"/>
-        <metric class="last_char_top" value="2918"/>
-        <metric class="last_char_left" value="1888"/>
-        <metric class="last_char_right" value="1916"/>
-        <metric class="last_char_bottom" value="2950"/>
+        <metric class="last_char_top" value="3153"/>
+        <metric class="last_char_left" value="911"/>
+        <metric class="last_char_right" value="924"/>
+        <metric class="last_char_bottom" value="3166"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p8.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Amsterdam, </t-style>
@@ -314,10 +314,10 @@
         <metric class="first_char_left" value="877"/>
         <metric class="first_char_right" value="917"/>
         <metric class="first_char_bottom" value="3236"/>
-        <metric class="last_char_top" value="3216"/>
-        <metric class="last_char_left" value="1902"/>
-        <metric class="last_char_right" value="1924"/>
-        <metric class="last_char_bottom" value="3226"/>
+        <metric class="last_char_top" value="4722"/>
+        <metric class="last_char_left" value="1382"/>
+        <metric class="last_char_right" value="1395"/>
+        <metric class="last_char_bottom" value="4736"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.1">
           <t class="OCR">
             <t-style><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Am </t-style>
@@ -365,10 +365,10 @@
         <metric class="first_char_left" value="2046"/>
         <metric class="first_char_right" value="2097"/>
         <metric class="first_char_bottom" value="609"/>
-        <metric class="last_char_top" value="570"/>
-        <metric class="last_char_left" value="3096"/>
-        <metric class="last_char_right" value="3123"/>
-        <metric class="last_char_bottom" value="611"/>
+        <metric class="last_char_top" value="666"/>
+        <metric class="last_char_left" value="2756"/>
+        <metric class="last_char_right" value="2771"/>
+        <metric class="last_char_bottom" value="679"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p11.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Anahuac, </t-style>
@@ -386,10 +386,10 @@
         <metric class="first_char_left" value="2048"/>
         <metric class="first_char_right" value="2097"/>
         <metric class="first_char_bottom" value="750"/>
-        <metric class="last_char_top" value="711"/>
-        <metric class="last_char_left" value="3103"/>
-        <metric class="last_char_right" value="3131"/>
-        <metric class="last_char_bottom" value="748"/>
+        <metric class="last_char_top" value="1234"/>
+        <metric class="last_char_left" value="2503"/>
+        <metric class="last_char_right" value="2520"/>
+        <metric class="last_char_bottom" value="1249"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p12.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Anastatia, St. </t-style>
@@ -427,10 +427,10 @@
         <metric class="first_char_left" value="2049"/>
         <metric class="first_char_right" value="2098"/>
         <metric class="first_char_bottom" value="1318"/>
-        <metric class="last_char_top" value="1264"/>
-        <metric class="last_char_left" value="3115"/>
-        <metric class="last_char_right" value="3145"/>
-        <metric class="last_char_bottom" value="1316"/>
+        <metric class="last_char_top" value="1659"/>
+        <metric class="last_char_left" value="3070"/>
+        <metric class="last_char_right" value="3085"/>
+        <metric class="last_char_bottom" value="1673"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Anclote </t-style>
@@ -458,10 +458,10 @@
         <metric class="first_char_left" value="2051"/>
         <metric class="first_char_right" value="2098"/>
         <metric class="first_char_bottom" value="1743"/>
-        <metric class="last_char_top" value="1711"/>
-        <metric class="last_char_left" value="3103"/>
-        <metric class="last_char_right" value="3135"/>
-        <metric class="last_char_bottom" value="1744"/>
+        <metric class="last_char_top" value="2016"/>
+        <metric class="last_char_left" value="2814"/>
+        <metric class="last_char_right" value="2830"/>
+        <metric class="last_char_bottom" value="2030"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p14.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Ancocus </t-style>
@@ -494,10 +494,10 @@
         <metric class="first_char_left" value="2050"/>
         <metric class="first_char_right" value="2099"/>
         <metric class="first_char_bottom" value="2099"/>
-        <metric class="last_char_top" value="2077"/>
-        <metric class="last_char_left" value="3114"/>
-        <metric class="last_char_right" value="3135"/>
-        <metric class="last_char_bottom" value="2089"/>
+        <metric class="last_char_top" value="2228"/>
+        <metric class="last_char_left" value="2178"/>
+        <metric class="last_char_right" value="2193"/>
+        <metric class="last_char_bottom" value="2241"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Anco, </t-style>
@@ -525,10 +525,10 @@
         <metric class="first_char_left" value="2070"/>
         <metric class="first_char_right" value="2117"/>
         <metric class="first_char_bottom" value="2314"/>
-        <metric class="last_char_top" value="2278"/>
-        <metric class="last_char_left" value="3102"/>
-        <metric class="last_char_right" value="3136"/>
-        <metric class="last_char_bottom" value="2313"/>
+        <metric class="last_char_top" value="2652"/>
+        <metric class="last_char_left" value="2690"/>
+        <metric class="last_char_right" value="2703"/>
+        <metric class="last_char_bottom" value="2665"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p16.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Andaguaylas, </t-style>
@@ -546,10 +546,10 @@
         <metric class="first_char_left" value="2055"/>
         <metric class="first_char_right" value="2105"/>
         <metric class="first_char_bottom" value="2737"/>
-        <metric class="last_char_top" value="2685"/>
-        <metric class="last_char_left" value="3118"/>
-        <metric class="last_char_right" value="3146"/>
-        <metric class="last_char_bottom" value="2736"/>
+        <metric class="last_char_top" value="2865"/>
+        <metric class="last_char_left" value="3061"/>
+        <metric class="last_char_right" value="3077"/>
+        <metric class="last_char_bottom" value="2879"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p17.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Andalusia, New, </t-style>
@@ -582,10 +582,10 @@
         <metric class="first_char_left" value="2055"/>
         <metric class="first_char_right" value="2106"/>
         <metric class="first_char_bottom" value="2953"/>
-        <metric class="last_char_top" value="2929"/>
-        <metric class="last_char_left" value="3119"/>
-        <metric class="last_char_right" value="3140"/>
-        <metric class="last_char_bottom" value="2940"/>
+        <metric class="last_char_top" value="3007"/>
+        <metric class="last_char_left" value="2090"/>
+        <metric class="last_char_right" value="2105"/>
+        <metric class="last_char_bottom" value="3021"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p18.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Andastes, </t-style>
@@ -603,10 +603,10 @@
         <metric class="first_char_left" value="2056"/>
         <metric class="first_char_right" value="2105"/>
         <metric class="first_char_bottom" value="3094"/>
-        <metric class="last_char_top" value="3058"/>
-        <metric class="last_char_left" value="3119"/>
-        <metric class="last_char_right" value="3141"/>
-        <metric class="last_char_bottom" value="3092"/>
+        <metric class="last_char_top" value="4688"/>
+        <metric class="last_char_left" value="3133"/>
+        <metric class="last_char_right" value="3157"/>
+        <metric class="last_char_bottom" value="4720"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Andes. </t-style>
@@ -707,10 +707,10 @@
         <metric class="first_char_left" value="797"/>
         <metric class="first_char_right" value="821"/>
         <metric class="first_char_bottom" value="579"/>
-        <metric class="last_char_top" value="528"/>
-        <metric class="last_char_left" value="1873"/>
-        <metric class="last_char_right" value="1896"/>
-        <metric class="last_char_bottom" value="562"/>
+        <metric class="last_char_top" value="1327"/>
+        <metric class="last_char_left" value="1358"/>
+        <metric class="last_char_right" value="1372"/>
+        <metric class="last_char_bottom" value="1340"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p2.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>pould the fruit come to maturity. This city has a church and fix very famous monasteries; but the dwelling houses make no great appearance. Here the women go out in the night to the shops, to buy such necessaries as they want for their families, it being contrary to the custom of this country for women of any character, to go abroad in the day<t-hbr/>time on such affairs. It is an open town ; and the few batteries it has, are kept ir, very indifferent order.</t-style>
@@ -723,10 +723,10 @@
         <metric class="first_char_left" value="855"/>
         <metric class="first_char_right" value="895"/>
         <metric class="first_char_bottom" value="1415"/>
-        <metric class="last_char_top" value="1379"/>
-        <metric class="last_char_left" value="1859"/>
-        <metric class="last_char_right" value="1888"/>
-        <metric class="last_char_bottom" value="1412"/>
+        <metric class="last_char_top" value="2108"/>
+        <metric class="last_char_left" value="1443"/>
+        <metric class="last_char_right" value="1455"/>
+        <metric class="last_char_bottom" value="2122"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Conch </t-style>
@@ -764,10 +764,10 @@
         <metric class="first_char_left" value="854"/>
         <metric class="first_char_right" value="891"/>
         <metric class="first_char_bottom" value="2191"/>
-        <metric class="last_char_top" value="2170"/>
-        <metric class="last_char_left" value="1861"/>
-        <metric class="last_char_right" value="1883"/>
-        <metric class="last_char_bottom" value="2182"/>
+        <metric class="last_char_top" value="3878"/>
+        <metric class="last_char_left" value="932"/>
+        <metric class="last_char_right" value="945"/>
+        <metric class="last_char_bottom" value="3893"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Concord, </t-style>
@@ -825,10 +825,10 @@
         <metric class="first_char_left" value="834"/>
         <metric class="first_char_right" value="870"/>
         <metric class="first_char_bottom" value="3962"/>
-        <metric class="last_char_top" value="3928"/>
-        <metric class="last_char_left" value="1855"/>
-        <metric class="last_char_right" value="1878"/>
-        <metric class="last_char_bottom" value="3962"/>
+        <metric class="last_char_top" value="4090"/>
+        <metric class="last_char_left" value="1200"/>
+        <metric class="last_char_right" value="1215"/>
+        <metric class="last_char_bottom" value="4105"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p5.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Concord, </t-style>
@@ -846,10 +846,10 @@
         <metric class="first_char_left" value="834"/>
         <metric class="first_char_right" value="870"/>
         <metric class="first_char_bottom" value="4177"/>
-        <metric class="last_char_top" value="4124"/>
-        <metric class="last_char_left" value="1854"/>
-        <metric class="last_char_right" value="1878"/>
-        <metric class="last_char_bottom" value="4175"/>
+        <metric class="last_char_top" value="4637"/>
+        <metric class="last_char_left" value="1855"/>
+        <metric class="last_char_right" value="1876"/>
+        <metric class="last_char_bottom" value="4674"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p6.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Concord, </t-style>
@@ -883,10 +883,10 @@
         <metric class="first_char_left" value="1971"/>
         <metric class="first_char_right" value="1987"/>
         <metric class="first_char_bottom" value="559"/>
-        <metric class="last_char_top" value="544"/>
-        <metric class="last_char_left" value="3109"/>
-        <metric class="last_char_right" value="3125"/>
-        <metric class="last_char_bottom" value="553"/>
+        <metric class="last_char_top" value="3170"/>
+        <metric class="last_char_left" value="2136"/>
+        <metric class="last_char_right" value="2149"/>
+        <metric class="last_char_bottom" value="3184"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>its present name to the peaceable man<t-hbr/>ner in which it was obtained from the natives. The first settlers, among whom were the Rev. Messrs» Buckley and Jones, having fettled the purchase, ob<t-hbr/>tained an act of incorporation, Sept. </t-style>
@@ -919,10 +919,10 @@
         <metric class="first_char_left" value="2019"/>
         <metric class="first_char_right" value="2060"/>
         <metric class="first_char_bottom" value="3255"/>
-        <metric class="last_char_top" value="3237"/>
-        <metric class="last_char_left" value="3092"/>
-        <metric class="last_char_right" value="3116"/>
-        <metric class="last_char_bottom" value="3248"/>
+        <metric class="last_char_top" value="4236"/>
+        <metric class="last_char_left" value="2657"/>
+        <metric class="last_char_right" value="2669"/>
+        <metric class="last_char_bottom" value="4250"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Concord, </t-style>
@@ -1070,10 +1070,10 @@
         <metric class="first_char_left" value="2022"/>
         <metric class="first_char_right" value="2063"/>
         <metric class="first_char_bottom" value="4319"/>
-        <metric class="last_char_top" value="4287"/>
-        <metric class="last_char_left" value="3080"/>
-        <metric class="last_char_right" value="3108"/>
-        <metric class="last_char_bottom" value="4323"/>
+        <metric class="last_char_top" value="4380"/>
+        <metric class="last_char_left" value="2432"/>
+        <metric class="last_char_right" value="2447"/>
+        <metric class="last_char_bottom" value="4392"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Concord, </t-style>
@@ -1101,10 +1101,10 @@
         <metric class="first_char_left" value="2021"/>
         <metric class="first_char_right" value="2062"/>
         <metric class="first_char_bottom" value="4462"/>
-        <metric class="last_char_top" value="4448"/>
-        <metric class="last_char_left" value="3093"/>
-        <metric class="last_char_right" value="3111"/>
-        <metric class="last_char_bottom" value="4476"/>
+        <metric class="last_char_top" value="4661"/>
+        <metric class="last_char_left" value="3095"/>
+        <metric class="last_char_right" value="3109"/>
+        <metric class="last_char_bottom" value="4672"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p11.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Concord, </t-style>
@@ -1175,10 +1175,10 @@
         <metric class="first_char_left" value="827"/>
         <metric class="first_char_right" value="857"/>
         <metric class="first_char_bottom" value="675"/>
-        <metric class="last_char_top" value="647"/>
-        <metric class="last_char_left" value="1949"/>
-        <metric class="last_char_right" value="1963"/>
-        <metric class="last_char_bottom" value="663"/>
+        <metric class="last_char_top" value="753"/>
+        <metric class="last_char_left" value="1781"/>
+        <metric class="last_char_right" value="1847"/>
+        <metric class="last_char_bottom" value="775"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p3.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>been discovered by navigators. 8. Lit. 59 </t-style>
@@ -1201,10 +1201,10 @@
         <metric class="first_char_left" value="890"/>
         <metric class="first_char_right" value="920"/>
         <metric class="first_char_bottom" value="813"/>
-        <metric class="last_char_top" value="781"/>
-        <metric class="last_char_left" value="1947"/>
-        <metric class="last_char_right" value="1967"/>
-        <metric class="last_char_bottom" value="792"/>
+        <metric class="last_char_top" value="1148"/>
+        <metric class="last_char_left" value="1259"/>
+        <metric class="last_char_right" value="1272"/>
+        <metric class="last_char_bottom" value="1161"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p4.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>South </t-style>
@@ -1232,10 +1232,10 @@
         <metric class="first_char_left" value="880"/>
         <metric class="first_char_right" value="911"/>
         <metric class="first_char_bottom" value="1234"/>
-        <metric class="last_char_top" value="1210"/>
-        <metric class="last_char_left" value="1954"/>
-        <metric class="last_char_right" value="1968"/>
-        <metric class="last_char_bottom" value="1238"/>
+        <metric class="last_char_top" value="1432"/>
+        <metric class="last_char_left" value="1279"/>
+        <metric class="last_char_right" value="1291"/>
+        <metric class="last_char_bottom" value="1445"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p5.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>South West </t-style>
@@ -1258,10 +1258,10 @@
         <metric class="first_char_left" value="876"/>
         <metric class="first_char_right" value="907"/>
         <metric class="first_char_bottom" value="1521"/>
-        <metric class="last_char_top" value="1499"/>
-        <metric class="last_char_left" value="1955"/>
-        <metric class="last_char_right" value="1967"/>
-        <metric class="last_char_bottom" value="1512"/>
+        <metric class="last_char_top" value="1859"/>
+        <metric class="last_char_left" value="1335"/>
+        <metric class="last_char_right" value="1346"/>
+        <metric class="last_char_bottom" value="1872"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p6.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>South </t-style>
@@ -1284,10 +1284,10 @@
         <metric class="first_char_left" value="866"/>
         <metric class="first_char_right" value="899"/>
         <metric class="first_char_bottom" value="1945"/>
-        <metric class="last_char_top" value="1918"/>
-        <metric class="last_char_left" value="1947"/>
-        <metric class="last_char_right" value="1967"/>
-        <metric class="last_char_bottom" value="1928"/>
+        <metric class="last_char_top" value="2285"/>
+        <metric class="last_char_left" value="959"/>
+        <metric class="last_char_right" value="974"/>
+        <metric class="last_char_bottom" value="2299"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p7.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>SouToux, an Indian village ii&gt; Lou<t-hbr/>isiana, on the west fide of Mtdifippi riv<t-hbr/>er, opposite to the Nine Mile Rapids, 4z miles below Wiefpincan river, and r8 above Riviere a la Roche. N. Jau 41 50.</t-style>
@@ -1300,10 +1300,10 @@
         <metric class="first_char_left" value="863"/>
         <metric class="first_char_right" value="896"/>
         <metric class="first_char_bottom" value="2370"/>
-        <metric class="last_char_top" value="2330"/>
-        <metric class="last_char_left" value="1941"/>
-        <metric class="last_char_right" value="1967"/>
-        <metric class="last_char_bottom" value="2366"/>
+        <metric class="last_char_top" value="2566"/>
+        <metric class="last_char_left" value="1954"/>
+        <metric class="last_char_right" value="1968"/>
+        <metric class="last_char_bottom" value="2580"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Sow </t-style>
@@ -1377,10 +1377,10 @@
         <metric class="first_char_left" value="856"/>
         <metric class="first_char_right" value="890"/>
         <metric class="first_char_bottom" value="2723"/>
-        <metric class="last_char_top" value="2667"/>
-        <metric class="last_char_left" value="1947"/>
-        <metric class="last_char_right" value="1978"/>
-        <metric class="last_char_bottom" value="2723"/>
+        <metric class="last_char_top" value="3279"/>
+        <metric class="last_char_left" value="1481"/>
+        <metric class="last_char_right" value="1491"/>
+        <metric class="last_char_bottom" value="3289"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p10.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spaniards’ </t-style>
@@ -1403,10 +1403,10 @@
         <metric class="first_char_left" value="863"/>
         <metric class="first_char_right" value="895"/>
         <metric class="first_char_bottom" value="3364"/>
-        <metric class="last_char_top" value="3341"/>
-        <metric class="last_char_left" value="1944"/>
-        <metric class="last_char_right" value="1965"/>
-        <metric class="last_char_bottom" value="3351"/>
+        <metric class="last_char_top" value="4822"/>
+        <metric class="last_char_left" value="1953"/>
+        <metric class="last_char_right" value="1976"/>
+        <metric class="last_char_bottom" value="4863"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish America </t-style>
@@ -1474,10 +1474,10 @@
         <metric class="first_char_left" value="2030"/>
         <metric class="first_char_right" value="2059"/>
         <metric class="first_char_bottom" value="660"/>
-        <metric class="last_char_top" value="644"/>
-        <metric class="last_char_left" value="3176"/>
-        <metric class="last_char_right" value="3202"/>
-        <metric class="last_char_bottom" value="682"/>
+        <metric class="last_char_top" value="2198"/>
+        <metric class="last_char_left" value="3172"/>
+        <metric class="last_char_right" value="3203"/>
+        <metric class="last_char_bottom" value="2233"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p12.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and barks, as sassafras, Peruvian bark* &amp;c. Vanilla, Vicunna wool, sugar, and tobacco. In 1784, the total amount of the value of Spanish goods exported ttf America, was 195,000,000 reales de vel<t-hbr/>lón ; foreign commodities, 238,000,000 r. d.- v. The imports from America were valued at 900,000,000 r. d. v. int gold, iilver, and precious stones ; and upwards of 300,000,000 in goods. In the Gazeta, de Madrid, i787,'(Ecb. 20) it Was stated, tliat the exports to Amer<t-hbr/>ica (the Indies) from the following </t-style>
@@ -1499,10 +1499,10 @@
         <metric class="first_char_left" value="2042"/>
         <metric class="first_char_right" value="2077"/>
         <metric class="first_char_bottom" value="2292"/>
-        <metric class="last_char_top" value="2282"/>
-        <metric class="last_char_left" value="3186"/>
-        <metric class="last_char_right" value="3206"/>
-        <metric class="last_char_bottom" value="2294"/>
+        <metric class="last_char_top" value="2495"/>
+        <metric class="last_char_left" value="2236"/>
+        <metric class="last_char_right" value="2252"/>
+        <metric class="last_char_bottom" value="2508"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>duties to 65,472,195 r. d. v. The prof<t-hbr/>its of the merchants from the whole mei icati trade was valued at f,ooQ,ooo dollars.</t-style>
@@ -1515,10 +1515,10 @@
         <metric class="first_char_left" value="2111"/>
         <metric class="first_char_right" value="2144"/>
         <metric class="first_char_bottom" value="2579"/>
-        <metric class="last_char_top" value="2566"/>
-        <metric class="last_char_left" value="3183"/>
-        <metric class="last_char_right" value="3208"/>
-        <metric class="last_char_bottom" value="2586"/>
+        <metric class="last_char_top" value="2638"/>
+        <metric class="last_char_left" value="2718"/>
+        <metric class="last_char_right" value="2732"/>
+        <metric class="last_char_bottom" value="2650"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.1">
           <t class="OCR">
             <t-style><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/>Spanish </t-style>
@@ -1556,10 +1556,10 @@
         <metric class="first_char_left" value="2112"/>
         <metric class="first_char_right" value="2142"/>
         <metric class="first_char_bottom" value="2720"/>
-        <metric class="last_char_top" value="2671"/>
-        <metric class="last_char_left" value="3157"/>
-        <metric class="last_char_right" value="3202"/>
-        <metric class="last_char_bottom" value="2728"/>
+        <metric class="last_char_top" value="2992"/>
+        <metric class="last_char_left" value="2906"/>
+        <metric class="last_char_right" value="2922"/>
+        <metric class="last_char_bottom" value="3008"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish </t-style>
@@ -1582,10 +1582,10 @@
         <metric class="first_char_left" value="2105"/>
         <metric class="first_char_right" value="2138"/>
         <metric class="first_char_bottom" value="3077"/>
-        <metric class="last_char_top" value="3059"/>
-        <metric class="last_char_left" value="3177"/>
-        <metric class="last_char_right" value="3197"/>
-        <metric class="last_char_bottom" value="3073"/>
+        <metric class="last_char_top" value="3206"/>
+        <metric class="last_char_left" value="2837"/>
+        <metric class="last_char_right" value="2856"/>
+        <metric class="last_char_bottom" value="3219"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Spanish </t-style>
@@ -1608,10 +1608,10 @@
         <metric class="first_char_left" value="2108"/>
         <metric class="first_char_right" value="2140"/>
         <metric class="first_char_bottom" value="3289"/>
-        <metric class="last_char_top" value="3272"/>
-        <metric class="last_char_left" value="3178"/>
-        <metric class="last_char_right" value="3200"/>
-        <metric class="last_char_bottom" value="3284"/>
+        <metric class="last_char_top" value="4203"/>
+        <metric class="last_char_left" value="2266"/>
+        <metric class="last_char_right" value="2281"/>
+        <metric class="last_char_bottom" value="4217"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spanish town, </t-style>
@@ -1659,10 +1659,10 @@
         <metric class="first_char_left" value="2004"/>
         <metric class="first_char_right" value="2011"/>
         <metric class="first_char_bottom" value="4282"/>
-        <metric class="last_char_top" value="4252"/>
-        <metric class="last_char_left" value="3177"/>
-        <metric class="last_char_right" value="3210"/>
-        <metric class="last_char_bottom" value="4285"/>
+        <metric class="last_char_top" value="4414"/>
+        <metric class="last_char_left" value="3125"/>
+        <metric class="last_char_right" value="3139"/>
+        <metric class="last_char_bottom" value="4426"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>I </t-style>
@@ -1700,10 +1700,10 @@
         <metric class="first_char_left" value="2122"/>
         <metric class="first_char_right" value="2154"/>
         <metric class="first_char_bottom" value="4501"/>
-        <metric class="last_char_top" value="4484"/>
+        <metric class="last_char_top" value="4560"/>
         <metric class="last_char_left" value="3195"/>
-        <metric class="last_char_right" value="3211"/>
-        <metric class="last_char_bottom" value="4513"/>
+        <metric class="last_char_right" value="3212"/>
+        <metric class="last_char_bottom" value="4570"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Sparta, </t-style>
@@ -1726,10 +1726,10 @@
         <metric class="first_char_left" value="2124"/>
         <metric class="first_char_right" value="2157"/>
         <metric class="first_char_bottom" value="4645"/>
-        <metric class="last_char_top" value="4620"/>
-        <metric class="last_char_left" value="3194"/>
-        <metric class="last_char_right" value="3217"/>
-        <metric class="last_char_bottom" value="4633"/>
+        <metric class="last_char_top" value="4837"/>
+        <metric class="last_char_left" value="3199"/>
+        <metric class="last_char_right" value="3216"/>
+        <metric class="last_char_bottom" value="4865"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.1">
           <t class="OCR">
             <t-style><feat class="bold" subset="font_typeface"/><feat class="smallcaps" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Spartanburg H, </t-style>

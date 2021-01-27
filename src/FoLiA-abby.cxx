@@ -528,12 +528,19 @@ bool process_paragraph( folia::Paragraph *root,
   }
 
   if ( add_metrics ){
+    // add the metrics for the first charParam of the first line
+    // and the last charParam of the last line
+    // First the charParams of the first line
     list<xmlNode *> chrs = TiCC::FindNodes( lines.front(), "*/*:charParams" );
+    // get the attributes of the first charParam
     map<string,string> atts = TiCC::getAttributes( chrs.front() );
     append_metric( root, "first_char_top", atts["t"] );
     append_metric( root, "first_char_left", atts["l"] );
     append_metric( root, "first_char_right", atts["r"] );
     append_metric( root, "first_char_bottom", atts["b"] );
+    // Then the charParams of the last line
+    chrs = TiCC::FindNodes( lines.back(), "*/*:charParams" );
+    // get the attributes of the last charParam
     atts = TiCC::getAttributes( chrs.back() );
     append_metric( root, "last_char_top", atts["t"] );
     append_metric( root, "last_char_left", atts["l"] );
