@@ -58,6 +58,7 @@ string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
 bool add_breaks = false;
+bool add_metrics = false;
 
 enum font_style { REGULAR=0,
 		  ITALIC=1,
@@ -494,6 +495,19 @@ void add_content( folia::FoliaElement *content,
   }
 }
 
+void append_metric( folia::Paragraph *root,
+		    const string& att,
+		    const string& val ){
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::METRIC, setname, args );
+  args.clear();
+  args["value"] = val;
+  args["class"] = att;
+  folia::Metric *metric = new folia::Metric( args, root->doc() );
+  root->append( metric );
+}
+
 bool process_paragraph( folia::Paragraph *root,
 			xmlNode *par,
 			const map<string,font_info>& font_styles ){
@@ -511,6 +525,20 @@ bool process_paragraph( folia::Paragraph *root,
   }
   if ( lines.empty() ){
     return false;
+  }
+
+  if ( add_metrics ){
+    list<xmlNode *> chrs = TiCC::FindNodes( lines.front(), "*/*:charParams" );
+    map<string,string> atts = TiCC::getAttributes( chrs.front() );
+    append_metric( root, "first_char_top", atts["t"] );
+    append_metric( root, "first_char_left", atts["l"] );
+    append_metric( root, "first_char_right", atts["r"] );
+    append_metric( root, "first_char_bottom", atts["b"] );
+    atts = TiCC::getAttributes( chrs.back() );
+    append_metric( root, "last_char_top", atts["t"] );
+    append_metric( root, "last_char_left", atts["l"] );
+    append_metric( root, "last_char_right", atts["r"] );
+    append_metric( root, "last_char_bottom", atts["b"] );
   }
   vector<line_info> line_parts;
   for ( const auto& line : lines ){
@@ -774,7 +802,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "addbreaks,threads:" );
+			 "addbreaks,addmetrics,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -830,6 +858,7 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   add_breaks = opts.extract( "addbreaks" );
+  add_metrics = opts.extract( "addmetrics" );
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
   opts.extract( "class", classname );
