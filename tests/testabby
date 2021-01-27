@@ -18,3 +18,9 @@ $my_bin/FoLiA-abby --addbreaks -O outbreak data/abby >> testabby.out 2>&1
 ./foliadiff.sh outbreak/FA-morse_OCR_perletter.folia.xml morse.break.ok  >> testabby.out 2>&1
 ./foliadiff.sh outbreak/FA-levi010geil01_01_Deel500.folia.xml levi.break.ok  >> testabby.out 2>&1
 ./foliadiff.sh outbreak/FA-piroska.abby.folia.xml piroska.break.ok  >> testabby.out 2>&1
+
+$my_bin/FoLiA-abby --addmetrics -O out/metric data/abby >> testabby.out 2>&1
+
+./foliadiff.sh out/metric/FA-morse_OCR_perletter.folia.xml morse.metric.ok  >> testabby.out 2>&1
+./foliadiff.sh out/metric/FA-levi010geil01_01_Deel500.folia.xml levi.metric.ok  >> testabby.out 2>&1
+./foliadiff.sh out/metric/FA-piroska.abby.folia.xml piroska.metric.ok  >> testabby.out 2>&1

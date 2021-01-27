@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-piroska" generator="libfolia-v2.8" version="2.4.2">
+  <metadata type="native">
+    <annotations>
+      <division-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </division-annotation>
+      <paragraph-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </paragraph-annotation>
+      <metric-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </metric-annotation>
+      <style-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </style-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <part-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </part-annotation>
+      <hyphenation-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hyphenation-annotation>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T17:53:47" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
+      </processor>
+    </provenance>
+    <meta id="abby_file">piroska.abby.xml</meta>
+    <foreign-data>
+      <paragraphStyles xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml">
+        <paragraphStyle id="{70C0E49A-EEFB-45E0-8119-02B965690BD0}" name="Body text|1" mainFontStyleId="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1284" fixedLineSpacing="0">
+          <fontStyle id="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" baseFont="1" ff="Times New Roman" fs="11." backgroundColor="4278190079"/>
+          <fontStyle id="{1E0209C7-8B11-46A1-8198-3921FA62603D}" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{5E549140-7BE0-4B62-824A-410404D7D00B}" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+          <fontStyle id="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" italic="1" ff="Times New Roman" fs="11." backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" name="Footnote|1" mainFontStyleId="{83B658BD-10BC-4CCE-B322-294F6F423445}" role="footnote" align="Left" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="960" lineSpacingRatio="1.0800000429153442" fixedLineSpacing="0">
+          <fontStyle id="{83B658BD-10BC-4CCE-B322-294F6F423445}" baseFont="1" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+          <fontStyle id="{41E2F122-1F1D-4C2C-AEB7-74C94A9FEAC3}" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{827F89BD-07E2-4687-A1C9-3B073016727E}" italic="1" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+          <fontStyle id="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" bold="1" ff="Arial" fs="8.5" backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{2C092230-2651-425A-ACE2-047B8277C192}" name="Body text|2" mainFontStyleId="{96A59073-7007-4008-A803-6C3663B19E8A}" role="text" align="Left" after="2900" startIndent="4050" leftIndent="0" rightIndent="0" lineSpacing="1670" lineSpacingRatio="0.97000002861022949" fixedLineSpacing="0">
+          <fontStyle id="{96A59073-7007-4008-A803-6C3663B19E8A}" baseFont="1" ff="Times New Roman" fs="15." backgroundColor="4278190079"/>
+          <fontStyle id="{32F58A59-F881-45F0-9F97-119F68B816CA}" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{EF179B17-CBAB-451F-95F9-D59D59B05037}" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{8196C26E-7010-43B2-9E10-63A3142A79C9}" name="Other|1" mainFontStyleId="{307674DC-676D-4083-84B2-77156A007C47}" role="other" align="Left" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1284" fixedLineSpacing="0">
+          <fontStyle id="{307674DC-676D-4083-84B2-77156A007C47}" baseFont="1" ff="Times New Roman" fs="11." backgroundColor="4278190079"/>
+          <fontStyle id="{8163B20A-5CB5-4784-9915-7B6DB3E8988F}" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" ff="Arial" fs="6." backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF}" name="Body text|3" mainFontStyleId="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+          <fontStyle id="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}" baseFont="1" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{90E58EAF-776D-4DFA-9B99-633E4F2C7386}" name="Other|2" mainFontStyleId="{1AC3F352-34E6-45D5-A316-FD595D940C79}" role="other" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+          <fontStyle id="{1AC3F352-34E6-45D5-A316-FD595D940C79}" baseFont="1" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{47896A60-785F-4B3C-BFBF-20E3181D07DF}" ff="Arial" fs="6." backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{3DC4F3A3-BE7C-4E04-BB8C-84B3DFABBDE4}" name="Body text|4" mainFontStyleId="{382FA1D5-F455-4ACB-A698-4A0BCA2116BA}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+          <fontStyle id="{382FA1D5-F455-4ACB-A698-4A0BCA2116BA}" baseFont="1" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{93E46740-8188-4810-B3AE-14172E908F87}" ff="Times New Roman" fs="15." backgroundColor="4278190079"/>
+          <fontStyle id="{CE014C8D-ABE0-455C-904B-4380C9B5C393}" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+          <fontStyle id="{220D7130-970D-4E1F-9DEA-135FFA06D800}" ff="Times New Roman" fs="11." backgroundColor="4278190079"/>
+          <fontStyle id="{2DF1C461-8C2A-47FB-BD21-E9792F9F2B17}" italic="1" ff="Times New Roman" fs="11." backgroundColor="4278190079"/>
+        </paragraphStyle>
+        <paragraphStyle id="{45F8BFC4-C230-477F-AD7B-DEAF97DB41CB}" name="Footnote|2" mainFontStyleId="{69B825BA-02CB-4E50-A109-BF0F1EA5AE2F}" role="footnote" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+          <fontStyle id="{69B825BA-02CB-4E50-A109-BF0F1EA5AE2F}" baseFont="1" ff="Times New Roman" fs="10." backgroundColor="4278190079"/>
+          <fontStyle id="{501F53F1-63A4-43FF-B3CA-8D8981CA45E8}" italic="1" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+          <fontStyle id="{BEDF5046-21F5-428B-80FF-00F64DFB3A0B}" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+          <fontStyle id="{48FE745F-0C76-4AA3-AEFF-9AB06DE5FB15}" bold="1" ff="Arial" fs="8.5" backgroundColor="4278190079"/>
+        </paragraphStyle>
+      </paragraphStyles>
+    </foreign-data>
+  </metadata>
+  <text xml:id="FA-piroska.text">
+    <div xml:id="FA-piroska.text.div1">
+      <p xml:id="FA-piroska.text.div1.p1">
+        <feat class="{8196C26E-7010-43B2-9E10-63A3142A79C9}" subset="par_style"/>
+        <feat class="Justified" subset="par_align"/>
+        <metric class="first_char_top" value="1344"/>
+        <metric class="first_char_left" value="315"/>
+        <metric class="first_char_right" value="335"/>
+        <metric class="first_char_bottom" value="1376"/>
+        <metric class="last_char_top" value="1344"/>
+        <metric class="last_char_left" value="315"/>
+        <metric class="last_char_right" value="335"/>
+        <metric class="last_char_bottom" value="1376"/>
+        <part xml:id="FA-piroska.text.div1.p1.part.1">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>5</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p2">
+        <feat class="{8196C26E-7010-43B2-9E10-63A3142A79C9}" subset="par_style"/>
+        <feat class="Justified" subset="par_align"/>
+        <metric class="first_char_top" value="1790"/>
+        <metric class="first_char_left" value="294"/>
+        <metric class="first_char_right" value="305"/>
+        <metric class="first_char_bottom" value="1819"/>
+        <metric class="last_char_top" value="1788"/>
+        <metric class="last_char_left" value="315"/>
+        <metric class="last_char_right" value="335"/>
+        <metric class="last_char_bottom" value="1820"/>
+        <part xml:id="FA-piroska.text.div1.p2.part.1">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>10</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p3">
+        <feat class="{8196C26E-7010-43B2-9E10-63A3142A79C9}" subset="par_style"/>
+        <feat class="Justified" subset="par_align"/>
+        <metric class="first_char_top" value="2234"/>
+        <metric class="first_char_left" value="293"/>
+        <metric class="first_char_right" value="304"/>
+        <metric class="first_char_bottom" value="2264"/>
+        <metric class="last_char_top" value="2233"/>
+        <metric class="last_char_left" value="314"/>
+        <metric class="last_char_right" value="334"/>
+        <metric class="last_char_bottom" value="2266"/>
+        <part xml:id="FA-piroska.text.div1.p3.part.1">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>15</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p4">
+        <feat class="{8196C26E-7010-43B2-9E10-63A3142A79C9}" subset="par_style"/>
+        <feat class="Justified" subset="par_align"/>
+        <metric class="first_char_top" value="2679"/>
+        <metric class="first_char_left" value="292"/>
+        <metric class="first_char_right" value="313"/>
+        <metric class="first_char_bottom" value="2710"/>
+        <metric class="last_char_top" value="2678"/>
+        <metric class="last_char_left" value="315"/>
+        <metric class="last_char_right" value="336"/>
+        <metric class="last_char_bottom" value="2710"/>
+        <part xml:id="FA-piroska.text.div1.p4.part.1">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>20</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p5">
+        <feat class="{2C092230-2651-425A-ACE2-047B8277C192}" subset="par_style"/>
+        <metric class="first_char_top" value="518"/>
+        <metric class="first_char_left" value="595"/>
+        <metric class="first_char_right" value="623"/>
+        <metric class="first_char_bottom" value="588"/>
+        <metric class="last_char_top" value="546"/>
+        <metric class="last_char_left" value="2667"/>
+        <metric class="last_char_right" value="2695"/>
+        <metric class="last_char_bottom" value="588"/>
+        <part xml:id="FA-piroska.text.div1.p5.part.1">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>IV. Die römische Landwirtschaft und die </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p5.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{EF179B17-CBAB-451F-95F9-D59D59B05037}" subset="font_style"/>A220</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p6">
+        <feat class="{2C092230-2651-425A-ACE2-047B8277C192}" subset="par_style"/>
+        <metric class="first_char_top" value="628"/>
+        <metric class="first_char_left" value="725"/>
+        <metric class="first_char_right" value="797"/>
+        <metric class="first_char_bottom" value="700"/>
+        <metric class="last_char_top" value="640"/>
+        <metric class="last_char_left" value="2145"/>
+        <metric class="last_char_right" value="2155"/>
+        <metric class="last_char_bottom" value="670"/>
+        <part xml:id="FA-piroska.text.div1.p6.part.1">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>Grundherrschaften der Kaiserzeit </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p6.part.2">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>* 1</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p7">
+        <feat class="{70C0E49A-EEFB-45E0-8119-02B965690BD0}" subset="par_style"/>
+        <feat class="Justified" subset="par_align"/>
+        <metric class="first_char_top" value="1160"/>
+        <metric class="first_char_left" value="379"/>
+        <metric class="first_char_right" value="409"/>
+        <metric class="first_char_bottom" value="1197"/>
+        <metric class="last_char_top" value="1174"/>
+        <metric class="last_char_left" value="2493"/>
+        <metric class="last_char_right" value="2511"/>
+        <metric class="last_char_bottom" value="1180"/>
+        <part xml:id="FA-piroska.text.div1.p7.part.1">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Entwickelung der </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.2">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Da in diesem Kapitel hauptsächlich eine Erschei<t-hbr/></t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.3">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Betnebsweise. </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.4">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>nung der Kaiserzeit behandelt werden soll, so ist der Rückblick, den wir auf die älteren Verhältnisse der römischen Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver<t-hbr/>sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den Terremare </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.5">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>2 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.6">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und der geistvollen Untersuchungen </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.7">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hehns </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.8">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.9">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.10">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hel<t-hbr/>bigs </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.11">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>4 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.12">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> eine allgemeine Entwickelungsgeschichte derselben von den ältesten Besiedlungen an zu geben. In historischer Zeit bietet die römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil<t-hbr/>dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele<t-hbr/>gentlich </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.13">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>5 6 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.14">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> behauptet worden ist, daß die Römer den Germanen die Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un<t-hbr/>verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die ältesten germanischen Verhältnisse in Frage kommen würde, keine Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist und mit dem Flurzwang untrennbar zusammenhängt. Die römischen Schriftsteller aber kennen nur das, was </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.15">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Thünen </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.16">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Q </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.17">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> „freie Wirtschaft“ nennen würde </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.18">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>1 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.19">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>). | Von Fruchtfolge sprechen sie überhaupt nur gele<t-hbr/></t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.20">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>A 221</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p8">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="2838"/>
+        <metric class="first_char_left" value="439"/>
+        <metric class="first_char_right" value="449"/>
+        <metric class="first_char_bottom" value="2864"/>
+        <metric class="last_char_top" value="2843"/>
+        <metric class="last_char_left" value="2668"/>
+        <metric class="last_char_right" value="2695"/>
+        <metric class="last_char_bottom" value="2885"/>
+        <part xml:id="FA-piroska.text.div1.p8.part.1">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{827F89BD-07E2-4687-A1C9-3B073016727E}" subset="font_style"/>’) Cato, </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> De r. r. </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.3">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>7 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.4">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> 148 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.5">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>8 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p8.part.6">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p9">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3050"/>
+        <metric class="first_char_left" value="381"/>
+        <metric class="first_char_right" value="399"/>
+        <metric class="first_char_bottom" value="3092"/>
+        <metric class="last_char_top" value="3084"/>
+        <metric class="last_char_left" value="2501"/>
+        <metric class="last_char_right" value="2506"/>
+        <metric class="last_char_bottom" value="3096"/>
+        <part xml:id="FA-piroska.text.div1.p9.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>1 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber, Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.3">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.4">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 14—18; dass. </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.5">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>2 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.6">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 80-84; dass. </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.7">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.8">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 165-168. In den folgenden Erläuterungen wird darauf nur ausnahmsweise Bezug genommen.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p10">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3316"/>
+        <metric class="first_char_left" value="379"/>
+        <metric class="first_char_right" value="406"/>
+        <metric class="first_char_bottom" value="3358"/>
+        <metric class="last_char_top" value="3351"/>
+        <metric class="last_char_left" value="905"/>
+        <metric class="last_char_right" value="911"/>
+        <metric class="last_char_bottom" value="3357"/>
+        <part xml:id="FA-piroska.text.div1.p10.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>2 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p10.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl.S. 142, Anm.5.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p11">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3383"/>
+        <metric class="first_char_left" value="379"/>
+        <metric class="first_char_right" value="406"/>
+        <metric class="first_char_bottom" value="3425"/>
+        <metric class="last_char_top" value="3416"/>
+        <metric class="last_char_left" value="1989"/>
+        <metric class="last_char_right" value="1994"/>
+        <metric class="last_char_bottom" value="3422"/>
+        <part xml:id="FA-piroska.text.div1.p11.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p11.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Hehn, Kulturpflanzen und Haustiere (vgl. Einleitung oben, S. 3f.).</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p12">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3450"/>
+        <metric class="first_char_left" value="379"/>
+        <metric class="first_char_right" value="406"/>
+        <metric class="first_char_bottom" value="3490"/>
+        <metric class="last_char_top" value="3484"/>
+        <metric class="last_char_left" value="1168"/>
+        <metric class="last_char_right" value="1173"/>
+        <metric class="last_char_bottom" value="3490"/>
+        <part xml:id="FA-piroska.text.div1.p12.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>4 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p12.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Helbig, Italiker in der Poebene.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p13">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3516"/>
+        <metric class="first_char_left" value="379"/>
+        <metric class="first_char_right" value="406"/>
+        <metric class="first_char_bottom" value="3559"/>
+        <metric class="last_char_top" value="3549"/>
+        <metric class="last_char_left" value="2131"/>
+        <metric class="last_char_right" value="2136"/>
+        <metric class="last_char_bottom" value="3556"/>
+        <part xml:id="FA-piroska.text.div1.p13.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>5 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p13.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Gemeint offenbar: Hanssen, Agrarhistorische Abhandlungen 1, S. 153.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p14">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <feat class="Justified" subset="par_align"/>
+        <metric class="first_char_top" value="3583"/>
+        <metric class="first_char_left" value="379"/>
+        <metric class="first_char_right" value="406"/>
+        <metric class="first_char_bottom" value="3626"/>
+        <metric class="last_char_top" value="3617"/>
+        <metric class="last_char_left" value="1412"/>
+        <metric class="last_char_right" value="1417"/>
+        <metric class="last_char_bottom" value="3624"/>
+        <part xml:id="FA-piroska.text.div1.p14.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>6 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p14.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl. v. Thünen, Isolierter Staat </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p14.part.3">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p14.part.4">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1, S. 3-5.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p15">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3650"/>
+        <metric class="first_char_left" value="378"/>
+        <metric class="first_char_right" value="407"/>
+        <metric class="first_char_bottom" value="3692"/>
+        <metric class="last_char_top" value="3660"/>
+        <metric class="last_char_left" value="2497"/>
+        <metric class="last_char_right" value="2511"/>
+        <metric class="last_char_bottom" value="3690"/>
+        <part xml:id="FA-piroska.text.div1.p15.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>7 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p15.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der früher üblichen Weise Catos Werk stets als r. r. (= De re rustica). Da der Titel jedoch nach heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen durchweg als ,de agric.“ zitiert.</t-style>
+          </t>
+        </part>
+      </p>
+      <p xml:id="FA-piroska.text.div1.p16">
+        <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
+        <metric class="first_char_top" value="3917"/>
+        <metric class="first_char_left" value="378"/>
+        <metric class="first_char_right" value="405"/>
+        <metric class="first_char_bottom" value="3960"/>
+        <metric class="last_char_top" value="3951"/>
+        <metric class="last_char_left" value="1476"/>
+        <metric class="last_char_right" value="1481"/>
+        <metric class="last_char_bottom" value="3958"/>
+        <part xml:id="FA-piroska.text.div1.p16.part.1">
+          <t class="OCR">
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>8 </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p16.part.2">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Die zitierte Stelle findet sich ebd., Kap. 149.</t-style>
+          </t>
+        </part>
+      </p>
+    </div>
+  </text>
+</FoLiA>
