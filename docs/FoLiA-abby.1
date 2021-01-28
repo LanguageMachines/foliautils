@@ -1,4 +1,4 @@
-.TH FoLiA-abby 1 "2020 mar 25"
+.TH FoLiA-abby 1 "2021 jan 28"
 
 .SH NAME
 FoLiA-abby - Convert ABBY files into FoLiA.
@@ -56,6 +56,19 @@ The FoLiA set of the <str> nodes that are created. (default FoLiA-abby-set).
 classname
 .RS
 The FoLiA classname of the <str> nodes that are created. (default OCR).
+.RE
+
+.B --addbreaks
+.RS
+Normally we make as much 'running' text as possible, concatenating lines into
+longer parts, when no change in style triggers a new part.
+With this option, we insert FoLiA <br/> nodes when newlines are encountered.
+.RE
+
+.B --addmetrics
+.RS
+add metric information to every part. Collected from the first and last
+characters in that part.
 .RE
 
 .B -t
