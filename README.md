@@ -64,7 +64,7 @@ To be able to succesfully build libfolia from source, you need the following dep
 - libexttextcat-dev OR libtextcat-dev (OS dependant)
 - A sane C++ build environment with autoconf, automake, autoconf-archive, make, gcc or clang, libtool, pkg-config
 
-To install ticcutils, libfolia ans ucto, first consult whether your
+To install ticcutils, libfolia and ucto, first consult whether your
 distribution's package manager has an up-to-date package.
 If not, for easy installation of libfolia and all dependencies, it is included
 as part of our software distribution LaMachine:
