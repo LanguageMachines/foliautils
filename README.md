@@ -73,7 +73,7 @@ https://proycon.github.io/LaMachine .
 To compile and install manually from source, provided you have all the
 dependencies installed:
 
- $ bash bootstrap.sh
- $ ./configure
- $ make
- $ make install
+ - $ bash bootstrap.sh
+ - $ ./configure
+ - $ make
+ - $ make install
