@@ -557,9 +557,8 @@ bool process_paragraph( folia::Paragraph *root,
     font_info current_font;
     folia::TextContent *container = 0;
     folia::FoliaElement *content = 0;
-    bool first = true;
+    bool no_break = false;
     for ( const auto& it : line_parts ){
-      bool no_break = false;
       if ( !container ){
 	// start with a fresh TextContent.
 	current_font = it._fi;
@@ -567,14 +566,13 @@ bool process_paragraph( folia::Paragraph *root,
       }
       else {
 	// end previous Parts and start a new one
-	if ( add_breaks
-	     && !first ){
+	if ( !no_break && add_breaks ){
 	  content->append( new folia::Linebreak() );
 	}
-	current_font = it._fi;
 	output_result( container, root );
+	current_font = it._fi;
 	container = make_styled_container( it._fi, content, root->doc() );
-	first = true;
+	no_break = false;
       }
       string value = it._value;
       //    cerr << "VALUE= '" << value << "'" << endl;
@@ -585,12 +583,10 @@ bool process_paragraph( folia::Paragraph *root,
 	value.pop_back();
 	add_content( content, value );
 	content->append( new folia::Hyphbreak() );
-	first = true;
 	no_break = true;
       }
       else if ( !value.empty() ){
 	add_content( content, value );
-	first = false;
       }
       if ( &it == &line_parts.back() ){
 	// the remains
