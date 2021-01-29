@@ -543,22 +543,18 @@ bool process_paragraph( folia::Paragraph *root,
     append_metric( root, "last_char_right", atts["r"] );
     append_metric( root, "last_char_bottom", atts["b"] );
   }
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
+  if ( add_breaks ){
+    root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+  }
+  root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
+  args.clear();
   vector<line_info> line_parts;
   for ( const auto& line : lines ){
     process_line( line, line_parts, par_font, font_styles );
   }
-  folia::KWargs args;
-  args["processor"] = processor_id;
-  root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
-  args.clear();
-  if ( add_breaks ){
-    args["processor"] = processor_id;
-    root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
-    args.clear();
-  }
-  args["processor"] = processor_id;
-  root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
-  args.clear();
   font_info current_font;
   folia::TextContent *container = 0;
   folia::FoliaElement *content = 0;
@@ -592,9 +588,6 @@ bool process_paragraph( folia::Paragraph *root,
       first = true;
     }
     else if ( !value.empty() ){
-      // if ( &it == &line_parts.back() && value.back() == ' ' ){
-      // 	value.pop_back();
-      // }
       add_content( content, value );
       first = false;
     }
