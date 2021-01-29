@@ -14,16 +14,16 @@
       <style-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </style-annotation>
+      <hyphenation-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hyphenation-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <part-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </part-annotation>
-      <hyphenation-annotation set="FoLiA-abby-set">
-        <annotator processor="FoLiA-abby.1"/>
-      </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T12:53:57" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T17:16:36" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -64,22 +64,22 @@
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.2">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.3">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>domein was, zij kende zich het monopolie toe en verklaarde, </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>domein was, zij kende zich het monopolie toe en verklaarde,</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.4">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>dat zij het recht had, dit monopolie af te staan aan wien zij </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>dat zij het recht had, dit monopolie af te staan aan wien zij</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.5">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goed dacht. Doch hiermede waren de diggers niet tevreden ; </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goed dacht. Doch hiermede waren de diggers niet tevreden ;</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.6">
@@ -89,32 +89,32 @@
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.7">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche regeering inbreuk op hunne rechten werd gemaakt. </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche regeering inbreuk op hunne rechten werd gemaakt.</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.8">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Hadden zij, zooals wij reeds weten, een comité gekozen, om </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Hadden zij, zooals wij reeds weten, een comité gekozen, om</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.9">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>hun allereerste belangen te regelen, thans werd eene soort van </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>hun allereerste belangen te regelen, thans werd eene soort van</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.10">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>republiek te Klipdrift gevormd, om tegenover de Transvaalsche </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>republiek te Klipdrift gevormd, om tegenover de Transvaalsche</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.11">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>regeering op te treden. Deze laatste, die dit niet duldde, wendde </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>regeering op te treden. Deze laatste, die dit niet duldde, wendde</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.12">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zich tot Engeland. Hoe de zaak ten slotte geregeld werd, zullen</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p2.part.13">
@@ -182,47 +182,47 @@
         <metric class="last_char_bottom" value="2269"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.1">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>landbouw en veeteelt. Velen begrepen met het toenemen der </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>landbouw en veeteelt. Velen begrepen met het toenemen der</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.2">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vondsten, dat zij hier niet tijdelijk zouden vertoeven, doch dat</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.3">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zij er een doel hadden gevonden, dat hen zou doen blijven. </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zij er een doel hadden gevonden, dat hen zou doen blijven.</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.4">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Weldra verdwenen dan ook vele tenten en maakten plaats voor </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Weldra verdwenen dan ook vele tenten en maakten plaats voor</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.5">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaste woningen van duurzamer constructie; voor het voornaamste </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaste woningen van duurzamer constructie; voor het voornaamste</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.6">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>bestanddeel dier woningen, de steenen, behoefde men niet ver te </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>bestanddeel dier woningen, de steenen, behoefde men niet ver te</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.7">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zoeken ; de nabijzijnde bergen leverden die aan ieder, die ze</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.8">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>er slechts wilde uithalen. Eene rij van woningen was weldra </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>er slechts wilde uithalen. Eene rij van woningen was weldra</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.9">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>gebouwd, en de „Campbellstraat” was de eerste straat, die werd </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>gebouwd, en de „Campbellstraat” was de eerste straat, die werd</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p6.part.10">
@@ -243,47 +243,47 @@
         <metric class="last_char_bottom" value="2770"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.1">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Het waren niet in hoofdzaak de diggers, die zich hier </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Het waren niet in hoofdzaak de diggers, die zich hier</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.2">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers, </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vestigden. Velen, die ingezien hadden, dat zij als bakkers, slagers,</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.3">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>kruideniers een goed stuk brood zouden kunnen verdienen </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>kruideniers een goed stuk brood zouden kunnen verdienen</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.4">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>op de velden, hadden hier zaken opgericht, en het ging hun </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>op de velden, hadden hier zaken opgericht, en het ging hun</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.5">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goed. Niet dat zij op buitengewoon hooge betaling hunner </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goed. Niet dat zij op buitengewoon hooge betaling hunner</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.6">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goederen en diensten konden rekenen ; de levensstandaard was </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goederen en diensten konden rekenen ; de levensstandaard was</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.7">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>niet hoog, voor omstreeks </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>niet hoog, voor omstreeks</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.8">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Liberation Serif" subset="font_family"/><feat class="15" subset="font_size"/>f </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Liberation Serif" subset="font_family"/><feat class="15" subset="font_size"/>f</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.9">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>1.50 (frs. 3) per dag, per persoon </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>1.50 (frs. 3) per dag, per persoon</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p7.part.10">
@@ -304,7 +304,7 @@
         <metric class="last_char_bottom" value="2895"/>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p8.part.1">
           <t class="OCR">
-            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Nu begon ook de diamanthandel te leven; kooplieden </t-style>
+            <t-style><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Nu begon ook de diamanthandel te leven; kooplieden</t-style>
           </t>
         </part>
         <part xml:id="FA-levi010geil01_01_Deel500.text.div1.p8.part.2">

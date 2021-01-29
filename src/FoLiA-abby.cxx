@@ -230,8 +230,12 @@ UnicodeString get_line( xmlNode *line ){
 	    cout << "\t\t\t\t\traw text: '" << tmp << "'" << endl;
 	  }
 	}
-	result += tmp + " ";
+	result += tmp + " "; // separate by spaces
       }
+    }
+    if ( !result.isEmpty() ){
+      // remove last space of the line
+      result.remove(result.length()-1);
     }
   }
   else {
@@ -547,6 +551,14 @@ bool process_paragraph( folia::Paragraph *root,
   args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
   args.clear();
+  if ( add_breaks ){
+    args["processor"] = processor_id;
+    root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+    args.clear();
+  }
+  args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
+  args.clear();
   font_info current_font;
   folia::TextContent *container = 0;
   folia::FoliaElement *content = 0;
@@ -561,9 +573,6 @@ bool process_paragraph( folia::Paragraph *root,
       // end previous Parts and start a new one
       if ( add_breaks
 	   && !first ){
-	args["processor"] = processor_id;
-	root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
-	args.clear();
 	content->append( new folia::Linebreak() );
       }
       current_font = it._fi;
@@ -579,16 +588,13 @@ bool process_paragraph( folia::Paragraph *root,
       // if so: add the value + <t-hbr/>
       value.pop_back();
       add_content( content, value );
-      args["processor"] = processor_id;
-      root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
-      args.clear();
       content->append( new folia::Hyphbreak() );
       first = true;
     }
     else if ( !value.empty() ){
-      if ( &it == &line_parts.back() && value.back() == ' ' ){
-	value.pop_back();
-      }
+      // if ( &it == &line_parts.back() && value.back() == ' ' ){
+      // 	value.pop_back();
+      // }
       add_content( content, value );
       first = false;
     }
