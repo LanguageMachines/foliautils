@@ -11,19 +11,19 @@
       <style-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </style-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <part-annotation set="FoLiA-abby-set">
-        <annotator processor="FoLiA-abby.1"/>
-      </part-annotation>
       <linebreak-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </linebreak-annotation>
       <hyphenation-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </hyphenation-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <part-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </part-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T14:24:52" command="FoLiA-abby --addbreaks -O outbreak" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T17:41:03" command="FoLiA-abby --addbreaks -O outbreak" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -82,7 +82,7 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-piroska.text.div1.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>5</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>5<br/></t-style>
           </t>
         </part>
       </p>
@@ -91,7 +91,7 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-piroska.text.div1.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>10</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>10<br/></t-style>
           </t>
         </part>
       </p>
@@ -100,7 +100,7 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-piroska.text.div1.p3.part.1">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>15</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>15<br/></t-style>
           </t>
         </part>
       </p>
@@ -109,7 +109,7 @@
         <feat class="Justified" subset="par_align"/>
         <part xml:id="FA-piroska.text.div1.p4.part.1">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>20</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="6." subset="font_size"/><feat class="{72CFDA41-3865-4EB2-A00D-0565CA4F2BD7}" subset="font_style"/>20<br/></t-style>
           </t>
         </part>
       </p>
@@ -122,7 +122,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p5.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{EF179B17-CBAB-451F-95F9-D59D59B05037}" subset="font_style"/>A220</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{EF179B17-CBAB-451F-95F9-D59D59B05037}" subset="font_style"/>A220<br/></t-style>
           </t>
         </part>
       </p>
@@ -135,7 +135,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p6.part.2">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>* 1</t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>* 1<br/></t-style>
           </t>
         </part>
       </p>
@@ -319,7 +319,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.36">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>A 221</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>A 221<br/></t-style>
           </t>
         </part>
       </p>
@@ -352,7 +352,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.6">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220<br/></t-style>
           </t>
         </part>
       </p>
@@ -410,7 +410,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.11">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>ausnahmsweise Bezug genommen.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>ausnahmsweise Bezug genommen.<br/></t-style>
           </t>
         </part>
       </p>
@@ -423,7 +423,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p10.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl.S. 142, Anm.5.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl.S. 142, Anm.5.<br/></t-style>
           </t>
         </part>
       </p>
@@ -436,7 +436,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p11.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Hehn, Kulturpflanzen und Haustiere (vgl. Einleitung oben, S. 3f.).</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Hehn, Kulturpflanzen und Haustiere (vgl. Einleitung oben, S. 3f.).<br/></t-style>
           </t>
         </part>
       </p>
@@ -449,7 +449,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p12.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Helbig, Italiker in der Poebene.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Helbig, Italiker in der Poebene.<br/></t-style>
           </t>
         </part>
       </p>
@@ -462,7 +462,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p13.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Gemeint offenbar: Hanssen, Agrarhistorische Abhandlungen 1, S. 153.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Gemeint offenbar: Hanssen, Agrarhistorische Abhandlungen 1, S. 153.<br/></t-style>
           </t>
         </part>
       </p>
@@ -486,7 +486,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.4">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1, S. 3-5.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1, S. 3-5.<br/></t-style>
           </t>
         </part>
       </p>
@@ -514,7 +514,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p15.part.5">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>durchweg als ,de agric.“ zitiert.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>durchweg als ,de agric.“ zitiert.<br/></t-style>
           </t>
         </part>
       </p>
@@ -527,7 +527,7 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p16.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Die zitierte Stelle findet sich ebd., Kap. 149.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Die zitierte Stelle findet sich ebd., Kap. 149.<br/></t-style>
           </t>
         </part>
       </p>

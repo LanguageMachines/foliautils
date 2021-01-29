@@ -551,49 +551,54 @@ bool process_paragraph( folia::Paragraph *root,
   }
   root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
   args.clear();
-  vector<line_info> line_parts;
   for ( const auto& line : lines ){
+    vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
-  }
-  font_info current_font;
-  folia::TextContent *container = 0;
-  folia::FoliaElement *content = 0;
-  bool first = true;
-  for ( const auto& it : line_parts ){
-    if ( !container ){
-      // start with a fresh TextContent.
-      current_font = it._fi;
-      container = make_styled_container( it._fi, content, root->doc() );
-    }
-    else {
-      // end previous Parts and start a new one
-      if ( add_breaks
-	   && !first ){
-	content->append( new folia::Linebreak() );
+    font_info current_font;
+    folia::TextContent *container = 0;
+    folia::FoliaElement *content = 0;
+    bool first = true;
+    for ( const auto& it : line_parts ){
+      bool no_break = false;
+      if ( !container ){
+	// start with a fresh TextContent.
+	current_font = it._fi;
+	container = make_styled_container( it._fi, content, root->doc() );
       }
-      current_font = it._fi;
-      output_result( container, root );
-      container = make_styled_container( it._fi, content, root->doc() );
-      first = true;
-    }
-    string value = it._value;
-    //    cerr << "VALUE= '" << value << "'" << endl;
-    if ( !value.empty()
-	 && value.back() == '-' ){
-      // check if we have a hyphenation
-      // if so: add the value + <t-hbr/>
-      value.pop_back();
-      add_content( content, value );
-      content->append( new folia::Hyphbreak() );
-      first = true;
-    }
-    else if ( !value.empty() ){
-      add_content( content, value );
-      first = false;
-    }
-    if ( &it == &line_parts.back() ){
-      // the remains
-      output_result( container, root );
+      else {
+	// end previous Parts and start a new one
+	if ( add_breaks
+	     && !first ){
+	  content->append( new folia::Linebreak() );
+	}
+	current_font = it._fi;
+	output_result( container, root );
+	container = make_styled_container( it._fi, content, root->doc() );
+	first = true;
+      }
+      string value = it._value;
+      //    cerr << "VALUE= '" << value << "'" << endl;
+      if ( !value.empty()
+	   && value.back() == '-' ){
+	// check if we have a hyphenation
+	// if so: add the value + <t-hbr/>
+	value.pop_back();
+	add_content( content, value );
+	content->append( new folia::Hyphbreak() );
+	first = true;
+	no_break = true;
+      }
+      else if ( !value.empty() ){
+	add_content( content, value );
+	first = false;
+      }
+      if ( &it == &line_parts.back() ){
+	// the remains
+	if ( !no_break && add_breaks ){
+	  content->append( new folia::Linebreak() );
+	}
+	output_result( container, root );
+      }
     }
   }
   return true;

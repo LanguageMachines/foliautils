@@ -11,19 +11,19 @@
       <style-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </style-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <part-annotation set="FoLiA-abby-set">
-        <annotator processor="FoLiA-abby.1"/>
-      </part-annotation>
       <linebreak-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </linebreak-annotation>
       <hyphenation-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </hyphenation-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <part-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </part-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T14:24:16" command="FoLiA-abby --addbreaks -O outbreak" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T17:40:06" command="FoLiA-abby --addbreaks -O outbreak" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -35,14 +35,14 @@
         <feat class="Right" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>AMU</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>AMU<br/></t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>AND</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>AND<br/></t-style>
           </t>
         </part>
       </p>
@@ -120,7 +120,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p3.part.15">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>ameter, but its violence soon subsides.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>ameter, but its violence soon subsides.<br/></t-style>
           </t>
         </part>
       </p>
@@ -173,7 +173,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p4.part.10">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>4.15.43.8.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>4.15.43.8.<br/></t-style>
           </t>
         </part>
       </p>
@@ -266,7 +266,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p5.part.18">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>See.</t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>See.<br/></t-style>
           </t>
         </part>
       </p>
@@ -319,7 +319,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p6.part.10">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>cattle.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>cattle.<br/></t-style>
           </t>
         </part>
       </p>
@@ -367,7 +367,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p7.part.9">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>from them.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>from them.<br/></t-style>
           </t>
         </part>
       </p>
@@ -405,7 +405,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p8.part.7">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>tors.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>tors.<br/></t-style>
           </t>
         </part>
       </p>
@@ -583,14 +583,14 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p9.part.35">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>42.59.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>42.59.<br/></t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div1.p10">
         <part xml:id="FA-morse_OCR_perletter.text.div1.p10.part.1">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="7." subset="font_size"/>»</t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="7." subset="font_size"/>»<br/></t-style>
           </t>
         </part>
       </p>
@@ -608,7 +608,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p11.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>of New-Spain, or Mexico.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>of New-Spain, or Mexico.<br/></t-style>
           </t>
         </part>
       </p>
@@ -706,7 +706,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p12.part.19">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>stone for building.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>stone for building.<br/></t-style>
           </t>
         </part>
       </p>
@@ -759,7 +759,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p13.part.10">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>from the small island of Gaudaloupe.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>from the small island of Gaudaloupe.<br/></t-style>
           </t>
         </part>
       </p>
@@ -812,7 +812,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p14.part.10">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>lumber are exported from it.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>lumber are exported from it.<br/></t-style>
           </t>
         </part>
       </p>
@@ -845,7 +845,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p15.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>manga.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>manga.<br/></t-style>
           </t>
         </part>
       </p>
@@ -893,7 +893,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p16.part.9">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and fruits.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and fruits.<br/></t-style>
           </t>
         </part>
       </p>
@@ -936,7 +936,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p17.part.8">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>lantic, opposite the Leeward Islands.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>lantic, opposite the Leeward Islands.<br/></t-style>
           </t>
         </part>
       </p>
@@ -954,7 +954,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p18.part.3">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>ada.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>ada.<br/></t-style>
           </t>
         </part>
       </p>
@@ -1182,7 +1182,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div1.p19.part.44">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>two ridges as they run, the one higher</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>two ridges as they run, the one higher<br/></t-style>
           </t>
         </part>
       </p>
@@ -1192,7 +1192,7 @@
         <feat class="Center" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON<br/></t-style>
           </t>
         </part>
       </p>
@@ -1265,7 +1265,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p2.part.14">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>very indifferent order.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>very indifferent order.<br/></t-style>
           </t>
         </part>
       </p>
@@ -1363,7 +1363,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p3.part.19">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>with the other provinces.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>with the other provinces.<br/></t-style>
           </t>
         </part>
       </p>
@@ -1586,7 +1586,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p4.part.44">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>71. 29.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>71. 29.<br/></t-style>
           </t>
         </part>
       </p>
@@ -1619,7 +1619,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p5.part.6">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>the 15-mile falls.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>the 15-mile falls.<br/></t-style>
           </t>
         </part>
       </p>
@@ -1677,7 +1677,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p6.part.11">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>came was Muiquetequid ; and it owes</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>came was Muiquetequid ; and it owes<br/></t-style>
           </t>
         </part>
       </p>
@@ -1685,7 +1685,7 @@
         <feat class="Center" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p7.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>CON<br/></t-style>
           </t>
         </part>
       </p>
@@ -1958,7 +1958,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p8.part.54">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>42. 25.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>42. 25.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2181,7 +2181,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p9.part.44">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>makes a fine appearance.</t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>makes a fine appearance.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2214,7 +2214,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p10.part.6">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>Pennsylvania.</t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="10.5" subset="font_size"/>Pennsylvania.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2262,7 +2262,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p11.part.9">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>miles N. from the mouth' of Yazoo R.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>miles N. from the mouth' of Yazoo R.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2270,7 +2270,7 @@
         <feat class="Right" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div2.p12.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and<br/></t-style>
           </t>
         </part>
       </p>
@@ -2279,14 +2279,14 @@
       <p xml:id="FA-morse_OCR_perletter.text.div3.p1">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p1.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>SPA</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="13." subset="font_size"/>SPA<br/></t-style>
           </t>
         </part>
       </p>
       <p xml:id="FA-morse_OCR_perletter.text.div3.p2">
         <part xml:id="FA-morse_OCR_perletter.text.div3.p2.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="14." subset="font_size"/>SPA</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="14." subset="font_size"/>SPA<br/></t-style>
           </t>
         </part>
       </p>
@@ -2309,7 +2309,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p3.part.4">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> W. long, a? 45-    .    . „</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> W. long, a? 45-    .    . „<br/></t-style>
           </t>
         </part>
       </p>
@@ -2377,7 +2377,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p4.part.13">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>841 inhabitants.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>841 inhabitants.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2435,7 +2435,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p5.part.11">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>erected.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>erected.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2478,7 +2478,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p6.part.8">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>front Wilmington.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>front Wilmington.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2541,7 +2541,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p7.part.12">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>41 50.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>41 50.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2589,7 +2589,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p8.part.9">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>on the coals of Massachusetts.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>on the coals of Massachusetts.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2612,7 +2612,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p9.part.4">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Mexico.</t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>Mexico.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2685,7 +2685,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p10.part.14">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>46 2C, W. long. j8 29.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>46 2C, W. long. j8 29.<br/></t-style>
           </t>
         </part>
       </p>
@@ -2943,7 +2943,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p11.part.51">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>ikins, rice, medicinal herbs</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>ikins, rice, medicinal herbs<br/></t-style>
           </t>
         </part>
       </p>
@@ -3171,7 +3171,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p12.part.44">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>year .to    6^,071^67 r. d. v. and the</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>year .to    6^,071^67 r. d. v. and the<br/></t-style>
           </t>
         </part>
       </p>
@@ -3193,7 +3193,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p13.part.4">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>dollars.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>dollars.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3231,7 +3231,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p14.part.7">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mary’s river in Florida.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Mary’s river in Florida.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3274,7 +3274,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p15.part.8">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Isles.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Isles.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3302,7 +3302,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p16.part.5">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>present seat of government.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>present seat of government.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3490,7 +3490,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p17.part.37">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>la Vega.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>la Vega.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3553,7 +3553,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p18.part.12">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>can anchor in 9 fathoms.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>can anchor in 9 fathoms.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3601,7 +3601,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p19.part.9">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Philadelphia.</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>Philadelphia.<br/></t-style>
           </t>
         </part>
       </p>
@@ -3694,7 +3694,7 @@
         </part>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p20.part.18">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> 7,907 are whites,</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/> 7,907 are whites,<br/></t-style>
           </t>
         </part>
       </p>
@@ -3702,7 +3702,7 @@
         <feat class="Right" subset="par_align"/>
         <part xml:id="FA-morse_OCR_perletter.text.div3.p21.part.1">
           <t class="OCR">
-            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and</t-style>
+            <t-style><feat class="bold" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="9.5" subset="font_size"/>and<br/></t-style>
           </t>
         </part>
       </p>
