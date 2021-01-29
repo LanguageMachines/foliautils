@@ -23,7 +23,7 @@
       </hyphenation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-27T21:13:37" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-01-29T13:48:59" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.4.2" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.4.2" name="libfolia" type="generator" version="2.8"/>
       </processor>
     </provenance>
@@ -178,7 +178,7 @@
         <metric class="last_char_bottom" value="670"/>
         <part xml:id="FA-piroska.text.div1.p6.part.1">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>Grundherrschaften der Kaiserzeit </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>Grundherrschaften der Kaiserzeit</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p6.part.2">
@@ -215,85 +215,165 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.4">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>nung der Kaiserzeit behandelt werden soll, so ist der Rückblick, den wir auf die älteren Verhältnisse der römischen Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver<t-hbr/>sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den Terremare </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>nung der Kaiserzeit behandelt werden soll, so ist</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.5">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>2 </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>der Rückblick, den wir auf die älteren Verhältnisse der römischen</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.6">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und der geistvollen Untersuchungen </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver<t-hbr/></t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.7">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hehns </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.8">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>3 </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Terremare</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.9">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und </t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>2</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.10">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hel<t-hbr/>bigs </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und der geistvollen Untersuchungen </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.11">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>4 </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hehns</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.12">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> eine allgemeine Entwickelungsgeschichte derselben von den ältesten Besiedlungen an zu geben. In historischer Zeit bietet die römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil<t-hbr/>dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele<t-hbr/>gentlich </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>3</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.13">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>5 6 </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und </t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.14">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> behauptet worden ist, daß die Römer den Germanen die Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un<t-hbr/>verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die ältesten germanischen Verhältnisse in Frage kommen würde, keine Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist und mit dem Flurzwang untrennbar zusammenhängt. Die römischen Schriftsteller aber kennen nur das, was </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hel<t-hbr/></t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.15">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Thünen </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>bigs</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.16">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Q </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>4</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.17">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> „freie Wirtschaft“ nennen würde </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> eine allgemeine Entwickelungsgeschichte derselben von den</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.18">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>1 </t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>ältesten Besiedlungen an zu geben. In historischer Zeit bietet die</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.19">
           <t class="OCR">
-            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>). | Von Fruchtfolge sprechen sie überhaupt nur gele<t-hbr/></t-style>
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil<t-hbr/></t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p7.part.20">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele<t-hbr/></t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.21">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>gentlich</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.22">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>5 6</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.23">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> behauptet worden ist, daß die Römer den Germanen die</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.24">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un<t-hbr/></t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.25">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.26">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>ältesten germanischen Verhältnisse in Frage kommen würde, keine</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.27">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.28">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>und mit dem Flurzwang untrennbar zusammenhängt. Die römischen</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.29">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Schriftsteller aber kennen nur das, was </t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.30">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Thünen</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.31">
+          <t class="OCR">
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Q</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.32">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> „freie Wirtschaft“</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.33">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>nennen würde</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.34">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>1</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.35">
+          <t class="OCR">
+            <t-style><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>). | Von Fruchtfolge sprechen sie überhaupt nur gele<t-hbr/></t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p7.part.36">
           <t class="OCR">
             <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>A 221</t-style>
           </t>
@@ -311,27 +391,27 @@
         <metric class="last_char_bottom" value="2885"/>
         <part xml:id="FA-piroska.text.div1.p8.part.1">
           <t class="OCR">
-            <t-style><feat class="italic" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{827F89BD-07E2-4687-A1C9-3B073016727E}" subset="font_style"/>’) Cato, </t-style>
+            <t-style><feat class="italic" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{827F89BD-07E2-4687-A1C9-3B073016727E}" subset="font_style"/>’) Cato,</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> De r. r. </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> De r. r.</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.3">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>7 </t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>7</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.4">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> 148 </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> 148</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.5">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>8 </t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>8</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p8.part.6">
@@ -357,37 +437,52 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber, Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber,</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.3">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1 </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.4">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 14—18; dass. </t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.5">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>2 </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 14—18;</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.6">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 80-84; dass. </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>dass.</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.7">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3 </t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>2</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p9.part.8">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 165-168. In den folgenden Erläuterungen wird darauf nur ausnahmsweise Bezug genommen.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 80-84; dass.</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.9">
+          <t class="OCR">
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.10">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 165-168. In den folgenden Erläuterungen wird darauf nur</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p9.part.11">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>ausnahmsweise Bezug genommen.</t-style>
           </t>
         </part>
       </p>
@@ -493,12 +588,12 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl. v. Thünen, Isolierter Staat </t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl. v. Thünen, Isolierter Staat</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.3">
           <t class="OCR">
-            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3 </t-style>
+            <t-style><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3</t-style>
           </t>
         </part>
         <part xml:id="FA-piroska.text.div1.p14.part.4">
@@ -524,7 +619,22 @@
         </part>
         <part xml:id="FA-piroska.text.div1.p15.part.2">
           <t class="OCR">
-            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der früher üblichen Weise Catos Werk stets als r. r. (= De re rustica). Da der Titel jedoch nach heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen durchweg als ,de agric.“ zitiert.</t-style>
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p15.part.3">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>früher üblichen Weise Catos Werk stets als r. r. (= De re rustica). Da der Titel jedoch nach</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p15.part.4">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen</t-style>
+          </t>
+        </part>
+        <part xml:id="FA-piroska.text.div1.p15.part.5">
+          <t class="OCR">
+            <t-style><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>durchweg als ,de agric.“ zitiert.</t-style>
           </t>
         </part>
       </p>

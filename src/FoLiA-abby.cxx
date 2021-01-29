@@ -192,6 +192,7 @@ UnicodeString get_text( xmlNode *node ){
   }
   return TiCC::UnicodeFromUTF8( result );
 }
+
 UnicodeString get_line( xmlNode *line ){
   UnicodeString result;
   list<xmlNode*> variants = TiCC::FindNodes( line, "*:wordRecVariants" );
@@ -359,15 +360,6 @@ void process_line( xmlNode *block,
     if ( uresult.endsWith( "¬" ) ){
       uresult.remove(uresult.length()-1);
       uresult += "-";
-    }
-    else if ( uresult.endsWith( "\n" ) ){
-      uresult.remove(uresult.length()-1);
-      if ( !uresult.endsWith( " " ) ){
-	uresult += " ";
-      }
-    }
-    if ( !uresult.endsWith( " " ) ){
-      uresult += " ";
     }
     if ( uresult.endsWith( "- " ) ){
       uresult.remove(uresult.length()-1);
@@ -565,11 +557,15 @@ bool process_paragraph( folia::Paragraph *root,
       current_font = it._fi;
       container = make_styled_container( it._fi, content, root->doc() );
     }
-    else if ( it._fi._fst != current_font._fst
-	      || it._fi._fs != current_font._fs
-	      || it._fi._id != current_font._id
-	      || it._fi._ff != current_font._ff ){
-      // a switch in font-syle. So end this Parts and start a new one
+    else {
+      // end previous Parts and start a new one
+      if ( add_breaks
+	   && !first ){
+	args["processor"] = processor_id;
+	root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+	args.clear();
+	content->append( new folia::Linebreak() );
+      }
       current_font = it._fi;
       output_result( container, root );
       container = make_styled_container( it._fi, content, root->doc() );
@@ -588,16 +584,6 @@ bool process_paragraph( folia::Paragraph *root,
       args.clear();
       content->append( new folia::Hyphbreak() );
       first = true;
-    }
-    else if ( add_breaks &&
-	      &it != &line_parts.back()
-	      && !first ){
-      // we are somewhere in the middle of a sequence. add a <br/>
-      args["processor"] = processor_id;
-      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
-      args.clear();
-      content->append( new folia::Linebreak() );
-      add_content( content, value );
     }
     else if ( !value.empty() ){
       if ( &it == &line_parts.back() && value.back() == ' ' ){
