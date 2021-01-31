@@ -1,32 +1,32 @@
 Usage: FoLiA-hocr [options] file/dir
-	-t <threads>
-	--threads <threads> Number of threads to run on.
+	-t 'threads' or
+	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
-	-O	 output directory 
+	-O		 output directory 
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 			 with 'c'=g create gzip files (.gz)
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-hocr-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FH-') 
 			 use 'none' for an empty prefix. (can be dangerous)
-	-v	 verbose output 
+	-v		 verbose output 
 	-V or --version	 show version 
 foliautils 0.17
 Usage: FoLiA-hocr [options] file/dir
-	-t <threads>
-	--threads <threads> Number of threads to run on.
+	-t 'threads' or
+	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
-	-O	 output directory 
+	-O		 output directory 
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 			 with 'c'=g create gzip files (.gz)
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-hocr-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FH-') 
 			 use 'none' for an empty prefix. (can be dangerous)
-	-v	 verbose output 
+	-v		 verbose output 
 	-V or --version	 show version 
 done

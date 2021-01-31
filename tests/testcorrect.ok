@@ -3,27 +3,27 @@ foliautils 0.17
 Usage: [options] file/dir
 	 FoLiA-correct will correct FoLiA files 
 	 or a whole directory of FoLiA files 
-	--inputclass 'classname'.	 (default 'current')
-	--outputclass 'classname'.	 (default 'Ticcl')
-	--rebase-inputclass 'classname'.	 (default "")
-		 rename the text with classname 'inputclass' to class 'classname'.
-	--setname	 FoLiA setname. (default 'Ticcl-set')
-	--nums	 max number_of_suggestions. (default 10)
-		 suggestions are only added when there are more then 1.
-	--ngram	 n analyse upto n N-grams.
-	--tags='tags' correct word/string nodes under all nodes in the list 'tags' (default='p')
-	-e 'expr': specify the expression all files should match with.
+	--inputclass='classname'	 (default 'current')
+	--outputclass='classname'.	 (default 'Ticcl')
+	--rebase-inputclass='classname'	 (default "")
+			 rename the text with classname 'inputclass' to class 'classname'.
+	--setname='setname'	 (default 'Ticcl-set')
+	--nums		 max number_of_suggestions. (default 10)
+			 suggestions are only added when there are more then 1.
+	--ngram=n	 analyse upto n N-grams.
+	--tags='tags'	 correct word/string nodes under all nodes in the list 'tags' (default='p')
+	-e 'expr'	 specify the expression all files should match with.
 	-O	 output prefix
-	--unk 'uname'	 name of unknown words file, the *unk file produced by TICCL-unk
-	--punct 'pname'	 name of punct words file, the *punct file produced by TICCL-unk
-	--rank 'vname'	 name of variants file. This can be a file produced by TICCL-rank, TICCL-chain 
+	--unk='uname'	 name of unknown words file, the *unk file produced by TICCL-unk
+	--punct='pname'	 name of punct words file, the *punct file produced by TICCL-unk
+	--rank='vname'	 name of variants file. This can be a file produced by TICCL-rank, TICCL-chain 
 			 or TICCL-chainclean
-	--clear	 redo ALL corrections. (default is to skip already processed file)
-	-R	 search the dirs recursively (when appropriate)
+	--clear		 redo ALL corrections. (default is to skip already processed files)
+	-R		 search the dirs recursively (when appropriate)
 	-t <threads>
 	--threads <threads> Number of threads to run on. (Default 1)
-		 If 'threads' has the value "max", the number of threads is set
-		 to a reasonable value. (OMP_NUM_TREADS - 2)
+			 If 'threads' has the value "max", the number of threads is set
+			 to a reasonable value. (OMP_NUM_TREADS - 2)
 	-v increase verbosity level. Repeat for even more output.
 	-h or --help	 this message 
 	-V or --version	 show version 

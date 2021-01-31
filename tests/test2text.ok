@@ -1,30 +1,30 @@
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
-	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
+	--class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
 	--retaintok	 retain tokenization. Default is attempt to remove.
-	-t <threads>
-	--threads <threads> Number of threads to run on.
+	-t 'threads' or
+	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-V or --version 	 show version 
-	-e	 expr: specify the expression all input files should match with.
-	-o	 name of the output file(s) prefix.
+	-e		 expr: specify the expression all input files should match with.
+	-o		 name of the output file(s) prefix.
 foliautils 0.17
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
-	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
+	--class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
 	--retaintok	 retain tokenization. Default is attempt to remove.
-	-t <threads>
-	--threads <threads> Number of threads to run on.
+	-t 'threads' or
+	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
 	-V or --version 	 show version 
-	-e	 expr: specify the expression all input files should match with.
-	-o	 name of the output file(s) prefix.
+	-e		 expr: specify the expression all input files should match with.
+	-o		 name of the output file(s) prefix.
 Hij is tegen de lamp gelopen. Met een flinke hoofdwond tot gevolg.
 
 De tekst gaat verder hier.

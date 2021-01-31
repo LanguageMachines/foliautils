@@ -1,36 +1,36 @@
 Usage: FoLiA-clean [options] file/dir
 	 FoLiA-clean will produce a cleaned up version of a FoLiA file, 
 	 or a whole directory of FoLiA files 
-	--textclass='name', retain only text nodes with this class. (default is to retain all)
+	--textclass='name' retain only text nodes with this class. (default is to retain all)
 	--current	 Make the textclass 'current'. (default is to keep 'name')
 	--fixtext	 Fixup problems in structured text. 
 	--cleanannoset='type\\setname'	 remove annotations with 'type' and 'setname'. NOTE: use a double '\' !. The setname can be empty. This option can be repeated for different annotations.
-	-e	 expr: specify the expression all input files should match with. (default .folia.xml)
-	--debug Set dubugging
+	-e expr		 specify the expression all input files should match with. (default .folia.xml)
+	--debug		 Set dubugging
 	-t <threads>
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
-	-V or --version 	 show version 
-	-O	 name of the output dir.
+	-V or --version show version 
+	-O		 name of the output dir.
 foliautils 0.17
 Usage: FoLiA-clean [options] file/dir
 	 FoLiA-clean will produce a cleaned up version of a FoLiA file, 
 	 or a whole directory of FoLiA files 
-	--textclass='name', retain only text nodes with this class. (default is to retain all)
+	--textclass='name' retain only text nodes with this class. (default is to retain all)
 	--current	 Make the textclass 'current'. (default is to keep 'name')
 	--fixtext	 Fixup problems in structured text. 
 	--cleanannoset='type\\setname'	 remove annotations with 'type' and 'setname'. NOTE: use a double '\' !. The setname can be empty. This option can be repeated for different annotations.
-	-e	 expr: specify the expression all input files should match with. (default .folia.xml)
-	--debug Set dubugging
+	-e expr		 specify the expression all input files should match with. (default .folia.xml)
+	--debug		 Set dubugging
 	-t <threads>
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message
-	-V or --version 	 show version 
-	-O	 name of the output dir.
+	-V or --version show version 
+	-O		 name of the output dir.
 Processed :data/dirty.folia.xml into clean/data/dirty.cleaned.folia.xml still 0 files to go.
 Processed :data/dirty.folia.xml into clean/data/dirty.cleaned.folia.xml still 0 files to go.
 Processed :data/dirty.folia.xml into clean/data/dirty.cleaned.folia.xml still 0 files to go.
