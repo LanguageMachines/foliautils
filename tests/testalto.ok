@@ -1,15 +1,15 @@
 missing input file(s)
 Usage: alto [options] file/dir
-	--cache	 alto cache directory 
-	--clear	 clear cached Alto files at start
+	--cache		 alto cache directory 
+	--clear		 clear cached Alto files at start
 	--direct	 read alto files directly. (so NO Didl)
-	-t <threads>
+	-t <threads> or
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this messages 
-	-O	 output directory 
-	--type	 Type of document ('krant' or 'boek' Default: 'krant')
+	-O		 output directory 
+	--type		 Type of document ('krant' or 'boek' Default: 'krant')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--oldstrings	 Fall back to old version that creates <str> nodes
@@ -19,20 +19,20 @@ Usage: alto [options] file/dir
 	--compress=<c>	 create zipped files.
 			 'c'=b creates bzip2 files (.bz2)
 			 'c'=g creates gzip files (.gz)
-	-v	 verbose output 
+	-v		 verbose output 
 	-V or --version	 show version 
 foliautils 0.17
 Usage: alto [options] file/dir
-	--cache	 alto cache directory 
-	--clear	 clear cached Alto files at start
+	--cache		 alto cache directory 
+	--clear		 clear cached Alto files at start
 	--direct	 read alto files directly. (so NO Didl)
-	-t <threads>
+	-t <threads> or
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this messages 
-	-O	 output directory 
-	--type	 Type of document ('krant' or 'boek' Default: 'krant')
+	-O		 output directory 
+	--type		 Type of document ('krant' or 'boek' Default: 'krant')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--oldstrings	 Fall back to old version that creates <str> nodes
@@ -42,7 +42,7 @@ Usage: alto [options] file/dir
 	--compress=<c>	 create zipped files.
 			 'c'=b creates bzip2 files (.bz2)
 			 'c'=g creates gzip files (.gz)
-	-v	 verbose output 
+	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 1 files 
 resolving BOEK data/test:mpeg21.xml

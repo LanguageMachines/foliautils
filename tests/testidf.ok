@@ -1,9 +1,9 @@
 Usage: [options] file/dir
 	 FoLiA-idf will produce IDF statistics for a directory of FoLiA files 
-	--clip	 clipping factor. 
+	--clip		 clipping factor. 
 			 (entries with frequency <= this factor will be ignored). 
-	--lower	 Lowercase all words
-	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
+	--lower		 lowercase all words
+	--class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
 	--strings	 search for String nodes (default is Word)
 	-t <threads>
 	--threads <threads> Number of threads to run on.
@@ -11,16 +11,16 @@ Usage: [options] file/dir
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
 	-V or --version	 show version 
-	-e	 expr: specify the expression all files should match with.
-	-O	 output prefix
-	-R	 search the dirs recursively (when appropriate).
+	-e		 expr: specify the expression all files should match with.
+	-O		 output prefix
+	-R		 search the dirs recursively (when appropriate).
 foliautils 0.17
 Usage: [options] file/dir
 	 FoLiA-idf will produce IDF statistics for a directory of FoLiA files 
-	--clip	 clipping factor. 
+	--clip		 clipping factor. 
 			 (entries with frequency <= this factor will be ignored). 
-	--lower	 Lowercase all words
-	--class='name', use 'name' as the folia class for <t> nodes. (default is 'current')
+	--lower		 lowercase all words
+	--class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
 	--strings	 search for String nodes (default is Word)
 	-t <threads>
 	--threads <threads> Number of threads to run on.
@@ -28,8 +28,8 @@ Usage: [options] file/dir
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this message 
 	-V or --version	 show version 
-	-e	 expr: specify the expression all files should match with.
-	-O	 output prefix
-	-R	 search the dirs recursively (when appropriate).
+	-e		 expr: specify the expression all files should match with.
+	-O		 output prefix
+	-R		 search the dirs recursively (when appropriate).
  806 1612 8009 out1.idf.tsv
  764 1528 7707 out2.idf.tsv
