@@ -590,9 +590,6 @@ bool process_paragraph( folia::Paragraph *paragraph,
       }
       else {
 	// end previous Parts and start a new one
-	if ( !no_break && add_breaks ){
-	  content->append( new folia::Linebreak() );
-	}
 	output_result( container, root, false );
 	current_font = it._fi;
 	container = make_styled_container( it._fi, content, root->doc() );
