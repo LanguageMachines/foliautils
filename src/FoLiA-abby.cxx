@@ -380,12 +380,22 @@ void process_line( xmlNode *block,
 }
 
 void output_result( folia::TextContent *tc,
-		    folia::FoliaElement *root ){
+		    folia::FoliaElement *root,
+		    bool nospace ){
   folia::KWargs args;
   args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PART, setname, args );
   args.clear();
   args["generate_id"] = root->id();
+  if ( root->element_id() == folia::Paragraph_t ){
+    args["class"] = "line";
+  }
+  else {
+    args["class"] = "fragment";
+  }
+  if ( nospace ){
+    args["space"] = "no";
+  }
   folia::Part *part = new folia::Part( args, root->doc() );
   part->append( tc );
   root->append( part );
@@ -504,7 +514,7 @@ void append_metric( folia::Paragraph *root,
   root->append( metric );
 }
 
-bool process_paragraph( folia::Paragraph *root,
+bool process_paragraph( folia::Paragraph *paragraph,
 			xmlNode *par,
 			const map<string,font_info>& font_styles ){
   font_info par_font;
@@ -530,27 +540,29 @@ bool process_paragraph( folia::Paragraph *root,
     list<xmlNode *> chrs = TiCC::FindNodes( lines.front(), "*/*:charParams" );
     // get the attributes of the first charParam
     map<string,string> atts = TiCC::getAttributes( chrs.front() );
-    append_metric( root, "first_char_top", atts["t"] );
-    append_metric( root, "first_char_left", atts["l"] );
-    append_metric( root, "first_char_right", atts["r"] );
-    append_metric( root, "first_char_bottom", atts["b"] );
+    append_metric( paragraph, "first_char_top", atts["t"] );
+    append_metric( paragraph, "first_char_left", atts["l"] );
+    append_metric( paragraph, "first_char_right", atts["r"] );
+    append_metric( paragraph, "first_char_bottom", atts["b"] );
     // Then the charParams of the last line
     chrs = TiCC::FindNodes( lines.back(), "*/*:charParams" );
     // get the attributes of the last charParam
     atts = TiCC::getAttributes( chrs.back() );
-    append_metric( root, "last_char_top", atts["t"] );
-    append_metric( root, "last_char_left", atts["l"] );
-    append_metric( root, "last_char_right", atts["r"] );
-    append_metric( root, "last_char_bottom", atts["b"] );
+    append_metric( paragraph, "last_char_top", atts["t"] );
+    append_metric( paragraph, "last_char_left", atts["l"] );
+    append_metric( paragraph, "last_char_right", atts["r"] );
+    append_metric( paragraph, "last_char_bottom", atts["b"] );
   }
   folia::KWargs args;
   args["processor"] = processor_id;
-  root->doc()->declare( folia::AnnotationType::STYLE, setname, args );
+  paragraph->doc()->declare( folia::AnnotationType::PART, setname, args );
+  paragraph->doc()->declare( folia::AnnotationType::STYLE, setname, args );
+  paragraph->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
   if ( add_breaks ){
-    root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+    paragraph->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
   }
-  root->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
   args.clear();
+  //  cerr << "start process lines: " << endl;
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
@@ -558,7 +570,19 @@ bool process_paragraph( folia::Paragraph *root,
     folia::TextContent *container = 0;
     folia::FoliaElement *content = 0;
     bool no_break = false;
+    //    cerr << "\tstart process parts: " << endl;
+    folia::FoliaElement *root = paragraph;
+    if ( line_parts.size() > 1 ){
+      // we have line fragments. introduce an extra layer
+      args.clear();
+      args["generate_id"] = root->id();
+      args["class"] = "line";
+      folia::Part *part = new folia::Part( args, root->doc() );
+      paragraph->append( part );
+      root = part;
+    }
     for ( const auto& it : line_parts ){
+      //      cerr << "\tNEXT part " << endl;
       if ( !container ){
 	// start with a fresh TextContent.
 	current_font = it._fi;
@@ -569,13 +593,13 @@ bool process_paragraph( folia::Paragraph *root,
 	if ( !no_break && add_breaks ){
 	  content->append( new folia::Linebreak() );
 	}
-	output_result( container, root );
+	output_result( container, root, false );
 	current_font = it._fi;
 	container = make_styled_container( it._fi, content, root->doc() );
 	no_break = false;
       }
       string value = it._value;
-      //    cerr << "VALUE= '" << value << "'" << endl;
+      //      cerr << "VALUE= '" << value << "'" << endl;
       if ( !value.empty()
 	   && value.back() == '-' ){
 	// check if we have a hyphenation
@@ -593,7 +617,7 @@ bool process_paragraph( folia::Paragraph *root,
 	if ( !no_break && add_breaks ){
 	  content->append( new folia::Linebreak() );
 	}
-	output_result( container, root );
+	output_result( container, root, no_break );
       }
     }
   }
