@@ -383,9 +383,6 @@ void output_result( folia::TextContent *tc,
 		    folia::FoliaElement *root,
 		    bool nospace ){
   folia::KWargs args;
-  args["processor"] = processor_id;
-  root->doc()->declare( folia::AnnotationType::PART, setname, args );
-  args.clear();
   args["generate_id"] = root->id();
   if ( root->element_id() == folia::Paragraph_t ){
     args["class"] = "line";
