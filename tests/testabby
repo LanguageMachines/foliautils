@@ -13,11 +13,11 @@ $my_bin/FoLiA-abby -O out data/abby >> testabby.out 2>&1
 ./foliadiff.sh out/FA-levi010geil01_01_Deel500.folia.xml levi.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/FA-piroska.abby.folia.xml piroska.ok  >> testabby.out 2>&1
 
-$my_bin/FoLiA-abby --addbreaks -O outbreak data/abby >> testabby.out 2>&1
+$my_bin/FoLiA-abby --addbreaks -O out/break data/abby >> testabby.out 2>&1
 
-./foliadiff.sh outbreak/FA-morse_OCR_perletter.folia.xml morse.break.ok  >> testabby.out 2>&1
-./foliadiff.sh outbreak/FA-levi010geil01_01_Deel500.folia.xml levi.break.ok  >> testabby.out 2>&1
-./foliadiff.sh outbreak/FA-piroska.abby.folia.xml piroska.break.ok  >> testabby.out 2>&1
+./foliadiff.sh out/break/FA-morse_OCR_perletter.folia.xml morse.break.ok  >> testabby.out 2>&1
+./foliadiff.sh out/break/FA-levi010geil01_01_Deel500.folia.xml levi.break.ok  >> testabby.out 2>&1
+./foliadiff.sh out/break/FA-piroska.abby.folia.xml piroska.break.ok  >> testabby.out 2>&1
 
 $my_bin/FoLiA-abby --addmetrics -O out/metric data/abby >> testabby.out 2>&1
 
