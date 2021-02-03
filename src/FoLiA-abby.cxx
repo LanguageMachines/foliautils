@@ -379,21 +379,16 @@ void process_line( xmlNode *block,
   }
 }
 
-void output_result( folia::TextContent *tc,
+void output_result( folia::TextMarkupString *tc,
 		    folia::FoliaElement *root,
 		    bool nospace ){
   folia::KWargs args;
   args["generate_id"] = root->id();
-  if ( root->element_id() == folia::Paragraph_t ){
-    args["class"] = "line";
-  }
-  else {
-    args["class"] = "fragment";
-  }
+  args["class"] = "line";
   if ( nospace ){
     args["space"] = "no";
   }
-  folia::Part *part = new folia::Part( args, root->doc() );
+  folia::TextMarkupString *part = new folia::TextMarkupString( args, root->doc() );
   part->append( tc );
   root->append( part );
 }
@@ -451,42 +446,36 @@ void append_styles( folia::TextMarkupStyle* markup,
   }
 }
 
-folia::TextContent* make_styled_container( const font_info& info,
-					   folia::FoliaElement*& content,
-					   folia::Document *doc ){
+folia::TextMarkupStyle* make_styled_container( const font_info& info,
+					       folia::Document *doc ){
   font_style style = info._fst;
   folia::KWargs args;
-  args["class"] = classname;
-  folia::TextContent *tc = new folia::TextContent( args, doc );
-  args.clear();
-  folia::TextMarkupStyle *st = new folia::TextMarkupStyle( args, doc );
-  tc->append( st );
-  content = st;
+  folia::TextMarkupStyle *content = new folia::TextMarkupStyle( args, doc );
   if ( style != REGULAR ){
-    append_styles( st, style );
+    append_styles( content, style );
   }
   if ( !info._ff.empty() ){
     folia::KWargs args;
     args["subset"] = "font_family";
     args["class"] = info._ff;
     folia::Feature *f = new folia::Feature( args );
-    st->append(f);
+    content->append(f);
   }
   if ( !info._fs.empty() ){
     folia::KWargs args;
     args["subset"] = "font_size";
     args["class"] = info._fs;
     folia::Feature *f = new folia::Feature( args );
-    st->append(f);
+    content->append(f);
   }
   if ( !info._id.empty() ){
     folia::KWargs args;
     args["subset"] = "font_style";
     args["class"] = info._id;
     folia::Feature *f = new folia::Feature( args );
-    st->append(f);
+    content->append(f);
   }
-  return tc;
+  return content;
 }
 
 void add_content( folia::FoliaElement *content,
@@ -552,7 +541,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
   }
   folia::KWargs args;
   args["processor"] = processor_id;
-  paragraph->doc()->declare( folia::AnnotationType::PART, setname, args );
+  paragraph->doc()->declare( folia::AnnotationType::STRING, setname, args );
   paragraph->doc()->declare( folia::AnnotationType::STYLE, setname, args );
   paragraph->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
   if ( add_breaks ){
@@ -560,36 +549,33 @@ bool process_paragraph( folia::Paragraph *paragraph,
   }
   args.clear();
   //  cerr << "start process lines: " << endl;
+  folia::FoliaElement *root = new folia::TextContent( args, paragraph->doc());
+  paragraph->append( root );
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
     font_info current_font;
-    folia::TextContent *container = 0;
-    folia::FoliaElement *content = 0;
     bool no_break = false;
     //    cerr << "\tstart process parts: " << endl;
-    folia::FoliaElement *root = paragraph;
-    if ( line_parts.size() > 1 ){
-      // we have line fragments. introduce an extra layer
-      args.clear();
-      args["generate_id"] = root->id();
-      args["class"] = "line";
-      folia::Part *part = new folia::Part( args, root->doc() );
-      paragraph->append( part );
-      root = part;
-    }
+    folia::TextMarkupString *container = 0;
+    folia::TextMarkupStyle *content = 0;
     for ( const auto& it : line_parts ){
       //      cerr << "\tNEXT part " << endl;
       if ( !container ){
 	// start with a fresh TextContent.
 	current_font = it._fi;
-	container = make_styled_container( it._fi, content, root->doc() );
+	args.clear();
+	args["generate_id"] = paragraph->id();
+	container = new folia::TextMarkupString( args, paragraph->doc() );
+	root->append( container);
+	content = make_styled_container( it._fi, root->doc() );
+	container->append( content );
       }
       else {
-	// end previous Parts and start a new one
-	output_result( container, root, false );
+	// end previous t-str and start a new one
 	current_font = it._fi;
-	container = make_styled_container( it._fi, content, root->doc() );
+	content = make_styled_container( it._fi, root->doc() );
+	container->append( content );
 	no_break = false;
       }
       string value = it._value;
@@ -600,7 +586,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	// if so: add the value + <t-hbr/>
 	value.pop_back();
 	add_content( content, value );
-	content->append( new folia::Hyphbreak() );
+	container->append( new folia::Hyphbreak() );
 	no_break = true;
       }
       else if ( !value.empty() ){
@@ -609,9 +595,8 @@ bool process_paragraph( folia::Paragraph *paragraph,
       if ( &it == &line_parts.back() ){
 	// the remains
 	if ( !no_break && add_breaks ){
-	  content->append( new folia::Linebreak() );
+	  container->append( new folia::Linebreak() );
 	}
-	output_result( container, root, no_break );
       }
     }
   }
