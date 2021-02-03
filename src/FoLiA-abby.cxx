@@ -549,6 +549,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
   }
   args.clear();
   //  cerr << "start process lines: " << endl;
+  args["class"] = classname;
   folia::FoliaElement *root = new folia::TextContent( args, paragraph->doc());
   paragraph->append( root );
   for ( const auto& line : lines ){
@@ -586,7 +587,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	// if so: add the value + <t-hbr/>
 	value.pop_back();
 	add_content( content, value );
-	container->append( new folia::Hyphbreak() );
+	content->append( new folia::Hyphbreak() );
 	no_break = true;
       }
       else if ( !value.empty() ){
@@ -595,7 +596,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
       if ( &it == &line_parts.back() ){
 	// the remains
 	if ( !no_break && add_breaks ){
-	  container->append( new folia::Linebreak() );
+	  content->append( new folia::Linebreak() );
 	}
       }
     }
