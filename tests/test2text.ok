@@ -1,3 +1,4 @@
+no file or dir specified!
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 

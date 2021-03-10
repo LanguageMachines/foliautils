@@ -69,10 +69,10 @@ int main( int argc, char *argv[] ){
     exit( EXIT_FAILURE );
   }
   string progname = opts.prog_name();
-  if ( opts.empty() ){
-    usage( progname );
-    exit(EXIT_FAILURE);
-  }
+  // if ( opts.empty() ){
+  //   usage( progname );
+  //   exit(EXIT_FAILURE);
+  // }
   string expression;
   string outputPrefix;
   string value;
@@ -84,12 +84,7 @@ int main( int argc, char *argv[] ){
     usage(progname);
     exit(EXIT_SUCCESS);
   }
-  if ( opts.extract( 'o', outputPrefix ) ){
-    // if ( outputPrefix.empty() ){
-    //   cerr << "an output filename prefix is required. (-o option) " << endl;
-    //   exit(EXIT_FAILURE);
-    // }
-  }
+  opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
   if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
@@ -114,6 +109,7 @@ int main( int argc, char *argv[] ){
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     cerr << "no file or dir specified!" << endl;
+    usage(progname);
     exit(EXIT_FAILURE);
   }
 
@@ -139,7 +135,10 @@ int main( int argc, char *argv[] ){
     }
   }
   else {
-    outputPrefix = TiCC::dirname( fileNames[0] ) + "/";
+    string pf = TiCC::dirname( fileNames[0] );
+    if ( pf != "." ){
+      outputPrefix = TiCC::dirname( fileNames[0] ) + "/";
+    }
   }
 
   if ( toDo > 1 ){
