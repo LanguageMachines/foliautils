@@ -165,6 +165,26 @@ void handle_one_word( folia::FoliaElement *sent,
   }
 }
 
+UnicodeString ltrim( const UnicodeString& in ){
+  /// remove leading whitespace (including newlines and tabs)
+  int begin = in.length();
+  for ( int i = 0; i < in.length(); ++i ) {
+    if ( !u_isspace(in[i]) ){
+      begin = i;
+      break;
+    }
+  }
+  if (begin == 0) {
+    return in;
+  }
+  else if (begin == in.length()) {
+    return "";
+  }
+  else {
+    return UnicodeString(in, begin, in.length() - begin);
+  }
+}
+
 void handle_uni_lines( folia::FoliaElement *root,
 		       xmlNode *parent,
 		       const string& fileName ){
@@ -185,7 +205,7 @@ void handle_uni_lines( folia::FoliaElement *root,
     if ( !value.empty() ){
       UnicodeString uval = TiCC::UnicodeFromUTF8(value);
       uval = UN.normalize(uval);
-      uval = folia::ltrim( uval );
+      uval = ltrim( uval );
       string id = "str_" + TiCC::toString(j++);
       appendStr( root, pos, uval, id, fileName );
       full_line += uval;
@@ -195,7 +215,7 @@ void handle_uni_lines( folia::FoliaElement *root,
       }
     }
   }
-  full_line = folia::ltrim( full_line );
+  full_line = ltrim( full_line );
   if ( !full_line.isEmpty() ){
     root->setutext( full_line, classname );
   }
@@ -255,7 +275,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	string value = TiCC::XmlContent( unicode );
 	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
 	uval = UN.normalize(uval);
-	uval = folia::ltrim( uval );
+	uval = ltrim( uval );
 	appendStr( par, pos, uval, word_ids[unicode], fileName );
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
@@ -277,7 +297,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       if ( !value.empty() ){
 	UnicodeString uval = TiCC::UnicodeFromUTF8(value);
 	uval = UN.normalize(uval);
-	uval = folia::ltrim( uval );
+	uval = ltrim( uval );
 	appendStr( par, pos, uval, lid, fileName );
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
@@ -350,7 +370,7 @@ void handle_one_region( folia::FoliaElement *root,
 	}
       }
     }
-    par_txt = folia::ltrim( par_txt );
+    par_txt = ltrim( par_txt );
     if ( !par_txt.isEmpty() ){
       par->setutext( par_txt, classname );
     }
