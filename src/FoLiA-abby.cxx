@@ -563,7 +563,15 @@ bool process_paragraph( folia::Paragraph *paragraph,
     for ( const auto& it : line_parts ){
       //      cerr << "\tNEXT part " << endl;
       if ( !container ){
-	// start with a fresh TextContent.
+	folia::XmlText *txt = new folia::XmlText();
+	if ( !add_breaks ){
+	  txt->setvalue( "\n" );
+	}
+	else {
+	  txt->setvalue( "" );
+	}
+	root->append( txt );
+	// start with a fresh <t-str>.
 	current_font = it._fi;
 	args.clear();
 	args["generate_id"] = paragraph->id();
@@ -571,12 +579,14 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	root->append( container);
 	content = make_styled_container( it._fi, root->doc() );
 	container->append( content );
+	//	cerr << "\t First styled container: " << container << endl;
       }
       else {
 	// end previous t-str and start a new one
 	current_font = it._fi;
 	content = make_styled_container( it._fi, root->doc() );
 	container->append( content );
+	//	cerr << "\t Next styled container: " << container << endl;
 	no_break = false;
       }
       string value = it._value;
@@ -588,17 +598,21 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	value.pop_back();
 	add_content( content, value );
 	content->append( new folia::Hyphbreak() );
+	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
       else if ( !value.empty() ){
 	add_content( content, value );
+	//	cerr << "added content now: " << content << endl;
       }
       if ( &it == &line_parts.back() ){
 	// the remains
 	if ( !no_break && add_breaks ){
 	  content->append( new folia::Linebreak() );
+	  //	  cerr << "content now: " << content << endl;
 	}
       }
+      //      cerr << "textcontent now: " << root << endl;
     }
   }
   return true;
