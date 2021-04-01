@@ -157,23 +157,29 @@ ostream& operator<<( ostream& os, const font_style& fs ){
   os << toString( fs );
   return os;
 }
-struct font_info {
-  font_info():
+struct formatting_info {
+  formatting_info():
     _fst(REGULAR)
   {};
-  font_info( const string& ff, const string& fs, const font_style fst ):
+  formatting_info( const string& lang,
+		   const string& ff,
+		   const string& fs,
+		   const font_style fst ):
+    _lang(lang),
     _ff(ff),
     _fs(fs),
     _fst(fst)
   {};
+  string _lang;
   string _ff;
   string _fs;
   string _id;
   font_style _fst;
 };
 
-ostream& operator<<( ostream& os, const font_info& fi ){
-  os << fi._ff << " (" << fi._fs << ") " << fi._fst << " " << fi._id;
+ostream& operator<<( ostream& os, const formatting_info& fi ){
+  os << fi._ff << " (" << fi._fs << ") " << fi._fst << " "
+     << fi._id << " " << fi._lang;
   return os;
 }
 
@@ -259,13 +265,17 @@ UnicodeString get_line( xmlNode *line ){
   return result;
 }
 
-void update_font_info( font_info& line_font,
-		       xmlNode *node,
-		       const map<string,font_info>& font_styles ){
+void update_formatting_info( formatting_info& line_font,
+			     xmlNode *node,
+			     const map<string,formatting_info>& font_styles ){
   string style = TiCC::getAttribute( node, "style" );
   if ( !style.empty() ){
     line_font = font_styles.at( style );
     line_font._id = style;
+  }
+  string lang = TiCC::getAttribute( node, "lang" );
+  if ( !lang.empty() ){
+    line_font._lang = lang;
   }
   string fs = TiCC::getAttribute( node, "fs" );
   if ( !fs.empty() ){
@@ -342,14 +352,14 @@ void update_font_info( font_info& line_font,
 
 struct line_info {
   string _value;
-  font_info _fi;
+  formatting_info _fi;
   xmlNode *_line;
 };
 
 void process_line( xmlNode *block,
 		   vector<line_info>& line_parts,
-		   const font_info& default_font,
-		   const map<string,font_info>& font_styles ){
+		   const formatting_info& default_format,
+		   const map<string,formatting_info>& font_styles ){
   list<xmlNode*> formats = TiCC::FindNodes( block, "*:formatting" );
   if ( verbose ){
 #pragma omp critical
@@ -358,8 +368,8 @@ void process_line( xmlNode *block,
     }
   }
   for ( const auto& form : formats ){
-    font_info line_font = default_font;
-    update_font_info( line_font, form, font_styles );
+    formatting_info line_font = default_format;
+    update_formatting_info( line_font, form, font_styles );
     UnicodeString uresult = get_line( form );
     if ( uresult.endsWith( "¬" ) ){
       uresult.remove(uresult.length()-1);
@@ -446,11 +456,42 @@ void append_styles( folia::TextMarkupStyle* markup,
   }
 }
 
-folia::TextMarkupStyle* make_styled_container( const font_info& info,
+void set_language( folia::FoliaElement* node, const string& lang ){
+  // set the language on this @node to @lang
+  // If a LangAnnotation with a set is already present, we silently
+  // keep using that set.
+  // Otherwise we add the ISO_SET
+  const string LANG_SET = "abbyy-languages";
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  node->doc()->declare( folia::AnnotationType::LANG,
+			LANG_SET,
+			args );
+  args.clear();
+  args["class"] = lang;
+  args["set"] = LANG_SET;
+  folia::LangAnnotation *la = new folia::LangAnnotation( args, node->doc() );
+  node->append( la );
+}
+
+folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
 					       folia::Document *doc ){
   font_style style = info._fst;
   folia::KWargs args;
   folia::TextMarkupStyle *content = new folia::TextMarkupStyle( args, doc );
+  // Unfortunately TextMarkUp doesn't allow teh 'lang' attribute
+  //
+  // if ( !info._lang.empty() ){
+  //   set_language( content, info._lang );
+  // }
+  if ( !info._lang.empty() ){
+    // second best, add language as a feature
+    folia::KWargs args;
+    args["subset"] = "language";
+    args["class"] = info._lang;
+    folia::Feature *f = new folia::Feature( args );
+    content->append(f);
+  }
   if ( style != REGULAR ){
     append_styles( content, style );
   }
@@ -502,8 +543,8 @@ void append_metric( folia::Paragraph *root,
 
 bool process_paragraph( folia::Paragraph *paragraph,
 			xmlNode *par,
-			const map<string,font_info>& font_styles ){
-  font_info par_font;
+			const map<string,formatting_info>& font_styles ){
+  formatting_info par_font;
   string par_style = TiCC::getAttribute( par, "style" );
   if ( !par_style.empty() ){
     par_font = font_styles.at(par_style);
@@ -555,7 +596,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
-    font_info current_font;
+    formatting_info current_font;
     bool no_break = false;
     //    cerr << "\tstart process parts: " << endl;
     folia::TextMarkupString *container = 0;
@@ -620,7 +661,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 
 bool process_page( folia::FoliaElement *root,
 		   xmlNode *block,
-		   const map<string,font_info>& font_styles ){
+		   const map<string,formatting_info>& font_styles ){
   list<xmlNode*> paragraphs = TiCC::FindNodes( block, ".//*:par" );
   if ( verbose ){
 #pragma omp critical
@@ -665,8 +706,8 @@ bool process_page( folia::FoliaElement *root,
   return didit;
 }
 
-map<string,font_info> extract_font_info( xmlNode *root ){
-  map<string,font_info> result;
+map<string,formatting_info> extract_formatting_info( xmlNode *root ){
+  map<string,formatting_info> result;
   list<xmlNode*> par_styles =
     TiCC::FindNodes( root, ".//*:paragraphStyles/*:paragraphStyle" );
   map<string,string> main_font_styles;
@@ -677,6 +718,7 @@ map<string,font_info> extract_font_info( xmlNode *root ){
     list<xmlNode*> font_styles =
       TiCC::FindNodes( ps, ".//*:fontStyle" );
     for ( const auto& fst : font_styles ){
+      string lang = TiCC::getAttribute( fst, "lang" );
       string id = TiCC::getAttribute( fst, "id" );
       string ff = TiCC::getAttribute( fst, "ff" );
       string fs = TiCC::getAttribute( fst, "fs" );
@@ -689,7 +731,7 @@ map<string,font_info> extract_font_info( xmlNode *root ){
       else if ( bl == "1" ){
 	f_s = BOLD;
       }
-      font_info fi( ff, fs, f_s );
+      formatting_info fi( lang, ff, fs, f_s );
       result.insert( make_pair(id,fi) );
     }
   }
@@ -736,7 +778,7 @@ bool convert_abbyxml( const string& fileName,
     }
     return false;
   }
-  map<string,font_info> font_styles = extract_font_info( root );
+  map<string,formatting_info> font_styles = extract_formatting_info( root );
 
   string orgFile = TiCC::basename( fileName );
   string docid = orgFile.substr( 0, orgFile.find(".") );
