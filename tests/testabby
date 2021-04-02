@@ -22,6 +22,12 @@ $my_bin/FoLiA-abby --addbreaks -O out/break data/abby >> testabby.out 2>&1
 ./foliadiff.sh out/break/FA-levi010geil01_01_Deel500.folia.xml levi.break.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/break/FA-piroska.abby.folia.xml piroska.break.ok  >> testabby.out 2>&1
 
+$my_bin/FoLiA-abby --keephyphens -O out/hyph data/abby >> testabby.out 2>&1
+
+./foliadiff.sh out/hyph/FA-morse_OCR_perletter.folia.xml morse.hyph.ok  >> testabby.out 2>&1
+./foliadiff.sh out/hyph/FA-levi010geil01_01_Deel500.folia.xml levi.hyph.ok  >> testabby.out 2>&1
+./foliadiff.sh out/hyph/FA-piroska.abby.folia.xml piroska.hyph.ok  >> testabby.out 2>&1
+
 $my_bin/FoLiA-abby --addmetrics -O out/metric data/abby >> testabby.out 2>&1
 
 ./foliadiff.sh out/metric/FA-morse_OCR_perletter.folia.xml morse.metric.ok  >> testabby.out 2>&1

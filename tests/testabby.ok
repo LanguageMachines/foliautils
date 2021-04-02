@@ -9,6 +9,7 @@ Usage: FoLiA-abby [options] file/dir
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-abby-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--addbreaks	 optionally add <br/> nodes for every newline in the input
+	--keephyphens	 optionally keep hyphenation symbols in <t-hbr> nodes
 	--addmetrics	 optionally add Metric information about first and last characters in each <par> from the input
 	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
@@ -27,6 +28,7 @@ Usage: FoLiA-abby [options] file/dir
 	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-abby-set')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--addbreaks	 optionally add <br/> nodes for every newline in the input
+	--keephyphens	 optionally keep hyphenation symbols in <t-hbr> nodes
 	--addmetrics	 optionally add Metric information about first and last characters in each <par> from the input
 	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
@@ -45,6 +47,12 @@ start processing of 4 files
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/break/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/break/FA-piroska.abby.folia.xml
 	converted: data/abby/morse_OCR_perletter.xml into: out/break/FA-morse_OCR_perletter.folia.xml
+done
+start processing of 4 files 
+	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/hyph/FA-morse_OCR_perletter2.folia.xml.gz
+	converted: data/abby/levi010geil01_01_Deel500.xml into: out/hyph/FA-levi010geil01_01_Deel500.folia.xml
+	converted: data/abby/piroska.abby.xml into: out/hyph/FA-piroska.abby.folia.xml
+	converted: data/abby/morse_OCR_perletter.xml into: out/hyph/FA-morse_OCR_perletter.folia.xml
 done
 start processing of 4 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/metric/FA-morse_OCR_perletter2.folia.xml.gz
