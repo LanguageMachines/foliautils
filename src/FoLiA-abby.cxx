@@ -57,6 +57,7 @@ string setname = "FoLiA-abby-set";
 string classname = "OCR";
 const string processor_name= "FoLiA-abby";
 string processor_id;
+bool keep_hyphens = false;
 bool add_breaks = false;
 bool add_metrics = false;
 
@@ -354,6 +355,7 @@ struct line_info {
   string _value;
   formatting_info _fi;
   xmlNode *_line;
+  UnicodeString _hyph;
 };
 
 void process_line( xmlNode *block,
@@ -368,22 +370,29 @@ void process_line( xmlNode *block,
     }
   }
   for ( const auto& form : formats ){
-    formatting_info line_font = default_format;
-    update_formatting_info( line_font, form, font_styles );
+    UnicodeString hyp;
+    formatting_info line_format = default_format;
+    update_formatting_info( line_format, form, font_styles );
     UnicodeString uresult = get_line( form );
     if ( uresult.endsWith( "¬" ) ){
       uresult.remove(uresult.length()-1);
       uresult += "-";
+      hyp = "¬";
     }
-    if ( uresult.endsWith( "- " ) ){
+    else if ( uresult.endsWith( "- " ) ){
       uresult.remove(uresult.length()-1);
+      hyp = "-";
+    }
+    else if ( uresult.endsWith( "-" ) ){
+      hyp = "-";
     }
     string result = TiCC::UnicodeToUTF8( uresult );
     if ( !TiCC::trim( result ).empty() ){
       line_info li;
       li._value = result;
       li._line = block;
-      li._fi = line_font;
+      li._fi = line_format;
+      li._hyph = hyp;
       line_parts.push_back( li );
     }
   }
@@ -609,13 +618,16 @@ bool process_paragraph( folia::Paragraph *paragraph,
       }
       string value = it._value;
       //      cerr << "VALUE= '" << value << "'" << endl;
-      if ( !value.empty()
-	   && value.back() == '-' ){
+      if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	// if so: add the value + <t-hbr/>
-	value.pop_back();
+	value.pop_back(); // remove the hyphen
 	add_content( content, value );
-	content->append( new folia::Hyphbreak() );
+	folia::KWargs args;
+	if ( keep_hyphens ){
+	  args["text"] = TiCC::UnicodeToUTF8(it._hyph);
+	}
+	content->append( new folia::Hyphbreak(args) );
 	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
@@ -822,6 +834,7 @@ void usage(){
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
   cerr << "\t--addbreaks\t optionally add <br/> nodes for every newline in the input" << endl;
+  cerr << "\t--keephyphens\t optionally keep hyphenation symbols in <t-hbr> nodes" << endl;
   cerr << "\t--addmetrics\t optionally add Metric information about first and last characters in each <par> from the input" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
@@ -834,7 +847,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "addbreaks,addmetrics,threads:" );
+			 "addbreaks,addmetrics,keephyphens,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -889,6 +902,7 @@ int main( int argc, char *argv[] ){
 #endif
   }
   verbose = opts.extract( 'v' );
+  keep_hyphens = opts.extract( "keephyphens" );
   add_breaks = opts.extract( "addbreaks" );
   add_metrics = opts.extract( "addmetrics" );
   opts.extract( 'O', outputDir );
