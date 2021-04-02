@@ -456,38 +456,15 @@ void append_styles( folia::TextMarkupStyle* markup,
   }
 }
 
-void set_language( folia::FoliaElement* node, const string& lang ){
-  // set the language on this @node to @lang
-  // If a LangAnnotation with a set is already present, we silently
-  // keep using that set.
-  // Otherwise we add the ISO_SET
-  const string LANG_SET = "abbyy-languages";
-  folia::KWargs args;
-  args["processor"] = processor_id;
-  node->doc()->declare( folia::AnnotationType::LANG,
-			LANG_SET,
-			args );
-  args.clear();
-  args["class"] = lang;
-  args["set"] = LANG_SET;
-  folia::LangAnnotation *la = new folia::LangAnnotation( args, node->doc() );
-  node->append( la );
-}
-
 folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
 					       folia::Document *doc ){
   font_style style = info._fst;
   folia::KWargs args;
   folia::TextMarkupStyle *content = new folia::TextMarkupStyle( args, doc );
-  // Unfortunately TextMarkUp doesn't allow teh 'lang' attribute
-  //
-  // if ( !info._lang.empty() ){
-  //   set_language( content, info._lang );
-  // }
   if ( !info._lang.empty() ){
-    // second best, add language as a feature
+    // add language as a feature
     folia::KWargs args;
-    args["subset"] = "language";
+    args["subset"] = "ocr_lang";
     args["class"] = info._lang;
     folia::Feature *f = new folia::Feature( args );
     content->append(f);
