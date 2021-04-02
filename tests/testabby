@@ -1,9 +1,6 @@
 #!/bin/sh
 #
 
-rm out/*.xml
-rm out/*/*.xml
-
 $my_bin/FoLiA-abby > testabby.out 2>&1
 
 $my_bin/FoLiA-abby -V >> testabby.out 2>&1
