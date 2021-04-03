@@ -471,11 +471,13 @@ folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
   folia::KWargs args;
   folia::TextMarkupStyle *content = new folia::TextMarkupStyle( args, doc );
   if ( !info._lang.empty() ){
-    // add language as a feature
+    // add language as a t-lang
     folia::KWargs args;
-    args["subset"] = "ocr_lang";
+    args["processor"] = processor_id;
+    doc->declare( folia::AnnotationType::LANG, setname, args );
+    args.clear();
     args["class"] = info._lang;
-    folia::Feature *f = new folia::Feature( args );
+    folia::FoliaElement *f = new folia::TextMarkupLanguage( args, doc );
     content->append(f);
   }
   if ( style != REGULAR ){
