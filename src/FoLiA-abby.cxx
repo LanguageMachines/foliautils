@@ -513,8 +513,7 @@ void append_metric( folia::Paragraph *root,
   args.clear();
   args["value"] = val;
   args["class"] = att;
-  folia::Metric *metric = new folia::Metric( args, root->doc() );
-  root->append( metric );
+  root->create_child<folia::Metric>( args );
 }
 
 bool process_paragraph( folia::Paragraph *paragraph,
@@ -567,8 +566,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
   args.clear();
   //  cerr << "start process lines: " << endl;
   args["class"] = classname;
-  folia::FoliaElement *root = new folia::TextContent( args, paragraph->doc());
-  paragraph->append( root );
+  folia::FoliaElement *root = paragraph->create_child<folia::TextContent>(args);
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
@@ -592,8 +590,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	current_font = it._fi;
 	args.clear();
 	args["generate_id"] = paragraph->id();
-	container = new folia::TextMarkupString( args, paragraph->doc() );
-	root->append( container);
+	container = root->create_child<folia::TextMarkupString>( args );
 	content = make_styled_container( it._fi, root->doc() );
 	container->append( content );
 	//	cerr << "\t First styled container: " << container << endl;
@@ -617,7 +614,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	if ( keep_hyphens ){
 	  args["text"] = TiCC::UnicodeToUTF8(it._hyph);
 	}
-	content->append( new folia::Hyphbreak(args) );
+	content->create_child<folia::Hyphbreak>(args);
 	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
@@ -628,7 +625,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
       if ( &it == &line_parts.back() ){
 	// the remains
 	if ( !no_break && add_breaks ){
-	  content->append( new folia::Linebreak() );
+	  content->create_child<folia::Linebreak>();
 	  //	  cerr << "content now: " << content << endl;
 	}
       }
@@ -662,16 +659,14 @@ bool process_page( folia::FoliaElement *root,
       args.clear();
       args["subset"] = "par_style";
       args["class"] = style;
-      folia::Feature *f = new folia::Feature( args );
-      paragraph->append(f);
+      paragraph->create_child<folia::Feature>( args );
     }
     string align = TiCC::getAttribute( par_node, "align" );
     if ( !align.empty() ){
       args.clear();
       args["subset"] = "par_align";
       args["class"] = align;
-      folia::Feature *f = new folia::Feature( args );
-      paragraph->append(f);
+      paragraph->create_child<folia::Feature>( args );
     }
     if ( process_paragraph( paragraph, par_node, font_styles ) ){
       root->append( paragraph );
@@ -781,8 +776,7 @@ bool convert_abbyxml( const string& fileName,
     doc.declare( folia::AnnotationType::DIVISION, setname, args );
     args.clear();
     args["xml:id"] = text->id() + ".div" + TiCC::toString(++i);
-    folia::Division *div = new folia::Division( args );
-    text->append( div );
+    folia::Division *div = text->create_child<folia::Division>( args );
     process_page( div, page, font_styles );
   }
 
