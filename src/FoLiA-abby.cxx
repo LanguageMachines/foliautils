@@ -407,9 +407,8 @@ void output_result( folia::TextMarkupString *tc,
   if ( nospace ){
     args["space"] = "no";
   }
-  folia::TextMarkupString *part = new folia::TextMarkupString( args, root->doc() );
+  folia::TextMarkupString *part = root->create_child<folia::TextMarkupString>( args );
   part->append( tc );
-  root->append( part );
 }
 
 void append_styles( folia::TextMarkupStyle* markup,
@@ -418,50 +417,43 @@ void append_styles( folia::TextMarkupStyle* markup,
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "bold";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
   if ( fs & ITALIC ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "italic";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
   if ( fs & SMALLCAPS ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "smallcaps";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
   if ( fs & SUPERSCRIPT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "superscript";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
   if ( fs & SUBSCRIPT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "subscript";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
   if ( fs & UNDERLINE ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "underline";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
   if ( fs & STRIKEOUT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "strikeout";
-    folia::Feature *f = new folia::Feature( args );
-    markup->append(f);
+    markup->create_child<folia::Feature>( args );
   }
 }
 
@@ -477,8 +469,7 @@ folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
     doc->declare( folia::AnnotationType::LANG, setname, args );
     args.clear();
     args["class"] = info._lang;
-    folia::FoliaElement *f = new folia::TextMarkupLanguage( args, doc );
-    content->append(f);
+    content->create_child<folia::TextMarkupLanguage>( args );
   }
   if ( style != REGULAR ){
     append_styles( content, style );
@@ -487,22 +478,19 @@ folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
     folia::KWargs args;
     args["subset"] = "font_family";
     args["class"] = info._ff;
-    folia::Feature *f = new folia::Feature( args );
-    content->append(f);
+    content->create_child<folia::Feature>( args );
   }
   if ( !info._fs.empty() ){
     folia::KWargs args;
     args["subset"] = "font_size";
     args["class"] = info._fs;
-    folia::Feature *f = new folia::Feature( args );
-    content->append(f);
+    content->create_child<folia::Feature>( args );
   }
   if ( !info._id.empty() ){
     folia::KWargs args;
     args["subset"] = "font_style";
     args["class"] = info._id;
-    folia::Feature *f = new folia::Feature( args );
-    content->append(f);
+    content->create_child<folia::Feature>( args );
   }
   return content;
 }
