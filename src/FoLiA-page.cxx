@@ -107,7 +107,7 @@ string getOrg( xmlNode *root ){
   if ( comment ){
     xmlNode *node = comment->children;
     if ( node->type == XML_CDATA_SECTION_NODE ){
-      string cdata = (char*)node->content;
+      string cdata = folia::TextValue(node);
       string::size_type pos = cdata.find("Original.Path");
       if ( pos != string::npos ){
 	string::size_type epos = cdata.find( "/meta", pos );
