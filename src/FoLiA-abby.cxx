@@ -653,7 +653,7 @@ bool process_page( folia::FoliaElement *root,
     root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
     args.clear();
     args["xml:id"] = root->id() + ".p" + TiCC::toString(++i);
-    folia::Paragraph *paragraph = new folia::Paragraph( args, root->doc() );
+    folia::Paragraph *paragraph = root->create_child<folia::Paragraph>( args );
     string style = TiCC::getAttribute( par_node, "style" );
     if ( !style.empty() ){
       args.clear();
@@ -669,12 +669,11 @@ bool process_page( folia::FoliaElement *root,
       paragraph->create_child<folia::Feature>( args );
     }
     if ( process_paragraph( paragraph, par_node, font_styles ) ){
-      root->append( paragraph );
       didit = true;
     }
     else {
+      root->remove( paragraph );
       --i;
-      delete paragraph;
     }
   }
   return didit;
@@ -767,8 +766,7 @@ bool convert_abbyxml( const string& fileName,
   processor_id = proc->id();
   folia::KWargs args;
   args["xml:id"] =  docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
+  folia::Text *text = doc.setTextRoot( args );
   int i = 0;
   for ( const auto& page : pages ){
     folia::KWargs args;
