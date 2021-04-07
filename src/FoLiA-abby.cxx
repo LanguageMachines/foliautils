@@ -269,10 +269,15 @@ UnicodeString get_line( xmlNode *line ){
 void update_formatting_info( formatting_info& line_font,
 			     xmlNode *node,
 			     const map<string,formatting_info>& font_styles ){
-  string style = TiCC::getAttribute( node, "style" );
-  if ( !style.empty() ){
-    line_font = font_styles.at( style );
-    line_font._id = style;
+  try {
+    string style = TiCC::getAttribute( node, "style" );
+    if ( !style.empty() ){
+      line_font = font_styles.at( style );
+      line_font._id = style;
+    }
+  }
+  catch ( const out_of_range& ){
+    // continue
   }
   string lang = TiCC::getAttribute( node, "lang" );
   if ( !lang.empty() ){
@@ -520,9 +525,14 @@ bool process_paragraph( folia::Paragraph *paragraph,
 			xmlNode *par,
 			const map<string,formatting_info>& font_styles ){
   formatting_info par_font;
-  string par_style = TiCC::getAttribute( par, "style" );
-  if ( !par_style.empty() ){
-    par_font = font_styles.at(par_style);
+  try {
+    string par_style = TiCC::getAttribute( par, "style" );
+    if ( !par_style.empty() ){
+      par_font = font_styles.at(par_style);
+    }
+  }
+  catch ( const out_of_range& ){
+    // continue
   }
   list<xmlNode*> lines = TiCC::FindNodes( par, "*:line" );
   if ( verbose ){
@@ -751,8 +761,13 @@ bool convert_abbyxml( const string& fileName,
     }
     return false;
   }
+  else if ( verbose ){
+#pragma omp critical
+    {
+      cout << "found " << pages.size() << " page nodes" << endl;
+    }
+  }
   map<string,formatting_info> font_styles = extract_formatting_info( root );
-
   string orgFile = TiCC::basename( fileName );
   string docid = orgFile.substr( 0, orgFile.find(".") );
   docid = prefix + docid;
