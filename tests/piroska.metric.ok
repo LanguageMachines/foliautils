@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-piroska" generator="libfolia-v2.8" version="2.5.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-piroska" generator="libfolia-v2.9" version="2.5.0">
   <metadata type="native">
     <annotations>
       <division-annotation set="FoLiA-abby-set">
@@ -24,10 +24,11 @@
       <lang-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </lang-annotation>
+      <hspace-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-04-03T10:41:11" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
-        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.8"/>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-04-10T16:58:37" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
     <meta id="abby_file">piroska.abby.xml</meta>
@@ -151,7 +152,7 @@
       <p xml:id="FA-piroska.text.div1.p5">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p5.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>IV. Die römische Landwirtschaft und die </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>IV. Die römische Landwirtschaft und die<t-hspace> </t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{EF179B17-CBAB-451F-95F9-D59D59B05037}" subset="font_style"/>A220</t-style>
           </t-str>
         </t>
@@ -169,7 +170,7 @@
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p6.t-str.1">
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>Grundherrschaften der Kaiserzeit</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>* 1</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="15." subset="font_size"/><feat class="{96A59073-7007-4008-A803-6C3663B19E8A}" subset="font_style"/>* 1</t-style>
           </t-str>
         </t>
         <feat class="{2C092230-2651-425A-ACE2-047B8277C192}" subset="par_style"/>
@@ -185,11 +186,11 @@
       <p xml:id="FA-piroska.text.div1.p7">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Entwickelung der </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Entwickelung der<t-hspace> </t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Da in diesem Kapitel hauptsächlich eine Erschei<t-hbr/></t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.2">
-            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Betnebsweise. </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>Betnebsweise.<t-hspace> </t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>nung der Kaiserzeit behandelt werden soll, so ist</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.3">
@@ -203,17 +204,17 @@
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.6">
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Terremare</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>2</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und der geistvollen Untersuchungen </t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>2</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/><t-hspace> </t-hspace>und der geistvollen Untersuchungen<t-hspace> </t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hehns</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>3</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> und </t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>3</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/><t-hspace> </t-hspace>und<t-hspace> </t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Hel<t-hbr/></t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.7">
             <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>bigs</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>4</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> eine allgemeine Entwickelungsgeschichte derselben von den</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>4</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/><t-hspace> </t-hspace>eine allgemeine Entwickelungsgeschichte derselben von den</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.8">
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>ältesten Besiedlungen an zu geben. In historischer Zeit bietet die</t-style>
@@ -226,8 +227,8 @@
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.11">
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>gentlich</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>5 6</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> behauptet worden ist, daß die Römer den Germanen die</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>5 6</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/><t-hspace> </t-hspace>behauptet worden ist, daß die Römer den Germanen die</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.12">
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un<t-hbr/></t-style>
@@ -245,14 +246,14 @@
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>und mit dem Flurzwang untrennbar zusammenhängt. Die römischen</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.17">
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Schriftsteller aber kennen nur das, was </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>Schriftsteller aber kennen nur das, was<t-hspace> </t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Thünen</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Q</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/> „freie Wirtschaft“</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{969685F8-BA90-4C77-B20B-CCDD69D1DF1E}" subset="font_style"/>Q</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/><t-hspace> </t-hspace>„freie Wirtschaft“</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p7.t-str.18">
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>nennen würde</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>1</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>1</t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="11." subset="font_size"/><feat class="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" subset="font_style"/>). | Von Fruchtfolge sprechen sie überhaupt nur gele<t-hbr/></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{5E549140-7BE0-4B62-824A-410404D7D00B}" subset="font_style"/>A 221</t-style>
           </t-str>
@@ -272,11 +273,11 @@
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p8.t-str.1">
             <t-style><t-lang class="GermanStandard"/><feat class="italic" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{827F89BD-07E2-4687-A1C9-3B073016727E}" subset="font_style"/>’) Cato,</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> De r. r.</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>7</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> 148</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>8</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/> bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/><t-hspace> </t-hspace>De r. r.</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>7</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/><t-hspace> </t-hspace>148</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>8</t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/><t-hspace> </t-hspace>bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220</t-style>
           </t-str>
         </t>
         <feat class="{22975262-47E4-491E-8D6F-0E1CEE4AFB42}" subset="par_style"/>
@@ -292,19 +293,19 @@
       <p xml:id="FA-piroska.text.div1.p9">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p9.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>1 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>1<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Zusammenfassende Wiedergabe größerer Teile des Inhalts dieses Kapitels bei Weber,</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p9.t-str.2">
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Untergang der antiken Kultur, S. 64—76; ders., Agrarverhältnisse im Altertum</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1</t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 14—18;</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p9.t-str.3">
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>dass.</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>2</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>2</t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 80-84; dass.</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3</t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>, S. 165-168. In den folgenden Erläuterungen wird darauf nur</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p9.t-str.4">
@@ -324,7 +325,7 @@
       <p xml:id="FA-piroska.text.div1.p10">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p10.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>2 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>2<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl.S. 142, Anm.5.</t-style>
           </t-str>
         </t>
@@ -341,7 +342,7 @@
       <p xml:id="FA-piroska.text.div1.p11">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p11.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>3 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>3<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Hehn, Kulturpflanzen und Haustiere (vgl. Einleitung oben, S. 3f.).</t-style>
           </t-str>
         </t>
@@ -358,7 +359,7 @@
       <p xml:id="FA-piroska.text.div1.p12">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p12.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>4 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>4<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Helbig, Italiker in der Poebene.</t-style>
           </t-str>
         </t>
@@ -375,7 +376,7 @@
       <p xml:id="FA-piroska.text.div1.p13">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p13.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>5 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>5<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Gemeint offenbar: Hanssen, Agrarhistorische Abhandlungen 1, S. 153.</t-style>
           </t-str>
         </t>
@@ -392,9 +393,9 @@
       <p xml:id="FA-piroska.text.div1.p14">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p14.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>6 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>6<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Vgl. v. Thünen, Isolierter Staat</t-style>
-            <t-style><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3</t-style>
+            <t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>3</t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>1, S. 3-5.</t-style>
           </t-str>
         </t>
@@ -412,7 +413,7 @@
       <p xml:id="FA-piroska.text.div1.p15">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p15.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>7 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>7<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der</t-style>
           </t-str>
           <t-str xml:id="FA-piroska.text.div1.p15.t-str.2">
@@ -438,7 +439,7 @@
       <p xml:id="FA-piroska.text.div1.p16">
         <t class="OCR">
           <t-str xml:id="FA-piroska.text.div1.p16.t-str.1">
-            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>8 </t-style>
+            <t-style><t-lang class="GermanStandard"/><feat class="bold" subset="font_typeface"/><feat class="Arial" subset="font_family"/><feat class="8.5" subset="font_size"/><feat class="{939D168A-AABC-44B3-88D8-439BCCED9DC2}" subset="font_style"/>8<t-hspace>	</t-hspace></t-style>
             <t-style><t-lang class="GermanStandard"/><feat class="Arial" subset="font_family"/><feat class="7.5" subset="font_size"/><feat class="{83B658BD-10BC-4CCE-B322-294F6F423445}" subset="font_style"/>Die zitierte Stelle findet sich ebd., Kap. 149.</t-style>
           </t-str>
         </t>
