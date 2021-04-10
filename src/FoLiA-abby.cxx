@@ -254,7 +254,21 @@ UnicodeString get_line( xmlNode *line ){
       }
     }
     for ( const auto& ch : chars ){
-      result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
+      string ist = TiCC::getAttribute( ch, "isTab" );
+      if ( ist == "1" ){
+	string cnt = TiCC::getAttribute( ch, "tabLeaderCount" );
+	int size = 1;
+	if ( !cnt.empty() ){
+	  if ( !TiCC::stringTo( cnt, size ) ){
+	    throw( runtime_error( "tabLeaderCount" ) );
+	  }
+	}
+	string tabs( "\t", size );
+	result += TiCC::UnicodeFromUTF8(tabs);
+      }
+      else {
+	result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
+      }
     }
   }
   if ( verbose ){
@@ -441,12 +455,14 @@ void append_styles( folia::TextMarkupStyle* markup,
     args["subset"] = "font_typeface";
     args["class"] = "superscript";
     markup->create_child<folia::Feature>( args );
+    markup->settag("token");
   }
   if ( fs & SUBSCRIPT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "subscript";
     markup->create_child<folia::Feature>( args );
+    markup->settag("token");
   }
   if ( fs & UNDERLINE ){
     folia::KWargs args;
@@ -502,10 +518,41 @@ folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
 
 void add_content( folia::FoliaElement *content,
 		  const string& value ){
+  ///
+  /// replace leading and trailing space by <t-hspace> nodes
   if ( !value.empty() ){
+    //    cerr << "VALUE '" << value << "'" << endl;
+    size_t begin = 0;
+    string spaces;
+    while ( begin < value.length() && isspace( value[begin] ) ){
+      spaces += value[begin++];
+    }
+    if ( !spaces.empty() ){
+      //      cerr << "1 ADD SPACES '" << spaces << "'" << endl;
+      folia::KWargs args;
+      args["text"] = spaces;
+      content->create_child<folia::TextMarkupHSpace>( args );
+    }
+    size_t end = value.length()-1;
+    while ( end > begin && isspace( value[end] ) ){
+      --end;
+    }
+    //    cerr << "begin=" << begin << " , end=" << end << endl;
+    string sub = value.substr( begin, end-begin+1 );
+    //    cerr << "SUB '" << sub << "'" << endl;
     folia::XmlText *t = new folia::XmlText();
-    t->setvalue( (const char*)value.c_str() );
+    t->setvalue( (const char*)sub.c_str() );
     content->append( t );
+    spaces.clear();
+    while ( ++end < value.length() ){
+      spaces += value[end];
+    }
+    if ( !spaces.empty() ){
+      //      cerr << "2 ADD SPACES '" << spaces << "'" << endl;
+      folia::KWargs args;
+      args["text"] = spaces;
+      content->create_child<folia::TextMarkupHSpace>( args );
+    }
   }
 }
 
@@ -588,14 +635,14 @@ bool process_paragraph( folia::Paragraph *paragraph,
     for ( const auto& it : line_parts ){
       //      cerr << "\tNEXT part " << endl;
       if ( !container ){
-	// folia::XmlText *txt = new folia::XmlText();
-	// if ( !add_breaks ){
-	//   txt->setvalue( "\n" );
-	// }
-	// else {
-	//   txt->setvalue( "" );
-	// }
-	// root->append( txt );
+	folia::XmlText *txt = new folia::XmlText();
+	if ( !add_breaks ){
+	  txt->setvalue( "\n" );
+	}
+	else {
+	  txt->setvalue( "" );
+	}
+	root->append( txt );
 	// start with a fresh <t-str>.
 	current_font = it._fi;
 	args.clear();
