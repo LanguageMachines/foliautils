@@ -59,7 +59,8 @@ void usage( const string& name ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVvpe:t:o:", "class:,help,version,retaintok,threads:" );
+  TiCC::CL_Options opts( "hVvpe:t:o:",
+			 "class:,help,version,retaintok,threads:,honour-tags" );
   try {
     opts.init(argc,argv);
   }
@@ -86,6 +87,7 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
+  bool honour_tags = opts.extract( "honour-tags" );
   if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
     int numThreads = 1;
@@ -170,11 +172,23 @@ int main( int argc, char *argv[] ){
     else {
       UnicodeString us;
       try {
-	us = d->text( class_name, retaintok);
+	us = d->text( class_name, retaintok, false, honour_tags );
       }
       catch( ... ){
 	cout << "document '" << docName << "' contains no text in class="
 	     << class_name << endl;
+      }
+      if ( honour_tags ){
+	UnicodeString out;
+	for ( int i=0; i < us.length(); ++i ){
+	  if ( us[i] == u'\u200d' ){
+	    out += " ";
+	  }
+	  else {
+	    out += us[i];
+	  }
+	}
+	us = out;
       }
       if ( !us.isEmpty() ){
 	ofstream os( outname );
