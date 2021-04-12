@@ -71,6 +71,10 @@ enum font_style { REGULAR=0,
 		  STRIKEOUT=64
 };
 
+inline UnicodeString& pop_back( UnicodeString& us ){
+  return us.remove( us.length() - 1 );
+}
+
 inline font_style operator~( font_style f ){
   return (font_style)( ~(int)f );
 }
@@ -242,7 +246,7 @@ UnicodeString get_line( xmlNode *line ){
     }
     if ( !result.isEmpty() ){
       // remove last space of the line
-      result.remove(result.length()-1);
+      result = pop_back( result );
     }
   }
   else {
@@ -380,12 +384,12 @@ void process_line( xmlNode *block,
     update_formatting_info( line_format, form, font_styles );
     UnicodeString uresult = get_line( form );
     if ( uresult.endsWith( "¬" ) ){
-      uresult.remove(uresult.length()-1);
+      uresult = pop_back( uresult );
       uresult += "-";
       hyp = "¬";
     }
     else if ( uresult.endsWith( "- " ) ){
-      uresult.remove(uresult.length()-1);
+      uresult =  pop_back( uresult );
       hyp = "-";
     }
     else if ( uresult.endsWith( "-" ) ){
@@ -639,7 +643,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	// if so: add the value + <t-hbr/>
-	value.remove( value.length()-1 ); // remove the hyphen
+	value = pop_back( value ); // remove the hyphen
 	add_content( content, value );
 	folia::KWargs args;
 	if ( keep_hyphens ){
