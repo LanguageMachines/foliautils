@@ -357,7 +357,7 @@ void update_formatting_info( formatting_info& line_font,
 }
 
 struct line_info {
-  string _value;
+  UnicodeString _value;
   formatting_info _fi;
   xmlNode *_line;
   UnicodeString _hyph;
@@ -391,10 +391,11 @@ void process_line( xmlNode *block,
     else if ( uresult.endsWith( "-" ) ){
       hyp = "-";
     }
-    string result = TiCC::UnicodeToUTF8( uresult );
-    if ( !TiCC::trim( result ).empty() ){
+    UnicodeString tmp = uresult;
+    tmp.trim();
+    if ( !tmp.isEmpty() ){
       line_info li;
-      li._value = result;
+      li._value = uresult;
       li._line = block;
       li._fi = line_format;
       li._hyph = hyp;
@@ -503,14 +504,14 @@ folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
 }
 
 void add_content( folia::FoliaElement *content,
-		  const string& value ){
+		  const UnicodeString& value ){
   ///
   /// replace leading and trailing space by <t-hspace> nodes
-  if ( !value.empty() ){
-    //    cerr << "VALUE '" << value << "'" << endl;
-    bool begin_space = isspace( value[0] );
-    bool end_space = isspace( value[value.length()-1] );
-    string out = TiCC::trim(value);
+  if ( !value.isEmpty() ){
+    bool begin_space = u_isspace( value[0] );
+    bool end_space = u_isspace( value[value.length()-1] );
+    UnicodeString out = value;
+    out.trim();
     if ( begin_space ){
       //      cerr << "1 ADD SPACES '" << spaces << "'" << endl;
       folia::KWargs args;
@@ -518,7 +519,7 @@ void add_content( folia::FoliaElement *content,
       content->create_child<folia::TextMarkupHSpace>( args );
     }
     folia::XmlText *t = new folia::XmlText();
-    t->setvalue( (const char*)out.c_str() );
+    t->setvalue( TiCC::UnicodeToUTF8(out) );
     content->append( t );
     if ( end_space ){
       //      cerr << "2 ADD SPACES '" << spaces << "'" << endl;
@@ -633,12 +634,12 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	//	cerr << "\t Next styled container: " << container << endl;
 	no_break = false;
       }
-      string value = it._value;
+      UnicodeString value = it._value;
       //      cerr << "VALUE= '" << value << "'" << endl;
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	// if so: add the value + <t-hbr/>
-	value.pop_back(); // remove the hyphen
+	value.remove( value.length()-1 ); // remove the hyphen
 	add_content( content, value );
 	folia::KWargs args;
 	if ( keep_hyphens ){
@@ -648,7 +649,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
-      else if ( !value.empty() ){
+      else if ( !value.isEmpty() ){
 	add_content( content, value );
 	//	cerr << "added content now: " << content << endl;
       }
