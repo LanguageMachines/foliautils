@@ -254,21 +254,7 @@ UnicodeString get_line( xmlNode *line ){
       }
     }
     for ( const auto& ch : chars ){
-      string ist = TiCC::getAttribute( ch, "isTab" );
-      if ( ist == "1" ){
-	string cnt = TiCC::getAttribute( ch, "tabLeaderCount" );
-	int size = 1;
-	if ( !cnt.empty() ){
-	  if ( !TiCC::stringTo( cnt, size ) ){
-	    throw( runtime_error( "tabLeaderCount" ) );
-	  }
-	}
-	string tabs( "\t", size );
-	result += TiCC::UnicodeFromUTF8(tabs);
-      }
-      else {
-	result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
-      }
+      result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
     }
   }
   if ( verbose ){
@@ -522,35 +508,22 @@ void add_content( folia::FoliaElement *content,
   /// replace leading and trailing space by <t-hspace> nodes
   if ( !value.empty() ){
     //    cerr << "VALUE '" << value << "'" << endl;
-    size_t begin = 0;
-    string spaces;
-    while ( begin < value.length() && isspace( value[begin] ) ){
-      spaces += value[begin++];
-    }
-    if ( !spaces.empty() ){
+    bool begin_space = isspace( value[0] );
+    bool end_space = isspace( value[value.length()-1] );
+    string out = TiCC::trim(value);
+    if ( begin_space ){
       //      cerr << "1 ADD SPACES '" << spaces << "'" << endl;
       folia::KWargs args;
-      args["text"] = spaces;
+      args["class"] = "space";
       content->create_child<folia::TextMarkupHSpace>( args );
     }
-    size_t end = value.length()-1;
-    while ( end > begin && isspace( value[end] ) ){
-      --end;
-    }
-    //    cerr << "begin=" << begin << " , end=" << end << endl;
-    string sub = value.substr( begin, end-begin+1 );
-    //    cerr << "SUB '" << sub << "'" << endl;
     folia::XmlText *t = new folia::XmlText();
-    t->setvalue( (const char*)sub.c_str() );
+    t->setvalue( (const char*)out.c_str() );
     content->append( t );
-    spaces.clear();
-    while ( ++end < value.length() ){
-      spaces += value[end];
-    }
-    if ( !spaces.empty() ){
+    if ( end_space ){
       //      cerr << "2 ADD SPACES '" << spaces << "'" << endl;
       folia::KWargs args;
-      args["text"] = spaces;
+      args["class"] = "space";
       content->create_child<folia::TextMarkupHSpace>( args );
     }
   }
