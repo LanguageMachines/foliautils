@@ -619,9 +619,6 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	  if ( !add_breaks ){
 	    txt->setvalue( "\n" );
 	  }
-	  else {
-	    txt->setvalue( "" );
-	  }
 	  root->append( txt );
 	}
 	current_font = it._fi;
