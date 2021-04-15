@@ -30,3 +30,8 @@ $my_bin/FoLiA-abby --addmetrics -O out/metric data/abby >> testabby.out 2>&1
 ./foliadiff.sh out/metric/FA-morse_OCR_perletter.folia.xml morse.metric.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/metric/FA-levi010geil01_01_Deel500.folia.xml levi.metric.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/metric/FA-piroska.abby.folia.xml piroska.metric.ok  >> testabby.out 2>&1
+
+$my_bin/FoLiA-2text -o txtout1/ --class=OCR out/FA-piroska.abby.folia.xml >> testabby.out 2>&1
+diff txtout1/FA-piroska.abby.folia.xml.txt piroska.txt.ok >> testabby.out 2>&1
+$my_bin/FoLiA-2text -o txtout2/ --class=OCR --honour-tags out/FA-piroska.abby.folia.xml >> testabby.out 2>&1
+diff txtout2/FA-piroska.abby.folia.xml.txt piroska.tags.txt.ok >> testabby.out 2>&1

@@ -60,3 +60,5 @@ start processing of 4 files
 	converted: data/abby/piroska.abby.xml into: out/metric/FA-piroska.abby.folia.xml
 	converted: data/abby/morse_OCR_perletter.xml into: out/metric/FA-morse_OCR_perletter.folia.xml
 done
+Processed :out/FA-piroska.abby.folia.xml into txtout1/FA-piroska.abby.folia.xml.txt still 0 files to go.
+Processed :out/FA-piroska.abby.folia.xml into txtout2/FA-piroska.abby.folia.xml.txt still 0 files to go.
