@@ -58,6 +58,14 @@ void usage( const string& name ){
   cerr << "\t-o\t\t name of the output file(s) prefix." << endl;
 }
 
+UnicodeString handle_token_tag( const folia::FoliaElement *d,
+				const folia::TextPolicy& tp ){
+  UnicodeString tmp_result = text( d, tp );
+  tmp_result = u'\u200D' + tmp_result;
+  tmp_result += u'\u200D';
+  return tmp_result;
+}
+
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:",
 			 "class:,help,version,retaintok,threads:,honour-tags" );
@@ -170,9 +178,17 @@ int main( int argc, char *argv[] ){
       }
     }
     else {
+      folia::TextPolicy tp( class_name );
+      if ( retaintok ){
+	tp._text_flags |= folia::TEXT_FLAGS::RETAIN;
+      }
+      if ( honour_tags ){
+	tp._tag_handler = &handle_token_tag;
+	tp._honour_tag = true;
+      }
       UnicodeString us;
       try {
-	us = d->text( class_name, retaintok, false, honour_tags );
+	us = d->text( tp );
       }
       catch( ... ){
 	cout << "document '" << docName << "' contains no text in class="
