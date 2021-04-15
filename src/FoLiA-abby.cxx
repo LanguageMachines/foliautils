@@ -613,14 +613,12 @@ bool process_paragraph( folia::Paragraph *paragraph,
     for ( const auto& it : line_parts ){
       //      cerr << "\tNEXT part " << endl;
       if ( !container ){
-	if ( &it != &line_parts.front() ){
-	  // start with a fresh <t-str>.
-	  folia::XmlText *txt = new folia::XmlText();
-	  if ( !add_breaks ){
-	    txt->setvalue( "\n" );
-	  }
-	  root->append( txt );
+	// start with a fresh <t-str>.
+	folia::XmlText *txt = new folia::XmlText();
+	if ( !add_breaks ){
+	  txt->setvalue( "\n" );
 	}
+	root->append( txt );
 	current_font = it._fi;
 	args.clear();
 	args["generate_id"] = paragraph->id();
