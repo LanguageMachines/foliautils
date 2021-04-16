@@ -183,8 +183,7 @@ int main( int argc, char *argv[] ){
 	tp._text_flags |= folia::TEXT_FLAGS::RETAIN;
       }
       if ( honour_tags ){
-	tp._tag_handler = &handle_token_tag;
-	tp._honour_tag = true;
+	tp._tag_handlers.insert(make_pair("token", &handle_token_tag ) );
       }
       UnicodeString us;
       try {
