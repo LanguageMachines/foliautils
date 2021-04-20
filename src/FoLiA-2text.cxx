@@ -180,10 +180,10 @@ int main( int argc, char *argv[] ){
     else {
       folia::TextPolicy tp( class_name );
       if ( retaintok ){
-	tp._text_flags |= folia::TEXT_FLAGS::RETAIN;
+	tp.set( folia::TEXT_FLAGS::RETAIN );
       }
       if ( honour_tags ){
-	tp._tag_handlers.insert(make_pair("token", &handle_token_tag ) );
+	tp.add_handler("token", &handle_token_tag );
       }
       UnicodeString us;
       try {
