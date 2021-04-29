@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml" version="1.0" producer="ABBYY FineReader Engine 12" languages="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml">
+<documentData>
+<paragraphStyles>
+<paragraphStyle id="{70C0E49A-EEFB-45E0-8119-02B965690BD0}" name="Body text|1" mainFontStyleId="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1284" fixedLineSpacing="0">
+<fontStyle id="{29589F1E-6010-4DF8-A0E8-D990639E17BE}" baseFont="1" ff="Times New Roman" fs="11." backgroundColor="4278190079"/>
+<fontStyle id="{5E549140-7BE0-4B62-824A-410404D7D00B}" ff="Arial" fs="7.5" backgroundColor="4278190079"/>
+</paragraphStyle>
+</paragraphStyles>
+</documentData>
+<page width="3051" height="4527" resolution="500" originalCoords="1">
+  <text>
+    <par align="Justified" lineSpacing="1284" style="{70C0E49A-EEFB-45E0-8119-02B965690BD0}">
+      <line baseline="593" l="343" t="562" r="732" b="597">
+	<formatting lang="Latin" ff="Times New Roman" fs="10." italic="1" style="{5C5F397F-82D0-4034-ABAE-1551350CF5AC}">
+	  <charParams l="343" t="566" r="364" b="590">V</charParams>
+	  <charParams l="359" t="573" r="378" b="596">g</charParams>
+	  <charParams l="379" t="567" r="387" b="589" suspicious="1">l</charParams>
+	  <charParams l="388" t="585" r="393" b="589" suspicious="1">.</charParams>
+	  <charParams l="394" t="572" r="410" b="589"> </charParams></formatting><formatting lang="GermanStandard" ff="Times New Roman" fs="10." italic="1" style="{5C5F397F-82D0-4034-ABAE-1551350CF5AC}">
+	  <charParams l="411" t="572" r="425" b="589">a</charParams>
+	  <charParams l="427" t="572" r="443" b="588">u</charParams>
+	  <charParams l="445" t="572" r="457" b="589">c</charParams>
+	  <charParams l="458" t="566" r="474" b="588">h</charParams>
+	</formatting>
+	<formatting lang="GermanStandard" ff="Times New Roman" fs="10." style="{5226A48F-7EB3-4F5B-9980-6EE40A5D4D10}">
+	  <charParams l="475" t="565" r="490" b="588"> </charParams>
+	</formatting>
+	<formatting lang="Latin" ff="Times New Roman" fs="10." style="{5226A48F-7EB3-4F5B-9980-6EE40A5D4D10}">
+	  <charParams l="491" t="565" r="504" b="588">J</charParams>
+	  <charParams l="510" t="573" r="524" b="588">u</charParams>
+	  <charParams l="531" t="571" r="541" b="588">s</charParams>
+	  <charParams l="727" t="581" r="732" b="585">.</charParams>
+	</formatting>
+      </line>
+    </par>
+  </text>
+</page>
+</document>

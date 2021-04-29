@@ -12,6 +12,7 @@ $my_bin/FoLiA-abby -O out data/abby >> testabby.out 2>&1
 ./foliadiff.sh out/FA-morse_OCR_perletter.folia.xml morse.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/FA-levi010geil01_01_Deel500.folia.xml levi.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/FA-piroska.abby.folia.xml piroska.ok  >> testabby.out 2>&1
+./foliadiff.sh out/FA-auch.folia.xml auch.ok  >> testabby.out 2>&1
 
 $my_bin/FoLiA-abby --addbreaks -O out/break data/abby >> testabby.out 2>&1
 
