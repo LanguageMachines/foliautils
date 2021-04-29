@@ -365,6 +365,7 @@ struct line_info {
   formatting_info _fi;
   xmlNode *_line;
   UnicodeString _hyph;
+  bool _empty;
 };
 
 void process_line( xmlNode *block,
@@ -395,16 +396,20 @@ void process_line( xmlNode *block,
     else if ( uresult.endsWith( "-" ) ){
       hyp = "-";
     }
+    line_info li;
+    li._value = uresult;
+    li._line = block;
+    li._fi = line_format;
+    li._hyph = hyp;
     UnicodeString tmp = uresult;
     tmp.trim();
-    if ( !tmp.isEmpty() ){
-      line_info li;
-      li._value = uresult;
-      li._line = block;
-      li._fi = line_format;
-      li._hyph = hyp;
-      line_parts.push_back( li );
+    if ( tmp.isEmpty() ){
+      li._empty = true;
     }
+    else {
+      li._empty = false;
+    }
+    line_parts.push_back( li );
   }
 }
 
@@ -534,6 +539,15 @@ void add_content( folia::FoliaElement *content,
   }
 }
 
+void add_empty( folia::FoliaElement *content,
+		const UnicodeString& ){
+  ///
+  /// insert a <t-hspace> node
+  folia::KWargs args;
+  args["class"] = "space";
+  content->create_child<folia::TextMarkupHSpace>( args );
+}
+
 void append_metric( folia::Paragraph *root,
 		    const string& att,
 		    const string& val ){
@@ -636,7 +650,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	no_break = false;
       }
       UnicodeString value = it._value;
-      //      cerr << "VALUE= '" << value << "'" << endl;
+      cerr << "VALUE= '" << value << "'" << endl;
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	// if so: add the value + <t-hbr/>
@@ -650,7 +664,11 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
-      else if ( !value.isEmpty() ){
+      else if ( it._empty ){
+	add_empty( content, value );
+	//	cerr << "added EMPTY" << content << endl;
+      }
+      else {
 	add_content( content, value );
 	//	cerr << "added content now: " << content << endl;
       }
