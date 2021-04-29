@@ -361,11 +361,14 @@ void update_formatting_info( formatting_info& line_font,
 }
 
 struct line_info {
+  line_info():
+    _line(0),
+    _spaces(0){};
   UnicodeString _value;
   formatting_info _fi;
   xmlNode *_line;
   UnicodeString _hyph;
-  bool _empty;
+  int _spaces;
 };
 
 void process_line( xmlNode *block,
@@ -396,20 +399,19 @@ void process_line( xmlNode *block,
     else if ( uresult.endsWith( "-" ) ){
       hyp = "-";
     }
-    line_info li;
-    li._value = uresult;
-    li._line = block;
-    li._fi = line_format;
-    li._hyph = hyp;
-    UnicodeString tmp = uresult;
-    tmp.trim();
-    if ( tmp.isEmpty() ){
-      li._empty = true;
+    if ( !uresult.isEmpty() ){
+      line_info li;
+      li._value = uresult;
+      li._line = block;
+      li._fi = line_format;
+      li._hyph = hyp;
+      UnicodeString tmp = uresult;
+      tmp.trim();
+      if ( tmp.isEmpty() ){
+	li._spaces = uresult.length();
+      }
+      line_parts.push_back( li );
     }
-    else {
-      li._empty = false;
-    }
-    line_parts.push_back( li );
   }
 }
 
@@ -650,7 +652,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	no_break = false;
       }
       UnicodeString value = it._value;
-      cerr << "VALUE= '" << value << "'" << endl;
+      //      cerr << "VALUE= '" << value << "'" << endl;
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	// if so: add the value + <t-hbr/>
@@ -664,7 +666,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
-      else if ( it._empty ){
+      else if ( it._spaces > 0 ){
 	add_empty( content, value );
 	//	cerr << "added EMPTY" << content << endl;
       }
