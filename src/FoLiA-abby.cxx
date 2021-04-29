@@ -663,6 +663,10 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	if ( it._hyph == "¬" ){
 	  previous_hyphen = true;
 	}
+	else if ( it._hyph == "-"
+		  && &it == &line_parts.back() ){
+	  previous_hyphen = true;
+	}
 	value = pop_back( value ); // remove the hyphen
 	add_content( content, value );
 	folia::KWargs args;
