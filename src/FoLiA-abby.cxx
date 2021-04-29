@@ -618,6 +618,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
   //  cerr << "start process lines: " << endl;
   args["class"] = classname;
   folia::FoliaElement *root = paragraph->create_child<folia::TextContent>(args);
+  bool previous_hyphen = false;
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
@@ -627,11 +628,12 @@ bool process_paragraph( folia::Paragraph *paragraph,
     folia::TextMarkupString *container = 0;
     folia::TextMarkupStyle *content = 0;
     for ( const auto& it : line_parts ){
-      //      cerr << "\tNEXT part " << endl;
+      // cerr << "\tNEXT part " << endl;
+      // cerr << "previous_hyphen=" << previous_hyphen << endl;
       if ( !container ){
 	// start with a fresh <t-str>.
 	folia::XmlText *txt = new folia::XmlText();
-	if ( !add_breaks ){
+	if ( !add_breaks && !previous_hyphen ) {
 	  txt->setvalue( "\n" );
 	}
 	root->append( txt );
@@ -653,9 +655,14 @@ bool process_paragraph( folia::Paragraph *paragraph,
       }
       UnicodeString value = it._value;
       //      cerr << "VALUE= '" << value << "'" << endl;
+      previous_hyphen = false;
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	// if so: add the value + <t-hbr/>
+	//	cerr << "HYPH= '" << it._hyph << "'" << endl;
+	if ( it._hyph == "¬" ){
+	  previous_hyphen = true;
+	}
 	value = pop_back( value ); // remove the hyphen
 	add_content( content, value );
 	folia::KWargs args;
