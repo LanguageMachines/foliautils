@@ -389,17 +389,18 @@ void process_line( xmlNode *block,
     UnicodeString uresult = get_line( form );
     if ( uresult.endsWith( "¬" ) ){
       uresult = pop_back( uresult );
-      uresult += "-";
       hyp = "¬";
     }
     else if ( uresult.endsWith( "- " ) ){
-      uresult =  pop_back( uresult );
+      uresult = pop_back( uresult );
+      uresult = pop_back( uresult );
       hyp = "-";
     }
     else if ( uresult.endsWith( "-" ) ){
+      uresult = pop_back( uresult );
       hyp = "-";
     }
-    if ( !uresult.isEmpty() ){
+    if ( !uresult.isEmpty() || !hyp.isEmpty() ){
       line_info li;
       li._value = uresult;
       li._line = block;
@@ -667,7 +668,6 @@ bool process_paragraph( folia::Paragraph *paragraph,
 		  && &it == &line_parts.back() ){
 	  previous_hyphen = true;
 	}
-	value = pop_back( value ); // remove the hyphen
 	add_content( content, value );
 	folia::KWargs args;
 	if ( keep_hyphens ){
