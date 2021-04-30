@@ -485,9 +485,6 @@ folia::TextMarkupStyle* make_style_content( const formatting_info& info,
   if ( !info._lang.empty() ){
     // add language as a t-lang
     folia::KWargs args;
-    args["processor"] = processor_id;
-    doc->declare( folia::AnnotationType::LANG, setname, args );
-    args.clear();
     args["class"] = info._lang;
     content->create_child<folia::TextMarkupLanguage>( args );
   }
@@ -515,49 +512,47 @@ folia::TextMarkupStyle* make_style_content( const formatting_info& info,
   return content;
 }
 
-void add_content( folia::FoliaElement *content,
-		  const UnicodeString& value ){
-  ///
-  /// replace leading and trailing space by <t-hspace> nodes
+void add_hspace( folia::FoliaElement *content ){
+  //! insert a <t-hspace> node to a FoliaElement
+  /*!
+    \param content the node to connect to
+   */
+  folia::KWargs args;
+  args["class"] = "space";
+  content->create_child<folia::TextMarkupHSpace>( args );
+}
+
+void add_value( folia::FoliaElement *content,
+		const UnicodeString& value ){
+  //! add a string value to the content
+  /*!
+    \param content the Folia to extend
+    \param value the Unicode string to add
+    this fuction will replace leading and trailing spaces by <t-hspace> nodes
+   */
   if ( !value.isEmpty() ){
     bool begin_space = u_isspace( value[0] );
     bool end_space = u_isspace( value[value.length()-1] );
     UnicodeString out = value;
     out.trim();
     if ( begin_space ){
-      //      cerr << "1 ADD SPACES '" << spaces << "'" << endl;
-      folia::KWargs args;
-      args["class"] = "space";
-      content->create_child<folia::TextMarkupHSpace>( args );
+      // represent ALL leading spaces as 1 TextMarkupHSpace
+      add_hspace( content );
     }
     folia::XmlText *t = new folia::XmlText();
     t->setvalue( TiCC::UnicodeToUTF8(out) );
     content->append( t );
     if ( end_space ){
-      //      cerr << "2 ADD SPACES '" << spaces << "'" << endl;
-      folia::KWargs args;
-      args["class"] = "space";
-      content->create_child<folia::TextMarkupHSpace>( args );
+      // represent ALL trailing spaces as 1 TextMarkupHSpace
+      add_hspace( content );
     }
   }
-}
-
-void add_empty( folia::FoliaElement *content,
-		const UnicodeString& ){
-  ///
-  /// insert a <t-hspace> node
-  folia::KWargs args;
-  args["class"] = "space";
-  content->create_child<folia::TextMarkupHSpace>( args );
 }
 
 void append_metric( folia::Paragraph *root,
 		    const string& att,
 		    const string& val ){
   folia::KWargs args;
-  args["processor"] = processor_id;
-  root->doc()->declare( folia::AnnotationType::METRIC, setname, args );
-  args.clear();
   args["value"] = val;
   args["class"] = att;
   root->create_child<folia::Metric>( args );
@@ -607,16 +602,8 @@ bool process_paragraph( folia::Paragraph *paragraph,
     append_metric( paragraph, "last_char_right", atts["r"] );
     append_metric( paragraph, "last_char_bottom", atts["b"] );
   }
-  folia::KWargs args;
-  args["processor"] = processor_id;
-  paragraph->doc()->declare( folia::AnnotationType::STRING, setname, args );
-  paragraph->doc()->declare( folia::AnnotationType::STYLE, setname, args );
-  paragraph->doc()->declare( folia::AnnotationType::HYPHENATION, setname, args );
-  if ( add_breaks ){
-    paragraph->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
-  }
-  args.clear();
   //  cerr << "start process lines: " << endl;
+  folia::KWargs args;
   args["class"] = classname;
   folia::FoliaElement *root = paragraph->create_child<folia::TextContent>(args);
   bool previous_hyphen = false;
@@ -669,7 +656,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 		  && &it == &line_parts.back() ){
 	  previous_hyphen = true;
 	}
-	add_content( content, value );
+	add_value( content, value );
 	folia::KWargs args;
 	if ( keep_hyphens ){
 	  args["text"] = TiCC::UnicodeToUTF8(it._hyph);
@@ -679,11 +666,10 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	no_break = true;
       }
       else if ( it._spaces > 0 ){
-	add_empty( content, value );
-	//	cerr << "added EMPTY" << content << endl;
+	add_hspace( content );
       }
       else {
-	add_content( content, value );
+	add_value( content, value );
 	//	cerr << "added content now: " << content << endl;
       }
       if ( &it == &line_parts.back() ){
@@ -713,9 +699,6 @@ bool process_page( folia::FoliaElement *root,
   bool didit = false;
   for ( const auto& par_node : paragraphs ){
     folia::KWargs args;
-    args["processor"] = processor_id;
-    root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
-    args.clear();
     args["xml:id"] = root->id() + ".p" + TiCC::toString(++i);
     folia::Paragraph *paragraph = root->create_child<folia::Paragraph>( args );
     string style = TiCC::getAttribute( par_node, "style" );
@@ -826,22 +809,31 @@ bool convert_abbyxml( const string& fileName,
   string docid = orgFile.substr( 0, orgFile.find(".") );
   docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
+  folia::processor *proc = add_provenance( doc, processor_name, command );
+  processor_id = proc->id();
+  folia::KWargs args;
+  args["processor"] = processor_id;
+  doc.declare( folia::AnnotationType::PARAGRAPH, setname, args );
+  doc.declare( folia::AnnotationType::DIVISION, setname, args );
+  doc.declare( folia::AnnotationType::STRING, setname, args );
+  doc.declare( folia::AnnotationType::STYLE, setname, args );
+  doc.declare( folia::AnnotationType::HYPHENATION, setname, args );
+  doc.declare( folia::AnnotationType::LANG, setname, args );
+  if ( add_metrics ){
+    doc.declare( folia::AnnotationType::METRIC, setname, args );
+  }
+  if ( add_breaks ){
+    doc.declare( folia::AnnotationType::LINEBREAK, setname, args );
+  }
   xmlNode *docinfo = TiCC::xPath( root, "//*:paragraphStyles" );
   if ( docinfo ){
     doc.set_foreign_metadata( docinfo );
   }
   doc.set_metadata( "abby_file", orgFile );
-  folia::processor *proc = add_provenance( doc, processor_name, command );
-  processor_id = proc->id();
-  folia::KWargs args;
-  args["xml:id"] =  docid + ".text";
+  args["xml:id"] = docid + ".text";
   folia::Text *text = doc.setTextRoot( args );
   int i = 0;
   for ( const auto& page : pages ){
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    doc.declare( folia::AnnotationType::DIVISION, setname, args );
-    args.clear();
     args["xml:id"] = text->id() + ".div" + TiCC::toString(++i);
     folia::Division *div = text->create_child<folia::Division>( args );
     process_page( div, page, font_styles );
