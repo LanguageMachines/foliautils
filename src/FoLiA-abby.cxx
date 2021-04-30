@@ -477,8 +477,8 @@ void append_styles( folia::TextMarkupStyle* markup,
   }
 }
 
-folia::TextMarkupStyle* make_styled_container( const formatting_info& info,
-					       folia::Document *doc ){
+folia::TextMarkupStyle* make_style_content( const formatting_info& info,
+					    folia::Document *doc ){
   font_style style = info._fst;
   folia::KWargs args;
   folia::TextMarkupStyle *content = new folia::TextMarkupStyle( args, doc );
@@ -632,9 +632,10 @@ bool process_paragraph( folia::Paragraph *paragraph,
       // cerr << "\tNEXT part " << endl;
       // cerr << "previous_hyphen=" << previous_hyphen << endl;
       if ( !container ){
-	// start with a fresh <t-str>.
+	// start with a fresh <t-style>.
 	folia::XmlText *txt = new folia::XmlText();
 	if ( !add_breaks && !previous_hyphen ) {
+	  // start on a new line too
 	  txt->setvalue( "\n" );
 	}
 	root->append( txt );
@@ -642,14 +643,14 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	args.clear();
 	args["generate_id"] = paragraph->id();
 	container = root->create_child<folia::TextMarkupString>( args );
-	content = make_styled_container( it._fi, root->doc() );
+	content = make_style_content( it._fi, root->doc() );
 	container->append( content );
 	//	cerr << "\t First styled container: " << container << endl;
       }
       else {
 	// end previous t-str and start a new one
 	current_font = it._fi;
-	content = make_styled_container( it._fi, root->doc() );
+	content = make_style_content( it._fi, root->doc() );
 	container->append( content );
 	//	cerr << "\t Next styled container: " << container << endl;
 	no_break = false;
