@@ -324,20 +324,19 @@ void add_notes( FoliaElement *par, const list<Note*>& notes ){
 }
 
 Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
-  string id = TiCC::getAttribute( p, "id" );
+  string par_id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "add_par: id=" << id << endl;
+      cerr << "add_par: id=" << par_id << endl;
     }
   }
   folia::Document *doc = root->doc();
-  KWargs args;
-  args["processor"] = processor_id;
-  doc->declare( folia::AnnotationType::PARAGRAPH, setname, args );
-  args.clear();
-  args["xml:id"] = id;
-  Paragraph *par = new Paragraph( args, root->doc() );
+  KWargs par_args;
+  par_args["processor"] = processor_id;
+  doc->declare( folia::AnnotationType::PARAGRAPH, setname, par_args );
+  par_args["xml:id"] = par_id;
+  Paragraph *par = new Paragraph( par_args, root->doc() );
   TextContent *tc = new TextContent();
   par->append( tc );
   root->append( par );
@@ -368,7 +367,6 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	add_stage_direction( tc, p );
       }
       else if ( tag == "note" ){
-	KWargs args;
 	string id = TiCC::getAttribute( p, "id" );
 	string ref = TiCC::getAttribute( p, "ref" );
 	string number;
@@ -413,6 +411,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	}
 	Note *note = 0;
 	if ( ref.empty() ){
+	  KWargs args;
 	  args["xml:id"] = id;
 	  note = new Note( args, doc );
 	}
@@ -423,7 +422,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	      throw ( "the ref attribute in note cannot be converted to an ID" );
 	    }
 	  }
-	  args.clear();
+	  KWargs args;
 	  args["xml:id"] = ref;
 	  note = new Note( args, doc );
 	}
@@ -446,7 +445,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
       else {
 #pragma omp critical
 	{
-	  cerr << "paragraph: " << id << ", unhandled tag : " << tag << endl;
+	  cerr << "paragraph: " << par_id << ", unhandled tag : " << tag << endl;
 	}
       }
     }
@@ -866,16 +865,16 @@ void process_vote( Division *div, xmlNode *vote ){
       cerr << "process_vote: id = " << id << endl;
     }
   }
-  KWargs args;
-  args["class"] = vote_type;
-  args["subset"] = "vote-type";
-  Feature *f = new Feature( args );
-  div->append( f );
-  args.clear();
-  args["subset"] = "outcome";
-  args["class"] = outcome;
-  f = new Feature( args );
-  div->append( f );
+  KWargs vt_args;
+  vt_args["class"] = vote_type;
+  vt_args["subset"] = "vote-type";
+  Feature *vt_f = new Feature( vt_args );
+  div->append( vt_f );
+  vt_args.clear();
+  vt_args["subset"] = "outcome";
+  vt_args["class"] = outcome;
+  vt_f = new Feature( vt_args );
+  div->append( vt_f );
   xmlNode *p = vote->children;
   while ( p ){
     string label = TiCC::Name(p);
@@ -919,10 +918,10 @@ void process_scene( Division *root, xmlNode *scene ){
     }
   }
   string type = atts["type"];
-  KWargs args;
-  args["xml:id"] = id;
-  args["class"] = type;
-  Division *div = new Division( args, root->doc() );
+  KWargs scene_args;
+  scene_args["xml:id"] = id;
+  scene_args["class"] = type;
+  Division *div = new Division( scene_args, root->doc() );
   root->append( div );
   for ( const auto& att : atts ){
     if ( att.first == "id"
@@ -1037,20 +1036,20 @@ void add_h_c_t( FoliaElement *root, xmlNode *block ){
 
 void process_stage( Division *root, xmlNode *_stage ){
   KWargs args;
-  string id = TiCC::getAttribute( _stage, "id" );
-  string type = TiCC::getAttribute( _stage, "type" );
+  string stage_id = TiCC::getAttribute( _stage, "id" );
+  string stage_type = TiCC::getAttribute( _stage, "type" );
   if ( verbose ){
 #pragma omp critical
     {
-      cerr << "process_stage: " << type << " ID=" << id << endl;
+      cerr << "process_stage: " << stage_type << " ID=" << stage_id << endl;
     }
   }
-  args["xml:id"] = id;
-  if ( type.empty() ){
+  args["xml:id"] = stage_id;
+  if ( stage_type.empty() ){
     args["class"] = "stage-direction";
   }
   else {
-    args["class"] = type;
+    args["class"] = stage_type;
   }
   Division *div = new Division( args, root->doc() );
   root->append( div );

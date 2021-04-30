@@ -650,7 +650,6 @@ set<UnicodeString> extract_hemps( const vector<UnicodeString>& data,
       if ( !mw.isEmpty() ){
 	mw.remove(mw.length()-1); //  remove last '_'
 	hemps.insert( mw );
-	mw = "";
       }
       mw = data[i] + "_";
     }
