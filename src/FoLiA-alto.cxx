@@ -318,32 +318,32 @@ void createFile( folia::FoliaElement *text,
 	while ( pnt != 0 ){
 	  if ( pnt->type == XML_ELEMENT_NODE ){
 	    if ( TiCC::Name(pnt) == "String" ){
-	      string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
-	      if ( sub == "HypPart2" ){
+	      string sub_t = TiCC::getAttribute( pnt, "SUBS_TYPE" );
+	      if ( sub_t == "HypPart2" ){
 		if ( keepPart1 == 0 ){
 		  addStr( p, ocr_text, pnt, altoFile, do_strings, ++cnt );
 		}
 		else {
 		  folia::KWargs atts = folia::getAttributes( keepPart1 );
 		  string kid = atts["ID"];
-		  string sub = atts["SUBS_CONTENT"];
-		  UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
-		  folia::KWargs args;
-		  string arg = p->id() + ".";
+		  string sub_c = atts["SUBS_CONTENT"];
+		  UnicodeString subc = TiCC::UnicodeFromUTF8( sub_c );
+		  folia::KWargs sub_args;
+		  string id_arg = p->id() + ".";
 		  if ( !kid.empty() ){
-		    arg += kid;
+		    id_arg += kid;
 		  }
 		  else {
-		    arg += "String_" + TiCC::toString(++cnt);
+		    id_arg += "String_" + TiCC::toString(++cnt);
 		  }
-		  args["xml:id"] = arg;
-		  args["class"] = classname;
+		  sub_args["xml:id"] = id_arg;
+		  sub_args["class"] = classname;
 		  folia::FoliaElement *s;
 		  if ( do_strings ){
-		    s = new folia::String( args, text->doc() );
+		    s = new folia::String( sub_args, text->doc() );
 		  }
 		  else {
-		    s = new folia::Word( args, text->doc() );
+		    s = new folia::Word( sub_args, text->doc() );
 		  }
 		  p->append( s );
 		  s->setutext( subc,
@@ -351,21 +351,21 @@ void createFile( folia::FoliaElement *text,
 			       classname );
 		  ocr_text += " " + subc;
 		  if ( !altoFile.empty() ){
-		    args.clear();
-		    args["processor"] = processor_id;
+		    folia::KWargs rel_args;
+		    rel_args["processor"] = processor_id;
 		    text->doc()->declare( folia::AnnotationType::RELATION,
-		    			  setname, args );
-		    args.clear();
-		    args["xlink:href"] = altoFile;
-		    folia::Relation *h = new folia::Relation( args );
+		    			  setname, rel_args );
+		    rel_args.clear();
+		    rel_args["xlink:href"] = altoFile;
+		    folia::Relation *h = new folia::Relation( rel_args );
 		    s->append( h );
-		    args.clear();
-		    args["id"] = kid;
-		    args["type"] = "str";
-		    folia::LinkReference *a = new folia::LinkReference( args );
+		    rel_args.clear();
+		    rel_args["id"] = kid;
+		    rel_args["type"] = "str";
+		    folia::LinkReference *a = new folia::LinkReference( rel_args );
 		    h->append( a );
-		    args["id"] = TiCC::getAttribute( pnt, "ID" );
-		    a = new folia::LinkReference( args );
+		    rel_args["id"] = TiCC::getAttribute( pnt, "ID" );
+		    a = new folia::LinkReference( rel_args );
 		    h->append( a );
 		  }
 		  keepPart1 = 0;
@@ -373,7 +373,7 @@ void createFile( folia::FoliaElement *text,
 		pnt = pnt->next;
 		continue;
 	      }
-	      else if ( sub == "HypPart1" ){
+	      else if ( sub_t == "HypPart1" ){
 		// see if there is a Part2 in next line at this level.
 		xmlNode *part2 = findPart2Level( line );
 		if ( part2 ){
@@ -954,7 +954,8 @@ void solveArtAlto( const string& alto_cache,
   }
 }
 
-void solveBook( const string& altoFile, const string& id,
+void solveBook( const string& altoFile,
+		const string& book_id,
 		const string& urn,
 		const string& outDir,
 		zipType outputType,
@@ -969,7 +970,7 @@ void solveBook( const string& altoFile, const string& id,
   zipType inputType;
   xmlDoc *xmldoc = getXml( altoFile, inputType );
   if ( xmldoc ){
-    string docid = replaceColon( id, '.' );
+    string docid = replaceColon( book_id, '.' );
     docid = prefix + docid;
     string outName = outDir + docid + ".folia.xml";
     folia::Document doc( "xml:id='" + docid + "'" );

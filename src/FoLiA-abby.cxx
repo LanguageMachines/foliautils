@@ -233,8 +233,8 @@ UnicodeString get_line( xmlNode *line ){
 	    cout << "\t\t\t\tfound " << text.size() << " text nodes" << endl;
 	  }
 	}
-	xmlNode *main = text.front();
-	UnicodeString tmp = get_text( main );
+	xmlNode *front = text.front();
+	UnicodeString tmp = get_text( front );
 	if ( verbose ){
 #pragma omp critical
 	  {
@@ -480,8 +480,8 @@ void append_styles( folia::TextMarkupStyle* markup,
 folia::TextMarkupStyle* make_style_content( const formatting_info& info,
 					    folia::Document *doc ){
   font_style style = info._fst;
-  folia::KWargs args;
-  folia::TextMarkupStyle *content = new folia::TextMarkupStyle( args, doc );
+  folia::KWargs no_args;
+  folia::TextMarkupStyle *content = new folia::TextMarkupStyle( no_args, doc );
   if ( !info._lang.empty() ){
     // add language as a t-lang
     folia::KWargs args;
@@ -603,9 +603,10 @@ bool process_paragraph( folia::Paragraph *paragraph,
     append_metric( paragraph, "last_char_bottom", atts["b"] );
   }
   //  cerr << "start process lines: " << endl;
-  folia::KWargs args;
-  args["class"] = classname;
-  folia::FoliaElement *root = paragraph->create_child<folia::TextContent>(args);
+  folia::KWargs text_args;
+  text_args["class"] = classname;
+  folia::FoliaElement *root
+    = paragraph->create_child<folia::TextContent>( text_args);
   bool previous_hyphen = false;
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
@@ -627,7 +628,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	}
 	root->append( txt );
 	current_font = it._fi;
-	args.clear();
+	folia::KWargs args;
 	args["generate_id"] = paragraph->id();
 	container = root->create_child<folia::TextMarkupString>( args );
 	content = make_style_content( it._fi, root->doc() );
