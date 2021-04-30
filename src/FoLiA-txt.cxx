@@ -217,21 +217,21 @@ int main( int argc, char *argv[] ){
       vector<string> words = TiCC::split( line );
       for ( const auto& w : words ){
 	if ( par == 0 ){
-	  folia::KWargs args;
-	  args["processor"] = processor_id;
-	  d->declare( folia::AnnotationType::PARAGRAPH, setname, args );
-	  args.clear();
+	  folia::KWargs p_args;
+	  p_args["processor"] = processor_id;
+	  d->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+	  p_args.clear();
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
-	  args["xml:id"] = parId;
-	  par = new folia::Paragraph( args, d );
+	  p_args["xml:id"] = parId;
+	  par = new folia::Paragraph( p_args, d );
 	  wrdCnt = 0;
 	}
 	string content = w;
 	content = TiCC::trim( content);
 	if ( !is_norm_empty(content) ){
-	  folia::KWargs args;
-	  args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
-	  folia::FoliaElement *str = new folia::String( args, d );
+	  folia::KWargs str_args;
+	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
+	  folia::FoliaElement *str = new folia::String( str_args, d );
 	  str->settext( content, classname );
 	  parTxt += " " + content;
 	  par->append( str );
