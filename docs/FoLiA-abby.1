@@ -1,4 +1,4 @@
-.TH FoLiA-abby 1 "2021 jan 28"
+.TH FoLiA-abby 1 "2021 may 01"
 
 .SH NAME
 FoLiA-abby - Convert ABBY files into FoLiA.
@@ -46,12 +46,16 @@ for no prefix. A prefix may be needed for files with non NCname characters in
 their names.
 .RE
 
+.B -S
+or
 .B --setname
 set
 .RS
 The FoLiA set of the <str> nodes that are created. (default FoLiA-abby-set).
 .RE
 
+.B -C
+or
 .B --class
 classname
 .RS
@@ -60,15 +64,20 @@ The FoLiA classname of the <str> nodes that are created. (default OCR).
 
 .B --addbreaks
 .RS
-Normally we make as much 'running' text as possible, concatenating lines into
-longer parts, when no change in style triggers a new part.
+Normally we make as much 'running' text as possible, concatenating line-parts
+into longer lines, when no change in style triggers a new part.
 With this option, we insert FoLiA <br/> nodes when newlines are encountered.
 .RE
 
 .B --addmetrics
 .RS
-add metric information to every part. Collected from the first and last
-characters in that part.
+add metric information to every part. These are the posiions on the page of the parts. The information is collected from the first and last characters in that
+part.
+.RE
+
+.B --keephyphens
+.RS
+retain hyphenation symbols in the text
 .RE
 
 .B -t
