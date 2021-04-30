@@ -870,9 +870,9 @@ void usage(){
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t\t output directory " << endl;
-  cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes. "
+  cerr << "\t-S or --setname='set'\t the FoLiA set name for <t> nodes. "
     "(default '" << setname << "')" << endl;
-  cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
+  cerr << "\t-C or --class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
   cerr << "\t--addbreaks\t optionally add <br/> nodes for every newline in the input" << endl;
   cerr << "\t--keephyphens\t optionally keep hyphenation symbols in <t-hbr> nodes" << endl;
@@ -886,7 +886,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h",
+  TiCC::CL_Options opts( "vVt:O:hC:S:",
 			 "compress:,class:,setname:,help,version,prefix:,"
 			 "addbreaks,addmetrics,keephyphens,threads:" );
   try {
@@ -902,7 +902,6 @@ int main( int argc, char *argv[] ){
 #endif
   string outputDir;
   zipType outputType = NORMAL;
-  string value;
   if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage();
     exit(EXIT_SUCCESS);
@@ -912,6 +911,7 @@ int main( int argc, char *argv[] ){
     exit(EXIT_SUCCESS);
   }
   string orig_command = "FoLiA-abby " + opts.toString();
+  string value;
   if ( opts.extract( "compress", value ) ){
     if ( value == "b" ){
       outputType = BZ2;
@@ -947,8 +947,14 @@ int main( int argc, char *argv[] ){
   add_breaks = opts.extract( "addbreaks" );
   add_metrics = opts.extract( "addmetrics" );
   opts.extract( 'O', outputDir );
-  opts.extract( "setname", setname );
-  opts.extract( "class", classname );
+  if ( opts.extract( "setname", value )
+       || opts.extract( 'S', value ) ){
+    setname = value;
+  }
+  if ( opts.extract( "classname", value )
+       || opts.extract( 'C', value ) ){
+    classname = value;
+  }
   string prefix = "FA-";
   opts.extract( "prefix", prefix );
   if ( prefix == "none" ){
