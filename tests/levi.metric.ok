@@ -2,15 +2,12 @@
 <FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-levi010geil01_01_Deel500" generator="libfolia-v2.9" version="2.5.0">
   <metadata type="native">
     <annotations>
-      <division-annotation set="FoLiA-abby-set">
-        <annotator processor="FoLiA-abby.1"/>
-      </division-annotation>
       <paragraph-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </paragraph-annotation>
-      <metric-annotation set="FoLiA-abby-set">
+      <division-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
-      </metric-annotation>
+      </division-annotation>
       <string-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </string-annotation>
@@ -20,19 +17,22 @@
       <hyphenation-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </hyphenation-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <lang-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </lang-annotation>
+      <metric-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </metric-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-04-29T17:02:30" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-04-30T12:22:36" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
     <meta id="abby_file">levi010geil01_01_Deel500.xml</meta>
   </metadata>
-  <text xml:id="FA-levi010geil01_01_Deel500.text">
+  <text xml:id="FA-levi010geil01_01_Deel500.text" processor="FoLiA-abby.1">
     <div xml:id="FA-levi010geil01_01_Deel500.text.div1">
       <p xml:id="FA-levi010geil01_01_Deel500.text.div1.p1">
         <t class="OCR">
