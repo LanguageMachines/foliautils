@@ -695,11 +695,10 @@ bool process_page( folia::FoliaElement *root,
       cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
     }
   }
-  int i = 0;
   bool didit = false;
   for ( const auto& par_node : paragraphs ){
     folia::KWargs args;
-    args["xml:id"] = root->id() + ".p" + TiCC::toString(++i);
+    args["generate_id"] = root->id();
     folia::Paragraph *paragraph = root->create_child<folia::Paragraph>( args );
     string style = TiCC::getAttribute( par_node, "style" );
     if ( !style.empty() ){
@@ -720,7 +719,6 @@ bool process_page( folia::FoliaElement *root,
     }
     else {
       root->remove( paragraph );
-      --i;
     }
   }
   return didit;
@@ -832,9 +830,9 @@ bool convert_abbyxml( const string& fileName,
   doc.set_metadata( "abby_file", orgFile );
   args["xml:id"] = docid + ".text";
   folia::Text *text = doc.setTextRoot( args );
-  int i = 0;
+  args.extract("xml:id");
   for ( const auto& page : pages ){
-    args["xml:id"] = text->id() + ".div" + TiCC::toString(++i);
+    args["generate_id"] = text->id();
     folia::Division *div = text->create_child<folia::Division>( args );
     process_page( div, page, font_styles );
   }
