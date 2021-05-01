@@ -824,9 +824,9 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     if ( verbose > 2 ){
       cout << "correct last bigram: " << last_bi << endl;
     }
-    int skip = last_bi.correct_one_bigram( variants, unknowns,
-					   puncts, counts,
-					   offset, proc );
+    skip = last_bi.correct_one_bigram( variants, unknowns,
+				       puncts, counts,
+				       offset, proc );
     if ( verbose > 2 ){
       cout << "handled last bigram: " << last_bi << endl;
     }
@@ -929,7 +929,6 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	  }
 	  add_to_result( result, mw, inventory, i-1 );
 	}
-	mw = "";
       }
       mw = unigrams[i].orig_text() + "_";
     }
@@ -998,10 +997,10 @@ void correctNgrams( FoliaElement* par,
 		    unordered_map<string,size_t>& counts,
 		    processor *proc ){
   vector<FoliaElement*> ev;
-  vector<Word*> sv = par->select<Word>();
-  if ( sv.size() > 0 ){
-    ev.resize(sv.size());
-    copy( sv.begin(), sv.end(), ev.begin() );
+  vector<Word*> wv = par->select<Word>();
+  if ( wv.size() > 0 ){
+    ev.resize(wv.size());
+    copy( wv.begin(), wv.end(), ev.begin() );
   }
   else {
     vector<String*> sv = par->select<String>();
@@ -1033,7 +1032,8 @@ void correctNgrams( FoliaElement* par,
 	// still nothing...
 #pragma omp critical
 	{
-	  cerr << "no text Words or Strings in : " << par->id() << " skipping" << endl;
+	  cerr << "no text Words or Strings in : " << par->id()
+	       << " skipping" << endl;
 	}
 	return;
       }
@@ -1069,7 +1069,6 @@ void correctNgrams( FoliaElement* par,
 #endif
   unigrams = replace_hemps( unigrams, puncts );
 
-  string partext;
   vector<gram_r> bigrams;
   vector<gram_r> trigrams;
   counts["TOKENS"] += unigrams.size();
@@ -1122,7 +1121,7 @@ bool correctDoc( Document *doc,
 		 const unordered_map<string,vector<word_conf> >& variants,
 		 const unordered_set<string>& unknowns,
 		 const unordered_map<string,string>& puncts,
-		 list<ElementType>& tag_list,
+		 const list<ElementType>& tag_list,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
 		 const string& outName ){

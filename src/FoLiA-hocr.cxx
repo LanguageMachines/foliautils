@@ -87,12 +87,12 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       }
     }
     string p_id = TiCC::getAttribute( p, "id" );
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    out->doc()->declare( folia::AnnotationType::PARAGRAPH, setname,  args );
-    args.clear();
-    args["xml:id"] = out->id() + "." + p_id;
-    folia::Paragraph *par = new folia::Paragraph( args, out->doc() );
+    folia::KWargs p_args;
+    p_args["processor"] = processor_id;
+    out->doc()->declare( folia::AnnotationType::PARAGRAPH, setname,  p_args );
+    p_args.clear();
+    p_args["xml:id"] = out->id() + "." + p_id;
+    folia::Paragraph *par = new folia::Paragraph( p_args, out->doc() );
     UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,

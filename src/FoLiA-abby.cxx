@@ -416,19 +416,6 @@ void process_line( xmlNode *block,
   }
 }
 
-void output_result( folia::TextMarkupString *tc,
-		    folia::FoliaElement *root,
-		    bool nospace ){
-  folia::KWargs args;
-  args["generate_id"] = root->id();
-  args["class"] = "line";
-  if ( nospace ){
-    args["space"] = "no";
-  }
-  folia::TextMarkupString *part = root->create_child<folia::TextMarkupString>( args );
-  part->append( tc );
-}
-
 void append_styles( folia::TextMarkupStyle* markup,
 		    const font_style& fs ){
   if ( fs & BOLD ){

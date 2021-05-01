@@ -429,7 +429,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	notes.push_back( note );
 	xmlNode *pnt = p->children;
 	while ( pnt ){
-	  string tag = TiCC::Name(pnt);
+	  tag = TiCC::Name(pnt);
 	  if ( tag == "p" ){
 	    add_note( note, pnt );
 	  }
@@ -604,10 +604,10 @@ void process_speech( Division *root, xmlNode *speech ){
     }
   }
   string type = atts["type"];
-  KWargs args;
-  args["xml:id"] = id;
-  args["class"] = type;
-  Division *div = new Division( args, root->doc() );
+  KWargs d_args;
+  d_args["xml:id"] = id;
+  d_args["class"] = type;
+  Division *div = new Division( d_args, root->doc() );
   root->append( div );
   for ( const auto& att : atts ){
     if ( att.first == "id"

@@ -220,7 +220,7 @@ void create_wf_list( const map<string,vector<map<UnicodeString, unsigned int>>>&
 	unsigned int types=0;
 	map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = wf.rbegin();
 	while ( wit != wf.rend() ){
-	  for ( const auto sit : wit->second ){
+	  for ( const auto& sit : wit->second ){
 	    sum += wit->first;
 	    os << sit << "\t" << wit->first;
 	    if ( doperc ){
@@ -299,7 +299,7 @@ void create_collected_wf_list( const map<string,vector<map<UnicodeString, unsign
   unsigned int types=0;
   map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = wf.rbegin();
   while ( wit != wf.rend() ){
-    for ( const auto sit : wit->second ){
+    for ( const auto& sit : wit->second ){
       sum += wit->first;
       os << sit << "\t" << wit->first;
       if ( doperc ){

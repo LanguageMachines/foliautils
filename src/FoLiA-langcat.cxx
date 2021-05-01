@@ -96,7 +96,6 @@ void addLang( const TextContent *t,
   //
   // we expect something like [dutch][french]
   //
-  string val;
   for ( const auto& l : lv ){
     setlang( t->parent(), l );
     if ( !doAll )

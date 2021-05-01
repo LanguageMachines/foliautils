@@ -65,16 +65,15 @@ void appendStr( folia::FoliaElement *par,
 		const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    par->doc()->declare( folia::AnnotationType::STRING, setname, args );
-    args.clear();
-    args["xml:id"] = par->id() + "." + id;
-    folia::String *str = new folia::String( args, par->doc() );
+    folia::KWargs p_args;
+    p_args["processor"] = processor_id;
+    par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
+    p_args.clear();
+    p_args["xml:id"] = par->id() + "." + id;
+    folia::String *str = new folia::String( p_args, par->doc() );
     par->append( str );
     str->setutext( val, pos, classname );
     pos += val.length();
-    args.clear();
     if ( do_refs ){
       folia::KWargs args;
       args["processor"] = processor_id;
@@ -139,14 +138,14 @@ void handle_one_word( folia::FoliaElement *sent,
     throw runtime_error( "expected only 1 unicode entry in Word: " + wid );
   }
   string value = TiCC::XmlContent( unicodes.front() );
-  folia::KWargs args;
-  args["processor"] = processor_id;
-  sent->doc()->declare( folia::AnnotationType::TOKEN, setname, args );
-  args.clear();
-  args["xml:id"] = sent->id() + "." + wid;
-  args["text"] = value;
-  args["textclass"] = classname;
-  folia::Word *w = new folia::Word( args, sent->doc() );
+  folia::KWargs p_args;
+  p_args["processor"] = processor_id;
+  sent->doc()->declare( folia::AnnotationType::TOKEN, setname, p_args );
+  p_args.clear();
+  p_args["xml:id"] = sent->id() + "." + wid;
+  p_args["text"] = value;
+  p_args["textclass"] = classname;
+  folia::Word *w = new folia::Word( p_args, sent->doc() );
   sent->append( w );
   if ( do_refs ){
     folia::KWargs args;
@@ -312,12 +311,12 @@ void handle_one_region( folia::FoliaElement *root,
 			const string& fileName ){
   string ind = TiCC::getAttribute( region, "id" );
   string type = TiCC::getAttribute( region, "type" );
-  folia::KWargs args;
-  args["processor"] = processor_id;
-  root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
-  args.clear();
-  args["xml:id"] = root->id() + "." + ind;
-  folia::FoliaElement *par = new folia::Paragraph( args, root->doc() );
+  folia::KWargs p_args;
+  p_args["processor"] = processor_id;
+  root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+  p_args.clear();
+  p_args["xml:id"] = root->id() + "." + ind;
+  folia::FoliaElement *par = new folia::Paragraph( p_args, root->doc() );
   root->append( par );
   if ( type.empty() || type == "paragraph" ){
   }
