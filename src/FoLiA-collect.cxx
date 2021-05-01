@@ -349,16 +349,16 @@ int main( int argc, char *argv[] ){
       filenames = TiCC::searchFilesMatch( name, "list.tsv", recurse );
     cout << "found " << filenames.size() << " files to process" << endl;
     for ( const auto& fullName : filenames ){
-      string::size_type pos = fullName.find( ".lemmafreqlist" );
-      if ( pos != string::npos ){
+      string::size_type e_pos = fullName.find( ".lemmafreqlist" );
+      if ( e_pos != string::npos ){
 	lfNames.push_back( fullName );
       }
-      pos = fullName.find( ".lemmaposfreqlist" );
-      if ( pos != string::npos ){
+      e_pos = fullName.find( ".lemmaposfreqlist" );
+      if ( e_pos != string::npos ){
 	lpfNames.push_back( fullName );
       }
-      pos = fullName.find( ".wordfreqlist" );
-      if ( pos != string::npos ){
+      e_pos = fullName.find( ".wordfreqlist" );
+      if ( e_pos != string::npos ){
 	wfNames.push_back( fullName );
       }
     }

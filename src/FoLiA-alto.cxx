@@ -292,17 +292,17 @@ void createFile( folia::FoliaElement *text,
     else {
       ids.insert(id);
     }
-    folia::KWargs args;
-    args["processor"] = processor_id;
-    text->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, args );
-    args.clear();
+    folia::KWargs p_args;
+    p_args["processor"] = processor_id;
+    text->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+    //    args.clear();
     string arg = text->id() + ".p.";
     if ( !altoFile.empty() ){
       arg += altoFile + ".";
     }
     arg += id;
-    args["xml:id"] = arg;
-    folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
+    p_args["xml:id"] = arg;
+    folia::Paragraph *p = new folia::Paragraph( p_args, text->doc() );
     text->append( p );
     UnicodeString ocr_text;
     list<xmlNode*> v =
@@ -1014,12 +1014,11 @@ void solveBook( const string& altoFile,
       else {
 	ids.insert(id);
       }
-      folia::KWargs args;
-      args["processor"] = processor_id;
-      doc.declare( folia::AnnotationType::PARAGRAPH, setname, args );
-      args.clear();
-      args["xml:id"] = text->id() + ".p." + id;
-      folia::Paragraph *p = new folia::Paragraph( args, text->doc() );
+      folia::KWargs p_args;
+      p_args["processor"] = processor_id;
+      doc.declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+      p_args["xml:id"] = text->id() + ".p." + id;
+      folia::Paragraph *p = new folia::Paragraph( p_args, text->doc() );
       text->append( p );
       UnicodeString ocr_text;
       list<xmlNode*> v =
@@ -1034,16 +1033,16 @@ void solveBook( const string& altoFile,
 	  while ( pnt != 0 ){
 	    if ( pnt->type == XML_ELEMENT_NODE ){
 	      if ( TiCC::Name(pnt) == "String" ){
-		string sub = TiCC::getAttribute( pnt, "SUBS_TYPE" );
-		if ( sub == "HypPart2" ){
+		string sub_t = TiCC::getAttribute( pnt, "SUBS_TYPE" );
+		if ( sub_t == "HypPart2" ){
 		  if ( keepPart1 == 0 ){
 		    addStr( p, ocr_text, pnt, urn, do_strings );
 		  }
 		  else {
 		    folia::KWargs atts = folia::getAttributes( keepPart1 );
 		    string kid = atts["ID"];
-		    string sub = atts["SUBS_CONTENT"];
-		    UnicodeString subc = TiCC::UnicodeFromUTF8( sub );
+		    string sub_c = atts["SUBS_CONTENT"];
+		    UnicodeString subc = TiCC::UnicodeFromUTF8( sub_c );
 		    folia::KWargs args;
 		    args["xml:id"] = p->id() + "." + kid;
 		    args["class"] = classname;
@@ -1081,7 +1080,7 @@ void solveBook( const string& altoFile,
 		  pnt = pnt->next;
 		  continue;
 		}
-		else if ( sub == "HypPart1" ){
+		else if ( sub_t == "HypPart1" ){
 		  // see if there is a Part2 in next line at this level.
 		  xmlNode *part2 = findPart2Level( line );
 		  if ( part2 ){
