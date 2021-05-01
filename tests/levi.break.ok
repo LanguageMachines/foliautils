@@ -17,6 +17,9 @@
       <hyphenation-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </hyphenation-annotation>
+      <hspace-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hspace-annotation>
       <lang-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </lang-annotation>
@@ -26,13 +29,13 @@
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-04-30T12:31:33" command="FoLiA-abby --addbreaks -O out/break" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-05-01T09:30:30" command="FoLiA-abby --addbreaks -O out/break" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
     <meta id="abby_file">levi010geil01_01_Deel500.xml</meta>
   </metadata>
-  <text xml:id="FA-levi010geil01_01_Deel500.text" processor="FoLiA-abby.1">
+  <text xml:id="FA-levi010geil01_01_Deel500.text">
     <div xml:id="FA-levi010geil01_01_Deel500.text.div.1">
       <p xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.1">
         <t class="OCR"><t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.1.t-str.1"><t-style><t-lang class="FrenchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="9.5" subset="font_size"/>490<br/></t-style></t-str></t>

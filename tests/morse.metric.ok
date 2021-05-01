@@ -17,6 +17,9 @@
       <hyphenation-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </hyphenation-annotation>
+      <hspace-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hspace-annotation>
       <lang-annotation set="FoLiA-abby-set">
         <annotator processor="FoLiA-abby.1"/>
       </lang-annotation>
@@ -24,16 +27,15 @@
         <annotator processor="FoLiA-abby.1"/>
       </metric-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <hspace-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-04-30T12:31:34" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-05-01T09:31:31" command="FoLiA-abby --addmetrics -O out/metric" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
         <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
     <meta id="abby_file">morse_OCR_perletter.xml</meta>
   </metadata>
-  <text xml:id="FA-morse_OCR_perletter.text" processor="FoLiA-abby.1">
+  <text xml:id="FA-morse_OCR_perletter.text">
     <div xml:id="FA-morse_OCR_perletter.text.div.1">
       <p xml:id="FA-morse_OCR_perletter.text.div.1.p.1">
         <t class="OCR">
