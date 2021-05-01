@@ -808,15 +808,19 @@ bool convert_abbyxml( const string& fileName,
   string docid = orgFile.substr( 0, orgFile.find(".") );
   docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
+  folia::KWargs args;
+  args["xml:id"] = docid + ".text";
+  folia::Text *text = doc.setTextRoot( args );
+  args.extract("xml:id");
   folia::processor *proc = add_provenance( doc, processor_name, command );
   processor_id = proc->id();
-  folia::KWargs args;
   args["processor"] = processor_id;
   doc.declare( folia::AnnotationType::PARAGRAPH, setname, args );
   doc.declare( folia::AnnotationType::DIVISION, setname, args );
   doc.declare( folia::AnnotationType::STRING, setname, args );
   doc.declare( folia::AnnotationType::STYLE, setname, args );
   doc.declare( folia::AnnotationType::HYPHENATION, setname, args );
+  doc.declare( folia::AnnotationType::HSPACE, setname, args );
   doc.declare( folia::AnnotationType::LANG, setname, args );
   if ( add_metrics ){
     doc.declare( folia::AnnotationType::METRIC, setname, args );
@@ -829,9 +833,6 @@ bool convert_abbyxml( const string& fileName,
     doc.set_foreign_metadata( docinfo );
   }
   doc.set_metadata( "abby_file", orgFile );
-  args["xml:id"] = docid + ".text";
-  folia::Text *text = doc.setTextRoot( args );
-  args.extract("xml:id");
   for ( const auto& page : pages ){
     args["generate_id"] = text->id();
     folia::Division *div = text->create_child<folia::Division>( args );
