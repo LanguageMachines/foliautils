@@ -422,45 +422,45 @@ void append_styles( folia::TextMarkupStyle* markup,
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "bold";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
   }
   if ( fs & ITALIC ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "italic";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
   }
   if ( fs & SMALLCAPS ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "smallcaps";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
   }
   if ( fs & SUPERSCRIPT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "superscript";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
     markup->settag("token");
   }
   if ( fs & SUBSCRIPT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "subscript";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
     markup->settag("token");
   }
   if ( fs & UNDERLINE ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "underline";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
   }
   if ( fs & STRIKEOUT ){
     folia::KWargs args;
     args["subset"] = "font_typeface";
     args["class"] = "strikeout";
-    markup->create_child<folia::Feature>( args );
+    markup->add_child<folia::Feature>( args );
   }
 }
 
@@ -473,7 +473,7 @@ folia::TextMarkupStyle* make_style_content( const formatting_info& info,
     // add language as a t-lang
     folia::KWargs args;
     args["class"] = info._lang;
-    content->create_child<folia::TextMarkupLanguage>( args );
+    content->add_child<folia::TextMarkupLanguage>( args );
   }
   if ( style != REGULAR ){
     append_styles( content, style );
@@ -482,19 +482,19 @@ folia::TextMarkupStyle* make_style_content( const formatting_info& info,
     folia::KWargs args;
     args["subset"] = "font_family";
     args["class"] = info._ff;
-    content->create_child<folia::Feature>( args );
+    content->add_child<folia::Feature>( args );
   }
   if ( !info._fs.empty() ){
     folia::KWargs args;
     args["subset"] = "font_size";
     args["class"] = info._fs;
-    content->create_child<folia::Feature>( args );
+    content->add_child<folia::Feature>( args );
   }
   if ( !info._id.empty() ){
     folia::KWargs args;
     args["subset"] = "font_style";
     args["class"] = info._id;
-    content->create_child<folia::Feature>( args );
+    content->add_child<folia::Feature>( args );
   }
   return content;
 }
@@ -506,7 +506,7 @@ void add_hspace( folia::FoliaElement *content ){
    */
   folia::KWargs args;
   args["class"] = "space";
-  content->create_child<folia::TextMarkupHSpace>( args );
+  content->add_child<folia::TextMarkupHSpace>( args );
 }
 
 void add_value( folia::FoliaElement *content,
@@ -542,7 +542,7 @@ void append_metric( folia::Paragraph *root,
   folia::KWargs args;
   args["value"] = val;
   args["class"] = att;
-  root->create_child<folia::Metric>( args );
+  root->add_child<folia::Metric>( args );
 }
 
 bool process_paragraph( folia::Paragraph *paragraph,
@@ -593,7 +593,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
   folia::KWargs text_args;
   text_args["class"] = classname;
   folia::FoliaElement *root
-    = paragraph->create_child<folia::TextContent>( text_args);
+    = paragraph->add_child<folia::TextContent>( text_args);
   bool previous_hyphen = false;
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
@@ -617,7 +617,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	current_font = it._fi;
 	folia::KWargs args;
 	args["generate_id"] = paragraph->id();
-	container = root->create_child<folia::TextMarkupString>( args );
+	container = root->add_child<folia::TextMarkupString>( args );
 	content = make_style_content( it._fi, root->doc() );
 	container->append( content );
 	//	cerr << "\t First styled container: " << container << endl;
@@ -649,7 +649,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	if ( keep_hyphens ){
 	  args["text"] = TiCC::UnicodeToUTF8(it._hyph);
 	}
-	content->create_child<folia::Hyphbreak>(args);
+	content->add_child<folia::Hyphbreak>(args);
 	//	cerr << "content now: " << content << endl;
 	no_break = true;
       }
@@ -663,7 +663,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
       if ( &it == &line_parts.back() ){
 	// the remains
 	if ( !no_break && add_breaks ){
-	  content->create_child<folia::Linebreak>();
+	  content->add_child<folia::Linebreak>();
 	  //	  cerr << "content now: " << content << endl;
 	}
       }
@@ -687,20 +687,20 @@ bool process_page( folia::FoliaElement *root,
   for ( const auto& par_node : paragraphs ){
     folia::KWargs args;
     args["generate_id"] = root->id();
-    folia::Paragraph *paragraph = root->create_child<folia::Paragraph>( args );
+    folia::Paragraph *paragraph = root->add_child<folia::Paragraph>( args );
     string style = TiCC::getAttribute( par_node, "style" );
     if ( !style.empty() ){
       args.clear();
       args["subset"] = "par_style";
       args["class"] = style;
-      paragraph->create_child<folia::Feature>( args );
+      paragraph->add_child<folia::Feature>( args );
     }
     string align = TiCC::getAttribute( par_node, "align" );
     if ( !align.empty() ){
       args.clear();
       args["subset"] = "par_align";
       args["class"] = align;
-      paragraph->create_child<folia::Feature>( args );
+      paragraph->add_child<folia::Feature>( args );
     }
     if ( process_paragraph( paragraph, par_node, font_styles ) ){
       didit = true;
@@ -822,7 +822,7 @@ bool convert_abbyxml( const string& fileName,
   doc.set_metadata( "abby_file", orgFile );
   for ( const auto& page : pages ){
     args["generate_id"] = text->id();
-    folia::Division *div = text->create_child<folia::Division>( args );
+    folia::Division *div = text->add_child<folia::Division>( args );
     process_page( div, page, font_styles );
   }
 
