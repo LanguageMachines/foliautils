@@ -96,7 +96,7 @@ int main( int argc, char *argv[] ){
   opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
   bool honour_tags = opts.extract( "honour-tags" );
-  bool do_original = opts.extract( "original" );
+  //  bool do_original = opts.extract( "original" );
   if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
     int numThreads = 1;
@@ -183,9 +183,9 @@ int main( int argc, char *argv[] ){
       if ( retaintok ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
       }
-      if ( do_original ){
-	tp.set_correction_handling( CORRECTION_HANDLING::ORIGINAL );
-      }
+      // if ( do_original ){
+      // 	tp.set_correction_handling( CORRECTION_HANDLING::ORIGINAL );
+      // }
       if ( honour_tags ){
 	tp.add_handler("token", &handle_token_tag );
       }
