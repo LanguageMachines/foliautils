@@ -47,7 +47,7 @@ void usage( const string& name ){
   cerr << "Usage: " << name << " [options] file/dir" << endl;
   cerr << "\t FoLiA-2text will produce a text from a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
-  cerr << "\t--class='name'\t use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
+  cerr << "\t-c OR --class='name'\t use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
   cerr << "\t--retaintok\t retain tokenization. Default is attempt to remove." << endl;
   cerr << "\t-t 'threads' or\n\t--threads='threads' Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
@@ -67,8 +67,8 @@ UnicodeString handle_token_tag( const folia::FoliaElement *d,
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVvpe:t:o:",
-			 "class:,help,version,retaintok,threads:,honour-tags" );
+  TiCC::CL_Options opts( "hVvpe:t:o:c:",
+			 "class:,help,version,retaintok,threads:,honour-tags,original" );
   try {
     opts.init(argc,argv);
   }
@@ -96,6 +96,7 @@ int main( int argc, char *argv[] ){
   opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
   bool honour_tags = opts.extract( "honour-tags" );
+  bool do_original = opts.extract( "original" );
   if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
     int numThreads = 1;
@@ -114,7 +115,7 @@ int main( int argc, char *argv[] ){
   }
   opts.extract('e', expression );
   string class_name = "current";
-  opts.extract( "class", class_name );
+  opts.extract( "class", class_name ) || opts.extract( 'c', class_name );
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
@@ -181,6 +182,9 @@ int main( int argc, char *argv[] ){
       folia::TextPolicy tp( class_name );
       if ( retaintok ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
+      }
+      if ( do_original ){
+	tp.set_correction_handling( CORRECTION_HANDLING::ORIGINAL );
       }
       if ( honour_tags ){
 	tp.add_handler("token", &handle_token_tag );

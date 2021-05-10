@@ -2,7 +2,7 @@ no file or dir specified!
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
-	--class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
+	-c OR --class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
 	--retaintok	 retain tokenization. Default is attempt to remove.
 	-t 'threads' or
 	--threads='threads' Number of threads to run on.
@@ -16,7 +16,7 @@ foliautils 0.17
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
-	--class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
+	-c OR --class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
 	--retaintok	 retain tokenization. Default is attempt to remove.
 	-t 'threads' or
 	--threads='threads' Number of threads to run on.
