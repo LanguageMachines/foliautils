@@ -36,13 +36,25 @@ $my_bin/FoLiA-2text -c older data/double_cor.xml
 cat data/double_cor.xml.txt >> test2text.out
 
 rm -rf data/double_cor.xml.txt
-$my_bin/FoLiA-2text --original data/double_cor.xml
+$my_bin/FoLiA-2text --correction-handling original data/double_cor.xml
 cat data/double_cor.xml.txt >> test2text.out
 
 rm -rf data/double_cor.xml.txt
-$my_bin/FoLiA-2text --original -cold data/double_cor.xml
+$my_bin/FoLiA-2text --correction-handling original -cold data/double_cor.xml
 cat data/double_cor.xml.txt >> test2text.out
 
 rm -rf data/double_cor.xml.txt
-$my_bin/FoLiA-2text --original -colder data/double_cor.xml
+$my_bin/FoLiA-2text --correction-handling original -colder data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text --correction-handling either data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text --correction-handling either -cold data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text --correction-handling either -colder data/double_cor.xml
 cat data/double_cor.xml.txt >> test2text.out
