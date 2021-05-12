@@ -15,9 +15,34 @@ cat out/data/folia.xml.txt >> test2text.out
 $my_bin/FoLiA-2text -o out/data ../tests/data/folia-head.xml
 cat out/data/folia-head.xml.txt >> test2text.out
 
+rm -rf data/folia-head.xml.txt
 $my_bin/FoLiA-2text -o out/data --class=anders data/folia-head.xml
 cat out/data/folia-head.xml.txt >> test2text.out
 
 rm -rf data/folia-head.xml.txt
 $my_bin/FoLiA-2text --class=anders data/folia-head.xml
 cat data/folia-head.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text -c old data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text -c older data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text --original data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text --original -cold data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/double_cor.xml.txt
+$my_bin/FoLiA-2text --original -colder data/double_cor.xml
+cat data/double_cor.xml.txt >> test2text.out

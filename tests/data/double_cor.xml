@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns="http://ilk.uvt.nl/folia" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="test" version="2.5" generator="diy">
+  <metadata type="native">
+    <annotations>
+      <text-annotation/>
+      <sentence-annotation/>
+      <paragraph-annotation/>
+      <correction-annotation/>
+      <token-annotation annotator="ucto" annotatortype="auto" datetime="2017-09-25T10:29:52" set="tokconfig-nld"/>
+      <style-annotation />
+    </annotations>
+  </metadata>
+  <text xml:id="example.text">
+    <p xml:id="example.p.1">
+      <s xml:id="example.p.1.s.1">
+        <t>het creëren van</t>
+        <t class="old">het creeren van</t>
+        <t class="older">het CREEREN van</t>
+        <w xml:id="example.p.1.s.1.w.1" class="WORD">
+          <t offset="0">het</t>
+          <t class="old" offset="0">het</t>
+          <t class="older" offset="0">het</t>
+        </w>
+        <w xml:id="example.p.1.s.1.w.2" class="WORD">
+          <correction xml:id="cor.1">
+           <new>
+              <t offset="4">creëren</t>
+           </new>
+           <original auth="no">
+             <correction xml:id="corr.2">
+               <new>
+                 <t class="old" offset="4">creeren</t>
+               </new>
+               <original auth="no">
+                 <t class="older" offset="4">CREEREN</t>
+               </original>
+             </correction>
+           </original>
+          </correction>
+        </w>
+        <w xml:id="example.p.1.s.1.w.4" class="WORD">
+          <t offset="12">van</t>
+          <t class="old" offset="12">van</t>
+          <t class="older" offset="12">van</t>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>
