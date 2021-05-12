@@ -68,7 +68,8 @@ UnicodeString handle_token_tag( const folia::FoliaElement *d,
 
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:c:",
-			 "class:,help,version,retaintok,threads:,honour-tags,original" );
+			 "class:,help,version,retaintok,threads:,"
+			 "honour-tags,correction-handling:" );
   try {
     opts.init(argc,argv);
   }
@@ -96,7 +97,24 @@ int main( int argc, char *argv[] ){
   opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
   bool honour_tags = opts.extract( "honour-tags" );
-  bool do_original = opts.extract( "original" );
+  CORRECTION_HANDLING ch = CORRECTION_HANDLING::CURRENT;
+  string handling;
+  opts.extract( "correction-handling", handling );
+  if ( !handling.empty() ) {
+    if ( handling == "original" ){
+      ch = CORRECTION_HANDLING::ORIGINAL;
+    }
+    else if ( handling == "current" ){
+      ch = CORRECTION_HANDLING::CURRENT;
+    }
+    else if ( handling == "either" ){
+      ch = CORRECTION_HANDLING::EITHER;
+    }
+    else {
+      cerr << "invalid value for option '--correction-handling' " << endl
+	   << "\t use 'current', original' or ''either'" << endl;
+    }
+  }
   if ( opts.extract('t', value ) || opts.extract("threads", value ) ){
 #ifdef HAVE_OPENMP
     int numThreads = 1;
@@ -116,6 +134,8 @@ int main( int argc, char *argv[] ){
   opts.extract('e', expression );
   string class_name = "current";
   opts.extract( "class", class_name ) || opts.extract( 'c', class_name );
+
+
 
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
@@ -183,9 +203,7 @@ int main( int argc, char *argv[] ){
       if ( retaintok ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
       }
-      if ( do_original ){
-	tp.set_correction_handling( CORRECTION_HANDLING::ORIGINAL );
-      }
+      tp.set_correction_handling( ch );
       if ( honour_tags ){
 	tp.add_handler("token", &handle_token_tag );
       }
