@@ -251,8 +251,7 @@ void add_entity( FoliaElement* root, xmlNode *p ){
 			setname, args );
   EntitiesLayer *el = root->add_child<EntitiesLayer>( args );
   args["class"] = "member";
-  Entity *ent = new Entity( args, root->doc() );
-  el->append(ent);
+  Entity *ent = el->add_child<Entity>( args );
   args.clear();
   args["subset"] = "member-ref";
   if ( !mem_ref.empty() ){
@@ -386,8 +385,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  args["id"] = ref;
 	  args["type"] = "note";
 	  args["text"] = number;
-	  TextMarkupReference *txt = new TextMarkupReference( args );
-	  tc->append( txt );
+	  tc->add_child<TextMarkupReference>( args );
 	  t = new folia::XmlText();
 	  t->setvalue( " " );
 	  tc->append( t );
@@ -536,8 +534,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	args.clear();
 	args["class"] = "member";
 	args["xml:id"] = id;
-	Entity *ent = new Entity( args, root->doc() );
-	root->append(ent);
+	Entity *ent = root->add_child<Entity>( args );
 	args.clear();
 	args["subset"] = "member-ref";
 	if ( !mem_ref.empty() ){
@@ -948,14 +945,12 @@ void process_break( Division *root, xmlNode *brk ){
   args.clear();
   args["pagenr"] = TiCC::getAttribute( brk, "originalpagenr");
   args["newpage"] = "yes";
-  Linebreak *pb = new Linebreak( args );
-  root->append( pb );
+  Linebreak *pb = root->add_child<Linebreak>( args );
   args.clear();
   args["class"] = "page";
   args["format"] = "image/jpeg";
   args["xlink:href"] = TiCC::getAttribute( brk, "source");
-  Relation *align = new Relation( args, root->doc() );
-  pb->append( align );
+  pb->add_child<Relation>( args );
 }
 
 void process_members( Division *root, xmlNode *members ){
@@ -1235,9 +1230,9 @@ void add_signed( FoliaElement *root, xmlNode* block ){
   args.clear();
   args["xml:id"] = id;
   args["class"] = type;
-  Division *div = new Division( args, doc );
-  EntitiesLayer *el = new EntitiesLayer();
-  div->append( el );
+  args["processor"] = processor_id;
+  Division *div = root->add_child<Division>( args );
+  EntitiesLayer *el = div->add_child<EntitiesLayer>();
   xmlNode *p = block->children;
   while ( p ){
     string label = TiCC::Name(p);
@@ -1253,7 +1248,6 @@ void add_signed( FoliaElement *root, xmlNode* block ){
     }
     p = p->next;
   }
-  root->append( div );
 }
 
 void add_section( FoliaElement *root, xmlNode* block ){
