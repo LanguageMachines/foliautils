@@ -377,7 +377,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  }
 	}
 	else {
-	  folia::XmlText *t = new folia::XmlText();
+	  XmlText *t = new XmlText();
 	  t->setvalue( " " );
 	  tc->append( t );
 	  KWargs args;
@@ -386,7 +386,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  args["type"] = "note";
 	  args["text"] = number;
 	  tc->add_child<TextMarkupReference>( args );
-	  t = new folia::XmlText();
+	  t = new XmlText();
 	  t->setvalue( " " );
 	  tc->append( t );
 	}
@@ -954,8 +954,7 @@ void process_break( Division *root, xmlNode *brk ){
 }
 
 void process_members( Division *root, xmlNode *members ){
-  ForeignData *fd = new ForeignData();
-  root->append( fd );
+  ForeignData *fd = root->add_child<ForeignData>();
   fd->set_data( members );
 }
 
@@ -1141,9 +1140,7 @@ void process_topic( const string& outDir,
     id = prefix + id;
     doc = create_basedoc( id, command );
     args["xml:id"] = id + ".text";
-    Text *txt = new Text( args, doc );
-    doc->append( txt );
-    root = txt;
+    root = doc->create_root<Text>( args );
   }
   args.clear();
   args["xml:id"] = id + ".div";
@@ -1192,7 +1189,7 @@ void process_topic( const string& outDir,
     args.clear();
     args["xml:id"] = id;
     args["src"] = id + ".folia.xml";
-    folia::External *ext = new External( args );
+    External *ext = new External( args );
     base_text->append( ext );
   }
 }
@@ -1414,10 +1411,9 @@ void convert_to_folia( const string& file,
       if ( pos != string::npos ){
 	docid = docid.substr(0,pos);
       }
-      folia::KWargs args;
+      KWargs args;
       args["xml:id"] = docid + ".text";
-      folia::Text *text = new folia::Text( args, doc );
-      doc->append( text );
+      Text *text = doc->create_root<Text>( args );
       try {
 	xmlNode *p = root->children;
 	while ( p ){
