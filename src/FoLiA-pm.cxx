@@ -1157,9 +1157,8 @@ void process_topic( const string& outDir,
     doc->declare( folia::AnnotationType::HEAD,
 		  setname, args );
     args.clear();
-    Head *hd = new Head( );
+    Head *hd = div->add_child<Head>( );
     hd->settext( title );
-    div->append( hd );
   }
   xmlNode *p = topic->children;
   while ( p ){
