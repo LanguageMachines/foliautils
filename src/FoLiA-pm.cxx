@@ -327,10 +327,8 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
   par_args["processor"] = processor_id;
   doc->declare( folia::AnnotationType::PARAGRAPH, setname, par_args );
   par_args["xml:id"] = par_id;
-  Paragraph *par = new Paragraph( par_args, root->doc() );
-  TextContent *tc = new TextContent();
-  par->append( tc );
-  root->append( par );
+  Paragraph *par = root->add_child<Paragraph>( par_args );
+  TextContent *tc = par->add_child<TextContent>();
   p = p->children;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
@@ -474,12 +472,10 @@ void process_chair( Division *root, xmlNode *chair ){
       KWargs args;
       args["subset"] = "speaker";
       args["class"] = speaker;
-      Feature *feat = new Feature( args );
-      root->append( feat );
+      root->add_child<Feature>( args );
       args["subset"] = "member-ref";
       args["class"] = member;
-      feat = new Feature( args );
-      root->append( feat );
+      root->add_child<Feature>( args );
     }
     else {
 #pragma omp critical
@@ -550,8 +546,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	else {
 	  args["class"] = "unknown";
 	}
-	Feature *f = new Feature( args );
-	ent->append( f );
+	ent->add_child<Feature>( args );
 	args.clear();
 	args["subset"] = "party-ref";
 	if ( !part_ref.empty() ){
@@ -560,8 +555,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	else {
 	  args["class"] = "unknown";
 	}
-	f = new Feature( args );
-	ent->append( f );
+	ent->add_child<Feature>( args );
 	args.clear();
 	args["subset"] = "name";
 	if ( !text_part.empty() ){
@@ -570,8 +564,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	else {
 	  args["class"] = "unknown";
 	}
-	f = new Feature( args );
-	ent->append( f );
+	ent->add_child<Feature>( args );
       }
     }
     else {
@@ -598,8 +591,8 @@ void process_speech( Division *root, xmlNode *speech ){
   KWargs d_args;
   d_args["xml:id"] = id;
   d_args["class"] = type;
-  Division *div = new Division( d_args, root->doc() );
-  root->append( div );
+  d_args["processor"] = processor_id;
+  Division *div = root->add_child<Division>( d_args );
   for ( const auto& att : atts ){
     if ( att.first == "id"
 	 || att.first == "type" ){
@@ -611,15 +604,14 @@ void process_speech( Division *root, xmlNode *speech ){
 	      || att.first == "role"
 	      || att.first == "party-ref"
 	      || att.first == "member-ref" ){
-      KWargs args;
-      args["subset"] = att.first;
       string cls =  att.second;
       if ( cls.empty() ){
 	cls = "unknown";
       }
+      KWargs args;
+      args["subset"] = att.first;
       args["class"] = cls;
-      Feature *feat = new Feature( args );
-      div->append( feat );
+      div->add_child<Feature>( args );
     }
     else {
 #pragma omp critical
@@ -973,13 +965,13 @@ void process_members( Division *root, xmlNode *members ){
 }
 
 void add_h_c_t( FoliaElement *root, xmlNode *block ){
-  Document *doc = root->doc();
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
   args["xml:id"] = id;
   args["class"] = type;
-  Division *div = new Division( args, doc );
+  args["processor"] = processor_id;
+  Division *div = root->add_child<Division>( args );
   xmlNode *p = block->children;
   while ( p ){
     string label = TiCC::Name(p);
@@ -1002,7 +994,6 @@ void add_h_c_t( FoliaElement *root, xmlNode *block ){
     }
     p = p->next;
   }
-  root->append( div );
 }
 
 void process_stage( Division *root, xmlNode *_stage ){
@@ -1022,8 +1013,8 @@ void process_stage( Division *root, xmlNode *_stage ){
   else {
     args["class"] = stage_type;
   }
-  Division *div = new Division( args, root->doc() );
-  root->append( div );
+  args["processor"] = processor_id;
+  Division *div = root->add_child<Division>( args );
   xmlNode *stage = _stage->children;
   while ( stage ){
     string id = TiCC::getAttribute( stage, "id" );
@@ -1148,8 +1139,8 @@ void process_topic( const string& outDir,
     doc = base_text->doc();
     args["generate_id"] = base_text->id();
     args["class"] = "proceedings";
-    root = new Division( args, doc );
-    base_text->append( root );
+    args["processor"] = processor_id;
+    root = base_text->add_child<Division>( args );
   }
   else {
     id = prefix + id;
@@ -1162,8 +1153,8 @@ void process_topic( const string& outDir,
   args.clear();
   args["xml:id"] = id + ".div";
   args["class"] = "topic";
-  Division *div = new Division( args, doc );
-  root->append( div );
+  args["processor"] = processor_id;
+  Division *div = root->add_child<Division>( args );
   string title = TiCC::getAttribute( topic, "title" );
   if ( !title.empty() ){
     args.clear();
@@ -1266,7 +1257,6 @@ void add_signed( FoliaElement *root, xmlNode* block ){
 }
 
 void add_section( FoliaElement *root, xmlNode* block ){
-  Document *doc = root->doc();
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   string section_id = TiCC::getAttribute( block, "section-identifier" );
@@ -1274,19 +1264,18 @@ void add_section( FoliaElement *root, xmlNode* block ){
   KWargs args;
   args["xml:id"] = id;
   args["class"] = type;
+  args["processor"] = processor_id;
   if ( !section_id.empty() ){
     args["n"] = section_id;
   }
-  Division *div = new Division( args, doc );
+  Division *div = root->add_child<Division>( args );
   if ( !section_path.empty() ){
     args.clear();
     args["subset"] = "section-path";
     args["class"] = section_path;
-    Feature *f = new Feature( args );
-    div->append( f );
+    div->add_child<Feature>( args );
   }
   process_sub_block( div, block );
-  root->append( div );
 }
 
 void add_block( FoliaElement *root, xmlNode *block ){
@@ -1295,9 +1284,9 @@ void add_block( FoliaElement *root, xmlNode *block ){
   KWargs args;
   args["xml:id"] = id;
   args["class"] = type;
-  Division *div = new Division( args, root->doc() );
+  args["processor"] = processor_id;
+  Division *div = root->add_child<Division>( args );
   process_sub_block( div, block );
-  root->append( div );
 }
 
 void add_heading( FoliaElement *root, xmlNode *block ){
@@ -1309,8 +1298,8 @@ void add_heading( FoliaElement *root, xmlNode *block ){
     // so if another Head is already there, append it as a Div
     KWargs args;
     args["class"] = "subheading";
-    el = new Division( args, root->doc() );
-    root->append( el );
+    args["processor"] = processor_id;
+    root->add_child<Division>( args );
   }
   string txt = TiCC::XmlContent(block);
   if ( !txt.empty() ){
@@ -1378,13 +1367,11 @@ void process_block( Text* base_text,
     }
   }
   KWargs args;
-  Document *doc = 0;
-  doc = base_text->doc();
   args["xml:id"] = id;
   args["class"] = type;
-  Division *root = new Division( args, doc );
-  base_text->append( root );
-  process_sub_block( root, block );
+  args["processor"] = processor_id;
+  Division *div = base_text->add_child<Division>( args );
+  process_sub_block( div, block );
 }
 
 void process_parldoc( Text *root,
