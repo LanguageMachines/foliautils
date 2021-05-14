@@ -181,10 +181,8 @@ void add_note( Note *root, xmlNode *p ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
       if ( tmp ){
-	string part = std::string( (char *)tmp );
-	XmlText *txt = new XmlText();
-	txt->setvalue( part );
-	tc->append( txt );
+	string val = std::string( (char *)tmp );
+	tc->add_child<XmlText>( val );
 	xmlFree( tmp );
       }
     }
@@ -292,13 +290,11 @@ void add_stage_direction( TextContent *tc, xmlNode *p ){
     }
   }
   else {
-    XmlText *txt = new XmlText();
     if ( p->next != 0 ){
       // not last
       embedded += " ";
     }
-    txt->setvalue( embedded );
-    tc->append( txt );
+    tc->add_child<XmlText>( embedded );
   }
 }
 
@@ -334,9 +330,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
       xmlChar *tmp = xmlNodeGetContent( p );
       if ( tmp ){
 	string part = std::string( (char *)tmp );
-	XmlText *txt = new XmlText();
-	txt->setvalue( part );
-	tc->append( txt );
+	tc->add_child<XmlText>( part );
 	xmlFree( tmp );
       }
     }
@@ -377,18 +371,14 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  }
 	}
 	else {
-	  XmlText *t = new XmlText();
-	  t->setvalue( " " );
-	  tc->append( t );
+	  tc->add_child<XmlText>( " " );
 	  KWargs args;
 	  args["xml:id"] = id;
 	  args["id"] = ref;
 	  args["type"] = "note";
 	  args["text"] = number;
 	  tc->add_child<TextMarkupReference>( args );
-	  t = new XmlText();
-	  t->setvalue( " " );
-	  tc->append( t );
+	  tc->add_child<XmlText>( " " );
 	}
 	if ( verbose ){
 #pragma omp critical

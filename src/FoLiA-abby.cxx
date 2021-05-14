@@ -467,8 +467,7 @@ void append_styles( folia::TextMarkupStyle* markup,
 folia::TextMarkupStyle* make_style_content( const formatting_info& info,
 					    folia::Document *doc ){
   font_style style = info._fst;
-  folia::KWargs no_args;
-  folia::TextMarkupStyle *content = new folia::TextMarkupStyle( no_args, doc );
+  folia::TextMarkupStyle *content = new folia::TextMarkupStyle( doc );
   if ( !info._lang.empty() ){
     // add language as a t-lang
     folia::KWargs args;
@@ -526,9 +525,7 @@ void add_value( folia::FoliaElement *content,
       // represent ALL leading spaces as 1 TextMarkupHSpace
       add_hspace( content );
     }
-    folia::XmlText *t = new folia::XmlText();
-    t->setvalue( TiCC::UnicodeToUTF8(out) );
-    content->append( t );
+    content->add_child<folia::XmlText>( TiCC::UnicodeToUTF8(out) );
     if ( end_space ){
       // represent ALL trailing spaces as 1 TextMarkupHSpace
       add_hspace( content );
@@ -608,12 +605,12 @@ bool process_paragraph( folia::Paragraph *paragraph,
       // cerr << "previous_hyphen=" << previous_hyphen << endl;
       if ( !container ){
 	// start with a fresh <t-style>.
-	folia::XmlText *txt = new folia::XmlText();
+	string val;
 	if ( !add_breaks && !previous_hyphen ) {
 	  // start on a new line too
-	  txt->setvalue( "\n" );
+	  val = "\n";
 	}
-	root->append( txt );
+	root->add_child<folia::XmlText>( val );
 	current_font = it._fi;
 	folia::KWargs args;
 	args["generate_id"] = paragraph->id();
