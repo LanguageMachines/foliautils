@@ -67,25 +67,16 @@ void setlang( FoliaElement* e, const string& lan ){
     KWargs args;
     args["class"] = lan;
     args["set"] = ISO_SET;
-    LangAnnotation *node = new LangAnnotation( args, e->doc() );
-    e->append( node );
+    e->add_child<LangAnnotation>( args );
   }
   else {
-    bool present = false;
-    for ( const auto it : lav ){
-      if ( it->cls() == lan ){
-	present = true;
-	break;
-      }
-    }
-    if ( !present ){
+    if ( std::none_of( lav.begin(), lav.end(),
+		       [lan]( LangAnnotation *l ){ return l->cls() == lan; } ) ){
       KWargs args;
       args["class"] = lan;
       args["set"] = ISO_SET;
-      LangAnnotation *node = new LangAnnotation( args, e->doc() );
-      Alternative *a = new Alternative( );
-      a->append( node );
-      e->append( a );
+      Alternative *a = e->add_child<Alternative>();
+      a->add_child<LangAnnotation>( args );
     }
   }
 }
