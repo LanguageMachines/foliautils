@@ -202,12 +202,11 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
     args["xml:id"] = arg;
     folia::FoliaElement *s;
     if ( do_strings ){
-      s = new folia::String( args, par->doc() );
+      s = par->add_child<folia::String>( args );
     }
     else {
-      s = new folia::Word( args, par->doc() );
+      s = par->add_child<folia::Word>( args );
     }
-    par->append( s );
     UnicodeString uc = TiCC::UnicodeFromUTF8( content );
     s->setutext( uc, txt.length(), classname );
     txt += " " + uc;
@@ -219,13 +218,11 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 			   setname, args );
       args.clear();
       args["xlink:href"] = altoFile;
-      folia::Relation *h = new folia::Relation( args );
-      s->append( h );
+      folia::Relation *h = s->add_child<folia::Relation>( args );
       args.clear();
       args["id"] = kid;
       args["type"] = "str";
-      folia::LinkReference *a = new folia::LinkReference( args );
-      h->append( a );
+      h->add_child<folia::LinkReference>( args );
     }
   }
   else {
@@ -242,12 +239,11 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 
       folia::FoliaElement *s;
       if ( do_strings ){
-	s = new folia::String( args, par->doc() );
+	s = par->add_child<folia::String>( args );
       }
       else {
-	s = new folia::Word( args, par->doc() );
+	s = par->add_child<folia::Word>( args );
       }
-      par->append( s );
       UnicodeString uc = TiCC::UnicodeFromUTF8( parts[i] );
       s->setutext( uc, txt.length(), classname );
       txt += " " + uc;
@@ -258,13 +254,11 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 			     setname, args );
 	args.clear();
 	args["xlink:href"] = altoFile;
-	folia::Relation *h = new folia::Relation( args );
-	s->append( h );
+	folia::Relation *h = s->add_child<folia::Relation>( args );
 	args.clear();
 	args["id"] = kid;
 	args["type"] = "str";
-	folia::LinkReference *a = new folia::LinkReference( args );
-	h->append( a );
+	h->add_child<folia::LinkReference>( args );
       }
     }
   }
@@ -295,15 +289,13 @@ void createFile( folia::FoliaElement *text,
     folia::KWargs p_args;
     p_args["processor"] = processor_id;
     text->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
-    //    args.clear();
     string arg = text->id() + ".p.";
     if ( !altoFile.empty() ){
       arg += altoFile + ".";
     }
     arg += id;
     p_args["xml:id"] = arg;
-    folia::Paragraph *p = new folia::Paragraph( p_args, text->doc() );
-    text->append( p );
+    folia::Paragraph *p = text->add_child<folia::Paragraph>( p_args );
     UnicodeString ocr_text;
     list<xmlNode*> v =
       TiCC::FindNodes( root,
@@ -340,12 +332,11 @@ void createFile( folia::FoliaElement *text,
 		  sub_args["class"] = classname;
 		  folia::FoliaElement *s;
 		  if ( do_strings ){
-		    s = new folia::String( sub_args, text->doc() );
+		    s = p->add_child<folia::String>( sub_args );
 		  }
 		  else {
-		    s = new folia::Word( sub_args, text->doc() );
+		    s = p->add_child<folia::Word>( sub_args );
 		  }
-		  p->append( s );
 		  s->setutext( subc,
 			       ocr_text.length(),
 			       classname );
@@ -357,16 +348,13 @@ void createFile( folia::FoliaElement *text,
 		    			  setname, rel_args );
 		    rel_args.clear();
 		    rel_args["xlink:href"] = altoFile;
-		    folia::Relation *h = new folia::Relation( rel_args );
-		    s->append( h );
+		    folia::Relation *h = s->add_child<folia::Relation>( rel_args );
 		    rel_args.clear();
 		    rel_args["id"] = kid;
 		    rel_args["type"] = "str";
-		    folia::LinkReference *a = new folia::LinkReference( rel_args );
-		    h->append( a );
+		    h->add_child<folia::LinkReference>( rel_args );
 		    rel_args["id"] = TiCC::getAttribute( pnt, "ID" );
-		    a = new folia::LinkReference( rel_args );
-		    h->append( a );
+		    h->add_child<folia::LinkReference>( rel_args );
 		  }
 		  keepPart1 = 0;
 		}
@@ -487,9 +475,7 @@ void processArticle( const string& f,
   doc.set_metadata( "genre", subject );
   args.clear();
   args["xml:id"] = docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
-
+  folia::Text *text = doc.create_root<folia::Text>( args );
   for ( const auto& it : parts ){
     list<xmlNode*> blocks = TiCC::FindNodes( it, "dcx:blocks" );
     if ( blocks.empty() ){
@@ -986,8 +972,7 @@ void solveBook( const string& altoFile,
     }
     args.clear();
     args["xml:id"] =  docid + ".text";
-    folia::Text *text = new folia::Text( args );
-    doc.append( text );
+    folia::Text *text = doc.create_root<folia::Text>( args );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     list<xmlNode*> textblocks = TiCC::FindNodes( root, "//*:TextBlock" );
     if ( textblocks.empty() ){
@@ -1018,8 +1003,7 @@ void solveBook( const string& altoFile,
       p_args["processor"] = processor_id;
       doc.declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
       p_args["xml:id"] = text->id() + ".p." + id;
-      folia::Paragraph *p = new folia::Paragraph( p_args, text->doc() );
-      text->append( p );
+      folia::Paragraph *p = text->add_child<folia::Paragraph>( p_args );
       UnicodeString ocr_text;
       list<xmlNode*> v =
 	TiCC::FindNodes( root,
@@ -1048,12 +1032,11 @@ void solveBook( const string& altoFile,
 		    args["class"] = classname;
 		    folia::FoliaElement *s;
 		    if ( do_strings ){
-		      s = new folia::String( args, text->doc() );
+		      s = p->add_child<folia::String>( args );
 		    }
 		    else {
-		      s = new folia::Word( args, text->doc() );
+		      s = p->add_child<folia::Word>( args );
 		    }
-		    p->append( s );
 		    s->setutext( subc,
 				 ocr_text.length(),
 				 classname );
@@ -1064,17 +1047,13 @@ void solveBook( const string& altoFile,
 		    			  setname, args );
 		    args.clear();
 		    args["xlink:href"] = urn;
-		    folia::Relation *h = new folia::Relation( args );
-		    s->append( h );
+		    folia::Relation *h = s->add_child<folia::Relation>( args );
 		    args.clear();
 		    args["id"] = kid;
 		    args["type"] = "str";
-		    folia::LinkReference *a = 0;
-		    a = new folia::LinkReference( args );
-		    h->append( a );
+		    h->add_child<folia::LinkReference>( args );
 		    args["id"] = TiCC::getAttribute( pnt, "ID" );
-		    a = new folia::LinkReference( args );
-		    h->append( a );
+		    h->add_child<folia::LinkReference>( args );
 		    keepPart1 = 0;
 		  }
 		  pnt = pnt->next;
@@ -1282,8 +1261,7 @@ void solveDirectAlto( const string& full_file,
   }
   args.clear();
   args["xml:id"] =  docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
+  folia::Text *text = doc.create_root<folia::Text>( args );
   createFile( text, xmldoc, "", texts, do_strings );
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
