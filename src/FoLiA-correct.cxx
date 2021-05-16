@@ -362,6 +362,7 @@ void gram_r::apply_folia_correction( size_t& offset,
 				     const processor *proc ) const {
   if ( has_folia() ){
     bool doStrings = _words[0]->xmltag() == "str";
+    string org_set = _words[0]->sett();
     string what;
     if ( _ed_type == "1-1"
 	 || _ed_type == "2-2"
@@ -391,6 +392,10 @@ void gram_r::apply_folia_correction( size_t& offset,
       // New elements
       KWargs args;
       args["xml:id"] = _words[0]->generateId( what );
+      if ( org_set != "None" ){
+	args["set"] = org_set;
+      }
+      args["processor"] = proc->id();
       FoliaElement *el = 0;
       if ( doStrings ){
 	el = new String( args, _words[0]->doc() );
@@ -406,6 +411,10 @@ void gram_r::apply_folia_correction( size_t& offset,
       // A final punct is an extra New element
       KWargs args;
       args["xml:id"] = _words[0]->generateId( "split" );
+      if ( org_set != "None" ){
+	args["set"] = org_set;
+      }
+      args["processor"] = proc->id();
       FoliaElement *el = 0;
       if ( doStrings ){
 	el = new String( args, _words[0]->doc() );
@@ -431,15 +440,18 @@ void gram_r::apply_folia_correction( size_t& offset,
 	for ( const auto& s : parts ){
 	  KWargs wargs;
 	  wargs["xml:id"] = _words[0]->generateId( "suggestion" );
+	  if ( org_set != "None" ){
+	    wargs["set"] = org_set;
+	  }
+	  wargs["processor"] = proc->id();
 	  FoliaElement *elt;
 	  if ( doStrings ){
-	    elt = new String( wargs, _words[0]->doc() );
+	    elt = sug->add_child<String>( wargs );
 	  }
 	  else {
-	    elt = new Word( wargs, _words[0]->doc() );
+	    elt = sug->add_child<Word>( wargs );
 	  }
 	  elt->settext( s, output_classname );
-	  sug->append( elt );
 	}
       }
     }
@@ -1143,6 +1155,8 @@ bool correctDoc( Document *doc,
   KWargs args;
   args["processor"] = proc->id();
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
+  // doc->declare( folia::AnnotationType::STRING, setname, args );
+  // doc->declare( folia::AnnotationType::TOKEN, setname, args );
   vector<FoliaElement*> ev;
   for ( const auto& et : tag_list ){
     vector<FoliaElement*> v1 = doc->doc()->select( et );
