@@ -985,13 +985,6 @@ edit statistics:
 	1-1	1
 	TOKENS	55
 	UNK	1
-6,8c6
-<       <token-annotation>
-<         <annotator processor="FoLiA-correct.1"/>
-<       </token-annotation>
----
->       <token-annotation/>
-foliadiff.sh: differences in: corr_word_T.ticcl.xml corr_word_T.ticcl.1.ok
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -1249,13 +1242,6 @@ edit statistics:
 	TOKENS	55
 	UNK	1
 	UNK UNK	1
-6,8c6
-<       <token-annotation>
-<         <annotator processor="FoLiA-correct.1"/>
-<       </token-annotation>
----
->       <token-annotation/>
-foliadiff.sh: differences in: corr_word_T.ticcl.xml corr_word_T.ticcl.3.ok
 start reading variants 
 read 4 variants 
 start reading unknowns 
@@ -1513,13 +1499,6 @@ edit statistics:
 	TOKENS	55
 	UNK	1
 	UNK UNK	1
-6,8c6
-<       <token-annotation>
-<         <annotator processor="FoLiA-correct.1"/>
-<       </token-annotation>
----
->       <token-annotation/>
-foliadiff.sh: differences in: corr_word_T.ticcl.xml corr_word_T.ticcl.2.ok
 start reading variants 
 read 9 variants 
 start reading unknowns 
@@ -1841,13 +1820,6 @@ edit statistics:
 	UNK	1
 	UNK UNK	1
 	UNK UNK UNK	1
-6,8c6
-<       <token-annotation>
-<         <annotator processor="FoLiA-correct.1"/>
-<       </token-annotation>
----
->       <token-annotation/>
-foliadiff.sh: differences in: corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok
 start reading variants 
 read 1 variants 
 start reading unknowns 
