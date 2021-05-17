@@ -176,7 +176,7 @@ void gram_r::set_output_text( size_t& offset ) const {
 ostream& operator<<( ostream& os, const gram_r& rec ){
   os << rec.orig_text();
   if ( !rec._result.empty() ){
-    os << " (" << rec._ed_type << ") ==> " << rec.result_text();
+    os << " (" << rec._ed_type << ") ==> '" << rec.result_text() << "'";
   }
   if ( rec._words[0] != 0 ){
     os << " " << rec._words;
@@ -398,6 +398,9 @@ void gram_r::apply_folia_correction( size_t& offset,
       if ( org_set != "None" ){
 	args["set"] = org_set;
       }
+      if ( !_words[0]->space() ){
+	args["space"] = "no";
+      }
       args["processor"] = proc->id();
       FoliaElement *el = 0;
       if ( doStrings ){
@@ -416,6 +419,9 @@ void gram_r::apply_folia_correction( size_t& offset,
       args["xml:id"] = _words[0]->generateId( "split" );
       if ( org_set != "None" ){
 	args["set"] = org_set;
+      }
+      if ( !_words[0]->space() ){
+	args["space"] = "no";
       }
       args["processor"] = proc->id();
       FoliaElement *el = 0;
@@ -445,6 +451,9 @@ void gram_r::apply_folia_correction( size_t& offset,
 	  wargs["xml:id"] = _words[0]->generateId( "suggestion" );
 	  if ( org_set != "None" ){
 	    wargs["set"] = org_set;
+	  }
+	  if ( !_words[0]->space() ){
+	    wargs["space"] = "no";
 	  }
 	  wargs["processor"] = proc->id();
 	  FoliaElement *elt;
@@ -698,6 +707,7 @@ string correct_bigrams( const vector<gram_r>& bigrams,
 				  puncts, counts, offset, proc );
     if ( verbose > 2 ){
       cout << "After correct_one_bi: cor=" << bi << endl;
+      cout << "result += '" << bi.result_text() + " '" << endl;
     }
     result += bi.result_text() + " ";
   }
