@@ -679,6 +679,29 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
   return extra_skip;
 }
 
+string determine_spacing( const gram_r& gr ){
+  string space;
+  FoliaElement *w = gr.word(0);
+  if ( w && w->space() ){
+    if ( verbose > 2 ){
+      cout << "1 space = ' '" << endl;
+    }
+    space = " ";
+  }
+  else if ( w ) {
+    if ( verbose > 2 ){
+      cout << "2 space = ''" << endl;
+    }
+  }
+  else {
+    if ( verbose > 2 ){
+      cout << "3 space = ' '" << endl;
+    }
+    space += " ";
+  }
+  return space;
+}
+
 string correct_bigrams( const vector<gram_r>& bigrams,
 			const unordered_map<string,vector<word_conf> >& variants,
 			const unordered_set<string>& unknowns,
@@ -721,24 +744,12 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       result += " ";
     }
     else {
-      FoliaElement *w = bi.word(0);
-      if ( w && w->space() ){
-	if ( verbose > 2 ){
-	  cout << "1 result += '" << bi.result_text() + " '" << endl;
-	}
-	result += " ";
-      }
-      else if ( !w ){
-      	if ( verbose > 2 ){
-	  cout << "2 result += '" << bi.result_text() + " '" << endl;
-	}
-	result += " ";
+      string space = determine_spacing( bi );
+      if ( space.empty() ){
+	--offset;
       }
       else {
-      	if ( verbose > 2 ){
-	  cout << "3 result += '" << bi.result_text() + "'" << endl;
-	}
-	--offset;
+	result += space;
       }
     }
   }
@@ -880,24 +891,12 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       result += " ";
     }
     else {
-      FoliaElement *w = tri.word(0);
-      if ( w && w->space() ){
-	if ( verbose > 2 ){
-	  cout << "1 result += '" << tri.result_text() + " '" << endl;
-	}
-	result += " ";
-      }
-      else if ( !w ){
-      	if ( verbose > 2 ){
-	  cout << "2 result += '" << tri.result_text() + " '" << endl;
-	}
-	result += " ";
+      string space = determine_spacing( tri );
+      if ( space.empty() ){
+	--offset;
       }
       else {
-      	if ( verbose > 2 ){
-	  cout << "3 result += '" << tri.result_text() + "'" << endl;
-	}
-	--offset;
+	result += space;
       }
     }
     if ( verbose > 2 ){
@@ -934,32 +933,19 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       if ( verbose > 2 ){
 	cout << "correct last word: " << last << endl;
       }
-      string space;
-      FoliaElement *w = last_bi.word(0);
-      if ( w && w->space() ){
-	if ( verbose > 2 ){
-	  cout << "1 space = ' '" << endl;
-	}
-	space = " ";
-      }
-      else if ( w ) {
-	if ( verbose > 2 ){
-	  cout << "2 space = ''" << endl;
-	}
+      string space = determine_spacing( last_bi );
+      if ( space.empty() ){
 	--offset;
       }
       else {
-	if ( verbose > 2 ){
-	  cout << "3 space = ' '" << endl;
-	}
-	space += " ";
+	result += space;
       }
       last.correct_one_unigram( variants, unknowns,
 				puncts, counts, offset, proc );
       if ( verbose > 2 ){
 	cout << "handled last unigram: " << last << endl;
       }
-      result += space + last.result_text();
+      result += last.result_text();
     }
     return result;
   }
