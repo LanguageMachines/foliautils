@@ -1862,3 +1862,44 @@ edit statistics:
 ---
 >       <token-annotation/>
 foliadiff.sh: differences in: corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok
+start reading variants 
+read 1 variants 
+start reading unknowns 
+read 4 unknown words 
+start reading puncts 
+read 14 punctuated words 
+verbosity = 2
+start 1-gram correcting in file: data/corr_word_spaces.xml
+
+   correct 1-grams in: '40ste vergadering' (current)
+correct unigrams
+corrected 1-grams uit: '40ste vergadering' (Ticcl)
+
+   correct 1-grams in: '2003-2004' (current)
+correct unigrams
+corrected 1-grams uit: '2003-2004' (Ticcl)
+
+   correct 1-grams in: '40' (current)
+correct unigrams
+corrected 1-grams uit: '40' (Ticcl)
+
+   correct 1-grams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (current)
+correct unigrams
+behándeling = 1-1 => behandeling
+correction: 
+behándeling (1-1) ==> behandeling [ <w xml:id="p4.6" > {<t>,}]
+created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.3.1.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1998.' (Ticcl)
+
+   correct 1-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .' (current)
+correct unigrams
+correction: 
+s4s67621 (1-1) ==> UNK [ <w xml:id="p5.6" > {<t>,}]
+created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
+corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
+finished data/corr_word_spaces.xml
+edit statistics: 
+	edit	 count
+	1-1	1
+	TOKENS	32
+	UNK	1
