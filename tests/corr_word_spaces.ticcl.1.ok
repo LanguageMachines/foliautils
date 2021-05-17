@@ -15,7 +15,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-17T16:26:01" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-17T23:23:04" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
@@ -139,65 +139,6 @@
           <w xml:id="p4.17">
             <t>.</t>
             <t class="Ticcl" offset="97">.</t>
-          </w>
-        </p>
-      </div>
-      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
-        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
-          <t>Deze wets voorstellen worden zonder s4s67621 en zonder stemming aangenomen .</t>
-          <t class="Ticcl">Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .</t>
-          <lang class="dut"/>
-          <w xml:id="p5.1">
-            <t>Deze</t>
-            <t class="Ticcl" offset="0">Deze</t>
-          </w>
-          <w xml:id="p5.2">
-            <t>wets</t>
-            <t class="Ticcl" offset="5">wets</t>
-          </w>
-          <w xml:id="p5.3">
-            <t>voorstellen</t>
-            <t class="Ticcl" offset="10">voorstellen</t>
-          </w>
-          <w xml:id="p5.4">
-            <t>worden</t>
-            <t class="Ticcl" offset="22">worden</t>
-          </w>
-          <w xml:id="p5.5">
-            <t>zonder</t>
-            <t class="Ticcl" offset="29">zonder</t>
-          </w>
-          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1">
-            <new>
-              <w xml:id="p5.6.edit.1">
-                <t class="Ticcl" offset="36">UNK</t>
-              </w>
-            </new>
-            <original auth="no">
-              <w xml:id="p5.6">
-                <t>s4s67621</t>
-              </w>
-            </original>
-          </correction>
-          <w xml:id="p5.7">
-            <t>en</t>
-            <t class="Ticcl" offset="40">en</t>
-          </w>
-          <w xml:id="p5.8">
-            <t>zonder</t>
-            <t class="Ticcl" offset="43">zonder</t>
-          </w>
-          <w xml:id="p5.9">
-            <t>stemming</t>
-            <t class="Ticcl" offset="50">stemming</t>
-          </w>
-          <w xml:id="p5.10">
-            <t>aangenomen</t>
-            <t class="Ticcl" offset="59">aangenomen</t>
-          </w>
-          <w xml:id="p5.11">
-            <t>.</t>
-            <t class="Ticcl" offset="70">.</t>
           </w>
         </p>
       </div>
