@@ -736,21 +736,12 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       cout << "After correct_one_bi: back=" << bigrams.back() << endl;
     }
     result += bi.result_text();
-    bool finish = (cnt == bigrams.size()); //(&bi == &bigrams.back()) fails?
-    if ( !finish ){
-      if ( verbose > 2 ){
-	cout << "4 result += '" << bi.result_text() + " '" << endl;
-      }
-      result += " ";
+    string space = determine_spacing( bi );
+    if ( space.empty() ){
+      --offset;
     }
     else {
-      string space = determine_spacing( bi );
-      if ( space.empty() ){
-	--offset;
-      }
-      else {
-	result += space;
-      }
+      result += space;
     }
   }
   if ( skip == 0 ){
@@ -883,21 +874,12 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       cout << "After correct_one_tri: back=" << trigrams.back() << endl;
     }
     result += tri.result_text();
-    bool finish = (cnt == trigrams.size()); //(&bi == &bigrams.back()) fails?
-    if ( !finish ){
-      if ( verbose > 2 ){
-	cout << "4 result += '" << tri.result_text() + " '" << endl;
-      }
-      result += " ";
+    string space = determine_spacing( tri );
+    if ( space.empty() ){
+      --offset;
     }
     else {
-      string space = determine_spacing( tri );
-      if ( space.empty() ){
-	--offset;
-      }
-      else {
-	result += space;
-      }
+      result += space;
     }
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
