@@ -88,6 +88,9 @@ public:
   gram_r( const string&, FoliaElement* );
   explicit gram_r( const string& s ): gram_r(s,0){};
   FoliaElement *word( size_t index ) const {
+    if ( _words.empty() ){
+      return 0;
+    }
     return _words[index];
   }
   string orig_text() const;
@@ -561,7 +564,14 @@ string correct_unigrams( const vector<gram_r>& unigrams,
   for ( auto uni : unigrams ){
     uni.correct_one_unigram( variants, unknowns,
 			     puncts, counts, offset, proc );
-    result += uni.result_text() + " ";
+    result += uni.result_text();
+    FoliaElement *w = uni.word(0);
+    if ( w && w->space() ){
+      result += " ";
+    }
+    else {
+      --offset;
+    }
   }
   if ( verbose > 2 ){
     cout << "corrected=" << result << endl;
@@ -1053,6 +1063,7 @@ void correctNgrams( FoliaElement* par,
 
     for( const auto& it : origV ){
       string content = it->str(input_classname);
+
       filter( content, SEPCHAR ); // HACK
       inval += content + " ";
       vector<string> parts = TiCC::split( content );
@@ -1064,8 +1075,12 @@ void correctNgrams( FoliaElement* par,
   else {
     for ( const auto& it : ev ){
       string content = it->str(input_classname);
+      bool no_space = it->space();
       filter( content, SEPCHAR ); // HACK
-      inval += content + " ";
+      inval += content;
+      if ( no_space ){
+	inval += " ";
+      }
       unigrams.push_back( gram_r( content, it ) );
     }
   }
