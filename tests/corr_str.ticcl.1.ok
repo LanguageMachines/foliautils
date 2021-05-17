@@ -6,7 +6,9 @@
       <lang-annotation set="iso"/>
       <head-annotation set="kop"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <string-annotation/>
+      <string-annotation>
+        <annotator processor="FoLiA-correct.1"/>
+      </string-annotation>
       <paragraph-annotation/>
       <correction-annotation set="Ticcl-set">
         <annotator processor="FoLiA-correct.1"/>
