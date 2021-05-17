@@ -15,7 +15,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-17T23:48:40" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-18T00:08:15" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v " folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
@@ -96,47 +96,51 @@
               </w>
             </original>
           </correction>
-          <w xml:id="p4.7">
-            <t>van:</t>
-            <t class="Ticcl" offset="30">van:</t>
+          <w xml:id="p4.7" space="no">
+            <t>van</t>
+            <t class="Ticcl" offset="30">van</t>
           </w>
           <w xml:id="p4.8">
+            <t>:</t>
+            <t class="Ticcl" offset="33">:</t>
+          </w>
+          <w xml:id="p4.9">
             <t>het</t>
             <t class="Ticcl" offset="35">het</t>
           </w>
-          <w xml:id="p4.9">
+          <w xml:id="p4.10">
             <t>wetsvoorstel</t>
             <t class="Ticcl" offset="39">wetsvoorstel</t>
           </w>
-          <w xml:id="p4.10">
+          <w xml:id="p4.11">
             <t>Wijsiging</t>
             <t class="Ticcl" offset="52">Wijsiging</t>
           </w>
-          <w xml:id="p4.11">
+          <w xml:id="p4.12">
             <t>van</t>
             <t class="Ticcl" offset="62">van</t>
           </w>
-          <w xml:id="p4.12">
+          <w xml:id="p4.13">
             <t>de</t>
             <t class="Ticcl" offset="66">de</t>
           </w>
-          <w xml:id="p4.13">
+          <w xml:id="p4.14">
             <t>Wet</t>
             <t class="Ticcl" offset="69">Wet</t>
           </w>
-          <w xml:id="p4.14">
+          <w xml:id="p4.15">
             <t>opde</t>
             <t class="Ticcl" offset="73">opde</t>
           </w>
-          <w xml:id="p4.15">
+          <w xml:id="p4.16">
             <t>omzetbelasting</t>
             <t class="Ticcl" offset="78">omzetbelasting</t>
           </w>
-          <w xml:id="p4.16" space="no">
+          <w xml:id="p4.17" space="no">
             <t>1998</t>
             <t class="Ticcl" offset="93">1998</t>
           </w>
-          <w xml:id="p4.17">
+          <w xml:id="p4.18">
             <t>.</t>
             <t class="Ticcl" offset="97">.</t>
           </w>
