@@ -219,8 +219,8 @@ verbosity = 2
 start 2-gram correcting in file: data/corr.xml
 
    correct 2-grams in: '40ste vergadering' (current)
-correct bigrams
-bigram is: '40ste_vergadering'
+correct 1 bigrams
+bigram 1 is: '40ste_vergadering'
 no correction for bigram: 40ste_vergadering
 try unigram: 40ste
 40ste = 2 => 40ste
@@ -235,112 +235,112 @@ correct unigrams
 corrected 2-grams uit: '40' (Ticcl)
 
    correct 2-grams in: 'Aan de orde is de behándeling van: het wetsvoorstel Wijsiging van de Wet opde omzetbelasting 1968.' (current)
-correct bigrams
-bigram is: 'Aan_de'
+correct 15 bigrams
+bigram 1 is: 'Aan_de'
 no correction for bigram: Aan_de
 try unigram: Aan
 Aan = 2 => Aan
-bigram is: 'de_orde'
+bigram 2 is: 'de_orde'
 no correction for bigram: de_orde
 try unigram: de
 de = 2 => de
-bigram is: 'orde_is'
+bigram 3 is: 'orde_is'
 no correction for bigram: orde_is
 try unigram: orde
 orde = 2 => orde
-bigram is: 'is_de'
+bigram 4 is: 'is_de'
 no correction for bigram: is_de
 try unigram: is
 is = 2 => is
-bigram is: 'de_behándeling'
+bigram 5 is: 'de_behándeling'
 no correction for bigram: de_behándeling
 try unigram: de
 de = 2 => de
-bigram is: 'behándeling_van:'
+bigram 6 is: 'behándeling_van:'
 no correction for bigram: behándeling_van:
 try unigram: behándeling
 behándeling = 1-1 => behandeling
 correction: 
 behándeling (1-1) ==> 'behandeling'
 behándeling = 2 => behandeling
-bigram is: 'van:_het'
+bigram 7 is: 'van:_het'
 no correction for bigram: van:_het
 try unigram: van:
 van: = 2 => van:
-bigram is: 'het_wetsvoorstel'
+bigram 8 is: 'het_wetsvoorstel'
 no correction for bigram: het_wetsvoorstel
 try unigram: het
 het = 2 => het
-bigram is: 'wetsvoorstel_Wijsiging'
+bigram 9 is: 'wetsvoorstel_Wijsiging'
 no correction for bigram: wetsvoorstel_Wijsiging
 try unigram: wetsvoorstel
 wetsvoorstel = 2 => wetsvoorstel
-bigram is: 'Wijsiging_van'
+bigram 10 is: 'Wijsiging_van'
 Wijsiging_van = 2-2 => Wijziging van
 correction: 
 Wijsiging_van (2-2) ==> 'Wijziging van'
 Wijsiging_van = 2 => Wijziging van
-bigram is: 'van_de'
-bigram is: 'de_Wet'
+bigram 11 is: 'van_de'
+bigram 12 is: 'de_Wet'
 no correction for bigram: de_Wet
 try unigram: de
 de = 2 => de
-bigram is: 'Wet_opde'
+bigram 13 is: 'Wet_opde'
 no correction for bigram: Wet_opde
 try unigram: Wet
 Wet = 2 => Wet
-bigram is: 'opde_omzetbelasting'
+bigram 14 is: 'opde_omzetbelasting'
 no correction for bigram: opde_omzetbelasting
 try unigram: opde
 opde = 1-2 => op de
 correction: 
 opde (1-2) ==> 'op de'
 opde = 2 => op de
-bigram is: 'omzetbelasting_1968.'
+bigram 15 is: 'omzetbelasting_1968.'
 no correction for bigram: omzetbelasting_1968.
 try unigram: omzetbelasting
 omzetbelasting = 2 => omzetbelasting
 corrected 2-grams uit: 'Aan de orde is de behandeling van: het wetsvoorstel Wijziging van de Wet op de omzetbelasting 1968.' (Ticcl)
 
    correct 2-grams in: 'Deze wets voorstellen worden zonder s4s67621 en zonder steming aangenomen .' (current)
-correct bigrams
-bigram is: 'Deze_wets'
+correct 10 bigrams
+bigram 1 is: 'Deze_wets'
 no correction for bigram: Deze_wets
 try unigram: Deze
 Deze = 2 => Deze
-bigram is: 'wets_voorstellen'
+bigram 2 is: 'wets_voorstellen'
 wets_voorstellen = 2-1 => wetsvoorstellen
 correction: 
 wets_voorstellen (2-1) ==> 'wetsvoorstellen'
 wets_voorstellen = 2 => wetsvoorstellen
-bigram is: 'voorstellen_worden'
-bigram is: 'worden_zonder'
+bigram 3 is: 'voorstellen_worden'
+bigram 4 is: 'worden_zonder'
 no correction for bigram: worden_zonder
 try unigram: worden
 worden = 2 => worden
-bigram is: 'zonder_s4s67621'
+bigram 5 is: 'zonder_s4s67621'
 no correction for bigram: zonder_s4s67621
 try unigram: zonder
 zonder = 2 => zonder
-bigram is: 's4s67621_en'
+bigram 6 is: 's4s67621_en'
 no correction for bigram: s4s67621_en
 try unigram: s4s67621
 correction: 
 s4s67621 (1-1) ==> 'UNK'
 s4s67621 = 2 => UNK
-bigram is: 'en_zonder'
+bigram 7 is: 'en_zonder'
 no correction for bigram: en_zonder
 try unigram: en
 en = 2 => en
-bigram is: 'zonder_steming'
+bigram 8 is: 'zonder_steming'
 no correction for bigram: zonder_steming
 try unigram: zonder
 zonder = 2 => zonder
-bigram is: 'steming_aangenomen'
+bigram 9 is: 'steming_aangenomen'
 no correction for bigram: steming_aangenomen
 try unigram: steming
 steming = 2 => steming
-bigram is: 'aangenomen_.'
+bigram 10 is: 'aangenomen_.'
 no correction for bigram: aangenomen_.
 try unigram: aangenomen
 aangenomen = 2 => aangenomen
@@ -364,8 +364,8 @@ verbosity = 2
 start 3-gram correcting in file: data/corr.xml
 
    correct 3-grams in: '40ste vergadering' (current)
-correct bigrams
-bigram is: '40ste_vergadering'
+correct 1 bigrams
+bigram 1 is: '40ste_vergadering'
 no correction for bigram: 40ste_vergadering
 try unigram: 40ste
 40ste = 2 => 40ste
@@ -557,8 +557,8 @@ verbosity = 2
 start 3-gram correcting in file: data/corr.folia.xml
 
    correct 3-grams in: '40ste vergadering' (current)
-correct bigrams
-bigram is: '40ste_vergadering'
+correct 1 bigrams
+bigram 1 is: '40ste_vergadering'
 no correction for bigram: 40ste_vergadering
 try unigram: 40ste
 40ste = 2 => 40ste
@@ -750,8 +750,8 @@ verbosity = 2
 start 3-gram correcting in file: data/corr.folia.xml
 
    correct 3-grams in: '40ste vergadering' (rebased)
-correct bigrams
-bigram is: '40ste_vergadering'
+correct 1 bigrams
+bigram 1 is: '40ste_vergadering'
 no correction for bigram: 40ste_vergadering
 try unigram: 40ste
 40ste = 2 => 40ste
@@ -1016,12 +1016,12 @@ verbosity = 2
 start 2-gram correcting in file: data/corr_word_T.xml
 
    correct 2-grams in: 'de behándeling van:' (Test)
-correct bigrams
-bigram is: 'de_behándeling [ <w xml:id="p1.1" > {<t>,}, <w xml:id="p1.2" > {<t>,}]'
+correct 2 bigrams
+bigram 1 is: 'de_behándeling [ <w xml:id="p1.1" > {<t>,}, <w xml:id="p1.2" > {<t>,}]'
 no correction for bigram: de_behándeling [ <w xml:id="p1.1" > {<t>,}, <w xml:id="p1.2" > {<t>,}]
 try unigram: de [ <w xml:id="p1.1" > {<t>,}]
 de = 2 => de
-bigram is: 'behándeling_van: [ <w xml:id="p1.2" > {<t>,}, <w xml:id="p1.3" > {<t>,}]'
+bigram 2 is: 'behándeling_van: [ <w xml:id="p1.2" > {<t>,}, <w xml:id="p1.3" > {<t>,}]'
 no correction for bigram: behándeling_van: [ <w xml:id="p1.2" > {<t>,}, <w xml:id="p1.3" > {<t>,}]
 try unigram: behándeling [ <w xml:id="p1.2" > {<t>,}]
 behándeling = 1-1 => behandeling
@@ -1032,31 +1032,31 @@ behándeling = 2 => behandeling
 corrected 2-grams uit: 'de behandeling van:' (Ticcl)
 
    correct 2-grams in: 'het wetsvoorstel Wijsiging van de' (Test)
-correct bigrams
-bigram is: 'het_wetsvoorstel [ <w xml:id="p2.1" > {<t>,}, <w xml:id="p2.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'het_wetsvoorstel [ <w xml:id="p2.1" > {<t>,}, <w xml:id="p2.2" > {<t>,}]'
 no correction for bigram: het_wetsvoorstel [ <w xml:id="p2.1" > {<t>,}, <w xml:id="p2.2" > {<t>,}]
 try unigram: het [ <w xml:id="p2.1" > {<t>,}]
 het = 2 => het
-bigram is: 'wetsvoorstel_Wijsiging [ <w xml:id="p2.2" > {<t>,}, <w xml:id="p2.3" > {<t>,}]'
+bigram 2 is: 'wetsvoorstel_Wijsiging [ <w xml:id="p2.2" > {<t>,}, <w xml:id="p2.3" > {<t>,}]'
 no correction for bigram: wetsvoorstel_Wijsiging [ <w xml:id="p2.2" > {<t>,}, <w xml:id="p2.3" > {<t>,}]
 try unigram: wetsvoorstel [ <w xml:id="p2.2" > {<t>,}]
 wetsvoorstel = 2 => wetsvoorstel
-bigram is: 'Wijsiging_van [ <w xml:id="p2.3" > {<t>,}, <w xml:id="p2.4" > {<t>,}]'
+bigram 3 is: 'Wijsiging_van [ <w xml:id="p2.3" > {<t>,}, <w xml:id="p2.4" > {<t>,}]'
 Wijsiging_van = 2-2 => Wijziging van
 correction: 
 Wijsiging_van (2-2) ==> 'Wijziging van' [ <w xml:id="p2.3" > {<t>,}, <w xml:id="p2.4" > {<t>,}]
 created:  <correction xml:id="p2.correction.1" > {<new>,<original>,}
 Wijsiging_van = 2 => Wijziging van
-bigram is: 'van_de [ <w xml:id="p2.4" > {<t>,}, <w xml:id="p2.5" > {<t>,}]'
+bigram 4 is: 'van_de [ <w xml:id="p2.4" > {<t>,}, <w xml:id="p2.5" > {<t>,}]'
 corrected 2-grams uit: 'het wetsvoorstel Wijziging van de' (Ticcl)
 
    correct 2-grams in: 'Wet opde omzetbelasting 1998.' (Test)
-correct bigrams
-bigram is: 'Wet_opde [ <w xml:id="p3.1" > {<t>,}, <w xml:id="p3.2" > {<t>,}]'
+correct 3 bigrams
+bigram 1 is: 'Wet_opde [ <w xml:id="p3.1" > {<t>,}, <w xml:id="p3.2" > {<t>,}]'
 no correction for bigram: Wet_opde [ <w xml:id="p3.1" > {<t>,}, <w xml:id="p3.2" > {<t>,}]
 try unigram: Wet [ <w xml:id="p3.1" > {<t>,}]
 Wet = 2 => Wet
-bigram is: 'opde_omzetbelasting [ <w xml:id="p3.2" > {<t>,}, <w xml:id="p3.3" > {<t>,}]'
+bigram 2 is: 'opde_omzetbelasting [ <w xml:id="p3.2" > {<t>,}, <w xml:id="p3.3" > {<t>,}]'
 no correction for bigram: opde_omzetbelasting [ <w xml:id="p3.2" > {<t>,}, <w xml:id="p3.3" > {<t>,}]
 try unigram: opde [ <w xml:id="p3.2" > {<t>,}]
 opde = 1-2 => op de
@@ -1064,7 +1064,7 @@ correction:
 opde (1-2) ==> 'op de' [ <w xml:id="p3.2" > {<t>,}]
 created:  <correction xml:id="p3.correction.1" > {<new>,<original>,}
 opde = 2 => op de
-bigram is: 'omzetbelasting_1998. [ <w xml:id="p3.3" > {<t>,}, <w xml:id="p3.4" > {<t>,}]'
+bigram 3 is: 'omzetbelasting_1998. [ <w xml:id="p3.3" > {<t>,}, <w xml:id="p3.4" > {<t>,}]'
 no correction for bigram: omzetbelasting_1998. [ <w xml:id="p3.3" > {<t>,}, <w xml:id="p3.4" > {<t>,}]
 try unigram: omzetbelasting [ <w xml:id="p3.3" > {<t>,}]
 omzetbelasting = 2 => omzetbelasting
@@ -1074,12 +1074,12 @@ created:  <correction xml:id="p3.correction.2" > {<new>,<original>,}
 corrected 2-grams uit: 'Wet op de omzetbelasting 1998 .' (Ticcl)
 
    correct 2-grams in: 'Deze wets voorstellen' (Test)
-correct bigrams
-bigram is: 'Deze_wets [ <w xml:id="p4.1" > {<t>,}, <w xml:id="p4.2" > {<t>,}]'
+correct 2 bigrams
+bigram 1 is: 'Deze_wets [ <w xml:id="p4.1" > {<t>,}, <w xml:id="p4.2" > {<t>,}]'
 no correction for bigram: Deze_wets [ <w xml:id="p4.1" > {<t>,}, <w xml:id="p4.2" > {<t>,}]
 try unigram: Deze [ <w xml:id="p4.1" > {<t>,}]
 Deze = 2 => Deze
-bigram is: 'wets_voorstellen [ <w xml:id="p4.2" > {<t>,}, <w xml:id="p4.3" > {<t>,}]'
+bigram 2 is: 'wets_voorstellen [ <w xml:id="p4.2" > {<t>,}, <w xml:id="p4.3" > {<t>,}]'
 wets_voorstellen = 2-1 => wetsvoorstellen
 correction: 
 wets_voorstellen (2-1) ==> 'wetsvoorstellen' [ <w xml:id="p4.2" > {<t>,}, <w xml:id="p4.3" > {<t>,}]
@@ -1088,119 +1088,119 @@ wets_voorstellen = 2 => wetsvoorstellen
 corrected 2-grams uit: 'Deze wetsvoorstellen' (Ticcl)
 
    correct 2-grams in: 'ze worden zonder s4s67621 en zonder steming aangenomen .' (Test)
-correct bigrams
-bigram is: 'ze_worden [ <w xml:id="p5.1" > {<t>,}, <w xml:id="p5.2" > {<t>,}]'
+correct 8 bigrams
+bigram 1 is: 'ze_worden [ <w xml:id="p5.1" > {<t>,}, <w xml:id="p5.2" > {<t>,}]'
 no correction for bigram: ze_worden [ <w xml:id="p5.1" > {<t>,}, <w xml:id="p5.2" > {<t>,}]
 try unigram: ze [ <w xml:id="p5.1" > {<t>,}]
 ze = 2 => ze
-bigram is: 'worden_zonder [ <w xml:id="p5.2" > {<t>,}, <w xml:id="p5.3" > {<t>,}]'
+bigram 2 is: 'worden_zonder [ <w xml:id="p5.2" > {<t>,}, <w xml:id="p5.3" > {<t>,}]'
 no correction for bigram: worden_zonder [ <w xml:id="p5.2" > {<t>,}, <w xml:id="p5.3" > {<t>,}]
 try unigram: worden [ <w xml:id="p5.2" > {<t>,}]
 worden = 2 => worden
-bigram is: 'zonder_s4s67621 [ <w xml:id="p5.3" > {<t>,}, <w xml:id="p5.4" > {<t>,}]'
+bigram 3 is: 'zonder_s4s67621 [ <w xml:id="p5.3" > {<t>,}, <w xml:id="p5.4" > {<t>,}]'
 no correction for bigram: zonder_s4s67621 [ <w xml:id="p5.3" > {<t>,}, <w xml:id="p5.4" > {<t>,}]
 try unigram: zonder [ <w xml:id="p5.3" > {<t>,}]
 zonder = 2 => zonder
-bigram is: 's4s67621_en [ <w xml:id="p5.4" > {<t>,}, <w xml:id="p5.5" > {<t>,}]'
+bigram 4 is: 's4s67621_en [ <w xml:id="p5.4" > {<t>,}, <w xml:id="p5.5" > {<t>,}]'
 no correction for bigram: s4s67621_en [ <w xml:id="p5.4" > {<t>,}, <w xml:id="p5.5" > {<t>,}]
 try unigram: s4s67621 [ <w xml:id="p5.4" > {<t>,}]
 correction: 
 s4s67621 (1-1) ==> 'UNK' [ <w xml:id="p5.4" > {<t>,}]
 created:  <correction xml:id="p5.correction.1" > {<new>,<original>,}
 s4s67621 = 2 => UNK
-bigram is: 'en_zonder [ <w xml:id="p5.5" > {<t>,}, <w xml:id="p5.6" > {<t>,}]'
+bigram 5 is: 'en_zonder [ <w xml:id="p5.5" > {<t>,}, <w xml:id="p5.6" > {<t>,}]'
 no correction for bigram: en_zonder [ <w xml:id="p5.5" > {<t>,}, <w xml:id="p5.6" > {<t>,}]
 try unigram: en [ <w xml:id="p5.5" > {<t>,}]
 en = 2 => en
-bigram is: 'zonder_steming [ <w xml:id="p5.6" > {<t>,}, <w xml:id="p5.7" > {<t>,}]'
+bigram 6 is: 'zonder_steming [ <w xml:id="p5.6" > {<t>,}, <w xml:id="p5.7" > {<t>,}]'
 no correction for bigram: zonder_steming [ <w xml:id="p5.6" > {<t>,}, <w xml:id="p5.7" > {<t>,}]
 try unigram: zonder [ <w xml:id="p5.6" > {<t>,}]
 zonder = 2 => zonder
-bigram is: 'steming_aangenomen [ <w xml:id="p5.7" > {<t>,}, <w xml:id="p5.8" > {<t>,}]'
+bigram 7 is: 'steming_aangenomen [ <w xml:id="p5.7" > {<t>,}, <w xml:id="p5.8" > {<t>,}]'
 no correction for bigram: steming_aangenomen [ <w xml:id="p5.7" > {<t>,}, <w xml:id="p5.8" > {<t>,}]
 try unigram: steming [ <w xml:id="p5.7" > {<t>,}]
 steming = 2 => steming
-bigram is: 'aangenomen_. [ <w xml:id="p5.8" > {<t>,}, <w xml:id="p5.9" > {<t>,}]'
+bigram 8 is: 'aangenomen_. [ <w xml:id="p5.8" > {<t>,}, <w xml:id="p5.9" > {<t>,}]'
 no correction for bigram: aangenomen_. [ <w xml:id="p5.8" > {<t>,}, <w xml:id="p5.9" > {<t>,}]
 try unigram: aangenomen [ <w xml:id="p5.8" > {<t>,}]
 aangenomen = 2 => aangenomen
 corrected 2-grams uit: 'ze worden zonder UNK en zonder steming aangenomen .' (Ticcl)
 
    correct 2-grams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
-correct bigrams
-bigram is: 'Deze_runonvanwoorden [ <w xml:id="p6.1" > {<t>,}, <w xml:id="p6.2" > {<t>,}]'
+correct 3 bigrams
+bigram 1 is: 'Deze_runonvanwoorden [ <w xml:id="p6.1" > {<t>,}, <w xml:id="p6.2" > {<t>,}]'
 no correction for bigram: Deze_runonvanwoorden [ <w xml:id="p6.1" > {<t>,}, <w xml:id="p6.2" > {<t>,}]
 try unigram: Deze [ <w xml:id="p6.1" > {<t>,}]
 Deze = 2 => Deze
-bigram is: 'runonvanwoorden_is [ <w xml:id="p6.2" > {<t>,}, <w xml:id="p6.3" > {<t>,}]'
+bigram 2 is: 'runonvanwoorden_is [ <w xml:id="p6.2" > {<t>,}, <w xml:id="p6.3" > {<t>,}]'
 no correction for bigram: runonvanwoorden_is [ <w xml:id="p6.2" > {<t>,}, <w xml:id="p6.3" > {<t>,}]
 try unigram: runonvanwoorden [ <w xml:id="p6.2" > {<t>,}]
 runonvanwoorden = 2 => runonvanwoorden
-bigram is: 'is_oplosbaar. [ <w xml:id="p6.3" > {<t>,}, <w xml:id="p6.4" > {<t>,}]'
+bigram 3 is: 'is_oplosbaar. [ <w xml:id="p6.3" > {<t>,}, <w xml:id="p6.4" > {<t>,}]'
 no correction for bigram: is_oplosbaar. [ <w xml:id="p6.3" > {<t>,}, <w xml:id="p6.4" > {<t>,}]
 try unigram: is [ <w xml:id="p6.3" > {<t>,}]
 is = 2 => is
 corrected 2-grams uit: 'Deze runonvanwoorden is oplosbaar.' (Ticcl)
 
    correct 2-grams in: 'Een ge splet en trigram.' (Test)
-correct bigrams
-bigram is: 'Een_ge [ <w xml:id="p7.1" > {<t>,}, <w xml:id="p7.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'Een_ge [ <w xml:id="p7.1" > {<t>,}, <w xml:id="p7.2" > {<t>,}]'
 no correction for bigram: Een_ge [ <w xml:id="p7.1" > {<t>,}, <w xml:id="p7.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p7.1" > {<t>,}]
 Een = 2 => Een
-bigram is: 'ge_splet [ <w xml:id="p7.2" > {<t>,}, <w xml:id="p7.3" > {<t>,}]'
+bigram 2 is: 'ge_splet [ <w xml:id="p7.2" > {<t>,}, <w xml:id="p7.3" > {<t>,}]'
 no correction for bigram: ge_splet [ <w xml:id="p7.2" > {<t>,}, <w xml:id="p7.3" > {<t>,}]
 try unigram: ge [ <w xml:id="p7.2" > {<t>,}]
 ge = 2 => ge
-bigram is: 'splet_en [ <w xml:id="p7.3" > {<t>,}, <w xml:id="p7.4" > {<t>,}]'
+bigram 3 is: 'splet_en [ <w xml:id="p7.3" > {<t>,}, <w xml:id="p7.4" > {<t>,}]'
 no correction for bigram: splet_en [ <w xml:id="p7.3" > {<t>,}, <w xml:id="p7.4" > {<t>,}]
 try unigram: splet [ <w xml:id="p7.3" > {<t>,}]
 splet = 2 => splet
-bigram is: 'en_trigram. [ <w xml:id="p7.4" > {<t>,}, <w xml:id="p7.5" > {<t>,}]'
+bigram 4 is: 'en_trigram. [ <w xml:id="p7.4" > {<t>,}, <w xml:id="p7.5" > {<t>,}]'
 no correction for bigram: en_trigram. [ <w xml:id="p7.4" > {<t>,}, <w xml:id="p7.5" > {<t>,}]
 try unigram: en [ <w xml:id="p7.4" > {<t>,}]
 en = 2 => en
 corrected 2-grams uit: 'Een ge splet en trigram.' (Ticcl)
 
    correct 2-grams in: 'Een 3-2 geval: Rhode I Land' (Test)
-correct bigrams
-bigram is: 'Een_3-2 [ <w xml:id="p8.1" > {<t>,}, <w xml:id="p8.2" > {<t>,}]'
+correct 5 bigrams
+bigram 1 is: 'Een_3-2 [ <w xml:id="p8.1" > {<t>,}, <w xml:id="p8.2" > {<t>,}]'
 no correction for bigram: Een_3-2 [ <w xml:id="p8.1" > {<t>,}, <w xml:id="p8.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p8.1" > {<t>,}]
 Een = 2 => Een
-bigram is: '3-2_geval: [ <w xml:id="p8.2" > {<t>,}, <w xml:id="p8.3" > {<t>,}]'
+bigram 2 is: '3-2_geval: [ <w xml:id="p8.2" > {<t>,}, <w xml:id="p8.3" > {<t>,}]'
 no correction for bigram: 3-2_geval: [ <w xml:id="p8.2" > {<t>,}, <w xml:id="p8.3" > {<t>,}]
 try unigram: 3-2 [ <w xml:id="p8.2" > {<t>,}]
 3-2 = 2 => 3-2
-bigram is: 'geval:_Rhode [ <w xml:id="p8.3" > {<t>,}, <w xml:id="p8.4" > {<t>,}]'
+bigram 3 is: 'geval:_Rhode [ <w xml:id="p8.3" > {<t>,}, <w xml:id="p8.4" > {<t>,}]'
 no correction for bigram: geval:_Rhode [ <w xml:id="p8.3" > {<t>,}, <w xml:id="p8.4" > {<t>,}]
 try unigram: geval: [ <w xml:id="p8.3" > {<t>,}]
 geval: = 2 => geval:
-bigram is: 'Rhode_I [ <w xml:id="p8.4" > {<t>,}, <w xml:id="p8.5" > {<t>,}]'
+bigram 4 is: 'Rhode_I [ <w xml:id="p8.4" > {<t>,}, <w xml:id="p8.5" > {<t>,}]'
 no correction for bigram: Rhode_I [ <w xml:id="p8.4" > {<t>,}, <w xml:id="p8.5" > {<t>,}]
 try unigram: Rhode [ <w xml:id="p8.4" > {<t>,}]
 Rhode = 2 => Rhode
-bigram is: 'I_Land [ <w xml:id="p8.5" > {<t>,}, <w xml:id="p8.6" > {<t>,}]'
+bigram 5 is: 'I_Land [ <w xml:id="p8.5" > {<t>,}, <w xml:id="p8.6" > {<t>,}]'
 no correction for bigram: I_Land [ <w xml:id="p8.5" > {<t>,}, <w xml:id="p8.6" > {<t>,}]
 try unigram: I [ <w xml:id="p8.5" > {<t>,}]
 I = 2 => I
 corrected 2-grams uit: 'Een 3-2 geval: Rhode I Land' (Ticcl)
 
    correct 2-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
-correct bigrams
-bigram is: 'Een_2-3 [ <w xml:id="p9.1" > {<t>,}, <w xml:id="p9.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'Een_2-3 [ <w xml:id="p9.1" > {<t>,}, <w xml:id="p9.2" > {<t>,}]'
 no correction for bigram: Een_2-3 [ <w xml:id="p9.1" > {<t>,}, <w xml:id="p9.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p9.1" > {<t>,}]
 Een = 2 => Een
-bigram is: '2-3_geval: [ <w xml:id="p9.2" > {<t>,}, <w xml:id="p9.3" > {<t>,}]'
+bigram 2 is: '2-3_geval: [ <w xml:id="p9.2" > {<t>,}, <w xml:id="p9.3" > {<t>,}]'
 no correction for bigram: 2-3_geval: [ <w xml:id="p9.2" > {<t>,}, <w xml:id="p9.3" > {<t>,}]
 try unigram: 2-3 [ <w xml:id="p9.2" > {<t>,}]
 2-3 = 2 => 2-3
-bigram is: 'geval:_He [ <w xml:id="p9.3" > {<t>,}, <w xml:id="p9.4" > {<t>,}]'
+bigram 3 is: 'geval:_He [ <w xml:id="p9.3" > {<t>,}, <w xml:id="p9.4" > {<t>,}]'
 no correction for bigram: geval:_He [ <w xml:id="p9.3" > {<t>,}, <w xml:id="p9.4" > {<t>,}]
 try unigram: geval: [ <w xml:id="p9.3" > {<t>,}]
 geval: = 2 => geval:
-bigram is: 'He_groenehuis. [ <w xml:id="p9.4" > {<t>,}, <w xml:id="p9.5" > {<t>,}]'
+bigram 4 is: 'He_groenehuis. [ <w xml:id="p9.4" > {<t>,}, <w xml:id="p9.5" > {<t>,}]'
 no correction for bigram: He_groenehuis. [ <w xml:id="p9.4" > {<t>,}, <w xml:id="p9.5" > {<t>,}]
 try unigram: He [ <w xml:id="p9.4" > {<t>,}]
 He = 2 => He
@@ -1210,20 +1210,20 @@ created:  <correction xml:id="p9.correction.1" > {<new>,<original>,}
 corrected 2-grams uit: 'Een 2-3 geval: He groenehuis .' (Ticcl)
 
    correct 2-grams in: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Test)
-correct bigrams
-bigram is: 'Een_dubbele [ <w xml:id="p10.1" > {<t>,}, <w xml:id="p10.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'Een_dubbele [ <w xml:id="p10.1" > {<t>,}, <w xml:id="p10.2" > {<t>,}]'
 no correction for bigram: Een_dubbele [ <w xml:id="p10.1" > {<t>,}, <w xml:id="p10.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p10.1" > {<t>,}]
 Een = 2 => Een
-bigram is: 'dubbele_unknown: [ <w xml:id="p10.2" > {<t>,}, <w xml:id="p10.3" > {<t>,}]'
+bigram 2 is: 'dubbele_unknown: [ <w xml:id="p10.2" > {<t>,}, <w xml:id="p10.3" > {<t>,}]'
 no correction for bigram: dubbele_unknown: [ <w xml:id="p10.2" > {<t>,}, <w xml:id="p10.3" > {<t>,}]
 try unigram: dubbele [ <w xml:id="p10.2" > {<t>,}]
 dubbele = 2 => dubbele
-bigram is: 'unknown:_Arglebargle, [ <w xml:id="p10.3" > {<t>,}, <w xml:id="p10.4" > {<t>,}]'
+bigram 3 is: 'unknown:_Arglebargle, [ <w xml:id="p10.3" > {<t>,}, <w xml:id="p10.4" > {<t>,}]'
 no correction for bigram: unknown:_Arglebargle, [ <w xml:id="p10.3" > {<t>,}, <w xml:id="p10.4" > {<t>,}]
 try unigram: unknown: [ <w xml:id="p10.3" > {<t>,}]
 unknown: = 2 => unknown:
-bigram is: 'Arglebargle,_glop-glyf! [ <w xml:id="p10.4" > {<t>,}, <w xml:id="p10.5" > {<t>,}]'
+bigram 4 is: 'Arglebargle,_glop-glyf! [ <w xml:id="p10.4" > {<t>,}, <w xml:id="p10.5" > {<t>,}]'
 correction: 
 Arglebargle,_glop-glyf! (2-2) ==> 'UNK UNK' [ <w xml:id="p10.4" > {<t>,}, <w xml:id="p10.5" > {<t>,}]
 created:  <correction xml:id="p10.correction.1" > {<new>,<original>,}
@@ -1231,24 +1231,24 @@ Arglebargle,_glop-glyf! = 2 => UNK UNK
 corrected 2-grams uit: 'Een dubbele unknown: UNK UNK' (Ticcl)
 
    correct 2-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
-correct bigrams
-bigram is: 'Een_triple [ <w xml:id="p11.1" > {<t>,}, <w xml:id="p11.2" > {<t>,}]'
+correct 5 bigrams
+bigram 1 is: 'Een_triple [ <w xml:id="p11.1" > {<t>,}, <w xml:id="p11.2" > {<t>,}]'
 no correction for bigram: Een_triple [ <w xml:id="p11.1" > {<t>,}, <w xml:id="p11.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p11.1" > {<t>,}]
 Een = 2 => Een
-bigram is: 'triple_unknown: [ <w xml:id="p11.2" > {<t>,}, <w xml:id="p11.3" > {<t>,}]'
+bigram 2 is: 'triple_unknown: [ <w xml:id="p11.2" > {<t>,}, <w xml:id="p11.3" > {<t>,}]'
 no correction for bigram: triple_unknown: [ <w xml:id="p11.2" > {<t>,}, <w xml:id="p11.3" > {<t>,}]
 try unigram: triple [ <w xml:id="p11.2" > {<t>,}]
 triple = 2 => triple
-bigram is: 'unknown:_Argle [ <w xml:id="p11.3" > {<t>,}, <w xml:id="p11.4" > {<t>,}]'
+bigram 3 is: 'unknown:_Argle [ <w xml:id="p11.3" > {<t>,}, <w xml:id="p11.4" > {<t>,}]'
 no correction for bigram: unknown:_Argle [ <w xml:id="p11.3" > {<t>,}, <w xml:id="p11.4" > {<t>,}]
 try unigram: unknown: [ <w xml:id="p11.3" > {<t>,}]
 unknown: = 2 => unknown:
-bigram is: 'Argle_bargle, [ <w xml:id="p11.4" > {<t>,}, <w xml:id="p11.5" > {<t>,}]'
+bigram 4 is: 'Argle_bargle, [ <w xml:id="p11.4" > {<t>,}, <w xml:id="p11.5" > {<t>,}]'
 no correction for bigram: Argle_bargle, [ <w xml:id="p11.4" > {<t>,}, <w xml:id="p11.5" > {<t>,}]
 try unigram: Argle [ <w xml:id="p11.4" > {<t>,}]
 Argle = 2 => Argle
-bigram is: 'bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xml:id="p11.6" > {<t>,}]'
+bigram 5 is: 'bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xml:id="p11.6" > {<t>,}]'
 no correction for bigram: bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xml:id="p11.6" > {<t>,}]
 try unigram: bargle, [ <w xml:id="p11.5" > {<t>,}]
 bargle, = 2 => bargle,
@@ -1280,12 +1280,12 @@ verbosity = 2
 start 2-gram correcting in file: data/corr_word_T.xml
 
    correct 2-grams in: 'de behándeling van:' (Test)
-correct bigrams
-bigram is: 'de_behándeling [ <w xml:id="p1.1" > {<t>,}, <w xml:id="p1.2" > {<t>,}]'
+correct 2 bigrams
+bigram 1 is: 'de_behándeling [ <w xml:id="p1.1" > {<t>,}, <w xml:id="p1.2" > {<t>,}]'
 no correction for bigram: de_behándeling [ <w xml:id="p1.1" > {<t>,}, <w xml:id="p1.2" > {<t>,}]
 try unigram: de [ <w xml:id="p1.1" > {<t>,}]
 de = 2 => de
-bigram is: 'behándeling_van: [ <w xml:id="p1.2" > {<t>,}, <w xml:id="p1.3" > {<t>,}]'
+bigram 2 is: 'behándeling_van: [ <w xml:id="p1.2" > {<t>,}, <w xml:id="p1.3" > {<t>,}]'
 no correction for bigram: behándeling_van: [ <w xml:id="p1.2" > {<t>,}, <w xml:id="p1.3" > {<t>,}]
 try unigram: behándeling [ <w xml:id="p1.2" > {<t>,}]
 behándeling = 1-1 => behandeling
@@ -1296,31 +1296,31 @@ behándeling = 2 => behandeling
 corrected 2-grams uit: 'de behandeling van:' (Ticcl)
 
    correct 2-grams in: 'het wetsvoorstel Wijsiging van de' (Test)
-correct bigrams
-bigram is: 'het_wetsvoorstel [ <w xml:id="p2.1" > {<t>,}, <w xml:id="p2.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'het_wetsvoorstel [ <w xml:id="p2.1" > {<t>,}, <w xml:id="p2.2" > {<t>,}]'
 no correction for bigram: het_wetsvoorstel [ <w xml:id="p2.1" > {<t>,}, <w xml:id="p2.2" > {<t>,}]
 try unigram: het [ <w xml:id="p2.1" > {<t>,}]
 het = 2 => het
-bigram is: 'wetsvoorstel_Wijsiging [ <w xml:id="p2.2" > {<t>,}, <w xml:id="p2.3" > {<t>,}]'
+bigram 2 is: 'wetsvoorstel_Wijsiging [ <w xml:id="p2.2" > {<t>,}, <w xml:id="p2.3" > {<t>,}]'
 no correction for bigram: wetsvoorstel_Wijsiging [ <w xml:id="p2.2" > {<t>,}, <w xml:id="p2.3" > {<t>,}]
 try unigram: wetsvoorstel [ <w xml:id="p2.2" > {<t>,}]
 wetsvoorstel = 2 => wetsvoorstel
-bigram is: 'Wijsiging_van [ <w xml:id="p2.3" > {<t>,}, <w xml:id="p2.4" > {<t>,}]'
+bigram 3 is: 'Wijsiging_van [ <w xml:id="p2.3" > {<t>,}, <w xml:id="p2.4" > {<t>,}]'
 Wijsiging_van = 2-2 => Wijziging van
 correction: 
 Wijsiging_van (2-2) ==> 'Wijziging van' [ <w xml:id="p2.3" > {<t>,}, <w xml:id="p2.4" > {<t>,}]
 created:  <correction xml:id="p2.correction.1" > {<new>,<original>,<suggestion>,<suggestion>,}
 Wijsiging_van = 2 => Wijziging van
-bigram is: 'van_de [ <w xml:id="p2.4" > {<t>,}, <w xml:id="p2.5" > {<t>,}]'
+bigram 4 is: 'van_de [ <w xml:id="p2.4" > {<t>,}, <w xml:id="p2.5" > {<t>,}]'
 corrected 2-grams uit: 'het wetsvoorstel Wijziging van de' (Ticcl)
 
    correct 2-grams in: 'Wet opde omzetbelasting 1998.' (Test)
-correct bigrams
-bigram is: 'Wet_opde [ <w xml:id="p3.1" > {<t>,}, <w xml:id="p3.2" > {<t>,}]'
+correct 3 bigrams
+bigram 1 is: 'Wet_opde [ <w xml:id="p3.1" > {<t>,}, <w xml:id="p3.2" > {<t>,}]'
 no correction for bigram: Wet_opde [ <w xml:id="p3.1" > {<t>,}, <w xml:id="p3.2" > {<t>,}]
 try unigram: Wet [ <w xml:id="p3.1" > {<t>,}]
 Wet = 2 => Wet
-bigram is: 'opde_omzetbelasting [ <w xml:id="p3.2" > {<t>,}, <w xml:id="p3.3" > {<t>,}]'
+bigram 2 is: 'opde_omzetbelasting [ <w xml:id="p3.2" > {<t>,}, <w xml:id="p3.3" > {<t>,}]'
 no correction for bigram: opde_omzetbelasting [ <w xml:id="p3.2" > {<t>,}, <w xml:id="p3.3" > {<t>,}]
 try unigram: opde [ <w xml:id="p3.2" > {<t>,}]
 opde = 1-2 => op de
@@ -1328,7 +1328,7 @@ correction:
 opde (1-2) ==> 'op de' [ <w xml:id="p3.2" > {<t>,}]
 created:  <correction xml:id="p3.correction.1" > {<new>,<original>,<suggestion>,<suggestion>,}
 opde = 2 => op de
-bigram is: 'omzetbelasting_1998. [ <w xml:id="p3.3" > {<t>,}, <w xml:id="p3.4" > {<t>,}]'
+bigram 3 is: 'omzetbelasting_1998. [ <w xml:id="p3.3" > {<t>,}, <w xml:id="p3.4" > {<t>,}]'
 no correction for bigram: omzetbelasting_1998. [ <w xml:id="p3.3" > {<t>,}, <w xml:id="p3.4" > {<t>,}]
 try unigram: omzetbelasting [ <w xml:id="p3.3" > {<t>,}]
 omzetbelasting = 2 => omzetbelasting
@@ -1338,12 +1338,12 @@ created:  <correction xml:id="p3.correction.2" > {<new>,<original>,}
 corrected 2-grams uit: 'Wet op de omzetbelasting 1998 .' (Ticcl)
 
    correct 2-grams in: 'Deze wets voorstellen' (Test)
-correct bigrams
-bigram is: 'Deze_wets [ <w xml:id="p4.1" > {<t>,}, <w xml:id="p4.2" > {<t>,}]'
+correct 2 bigrams
+bigram 1 is: 'Deze_wets [ <w xml:id="p4.1" > {<t>,}, <w xml:id="p4.2" > {<t>,}]'
 no correction for bigram: Deze_wets [ <w xml:id="p4.1" > {<t>,}, <w xml:id="p4.2" > {<t>,}]
 try unigram: Deze [ <w xml:id="p4.1" > {<t>,}]
 Deze = 2 => Deze
-bigram is: 'wets_voorstellen [ <w xml:id="p4.2" > {<t>,}, <w xml:id="p4.3" > {<t>,}]'
+bigram 2 is: 'wets_voorstellen [ <w xml:id="p4.2" > {<t>,}, <w xml:id="p4.3" > {<t>,}]'
 wets_voorstellen = 2-1 => wetsvoorstellen
 correction: 
 wets_voorstellen (2-1) ==> 'wetsvoorstellen' [ <w xml:id="p4.2" > {<t>,}, <w xml:id="p4.3" > {<t>,}]
@@ -1352,119 +1352,119 @@ wets_voorstellen = 2 => wetsvoorstellen
 corrected 2-grams uit: 'Deze wetsvoorstellen' (Ticcl)
 
    correct 2-grams in: 'ze worden zonder s4s67621 en zonder steming aangenomen .' (Test)
-correct bigrams
-bigram is: 'ze_worden [ <w xml:id="p5.1" > {<t>,}, <w xml:id="p5.2" > {<t>,}]'
+correct 8 bigrams
+bigram 1 is: 'ze_worden [ <w xml:id="p5.1" > {<t>,}, <w xml:id="p5.2" > {<t>,}]'
 no correction for bigram: ze_worden [ <w xml:id="p5.1" > {<t>,}, <w xml:id="p5.2" > {<t>,}]
 try unigram: ze [ <w xml:id="p5.1" > {<t>,}]
 ze = 2 => ze
-bigram is: 'worden_zonder [ <w xml:id="p5.2" > {<t>,}, <w xml:id="p5.3" > {<t>,}]'
+bigram 2 is: 'worden_zonder [ <w xml:id="p5.2" > {<t>,}, <w xml:id="p5.3" > {<t>,}]'
 no correction for bigram: worden_zonder [ <w xml:id="p5.2" > {<t>,}, <w xml:id="p5.3" > {<t>,}]
 try unigram: worden [ <w xml:id="p5.2" > {<t>,}]
 worden = 2 => worden
-bigram is: 'zonder_s4s67621 [ <w xml:id="p5.3" > {<t>,}, <w xml:id="p5.4" > {<t>,}]'
+bigram 3 is: 'zonder_s4s67621 [ <w xml:id="p5.3" > {<t>,}, <w xml:id="p5.4" > {<t>,}]'
 no correction for bigram: zonder_s4s67621 [ <w xml:id="p5.3" > {<t>,}, <w xml:id="p5.4" > {<t>,}]
 try unigram: zonder [ <w xml:id="p5.3" > {<t>,}]
 zonder = 2 => zonder
-bigram is: 's4s67621_en [ <w xml:id="p5.4" > {<t>,}, <w xml:id="p5.5" > {<t>,}]'
+bigram 4 is: 's4s67621_en [ <w xml:id="p5.4" > {<t>,}, <w xml:id="p5.5" > {<t>,}]'
 no correction for bigram: s4s67621_en [ <w xml:id="p5.4" > {<t>,}, <w xml:id="p5.5" > {<t>,}]
 try unigram: s4s67621 [ <w xml:id="p5.4" > {<t>,}]
 correction: 
 s4s67621 (1-1) ==> 'UNK' [ <w xml:id="p5.4" > {<t>,}]
 created:  <correction xml:id="p5.correction.1" > {<new>,<original>,}
 s4s67621 = 2 => UNK
-bigram is: 'en_zonder [ <w xml:id="p5.5" > {<t>,}, <w xml:id="p5.6" > {<t>,}]'
+bigram 5 is: 'en_zonder [ <w xml:id="p5.5" > {<t>,}, <w xml:id="p5.6" > {<t>,}]'
 no correction for bigram: en_zonder [ <w xml:id="p5.5" > {<t>,}, <w xml:id="p5.6" > {<t>,}]
 try unigram: en [ <w xml:id="p5.5" > {<t>,}]
 en = 2 => en
-bigram is: 'zonder_steming [ <w xml:id="p5.6" > {<t>,}, <w xml:id="p5.7" > {<t>,}]'
+bigram 6 is: 'zonder_steming [ <w xml:id="p5.6" > {<t>,}, <w xml:id="p5.7" > {<t>,}]'
 no correction for bigram: zonder_steming [ <w xml:id="p5.6" > {<t>,}, <w xml:id="p5.7" > {<t>,}]
 try unigram: zonder [ <w xml:id="p5.6" > {<t>,}]
 zonder = 2 => zonder
-bigram is: 'steming_aangenomen [ <w xml:id="p5.7" > {<t>,}, <w xml:id="p5.8" > {<t>,}]'
+bigram 7 is: 'steming_aangenomen [ <w xml:id="p5.7" > {<t>,}, <w xml:id="p5.8" > {<t>,}]'
 no correction for bigram: steming_aangenomen [ <w xml:id="p5.7" > {<t>,}, <w xml:id="p5.8" > {<t>,}]
 try unigram: steming [ <w xml:id="p5.7" > {<t>,}]
 steming = 2 => steming
-bigram is: 'aangenomen_. [ <w xml:id="p5.8" > {<t>,}, <w xml:id="p5.9" > {<t>,}]'
+bigram 8 is: 'aangenomen_. [ <w xml:id="p5.8" > {<t>,}, <w xml:id="p5.9" > {<t>,}]'
 no correction for bigram: aangenomen_. [ <w xml:id="p5.8" > {<t>,}, <w xml:id="p5.9" > {<t>,}]
 try unigram: aangenomen [ <w xml:id="p5.8" > {<t>,}]
 aangenomen = 2 => aangenomen
 corrected 2-grams uit: 'ze worden zonder UNK en zonder steming aangenomen .' (Ticcl)
 
    correct 2-grams in: 'Deze runonvanwoorden is oplosbaar.' (Test)
-correct bigrams
-bigram is: 'Deze_runonvanwoorden [ <w xml:id="p6.1" > {<t>,}, <w xml:id="p6.2" > {<t>,}]'
+correct 3 bigrams
+bigram 1 is: 'Deze_runonvanwoorden [ <w xml:id="p6.1" > {<t>,}, <w xml:id="p6.2" > {<t>,}]'
 no correction for bigram: Deze_runonvanwoorden [ <w xml:id="p6.1" > {<t>,}, <w xml:id="p6.2" > {<t>,}]
 try unigram: Deze [ <w xml:id="p6.1" > {<t>,}]
 Deze = 2 => Deze
-bigram is: 'runonvanwoorden_is [ <w xml:id="p6.2" > {<t>,}, <w xml:id="p6.3" > {<t>,}]'
+bigram 2 is: 'runonvanwoorden_is [ <w xml:id="p6.2" > {<t>,}, <w xml:id="p6.3" > {<t>,}]'
 no correction for bigram: runonvanwoorden_is [ <w xml:id="p6.2" > {<t>,}, <w xml:id="p6.3" > {<t>,}]
 try unigram: runonvanwoorden [ <w xml:id="p6.2" > {<t>,}]
 runonvanwoorden = 2 => runonvanwoorden
-bigram is: 'is_oplosbaar. [ <w xml:id="p6.3" > {<t>,}, <w xml:id="p6.4" > {<t>,}]'
+bigram 3 is: 'is_oplosbaar. [ <w xml:id="p6.3" > {<t>,}, <w xml:id="p6.4" > {<t>,}]'
 no correction for bigram: is_oplosbaar. [ <w xml:id="p6.3" > {<t>,}, <w xml:id="p6.4" > {<t>,}]
 try unigram: is [ <w xml:id="p6.3" > {<t>,}]
 is = 2 => is
 corrected 2-grams uit: 'Deze runonvanwoorden is oplosbaar.' (Ticcl)
 
    correct 2-grams in: 'Een ge splet en trigram.' (Test)
-correct bigrams
-bigram is: 'Een_ge [ <w xml:id="p7.1" > {<t>,}, <w xml:id="p7.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'Een_ge [ <w xml:id="p7.1" > {<t>,}, <w xml:id="p7.2" > {<t>,}]'
 no correction for bigram: Een_ge [ <w xml:id="p7.1" > {<t>,}, <w xml:id="p7.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p7.1" > {<t>,}]
 Een = 2 => Een
-bigram is: 'ge_splet [ <w xml:id="p7.2" > {<t>,}, <w xml:id="p7.3" > {<t>,}]'
+bigram 2 is: 'ge_splet [ <w xml:id="p7.2" > {<t>,}, <w xml:id="p7.3" > {<t>,}]'
 no correction for bigram: ge_splet [ <w xml:id="p7.2" > {<t>,}, <w xml:id="p7.3" > {<t>,}]
 try unigram: ge [ <w xml:id="p7.2" > {<t>,}]
 ge = 2 => ge
-bigram is: 'splet_en [ <w xml:id="p7.3" > {<t>,}, <w xml:id="p7.4" > {<t>,}]'
+bigram 3 is: 'splet_en [ <w xml:id="p7.3" > {<t>,}, <w xml:id="p7.4" > {<t>,}]'
 no correction for bigram: splet_en [ <w xml:id="p7.3" > {<t>,}, <w xml:id="p7.4" > {<t>,}]
 try unigram: splet [ <w xml:id="p7.3" > {<t>,}]
 splet = 2 => splet
-bigram is: 'en_trigram. [ <w xml:id="p7.4" > {<t>,}, <w xml:id="p7.5" > {<t>,}]'
+bigram 4 is: 'en_trigram. [ <w xml:id="p7.4" > {<t>,}, <w xml:id="p7.5" > {<t>,}]'
 no correction for bigram: en_trigram. [ <w xml:id="p7.4" > {<t>,}, <w xml:id="p7.5" > {<t>,}]
 try unigram: en [ <w xml:id="p7.4" > {<t>,}]
 en = 2 => en
 corrected 2-grams uit: 'Een ge splet en trigram.' (Ticcl)
 
    correct 2-grams in: 'Een 3-2 geval: Rhode I Land' (Test)
-correct bigrams
-bigram is: 'Een_3-2 [ <w xml:id="p8.1" > {<t>,}, <w xml:id="p8.2" > {<t>,}]'
+correct 5 bigrams
+bigram 1 is: 'Een_3-2 [ <w xml:id="p8.1" > {<t>,}, <w xml:id="p8.2" > {<t>,}]'
 no correction for bigram: Een_3-2 [ <w xml:id="p8.1" > {<t>,}, <w xml:id="p8.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p8.1" > {<t>,}]
 Een = 2 => Een
-bigram is: '3-2_geval: [ <w xml:id="p8.2" > {<t>,}, <w xml:id="p8.3" > {<t>,}]'
+bigram 2 is: '3-2_geval: [ <w xml:id="p8.2" > {<t>,}, <w xml:id="p8.3" > {<t>,}]'
 no correction for bigram: 3-2_geval: [ <w xml:id="p8.2" > {<t>,}, <w xml:id="p8.3" > {<t>,}]
 try unigram: 3-2 [ <w xml:id="p8.2" > {<t>,}]
 3-2 = 2 => 3-2
-bigram is: 'geval:_Rhode [ <w xml:id="p8.3" > {<t>,}, <w xml:id="p8.4" > {<t>,}]'
+bigram 3 is: 'geval:_Rhode [ <w xml:id="p8.3" > {<t>,}, <w xml:id="p8.4" > {<t>,}]'
 no correction for bigram: geval:_Rhode [ <w xml:id="p8.3" > {<t>,}, <w xml:id="p8.4" > {<t>,}]
 try unigram: geval: [ <w xml:id="p8.3" > {<t>,}]
 geval: = 2 => geval:
-bigram is: 'Rhode_I [ <w xml:id="p8.4" > {<t>,}, <w xml:id="p8.5" > {<t>,}]'
+bigram 4 is: 'Rhode_I [ <w xml:id="p8.4" > {<t>,}, <w xml:id="p8.5" > {<t>,}]'
 no correction for bigram: Rhode_I [ <w xml:id="p8.4" > {<t>,}, <w xml:id="p8.5" > {<t>,}]
 try unigram: Rhode [ <w xml:id="p8.4" > {<t>,}]
 Rhode = 2 => Rhode
-bigram is: 'I_Land [ <w xml:id="p8.5" > {<t>,}, <w xml:id="p8.6" > {<t>,}]'
+bigram 5 is: 'I_Land [ <w xml:id="p8.5" > {<t>,}, <w xml:id="p8.6" > {<t>,}]'
 no correction for bigram: I_Land [ <w xml:id="p8.5" > {<t>,}, <w xml:id="p8.6" > {<t>,}]
 try unigram: I [ <w xml:id="p8.5" > {<t>,}]
 I = 2 => I
 corrected 2-grams uit: 'Een 3-2 geval: Rhode I Land' (Ticcl)
 
    correct 2-grams in: 'Een 2-3 geval: He groenehuis.' (Test)
-correct bigrams
-bigram is: 'Een_2-3 [ <w xml:id="p9.1" > {<t>,}, <w xml:id="p9.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'Een_2-3 [ <w xml:id="p9.1" > {<t>,}, <w xml:id="p9.2" > {<t>,}]'
 no correction for bigram: Een_2-3 [ <w xml:id="p9.1" > {<t>,}, <w xml:id="p9.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p9.1" > {<t>,}]
 Een = 2 => Een
-bigram is: '2-3_geval: [ <w xml:id="p9.2" > {<t>,}, <w xml:id="p9.3" > {<t>,}]'
+bigram 2 is: '2-3_geval: [ <w xml:id="p9.2" > {<t>,}, <w xml:id="p9.3" > {<t>,}]'
 no correction for bigram: 2-3_geval: [ <w xml:id="p9.2" > {<t>,}, <w xml:id="p9.3" > {<t>,}]
 try unigram: 2-3 [ <w xml:id="p9.2" > {<t>,}]
 2-3 = 2 => 2-3
-bigram is: 'geval:_He [ <w xml:id="p9.3" > {<t>,}, <w xml:id="p9.4" > {<t>,}]'
+bigram 3 is: 'geval:_He [ <w xml:id="p9.3" > {<t>,}, <w xml:id="p9.4" > {<t>,}]'
 no correction for bigram: geval:_He [ <w xml:id="p9.3" > {<t>,}, <w xml:id="p9.4" > {<t>,}]
 try unigram: geval: [ <w xml:id="p9.3" > {<t>,}]
 geval: = 2 => geval:
-bigram is: 'He_groenehuis. [ <w xml:id="p9.4" > {<t>,}, <w xml:id="p9.5" > {<t>,}]'
+bigram 4 is: 'He_groenehuis. [ <w xml:id="p9.4" > {<t>,}, <w xml:id="p9.5" > {<t>,}]'
 no correction for bigram: He_groenehuis. [ <w xml:id="p9.4" > {<t>,}, <w xml:id="p9.5" > {<t>,}]
 try unigram: He [ <w xml:id="p9.4" > {<t>,}]
 He = 2 => He
@@ -1474,20 +1474,20 @@ created:  <correction xml:id="p9.correction.1" > {<new>,<original>,}
 corrected 2-grams uit: 'Een 2-3 geval: He groenehuis .' (Ticcl)
 
    correct 2-grams in: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Test)
-correct bigrams
-bigram is: 'Een_dubbele [ <w xml:id="p10.1" > {<t>,}, <w xml:id="p10.2" > {<t>,}]'
+correct 4 bigrams
+bigram 1 is: 'Een_dubbele [ <w xml:id="p10.1" > {<t>,}, <w xml:id="p10.2" > {<t>,}]'
 no correction for bigram: Een_dubbele [ <w xml:id="p10.1" > {<t>,}, <w xml:id="p10.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p10.1" > {<t>,}]
 Een = 2 => Een
-bigram is: 'dubbele_unknown: [ <w xml:id="p10.2" > {<t>,}, <w xml:id="p10.3" > {<t>,}]'
+bigram 2 is: 'dubbele_unknown: [ <w xml:id="p10.2" > {<t>,}, <w xml:id="p10.3" > {<t>,}]'
 no correction for bigram: dubbele_unknown: [ <w xml:id="p10.2" > {<t>,}, <w xml:id="p10.3" > {<t>,}]
 try unigram: dubbele [ <w xml:id="p10.2" > {<t>,}]
 dubbele = 2 => dubbele
-bigram is: 'unknown:_Arglebargle, [ <w xml:id="p10.3" > {<t>,}, <w xml:id="p10.4" > {<t>,}]'
+bigram 3 is: 'unknown:_Arglebargle, [ <w xml:id="p10.3" > {<t>,}, <w xml:id="p10.4" > {<t>,}]'
 no correction for bigram: unknown:_Arglebargle, [ <w xml:id="p10.3" > {<t>,}, <w xml:id="p10.4" > {<t>,}]
 try unigram: unknown: [ <w xml:id="p10.3" > {<t>,}]
 unknown: = 2 => unknown:
-bigram is: 'Arglebargle,_glop-glyf! [ <w xml:id="p10.4" > {<t>,}, <w xml:id="p10.5" > {<t>,}]'
+bigram 4 is: 'Arglebargle,_glop-glyf! [ <w xml:id="p10.4" > {<t>,}, <w xml:id="p10.5" > {<t>,}]'
 correction: 
 Arglebargle,_glop-glyf! (2-2) ==> 'UNK UNK' [ <w xml:id="p10.4" > {<t>,}, <w xml:id="p10.5" > {<t>,}]
 created:  <correction xml:id="p10.correction.1" > {<new>,<original>,}
@@ -1495,24 +1495,24 @@ Arglebargle,_glop-glyf! = 2 => UNK UNK
 corrected 2-grams uit: 'Een dubbele unknown: UNK UNK' (Ticcl)
 
    correct 2-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
-correct bigrams
-bigram is: 'Een_triple [ <w xml:id="p11.1" > {<t>,}, <w xml:id="p11.2" > {<t>,}]'
+correct 5 bigrams
+bigram 1 is: 'Een_triple [ <w xml:id="p11.1" > {<t>,}, <w xml:id="p11.2" > {<t>,}]'
 no correction for bigram: Een_triple [ <w xml:id="p11.1" > {<t>,}, <w xml:id="p11.2" > {<t>,}]
 try unigram: Een [ <w xml:id="p11.1" > {<t>,}]
 Een = 2 => Een
-bigram is: 'triple_unknown: [ <w xml:id="p11.2" > {<t>,}, <w xml:id="p11.3" > {<t>,}]'
+bigram 2 is: 'triple_unknown: [ <w xml:id="p11.2" > {<t>,}, <w xml:id="p11.3" > {<t>,}]'
 no correction for bigram: triple_unknown: [ <w xml:id="p11.2" > {<t>,}, <w xml:id="p11.3" > {<t>,}]
 try unigram: triple [ <w xml:id="p11.2" > {<t>,}]
 triple = 2 => triple
-bigram is: 'unknown:_Argle [ <w xml:id="p11.3" > {<t>,}, <w xml:id="p11.4" > {<t>,}]'
+bigram 3 is: 'unknown:_Argle [ <w xml:id="p11.3" > {<t>,}, <w xml:id="p11.4" > {<t>,}]'
 no correction for bigram: unknown:_Argle [ <w xml:id="p11.3" > {<t>,}, <w xml:id="p11.4" > {<t>,}]
 try unigram: unknown: [ <w xml:id="p11.3" > {<t>,}]
 unknown: = 2 => unknown:
-bigram is: 'Argle_bargle, [ <w xml:id="p11.4" > {<t>,}, <w xml:id="p11.5" > {<t>,}]'
+bigram 4 is: 'Argle_bargle, [ <w xml:id="p11.4" > {<t>,}, <w xml:id="p11.5" > {<t>,}]'
 no correction for bigram: Argle_bargle, [ <w xml:id="p11.4" > {<t>,}, <w xml:id="p11.5" > {<t>,}]
 try unigram: Argle [ <w xml:id="p11.4" > {<t>,}]
 Argle = 2 => Argle
-bigram is: 'bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xml:id="p11.6" > {<t>,}]'
+bigram 5 is: 'bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xml:id="p11.6" > {<t>,}]'
 no correction for bigram: bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xml:id="p11.6" > {<t>,}]
 try unigram: bargle, [ <w xml:id="p11.5" > {<t>,}]
 bargle, = 2 => bargle,

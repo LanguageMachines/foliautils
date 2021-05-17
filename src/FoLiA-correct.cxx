@@ -687,14 +687,16 @@ string correct_bigrams( const vector<gram_r>& bigrams,
 			unordered_map<string,size_t>& counts,
 			const processor *proc ){
   if ( verbose > 1 ){
-    cout << "correct bigrams" << endl;
+    cout << "correct " << bigrams.size() << " bigrams" << endl;
   }
   string result;
   int skip = 0;
   size_t offset = 0;
+  size_t cnt = 0;
   for ( auto bi : bigrams ){
+    ++cnt;
     if ( verbose > 1 ){
-      cout << "bigram is: '" << bi << "'" << endl;
+      cout << "bigram " << cnt <<" is: '" << bi << "'" << endl;
     }
     if ( skip > 0 ){
       --skip;
@@ -702,14 +704,42 @@ string correct_bigrams( const vector<gram_r>& bigrams,
     }
     if ( verbose > 2 ){
       cout << "before correct_one_bi: bi=" << bi << endl;
+      cout << "before correct_one_bi: back=" << bigrams.back() << endl;
     }
     skip = bi.correct_one_bigram( variants, unknowns,
 				  puncts, counts, offset, proc );
     if ( verbose > 2 ){
       cout << "After correct_one_bi: cor=" << bi << endl;
-      cout << "result += '" << bi.result_text() + " '" << endl;
+      cout << "After correct_one_bi: back=" << bigrams.back() << endl;
     }
-    result += bi.result_text() + " ";
+    result += bi.result_text();
+    bool finish = (cnt == bigrams.size()); //(&bi == &bigrams.back()) fails?
+    if ( !finish ){
+      if ( verbose > 2 ){
+	cout << "4 result += '" << bi.result_text() + " '" << endl;
+      }
+      result += " ";
+    }
+    else {
+      FoliaElement *w = bi.word(0);
+      if ( w && w->space() ){
+	if ( verbose > 2 ){
+	  cout << "1 result += '" << bi.result_text() + " '" << endl;
+	}
+	result += " ";
+      }
+      else if ( !w ){
+      	if ( verbose > 2 ){
+	  cout << "2 result += '" << bi.result_text() + " '" << endl;
+	}
+	result += " ";
+      }
+      else {
+      	if ( verbose > 2 ){
+	  cout << "3 result += '" << bi.result_text() + " '" << endl;
+	}
+      }
+    }
   }
   if ( skip == 0 ){
     last.correct_one_unigram( variants, unknowns,
