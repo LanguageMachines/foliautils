@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.4" version="2.2.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1" generator="libfolia-v2.9" version="2.2.0">
   <metadata type="native">
     <annotations>
       <division-annotation annotator="FoLiA-pm" datetime="2016-08-07T16:24:59" set="polmash"/>
@@ -7,14 +7,16 @@
       <head-annotation/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <paragraph-annotation/>
-      <token-annotation/>
+      <token-annotation>
+        <annotator processor="FoLiA-correct.1"/>
+      </token-annotation>
       <correction-annotation set="Ticcl-set">
         <annotator processor="FoLiA-correct.1"/>
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2020-01-03T14:39:41" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple --word-nodes -v  -v " folia_version="2.2.1" host="kokos" name="FoLiA-correct" user="sloot" version="0.14">
-        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.2.1" name="libfolia" type="generator" version="2.4"/>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-17T23:29:34" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple -v  -v " folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
     <meta id="language">dut</meta>

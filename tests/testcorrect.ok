@@ -152,13 +152,6 @@ edit statistics:
 	1-1	1
 	TOKENS	31
 	UNK	1
-6,8c6
-<       <token-annotation>
-<         <annotator processor="FoLiA-correct.1"/>
-<       </token-annotation>
----
->       <token-annotation/>
-foliadiff.sh: differences in: corr_word.ticcl.xml corr_word.ticcl.1.ok
 WARNING: '--class' is deprecated. Please use '--outputclass'.
 inputclass and outputclass are the same, and rebase_inputclass not set
 start reading variants 
@@ -202,13 +195,6 @@ edit statistics:
 	1-1	1
 	TOKENS	31
 	UNK	1
-6,8c6
-<       <token-annotation>
-<         <annotator processor="FoLiA-correct.1"/>
-<       </token-annotation>
----
->       <token-annotation/>
-foliadiff.sh: differences in: corr_word.ticcl.xml corr_word.ticcl.2.ok
 start reading variants 
 read 4 variants 
 start reading unknowns 
