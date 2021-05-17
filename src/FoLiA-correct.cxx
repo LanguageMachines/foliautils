@@ -854,7 +854,9 @@ string correct_trigrams( const vector<gram_r>& trigrams,
   string result;
   int skip = 0;
   size_t offset = 0;
+  size_t cnt = 0;
   for ( auto tri : trigrams ){
+    ++cnt;
     if ( skip > 0 ){
       --skip;
       continue;
@@ -864,7 +866,40 @@ string correct_trigrams( const vector<gram_r>& trigrams,
     }
     skip = tri.correct_one_trigram( variants, unknowns,
 				    puncts, counts, offset, proc );
-    result += tri.result_text() + " ";
+
+    if ( verbose > 2 ){
+      cout << "After correct_one_tri: cor=" << tri << endl;
+      cout << "After correct_one_tri: back=" << trigrams.back() << endl;
+    }
+    result += tri.result_text();
+    bool finish = (cnt == trigrams.size()); //(&bi == &bigrams.back()) fails?
+    if ( !finish ){
+      if ( verbose > 2 ){
+	cout << "4 result += '" << tri.result_text() + " '" << endl;
+      }
+      result += " ";
+    }
+    else {
+      FoliaElement *w = tri.word(0);
+      if ( w && w->space() ){
+	if ( verbose > 2 ){
+	  cout << "1 result += '" << tri.result_text() + " '" << endl;
+	}
+	result += " ";
+      }
+      else if ( !w ){
+      	if ( verbose > 2 ){
+	  cout << "2 result += '" << tri.result_text() + " '" << endl;
+	}
+	result += " ";
+      }
+      else {
+      	if ( verbose > 2 ){
+	  cout << "3 result += '" << tri.result_text() + "'" << endl;
+	}
+	--offset;
+      }
+    }
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
     }
@@ -899,12 +934,32 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       if ( verbose > 2 ){
 	cout << "correct last word: " << last << endl;
       }
+      string space;
+      FoliaElement *w = last_bi.word(0);
+      if ( w && w->space() ){
+	if ( verbose > 2 ){
+	  cout << "1 space = ' '" << endl;
+	}
+	space = " ";
+      }
+      else if ( w ) {
+	if ( verbose > 2 ){
+	  cout << "2 space = ''" << endl;
+	}
+	--offset;
+      }
+      else {
+	if ( verbose > 2 ){
+	  cout << "3 space = ' '" << endl;
+	}
+	space += " ";
+      }
       last.correct_one_unigram( variants, unknowns,
 				puncts, counts, offset, proc );
       if ( verbose > 2 ){
 	cout << "handled last unigram: " << last << endl;
       }
-      result += " " + last.result_text();
+      result += space + last.result_text();
     }
     return result;
   }

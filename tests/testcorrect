@@ -65,3 +65,6 @@ rrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr_word_spaces.xml
 ./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.2.ok  >> testcorrect.out 2>&1
+
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr_word_spaces.xml
+./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.3.ok  >> testcorrect.out 2>&1
