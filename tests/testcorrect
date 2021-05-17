@@ -60,5 +60,8 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --cle
 ./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v -v data/corr_word_spaces.xml >> testcorrect.out  2>&1
+./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.1.ok  >> testco
+rrect.out 2>&1
 
-./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.1.ok  >> testcorrect.out 2>&1
+$my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr_word_spaces.xml
+./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.2.ok  >> testcorrect.out 2>&1

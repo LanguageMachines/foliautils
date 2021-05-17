@@ -736,8 +736,9 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       }
       else {
       	if ( verbose > 2 ){
-	  cout << "3 result += '" << bi.result_text() + " '" << endl;
+	  cout << "3 result += '" << bi.result_text() + "'" << endl;
 	}
+	--offset;
       }
     }
   }
