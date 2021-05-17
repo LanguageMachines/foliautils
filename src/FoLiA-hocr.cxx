@@ -90,7 +90,6 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     folia::KWargs p_args;
     p_args["processor"] = processor_id;
     out->doc()->declare( folia::AnnotationType::PARAGRAPH, setname,  p_args );
-    p_args.clear();
     p_args["xml:id"] = out->id() + "." + p_id;
     folia::Paragraph *par = new folia::Paragraph( p_args, out->doc() );
     UnicodeString txt;
@@ -231,8 +230,7 @@ void convert_hocr( const string& fileName,
   doc.declare( folia::AnnotationType::STRING, setname,  args );
   args.clear();
   args["xml:id"] = docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
+  folia::Text *text = doc.create_root<folia::Text>( args );
   processParagraphs( root, text, TiCC::basename(fileName) );
   xmlFreeDoc( xdoc );
 
