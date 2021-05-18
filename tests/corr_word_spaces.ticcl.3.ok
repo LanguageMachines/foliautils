@@ -15,7 +15,7 @@
       </correction-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-18T00:22:11" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v  -v  --ngram=3" folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
+      <processor xml:id="FoLiA-correct.1" begindatetime="2021-05-18T10:50:21" command="FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v  -v " folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
         <processor xml:id="FoLiA-correct.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
       </processor>
     </provenance>
@@ -164,6 +164,76 @@
           <w xml:id="p4.18">
             <t>.</t>
             <t class="Ticcl" offset="98">.</t>
+          </w>
+        </p>
+      </div>
+      <div xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4" class="other">
+        <p xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1">
+          <t>Deze wets voorstellen worden zonder s4s67621, en zonder stemming aangenomen.</t>
+          <t class="Ticcl">Deze wetsvoorstellen worden zonder UNK, en zonder stemming aangenomen.</t>
+          <lang class="dut"/>
+          <w xml:id="p5.1">
+            <t>Deze</t>
+            <t class="Ticcl" offset="0">Deze</t>
+          </w>
+          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1">
+            <new>
+              <w xml:id="p5.2.merge.1">
+                <t class="Ticcl" offset="5">wetsvoorstellen</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p5.2">
+                <t>wets</t>
+              </w>
+              <w xml:id="p5.3">
+                <t>voorstellen</t>
+              </w>
+            </original>
+          </correction>
+          <w xml:id="p5.4">
+            <t>worden</t>
+            <t class="Ticcl" offset="21">worden</t>
+          </w>
+          <w xml:id="p5.5">
+            <t>zonder</t>
+            <t class="Ticcl" offset="28">zonder</t>
+          </w>
+          <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.2">
+            <new>
+              <w xml:id="p5.6.edit.1" space="no">
+                <t class="Ticcl" offset="35">UNK</t>
+              </w>
+            </new>
+            <original auth="no">
+              <w xml:id="p5.6" space="no">
+                <t>s4s67621</t>
+              </w>
+            </original>
+          </correction>
+          <w xml:id="p5.7">
+            <t>,</t>
+            <t class="Ticcl" offset="38">,</t>
+          </w>
+          <w xml:id="p5.8">
+            <t>en</t>
+            <t class="Ticcl" offset="40">en</t>
+          </w>
+          <w xml:id="p5.9">
+            <t>zonder</t>
+            <t class="Ticcl" offset="43">zonder</t>
+          </w>
+          <w xml:id="p5.10">
+            <t>stemming</t>
+            <t class="Ticcl" offset="50">stemming</t>
+          </w>
+          <w xml:id="p5.11" space="no">
+            <t>aangenomen</t>
+            <t class="Ticcl" offset="59">aangenomen</t>
+          </w>
+          <w xml:id="p5.12">
+            <t>.</t>
+            <t class="Ticcl" offset="69">.</t>
           </w>
         </p>
       </div>
