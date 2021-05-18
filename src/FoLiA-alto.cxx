@@ -962,17 +962,17 @@ void solveBook( const string& altoFile,
     folia::Document doc( "xml:id='" + docid + "'" );
     folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
     processor_id = proc->id();
-    folia::KWargs args;
-    args["processor"] = processor_id;
+    folia::KWargs proc_args;
+    proc_args["processor"] = processor_id;
     if ( do_strings ){
-      doc.declare( folia::AnnotationType::STRING, setname, args );
+      doc.declare( folia::AnnotationType::STRING, setname, proc_args );
     }
     else {
-      doc.declare( folia::AnnotationType::TOKEN, setname, args );
+      doc.declare( folia::AnnotationType::TOKEN, setname, proc_args );
     }
-    args.clear();
-    args["xml:id"] =  docid + ".text";
-    folia::Text *text = doc.create_root<folia::Text>( args );
+    folia::KWargs text_args;
+    text_args["xml:id"] = docid + ".text";
+    folia::Text *text = doc.create_root<folia::Text>( text_args );
     xmlNode *root = xmlDocGetRootElement( xmldoc );
     list<xmlNode*> textblocks = TiCC::FindNodes( root, "//*:TextBlock" );
     if ( textblocks.empty() ){
