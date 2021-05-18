@@ -95,6 +95,7 @@ public:
   }
   string orig_text() const;
   string result_text() const;
+  bool has_space();
   int correct_one_trigram( const unordered_map<string,vector<word_conf> >&,
 			   const unordered_set<string>&,
 			   const unordered_map<string,string>&,
@@ -158,6 +159,29 @@ gram_r::gram_r( const string& val, FoliaElement *el ) :
   _orig.push_back( val );
   //  cerr << "create gram_r: " << el->xmlstring() << endl;
   _words.push_back( el );
+}
+
+bool gram_r::has_space( ){
+  FoliaElement *w = word(0);
+  if ( w && w->space() ){
+    if ( verbose > 2 ){
+      cout << "1 space = ' '" << endl;
+    }
+    return true;
+  }
+  else if ( w ) {
+    if ( verbose > 2 ){
+      cout << "2 space = ''" << endl;
+    }
+    return false;
+  }
+  else {
+    if ( verbose > 2 ){
+      cout << "3 space = ' '" << endl;
+    }
+    return true;
+  }
+  return true;
 }
 
 size_t unicode_size( const string& value ){
@@ -574,8 +598,7 @@ string correct_unigrams( const vector<gram_r>& unigrams,
     uni.correct_one_unigram( variants, unknowns,
 			     puncts, counts, offset, proc );
     result += uni.result_text();
-    FoliaElement *w = uni.word(0);
-    if ( w && w->space() ){
+    if ( uni.has_space() ){
       result += " ";
     }
     else {
@@ -679,29 +702,6 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
   return extra_skip;
 }
 
-string determine_spacing( const gram_r& gr ){
-  string space;
-  FoliaElement *w = gr.word(0);
-  if ( w && w->space() ){
-    if ( verbose > 2 ){
-      cout << "1 space = ' '" << endl;
-    }
-    space = " ";
-  }
-  else if ( w ) {
-    if ( verbose > 2 ){
-      cout << "2 space = ''" << endl;
-    }
-  }
-  else {
-    if ( verbose > 2 ){
-      cout << "3 space = ' '" << endl;
-    }
-    space += " ";
-  }
-  return space;
-}
-
 string correct_bigrams( const vector<gram_r>& bigrams,
 			const unordered_map<string,vector<word_conf> >& variants,
 			const unordered_set<string>& unknowns,
@@ -736,12 +736,11 @@ string correct_bigrams( const vector<gram_r>& bigrams,
       cout << "After correct_one_bi: back=" << bigrams.back() << endl;
     }
     result += bi.result_text();
-    string space = determine_spacing( bi );
-    if ( space.empty() ){
-      --offset;
+    if ( bi.has_space() ){
+      result += " ";
     }
     else {
-      result += space;
+      --offset;
     }
   }
   if ( skip == 0 ){
@@ -874,12 +873,11 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       cout << "After correct_one_tri: back=" << trigrams.back() << endl;
     }
     result += tri.result_text();
-    string space = determine_spacing( tri );
-    if ( space.empty() ){
-      --offset;
+    if ( tri.has_space() ){
+      result += " ";
     }
     else {
-      result += space;
+      --offset;
     }
     if ( verbose > 2 ){
       cout << "skip=" << skip  << " intermediate:" << result << endl;
@@ -915,12 +913,11 @@ string correct_trigrams( const vector<gram_r>& trigrams,
       if ( verbose > 2 ){
 	cout << "correct last word: " << last << endl;
       }
-      string space = determine_spacing( last_bi );
-      if ( space.empty() ){
-	--offset;
+      if ( last_bi.has_space() ){
+	result += " ";
       }
       else {
-	result += space;
+	--offset;
       }
       last.correct_one_unigram( variants, unknowns,
 				puncts, counts, offset, proc );
@@ -1139,10 +1136,10 @@ void correctNgrams( FoliaElement* par,
   else {
     for ( const auto& it : ev ){
       string content = it->str(input_classname);
-      bool no_space = it->space();
+      bool space = it->space();
       filter( content, SEPCHAR ); // HACK
       inval += content;
-      if ( no_space ){
+      if ( space ){
 	inval += " ";
       }
       unigrams.push_back( gram_r( content, it ) );
