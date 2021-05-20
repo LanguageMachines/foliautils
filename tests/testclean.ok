@@ -31,8 +31,8 @@ Usage: FoLiA-clean [options] file/dir
 	-h or --help	 this message
 	-V or --version show version 
 	-O		 name of the output dir.
-Processed :data/dirty.folia.xml into clean/data/dirty.cleaned.folia.xml still 0 files to go.
-Processed :data/dirty.folia.xml into clean/data/dirty.cleaned.folia.xml still 0 files to go.
-Processed :data/dirty.folia.xml into clean/data/dirty.cleaned.folia.xml still 0 files to go.
-Processed :data/dirty2.folia.xml into clean/data/dirty2.cleaned.folia.xml still 0 files to go.
-Processed :data/dirty2.folia.xml into clean/data/dirty2.cleaned.folia.xml still 0 files to go.
+Processed :data/dirty.folia.xml into clean1/data/dirty.cleaned.folia.xml still 0 files to go.
+Processed :data/dirty.folia.xml into clean2/data/dirty.cleaned.folia.xml still 0 files to go.
+Processed :data/dirty.folia.xml into clean3/data/dirty.cleaned.folia.xml still 0 files to go.
+Processed :data/dirty2.folia.xml into clean4/data/dirty2.cleaned.folia.xml still 0 files to go.
+Processed :data/dirty2.folia.xml into clean5/data/dirty2.cleaned.folia.xml still 0 files to go.

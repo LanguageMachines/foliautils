@@ -394,10 +394,6 @@ int main( int argc, char *argv[] ){
       type = line.substr( 0, bs_pos );
       setname = line.substr( bs_pos+1 );
     }
-    // if ( type == "token" ){
-    //   cerr << "deleting token annotation is not supported yet." << endl;
-    //   exit( EXIT_FAILURE );
-    // }
     AnnotationType at;
     try {
       at = TiCC::stringTo<AnnotationType>( type );
