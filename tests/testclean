@@ -1,7 +1,7 @@
 #!/bin/sh -v
 #
 
-\rm -rf clean/*
+\rm -rf clean[12345]/*
 
 $my_bin/FoLiA-clean > testclean.out 2>&1
 
@@ -11,37 +11,37 @@ $my_bin/FoLiA-clean --help >> testclean.out 2>&1
 
 echo test1:
 
-$my_bin/FoLiA-clean -O clean --cleanannoset=lang data/dirty.folia.xml >> testclean.out 2>&1
-./foliadiff.sh clean/data/dirty.cleaned.folia.xml cleaned_lang.ok  >> testclean.out 2>&1
+$my_bin/FoLiA-clean -O clean1 --cleanannoset=lang data/dirty.folia.xml >> testclean.out 2>&1
+./foliadiff.sh clean1/data/dirty.cleaned.folia.xml cleaned_lang.ok  >> testclean.out 2>&1
 if [ $? -ne 0 ];
 then
     exit
 fi
 
 echo test2:
-$my_bin/FoLiA-clean -O clean --cleanannoset=lang\\http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset data/dirty.folia.xml >> testclean.out 2>&1
-./foliadiff.sh clean/data/dirty.cleaned.folia.xml cleaned_lang.ok  >> testclean.out 2>&1
+$my_bin/FoLiA-clean -O clean2 --cleanannoset=lang\\http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset data/dirty.folia.xml >> testclean.out 2>&1
+./foliadiff.sh clean2/data/dirty.cleaned.folia.xml cleaned_lang.ok  >> testclean.out 2>&1
 if [ $? -ne 0 ];
 then
     exit
 fi
 
 echo test3:
-$my_bin/FoLiA-clean -O clean --cleanannoset=lang --cleanannoset=pos --cleanannoset=entity --cleanannoset=lemma --textclass=OCR --current data/dirty.folia.xml >> testclean.out 2>&1
-./foliadiff.sh clean/data/dirty.cleaned.folia.xml cleaned_all.ok  >> testclean.out 2>&1
+$my_bin/FoLiA-clean -O clean3 --cleanannoset=lang --cleanannoset=pos --cleanannoset=entity --cleanannoset=lemma --textclass=OCR --current data/dirty.folia.xml >> testclean.out 2>&1
+./foliadiff.sh clean3/data/dirty.cleaned.folia.xml cleaned_all.ok  >> testclean.out 2>&1
 if [ $? -ne 0 ];
 then
     exit
 fi
 
 echo test4:
-$my_bin/FoLiA-clean -O clean --fixtext --textclass=OCR data/dirty2.folia.xml >> testclean.out 2>&1
-./foliadiff.sh clean/data/dirty2.cleaned.folia.xml clean_fix.ok  >> testclean.out 2>&1
+$my_bin/FoLiA-clean -O clean4 --fixtext --textclass=OCR data/dirty2.folia.xml >> testclean.out 2>&1
+./foliadiff.sh clean4/data/dirty2.cleaned.folia.xml clean_fix.ok  >> testclean.out 2>&1
 if [ $? -ne 0 ];
 then
     exit
 fi
 
 echo test5:
-$my_bin/FoLiA-clean -O clean --cleanannoset=token --cleanannoset=pos --cleanannoset=entity --cleanannoset=chunking --cleanannoset=lemma --textclass=OCR data/dirty2.folia.xml >> testclean.out 2>&1
-./foliadiff.sh clean/data/dirty2.cleaned.folia.xml clean_tok.ok  >> testclean.out 2>&1
+$my_bin/FoLiA-clean -O clean5 --cleanannoset=token --cleanannoset=pos --cleanannoset=entity --cleanannoset=chunking --cleanannoset=lemma --textclass=OCR data/dirty2.folia.xml >> testclean.out 2>&1
+./foliadiff.sh clean5/data/dirty2.cleaned.folia.xml clean_tok.ok  >> testclean.out 2>&1
