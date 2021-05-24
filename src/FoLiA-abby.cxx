@@ -703,7 +703,7 @@ bool process_page( folia::FoliaElement *root,
       didit = true;
     }
     else {
-      root->remove( paragraph );
+      destroy( paragraph );
     }
   }
   return didit;

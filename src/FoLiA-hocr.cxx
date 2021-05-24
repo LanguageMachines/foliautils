@@ -104,7 +104,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  {
 	    cerr << "found no OCRX_WORD or OCR_WORD nodes in " << file << endl;
 	  }
-	  out->remove( par, true );
+	  destroy( par );
 	  // maybe just warn and skip to next line?
 	  return;
 	}
@@ -145,7 +145,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
       par->setutext( txt.tempSubString(1), classname );
     }
     else {
-      out->remove( par, true );
+      destroy( par );
     }
   }
 }
