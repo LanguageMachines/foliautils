@@ -68,10 +68,8 @@ void appendStr( folia::FoliaElement *par,
     folia::KWargs p_args;
     p_args["processor"] = processor_id;
     par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
-    p_args.clear();
     p_args["xml:id"] = par->id() + "." + id;
-    folia::String *str = new folia::String( p_args, par->doc() );
-    par->append( str );
+    folia::String *str = par->add_child<folia::String>( p_args );
     str->setutext( val, pos, classname );
     pos += val.length();
     if ( do_refs ){
@@ -81,13 +79,11 @@ void appendStr( folia::FoliaElement *par,
       args.clear();
       args["xlink:href"] = file;
       args["format"] = "text/page+xml";
-      folia::Relation *h = new folia::Relation( args );
-      str->append( h );
+      folia::Relation *h = str->add_child<folia::Relation>( args );
       args.clear();
       args["id"] = id;
       args["type"] = "str";
-      folia::LinkReference *a = new folia::LinkReference( args );
-      h->append( a );
+      h->add_child<folia::LinkReference>( args );
     }
   }
 }
@@ -141,26 +137,21 @@ void handle_one_word( folia::FoliaElement *sent,
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   sent->doc()->declare( folia::AnnotationType::TOKEN, setname, p_args );
-  p_args.clear();
   p_args["xml:id"] = sent->id() + "." + wid;
   p_args["text"] = value;
   p_args["textclass"] = classname;
-  folia::Word *w = new folia::Word( p_args, sent->doc() );
-  sent->append( w );
+  folia::Word *w = sent->add_child<folia::Word>( p_args );
   if ( do_refs ){
     folia::KWargs args;
     args["processor"] = processor_id;
     sent->doc()->declare( folia::AnnotationType::RELATION, setname, args );
-    args.clear();
     args["xlink:href"] = fileName;
     args["format"] = "text/page+xml";
-    folia::Relation *h = new folia::Relation( args );
-    w->append( h );
+    folia::Relation *h = w->add_child<folia::Relation>( args );
     args.clear();
     args["id"] = wid;
     args["type"] = "w";
-    folia::LinkReference *a = new folia::LinkReference( args );
-    h->append( a );
+    h->add_child<folia::LinkReference>( args );
   }
 }
 
@@ -237,8 +228,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       par->doc()->declare( folia::AnnotationType::SENTENCE, setname, args );
       args.clear();
       args["xml:id"] = par->id() + "." + lid;
-      folia::Sentence *sent = new folia::Sentence( args, par->doc() );
-      par->append( sent );
+      folia::Sentence *sent = par->add_child<folia::Sentence>( args );
       for ( const auto& w :words ){
 	handle_one_word( sent, w, fileName );
       }
@@ -314,10 +304,8 @@ void handle_one_region( folia::FoliaElement *root,
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
-  p_args.clear();
   p_args["xml:id"] = root->id() + "." + ind;
-  folia::FoliaElement *par = new folia::Paragraph( p_args, root->doc() );
-  root->append( par );
+  folia::FoliaElement *par = root->add_child<folia::Paragraph>( p_args );
   if ( type.empty() || type == "paragraph" ){
   }
   else if ( type == "page-number" ){
@@ -329,8 +317,7 @@ void handle_one_region( folia::FoliaElement *root,
       root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
       args.clear();
       args["pagenr"] = value;
-      folia::FoliaElement *hd = new folia::Linebreak( args, root->doc() );
-      par->append( hd );
+      par->add_child<folia::Linebreak>( args );
       root->doc()->set_metadata( "page-number", value );
       return;
     }
@@ -345,8 +332,7 @@ void handle_one_region( folia::FoliaElement *root,
     args.clear();
     args["xml:id"] = root->id() + ".head." + ind;
     args["class"] = type;
-    folia::FoliaElement *hd = new folia::Head( args, root->doc() );
-    par->append( hd );
+    folia::FoliaElement *hd = par->add_child<folia::Head>( args );
     par = hd;
   }
   else {
@@ -499,8 +485,7 @@ bool convert_pagexml( const string& fileName,
   processor_id = proc->id();
   folia::KWargs args;
   args["xml:id"] =  docid + ".text";
-  folia::Text *text = new folia::Text( args );
-  doc.append( text );
+  folia::Text *text = doc.create_root<folia::Text>( args );
   for ( const auto& no : ordered_regions ){
     handle_one_region( text, no, fileName );
   }

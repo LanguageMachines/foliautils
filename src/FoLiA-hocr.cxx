@@ -91,7 +91,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
     p_args["processor"] = processor_id;
     out->doc()->declare( folia::AnnotationType::PARAGRAPH, setname,  p_args );
     p_args["xml:id"] = out->id() + "." + p_id;
-    folia::Paragraph *par = new folia::Paragraph( p_args, out->doc() );
+    folia::Paragraph *par = out->add_child<folia::Paragraph>( p_args );
     UnicodeString txt;
     for ( const auto& line : lines ){
       list<xmlNode*> words = TiCC::FindNodes( line,
@@ -104,7 +104,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  {
 	    cerr << "found no OCRX_WORD or OCR_WORD nodes in " << file << endl;
 	  }
-	  delete par;
+	  out->remove( par, true );
 	  // maybe just warn and skip to next line?
 	  return;
 	}
@@ -122,8 +122,7 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	if ( !content.empty() ){
 	  folia::KWargs args;
 	  args["xml:id"] = par->id() + "." + w_id;
-	  folia::String *str = new folia::String( args, out->doc() );
-	  par->append( str );
+	  folia::String *str = par->add_child<folia::String>( args );
 	  UnicodeString uc = TiCC::UnicodeFromUTF8( content );
 	  str->setutext( uc, txt.length(), classname );
 	  txt += " " + uc;
@@ -134,22 +133,19 @@ void processParagraphs( xmlNode *div, folia::FoliaElement *out, const string& fi
 	  args.clear();
 	  args["xlink:href"] = file;
 	  args["format"] = "text/hocr+xml";
-	  folia::Relation *h = new folia::Relation( args );
-	  str->append( h );
+	  folia::Relation *h = str->add_child<folia::Relation>( args );
 	  args.clear();
 	  args["id"] = w_id;
 	  args["type"] = "str";
-	  folia::LinkReference *a = new folia::LinkReference( args );
-	  h->append( a );
+	  h->add_child<folia::LinkReference>( args );
 	}
       }
     }
     if ( txt.length() > 1 ){
-      out->append( par );
       par->setutext( txt.tempSubString(1), classname );
     }
     else {
-      delete par;
+      out->remove( par, true );
     }
   }
 }
