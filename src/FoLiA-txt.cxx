@@ -194,8 +194,7 @@ int main( int argc, char *argv[] ){
     d->declare( folia::AnnotationType::STRING, setname, args );
     args.clear();
     args["xml:id"] = docid + ".text";
-    folia::Text *text = new folia::Text( args );
-    d->addText( text );
+    folia::Text *text = d->create_root<folia::Text>( args );
     int parCount = 0;
     int wrdCnt = 0;
     folia::FoliaElement *par = 0;
@@ -231,10 +230,9 @@ int main( int argc, char *argv[] ){
 	if ( !is_norm_empty(content) ){
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
-	  folia::FoliaElement *str = new folia::String( str_args, d );
+	  folia::FoliaElement *str = par->add_child<folia::String>( str_args );
 	  str->settext( content, classname );
 	  parTxt += " " + content;
-	  par->append( str );
 	}
       }
     }
