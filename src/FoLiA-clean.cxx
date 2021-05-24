@@ -102,7 +102,7 @@ void clean_text( FoliaElement *node,
 		   << "remove " << p << endl;
 	    }
 	  }
-	  node->remove(p,true);
+	  destroy( p );
 	  --i;
 	}
 	else {
@@ -162,7 +162,7 @@ void clean_anno( FoliaElement *node,
       }
       if ( ( ( !set.empty() && setname == set )
 	     || setname.empty() ) ){
-	node->remove(p,true);
+	destroy( p );
 	--i;
       }
     }
@@ -244,7 +244,7 @@ void clean_tokens( FoliaElement *node,
 	      cerr << "clean tokens: verwijder " << p << endl;
 	    }
 	  }
-	  node->remove(p,true);
+	  destroy( p );
 	  --i;
 	}
       }
