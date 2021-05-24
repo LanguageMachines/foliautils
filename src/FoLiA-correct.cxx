@@ -407,14 +407,10 @@ void gram_r::apply_folia_correction( size_t& offset,
     if ( verbose > 3 ){
       cerr << what << " ngram: " << this << endl;
     }
+    vector<FoliaElement*> oV = _words;
     vector<FoliaElement*> sV;
     vector<FoliaElement*> cV;
-    vector<FoliaElement*> oV;
     vector<FoliaElement*> nV;
-    for( const auto& it : _words ){
-      // Original elements
-      oV.push_back( it );
-    }
     for ( const auto& p : _result ){
       // New elements
       KWargs args;
@@ -534,9 +530,7 @@ void gram_r::correct_one_unigram( const unordered_map<string,vector<word_conf> >
     // edit might be seperatable!
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR );
-    for ( const auto& p : parts ){
-      _result.push_back( p );
-    }
+    _result = parts;
     _final_punct = final_punct;
     string ed = set_ed_type( );
     ++counts[ed];
@@ -640,10 +634,7 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
     _suggestions = &vit->second;
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can be unseperated!
-    _result.clear();
-    for ( const auto& p : parts ){
-      _result.push_back( p );
-    }
+    _result = parts;
     _final_punct = final_punct;
     string ed = set_ed_type();
     ++counts[ed];
@@ -783,10 +774,7 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
     string edit = vit->second[0].word;
     vector<string> parts = TiCC::split_at( edit, SEPARATOR ); // edit can can be unseperated!
     _suggestions = &vit->second;
-    _result.clear();
-    for ( const auto& p : parts ){
-      _result.push_back( p );
-    }
+    _result = parts;
     string ed = set_ed_type();
     ++counts[ed];
     if ( verbose > 1 ){
