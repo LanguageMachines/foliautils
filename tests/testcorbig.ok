@@ -173588,6 +173588,7 @@ correction:
 Bridgehampton, () ==> 'Bridgehampton ,'
 correction: 
 East, () ==> 'East ,'
+Processed :Morse.xml into morse/Morse.ticcl.xml
 finished data/Morse.xml
 edit statistics: 
 	edit	 count

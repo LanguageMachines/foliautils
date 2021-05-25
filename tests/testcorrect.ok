@@ -62,6 +62,7 @@ correction:
 s4s67621 (1-1) ==> 'UNK' [ <str xml:id="p5.6" > {<t>,}]
 created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
+Processed :corr_str.xml into corr_str.ticcl.xml
 finished data/corr_str.xml
 edit statistics: 
 	edit	 count
@@ -104,6 +105,7 @@ correction:
 s4s67621 (1-1) ==> 'UNK' [ <str xml:id="p5.6" > {<t>,}]
 created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
+Processed :corr_str.xml into corr_str.ticcl.xml
 finished data/corr_str.xml
 edit statistics: 
 	edit	 count
@@ -146,6 +148,7 @@ correction:
 s4s67621 (1-1) ==> 'UNK' [ <w xml:id="p5.6" > {<t>,}]
 created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (Apple)
+Processed :corr_word.xml into corr_word.ticcl.xml
 finished data/corr_word.xml
 edit statistics: 
 	edit	 count
@@ -189,6 +192,7 @@ correction:
 s4s67621 (1-1) ==> 'UNK' [ <w xml:id="p5.6" > {<t>,}]
 created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK en zonder stemming aangenomen .' (current)
+Processed :corr_word.xml into corr_word.ticcl.xml
 finished data/corr_word.xml
 edit statistics: 
 	edit	 count
@@ -331,6 +335,7 @@ no correction for bigram: aangenomen_.
 try unigram: aangenomen
 aangenomen = 2 => aangenomen
 corrected 2-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder steming aangenomen .' (Ticcl)
+Processed :corr.xml into corr.ticcl.xml
 finished data/corr.xml
 edit statistics: 
 	edit	 count
@@ -523,6 +528,7 @@ correction:
 zonder_steming_aangenomen (3-3) ==> 'zonder stemming aangenomen'
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
 corrected 3-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
+Processed :corr.xml into corr.ticcl.xml
 finished data/corr.xml
 edit statistics: 
 	edit	 count
@@ -716,6 +722,7 @@ correction:
 zonder_steming_aangenomen (3-3) ==> 'zonder stemming aangenomen'
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
 corrected 3-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .' (Ticcl)
+Processed :corr.folia.xml into corr.ticcl.folia.xml
 finished data/corr.folia.xml
 edit statistics: 
 	edit	 count
@@ -909,6 +916,7 @@ correction:
 zonder_steming_aangenomen (3-3) ==> 'zonder stemming aangenomen'
 zonder_steming_aangenomen = 3 => zonder stemming aangenomen extra_skip=2
 corrected 3-grams uit: 'Deze wetsvoorstellen worden zonder UNK en zonder stemming aangenomen .' (current)
+Processed :corr.folia.xml into corr.ticcl.folia.xml
 finished data/corr.folia.xml
 edit statistics: 
 	edit	 count
@@ -979,6 +987,7 @@ corrected 1-grams uit: 'Een dubbele unknown: Arglebargle, glop-glyf!' (Apple)
    correct 1-grams in: 'Een triple unknown: Argle bargle, glop-glyf!' (Test)
 correct unigrams
 corrected 1-grams uit: 'Een triple unknown: Argle bargle, glop-glyf!' (Apple)
+Processed :corr_word_T.xml into corr_word_T.ticcl.xml
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1232,6 +1241,7 @@ no correction for bigram: bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xm
 try unigram: bargle, [ <w xml:id="p11.5" > {<t>,}]
 bargle, = 2 => bargle,
 corrected 2-grams uit: 'Een triple unknown: Argle bargle, glop-glyf!' (Ticcl)
+Processed :corr_word_T.xml into corr_word_T.ticcl.xml
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1489,6 +1499,7 @@ no correction for bigram: bargle,_glop-glyf! [ <w xml:id="p11.5" > {<t>,}, <w xm
 try unigram: bargle, [ <w xml:id="p11.5" > {<t>,}]
 bargle, = 2 => bargle,
 corrected 2-grams uit: 'Een triple unknown: Argle bargle, glop-glyf!' (Ticcl)
+Processed :corr_word_T.xml into corr_word_T.ticcl.xml
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1804,6 +1815,7 @@ trigram is: 'Argle_bargle,_glop-glyf!'
 created:  <correction xml:id="p11.correction.1" > {<new>,<original>,}
 Argle_bargle,_glop-glyf! = 3 => UNK UNK UNK extra_skip=2
 corrected 3-grams uit: 'Een triple unknown: UNK UNK UNK' (Ticcl)
+Processed :corr_word_T.xml into corr_word_T.ticcl.xml
 finished data/corr_word_T.xml
 edit statistics: 
 	edit	 count
@@ -1855,6 +1867,7 @@ correction:
 s4s67621 (1-1) ==> 'UNK' [ <w xml:id="p5.6" space="no" > {<t>,}]
 created:  <correction xml:id="nl.proc.ob.d.h-ek-20032004-2186-2187.1.4.1.correction.1" > {<new>,<original>,}
 corrected 1-grams uit: 'Deze wets voorstellen worden zonder UNK, en zonder stemming aangenomen.' (Ticcl)
+Processed :corr_word_spaces.xml into corr_word_spaces.ticcl.xml
 finished data/corr_word_spaces.xml
 edit statistics: 
 	edit	 count
