@@ -418,10 +418,12 @@ void gram_r::apply_folia_correction( size_t& offset,
       if ( org_set != "None" ){
 	args["set"] = org_set;
       }
-      if ( !_words[0]->space() ){
-	args["space"] = "no";
-      }
       args["processor"] = proc->id();
+      if ( &p == &_result.back() ){
+	if ( !_words[0]->space() ){
+	  args["space"] = "no";
+	}
+      }
       FoliaElement *el = 0;
       if ( doStrings ){
 	el = new String( args, _words[0]->doc() );
