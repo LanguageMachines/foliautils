@@ -1297,6 +1297,7 @@ void checkFile( const string& what, const string& name, const string& ext ){
   }
   if ( !TiCC::isFile( name ) ){
     cerr << "unable to find file '" << name << "'" << endl;
+    exit( EXIT_FAILURE );
   }
 }
 
