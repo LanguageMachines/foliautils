@@ -487,6 +487,11 @@ void gram_r::apply_folia_correction( size_t& offset,
 	}
       }
     }
+    if ( verbose > 3 ){
+      cerr << "original=" << oV << endl;
+      cerr << "new=" << nV << endl;
+      cerr << "suggestions=" << nV << endl;
+    }
     KWargs cor_args;
     cor_args["processor"] = proc->id();
     Correction *c = _words[0]->parent()->correct( oV, cV, nV, sV, cor_args );
@@ -1634,6 +1639,9 @@ int main( int argc, const char *argv[] ){
 	    if ( toDo > 1 ){
 	      cout << "Processed :" << docName << " into " << outName
 		   << " still " << --toDo << " files to go." << endl;
+	    }
+	    else {
+	      cout << "Processed :" << docName << " into " << outName << endl;
 	    }
 	  }
 	}
