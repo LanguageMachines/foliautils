@@ -488,6 +488,7 @@ void gram_r::apply_folia_correction( size_t& offset,
       }
     }
     if ( verbose > 3 ){
+      cerr << "correct node: " << _words[0]->parent() << endl;
       cerr << "original=" << oV << endl;
       cerr << "new=" << nV << endl;
       cerr << "suggestions=" << nV << endl;
@@ -966,7 +967,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	mw.pop_back(); // remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
-	  result.push_back( gram_r(it->second, unigrams[i].word(0) ) );
+	  result.push_back( gram_r(it->second, unigrams[i-1].word(0) ) );
 	}
 	else {
 	  if ( verbose > 4 ){
@@ -1066,20 +1067,20 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 
 //#define TEST_HEMP
 
-void correctNgrams( FoliaElement* par,
+void correctNgrams( FoliaElement* root,
 		    const unordered_map<string,vector<word_conf> >& variants,
 		    const unordered_set<string>& unknowns,
 		    const unordered_map<string,string>& puncts,
 		    unordered_map<string,size_t>& counts,
 		    processor *proc ){
   vector<FoliaElement*> ev;
-  vector<Word*> wv = par->select<Word>();
+  vector<Word*> wv = root->select<Word>();
   if ( wv.size() > 0 ){
     ev.resize(wv.size());
     copy( wv.begin(), wv.end(), ev.begin() );
   }
   else {
-    vector<String*> sv = par->select<String>();
+    vector<String*> sv = root->select<String>();
     if ( sv.size() > 0 ){
       ev.resize(sv.size());
       copy( sv.begin(), sv.end(), ev.begin() );
@@ -1099,16 +1100,16 @@ void correctNgrams( FoliaElement* par,
 #else
   string inval;
   if ( ev.size() == 0 ){
-    vector<TextContent *> origV = par->select<TextContent>(false);
+    vector<TextContent *> origV = root->select<TextContent>(false);
     if ( origV.empty() ){
       // OK, no text directly
       // look deeper then
-      origV = par->select<TextContent>();
+      origV = root->select<TextContent>();
       if ( origV.empty() ){
 	// still nothing...
 #pragma omp critical
 	{
-	  cerr << "no text Words or Strings in : " << par->id()
+	  cerr << "no text Words or Strings in : " << root->id()
 	       << " skipping" << endl;
 	}
 	return;
@@ -1138,6 +1139,7 @@ void correctNgrams( FoliaElement* par,
       unigrams.push_back( gram_r( content, it ) );
     }
   }
+  //  cout << "found unigrams: " << unigrams << endl;
   inval = TiCC::trim( inval );
   if ( verbose > 1 ){
 #pragma omp critical
@@ -1149,7 +1151,7 @@ void correctNgrams( FoliaElement* par,
   }
 #endif
   unigrams = replace_hemps( unigrams, puncts );
-
+  //  cout << "after hemping: " << unigrams << endl;
   vector<gram_r> bigrams;
   vector<gram_r> trigrams;
   counts["TOKENS"] += unigrams.size();
@@ -1194,7 +1196,7 @@ void correctNgrams( FoliaElement* par,
     // cerr << par->data()[1]->str(output_classname) << endl;
     // cerr << par->data()[8]->str(output_classname) << endl;
     // cerr << par->data()[88]->str(output_classname) << endl;
-    par->settext( corrected, output_classname );
+    root->settext( corrected, output_classname );
   }
 }
 
@@ -1234,14 +1236,14 @@ bool correctDoc( Document *doc,
       break;
     }
   }
-  for( const auto& par : ev ){
+  for( const auto& root : ev ){
     try {
-      correctNgrams( par, variants, unknowns, puncts, counts, proc );
+      correctNgrams( root, variants, unknowns, puncts, counts, proc );
     }
     catch ( exception& e ){
 #pragma omp critical
       {
-	cerr << "FoLiA error in paragraph " << par->id() << " of document " << doc->id() << endl;
+	cerr << "FoLiA error in element: " << root->id() << " of document " << doc->id() << endl;
 	cerr << e.what() << endl;
       }
       remove( outName.c_str() );
