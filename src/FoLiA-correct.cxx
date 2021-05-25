@@ -1473,7 +1473,12 @@ int main( int argc, const char *argv[] ){
   }
   size_t toDo = fileNames.size();
   if ( toDo == 0 ){
-    cerr << "no matching files found" << endl;
+    if ( expression.empty() ){
+      cerr << "no input-files found." << endl;
+    }
+    else {
+      cerr << "no input-files found matching: '" << expression << "'" << endl;
+    }
     exit(EXIT_SUCCESS);
   }
 
