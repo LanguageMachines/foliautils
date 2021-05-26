@@ -117,6 +117,14 @@ public:
 private:
   void clear(){ _orig.clear(); _result.clear();_words.clear(); };
   bool has_folia() const { return (!_words.empty() && _words[0]); };
+  bool no_depunct() const {
+    if ( !_words.empty() && _words.back() ){
+      return _words.back()->cls() == "ABBREVIATION";
+    }
+    else {
+      return false;
+    }
+  };
   string set_ed_type();
   void apply_folia_correction( size_t&, const processor * ) const;
   void set_output_text( size_t& ) const;
@@ -367,12 +375,10 @@ bool solve_punctuation( string& word,
   if ( pit != puncts.end() ){
     result = true;
     string new_word = pit->second;
-    //    if ( word.find(new_word) != string::npos ){
     if ( real_puncts.find(word.back()) != string::npos
 	 && new_word.back() != word.back() ){
       final = word.back();
     }
-    //    }
     word = new_word;
   }
   return result;
@@ -521,12 +527,14 @@ void gram_r::correct_one_unigram( const unordered_map<string,vector<word_conf> >
   string orig_word = word;
   string final_punct;
   bool is_punct = false;
-  if ( ngram_size > 1 ){
-    is_punct = solve_punctuation( word, puncts, final_punct );
-    if ( is_punct ){
-      if ( verbose > 2 ){
-	cout << "punctuated word found, final='" << final_punct << "'" << endl;
-	cout << "depuncted word   : " << word << endl;
+  if ( !no_depunct() ){
+    if ( ngram_size > 1 ){
+      is_punct = solve_punctuation( word, puncts, final_punct );
+      if ( is_punct ){
+	if ( verbose > 2 ){
+	  cout << "punctuated word found, final='" << final_punct << "'" << endl;
+	  cout << "depuncted word   : '" << word << "'" << endl;
+	}
       }
     }
   }
@@ -627,12 +635,14 @@ int gram_r::correct_one_bigram( const unordered_map<string,vector<word_conf> >& 
   filter(word);
   string orig_word = word;
   string final_punct;
-  if ( ngram_size > 1 ){
-    bool is_punct = solve_punctuation( word, puncts, final_punct );
-    if ( is_punct ){
-      if ( verbose > 2 ){
-	cout << "punctuated word found, final='" << final_punct << "'" << endl;
-	cout << "depuncted word   : " << word << endl;
+  if ( !no_depunct() ){
+    if ( ngram_size > 1 ){
+      bool is_punct = solve_punctuation( word, puncts, final_punct );
+      if ( is_punct ){
+	if ( verbose > 2 ){
+	  cout << "punctuated word found, final='" << final_punct << "'" << endl;
+	  cout << "depuncted word   : " << word << endl;
+	}
       }
     }
   }
@@ -767,12 +777,14 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
   filter(word);
   string orig_word = word;
   string final_punct;
-  if ( ngram_size > 1 ){
-    bool is_punct = solve_punctuation( word, puncts, _final_punct );
-    if ( is_punct ){
-      if ( verbose > 2 ){
-	cout << "punctuated word found, final='" << final_punct << "'" << endl;
-	cout << "depuncted word   : " << word << endl;
+  if ( !no_depunct() ){
+    if ( ngram_size > 1 ){
+      bool is_punct = solve_punctuation( word, puncts, _final_punct );
+      if ( is_punct ){
+	if ( verbose > 2 ){
+	  cout << "punctuated word found, final='" << final_punct << "'" << endl;
+	  cout << "depuncted word   : " << word << endl;
+	}
       }
     }
   }
