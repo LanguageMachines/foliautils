@@ -120,7 +120,9 @@ private:
   bool no_depunct() const {
     if ( !_words.empty() && _words.back() ){
       return ( _words.back()->cls() == "ABBREVIATION"
-	       || _words.back()->cls() == "ABBREVIATION-KNOWN" );
+	       || _words.back()->cls() == "ABBREVIATION-KNOWN"
+	       || _words.back()->cls() == "INITIAL"
+	       || _words.back()->cls() == "INITIALS" );
     }
     else {
       return false;
