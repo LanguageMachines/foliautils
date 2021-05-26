@@ -119,7 +119,8 @@ private:
   bool has_folia() const { return (!_words.empty() && _words[0]); };
   bool no_depunct() const {
     if ( !_words.empty() && _words.back() ){
-      return _words.back()->cls() == "ABBREVIATION";
+      return ( _words.back()->cls() == "ABBREVIATION"
+	       || _words.back()->cls() == "ABBREVIATION-KNOWN" );
     }
     else {
       return false;
