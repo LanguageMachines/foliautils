@@ -981,6 +981,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     }
     if ( inventory[i].first == NO_HEMP ){
       if ( !mw.empty() ){
+	// so this ends some previous HEMP
 	mw.pop_back(); // remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
@@ -1012,10 +1013,11 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     }
     else if ( inventory[i].first == START_PUNCT_HEMP ){
       if ( !mw.empty() ){
+	// so this ends some previous HEMP
 	mw.pop_back(); //  remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
-	  result.push_back( gram_r(it->second,unigrams[i].word(0) ) );
+	  result.push_back( gram_r(it->second,unigrams[i-1].word(0) ) );
 	}
 	else {
 	  if ( verbose > 4 ){
