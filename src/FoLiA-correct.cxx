@@ -1242,11 +1242,20 @@ bool correctDoc( Document *doc,
   // doc->declare( folia::AnnotationType::STRING, setname, args );
   // doc->declare( folia::AnnotationType::TOKEN, setname, args );
   vector<FoliaElement*> ev;
-  for ( const auto& et : tag_list ){
-    vector<FoliaElement*> v1 = doc->doc()->select( et );
-    if ( !v1.empty() ){
-      ev = v1;
-      break;
+  if ( tag_list.empty() ){
+    vector<FoliaElement*> v1 = doc->doc()->select( Sentence_t );
+    if ( v1.empty() ){
+      v1 = doc->doc()->select( Paragraph_t );
+    }
+    ev = v1;
+  }
+  else {
+    for ( const auto& et : tag_list ){
+      vector<FoliaElement*> v1 = doc->doc()->select( et );
+      if ( !v1.empty() ){
+	ev = v1;
+	break;
+      }
     }
   }
   for( const auto& root : ev ){
@@ -1291,7 +1300,7 @@ void usage( const string& name ){
   cerr << "\t--nums\t\t max number_of_suggestions. (default 10)" << endl;
   cerr << "\t\t\t suggestions are only added when there are more then 1." << endl;
   cerr << "\t--ngram=n\t analyse upto n N-grams." << endl;
-  cerr << "\t--tags='tags'\t correct word/string nodes under all nodes in the list 'tags' (default='p')" << endl;
+  cerr << "\t--tags='tags'\t correct word/string nodes under all nodes in the list 'tags' (default='s' but 'p' when no Sentence nodes present)" << endl;
   cerr << "\t-e 'expr'\t specify the expression all files should match with." << endl;
   cerr << "\t-O\t output prefix" << endl;
   cerr << "\t--unk='uname'\t name of unknown words file, the *unk file produced by TICCL-unk" << endl;
@@ -1465,9 +1474,6 @@ int main( int argc, const char *argv[] ){
       }
       tag_list.push_back( et );
     }
-  }
-  else {
-    tag_list.push_back(Paragraph_t);
   }
 
   vector<string> file_names = opts.getMassOpts();
