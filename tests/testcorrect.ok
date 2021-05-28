@@ -1869,13 +1869,13 @@ start reading puncts
 read 7 punctuated words 
 verbosity = 0
 start processing of 7 files 
-Processed :bisbug.xml into bisbug.ticcl.xml still 6 files to go.
-Processed :bug.xml into bug.ticcl.xml still 5 files to go.
-Processed :bug2.xml into bug2.ticcl.xml still 4 files to go.
-Processed :bug4.xml into bug4.ticcl.xml still 3 files to go.
-Processed :lastbug.xml into lastbug.ticcl.xml still 2 files to go.
-Processed :newbug.xml into newbug.ticcl.xml still 1 files to go.
-Processed :otherbug.xml into otherbug.ticcl.xml
+Processed :bisbug.xml into correctproblems/OUT/bisbug.ticcl.xml still 6 files to go.
+Processed :bug.xml into correctproblems/OUT/bug.ticcl.xml still 5 files to go.
+Processed :bug2.xml into correctproblems/OUT/bug2.ticcl.xml still 4 files to go.
+Processed :bug4.xml into correctproblems/OUT/bug4.ticcl.xml still 3 files to go.
+Processed :lastbug.xml into correctproblems/OUT/lastbug.ticcl.xml still 2 files to go.
+Processed :newbug.xml into correctproblems/OUT/newbug.ticcl.xml still 1 files to go.
+Processed :otherbug.xml into correctproblems/OUT/otherbug.ticcl.xml
 edit statistics: 
 	edit	 count
 	1-1	5
