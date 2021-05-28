@@ -1080,7 +1080,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 
 //#define TEST_HEMP
 
-void correctNgrams( FoliaElement* root,
+void correctNgrams( FoliaElement *root,
 		    const unordered_map<string,vector<word_conf> >& variants,
 		    const unordered_set<string>& unknowns,
 		    const unordered_map<string,string>& puncts,
@@ -1204,7 +1204,7 @@ void correctNgrams( FoliaElement* root,
     }
   }
   if ( !corrected.empty() ){
-    //    cerr << "set text on " << par << endl;
+    //    cerr << "set text on " << root << endl;
     //    cerr << par->str(output_classname) << endl;
     // cerr << par->data()[1]->str(output_classname) << endl;
     // cerr << par->data()[8]->str(output_classname) << endl;
