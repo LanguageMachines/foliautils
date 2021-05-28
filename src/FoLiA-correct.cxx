@@ -173,26 +173,20 @@ gram_r::gram_r( const string& val, FoliaElement *el ) :
 }
 
 bool gram_r::has_space( ){
-  FoliaElement *w = word(0);
-  if ( w && w->space() ){
-    if ( verbose > 2 ){
-      cout << "1 space = ' '" << endl;
-    }
+  if ( !has_folia() ){
     return true;
-  }
-  else if ( w ) {
-    if ( verbose > 2 ){
-      cout << "2 space = ''" << endl;
-    }
-    return false;
   }
   else {
-    if ( verbose > 2 ){
-      cout << "3 space = ' '" << endl;
+    FoliaElement *w = _words.back();
+    if ( w->space() ){
+      if ( verbose > 2 ){
+      }
+      return true;
     }
-    return true;
+    else {
+      return false;
+    }
   }
-  return true;
 }
 
 size_t unicode_size( const string& value ){
@@ -429,7 +423,7 @@ void gram_r::apply_folia_correction( size_t& offset,
       }
       args["processor"] = proc->id();
       if ( &p == &_result.back() ){
-	if ( !_words[0]->space() ){
+	if ( !_words.back()->space() ){
 	  args["space"] = "no";
 	}
       }
@@ -451,7 +445,7 @@ void gram_r::apply_folia_correction( size_t& offset,
       if ( org_set != "None" ){
 	args["set"] = org_set;
       }
-      if ( !_words[0]->space() ){
+      if ( !_words.back()->space() ){
 	args["space"] = "no";
       }
       args["processor"] = proc->id();
@@ -483,7 +477,7 @@ void gram_r::apply_folia_correction( size_t& offset,
 	  if ( org_set != "None" ){
 	    wargs["set"] = org_set;
 	  }
-	  if ( !_words[0]->space() ){
+	  if ( !_words.back()->space() ){
 	    wargs["space"] = "no";
 	  }
 	  wargs["processor"] = proc->id();

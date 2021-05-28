@@ -1874,3 +1874,29 @@ edit statistics:
 	1-1	1
 	TOKENS	34
 	UNK	1
+start reading variants 
+read 1033 variants 
+start reading unknowns 
+read 35 unknown words 
+start reading puncts 
+read 7 punctuated words 
+verbosity = 0
+start processing of 7 files 
+Processed :bisbug.xml into bisbug.ticcl.xml still 6 files to go.
+finished correctproblems/bisbug.xml
+Processed :bug.xml into bug.ticcl.xml still 5 files to go.
+finished correctproblems/bug.xml
+Processed :bug2.xml into bug2.ticcl.xml still 4 files to go.
+finished correctproblems/bug2.xml
+Processed :bug4.xml into bug4.ticcl.xml still 3 files to go.
+finished correctproblems/bug4.xml
+Processed :lastbug.xml into lastbug.ticcl.xml still 2 files to go.
+finished correctproblems/lastbug.xml
+Processed :newbug.xml into newbug.ticcl.xml still 1 files to go.
+finished correctproblems/newbug.xml
+Processed :otherbug.xml into otherbug.ticcl.xml
+finished correctproblems/otherbug.xml
+edit statistics: 
+	edit	 count
+	1-1	5
+	TOKENS	574
