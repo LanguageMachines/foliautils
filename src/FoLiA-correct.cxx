@@ -1660,6 +1660,12 @@ int main( int argc, const char *argv[] ){
 	    }
 	  }
 	}
+	else {
+#pragma omp critical
+	  {
+	    cout << "FAILED correction: " << fileNames[fn] << endl;
+	  }
+	}
       }
       catch ( const exception& e ){
 #pragma omp critical
@@ -1673,10 +1679,6 @@ int main( int argc, const char *argv[] ){
       }
     }
     delete doc;
-#pragma omp critical
-    {
-      cout << "finished " << fileNames[fn] << endl;
-    }
   }
 
   if ( !total_counts.empty() ){
