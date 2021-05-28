@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="folia.xsl"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="KB.DDD17C.NicolineCrowd.61270" generator="libfolia-v2.9" version="2.5.0">
+  <metadata type="native">
+    <annotations>
+      <token-annotation alias="tokconfig-nld" set="https://raw.githubusercontent.com/LanguageMachines/uctodata/master/setdefinitions/tokconfig-nld.foliaset.ttl">
+        <annotator processor="ucto.1"/>
+      </token-annotation>
+      <paragraph-annotation>
+        <annotator processor="ucto.1"/>
+      </paragraph-annotation>
+      <sentence-annotation>
+        <annotator processor="ucto.1"/>
+      </sentence-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+    </annotations>
+    <provenance>
+      <processor xml:id="ucto.1" begindatetime="2021-05-15T15:14:27" command="ucto -L nld --textredundancy=full --id KB.DDD17C.NicolineCrowd.61270 /reddata/KB/Nicoline/CSPLIT/KB.DDD17C.NicolineCrowd.61270 /reddata/KB/Nicoline/UCTO/KB.DDD17C.NicolineCrowd.61270.ucto.folia.xml" folia_version="2.5.0" host="violet.uvt.nl" name="ucto" user="reynaert" version="0.23">
+        <processor xml:id="ucto.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
+        <processor xml:id="uctodata.1" name="uctodata" type="datasource" version="0.8">
+          <processor xml:id="uctodata.1.1" name="tokconfig-nld" type="datasource" version="0.2"/>
+        </processor>
+      </processor>
+    </provenance>
+    <meta id="language">nld</meta>
+  </metadata>
+  <text xml:id="KB.DDD17C.NicolineCrowd.61270.text">
+    <p xml:id="KB.DDD17C.NicolineCrowd.61270.p.1">
+      <s xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24">
+        <t>Harley, Esq.,</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.24" class="WORD" space="no">
+          <t>Harley</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.25" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.26" class="ABBREVIATION-KNOWN" space="no">
+          <t>Esq.</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.27" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>

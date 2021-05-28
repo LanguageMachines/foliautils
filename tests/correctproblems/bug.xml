@@ -1,0 +1,1738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="folia.xsl"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="KB.DDD17C.NicolineCrowd.73272" generator="libfolia-v2.9" version="2.5.0">
+  <metadata type="native">
+    <annotations>
+      <token-annotation alias="tokconfig-nld" set="https://raw.githubusercontent.com/LanguageMachines/uctodata/master/setdefinitions/tokconfig-nld.foliaset.ttl">
+        <annotator processor="ucto.1"/>
+      </token-annotation>
+      <paragraph-annotation>
+        <annotator processor="ucto.1"/>
+      </paragraph-annotation>
+      <sentence-annotation>
+        <annotator processor="ucto.1"/>
+      </sentence-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+    </annotations>
+    <provenance>
+      <processor xml:id="ucto.1" begindatetime="2021-05-15T15:15:49" command="ucto -L nld --textredundancy=full --id KB.DDD17C.NicolineCrowd.73272 /reddata/KB/Nicoline/CSPLIT/KB.DDD17C.NicolineCrowd.73272 /reddata/KB/Nicoline/UCTO/KB.DDD17C.NicolineCrowd.73272.ucto.folia.xml" folia_version="2.5.0" host="violet.uvt.nl" name="ucto" user="reynaert" version="0.23">
+        <processor xml:id="ucto.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
+        <processor xml:id="uctodata.1" name="uctodata" type="datasource" version="0.8">
+          <processor xml:id="uctodata.1.1" name="tokconfig-nld" type="datasource" version="0.2"/>
+        </processor>
+      </processor>
+    </provenance>
+    <meta id="language">nld</meta>
+  </metadata>
+  <text xml:id="KB.DDD17C.NicolineCrowd.73272.text">
+    <p xml:id="KB.DDD17C.NicolineCrowd.73272.p.1">
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1">
+        <t>T U R C K Y E N Constantinopolen den 15 July.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.1" class="WORD">
+          <t>T</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.2" class="WORD">
+          <t>U</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.3" class="WORD">
+          <t>R</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.4" class="WORD">
+          <t>C</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.5" class="WORD">
+          <t>K</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.6" class="WORD">
+          <t>Y</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.7" class="WORD">
+          <t>E</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.8" class="WORD">
+          <t>N</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.9" class="WORD">
+          <t>Constantinopolen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.10" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.11" class="NUMBER">
+          <t>15</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.12" class="WORD" space="no">
+          <t>July</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.1.w.13" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2">
+        <t>Dagelijks arrieveren in dese Stadt veele Soldaten van de Armee in Ongaryen en de Guarnisoenen van Visefrad, Weitzen, Pest en andere Plaetsen, die van de Keysersse ingenomen zijn.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.1" class="WORD">
+          <t>Dagelijks</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.2" class="WORD">
+          <t>arrieveren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.3" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.4" class="WORD">
+          <t>dese</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.5" class="WORD">
+          <t>Stadt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.6" class="WORD">
+          <t>veele</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.7" class="WORD">
+          <t>Soldaten</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.8" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.9" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.10" class="WORD">
+          <t>Armee</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.11" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.12" class="WORD">
+          <t>Ongaryen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.13" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.14" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.15" class="WORD">
+          <t>Guarnisoenen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.16" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.17" class="WORD" space="no">
+          <t>Visefrad</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.18" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.19" class="WORD" space="no">
+          <t>Weitzen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.20" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.21" class="WORD">
+          <t>Pest</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.22" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.23" class="WORD">
+          <t>andere</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.24" class="WORD" space="no">
+          <t>Plaetsen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.25" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.26" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.27" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.28" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.29" class="WORD">
+          <t>Keysersse</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.30" class="WORD">
+          <t>ingenomen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.31" class="WORD" space="no">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.2.w.32" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3">
+        <t>Een Barck van Milo gearriveert, een Schip van Malvasie komende, en een Feloucke, door den Capiteyn Bassa gedepecheert, hebben advys van 't mouvement van Venetianen mede gebracht, en door dese Wegh heeft men verstaen, dat sy sig disponeren om de Fortresse van St. Maura t'attacqueren.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.1" class="WORD">
+          <t>Een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.2" class="WORD">
+          <t>Barck</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.3" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.4" class="WORD">
+          <t>Milo</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.5" class="WORD" space="no">
+          <t>gearriveert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.6" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.7" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.8" class="WORD">
+          <t>Schip</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.9" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.10" class="WORD">
+          <t>Malvasie</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.11" class="WORD" space="no">
+          <t>komende</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.12" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.13" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.14" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.15" class="WORD" space="no">
+          <t>Feloucke</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.16" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.17" class="WORD">
+          <t>door</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.18" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.19" class="WORD">
+          <t>Capiteyn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.20" class="WORD">
+          <t>Bassa</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.21" class="WORD" space="no">
+          <t>gedepecheert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.22" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.23" class="WORD">
+          <t>hebben</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.24" class="WORD">
+          <t>advys</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.25" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.26" class="WORD-TOKEN">
+          <t>'t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.27" class="WORD">
+          <t>mouvement</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.28" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.29" class="WORD">
+          <t>Venetianen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.30" class="WORD">
+          <t>mede</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.31" class="WORD" space="no">
+          <t>gebracht</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.32" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.33" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.34" class="WORD">
+          <t>door</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.35" class="WORD">
+          <t>dese</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.36" class="WORD">
+          <t>Wegh</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.37" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.38" class="WORD">
+          <t>men</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.39" class="WORD" space="no">
+          <t>verstaen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.40" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.41" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.42" class="WORD">
+          <t>sy</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.43" class="WORD">
+          <t>sig</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.44" class="WORD">
+          <t>disponeren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.45" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.46" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.47" class="WORD">
+          <t>Fortresse</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.48" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.49" class="ABBREVIATION-KNOWN">
+          <t>St.</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.50" class="WORD">
+          <t>Maura</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.51" class="WORD" space="no">
+          <t>t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.52" class="PUNCTUATION" space="no">
+          <t>'</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.53" class="WORD" space="no">
+          <t>attacqueren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.3.w.54" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4">
+        <t>dese tydingh heeft hier in de Stadt groote consternatien verweckt, en de Aenbrengers van deselve zijn aenstonts na Adrianopolen gedepecheert.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.1" class="WORD">
+          <t>dese</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.2" class="WORD">
+          <t>tydingh</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.3" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.4" class="WORD">
+          <t>hier</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.5" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.6" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.7" class="WORD">
+          <t>Stadt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.8" class="WORD">
+          <t>groote</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.9" class="WORD">
+          <t>consternatien</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.10" class="WORD" space="no">
+          <t>verweckt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.11" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.12" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.13" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.14" class="WORD">
+          <t>Aenbrengers</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.15" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.16" class="WORD">
+          <t>deselve</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.17" class="WORD">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.18" class="WORD">
+          <t>aenstonts</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.19" class="WORD">
+          <t>na</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.20" class="WORD">
+          <t>Adrianopolen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.21" class="WORD" space="no">
+          <t>gedepecheert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.4.w.22" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5">
+        <t>Den Primo Vizir heeft aen de Bassa, die in Ongaryen zijn, orde gesonden, om een Corps van de beste Troupen in Buda te brengen, en al de nieugeworvene, welcke in die Stadt leggen daer uyt te trecken.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.1" class="WORD">
+          <t>Den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.2" class="WORD">
+          <t>Primo</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.3" class="WORD">
+          <t>Vizir</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.4" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.5" class="WORD">
+          <t>aen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.6" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.7" class="WORD" space="no">
+          <t>Bassa</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.8" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.9" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.10" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.11" class="WORD">
+          <t>Ongaryen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.12" class="WORD" space="no">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.13" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.14" class="WORD">
+          <t>orde</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.15" class="WORD" space="no">
+          <t>gesonden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.16" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.17" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.18" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.19" class="WORD">
+          <t>Corps</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.20" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.21" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.22" class="WORD">
+          <t>beste</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.23" class="WORD">
+          <t>Troupen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.24" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.25" class="WORD">
+          <t>Buda</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.26" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.27" class="WORD" space="no">
+          <t>brengen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.28" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.29" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.30" class="WORD">
+          <t>al</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.31" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.32" class="WORD" space="no">
+          <t>nieugeworvene</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.33" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.34" class="WORD">
+          <t>welcke</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.35" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.36" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.37" class="WORD">
+          <t>Stadt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.38" class="WORD">
+          <t>leggen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.39" class="WORD">
+          <t>daer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.40" class="WORD">
+          <t>uyt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.41" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.42" class="WORD" space="no">
+          <t>trecken</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.5.w.43" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6">
+        <t>Aen den Seraskier van Ongaryen is oock geordonneert alle de Troupen, die op de Frontieren zijn, te versamelen, en na de kant van Buda te marcheren.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.1" class="WORD">
+          <t>Aen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.2" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.3" class="WORD">
+          <t>Seraskier</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.4" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.5" class="WORD">
+          <t>Ongaryen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.6" class="WORD">
+          <t>is</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.7" class="WORD">
+          <t>oock</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.8" class="WORD">
+          <t>geordonneert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.9" class="WORD">
+          <t>alle</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.10" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.11" class="WORD" space="no">
+          <t>Troupen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.12" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.13" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.14" class="WORD">
+          <t>op</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.15" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.16" class="WORD">
+          <t>Frontieren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.17" class="WORD" space="no">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.18" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.19" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.20" class="WORD" space="no">
+          <t>versamelen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.21" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.22" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.23" class="WORD">
+          <t>na</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.24" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.25" class="WORD">
+          <t>kant</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.26" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.27" class="WORD">
+          <t>Buda</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.28" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.29" class="WORD" space="no">
+          <t>marcheren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.6.w.30" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7">
+        <t>Men prepareert eenige Galeyen van de Beys,om haer te doen conjugeren met die, dewelcke den Capiteyn Bassa commandeert.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.1" class="WORD">
+          <t>Men</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.2" class="WORD">
+          <t>prepareert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.3" class="WORD">
+          <t>eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.4" class="WORD">
+          <t>Galeyen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.5" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.6" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.7" class="WORD" space="no">
+          <t>Beys</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.8" class="PUNCTUATION" space="no">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.9" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.10" class="WORD">
+          <t>haer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.11" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.12" class="WORD">
+          <t>doen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.13" class="WORD">
+          <t>conjugeren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.14" class="WORD">
+          <t>met</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.15" class="WORD" space="no">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.16" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.17" class="WORD">
+          <t>dewelcke</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.18" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.19" class="WORD">
+          <t>Capiteyn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.20" class="WORD">
+          <t>Bassa</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.21" class="WORD" space="no">
+          <t>commandeert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.7.w.22" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8">
+        <t>Daer zijn oock ordres gegeven, om eenige Schepen in de mont van de Dardanelli te houden, en de Castelen van alle noodsakelijckheden te voorsien, soo de Venetiaensse Zee-macht na die kant nadert.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.1" class="WORD">
+          <t>Daer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.2" class="WORD">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.3" class="WORD">
+          <t>oock</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.4" class="WORD">
+          <t>ordres</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.5" class="WORD" space="no">
+          <t>gegeven</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.6" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.7" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.8" class="WORD">
+          <t>eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.9" class="WORD">
+          <t>Schepen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.10" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.11" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.12" class="WORD">
+          <t>mont</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.13" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.14" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.15" class="WORD">
+          <t>Dardanelli</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.16" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.17" class="WORD" space="no">
+          <t>houden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.18" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.19" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.20" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.21" class="WORD">
+          <t>Castelen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.22" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.23" class="WORD">
+          <t>alle</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.24" class="WORD">
+          <t>noodsakelijckheden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.25" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.26" class="WORD" space="no">
+          <t>voorsien</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.27" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.28" class="WORD">
+          <t>soo</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.29" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.30" class="WORD">
+          <t>Venetiaensse</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.31" class="WORD-COMPOUND">
+          <t>Zee-macht</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.32" class="WORD">
+          <t>na</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.33" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.34" class="WORD">
+          <t>kant</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.35" class="WORD" space="no">
+          <t>nadert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.8.w.36" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9">
+        <t>Een Chaous, van de Persisse Frontieren aengekomen, heeft gerapporteert, dat den Bassa van Babylonien een Convoy van eenige Vivres- en Ammunitie-Wagens, na 't Persiaense Leger gaende, vermeestert, als oock een van haer Partyen geslagen, 2 Stucken Geschut met Standaert verovert, en 50 Persianen in dese Rencontre gedood hadde.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.1" class="WORD">
+          <t>Een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.2" class="WORD" space="no">
+          <t>Chaous</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.3" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.4" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.5" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.6" class="WORD">
+          <t>Persisse</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.7" class="WORD">
+          <t>Frontieren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.8" class="WORD" space="no">
+          <t>aengekomen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.9" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.10" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.11" class="WORD" space="no">
+          <t>gerapporteert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.12" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.13" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.14" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.15" class="WORD">
+          <t>Bassa</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.16" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.17" class="WORD">
+          <t>Babylonien</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.18" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.19" class="WORD">
+          <t>Convoy</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.20" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.21" class="WORD">
+          <t>eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.22" class="WORD-COMPOUND">
+          <t>Vivres-</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.23" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.24" class="WORD-COMPOUND" space="no">
+          <t>Ammunitie-Wagens</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.25" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.26" class="WORD">
+          <t>na</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.27" class="WORD-TOKEN">
+          <t>'t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.28" class="WORD">
+          <t>Persiaense</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.29" class="WORD">
+          <t>Leger</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.30" class="WORD" space="no">
+          <t>gaende</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.31" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.32" class="WORD" space="no">
+          <t>vermeestert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.33" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.34" class="WORD">
+          <t>als</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.35" class="WORD">
+          <t>oock</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.36" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.37" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.38" class="WORD">
+          <t>haer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.39" class="WORD">
+          <t>Partyen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.40" class="WORD" space="no">
+          <t>geslagen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.41" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.42" class="NUMBER">
+          <t>2</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.43" class="WORD">
+          <t>Stucken</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.44" class="WORD">
+          <t>Geschut</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.45" class="WORD">
+          <t>met</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.46" class="WORD">
+          <t>Standaert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.47" class="WORD" space="no">
+          <t>verovert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.48" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.49" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.50" class="NUMBER">
+          <t>50</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.51" class="WORD">
+          <t>Persianen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.52" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.53" class="WORD">
+          <t>dese</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.54" class="WORD">
+          <t>Rencontre</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.55" class="WORD">
+          <t>gedood</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.56" class="WORD" space="no">
+          <t>hadde</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.9.w.57" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10">
+        <t>De Standaert is in dese Stadt gebracht, en in St. Sophie geëxposeert.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.1" class="WORD">
+          <t>De</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.2" class="WORD">
+          <t>Standaert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.3" class="WORD">
+          <t>is</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.4" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.5" class="WORD">
+          <t>dese</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.6" class="WORD">
+          <t>Stadt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.7" class="WORD" space="no">
+          <t>gebracht</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.8" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.9" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.10" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.11" class="ABBREVIATION-KNOWN">
+          <t>St.</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.12" class="WORD">
+          <t>Sophie</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.13" class="WORD" space="no">
+          <t>geëxposeert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.10.w.14" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11">
+        <t>Een andere Cou-rier, die door Armenien gepasseert is, heeft gerapporteert, dat de Persianen een seer groot getal Troupen by-een gebracht hebben, maar dat de besmettelijcke Sieckte al onder haer Volck gekomen was, waerom sy oock andere Quartieren, om de verandering van Lucht, genomen hadden.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.1" class="WORD">
+          <t>Een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.2" class="WORD">
+          <t>andere</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.3" class="WORD-COMPOUND" space="no">
+          <t>Cou-rier</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.4" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.5" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.6" class="WORD">
+          <t>door</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.7" class="WORD">
+          <t>Armenien</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.8" class="WORD">
+          <t>gepasseert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.9" class="WORD" space="no">
+          <t>is</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.10" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.11" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.12" class="WORD" space="no">
+          <t>gerapporteert</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.13" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.14" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.15" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.16" class="WORD">
+          <t>Persianen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.17" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.18" class="WORD">
+          <t>seer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.19" class="WORD">
+          <t>groot</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.20" class="WORD">
+          <t>getal</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.21" class="WORD">
+          <t>Troupen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.22" class="WORD-COMPOUND">
+          <t>by-een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.23" class="WORD">
+          <t>gebracht</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.24" class="WORD" space="no">
+          <t>hebben</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.25" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.26" class="WORD">
+          <t>maar</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.27" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.28" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.29" class="WORD">
+          <t>besmettelijcke</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.30" class="WORD">
+          <t>Sieckte</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.31" class="WORD">
+          <t>al</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.32" class="WORD">
+          <t>onder</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.33" class="WORD">
+          <t>haer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.34" class="WORD">
+          <t>Volck</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.35" class="WORD">
+          <t>gekomen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.36" class="WORD" space="no">
+          <t>was</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.37" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.38" class="WORD">
+          <t>waerom</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.39" class="WORD">
+          <t>sy</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.40" class="WORD">
+          <t>oock</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.41" class="WORD">
+          <t>andere</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.42" class="WORD" space="no">
+          <t>Quartieren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.43" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.44" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.45" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.46" class="WORD">
+          <t>verandering</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.47" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.48" class="WORD" space="no">
+          <t>Lucht</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.49" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.50" class="WORD">
+          <t>genomen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.51" class="WORD" space="no">
+          <t>hadden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.11.w.52" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12">
+        <t>Eenige advysen melden, dat den Koning van Persien sigh in 't kort selfs aen 't Hooft van sijn Armee soude begeven; maer deze tyding is seer los.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.1" class="WORD">
+          <t>Eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.2" class="WORD">
+          <t>advysen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.3" class="WORD" space="no">
+          <t>melden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.4" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.5" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.6" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.7" class="WORD">
+          <t>Koning</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.8" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.9" class="WORD">
+          <t>Persien</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.10" class="WORD">
+          <t>sigh</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.11" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.12" class="WORD-TOKEN">
+          <t>'t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.13" class="WORD">
+          <t>kort</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.14" class="WORD">
+          <t>selfs</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.15" class="WORD">
+          <t>aen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.16" class="WORD-TOKEN">
+          <t>'t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.17" class="WORD">
+          <t>Hooft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.18" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.19" class="WORD">
+          <t>sijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.20" class="WORD">
+          <t>Armee</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.21" class="WORD">
+          <t>soude</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.22" class="WORD" space="no">
+          <t>begeven</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.23" class="PUNCTUATION">
+          <t>;</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.24" class="WORD">
+          <t>maer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.25" class="WORD">
+          <t>deze</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.26" class="WORD">
+          <t>tyding</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.27" class="WORD">
+          <t>is</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.28" class="WORD">
+          <t>seer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.29" class="WORD" space="no">
+          <t>los</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.12.w.30" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13">
+        <t>Oock zijn hier eenige geruchten, dat Demetrius Pankalos, die met eenige Troupen na Wallachyen gegaen is, bereyts 50 Vivres-Wagens in Caminiec heeft doen komen, hopende gedurig alle nootsakelijckheden, tot onderhoud van 't Guarnisoen, daer in te sullen konnen brengen; maer men twijfelt, of dit Secours suffisant genoeg sal wesen, en of men 't wel in Caminiec, sonder veel swarigheyt, sal konnen brengen.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.1" class="WORD">
+          <t>Oock</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.2" class="WORD">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.3" class="WORD">
+          <t>hier</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.4" class="WORD">
+          <t>eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.5" class="WORD" space="no">
+          <t>geruchten</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.6" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.7" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.8" class="WORD">
+          <t>Demetrius</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.9" class="WORD" space="no">
+          <t>Pankalos</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.10" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.11" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.12" class="WORD">
+          <t>met</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.13" class="WORD">
+          <t>eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.14" class="WORD">
+          <t>Troupen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.15" class="WORD">
+          <t>na</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.16" class="WORD">
+          <t>Wallachyen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.17" class="WORD">
+          <t>gegaen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.18" class="WORD" space="no">
+          <t>is</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.19" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.20" class="WORD">
+          <t>bereyts</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.21" class="NUMBER">
+          <t>50</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.22" class="WORD-COMPOUND">
+          <t>Vivres-Wagens</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.23" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.24" class="WORD">
+          <t>Caminiec</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.25" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.26" class="WORD">
+          <t>doen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.27" class="WORD" space="no">
+          <t>komen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.28" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.29" class="WORD">
+          <t>hopende</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.30" class="WORD">
+          <t>gedurig</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.31" class="WORD">
+          <t>alle</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.32" class="WORD" space="no">
+          <t>nootsakelijckheden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.33" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.34" class="WORD">
+          <t>tot</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.35" class="WORD">
+          <t>onderhoud</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.36" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.37" class="WORD-TOKEN">
+          <t>'t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.38" class="WORD" space="no">
+          <t>Guarnisoen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.39" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.40" class="WORD">
+          <t>daer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.41" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.42" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.43" class="WORD">
+          <t>sullen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.44" class="WORD">
+          <t>konnen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.45" class="WORD" space="no">
+          <t>brengen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.46" class="PUNCTUATION">
+          <t>;</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.47" class="WORD">
+          <t>maer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.48" class="WORD">
+          <t>men</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.49" class="WORD" space="no">
+          <t>twijfelt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.50" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.51" class="WORD">
+          <t>of</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.52" class="WORD">
+          <t>dit</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.53" class="WORD">
+          <t>Secours</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.54" class="WORD">
+          <t>suffisant</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.55" class="WORD">
+          <t>genoeg</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.56" class="WORD">
+          <t>sal</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.57" class="WORD" space="no">
+          <t>wesen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.58" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.59" class="WORD">
+          <t>en</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.60" class="WORD">
+          <t>of</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.61" class="WORD">
+          <t>men</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.62" class="WORD-TOKEN">
+          <t>'t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.63" class="WORD">
+          <t>wel</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.64" class="WORD">
+          <t>in</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.65" class="WORD" space="no">
+          <t>Caminiec</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.66" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.67" class="WORD">
+          <t>sonder</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.68" class="WORD">
+          <t>veel</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.69" class="WORD" space="no">
+          <t>swarigheyt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.70" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.71" class="WORD">
+          <t>sal</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.72" class="WORD">
+          <t>konnen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.73" class="WORD" space="no">
+          <t>brengen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.13.w.74" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+      <s xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14">
+        <t>Hier is een Envoyé van den Prince Abassi, Waywode van Sevenbergen, gekomen, om hem te justificeren van eenige beschuldiging, die hy segt, dat sijn Vyanden aen de Porte tegens hem gedaen hebben: Eenige Ministers zijn van advys geweest, dat men hem behoorde t'arresteren, maer men heeft het selve verworpen, om de gevolgen, die dese Proceduren nu ter tijdt na sigh souden konnen slepen.</t>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.1" class="WORD">
+          <t>Hier</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.2" class="WORD">
+          <t>is</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.3" class="WORD">
+          <t>een</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.4" class="WORD">
+          <t>Envoyé</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.5" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.6" class="WORD">
+          <t>den</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.7" class="WORD">
+          <t>Prince</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.8" class="WORD" space="no">
+          <t>Abassi</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.9" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.10" class="WORD">
+          <t>Waywode</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.11" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.12" class="WORD" space="no">
+          <t>Sevenbergen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.13" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.14" class="WORD" space="no">
+          <t>gekomen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.15" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.16" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.17" class="WORD">
+          <t>hem</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.18" class="WORD">
+          <t>te</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.19" class="WORD">
+          <t>justificeren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.20" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.21" class="WORD">
+          <t>eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.22" class="WORD" space="no">
+          <t>beschuldiging</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.23" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.24" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.25" class="WORD">
+          <t>hy</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.26" class="WORD" space="no">
+          <t>segt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.27" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.28" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.29" class="WORD">
+          <t>sijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.30" class="WORD">
+          <t>Vyanden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.31" class="WORD">
+          <t>aen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.32" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.33" class="WORD">
+          <t>Porte</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.34" class="WORD">
+          <t>tegens</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.35" class="WORD">
+          <t>hem</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.36" class="WORD">
+          <t>gedaen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.37" class="WORD" space="no">
+          <t>hebben</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.38" class="PUNCTUATION">
+          <t>:</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.39" class="WORD">
+          <t>Eenige</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.40" class="WORD">
+          <t>Ministers</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.41" class="WORD">
+          <t>zijn</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.42" class="WORD">
+          <t>van</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.43" class="WORD">
+          <t>advys</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.44" class="WORD" space="no">
+          <t>geweest</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.45" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.46" class="WORD">
+          <t>dat</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.47" class="WORD">
+          <t>men</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.48" class="WORD">
+          <t>hem</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.49" class="WORD">
+          <t>behoorde</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.50" class="WORD" space="no">
+          <t>t</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.51" class="PUNCTUATION" space="no">
+          <t>'</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.52" class="WORD" space="no">
+          <t>arresteren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.53" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.54" class="WORD">
+          <t>maer</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.55" class="WORD">
+          <t>men</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.56" class="WORD">
+          <t>heeft</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.57" class="WORD">
+          <t>het</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.58" class="WORD">
+          <t>selve</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.59" class="WORD" space="no">
+          <t>verworpen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.60" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.61" class="WORD">
+          <t>om</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.62" class="WORD">
+          <t>de</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.63" class="WORD" space="no">
+          <t>gevolgen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.64" class="PUNCTUATION">
+          <t>,</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.65" class="WORD">
+          <t>die</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.66" class="WORD">
+          <t>dese</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.67" class="WORD">
+          <t>Proceduren</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.68" class="WORD">
+          <t>nu</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.69" class="WORD">
+          <t>ter</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.70" class="WORD">
+          <t>tijdt</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.71" class="WORD">
+          <t>na</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.72" class="WORD">
+          <t>sigh</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.73" class="WORD">
+          <t>souden</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.74" class="WORD">
+          <t>konnen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.75" class="WORD" space="no">
+          <t>slepen</t>
+        </w>
+        <w xml:id="KB.DDD17C.NicolineCrowd.73272.p.1.s.14.w.76" class="PUNCTUATION">
+          <t>.</t>
+        </w>
+      </s>
+    </p>
+  </text>
+</FoLiA>
