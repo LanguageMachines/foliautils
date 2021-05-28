@@ -1089,12 +1089,26 @@ void correctNgrams( FoliaElement *root,
   vector<FoliaElement*> ev;
   vector<Word*> wv = root->select<Word>();
   if ( wv.size() > 0 ){
+    if ( wv[0]->parent() != root ){
+      cerr << "found <w> nodes in a deeper context than requested by "
+	   << "the tags='' option!" << endl;
+      cerr << "Consider using a more elementary element. "
+	   << "(like 's' for 'p')" << endl;
+      exit( EXIT_FAILURE );
+    }
     ev.resize(wv.size());
     copy( wv.begin(), wv.end(), ev.begin() );
   }
   else {
     vector<String*> sv = root->select<String>();
     if ( sv.size() > 0 ){
+      if ( sv[0]->parent() != root ){
+	cerr << "found <str> nodes in a deeper context than requested by "
+	     << "the tags='' option!" << endl;
+	cerr << "Consider using a more elementary element. "
+	     << "(like 's' for 'p')" << endl;
+	exit( EXIT_FAILURE );
+      }
       ev.resize(sv.size());
       copy( sv.begin(), sv.end(), ev.begin() );
     }
