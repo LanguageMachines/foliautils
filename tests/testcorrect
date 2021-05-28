@@ -66,6 +66,6 @@ $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngr
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr_word_spaces.xml
 ./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.3.ok  >> testcorrect.out 2>&1
 
-$my_bin/FoLiA-correct --punct=correctproblems/punct.punct --tags=s --unk=correctproblems/unk.unk --rank=correctproblems/chain.chained --ngram=3 --clear correctproblems/*bug*.xml -O correctproblems/OUT >> testcorrect.out 2> correctproblems.err
+$my_bin/FoLiA-correct --punct=correctproblems/punct.punct --unk=correctproblems/unk.unk --rank=correctproblems/chain.chained --ngram=3 --clear correctproblems/*bug*.xml -O correctproblems/OUT >> testcorrect.out 2> correctproblems.err
 cat correctproblems.err
 ./foliadiff.sh correctproblems/OUT/bisbug.ticcl.xml bisbug.ticcl.ok  >> testcorrect.out 2>&1

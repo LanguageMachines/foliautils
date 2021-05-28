@@ -11,7 +11,7 @@ Usage: [options] file/dir
 	--nums		 max number_of_suggestions. (default 10)
 			 suggestions are only added when there are more then 1.
 	--ngram=n	 analyse upto n N-grams.
-	--tags='tags'	 correct word/string nodes under all nodes in the list 'tags' (default='p')
+	--tags='tags'	 correct word/string nodes under all nodes in the list 'tags' (default='s' but 'p' when no Sentence nodes present)
 	-e 'expr'	 specify the expression all files should match with.
 	-O	 output prefix
 	--unk='uname'	 name of unknown words file, the *unk file produced by TICCL-unk
