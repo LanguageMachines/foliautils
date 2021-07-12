@@ -1,3 +1,37 @@
+foliautils 0.17  12-07-2021
+[Ko van der Sloot]
+* needs libfolia 2.9 or above
+* replaced TravisCI by GitHub actions
+* FoLiA-correct:
+  - fixex a problem with correcting FoLia with both p and s nodes
+  - added support for the FoLiA 'tag' feature
+  - clearer error messages
+  - fixed bugs in HEMP handling
+  - better handling of Ucto's ABBREVIATION* tokens
+  - fixed correctings when a word has 'space="no"'.
+  - some smaller fixes
+  - added more tests
+* FoLiA-clean:
+  - improved, using new features from libfolia 2.9
+* FoLiA-2text:
+  - replaced '--original' parameter by a '--correction-handling' parameter
+  - implemented a --honour-tags option, to interpret tag="token" tags
+  - some improvement in output-file naming
+* FoLiA-abby:
+  - complete reworked the code
+  - added '-S' and '-C' as alternatives for '--setname' and '--classname'
+  - added a --keephyphens option
+  - added a --addbreaks option
+  - addes option --addmetrics to optionally add positional info to the
+    paragraphs
+  - improved handling of '-' (Hyphen)
+  - add 'font_properties', 'font_id' and 'font_style' as a feature node
+  - improved handling of text with spaces at 'unexpected' locations
+* all modules:
+  - Code refactoring and cleaning
+  - added and improved tests
+  - adapted man pages
+
 foliautils 0.16  07-01-2021
 [Ko vd Sloot]
 * requires libfolia 2.7 or above
