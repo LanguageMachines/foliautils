@@ -1,5 +1,5 @@
 missing input file(s)
-FoLiA-page [foliautils 0.17]
+FoLiA-page [foliautils 0.18]
 Usage: FoLiA-page [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.
@@ -14,7 +14,7 @@ Usage: FoLiA-page [options] file/dir
 	--norefs	 do not add references nodes to the original document. (default: Add References)
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
-				 with 'c'=g create gzip files (.gz)
+			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 12 files 
@@ -31,16 +31,16 @@ converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jp
 converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
-   75   194  3377 out/page/FP-00667460.tif.folia.xml
-  160   499  7310 out/page/FP-00667461.tif.folia.xml
-   95   272  4455 out/page/FP-00667462.tif.folia.xml
-  146   471  6718 out/page/FP-00667463.tif.folia.xml
-  144   431  6494 out/page/FP-00667464.tif.folia.xml
-  135   446  6291 out/page/FP-00667465.tif.folia.xml
-  146   453  6660 out/page/FP-00667466.tif.folia.xml
-  173   496  7149 out/page/FP-00667467.tif.folia.xml
-  106   309  4864 out/page/FP-00667468.tif.folia.xml
- 1180  3571 53318 total
+   75   194  3379 out/page/FP-00667460.tif.folia.xml
+  160   499  7312 out/page/FP-00667461.tif.folia.xml
+   95   272  4457 out/page/FP-00667462.tif.folia.xml
+  146   471  6720 out/page/FP-00667463.tif.folia.xml
+  144   431  6496 out/page/FP-00667464.tif.folia.xml
+  135   446  6293 out/page/FP-00667465.tif.folia.xml
+  146   453  6662 out/page/FP-00667466.tif.folia.xml
+  173   496  7151 out/page/FP-00667467.tif.folia.xml
+  106   309  4866 out/page/FP-00667468.tif.folia.xml
+ 1180  3571 53336 total
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
 converted: data/page/piros.xml into: out/FP-page/FP-0001.png.folia.xml
