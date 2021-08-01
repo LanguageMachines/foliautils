@@ -14,6 +14,7 @@ $my_bin/FoLiA-abby -O out data/abby >> testabby.out 2>&1
 ./foliadiff.sh out/FA-piroska.abby.folia.xml piroska.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/FA-auch.folia.xml auch.ok  >> testabby.out 2>&1
 ./foliadiff.sh out/FA-hyph.folia.xml hyph.ok  >> testabby.out 2>&1
+./foliadiff.sh out/FA-item.folia.xml item.ok  >> testabby.out 2>&1
 
 $my_bin/FoLiA-abby --addbreaks -O out/break data/abby >> testabby.out 2>&1
 
@@ -39,3 +40,5 @@ $my_bin/FoLiA-2text -o txtout2/ --class=OCR --honour-tags out/FA-piroska.abby.fo
 diff txtout2/FA-piroska.abby.folia.xml.txt piroska.tags.txt.ok >> testabby.out 2>&1
 $my_bin/FoLiA-2text -o txtout3/ --class=OCR out/FA-hyph.folia.xml >> testabby.out 2>&1
 diff txtout3/FA-hyph.folia.xml.txt hyph.txt.ok >> testabby.out 2>&1
+$my_bin/FoLiA-2text -o txtout4/ --class=OCR out/FA-item.folia.xml >> testabby.out 2>&1
+diff txtout4/FA-item.folia.xml.txt item.txt.ok >> testabby.out 2>&1

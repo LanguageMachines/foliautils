@@ -17,7 +17,7 @@ Usage: FoLiA-abby [options] file/dir
 			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-FoLiA-abby [foliautils 0.17]
+FoLiA-abby [foliautils 0.18]
 Usage: FoLiA-abby [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.
@@ -36,38 +36,43 @@ Usage: FoLiA-abby [options] file/dir
 			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-start processing of 6 files 
+start processing of 7 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/FA-piroska.abby.folia.xml
 	converted: data/abby/morse_OCR_perletter.xml into: out/FA-morse_OCR_perletter.folia.xml
 	converted: data/abby/auch.xml into: out/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/FA-hyph.folia.xml
+	converted: data/abby/item.xml into: out/FA-item.folia.xml
 done
-start processing of 6 files 
+start processing of 7 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/break/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/break/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/break/FA-piroska.abby.folia.xml
 	converted: data/abby/morse_OCR_perletter.xml into: out/break/FA-morse_OCR_perletter.folia.xml
 	converted: data/abby/auch.xml into: out/break/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/break/FA-hyph.folia.xml
+	converted: data/abby/item.xml into: out/break/FA-item.folia.xml
 done
-start processing of 6 files 
+start processing of 7 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/hyph/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/hyph/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/hyph/FA-piroska.abby.folia.xml
 	converted: data/abby/morse_OCR_perletter.xml into: out/hyph/FA-morse_OCR_perletter.folia.xml
 	converted: data/abby/auch.xml into: out/hyph/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/hyph/FA-hyph.folia.xml
+	converted: data/abby/item.xml into: out/hyph/FA-item.folia.xml
 done
-start processing of 6 files 
+start processing of 7 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/metric/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/metric/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/metric/FA-piroska.abby.folia.xml
 	converted: data/abby/morse_OCR_perletter.xml into: out/metric/FA-morse_OCR_perletter.folia.xml
 	converted: data/abby/auch.xml into: out/metric/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/metric/FA-hyph.folia.xml
+	converted: data/abby/item.xml into: out/metric/FA-item.folia.xml
 done
 Processed :out/FA-piroska.abby.folia.xml into txtout1/FA-piroska.abby.folia.xml.txt still 0 files to go.
 Processed :out/FA-piroska.abby.folia.xml into txtout2/FA-piroska.abby.folia.xml.txt still 0 files to go.
 Processed :out/FA-hyph.folia.xml into txtout3/FA-hyph.folia.xml.txt still 0 files to go.
+Processed :out/FA-item.folia.xml into txtout4/FA-item.folia.xml.txt still 0 files to go.
