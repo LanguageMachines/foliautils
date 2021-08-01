@@ -363,7 +363,8 @@ void update_formatting_info( formatting_info& line_font,
 struct line_info {
   line_info():
     _line(0),
-    _spaces(0){};
+    _spaces(0)
+  {};
   UnicodeString _value;
   formatting_info _fi;
   xmlNode *_line;
@@ -555,6 +556,8 @@ bool process_paragraph( folia::Paragraph *paragraph,
   catch ( const out_of_range& ){
     // continue
   }
+  string item = TiCC::getAttribute( par, "isListItem" );
+  bool is_item = ( item == "1" );
   list<xmlNode*> lines = TiCC::FindNodes( par, "*:line" );
   if ( verbose ){
 #pragma omp critical
@@ -632,23 +635,30 @@ bool process_paragraph( folia::Paragraph *paragraph,
       previous_hyphen = false;
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
-	// if so: add the value + <t-hbr/>
-	//	cerr << "HYPH= '" << it._hyph << "'" << endl;
-	if ( it._hyph == "¬" ){
-	  previous_hyphen = true;
+	if ( is_item ){
+	  // list items are specila. KEEP the hyphen!
+	  value = "- " + value;
+	  add_value( content, value );
 	}
-	else if ( it._hyph == "-"
-		  && &it == &line_parts.back() ){
-	  previous_hyphen = true;
+	else {
+	  // a 'true' hyphen: add the value + <t-hbr/>
+	  //	cerr << "HYPH= '" << it._hyph << "'" << endl;
+	  if ( it._hyph == "¬" ){
+	    previous_hyphen = true;
+	  }
+	  else if ( it._hyph == "-"
+		    && &it == &line_parts.back() ){
+	    previous_hyphen = true;
+	  }
+	  add_value( content, value );
+	  folia::KWargs args;
+	  if ( keep_hyphens ){
+	    args["text"] = TiCC::UnicodeToUTF8(it._hyph);
+	  }
+	  content->add_child<folia::Hyphbreak>(args);
+	  //	cerr << "content now: " << content << endl;
+	  no_break = true;
 	}
-	add_value( content, value );
-	folia::KWargs args;
-	if ( keep_hyphens ){
-	  args["text"] = TiCC::UnicodeToUTF8(it._hyph);
-	}
-	content->add_child<folia::Hyphbreak>(args);
-	//	cerr << "content now: " << content << endl;
-	no_break = true;
       }
       else if ( it._spaces > 0 ){
 	add_hspace( content );
