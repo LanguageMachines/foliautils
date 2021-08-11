@@ -1,0 +1,830 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml" version="1.0" producer="" languages="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml">
+<documentData>
+<paragraphStyles>
+<paragraphStyle id="{ECFB634E-391F-4D83-AC34-20B3035582BF}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|1" mainFontStyleId="{9E21A889-E123-4345-957D-5C8434C624D4}" role="other" align="Left" startIndent="1600" leftIndent="0" rightIndent="0" lineSpacing="1781" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{344DA10A-2B8B-4496-9D41-7A1E980DD2AF}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|1" mainFontStyleId="{1C0C3BFA-12AC-49E2-BD1E-615D1937DAB6}" role="text" align="Left" startIndent="1600" leftIndent="0" rightIndent="0" lineSpacing="1781" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{28427CF2-BC1E-450C-B5CB-98765ED210D9}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|2" mainFontStyleId="{3BCE856A-6334-4FF7-8387-AFF7A55B690C}" role="text" align="Left" after="450" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1350" lineSpacingRatio="1.0700000524520874" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{E3A11DE4-4AE9-4429-BF7F-F203EFEFEF27}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|1" mainFontStyleId="{47A61AA0-B0C0-43A2-B99D-511D7C45C8F4}" role="tableCaption" align="Left" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1150" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{20226459-81AF-45FC-96CA-BABE26287C5C}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|3" mainFontStyleId="{359683C9-10F9-4038-9634-977B60EBDA58}" role="text" align="Left" after="1900" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1380" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|4" mainFontStyleId="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{57AC2113-A5DA-4132-AFEA-C5C865FEE027}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|5" mainFontStyleId="{5B105EC0-D479-45BF-A645-5A4A4E5CA0AD}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{F807A41E-6AEB-4417-B724-AF91782CA932}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|2" mainFontStyleId="{8ACB8D0A-274B-4E01-A858-39CBF93A4311}" role="tableCaption" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+<paragraphStyle id="{E86C9154-8C88-43CC-86F7-F52BFAE78A09}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|2" mainFontStyleId="{C9CFC7E0-9878-48FC-94B9-870A50C65816}" role="other" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+</paragraphStyles>
+<sections>
+<section><stream role="text" beginPage="0"><mainText columnCount="1"/><elemId id="{F5CDABFC-B74F-4B33-8B7C-35D8E04126B1}"/></stream>
+</section>
+</sections>
+</documentData>
+<page width="1700" height="2200" resolution="400" originalCoords="1">
+<block blockType="Table" pageElemId="{F5CDABFC-B74F-4B33-8B7C-35D8E04126B1}" l="293" t="195" r="1500" b="730"><region><rect l="293" t="195" r="1500" b="730"/></region>
+<row>
+<cell rowSpan="3" leftBorder="White" width="671" height="368">
+<text id="{D82DEEB2-6ED1-4619-A1E5-27BA7731A7E2}">
+<par lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}"></par>
+</text></cell>
+<cell colSpan="4" bottomBorder="White" width="864" height="100">
+<text id="{2507B873-069D-45C7-8AA6-6CFA20E20FA6}">
+<par align="Center" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="468" l="697" t="216" r="1000" b="240"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="697" t="217" r="703" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="100" wordPenalty="0" meanStrokeWidth="61">1</charParams>
+<charParams l="707" t="231" r="711" b="234" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="85" serifProbability="255" wordPenalty="0" meanStrokeWidth="61">.</charParams>
+<charParams l="711" t="216" r="726" b="234"> </charParams>
+<charParams l="726" t="216" r="735" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="0" wordPenalty="0" meanStrokeWidth="59">f</charParams>
+<charParams l="734" t="217" r="746" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="59">ü</charParams>
+<charParams l="748" t="222" r="756" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="53" serifProbability="100" wordPenalty="0" meanStrokeWidth="59">r</charParams>
+<charParams l="757" t="222" r="763" b="234"> </charParams>
+<charParams l="764" t="222" r="783" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">m</charParams>
+<charParams l="785" t="217" r="796" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="81" wordPenalty="0" meanStrokeWidth="52">ä</charParams>
+<charParams l="798" t="222" r="810" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="75" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">n</charParams>
+<charParams l="811" t="222" r="823" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="38" serifProbability="94" wordPenalty="0" meanStrokeWidth="52">n</charParams>
+<charParams l="825" t="216" r="831" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="70" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">l</charParams>
+<charParams l="831" t="216" r="836" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="87" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">i</charParams>
+<charParams l="838" t="222" r="849" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="57" wordPenalty="0" meanStrokeWidth="52">c</charParams>
+<charParams l="850" t="216" r="862" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">h</charParams>
+<charParams l="863" t="222" r="873" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="83" serifProbability="90" wordPenalty="0" meanStrokeWidth="52">e</charParams>
+<charParams l="873" t="217" r="881" b="234"> </charParams>
+<charParams l="881" t="217" r="897" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="95" serifProbability="50" wordPenalty="2" meanStrokeWidth="51">T</charParams>
+<charParams l="896" t="222" r="907" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="65" serifProbability="94" wordPenalty="2" meanStrokeWidth="51">a</charParams>
+<charParams l="909" t="222" r="920" b="240" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="2" meanStrokeWidth="51">g</charParams>
+<charParams l="921" t="222" r="931" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="2" meanStrokeWidth="51">e</charParams>
+<charParams l="932" t="217" r="937" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="59" serifProbability="11" wordPenalty="2" meanStrokeWidth="51">l</charParams>
+<charParams l="939" t="217" r="951" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="98" serifProbability="55" wordPenalty="2" meanStrokeWidth="51">ö</charParams>
+<charParams l="953" t="216" r="965" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="2" meanStrokeWidth="51">h</charParams>
+<charParams l="966" t="222" r="978" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="31" serifProbability="42" wordPenalty="2" meanStrokeWidth="51">n</charParams>
+<charParams l="979" t="222" r="990" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="2" meanStrokeWidth="51">e</charParams>
+<charParams l="991" t="222" r="1000" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="86" serifProbability="100" wordPenalty="2" meanStrokeWidth="51">r</charParams></formatting></line></par>
+</text></cell>
+<cell colSpan="4" rightBorder="White" bottomBorder="White" width="878" height="100">
+<text id="{BB442D70-7685-4071-BA7F-A22F6AC3AEDA}">
+<par align="Center" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="468" l="1131" t="216" r="1427" b="240"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1131" t="216" r="1143" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="46" wordPenalty="0" meanStrokeWidth="59">2</charParams>
+<charParams l="1145" t="231" r="1149" b="234" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="0" meanStrokeWidth="59">.</charParams>
+<charParams l="1149" t="216" r="1164" b="234"> </charParams>
+<charParams l="1164" t="216" r="1174" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="72" serifProbability="0" wordPenalty="0" meanStrokeWidth="59">f</charParams>
+<charParams l="1172" t="217" r="1184" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="59">ü</charParams>
+<charParams l="1185" t="222" r="1194" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="59">r</charParams>
+<charParams l="1194" t="222" r="1202" b="234"> </charParams>
+<charParams l="1202" t="222" r="1219" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="23" wordPenalty="0" meanStrokeWidth="50">w</charParams>
+<charParams l="1220" t="222" r="1230" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="50">e</charParams>
+<charParams l="1231" t="217" r="1237" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="40" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">i</charParams>
+<charParams l="1238" t="216" r="1251" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">b</charParams>
+<charParams l="1252" t="217" r="1257" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="32" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">l</charParams>
+<charParams l="1259" t="217" r="1264" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="92" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">i</charParams>
+<charParams l="1265" t="222" r="1275" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="57" wordPenalty="0" meanStrokeWidth="50">c</charParams>
+<charParams l="1276" t="216" r="1289" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">h</charParams>
+<charParams l="1289" t="222" r="1300" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="50">e</charParams>
+<charParams l="1300" t="217" r="1307" b="234"> </charParams>
+<charParams l="1308" t="217" r="1324" b="234" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="95" serifProbability="50" wordPenalty="0" meanStrokeWidth="52">T</charParams>
+<charParams l="1323" t="222" r="1334" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="47" serifProbability="94" wordPenalty="0" meanStrokeWidth="52">a</charParams>
+<charParams l="1336" t="222" r="1347" b="240" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="0" meanStrokeWidth="52">g</charParams>
+<charParams l="1347" t="222" r="1358" b="235" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="95" serifProbability="90" wordPenalty="0" meanStrokeWidth="52">e</charParams>
+<charParams l="1360" t="217" r="1364" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="65" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">l</charParams>
+<charParams l="1367" t="217" r="1379" b="235" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="55" wordPenalty="0" meanStrokeWidth="52">ö</charParams>
+<charParams l="1380" t="216" r="1392" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="90" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">h</charParams>
+<charParams l="1394" t="222" r="1406" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="36" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">n</charParams>
+<charParams l="1408" t="222" r="1417" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="92" serifProbability="90" wordPenalty="0" meanStrokeWidth="52">e</charParams>
+<charParams l="1419" t="222" r="1427" b="234" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="92" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">r</charParams></formatting></line></par>
+</text></cell></row>
+<row>
+<cell colSpan="2" topBorder="White" bottomBorder="White" width="433" height="71">
+<text id="{C0C56624-8750-4AE4-8280-18485E01A4A6}">
+<par align="Center" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="543" l="677" t="253" r="800" b="272"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="677" t="253" r="682" b="272" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="91" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">i</charParams>
+<charParams l="684" t="259" r="703" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">m</charParams>
+<charParams l="704" t="253" r="712" b="272"> </charParams>
+<charParams l="712" t="253" r="724" b="272" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="43" serifProbability="76" wordPenalty="0" meanStrokeWidth="56">S</charParams>
+<charParams l="725" t="259" r="737" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="25" serifProbability="255" wordPenalty="0" meanStrokeWidth="56">o</charParams>
+<charParams l="740" t="259" r="758" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="8" serifProbability="100" wordPenalty="0" meanStrokeWidth="56">m</charParams>
+<charParams l="760" t="260" r="779" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="1" serifProbability="100" wordPenalty="0" meanStrokeWidth="56">m</charParams>
+<charParams l="780" t="259" r="790" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="97" serifProbability="90" wordPenalty="0" meanStrokeWidth="56">e</charParams>
+<charParams l="791" t="259" r="800" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="56">r</charParams></formatting></line></par>
+</text></cell>
+<cell colSpan="2" topBorder="White" bottomBorder="White" width="431" height="71">
+<text id="{1974662D-7D91-41D7-816B-FE2CD93731FA}">
+<par startIndent="1900" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="543" l="901" t="253" r="1008" b="272"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="901" t="253" r="906" b="272" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="52" serifProbability="13" wordPenalty="0" meanStrokeWidth="59">i</charParams>
+<charParams l="908" t="259" r="927" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="59">m</charParams>
+<charParams l="927" t="254" r="935" b="272"> </charParams>
+<charParams l="936" t="254" r="959" b="271" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="23" wordPenalty="0" meanStrokeWidth="50">W</charParams>
+<charParams l="960" t="253" r="965" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="52" serifProbability="11" wordPenalty="0" meanStrokeWidth="50">i</charParams>
+<charParams l="967" t="259" r="979" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="31" serifProbability="94" wordPenalty="0" meanStrokeWidth="50">n</charParams>
+<charParams l="981" t="257" r="988" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="61" wordPenalty="0" meanStrokeWidth="50">t</charParams>
+<charParams l="988" t="259" r="999" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="50">e</charParams>
+<charParams l="1000" t="260" r="1008" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="25" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">r</charParams></formatting></line></par>
+</text></cell>
+<cell colSpan="2" topBorder="White" bottomBorder="White" width="435" height="71">
+<text id="{1B6EB4C0-5DB7-4CC9-A54A-FDA84DA13827}">
+<par align="Center" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="543" l="1109" t="253" r="1232" b="272"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1109" t="253" r="1114" b="272" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="71" serifProbability="100" wordPenalty="0" meanStrokeWidth="56">i</charParams>
+<charParams l="1116" t="260" r="1135" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="5" serifProbability="100" wordPenalty="0" meanStrokeWidth="56">m</charParams>
+<charParams l="1135" t="254" r="1144" b="272"> </charParams>
+<charParams l="1144" t="254" r="1156" b="272" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="29" wordPenalty="0" meanStrokeWidth="57">S</charParams>
+<charParams l="1158" t="260" r="1170" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="67" serifProbability="255" wordPenalty="0" meanStrokeWidth="57">o</charParams>
+<charParams l="1172" t="260" r="1191" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">m</charParams>
+<charParams l="1192" t="260" r="1211" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="36" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">m</charParams>
+<charParams l="1213" t="260" r="1222" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="70" serifProbability="90" wordPenalty="0" meanStrokeWidth="57">e</charParams>
+<charParams l="1224" t="260" r="1232" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">r</charParams></formatting></line></par>
+</text></cell>
+<cell colSpan="2" topBorder="White" rightBorder="White" bottomBorder="White" width="443" height="71">
+<text id="{90952657-C386-4A08-B3AF-A3820FA0B3CA}">
+<par startIndent="1800" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="543" l="1333" t="253" r="1442" b="273"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1333" t="253" r="1338" b="272" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="11" wordPenalty="0" meanStrokeWidth="56">i</charParams>
+<charParams l="1340" t="260" r="1360" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="56">m</charParams>
+<charParams l="1360" t="254" r="1368" b="272"> </charParams>
+<charParams l="1368" t="254" r="1393" b="271" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="5" serifProbability="91" wordPenalty="0" meanStrokeWidth="49">W</charParams>
+<charParams l="1394" t="253" r="1399" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="49">i</charParams>
+<charParams l="1401" t="260" r="1413" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="35" serifProbability="100" wordPenalty="0" meanStrokeWidth="49">n</charParams>
+<charParams l="1414" t="257" r="1422" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="86" serifProbability="61" wordPenalty="0" meanStrokeWidth="49">t</charParams>
+<charParams l="1423" t="260" r="1432" b="273" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="50" serifProbability="90" wordPenalty="0" meanStrokeWidth="49">e</charParams>
+<charParams l="1433" t="260" r="1442" b="272" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="39" serifProbability="100" wordPenalty="0" meanStrokeWidth="49">r</charParams></formatting></line></par>
+</text></cell></row>
+<row>
+<cell topBorder="White" width="217" height="197">
+<text id="{E5FA552C-D5C1-4762-B739-F43944DBC8A5}">
+<par startIndent="1000" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="617" l="659" t="290" r="710" b="309"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="659" t="297" r="671" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="45" serifProbability="255" wordPenalty="0" meanStrokeWidth="51">o</charParams>
+<charParams l="672" t="290" r="685" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="32" serifProbability="100" wordPenalty="0" meanStrokeWidth="51">h</charParams>
+<charParams l="686" t="297" r="699" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="26" serifProbability="100" wordPenalty="0" meanStrokeWidth="51">n</charParams>
+<charParams l="699" t="296" r="710" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="55" serifProbability="0" wordPenalty="0" meanStrokeWidth="51">e</charParams></formatting></line></par>
+<par startIndent="1000" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="676" l="659" t="320" r="711" b="338"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="659" t="320" r="678" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="53" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">K</charParams>
+<charParams l="680" t="326" r="692" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="255" wordPenalty="0" meanStrokeWidth="57">o</charParams>
+<charParams l="693" t="326" r="701" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="29" wordPenalty="0" meanStrokeWidth="57">s</charParams>
+<charParams l="703" t="323" r="711" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="34" serifProbability="61" wordPenalty="0" meanStrokeWidth="57">t</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" width="216" height="197">
+<text id="{A03D0DED-5396-4593-94F1-FD0A93AA3777}">
+<par align="Center" lineSpacing="1044" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="617" l="778" t="290" r="807" b="309"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="778" t="290" r="790" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="80" wordPenalty="0" meanStrokeWidth="50">b</charParams>
+<charParams l="791" t="296" r="801" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="50">e</charParams>
+<charParams l="801" t="291" r="807" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">i</charParams></formatting></line>
+<line baseline="676" l="750" t="319" r="836" b="338"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="750" t="320" r="764" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="76" serifProbability="100" wordPenalty="3" meanStrokeWidth="58">B</charParams>
+<charParams l="766" t="326" r="775" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="83" serifProbability="90" wordPenalty="3" meanStrokeWidth="58">e</charParams>
+<charParams l="776" t="320" r="789" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="3" meanStrokeWidth="58">k</charParams>
+<charParams l="790" t="320" r="802" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="79" serifProbability="55" wordPenalty="3" meanStrokeWidth="58">ö</charParams>
+<charParams l="804" t="326" r="812" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="92" wordPenalty="3" meanStrokeWidth="58">s</charParams>
+<charParams l="814" t="323" r="821" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="61" wordPenalty="3" meanStrokeWidth="58">t</charParams>
+<charParams l="822" t="319" r="827" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="43" serifProbability="0" wordPenalty="3" meanStrokeWidth="58">i</charParams>
+<charParams l="829" t="330" r="836" b="333" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="79" serifProbability="255" wordPenalty="3" meanStrokeWidth="58">¬</charParams></formatting></line>
+<line baseline="733" l="767" t="355" r="819" b="372"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="767" t="355" r="779" b="372" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="3" meanStrokeWidth="49">g</charParams>
+<charParams l="780" t="355" r="791" b="367" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="30" serifProbability="100" wordPenalty="3" meanStrokeWidth="49">u</charParams>
+<charParams l="793" t="355" r="805" b="367" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="45" serifProbability="100" wordPenalty="3" meanStrokeWidth="49">n</charParams>
+<charParams l="807" t="355" r="819" b="372" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="3" meanStrokeWidth="49">g</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" width="217" height="197">
+<text id="{3F85148C-2096-4E24-B97D-F66F7BD19F91}">
+<par align="Center" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="617" l="876" t="291" r="926" b="309"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="876" t="297" r="888" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="44" serifProbability="255" wordPenalty="0" meanStrokeWidth="51">o</charParams>
+<charParams l="889" t="291" r="902" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="98" serifProbability="100" wordPenalty="0" meanStrokeWidth="51">h</charParams>
+<charParams l="903" t="297" r="916" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="88" wordPenalty="0" meanStrokeWidth="51">n</charParams>
+<charParams l="916" t="297" r="926" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="51">e</charParams></formatting></line></par>
+<par align="Center" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="675" l="876" t="320" r="926" b="338"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="876" t="320" r="894" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="60">K</charParams>
+<charParams l="896" t="326" r="908" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="56" serifProbability="255" wordPenalty="0" meanStrokeWidth="60">o</charParams>
+<charParams l="910" t="326" r="918" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="92" serifProbability="29" wordPenalty="0" meanStrokeWidth="60">s</charParams>
+<charParams l="920" t="323" r="926" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="37" serifProbability="61" wordPenalty="0" meanStrokeWidth="60">t</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" width="214" height="197">
+<text id="{87089DFD-5EBF-46DE-8ED0-53A6802CAD38}">
+<par align="Center" lineSpacing="1044" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="617" l="993" t="291" r="1023" b="309"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="993" t="291" r="1007" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="34" serifProbability="100" wordPenalty="0" meanStrokeWidth="51">b</charParams>
+<charParams l="1007" t="297" r="1017" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="97" serifProbability="90" wordPenalty="0" meanStrokeWidth="51">e</charParams>
+<charParams l="1018" t="291" r="1023" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="64" serifProbability="100" wordPenalty="0" meanStrokeWidth="51">i</charParams></formatting></line>
+<line baseline="675" l="967" t="320" r="1052" b="338"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="967" t="320" r="980" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="95" wordPenalty="8" meanStrokeWidth="51">B</charParams>
+<charParams l="981" t="326" r="991" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="75" wordPenalty="8" meanStrokeWidth="51">e</charParams>
+<charParams l="993" t="320" r="1005" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="8" meanStrokeWidth="51">k</charParams>
+<charParams l="1006" t="320" r="1019" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="55" wordPenalty="8" meanStrokeWidth="51">ö</charParams>
+<charParams l="1020" t="326" r="1029" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="52" serifProbability="29" wordPenalty="8" meanStrokeWidth="51">s</charParams>
+<charParams l="1031" t="323" r="1037" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="87" serifProbability="61" wordPenalty="8" meanStrokeWidth="51">t</charParams>
+<charParams l="1038" t="320" r="1044" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="99" serifProbability="100" wordPenalty="8" meanStrokeWidth="51">i</charParams>
+<charParams l="1045" t="330" r="1052" b="333" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="8" meanStrokeWidth="51">¬</charParams></formatting></line>
+<line baseline="733" l="983" t="355" r="1034" b="372"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="983" t="355" r="995" b="372" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="8" meanStrokeWidth="50">g</charParams>
+<charParams l="996" t="355" r="1008" b="367" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="24" serifProbability="100" wordPenalty="8" meanStrokeWidth="50">u</charParams>
+<charParams l="1010" t="355" r="1022" b="367" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="88" wordPenalty="8" meanStrokeWidth="50">n</charParams>
+<charParams l="1023" t="355" r="1034" b="372" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="8" meanStrokeWidth="50">g</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" width="218" height="197">
+<text id="{328B0688-41A2-42E0-BE8B-516D05D64BB4}">
+<par startIndent="900" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="617" l="1091" t="291" r="1142" b="309"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1091" t="297" r="1103" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="67" serifProbability="255" wordPenalty="0" meanStrokeWidth="52">o</charParams>
+<charParams l="1105" t="291" r="1117" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="90" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">h</charParams>
+<charParams l="1119" t="297" r="1131" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="27" serifProbability="100" wordPenalty="0" meanStrokeWidth="52">n</charParams>
+<charParams l="1132" t="297" r="1142" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="52">e</charParams></formatting></line></par>
+<par startIndent="900" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="676" l="1091" t="320" r="1142" b="339"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1091" t="320" r="1110" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="49">K</charParams>
+<charParams l="1112" t="326" r="1124" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="0" meanStrokeWidth="49">o</charParams>
+<charParams l="1126" t="326" r="1133" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="29" wordPenalty="0" meanStrokeWidth="49">s</charParams>
+<charParams l="1135" t="323" r="1142" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="61" wordPenalty="0" meanStrokeWidth="49">t</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" width="217" height="197">
+<text id="{50EC8463-252A-4117-BC05-D3F810A35C5E}">
+<par align="Center" lineSpacing="1044" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="617" l="1210" t="290" r="1239" b="309"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1210" t="290" r="1222" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="44" serifProbability="80" wordPenalty="0" meanStrokeWidth="52">b</charParams>
+<charParams l="1222" t="297" r="1233" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="68" serifProbability="90" wordPenalty="0" meanStrokeWidth="52">e</charParams>
+<charParams l="1234" t="291" r="1239" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="58" serifProbability="11" wordPenalty="0" meanStrokeWidth="52">i</charParams></formatting></line>
+<line baseline="675" l="1182" t="320" r="1269" b="339"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1182" t="320" r="1197" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="45" serifProbability="100" wordPenalty="6" meanStrokeWidth="58">B</charParams>
+<charParams l="1198" t="326" r="1208" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="6" meanStrokeWidth="58">e</charParams>
+<charParams l="1209" t="320" r="1221" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="6" meanStrokeWidth="58">k</charParams>
+<charParams l="1223" t="320" r="1235" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="55" wordPenalty="6" meanStrokeWidth="58">ö</charParams>
+<charParams l="1237" t="326" r="1244" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="29" wordPenalty="6" meanStrokeWidth="58">s</charParams>
+<charParams l="1247" t="323" r="1254" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="61" wordPenalty="6" meanStrokeWidth="58">t</charParams>
+<charParams l="1254" t="320" r="1260" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="63" serifProbability="100" wordPenalty="6" meanStrokeWidth="58">i</charParams>
+<charParams l="1261" t="330" r="1269" b="333" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="6" meanStrokeWidth="58">¬</charParams></formatting></line>
+<line baseline="733" l="1200" t="355" r="1251" b="372"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1200" t="355" r="1211" b="372" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="53" wordPenalty="6" meanStrokeWidth="50">g</charParams>
+<charParams l="1211" t="355" r="1224" b="368" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="25" serifProbability="100" wordPenalty="6" meanStrokeWidth="50">u</charParams>
+<charParams l="1226" t="355" r="1237" b="367" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="68" serifProbability="94" wordPenalty="6" meanStrokeWidth="50">n</charParams>
+<charParams l="1240" t="355" r="1251" b="372" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="83" serifProbability="53" wordPenalty="6" meanStrokeWidth="50">g</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" width="218" height="197">
+<text id="{1B208A29-CA2B-4EF7-87CF-E660E41E9EE4}">
+<par startIndent="800" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="619" l="1308" t="291" r="1359" b="310"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1308" t="297" r="1320" b="309" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="81" serifProbability="255" wordPenalty="0" meanStrokeWidth="53">o</charParams>
+<charParams l="1321" t="291" r="1334" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="53">h</charParams>
+<charParams l="1335" t="297" r="1348" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="100" wordPenalty="0" meanStrokeWidth="53">n</charParams>
+<charParams l="1348" t="297" r="1359" b="310" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="41" serifProbability="0" wordPenalty="0" meanStrokeWidth="53">e</charParams></formatting></line></par>
+<par startIndent="800" lineSpacing="1030" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="676" l="1308" t="320" r="1359" b="339"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1308" t="320" r="1326" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">K</charParams>
+<charParams l="1328" t="326" r="1341" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="89" serifProbability="255" wordPenalty="0" meanStrokeWidth="64">o</charParams>
+<charParams l="1341" t="326" r="1350" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="29" wordPenalty="0" meanStrokeWidth="64">s</charParams>
+<charParams l="1352" t="323" r="1359" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="71" serifProbability="61" wordPenalty="0" meanStrokeWidth="64">t</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" rightBorder="White" width="225" height="197">
+<text id="{CBC8924F-74D3-46A4-AA07-204DA7DF2AEE}">
+<par align="Center" lineSpacing="1053" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="618" l="1427" t="290" r="1457" b="310"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1427" t="291" r="1439" b="310" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="81" serifProbability="80" wordPenalty="0" meanStrokeWidth="51">b</charParams>
+<charParams l="1440" t="297" r="1451" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="51">e</charParams>
+<charParams l="1452" t="290" r="1457" b="309" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="32" serifProbability="100" wordPenalty="0" meanStrokeWidth="51">i</charParams></formatting></line>
+<line baseline="677" l="1399" t="320" r="1485" b="339"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1399" t="320" r="1414" b="338" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="76" serifProbability="95" wordPenalty="3" meanStrokeWidth="64">B</charParams>
+<charParams l="1414" t="326" r="1425" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="38" serifProbability="90" wordPenalty="3" meanStrokeWidth="64">e</charParams>
+<charParams l="1427" t="320" r="1438" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="3" meanStrokeWidth="64">k</charParams>
+<charParams l="1440" t="321" r="1452" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="55" wordPenalty="3" meanStrokeWidth="64">ö</charParams>
+<charParams l="1454" t="326" r="1462" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="29" wordPenalty="3" meanStrokeWidth="64">s</charParams>
+<charParams l="1464" t="323" r="1471" b="339" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="41" serifProbability="61" wordPenalty="3" meanStrokeWidth="64">t</charParams>
+<charParams l="1471" t="320" r="1476" b="338" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="21" wordPenalty="3" meanStrokeWidth="64">i</charParams>
+<charParams l="1479" t="330" r="1485" b="333" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="59" serifProbability="255" wordPenalty="3" meanStrokeWidth="64">¬</charParams></formatting></line>
+<line baseline="735" l="1416" t="355" r="1468" b="372"><formatting lang="GermanStandard" ff="Times New Roman" fs="9.">
+<charParams l="1416" t="355" r="1428" b="372" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="77" serifProbability="53" wordPenalty="3" meanStrokeWidth="50">g</charParams>
+<charParams l="1429" t="355" r="1441" b="368" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="30" serifProbability="100" wordPenalty="3" meanStrokeWidth="50">u</charParams>
+<charParams l="1443" t="355" r="1455" b="368" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="26" serifProbability="94" wordPenalty="3" meanStrokeWidth="50">n</charParams>
+<charParams l="1457" t="355" r="1468" b="372" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="55" serifProbability="53" wordPenalty="3" meanStrokeWidth="50">g</charParams></formatting></line></par>
+</text></cell></row>
+<row>
+<cell leftBorder="White" bottomBorder="White" width="671" height="232">
+<text id="{1E684A35-ACD7-4E0A-AF25-0A8194E7F7BB}">
+<par align="Right" rightIndent="700" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="840" l="303" t="400" r="605" b="427"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="303" t="400" r="309" b="420" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">1</charParams>
+<charParams l="314" t="400" r="321" b="426" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="66" serifProbability="255" wordPenalty="0" meanStrokeWidth="57">)</charParams>
+<charParams l="322" t="400" r="333" b="426"> </charParams>
+<charParams l="333" t="400" r="339" b="420" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="52" serifProbability="100" wordPenalty="0" meanStrokeWidth="65">i</charParams>
+<charParams l="341" t="406" r="355" b="420" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="63" serifProbability="42" wordPenalty="0" meanStrokeWidth="65">n</charParams>
+<charParams l="355" t="400" r="363" b="421"> </charParams>
+<charParams l="363" t="400" r="378" b="421" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="33" serifProbability="100" wordPenalty="0" meanStrokeWidth="63">d</charParams>
+<charParams l="379" t="406" r="390" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="63">e</charParams>
+<charParams l="392" t="406" r="406" b="420" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="70" serifProbability="42" wordPenalty="0" meanStrokeWidth="63">n</charParams>
+<charParams l="407" t="400" r="414" b="420"> </charParams>
+<charParams l="415" t="400" r="436" b="420" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="2" meanStrokeWidth="64">K</charParams>
+<charParams l="439" t="406" r="449" b="420" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="41" serifProbability="100" wordPenalty="2" meanStrokeWidth="64">r</charParams>
+<charParams l="449" t="406" r="460" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="2" meanStrokeWidth="64">e</charParams>
+<charParams l="462" t="400" r="468" b="420" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="87" serifProbability="100" wordPenalty="2" meanStrokeWidth="64">i</charParams>
+<charParams l="471" t="406" r="480" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="92" wordPenalty="2" meanStrokeWidth="64">s</charParams>
+<charParams l="481" t="406" r="492" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="2" meanStrokeWidth="64">e</charParams>
+<charParams l="494" t="406" r="509" b="420" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="61" serifProbability="42" wordPenalty="2" meanStrokeWidth="64">n</charParams>
+<charParams l="509" t="400" r="517" b="420"> </charParams>
+<charParams l="517" t="400" r="538" b="420" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="69" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">H</charParams>
+<charParams l="540" t="406" r="552" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="67">e</charParams>
+<charParams l="554" t="406" r="566" b="427" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="52" serifProbability="16" wordPenalty="0" meanStrokeWidth="67">y</charParams>
+<charParams l="568" t="400" r="582" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="71" wordPenalty="0" meanStrokeWidth="67">d</charParams>
+<charParams l="584" t="406" r="595" b="421" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="74" serifProbability="90" wordPenalty="0" meanStrokeWidth="67">e</charParams>
+<charParams l="597" t="412" r="605" b="414" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="0" meanStrokeWidth="67">¬</charParams></formatting></line>
+<line baseline="907" l="333" t="432" r="605" b="460"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="333" t="432" r="346" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">k</charParams>
+<charParams l="349" t="439" r="360" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">r</charParams>
+<charParams l="360" t="440" r="374" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="98" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">u</charParams>
+<charParams l="376" t="439" r="389" b="459" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="5" serifProbability="53" wordPenalty="0" meanStrokeWidth="67">g</charParams>
+<charParams l="390" t="439" r="409" b="459"> </charParams>
+<charParams l="409" t="440" r="423" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="62" serifProbability="100" wordPenalty="0" meanStrokeWidth="63">u</charParams>
+<charParams l="425" t="439" r="439" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="46" serifProbability="42" wordPenalty="0" meanStrokeWidth="63">n</charParams>
+<charParams l="440" t="432" r="455" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="85" wordPenalty="0" meanStrokeWidth="63">d</charParams>
+<charParams l="455" t="432" r="474" b="454"> </charParams>
+<charParams l="474" t="433" r="498" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="62">N</charParams>
+<charParams l="499" t="432" r="505" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="60" serifProbability="100" wordPenalty="0" meanStrokeWidth="62">i</charParams>
+<charParams l="506" t="439" r="518" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="62">e</charParams>
+<charParams l="519" t="432" r="533" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="85" wordPenalty="0" meanStrokeWidth="62">d</charParams>
+<charParams l="535" t="439" r="547" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="62">e</charParams>
+<charParams l="549" t="439" r="558" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="62">r</charParams>
+<charParams l="561" t="440" r="574" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="62">u</charParams>
+<charParams l="576" t="439" r="590" b="454" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="74" serifProbability="42" wordPenalty="0" meanStrokeWidth="62">n</charParams>
+<charParams l="591" t="439" r="605" b="460" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="91" serifProbability="53" wordPenalty="0" meanStrokeWidth="62">g</charParams></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="217" height="232">
+<text id="{478FB290-A925-491A-A3D9-8F37FB32266E}">
+<par align="Center" lineSpacing="1278" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="907" l="663" t="433" r="709" b="458"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="663" t="433" r="669" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="57">1</charParams>
+<charParams l="674" t="433" r="688" b="454" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="56" wordPenalty="0" meanStrokeWidth="57">4</charParams>
+<charParams l="689" t="450" r="695" b="458" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="66" serifProbability="255" wordPenalty="0" meanStrokeWidth="57">,</charParams>
+<charParams l="697" t="433" r="709" b="454" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="68" serifProbability="51" wordPenalty="0" meanStrokeWidth="57">5</charParams></formatting></line>
+<line baseline="978" l="643" t="463" r="722" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="643" t="466" r="652" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="1" charConfidence="94" serifProbability="255" wordPenalty="21" meanStrokeWidth="58">(</charParams>
+<charParams l="656" t="466" r="662" b="486" suspicious="1" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="1" charConfidence="26" serifProbability="11" wordPenalty="21" meanStrokeWidth="58">1</charParams>
+<charParams l="669" t="466" r="682" b="487" suspicious="1" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="1" charConfidence="29" serifProbability="33" wordPenalty="21" meanStrokeWidth="58">6</charParams>
+<charParams l="0" t="0" r="0" b="0">,</charParams>
+<charParams l="0" t="0" r="0" b="0">1</charParams>
+<charParams l="705" t="466" r="712" b="492" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="1" charConfidence="57" serifProbability="255" wordPenalty="21" meanStrokeWidth="58">)</charParams></formatting><formatting lang="GermanStandard" ff="Times New Roman" fs="10." superscript="1">
+<charParams l="717" t="463" r="722" b="475" suspicious="1" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="1" charConfidence="31" serifProbability="100" wordPenalty="21" meanStrokeWidth="58">1</charParams></formatting><formatting lang="GermanStandard" ff="Times New Roman" fs="10."></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="216" height="232">
+<text id="{92D66750-9124-4877-9040-BF4E883E38DF}">
+<par align="Center" lineSpacing="1242" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="907" l="775" t="433" r="810" b="456"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="775" t="433" r="788" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="45" serifProbability="33" wordPenalty="0" meanStrokeWidth="65">6</charParams>
+<charParams l="790" t="450" r="795" b="456" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="61" serifProbability="255" wordPenalty="0" meanStrokeWidth="65">,</charParams>
+<charParams l="798" t="433" r="810" b="454" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="75" wordPenalty="0" meanStrokeWidth="65">5</charParams></formatting></line>
+<line baseline="976" l="765" t="466" r="820" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="765" t="466" r="774" b="492" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="57" serifProbability="255" wordPenalty="10" meanStrokeWidth="56">(</charParams>
+<charParams l="776" t="466" r="787" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="30" serifProbability="57" wordPenalty="10" meanStrokeWidth="56">8</charParams>
+<charParams l="791" t="484" r="796" b="492" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="59" serifProbability="255" wordPenalty="10" meanStrokeWidth="56">,</charParams>
+<charParams l="798" t="466" r="810" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="36" serifProbability="57" wordPenalty="10" meanStrokeWidth="56">8</charParams>
+<charParams l="811" t="466" r="820" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="61" serifProbability="255" wordPenalty="10" meanStrokeWidth="56">)</charParams></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="217" height="232">
+<text id="{FD184468-D2E9-496A-99E5-863F887892FB}">
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="909" l="872" t="426" r="932" b="458"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="872" t="433" r="883" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="0" charConfidence="53" serifProbability="57" wordPenalty="8" meanStrokeWidth="58">8</charParams>
+<charParams l="886" t="450" r="891" b="458" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="0" charConfidence="66" serifProbability="255" wordPenalty="8" meanStrokeWidth="58">,</charParams>
+<charParams l="894" t="433" r="906" b="455" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="0" charConfidence="38" serifProbability="100" wordPenalty="8" meanStrokeWidth="58">3</charParams></formatting><formatting lang="GermanStandard" ff="Times New Roman" fs="10." superscript="1">
+<charParams l="907" t="426" r="919" b="442" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="0" charConfidence="54" serifProbability="255" wordPenalty="8" meanStrokeWidth="58">2</charParams>
+<charParams l="920" t="426" r="932" b="442" suspicious="1" wordFromDictionary="0" wordNormal="0" wordNumeric="0" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="8" meanStrokeWidth="58">3</charParams></formatting><formatting lang="GermanStandard" ff="Times New Roman" fs="10."></formatting></line></par>
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="982" l="885" t="466" r="917" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="885" t="466" r="894" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="66" serifProbability="255" wordPenalty="7" meanStrokeWidth="68">(</charParams>
+<charParams l="894" t="467" r="908" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="37" serifProbability="42" wordPenalty="7" meanStrokeWidth="68">9</charParams>
+<charParams l="909" t="466" r="917" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="80" serifProbability="255" wordPenalty="7" meanStrokeWidth="68">)</charParams></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="214" height="232">
+<text id="{32EF0B77-0A1B-44F9-A73E-BD7AB9EC3E77}">
+<par align="Center" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="909" l="992" t="433" r="1026" b="458"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="992" t="433" r="1004" b="455" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="17" serifProbability="100" wordPenalty="0" meanStrokeWidth="49">3</charParams>
+<charParams l="1006" t="450" r="1012" b="458" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="62" serifProbability="255" wordPenalty="0" meanStrokeWidth="49">,</charParams>
+<charParams l="1015" t="433" r="1026" b="455" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="75" wordPenalty="0" meanStrokeWidth="49">5</charParams></formatting></line>
+<line baseline="976" l="981" t="466" r="1036" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="981" t="466" r="990" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="63" serifProbability="255" wordPenalty="12" meanStrokeWidth="57">(</charParams>
+<charParams l="991" t="467" r="1005" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="31" serifProbability="56" wordPenalty="12" meanStrokeWidth="57">4</charParams>
+<charParams l="1006" t="484" r="1011" b="492" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="81" serifProbability="255" wordPenalty="12" meanStrokeWidth="57">,</charParams>
+<charParams l="1015" t="466" r="1026" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="61" serifProbability="57" wordPenalty="12" meanStrokeWidth="57">8</charParams>
+<charParams l="1028" t="466" r="1036" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="12" meanStrokeWidth="57">)</charParams></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="218" height="232">
+<text id="{F0DDFDA4-48B8-4177-98D2-3ED16B8FE5D2}">
+<par align="Right" rightIndent="1200" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="909" l="1106" t="433" r="1131" b="455"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1106" t="433" r="1112" b="454" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="66">1</charParams>
+<charParams l="1117" t="433" r="1131" b="455" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="46" serifProbability="255" wordPenalty="0" meanStrokeWidth="66">0</charParams></formatting></line></par>
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="982" l="1100" t="466" r="1133" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1100" t="466" r="1109" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="56" serifProbability="255" wordPenalty="7" meanStrokeWidth="67">(</charParams>
+<charParams l="1110" t="466" r="1123" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="31" serifProbability="42" wordPenalty="7" meanStrokeWidth="67">9</charParams>
+<charParams l="1124" t="466" r="1133" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="7" meanStrokeWidth="67">)</charParams></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="217" height="232">
+<text id="{EE145692-0E00-447A-AE1A-CA28F227474F}">
+<par align="Center" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="909" l="1219" t="433" r="1231" b="455"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1219" t="433" r="1231" b="455" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="75" wordPenalty="0" meanStrokeWidth="49">5</charParams></formatting></line>
+<line baseline="976" l="1198" t="466" r="1253" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1198" t="466" r="1206" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="59" serifProbability="255" wordPenalty="13" meanStrokeWidth="54">(</charParams>
+<charParams l="1209" t="467" r="1220" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="59" serifProbability="100" wordPenalty="13" meanStrokeWidth="54">5</charParams>
+<charParams l="1223" t="484" r="1228" b="492" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="62" serifProbability="255" wordPenalty="13" meanStrokeWidth="54">,</charParams>
+<charParams l="1230" t="466" r="1243" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="27" serifProbability="46" wordPenalty="13" meanStrokeWidth="54">2</charParams>
+<charParams l="1244" t="466" r="1253" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="83" serifProbability="255" wordPenalty="13" meanStrokeWidth="54">)</charParams></formatting></line></par>
+</text></cell>
+<cell bottomBorder="White" width="218" height="232">
+<text id="{9B942B77-E8DB-4E1C-B827-B607790E393A}">
+<par align="Center" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="909" l="1327" t="433" r="1339" b="455"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1327" t="433" r="1339" b="455" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="75" serifProbability="100" wordPenalty="0" meanStrokeWidth="62">6</charParams></formatting></line>
+<line baseline="976" l="1306" t="466" r="1361" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1306" t="466" r="1314" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="62" serifProbability="255" wordPenalty="14" meanStrokeWidth="60">(</charParams>
+<charParams l="1316" t="467" r="1328" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="75" serifProbability="49" wordPenalty="14" meanStrokeWidth="60">6</charParams>
+<charParams l="1331" t="484" r="1336" b="491" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="64" serifProbability="255" wordPenalty="14" meanStrokeWidth="60">,</charParams>
+<charParams l="1339" t="467" r="1351" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="14" meanStrokeWidth="60">5</charParams>
+<charParams l="1352" t="466" r="1361" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="74" serifProbability="255" wordPenalty="14" meanStrokeWidth="60">)</charParams></formatting></line></par>
+</text></cell>
+<cell rightBorder="White" bottomBorder="White" width="225" height="232">
+<text id="{9476C479-373E-41ED-8CF6-90C584DBA50C}">
+<par align="Center" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="909" l="1437" t="433" r="1448" b="455"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1437" t="433" r="1448" b="455" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="69" wordPenalty="0" meanStrokeWidth="57">3</charParams></formatting></line>
+<line baseline="976" l="1415" t="467" r="1470" b="493"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1415" t="467" r="1423" b="493" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="13" meanStrokeWidth="51">(</charParams>
+<charParams l="1425" t="467" r="1437" b="488" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="89" wordPenalty="13" meanStrokeWidth="51">3</charParams>
+<charParams l="1440" t="484" r="1445" b="492" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="67" serifProbability="255" wordPenalty="13" meanStrokeWidth="51">,</charParams>
+<charParams l="1447" t="467" r="1460" b="487" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="46" wordPenalty="13" meanStrokeWidth="51">2</charParams>
+<charParams l="1462" t="467" r="1470" b="493" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="99" serifProbability="255" wordPenalty="13" meanStrokeWidth="51">)</charParams></formatting></line></par>
+</text></cell></row>
+<row>
+<cell leftBorder="White" topBorder="White" bottomBorder="White" width="671" height="264">
+<text id="{54041D79-8F79-4351-BB24-5C562F6B074F}">
+<par align="Right" rightIndent="700" lineSpacing="1197" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1039" l="299" t="498" r="605" b="526"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="299" t="498" r="312" b="520" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="84" serifProbability="46" wordPenalty="0" meanStrokeWidth="56">2</charParams>
+<charParams l="313" t="498" r="321" b="526" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="57" serifProbability="255" wordPenalty="0" meanStrokeWidth="56">)</charParams>
+<charParams l="322" t="498" r="333" b="526"> </charParams>
+<charParams l="333" t="498" r="339" b="520" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="66">i</charParams>
+<charParams l="341" t="505" r="355" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="47" serifProbability="94" wordPenalty="0" meanStrokeWidth="66">n</charParams>
+<charParams l="355" t="498" r="372" b="520"> </charParams>
+<charParams l="373" t="498" r="387" b="520" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="85" wordPenalty="0" meanStrokeWidth="64">d</charParams>
+<charParams l="389" t="505" r="400" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="64">e</charParams>
+<charParams l="402" t="505" r="416" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="28" serifProbability="42" wordPenalty="0" meanStrokeWidth="64">n</charParams>
+<charParams l="416" t="499" r="433" b="520"> </charParams>
+<charParams l="434" t="499" r="455" b="520" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">K</charParams>
+<charParams l="458" t="506" r="468" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">r</charParams>
+<charParams l="468" t="505" r="480" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="63" serifProbability="84" wordPenalty="0" meanStrokeWidth="64">e</charParams>
+<charParams l="482" t="498" r="487" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="92" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">i</charParams>
+<charParams l="489" t="505" r="500" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="53" serifProbability="10" wordPenalty="0" meanStrokeWidth="64">s</charParams>
+<charParams l="500" t="505" r="512" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="64">e</charParams>
+<charParams l="513" t="505" r="527" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="49" serifProbability="42" wordPenalty="0" meanStrokeWidth="64">n</charParams>
+<charParams l="528" t="499" r="545" b="520"> </charParams>
+<charParams l="546" t="499" r="566" b="520" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="95" wordPenalty="0" meanStrokeWidth="64">R</charParams>
+<charParams l="568" t="505" r="581" b="520" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="85" serifProbability="94" wordPenalty="0" meanStrokeWidth="64">a</charParams>
+<charParams l="582" t="505" r="596" b="526" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="37" serifProbability="53" wordPenalty="0" meanStrokeWidth="64">g</charParams>
+<charParams l="597" t="511" r="605" b="514" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="84" serifProbability="255" wordPenalty="0" meanStrokeWidth="64">¬</charParams></formatting></line>
+<line baseline="1107" l="333" t="532" r="605" b="557"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="333" t="539" r="347" b="553" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="48" serifProbability="42" wordPenalty="0" meanStrokeWidth="59">n</charParams>
+<charParams l="348" t="532" r="354" b="553" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="56" serifProbability="11" wordPenalty="0" meanStrokeWidth="59">i</charParams>
+<charParams l="357" t="536" r="365" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="61" wordPenalty="0" meanStrokeWidth="59">t</charParams>
+<charParams l="367" t="550" r="372" b="557" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="69" serifProbability="255" wordPenalty="0" meanStrokeWidth="59">,</charParams>
+<charParams l="372" t="532" r="396" b="557"> </charParams>
+<charParams l="397" t="532" r="416" b="553" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="73" serifProbability="50" wordPenalty="0" meanStrokeWidth="67">T</charParams>
+<charParams l="417" t="532" r="423" b="553" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="87" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">i</charParams>
+<charParams l="425" t="532" r="430" b="553" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="34" serifProbability="21" wordPenalty="0" meanStrokeWidth="67">l</charParams>
+<charParams l="433" t="539" r="443" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="33" serifProbability="92" wordPenalty="0" meanStrokeWidth="67">s</charParams>
+<charParams l="444" t="532" r="449" b="553" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="11" wordPenalty="0" meanStrokeWidth="67">i</charParams>
+<charParams l="452" t="536" r="460" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="61" wordPenalty="0" meanStrokeWidth="67">t</charParams>
+<charParams l="462" t="550" r="467" b="557" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="0" meanStrokeWidth="67">,</charParams>
+<charParams l="467" t="532" r="493" b="557"> </charParams>
+<charParams l="493" t="532" r="515" b="554" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="45" serifProbability="22" wordPenalty="0" meanStrokeWidth="64">G</charParams>
+<charParams l="518" t="540" r="531" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="33" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">u</charParams>
+<charParams l="533" t="539" r="554" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="25" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">m</charParams>
+<charParams l="557" t="532" r="571" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="98" serifProbability="80" wordPenalty="0" meanStrokeWidth="64">b</charParams>
+<charParams l="573" t="532" r="578" b="553" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="77" serifProbability="0" wordPenalty="0" meanStrokeWidth="64">i</charParams>
+<charParams l="581" t="539" r="594" b="554" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="75" serifProbability="42" wordPenalty="0" meanStrokeWidth="64">n</charParams>
+<charParams l="597" t="544" r="605" b="547" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="0" meanStrokeWidth="64">¬</charParams></formatting></line>
+<line baseline="1172" l="333" t="571" r="604" b="586"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="333" t="571" r="347" b="586" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="55" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">n</charParams>
+<charParams l="348" t="571" r="360" b="586" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="64">e</charParams>
+<charParams l="362" t="571" r="375" b="586" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="56" serifProbability="42" wordPenalty="0" meanStrokeWidth="64">n</charParams>
+<charParams l="376" t="571" r="411" b="586"> </charParams>
+<charParams l="411" t="582" r="604" b="586" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="0" wordNumeric="0" wordIdentifier="1" charConfidence="-1" serifProbability="255" wordPenalty="0" meanStrokeWidth="58" isTab="1" tabLeaderCount="10">..........</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="217" height="264">
+<text id="{94B19BAD-989A-4578-B287-82BF78152C6E}">
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1173" l="668" t="566" r="702" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="668" t="566" r="679" b="587" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="93" serifProbability="57" wordPenalty="0" meanStrokeWidth="50">8</charParams>
+<charParams l="682" t="582" r="687" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="59" serifProbability="255" wordPenalty="0" meanStrokeWidth="50">,</charParams>
+<charParams l="690" t="566" r="702" b="587" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="45" serifProbability="100" wordPenalty="0" meanStrokeWidth="50">5</charParams></formatting></line></par>
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1240" l="661" t="598" r="708" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="661" t="598" r="669" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="85" serifProbability="255" wordPenalty="13" meanStrokeWidth="56">(</charParams>
+<charParams l="674" t="599" r="680" b="619" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="25" serifProbability="21" wordPenalty="13" meanStrokeWidth="56">1</charParams>
+<charParams l="686" t="598" r="697" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="36" serifProbability="89" wordPenalty="13" meanStrokeWidth="56">3</charParams>
+<charParams l="700" t="599" r="708" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="13" meanStrokeWidth="56">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="216" height="264">
+<text id="{E03B7A8A-C9C5-4AC3-9E9F-12DDB4FD40AC}">
+<par align="Center" lineSpacing="1134" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1177" l="775" t="566" r="810" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="775" t="566" r="788" b="587" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="100" wordPenalty="7" meanStrokeWidth="59">6</charParams>
+<charParams l="790" t="583" r="795" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="59" serifProbability="255" wordPenalty="7" meanStrokeWidth="59">,</charParams>
+<charParams l="798" t="566" r="810" b="586" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="41" serifProbability="48" wordPenalty="7" meanStrokeWidth="59">7</charParams></formatting></line>
+<line baseline="1240" l="765" t="598" r="820" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="765" t="598" r="774" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="65" serifProbability="255" wordPenalty="8" meanStrokeWidth="56">(</charParams>
+<charParams l="776" t="598" r="787" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="33" serifProbability="57" wordPenalty="8" meanStrokeWidth="56">8</charParams>
+<charParams l="790" t="616" r="796" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="57" serifProbability="255" wordPenalty="8" meanStrokeWidth="56">,</charParams>
+<charParams l="798" t="598" r="810" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="60" serifProbability="100" wordPenalty="8" meanStrokeWidth="56">5</charParams>
+<charParams l="812" t="599" r="820" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="8" meanStrokeWidth="56">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="217" height="264">
+<text id="{941DD536-4824-4264-8604-B7740F9C2C91}">
+<par align="Center" lineSpacing="1332" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1172" l="884" t="566" r="919" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="884" t="566" r="896" b="587" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="5" serifProbability="33" wordPenalty="6" meanStrokeWidth="50">6</charParams>
+<charParams l="898" t="583" r="904" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="69" serifProbability="255" wordPenalty="6" meanStrokeWidth="50">,</charParams>
+<charParams l="906" t="566" r="919" b="586" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="75" serifProbability="46" wordPenalty="6" meanStrokeWidth="50">2</charParams></formatting></line>
+<line baseline="1246" l="885" t="598" r="917" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="885" t="598" r="893" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="58" serifProbability="255" wordPenalty="6" meanStrokeWidth="50">(</charParams>
+<charParams l="895" t="598" r="906" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="27" serifProbability="57" wordPenalty="6" meanStrokeWidth="50">8</charParams>
+<charParams l="909" t="598" r="917" b="625" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="83" serifProbability="255" wordPenalty="6" meanStrokeWidth="50">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="214" height="264">
+<text id="{8C20DEB3-D4BE-4F29-A967-12A239ECB65D}">
+<par startIndent="1600" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1172" l="1002" t="566" r="1016" b="586"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1002" t="566" r="1016" b="586" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="56" wordPenalty="0" meanStrokeWidth="47">4</charParams></formatting></line></par>
+<par startIndent="800" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1240" l="981" t="598" r="1036" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="981" t="599" r="990" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="78" serifProbability="255" wordPenalty="14" meanStrokeWidth="50">(</charParams>
+<charParams l="992" t="598" r="1004" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="10" serifProbability="100" wordPenalty="14" meanStrokeWidth="50">5</charParams>
+<charParams l="1006" t="616" r="1011" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="72" serifProbability="255" wordPenalty="14" meanStrokeWidth="50">,</charParams>
+<charParams l="1014" t="598" r="1027" b="619" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="30" serifProbability="46" wordPenalty="14" meanStrokeWidth="50">2</charParams>
+<charParams l="1028" t="598" r="1036" b="625" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="81" serifProbability="255" wordPenalty="14" meanStrokeWidth="50">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="218" height="264">
+<text id="{56CFC6DC-06B0-405A-A8A5-FA4058085C8C}">
+<par align="Center" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1174" l="1100" t="566" r="1134" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1100" t="566" r="1112" b="587" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="89" serifProbability="33" wordPenalty="0" meanStrokeWidth="56">6</charParams>
+<charParams l="1114" t="583" r="1119" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="0" meanStrokeWidth="56">,</charParams>
+<charParams l="1122" t="566" r="1134" b="587" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="75" wordPenalty="0" meanStrokeWidth="56">5</charParams></formatting></line>
+<line baseline="1241" l="1089" t="598" r="1144" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1089" t="598" r="1098" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="69" serifProbability="255" wordPenalty="10" meanStrokeWidth="57">(</charParams>
+<charParams l="1099" t="598" r="1112" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="38" serifProbability="100" wordPenalty="10" meanStrokeWidth="57">6</charParams>
+<charParams l="1114" t="616" r="1119" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="10" meanStrokeWidth="57">,</charParams>
+<charParams l="1122" t="598" r="1133" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="43" serifProbability="57" wordPenalty="10" meanStrokeWidth="57">8</charParams>
+<charParams l="1136" t="598" r="1144" b="625" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="10" meanStrokeWidth="57">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="217" height="264">
+<text id="{60BAC0F4-FB67-4656-B60C-E3054C8624BF}">
+<par align="Center" lineSpacing="1188" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1174" l="1208" t="566" r="1242" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1208" t="566" r="1219" b="587" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="69" wordPenalty="0" meanStrokeWidth="54">3</charParams>
+<charParams l="1223" t="583" r="1228" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="69" serifProbability="255" wordPenalty="0" meanStrokeWidth="54">,</charParams>
+<charParams l="1230" t="566" r="1242" b="587" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="69" wordPenalty="0" meanStrokeWidth="54">3</charParams></formatting></line>
+<line baseline="1240" l="1197" t="598" r="1252" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1197" t="598" r="1206" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="10" meanStrokeWidth="56">(</charParams>
+<charParams l="1208" t="598" r="1220" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="20" serifProbability="100" wordPenalty="10" meanStrokeWidth="56">5</charParams>
+<charParams l="1223" t="616" r="1228" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="62" serifProbability="255" wordPenalty="10" meanStrokeWidth="56">,</charParams>
+<charParams l="1230" t="598" r="1243" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="46" wordPenalty="10" meanStrokeWidth="56">2</charParams>
+<charParams l="1244" t="599" r="1252" b="625" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="77" serifProbability="255" wordPenalty="10" meanStrokeWidth="56">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="218" height="264">
+<text id="{374BB455-AA5C-4791-88ED-F8F64533CE93}">
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1174" l="1315" t="565" r="1351" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1315" t="565" r="1330" b="586" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="45" serifProbability="56" wordPenalty="6" meanStrokeWidth="66">4</charParams>
+<charParams l="1331" t="583" r="1336" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="64" serifProbability="255" wordPenalty="6" meanStrokeWidth="66">,</charParams>
+<charParams l="1338" t="565" r="1351" b="587" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="64" serifProbability="65" wordPenalty="6" meanStrokeWidth="66">7</charParams></formatting></line></par>
+<par startIndent="800" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1240" l="1306" t="598" r="1361" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1306" t="598" r="1314" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="69" serifProbability="255" wordPenalty="10" meanStrokeWidth="57">(</charParams>
+<charParams l="1315" t="598" r="1329" b="619" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="78" serifProbability="56" wordPenalty="10" meanStrokeWidth="57">4</charParams>
+<charParams l="1331" t="616" r="1336" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="61" serifProbability="255" wordPenalty="10" meanStrokeWidth="57">,</charParams>
+<charParams l="1338" t="598" r="1350" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="42" serifProbability="57" wordPenalty="10" meanStrokeWidth="57">8</charParams>
+<charParams l="1352" t="599" r="1361" b="625" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="83" serifProbability="255" wordPenalty="10" meanStrokeWidth="57">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" rightBorder="White" bottomBorder="White" width="225" height="264">
+<text id="{15574CCB-C10F-4CF2-A9A2-1F50705BB931}">
+<par align="Center" lineSpacing="1188" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1174" l="1425" t="566" r="1459" b="591"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1425" t="566" r="1438" b="586" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="58" serifProbability="46" wordPenalty="7" meanStrokeWidth="49">2</charParams>
+<charParams l="1440" t="583" r="1445" b="591" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="71" serifProbability="255" wordPenalty="7" meanStrokeWidth="49">,</charParams>
+<charParams l="1448" t="566" r="1459" b="587" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="69" wordPenalty="7" meanStrokeWidth="49">3</charParams></formatting></line>
+<line baseline="1240" l="1415" t="598" r="1469" b="625"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1415" t="598" r="1423" b="625" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="59" serifProbability="255" wordPenalty="9" meanStrokeWidth="50">(</charParams>
+<charParams l="1425" t="598" r="1438" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="13" serifProbability="46" wordPenalty="9" meanStrokeWidth="50">2</charParams>
+<charParams l="1440" t="616" r="1445" b="624" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="67" serifProbability="255" wordPenalty="9" meanStrokeWidth="50">,</charParams>
+<charParams l="1448" t="598" r="1460" b="620" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="36" serifProbability="57" wordPenalty="9" meanStrokeWidth="50">8</charParams>
+<charParams l="1462" t="599" r="1469" b="625" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="9" meanStrokeWidth="50">)</charParams></formatting></line></par>
+</text></cell></row>
+<row>
+<cell leftBorder="White" topBorder="White" bottomBorder="White" width="671" height="206">
+<text id="{C4322E1B-32C2-4EF9-AC1C-BC4914A5F6B8}">
+<par align="Right" rightIndent="700" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1303" l="300" t="630" r="605" b="657"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="300" t="631" r="311" b="652" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="56" serifProbability="38" wordPenalty="0" meanStrokeWidth="58">3</charParams>
+<charParams l="313" t="631" r="321" b="657" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="29" serifProbability="255" wordPenalty="0" meanStrokeWidth="58">)</charParams>
+<charParams l="322" t="630" r="333" b="657"> </charParams>
+<charParams l="334" t="630" r="339" b="652" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="45" serifProbability="0" wordPenalty="0" meanStrokeWidth="66">i</charParams>
+<charParams l="341" t="638" r="355" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="42" wordPenalty="0" meanStrokeWidth="66">n</charParams>
+<charParams l="355" t="631" r="365" b="652"> </charParams>
+<charParams l="365" t="631" r="380" b="652" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="85" wordPenalty="0" meanStrokeWidth="64">d</charParams>
+<charParams l="382" t="638" r="393" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="64">e</charParams>
+<charParams l="395" t="638" r="409" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="62" serifProbability="94" wordPenalty="0" meanStrokeWidth="64">n</charParams>
+<charParams l="409" t="631" r="420" b="652"> </charParams>
+<charParams l="420" t="631" r="441" b="652" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="63">K</charParams>
+<charParams l="444" t="638" r="454" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="63">r</charParams>
+<charParams l="455" t="638" r="466" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="63">e</charParams>
+<charParams l="468" t="631" r="473" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="35" serifProbability="11" wordPenalty="0" meanStrokeWidth="63">i</charParams>
+<charParams l="475" t="638" r="486" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="65" serifProbability="76" wordPenalty="0" meanStrokeWidth="63">s</charParams>
+<charParams l="487" t="638" r="498" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="90" serifProbability="90" wordPenalty="0" meanStrokeWidth="63">e</charParams>
+<charParams l="500" t="638" r="513" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="42" wordPenalty="0" meanStrokeWidth="63">n</charParams>
+<charParams l="514" t="631" r="524" b="652"> </charParams>
+<charParams l="525" t="631" r="534" b="652" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="45" serifProbability="29" wordPenalty="0" meanStrokeWidth="66">I</charParams>
+<charParams l="536" t="638" r="550" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="42" wordPenalty="0" meanStrokeWidth="66">n</charParams>
+<charParams l="552" t="638" r="561" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="76" wordPenalty="0" meanStrokeWidth="66">s</charParams>
+<charParams l="563" t="634" r="571" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="78" serifProbability="74" wordPenalty="0" meanStrokeWidth="66">t</charParams>
+<charParams l="572" t="638" r="584" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="66">e</charParams>
+<charParams l="586" t="638" r="596" b="652" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="66">r</charParams>
+<charParams l="597" t="643" r="605" b="647" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="63" serifProbability="255" wordPenalty="0" meanStrokeWidth="66">¬</charParams></formatting></line>
+<line baseline="1370" l="333" t="664" r="601" b="691"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="333" t="664" r="347" b="685" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">b</charParams>
+<charParams l="350" t="671" r="363" b="685" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">u</charParams>
+<charParams l="365" t="671" r="375" b="685" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="42" serifProbability="100" wordPenalty="0" meanStrokeWidth="64">r</charParams>
+<charParams l="376" t="671" r="389" b="691" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="55" serifProbability="53" wordPenalty="0" meanStrokeWidth="64">g</charParams>
+<charParams l="390" t="671" r="399" b="691"> </charParams>
+<charParams l="400" t="671" r="414" b="685" wordFirst="1" wordLeftMost="1" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="78" serifProbability="100" wordPenalty="0" meanStrokeWidth="63">u</charParams>
+<charParams l="415" t="670" r="429" b="685" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="50" serifProbability="42" wordPenalty="0" meanStrokeWidth="63">n</charParams>
+<charParams l="431" t="664" r="445" b="685" wordFromDictionary="1" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="72" serifProbability="100" wordPenalty="0" meanStrokeWidth="63">d</charParams>
+<charParams l="446" t="664" r="456" b="685"> </charParams>
+<charParams l="457" t="665" r="478" b="685" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="94" serifProbability="98" wordPenalty="0" meanStrokeWidth="67">D</charParams>
+<charParams l="480" t="671" r="493" b="686" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="74" wordPenalty="0" meanStrokeWidth="67">a</charParams>
+<charParams l="495" t="671" r="505" b="685" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="69" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">r</charParams>
+<charParams l="506" t="664" r="520" b="685" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="81" wordPenalty="0" meanStrokeWidth="67">k</charParams>
+<charParams l="521" t="671" r="533" b="686" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="53" serifProbability="90" wordPenalty="0" meanStrokeWidth="67">e</charParams>
+<charParams l="534" t="664" r="548" b="685" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="36" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">h</charParams>
+<charParams l="550" t="671" r="573" b="685" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="0" meanStrokeWidth="67">m</charParams>
+<charParams l="574" t="671" r="585" b="686" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="100" serifProbability="90" wordPenalty="0" meanStrokeWidth="67">e</charParams>
+<charParams l="587" t="671" r="601" b="685" wordFromDictionary="0" wordNormal="1" wordNumeric="0" wordIdentifier="0" charConfidence="67" serifProbability="42" wordPenalty="0" meanStrokeWidth="67">n</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="217" height="206">
+<text id="{07621CAA-8D22-4356-A8CD-C3C5D420322D}">
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1372" l="675" t="665" r="698" b="686"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="675" t="665" r="680" b="685" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="41" serifProbability="21" wordPenalty="0" meanStrokeWidth="67">1</charParams>
+<charParams l="685" t="665" r="698" b="686" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="50" serifProbability="255" wordPenalty="0" meanStrokeWidth="67">0</charParams></formatting></line></par>
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1437" l="650" t="698" r="719" b="724"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="650" t="698" r="658" b="724" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="82" serifProbability="255" wordPenalty="12" meanStrokeWidth="56">(</charParams>
+<charParams l="663" t="698" r="669" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="29" serifProbability="100" wordPenalty="12" meanStrokeWidth="56">1</charParams>
+<charParams l="675" t="698" r="686" b="719" suspicious="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="12" meanStrokeWidth="56">5</charParams>
+<charParams l="690" t="715" r="695" b="723" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="12" meanStrokeWidth="56">,</charParams>
+<charParams l="697" t="698" r="709" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="75" wordPenalty="12" meanStrokeWidth="56">5</charParams>
+<charParams l="711" t="698" r="719" b="724" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="12" meanStrokeWidth="56">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="216" height="206">
+<text id="{9F196F9D-316F-4E53-A50A-2B10988C3EDD}">
+<par align="Center" lineSpacing="1170" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1372" l="787" t="665" r="799" b="686"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="787" t="665" r="799" b="686" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="41" serifProbability="33" wordPenalty="0" meanStrokeWidth="59">6</charParams></formatting></line>
+<line baseline="1437" l="758" t="698" r="827" b="724"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="758" t="698" r="767" b="724" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="71" serifProbability="255" wordPenalty="6" meanStrokeWidth="59">(</charParams>
+<charParams l="771" t="698" r="777" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="6" meanStrokeWidth="59">1</charParams>
+<charParams l="782" t="698" r="795" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="30" serifProbability="255" wordPenalty="6" meanStrokeWidth="59">0</charParams>
+<charParams l="797" t="715" r="802" b="722" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="6" meanStrokeWidth="59">,</charParams>
+<charParams l="805" t="698" r="818" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="6" meanStrokeWidth="59">6</charParams>
+<charParams l="819" t="698" r="827" b="724" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="81" serifProbability="255" wordPenalty="6" meanStrokeWidth="59">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="217" height="206">
+<text id="{3F268B4B-592D-4808-BF26-ECC9D388BC92}">
+<par align="Center" lineSpacing="1224" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1371" l="884" t="665" r="919" b="690"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="884" t="665" r="896" b="686" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="45" serifProbability="33" wordPenalty="4" meanStrokeWidth="55">6</charParams>
+<charParams l="899" t="682" r="904" b="690" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="56" serifProbability="255" wordPenalty="4" meanStrokeWidth="55">,</charParams>
+<charParams l="906" t="665" r="919" b="686" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="52" serifProbability="93" wordPenalty="4" meanStrokeWidth="55">7</charParams></formatting></line>
+<line baseline="1439" l="874" t="698" r="928" b="725"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="874" t="698" r="882" b="725" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="13" meanStrokeWidth="59">(</charParams>
+<charParams l="884" t="698" r="896" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="41" serifProbability="33" wordPenalty="13" meanStrokeWidth="59">6</charParams>
+<charParams l="899" t="715" r="904" b="723" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="13" meanStrokeWidth="59">,</charParams>
+<charParams l="906" t="698" r="919" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="99" serifProbability="33" wordPenalty="13" meanStrokeWidth="59">6</charParams>
+<charParams l="920" t="698" r="928" b="724" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="75" serifProbability="255" wordPenalty="13" meanStrokeWidth="59">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="214" height="206">
+<text id="{207A3214-B0A2-4596-B300-DDBD2DCC0ACA}">
+<par align="Center" lineSpacing="1224" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1371" l="992" t="665" r="1027" b="690"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="992" t="665" r="1004" b="686" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="30" serifProbability="89" wordPenalty="8" meanStrokeWidth="54">3</charParams>
+<charParams l="1006" t="682" r="1011" b="690" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="8" meanStrokeWidth="54">,</charParams>
+<charParams l="1014" t="665" r="1027" b="685" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="46" wordPenalty="8" meanStrokeWidth="54">2</charParams></formatting></line>
+<line baseline="1439" l="981" t="698" r="1036" b="725"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="981" t="698" r="989" b="725" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="61" serifProbability="255" wordPenalty="12" meanStrokeWidth="54">(</charParams>
+<charParams l="991" t="698" r="1005" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="48" serifProbability="56" wordPenalty="12" meanStrokeWidth="54">4</charParams>
+<charParams l="1006" t="715" r="1012" b="723" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="57" serifProbability="255" wordPenalty="12" meanStrokeWidth="54">,</charParams>
+<charParams l="1015" t="698" r="1026" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="100" wordPenalty="12" meanStrokeWidth="54">5</charParams>
+<charParams l="1028" t="698" r="1036" b="724" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="93" serifProbability="255" wordPenalty="12" meanStrokeWidth="54">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="218" height="206">
+<text id="{2D9713C0-F4D5-4C7F-AE42-B02F9862C5E3}">
+<par align="Center" lineSpacing="1206" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1372" l="1100" t="665" r="1134" b="691"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1100" t="665" r="1112" b="686" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="90" serifProbability="100" wordPenalty="0" meanStrokeWidth="55">5</charParams>
+<charParams l="1114" t="682" r="1120" b="691" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="0" meanStrokeWidth="55">,</charParams>
+<charParams l="1122" t="666" r="1134" b="686" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="77" serifProbability="51" wordPenalty="0" meanStrokeWidth="55">5</charParams></formatting></line>
+<line baseline="1439" l="1089" t="698" r="1144" b="724"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1089" t="698" r="1098" b="724" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="63" serifProbability="255" wordPenalty="5" meanStrokeWidth="65">(</charParams>
+<charParams l="1100" t="698" r="1112" b="720" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="61" serifProbability="33" wordPenalty="5" meanStrokeWidth="65">6</charParams>
+<charParams l="1114" t="716" r="1119" b="723" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="5" meanStrokeWidth="65">,</charParams>
+<charParams l="1122" t="698" r="1134" b="720" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="55" wordPenalty="5" meanStrokeWidth="65">6</charParams>
+<charParams l="1136" t="698" r="1144" b="724" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="99" serifProbability="255" wordPenalty="5" meanStrokeWidth="65">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="217" height="206">
+<text id="{24A829C0-48F2-485D-948A-3975C8CC5BDC}">
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1371" l="1207" t="665" r="1243" b="690"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1207" t="665" r="1220" b="685" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="57" serifProbability="46" wordPenalty="9" meanStrokeWidth="51">2</charParams>
+<charParams l="1223" t="682" r="1228" b="690" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="55" serifProbability="255" wordPenalty="9" meanStrokeWidth="51">,</charParams>
+<charParams l="1230" t="666" r="1243" b="686" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="70" wordPenalty="9" meanStrokeWidth="51">7</charParams></formatting></line></par>
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1444" l="1209" t="698" r="1241" b="725"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1209" t="698" r="1217" b="725" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="64" serifProbability="255" wordPenalty="8" meanStrokeWidth="56">(</charParams>
+<charParams l="1218" t="698" r="1232" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="56" wordPenalty="8" meanStrokeWidth="56">4</charParams>
+<charParams l="1233" t="698" r="1241" b="724" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="83" serifProbability="255" wordPenalty="8" meanStrokeWidth="56">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" bottomBorder="White" width="218" height="206">
+<text id="{32A20306-AB94-4563-9145-C41D21350ED1}">
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1371" l="1326" t="665" r="1341" b="686"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1326" t="665" r="1341" b="686" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="56" wordPenalty="0" meanStrokeWidth="56">4</charParams></formatting></line></par>
+<par align="Center" lineSpacing="1150" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1440" l="1305" t="698" r="1361" b="725"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1305" t="698" r="1315" b="725" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="255" wordPenalty="9" meanStrokeWidth="64">(</charParams>
+<charParams l="1315" t="698" r="1330" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="45" serifProbability="56" wordPenalty="9" meanStrokeWidth="64">4</charParams>
+<charParams l="1331" t="716" r="1336" b="723" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="62" serifProbability="255" wordPenalty="9" meanStrokeWidth="64">,</charParams>
+<charParams l="1338" t="698" r="1350" b="720" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="69" wordPenalty="9" meanStrokeWidth="64">3</charParams>
+<charParams l="1352" t="698" r="1361" b="725" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="93" serifProbability="255" wordPenalty="9" meanStrokeWidth="64">)</charParams></formatting></line></par>
+</text></cell>
+<cell topBorder="White" rightBorder="White" bottomBorder="White" width="225" height="206">
+<text id="{43F86E76-32F3-4D30-B0A6-4EB5BCE01920}">
+<par align="Center" lineSpacing="1332" style="{ECFB634E-391F-4D83-AC34-20B3035582BF}">
+<line baseline="1372" l="1436" t="665" r="1449" b="686"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1436" t="665" r="1449" b="686" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="100" serifProbability="46" wordPenalty="0" meanStrokeWidth="46">2</charParams></formatting></line>
+<line baseline="1446" l="1426" t="698" r="1458" b="725"><formatting lang="GermanStandard" ff="Times New Roman" fs="10.">
+<charParams l="1426" t="698" r="1435" b="725" wordFirst="1" wordLeftMost="1" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="60" serifProbability="255" wordPenalty="8" meanStrokeWidth="48">(</charParams>
+<charParams l="1436" t="698" r="1449" b="719" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="56" serifProbability="46" wordPenalty="8" meanStrokeWidth="48">2</charParams>
+<charParams l="1451" t="698" r="1458" b="725" wordFromDictionary="0" wordNormal="0" wordNumeric="1" wordIdentifier="0" charConfidence="62" serifProbability="255" wordPenalty="8" meanStrokeWidth="48">)</charParams></formatting></line></par>
+</text></cell></row>
+</block>
+<block blockType="Separator" l="297" t="195" r="1496" b="199"><region><rect l="297" t="195" r="1203" b="196"/><rect l="297" t="196" r="1496" b="199"/></region>
+<separator type="Black" thickness="6"><start x="297" y="197"/><end x="1496" y="197"/>
+</separator>
+</block>
+<block blockType="Separator" l="297" t="377" r="1496" b="381"><region><rect l="297" t="377" r="450" b="378"/><rect l="297" t="378" r="1496" b="380"/><rect l="450" t="380" r="1496" b="381"/></region>
+<separator type="Black" thickness="5"><start x="297" y="379"/><end x="1496" y="379"/>
+</separator>
+</block>
+<block blockType="Separator" l="627" t="195" r="631" b="725"><region><rect l="627" t="195" r="630" b="487"/><rect l="628" t="487" r="631" b="550"/><rect l="627" t="550" r="630" b="599"/><rect l="628" t="599" r="631" b="606"/><rect l="627" t="606" r="630" b="725"/></region>
+<separator type="Black" thickness="6"><start x="629" y="195"/><end x="629" y="725"/>
+</separator>
+</block>
+<block blockType="Separator" l="736" t="279" r="739" b="725"><region><rect l="736" t="279" r="739" b="329"/><rect l="736" t="329" r="738" b="330"/><rect l="736" t="330" r="739" b="725"/></region>
+<separator type="Black" thickness="5"><start x="737" y="279"/><end x="737" y="725"/>
+</separator>
+</block>
+<block blockType="Separator" l="844" t="241" r="847" b="726"><region><rect l="844" t="241" r="847" b="477"/><rect l="845" t="477" r="847" b="518"/><rect l="844" t="518" r="847" b="523"/><rect l="844" t="523" r="846" b="602"/><rect l="845" t="602" r="847" b="614"/><rect l="844" t="614" r="846" b="647"/><rect l="845" t="647" r="847" b="662"/><rect l="844" t="662" r="846" b="726"/></region>
+<separator type="Black" thickness="4"><start x="845" y="241"/><end x="845" y="726"/>
+</separator>
+</block>
+<block blockType="Separator" l="953" t="279" r="955" b="725"><region><rect l="953" t="279" r="955" b="725"/></region>
+<separator type="Black" thickness="4"><start x="954" y="279"/><end x="954" y="725"/>
+</separator>
+</block>
+<block blockType="Separator" l="1059" t="196" r="1063" b="726"><region><rect l="1059" t="196" r="1062" b="342"/><rect l="1059" t="342" r="1063" b="726"/></region>
+<separator type="Black" thickness="6"><start x="1061" y="196"/><end x="1061" y="726"/>
+</separator>
+</block>
+<block blockType="Separator" l="1168" t="280" r="1171" b="726"><region><rect l="1168" t="280" r="1171" b="368"/><rect l="1169" t="368" r="1171" b="726"/></region>
+<separator type="Black" thickness="5"><start x="1170" y="280"/><end x="1170" y="726"/>
+</separator>
+</block>
+<block blockType="Separator" l="1277" t="242" r="1280" b="726"><region><rect l="1277" t="242" r="1279" b="377"/><rect l="1277" t="377" r="1280" b="382"/><rect l="1277" t="382" r="1279" b="726"/></region>
+<separator type="Black" thickness="5"><start x="1278" y="242"/><end x="1278" y="726"/>
+</separator>
+</block>
+<block blockType="Separator" l="1386" t="280" r="1389" b="726"><region><rect l="1386" t="280" r="1389" b="726"/></region>
+<separator type="Black" thickness="4"><start x="1387" y="280"/><end x="1387" y="726"/>
+</separator>
+</block>
+<block blockType="Separator" l="411" t="582" r="631" b="586"><region><rect l="411" t="582" r="631" b="586"/></region>
+<separator type="Dotted" thickness="7"><start x="411" y="584"/><end x="631" y="584"/>
+</separator>
+</block>
+</page>
+</document>

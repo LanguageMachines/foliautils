@@ -36,7 +36,7 @@ Usage: FoLiA-abby [options] file/dir
 			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-start processing of 7 files 
+start processing of 8 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/FA-piroska.abby.folia.xml
@@ -44,8 +44,18 @@ start processing of 7 files
 	converted: data/abby/auch.xml into: out/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/FA-hyph.folia.xml
 	converted: data/abby/item.xml into: out/FA-item.folia.xml
+surprise for {20226459-81AF-45FC-96CA-BABE26287C5C} ==> {359683C9-10F9-4038-9634-977B60EBDA58}
+surprise for {28427CF2-BC1E-450C-B5CB-98765ED210D9} ==> {3BCE856A-6334-4FF7-8387-AFF7A55B690C}
+surprise for {344DA10A-2B8B-4496-9D41-7A1E980DD2AF} ==> {1C0C3BFA-12AC-49E2-BD1E-615D1937DAB6}
+surprise for {57AC2113-A5DA-4132-AFEA-C5C865FEE027} ==> {5B105EC0-D479-45BF-A645-5A4A4E5CA0AD}
+surprise for {E3A11DE4-4AE9-4429-BF7F-F203EFEFEF27} ==> {47A61AA0-B0C0-43A2-B99D-511D7C45C8F4}
+surprise for {E86C9154-8C88-43CC-86F7-F52BFAE78A09} ==> {C9CFC7E0-9878-48FC-94B9-870A50C65816}
+surprise for {ECFB634E-391F-4D83-AC34-20B3035582BF} ==> {9E21A889-E123-4345-957D-5C8434C624D4}
+surprise for {F807A41E-6AEB-4417-B724-AF91782CA932} ==> {8ACB8D0A-274B-4E01-A858-39CBF93A4311}
+surprise for {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF} ==> {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}
+	converted: data/abby/table.xml into: out/FA-table.folia.xml
 done
-start processing of 7 files 
+start processing of 8 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/break/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/break/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/break/FA-piroska.abby.folia.xml
@@ -53,8 +63,18 @@ start processing of 7 files
 	converted: data/abby/auch.xml into: out/break/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/break/FA-hyph.folia.xml
 	converted: data/abby/item.xml into: out/break/FA-item.folia.xml
+surprise for {20226459-81AF-45FC-96CA-BABE26287C5C} ==> {359683C9-10F9-4038-9634-977B60EBDA58}
+surprise for {28427CF2-BC1E-450C-B5CB-98765ED210D9} ==> {3BCE856A-6334-4FF7-8387-AFF7A55B690C}
+surprise for {344DA10A-2B8B-4496-9D41-7A1E980DD2AF} ==> {1C0C3BFA-12AC-49E2-BD1E-615D1937DAB6}
+surprise for {57AC2113-A5DA-4132-AFEA-C5C865FEE027} ==> {5B105EC0-D479-45BF-A645-5A4A4E5CA0AD}
+surprise for {E3A11DE4-4AE9-4429-BF7F-F203EFEFEF27} ==> {47A61AA0-B0C0-43A2-B99D-511D7C45C8F4}
+surprise for {E86C9154-8C88-43CC-86F7-F52BFAE78A09} ==> {C9CFC7E0-9878-48FC-94B9-870A50C65816}
+surprise for {ECFB634E-391F-4D83-AC34-20B3035582BF} ==> {9E21A889-E123-4345-957D-5C8434C624D4}
+surprise for {F807A41E-6AEB-4417-B724-AF91782CA932} ==> {8ACB8D0A-274B-4E01-A858-39CBF93A4311}
+surprise for {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF} ==> {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}
+	converted: data/abby/table.xml into: out/break/FA-table.folia.xml
 done
-start processing of 7 files 
+start processing of 8 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/hyph/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/hyph/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/hyph/FA-piroska.abby.folia.xml
@@ -62,8 +82,18 @@ start processing of 7 files
 	converted: data/abby/auch.xml into: out/hyph/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/hyph/FA-hyph.folia.xml
 	converted: data/abby/item.xml into: out/hyph/FA-item.folia.xml
+surprise for {20226459-81AF-45FC-96CA-BABE26287C5C} ==> {359683C9-10F9-4038-9634-977B60EBDA58}
+surprise for {28427CF2-BC1E-450C-B5CB-98765ED210D9} ==> {3BCE856A-6334-4FF7-8387-AFF7A55B690C}
+surprise for {344DA10A-2B8B-4496-9D41-7A1E980DD2AF} ==> {1C0C3BFA-12AC-49E2-BD1E-615D1937DAB6}
+surprise for {57AC2113-A5DA-4132-AFEA-C5C865FEE027} ==> {5B105EC0-D479-45BF-A645-5A4A4E5CA0AD}
+surprise for {E3A11DE4-4AE9-4429-BF7F-F203EFEFEF27} ==> {47A61AA0-B0C0-43A2-B99D-511D7C45C8F4}
+surprise for {E86C9154-8C88-43CC-86F7-F52BFAE78A09} ==> {C9CFC7E0-9878-48FC-94B9-870A50C65816}
+surprise for {ECFB634E-391F-4D83-AC34-20B3035582BF} ==> {9E21A889-E123-4345-957D-5C8434C624D4}
+surprise for {F807A41E-6AEB-4417-B724-AF91782CA932} ==> {8ACB8D0A-274B-4E01-A858-39CBF93A4311}
+surprise for {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF} ==> {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}
+	converted: data/abby/table.xml into: out/hyph/FA-table.folia.xml
 done
-start processing of 7 files 
+start processing of 8 files 
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/metric/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/levi010geil01_01_Deel500.xml into: out/metric/FA-levi010geil01_01_Deel500.folia.xml
 	converted: data/abby/piroska.abby.xml into: out/metric/FA-piroska.abby.folia.xml
@@ -71,6 +101,16 @@ start processing of 7 files
 	converted: data/abby/auch.xml into: out/metric/FA-auch.folia.xml
 	converted: data/abby/hyph.xml into: out/metric/FA-hyph.folia.xml
 	converted: data/abby/item.xml into: out/metric/FA-item.folia.xml
+surprise for {20226459-81AF-45FC-96CA-BABE26287C5C} ==> {359683C9-10F9-4038-9634-977B60EBDA58}
+surprise for {28427CF2-BC1E-450C-B5CB-98765ED210D9} ==> {3BCE856A-6334-4FF7-8387-AFF7A55B690C}
+surprise for {344DA10A-2B8B-4496-9D41-7A1E980DD2AF} ==> {1C0C3BFA-12AC-49E2-BD1E-615D1937DAB6}
+surprise for {57AC2113-A5DA-4132-AFEA-C5C865FEE027} ==> {5B105EC0-D479-45BF-A645-5A4A4E5CA0AD}
+surprise for {E3A11DE4-4AE9-4429-BF7F-F203EFEFEF27} ==> {47A61AA0-B0C0-43A2-B99D-511D7C45C8F4}
+surprise for {E86C9154-8C88-43CC-86F7-F52BFAE78A09} ==> {C9CFC7E0-9878-48FC-94B9-870A50C65816}
+surprise for {ECFB634E-391F-4D83-AC34-20B3035582BF} ==> {9E21A889-E123-4345-957D-5C8434C624D4}
+surprise for {F807A41E-6AEB-4417-B724-AF91782CA932} ==> {8ACB8D0A-274B-4E01-A858-39CBF93A4311}
+surprise for {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF} ==> {FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}
+	converted: data/abby/table.xml into: out/metric/FA-table.folia.xml
 done
 Processed :out/FA-piroska.abby.folia.xml into txtout1/FA-piroska.abby.folia.xml.txt still 0 files to go.
 Processed :out/FA-piroska.abby.folia.xml into txtout2/FA-piroska.abby.folia.xml.txt still 0 files to go.
