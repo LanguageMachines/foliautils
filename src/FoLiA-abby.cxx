@@ -712,12 +712,32 @@ bool process_paragraphs( folia::FoliaElement *root,
   return didit;
 }
 
+bool process_table( folia::FoliaElement *root,
+		    const xmlNode *tab,
+		    const map<string,formatting_info>& font_styles ){
+  folia::KWargs args;
+  args["generate_id"] = root->id();
+  folia::Table *table = root->add_child<folia::Table>( args );
+  list<xmlNode*> rows = TiCC::FindNodes( tab, ".//*:row" );
+  for ( const auto& row : rows ){
+    args["generate_id"] = table->id();
+    folia::Row *f_row = table->add_child<folia::Row>( args );
+    list<xmlNode*> cells = TiCC::FindNodes( row, ".//*:cell" );
+    for ( const auto& cell : cells ){
+      args["generate_id"] = f_row->id();
+      folia::Cell *f_cell = f_row->add_child<folia::Cell>( args );
+      list<xmlNode*> paragraphs = TiCC::FindNodes( cell, ".//*:par" );
+      process_paragraphs( f_cell , paragraphs, font_styles );
+    }
+  }
+  return true;
+}
+
 bool process_blocks( folia::FoliaElement *root,
 		     const list<xmlNode *>& blocks,
 		     const map<string,formatting_info>& font_styles ){
   bool result = true;
   for ( const auto& block_node : blocks ){
-    //    cerr << "FOUND block: " << TiCC::getAttribute( block_node, "blockType" ) << endl;
     string block_type = TiCC::getAttribute( block_node, "blockType" );
     if ( block_type == "Text" ){
       // folia::KWargs d_args;
@@ -740,7 +760,7 @@ bool process_blocks( folia::FoliaElement *root,
       // skip
     }
     else if ( block_type == "Table" ){
-      //      process_table( root, paragraphs, font_styles );
+      process_table( root, block_node, font_styles );
     }
     else {
 #pragma omp critical
