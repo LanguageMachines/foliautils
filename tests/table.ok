@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-table" generator="libfolia-v2.10" version="2.5.0">
+  <metadata type="native">
+    <annotations>
+      <paragraph-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </paragraph-annotation>
+      <division-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </division-annotation>
+      <string-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </string-annotation>
+      <style-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </style-annotation>
+      <hyphenation-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hyphenation-annotation>
+      <hspace-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </hspace-annotation>
+      <lang-annotation set="FoLiA-abby-set">
+        <annotator processor="FoLiA-abby.1"/>
+      </lang-annotation>
+      <table-annotation/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2021-08-11T17:12:34" command="FoLiA-abby " folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.18">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.10"/>
+      </processor>
+    </provenance>
+    <meta id="abby_file">table.xml</meta>
+    <foreign-data>
+      <paragraphStyles xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml">
+        <paragraphStyle id="{ECFB634E-391F-4D83-AC34-20B3035582BF}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|1" mainFontStyleId="{9E21A889-E123-4345-957D-5C8434C624D4}" role="other" align="Left" startIndent="1600" leftIndent="0" rightIndent="0" lineSpacing="1781" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{344DA10A-2B8B-4496-9D41-7A1E980DD2AF}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|1" mainFontStyleId="{1C0C3BFA-12AC-49E2-BD1E-615D1937DAB6}" role="text" align="Left" startIndent="1600" leftIndent="0" rightIndent="0" lineSpacing="1781" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{28427CF2-BC1E-450C-B5CB-98765ED210D9}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|2" mainFontStyleId="{3BCE856A-6334-4FF7-8387-AFF7A55B690C}" role="text" align="Left" after="450" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1350" lineSpacingRatio="1.0700000524520874" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{E3A11DE4-4AE9-4429-BF7F-F203EFEFEF27}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|1" mainFontStyleId="{47A61AA0-B0C0-43A2-B99D-511D7C45C8F4}" role="tableCaption" align="Left" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1150" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{20226459-81AF-45FC-96CA-BABE26287C5C}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|3" mainFontStyleId="{359683C9-10F9-4038-9634-977B60EBDA58}" role="text" align="Left" after="1900" startIndent="0" leftIndent="0" rightIndent="0" lineSpacing="1380" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|4" mainFontStyleId="{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFE}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{57AC2113-A5DA-4132-AFEA-C5C865FEE027}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|5" mainFontStyleId="{5B105EC0-D479-45BF-A645-5A4A4E5CA0AD}" role="text" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{F807A41E-6AEB-4417-B724-AF91782CA932}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|2" mainFontStyleId="{8ACB8D0A-274B-4E01-A858-39CBF93A4311}" role="tableCaption" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+        <paragraphStyle id="{E86C9154-8C88-43CC-86F7-F52BFAE78A09}" name="{104F9AAA-E4CE-4376-A4DE-5A1AD40CBFC8}|2" mainFontStyleId="{C9CFC7E0-9878-48FC-94B9-870A50C65816}" role="other" align="Left" startIndent="0" leftIndent="0" rightIndent="0" fixedLineSpacing="0">
+</paragraphStyle>
+      </paragraphStyles>
+    </foreign-data>
+  </metadata>
+  <text xml:id="FA-table.text">
+    <div xml:id="FA-table.text.div.1">
+      <table xml:id="FA-table.text.div.1.table.1">
+        <row xml:id="FA-table.text.div.1.table.1.row.1">
+          <cell xml:id="FA-table.text.div.1.table.1.row.1.cell.1"/>
+          <cell xml:id="FA-table.text.div.1.table.1.row.1.cell.2">
+            <p xml:id="FA-table.text.div.1.table.1.row.1.cell.2.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.1.cell.2.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>1. für männliche Tagelöhner</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.1.cell.3">
+            <p xml:id="FA-table.text.div.1.table.1.row.1.cell.3.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.1.cell.3.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>2. für weibliche Tagelöhner</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+        </row>
+        <row xml:id="FA-table.text.div.1.table.1.row.2">
+          <cell xml:id="FA-table.text.div.1.table.1.row.2.cell.1">
+            <p xml:id="FA-table.text.div.1.table.1.row.2.cell.1.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.2.cell.1.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>im Sommer</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.2.cell.2">
+            <p xml:id="FA-table.text.div.1.table.1.row.2.cell.2.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.2.cell.2.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>im Winter</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.2.cell.3">
+            <p xml:id="FA-table.text.div.1.table.1.row.2.cell.3.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.2.cell.3.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>im Sommer</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.2.cell.4">
+            <p xml:id="FA-table.text.div.1.table.1.row.2.cell.4.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.2.cell.4.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>im Winter</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+        </row>
+        <row xml:id="FA-table.text.div.1.table.1.row.3">
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.1">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.1.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.1.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>ohne</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.1.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.1.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Kost</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.2">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.2.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.2.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>bei</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.2.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Bekösti<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.2.p.1.t-str.3"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>gung</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.3">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.3.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.3.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>ohne</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.3.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.3.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Kost</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.4">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.4.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.4.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>bei</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.4.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Bekösti<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.4.p.1.t-str.3"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>gung</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.5">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.5.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.5.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>ohne</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.5.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.5.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Kost</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.6">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.6.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.6.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>bei</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.6.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Bekösti<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.6.p.1.t-str.3"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>gung</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.7">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.7.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.7.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>ohne</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.7.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.7.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Kost</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.3.cell.8">
+            <p xml:id="FA-table.text.div.1.table.1.row.3.cell.8.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.8.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>bei</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.8.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>Bekösti<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.3.cell.8.p.1.t-str.3"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="9." subset="font_size"/>gung</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+        </row>
+        <row xml:id="FA-table.text.div.1.table.1.row.4">
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.1">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.1.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.1.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>1) in den Kreisen Heyde<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.1.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>krug und Niederung</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Right" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.2">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.2.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.2.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>14,5</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.2.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(16,1)</t-style><t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>1</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.3">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.3.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.3.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6,5</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.3.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(8,8)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.4">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.4.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.4.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>8,3</t-style><t-style tag="token"><t-lang class="GermanStandard"/><feat class="superscript" subset="font_typeface"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>23</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.4.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.4.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(9)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.5">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.5.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.5.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>3,5</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.5.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(4,8)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.6">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.6.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.6.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>10</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Right" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.6.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.6.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(9)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.7">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.7.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.7.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>5</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.7.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(5,2)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.8">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.8.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.8.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.8.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(6,5)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.4.cell.9">
+            <p xml:id="FA-table.text.div.1.table.1.row.4.cell.9.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.9.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>3</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.4.cell.9.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(3,2)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+        </row>
+        <row xml:id="FA-table.text.div.1.table.1.row.5">
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.1">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.1.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.1.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>2) in den Kreisen Rag<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.1.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>nit, Tilsit, Gumbin<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.1.p.1.t-str.3"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>nen ..........</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Right" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.2">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.2.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.2.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>8,5</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.2.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.2.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(13)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.3">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.3.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.3.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6,7</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.3.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(8,5)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.4">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.4.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.4.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6,2</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.4.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(8)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.5">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.5.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.5.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>4</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.5.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.5.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(5,2)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.6">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.6.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.6.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6,5</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.6.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(6,8)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.7">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.7.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.7.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>3,3</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.7.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(5,2)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.8">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.8.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.8.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>4,7</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.8.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.8.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(4,8)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.5.cell.9">
+            <p xml:id="FA-table.text.div.1.table.1.row.5.cell.9.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.9.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>2,3</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.5.cell.9.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(2,8)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+        </row>
+        <row xml:id="FA-table.text.div.1.table.1.row.6">
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.1">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.1.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.1.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>3) in den Kreisen Inster<t-hbr/></t-style></t-str><t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.1.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>burg und Darkehmen</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Right" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.2">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.2.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.2.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>10</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.2.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.2.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(15,5)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.3">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.3.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.3.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.3.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(10,6)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.4">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.4.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.4.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>6,7</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.4.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(6,6)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.5">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.5.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.5.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>3,2</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.5.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(4,5)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.6">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.6.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.6.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>5,5</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.6.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(6,6)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.7">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.7.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.7.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>2,7</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.7.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.7.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(4)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.8">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.8.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.8.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>4</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.8.p.2">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.8.p.2.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(4,3)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+          <cell xml:id="FA-table.text.div.1.table.1.row.6.cell.9">
+            <p xml:id="FA-table.text.div.1.table.1.row.6.cell.9.p.1">
+              <t class="OCR">
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.9.p.1.t-str.1"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>2</t-style></t-str>
+<t-str xml:id="FA-table.text.div.1.table.1.row.6.cell.9.p.1.t-str.2"><t-style><t-lang class="GermanStandard"/><feat class="Times New Roman" subset="font_family"/><feat class="10." subset="font_size"/>(2)</t-style></t-str></t>
+              <feat class="{ECFB634E-391F-4D83-AC34-20B3035582BF}" subset="par_style"/>
+              <feat class="Center" subset="par_align"/>
+            </p>
+          </cell>
+        </row>
+      </table>
+    </div>
+  </text>
+</FoLiA>
