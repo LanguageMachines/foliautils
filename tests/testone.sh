@@ -9,6 +9,8 @@ OK="\033[1;32m OK  \033[0m"
 FAIL="\033[1;31m  FAILED  \033[0m"
 KNOWNFAIL="\033[1;33m  KNOWN FAILURES  \033[0m"
 
+err_cnt=0
+
 for file in $1
 do if test -x $file
    then
@@ -25,6 +27,7 @@ do if test -x $file
 	   then
 	       echo -e $FAIL;
 	       echo "differences logged in $file.diff";
+	       erc_cnt=$(($err_cnt+1))
 	   else
 	       echo -e $KNOWNFAIL;
 	       \rm -f $file.diff
@@ -37,3 +40,4 @@ do if test -x $file
        echo "file $file not found"
    fi
 done
+exit $err_cnt

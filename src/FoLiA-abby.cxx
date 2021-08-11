@@ -543,9 +543,9 @@ void append_metric( folia::Paragraph *root,
   root->add_child<folia::Metric>( args );
 }
 
-bool process_paragraph( folia::Paragraph *paragraph,
-			xmlNode *par,
-			const map<string,formatting_info>& font_styles ){
+bool process_one_paragraph( folia::Paragraph *paragraph,
+			    xmlNode *par,
+			    const map<string,formatting_info>& font_styles ){
   formatting_info par_font;
   try {
     string par_style = TiCC::getAttribute( par, "style" );
@@ -680,16 +680,9 @@ bool process_paragraph( folia::Paragraph *paragraph,
   return true;
 }
 
-bool process_page( folia::FoliaElement *root,
-		   xmlNode *block,
-		   const map<string,formatting_info>& font_styles ){
-  list<xmlNode*> paragraphs = TiCC::FindNodes( block, ".//*:par" );
-  if ( verbose ){
-#pragma omp critical
-    {
-      cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
-    }
-  }
+bool process_paragraphs( folia::FoliaElement *root,
+			 const list<xmlNode *>& paragraphs,
+			 const map<string,formatting_info>& font_styles ){
   bool didit = false;
   for ( const auto& par_node : paragraphs ){
     folia::KWargs args;
@@ -709,7 +702,7 @@ bool process_page( folia::FoliaElement *root,
       args["class"] = align;
       paragraph->add_child<folia::Feature>( args );
     }
-    if ( process_paragraph( paragraph, par_node, font_styles ) ){
+    if ( process_one_paragraph( paragraph, par_node, font_styles ) ){
       didit = true;
     }
     else {
@@ -717,6 +710,56 @@ bool process_page( folia::FoliaElement *root,
     }
   }
   return didit;
+}
+
+bool process_blocks( folia::FoliaElement *root,
+		     const list<xmlNode *>& blocks,
+		     const map<string,formatting_info>& font_styles ){
+  bool result = true;
+  for ( const auto& block_node : blocks ){
+    //    cerr << "FOUND block: " << TiCC::getAttribute( block_node, "blockType" ) << endl;
+    list<xmlNode*> paragraphs = TiCC::FindNodes( block_node, ".//*:par" );
+    if ( !paragraphs.empty() ){
+      if ( verbose ){
+#pragma omp critical
+	{
+	  cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
+	}
+      }
+      process_paragraphs( root, paragraphs, font_styles );
+    }
+  }
+  return result;
+}
+
+bool process_one_page( folia::FoliaElement *root,
+		       xmlNode *block,
+		       const map<string,formatting_info>& font_styles ){
+  list<xmlNode*> blocks = TiCC::FindNodes( block, ".//*:block" );
+  if ( !blocks.empty() ){
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "\tfound " << blocks.size() << " blocks" << endl;
+      }
+    }
+    return process_blocks( root, blocks, font_styles );
+  }
+  list<xmlNode*> paragraphs = TiCC::FindNodes( block, ".//*:par" );
+  if ( !paragraphs.empty() ){
+    if ( verbose ){
+#pragma omp critical
+      {
+	cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
+      }
+    }
+    return process_paragraphs( root, paragraphs, font_styles );
+  }
+#pragma omp critical
+  {
+    cout << "\tfound NO blocks or paragraphs" << endl;
+  }
+  return false;
 }
 
 map<string,formatting_info> extract_formatting_info( xmlNode *root ){
@@ -830,7 +873,7 @@ bool convert_abbyxml( const string& fileName,
   for ( const auto& page : pages ){
     args["generate_id"] = text->id();
     folia::Division *div = text->add_child<folia::Division>( args );
-    process_page( div, page, font_styles );
+    process_one_page( div, page, font_styles );
   }
 
   string outName;

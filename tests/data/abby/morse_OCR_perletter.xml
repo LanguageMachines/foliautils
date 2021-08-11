@@ -536,25 +536,34 @@
 	</line>
       </par>
       <par align="Justified" startIndent="1100" lineSpacing="1069">
-	  <line baseline="1462" l="864" t="1412" r="1912" b="1472"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
+	<line baseline="1462" l="864" t="1412" r="1912" b="1472">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
 	    <charParams l="864" t="1414" r="899" b="1465">A</charParams>
 	    <charParams l="906" t="1429" r="939" b="1463">m</charParams>
-	    <charParams l="940" t="1427" r="949" b="1463" suspicious="1"> </charParams></formatting><formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
+	    <charParams l="940" t="1427" r="949" b="1463" suspicious="1"> </charParams>
+	  </formatting>
+	  <formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
 	    <charParams l="950" t="1427" r="981" b="1463">o</charParams>
 	    <charParams l="989" t="1427" r="1023" b="1462">t</charParams>
 	    <charParams l="1031" t="1428" r="1065" b="1464">a</charParams>
 	    <charParams l="1066" t="1428" r="1075" b="1464" suspicious="1"> </charParams>
 	    <charParams l="1076" t="1428" r="1103" b="1463">p</charParams>
 	    <charParams l="1115" t="1427" r="1140" b="1462">e</charParams>
-	    <charParams l="1149" t="1446" r="1166" b="1472">,</charParams></formatting><formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
-	    <charParams l="1167" t="1429" r="1207" b="1472"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+	    <charParams l="1149" t="1446" r="1166" b="1472">,</charParams>
+	  </formatting>
+	  <formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+	    <charParams l="1167" t="1429" r="1207" b="1472"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
 	    <charParams l="1208" t="1429" r="1236" b="1462">a</charParams>
 	    <charParams l="1237" t="1423" r="1274" b="1464"> </charParams>
 	    <charParams l="1275" t="1423" r="1297" b="1464">t</charParams>
 	    <charParams l="1301" t="1429" r="1337" b="1463">o</charParams>
 	    <charParams l="1338" t="1429" r="1389" b="1461">w</charParams>
 	    <charParams l="1396" t="1428" r="1425" b="1461">n</charParams>
-	    <charParams l="1426" t="1428" r="1478" b="1461"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1426" t="1428" r="1478" b="1461"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="1479" t="1428" r="1509" b="1461">n</charParams>
 	    <charParams l="1513" t="1428" r="1538" b="1462">e</charParams>
 	    <charParams l="1543" t="1428" r="1572" b="1463">a</charParams>
@@ -566,8 +575,11 @@
 	    <charParams l="1790" t="1413" r="1825" b="1462">b</charParams>
 	    <charParams l="1825" t="1429" r="1855" b="1463">e</charParams>
 	    <charParams l="1860" t="1428" r="1890" b="1463">z</charParams>
-	  <charParams l="1897" t="1447" r="1912" b="1471">,</charParams></formatting></line>
-	  <line baseline="1534" l="812" t="1481" r="1911" b="1552"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1897" t="1447" r="1912" b="1471">,</charParams>
+	  </formatting>
+	</line>
+	<line baseline="1534" l="812" t="1481" r="1911" b="1552">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="812" t="1484" r="824" b="1535">l</charParams>
 	    <charParams l="828" t="1502" r="853" b="1552">y</charParams>
 	    <charParams l="853" t="1483" r="867" b="1535">i</charParams>
@@ -605,8 +617,11 @@
 	    <charParams l="1795" t="1484" r="1829" b="1534">S</charParams>
 	    <charParams l="1829" t="1501" r="1859" b="1535">e</charParams>
 	    <charParams l="1863" t="1498" r="1889" b="1532">a</charParams>
-	  <charParams l="1897" t="1518" r="1911" b="1544">,</charParams></formatting></line>
-	  <line baseline="1605" l="811" t="1552" r="1913" b="1620"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1897" t="1518" r="1911" b="1544">,</charParams>
+	  </formatting>
+	</line>
+	<line baseline="1605" l="811" t="1552" r="1913" b="1620">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="811" t="1554" r="824" b="1604">i</charParams>
 	    <charParams l="824" t="1572" r="852" b="1605">n</charParams>
 	    <charParams l="853" t="1563" r="869" b="1605"> </charParams>
@@ -641,8 +656,11 @@
 	    <charParams l="1783" t="1571" r="1811" b="1605">a</charParams>
 	    <charParams l="1814" t="1572" r="1839" b="1605">r</charParams>
 	    <charParams l="1840" t="1571" r="1882" b="1605"> </charParams>
-	  <charParams l="1883" t="1571" r="1913" b="1604">a</charParams></formatting></line>
-	  <line baseline="1676" l="811" t="1624" r="1914" b="1691"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1883" t="1571" r="1913" b="1604">a</charParams>
+	  </formatting>
+	</line>
+	<line baseline="1676" l="811" t="1624" r="1914" b="1691">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="811" t="1625" r="843" b="1676" suspicious="1">r</charParams>
 	    <charParams l="811" t="1625" r="843" b="1676" suspicious="1">i</charParams>
 	    <charParams l="843" t="1643" r="868" b="1674">v</charParams>
@@ -681,8 +699,11 @@
 	    <charParams l="1782" t="1642" r="1814" b="1676">o</charParams>
 	    <charParams l="1820" t="1642" r="1852" b="1676">u</charParams>
 	    <charParams l="1859" t="1641" r="1888" b="1673">n</charParams>
-	  <charParams l="1893" t="1654" r="1914" b="1665">¬</charParams></formatting></line>
-	  <line baseline="1746" l="810" t="1695" r="1913" b="1765"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1893" t="1654" r="1914" b="1665">¬</charParams>
+	  </formatting>
+	</line>
+	<line baseline="1746" l="810" t="1695" r="1913" b="1765">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="810" t="1709" r="828" b="1748">t</charParams>
 	    <charParams l="828" t="1713" r="848" b="1746">r</charParams>
 	    <charParams l="850" t="1715" r="873" b="1765">y</charParams>
@@ -706,12 +727,16 @@
 	    <charParams l="1324" t="1713" r="1354" b="1747">e</charParams>
 	    <charParams l="1359" t="1696" r="1393" b="1746">d</charParams>
 	    <charParams l="1400" t="1734" r="1416" b="1746">.</charParams>
-	    <charParams l="1417" t="1697" r="1452" b="1748"> </charParams></formatting><formatting lang="OldEnglish" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1417" t="1697" r="1452" b="1748"> </charParams>
+	  </formatting>
+	  <formatting lang="OldEnglish" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="1453" t="1697" r="1501" b="1748">L</charParams>
 	    <charParams l="1501" t="1711" r="1532" b="1744">a</charParams>
 	    <charParams l="1535" t="1704" r="1553" b="1745">t</charParams>
 	    <charParams l="1561" t="1734" r="1575" b="1747">.</charParams>
-	    <charParams l="1576" t="1716" r="1589" b="1758" suspicious="1"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1576" t="1716" r="1589" b="1758" suspicious="1"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 	    <charParams l="1590" t="1716" r="1619" b="1758">4</charParams>
 	    <charParams l="1627" t="1734" r="1640" b="1749">.</charParams>
 	    <charParams l="1663" t="1714" r="1684" b="1748" suspicious="1">1</charParams>
@@ -721,85 +746,107 @@
 	    <charParams l="1801" t="1716" r="1824" b="1760">3</charParams>
 	    <charParams l="1836" t="1734" r="1849" b="1747">.</charParams>
 	    <charParams l="1860" t="1696" r="1893" b="1747" suspicious="1">8</charParams>
-	    <charParams l="1901" t="1731" r="1913" b="1746">.</charParams></formatting></line></par>
-	    <par align="Justified" startIndent="1100" lineSpacing="1069">
-	      <line baseline="1818" l="864" t="1767" r="1911" b="1835"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
-		<charParams l="864" t="1770" r="899" b="1819">A</charParams>
-		<charParams l="907" t="1783" r="943" b="1817">m</charParams>
-		<charParams l="944" t="1782" r="954" b="1817"> </charParams></formatting><formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
-		<charParams l="955" t="1782" r="978" b="1817">p</charParams>
-		<charParams l="987" t="1783" r="1016" b="1817">a</charParams>
-		<charParams l="1029" t="1782" r="1056" b="1817">l</charParams>
-		<charParams l="1066" t="1783" r="1095" b="1817" suspicious="1">l</charParams>
-		<charParams l="1104" t="1783" r="1135" b="1818" suspicious="1">a</charParams>
-		<charParams l="1143" t="1804" r="1159" b="1829">,</charParams></formatting><formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
-		<charParams l="1160" t="1768" r="1198" b="1829"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
-		<charParams l="1199" t="1768" r="1232" b="1818">b</charParams>
-		<charParams l="1234" t="1786" r="1267" b="1835">y</charParams>
-		<charParams l="1268" t="1768" r="1300" b="1835"> </charParams>
-		<charParams l="1301" t="1768" r="1333" b="1817" suspicious="1">s</charParams>
-		<charParams l="1324" t="1785" r="1358" b="1817">o</charParams>
-		<charParams l="1363" t="1784" r="1416" b="1817">m</charParams>
-		<charParams l="1423" t="1785" r="1451" b="1819">e</charParams>
-		<charParams l="1452" t="1783" r="1491" b="1819"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
-		<charParams l="1492" t="1783" r="1521" b="1818">a</charParams>
-		<charParams l="1525" t="1784" r="1556" b="1818">u</charParams>
-		<charParams l="1560" t="1778" r="1584" b="1818">t</charParams>
-		<charParams l="1586" t="1767" r="1616" b="1817">h</charParams>
-		<charParams l="1623" t="1784" r="1654" b="1817">o</charParams>
-		<charParams l="1656" t="1784" r="1683" b="1818">r</charParams>
-		<charParams l="1685" t="1784" r="1708" b="1818">s</charParams>
-		<charParams l="1709" t="1784" r="1741" b="1818"> </charParams>
-		<charParams l="1742" t="1784" r="1772" b="1818">c</charParams>
-		<charParams l="1775" t="1784" r="1805" b="1818">a</charParams>
-		<charParams l="1808" t="1767" r="1820" b="1818">l</charParams>
-		<charParams l="1828" t="1768" r="1840" b="1817">l</charParams>
-		<charParams l="1847" t="1784" r="1873" b="1819">e</charParams>
-	      <charParams l="1876" t="1767" r="1911" b="1817">d</charParams></formatting></line>
-	      <line baseline="1889" l="815" t="1837" r="1914" b="1907"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." italic="1" color="1783626">
-		<charParams l="815" t="1840" r="857" b="1893">A</charParams>
-		<charParams l="860" t="1859" r="896" b="1888" suspicious="1">m</charParams>
-		<charParams l="892" t="1852" r="925" b="1907">p</charParams>
-		<charParams l="924" t="1859" r="954" b="1888">a</charParams>
-		<charParams l="957" t="1839" r="976" b="1888">l</charParams>
-		<charParams l="973" t="1841" r="988" b="1888">i</charParams>
-		<charParams l="989" t="1859" r="1023" b="1889" suspicious="1">a</charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
-		<charParams l="1027" t="1874" r="1043" b="1900">,</charParams>
-		<charParams l="1044" t="1856" r="1084" b="1900"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
-		<charParams l="1085" t="1856" r="1114" b="1889">a</charParams>
-		<charParams l="1115" t="1855" r="1137" b="1890"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
-		<charParams l="1138" t="1855" r="1168" b="1890">c</charParams>
-		<charParams l="1171" t="1839" r="1186" b="1888">i</charParams>
-		<charParams l="1187" t="1848" r="1210" b="1890">t</charParams>
-		<charParams l="1212" t="1856" r="1244" b="1906">y</charParams>
-		<charParams l="1245" t="1856" r="1270" b="1906"> </charParams>
-		<charParams l="1271" t="1856" r="1300" b="1890">a</charParams>
-		<charParams l="1305" t="1856" r="1338" b="1890">n</charParams>
-		<charParams l="1342" t="1839" r="1379" b="1889">d</charParams>
-		<charParams l="1380" t="1838" r="1407" b="1889"> </charParams>
-		<charParams l="1408" t="1838" r="1437" b="1889">s</charParams>
-		<charParams l="1430" t="1853" r="1456" b="1890">e</charParams>
-		<charParams l="1459" t="1854" r="1488" b="1889">a</charParams>
-		<charParams l="1491" t="1854" r="1527" b="1903">p</charParams>
-		<charParams l="1530" t="1855" r="1564" b="1888">o</charParams>
-		<charParams l="1567" t="1856" r="1591" b="1887">r</charParams>
-		<charParams l="1591" t="1847" r="1611" b="1889">t</charParams>
-		<charParams l="1612" t="1837" r="1638" b="1889"> </charParams>
-		<charParams l="1639" t="1837" r="1651" b="1888" suspicious="1">i</charParams>
-		<charParams l="1660" t="1855" r="1688" b="1888" suspicious="1">n</charParams>
-		<charParams l="1689" t="1839" r="1719" b="1889"> </charParams>
-		<charParams l="1720" t="1839" r="1772" b="1889">G</charParams>
-		<charParams l="1781" t="1851" r="1815" b="1889" suspicious="1">u</charParams>
-		<charParams l="1815" t="1854" r="1845" b="1888">a</charParams>
-		<charParams l="1848" t="1847" r="1868" b="1888">t</charParams>
-		<charParams l="1875" t="1838" r="1887" b="1887">i</charParams>
-	      <charParams l="1894" t="1868" r="1914" b="1877">-</charParams></formatting></line>
-	      <line baseline="1960" l="812" t="1907" r="1911" b="1974"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
-		<charParams l="812" t="1925" r="853" b="1961" suspicious="1">m</charParams>
-		<charParams l="853" t="1927" r="877" b="1960">a</charParams>
-		<charParams l="877" t="1911" r="889" b="1960" suspicious="1">J</charParams>
-		<charParams l="894" t="1925" r="919" b="1960">a</charParams>
-		<charParams l="920" t="1909" r="961" b="1960"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1901" t="1731" r="1913" b="1746">.</charParams>
+	  </formatting>
+	</line>
+      </par>
+      <par align="Justified" startIndent="1100" lineSpacing="1069">
+	<line baseline="1818" l="864" t="1767" r="1911" b="1835">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
+	    <charParams l="864" t="1770" r="899" b="1819">A</charParams>
+	    <charParams l="907" t="1783" r="943" b="1817">m</charParams>
+	    <charParams l="944" t="1782" r="954" b="1817"> </charParams>
+	  </formatting>
+	  <formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" smallcaps="1" color="1783626" spacing="20">
+	    <charParams l="955" t="1782" r="978" b="1817">p</charParams>
+	    <charParams l="987" t="1783" r="1016" b="1817">a</charParams>
+	    <charParams l="1029" t="1782" r="1056" b="1817">l</charParams>
+	    <charParams l="1066" t="1783" r="1095" b="1817" suspicious="1">l</charParams>
+	    <charParams l="1104" t="1783" r="1135" b="1818" suspicious="1">a</charParams>
+	    <charParams l="1143" t="1804" r="1159" b="1829">,</charParams>
+	  </formatting>
+	  <formatting lang="OldSpanish" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+	    <charParams l="1160" t="1768" r="1198" b="1829"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+	    <charParams l="1199" t="1768" r="1232" b="1818">b</charParams>
+	    <charParams l="1234" t="1786" r="1267" b="1835">y</charParams>
+	    <charParams l="1268" t="1768" r="1300" b="1835"> </charParams>
+	    <charParams l="1301" t="1768" r="1333" b="1817" suspicious="1">s</charParams>
+	    <charParams l="1324" t="1785" r="1358" b="1817">o</charParams>
+	    <charParams l="1363" t="1784" r="1416" b="1817">m</charParams>
+	    <charParams l="1423" t="1785" r="1451" b="1819">e</charParams>
+	    <charParams l="1452" t="1783" r="1491" b="1819"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1492" t="1783" r="1521" b="1818">a</charParams>
+	    <charParams l="1525" t="1784" r="1556" b="1818">u</charParams>
+	    <charParams l="1560" t="1778" r="1584" b="1818">t</charParams>
+	    <charParams l="1586" t="1767" r="1616" b="1817">h</charParams>
+	    <charParams l="1623" t="1784" r="1654" b="1817">o</charParams>
+	    <charParams l="1656" t="1784" r="1683" b="1818">r</charParams>
+	    <charParams l="1685" t="1784" r="1708" b="1818">s</charParams>
+	    <charParams l="1709" t="1784" r="1741" b="1818"> </charParams>
+	    <charParams l="1742" t="1784" r="1772" b="1818">c</charParams>
+	    <charParams l="1775" t="1784" r="1805" b="1818">a</charParams>
+	    <charParams l="1808" t="1767" r="1820" b="1818">l</charParams>
+	    <charParams l="1828" t="1768" r="1840" b="1817">l</charParams>
+	    <charParams l="1847" t="1784" r="1873" b="1819">e</charParams>
+	    <charParams l="1876" t="1767" r="1911" b="1817">d</charParams>
+	  </formatting>
+	</line>
+	<line baseline="1889" l="815" t="1837" r="1914" b="1907">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." italic="1" color="1783626">
+	    <charParams l="815" t="1840" r="857" b="1893">A</charParams>
+	    <charParams l="860" t="1859" r="896" b="1888" suspicious="1">m</charParams>
+	    <charParams l="892" t="1852" r="925" b="1907">p</charParams>
+	    <charParams l="924" t="1859" r="954" b="1888">a</charParams>
+	    <charParams l="957" t="1839" r="976" b="1888">l</charParams>
+	    <charParams l="973" t="1841" r="988" b="1888">i</charParams>
+	    <charParams l="989" t="1859" r="1023" b="1889" suspicious="1">a</charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1027" t="1874" r="1043" b="1900">,</charParams>
+	    <charParams l="1044" t="1856" r="1084" b="1900"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+	    <charParams l="1085" t="1856" r="1114" b="1889">a</charParams>
+	    <charParams l="1115" t="1855" r="1137" b="1890"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+	    <charParams l="1138" t="1855" r="1168" b="1890">c</charParams>
+	    <charParams l="1171" t="1839" r="1186" b="1888">i</charParams>
+	    <charParams l="1187" t="1848" r="1210" b="1890">t</charParams>
+	    <charParams l="1212" t="1856" r="1244" b="1906">y</charParams>
+	    <charParams l="1245" t="1856" r="1270" b="1906"> </charParams>
+	    <charParams l="1271" t="1856" r="1300" b="1890">a</charParams>
+	    <charParams l="1305" t="1856" r="1338" b="1890">n</charParams>
+	    <charParams l="1342" t="1839" r="1379" b="1889">d</charParams>
+	    <charParams l="1380" t="1838" r="1407" b="1889"> </charParams>
+	    <charParams l="1408" t="1838" r="1437" b="1889">s</charParams>
+	    <charParams l="1430" t="1853" r="1456" b="1890">e</charParams>
+	    <charParams l="1459" t="1854" r="1488" b="1889">a</charParams>
+	    <charParams l="1491" t="1854" r="1527" b="1903">p</charParams>
+	    <charParams l="1530" t="1855" r="1564" b="1888">o</charParams>
+	    <charParams l="1567" t="1856" r="1591" b="1887">r</charParams>
+	    <charParams l="1591" t="1847" r="1611" b="1889">t</charParams>
+	    <charParams l="1612" t="1837" r="1638" b="1889"> </charParams>
+	    <charParams l="1639" t="1837" r="1651" b="1888" suspicious="1">i</charParams>
+	    <charParams l="1660" t="1855" r="1688" b="1888" suspicious="1">n</charParams>
+	    <charParams l="1689" t="1839" r="1719" b="1889"> </charParams>
+	    <charParams l="1720" t="1839" r="1772" b="1889">G</charParams>
+	    <charParams l="1781" t="1851" r="1815" b="1889" suspicious="1">u</charParams>
+	    <charParams l="1815" t="1854" r="1845" b="1888">a</charParams>
+	    <charParams l="1848" t="1847" r="1868" b="1888">t</charParams>
+	    <charParams l="1875" t="1838" r="1887" b="1887">i</charParams>
+	    <charParams l="1894" t="1868" r="1914" b="1877">-</charParams>
+	  </formatting>
+	</line>
+	<line baseline="1960" l="812" t="1907" r="1911" b="1974">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+	    <charParams l="812" t="1925" r="853" b="1961" suspicious="1">m</charParams>
+	    <charParams l="853" t="1927" r="877" b="1960">a</charParams>
+	    <charParams l="877" t="1911" r="889" b="1960" suspicious="1">J</charParams>
+	    <charParams l="894" t="1925" r="919" b="1960">a</charParams>
+	    <charParams l="920" t="1909" r="961" b="1960"> </charParams>
+	  </formatting>
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 		<charParams l="962" t="1909" r="1004" b="1959">G</charParams>
 		<charParams l="1013" t="1926" r="1041" b="1960">u</charParams>
 		<charParams l="1048" t="1909" r="1060" b="1959">l</charParams>
@@ -827,8 +874,11 @@
 		<charParams l="1761" t="1929" r="1811" b="1974"> </charParams>
 		<charParams l="1812" t="1929" r="1835" b="1974">3</charParams>
 		<charParams l="1843" t="1928" r="1871" b="1972">5</charParams>
-	      <charParams l="1880" t="1929" r="1911" b="1963">0</charParams></formatting></line>
-	      <line baseline="2032" l="810" t="1979" r="1911" b="2048"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+		<charParams l="1880" t="1929" r="1911" b="1963">0</charParams>
+	  </formatting>
+	</line>
+	<line baseline="2032" l="810" t="1979" r="1911" b="2048">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 		<charParams l="810" t="1995" r="853" b="2031">m</charParams>
 		<charParams l="855" t="1981" r="866" b="2031">i</charParams>
 		<charParams l="867" t="1982" r="879" b="2031">l</charParams>
@@ -865,8 +915,11 @@
 		<charParams l="1811" t="1996" r="1841" b="2030">a</charParams>
 		<charParams l="1841" t="1982" r="1855" b="2030">l</charParams>
 		<charParams l="1861" t="1997" r="1889" b="2030">a</charParams>
-	      <charParams l="1894" t="2016" r="1911" b="2042">,</charParams></formatting></line>
-	      <line baseline="2102" l="811" t="2048" r="1914" b="2104"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
+		<charParams l="1894" t="2016" r="1911" b="2042">,</charParams>
+	  </formatting>
+	</line>
+	<line baseline="2102" l="811" t="2048" r="1914" b="2104">
+	  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="10." bold="1" color="1783626" spacing="20">
 		<charParams l="811" t="2067" r="836" b="2101">a</charParams>
 		<charParams l="836" t="2068" r="860" b="2103">n</charParams>
 		<charParams l="863" t="2052" r="891" b="2103">d</charParams>
@@ -10742,7 +10795,8 @@
 															  <charParams l="1851" t="4525" r="1904" b="4574">T</charParams>
 															  <charParams l="1907" t="4520" r="1943" b="4574">h</charParams>
 															<charParams l="1945" t="4539" r="1975" b="4573">e</charParams></formatting></line>
-															<line baseline="4645" l="759" t="4577" r="1979" b="4664"><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+															<line baseline="4645" l="759" t="4577" r="1979" b="4664">
+															  <formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 															  <charParams l="759" t="4614" r="794" b="4652">c</charParams>
 															  <charParams l="794" t="4597" r="829" b="4651">h</charParams>
 															  <charParams l="829" t="4595" r="844" b="4651">i</charParams>
@@ -10875,8 +10929,10 @@
 															  <charParams l="969" t="4831" r="1005" b="4866">o</charParams>
 															  <charParams l="1009" t="4810" r="1047" b="4866">d</charParams>
 															  <charParams l="1051" t="4848" r="1071" b="4877">,</charParams>
-															  <charParams l="1072" t="4807" r="1107" b="4877"> </charParams></formatting><formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
-															  <charParams l="1108" t="4807" r="1130" b="4864" suspicious="1">i</charParams>
+															  <charParams l="1072" t="4807" r="1107" b="4877"> </charParams>
+															</formatting>
+														<formatting lang="EnglishUnitedStates" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+									<charParams l="1108" t="4807" r="1130" b="4864" suspicious="1">i</charParams>
 															  <charParams l="1130" t="4805" r="1171" b="4864">k</charParams>
 															  <charParams l="1171" t="4806" r="1193" b="4863">i</charParams>
 															  <charParams l="1193" t="4825" r="1233" b="4863">n</charParams>
@@ -10948,7 +11004,9 @@
 															    <charParams l="2925" t="609" r="2941" b="663">i</charParams>
 															    <charParams l="2948" t="630" r="2974" b="666">a</charParams>
 															    <charParams l="2980" t="630" r="3011" b="667">n</charParams>
-															    <charParams l="3012" t="613" r="3046" b="669"> </charParams></formatting><formatting lang="OldEnglish" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
+															    <charParams l="3012" t="613" r="3046" b="669"> </charParams>
+															  </formatting>
+															  <formatting lang="OldEnglish" ff="Times New Roman" fs="9.5" bold="1" color="1783626">
 															    <charParams l="3047" t="613" r="3079" b="669" suspicious="1">b</charParams>
 															    <charParams l="3083" t="633" r="3109" b="668" suspicious="1">a</charParams>
 															    <charParams l="3113" t="632" r="3136" b="667" suspicious="1">r</charParams>
