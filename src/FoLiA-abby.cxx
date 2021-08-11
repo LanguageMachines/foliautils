@@ -718,15 +718,35 @@ bool process_blocks( folia::FoliaElement *root,
   bool result = true;
   for ( const auto& block_node : blocks ){
     //    cerr << "FOUND block: " << TiCC::getAttribute( block_node, "blockType" ) << endl;
-    list<xmlNode*> paragraphs = TiCC::FindNodes( block_node, ".//*:par" );
-    if ( !paragraphs.empty() ){
-      if ( verbose ){
+    string block_type = TiCC::getAttribute( block_node, "blockType" );
+    if ( block_type == "Text" ){
+      // folia::KWargs d_args;
+      // d_args["generate_id"] = root->id();
+      // d_args["class"] = block_type;
+      // folia::Division *div = root->add_child<folia::Division>( d_args );
+      folia::FoliaElement *div = root;
+      list<xmlNode*> paragraphs = TiCC::FindNodes( block_node, ".//*:par" );
+      if ( !paragraphs.empty() ){
+	if ( verbose ){
 #pragma omp critical
-	{
-	  cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
+	  {
+	    cout << "\tfound " << paragraphs.size() << " paragraphs" << endl;
+	  }
 	}
+	process_paragraphs( div, paragraphs, font_styles );
       }
-      process_paragraphs( root, paragraphs, font_styles );
+    }
+    else if ( block_type == "Separator" ){
+      // skip
+    }
+    else if ( block_type == "Table" ){
+      //      process_table( root, paragraphs, font_styles );
+    }
+    else {
+#pragma omp critical
+      {
+	cerr << "\tskip unhandled block type=" << block_type << endl;
+      }
     }
   }
   return result;
