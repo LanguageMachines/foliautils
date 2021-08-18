@@ -52,6 +52,7 @@ using TiCC::operator<<;
 
 bool verbose = false;
 bool do_refs = true;
+bool do_sent = false;
 bool trust_tokenization = false;
 const string processor_label = "FoLiA-page";
 
@@ -65,26 +66,42 @@ void appendStr( folia::FoliaElement *par,
 		const string& id,
 		const string& file ){
   if ( !val.isEmpty() ){
+    folia::KWargs ref_args;
+    if ( do_refs ){
+      folia::KWargs ref_proc_args;
+      ref_proc_args["processor"] = processor_id;
+      par->doc()->declare( folia::AnnotationType::RELATION, setname, ref_proc_args );
+      ref_args["xlink:href"] = file;
+      ref_args["format"] = "text/page+xml";
+    }
     folia::KWargs p_args;
     p_args["processor"] = processor_id;
-    par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
-    p_args["xml:id"] = par->id() + "." + id;
-    folia::String *str = par->add_child<folia::String>( p_args );
-    str->setutext( val, pos, classname );
-    pos += val.length();
-    if ( do_refs ){
-      folia::KWargs args;
-      args["processor"] = processor_id;
-      par->doc()->declare( folia::AnnotationType::RELATION, setname, args );
-      args.clear();
-      args["xlink:href"] = file;
-      args["format"] = "text/page+xml";
-      folia::Relation *h = str->add_child<folia::Relation>( args );
-      args.clear();
-      args["id"] = id;
-      args["type"] = "str";
-      h->add_child<folia::LinkReference>( args );
+    if ( do_sent) {
+        par->doc()->declare( folia::AnnotationType::SENTENCE, setname, p_args );
+        p_args["xml:id"] = par->id() + "." + id;
+        folia::Sentence *sent = par->add_child<folia::Sentence>( p_args );
+        sent->setutext( val, pos, classname );
+        if ( do_refs) {
+          folia::Relation *h = sent->add_child<folia::Relation>( ref_args );
+          ref_args.clear();
+          ref_args["id"] = id;
+          ref_args["type"] = "s";
+          h->add_child<folia::LinkReference>( ref_args );
+        }
+    } else {
+        par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
+        p_args["xml:id"] = par->id() + "." + id;
+        folia::String *str = par->add_child<folia::String>( p_args );
+        str->setutext( val, pos, classname );
+        if ( do_refs) {
+          folia::Relation *h = str->add_child<folia::Relation>( ref_args );
+          ref_args.clear();
+          ref_args["id"] = id;
+          ref_args["type"] = "str";
+          h->add_child<folia::LinkReference>( ref_args );
+        }
     }
+    pos += val.length();
   }
 }
 
@@ -539,6 +556,7 @@ void usage(){
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
+  cerr << "\t--sent\t treat each text line as a sentence" << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
@@ -549,7 +567,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "norefs,threads:,trusttokens" );
+			 "norefs,threads:,trusttokens,sent" );
   try {
     opts.init( argc, argv );
   }
@@ -600,6 +618,7 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   do_refs = !opts.extract( "norefs" );
+  do_sent = opts.extract( "sent" );
   trust_tokenization = opts.extract( "trusttokens" );
   opts.extract( 'O', outputDir );
   opts.extract( "setname", setname );
