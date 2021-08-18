@@ -56,7 +56,7 @@ bool do_sent = false;
 bool trust_tokenization = false;
 const string processor_label = "FoLiA-page";
 
-string setname = "FoLiA-page-set";
+string setname = "";
 string classname = "OCR";
 string processor_id;
 
