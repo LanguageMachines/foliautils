@@ -7,11 +7,12 @@ Usage: FoLiA-page [options] file/dir
 			 reasonable value. (OMP_NUM_TREADS - 2)
 	-h or --help	 this messages 
 	-O		 output directory 
-	--setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-page-set')
+	--setname='set'	 the common FoLiA set name for all structural nodes. (default '')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--norefs	 do not add references nodes to the original document. (default: Add References)
+	--sent	 treat each text line as a sentence
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 			 with 'c'=g create gzip files (.gz)
@@ -31,20 +32,97 @@ converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jp
 converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
-   75   194  3379 out/page/FP-00667460.tif.folia.xml
-  160   499  7312 out/page/FP-00667461.tif.folia.xml
-   95   272  4457 out/page/FP-00667462.tif.folia.xml
-  146   471  6720 out/page/FP-00667463.tif.folia.xml
-  144   431  6496 out/page/FP-00667464.tif.folia.xml
-  135   446  6293 out/page/FP-00667465.tif.folia.xml
-  146   453  6662 out/page/FP-00667466.tif.folia.xml
-  173   496  7151 out/page/FP-00667467.tif.folia.xml
-  106   309  4866 out/page/FP-00667468.tif.folia.xml
- 1180  3571 53336 total
+   75   189  3274 out/page/FP-00667460.tif.folia.xml
+  160   494  7207 out/page/FP-00667461.tif.folia.xml
+   95   267  4352 out/page/FP-00667462.tif.folia.xml
+  146   466  6615 out/page/FP-00667463.tif.folia.xml
+  144   426  6391 out/page/FP-00667464.tif.folia.xml
+  135   441  6188 out/page/FP-00667465.tif.folia.xml
+  146   448  6557 out/page/FP-00667466.tif.folia.xml
+  173   491  7046 out/page/FP-00667467.tif.folia.xml
+  106   304  4761 out/page/FP-00667468.tif.folia.xml
+ 1180  3526 52391 total
+6c6
+<       <paragraph-annotation>
+---
+>       <paragraph-annotation set="FoLiA-page-set">
+9c9
+<       <head-annotation>
+---
+>       <head-annotation set="FoLiA-page-set">
+12c12
+<       <linebreak-annotation>
+---
+>       <linebreak-annotation set="FoLiA-page-set">
+15c15
+<       <relation-annotation>
+---
+>       <relation-annotation set="FoLiA-page-set">
+18c18
+<       <string-annotation>
+---
+>       <string-annotation set="FoLiA-page-set">
+foliadiff.sh: differences in: out/page/FP-00667464.tif.folia.xml page1.folia.xml.ok
+6c6
+<       <paragraph-annotation>
+---
+>       <paragraph-annotation set="FoLiA-page-set">
+9c9
+<       <relation-annotation>
+---
+>       <relation-annotation set="FoLiA-page-set">
+12c12
+<       <string-annotation>
+---
+>       <string-annotation set="FoLiA-page-set">
+foliadiff.sh: differences in: out/page/FP-0001.png.folia.xml page2.folia.xml.ok
+6c6
+<       <paragraph-annotation>
+---
+>       <paragraph-annotation set="FoLiA-page-set">
+9c9
+<       <relation-annotation>
+---
+>       <relation-annotation set="FoLiA-page-set">
+12c12
+<       <string-annotation>
+---
+>       <string-annotation set="FoLiA-page-set">
+foliadiff.sh: differences in: out/page/FP-roemische_1pg.png.folia.xml page3.folia.xml.ok
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
+6c6
+<       <token-annotation>
+---
+>       <token-annotation set="FoLiA-page-set">
+9c9
+<       <paragraph-annotation>
+---
+>       <paragraph-annotation set="FoLiA-page-set">
+12c12
+<       <sentence-annotation>
+---
+>       <sentence-annotation set="FoLiA-page-set">
+15c15
+<       <relation-annotation>
+---
+>       <relation-annotation set="FoLiA-page-set">
+foliadiff.sh: differences in: out/page/FP-roemische_1pg.png.folia.xml page4.folia.xml.ok
 converted: data/page/piros.xml into: out/FP-page/FP-0001.png.folia.xml
 done
+6c6
+<       <paragraph-annotation>
+---
+>       <paragraph-annotation set="FoLiA-page-set">
+9c9
+<       <relation-annotation>
+---
+>       <relation-annotation set="FoLiA-page-set">
+12c12
+<       <string-annotation>
+---
+>       <string-annotation set="FoLiA-page-set">
+foliadiff.sh: differences in: out/page/FP-0001.png.folia.xml page5.folia.xml.ok
 Validated successfully: out/page/FP-0001.png.folia.xml
 Validated successfully: out/page/FP-00667460.tif.folia.xml
 Validated successfully: out/page/FP-00667461.tif.folia.xml
