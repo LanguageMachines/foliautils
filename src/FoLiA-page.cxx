@@ -231,7 +231,9 @@ void handle_uni_lines( folia::FoliaElement *root,
 UnicodeString handle_one_line( folia::FoliaElement *par,
 			       int& pos,
 			       xmlNode *line,
-			       const string& fileName ){
+			       const string& fileName,
+                               string& id //output variable
+                             ){
   static TiCC::UnicodeNormalizer UN;
   UnicodeString result;
   string lid = TiCC::getAttribute( line, "id" );
@@ -245,6 +247,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       par->doc()->declare( folia::AnnotationType::SENTENCE, setname, args );
       args.clear();
       args["xml:id"] = par->id() + "." + lid;
+      id = par->id() + "."  + lid;
       folia::Sentence *sent = par->add_child<folia::Sentence>( args );
       for ( const auto& w :words ){
 	handle_one_word( sent, w, fileName );
@@ -283,6 +286,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	uval = UN.normalize(uval);
 	uval = ltrim( uval );
 	appendStr( par, pos, uval, word_ids[unicode], fileName );
+        id = par->id() + "."  + word_ids[unicode];
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
       }
@@ -305,6 +309,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	uval = UN.normalize(uval);
 	uval = ltrim( uval );
 	appendStr( par, pos, uval, lid, fileName );
+        id = par->id() + "."  + lid;
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
       }
@@ -321,6 +326,7 @@ void handle_one_region( folia::FoliaElement *root,
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+  root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
   p_args["xml:id"] = root->id() + "." + ind;
   folia::FoliaElement *par = root->add_child<folia::Paragraph>( p_args );
   if ( type.empty() || type == "paragraph" ){
@@ -330,9 +336,6 @@ void handle_one_region( folia::FoliaElement *root,
     if ( unicode ){
       string value = TiCC::XmlContent( unicode );
       folia::KWargs args;
-      args["processor"] = processor_id;
-      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
-      args.clear();
       args["pagenr"] = value;
       par->add_child<folia::Linebreak>( args );
       root->doc()->set_metadata( "page-number", value );
@@ -358,23 +361,30 @@ void handle_one_region( folia::FoliaElement *root,
   }
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
   if ( !lines.empty() ){
-    UnicodeString par_txt;
+    folia::KWargs text_args;
+    text_args["class"] = classname;
+    folia::TextContent * content = par->add_child<folia::TextContent>( text_args);
     int pos = 0;
+    size_t i = 0;
+    string id;
     for ( const auto& line : lines ){
-      UnicodeString value = handle_one_line( par, pos,
+        UnicodeString line_txt = handle_one_line( par, pos,
 					     line,
-					     fileName );
-      par_txt += value;
-      if ( &line != &lines.back() ){
-	if ( !par_txt.isEmpty() ){
-	  ++pos;
-	  par_txt += " ";
-	}
-      }
-    }
-    par_txt = ltrim( par_txt );
-    if ( !par_txt.isEmpty() ){
-      par->setutext( par_txt, classname );
+					     fileName, id );
+        line_txt = ltrim(line_txt );
+        if ( !line_txt.isEmpty() ){
+          folia::KWargs str_args;
+          str_args["id"] = id;
+          str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
+          root->doc()->set_checktext(false); //TODO: REMOVE THIS after issues are fixed!
+          folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
+          content->append(str);
+          if (i < lines.size() - 1) {
+              content->add_child<folia::Linebreak>();
+              pos++;
+          }
+        }
+        i++;
     }
   }
   else {
