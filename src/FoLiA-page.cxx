@@ -549,7 +549,7 @@ void usage(){
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
   cerr << "\t-h or --help\t this messages " << endl;
   cerr << "\t-O\t\t output directory " << endl;
-  cerr << "\t--setname='set'\t the FoLiA set name for <t> nodes. "
+  cerr << "\t--setname='set'\t the common FoLiA set name for all structural nodes. "
     "(default '" << setname << "')" << endl;
   cerr << "\t--class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
