@@ -328,7 +328,6 @@ void handle_one_region( folia::FoliaElement *root,
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
-  root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
   p_args["xml:id"] = root->id() + "." + ind;
   folia::FoliaElement *par = root->add_child<folia::Paragraph>( p_args );
   if ( type.empty() || type == "paragraph" ){
@@ -336,8 +335,11 @@ void handle_one_region( folia::FoliaElement *root,
   else if ( type == "page-number" ){
     xmlNode* unicode = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
     if ( unicode ){
-      string value = TiCC::XmlContent( unicode );
       folia::KWargs args;
+      args["processor"] = processor_id;
+      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
+      string value = TiCC::XmlContent( unicode );
+      args.clear();
       args["pagenr"] = value;
       par->add_child<folia::Linebreak>( args );
       root->doc()->set_metadata( "page-number", value );
