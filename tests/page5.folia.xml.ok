@@ -1,28 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-0001" generator="libfolia-v2.6.1" version="2.4.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-0001" generator="libfolia-v2.10" version="2.5.1">
   <metadata type="native">
     <annotations>
-      <paragraph-annotation set="FoLiA-page-set">
+      <paragraph-annotation>
         <annotator processor="FoLiA-page.1"/>
       </paragraph-annotation>
-      <string-annotation set="FoLiA-page-set">
+      <linebreak-annotation>
         <annotator processor="FoLiA-page.1"/>
-      </string-annotation>
+      </linebreak-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <relation-annotation set="FoLiA-page-set">
+      <relation-annotation>
         <annotator processor="FoLiA-page.1"/>
       </relation-annotation>
+      <string-annotation>
+        <annotator processor="FoLiA-page.1"/>
+      </string-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2020-12-12T16:35:29" command="FoLiA-page -O out/page" folia_version="2.4.1" host="kokos" name="FoLiA-page" user="sloot" version="0.16">
-        <processor xml:id="FoLiA-page.1.generator" folia_version="2.4.1" name="libfolia" type="generator" version="2.6.1"/>
+      <processor xml:id="FoLiA-page.1" begindatetime="2021-08-19T15:30:16" command="FoLiA-page -O out/page" folia_version="2.5.1" host="kokos" name="FoLiA-page" user="sloot" version="0.18">
+        <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.10"/>
       </processor>
     </provenance>
     <meta id="page_file">piros.xml</meta>
   </metadata>
   <text xml:id="FP-0001.text">
     <p xml:id="FP-0001.text.r1">
-      <t class="OCR">IV. Die römische Landwirtschaft und die A220 Grundherrschaften der Kaiserzeit‘ Entwickelungder Da in diesem Kapitel hauptsächlich eine Erschei- Betiebsweise. nung der Kaiserzeit behandelt werden soll, so ist s der Rückblick, den wir auf die älteren Verhältnisse der römischen Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver- sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den Terremare2 und der geistvollen Untersuchungen Hehns2 und Hel- bigs eine allgemeine Entwickelungsgeschichte derselben von den o ältesten Besiedlungen an zu geben. In historischer Zeit bietet die römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil- dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele- gentlich2 behauptet worden ist, daß die Römer den Germanen die Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un- s verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die ältesten germanischen Verhältnisse in Frage kommen würde, keine Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist und mit dem Flurzwang untrennbar zusammenhängt. Die römischen Schriftsteller aber kennen nur das, was Thünen „freie Wirtschaft“ o nennen würde1). Von Fruchtfolge sprechen sie überhaupt nur gele- A22t 1) Cato, De r. r. 1482 bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220 1 Zusammenfassende Wiedergabe größerer Teile des lnhalts dieses Kapitels bei Weber, Untergang der antiken Kultur, S. 6476; ders., Agrarerhältnisse im Altertum‘, S. 14—18; dass.2, S. 80-84; dass.2, S. 165168. (n den folgenden Erläuterungen wird darauf nur ausnahmsweise Bezug genommen. 2 Vgl. S. 142, Anm. 5. 3 Hehn, ulturpflanzen und Haustiere (vgl. Eileitung oben, S. 3f.). 4 Helbig, ltaliker in der Poebene. 5 Gemeint offenbar: Hanssen, Agraristorische Abhandlungen 1, S. 153. 6 Vgl. v. Thünen, lsolierter Staat3 1, S. 35. 7 Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der früher übichen Weise Catos Werk stets als r. r. (= De re rustica). Da der itel jedoch nach heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen durchweg als ‚de agric.‘ zitiert. 8 Oie zitierte Stelle fndet sich ebd., Kap. 149.</t>
+      <t class="OCR">
+        <t-str id="FP-0001.text.r1.l1">IV. Die römische Landwirtschaft und die</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l2">A220</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l3">Grundherrschaften der Kaiserzeit‘</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l4">Entwickelungder Da in diesem Kapitel hauptsächlich eine Erschei-</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l5">Betiebsweise. nung der Kaiserzeit behandelt werden soll, so ist</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l6">s der Rückblick, den wir auf die älteren Verhältnisse der römischen</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l7">Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver-</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l8">sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l9">Terremare2 und der geistvollen Untersuchungen Hehns2 und Hel-</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l10">bigs eine allgemeine Entwickelungsgeschichte derselben von den</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l11">o ältesten Besiedlungen an zu geben. In historischer Zeit bietet die</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l12">römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil-</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l13">dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele-</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l14">gentlich2 behauptet worden ist, daß die Römer den Germanen die</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l15">Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un-</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l16">s verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l17">ältesten germanischen Verhältnisse in Frage kommen würde, keine</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l18">Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l19">und mit dem Flurzwang untrennbar zusammenhängt. Die römischen</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l20">Schriftsteller aber kennen nur das, was Thünen „freie Wirtschaft“</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l21">o nennen würde1). Von Fruchtfolge sprechen sie überhaupt nur gele- A22t</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l22">1) Cato, De r. r. 1482 bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l23">1 Zusammenfassende Wiedergabe größerer Teile des lnhalts dieses Kapitels bei Weber,</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l24">Untergang der antiken Kultur, S. 6476; ders., Agrarerhältnisse im Altertum‘, S. 14—18;</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l25">dass.2, S. 80-84; dass.2, S. 165168. (n den folgenden Erläuterungen wird darauf nur</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l26">ausnahmsweise Bezug genommen.</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l27">2 Vgl. S. 142, Anm. 5.</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l28">3 Hehn, ulturpflanzen und Haustiere (vgl. Eileitung oben, S. 3f.).</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l29">4 Helbig, ltaliker in der Poebene.</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l30">5 Gemeint offenbar: Hanssen, Agraristorische Abhandlungen 1, S. 153.</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l31">6 Vgl. v. Thünen, lsolierter Staat3 1, S. 35.</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l32">7 Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l33">früher übichen Weise Catos Werk stets als r. r. (= De re rustica). Da der itel jedoch nach</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l34">heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l35">durchweg als ‚de agric.‘ zitiert.</t-str>
+        <br/>
+        <t-str id="FP-0001.text.r1.l36">8 Oie zitierte Stelle fndet sich ebd., Kap. 149.</t-str>
+      </t>
       <str xml:id="FP-0001.text.r1.l1">
         <t class="OCR" offset="0">IV. Die römische Landwirtschaft und die</t>
         <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">

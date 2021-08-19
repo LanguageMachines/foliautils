@@ -12,7 +12,9 @@ Usage: FoLiA-page [options] file/dir
 	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--norefs	 do not add references nodes to the original document. (default: Add References)
-	--sent	 treat each text line as a sentence
+	--nostrings	 do not add string annotations (no str), implies --norefs
+	--nomarkup	 do not add any markup to the text (no t-str)
+	--sent	 treat each text line as a sentence. This is a contrived solution and not recommended.
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 			 with 'c'=g create gzip files (.gz)
@@ -42,87 +44,12 @@ done
   173   491  7046 out/page/FP-00667467.tif.folia.xml
   106   304  4761 out/page/FP-00667468.tif.folia.xml
  1180  3526 52391 total
-6c6
-<       <paragraph-annotation>
----
->       <paragraph-annotation set="FoLiA-page-set">
-9c9
-<       <head-annotation>
----
->       <head-annotation set="FoLiA-page-set">
-12c12
-<       <linebreak-annotation>
----
->       <linebreak-annotation set="FoLiA-page-set">
-15c15
-<       <relation-annotation>
----
->       <relation-annotation set="FoLiA-page-set">
-18c18
-<       <string-annotation>
----
->       <string-annotation set="FoLiA-page-set">
-foliadiff.sh: differences in: out/page/FP-00667464.tif.folia.xml page1.folia.xml.ok
-6c6
-<       <paragraph-annotation>
----
->       <paragraph-annotation set="FoLiA-page-set">
-9c9
-<       <relation-annotation>
----
->       <relation-annotation set="FoLiA-page-set">
-12c12
-<       <string-annotation>
----
->       <string-annotation set="FoLiA-page-set">
-foliadiff.sh: differences in: out/page/FP-0001.png.folia.xml page2.folia.xml.ok
-6c6
-<       <paragraph-annotation>
----
->       <paragraph-annotation set="FoLiA-page-set">
-9c9
-<       <relation-annotation>
----
->       <relation-annotation set="FoLiA-page-set">
-12c12
-<       <string-annotation>
----
->       <string-annotation set="FoLiA-page-set">
-foliadiff.sh: differences in: out/page/FP-roemische_1pg.png.folia.xml page3.folia.xml.ok
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
-6c6
-<       <token-annotation>
----
->       <token-annotation set="FoLiA-page-set">
-9c9
-<       <paragraph-annotation>
----
->       <paragraph-annotation set="FoLiA-page-set">
-12c12
-<       <sentence-annotation>
----
->       <sentence-annotation set="FoLiA-page-set">
-15c15
-<       <relation-annotation>
----
->       <relation-annotation set="FoLiA-page-set">
-foliadiff.sh: differences in: out/page/FP-roemische_1pg.png.folia.xml page4.folia.xml.ok
+converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
+done
 converted: data/page/piros.xml into: out/FP-page/FP-0001.png.folia.xml
 done
-6c6
-<       <paragraph-annotation>
----
->       <paragraph-annotation set="FoLiA-page-set">
-9c9
-<       <relation-annotation>
----
->       <relation-annotation set="FoLiA-page-set">
-12c12
-<       <string-annotation>
----
->       <string-annotation set="FoLiA-page-set">
-foliadiff.sh: differences in: out/page/FP-0001.png.folia.xml page5.folia.xml.ok
 Validated successfully: out/page/FP-0001.png.folia.xml
 Validated successfully: out/page/FP-00667460.tif.folia.xml
 Validated successfully: out/page/FP-00667461.tif.folia.xml

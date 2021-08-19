@@ -328,6 +328,7 @@ void handle_one_region( folia::FoliaElement *root,
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+  root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
   p_args["xml:id"] = root->id() + "." + ind;
   folia::FoliaElement *par = root->add_child<folia::Paragraph>( p_args );
   if ( type.empty() || type == "paragraph" ){
@@ -335,11 +336,8 @@ void handle_one_region( folia::FoliaElement *root,
   else if ( type == "page-number" ){
     xmlNode* unicode = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
     if ( unicode ){
-      folia::KWargs args;
-      args["processor"] = processor_id;
-      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
       string value = TiCC::XmlContent( unicode );
-      args.clear();
+      folia::KWargs args;
       args["pagenr"] = value;
       par->add_child<folia::Linebreak>( args );
       root->doc()->set_metadata( "page-number", value );
@@ -367,50 +365,52 @@ void handle_one_region( folia::FoliaElement *root,
   if ( !lines.empty() ){
     folia::KWargs text_args;
     text_args["class"] = classname;
-    folia::TextContent * content = NULL;
-    if (do_markup) {
-        content = par->add_child<folia::TextContent>( text_args);
+    folia::TextContent *content = NULL;
+    if ( do_markup ) {
+      content = par->add_child<folia::TextContent>( text_args);
     }
     int pos = 0;
     size_t i = 0;
     string id;
     UnicodeString par_txt;
     for ( const auto& line : lines ){
-        UnicodeString line_txt = handle_one_line( par, pos,
-					     line,
-					     fileName, id );
-        if (do_markup) {
-            line_txt = ltrim(line_txt );
-            if ( !line_txt.isEmpty() ){
-              folia::KWargs str_args;
-              if (do_strings) {
-                  str_args["id"] = id; //references
-              } else {
-                  str_args["xml:id"] = id; //no references
-              }
-              str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
-              root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
-              folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
-              content->append(str);
-              if (i < lines.size() - 1) {
-                  content->add_child<folia::Linebreak>();
-                  pos++;
-              }
-            }
-            i++;
-        } else {
-            par_txt += line_txt;
-            if ( &line != &lines.back() && !par_txt.isEmpty()) {
-                ++pos;
-                par_txt += " ";
-            }
-        }
+      UnicodeString line_txt = handle_one_line( par, pos,
+						line,
+						fileName, id );
+      if ( do_markup ) {
+	line_txt = ltrim(line_txt );
+	if ( !line_txt.isEmpty() ){
+	  folia::KWargs str_args;
+	  if (do_strings) {
+	    str_args["id"] = id; //references
+	  }
+	  else {
+	    str_args["xml:id"] = id; //no references
+	  }
+	  str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
+	  root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
+	  folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
+	  content->append(str);
+	  if (i < lines.size() - 1) {
+	    content->add_child<folia::Linebreak>();
+	    pos++;
+	  }
+	}
+	i++;
+      }
+      else {
+	par_txt += line_txt;
+	if ( &line != &lines.back() && !par_txt.isEmpty()) {
+	  ++pos;
+	  par_txt += " ";
+	}
+      }
     }
     if (!do_markup) {
-        par_txt = ltrim(par_txt);
-        if (!par_txt.isEmpty()) {
-            par->setutext( par_txt, classname );
-        }
+      par_txt = ltrim(par_txt);
+      if (!par_txt.isEmpty()) {
+	par->setutext( par_txt, classname );
+      }
     }
   }
   else {
