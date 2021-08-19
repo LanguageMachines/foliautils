@@ -377,6 +377,7 @@ void handle_one_region( folia::FoliaElement *root,
           str_args["id"] = id;
           str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
           root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
+It works now
           folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
           content->append(str);
           if (i < lines.size() - 1) {
@@ -567,7 +568,7 @@ void usage(){
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
-  cerr << "\t--sent\t treat each text line as a sentence" << endl;
+  cerr << "\t--sent\t treat each text line as a sentence. This is a contrived solution and not recommended." << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
