@@ -376,7 +376,7 @@ void handle_one_region( folia::FoliaElement *root,
           folia::KWargs str_args;
           str_args["id"] = id;
           str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
-          root->doc()->set_checktext(false); //TODO: REMOVE THIS after issues are fixed!
+          root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
           folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
           content->append(str);
           if (i < lines.size() - 1) {
@@ -543,6 +543,7 @@ bool convert_pagexml( const string& fileName,
     }
   }
   else {
+    doc.set_checktext(true); //we disabled it earlier, set to true prior to serialisation again (not sure if it has an effect?)
     doc.save( outName );
 #pragma omp critical
     {
