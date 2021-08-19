@@ -367,7 +367,9 @@ void handle_one_region( folia::FoliaElement *root,
     text_args["class"] = classname;
     folia::TextContent *content = NULL;
     if ( do_markup ) {
-      content = par->add_child<folia::TextContent>( text_args);
+      content = new folia::TextContent( text_args, root->doc() );
+      // Do Not attach this content to the Paragraph here. We have to fill
+      // it with text yet!
     }
     int pos = 0;
     size_t i = 0;
@@ -388,9 +390,7 @@ void handle_one_region( folia::FoliaElement *root,
 	    str_args["xml:id"] = id; //no references
 	  }
 	  str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
-	  root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
-	  folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
-	  content->append(str);
+	  content->add_child<folia::TextMarkupString>( str_args );
 	  if (i < lines.size() - 1) {
 	    content->add_child<folia::Linebreak>();
 	    pos++;
@@ -406,7 +406,13 @@ void handle_one_region( folia::FoliaElement *root,
 	}
       }
     }
-    if (!do_markup) {
+    if ( do_markup ) {
+      // We are done with the text of content, so we may attach it to the
+      // Paragraph now.
+      par->append( content );
+    }
+    else {
+      // add the plai text without markup
       par_txt = ltrim(par_txt);
       if (!par_txt.isEmpty()) {
 	par->setutext( par_txt, classname );
