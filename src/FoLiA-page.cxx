@@ -567,7 +567,7 @@ bool convert_pagexml( const string& fileName,
     }
   }
   else {
-    doc.set_checktext(true); //we disabled it earlier, set to true prior to serialisation again (not sure if it has an effect?)
+    doc.set_checktext(true); //we disabled it earlier, set to true prior to serialisation again
     doc.save( outName );
 #pragma omp critical
     {
