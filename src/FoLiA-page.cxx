@@ -52,6 +52,8 @@ using TiCC::operator<<;
 
 bool verbose = false;
 bool do_refs = true;
+bool do_strings = true;
+bool do_markup = true;
 bool do_sent = false;
 bool trust_tokenization = false;
 const string processor_label = "FoLiA-page";
@@ -88,7 +90,7 @@ void appendStr( folia::FoliaElement *par,
           ref_args["type"] = "s";
           h->add_child<folia::LinkReference>( ref_args );
         }
-    } else {
+    } else if (do_strings) {
         par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
         p_args["xml:id"] = par->id() + "." + id;
         folia::String *str = par->add_child<folia::String>( p_args );
@@ -363,29 +365,50 @@ void handle_one_region( folia::FoliaElement *root,
   if ( !lines.empty() ){
     folia::KWargs text_args;
     text_args["class"] = classname;
-    folia::TextContent * content = par->add_child<folia::TextContent>( text_args);
+    folia::TextContent * content = NULL;
+    if (do_markup) {
+        content = par->add_child<folia::TextContent>( text_args);
+    }
     int pos = 0;
     size_t i = 0;
     string id;
+    UnicodeString par_txt;
     for ( const auto& line : lines ){
         UnicodeString line_txt = handle_one_line( par, pos,
 					     line,
 					     fileName, id );
-        line_txt = ltrim(line_txt );
-        if ( !line_txt.isEmpty() ){
-          folia::KWargs str_args;
-          str_args["id"] = id;
-          str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
-          root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
-It works now
-          folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
-          content->append(str);
-          if (i < lines.size() - 1) {
-              content->add_child<folia::Linebreak>();
-              pos++;
-          }
+        if (do_markup) {
+            line_txt = ltrim(line_txt );
+            if ( !line_txt.isEmpty() ){
+              folia::KWargs str_args;
+              if (do_strings) {
+                  str_args["id"] = id; //references
+              } else {
+                  str_args["xml:id"] = id; //no references
+              }
+              str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
+              root->doc()->set_checktext(false); //TODO: I don't like this, but it seems we need to disable the checks (may be a bug?), otherwise we get a text validation error here (the final document validates fine)
+              folia::TextMarkupString *str = new folia::TextMarkupString( str_args, root->doc());
+              content->append(str);
+              if (i < lines.size() - 1) {
+                  content->add_child<folia::Linebreak>();
+                  pos++;
+              }
+            }
+            i++;
+        } else {
+            par_txt += line_txt;
+            if ( &line != &lines.back() && !par_txt.isEmpty()) {
+                ++pos;
+                par_txt += " ";
+            }
         }
-        i++;
+    }
+    if (!do_markup) {
+        par_txt = ltrim(par_txt);
+        if (!par_txt.isEmpty()) {
+            par->setutext( par_txt, classname );
+        }
     }
   }
   else {
@@ -568,6 +591,8 @@ void usage(){
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
+  cerr << "\t--nostrings\t do not add string annotations (no str), implies --norefs" << endl;
+  cerr << "\t--nomarkup\t do not add any markup to the text (no t-str)" << endl;
   cerr << "\t--sent\t treat each text line as a sentence. This is a contrived solution and not recommended." << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
@@ -579,7 +604,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "norefs,threads:,trusttokens,sent" );
+			 "norefs,threads:,trusttokens,sent,nostrings,nomarkup" );
   try {
     opts.init( argc, argv );
   }
@@ -630,6 +655,8 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   do_refs = !opts.extract( "norefs" );
+  do_strings = !opts.extract( "nostrings" );
+  do_markup = !opts.extract( "nomarkup" );
   do_sent = opts.extract( "sent" );
   trust_tokenization = opts.extract( "trusttokens" );
   opts.extract( 'O', outputDir );
