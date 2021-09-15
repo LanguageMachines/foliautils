@@ -3,6 +3,8 @@
 
 \rm *.ticcl.xml
 
+foliadiff=foliadiff.sh
+
 $my_bin/FoLiA-correct > testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct -V >> testcorrect.out 2>&1
@@ -11,61 +13,61 @@ $my_bin/FoLiA-correct --help >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v -v data/corr_str.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.1.ok  >> testcorrect.out 2>&1
+$foliadiff corr_str.ticcl.xml corr_str.ticcl.1.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --string-nodes -v -v data/corr_str.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
+$foliadiff corr_str.ticcl.xml corr_str.ticcl.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=Apple -v -v data/corr_word.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_word.ticcl.xml corr_word.ticcl.1.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word.ticcl.xml corr_word.ticcl.1.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --class=current --word-nodes -v -v data/corr_word.xml >> testcorrect.out  2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --rebase-inputclass=original --outputclass=current -v -v data/corr_word.xml >> testcorrect.out  2>&1
-./foliadiff.sh corr_word.ticcl.xml corr_word.ticcl.2.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word.ticcl.xml corr_word.ticcl.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr.xml >> testcorrect.out  2>&1
-./foliadiff.sh corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1
+$foliadiff corr.ticcl.xml corr.ticcl.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr.ticcl.xml corr.ticcl.3.ok  >> testcorrect.out 2>&1
+$foliadiff corr.ticcl.xml corr.ticcl.3.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr.folia.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr.ticcl.folia.xml corr.ticcl.folia.1.ok  >> testcorrect.out 2>&1
+$foliadiff corr.ticcl.folia.xml corr.ticcl.folia.1.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --outputclass=current --rebase-inputclass=rebased --clear -v -v data/corr.folia.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr.ticcl.folia.xml corr.ticcl.folia.2.ok  >> testcorrect.out 2>&1
+$foliadiff corr.ticcl.folia.xml corr.ticcl.folia.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --outputclass=Apple --word-nodes -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.1.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_T.ticcl.xml corr_word_T.ticcl.1.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --ngram=2 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.3.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_T.ticcl.xml corr_word_T.ticcl.3.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank2.ranked --clear --inputclass=Test --ngram=2 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.2.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_T.ticcl.xml corr_word_T.ticcl.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear --inputclass=Test --ngram=3 -v -v data/corr_word_T.xml >> testcorrect.out  2>&1
 
-./foliadiff.sh corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_T.ticcl.xml corr_word_T.ticcl.4.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --clear -v -v data/corr_word_spaces.xml >> testcorrect.out  2>&1
-./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.1.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.1.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=2 --clear -v -v data/corr_word_spaces.xml
-./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.2.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.2.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=punct.punct --unk=unk.unk --rank=rank.ranked --ngram=3 --clear -v -v data/corr_word_spaces.xml
-./foliadiff.sh corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.3.ok  >> testcorrect.out 2>&1
+$foliadiff corr_word_spaces.ticcl.xml corr_word_spaces.ticcl.3.ok  >> testcorrect.out 2>&1
 
 $my_bin/FoLiA-correct --punct=correctproblems/punct.punct --unk=correctproblems/unk.unk --rank=correctproblems/chain.chained --ngram=3 --rebase-inputclass=ucto --outputclass=current --clear correctproblems/*bug*.xml -O correctproblems/OUT >> testcorrect.out 2> correctproblems.err
 cat correctproblems.err
-./foliadiff.sh correctproblems/OUT/bisbug.ticcl.xml bisbug.ticcl.ok  >> testcorrect.out 2>&1
+$foliadiff correctproblems/OUT/bisbug.ticcl.xml bisbug.ticcl.ok  >> testcorrect.out 2>&1
