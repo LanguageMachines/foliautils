@@ -365,21 +365,21 @@ void handle_one_region( folia::FoliaElement *root,
   if ( !lines.empty() ){
     folia::KWargs text_args;
     text_args["class"] = classname;
-    folia::TextContent *content = NULL;
-    if ( do_markup ) {
-      content = new folia::TextContent( text_args, root->doc() );
-      // Do Not attach this content to the Paragraph here. We have to fill
-      // it with text yet!
-    }
     int pos = 0;
     size_t i = 0;
     string id;
     UnicodeString par_txt;
+    folia::TextContent *content = NULL;
     for ( const auto& line : lines ){
       UnicodeString line_txt = handle_one_line( par, pos,
 						line,
 						fileName, id );
       if ( do_markup ) {
+	if ( !content ) {
+	  content = new folia::TextContent( text_args, root->doc() );
+	  // Do Not attach this content to the Paragraph here. We have to fill
+	  // it with text yet!
+	}
 	line_txt = ltrim(line_txt );
 	if ( !line_txt.isEmpty() ){
 	  folia::KWargs str_args;
