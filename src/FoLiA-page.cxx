@@ -412,7 +412,7 @@ void handle_one_region( folia::FoliaElement *root,
       par->append( content );
     }
     else {
-      // add the plai text without markup
+      // add the plain text without markup
       par_txt = ltrim(par_txt);
       if (!par_txt.isEmpty()) {
 	par->setutext( par_txt, classname );
