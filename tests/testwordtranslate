@@ -11,4 +11,4 @@ $my_bin/FoLiA-wordtranslate --help >> testwordtranslate.out 2>&1
 
 $my_bin/FoLiA-wordtranslate --outputclass contemporary -t 8 -d data/lexicon.1637-2010.250.lexserv.vandale.tsv -p data/preservation2010.txt -r data/rules.machine -O translate data/trans >> testwordtranslate.out 2>&1
 
-./foliadiff.sh translate/aa__001biog01_01.tok.translated.folia.xml aa__001biog01_01.tok.translated.folia.xml.ok  >> testwordtranslate.out 2>&1
+foliadiff.sh translate/aa__001biog01_01.tok.translated.folia.xml aa__001biog01_01.tok.translated.folia.xml.ok  >> testwordtranslate.out 2>&1

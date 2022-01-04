@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2014 - 2021
+  Copyright (c) 2014 - 2022
   CLST  - Radboud University
   ILK   - Tilburg University
 
@@ -52,6 +52,8 @@ using TiCC::operator<<;
 
 bool verbose = false;
 bool do_refs = true;
+bool do_strings = true;
+bool do_markup = true;
 bool do_sent = false;
 bool trust_tokenization = false;
 const string processor_label = "FoLiA-page";
@@ -88,7 +90,7 @@ void appendStr( folia::FoliaElement *par,
           ref_args["type"] = "s";
           h->add_child<folia::LinkReference>( ref_args );
         }
-    } else {
+    } else if (do_strings) {
         par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
         p_args["xml:id"] = par->id() + "." + id;
         folia::String *str = par->add_child<folia::String>( p_args );
@@ -231,7 +233,9 @@ void handle_uni_lines( folia::FoliaElement *root,
 UnicodeString handle_one_line( folia::FoliaElement *par,
 			       int& pos,
 			       xmlNode *line,
-			       const string& fileName ){
+			       const string& fileName,
+                               string& id //output variable
+                             ){
   static TiCC::UnicodeNormalizer UN;
   UnicodeString result;
   string lid = TiCC::getAttribute( line, "id" );
@@ -245,6 +249,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       par->doc()->declare( folia::AnnotationType::SENTENCE, setname, args );
       args.clear();
       args["xml:id"] = par->id() + "." + lid;
+      id = par->id() + "."  + lid;
       folia::Sentence *sent = par->add_child<folia::Sentence>( args );
       for ( const auto& w :words ){
 	handle_one_word( sent, w, fileName );
@@ -283,6 +288,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	uval = UN.normalize(uval);
 	uval = ltrim( uval );
 	appendStr( par, pos, uval, word_ids[unicode], fileName );
+        id = par->id() + "."  + word_ids[unicode];
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
       }
@@ -305,6 +311,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	uval = UN.normalize(uval);
 	uval = ltrim( uval );
 	appendStr( par, pos, uval, lid, fileName );
+        id = par->id() + "."  + lid;
 	result = uval;
 	break; // We assume only 1 non-empty Unicode string
       }
@@ -321,6 +328,7 @@ void handle_one_region( folia::FoliaElement *root,
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   root->doc()->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+  root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
   p_args["xml:id"] = root->id() + "." + ind;
   folia::FoliaElement *par = root->add_child<folia::Paragraph>( p_args );
   if ( type.empty() || type == "paragraph" ){
@@ -330,9 +338,6 @@ void handle_one_region( folia::FoliaElement *root,
     if ( unicode ){
       string value = TiCC::XmlContent( unicode );
       folia::KWargs args;
-      args["processor"] = processor_id;
-      root->doc()->declare( folia::AnnotationType::LINEBREAK, setname, args );
-      args.clear();
       args["pagenr"] = value;
       par->add_child<folia::Linebreak>( args );
       root->doc()->set_metadata( "page-number", value );
@@ -358,23 +363,60 @@ void handle_one_region( folia::FoliaElement *root,
   }
   list<xmlNode*> lines = TiCC::FindNodes( region, "./*:TextLine" );
   if ( !lines.empty() ){
-    UnicodeString par_txt;
+    folia::KWargs text_args;
+    text_args["class"] = classname;
     int pos = 0;
+    size_t i = 0;
+    string id;
+    UnicodeString par_txt;
+    folia::TextContent *content = NULL;
     for ( const auto& line : lines ){
-      UnicodeString value = handle_one_line( par, pos,
-					     line,
-					     fileName );
-      par_txt += value;
-      if ( &line != &lines.back() ){
-	if ( !par_txt.isEmpty() ){
+      UnicodeString line_txt = handle_one_line( par, pos,
+						line,
+						fileName, id );
+      if ( do_markup ) {
+	if ( !content ) {
+	  content = new folia::TextContent( text_args, root->doc() );
+	  // Do Not attach this content to the Paragraph here. We have to fill
+	  // it with text yet!
+	}
+	line_txt = ltrim(line_txt );
+	if ( !line_txt.isEmpty() ){
+	  folia::KWargs str_args;
+	  if (do_strings) {
+	    str_args["id"] = id; //references
+	  }
+	  else {
+	    str_args["xml:id"] = id; //no references
+	  }
+	  str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
+	  content->add_child<folia::TextMarkupString>( str_args );
+	  if (i < lines.size() - 1) {
+	    content->add_child<folia::Linebreak>();
+	    pos++;
+	  }
+	}
+	i++;
+      }
+      else {
+	par_txt += line_txt;
+	if ( &line != &lines.back() && !par_txt.isEmpty()) {
 	  ++pos;
 	  par_txt += " ";
 	}
       }
     }
-    par_txt = ltrim( par_txt );
-    if ( !par_txt.isEmpty() ){
-      par->setutext( par_txt, classname );
+    if ( do_markup ) {
+      // We are done with the text of content, so we may attach it to the
+      // Paragraph now.
+      par->append( content );
+    }
+    else {
+      // add the plain text without markup
+      par_txt = ltrim(par_txt);
+      if (!par_txt.isEmpty()) {
+	par->setutext( par_txt, classname );
+      }
     }
   }
   else {
@@ -533,6 +575,7 @@ bool convert_pagexml( const string& fileName,
     }
   }
   else {
+    doc.set_checktext(true); //we disabled it earlier, set to true prior to serialisation again
     doc.save( outName );
 #pragma omp critical
     {
@@ -556,7 +599,9 @@ void usage(){
   cerr << "\t--prefix='pre'\t add this prefix to ALL created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
-  cerr << "\t--sent\t treat each text line as a sentence" << endl;
+  cerr << "\t--nostrings\t do not add string annotations (no str), implies --norefs" << endl;
+  cerr << "\t--nomarkup\t do not add any markup to the text (no t-str)" << endl;
+  cerr << "\t--sent\t treat each text line as a sentence. This is a contrived solution and not recommended." << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
@@ -567,7 +612,7 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
-			 "norefs,threads:,trusttokens,sent" );
+			 "norefs,threads:,trusttokens,sent,nostrings,nomarkup" );
   try {
     opts.init( argc, argv );
   }
@@ -618,6 +663,8 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   do_refs = !opts.extract( "norefs" );
+  do_strings = !opts.extract( "nostrings" );
+  do_markup = !opts.extract( "nomarkup" );
   do_sent = opts.extract( "sent" );
   trust_tokenization = opts.extract( "trusttokens" );
   opts.extract( 'O', outputDir );
