@@ -17,6 +17,7 @@ $foliadiff out/FA-piroska.abby.folia.xml piroska.ok  >> testabby.out 2>&1
 $foliadiff out/FA-auch.folia.xml auch.ok  >> testabby.out 2>&1
 $foliadiff out/FA-hyph.folia.xml hyph.ok  >> testabby.out 2>&1
 $foliadiff out/FA-item.folia.xml item.ok  >> testabby.out 2>&1
+$foliadiff out/FA-table.folia.xml table.ok  >> testabby.out 2>&1
 
 $my_bin/FoLiA-abby --addbreaks -O out/break data/abby >> testabby.out 2>&1
 
