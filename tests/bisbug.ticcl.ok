@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="folia.xsl"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="KB.DDD17C.NicolineCrowd.61270" generator="libfolia-v2.9" version="2.5.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="KB.DDD17C.NicolineCrowd.61270" generator="libfolia-v2.11" version="2.5.0">
   <metadata type="native">
     <annotations>
       <token-annotation alias="tokconfig-nld" set="https://raw.githubusercontent.com/LanguageMachines/uctodata/master/setdefinitions/tokconfig-nld.foliaset.ttl">
+        <annotator processor="FoLiA-correct.1"/>
         <annotator processor="ucto.1"/>
       </token-annotation>
       <paragraph-annotation>
@@ -24,8 +25,8 @@
           <processor xml:id="uctodata.1.1" name="tokconfig-nld" type="datasource" version="0.2"/>
         </processor>
       </processor>
-      <processor xml:id="FoLiA-correct.1" begindatetime="2021-06-01T12:31:11" command="FoLiA-correct --punct=correctproblems/punct.punct --unk=correctproblems/unk.unk --rank=correctproblems/chain.chained --ngram=3 --rebase-inputclass=ucto --outputclass=current --clear -O correctproblems/OUT" folia_version="2.5.0" host="kokos" name="FoLiA-correct" user="sloot" version="0.17">
-        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
+      <processor xml:id="FoLiA-correct.1" begindatetime="2022-04-22T00:46:55" command="FoLiA-correct --punct=correctproblems/punct.punct --unk=correctproblems/unk.unk --rank=correctproblems/chain.chained --ngram=3 --rebase-inputclass=ucto --outputclass=current --clear -O correctproblems/OUT" folia_version="2.5.1" host="kobus" name="FoLiA-correct" user="sloot" version="0.18">
+        <processor xml:id="FoLiA-correct.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.11"/>
       </processor>
     </provenance>
     <meta id="language">nld</meta>
@@ -35,19 +36,19 @@
       <s xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24">
         <t>Harley, Esq.,</t>
         <t class="ucto">Harley, Esq.,</t>
-        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.24" class="WORD" space="no">
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.24" class="WORD" processor="ucto.1" space="no">
           <t offset="0">Harley</t>
           <t class="ucto">Harley</t>
         </w>
-        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.25" class="PUNCTUATION">
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.25" class="PUNCTUATION" processor="ucto.1">
           <t offset="6">,</t>
           <t class="ucto">,</t>
         </w>
-        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.26" class="ABBREVIATION-KNOWN" space="no">
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.26" class="ABBREVIATION-KNOWN" processor="ucto.1" space="no">
           <t offset="8">Esq.</t>
           <t class="ucto">Esq.</t>
         </w>
-        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.27" class="PUNCTUATION">
+        <w xml:id="KB.DDD17C.NicolineCrowd.61270.p.1.s.24.w.27" class="PUNCTUATION" processor="ucto.1">
           <t offset="12">,</t>
           <t class="ucto">,</t>
         </w>

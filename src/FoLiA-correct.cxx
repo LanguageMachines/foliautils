@@ -1086,7 +1086,12 @@ void correctNgrams( FoliaElement *root,
 		    const unordered_map<string,string>& puncts,
 		    unordered_map<string,size_t>& counts,
 		    processor *proc ){
+  KWargs correction_args;
+  string original_set;
+  correction_args["processor"] = proc->id();
   vector<FoliaElement*> ev;
+  bool doStrings = false;
+  bool doTokens = false;
   vector<Word*> wv = root->select<Word>();
   if ( wv.size() > 0 ){
     if ( wv[0]->parent() != root ){
@@ -1098,6 +1103,15 @@ void correctNgrams( FoliaElement *root,
     }
     ev.resize(wv.size());
     copy( wv.begin(), wv.end(), ev.begin() );
+    if ( !ev.empty() ){
+      doTokens = true;
+      original_set = root->doc()->default_set(folia::AnnotationType::TOKEN);
+      string alias = root->doc()->alias( folia::AnnotationType::TOKEN,
+					 original_set );
+      if ( !alias.empty() ){
+	correction_args["alias"] = alias;
+      }
+    }
   }
   else {
     vector<String*> sv = root->select<String>();
@@ -1111,6 +1125,16 @@ void correctNgrams( FoliaElement *root,
       }
       ev.resize(sv.size());
       copy( sv.begin(), sv.end(), ev.begin() );
+      if ( !ev.empty() ){
+	doStrings = true;
+	original_set = root->doc()->default_set(folia::AnnotationType::STRING);
+	string alias = root->doc()->alias( folia::AnnotationType::STRING,
+					   original_set );
+	if ( !alias.empty() ){
+	  correction_args["alias"] = alias;
+	}
+	//	root->doc()->declare( folia::AnnotationType::STRING, org_set, args );
+      }
     }
   }
 
@@ -1197,15 +1221,42 @@ void correctNgrams( FoliaElement *root,
   string corrected;
   if ( trigrams.empty() ){
     if ( bigrams.empty() ){
+      if ( !unigrams.empty() ){
+	if ( doStrings ){
+	  root->doc()->declare( folia::AnnotationType::STRING, original_set,
+				correction_args );	}
+	else if ( doTokens ){
+	  root->doc()->declare( folia::AnnotationType::TOKEN, original_set,
+				correction_args );
+	}
+      }
       corrected = correct_unigrams( unigrams, variants, unknowns,
 				    puncts, counts, proc );
     }
     else {
+      if ( !unigrams.empty() ){
+	if ( doStrings ){
+	  root->doc()->declare( folia::AnnotationType::STRING, original_set,
+				correction_args );	}
+	else if ( doTokens ){
+	  root->doc()->declare( folia::AnnotationType::TOKEN, original_set,
+				correction_args );
+	}
+      }
       corrected = correct_bigrams( bigrams, variants, unknowns,
 				   puncts, unigrams.back(), counts, proc );
     }
   }
   else {
+    if ( !unigrams.empty() ){
+      if ( doStrings ){
+	root->doc()->declare( folia::AnnotationType::STRING, original_set,
+			      correction_args );	}
+      else if ( doTokens ){
+	root->doc()->declare( folia::AnnotationType::TOKEN, original_set,
+			      correction_args );
+      }
+    }
     corrected = correct_trigrams( trigrams, variants, unknowns,
 				  puncts, unigrams, counts, proc );
   }
@@ -1253,8 +1304,6 @@ bool correctDoc( Document *doc,
   KWargs args;
   args["processor"] = proc->id();
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
-  // doc->declare( folia::AnnotationType::STRING, setname, args );
-  // doc->declare( folia::AnnotationType::TOKEN, setname, args );
   vector<FoliaElement*> ev;
   if ( tag_list.empty() ){
     vector<FoliaElement*> v1 = doc->doc()->select( Sentence_t );
