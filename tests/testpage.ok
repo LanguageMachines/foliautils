@@ -21,6 +21,10 @@ Usage: FoLiA-page [options] file/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 start processing of 12 files 
+converted: data/page/00667460.xml into: out/page/FP-00667460.tif.folia.xml
+converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
+converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 converted: data/page/00667461.xml into: out/page/FP-00667461.tif.folia.xml
 converted: data/page/00667462.xml into: out/page/FP-00667462.tif.folia.xml
 converted: data/page/00667463.xml into: out/page/FP-00667463.tif.folia.xml
@@ -29,10 +33,6 @@ converted: data/page/00667465.xml into: out/page/FP-00667465.tif.folia.xml
 converted: data/page/00667466.xml into: out/page/FP-00667466.tif.folia.xml
 converted: data/page/00667467.xml into: out/page/FP-00667467.tif.folia.xml
 converted: data/page/00667468.xml into: out/page/FP-00667468.tif.folia.xml
-converted: data/page/00667460.xml into: out/page/FP-00667460.tif.folia.xml
-converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
-converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
-converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
    75   189  3274 out/page/FP-00667460.tif.folia.xml
   160   494  7207 out/page/FP-00667461.tif.folia.xml
