@@ -1,3 +1,20 @@
+foliautils 0.18  22-07-2022
+[Ko van der Sloot]
+* FoLiA-page: only add LineBreak annotation when needed
+* added more tests to make check
+* adapted and fixed tests
+* fixed the ugly problem of temporally disabling text checking.
+* start using the "system" foliadiff
+* fix declarations
+
+[Maarten van Gompel]
+* FoLiA-page: added a --nomarkup parameter to revert to the old behaviour, and an extra --nostrings parameter to omit the strings #65
+* added a note for the --sent option #65
+* Added some comments for the ugly disable set_checktext patch, I don't like this but it seems needed (underlying libfolia issue?) #65
+* Add linebreaks and t-str to the paragraph text (currently fails text validation)
+* added Dockerfile and instructions
+* codemeta.json: updated according to (proposed) CLARIAH requirements (CLARIAH/clariah-plus#38)
+
 foliautils 0.17  12-07-2021
 [Ko van der Sloot]
 * needs libfolia 2.9 or above
