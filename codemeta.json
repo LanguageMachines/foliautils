@@ -1,14 +1,15 @@
 {
     "@context": [
         "https://doi.org/10.5063/schema/codemeta-2.0",
-        "http://schema.org"
+        "http://schema.org",
+        "https://w3id.org/software-types"
     ],
     "@type": "SoftwareSourceCode",
     "identifier": "foliautils",
     "name": "foliautils",
     "version": "0.18",
     "description": "Command-line utilities for working with the Format for Linguistic Annotation (FoLiA).",
-    "license": "https://spdx.org/licenses/GPL-3.0",
+    "license": "https://spdx.org/licenses/GPL-3.0-only",
 	"url": "https://github.com/LanguageMachines/foliautils",
     "author": [
 		{
@@ -83,7 +84,7 @@
 	"issueTracker": "https://github.com/LanguageMachines/foliautils/issues",
 	"contIntegration": "https://travis-ci.org/LanguageMachines/foliautils",
 	"releaseNotes": "https://github.com/LanguageMachines/foliautils/releases",
-	"developmentStatus": "active",
+	"developmentStatus": "https://www.repostatus.org/#active",
 	"keywords":  [ "nlp", "natural language processing", "folia", "xml", "linguistic annotation" ],
     "referencePublication": [
 		{
@@ -114,97 +115,222 @@
 			"url": "https://github.com/proycon/folia/raw/master/docs/folia.pdf"
 		}
     ],
-    "entryPoints": [
+    "targetProduct": [
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-2text",
-            "urlTemplate": "file:///FoLiA-2text",
+            "executableName": "FoLiA-2text",
             "description": "Convert FoLiA documents into plain text",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "text/plain"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-txt",
-            "urlTemplate": "file:///FoLiA-txt",
-            "description": "Convert plain textinto FoLiA, the output will contain only <p> and <str> nodes. See ucto or rst2folia (FoLiA-tools) for alternatives.",
-            "interfaceType": "CLI"
+            "executableName": "FoLiA-txt",
+            "description": "Convert plain text to FoLiA, the output will contain only <p> and <str> nodes. See ucto or rst2folia (FoLiA-tools) for alternatives.",
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "text/plain"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-page",
-            "urlTemplate": "file:///FoLiA-page",
+            "executableName": "FoLiA-page",
             "description": "Convert PAGE XML to FoLiA",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/page+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-hocr",
-            "urlTemplate": "file:///FoLiA-hocr",
+            "executableName": "FoLiA-hocr",
             "description": "Convert hOCR (as outputted by Tesseract) to FoLiA",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "text/html"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-alto",
-            "urlTemplate": "file:///FoLiA-alto",
-            "description": "Convert ALTO DIDL files into a series of FoLiA documents",
-            "interfaceType": "CLI"
+            "executableName": "FoLiA-alto",
+            "description": "Convert ALTO DIDL files into a series of FoLiA documents"
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-langcat",
-            "urlTemplate": "file:///FoLiA-langcat",
+            "executableName": "FoLiA-langcat",
             "description": "Language Identification using textcat.",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-idf",
-            "urlTemplate": "file:///FoLiA-idf",
+            "executableName": "FoLiA-idf",
             "description": "Count words in a series of FoLiA documents and compute IDF statistics, which are outputted to a tsv file",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "Dataset",
+                    "encodingFormat": "text/tab-separated-values"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-stats",
-            "urlTemplate": "file:///FoLiA-stats",
+            "executableName": "FoLiA-stats",
             "description": "Gather n-gram statistics over a series of FoLiA documents",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "Dataset",
+                    "encodingFormat": "text/tab-separated-values"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-collect",
-            "urlTemplate": "file:///FoLiA-collect",
+            "executableName": "FoLiA-collect",
             "description": "Collect n-gram statistics from tsv files produced by FoLiA-stats, aggregating results.",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "Dataset",
+                    "encodingFormat": "text/tab-seperated-values"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "Dataset",
+                    "encodingFormat": "text/tab-separated-values"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-correct",
-            "urlTemplate": "file:///FoLiA-correct",
+            "executableName": "FoLiA-correct",
             "description": "Correct FoLiA documents using correction candidates generated by TICCL-rank (from ticcltools)",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-wordtranslate",
-            "urlTemplate": "file:///FoLiA-wordtranslate",
+            "executableName": "FoLiA-wordtranslate",
             "description": "Simple word-by-word translator on the basis of a dictonary and/or rewrite rules",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-clean",
-            "urlTemplate": "file:///FoLiA-clean",
+            "executableName": "FoLiA-clean",
             "description": "FoLiA-clean will produce a cleaned up version of a FoLiA file, or a whole directory of FoLiA files, removing specified annotation types and specified text classes",
-            "interfaceType": "CLI"
+            "consumesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ],
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         },
         {
-            "@type": "EntryPoint",
+            "@type": "CommandLineApplication",
             "name": "FoLiA-pm",
-            "urlTemplate": "file:///FoLiA-pm",
+            "executableName": "file:///FoLiA-pm",
             "description": "Convert Political Maskup XML to FoLiA",
-            "interfaceType": "CLI"
+            "producesData": [ 
+                {
+                    "@type": "TextDigitalDocument",
+                    "encodingFormat": "application/folia+xml"
+                }
+            ]
         }
     ]
 }
