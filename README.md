@@ -53,9 +53,11 @@ Contents of this distribution:
 - Sources
 - Licensing information ( COPYING )
 - Build system based on GNU Autotools
+- Dockerfile
 
 Dependencies:
-To be able to succesfully build libfolia from source, you need the following dependencies:
+To be able to succesfully build foliautils from source, you need the following dependencies:
+
 - ticcutils (https://github.com/LanguageMachines/ticcutils)
 - libfolia (https://github.com/LanguageMachines/libfolia)
 - ucto (https://github.com/LanguageMachines/ucto)
@@ -77,3 +79,11 @@ dependencies installed:
  - $ ./configure
  - $ make
  - $ make install
+
+If you want to automatically download and install the latest stable versions of
+the required dependencies, then run `./build-deps.sh` prior to the above. You
+can pass a target directory prefix as first argument and you may need to
+prepend `sudo` to ensure you can install there. The dependencies are:
+
+A `Dockerfile` for a container build is also available, specify `--build-arg VERSION=development` if you want the latest
+development version instead.
