@@ -1,5 +1,5 @@
 missing input file(s)
-foliautils 0.18
+foliautils 0.19
 Usage: [options] dir/filename 
   add language information to a file or files in FoLiA XML format
   The files must have extension '.folia.xml' or '.xml'

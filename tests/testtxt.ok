@@ -10,7 +10,7 @@ Usage: [options] file/dir
 	-O	 output directory 
 	--setname The FoLiA setname of the <str> nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <str> nodes. (Default 'FoLiA-txt')
-foliautils 0.18
+foliautils 0.19
 Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.
