@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.61)
+AC_PREREQ([2.69])
 AC_INIT([foliautils],[0.19],[lamasoftware@science.ru.nl]) #adapt version number in codemeta.json as well
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([.])
@@ -26,18 +26,20 @@ if test "x$ac_cv_prog_cxx_openmp" != "x"; then
 fi
 
 # use libtool
-AC_PROG_LIBTOOL
 LT_INIT
 
 #checks for libraries.
 
 # Checks for header files.
+AC_CHECK_HEADERS([fcntl.h mach/mach.h sys/time.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
+AC_TYPE_INT8_T
 AC_HEADER_STDBOOL
-
+AC_C_INLINE
 # Checks for library functions.
+AC_CHECK_FUNCS([select])
 
 if test $prefix = "NONE"; then
    prefix="$ac_default_prefix"
@@ -99,7 +101,7 @@ PKG_CHECK_MODULES([folia], [folia >= 2.11] )
 CXXFLAGS="$folia_CFLAGS $CXXFLAGS"
 LIBS="$folia_LIBS $LIBS"
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
   Makefile
   m4/Makefile
   src/Makefile
@@ -108,3 +110,4 @@ AC_OUTPUT([
   docs/Makefile
   tests/Makefile
 ])
+AC_OUTPUT
