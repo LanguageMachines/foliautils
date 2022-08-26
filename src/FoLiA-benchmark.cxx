@@ -172,20 +172,25 @@ struct Measurement {
 };
 
 Measurement begin() {
-    Measurement m;
-    m.begintime = clock();
-	m.beginmem = getCurrentRSS();
-	return m;
+  Measurement m;
+  m.begintime = clock();
+  m.beginmem = getCurrentRSS();
+  m.duration = 0.0;
+  m.endmem = m.beginmem;
+  return m;
 }
 
-void end(Measurement& m, const string & test_id, const string & filename, const string & title) {
-    m.duration = (clock() - m.begintime) / (double) CLOCKS_PER_SEC;
-	m.endmem = getCurrentRSS();
-	const size_t peakmem = getPeakRSS();
-	const double peak = peakmem / 1024.0 / 1024.0;
-	const size_t memdiff = m.endmem-m.beginmem;
-    const double mem = memdiff / 1024.0 / 1024.0;
-    cout << filename << " - [" << test_id << "] " << title << " - time: " <<  (m.duration*1000) << " ms res: " << mem << " MB peak: " << peak << " MB" << endl << endl;
+void end( Measurement& m,
+	  const string& test_id,
+	  const string& filename,
+	  const string& title ) {
+  m.duration = (clock() - m.begintime) / (double) CLOCKS_PER_SEC;
+  m.endmem = getCurrentRSS();
+  const size_t peakmem = getPeakRSS();
+  const double peak = peakmem / 1024.0 / 1024.0;
+  const size_t memdiff = m.endmem-m.beginmem;
+  const double mem = memdiff / 1024.0 / 1024.0;
+  cout << filename << " - [" << test_id << "] " << title << " - time: " <<  (m.duration*1000) << " ms res: " << mem << " MB peak: " << peak << " MB" << endl << endl;
 }
 
 void test(const string & test_id, const string & filename) {
