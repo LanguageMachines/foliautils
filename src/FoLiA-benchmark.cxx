@@ -195,25 +195,25 @@ void end( Measurement& m,
 
 void test(const string & test_id, const string & filename) {
     if (test_id == "parse") {
-            const string title = "Parse XML from file into full memory representation";
-            Measurement m = begin();
-            folia::Document doc( "file='"+ filename + "'" );
-            end(m, test_id, filename, title);
+      const string title = "Parse XML from file into full memory representation";
+      Measurement m = begin();
+      folia::Document doc( "file='"+ filename + "'" );
+      end(m, test_id, filename, title);
     } else if (test_id == "serialise") {
-            const string title = "Serialise to XML";
-            folia::Document doc( "file='"+ filename + "'" );
-            Measurement m = begin();
-            doc.xmlstring();
-            end(m, test_id, filename, title);
+      const string title = "Serialise to XML";
+      folia::Document doc( "file='"+ filename + "'" );
+      Measurement m = begin();
+      doc.xmlstring();
+      end(m, test_id, filename, title);
     } else if (test_id == "select") {
-            const string title = "Select and iterate over all words";
-            folia::Document doc( "file='"+ filename + "'" );
-            Measurement m = begin();
-            vector<folia::Word*> selection = doc.words();
-            cerr << "found " << selection.size() << " words" << endl;
-            end(m, test_id, filename, title);
+      const string title = "Select and iterate over all words";
+      folia::Document doc( "file='"+ filename + "'" );
+      Measurement m = begin();
+      vector<folia::Word*> selection = doc.words();
+      cerr << "found " << selection.size() << " words" << endl;
+      end(m, test_id, filename, title);
     } else {
-            cerr << "ERROR: No such test: " << test_id << endl;
+      cerr << "ERROR: No such test: " << test_id << endl;
     }
 }
 
@@ -254,7 +254,13 @@ int main( int argc, char *argv[] ){
       const string test_id = tests[tn];
       for ( size_t fn=0; fn < filenames.size(); fn++ ){
         const string filename  = filenames[fn];
-        test(test_id, filename);
+	try {
+	  test(test_id, filename);
+	}
+	catch ( const exception&e ){
+	  cerr << test_id << ": failed for file: " << filename << endl;
+	  cerr << e.what() << endl;
+	}
       }
   }
 }
