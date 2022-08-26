@@ -6,7 +6,7 @@ AC_INIT([foliautils],[0.19],[lamasoftware@science.ru.nl]) #adapt version number 
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([.])
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CXX( [g++ c++] )
