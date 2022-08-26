@@ -33,6 +33,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <algorithm>
 
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/FileUtils.h"
@@ -1577,9 +1578,11 @@ int main( int argc, char *argv[] ){
   }
 
   vector<pair<string,vector<string>>> omp_hack;
-  for ( const auto& it : out_in_files ){
-    omp_hack.push_back( make_pair( it.first, it.second ) );
-  }
+  // we need this hack, as OpenMP befor veriosn 3.0 doesn't have a parallel for
+  // working on containers
+  std::transform( out_in_files.cbegin(), out_in_files.cend(),
+		  std::back_inserter( omp_hack ),
+		  [](const auto& it ) { return make_pair( it.first, it.second ); } );
 #ifdef HAVE_OPENMP
   int out_numt = numThreads/omp_hack.size();
   ++out_numt;

@@ -351,15 +351,8 @@ bool fillPuncts( const string& fn, unordered_map<string,string>& puncts ){
   return !puncts.empty();
 }
 
-void filter( string& word, char c ){
-  for ( auto& w : word ){
-    if ( w == c )
-      w = '.';
-  }
-}
-
-void filter( string& word ){
-  filter( word, '#' );
+void filter( string& word, char c = '#' ){
+  std::replace( word.begin(), word.end(), c, '.' );
 }
 
 bool solve_punctuation( string& word,
@@ -1144,9 +1137,10 @@ void correctNgrams( FoliaElement *root,
 			  "aan","(N","A","P","O","L","E","O","N)","EX",
 			  "voor","N","A","P","O","L","E","O","toch?",
 			  "tegen","P","Q.","zeker"};
-  for( const auto& gr : grams ){
-    unigrams.push_back( gram_r(gr) );
-  }
+  cout << "Test HEMP: " << grams << endl;
+  std::transform( grams.cbegin(), grams.cend(),
+		  std::back_inserter( unigrams ),
+		  [](const string& s) { return gram_r(s); } );
   cout << "old_uni: " << unigrams << endl;
 #else
   string inval;
@@ -1173,9 +1167,9 @@ void correctNgrams( FoliaElement *root,
       filter( content, SEPCHAR ); // HACK
       inval += content + " ";
       vector<string> parts = TiCC::split( content );
-      for ( const auto& p : parts ){
-	unigrams.push_back( gram_r(p) );
-      }
+      std::transform( parts.cbegin(), parts.cend(),
+		      std::back_inserter( unigrams ),
+		      [](const string& s) { return gram_r(s); } );
     }
   }
   else {
