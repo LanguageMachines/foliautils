@@ -1229,9 +1229,9 @@ void correctNgrams( FoliaElement *root,
 	  root->doc()->declare( folia::AnnotationType::TOKEN, original_set,
 				correction_args );
 	}
-      }
-      corrected = correct_unigrams( unigrams, variants, unknowns,
+	corrected = correct_unigrams( unigrams, variants, unknowns,
 				    puncts, counts, proc );
+      }
     }
     else {
       if ( !unigrams.empty() ){
@@ -1242,9 +1242,9 @@ void correctNgrams( FoliaElement *root,
 	  root->doc()->declare( folia::AnnotationType::TOKEN, original_set,
 				correction_args );
 	}
+	corrected = correct_bigrams( bigrams, variants, unknowns,
+				     puncts, unigrams.back(), counts, proc );
       }
-      corrected = correct_bigrams( bigrams, variants, unknowns,
-				   puncts, unigrams.back(), counts, proc );
     }
   }
   else {
@@ -1256,9 +1256,9 @@ void correctNgrams( FoliaElement *root,
 	root->doc()->declare( folia::AnnotationType::TOKEN, original_set,
 			      correction_args );
       }
+      corrected = correct_trigrams( trigrams, variants, unknowns,
+				    puncts, unigrams, counts, proc );
     }
-    corrected = correct_trigrams( trigrams, variants, unknowns,
-				  puncts, unigrams, counts, proc );
   }
   corrected = TiCC::trim( corrected );
   if ( verbose > 1 ){
@@ -1286,20 +1286,6 @@ bool correctDoc( Document *doc,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
 		 const string& outName ){
-  //
-  // Code commented out, enabling 'cascading' of FoliA-correct runs
-  //
-//   if ( doc->declared( folia::AnnotationType::CORRECTION,
-// 		      setname ) ){
-// #pragma omp critical
-//     {
-//       cerr << "skipped " << doc->filename()
-// 	   << " seems to be already processed, (with setname="
-// 	   << setname
-// 	   << ")" << endl;
-//     }
-//     return false;
-//   }
   processor *proc = add_provenance( *doc, "FoLiA-correct", command );
   KWargs args;
   args["processor"] = proc->id();
