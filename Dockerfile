@@ -10,6 +10,7 @@ LABEL description="FoLiA utilities"
 RUN mkdir -p /data
 RUN mkdir -p /usr/src/foliautils
 COPY . /usr/src/foliautils
+COPY entrypoint.sh /usr/bin/entrypoint.sh
 
 RUN if [ "$VERSION" = "distro" ]; then \
         rm -Rf /usr/src/foliautils &&\
@@ -24,6 +25,7 @@ RUN if [ "$VERSION" = "distro" ]; then \
         apk del $BUILD_PACKAGES && rm -Rf /usr/src; \
     fi
 
-WORKDIR /
+WORKDIR /data
+VOLUME /data
 
-ENTRYPOINT [ "ash" ]
+ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]

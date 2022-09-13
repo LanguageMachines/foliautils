@@ -75,15 +75,38 @@ https://proycon.github.io/LaMachine .
 To compile and install manually from source, provided you have all the
 dependencies installed:
 
- - $ bash bootstrap.sh
- - $ ./configure
- - $ make
- - $ make install
+```
+$ bash bootstrap.sh
+$ ./configure
+$ make
+$ make install
+```
 
 If you want to automatically download and install the latest stable versions of
 the required dependencies, then run `./build-deps.sh` prior to the above. You
 can pass a target directory prefix as first argument and you may need to
 prepend `sudo` to ensure you can install there. The dependencies are:
 
-A `Dockerfile` for a container build is also available, specify `--build-arg VERSION=development` if you want the latest
-development version instead.
+## Container Usage
+
+A pre-made container image can be obtained from Docker Hub as follows:
+
+docker pull proycon/foliautils
+
+You can build a docker container as follows, make sure you are in the root of this repository:
+
+docker build -t proycon/foliautils .
+
+This builds the latest stable release, if you want to use the latest development version from the git repository instead, do:
+
+docker build -t proycon/foliautils --build-arg VERSION=development .
+
+Run the container interactively as follows:
+
+docker run -t -i proycon/foliautils
+
+Or invoke the tool you want:
+
+docker run proycon/foliautils FoLiA-page
+
+Add the -v /path/to/your/data:/data parameter (before -t) if you want to mount your data volume into the container at /data .
