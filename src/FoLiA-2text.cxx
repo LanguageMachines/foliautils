@@ -52,6 +52,7 @@ void usage( const string& name ){
   cerr << "\t-t 'threads' or\n\t--threads='threads' Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
+  cerr << "\t-v increment the verbosity level." << endl;
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version \t show version " << endl;
   cerr << "\t-e\t\t expr: specify the expression all input files should match with." << endl;
@@ -85,6 +86,7 @@ int main( int argc, char *argv[] ){
   // }
   string expression;
   string outputPrefix;
+  int verbosity = 0;
   string value;
   if ( opts.extract('V') || opts.extract("version") ){
     cerr << PACKAGE_STRING << endl;
@@ -131,7 +133,10 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
 #endif
   }
-  opts.extract('e', expression );
+  while ( opts.extract( 'v' ) ){
+    ++verbosity;
+  }
+  opts.extract( 'e', expression );
   string class_name = "current";
   opts.extract( "class", class_name ) || opts.extract( 'c', class_name );
 
@@ -204,6 +209,7 @@ int main( int argc, char *argv[] ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
       }
       tp.set_correction_handling( ch );
+      tp.set_debug( verbosity > 0 );
       if ( honour_tags ){
 	tp.add_handler("token", &handle_token_tag );
       }
