@@ -59,7 +59,7 @@ void create_wf_list( const map<string, unsigned int>& wc,
   }
   unsigned int sum=0;
   unsigned int types=0;
-  map<unsigned int, set<string> >::const_reverse_iterator wit = wf.rbegin();
+  auto wit = wf.rbegin();
   while ( wit != wf.rend() ){
     for ( const auto& st : wit->second ){
       sum += wit->first;
@@ -96,7 +96,7 @@ void create_lf_list( const map<string, unsigned int>& lc,
 
   unsigned int sum=0;
   unsigned int types=0;
-  map<unsigned int, set<string> >::const_reverse_iterator wit = lf.rbegin();
+  auto wit = lf.rbegin();
   while ( wit != lf.rend() ){
     for ( const auto& st : wit->second ){
       sum += wit->first;
@@ -129,7 +129,7 @@ void create_lpf_list( const multimap<string, rec>& lpc,
     }
   }
   unsigned int sum =0;
-  multimap<unsigned int, pair<string,string> >::const_reverse_iterator wit = lpf.rbegin();
+  auto wit = lpf.rbegin();
   unsigned int types = 0;
   while ( wit != lpf.rend() ){
     sum += wit->first;
@@ -219,7 +219,7 @@ unsigned int fillLPF( const string& fName, unsigned int ng,
 	    pos += " ";
 	  }
 	}
-	multimap<string, rec >::iterator it = lpc.find(lemma);
+	auto it = lpc.find(lemma);
 	if ( it == lpc.end() ){
 	  rec tmp;
 	  tmp.count = cnt;
@@ -343,10 +343,12 @@ int main( int argc, char *argv[] ){
     }
     cout << "Processing dir '" << name << "'" << endl;
     vector<string> filenames;
-    if ( nGv > 1 )
+    if ( nGv > 1 ){
       filenames = TiCC::searchFilesMatch( name, nG + "-gram.tsv", recurse );
-    else
+    }
+    else {
       filenames = TiCC::searchFilesMatch( name, "list.tsv", recurse );
+    }
     cout << "found " << filenames.size() << " files to process" << endl;
     for ( const auto& fullName : filenames ){
       string::size_type e_pos = fullName.find( ".lemmafreqlist" );

@@ -1552,7 +1552,7 @@ int main( int argc, char *argv[] ){
   }
   else {
     // sanity check
-    vector<string>::iterator it = fileNames.begin();
+    auto it = fileNames.begin();
     while ( it != fileNames.end() ){
       if ( it->find( ".xml" ) == string::npos ){
 	if ( verbose ){
@@ -1560,8 +1560,9 @@ int main( int argc, char *argv[] ){
 	}
 	it = fileNames.erase(it);
       }
-      else
+      else {
 	++it;
+      }
     }
   }
   size_t toDo = fileNames.size();
