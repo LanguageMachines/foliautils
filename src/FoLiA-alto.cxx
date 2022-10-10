@@ -121,10 +121,12 @@ void docCache::fill( const string& alto_cache, const list<xmlNode*>& blocks ){
 
 xmlDoc *docCache::find( const string& f ) const {
   const auto it = cache.find( f );
-  if ( it == cache.end() )
+  if ( it == cache.end() ){
     return 0;
-  else
+  }
+  else {
     return it->second;
+  }
 }
 
 xmlNode *findPart2Level( const xmlNode *start ){
@@ -490,10 +492,12 @@ void processArticle( const string& f,
   zipType type = inputType;
   if ( outputType != NORMAL )
     type = outputType;
-  if ( type == BZ2 )
+  if ( type == BZ2 ){
     outName += ".bz2";
-  else if ( type == GZ )
+  }
+  else if ( type == GZ ){
     outName += ".gz";
+  }
   vector<folia::Paragraph*> pv = doc.paragraphs();
   if ( pv.size() == 0 ||
        ( pv.size() == 1 && pv[0]->size() == 0 ) ){
@@ -1094,8 +1098,9 @@ void solveBook( const string& altoFile,
 	if ( id.find("CB") != string::npos ){
 	  // YES
 	}
-	else
+	else {
 	  cerr << "found nothing, what is this? " << id << endl;
+	}
       }
       else {
 	cerr << "Confusing! " << endl;
@@ -1106,10 +1111,12 @@ void solveBook( const string& altoFile,
     zipType type = inputType;
     if ( outputType != NORMAL )
       type = outputType;
-    if ( type == BZ2 )
+    if ( type == BZ2 ){
       outName += ".bz2";
-    else if ( type == GZ )
+    }
+    else if ( type == GZ ){
       outName += ".gz";
+    }
     vector<folia::Paragraph*> pv = doc.paragraphs();
     if ( pv.size() == 0 ||
 	 ( pv.size() == 1 && pv[0]->size() == 0 ) ){
@@ -1363,8 +1370,9 @@ int main( int argc, char *argv[] ){
   if ( opts.extract( "compress", value ) ){
     if ( value == "b" )
       outputType = BZ2;
-    else if ( value == "g" )
+    else if ( value == "g" ){
       outputType = GZ;
+    }
     else {
       cerr << "unknown compression: use 'b' or 'g'" << endl;
       exit( EXIT_FAILURE );
@@ -1402,10 +1410,12 @@ int main( int argc, char *argv[] ){
   vector<string> fileNames = opts.getMassOpts();
   if ( fileNames.empty() ){
     if ( clearCachedFiles ){
-      if ( clear_alto_files( alto_cache ) )
+      if ( clear_alto_files( alto_cache ) ){
 	exit(EXIT_SUCCESS);
-      else
+      }
+      else {
 	exit(EXIT_FAILURE);
+      }
     }
     else {
       cerr << "missing input file(s)" << endl;
@@ -1457,7 +1467,8 @@ int main( int argc, char *argv[] ){
     }
     else {
       if ( do_direct ){
-	fileNames = TiCC::searchFilesMatch( name, "*.xml" );      }
+	fileNames = TiCC::searchFilesMatch( name, "*.xml" );
+      }
       else {
 	fileNames = TiCC::searchFilesMatch( name, "*:mpeg21.xml*" );
       }
@@ -1465,7 +1476,7 @@ int main( int argc, char *argv[] ){
   }
   else if ( !do_direct ) {
     // sanity check, not for direct reading
-    vector<string>::iterator it = fileNames.begin();
+    auto it = fileNames.begin();
     while ( it != fileNames.end() ){
       if ( it->find( ":mpeg21.xml" ) == string::npos ){
 	if ( verbose ){
@@ -1473,8 +1484,9 @@ int main( int argc, char *argv[] ){
 	}
 	it = fileNames.erase(it);
       }
-      else
+      else {
 	++it;
+      }
     }
   }
   size_t toDo = fileNames.size();
