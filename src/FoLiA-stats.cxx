@@ -219,7 +219,7 @@ void create_wf_list( const map<string,vector<map<UnicodeString, unsigned int>>>&
 	}
 	unsigned int sum=0;
 	unsigned int types=0;
-	map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = wf.rbegin();
+	auto wit = wf.rbegin();
 	while ( wit != wf.rend() ){
 	  for ( const auto& sit : wit->second ){
 	    sum += wit->first;
@@ -298,7 +298,7 @@ void create_collected_wf_list( const map<string,vector<map<UnicodeString, unsign
   }
   unsigned int sum=0;
   unsigned int types=0;
-  map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = wf.rbegin();
+  auto wit = wf.rbegin();
   while ( wit != wf.rend() ){
     for ( const auto& sit : wit->second ){
       sum += wit->first;
@@ -369,7 +369,7 @@ void create_lf_list( const map<string,vector<map<UnicodeString, unsigned int>>>&
 
 	unsigned int sum=0;
 	unsigned int types=0;
-	map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = lf.rbegin();
+	auto wit = lf.rbegin();
 	while ( wit != lf.rend() ){
 	  for ( const auto& sit : wit->second ){
 	    sum += wit->first;
@@ -448,7 +448,7 @@ void create_collected_lf_list( const map<string,vector<map<UnicodeString, unsign
   }
   unsigned int sum=0;
   unsigned int types=0;
-  map<unsigned int, set<UnicodeString> >::const_reverse_iterator wit = lf.rbegin();
+  auto wit = lf.rbegin();
   while ( wit != lf.rend() ){
     for ( const auto& sit : wit->second ){
       sum += wit->first;
@@ -516,7 +516,7 @@ void create_lpf_list( const map<string,vector<multimap<UnicodeString, rec>>>& lp
 	}
 	unsigned int sum =0;
 	unsigned int types =0;
-	multimap<unsigned int, pair<UnicodeString,string> >::const_reverse_iterator wit = lpf.rbegin();
+	auto wit = lpf.rbegin();
 	while ( wit != lpf.rend() ){
 	  sum += wit->first;
 	  os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
@@ -596,7 +596,7 @@ void create_collected_lpf_list( const map<string,vector<multimap<UnicodeString, 
   }
   unsigned int sum =0;
   unsigned int types =0;
-  multimap<unsigned int, pair<UnicodeString,string> >::const_reverse_iterator wit = lpf.rbegin();
+  auto wit = lpf.rbegin();
   while ( wit != lpf.rend() ){
     sum += wit->first;
     os << wit->second.first << " " << wit->second.second << "\t" << wit->first;
@@ -907,7 +907,7 @@ size_t doc_sent_word_inventory( const Document *d, const string& docName,
 #pragma omp critical
 	  {
 	    auto& lpc0 = lpcv[lang][ng];
-	    multimap<UnicodeString, rec >::iterator it = lpc0.find(multil);
+	    auto it = lpc0.find(multil);
 	    if ( it == lpc0.end() ){
 	      rec tmp;
 	      tmp.count = 1;
