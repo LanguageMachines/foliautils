@@ -63,8 +63,12 @@ void usage(){
        << classname << "')"<< endl;
 }
 
-bool is_real_empty( const UnicodeString& str ){
+inline bool is_real_empty( const UnicodeString& str ){
   return is_norm_empty( TiCC::UnicodeToUTF8(str) );
+}
+
+inline UnicodeString& pop_back( UnicodeString& us ){
+  return us.remove( us.length() - 1 );
 }
 
 int main( int argc, char *argv[] ){
@@ -203,16 +207,22 @@ int main( int argc, char *argv[] ){
     int wrdCnt = 0;
     folia::FoliaElement *par = 0;
     string parId;
-    UnicodeString parTxt;
+    vector<FoliaElement*> par_stack; // temp store for textfragments which will
+    // make up the paragraph text. may include formatting like <t-hbr/>
     UnicodeString line;
     while ( TiCC::getline( is, line ) ){
       line.trim();
       if ( line.isEmpty() ){
-	parTxt.trim( );
-	if ( par && !is_real_empty(parTxt) ){
-	  par->setutext( parTxt, classname );
-	  text->append( par );
-	  parTxt = "";
+	// end a paragraph
+	if ( par && !par_stack.empty() ){
+	  // do we have some fragments?
+	  folia::KWargs text_args;
+	  text_args["class"] = classname;
+	  FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
+	  for ( const auto& it : par_stack ){
+	    txt->append(it );
+	  }
+	  par_stack.clear();
 	}
 	par = 0;
 	continue;
@@ -220,25 +230,66 @@ int main( int argc, char *argv[] ){
       vector<UnicodeString> words = TiCC::split( line );
       for ( const auto& w : words ){
 	if ( par == 0 ){
+	  // start a new Paragraph, only when at least 1 entry.
 	  folia::KWargs p_args;
 	  p_args["processor"] = processor_id;
 	  d->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
 	  p_args.clear();
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
 	  p_args["xml:id"] = parId;
-	  par = new folia::Paragraph( p_args, d );
+	  par = text->add_child<folia::Paragraph>( p_args );
 	  wrdCnt = 0;
 	}
-	UnicodeString content = w;
-	content.trim();
-	if ( !is_real_empty(content) ){
+	UnicodeString str_content = w; // the value to create a String node
+	str_content.trim();
+	if ( !is_real_empty(str_content) ){
+	  UnicodeString par_content = str_content; // the value we will use for
+	  // the paragraph text
+	  UnicodeString hyp; // hyphen symbol at the end of par_contet
+	  if ( par_content.endsWith( "¬" ) ){
+	    par_content = pop_back( par_content ); // remove it
+	    hyp = "¬";
+	  }
+	  else if ( par_content.endsWith( "- " ) ){
+	    par_content = pop_back( par_content ); // remove the space
+	    par_content = pop_back( par_content ); // remove the '-'
+	    hyp = "-";
+	  }
+	  else if ( par_content.endsWith( "-" ) ){
+	    par_content = pop_back( par_content ); // remove the '-'
+	    hyp = "-";
+	  }
+	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = par->add_child<folia::String>( str_args );
-	  str->setutext( content, classname );
-	  parTxt += " " + content;
+	  str->setutext( str_content, classname );
+	  if ( hyp.isEmpty() && &w != &words.back() ){
+	    par_content += " "; // no hyphen, so add a space separator except
+	    // for last word
+	  }
+	  XmlText *e = new folia::XmlText(); // create partial text
+	  e->setvalue( TiCC::UnicodeToUTF8(par_content) );
+	  par_stack.push_back( e ); // add the XmlText to te stack
+	  if ( !hyp.isEmpty() ){
+	    // add an extra HyphBreak to the stack
+	    folia::KWargs args;
+	    args["class"] = TiCC::UnicodeToUTF8(hyp);
+	    FoliaElement *e = new folia::Hyphbreak(args,d);
+	    par_stack.push_back( e );
+	  }
 	}
       }
+    }
+    if ( par && !par_stack.empty() ){
+      // leftovers
+      folia::KWargs text_args;
+      text_args["class"] = classname;
+      FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
+      for ( const auto& it : par_stack ){
+	txt->append(it );
+      }
+      par_stack.clear();
     }
     if ( parCount == 0 ){
 #pragma omp critical
@@ -249,11 +300,6 @@ int main( int argc, char *argv[] ){
 	--to_do;
       }
       continue;
-    }
-    parTxt.trim();
-    if ( !is_real_empty(parTxt) ){
-      par->setutext( parTxt, classname );
-      text->append( par );
     }
     string outname = outputDir + nameNoExt + ".folia.xml";
     d->save( outname );
