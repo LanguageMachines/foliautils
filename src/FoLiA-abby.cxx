@@ -636,25 +636,21 @@ bool process_paragraph( folia::Paragraph *paragraph,
       if ( !it._hyph.isEmpty() ){
 	// check if we have a hyphenation
 	if ( is_item ){
-	  // list items are specila. KEEP the hyphen!
+	  // list items are special. KEEP the hyphen!
 	  value = "- " + value;
 	  add_value( content, value );
 	}
 	else {
 	  // a 'true' hyphen: add the value + <t-hbr/>
 	  //	cerr << "HYPH= '" << it._hyph << "'" << endl;
-	  if ( it._hyph == "¬" ){
-	    previous_hyphen = true;
-	  }
-	  else if ( it._hyph == "-"
-		    && &it == &line_parts.back() ){
+	  folia::KWargs args;
+	  if ( it._hyph == "¬"
+	       || ( it._hyph == "-"
+		    && &it == &line_parts.back() ) ){
+	    args["class"] = TiCC::UnicodeToUTF8(it._hyph);
 	    previous_hyphen = true;
 	  }
 	  add_value( content, value );
-	  folia::KWargs args;
-	  if ( keep_hyphens ){
-	    args["text"] = TiCC::UnicodeToUTF8(it._hyph);
-	  }
 	  content->add_child<folia::Hyphbreak>(args);
 	  //	cerr << "content now: " << content << endl;
 	  no_break = true;
@@ -871,7 +867,6 @@ void usage(){
   cerr << "\t-C or --class='class'\t the FoLiA class name for <t> nodes. "
     "(default '" << classname << "')" << endl;
   cerr << "\t--addbreaks\t optionally add <br/> nodes for every newline in the input" << endl;
-  cerr << "\t--keephyphens\t optionally keep hyphenation symbols in <t-hbr> nodes" << endl;
   cerr << "\t--addmetrics\t optionally add Metric information about first and last characters in each <par> from the input" << endl;
   cerr << "\t--prefix='pre'\t add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') " << endl;
   cerr << "\t\t\t use 'none' for an empty prefix. (can be dangerous)" << endl;
@@ -940,6 +935,9 @@ int main( int argc, char *argv[] ){
   }
   verbose = opts.extract( 'v' );
   keep_hyphens = opts.extract( "keephyphens" );
+  if ( keep_hyphens ){
+    cerr << "WARNING: --keep-hyphens no longer necessesary. Ignored" << endl;
+  }
   add_breaks = opts.extract( "addbreaks" );
   add_metrics = opts.extract( "addmetrics" );
   opts.extract( 'O', outputDir );
