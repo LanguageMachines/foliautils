@@ -63,6 +63,10 @@ void usage(){
        << classname << "')"<< endl;
 }
 
+bool is_real_empty( const UnicodeString& str ){
+  return is_norm_empty( TiCC::UnicodeToUTF8(str) );
+}
+
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:", "class:,setname:,help,version,threads:" );
   try {
@@ -198,22 +202,22 @@ int main( int argc, char *argv[] ){
     int parCount = 0;
     int wrdCnt = 0;
     folia::FoliaElement *par = 0;
-    string parTxt;
     string parId;
-    string line;
-    while ( getline( is, line ) ){
-      line = TiCC::trim(line);
-      if ( line.empty() ){
-	parTxt = TiCC::trim( parTxt );
-	if ( par && !is_norm_empty(parTxt) ){
-	  par->settext( parTxt, classname );
+    UnicodeString parTxt;
+    UnicodeString line;
+    while ( TiCC::getline( is, line ) ){
+      line.trim();
+      if ( line.isEmpty() ){
+	parTxt.trim( );
+	if ( par && !is_real_empty(parTxt) ){
+	  par->setutext( parTxt, classname );
 	  text->append( par );
 	  parTxt = "";
 	}
 	par = 0;
 	continue;
       }
-      vector<string> words = TiCC::split( line );
+      vector<UnicodeString> words = TiCC::split( line );
       for ( const auto& w : words ){
 	if ( par == 0 ){
 	  folia::KWargs p_args;
@@ -225,13 +229,13 @@ int main( int argc, char *argv[] ){
 	  par = new folia::Paragraph( p_args, d );
 	  wrdCnt = 0;
 	}
-	string content = w;
-	content = TiCC::trim( content);
-	if ( !is_norm_empty(content) ){
+	UnicodeString content = w;
+	content.trim();
+	if ( !is_real_empty(content) ){
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = par->add_child<folia::String>( str_args );
-	  str->settext( content, classname );
+	  str->setutext( content, classname );
 	  parTxt += " " + content;
 	}
       }
@@ -246,9 +250,9 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    parTxt = TiCC::trim( parTxt );
-    if ( !is_norm_empty(parTxt) ){
-      par->settext( parTxt, classname );
+    parTxt.trim();
+    if ( !is_real_empty(parTxt) ){
+      par->setutext( parTxt, classname );
       text->append( par );
     }
     string outname = outputDir + nameNoExt + ".folia.xml";
