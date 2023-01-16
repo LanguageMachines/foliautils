@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-levi010geil01_01_Deel500" generator="libfolia-v2.9" version="2.5.0">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FA-levi010geil01_01_Deel500" generator="libfolia-v2.13" version="2.5.1">
   <metadata type="native">
     <annotations>
       <paragraph-annotation set="FoLiA-abby-set">
@@ -26,8 +26,8 @@
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-abby.1" begindatetime="2021-05-01T09:31:14" command="FoLiA-abby --keephyphens -O out/hyph" folia_version="2.5.0" host="kokos" name="FoLiA-abby" user="sloot" version="0.17">
-        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.9"/>
+      <processor xml:id="FoLiA-abby.1" begindatetime="2023-01-16T15:42:20" command="FoLiA-abby --keephyphens -O out/hyph" folia_version="2.5.1" host="kobus" name="FoLiA-abby" user="sloot" version="0.19">
+        <processor xml:id="FoLiA-abby.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.13"/>
       </processor>
     </provenance>
     <meta id="abby_file">levi010geil01_01_Deel500.xml</meta>
@@ -41,11 +41,11 @@
       </p>
       <p xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2">
         <t class="OCR">
-<t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.1"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>uit te maken, tot wiens territorium deze behoorde. De Trans<t-hbr>-</t-hbr></t-style></t-str><t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.2"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar</t-style></t-str>
+<t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.1"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>uit te maken, tot wiens territorium deze behoorde. De Trans<t-hbr class="-"/></t-style></t-str><t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.2"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche Republiek verklaarde, dat Klipdrift en omgeving haar</t-style></t-str>
 <t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.3"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>domein was, zij kende zich het monopolie toe en verklaarde,</t-style></t-str>
 <t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.4"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>dat zij het recht had, dit monopolie af te staan aan wien zij</t-style></t-str>
 <t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.5"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>goed dacht. Doch hiermede waren de diggers niet tevreden ;</t-style></t-str>
-<t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.6"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zij meenden, dat op deze wijze van de zijde der Trans<t-hbr>-</t-hbr></t-style></t-str><t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.7"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche regeering inbreuk op hunne rechten werd gemaakt.</t-style></t-str>
+<t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.6"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>zij meenden, dat op deze wijze van de zijde der Trans<t-hbr class="-"/></t-style></t-str><t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.7"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>vaalsche regeering inbreuk op hunne rechten werd gemaakt.</t-style></t-str>
 <t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.8"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>Hadden zij, zooals wij reeds weten, een comité gekozen, om</t-style></t-str>
 <t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.9"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>hun allereerste belangen te regelen, thans werd eene soort van</t-style></t-str>
 <t-str xml:id="FA-levi010geil01_01_Deel500.text.div.1.p.2.t-str.10"><t-style><t-lang class="DutchStandard"/><feat class="Liberation Serif" subset="font_family"/><feat class="12" subset="font_size"/>republiek te Klipdrift gevormd, om tegenover de Transvaalsche</t-style></t-str>

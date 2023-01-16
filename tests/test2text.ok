@@ -8,6 +8,7 @@ Usage: FoLiA-2text [options] file/dir
 	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
+	-v increment the verbosity level.
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-e		 expr: specify the expression all input files should match with.
@@ -22,6 +23,7 @@ Usage: FoLiA-2text [options] file/dir
 	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
+	-v increment the verbosity level.
 	-h or --help	 this message
 	-V or --version 	 show version 
 	-e		 expr: specify the expression all input files should match with.

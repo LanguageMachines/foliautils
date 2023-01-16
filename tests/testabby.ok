@@ -9,7 +9,6 @@ Usage: FoLiA-abby [options] file/dir
 	-S or --setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-abby-set')
 	-C or --class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--addbreaks	 optionally add <br/> nodes for every newline in the input
-	--keephyphens	 optionally keep hyphenation symbols in <t-hbr> nodes
 	--addmetrics	 optionally add Metric information about first and last characters in each <par> from the input
 	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
@@ -28,7 +27,6 @@ Usage: FoLiA-abby [options] file/dir
 	-S or --setname='set'	 the FoLiA set name for <t> nodes. (default 'FoLiA-abby-set')
 	-C or --class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
 	--addbreaks	 optionally add <br/> nodes for every newline in the input
-	--keephyphens	 optionally keep hyphenation symbols in <t-hbr> nodes
 	--addmetrics	 optionally add Metric information about first and last characters in each <par> from the input
 	--prefix='pre'	 add this prefix to the xml:id of ALL nodes in the created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
@@ -54,6 +52,7 @@ start processing of 7 files
 	converted: data/abby/morse_OCR_perletter2.xml.gz into: out/break/FA-morse_OCR_perletter2.folia.xml.gz
 	converted: data/abby/morse_OCR_perletter.xml into: out/break/FA-morse_OCR_perletter.folia.xml
 done
+WARNING: --keep-hyphens no longer necessesary. Ignored
 start processing of 7 files 
 	converted: data/abby/item.xml into: out/hyph/FA-item.folia.xml
 	converted: data/abby/hyph.xml into: out/hyph/FA-hyph.folia.xml
