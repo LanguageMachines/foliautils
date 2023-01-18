@@ -57,9 +57,9 @@ void usage(){
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-O\t output directory " << endl;
-  cerr << "\t--setname The FoLiA setname of the <str> nodes. "
+  cerr << "\t--setname The FoLiA setname of the created nodes. "
     "(Default '" << setname << "')" << endl;
-  cerr << "\t--class The classname of the <str> nodes. (Default '"
+  cerr << "\t--class The classname of the <t> nodes that are created. (Default '"
        << classname << "')"<< endl;
 }
 
@@ -248,7 +248,7 @@ int main( int argc, char *argv[] ){
 	  UnicodeString hyp; // hyphen symbol at the end of par_contet
 	  if ( par_content.endsWith( "¬" ) ){
 	    par_content = pop_back( par_content ); // remove it
-	    hyp = "¬";
+	    hyp = "¬";  // the Not-Sign u00ac
 	  }
 	  else if ( par_content.endsWith( "- " ) ){
 	    par_content = pop_back( par_content ); // remove the space
