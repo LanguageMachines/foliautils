@@ -1459,13 +1459,7 @@ int main( int argc, char *argv[] ){
 	   << endl;
       exit(EXIT_FAILURE);
     }
-    if ( TiCC::isFile(name) ){
-      if ( TiCC::match_back( name, ".tar" ) ){
-	cerr << "TAR files are not supported." << endl;
-	exit(EXIT_FAILURE);
-      }
-    }
-    else {
+    if ( !TiCC::isFile(name) ){
       if ( do_direct ){
 	fileNames = TiCC::searchFilesMatch( name, "*.xml" );
       }

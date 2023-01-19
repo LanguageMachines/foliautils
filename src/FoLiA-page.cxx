@@ -702,13 +702,7 @@ int main( int argc, char *argv[] ){
 	 << endl;
     exit(EXIT_FAILURE);
   }
-  if ( TiCC::isFile(name) ){
-    if ( TiCC::match_back( name, ".tar" ) ){
-      cerr << "TAR files are not supported yet." << endl;
-      exit(EXIT_FAILURE);
-    }
-  }
-  else {
+  if ( !TiCC::isFile(name) ){
     fileNames = TiCC::searchFilesMatch( name, ".xml", false );
   }
   size_t toDo = fileNames.size();

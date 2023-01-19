@@ -981,18 +981,11 @@ int main( int argc, char *argv[] ){
 	 << endl;
     exit(EXIT_FAILURE);
   }
-  if ( TiCC::isFile(name) ){
-    if ( TiCC::match_back( name, ".tar" ) ){
-      cerr << "TAR files are not supported yet." << endl;
-      exit(EXIT_FAILURE);
-    }
-  }
   else {
-    // we know name is a directory
+    // we assume name is a directory
     if ( name.back() == '/' ){
       name.pop_back();
     }
-
     fileNames = TiCC::searchFilesMatch( name, ".xml($|.gz$|.bz2$)", false );
   }
   size_t toDo = fileNames.size();
