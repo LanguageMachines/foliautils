@@ -242,13 +242,15 @@ int main( int argc, char *argv[] ){
 	}
 	UnicodeString str_content = w; // the value to create a String node
 	str_content.trim();
+	bool add_break = true;
 	if ( !is_real_empty(str_content) ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
-	  UnicodeString hyp; // hyphen symbol at the end of par_contet
+	  UnicodeString hyp; // hyphen symbol at the end of par_content
 	  if ( par_content.endsWith( "¬" ) ){
 	    par_content = pop_back( par_content ); // remove it
 	    hyp = "¬";  // the Not-Sign u00ac
+	    add_break = false;
 	  }
 	  else if ( par_content.endsWith( "- " ) ){
 	    par_content = pop_back( par_content ); // remove the space
@@ -277,6 +279,9 @@ int main( int argc, char *argv[] ){
 	    args["class"] = TiCC::UnicodeToUTF8(hyp);
 	    FoliaElement *e = new folia::Hyphbreak(args,d);
 	    par_stack.push_back( e );
+	  }
+	  if ( add_break && &w == &words.back() ){
+	    par_stack.push_back( new folia::Linebreak() );
 	  }
 	}
       }
