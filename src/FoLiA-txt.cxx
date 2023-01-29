@@ -200,6 +200,8 @@ int main( int argc, char *argv[] ){
     KWargs args;
     args["processor"] = processor_id;
     d->declare( folia::AnnotationType::STRING, setname, args );
+    d->declare( folia::AnnotationType::PARAGRAPH, setname, args );
+    d->declare( folia::AnnotationType::LINEBREAK, setname, args );
     args.clear();
     args["xml:id"] = docid + ".text";
     folia::Text *text = d->create_root<folia::Text>( args );
@@ -233,7 +235,6 @@ int main( int argc, char *argv[] ){
 	  // start a new Paragraph, only when at least 1 entry.
 	  folia::KWargs p_args;
 	  p_args["processor"] = processor_id;
-	  d->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
 	  p_args.clear();
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
 	  p_args["xml:id"] = parId;
