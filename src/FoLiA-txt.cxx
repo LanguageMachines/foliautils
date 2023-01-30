@@ -243,7 +243,6 @@ int main( int argc, char *argv[] ){
 	}
 	UnicodeString str_content = w; // the value to create a String node
 	str_content.trim();
-	bool add_break = true;
 	if ( !is_real_empty(str_content) ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
@@ -251,7 +250,6 @@ int main( int argc, char *argv[] ){
 	  if ( par_content.endsWith( "¬" ) ){
 	    par_content = pop_back( par_content ); // remove it
 	    hyp = "¬";  // the Not-Sign u00ac
-	    add_break = false;
 	  }
 	  else if ( par_content.endsWith( "- " ) ){
 	    par_content = pop_back( par_content ); // remove the space
@@ -274,15 +272,21 @@ int main( int argc, char *argv[] ){
 	  XmlText *e = new folia::XmlText(); // create partial text
 	  e->setvalue( TiCC::UnicodeToUTF8(par_content) );
 	  par_stack.push_back( e ); // add the XmlText to te stack
+	  bool add_space = true;
 	  if ( !hyp.isEmpty() ){
 	    // add an extra HyphBreak to the stack
 	    folia::KWargs args;
 	    args["class"] = TiCC::UnicodeToUTF8(hyp);
 	    FoliaElement *e = new folia::Hyphbreak(args,d);
 	    par_stack.push_back( e );
+	    add_space = false;
 	  }
-	  if ( add_break && &w == &words.back() ){
-	    par_stack.push_back( new folia::Linebreak() );
+	  if ( &w == &words.back() ){
+	    folia::KWargs args;
+	    if ( !add_space ){
+	      args["space"] = "no";
+	    }
+	    par_stack.push_back( new folia::Linebreak(args) );
 	  }
 	}
       }
