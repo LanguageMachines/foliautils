@@ -57,6 +57,9 @@ void usage(){
   cerr << "\t-h or --help\t this message" << endl;
   cerr << "\t-V or --version\t show version " << endl;
   cerr << "\t-O\t output directory " << endl;
+  cerr << "\t--remove-end-hyphens:yes|no (default = 'no') " << endl;
+  cerr << "\t\t\t if 'yes', hyphens (-) att the end of lines are converted to"
+    " <t-hbr> nodes.\n\t\t\t And ignored in general." << endl;
   cerr << "\t--setname The FoLiA setname of the created nodes. "
     "(Default '" << setname << "')" << endl;
   cerr << "\t--class The classname of the <t> nodes that are created. (Default '"
@@ -72,7 +75,9 @@ inline UnicodeString& pop_back( UnicodeString& us ){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "hVt:O:", "class:,setname:,help,version,threads:" );
+  TiCC::CL_Options opts( "hVt:O:",
+			 "class:,setname:,remove-end-hyphens:,"
+			 "help,version,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -129,6 +134,11 @@ int main( int argc, char *argv[] ){
 	exit(EXIT_FAILURE);
       }
     }
+  }
+  bool keep_hyphens = true;
+  string h_val;
+  if ( opts.extract( "remove-end-hyphens", h_val ) ){
+    keep_hyphens = !TiCC::stringTo<bool>( h_val );
   }
   vector<string> file_names = opts.getMassOpts();
   size_t to_do = file_names.size();
@@ -251,12 +261,14 @@ int main( int argc, char *argv[] ){
 	    par_content = pop_back( par_content ); // remove it
 	    hyp = "¬";  // the Not-Sign u00ac
 	  }
-	  else if ( par_content.endsWith( "- " ) ){
+	  else if ( !keep_hyphens
+		    && par_content.endsWith( "- " ) ){
 	    par_content = pop_back( par_content ); // remove the space
 	    par_content = pop_back( par_content ); // remove the '-'
 	    hyp = "-";
 	  }
-	  else if ( par_content.endsWith( "-" ) ){
+	  else if ( !keep_hyphens
+		    && par_content.endsWith( "-" ) ){
 	    par_content = pop_back( par_content ); // remove the '-'
 	    hyp = "-";
 	  }

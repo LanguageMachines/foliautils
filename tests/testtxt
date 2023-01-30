@@ -18,3 +18,6 @@ cat out/test.folia.xml >> testtxt.out
 
 $my_bin/FoLiA-txt -O out data/hyph.txt
 cat out/hyph.folia.xml >> testtxt.out
+
+$my_bin/FoLiA-txt -O out --remove-end-hyphens data/hyph.txt
+cat out/hyph.folia.xml >> testtxt.out

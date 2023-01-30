@@ -70,6 +70,7 @@ UnicodeString handle_token_tag( const folia::FoliaElement *d,
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:c:",
 			 "class:,help,version,retaintok,threads:,"
+			 "hyphens,"
 			 "honour-tags,correction-handling:" );
   try {
     opts.init(argc,argv);
@@ -98,6 +99,7 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
+  bool add_hyphens = opts.extract( "hyphens" );
   bool honour_tags = opts.extract( "honour-tags" );
   CORRECTION_HANDLING ch = CORRECTION_HANDLING::CURRENT;
   string handling;
@@ -207,6 +209,9 @@ int main( int argc, char *argv[] ){
       folia::TextPolicy tp( class_name );
       if ( retaintok ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
+      }
+      if ( add_hyphens ){
+	tp.set( folia::TEXT_FLAGS::RETAIN_FORMATTING );
       }
       tp.set_correction_handling( ch );
       tp.set_debug( verbosity > 0 );

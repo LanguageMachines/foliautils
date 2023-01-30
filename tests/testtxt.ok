@@ -8,6 +8,9 @@ Usage: [options] file/dir
 	-h or --help	 this message
 	-V or --version	 show version 
 	-O	 output directory 
+	--remove-end-hyphens:yes|no (default = 'no') 
+			 if 'yes', hyphens (-) att the end of lines are converted to <t-hbr> nodes.
+			 And ignored in general.
 	--setname The FoLiA setname of the created nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <t> nodes that are created. (Default 'FoLiA-txt')
 foliautils 0.19
@@ -21,6 +24,9 @@ Usage: [options] file/dir
 	-h or --help	 this message
 	-V or --version	 show version 
 	-O	 output directory 
+	--remove-end-hyphens:yes|no (default = 'no') 
+			 if 'yes', hyphens (-) att the end of lines are converted to <t-hbr> nodes.
+			 And ignored in general.
 	--setname The FoLiA setname of the created nodes. (Default 'FoLiA-txt-set')
 	--class The classname of the <t> nodes that are created. (Default 'FoLiA-txt')
 <?xml version="1.0" encoding="UTF-8"?>
@@ -39,7 +45,7 @@ Usage: [options] file/dir
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T11:56:35" command="FoLiA-txt -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T15:00:22" command="FoLiA-txt -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
         <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
@@ -132,7 +138,7 @@ Usage: [options] file/dir
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T11:56:36" command="FoLiA-txt --class=foobar -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T15:00:22" command="FoLiA-txt --class=foobar -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
         <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
@@ -225,7 +231,7 @@ Usage: [options] file/dir
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T11:56:36" command="FoLiA-txt --class=bar --setname=foo -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T15:00:22" command="FoLiA-txt --class=bar --setname=foo -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
         <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
@@ -319,14 +325,141 @@ Usage: [options] file/dir
       <hyphenation-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T11:56:36" command="FoLiA-txt -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T15:00:22" command="FoLiA-txt -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
         <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
   </metadata>
   <text xml:id="hyph.text">
     <p xml:id="hyph.p.1">
-      <t class="FoLiA-txt">Dit is een test. Met enkele paragra<t-hbr class="-"/><br space="no"/>fen. Dit is de eerste. Met ook een af<t-hbr class="-"/><br space="no"/>breking.<br/></t>
+      <t class="FoLiA-txt">Dit is een test. Met enkele paragra-<br/>fen. Dit is de eerste. Met ook een af-<br/>breking.<br/></t>
+      <str xml:id="hyph.p.1.str.1">
+        <t class="FoLiA-txt">Dit</t>
+      </str>
+      <str xml:id="hyph.p.1.str.2">
+        <t class="FoLiA-txt">is</t>
+      </str>
+      <str xml:id="hyph.p.1.str.3">
+        <t class="FoLiA-txt">een</t>
+      </str>
+      <str xml:id="hyph.p.1.str.4">
+        <t class="FoLiA-txt">test.</t>
+      </str>
+      <str xml:id="hyph.p.1.str.5">
+        <t class="FoLiA-txt">Met</t>
+      </str>
+      <str xml:id="hyph.p.1.str.6">
+        <t class="FoLiA-txt">enkele</t>
+      </str>
+      <str xml:id="hyph.p.1.str.7">
+        <t class="FoLiA-txt">paragra-</t>
+      </str>
+      <str xml:id="hyph.p.1.str.8">
+        <t class="FoLiA-txt">fen.</t>
+      </str>
+      <str xml:id="hyph.p.1.str.9">
+        <t class="FoLiA-txt">Dit</t>
+      </str>
+      <str xml:id="hyph.p.1.str.10">
+        <t class="FoLiA-txt">is</t>
+      </str>
+      <str xml:id="hyph.p.1.str.11">
+        <t class="FoLiA-txt">de</t>
+      </str>
+      <str xml:id="hyph.p.1.str.12">
+        <t class="FoLiA-txt">eerste.</t>
+      </str>
+      <str xml:id="hyph.p.1.str.13">
+        <t class="FoLiA-txt">Met</t>
+      </str>
+      <str xml:id="hyph.p.1.str.14">
+        <t class="FoLiA-txt">ook</t>
+      </str>
+      <str xml:id="hyph.p.1.str.15">
+        <t class="FoLiA-txt">een</t>
+      </str>
+      <str xml:id="hyph.p.1.str.16">
+        <t class="FoLiA-txt">af-</t>
+      </str>
+      <str xml:id="hyph.p.1.str.17">
+        <t class="FoLiA-txt">breking.</t>
+      </str>
+    </p>
+    <p xml:id="hyph.p.2">
+      <t class="FoLiA-txt">En dit de tweede. Met een speciaaal ge<t-hbr class="¬"/><br space="no"/>val. En ook weer een soft<t-hbr class="¬"/><br space="no"/>hyphen.<br/></t>
+      <str xml:id="hyph.p.2.str.1">
+        <t class="FoLiA-txt">En</t>
+      </str>
+      <str xml:id="hyph.p.2.str.2">
+        <t class="FoLiA-txt">dit</t>
+      </str>
+      <str xml:id="hyph.p.2.str.3">
+        <t class="FoLiA-txt">de</t>
+      </str>
+      <str xml:id="hyph.p.2.str.4">
+        <t class="FoLiA-txt">tweede.</t>
+      </str>
+      <str xml:id="hyph.p.2.str.5">
+        <t class="FoLiA-txt">Met</t>
+      </str>
+      <str xml:id="hyph.p.2.str.6">
+        <t class="FoLiA-txt">een</t>
+      </str>
+      <str xml:id="hyph.p.2.str.7">
+        <t class="FoLiA-txt">speciaaal</t>
+      </str>
+      <str xml:id="hyph.p.2.str.8">
+        <t class="FoLiA-txt">ge¬</t>
+      </str>
+      <str xml:id="hyph.p.2.str.9">
+        <t class="FoLiA-txt">val.</t>
+      </str>
+      <str xml:id="hyph.p.2.str.10">
+        <t class="FoLiA-txt">En</t>
+      </str>
+      <str xml:id="hyph.p.2.str.11">
+        <t class="FoLiA-txt">ook</t>
+      </str>
+      <str xml:id="hyph.p.2.str.12">
+        <t class="FoLiA-txt">weer</t>
+      </str>
+      <str xml:id="hyph.p.2.str.13">
+        <t class="FoLiA-txt">een</t>
+      </str>
+      <str xml:id="hyph.p.2.str.14">
+        <t class="FoLiA-txt">soft¬</t>
+      </str>
+      <str xml:id="hyph.p.2.str.15">
+        <t class="FoLiA-txt">hyphen.</t>
+      </str>
+    </p>
+  </text>
+</FoLiA>
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="hyph" generator="libfolia-v2.14" version="2.5.1">
+  <metadata type="native">
+    <annotations>
+      <string-annotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </string-annotation>
+      <paragraph-annotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </paragraph-annotation>
+      <linebreak-annotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </linebreak-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <hyphenation-annotation/>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-01-30T15:00:22" command="FoLiA-txt -O out" folia_version="2.5.1" host="kobus" name="FoLiA-txt" user="sloot" version="0.19">
+        <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
+      </processor>
+    </provenance>
+  </metadata>
+  <text xml:id="hyph.text">
+    <p xml:id="hyph.p.1">
+      <t class="FoLiA-txt">Dit is een test. Met enkele paragra-<br/>fen. Dit is de eerste. Met ook een af-<br/>breking.<br/></t>
       <str xml:id="hyph.p.1.str.1">
         <t class="FoLiA-txt">Dit</t>
       </str>
