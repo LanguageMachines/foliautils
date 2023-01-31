@@ -66,10 +66,6 @@ void usage(){
        << classname << "')"<< endl;
 }
 
-inline bool is_real_empty( const UnicodeString& str ){
-  return is_norm_empty( TiCC::UnicodeToUTF8(str) );
-}
-
 inline UnicodeString& pop_back( UnicodeString& us ){
   return us.remove( us.length() - 1 );
 }
@@ -253,7 +249,7 @@ int main( int argc, char *argv[] ){
 	}
 	UnicodeString str_content = w; // the value to create a String node
 	str_content.trim();
-	if ( !is_real_empty(str_content) ){
+	if ( !is_norm_empty(str_content) ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
 	  UnicodeString hyp; // hyphen symbol at the end of par_content

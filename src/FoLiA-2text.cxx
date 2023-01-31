@@ -211,7 +211,7 @@ int main( int argc, char *argv[] ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
       }
       // if ( add_hyphens ){
-      // 	tp.set( folia::TEXT_FLAGS::RETAIN_FORMATTING );
+      // 	tp.set( folia::TEXT_FLAGS::ADD_FORMATTING );
       // }
       tp.set_correction_handling( ch );
       tp.set_debug( verbosity > 0 );
