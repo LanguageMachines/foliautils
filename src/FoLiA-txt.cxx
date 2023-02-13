@@ -203,14 +203,14 @@ int main( int argc, char *argv[] ){
     }
     processor *proc = add_provenance( *d, "FoLiA-txt", command );
     processor_id = proc->id();
-    KWargs args;
-    args["processor"] = processor_id;
-    d->declare( folia::AnnotationType::STRING, setname, args );
-    d->declare( folia::AnnotationType::PARAGRAPH, setname, args );
-    d->declare( folia::AnnotationType::LINEBREAK, setname, args );
-    args.clear();
-    args["xml:id"] = docid + ".text";
-    folia::Text *text = d->create_root<folia::Text>( args );
+    KWargs p_args;
+    p_args["processor"] = processor_id;
+    d->declare( folia::AnnotationType::STRING, setname, p_args );
+    d->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+    d->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
+    p_args.clear();
+    p_args["xml:id"] = docid + ".text";
+    folia::Text *text = d->create_root<folia::Text>( p_args );
     int parCount = 0;
     int wrdCnt = 0;
     folia::FoliaElement *par = 0;
@@ -239,12 +239,11 @@ int main( int argc, char *argv[] ){
       for ( const auto& w : words ){
 	if ( par == 0 ){
 	  // start a new Paragraph, only when at least 1 entry.
-	  folia::KWargs p_args;
-	  p_args["processor"] = processor_id;
-	  p_args.clear();
+	  folia::KWargs par_args;
+	  par_args["processor"] = processor_id;
 	  parId = docid + ".p." +  TiCC::toString(++parCount);
-	  p_args["xml:id"] = parId;
-	  par = text->add_child<folia::Paragraph>( p_args );
+	  par_args["xml:id"] = parId;
+	  par = text->add_child<folia::Paragraph>( par_args );
 	  wrdCnt = 0;
 	}
 	UnicodeString str_content = w; // the value to create a String node
@@ -285,16 +284,16 @@ int main( int argc, char *argv[] ){
 	    // add an extra HyphBreak to the stack
 	    folia::KWargs args;
 	    args["class"] = TiCC::UnicodeToUTF8(hyp);
-	    FoliaElement *e = new folia::Hyphbreak(args,d);
-	    par_stack.push_back( e );
+	    FoliaElement *hb = new folia::Hyphbreak(args,d);
+	    par_stack.push_back( hb );
 	    add_space = false;
 	  }
 	  if ( &w == &words.back() ){
-	    folia::KWargs args;
+	    folia::KWargs line_args;
 	    if ( !add_space ){
-	      args["space"] = "no";
+	      line_args["space"] = "no";
 	    }
-	    par_stack.push_back( new folia::Linebreak(args) );
+	    par_stack.push_back( new folia::Linebreak(line_args) );
 	  }
 	}
       }
