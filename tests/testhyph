@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+
+echo "Start" > testhyph.out
+$my_bin/FoLiA-txt -O out data/hyph.txt
+echo "FoLia default:" >> testhyph.out
+cat out/hyph.folia.xml >> testhyph.out
+
+$my_bin/FoLiA-2text --class=FoLiA-txt out/hyph.folia.xml
+echo "default 2text" >> testhyph.out
+cat out/hyph.folia.xml.txt >> testhyph.out
+
+$my_bin/FoLiA-txt --remove-end-hyphens=yes -O out data/hyph.txt
+echo "FoLia with --remove-end-hyphens:" >> testhyph.out
+cat out/hyph.folia.xml >> testhyph.out
+
+$my_bin/FoLiA-2text --class=FoLiA-txt out/hyph.folia.xml
+echo "hyphens met default 2text:" >> testhyph.out
+cat out/hyph.folia.xml.txt >> testhyph.out
+
+$my_bin/FoLiA-2text --restore-formatting --class=FoLiA-txt out/hyph.folia.xml
+echo "hyphens met restore formatting:" >> testhyph.out
+cat out/hyph.folia.xml.txt >> testhyph.out
