@@ -48,7 +48,9 @@ void usage( const string& name ){
   cerr << "\t FoLiA-2text will produce a text from a FoLiA file, " << endl;
   cerr << "\t or a whole directory of FoLiA files " << endl;
   cerr << "\t-c OR --class='name'\t use 'name' as the folia class for <t> nodes. (default is 'current')" << endl;
-  cerr << "\t--retaintok\t retain tokenization. Default is attempt to remove." << endl;
+  cerr << "\t--retaintok\t Retain tokenization. Default is attempt to remove." << endl;
+  cerr << "\t--restore-formatting \tAttempt to restore the original formatting." << endl;
+  cerr << "\t\t\t Will insert (soft-)hypens and such." << endl;
   cerr << "\t-t 'threads' or\n\t--threads='threads' Number of threads to run on." << endl;
   cerr << "\t\t\t If 'threads' has the value \"max\", the number of threads is set to a" << endl;
   cerr << "\t\t\t reasonable value. (OMP_NUM_TREADS - 2)" << endl;
@@ -70,7 +72,7 @@ UnicodeString handle_token_tag( const folia::FoliaElement *d,
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:c:",
 			 "class:,help,version,retaintok,threads:,"
-			 //			 "hyphens,"
+			 "restore-formatting,"
 			 "honour-tags,correction-handling:" );
   try {
     opts.init(argc,argv);
@@ -99,7 +101,7 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( 'o', outputPrefix );
   bool retaintok = opts.extract( "retaintok" );
-  //  bool add_hyphens = opts.extract( "hyphens" );
+  bool restore = opts.extract( "restore-formatting" );
   bool honour_tags = opts.extract( "honour-tags" );
   CORRECTION_HANDLING ch = CORRECTION_HANDLING::CURRENT;
   string handling;
@@ -210,9 +212,9 @@ int main( int argc, char *argv[] ){
       if ( retaintok ){
 	tp.set( folia::TEXT_FLAGS::RETAIN );
       }
-      // if ( add_hyphens ){
-      // 	tp.set( folia::TEXT_FLAGS::ADD_FORMATTING );
-      // }
+      if ( restore ){
+	tp.set( folia::TEXT_FLAGS::ADD_FORMATTING );
+      }
       tp.set_correction_handling( ch );
       tp.set_debug( verbosity > 0 );
       if ( honour_tags ){

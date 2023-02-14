@@ -282,9 +282,9 @@ int main( int argc, char *argv[] ){
 	  bool add_space = true;
 	  if ( !hyp.isEmpty() ){
 	    // add an extra HyphBreak to the stack
-	    folia::KWargs args;
-	    args["class"] = TiCC::UnicodeToUTF8(hyp);
-	    FoliaElement *hb = new folia::Hyphbreak(args,d);
+	    FoliaElement *hb = new folia::Hyphbreak();
+	    XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
+	    e->setvalue( TiCC::UnicodeToUTF8(hyp) );
 	    par_stack.push_back( hb );
 	    add_space = false;
 	  }

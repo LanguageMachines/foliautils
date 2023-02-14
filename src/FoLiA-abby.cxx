@@ -362,14 +362,13 @@ void update_formatting_info( formatting_info& line_font,
 
 struct line_info {
   line_info():
-    _line(0),
-    _spaces(0)
+    _line(0)
   {};
   UnicodeString _value;
   formatting_info _fi;
   xmlNode *_line;
   UnicodeString _hyph;
-  int _spaces;
+  UnicodeString _spaces;
 };
 
 void process_line( xmlNode *block,
@@ -410,7 +409,7 @@ void process_line( xmlNode *block,
       UnicodeString tmp = uresult;
       tmp.trim();
       if ( tmp.isEmpty() ){
-	li._spaces = uresult.length();
+	li._spaces = uresult;
       }
       line_parts.push_back( li );
     }
@@ -499,14 +498,19 @@ folia::TextMarkupStyle* make_style_content( const formatting_info& info,
   return content;
 }
 
-void add_hspace( folia::FoliaElement *content ){
+void add_hspace( folia::FoliaElement *content,
+		 const UnicodeString& value ){
   //! insert a <t-hspace> node to a FoliaElement
   /*!
     \param content the node to connect to
    */
   folia::KWargs args;
   args["class"] = "space";
-  content->add_child<folia::TextMarkupHSpace>( args );
+  folia::FoliaElement *hs = content->add_child<folia::TextMarkupHSpace>( args );
+  if ( !value.isEmpty() ){
+    folia::XmlText *te = hs->add_child<folia::XmlText>();
+    te->setvalue( TiCC::UnicodeToUTF8(value) );
+  }
 }
 
 void add_value( folia::FoliaElement *content,
@@ -516,20 +520,38 @@ void add_value( folia::FoliaElement *content,
     \param content the Folia to extend
     \param value the Unicode string to add
     this fuction will replace leading and trailing spaces by <t-hspace> nodes
-   */
+  */
   if ( !value.isEmpty() ){
-    bool begin_space = u_isspace( value[0] );
-    bool end_space = u_isspace( value[value.length()-1] );
+    UnicodeString start_spaces;
+    for ( int i=0;i < value.length(); ++i ){
+      if ( u_isspace(value[i] ) ){
+	start_spaces += value[i];
+      }
+      else {
+	break;
+      }
+    }
+    UnicodeString end_spaces;
+    for ( int i=value.length()-1; i>0; --i ){
+      if ( u_isspace(value[i] ) ){
+	end_spaces = value[i] + end_spaces;
+      }
+      else {
+	break;
+      }
+    }
+    bool begin_space = !start_spaces.isEmpty();
+    bool end_space = !end_spaces.isEmpty();
     UnicodeString out = value;
     out.trim();
     if ( begin_space ){
       // represent ALL leading spaces as 1 TextMarkupHSpace
-      add_hspace( content );
+      add_hspace( content, start_spaces );
     }
     content->add_child<folia::XmlText>( TiCC::UnicodeToUTF8(out) );
     if ( end_space ){
       // represent ALL trailing spaces as 1 TextMarkupHSpace
-      add_hspace( content );
+      add_hspace( content, end_spaces );
     }
   }
 }
@@ -643,21 +665,21 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	else {
 	  // a 'true' hyphen: add the value + <t-hbr/>
 	  //	cerr << "HYPH= '" << it._hyph << "'" << endl;
-	  folia::KWargs args;
+	  add_value( content, value );
+	  folia::Hyphbreak *hb = content->add_child<folia::Hyphbreak>();
 	  if ( it._hyph == "¬"
 	       || ( it._hyph == "-"
 		    && &it == &line_parts.back() ) ){
-	    args["class"] = TiCC::UnicodeToUTF8(it._hyph);
+	    folia::XmlText *e = hb->add_child<folia::XmlText>();
+	    e->setvalue( TiCC::UnicodeToUTF8(it._hyph) );
 	    previous_hyphen = true;
 	  }
-	  add_value( content, value );
-	  content->add_child<folia::Hyphbreak>(args);
 	  //	cerr << "content now: " << content << endl;
 	  no_break = true;
 	}
       }
-      else if ( it._spaces > 0 ){
-	add_hspace( content );
+      else if ( !it._spaces.isEmpty() ){
+	add_hspace( content, it._spaces );
       }
       else {
 	add_value( content, value );
