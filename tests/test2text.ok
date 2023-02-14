@@ -3,7 +3,9 @@ Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
 	-c OR --class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
-	--retaintok	 retain tokenization. Default is attempt to remove.
+	--retaintok	 Retain tokenization. Default is attempt to remove.
+	--restore-formatting 	Attempt to restore the original formatting.
+			 Will insert (soft-)hypens and such.
 	-t 'threads' or
 	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
@@ -18,7 +20,9 @@ Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
 	-c OR --class='name'	 use 'name' as the folia class for <t> nodes. (default is 'current')
-	--retaintok	 retain tokenization. Default is attempt to remove.
+	--retaintok	 Retain tokenization. Default is attempt to remove.
+	--restore-formatting 	Attempt to restore the original formatting.
+			 Will insert (soft-)hypens and such.
 	-t 'threads' or
 	--threads='threads' Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a

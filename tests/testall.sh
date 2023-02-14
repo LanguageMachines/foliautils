@@ -11,6 +11,6 @@ fi
 
 for file in test2text testtxt testalto testcorrect testcorbig \
 	    testhocr testidf testpage testabby testlangcat teststats \
-	    testpm testclean testwordtranslate
+	    testhyph testpm testclean testwordtranslate
 do bash ./testone.sh $file
 done
