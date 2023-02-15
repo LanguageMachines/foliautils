@@ -64,5 +64,6 @@ $my_bin/FoLiA-2text data/markup.xml
 cat data/markup.xml.txt >> test2text.out
 rm -rf data/markup.xml.txt
 
+rm -rf data/markup.xml.txt
 $my_bin/FoLiA-2text --restore-formatting data/markup.xml
 cat data/markup.xml.txt >> test2text.out
