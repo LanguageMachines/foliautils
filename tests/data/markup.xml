@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="markup" generator="libfolia-v2.14" version="2.5.1">
+  <metadata type="native">
+    <annotations>
+      <sentence-annotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </sentence-annotation>
+      <paragraph-annotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </paragraph-annotation>
+      <linebreak-annotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </linebreak-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <hyphenationannotation set="FoLiA-txt-set">
+        <annotator processor="FoLiA-txt.1"/>
+      </hyphenationannotation>
+    </annotations>
+  </metadata>
+  <text xml:id="markup.text">
+    <p xml:id="markup.p.1">
+      <s xml:id="markup.p.1.s.1">
+	<t>Dit is een test. Met enkele afgebroken zin<t-hbr>-</t-hbr><br space="no"/>nen. Dit is de eerste. Met ook een soft af<t-hbr>¬</t-hbr><br space="no"/>breking.<br/></t>
+      </s>
+      <s xml:id="markup.p.1.s.2">
+	<t>En dit heeft een lange'<t-hspace>   </t-hspace>'space val.<br/></t>
+      </s>
+      <s xml:id="markup.p.1.s.3">
+	<t>En dit heeft een enkele'<t-hspace/>'space val.<br/></t>
+      </s>
+      <s xml:id="markup.p.1.s.4">
+	<t>En dit heeft een speciale'<t-hspace>⍽</t-hspace>'space val.<br/></t>
+      </s>
+    </p>
+  </text>
+</FoLiA>

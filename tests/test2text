@@ -58,3 +58,11 @@ cat data/double_cor.xml.txt >> test2text.out
 rm -rf data/double_cor.xml.txt
 $my_bin/FoLiA-2text --correction-handling either -colder data/double_cor.xml
 cat data/double_cor.xml.txt >> test2text.out
+
+rm -rf data/markup.xml.txt
+$my_bin/FoLiA-2text data/markup.xml
+cat data/markup.xml.txt >> test2text.out
+rm -rf data/markup.xml.txt
+
+$my_bin/FoLiA-2text --restore-formatting data/markup.xml
+cat data/markup.xml.txt >> test2text.out
