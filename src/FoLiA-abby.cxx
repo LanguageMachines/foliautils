@@ -509,7 +509,7 @@ void add_hspace( folia::FoliaElement *content,
   folia::FoliaElement *hs = content->add_child<folia::TextMarkupHSpace>( args );
   if ( !value.isEmpty() ){
     folia::XmlText *te = hs->add_child<folia::XmlText>();
-    te->setvalue( TiCC::UnicodeToUTF8(value) );
+    te->setuvalue(value );
   }
 }
 
@@ -671,7 +671,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	       || ( it._hyph == "-"
 		    && &it == &line_parts.back() ) ){
 	    folia::XmlText *e = hb->add_child<folia::XmlText>();
-	    e->setvalue( TiCC::UnicodeToUTF8(it._hyph) );
+	    e->setuvalue( it._hyph );
 	    previous_hyphen = true;
 	  }
 	  //	cerr << "content now: " << content << endl;

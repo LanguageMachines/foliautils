@@ -277,14 +277,14 @@ int main( int argc, char *argv[] ){
 	    // for last word
 	  }
 	  XmlText *e = new folia::XmlText(); // create partial text
-	  e->setvalue( TiCC::UnicodeToUTF8(par_content) );
+	  e->setuvalue( par_content );
 	  par_stack.push_back( e ); // add the XmlText to te stack
 	  bool add_space = true;
 	  if ( !hyp.isEmpty() ){
 	    // add an extra HyphBreak to the stack
 	    FoliaElement *hb = new folia::Hyphbreak();
 	    XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	    e->setvalue( TiCC::UnicodeToUTF8(hyp) );
+	    e->setuvalue( hyp );
 	    par_stack.push_back( hb );
 	    add_space = false;
 	  }
