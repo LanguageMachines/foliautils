@@ -1,3 +1,21 @@
+foliautils 0.19  21-02-2023
+[Ko van der Sloot]
+* general C++ cleanup and refactoring
+* Some fixes for building on Mac OSX
+* FoLiA-txt:
+  - now we handle soft-hyphens
+  - --remove-end-hyphens is the default now. We create <t-hbr> nodes
+  - modifications for https://github.com/proycon/foliapy/issues/25
+  - Unicode awareness
+* FoLiA-2text:
+  - added a --restore-formatting option, which outputs the text inside
+    <t-hspace> and <t-hbr> nodes
+* FoLiA-abby:
+  - handling of soft-hyphens
+  - fixes for <br/> and <t-hbr>
+  - preserve original spaces in <t-hspace>'s text
+* FoLiA-correct: small fix in program logic.
+
 foliautils 0.18  22-07-2022
 [Ko van der Sloot]
 * FoLiA-page: only add LineBreak annotation when needed
