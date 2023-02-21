@@ -16,7 +16,7 @@ Usage: FoLiA-abby [options] file/dir
 			 with 'c'=g create gzip files (.gz)
 	-v		 verbose output 
 	-V or --version	 show version 
-FoLiA-abby [foliautils 0.19]
+FoLiA-abby [foliautils 0.20]
 Usage: FoLiA-abby [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.

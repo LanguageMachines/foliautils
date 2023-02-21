@@ -12,7 +12,7 @@ Usage: FoLiA-pm [options] files/dir
 	-v		 verbose output 
 	-V or --version	 show version 
 	-h or --help 	 this messages 
-foliautils 0.19
+foliautils 0.20
 Usage: FoLiA-pm [options] files/dir
 	 convert Political Mashup XML files to FoLiA
 	 when a dir is given, all '.xml' files in that dir are processed

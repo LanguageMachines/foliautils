@@ -1,5 +1,5 @@
 missing input file(s)
-foliautils 0.19
+foliautils 0.20
 Usage: [options] dir/filename 
   add language information to a file or files in FoLiA XML format
   The files must have extension '.folia.xml' or '.xml'
@@ -22,15 +22,15 @@ Usage: [options] dir/filename
 process data/langcat.test.xml
 document 'data/langcat.test.xml' has 3 p nodes 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.10" version="1.4.987">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.14" version="1.4.987">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2021-08-01T16:25:59" command="FoLiA-langcat " folia_version="2.5.0" host="kokos" name="FoLiA-langcat" user="sloot" version="0.18">
-        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.10"/>
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2023-02-21T11:17:29" command="FoLiA-langcat " folia_version="2.5.1" host="kobus" name="FoLiA-langcat" user="sloot" version="0.20">
+        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
     <meta id="language">nld</meta>
@@ -53,15 +53,15 @@ document 'data/langcat.test.xml' has 3 p nodes
 process data/lc.xml.gz
 document 'data/lc.xml.gz' has 3 p nodes 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.10" version="1.4.987">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.14" version="1.4.987">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2021-08-01T16:25:59" command="FoLiA-langcat " folia_version="2.5.0" host="kokos" name="FoLiA-langcat" user="sloot" version="0.18">
-        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.10"/>
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2023-02-21T11:17:29" command="FoLiA-langcat " folia_version="2.5.1" host="kobus" name="FoLiA-langcat" user="sloot" version="0.20">
+        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
     <meta id="language">nld</meta>
@@ -84,15 +84,15 @@ document 'data/lc.xml.gz' has 3 p nodes
 process data/langcat.test2.xml
 document 'data/langcat.test2.xml' has 1 p nodes 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.10" version="1.4.987">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.14" version="1.4.987">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2021-08-01T16:25:59" command="FoLiA-langcat " folia_version="2.5.0" host="kokos" name="FoLiA-langcat" user="sloot" version="0.18">
-        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.10"/>
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2023-02-21T11:17:29" command="FoLiA-langcat " folia_version="2.5.1" host="kobus" name="FoLiA-langcat" user="sloot" version="0.20">
+        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
     <meta id="language">nld</meta>
@@ -110,15 +110,15 @@ document 'data/langcat.test2.xml' has 1 p nodes
 process data/langcat.test-str.folia.xml
 document 'data/langcat.test-str.folia.xml' has 2 str nodes 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.10" version="1.4.987">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.14" version="1.4.987">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2021-08-01T16:25:59" command="FoLiA-langcat " folia_version="2.5.0" host="kokos" name="FoLiA-langcat" user="sloot" version="0.18">
-        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.10"/>
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2023-02-21T11:17:29" command="FoLiA-langcat " folia_version="2.5.1" host="kobus" name="FoLiA-langcat" user="sloot" version="0.20">
+        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
     <meta id="language">nld</meta>
@@ -137,15 +137,15 @@ document 'data/langcat.test-str.folia.xml' has 2 str nodes
 process data/langcat.test-str.folia.xml
 document 'data/langcat.test-str.folia.xml' has 2 str nodes 
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.10" version="1.4.987">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="test" generator="libfolia-v2.14" version="1.4.987">
   <metadata type="native">
     <annotations>
       <lang-annotation set="http://raw.github.com/proycon/folia/master/setdefinitions/iso639_3.foliaset"/>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-langcat.1" begindatetime="2021-08-01T16:25:59" command="FoLiA-langcat " folia_version="2.5.0" host="kokos" name="FoLiA-langcat" user="sloot" version="0.18">
-        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.0" name="libfolia" type="generator" version="2.10"/>
+      <processor xml:id="FoLiA-langcat.1" begindatetime="2023-02-21T11:17:29" command="FoLiA-langcat " folia_version="2.5.1" host="kobus" name="FoLiA-langcat" user="sloot" version="0.20">
+        <processor xml:id="FoLiA-langcat.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.14"/>
       </processor>
     </provenance>
     <meta id="language">nld</meta>
