@@ -7,7 +7,7 @@
     "@type": "SoftwareSourceCode",
     "identifier": "foliautils",
     "name": "foliautils",
-    "version": "0.19",
+    "version": "0.20",
     "description": "Command-line utilities for working with the Format for Linguistic Annotation (FoLiA).",
     "license": "https://spdx.org/licenses/GPL-3.0-only",
 	"url": "https://github.com/LanguageMachines/foliautils",
@@ -121,13 +121,13 @@
             "name": "FoLiA-2text",
             "executableName": "FoLiA-2text",
             "description": "Convert FoLiA documents into plain text",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "text/plain"
@@ -139,13 +139,13 @@
             "name": "FoLiA-txt",
             "executableName": "FoLiA-txt",
             "description": "Convert plain text to FoLiA, the output will contain only <p> and <str> nodes. See ucto or rst2folia (FoLiA-tools) for alternatives.",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "text/plain"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -157,13 +157,13 @@
             "name": "FoLiA-page",
             "executableName": "FoLiA-page",
             "description": "Convert PAGE XML to FoLiA",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/page+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -175,13 +175,13 @@
             "name": "FoLiA-hocr",
             "executableName": "FoLiA-hocr",
             "description": "Convert hOCR (as outputted by Tesseract) to FoLiA",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "text/html"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -199,13 +199,13 @@
             "name": "FoLiA-langcat",
             "executableName": "FoLiA-langcat",
             "description": "Language Identification using textcat.",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -217,13 +217,13 @@
             "name": "FoLiA-idf",
             "executableName": "FoLiA-idf",
             "description": "Count words in a series of FoLiA documents and compute IDF statistics, which are outputted to a tsv file",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "Dataset",
                     "encodingFormat": "text/tab-separated-values"
@@ -235,13 +235,13 @@
             "name": "FoLiA-stats",
             "executableName": "FoLiA-stats",
             "description": "Gather n-gram statistics over a series of FoLiA documents",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "Dataset",
                     "encodingFormat": "text/tab-separated-values"
@@ -253,13 +253,13 @@
             "name": "FoLiA-collect",
             "executableName": "FoLiA-collect",
             "description": "Collect n-gram statistics from tsv files produced by FoLiA-stats, aggregating results.",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "Dataset",
                     "encodingFormat": "text/tab-seperated-values"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "Dataset",
                     "encodingFormat": "text/tab-separated-values"
@@ -271,13 +271,13 @@
             "name": "FoLiA-correct",
             "executableName": "FoLiA-correct",
             "description": "Correct FoLiA documents using correction candidates generated by TICCL-rank (from ticcltools)",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -289,13 +289,13 @@
             "name": "FoLiA-wordtranslate",
             "executableName": "FoLiA-wordtranslate",
             "description": "Simple word-by-word translator on the basis of a dictonary and/or rewrite rules",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -307,13 +307,13 @@
             "name": "FoLiA-clean",
             "executableName": "FoLiA-clean",
             "description": "FoLiA-clean will produce a cleaned up version of a FoLiA file, or a whole directory of FoLiA files, removing specified annotation types and specified text classes",
-            "consumesData": [ 
+            "consumesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
                 }
             ],
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
@@ -325,7 +325,7 @@
             "name": "FoLiA-pm",
             "executableName": "file:///FoLiA-pm",
             "description": "Convert Political Maskup XML to FoLiA",
-            "producesData": [ 
+            "producesData": [
                 {
                     "@type": "TextDigitalDocument",
                     "encodingFormat": "application/folia+xml"
