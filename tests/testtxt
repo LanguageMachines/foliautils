@@ -16,8 +16,8 @@ cat out/test.folia.xml >> testtxt.out
 $my_bin/FoLiA-txt --class=bar --setname=foo -O out data/test.txt
 cat out/test.folia.xml >> testtxt.out
 
-$my_bin/FoLiA-txt -O out data/hyph.txt
+$my_bin/FoLiA-txt -O out  data/hyph.txt
 cat out/hyph.folia.xml >> testtxt.out
 
-$my_bin/FoLiA-txt -O out --remove-end-hyphens data/hyph.txt
+$my_bin/FoLiA-txt -O out --remove-end-hyphens=no data/hyph.txt
 cat out/hyph.folia.xml >> testtxt.out
