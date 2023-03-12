@@ -288,8 +288,7 @@ int main( int argc, char *argv[] ){
 	    par_stack.push_back( hb );
 	    add_space = false;
 	  }
-	  if ( !remove_hyphens
-	       && &w == &words.back() ){
+	  else if ( &w == &words.back() ){
 	    folia::KWargs line_args;
 	    if ( !add_space ){
 	      line_args["space"] = "no";
