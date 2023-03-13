@@ -1,3 +1,8 @@
+foliautils 0.20  12-03-2023
+[Ko van der Sloot]
+* Fix in FoLiA-txt. A <t-hbr> signals a newline, so adding an extra <br/> is
+  not correct
+
 foliautils 0.19  21-02-2023
 [Ko van der Sloot]
 * general C++ cleanup and refactoring
