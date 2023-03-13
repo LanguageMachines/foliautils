@@ -15,7 +15,7 @@ Usage: FoLiA-2text [options] file/dir
 	-V or --version 	 show version 
 	-e		 expr: specify the expression all input files should match with.
 	-o		 name of the output file(s) prefix.
-foliautils 0.20
+foliautils 0.21
 Usage: FoLiA-2text [options] file/dir
 	 FoLiA-2text will produce a text from a FoLiA file, 
 	 or a whole directory of FoLiA files 
