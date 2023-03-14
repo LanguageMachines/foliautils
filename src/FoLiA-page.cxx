@@ -90,18 +90,19 @@ void appendStr( folia::FoliaElement *par,
           ref_args["type"] = "s";
           h->add_child<folia::LinkReference>( ref_args );
         }
-    } else if (do_strings) {
-        par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
-        p_args["xml:id"] = par->id() + "." + id;
-        folia::String *str = par->add_child<folia::String>( p_args );
-        str->setutext( val, pos, classname );
-        if ( do_refs) {
-          folia::Relation *h = str->add_child<folia::Relation>( ref_args );
-          ref_args.clear();
-          ref_args["id"] = id;
-          ref_args["type"] = "str";
-          h->add_child<folia::LinkReference>( ref_args );
-        }
+    }
+    else if ( do_strings ) {
+      par->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
+      p_args["xml:id"] = par->id() + "." + id;
+      folia::String *str = par->add_child<folia::String>( p_args );
+      str->setutext( val, pos, classname );
+      if ( do_refs) {
+	folia::Relation *h = str->add_child<folia::Relation>( ref_args );
+	ref_args.clear();
+	ref_args["id"] = id;
+	ref_args["type"] = "str";
+	h->add_child<folia::LinkReference>( ref_args );
+      }
     }
     pos += val.length();
   }
@@ -212,10 +213,10 @@ void handle_uni_lines( folia::FoliaElement *root,
   for ( const auto& unicode : unicodes ){
     string value = TiCC::XmlContent( unicode );
     if ( !value.empty() ){
+      string id = "str_" + TiCC::toString(j++);
       UnicodeString uval = TiCC::UnicodeFromUTF8(value);
       uval = UN.normalize(uval);
       uval = ltrim( uval );
-      string id = "str_" + TiCC::toString(j++);
       appendStr( root, pos, uval, id, fileName );
       full_line += uval;
       if ( &unicode != &unicodes.back() ){
@@ -262,7 +263,10 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
     else {
       // we add the text as strings, enabling external tokenizations
       map<xmlNode*,string> word_ids;
-      list<xmlNode*> unicodes;
+      list<xmlNode*> unicodes;  // A list is a bit silly, as we will always
+      // take only the fist valid entry in the following code.
+      // Maybe good to keep this?
+      // Will there ever be a need ?
       for ( const auto& w : words ){
 	list<xmlNode*> tmp = TiCC::FindNodes( w, "./*:TextEquiv/*:Unicode" );
 	string wid = TiCC::getAttribute( w, "id" );
@@ -278,7 +282,8 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       if ( unicodes.empty() ){
 #pragma omp critical
 	{
-	  cerr << "missing Unicode node in " << TiCC::Name(line) << " of " << fileName << endl;
+	  cerr << "missing Unicode node in " << TiCC::Name(line)
+	       << " of " << fileName << endl;
 	}
 	return "";
       }
