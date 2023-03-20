@@ -44,6 +44,18 @@ done
   173   491  7046 out/page/FP-00667467.tif.folia.xml
   106   304  4761 out/page/FP-00667468.tif.folia.xml
  1180  3526 52391 total
+Validated successfully: out/page/FP-0001.png.folia.xml
+Validated successfully: out/page/FP-00667460.tif.folia.xml
+Validated successfully: out/page/FP-00667461.tif.folia.xml
+Validated successfully: out/page/FP-00667462.tif.folia.xml
+Validated successfully: out/page/FP-00667463.tif.folia.xml
+Validated successfully: out/page/FP-00667464.tif.folia.xml
+Validated successfully: out/page/FP-00667465.tif.folia.xml
+Validated successfully: out/page/FP-00667466.tif.folia.xml
+Validated successfully: out/page/FP-00667467.tif.folia.xml
+Validated successfully: out/page/FP-00667468.tif.folia.xml
+Validated successfully: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
+Validated successfully: out/page/FP-roemische_1pg.png.folia.xml
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
