@@ -340,7 +340,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	handle_one_word( sent, s_txt, w, last, fileName );
       }
       sent->append( s_txt );
-      // result = sent->text(classname);
+      result = sent->text(classname);
       // if ( !result.isEmpty() ){
       // 	sent->setutext( result, classname );
       // }
