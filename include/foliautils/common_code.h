@@ -59,4 +59,7 @@ std::vector<hemp_status> create_emph_inventory( const std::vector<icu::UnicodeSt
 folia::processor *add_provenance( folia::Document&,
 				  const std::string&,
 				  const std::string& );
+
+UnicodeString& pop_back( UnicodeString& );
+
 #endif // COMMON_CODE_H
