@@ -208,6 +208,7 @@ string stripDir( const string& name ){
 }
 
 void handle_one_word( folia::FoliaElement *sent,
+		      folia::TextContent *s_txt,
 		      xmlNode *word,
 		      bool last,
 		      const string& fileName ){
@@ -233,13 +234,22 @@ void handle_one_word( folia::FoliaElement *sent,
   text_args["class"] = classname;
   folia::TextContent *txt = new folia::TextContent( text_args, sent->doc() );
   folia::XmlText *e = txt->add_child<folia::XmlText>(); // create partial text
+  folia::XmlText *s_e = s_txt->add_child<folia::XmlText>(); // create partial text
   e->setvalue( value );
+  if ( hyp.isEmpty() && !last ){
+    value += " ";
+  }
+  s_e->setvalue( value );
   if ( !hyp.isEmpty() ){
     // add an extra HyphBreak to the textcontent
     folia::FoliaElement *hb = new folia::Hyphbreak();
     folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
     e->setuvalue( hyp );
     txt->append( hb );
+    hb = new folia::Hyphbreak();
+    folia::XmlText *s_e = hb->add_child<folia::XmlText>(); // create partial text
+    s_e->setuvalue( hyp );
+    s_txt->append( hb );
   }
   w->append( txt );
   if ( do_refs ){
@@ -321,14 +331,19 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       args["xml:id"] = par->id() + "." + lid;
       id = par->id() + "."  + lid;
       folia::Sentence *sent = par->add_child<folia::Sentence>( args );
+      folia::KWargs text_args;
+      text_args["class"] = classname;
+      folia::TextContent *s_txt
+	= new folia::TextContent( text_args, sent->doc() );
       for ( const auto& w : words ){
 	bool last = (&w == &words.back());
-	handle_one_word( sent, w, last, fileName );
+	handle_one_word( sent, s_txt, w, last, fileName );
       }
-      result = sent->text(classname);
-      if ( !result.isEmpty() ){
-	sent->setutext( result, classname );
-      }
+      sent->append( s_txt );
+      // result = sent->text(classname);
+      // if ( !result.isEmpty() ){
+      // 	sent->setutext( result, classname );
+      // }
     }
     else {
       // we add the text as strings, enabling external tokenizations
