@@ -14,17 +14,17 @@
       <sentence-annotation>
         <annotator processor="FoLiA-page.1"/>
       </sentence-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <token-annotation>
         <annotator processor="FoLiA-page.1"/>
       </token-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <relation-annotation>
         <annotator processor="FoLiA-page.1"/>
       </relation-annotation>
       <string-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-02T20:14:13" command="FoLiA-page --trusttokens -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-02T21:29:45" command="FoLiA-page --trusttokens -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.15"/>
       </processor>
     </provenance>
@@ -155,7 +155,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_1.tl_4">
-        <t class="OCR">können, - derartige Ergebnisse wären nur auf Grund einer Vermeh</t>
+        <t class="OCR">können, - derartige Ergebnisse wären nur auf Grund einer Vermeh<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_1.tl_4.w_w2aab1b5b2b1b3ab1" textclass="OCR">
           <t class="OCR">können,</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -401,7 +401,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_1.tl_8">
-        <t class="OCR">aber läßt sich über die Wesentlichkeit oder Unwesentlichkeit man</t>
+        <t class="OCR">aber läßt sich über die Wesentlichkeit oder Unwesentlichkeit man<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_1.tl_8.w_w2aab1b5b2b1c11ab1" textclass="OCR">
           <t class="OCR">aber</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -584,7 +584,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_1.tl_11">
-        <t class="OCR">und deren Betrachtung nach der Seite ihrer praktischen agrarpoliti</t>
+        <t class="OCR">und deren Betrachtung nach der Seite ihrer praktischen agrarpoliti<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_1.tl_11.w_w2aab1b5b2b1c17ab1" textclass="OCR">
           <t class="OCR">und</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -763,7 +763,7 @@
         <t-str id="FP-roemische_1pg.text.r_3_2.tl_15">Quellen Für eine Untersuchung von diesem Ausgangspunk</t-str>
       </t>
       <s xml:id="FP-roemische_1pg.text.r_3_2.tl_15">
-        <t class="OCR">Quellen Für eine Untersuchung von diesem Ausgangspunk</t>
+        <t class="OCR">Quellen Für eine Untersuchung von diesem Ausgangspunk<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_2.tl_15.w_w2aab1b5b2b3b1ab1" textclass="OCR">
           <t class="OCR">Quellen</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1067,7 +1067,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_20">
-        <t class="OCR">„Schriften der römischen Feldmesser“ edierten Materialien' 7 , ent</t>
+        <t class="OCR">„Schriften der römischen Feldmesser“ edierten Materialien' 7 , ent<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_20.w_w2aab1b5b2b5b9ab1" textclass="OCR">
           <t class="OCR">„Schriften</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1124,7 +1124,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_21">
-        <t class="OCR">haltend teils Handbücher der Feldmeßkunst aus der Feder agrimen</t>
+        <t class="OCR">haltend teils Handbücher der Feldmeßkunst aus der Feder agrimen<t-hbr>-</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_21.w_w2aab1b5b2b5c11ab1" textclass="OCR">
           <t class="OCR">haltend</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1181,7 +1181,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_22">
-        <t class="OCR">sorischer Praktiker, teils Excerpte aus geometrischen Schriften, Ge</t>
+        <t class="OCR">sorischer Praktiker, teils Excerpte aus geometrischen Schriften, Ge<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_22.w_w2aab1b5b2b5c13ab1" textclass="OCR">
           <t class="OCR">sorischer</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1232,7 +1232,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_23">
-        <t class="OCR">setzesfragmente und die unter dem Namen libri coloniarum bekann</t>
+        <t class="OCR">setzesfragmente und die unter dem Namen libri coloniarum bekann<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_23.w_w2aab1b5b2b5c15ab1" textclass="OCR">
           <t class="OCR">setzesfragmente</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1289,7 +1289,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_24">
-        <t class="OCR">ten Verzeichnisse der vorhandenen formae des aufgeteilten itali</t>
+        <t class="OCR">ten Verzeichnisse der vorhandenen formae des aufgeteilten itali<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_24.w_w2aab1b5b2b5c17ab1" textclass="OCR">
           <t class="OCR">ten</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1340,7 +1340,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_25">
-        <t class="OCR">schen Landes, und ferner, für die wirtschaftliche Seite der Untersu</t>
+        <t class="OCR">schen Landes, und ferner, für die wirtschaftliche Seite der Untersu<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_25.w_w2aab1b5b2b5c19ab1" textclass="OCR">
           <t class="OCR">schen</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1517,7 +1517,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_28">
-        <t class="OCR">abgesehen, freilich, wie an manchen Punkten zu Tage tritt, es mögli</t>
+        <t class="OCR">abgesehen, freilich, wie an manchen Punkten zu Tage tritt, es mögli<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_28.w_w2aab1b5b2b5c25ab1" textclass="OCR">
           <t class="OCR">abgesehen,</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1643,7 +1643,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_30">
-        <t class="OCR">hinausgebracht haben. Bei beiden letztgenannten Qucllenkomple</t>
+        <t class="OCR">hinausgebracht haben. Bei beiden letztgenannten Qucllenkomple<t-hbr>-</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_30.w_w2aab1b5b2b5c29ab1" textclass="OCR">
           <t class="OCR">hinausgebracht</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -1796,7 +1796,7 @@
         </w>
       </s>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_33">
-        <t class="OCR">insofern man häufig genötigt ist, zunächst die Angaben des Schrift</t>
+        <t class="OCR">insofern man häufig genötigt ist, zunächst die Angaben des Schrift<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_33.w_w2aab1b5b2b5c35ab1" textclass="OCR">
           <t class="OCR">insofern</t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
