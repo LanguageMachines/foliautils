@@ -228,7 +228,7 @@ void handle_one_word( folia::FoliaElement *sent,
   p_args["processor"] = processor_id;
   sent->doc()->declare( folia::AnnotationType::TOKEN, setname, p_args );
   p_args["xml:id"] = sent->id() + "." + wid;
-  p_args["textclass"] = classname;
+  //  p_args["textclass"] = classname;
   folia::Word *w = sent->add_child<folia::Word>( p_args );
   folia::KWargs text_args;
   text_args["class"] = classname;
