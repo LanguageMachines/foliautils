@@ -480,6 +480,7 @@ void handle_one_region( folia::FoliaElement *root,
     if ( trust_tokenization ){
       content = new folia::TextContent( text_args, root->doc() );
       // Do Not attach this content yest We have to fill it with text yet!
+      content->add_child<folia::XmlText>( "\n" ); // trickery
     }
     folia::TextMarkupString *tms = NULL;
     for ( const auto& line : lines ){
@@ -492,7 +493,6 @@ void handle_one_region( folia::FoliaElement *root,
       if ( do_markup ) {
 	if ( !content ) {
 	  content = new folia::TextContent( text_args, root->doc() );
-	  content->add_child<folia::XmlText>( "" ); // trickery
 	  // Do Not attach this content to the Paragraph here. We have to fill
 	  // it with text yet!
 
