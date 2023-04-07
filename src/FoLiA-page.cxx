@@ -492,6 +492,7 @@ void handle_one_region( folia::FoliaElement *root,
       if ( do_markup ) {
 	if ( !content ) {
 	  content = new folia::TextContent( text_args, root->doc() );
+	  content->add_child<folia::XmlText>( "" ); // trickery
 	  // Do Not attach this content to the Paragraph here. We have to fill
 	  // it with text yet!
 
@@ -519,7 +520,7 @@ void handle_one_region( folia::FoliaElement *root,
 	    ++pos;
 	  }
 	  content->add_child<folia::XmlText>( "" ); // trickery to glue all
-	  // <t-str> in one line
+	  // <t-str> nodes in one line
 	}
 	i++;
       }
