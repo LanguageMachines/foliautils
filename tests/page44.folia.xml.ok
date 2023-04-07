@@ -11,20 +11,22 @@
       <hyphenation-annotation>
         <annotator processor="FoLiA-page.1"/>
       </hyphenation-annotation>
+      <string-annotation>
+        <annotator processor="FoLiA-page.1"/>
+      </string-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <sentence-annotation>
         <annotator processor="FoLiA-page.1"/>
       </sentence-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <token-annotation>
         <annotator processor="FoLiA-page.1"/>
       </token-annotation>
       <relation-annotation>
         <annotator processor="FoLiA-page.1"/>
       </relation-annotation>
-      <string-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-03T09:45:50" command="FoLiA-page --trusttokens -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-07T11:27:17" command="FoLiA-page --trusttokens -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.15"/>
       </processor>
     </provenance>
@@ -32,9 +34,7 @@
   </metadata>
   <text xml:id="FP-roemische_1pg.text">
     <p xml:id="FP-roemische_1pg.text.r_1_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_1_1.tl_1">Quellen</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_1_1.tl_1">Quellen</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_1_1.tl_1">
         <t class="OCR">Quellen</t>
         <w xml:id="FP-roemische_1pg.text.r_1_1.tl_1.w_w2aab1b1b2b1b1ab1">
@@ -46,9 +46,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_2_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_2_1.tl_2">105</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_2_1.tl_2">105</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_2_1.tl_2">
         <t class="OCR">105</t>
         <w xml:id="FP-roemische_1pg.text.r_2_1.tl_2.w_w2aab1b3b2b1b1ab1">
@@ -60,31 +58,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_3">te Licht zu verbreiten oder dem Kundigen wesentlich Neues sagen zu</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_4">können, - derartige Ergebnisse wären nur auf Grund einer Vermeh</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_5">rung des Quellenmaterials zu gewärtigen, denn soweit auf Grund des</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_6">vorhandenen Materials Antworten auf die obigen Fragen zu geben</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_7">sind, stehen dieselben in ihren wesentlichen Zügen bereits fest. Wohl</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_8">aber läßt sich über die Wesentlichkeit oder Unwesentlichkeit man</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_9">cher Momente für die Entwickelung zur Zeit noch streiten, und hier</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_10">können durch eine Kombination an sich bekannter 3 Erscheinungen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_11">und deren Betrachtung nach der Seite ihrer praktischen agrarpoliti</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_12">schen und wirtschaftlichen Bedeutung, wie ich glaube, einige weitere</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_13">Gesichtspunkte gewonnen werden, welche m.E. der Erörterung</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.tl_14">wert sind.</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_3_1.tl_3">te Licht zu verbreiten oder dem Kundigen wesentlich Neues sagen zu<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_4">können, - derartige Ergebnisse wären nur auf Grund einer Vermeh<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_5">rung des Quellenmaterials zu gewärtigen, denn soweit auf Grund des<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_6">vorhandenen Materials Antworten auf die obigen Fragen zu geben<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_7">sind, stehen dieselben in ihren wesentlichen Zügen bereits fest. Wohl<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_8">aber läßt sich über die Wesentlichkeit oder Unwesentlichkeit man<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_9">cher Momente für die Entwickelung zur Zeit noch streiten, und hier<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_10">können durch eine Kombination an sich bekannter 3 Erscheinungen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_11">und deren Betrachtung nach der Seite ihrer praktischen agrarpoliti<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_12">schen und wirtschaftlichen Bedeutung, wie ich glaube, einige weitere<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_13">Gesichtspunkte gewonnen werden, welche m.E. der Erörterung<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.tl_14">wert sind.</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_3_1.tl_3">
         <t class="OCR">te Licht zu verbreiten oder dem Kundigen wesentlich Neues sagen zu</t>
         <w xml:id="FP-roemische_1pg.text.r_3_1.tl_3.w_w2aab1b5b2b1b1ab1">
@@ -210,7 +184,7 @@
             <xref id="w_w2aab1b5b2b1b3ad103" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_1.tl_4.w_w2aab1b5b2b1b3ad115">
+        <w xml:id="FP-roemische_1pg.text.r_3_1.tl_4.w_w2aab1b5b2b1b3ad115" space="no">
           <t class="OCR">Vermeh<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b1b3ad115" type="w"/>
@@ -450,7 +424,7 @@
             <xref id="w_w2aab1b5b2b1c11ac89" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_1.tl_8.w_w2aab1b5b2b1c11ad123">
+        <w xml:id="FP-roemische_1pg.text.r_3_1.tl_8.w_w2aab1b5b2b1c11ad123" space="no">
           <t class="OCR">man<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b1c11ad123" type="w"/>
@@ -633,7 +607,7 @@
             <xref id="w_w2aab1b5b2b1c17ac87" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_1.tl_11.w_w2aab1b5b2b1c17ad111">
+        <w xml:id="FP-roemische_1pg.text.r_3_1.tl_11.w_w2aab1b5b2b1c17ad111" space="no">
           <t class="OCR">agrarpoliti<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b1c17ad111" type="w"/>
@@ -759,9 +733,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_2">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_3_2.tl_15">Quellen Für eine Untersuchung von diesem Ausgangspunk</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_3_2.tl_15">Quellen Für eine Untersuchung von diesem Ausgangspunk<t-hbr>¬</t-hbr></t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_3_2.tl_15">
         <t class="OCR">Quellen Für eine Untersuchung von diesem Ausgangspunk<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_2.tl_15.w_w2aab1b5b2b3b1ab1">
@@ -800,7 +772,7 @@
             <xref id="w_w2aab1b5b2b3b1b1c53" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_2.tl_15.w_w2aab1b5b2b3b1b1c67">
+        <w xml:id="FP-roemische_1pg.text.r_3_2.tl_15.w_w2aab1b5b2b3b1b1c67" space="no">
           <t class="OCR">Ausgangspunk<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b3b1b1c67" type="w"/>
@@ -809,47 +781,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_3">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_16">te aus stehen uns an Quellen, abgesehen von nicht</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_17">sehr erheblichen Bemerkungen der Historiker und einigen allerdings</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_18">besonders wertvollen Aufschlüssen, welche die Inschriften geben,</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_19">namentlich zu Gebote die zuletzt von Lachmann unter dem Namen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_20">„Schriften der römischen Feldmesser“ edierten Materialien' 7 , ent</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_21">haltend teils Handbücher der Feldmeßkunst aus der Feder agrimen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_22">sorischer Praktiker, teils Excerpte aus geometrischen Schriften, Ge</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_23">setzesfragmente und die unter dem Namen libri coloniarum bekann</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_24">ten Verzeichnisse der vorhandenen formae des aufgeteilten itali</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_25">schen Landes, und ferner, für die wirtschaftliche Seite der Untersu</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_26">chung, namentlich die scriptores rei rusticae 18 , Kompendien der</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_27">Landwirtschaft für angehende Landwirte, deren Verfasser, von Calo</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_28">abgesehen, freilich, wie an manchen Punkten zu Tage tritt, es mögli</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_29">cherweise nicht über ein gewisses Dilettantentum auf diesem Gebiet</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_30">hinausgebracht haben. Bei beiden letztgenannten Qucllenkomple</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_31">xen macht sich der offenbar sehr starke Bestandteil tralaticischen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_32">und deshalb zeitlosen Materials bei der Benutzung störend geltend,</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_33">insofern man häufig genötigt ist, zunächst die Angaben des Schrift</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_34">stellers undatiert zu analysieren und dann die ungefähre Zeit, für a i</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.tl_35">welche sie praktisch sind, zu ermitteln, was oft nur bis zu einem</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_3_3.tl_16">te aus stehen uns an Quellen, abgesehen von nicht<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_17">sehr erheblichen Bemerkungen der Historiker und einigen allerdings<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_18">besonders wertvollen Aufschlüssen, welche die Inschriften geben,<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_19">namentlich zu Gebote die zuletzt von Lachmann unter dem Namen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_20">„Schriften der römischen Feldmesser“ edierten Materialien' 7 , ent<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_21">haltend teils Handbücher der Feldmeßkunst aus der Feder agrimen<t-hbr>-</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_22">sorischer Praktiker, teils Excerpte aus geometrischen Schriften, Ge<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_23">setzesfragmente und die unter dem Namen libri coloniarum bekann<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_24">ten Verzeichnisse der vorhandenen formae des aufgeteilten itali<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_25">schen Landes, und ferner, für die wirtschaftliche Seite der Untersu<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_26">chung, namentlich die scriptores rei rusticae 18 , Kompendien der<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_27">Landwirtschaft für angehende Landwirte, deren Verfasser, von Calo<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_28">abgesehen, freilich, wie an manchen Punkten zu Tage tritt, es mögli<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_29">cherweise nicht über ein gewisses Dilettantentum auf diesem Gebiet<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_30">hinausgebracht haben. Bei beiden letztgenannten Qucllenkomple<t-hbr>-</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_31">xen macht sich der offenbar sehr starke Bestandteil tralaticischen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_32">und deshalb zeitlosen Materials bei der Benutzung störend geltend,<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_33">insofern man häufig genötigt ist, zunächst die Angaben des Schrift<t-hbr>¬</t-hbr></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_34">stellers undatiert zu analysieren und dann die ungefähre Zeit, für a i<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.tl_35">welche sie praktisch sind, zu ermitteln, was oft nur bis zu einem</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_16">
         <t class="OCR">te aus stehen uns an Quellen, abgesehen von nicht</t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_16.w_w2aab1b5b2b5b1ab1">
@@ -1116,7 +1048,7 @@
             <xref id="w_w2aab1b5b2b5b9b2b1" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_20.w_w2aab1b5b2b5b9b2b5">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_20.w_w2aab1b5b2b5b9b2b5" space="no">
           <t class="OCR">ent<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5b9b2b5" type="w"/>
@@ -1173,7 +1105,7 @@
             <xref id="w_w2aab1b5b2b5c11ad101" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_21.w_w2aab1b5b2b5c11ad113">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_21.w_w2aab1b5b2b5c11ad113" space="no">
           <t class="OCR">agrimen<t-hbr>-</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c11ad113" type="w"/>
@@ -1224,7 +1156,7 @@
             <xref id="w_w2aab1b5b2b5c13ad109" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_22.w_w2aab1b5b2b5c13ad131">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_22.w_w2aab1b5b2b5c13ad131" space="no">
           <t class="OCR">Ge<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c13ad131" type="w"/>
@@ -1281,7 +1213,7 @@
             <xref id="w_w2aab1b5b2b5c15ac93" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_23.w_w2aab1b5b2b5c15ad115">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_23.w_w2aab1b5b2b5c15ad115" space="no">
           <t class="OCR">bekann<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c15ad115" type="w"/>
@@ -1332,7 +1264,7 @@
             <xref id="w_w2aab1b5b2b5c17ac91" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_24.w_w2aab1b5b2b5c17ad117">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_24.w_w2aab1b5b2b5c17ad117" space="no">
           <t class="OCR">itali<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c17ad117" type="w"/>
@@ -1395,7 +1327,7 @@
             <xref id="w_w2aab1b5b2b5c19ad113" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_25.w_w2aab1b5b2b5c19ad121">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_25.w_w2aab1b5b2b5c19ad121" space="no">
           <t class="OCR">Untersu<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c19ad121" type="w"/>
@@ -1578,7 +1510,7 @@
             <xref id="w_w2aab1b5b2b5c25ad119" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_28.w_w2aab1b5b2b5c25ad125">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_28.w_w2aab1b5b2b5c25ad125" space="no">
           <t class="OCR">mögli<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c25ad125" type="w"/>
@@ -1674,7 +1606,7 @@
             <xref id="w_w2aab1b5b2b5c29ac67" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_30.w_w2aab1b5b2b5c29ac97">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_30.w_w2aab1b5b2b5c29ac97" space="no">
           <t class="OCR">Qucllenkomple<t-hbr>-</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c29ac97" type="w"/>
@@ -1851,7 +1783,7 @@
             <xref id="w_w2aab1b5b2b5c35ad111" type="w"/>
           </relation>
         </w>
-        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_33.w_w2aab1b5b2b5c35ad119">
+        <w xml:id="FP-roemische_1pg.text.r_3_3.tl_33.w_w2aab1b5b2b5c35ad119" space="no">
           <t class="OCR">Schrift<t-hbr>¬</t-hbr></t>
           <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
             <xref id="w_w2aab1b5b2b5c35ad119" type="w"/>
@@ -2010,9 +1942,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_4_1.tl_36">a A: bekannte</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_4_1.tl_36">a A: bekannte</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_4_1.tl_36">
         <t class="OCR">a A: bekannte</t>
         <w xml:id="FP-roemische_1pg.text.r_4_1.tl_36.w_w2aab1b7b2b1b1ab1">
@@ -2036,11 +1966,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_2">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_4_2.tl_37">17 In zwei Banden 1848-1852 erschienen, vgl. oben, S. 81 f.. sowie das Verzeichnis der</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_4_2.tl_38">von Weber zitierten Literatur unten, S. 380.</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_4_2.tl_37">17 In zwei Banden 1848-1852 erschienen, vgl. oben, S. 81 f.. sowie das Verzeichnis der<br/></t-str><t-str id="FP-roemische_1pg.text.r_4_2.tl_38">von Weber zitierten Literatur unten, S. 380.</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_4_2.tl_37">
         <t class="OCR">17 In zwei Banden 1848-1852 erschienen, vgl. oben, S. 81 f.. sowie das Verzeichnis der</t>
         <w xml:id="FP-roemische_1pg.text.r_4_2.tl_37.w_w2aab1b7b2b3b1ab1">
@@ -2181,11 +2107,7 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_3">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_4_3.tl_39">18 Zu der von Weber verwendeten sog. Zweibrücker Ausgabe (Bipontina) vgl. oben den</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_4_3.tl_40">Editorischen Bericht, S. 82.</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_4_3.tl_39">18 Zu der von Weber verwendeten sog. Zweibrücker Ausgabe (Bipontina) vgl. oben den<br/></t-str><t-str id="FP-roemische_1pg.text.r_4_3.tl_40">Editorischen Bericht, S. 82.</t-str></t>
       <s xml:id="FP-roemische_1pg.text.r_4_3.tl_39">
         <t class="OCR">18 Zu der von Weber verwendeten sog. Zweibrücker Ausgabe (Bipontina) vgl. oben den</t>
         <w xml:id="FP-roemische_1pg.text.r_4_3.tl_39.w_w2aab1b7b2b5b1ab1">
