@@ -57,7 +57,6 @@ bool do_strings = true;
 bool do_markup = true;
 bool do_sent = false;
 bool trust_tokenization = false;
-bool remove_hyphens = true;
 const string processor_label = "FoLiA-page";
 
 string setname = "";
@@ -93,8 +92,7 @@ UnicodeString extract_final_hyphen( UnicodeString& uval ){
     uval = pop_back( uval ); // remove it
     hyp = "¬";  // the Not-Sign u00ac. A Soft Hyphen
   }
-  else if ( remove_hyphens
-	    && uval.endsWith( "-" ) ){
+  else if ( uval.endsWith( "-" ) ){
     uval = pop_back( uval ); // remove the '-'
     hyp = "-";
   }
@@ -479,7 +477,7 @@ void handle_one_region( folia::FoliaElement *root,
     folia::TextContent *content = NULL;
     if ( trust_tokenization ){
       content = new folia::TextContent( text_args, root->doc() );
-      // Do Not attach this content yest We have to fill it with text yet!
+      // Do Not attach this content. We have to fill it with text yet!
       content->add_child<folia::XmlText>( "\n" ); // trickery
     }
     folia::TextMarkupString *tms = NULL;
