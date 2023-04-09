@@ -60,7 +60,7 @@ converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
-converted: data/page/piros.xml into: out/FP-page/FP-0001.png.folia.xml
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
 done
 Validated successfully: out/page/FP-0001.png.folia.xml
 Validated successfully: out/page/FP-00667460.tif.folia.xml
@@ -74,3 +74,7 @@ Validated successfully: out/page/FP-00667467.tif.folia.xml
 Validated successfully: out/page/FP-00667468.tif.folia.xml
 Validated successfully: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
 Validated successfully: out/page/FP-roemische_1pg.png.folia.xml
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
+done
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
+done

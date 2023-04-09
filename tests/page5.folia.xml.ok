@@ -14,13 +14,10 @@
       <string-annotation>
         <annotator processor="FoLiA-page.1"/>
       </string-annotation>
-      <relation-annotation>
-        <annotator processor="FoLiA-page.1"/>
-      </relation-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-07T11:35:30" command="FoLiA-page -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-09T09:41:58" command="FoLiA-page --norefs -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.15"/>
       </processor>
     </provenance>
@@ -31,219 +28,111 @@
       <t class="OCR"><t-str id="FP-0001.text.r1.l1">IV. Die römische Landwirtschaft und die<br/></t-str><t-str id="FP-0001.text.r1.l2">A220<br/></t-str><t-str id="FP-0001.text.r1.l3">Grundherrschaften der Kaiserzeit‘<br/></t-str><t-str id="FP-0001.text.r1.l4">Entwickelungder Da in diesem Kapitel hauptsächlich eine Erschei<br/></t-str><t-str id="FP-0001.text.r1.l5">Betiebsweise. nung der Kaiserzeit behandelt werden soll, so ist<br/></t-str><t-str id="FP-0001.text.r1.l6">s der Rückblick, den wir auf die älteren Verhältnisse der römischen<br/></t-str><t-str id="FP-0001.text.r1.l7">Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver<br/></t-str><t-str id="FP-0001.text.r1.l8">sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den<br/></t-str><t-str id="FP-0001.text.r1.l9">Terremare2 und der geistvollen Untersuchungen Hehns2 und Hel<br/></t-str><t-str id="FP-0001.text.r1.l10">bigs eine allgemeine Entwickelungsgeschichte derselben von den<br/></t-str><t-str id="FP-0001.text.r1.l11">o ältesten Besiedlungen an zu geben. In historischer Zeit bietet die<br/></t-str><t-str id="FP-0001.text.r1.l12">römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil<br/></t-str><t-str id="FP-0001.text.r1.l13">dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele<br/></t-str><t-str id="FP-0001.text.r1.l14">gentlich2 behauptet worden ist, daß die Römer den Germanen die<br/></t-str><t-str id="FP-0001.text.r1.l15">Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un<br/></t-str><t-str id="FP-0001.text.r1.l16">s verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die<br/></t-str><t-str id="FP-0001.text.r1.l17">ältesten germanischen Verhältnisse in Frage kommen würde, keine<br/></t-str><t-str id="FP-0001.text.r1.l18">Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist<br/></t-str><t-str id="FP-0001.text.r1.l19">und mit dem Flurzwang untrennbar zusammenhängt. Die römischen<br/></t-str><t-str id="FP-0001.text.r1.l20">Schriftsteller aber kennen nur das, was Thünen „freie Wirtschaft“<br/></t-str><t-str id="FP-0001.text.r1.l21">o nennen würde1). Von Fruchtfolge sprechen sie überhaupt nur gele- A22t<br/></t-str><t-str id="FP-0001.text.r1.l22">1) Cato, De r. r. 1482 bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220<br/></t-str><t-str id="FP-0001.text.r1.l23">1 Zusammenfassende Wiedergabe größerer Teile des lnhalts dieses Kapitels bei Weber,<br/></t-str><t-str id="FP-0001.text.r1.l24">Untergang der antiken Kultur, S. 6476; ders., Agrarerhältnisse im Altertum‘, S. 14—18;<br/></t-str><t-str id="FP-0001.text.r1.l25">dass.2, S. 80-84; dass.2, S. 165168. (n den folgenden Erläuterungen wird darauf nur<br/></t-str><t-str id="FP-0001.text.r1.l26">ausnahmsweise Bezug genommen.<br/></t-str><t-str id="FP-0001.text.r1.l27">2 Vgl. S. 142, Anm. 5.<br/></t-str><t-str id="FP-0001.text.r1.l28">3 Hehn, ulturpflanzen und Haustiere (vgl. Eileitung oben, S. 3f.).<br/></t-str><t-str id="FP-0001.text.r1.l29">4 Helbig, ltaliker in der Poebene.<br/></t-str><t-str id="FP-0001.text.r1.l30">5 Gemeint offenbar: Hanssen, Agraristorische Abhandlungen 1, S. 153.<br/></t-str><t-str id="FP-0001.text.r1.l31">6 Vgl. v. Thünen, lsolierter Staat3 1, S. 35.<br/></t-str><t-str id="FP-0001.text.r1.l32">7 Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der<br/></t-str><t-str id="FP-0001.text.r1.l33">früher übichen Weise Catos Werk stets als r. r. (= De re rustica). Da der itel jedoch nach<br/></t-str><t-str id="FP-0001.text.r1.l34">heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen<br/></t-str><t-str id="FP-0001.text.r1.l35">durchweg als ‚de agric.‘ zitiert.<br/></t-str><t-str id="FP-0001.text.r1.l36">8 Oie zitierte Stelle fndet sich ebd., Kap. 149.</t-str></t>
       <str xml:id="FP-0001.text.r1.l1">
         <t class="OCR" offset="0">IV. Die römische Landwirtschaft und die</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l1" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l2">
         <t class="OCR" offset="40">A220</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l2" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l3">
         <t class="OCR" offset="45">Grundherrschaften der Kaiserzeit‘</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l3" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l4">
         <t class="OCR" offset="79">Entwickelungder Da in diesem Kapitel hauptsächlich eine Erschei<t-hbr>-</t-hbr></t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l4" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l5">
         <t class="OCR" offset="143">Betiebsweise. nung der Kaiserzeit behandelt werden soll, so ist</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l5" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l6">
         <t class="OCR" offset="207">s der Rückblick, den wir auf die älteren Verhältnisse der römischen</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l6" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l7">
         <t class="OCR" offset="275">Landwirtschaft werfen, ein cursorischer. Namentlich soll nicht ver<t-hbr>-</t-hbr></t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l7" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l8">
         <t class="OCR" offset="342">sucht werden, an der Hand der Ergebnisse der Ausgrabungen in den</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l8" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l9">
         <t class="OCR" offset="407">Terremare2 und der geistvollen Untersuchungen Hehns2 und Hel<t-hbr>-</t-hbr></t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l9" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l10">
         <t class="OCR" offset="468">bigs eine allgemeine Entwickelungsgeschichte derselben von den</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l10" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l11">
         <t class="OCR" offset="531">o ältesten Besiedlungen an zu geben. In historischer Zeit bietet die</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l11" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l12">
         <t class="OCR" offset="600">römische Landwirtschaft, wie sie uns die scriptores rei rusticae schil<t-hbr>-</t-hbr></t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l12" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l13">
         <t class="OCR" offset="671">dern, keinerlei besonders fremdartige Züge dar. Wenn früher gele<t-hbr>-</t-hbr></t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l13" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l14">
         <t class="OCR" offset="736">gentlich2 behauptet worden ist, daß die Römer den Germanen die</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l14" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l15">
         <t class="OCR" offset="799">Dreifelderwirtschaft gebracht hätten, so ist dies schon deshalb un<t-hbr>-</t-hbr></t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l15" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l16">
         <t class="OCR" offset="866">s verständlich, weil die Dreifelderwirtschaft in der Art, wie sie für die</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l16" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l17">
         <t class="OCR" offset="940">ältesten germanischen Verhältnisse in Frage kommen würde, keine</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l17" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l18">
         <t class="OCR" offset="1004">Wirtschaft eines Individuums, sondern einer Dorfgemeinschaft ist</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l18" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l19">
         <t class="OCR" offset="1069">und mit dem Flurzwang untrennbar zusammenhängt. Die römischen</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l19" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l20">
         <t class="OCR" offset="1131">Schriftsteller aber kennen nur das, was Thünen „freie Wirtschaft“</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l20" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l21">
         <t class="OCR" offset="1197">o nennen würde1). Von Fruchtfolge sprechen sie überhaupt nur gele- A22t</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l21" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l22">
         <t class="OCR" offset="1269">1) Cato, De r. r. 1482 bemerkt bei Besprechung des Verkaufs des „pabulum hibernum“ A 220</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l22" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l23">
         <t class="OCR" offset="1358">1 Zusammenfassende Wiedergabe größerer Teile des lnhalts dieses Kapitels bei Weber,</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l23" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l24">
         <t class="OCR" offset="1442">Untergang der antiken Kultur, S. 6476; ders., Agrarerhältnisse im Altertum‘, S. 14—18;</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l24" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l25">
         <t class="OCR" offset="1529">dass.2, S. 80-84; dass.2, S. 165168. (n den folgenden Erläuterungen wird darauf nur</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l25" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l26">
         <t class="OCR" offset="1613">ausnahmsweise Bezug genommen.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l26" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l27">
         <t class="OCR" offset="1643">2 Vgl. S. 142, Anm. 5.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l27" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l28">
         <t class="OCR" offset="1666">3 Hehn, ulturpflanzen und Haustiere (vgl. Eileitung oben, S. 3f.).</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l28" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l29">
         <t class="OCR" offset="1733">4 Helbig, ltaliker in der Poebene.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l29" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l30">
         <t class="OCR" offset="1768">5 Gemeint offenbar: Hanssen, Agraristorische Abhandlungen 1, S. 153.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l30" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l31">
         <t class="OCR" offset="1837">6 Vgl. v. Thünen, lsolierter Staat3 1, S. 35.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l31" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l32">
         <t class="OCR" offset="1883">7 Weber zitiert nach der Bipontina (vgl. oben den Editorischen Bericht, S. 82) und in der</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l32" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l33">
         <t class="OCR" offset="1973">früher übichen Weise Catos Werk stets als r. r. (= De re rustica). Da der itel jedoch nach</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l33" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l34">
         <t class="OCR" offset="2064">heutiger Auffassung De agri cultura lautete, wird er in den folgenden Erläuterungen</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l34" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l35">
         <t class="OCR" offset="2148">durchweg als ‚de agric.‘ zitiert.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l35" type="str"/>
-        </relation>
       </str>
       <str xml:id="FP-0001.text.r1.l36">
         <t class="OCR" offset="2182">8 Oie zitierte Stelle fndet sich ebd., Kap. 149.</t>
-        <relation format="text/page+xml" xlink:href="data/page/piros.xml" xlink:type="simple">
-          <xref id="l36" type="str"/>
-        </relation>
       </str>
     </p>
   </text>
