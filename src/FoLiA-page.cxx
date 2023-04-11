@@ -156,28 +156,7 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
       root->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
       p_args["xml:id"] = root->id() + "." + id;
       folia::String *str = root->add_child<folia::String>( p_args );
-      vector<folia::FoliaElement*> txt_stack; // temp store for textfragments
-      folia::XmlText *e = new folia::XmlText(); // create partial text
-      e->setuvalue( uval );
-      txt_stack.push_back( e ); // add the XmlText to te stack
-      if ( !hyph.isEmpty() ){
-	// add an extra HyphBreak to the stack
-	folia::FoliaElement *hb = new folia::Hyphbreak();
-	folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	e->setuvalue( hyph );
-	txt_stack.push_back( hb );
-      }
-      if ( !txt_stack.empty() ){
-	folia::KWargs text_args;
-	text_args["class"] = classname;
-	text_args["offset"] = std::to_string( pos );
-	folia::FoliaElement *txt
-	  = str->add_child<folia::TextContent>( text_args );
-	for ( const auto& it : txt_stack ){
-	  txt->append( it );
-	}
-      }
-
+      add_text( str, uval, hyph, pos );
       if ( do_refs) {
 	folia::Relation *h = str->add_child<folia::Relation>( ref_args );
 	ref_args.clear();
@@ -186,7 +165,6 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
 	h->add_child<folia::LinkReference>( ref_args );
       }
     }
-    //    pos += uval.length();
   }
   return make_pair(uval,hyph);
 }
