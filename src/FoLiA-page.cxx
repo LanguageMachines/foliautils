@@ -99,8 +99,30 @@ UnicodeString extract_final_hyphen( UnicodeString& uval ){
   return hyp;
 }
 
+void add_text( folia::FoliaElement *root,
+	       const UnicodeString& uval,
+	       const UnicodeString& hyp,
+	       int offset=-1 ){
+  folia::KWargs text_args;
+  text_args["class"] = classname;
+  if ( offset >= 0 ){
+    text_args["offset"] = std::to_string( offset );
+  }
+  folia::FoliaElement *txt = root->add_child<folia::TextContent>( text_args );
+  folia::XmlText *e = new folia::XmlText(); // create partial text
+  e->setuvalue( uval );
+  txt->append( e ); // add the XmlText
+  if ( !hyp.isEmpty() ){
+    // add an extra HyphBreak
+    folia::FoliaElement *hb = new folia::Hyphbreak();
+    folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
+    e->setuvalue( hyp );
+    txt->append( hb );
+  }
+}
+
 pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
-					     int& pos,
+					     const int pos,
 					     const string& val,
 					     const string& id,
 					     const string& file ){
@@ -164,7 +186,7 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
 	h->add_child<folia::LinkReference>( ref_args );
       }
     }
-    pos += uval.length();
+    //    pos += uval.length();
   }
   return make_pair(uval,hyph);
 }
@@ -288,34 +310,15 @@ void handle_uni_lines( folia::FoliaElement *root,
     }
     return;
   }
-  int pos = 0;
-  vector<folia::FoliaElement*> txt_stack; // temp store for textfragments which will
-  // make up the root text. may include formatting like <t-hbr/>
   const auto& unicode = unicodes.front();
   string value = TiCC::XmlContent( unicode );
   if ( !value.empty() ){
     string id = "str_1";
+    int pos = 0;
     auto lp = appendStr( root, pos, value, id, fileName );
     UnicodeString uval = lp.first;
     UnicodeString hyp = lp.second;
-    folia::XmlText *e = new folia::XmlText(); // create partial text
-    e->setuvalue( uval );
-    txt_stack.push_back( e ); // add the XmlText to the stack
-    if ( !hyp.isEmpty() ){
-      // add an extra HyphBreak to the stack
-      folia::FoliaElement *hb = new folia::Hyphbreak();
-      folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-      e->setuvalue( hyp );
-      txt_stack.push_back( hb );
-    }
-  }
-  if ( !txt_stack.empty() ){
-    folia::KWargs text_args;
-    text_args["class"] = classname;
-    folia::FoliaElement *txt = root->add_child<folia::TextContent>( text_args );
-    for ( const auto& it : txt_stack ){
-      txt->append( it );
-    }
+    add_text( root, uval, hyp );
   }
 }
 
@@ -384,6 +387,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       value = TiCC::XmlContent( unicode );
       auto lp = appendStr( par, pos, value, word_id, fileName );
       UnicodeString uval = lp.first;
+      pos += uval.length();
       last_hyph = lp.second;
       result = uval;
       id = par->id() + "."  + word_id;
@@ -401,20 +405,12 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
     }
     // There may be several Unicode nodes.
     // We will take the first which has a NON empty value
-    vector<folia::FoliaElement*> txt_stack; // temp store for textfragments
     for ( const auto& unicode : unicodes ){
       string value = TiCC::XmlContent( unicode );
       if ( !value.empty() ){
 	auto lp = appendStr( par, pos, value, lid, fileName );
 	UnicodeString uval = lp.first;
-	UnicodeString hyp = lp.second;
-	if ( !hyp.isEmpty() ){
-	  // add an extra HyphBreak to the stack
-	  folia::FoliaElement *hb = new folia::Hyphbreak();
-	  folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	  e->setuvalue( hyp );
-	  txt_stack.push_back( hb );
-	}
+	pos += uval.length();
 	result = uval;
         id = par->id() + "."  + lid;
 	break; // We take the first non-empty Unicode string
