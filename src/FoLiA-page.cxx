@@ -277,14 +277,14 @@ void handle_uni_lines( folia::FoliaElement *root,
     }
     return;
   }
+  assert( unicodes.size() == 1 );
   int pos = 0;
-  int j = 0;
   vector<folia::FoliaElement*> txt_stack; // temp store for textfragments which will
   // make up the root text. may include formatting like <t-hbr/>
   for ( const auto& unicode : unicodes ){
     string value = TiCC::XmlContent( unicode );
     if ( !value.empty() ){
-      string id = "str_" + TiCC::toString(j++);
+      string id = "str_1";// + TiCC::toString(j++);
       UnicodeString uval = TiCC::UnicodeFromUTF8(value);
       UnicodeString hyp = extract_final_hyphen( uval );
       appendStr( root, pos, uval, hyp, id, fileName );

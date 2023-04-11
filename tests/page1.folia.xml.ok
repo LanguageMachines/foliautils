@@ -11,19 +11,19 @@
       <hyphenation-annotation>
         <annotator processor="FoLiA-page.1"/>
       </hyphenation-annotation>
+      <string-annotation>
+        <annotator processor="FoLiA-page.1"/>
+      </string-annotation>
       <head-annotation>
         <annotator processor="FoLiA-page.1"/>
       </head-annotation>
       <relation-annotation>
         <annotator processor="FoLiA-page.1"/>
       </relation-annotation>
-      <string-annotation>
-        <annotator processor="FoLiA-page.1"/>
-      </string-annotation>
       <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2023-03-23T12:59:05" command="FoLiA-page -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-11T08:40:19" command="FoLiA-page -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.15"/>
       </processor>
     </provenance>
@@ -37,10 +37,10 @@
     <p xml:id="FP-00667464.text.r17">
       <head xml:id="FP-00667464.text.head.r17" class="heading">
         <t class="OCR">16DE VERGADERING. — 12 JANUARIJ 1815.</t>
-        <str xml:id="FP-00667464.text.head.r17.str_0">
+        <str xml:id="FP-00667464.text.head.r17.str_1">
           <t class="OCR" offset="0">16DE VERGADERING. — 12 JANUARIJ 1815.</t>
           <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-            <xref id="str_0" type="str"/>
+            <xref id="str_1" type="str"/>
           </relation>
         </str>
       </head>
@@ -48,65 +48,65 @@
     <p xml:id="FP-00667464.text.r18">
       <head xml:id="FP-00667464.text.head.r18" class="heading">
         <t class="OCR">Bijlagen der concept-wet op de nationale militie.</t>
-        <str xml:id="FP-00667464.text.head.r18.str_0">
+        <str xml:id="FP-00667464.text.head.r18.str_1">
           <t class="OCR" offset="0">Bijlagen der concept-wet op de nationale militie.</t>
           <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-            <xref id="str_0" type="str"/>
+            <xref id="str_1" type="str"/>
           </relation>
         </str>
       </head>
     </p>
     <p xml:id="FP-00667464.text.r20">
       <t class="OCR">militie-district kanton gemeente</t>
-      <str xml:id="FP-00667464.text.r20.str_0">
+      <str xml:id="FP-00667464.text.r20.str_1">
         <t class="OCR" offset="0">militie-district kanton gemeente</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r22">
       <t class="OCR">plaatselijk bestuur geteekend worden.</t>
-      <str xml:id="FP-00667464.text.r22.str_0">
+      <str xml:id="FP-00667464.text.r22.str_1">
         <t class="OCR" offset="0">plaatselijk bestuur geteekend worden.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r23">
       <t class="OCR">MODEL LITT. G.</t>
-      <str xml:id="FP-00667464.text.r23.str_0">
+      <str xml:id="FP-00667464.text.r23.str_1">
         <t class="OCR" offset="0">MODEL LITT. G.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r25">
       <t class="OCR">MILITIE-DISTRICT.</t>
-      <str xml:id="FP-00667464.text.r25.str_0">
+      <str xml:id="FP-00667464.text.r25.str_1">
         <t class="OCR" offset="0">MILITIE-DISTRICT.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r26">
       <t class="OCR">MILITIE-KANTON.</t>
-      <str xml:id="FP-00667464.text.r26.str_0">
+      <str xml:id="FP-00667464.text.r26.str_1">
         <t class="OCR" offset="0">MILITIE-KANTON.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r27">
       <t class="OCR">GEMEENTE.</t>
-      <str xml:id="FP-00667464.text.r27.str_0">
+      <str xml:id="FP-00667464.text.r27.str_1">
         <t class="OCR" offset="0">GEMEENTE.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
@@ -115,31 +115,31 @@
 het jaar in het militie-kanton gemeente van getrokken hebbende
 n°. gehuwd en zijne huisvrouw in leven is, (of bijaldien hij weduwenaar zijn mogt) weduwenaar is en kinde��n
 in leven heeft.</t>
-      <str xml:id="FP-00667464.text.r31.str_0">
+      <str xml:id="FP-00667464.text.r31.str_1">
         <t class="OCR" offset="0">Het plaatselijk bestuur van verklaart dat N. N. bij de loting voor de nationale militie van
 het jaar in het militie-kanton gemeente van getrokken hebbende
 n°. gehuwd en zijne huisvrouw in leven is, (of bijaldien hij weduwenaar zijn mogt) weduwenaar is en kinde��n
 in leven heeft.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r32">
       <t class="OCR">Gedaan te den 18.</t>
-      <str xml:id="FP-00667464.text.r32.str_0">
+      <str xml:id="FP-00667464.text.r32.str_1">
         <t class="OCR" offset="0">Gedaan te den 18.</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
     <p xml:id="FP-00667464.text.r33">
       <t class="OCR">Van wege het plaatselijk bestuur,</t>
-      <str xml:id="FP-00667464.text.r33.str_0">
+      <str xml:id="FP-00667464.text.r33.str_1">
         <t class="OCR" offset="0">Van wege het plaatselijk bestuur,</t>
         <relation format="text/page+xml" xlink:href="data/page/00667464.xml" xlink:type="simple">
-          <xref id="str_0" type="str"/>
+          <xref id="str_1" type="str"/>
         </relation>
       </str>
     </p>
