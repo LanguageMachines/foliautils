@@ -455,39 +455,41 @@ void handle_one_region( folia::FoliaElement *root,
 						last_hyph,
 						fileName,
 						id );
+      if ( line_txt.isEmpty() ){
+	++i;
+	continue;
+      }
       if ( do_markup ) {
-	if ( !line_txt.isEmpty() ){
-	  if ( !content ) {
-	    content = new folia::TextContent( text_args, root->doc() );
-	    // Do Not attach this content to the Paragraph here. We have to fill
-	    // it with text yet!
-	    if ( trust_tokenization ){
-	      content->add_child<folia::XmlText>( "\n" ); // trickery
-	    }
+	if ( !content ) {
+	  content = new folia::TextContent( text_args, root->doc() );
+	  // Do Not attach this content to the Paragraph here. We have to fill
+	  // it with text yet!
+	  if ( trust_tokenization ){
+	    content->add_child<folia::XmlText>( "\n" ); // trickery
 	  }
-	  folia::KWargs str_args;
-	  if ( do_strings ) {
-	    str_args["id"] = id; //references
-	  }
-	  else {
-	    str_args["xml:id"] = id; //no references
-	  }
-	  str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
-	  tms = content->add_child<folia::TextMarkupString>(str_args);
-	  if ( !last_hyph.isEmpty() ){
-	    // add an extra HyphBreak to the content
-	    folia::FoliaElement *hb = new folia::Hyphbreak();
-	    folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	    e->setuvalue( last_hyph );
-	    tms->append( hb );
-	  }
-	  else if ( i < lines.size() - 1 ) {
-	    tms->append( new folia::Linebreak() );
-	    ++pos;
-	  }
-	  content->add_child<folia::XmlText>( "" ); // trickery to glue all
-	  // <t-str> nodes in one line
 	}
+	folia::KWargs str_args;
+	if ( do_strings ) {
+	  str_args["id"] = id; //references
+	}
+	else {
+	  str_args["xml:id"] = id; //no references
+	}
+	str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
+	tms = content->add_child<folia::TextMarkupString>(str_args);
+	if ( !last_hyph.isEmpty() ){
+	  // add an extra HyphBreak to the content
+	  folia::FoliaElement *hb = new folia::Hyphbreak();
+	  folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
+	  e->setuvalue( last_hyph );
+	  tms->append( hb );
+	}
+	else if ( i < lines.size() - 1 ) {
+	  tms->append( new folia::Linebreak() );
+	  ++pos;
+	}
+	content->add_child<folia::XmlText>( "" ); // trickery to glue all
+	// <t-str> nodes in one line
 	i++;
       }
       else {
