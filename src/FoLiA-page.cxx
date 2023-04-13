@@ -108,7 +108,8 @@ void add_text( folia::FoliaElement *root,
   if ( offset >= 0 ){
     text_args["offset"] = std::to_string( offset );
   }
-  folia::FoliaElement *txt = root->add_child<folia::TextContent>( text_args );
+  folia::TextContent *txt = new folia::TextContent( text_args, root->doc() );
+  // create un attached TextContent, fill it, and THEN connect it to root
   folia::XmlText *e = new folia::XmlText(); // create partial text
   e->setuvalue( uval );
   txt->append( e ); // add the XmlText
@@ -119,6 +120,7 @@ void add_text( folia::FoliaElement *root,
     e->setuvalue( hyp );
     txt->append( hb );
   }
+  root->append( txt );
 }
 
 pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
@@ -216,43 +218,37 @@ UnicodeString handle_one_word( folia::Sentence *sent,
   if ( unicodes.size() != 1 ){
     throw runtime_error( "expected only 1 unicode entry in Word: " + wid );
   }
-  string value = TiCC::XmlContent( unicodes.front() );
-  UnicodeString hyp;
-  if ( last ){
-    UnicodeString uval = TiCC::UnicodeFromUTF8(value);
-    hyp = extract_final_hyphen( uval );
-    value = TiCC::UnicodeToUTF8( uval );
-  }
   folia::KWargs p_args;
   p_args["processor"] = processor_id;
   sent->doc()->declare( folia::AnnotationType::TOKEN, setname, p_args );
   p_args["xml:id"] = sent->id() + "." + wid;
-  if ( !hyp.isEmpty() ){
-    p_args["space"] = "no";
-  }
   folia::Word *w = sent->add_child<folia::Word>( p_args );
+  string value = TiCC::XmlContent( unicodes.front() );
+  UnicodeString uval = TiCC::UnicodeFromUTF8(value);
+  UnicodeString hyp;
+  if ( last ){
+    hyp = extract_final_hyphen( uval );
+    if ( !hyp.isEmpty() ){
+      w->set_space(false);
+    }
+  }
+  add_text( w, uval, hyp );
   folia::KWargs text_args;
   text_args["class"] = classname;
-  folia::TextContent *txt = new folia::TextContent( text_args, sent->doc() );
-  folia::XmlText *e = txt->add_child<folia::XmlText>(); // create partial text
-  folia::XmlText *s_e = s_txt->add_child<folia::XmlText>(); // create partial text
-  e->setvalue( value );
+  folia::XmlText *s_e = s_txt->add_child<folia::XmlText>();
+  // create partial text for the sentence above
   if ( hyp.isEmpty() && !last ){
-    value += " ";
+    uval += " ";
   }
-  s_e->setvalue( value );
+  s_e->setuvalue( uval );
   if ( !hyp.isEmpty() ){
-    // add an extra HyphBreak to the textcontent
+    // add an extra HyphBreak to the Sentence too
     folia::FoliaElement *hb = new folia::Hyphbreak();
-    folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-    e->setuvalue( hyp );
-    txt->append( hb );
     hb = new folia::Hyphbreak();
-    folia::XmlText *s_e = hb->add_child<folia::XmlText>(); // create partial text
+    folia::XmlText *s_e = hb->add_child<folia::XmlText>();
     s_e->setuvalue( hyp );
     s_txt->append( hb );
   }
-  w->append( txt );
   if ( do_refs ){
     folia::KWargs args;
     args["processor"] = processor_id;
