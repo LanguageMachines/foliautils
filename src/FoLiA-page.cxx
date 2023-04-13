@@ -330,7 +330,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	last_hyph = handle_one_word( sent, s_txt, w, last, fileName );
       }
       sent->append( s_txt );
-      result = sent->text(classname);
+      return "";
     }
     else {
       // we add the text as strings, enabling external tokenizations
@@ -451,11 +451,6 @@ void handle_one_region( folia::FoliaElement *root,
     UnicodeString par_txt;
     UnicodeString last_hyph;
     folia::TextContent *content = NULL;
-    if ( trust_tokenization ){
-      content = new folia::TextContent( text_args, root->doc() );
-      // Do Not attach this content. We have to fill it with text yet!
-      content->add_child<folia::XmlText>( "\n" ); // trickery
-    }
     folia::TextMarkupString *tms = NULL;
     for ( const auto& line : lines ){
       UnicodeString line_txt = handle_one_line( par,
@@ -465,14 +460,16 @@ void handle_one_region( folia::FoliaElement *root,
 						fileName,
 						id );
       if ( do_markup ) {
-	if ( !content ) {
-	  content = new folia::TextContent( text_args, root->doc() );
-	  // Do Not attach this content to the Paragraph here. We have to fill
-	  // it with text yet!
-
-	}
-	line_txt = ltrim(line_txt );
 	if ( !line_txt.isEmpty() ){
+	  if ( !content ) {
+	    content = new folia::TextContent( text_args, root->doc() );
+	    // Do Not attach this content to the Paragraph here. We have to fill
+	    // it with text yet!
+	    if ( trust_tokenization ){
+	      content->add_child<folia::XmlText>( "\n" ); // trickery
+	    }
+	  }
+	  line_txt = ltrim(line_txt );
 	  folia::KWargs str_args;
 	  if ( do_strings ) {
 	    str_args["id"] = id; //references
@@ -508,7 +505,7 @@ void handle_one_region( folia::FoliaElement *root,
 	}
       }
     }
-    if ( do_markup ) {
+    if ( do_markup && content ) {
       // We are done with the text of content, so we may attach it to the
       // Paragraph now.
       par->append( content );

@@ -14,10 +14,10 @@
       <string-annotation>
         <annotator processor="FoLiA-page.1"/>
       </string-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <sentence-annotation>
         <annotator processor="FoLiA-page.1"/>
       </sentence-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
       <token-annotation>
         <annotator processor="FoLiA-page.1"/>
       </token-annotation>
@@ -26,7 +26,7 @@
       </relation-annotation>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-07T11:34:58" command="FoLiA-page --nomarkup --trusttokens -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-13T08:49:30" command="FoLiA-page --trusttokens --nomarkup -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
         <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.15"/>
       </processor>
     </provenance>
@@ -34,7 +34,6 @@
   </metadata>
   <text xml:id="FP-roemische_1pg.text">
     <p xml:id="FP-roemische_1pg.text.r_1_1">
-      <t class="OCR">Quellen</t>
       <s xml:id="FP-roemische_1pg.text.r_1_1.tl_1">
         <t class="OCR">Quellen</t>
         <w xml:id="FP-roemische_1pg.text.r_1_1.tl_1.w_w2aab1b1b2b1b1ab1">
@@ -46,7 +45,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_2_1">
-      <t class="OCR">105</t>
       <s xml:id="FP-roemische_1pg.text.r_2_1.tl_2">
         <t class="OCR">105</t>
         <w xml:id="FP-roemische_1pg.text.r_2_1.tl_2.w_w2aab1b3b2b1b1ab1">
@@ -58,7 +56,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_1">
-      <t class="OCR">te Licht zu verbreiten oder dem Kundigen wesentlich Neues sagen zu können, - derartige Ergebnisse wären nur auf Grund einer Vermehrung des Quellenmaterials zu gewärtigen, denn soweit auf Grund des vorhandenen Materials Antworten auf die obigen Fragen zu geben sind, stehen dieselben in ihren wesentlichen Zügen bereits fest. Wohl aber läßt sich über die Wesentlichkeit oder Unwesentlichkeit mancher Momente für die Entwickelung zur Zeit noch streiten, und hier können durch eine Kombination an sich bekannter 3 Erscheinungen und deren Betrachtung nach der Seite ihrer praktischen agrarpolitischen und wirtschaftlichen Bedeutung, wie ich glaube, einige weitere Gesichtspunkte gewonnen werden, welche m.E. der Erörterung wert sind.</t>
       <s xml:id="FP-roemische_1pg.text.r_3_1.tl_3">
         <t class="OCR">te Licht zu verbreiten oder dem Kundigen wesentlich Neues sagen zu</t>
         <w xml:id="FP-roemische_1pg.text.r_3_1.tl_3.w_w2aab1b5b2b1b1ab1">
@@ -733,7 +730,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_2">
-      <t class="OCR">Quellen Für eine Untersuchung von diesem Ausgangspunk</t>
       <s xml:id="FP-roemische_1pg.text.r_3_2.tl_15">
         <t class="OCR">Quellen Für eine Untersuchung von diesem Ausgangspunk<t-hbr>¬</t-hbr></t>
         <w xml:id="FP-roemische_1pg.text.r_3_2.tl_15.w_w2aab1b5b2b3b1ab1">
@@ -781,7 +777,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_3">
-      <t class="OCR">te aus stehen uns an Quellen, abgesehen von nicht sehr erheblichen Bemerkungen der Historiker und einigen allerdings besonders wertvollen Aufschlüssen, welche die Inschriften geben, namentlich zu Gebote die zuletzt von Lachmann unter dem Namen „Schriften der römischen Feldmesser“ edierten Materialien' 7 , enthaltend teils Handbücher der Feldmeßkunst aus der Feder agrimensorischer Praktiker, teils Excerpte aus geometrischen Schriften, Gesetzesfragmente und die unter dem Namen libri coloniarum bekannten Verzeichnisse der vorhandenen formae des aufgeteilten italischen Landes, und ferner, für die wirtschaftliche Seite der Untersuchung, namentlich die scriptores rei rusticae 18 , Kompendien der Landwirtschaft für angehende Landwirte, deren Verfasser, von Calo abgesehen, freilich, wie an manchen Punkten zu Tage tritt, es möglicherweise nicht über ein gewisses Dilettantentum auf diesem Gebiet hinausgebracht haben. Bei beiden letztgenannten Qucllenkomplexen macht sich der offenbar sehr starke Bestandteil tralaticischen und deshalb zeitlosen Materials bei der Benutzung störend geltend, insofern man häufig genötigt ist, zunächst die Angaben des Schriftstellers undatiert zu analysieren und dann die ungefähre Zeit, für a i welche sie praktisch sind, zu ermitteln, was oft nur bis zu einem</t>
       <s xml:id="FP-roemische_1pg.text.r_3_3.tl_16">
         <t class="OCR">te aus stehen uns an Quellen, abgesehen von nicht</t>
         <w xml:id="FP-roemische_1pg.text.r_3_3.tl_16.w_w2aab1b5b2b5b1ab1">
@@ -1942,7 +1937,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_1">
-      <t class="OCR">a A: bekannte</t>
       <s xml:id="FP-roemische_1pg.text.r_4_1.tl_36">
         <t class="OCR">a A: bekannte</t>
         <w xml:id="FP-roemische_1pg.text.r_4_1.tl_36.w_w2aab1b7b2b1b1ab1">
@@ -1966,7 +1960,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_2">
-      <t class="OCR">17 In zwei Banden 1848-1852 erschienen, vgl. oben, S. 81 f.. sowie das Verzeichnis der von Weber zitierten Literatur unten, S. 380.</t>
       <s xml:id="FP-roemische_1pg.text.r_4_2.tl_37">
         <t class="OCR">17 In zwei Banden 1848-1852 erschienen, vgl. oben, S. 81 f.. sowie das Verzeichnis der</t>
         <w xml:id="FP-roemische_1pg.text.r_4_2.tl_37.w_w2aab1b7b2b3b1ab1">
@@ -2107,7 +2100,6 @@
       </s>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_3">
-      <t class="OCR">18 Zu der von Weber verwendeten sog. Zweibrücker Ausgabe (Bipontina) vgl. oben den Editorischen Bericht, S. 82.</t>
       <s xml:id="FP-roemische_1pg.text.r_4_3.tl_39">
         <t class="OCR">18 Zu der von Weber verwendeten sog. Zweibrücker Ausgabe (Bipontina) vgl. oben den</t>
         <w xml:id="FP-roemische_1pg.text.r_4_3.tl_39.w_w2aab1b7b2b5b1ab1">
