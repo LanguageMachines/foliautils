@@ -236,7 +236,7 @@ UnicodeString handle_one_word( folia::Sentence *sent,
   folia::KWargs text_args;
   text_args["class"] = classname;
   folia::XmlText *s_e = s_txt->add_child<folia::XmlText>();
-  // create partial text for the sentence above
+  // create partial text for the parent sentence
   if ( hyp.isEmpty() && !last ){
     uval += " ";
   }
@@ -317,10 +317,10 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
       args["xml:id"] = par->id() + "." + lid;
       id = par->id() + "."  + lid;
       folia::Sentence *sent = par->add_child<folia::Sentence>( args );
-      folia::KWargs text_args;
-      text_args["class"] = classname;
+      args.clear();
+      args["class"] = classname;
       folia::TextContent *s_txt
-	= new folia::TextContent( text_args, sent->doc() );
+	= new folia::TextContent( args, sent->doc() );
       for ( const auto& w : words ){
 	bool last = (&w == &words.back());
 	last_hyph = handle_one_word( sent, s_txt, w, last, fileName );
@@ -465,7 +465,6 @@ void handle_one_region( folia::FoliaElement *root,
 	      content->add_child<folia::XmlText>( "\n" ); // trickery
 	    }
 	  }
-	  line_txt = ltrim(line_txt );
 	  folia::KWargs str_args;
 	  if ( do_strings ) {
 	    str_args["id"] = id; //references
@@ -509,7 +508,6 @@ void handle_one_region( folia::FoliaElement *root,
     else {
       // add the plain text without markup
       UnicodeString hyp = extract_final_hyphen( par_txt );
-      par_txt = ltrim(par_txt);
       if ( !par_txt.isEmpty() ) {
 	par->setutext( par_txt, classname );
       }
