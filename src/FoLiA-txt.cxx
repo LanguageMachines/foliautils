@@ -111,9 +111,9 @@ int main( int argc, char *argv[] ){
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
     exit( EXIT_FAILURE );
 #endif
-#ifdef HAVE_OPENMP
-    omp_set_num_threads( numThreads );
   }
+#ifdef HAVE_OPENMP
+  omp_set_num_threads( numThreads );
 #endif
   opts.extract( 'O', outputDir );
   if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' ){
