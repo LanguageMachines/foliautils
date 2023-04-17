@@ -45,7 +45,6 @@ using namespace	folia;
 
 string setname = "FoLiA-txt-set";
 string classname = "FoLiA-txt";
-string processor_id;
 
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
@@ -215,7 +214,7 @@ int main( int argc, char *argv[] ){
       continue;
     }
     processor *proc = add_provenance( *d, "FoLiA-txt", command );
-    processor_id = proc->id();
+    string processor_id = proc->id();
     KWargs p_args;
     p_args["processor"] = processor_id;
     d->declare( folia::AnnotationType::STRING, setname, p_args );
@@ -332,9 +331,9 @@ int main( int argc, char *argv[] ){
       continue;
     }
     string outname = outputDir + nameNoExt + ".folia.xml";
-    d->save( outname );
 #pragma omp critical
     {
+      d->save( outname );
       cout << "Processed: " << fileName << " into " << outname
 	   << " still " << --to_do << " files to go." << endl;
     }
