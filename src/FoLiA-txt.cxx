@@ -158,6 +158,7 @@ int main( int argc, char *argv[] ){
   bool shown = false;
 #pragma omp parallel for shared(file_names) schedule(dynamic)
   for ( size_t fn=0; fn < file_names.size(); ++fn ){
+#ifdef HAVE_OPENMP
 #pragma omp critical
     {
       if ( !shown && omp_get_thread_num() == 1 ){
@@ -165,6 +166,7 @@ int main( int argc, char *argv[] ){
 	shown = true;
       }
     }
+#endif
     string fileName = file_names[fn];
     ifstream is( fileName );
     if ( !is ){
