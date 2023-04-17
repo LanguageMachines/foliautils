@@ -93,11 +93,13 @@ int main( int argc, char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
+#ifdef HAVE_OPENMP
+  int numThreads = 1;
+#endif
   string command = "FoLiA-txt " + opts.toString();
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
-    int numThreads = 1;
     if ( TiCC::lowercase(value) == "max" ){
       numThreads = omp_get_max_threads() - 2;
     }
@@ -105,13 +107,14 @@ int main( int argc, char *argv[] ){
       cerr << "illegal value for -t (" << value << ")" << endl;
       exit( EXIT_FAILURE );
     }
-    omp_set_num_threads( numThreads );
 #else
     cerr << "-t option does not work, no OpenMP support in your compiler?" << endl;
     exit( EXIT_FAILURE );
 #endif
+#ifdef HAVE_OPENMP
+    omp_set_num_threads( numThreads );
   }
-
+#endif
   opts.extract( 'O', outputDir );
   if ( !outputDir.empty() && outputDir[outputDir.length()-1] != '/' ){
     outputDir += "/";
@@ -149,11 +152,19 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( to_do > 1 ){
-    cout << "start processing of " << to_do << " files " << endl;
+    cout << "start processing of " << to_do << " files" << endl;
   }
   size_t failed_docs = 0;
+  bool shown = false;
 #pragma omp parallel for shared(file_names) schedule(dynamic)
   for ( size_t fn=0; fn < file_names.size(); ++fn ){
+#pragma omp critical
+    {
+      if ( !shown && omp_get_thread_num() == 1 ){
+	cerr << "running on " << omp_get_num_threads() << " threads" << endl;
+	shown = true;
+      }
+    }
     string fileName = file_names[fn];
     ifstream is( fileName );
     if ( !is ){
@@ -163,6 +174,10 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
+// #pragma omp critical
+//     {
+//       cout << "Starting " << fileName << endl;
+//     }
     string nameNoExt = fileName;
     string::size_type pos = fileName.rfind( "." );
     if ( pos != string::npos ){
