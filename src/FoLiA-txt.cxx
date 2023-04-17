@@ -66,6 +66,10 @@ void usage(){
        << classname << "')"<< endl;
 }
 
+inline UnicodeString& pop_back( UnicodeString& us ){
+  return us.remove( us.length() - 1 );
+}
+
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:",
 			 "class:,setname:,remove-end-hyphens:,"
