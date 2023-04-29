@@ -1,5 +1,5 @@
 AM_CPPFLAGS = -I ../include/
-AM_CXXFLAGS = -std=c++14 -W -Wall -pedantic -g
+AM_CXXFLAGS = -std=c++14 -W -Wall -pedantic -g -O3
 
 bin_PROGRAMS = FoLiA-stats FoLiA-collect FoLiA-idf FoLiA-correct \
 	FoLiA-alto FoLiA-langcat FoLiA-hocr FoLiA-page FoLiA-txt FoLiA-2text \
