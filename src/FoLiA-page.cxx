@@ -141,20 +141,21 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
     }
     folia::KWargs p_args;
     p_args["processor"] = processor_id;
-    if ( do_sent) {
-      root->doc()->declare( folia::AnnotationType::SENTENCE, setname, p_args );
-      p_args["xml:id"] = root->id() + "." + id;
-      folia::Sentence *sent = root->add_child<folia::Sentence>( p_args );
-      sent->setutext( uval, pos, classname );
-      if ( do_refs) {
-	folia::Relation *h = sent->add_child<folia::Relation>( ref_args );
-	ref_args.clear();
-	ref_args["id"] = id;
-	ref_args["type"] = "s";
-	h->add_child<folia::LinkReference>( ref_args );
-      }
-    }
-    else if ( do_strings ) {
+    // if ( do_sent) {
+    //   root->doc()->declare( folia::AnnotationType::SENTENCE, setname, p_args );
+    //   p_args["xml:id"] = root->id() + "." + id;
+    //   folia::Sentence *sent = root->add_child<folia::Sentence>( p_args );
+    //   sent->setutext( uval, pos, classname );
+    //   if ( do_refs) {
+    // 	folia::Relation *h = sent->add_child<folia::Relation>( ref_args );
+    // 	ref_args.clear();
+    // 	ref_args["id"] = id;
+    // 	ref_args["type"] = "s";
+    // 	h->add_child<folia::LinkReference>( ref_args );
+    //   }
+    // }
+    // else
+    if ( do_strings ) {
       root->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
       p_args["xml:id"] = root->id() + "." + id;
       folia::String *str = root->add_child<folia::String>( p_args );
@@ -691,7 +692,6 @@ void usage(){
   cerr << "\t--norefs\t do not add references nodes to the original document. (default: Add References)" << endl;
   cerr << "\t--nostrings\t do not add string annotations (no str), implies --norefs" << endl;
   cerr << "\t--nomarkup\t do not add any markup to the text (no t-str)" << endl;
-  cerr << "\t--sent\t treat each text line as a sentence. This is a contrived solution and not recommended." << endl;
   cerr << "\t--trusttokens\t when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements" << endl;
   cerr << "\t--compress='c'\t with 'c'=b create bzip2 files (.bz2) " << endl;
   cerr << "\t\t\t with 'c'=g create gzip files (.gz)" << endl;
@@ -700,7 +700,7 @@ void usage(){
 }
 
 int main( int argc, char *argv[] ){
-  TiCC::CL_Options opts( "vVt:O:h",
+  TiCC::CL_Options opts( "CSvVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
 			 "norefs,threads:,trusttokens,sent,nostrings,nomarkup" );
   try {
@@ -756,10 +756,20 @@ int main( int argc, char *argv[] ){
   do_strings = !opts.extract( "nostrings" );
   do_markup = !opts.extract( "nomarkup" );
   do_sent = opts.extract( "sent" );
+  if ( do_sent ){
+    cerr << "the --sent option is no longer supported" << endl;
+    exit( EXIT_FAILURE );
+  }
   trust_tokenization = opts.extract( "trusttokens" );
   opts.extract( 'O', outputDir );
-  opts.extract( "setname", setname );
-  opts.extract( "class", classname );
+  if ( opts.extract( "setname", value )
+       || opts.extract( 'S', value ) ){
+    setname = value;
+  }
+  if ( opts.extract( "classname", value )
+       || opts.extract( 'C', value ) ){
+    classname = value;
+  }
   string prefix = "FP-";
   opts.extract( "prefix", prefix );
   if ( prefix == "none" ){
