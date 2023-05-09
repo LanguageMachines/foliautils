@@ -234,8 +234,8 @@ UnicodeString handle_one_word( folia::Sentence *sent,
     }
   }
   add_text( w, uval, hyp );
-  folia::KWargs text_args;
-  text_args["class"] = classname;
+  // folia::KWargs text_args;
+  // text_args["class"] = classname;
   folia::XmlText *s_e = s_txt->add_child<folia::XmlText>();
   // create partial text for the parent sentence
   if ( hyp.isEmpty() && !last ){
@@ -245,7 +245,6 @@ UnicodeString handle_one_word( folia::Sentence *sent,
   if ( !hyp.isEmpty() ){
     // add an extra HyphBreak to the Sentence too
     folia::FoliaElement *hb = new folia::Hyphbreak();
-    hb = new folia::Hyphbreak();
     folia::XmlText *hb_txt = hb->add_child<folia::XmlText>();
     hb_txt->setuvalue( hyp );
     s_txt->append( hb );
