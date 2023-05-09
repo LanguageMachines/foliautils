@@ -295,8 +295,8 @@ int main( int argc, char *argv[] ){
 	  if ( !hyp.isEmpty() ){
 	    // add an extra HyphBreak to the stack
 	    FoliaElement *hb = new folia::Hyphbreak();
-	    XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	    e->setuvalue( hyp );
+	    XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
+	    hb_txt->setuvalue( hyp );
 	    par_stack.push_back( hb );
 	    add_space = false;
 	  }

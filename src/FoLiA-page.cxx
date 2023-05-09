@@ -116,8 +116,8 @@ void add_text( folia::FoliaElement *root,
   if ( !hyp.isEmpty() ){
     // add an extra HyphBreak
     folia::FoliaElement *hb = new folia::Hyphbreak();
-    folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-    e->setuvalue( hyp );
+    folia::XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
+    hb_txt->setuvalue( hyp );
     txt->append( hb );
   }
   root->append( txt );
@@ -246,8 +246,8 @@ UnicodeString handle_one_word( folia::Sentence *sent,
     // add an extra HyphBreak to the Sentence too
     folia::FoliaElement *hb = new folia::Hyphbreak();
     hb = new folia::Hyphbreak();
-    folia::XmlText *s_e = hb->add_child<folia::XmlText>();
-    s_e->setuvalue( hyp );
+    folia::XmlText *hb_txt = hb->add_child<folia::XmlText>();
+    hb_txt->setuvalue( hyp );
     s_txt->append( hb );
   }
   if ( do_refs ){
