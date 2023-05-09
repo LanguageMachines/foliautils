@@ -547,7 +547,7 @@ string generateName( const string& ref, string& id ){
   res = ref.substr(pos+4);
   id = res;
   pos = res.find( ":mpeg21" );
-  res = res.substr(0,pos) + res.substr(pos+7);
+  res.replace(pos, string::npos, res.substr(pos+7) );
   res = replaceColon(res,'_');
   res += ".xml";
   return res;

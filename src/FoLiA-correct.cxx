@@ -87,7 +87,7 @@ class gram_r {
 public:
   gram_r( const string&, FoliaElement* );
   explicit gram_r( const string& s ): gram_r(s,0){};
-  FoliaElement *word( size_t index ) const {
+  FoliaElement *get_word( size_t index ) const {
     if ( _words.empty() ){
       return 0;
     }
@@ -766,9 +766,9 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
   string word = orig_text();
   filter(word);
   string orig_word = word;
-  string final_punct;
   if ( !no_depunct() ){
     if ( ngram_size > 1 ){
+      string final_punct;
       bool is_punct = solve_punctuation( word, puncts, _final_punct );
       if ( is_punct ){
 	if ( verbose > 2 ){
@@ -972,7 +972,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	mw.pop_back(); // remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
-	  result.push_back( gram_r(it->second, unigrams[i-1].word(0) ) );
+	  result.push_back( gram_r(it->second, unigrams[i-1].get_word(0) ) );
 	}
 	else {
 	  if ( verbose > 4 ){
@@ -988,7 +988,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
       mw += unigrams[i].orig_text();
       const auto& it = puncts.find( mw );
       if ( it != puncts.end() ){
-	result.push_back( gram_r(it->second,unigrams[i].word(0) ) );
+	result.push_back( gram_r(it->second,unigrams[i].get_word(0) ) );
       }
       else {
 	if ( verbose > 4 ){
@@ -1004,7 +1004,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
 	mw.pop_back(); //  remove last '_'
 	const auto& it = puncts.find( mw );
 	if ( it != puncts.end() ){
-	  result.push_back( gram_r(it->second,unigrams[i-1].word(0) ) );
+	  result.push_back( gram_r(it->second,unigrams[i-1].get_word(0) ) );
 	}
 	else {
 	  if ( verbose > 4 ){
@@ -1027,7 +1027,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
     mw.pop_back(); //  remove last '_'
     const auto& it = puncts.find( mw );
     if ( it != puncts.end() ){
-      result.push_back( gram_r(it->second,unigrams.back().word(0)) );
+      result.push_back( gram_r(it->second,unigrams.back().get_word(0)) );
     }
     else {
       if ( verbose > 4 ){
@@ -1059,7 +1059,7 @@ vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
   }
   vector<pair<hemp_status,FoliaElement*>> inventory;
   for ( size_t i=0; i < unigrams.size(); ++i ){
-    inventory.push_back(make_pair(hemp_inventory[i],unigrams[i].word(0)));
+    inventory.push_back(make_pair(hemp_inventory[i],unigrams[i].get_word(0)));
   }
   if ( verbose > 4 ){
     cerr << "PAIRED inventory " << inventory << endl;
@@ -1678,7 +1678,6 @@ int main( int argc, const char *argv[] ){
 	}
 	exit(EXIT_FAILURE);
       }
-      unordered_map<string,size_t> counts;
 #pragma omp critical
       {
 	cerr << "start " << ngram_size << "-gram correcting in file: "
@@ -1688,6 +1687,7 @@ int main( int argc, const char *argv[] ){
 	rebase_text( doc, safe_inputclass, rebase_inputclass );
       }
       try {
+	unordered_map<string,size_t> counts;
 	if ( correctDoc( doc, variants, unknowns, puncts,
 			 tag_list, counts,
 			 orig_command, outName ) ){

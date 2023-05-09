@@ -191,7 +191,7 @@ UnicodeString get_text( xmlNode *node ){
     if ( pnt->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( pnt );
       if ( tmp ){
-	result = string( (char*)tmp );
+	result = string( folia::to_char(tmp) );
 	xmlFree( tmp );
       }
       break;
@@ -616,14 +616,13 @@ bool process_paragraph( folia::Paragraph *paragraph,
   for ( const auto& line : lines ){
     vector<line_info> line_parts;
     process_line( line, line_parts, par_font, font_styles );
-    formatting_info current_font;
     bool no_break = false;
     //    cerr << "\tstart process parts: " << endl;
     folia::TextMarkupString *container = 0;
-    folia::TextMarkupStyle *content = 0;
     for ( const auto& it : line_parts ){
       // cerr << "\tNEXT part " << endl;
       // cerr << "previous_hyphen=" << previous_hyphen << endl;
+      folia::TextMarkupStyle *content = 0;
       if ( !container ){
 	// start with a fresh <t-style>.
 	string val;
@@ -632,7 +631,6 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	  val = "\n";
 	}
 	root->add_child<folia::XmlText>( val );
-	current_font = it._fi;
 	folia::KWargs args;
 	args["generate_id"] = paragraph->id();
 	container = root->add_child<folia::TextMarkupString>( args );
@@ -642,7 +640,6 @@ bool process_paragraph( folia::Paragraph *paragraph,
       }
       else {
 	// end previous t-str and start a new one
-	current_font = it._fi;
 	content = make_style_content( it._fi, root->doc() );
 	container->append( content );
 	//	cerr << "\t Next styled container: " << container << endl;
