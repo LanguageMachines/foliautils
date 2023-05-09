@@ -14,7 +14,6 @@ Usage: FoLiA-page [options] file/dir
 	--norefs	 do not add references nodes to the original document. (default: Add References)
 	--nostrings	 do not add string annotations (no str), implies --norefs
 	--nomarkup	 do not add any markup to the text (no t-str)
-	--sent	 treat each text line as a sentence. This is a contrived solution and not recommended.
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
 	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 			 with 'c'=g create gzip files (.gz)
