@@ -71,10 +71,6 @@ enum font_style { REGULAR=0,
 		  STRIKEOUT=64
 };
 
-inline UnicodeString& pop_back( UnicodeString& us ){
-  return us.remove( us.length() - 1 );
-}
-
 inline font_style operator~( font_style f ){
   return (font_style)( ~(int)f );
 }

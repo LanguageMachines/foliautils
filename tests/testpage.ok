@@ -5,22 +5,21 @@ Usage: FoLiA-page [options] file/dir
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
-	-h or --help	 this messages 
-	-O		 output directory 
+	-h or --help	 this messages
+	-O		 output directory
 	--setname='set'	 the common FoLiA set name for all structural nodes. (default '')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-')
 			 use 'none' for an empty prefix. (can be dangerous)
 	--norefs	 do not add references nodes to the original document. (default: Add References)
 	--nostrings	 do not add string annotations (no str), implies --norefs
 	--nomarkup	 do not add any markup to the text (no t-str)
-	--sent	 treat each text line as a sentence. This is a contrived solution and not recommended.
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
-	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
+	--compress='c'	 with 'c'=b create bzip2 files (.bz2)
 			 with 'c'=g create gzip files (.gz)
-	-v		 verbose output 
-	-V or --version	 show version 
-start processing of 12 files 
+	-v		 verbose output
+	-V or --version	 show version
+start processing of 12 files
 converted: data/page/00667460.xml into: out/page/FP-00667460.tif.folia.xml
 converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
 converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
@@ -34,16 +33,16 @@ converted: data/page/00667466.xml into: out/page/FP-00667466.tif.folia.xml
 converted: data/page/00667467.xml into: out/page/FP-00667467.tif.folia.xml
 converted: data/page/00667468.xml into: out/page/FP-00667468.tif.folia.xml
 done
-   75   189  3274 out/page/FP-00667460.tif.folia.xml
-  160   494  7207 out/page/FP-00667461.tif.folia.xml
-   95   267  4352 out/page/FP-00667462.tif.folia.xml
-  146   466  6615 out/page/FP-00667463.tif.folia.xml
-  144   426  6391 out/page/FP-00667464.tif.folia.xml
-  135   441  6188 out/page/FP-00667465.tif.folia.xml
-  146   448  6557 out/page/FP-00667466.tif.folia.xml
-  173   491  7046 out/page/FP-00667467.tif.folia.xml
-  106   304  4761 out/page/FP-00667468.tif.folia.xml
- 1180  3526 52391 total
+   78   193  3383 out/page/FP-00667460.tif.folia.xml
+  163   498  7316 out/page/FP-00667461.tif.folia.xml
+   98   271  4461 out/page/FP-00667462.tif.folia.xml
+  149   470  6724 out/page/FP-00667463.tif.folia.xml
+  147   430  6500 out/page/FP-00667464.tif.folia.xml
+  138   445  6297 out/page/FP-00667465.tif.folia.xml
+  149   452  6666 out/page/FP-00667466.tif.folia.xml
+  176   495  7155 out/page/FP-00667467.tif.folia.xml
+  109   308  4870 out/page/FP-00667468.tif.folia.xml
+ 1207  3562 53372 total
 Validated successfully: out/page/FP-0001.png.folia.xml
 Validated successfully: out/page/FP-00667460.tif.folia.xml
 Validated successfully: out/page/FP-00667461.tif.folia.xml
@@ -60,7 +59,7 @@ converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
 converted: data/page/piroska.xml into: out/page/FP-roemische_1pg.png.folia.xml
 done
-converted: data/page/piros.xml into: out/FP-page/FP-0001.png.folia.xml
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
 done
 Validated successfully: out/page/FP-0001.png.folia.xml
 Validated successfully: out/page/FP-00667460.tif.folia.xml
@@ -74,3 +73,7 @@ Validated successfully: out/page/FP-00667467.tif.folia.xml
 Validated successfully: out/page/FP-00667468.tif.folia.xml
 Validated successfully: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
 Validated successfully: out/page/FP-roemische_1pg.png.folia.xml
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
+done
+converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml
+done

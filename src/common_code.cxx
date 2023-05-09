@@ -248,3 +248,7 @@ folia::processor *add_provenance( folia::Document& doc,
   proc->get_system_defaults();
   return proc;
 }
+
+UnicodeString& pop_back( UnicodeString& us ){
+  return us.remove( us.length() - 1 );
+}

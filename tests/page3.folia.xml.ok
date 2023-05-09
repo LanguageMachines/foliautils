@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-roemische_1pg" generator="libfolia-v2.10" version="2.5.1">
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="FP-roemische_1pg" generator="libfolia-v2.15" version="2.5.1">
   <metadata type="native">
     <annotations>
       <paragraph-annotation>
@@ -8,26 +8,27 @@
       <linebreak-annotation>
         <annotator processor="FoLiA-page.1"/>
       </linebreak-annotation>
-      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-      <relation-annotation>
+      <hyphenation-annotation>
         <annotator processor="FoLiA-page.1"/>
-      </relation-annotation>
+      </hyphenation-annotation>
       <string-annotation>
         <annotator processor="FoLiA-page.1"/>
       </string-annotation>
+      <relation-annotation>
+        <annotator processor="FoLiA-page.1"/>
+      </relation-annotation>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-page.1" begindatetime="2021-08-19T15:08:20" command="FoLiA-page -O out/page" folia_version="2.5.1" host="kokos" name="FoLiA-page" user="sloot" version="0.18">
-        <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.10"/>
+      <processor xml:id="FoLiA-page.1" begindatetime="2023-04-07T11:33:48" command="FoLiA-page -O out/page" folia_version="2.5.1" host="kobus" name="FoLiA-page" user="sloot" version="0.21">
+        <processor xml:id="FoLiA-page.1.generator" folia_version="2.5.1" name="libfolia" type="generator" version="2.15"/>
       </processor>
     </provenance>
     <meta id="page_file">piroska.xml</meta>
   </metadata>
   <text xml:id="FP-roemische_1pg.text">
     <p xml:id="FP-roemische_1pg.text.r_1_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_1_1.w_w2aab1b1b2b1b1ab1">Quellen</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_1_1.w_w2aab1b1b2b1b1ab1">Quellen</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_1_1.w_w2aab1b1b2b1b1ab1">
         <t class="OCR" offset="0">Quellen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -36,9 +37,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_2_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_2_1.w_w2aab1b3b2b1b1ab1">105</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_2_1.w_w2aab1b3b2b1b1ab1">105</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_2_1.w_w2aab1b3b2b1b1ab1">
         <t class="OCR" offset="0">105</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -47,31 +46,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b1ab1">te</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b3ab1">können,</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b5ab1">rung</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b7ab1">vorhandenen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b9ab1">sind,</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c11ab1">aber</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c13ab1">cher</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c15ab1">können</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c17ab1">und</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c19ab1">schen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c21ab1">Gesichtspunkte</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c23ab1">wert</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b1ab1">te<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b3ab1">können,<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b5ab1">rung<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b7ab1">vorhandenen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b9ab1">sind,<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c11ab1">aber<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c13ab1">cher<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c15ab1">können<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c17ab1">und<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c19ab1">schen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c21ab1">Gesichtspunkte<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1c23ab1">wert</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_3_1.w_w2aab1b5b2b1b1ab1">
         <t class="OCR" offset="0">te</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -146,9 +121,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_2">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_3_2.w_w2aab1b5b2b3b1ab1">Quellen</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_3_2.w_w2aab1b5b2b3b1ab1">Quellen</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_3_2.w_w2aab1b5b2b3b1ab1">
         <t class="OCR" offset="0">Quellen</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -157,47 +130,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_3_3">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b1ab1">te</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b3ab1">sehr</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b5ab1">besonders</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b7ab1">namentlich</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b9ab1">„Schriften</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c11ab1">haltend</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c13ab1">sorischer</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c15ab1">setzesfragmente</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c17ab1">ten</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c19ab1">schen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c21ab1">chung,</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c23ab1">Landwirtschaft</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c25ab1">abgesehen,</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c27ab1">cherweise</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c29ab1">hinausgebracht</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c31ab1">xen</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c33ab1">und</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c35ab1">insofern</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c37ab1">stellers</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c39ab1">welche</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b1ab1">te<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b3ab1">sehr<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b5ab1">besonders<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b7ab1">namentlich<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b9ab1">„Schriften<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c11ab1">haltend<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c13ab1">sorischer<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c15ab1">setzesfragmente<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c17ab1">ten<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c19ab1">schen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c21ab1">chung,<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c23ab1">Landwirtschaft<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c25ab1">abgesehen,<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c27ab1">cherweise<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c29ab1">hinausgebracht<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c31ab1">xen<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c33ab1">und<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c35ab1">insofern<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c37ab1">stellers<br/></t-str><t-str id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5c39ab1">welche</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_3_3.w_w2aab1b5b2b5b1ab1">
         <t class="OCR" offset="0">te</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -320,9 +253,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_1">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_4_1.w_w2aab1b7b2b1b1ab1">a</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_4_1.w_w2aab1b7b2b1b1ab1">a</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_4_1.w_w2aab1b7b2b1b1ab1">
         <t class="OCR" offset="0">a</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -331,11 +262,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_2">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b1ab1">17</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b3ab1">von</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b1ab1">17<br/></t-str><t-str id="FP-roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b3ab1">von</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_4_2.w_w2aab1b7b2b3b1ab1">
         <t class="OCR" offset="0">17</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
@@ -350,11 +277,7 @@
       </str>
     </p>
     <p xml:id="FP-roemische_1pg.text.r_4_3">
-      <t class="OCR">
-        <t-str id="FP-roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b1ab1">18</t-str>
-        <br/>
-        <t-str id="FP-roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b3ab1">Editorischen</t-str>
-      </t>
+      <t class="OCR"><t-str id="FP-roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b1ab1">18<br/></t-str><t-str id="FP-roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b3ab1">Editorischen</t-str></t>
       <str xml:id="FP-roemische_1pg.text.r_4_3.w_w2aab1b7b2b5b1ab1">
         <t class="OCR" offset="0">18</t>
         <relation format="text/page+xml" xlink:href="data/page/piroska.xml" xlink:type="simple">
