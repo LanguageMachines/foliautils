@@ -60,7 +60,7 @@ KWargs getAllAttributes( const xmlNode *node ){
   if ( node ){
     xmlAttr *a = node->properties;
     while ( a ){
-      atts[(char*)a->name] = (char *)a->children->content;
+      atts[folia::to_char(a->name)] = folia::to_char(a->children->content);
       a = a->next;
     }
   }
@@ -123,7 +123,7 @@ void add_reference( TextContent *tc, xmlNode *p ){
     if ( t->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( t );
       if ( tmp ){
-	text_part = std::string( (char *)tmp );
+	text_part = std::string( folia::to_char(tmp) );
 	xmlFree( tmp );
       }
     }
@@ -181,7 +181,7 @@ void add_note( Note *root, xmlNode *p ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
       if ( tmp ){
-	string val = std::string( (char *)tmp );
+	string val = std::string( folia::to_char(tmp) );
 	tc->add_child<XmlText>( val );
 	xmlFree( tmp );
       }
@@ -227,7 +227,7 @@ void add_entity( FoliaElement* root, xmlNode *p ){
     if ( t->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( t );
       if ( tmp ){
-	text_part = std::string( (char *)tmp );
+	text_part = std::string( folia::to_char(tmp) );
 	xmlFree( tmp );
       }
     }
@@ -329,7 +329,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
       if ( tmp ){
-	string part = std::string( (char *)tmp );
+	string part = std::string( folia::to_char(tmp) );
 	tc->add_child<XmlText>( part );
 	xmlFree( tmp );
       }
@@ -504,7 +504,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	  if ( t->type == XML_TEXT_NODE ){
 	    xmlChar *tmp = xmlNodeGetContent( t );
 	    if ( tmp ){
-	      text_part = std::string( (char *)tmp );
+	      text_part = std::string( folia::to_char(tmp) );
 	      xmlFree( tmp );
 	    }
 	  }
@@ -1092,7 +1092,7 @@ folia::Document *create_basedoc( const string& docid,
   if ( metadata ){
     if ( metadata->nsDef == 0 ){
       xmlNewNs( metadata,
-		(const xmlChar*)"http://www.politicalmashup.nl",
+		folia::to_xmlChar("http://www.politicalmashup.nl"),
 		0 );
     }
     doc->set_foreign_metadata( metadata );
@@ -1399,7 +1399,7 @@ void convert_to_folia( const string& file,
       Document *doc = create_basedoc( docid, command, metadata, docinfo );
       string::size_type pos = docid.rfind( ".xml" );
       if ( pos != string::npos ){
-	docid = docid.substr(0,pos);
+	docid.resize(pos);
       }
       KWargs args;
       args["xml:id"] = docid + ".text";

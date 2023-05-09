@@ -1549,13 +1549,12 @@ int main( int argc, char *argv[] ){
     exit(EXIT_FAILURE);
   }
   if ( out_in_files.empty() ){
-    string dir_name;
     vector<string> fileNames;
     if ( massOpts.size() > 1 ){
       fileNames = massOpts;
     }
     else {
-      dir_name = massOpts[0];
+      string dir_name = massOpts[0];
       fileNames = TiCC::searchFilesMatch( dir_name, expression, recursiveDirs );
     }
     toDo = fileNames.size();

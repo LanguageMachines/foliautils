@@ -520,8 +520,8 @@ void handle_one_region( folia::FoliaElement *root,
   }
 }
 
-list<xmlNode*> sort_regions( list<xmlNode*>& all_regions,
-			     list<xmlNode*>& my_order ){
+list<xmlNode*> sort_regions( const list<xmlNode*>& all_regions,
+			     const list<xmlNode*>& my_order ){
   if ( my_order.empty() ){
     return all_regions;
   }

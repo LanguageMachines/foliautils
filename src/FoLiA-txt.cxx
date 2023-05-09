@@ -291,20 +291,15 @@ int main( int argc, char *argv[] ){
 	  XmlText *e = new folia::XmlText(); // create partial text
 	  e->setuvalue( par_content );
 	  par_stack.push_back( e ); // add the XmlText to te stack
-	  bool add_space = true;
 	  if ( !hyp.isEmpty() ){
 	    // add an extra HyphBreak to the stack
 	    FoliaElement *hb = new folia::Hyphbreak();
 	    XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
 	    hb_txt->setuvalue( hyp );
 	    par_stack.push_back( hb );
-	    add_space = false;
 	  }
 	  else if ( &w == &words.back() ){
 	    folia::KWargs line_args;
-	    if ( !add_space ){
-	      line_args["space"] = "no";
-	    }
 	    par_stack.push_back( new folia::Linebreak(line_args) );
 	  }
 	}

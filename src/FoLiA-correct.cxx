@@ -768,11 +768,10 @@ int gram_r::correct_one_trigram( const unordered_map<string,vector<word_conf> >&
   string orig_word = word;
   if ( !no_depunct() ){
     if ( ngram_size > 1 ){
-      string final_punct;
       bool is_punct = solve_punctuation( word, puncts, _final_punct );
       if ( is_punct ){
 	if ( verbose > 2 ){
-	  cout << "punctuated word found, final='" << final_punct << "'" << endl;
+	  cout << "punctuated word found, final='" << _final_punct << "'" << endl;
 	  cout << "depuncted word   : " << word << endl;
 	}
       }
