@@ -67,10 +67,14 @@ To be able to succesfully build foliautils from source, you need the following d
 - A sane C++ build environment with autoconf, automake, autoconf-archive, make, gcc or clang, libtool, pkg-config
 
 To install ticcutils, libfolia and ucto, first consult whether your
-distribution's package manager has an up-to-date package.
+distribution's package manager has an up-to-date package. If not, you can use
+the supplied `build-deps.sh` script to automatically download and install the
+latest stable versions of these dependencis dependencies. You can pass a target
+directory prefix as first argument and you may need to prepend `sudo` to ensure
+you can install there.  
 
-To compile and install manually from source, provided you have all the
-dependencies installed:
+To compile and install FoLiA-utils manually from source, provided you have all the
+dependencies installed, do:
 
 ```
 $ bash bootstrap.sh
@@ -78,11 +82,6 @@ $ ./configure
 $ make
 $ make install
 ```
-
-If you want to automatically download and install the latest stable versions of
-the required dependencies, then run `./build-deps.sh` prior to the above. You
-can pass a target directory prefix as first argument and you may need to
-prepend `sudo` to ensure you can install there. The dependencies are:
 
 ## Container Usage
 
