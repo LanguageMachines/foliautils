@@ -58,9 +58,9 @@ Contents of this distribution:
 Dependencies:
 To be able to succesfully build foliautils from source, you need the following dependencies:
 
-- ticcutils (https://github.com/LanguageMachines/ticcutils)
-- libfolia (https://github.com/LanguageMachines/libfolia)
-- ucto (https://github.com/LanguageMachines/ucto)
+- [ticcutils](https://github.com/LanguageMachines/ticcutils)
+- [libfolia](https://github.com/LanguageMachines/libfolia)
+- [ucto](https://github.com/LanguageMachines/ucto)
 - libicu-dev
 - libxml2-dev
 - libexttextcat-dev OR libtextcat-dev (OS dependant)
@@ -88,22 +88,32 @@ prepend `sudo` to ensure you can install there. The dependencies are:
 
 A pre-made container image can be obtained from Docker Hub as follows:
 
+```
 docker pull proycon/foliautils
+```
 
 You can build a docker container as follows, make sure you are in the root of this repository:
 
+```
 docker build -t proycon/foliautils .
+```
 
 This builds the latest stable release, if you want to use the latest development version from the git repository instead, do:
 
+```
 docker build -t proycon/foliautils --build-arg VERSION=development .
+```
 
 Run the container interactively as follows:
 
+```
 docker run -t -i proycon/foliautils
+```
 
 Or invoke the tool you want:
 
+```
 docker run proycon/foliautils FoLiA-page
+```
 
 Add the -v /path/to/your/data:/data parameter (before -t) if you want to mount your data volume into the container at /data .
