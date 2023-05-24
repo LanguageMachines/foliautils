@@ -38,7 +38,7 @@
   (at your option) any later version.
 
   Comments and bug-reports are welcome at our issue tracker at
-  https://github.com/LanguageMachines/timbl/issues or by mailing
+  https://github.com/LanguageMachines/foliautils/issues or by mailing
   lamasoftware (at) science.ru.nl.
 
 -----------------------------------------------------------------------
