@@ -68,9 +68,6 @@ To be able to succesfully build foliautils from source, you need the following d
 
 To install ticcutils, libfolia and ucto, first consult whether your
 distribution's package manager has an up-to-date package.
-If not, for easy installation of libfolia and all dependencies, it is included
-as part of our software distribution LaMachine:
-https://proycon.github.io/LaMachine .
 
 To compile and install manually from source, provided you have all the
 dependencies installed:
