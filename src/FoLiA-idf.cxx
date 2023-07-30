@@ -71,6 +71,12 @@ size_t words_inventory( const Document *doc,
 			const string& classname,
 			map<string,unsigned int>& wc ){
   vector<Word*> words = doc->words();
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << doc->filename() << ": " << words.size() << " words" << endl;
+    }
+  }
   set<string> ws;
   for ( auto const& folia_word : words ){
     string word;
@@ -90,6 +96,12 @@ size_t words_inventory( const Document *doc,
       }
       break;
     }
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "word: '" << word << "'" << endl;
+      }
+    }
     ws.insert( word );
   }
 
@@ -107,6 +119,12 @@ size_t strings_inventory( const Document *doc,
 			  const string& classname,
 			  map<string,unsigned int>& wc ){
   vector<String*> words = doc->doc()->select<String>();
+  if ( verbose ){
+#pragma omp critical
+    {
+      cerr << doc->filename() << ": " << words.size() << " string nodes" << endl;
+    }
+  }
   set<string> ws;
   for ( auto const& folia_word : words ){
     string word;
@@ -123,6 +141,12 @@ size_t strings_inventory( const Document *doc,
 	cerr << "missing text for word " << folia_word->id() << endl;
       }
       break;
+    }
+    if ( verbose ){
+#pragma omp critical
+      {
+	cerr << "word: '" << word << "'" << endl;
+      }
     }
     ws.insert( word );
   }
