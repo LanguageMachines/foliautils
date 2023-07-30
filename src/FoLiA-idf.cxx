@@ -34,6 +34,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/CommandLine.h"
 #include "ticcutils/StringOps.h"
+#include "ticcutils/PrettyPrint.h"
 #include "ticcutils/Unicode.h"
 #include "libfolia/folia.h"
 
@@ -45,6 +46,7 @@
 using namespace	std;
 using namespace	icu;
 using namespace	folia;
+using TiCC::operator<<;
 
 bool verbose = false;
 
@@ -71,6 +73,24 @@ size_t words_inventory( const Document *doc,
 			const string& classname,
 			map<string,unsigned int>& wc ){
   vector<Word*> words = doc->words();
+  if ( words.empty() ){
+#pragma omp critical
+    {
+      cerr << "WARNING: no <w> nodes in " << doc->filename() << endl;
+    }
+    return 0;
+  }
+  const auto classes = doc->textclasses();
+  if ( !classes.empty()
+       && classes.find(classname) == classes.end() ){
+#pragma omp critical
+    {
+      cerr << "no words with class=" << classname << " in " << doc->filename()
+	   << endl
+	   << "available textclasses: " << doc->textclasses() << endl;
+    }
+    return 0;
+  }
   if ( verbose ){
 #pragma omp critical
     {
@@ -119,6 +139,24 @@ size_t strings_inventory( const Document *doc,
 			  const string& classname,
 			  map<string,unsigned int>& wc ){
   vector<String*> words = doc->doc()->select<String>();
+  if ( words.empty() ){
+#pragma omp critical
+    {
+      cerr << "WARNING: no <str> nodes in " << doc->filename() << endl;
+    }
+    return 0;
+  }
+  const auto classes = doc->textclasses();
+  if ( !classes.empty()
+       && classes.find(classname) == classes.end() ){
+#pragma omp critical
+    {
+      cerr << "no words with class=" << classname << " in " << doc->filename()
+	   << endl
+	   << "available textclasses: " << doc->textclasses() << endl;
+    }
+    return 0;
+  }
   if ( verbose ){
 #pragma omp critical
     {
@@ -303,7 +341,16 @@ int main( int argc, char *argv[] ){
     }
     delete d;
   }
-
+  if ( wordTotal == 0 ){
+    cerr << "no useful data found." << endl;
+    if ( do_strings ){
+      cerr << "maybe the --strings option is not applicable?" << endl;
+    }
+    else {
+      cerr << "maybe the --strings option should be used?" << endl;
+    }
+    return EXIT_FAILURE;
+  }
   if ( toDo > 1 ){
     cout << "done processsing directory '" << dirName << "' in total "
 	 << wordTotal << " unique words were found." << endl;
