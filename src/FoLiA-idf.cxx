@@ -234,7 +234,7 @@ int main( int argc, char *argv[] ){
   string expression;
   string outPrefix;
   string value;
-  string classname;
+  string classname = "current";
   if ( opts.empty() ){
     usage();
     exit(EXIT_FAILURE);
