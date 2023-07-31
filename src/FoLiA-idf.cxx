@@ -48,7 +48,7 @@ using namespace	icu;
 using namespace	folia;
 using TiCC::operator<<;
 
-bool verbose = false;
+int verbose = 0;
 
 void create_idf_list( const map<string, unsigned int>& wc,
 		      const string& filename, unsigned int clip ){
@@ -85,7 +85,7 @@ size_t words_inventory( const Document *doc,
        && classes.find(classname) == classes.end() ){
 #pragma omp critical
     {
-      cerr << "no words with class=" << classname << " in " << doc->filename()
+      cerr << "no text with class=" << classname << " in " << doc->filename()
 	   << endl
 	   << "available textclasses: " << doc->textclasses() << endl;
     }
@@ -116,7 +116,15 @@ size_t words_inventory( const Document *doc,
       }
       break;
     }
-    if ( verbose ){
+    if ( word.empty() ){
+#pragma omp critical
+      {
+	cerr << "missing text (class=" << classname << ") for word "
+	     << folia_word->id() << endl;
+      }
+      break;
+    }
+    if ( verbose > 2 ){
 #pragma omp critical
       {
 	cerr << "word: '" << word << "'" << endl;
@@ -151,7 +159,7 @@ size_t strings_inventory( const Document *doc,
        && classes.find(classname) == classes.end() ){
 #pragma omp critical
     {
-      cerr << "no words with class=" << classname << " in " << doc->filename()
+      cerr << "no strings with class=" << classname << " in " << doc->filename()
 	   << endl
 	   << "available textclasses: " << doc->textclasses() << endl;
     }
@@ -180,7 +188,7 @@ size_t strings_inventory( const Document *doc,
       }
       break;
     }
-    if ( verbose ){
+    if ( verbose > 2 ){
 #pragma omp critical
       {
 	cerr << "word: '" << word << "'" << endl;
@@ -247,7 +255,9 @@ int main( int argc, char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  verbose = opts.extract( 'v' );
+  while ( opts.extract( 'v' ) ){
+    ++verbose;
+  }
   bool do_strings = opts.extract( "strings" );
   opts.extract( 'e', expression );
   recursiveDirs = opts.extract( 'R' );
