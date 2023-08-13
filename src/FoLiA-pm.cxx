@@ -60,7 +60,7 @@ KWargs getAllAttributes( const xmlNode *node ){
   if ( node ){
     xmlAttr *a = node->properties;
     while ( a ){
-      atts[folia::to_char(a->name)] = folia::to_char(a->children->content);
+      atts[folia::to_string(a->name)] = folia::to_string(a->children->content);
       a = a->next;
     }
   }
@@ -123,7 +123,7 @@ void add_reference( TextContent *tc, xmlNode *p ){
     if ( t->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( t );
       if ( tmp ){
-	text_part = std::string( folia::to_char(tmp) );
+	text_part = std::string( folia::to_string(tmp) );
 	xmlFree( tmp );
       }
     }
@@ -181,7 +181,7 @@ void add_note( Note *root, xmlNode *p ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
       if ( tmp ){
-	string val = std::string( folia::to_char(tmp) );
+	string val = folia::to_string(tmp);
 	tc->add_child<XmlText>( val );
 	xmlFree( tmp );
       }
@@ -227,7 +227,7 @@ void add_entity( FoliaElement* root, xmlNode *p ){
     if ( t->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( t );
       if ( tmp ){
-	text_part = std::string( folia::to_char(tmp) );
+	text_part = folia::to_string(tmp );
 	xmlFree( tmp );
       }
     }
@@ -329,7 +329,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
     if ( p->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( p );
       if ( tmp ){
-	string part = std::string( folia::to_char(tmp) );
+	string part = folia::to_string(tmp);
 	tc->add_child<XmlText>( part );
 	xmlFree( tmp );
       }
@@ -504,7 +504,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	  if ( t->type == XML_TEXT_NODE ){
 	    xmlChar *tmp = xmlNodeGetContent( t );
 	    if ( tmp ){
-	      text_part = std::string( folia::to_char(tmp) );
+	      text_part = folia::to_string(tmp);
 	      xmlFree( tmp );
 	    }
 	  }

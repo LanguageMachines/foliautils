@@ -191,7 +191,7 @@ UnicodeString get_text( xmlNode *node ){
     if ( pnt->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( pnt );
       if ( tmp ){
-	result = string( folia::to_char(tmp) );
+	result = folia::to_string( tmp );
 	xmlFree( tmp );
       }
       break;
