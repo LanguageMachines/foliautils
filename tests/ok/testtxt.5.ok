@@ -15,14 +15,14 @@
       <hyphenation-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2023-09-15T16:43:48" command="FoLiA-txt -O out --remove-end-hyphens=no" folia_version="2.5.3" host="kobus" name="FoLiA-txt" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-09-15T17:20:09" command="FoLiA-txt -O out --remove-end-hyphens=no" folia_version="2.5.3" host="kobus" name="FoLiA-txt" user="sloot" version="0.21">
         <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.3" name="libfolia" type="generator" version="2.16"/>
       </processor>
     </provenance>
   </metadata>
   <text xml:id="hyph.text">
     <p xml:id="hyph.p.1">
-      <t class="FoLiA-txt">Dit is een test. Met enkele paragra-<br/>fen. Dit is de eerste. Met ook een af-<br/>breking.<br/></t>
+      <t class="FoLiA-txt">Dit is een test. Met enkele paragra-<br/>fen. Dit is de eerste. Met ook een af-<br/>breking. -*-<br/></t>
       <str xml:id="hyph.p.1.str.1">
         <t class="FoLiA-txt">Dit</t>
       </str>
@@ -74,9 +74,12 @@
       <str xml:id="hyph.p.1.str.17">
         <t class="FoLiA-txt">breking.</t>
       </str>
+      <str xml:id="hyph.p.1.str.18">
+        <t class="FoLiA-txt">-*-</t>
+      </str>
     </p>
     <p xml:id="hyph.p.2">
-      <t class="FoLiA-txt">En dit de tweede. Met een speciaaal ge<t-hbr>¬</t-hbr>val. En ook weer een soft<t-hbr>¬</t-hbr>hyphen.<br/></t>
+      <t class="FoLiA-txt">En dit de tweede. Met een speciaaal ge<t-hbr>¬</t-hbr>val. En ook weer een soft<t-hbr>¬</t-hbr>hyphen. -.-<br/></t>
       <str xml:id="hyph.p.2.str.1">
         <t class="FoLiA-txt">En</t>
       </str>
@@ -121,6 +124,9 @@
       </str>
       <str xml:id="hyph.p.2.str.15">
         <t class="FoLiA-txt">hyphen.</t>
+      </str>
+      <str xml:id="hyph.p.2.str.16">
+        <t class="FoLiA-txt">-.-</t>
       </str>
     </p>
   </text>

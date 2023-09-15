@@ -65,6 +65,30 @@ void usage(){
        << classname << "')"<< endl;
 }
 
+void add_paragraph( folia::FoliaElement *par,
+		    const vector<FoliaElement*>& par_stack ){
+  folia::KWargs text_args;
+  text_args["class"] = classname;
+  FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
+  for ( const auto& it : par_stack ){
+    if ( &it == &par_stack.back()
+	 && it->isSubClass(Hyphbreak_t) ){
+      folia::TextPolicy tp;
+      tp.set( TEXT_FLAGS::ADD_FORMATTING );
+      UnicodeString val = it->text(tp);
+      if ( val.endsWith("\n") ){
+	pop_back( val );
+      }
+      XmlText *e = new folia::XmlText(); // create partial text
+      e->setuvalue( val );
+      txt->append( e );
+    }
+    else {
+      txt->append(it );
+    }
+  }
+}
+
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:",
 			 "class:,setname:,remove-end-hyphens:,"
@@ -236,15 +260,10 @@ int main( int argc, char *argv[] ){
 	// end a paragraph
 	if ( par && !par_stack.empty() ){
 	  // do we have some fragments?
-	  folia::KWargs text_args;
-	  text_args["class"] = classname;
-	  FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
-	  for ( const auto& it : par_stack ){
-	    txt->append(it );
-	  }
+	  add_paragraph( par, par_stack );
 	  par_stack.clear();
+	  par = 0;
 	}
-	par = 0;
 	continue;
       }
       vector<UnicodeString> words = TiCC::split( line );
@@ -307,12 +326,8 @@ int main( int argc, char *argv[] ){
     }
     if ( par && !par_stack.empty() ){
       // leftovers
-      folia::KWargs text_args;
-      text_args["class"] = classname;
-      FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
-      for ( const auto& it : par_stack ){
-	txt->append(it );
-      }
+      add_paragraph( par, par_stack );
+      par = 0;
       par_stack.clear();
     }
     if ( parCount == 0 ){
