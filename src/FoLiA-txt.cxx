@@ -71,6 +71,12 @@ void add_paragraph( folia::FoliaElement *par,
   text_args["class"] = classname;
   FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
   for ( const auto& it : par_stack ){
+    // we don't want a terminating <br/> at the end of a paragraph.
+    // 2 newlines ar already implicit for a paragraph
+    if ( &it == &par_stack.back()
+	 && it->isSubClass( Linebreak_t ) ){
+      break;
+    }
     txt->append(it );
   }
 }
