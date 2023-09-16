@@ -15,14 +15,14 @@
       <hyphenation-annotation/>
     </annotations>
     <provenance>
-      <processor xml:id="FoLiA-txt.1" begindatetime="2023-09-15T17:20:09" command="FoLiA-txt -O out --remove-end-hyphens=no" folia_version="2.5.3" host="kobus" name="FoLiA-txt" user="sloot" version="0.21">
+      <processor xml:id="FoLiA-txt.1" begindatetime="2023-09-16T08:47:41" command="FoLiA-txt -O out --remove-end-hyphens=no" folia_version="2.5.3" host="kobus" name="FoLiA-txt" user="sloot" version="0.21">
         <processor xml:id="FoLiA-txt.1.generator" folia_version="2.5.3" name="libfolia" type="generator" version="2.16"/>
       </processor>
     </provenance>
   </metadata>
   <text xml:id="hyph.text">
     <p xml:id="hyph.p.1">
-      <t class="FoLiA-txt">Dit is een test. Met enkele paragra-<br/>fen. Dit is de eerste. Met ook een af-<br/>breking. -*-<br/></t>
+      <t class="FoLiA-txt">Dit is een test. Met enkele paragra-<br/>fen. Dit is de eerste. Met ook een af-<br/>breking.<br/></t>
       <str xml:id="hyph.p.1.str.1">
         <t class="FoLiA-txt">Dit</t>
       </str>
@@ -74,12 +74,9 @@
       <str xml:id="hyph.p.1.str.17">
         <t class="FoLiA-txt">breking.</t>
       </str>
-      <str xml:id="hyph.p.1.str.18">
-        <t class="FoLiA-txt">-*-</t>
-      </str>
     </p>
     <p xml:id="hyph.p.2">
-      <t class="FoLiA-txt">En dit de tweede. Met een speciaaal ge<t-hbr>¬</t-hbr>val. En ook weer een soft<t-hbr>¬</t-hbr>hyphen. -.-<br/></t>
+      <t class="FoLiA-txt">En dit de tweede. Met een speciaaal ge<t-hbr>¬</t-hbr>val. En ook weer een soft<t-hbr>¬</t-hbr>hyphen.<br/></t>
       <str xml:id="hyph.p.2.str.1">
         <t class="FoLiA-txt">En</t>
       </str>
@@ -125,8 +122,32 @@
       <str xml:id="hyph.p.2.str.15">
         <t class="FoLiA-txt">hyphen.</t>
       </str>
-      <str xml:id="hyph.p.2.str.16">
-        <t class="FoLiA-txt">-.-</t>
+    </p>
+    <p xml:id="hyph.p.3">
+      <t class="FoLiA-txt">En dit is ook -*-<br/>een uitzondering :{-<br/></t>
+      <str xml:id="hyph.p.3.str.1">
+        <t class="FoLiA-txt">En</t>
+      </str>
+      <str xml:id="hyph.p.3.str.2">
+        <t class="FoLiA-txt">dit</t>
+      </str>
+      <str xml:id="hyph.p.3.str.3">
+        <t class="FoLiA-txt">is</t>
+      </str>
+      <str xml:id="hyph.p.3.str.4">
+        <t class="FoLiA-txt">ook</t>
+      </str>
+      <str xml:id="hyph.p.3.str.5">
+        <t class="FoLiA-txt">-*-</t>
+      </str>
+      <str xml:id="hyph.p.3.str.6">
+        <t class="FoLiA-txt">een</t>
+      </str>
+      <str xml:id="hyph.p.3.str.7">
+        <t class="FoLiA-txt">uitzondering</t>
+      </str>
+      <str xml:id="hyph.p.3.str.8">
+        <t class="FoLiA-txt">:{-</t>
       </str>
     </p>
   </text>
