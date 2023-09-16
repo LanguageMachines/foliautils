@@ -71,22 +71,34 @@ void add_paragraph( folia::FoliaElement *par,
   text_args["class"] = classname;
   FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
   for ( const auto& it : par_stack ){
-    if ( &it == &par_stack.back()
-	 && it->isSubClass(Hyphbreak_t) ){
-      folia::TextPolicy tp;
-      tp.set( TEXT_FLAGS::ADD_FORMATTING );
-      UnicodeString val = it->text(tp);
-      if ( val.endsWith("\n") ){
-	pop_back( val );
-      }
-      XmlText *e = new folia::XmlText(); // create partial text
-      e->setuvalue( val );
-      txt->append( e );
-    }
-    else {
-      txt->append(it );
-    }
+    txt->append(it );
   }
+}
+
+UnicodeString extract_hyphen( UnicodeString& word, bool soft_only=false ){
+  UnicodeString hyph;
+  int size = word.length();
+  if ( word[size-1] == U'¬' ){
+    word = pop_back( word ); // remove it
+    hyph = "¬";  // the Not-Sign u00ac. A Soft Hyphen
+  }
+  else if ( soft_only
+	    && size > 1
+	    && word[size-1] == U'-'
+	    && u_isalpha( word[size-2] )){
+    word = pop_back( word ); // remove the hyphen
+    hyph = "-";
+  }
+  else if ( soft_only
+	    && size > 2
+	    && word[size-1] == ' '
+	    && word[size-2] == U'-'
+	    && u_isalpha( word[size-3] )){
+    word = pop_back( word ); // remove the space
+    word = pop_back( word ); // remove the hyphen
+    hyph = "-";
+  }
+  return hyph;
 }
 
 int main( int argc, char *argv[] ){
@@ -283,21 +295,7 @@ int main( int argc, char *argv[] ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
 	  UnicodeString hyp; // hyphen symbol at the end of par_content
-	  if ( par_content.endsWith( "¬" ) ){
-	    par_content = pop_back( par_content ); // remove it
-	    hyp = "¬";  // the Not-Sign u00ac. A Soft Hyphen
-	  }
-	  else if ( remove_hyphens
-		    && par_content.endsWith( "- " ) ){
-	    par_content = pop_back( par_content ); // remove the space
-	    par_content = pop_back( par_content ); // remove the '-'
-	    hyp = "-";
-	  }
-	  else if ( remove_hyphens
-		    && par_content.endsWith( "-" ) ){
-	    par_content = pop_back( par_content ); // remove the '-'
-	    hyp = "-";
-	  }
+	  hyp = extract_hyphen( par_content, remove_hyphens );
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
