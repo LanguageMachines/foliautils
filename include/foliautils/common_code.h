@@ -35,6 +35,8 @@
 
 extern const int XML_PARSER_OPTIONS;
 
+const UChar32 SOFT_HYPHEN=U'¬';   // the Not-Sign u00ac. Use3 as a Soft Hyphen
+
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 
 xmlDoc *getXml( const std::string& , zipType& );
@@ -61,5 +63,7 @@ folia::processor *add_provenance( folia::Document&,
 				  const std::string& );
 
 UnicodeString& pop_back( UnicodeString& );
+
+UnicodeString extract_hyphen( UnicodeString& word, bool soft_only=false );
 
 #endif // COMMON_CODE_H

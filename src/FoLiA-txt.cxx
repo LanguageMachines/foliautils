@@ -81,32 +81,6 @@ void add_paragraph( folia::FoliaElement *par,
   }
 }
 
-UnicodeString extract_hyphen( UnicodeString& word, bool soft_only=false ){
-  UnicodeString hyph;
-  int size = word.length();
-  if ( word[size-1] == U'¬' ){
-    word = pop_back( word ); // remove it
-    hyph = "¬";  // the Not-Sign u00ac. A Soft Hyphen
-  }
-  else if ( soft_only
-	    && size > 1
-	    && word[size-1] == U'-'
-	    && u_isalpha( word[size-2] )){
-    word = pop_back( word ); // remove the hyphen
-    hyph = "-";
-  }
-  else if ( soft_only
-	    && size > 2
-	    && word[size-1] == ' '
-	    && word[size-2] == U'-'
-	    && u_isalpha( word[size-3] )){
-    word = pop_back( word ); // remove the space
-    word = pop_back( word ); // remove the hyphen
-    hyph = "-";
-  }
-  return hyph;
-}
-
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:",
 			 "class:,setname:,remove-end-hyphens:,"
@@ -301,7 +275,7 @@ int main( int argc, char *argv[] ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
 	  UnicodeString hyp; // hyphen symbol at the end of par_content
-	  hyp = extract_hyphen( par_content, remove_hyphens );
+	  hyp = extract_hyphen( par_content, !remove_hyphens );
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);

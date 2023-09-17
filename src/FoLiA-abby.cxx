@@ -383,6 +383,7 @@ void process_line( xmlNode *block,
     formatting_info line_format = default_format;
     update_formatting_info( line_format, form, font_styles );
     UnicodeString uresult = get_line( form );
+    //    hyp = extract_hyphen( uresult );
     if ( uresult.endsWith( "¬" ) ){
       uresult = pop_back( uresult );
       hyp = "¬";
@@ -660,7 +661,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	  //	cerr << "HYPH= '" << it._hyph << "'" << endl;
 	  add_value( content, value );
 	  folia::Hyphbreak *hb = content->add_child<folia::Hyphbreak>();
-	  if ( it._hyph == "¬"
+	  if ( it._hyph == SOFT_HYPHEN
 	       || ( it._hyph == "-"
 		    && &it == &line_parts.back() ) ){
 	    folia::XmlText *e = hb->add_child<folia::XmlText>();

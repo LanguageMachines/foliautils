@@ -252,3 +252,29 @@ folia::processor *add_provenance( folia::Document& doc,
 UnicodeString& pop_back( UnicodeString& us ){
   return us.remove( us.length() - 1 );
 }
+
+UnicodeString extract_hyphen( UnicodeString& word, bool soft_only ){
+  UnicodeString hyph;
+  int size = word.length();
+  if ( word[size-1] == SOFT_HYPHEN ){
+    word = pop_back( word ); // remove it
+    hyph = SOFT_HYPHEN;  // the Not-Sign u00ac. A Soft Hyphen
+  }
+  else if ( !soft_only
+	    && size > 1
+	    && word[size-1] == U'-'
+	    && u_isalpha( word[size-2] )){
+    word = pop_back( word ); // remove the hyphen
+    hyph = "-";
+  }
+  else if ( !soft_only
+	    && size > 2
+	    && word[size-1] ==' '
+	    && word[size-2] == U'-'
+	    && u_isalpha( word[size-3] )){
+    word = pop_back( word ); // remove the space
+    word = pop_back( word ); // remove the hyphen
+    hyph = "-";
+  }
+  return hyph;
+}
