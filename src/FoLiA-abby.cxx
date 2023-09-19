@@ -379,24 +379,10 @@ void process_line( xmlNode *block,
     }
   }
   for ( const auto& form : formats ){
-    UnicodeString hyp;
     formatting_info line_format = default_format;
     update_formatting_info( line_format, form, font_styles );
     UnicodeString uresult = get_line( form );
-    //    hyp = extract_hyphen( uresult );
-    if ( uresult.endsWith( "¬" ) ){
-      uresult = pop_back( uresult );
-      hyp = "¬";
-    }
-    else if ( uresult.endsWith( "- " ) ){
-      uresult = pop_back( uresult );
-      uresult = pop_back( uresult );
-      hyp = "-";
-    }
-    else if ( uresult.endsWith( "-" ) ){
-      uresult = pop_back( uresult );
-      hyp = "-";
-    }
+    UnicodeString hyp = extract_hyphen( uresult );
     if ( !uresult.isEmpty() || !hyp.isEmpty() ){
       line_info li;
       li._value = uresult;
