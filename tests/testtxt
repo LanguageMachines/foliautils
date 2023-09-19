@@ -21,3 +21,6 @@ foliadiff.sh out/hyph.folia.xml ok/testtxt.4.ok >> testtxt.out
 
 $my_bin/FoLiA-txt -O out --remove-end-hyphens=no data/txt/hyph.txt
 foliadiff.sh out/hyph.folia.xml ok/testtxt.5.ok >> testtxt.out
+
+$my_bin/FoLiA-txt -O out data/txt/paragraphs.txt
+foliadiff.sh out/paragraphs.folia.xml ok/testtxt.6.ok >> testtxt.out
