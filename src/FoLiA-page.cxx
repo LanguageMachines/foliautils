@@ -83,22 +83,6 @@ UnicodeString ltrim( const UnicodeString& in ){
   }
 }
 
-UnicodeString extract_final_hyphen( UnicodeString& uval ){
-  static TiCC::UnicodeNormalizer UN;
-  uval = UN.normalize(uval);
-  uval = ltrim( uval );
-  UnicodeString hyp; // hyphen symbol at the end of par_content
-  if ( uval.endsWith( "¬" ) ){
-    uval = pop_back( uval ); // remove it
-    hyp = "¬";  // the Not-Sign u00ac. A Soft Hyphen
-  }
-  else if ( uval.endsWith( "-" ) ){
-    uval = pop_back( uval ); // remove the '-'
-    hyp = "-";
-  }
-  return hyp;
-}
-
 void add_text( folia::FoliaElement *root,
 	       const UnicodeString& uval,
 	       const UnicodeString& hyp,
