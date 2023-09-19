@@ -274,25 +274,25 @@ int main( int argc, char *argv[] ){
 	if ( !is_norm_empty(str_content) ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
-	  UnicodeString hyp; // hyphen symbol at the end of par_content
-	  hyp = extract_final_hyphen( par_content, keep_hyphens );
+	  UnicodeString hyph; // hyphen symbol at the end of par_content
+	  hyph = extract_final_hyphen( par_content, keep_hyphens );
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = par->add_child<folia::String>( str_args );
 	  str->setutext( str_content, classname );
-	  if ( hyp.isEmpty() && &w != &words.back() ){
+	  if ( hyph.isEmpty() && &w != &words.back() ){
 	    par_content += " "; // no hyphen, so add a space separator except
 	    // for last word
 	  }
 	  XmlText *e = new folia::XmlText(); // create partial text
 	  e->setuvalue( par_content );
 	  par_stack.push_back( e ); // add the XmlText to te stack
-	  if ( !hyp.isEmpty() ){
+	  if ( !hyph.isEmpty() ){
 	    // add an extra HyphBreak to the stack
 	    FoliaElement *hb = new folia::Hyphbreak();
 	    XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
-	    hb_txt->setuvalue( hyp );
+	    hb_txt->setuvalue( hyph );
 	    par_stack.push_back( hb );
 	  }
 	  else if ( &w == &words.back() ){
