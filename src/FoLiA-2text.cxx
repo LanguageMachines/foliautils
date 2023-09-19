@@ -33,7 +33,7 @@
 #include "ticcutils/FileUtils.h"
 #include "ticcutils/StringOps.h"
 #include "libfolia/folia.h"
-
+#include "foliautils/common_code.h"
 #include "config.h"
 #ifdef HAVE_OPENMP
 #include "omp.h"
@@ -64,8 +64,8 @@ void usage( const string& name ){
 UnicodeString handle_token_tag( const folia::FoliaElement *d,
 				const folia::TextPolicy& tp ){
   UnicodeString tmp_result = text( d, tp );
-  tmp_result = u'\u200D' + tmp_result;
-  tmp_result += u'\u200D';
+  tmp_result = ZWJ + tmp_result;
+  tmp_result += ZWJ;
   return tmp_result;
 }
 
@@ -231,7 +231,7 @@ int main( int argc, char *argv[] ){
       if ( honour_tags ){
 	UnicodeString out;
 	for ( int i=0; i < us.length(); ++i ){
-	  if ( us[i] == u'\u200d' ){
+	  if ( us[i] == ZWJ ){
 	    out += " ";
 	  }
 	  else {

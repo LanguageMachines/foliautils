@@ -36,6 +36,8 @@
 extern const int XML_PARSER_OPTIONS;
 
 const UChar32 SOFT_HYPHEN=U'¬';   // the Not-Sign u00ac. Use3 as a Soft Hyphen
+const UChar32 ZWNJ = U'\u200C';
+const UChar32 ZWJ  = U'\u200D';
 
 enum zipType { NORMAL, GZ, BZ2, UNKNOWN };
 

@@ -245,6 +245,10 @@ int main( int argc, char *argv[] ){
     UnicodeString line;
     while ( TiCC::getline( is, line ) ){
       line.trim();
+      if ( line.length() == 1
+	   && line[line.length()-1] == ZWNJ ){
+	line = pop_back( line );
+      }
       if ( line.isEmpty() ){
 	// end a paragraph
 	if ( par && !par_stack.empty() ){
