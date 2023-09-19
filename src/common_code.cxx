@@ -253,7 +253,9 @@ UnicodeString& pop_back( UnicodeString& us ){
   return us.remove( us.length() - 1 );
 }
 
-UnicodeString extract_hyphen( UnicodeString& word, bool soft_only ){
+UnicodeString extract_final_hyphen( UnicodeString& word, bool soft_only ){
+  static TiCC::UnicodeNormalizer UN;
+  word = UN.normalize(word); // normalize to UTF8 NFC
   UnicodeString hyph;
   int size = word.length();
   if ( word[size-1] == SOFT_HYPHEN ){

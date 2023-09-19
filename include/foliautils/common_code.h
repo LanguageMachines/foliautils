@@ -64,6 +64,6 @@ folia::processor *add_provenance( folia::Document&,
 
 UnicodeString& pop_back( UnicodeString& );
 
-UnicodeString extract_hyphen( UnicodeString& word, bool soft_only=false );
+UnicodeString extract_final_hyphen( UnicodeString& word, bool soft_only=false );
 
 #endif // COMMON_CODE_H

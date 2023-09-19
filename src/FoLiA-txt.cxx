@@ -145,10 +145,10 @@ int main( int argc, char *argv[] ){
       }
     }
   }
-  bool remove_hyphens = true;
+  bool keep_hyphens = false;
   string h_val;
   if ( opts.extract( "remove-end-hyphens", h_val ) ){
-    remove_hyphens = TiCC::stringTo<bool>( h_val );
+    keep_hyphens = !TiCC::stringTo<bool>( h_val );
   }
   vector<string> file_names = opts.getMassOpts();
   size_t to_do = file_names.size();
@@ -275,7 +275,7 @@ int main( int argc, char *argv[] ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
 	  UnicodeString hyp; // hyphen symbol at the end of par_content
-	  hyp = extract_hyphen( par_content, !remove_hyphens );
+	  hyp = extract_final_hyphen( par_content, keep_hyphens );
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
