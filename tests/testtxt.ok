@@ -1,3 +1,4 @@
+no matching files found
 Usage: [options] file/dir
 	 FoLiA-txt will produce FoLiA files from text files 
 	 The output will only contain <p> and <str> nodes.

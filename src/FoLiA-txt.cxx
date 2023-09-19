@@ -94,10 +94,6 @@ int main( int argc, char *argv[] ){
   }
   string outputDir;
   string value;
-  if ( opts.empty() ){
-    usage();
-    exit(EXIT_FAILURE);
-  }
   if ( opts.extract( 'h' ) ||
        opts.extract( "help" ) ){
     usage();
@@ -136,15 +132,6 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( "class", classname );
   opts.extract( "setname", setname );
-  if ( !outputDir.empty() ){
-    if ( !TiCC::isDir(outputDir) ){
-      if ( !TiCC::createPath( outputDir ) ){
-	cerr << "outputdir '" << outputDir
-	     << "' doesn't exist and can't be created" << endl;
-	exit(EXIT_FAILURE);
-      }
-    }
-  }
   bool keep_hyphens = false;
   string h_val;
   if ( opts.extract( "remove-end-hyphens", h_val ) ){
@@ -154,6 +141,7 @@ int main( int argc, char *argv[] ){
   size_t to_do = file_names.size();
   if ( to_do == 0 ){
     cerr << "no matching files found" << endl;
+    usage();
     exit(EXIT_SUCCESS);
   }
   if ( to_do == 1 ){
@@ -167,6 +155,15 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( to_do > 1 ){
+    if ( !outputDir.empty() ){
+      if ( !TiCC::isDir(outputDir) ){
+	if ( !TiCC::createPath( outputDir ) ){
+	  cerr << "outputdir '" << outputDir
+	       << "' doesn't exist and can't be created" << endl;
+	  exit(EXIT_FAILURE);
+	}
+      }
+    }
     cout << "start processing of " << to_do << " files" << endl;
   }
   size_t failed_docs = 0;
@@ -191,10 +188,10 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-// #pragma omp critical
-//     {
-//       cout << "Starting " << fileName << endl;
-//     }
+#pragma omp critical
+    {
+      cout << "Starting " << fileName << endl;
+    }
     string nameNoExt = fileName;
     string::size_type pos = fileName.rfind( "." );
     if ( pos != string::npos ){

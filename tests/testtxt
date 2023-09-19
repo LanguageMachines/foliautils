@@ -7,17 +7,17 @@ $my_bin/FoLiA-txt -V >> testtxt.out 2>&1
 
 $my_bin/FoLiA-txt --help >> testtxt.out 2>&1
 
-$my_bin/FoLiA-txt -O out data/test.txt
+$my_bin/FoLiA-txt -O out data/txt/test.txt
 foliadiff.sh out/test.folia.xml ok/testtxt.1.ok >> testtxt.out
 
-$my_bin/FoLiA-txt --class=foobar -O out data/test.txt
+$my_bin/FoLiA-txt --class=foobar -O out data/txt/test.txt
 foliadiff.sh out/test.folia.xml ok/testtxt.2.ok >> testtxt.out
 
-$my_bin/FoLiA-txt --class=bar --setname=foo -O out data/test.txt
+$my_bin/FoLiA-txt --class=bar --setname=foo -O out data/txt/test.txt
 foliadiff.sh out/test.folia.xml ok/testtxt.3.ok >> testtxt.out
 
-$my_bin/FoLiA-txt -O out  data/hyph.txt
+$my_bin/FoLiA-txt -O out  data/txt/hyph.txt
 foliadiff.sh out/hyph.folia.xml ok/testtxt.4.ok >> testtxt.out
 
-$my_bin/FoLiA-txt -O out --remove-end-hyphens=no data/hyph.txt
+$my_bin/FoLiA-txt -O out --remove-end-hyphens=no data/txt/hyph.txt
 foliadiff.sh out/hyph.folia.xml ok/testtxt.5.ok >> testtxt.out
