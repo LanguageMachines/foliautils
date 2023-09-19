@@ -63,26 +63,6 @@ string setname = "";
 string classname = "OCR";
 string processor_id;
 
-UnicodeString ltrim( const UnicodeString& in ){
-  /// remove leading whitespace (including newlines and tabs)
-  int begin = in.length();
-  for ( int i = 0; i < in.length(); ++i ) {
-    if ( !u_isspace(in[i]) ){
-      begin = i;
-      break;
-    }
-  }
-  if (begin == 0) {
-    return in;
-  }
-  else if (begin == in.length()) {
-    return "";
-  }
-  else {
-    return UnicodeString(in, begin, in.length() - begin);
-  }
-}
-
 void add_text( folia::FoliaElement *root,
 	       const UnicodeString& uval,
 	       const UnicodeString& hyp,
