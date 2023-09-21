@@ -26,6 +26,7 @@
 
 #include <string>
 #include "libfolia/folia.h"
+#include "libfolia/folia.h"
 #include "libxml/HTMLparser.h"
 #include "foliautils/common_code.h"
 #include "ticcutils/XMLtools.h"
@@ -253,30 +254,34 @@ UnicodeString& pop_back( UnicodeString& us ){
   return us.remove( us.length() - 1 );
 }
 
-UnicodeString extract_final_hyphen( UnicodeString& word, bool soft_only ){
+UnicodeString extract_final_hyphen( const UnicodeString& word,
+				    const set<UChar32>& hyphens,
+				    UnicodeString& hyph ){
   static TiCC::UnicodeNormalizer UN;
-  word = UN.normalize(word); // normalize to UTF8 NFC
-  UnicodeString hyph;
-  int size = word.length();
-  if ( word[size-1] == SOFT_HYPHEN ){
-    word = pop_back( word ); // remove it
-    hyph = SOFT_HYPHEN;  // the Not-Sign u00ac. A Soft Hyphen
+  hyph.remove(); // to be sure
+  UnicodeString result = UN.normalize(word); // normalize to UTF8 NFC
+  result = TiCC::rtrim( result ); // remove trailing spaces
+  int pos = result.length();
+  if ( pos >= 2 ){
+    // otherwise no chance
+    if ( hyphens.find( result[pos-1] ) != hyphens.end()
+	 && u_isalpha(result[pos-2]) ) {
+      // so a hyphen after an alphabetic character
+      hyph = result[pos-1];
+      return pop_back( result ); // remove the hyphen
+    }
   }
-  else if ( !soft_only
-	    && size > 1
-	    && word[size-1] == U'-'
-	    && u_isalpha( word[size-2] )){
-    word = pop_back( word ); // remove the hyphen
-    hyph = "-";
-  }
-  else if ( !soft_only
-	    && size > 2
-	    && word[size-1] ==' '
-	    && word[size-2] == U'-'
-	    && u_isalpha( word[size-3] )){
-    word = pop_back( word ); // remove the space
-    word = pop_back( word ); // remove the hyphen
-    hyph = "-";
-  }
-  return hyph;
+  return word; // nothing donne/changed
+}
+
+UnicodeString extract_final_hyphen( const UnicodeString& word,
+				    UnicodeString& hyph ){
+  set<UChar32> hyphens = { SOFT_HYPHEN, '-' };
+  return extract_final_hyphen( word, hyphens, hyph );
+}
+
+UnicodeString extract_soft_hyphen( const UnicodeString& word,
+				   UnicodeString& hyph ){
+  set<UChar32> hyphens = { SOFT_HYPHEN };
+  return extract_final_hyphen( word, hyphens, hyph );
 }

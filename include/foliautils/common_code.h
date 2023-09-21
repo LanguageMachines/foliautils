@@ -66,6 +66,12 @@ folia::processor *add_provenance( folia::Document&,
 
 UnicodeString& pop_back( UnicodeString& );
 
-UnicodeString extract_final_hyphen( UnicodeString& word, bool soft_only=false );
+UnicodeString extract_final_hyphen( const UnicodeString&,
+				    const std::set<UChar32>&,
+				    UnicodeString& );
+UnicodeString extract_final_hyphen( const UnicodeString&,
+				    UnicodeString& );
+UnicodeString extract_soft_hyphen( const UnicodeString&,
+				   UnicodeString& );
 
 #endif // COMMON_CODE_H
