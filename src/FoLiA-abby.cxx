@@ -382,13 +382,14 @@ void process_line( xmlNode *block,
     formatting_info line_format = default_format;
     update_formatting_info( line_format, form, font_styles );
     UnicodeString uresult = get_line( form );
-    UnicodeString hyp = extract_final_hyphen( uresult );
-    if ( !uresult.isEmpty() || !hyp.isEmpty() ){
+    UnicodeString hyph;
+    uresult = extract_final_hyphen( uresult, hyph );
+    if ( !uresult.isEmpty() || !hyph.isEmpty() ){
       line_info li;
       li._value = uresult;
       li._line = block;
       li._fi = line_format;
-      li._hyph = hyp;
+      li._hyph = hyph;
       UnicodeString tmp = uresult;
       tmp.trim();
       if ( tmp.isEmpty() ){

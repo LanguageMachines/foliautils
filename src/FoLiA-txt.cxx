@@ -24,6 +24,7 @@
       lamasoftware (at ) science.ru.nl
 */
 
+#include <cassert>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -275,8 +276,12 @@ int main( int argc, char *argv[] ){
 	if ( !is_norm_empty(str_content) ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
-	  UnicodeString hyph; // hyphen symbol at the end of par_content
-	  hyph = extract_final_hyphen( par_content, keep_hyphens );
+	  UnicodeString hyph; // hyphen symbol
+	  set<UChar32> hyphens = { SOFT_HYPHEN };
+	  if ( !keep_hyphens ){
+	    hyphens.insert( '-' );
+	  }
+	  par_content = extract_final_hyphen( par_content, hyphens, hyph );
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);

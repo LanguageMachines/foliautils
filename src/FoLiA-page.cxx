@@ -93,7 +93,10 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
 					     const string& id,
 					     const string& file ){
   UnicodeString uval = TiCC::UnicodeFromUTF8(val);
-  UnicodeString hyph = extract_final_hyphen( uval );
+  static TiCC::UnicodeNormalizer UN;
+  uval = UN.normalize( uval );
+  UnicodeString hyph;
+  uval = extract_final_hyphen( uval, hyph );
   if ( !uval.isEmpty() ){
     folia::KWargs ref_args;
     if ( do_refs ){
@@ -192,7 +195,7 @@ UnicodeString handle_one_word( folia::Sentence *sent,
   UnicodeString uval = TiCC::UnicodeFromUTF8(value);
   UnicodeString hyp;
   if ( last ){
-    hyp = extract_final_hyphen( uval );
+    uval = extract_final_hyphen( uval, hyp );
     if ( !hyp.isEmpty() ){
       w->set_space(false);
     }
@@ -472,7 +475,8 @@ void handle_one_region( folia::FoliaElement *root,
     }
     else {
       // add the plain text without markup
-      UnicodeString hyp = extract_final_hyphen( par_txt );
+      UnicodeString hyp;
+      par_txt = extract_final_hyphen( par_txt, hyp );
       if ( !par_txt.isEmpty() ) {
 	par->setutext( par_txt, classname );
       }
