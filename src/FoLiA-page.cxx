@@ -87,13 +87,12 @@ void add_text( folia::FoliaElement *root,
   root->append( txt );
 }
 
-pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
-					     const int pos,
-					     const UnicodeString& val,
-					     const string& id,
-					     const string& file ){
-  UnicodeString hyph;
-  UnicodeString uval = extract_final_hyphen( val, hyph );
+void appendStr( folia::FoliaElement *root,
+		const int pos,
+		const UnicodeString& uval,
+		const UnicodeString& hyph,
+		const string& id,
+		const string& file ){
   if ( !uval.isEmpty() ){
     folia::KWargs ref_args;
     if ( do_refs ){
@@ -105,20 +104,6 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
     }
     folia::KWargs p_args;
     p_args["processor"] = processor_id;
-    // if ( do_sent) {
-    //   root->doc()->declare( folia::AnnotationType::SENTENCE, setname, p_args );
-    //   p_args["xml:id"] = root->id() + "." + id;
-    //   folia::Sentence *sent = root->add_child<folia::Sentence>( p_args );
-    //   sent->setutext( uval, pos, classname );
-    //   if ( do_refs) {
-    // 	folia::Relation *h = sent->add_child<folia::Relation>( ref_args );
-    // 	ref_args.clear();
-    // 	ref_args["id"] = id;
-    // 	ref_args["type"] = "s";
-    // 	h->add_child<folia::LinkReference>( ref_args );
-    //   }
-    // }
-    // else
     if ( do_strings ) {
       root->doc()->declare( folia::AnnotationType::STRING, setname, p_args );
       p_args["xml:id"] = root->id() + "." + id;
@@ -133,7 +118,6 @@ pair<UnicodeString,UnicodeString> appendStr( folia::FoliaElement *root,
       }
     }
   }
-  return make_pair(uval,hyph);
 }
 
 string getOrg( xmlNode *root ){
@@ -259,17 +243,19 @@ void handle_uni_lines( folia::FoliaElement *root,
   const auto& unicode = unicodes.front(); // only first hit
   UnicodeString value = UnicodeValue( unicode );
   if ( !value.isEmpty() ){
+    UnicodeString hyph;
+    UnicodeString uval = extract_final_hyphen( value, hyph );
     string id = "str_1";
     int pos = 0;
-    auto lp = appendStr( root, pos, value, id, fileName );
-    add_text( root, lp.first, lp.second );
+    appendStr( root, pos, uval, hyph, id, fileName );
+    add_text( root, uval, hyph );
   }
 }
 
 UnicodeString handle_one_line( folia::FoliaElement *par,
 			       int& pos,
 			       xmlNode *line,
-			       UnicodeString& last_hyph,
+			       UnicodeString& final_hyph,
 			       const string& fileName,
                                string& id //output variable
                              ){
@@ -293,7 +279,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	= new folia::TextContent( args, sent->doc() );
       for ( const auto& w : words ){
 	bool last = (&w == &words.back());
-	last_hyph = handle_one_word( sent, s_txt, w, last, fileName );
+	final_hyph = handle_one_word( sent, s_txt, w, last, fileName );
       }
       sent->append( s_txt );
       return "";
@@ -318,11 +304,10 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	return "";
       }
       auto& it = unicodes.front();
-      UnicodeString value = UnicodeValue( it );
+      result = UnicodeValue( it );
+      result = extract_final_hyphen( result, final_hyph );
       string word_id = TiCC::getAttribute( w, "id" );
-      auto lp = appendStr( par, pos, value, word_id, fileName );
-      result = lp.first;
-      last_hyph = lp.second;
+      appendStr( par, pos, result, final_hyph, word_id, fileName );
       pos += result.length();
       id = par->id() + "."  + word_id;
     }
@@ -340,10 +325,11 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
     // There may be several Unicode nodes.
     // We will take the first which has a NON empty value
     for ( const auto& unicode : unicodes ){
-      UnicodeString value = UnicodeValue( unicode );
-      if ( !value.isEmpty() ){
-	auto lp = appendStr( par, pos, value, lid, fileName );
-	result = lp.first; // maybe stripped hyphen
+      result = UnicodeValue( unicode );
+      UnicodeString hyph;
+      result = extract_final_hyphen( result, hyph );
+      if ( !result.isEmpty() ){
+	appendStr( par, pos, result, hyph, lid, fileName );
 	pos += result.length();
         id = par->id() + "."  + lid;
 	break; // We take the first non-empty Unicode string
@@ -404,14 +390,14 @@ void handle_one_region( folia::FoliaElement *root,
     size_t i = 0;
     string id;
     UnicodeString par_txt;
-    UnicodeString last_hyph;
+    UnicodeString final_hyph;
     folia::TextContent *content = NULL;
     folia::TextMarkupString *tms = NULL;
     for ( const auto& line : lines ){
       UnicodeString line_txt = handle_one_line( par,
 						pos,
 						line,
-						last_hyph,
+						final_hyph,
 						fileName,
 						id );
       if ( line_txt.isEmpty() ){
@@ -436,11 +422,11 @@ void handle_one_region( folia::FoliaElement *root,
 	}
 	str_args["text"] = TiCC::UnicodeToUTF8(line_txt);
 	tms = content->add_child<folia::TextMarkupString>(str_args);
-	if ( !last_hyph.isEmpty() ){
+	if ( !final_hyph.isEmpty() ){
 	  // add an extra HyphBreak to the content
 	  folia::FoliaElement *hb = new folia::Hyphbreak();
 	  folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	  e->setuvalue( last_hyph );
+	  e->setuvalue( final_hyph );
 	  tms->append( hb );
 	}
 	else if ( i < lines.size() - 1 ) {
@@ -454,7 +440,7 @@ void handle_one_region( folia::FoliaElement *root,
       else {
 	par_txt += line_txt;
 	if ( &line != &lines.back()
-	     && last_hyph.isEmpty()
+	     && final_hyph.isEmpty()
 	     && !par_txt.isEmpty()) {
 	  ++pos;
 	  par_txt += " ";
