@@ -63,6 +63,13 @@ string setname = "";
 string classname = "OCR";
 string processor_id;
 
+folia::Hyphbreak *make_hbreak( const UnicodeString& hyph ){
+  auto *hb = new folia::Hyphbreak();
+  folia::XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
+  hb_txt->setuvalue( hyph );
+  return hb;
+}
+
 void add_text( folia::FoliaElement *root,
 	       const UnicodeString& uval,
 	       const UnicodeString& hyp,
@@ -79,9 +86,7 @@ void add_text( folia::FoliaElement *root,
   txt->append( e ); // add the XmlText
   if ( !hyp.isEmpty() ){
     // add an extra HyphBreak
-    folia::FoliaElement *hb = new folia::Hyphbreak();
-    folia::XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
-    hb_txt->setuvalue( hyp );
+    auto *hb = make_hbreak( hyp );
     txt->append( hb );
   }
   root->append( txt );
@@ -182,27 +187,25 @@ UnicodeString handle_one_word( folia::Sentence *sent,
   p_args["xml:id"] = sent->id() + "." + wid;
   folia::Word *w = sent->add_child<folia::Word>( p_args );
   UnicodeString value = UnicodeValue( unicodes.front() );
-  UnicodeString hyp;
+  UnicodeString hyph;
   if ( last ){
-    value = extract_final_hyphen( value, hyp );
-    if ( !hyp.isEmpty() ){
+    value = extract_final_hyphen( value, hyph );
+    if ( !hyph.isEmpty() ){
       w->set_space(false);
     }
   }
-  add_text( w, value, hyp );
+  add_text( w, value, hyph );
   // folia::KWargs text_args;
   // text_args["class"] = classname;
   folia::XmlText *s_e = s_txt->add_child<folia::XmlText>();
   // create partial text for the parent sentence
-  if ( hyp.isEmpty() && !last ){
+  if ( hyph.isEmpty() && !last ){
     value += " ";
   }
   s_e->setuvalue( value );
-  if ( !hyp.isEmpty() ){
+  if ( !hyph.isEmpty() ){
     // add an extra HyphBreak to the Sentence too
-    folia::FoliaElement *hb = new folia::Hyphbreak();
-    folia::XmlText *hb_txt = hb->add_child<folia::XmlText>();
-    hb_txt->setuvalue( hyp );
+    auto *hb = make_hbreak( hyph );
     s_txt->append( hb );
   }
   if ( do_refs ){
@@ -217,7 +220,7 @@ UnicodeString handle_one_word( folia::Sentence *sent,
     args["type"] = "w";
     h->add_child<folia::LinkReference>( args );
   }
-  return hyp;
+  return hyph;
 }
 
 void handle_uni_lines( folia::FoliaElement *root,
@@ -424,9 +427,7 @@ void handle_one_region( folia::FoliaElement *root,
 	tms = content->add_child<folia::TextMarkupString>(str_args);
 	if ( !final_hyph.isEmpty() ){
 	  // add an extra HyphBreak to the content
-	  folia::FoliaElement *hb = new folia::Hyphbreak();
-	  folia::XmlText *e = hb->add_child<folia::XmlText>(); // create partial text
-	  e->setuvalue( final_hyph );
+	  auto *hb = make_hbreak( final_hyph );
 	  tms->append( hb );
 	}
 	else if ( i < lines.size() - 1 ) {
