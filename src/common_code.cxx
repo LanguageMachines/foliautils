@@ -257,10 +257,8 @@ UnicodeString& pop_back( UnicodeString& us ){
 UnicodeString extract_final_hyphen( const UnicodeString& word,
 				    const set<UChar32>& hyphens,
 				    UnicodeString& hyph ){
-  static TiCC::UnicodeNormalizer UN;
   hyph.remove(); // to be sure
-  UnicodeString result = UN.normalize(word); // normalize to UTF8 NFC
-  result = TiCC::rtrim( result ); // remove trailing spaces
+  UnicodeString result = TiCC::rtrim( word ); // remove trailing spaces
   int pos = result.length();
   if ( pos >= 2 ){
     // otherwise no chance
@@ -271,7 +269,7 @@ UnicodeString extract_final_hyphen( const UnicodeString& word,
       return pop_back( result ); // remove the hyphen
     }
   }
-  return word; // nothing donne/changed
+  return word; // nothing done/changed
 }
 
 UnicodeString extract_final_hyphen( const UnicodeString& word,
