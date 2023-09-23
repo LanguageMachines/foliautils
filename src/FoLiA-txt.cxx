@@ -277,11 +277,13 @@ int main( int argc, char *argv[] ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
 	  UnicodeString hyph; // hyphen symbol
-	  set<UChar32> hyphens = { SOFT_HYPHEN };
-	  if ( !keep_hyphens ){
-	    hyphens.insert( '-' );
+	  if ( keep_hyphens ){
+	    // only soft hyphens are removed
+	    par_content = extract_soft_hyphen( par_content, hyph );
 	  }
-	  par_content = extract_final_hyphen( par_content, hyphens, hyph );
+	  else {
+	    par_content = extract_final_hyphen( par_content, hyph );
+	  }
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
