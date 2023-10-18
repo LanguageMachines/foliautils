@@ -74,4 +74,6 @@ UnicodeString extract_final_hyphen( const UnicodeString&,
 UnicodeString extract_soft_hyphen( const UnicodeString&,
 				   UnicodeString& );
 
+UnicodeString UnicodeValue( const xmlNode * );
+
 #endif // COMMON_CODE_H

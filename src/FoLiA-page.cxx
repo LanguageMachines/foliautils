@@ -162,15 +162,6 @@ string stripDir( const string& name ){
   }
 }
 
-UnicodeString UnicodeValue( const xmlNode *node ){
-  /// extract a Normalized UnicodeString value from xmlNode node
-  static TiCC::UnicodeNormalizer UN;
-  UnicodeString result = TiCC::UnicodeFromUTF8(TiCC::XmlContent(node) );
-  result = UN.normalize( result );
-  return result;
-}
-
-
 UnicodeString handle_one_word( folia::Sentence *sent,
 			       folia::TextContent *s_txt,
 			       xmlNode *word,

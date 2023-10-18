@@ -254,7 +254,7 @@ UnicodeString get_line( xmlNode *line ){
       }
     }
     for ( const auto& ch : chars ){
-      result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
+      result += UnicodeValue(ch);
     }
   }
   if ( verbose ){

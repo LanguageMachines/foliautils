@@ -283,3 +283,8 @@ UnicodeString extract_soft_hyphen( const UnicodeString& word,
   set<UChar32> hyphens = { SOFT_HYPHEN };
   return extract_final_hyphen( word, hyphens, hyph );
 }
+
+UnicodeString UnicodeValue( const xmlNode *node ){
+  /// extract a UnicodeString value from xmlNode node
+  return TiCC::UnicodeFromUTF8(TiCC::XmlContent(node) );
+}
