@@ -50,7 +50,7 @@ using TiCC::operator<<;
 
 int verbose = 0;
 
-void create_idf_list( const map<string, unsigned int>& wc,
+void create_idf_list( const map<UnicodeString, unsigned int>& wc,
 		      const string& filename, unsigned int clip ){
   ofstream os( filename );
   if ( !os ){
@@ -71,7 +71,7 @@ void create_idf_list( const map<string, unsigned int>& wc,
 size_t words_inventory( const Document *doc,
 			bool lowercase,
 			const string& classname,
-			map<string,unsigned int>& wc ){
+			map<UnicodeString,unsigned int>& wc ){
   vector<Word*> words = doc->words();
   if ( words.empty() ){
 #pragma omp critical
@@ -97,17 +97,14 @@ size_t words_inventory( const Document *doc,
       cerr << doc->filename() << ": " << words.size() << " words" << endl;
     }
   }
-  set<string> ws;
+  set<UnicodeString> ws;
   for ( auto const& folia_word : words ){
-    string word;
+    UnicodeString word;
     try {
+      word = folia_word->unicode(classname);
       if ( lowercase ){
-	UnicodeString uword = TiCC::UnicodeFromUTF8( folia_word->str(classname) );
-	uword.toLower();
-	word = TiCC::UnicodeToUTF8( uword );
+	word.toLower();
       }
-      else
-	word = folia_word->str(classname);
     }
     catch(...){
 #pragma omp critical
@@ -116,7 +113,7 @@ size_t words_inventory( const Document *doc,
       }
       break;
     }
-    if ( word.empty() ){
+    if ( word.isEmpty() ){
 #pragma omp critical
       {
 	cerr << "missing text (class=" << classname << ") for word "
@@ -145,7 +142,7 @@ size_t words_inventory( const Document *doc,
 size_t strings_inventory( const Document *doc,
 			  bool lowercase,
 			  const string& classname,
-			  map<string,unsigned int>& wc ){
+			  map<UnicodeString,unsigned int>& wc ){
   vector<String*> words = doc->doc()->select<String>();
   if ( words.empty() ){
 #pragma omp critical
@@ -171,15 +168,14 @@ size_t strings_inventory( const Document *doc,
       cerr << doc->filename() << ": " << words.size() << " string nodes" << endl;
     }
   }
-  set<string> ws;
+  set<UnicodeString> ws;
   for ( auto const& folia_word : words ){
-    string word;
+    UnicodeString word;
     try {
-      UnicodeString uword = folia_word->text(classname);
+      word = folia_word->unicode(classname);
       if ( lowercase ){
-	uword.toLower();
+	word.toLower();
       }
-      word = TiCC::UnicodeToUTF8( uword );
     }
     catch(...){
 #pragma omp critical
@@ -318,7 +314,7 @@ int main( int argc, char *argv[] ){
   }
 
 
-  map<string,unsigned int> wc;
+  map<UnicodeString,unsigned int> wc;
   unsigned int wordTotal =0;
 
 #pragma omp parallel for shared(fileNames,wordTotal,wc ) schedule(dynamic)
