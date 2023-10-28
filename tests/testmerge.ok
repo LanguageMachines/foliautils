@@ -16,4 +16,4 @@ Usage: [options] file/dir
 read 1 lexicon entries
 verbosity = 0
 start merging in file: merge/greek.xml
-Processed :greek.xml into greek.merged.xml
+Processed greek.xml into greek.merged.xml

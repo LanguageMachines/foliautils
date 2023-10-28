@@ -171,10 +171,10 @@ int main( int argc, const char *argv[] ){
     cerr << PACKAGE_STRING << endl;
     exit(EXIT_SUCCESS);
   }
-  string orig_command = "FoLiA-merge " + opts.toString();
   while ( opts.extract( 'v' ) ){
     ++verbose;
   }
+  string orig_command = "FoLiA-merge " + opts.toString();
   opts.extract( "lemset", lem_setname );
   opts.extract( "posset", pos_setname );
   string outPrefix;
@@ -293,7 +293,7 @@ int main( int argc, const char *argv[] ){
 		 << " still " << --toDo << " files to go." << endl;
 	  }
 	  else {
-	    cout << "Processed :" << docName << " into " << outName << endl;
+	    cout << "Processed " << docName << " into " << outName << endl;
 	  }
 	}
       }
