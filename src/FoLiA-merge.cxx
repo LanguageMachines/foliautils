@@ -74,7 +74,7 @@ map<UnicodeString,pair<UnicodeString,UnicodeString>> fill_lexicon( const string&
       cerr << "error in line " << line << endl;
     }
   }
-  cout << "read " << result.size() << " lemmas" << endl;
+  cout << "read " << result.size() << " lexicon entries" << endl;
   return result;
 }
 
@@ -133,9 +133,9 @@ bool merge_values( Document *doc,
 
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t " << name << " will merge lemmas an POS tags into FoLiA files "
+  cerr << "\t " << name << " will merge lemmas and POS tags into FoLiA files "
        << endl;
-  cerr << "\t-l or --lemmas=<name>\t the lexicon for word/lemma/POS lookup "
+  cerr << "\t-l or --lexicon=<name>\t the lexicon for word/lemma/POS lookup "
        << endl;
   cerr << "\t--lemset='name'\t (default '" << lem_setname << "')" << endl;
   cerr << "\t--posset='name'\t (default '" << pos_setname << "')" << endl;
@@ -151,7 +151,7 @@ void usage( const string& name ){
 
 int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "vVl:O:t:h",
-			 "help,lemset:,posset:,lemmas:,threads:" );
+			 "help,lemset:,posset:,lexicon:,threads:" );
   try {
     opts.init( argc, argv );
   }
@@ -161,7 +161,7 @@ int main( int argc, const char *argv[] ){
     exit( EXIT_FAILURE );
   }
   string progname = opts.prog_name();
-  string lemma_filename;
+  string lex_filename;
   string value;
   if ( opts.extract( 'h' ) || opts.extract( "help" ) ){
     usage(progname);
@@ -179,13 +179,13 @@ int main( int argc, const char *argv[] ){
   opts.extract( "posset", pos_setname );
   string outPrefix;
   opts.extract( 'O', outPrefix );
-  if ( !( opts.extract( "l", lemma_filename ) ||
-	  opts.extract( "lemmas", lemma_filename ) ) ){
-    cerr << "missing '-l or --lemmas' option" << endl;
+  if ( !( opts.extract( "l", lex_filename ) ||
+	  opts.extract( "lexicon", lex_filename ) ) ){
+    cerr << "missing '-l or --lexicon' option" << endl;
     exit( EXIT_FAILURE );
   }
-  if ( !TiCC::isFile( lemma_filename ) ){
-    cerr << "unable to find file '" << lemma_filename << "'" << endl;
+  if ( !TiCC::isFile( lex_filename ) ){
+    cerr << "unable to find file '" << lex_filename << "'" << endl;
     exit( EXIT_FAILURE );
   }
 #ifdef HAVE_OPENMP
@@ -232,7 +232,7 @@ int main( int argc, const char *argv[] ){
     exit(EXIT_SUCCESS);
   }
 
-  map<UnicodeString,pair<UnicodeString,UnicodeString>> lexicon = fill_lexicon( lemma_filename );
+  map<UnicodeString,pair<UnicodeString,UnicodeString>> lexicon = fill_lexicon( lex_filename );
   cout << "verbosity = " << verbose << endl;
 
   if ( filenames.size() > 1  ){

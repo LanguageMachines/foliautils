@@ -1,8 +1,8 @@
-missing '-l or --lemmas' option
+missing '-l or --lexicon' option
 foliautils 0.21
 Usage: [options] file/dir
-	 FoLiA-merge will merge lemmas an POS tags into FoLiA files 
-	-l or --lemmas=<name>	 the lexicon for word/lemma/POS lookup 
+	 FoLiA-merge will merge lemmas and POS tags into FoLiA files 
+	-l or --lexicon=<name>	 the lexicon for word/lemma/POS lookup 
 	--lemset='name'	 (default 'merged-lemma-set')
 	--posset='name'	 (default 'merged-pos-set')
 	-O	 output prefix
@@ -13,7 +13,7 @@ Usage: [options] file/dir
 	-v increase verbosity level. Repeat for even more output.
 	-h or --help	 this message 
 	-V or --version	 show version 
-read 1 lemmas
+read 1 lexicon entries
 verbosity = 0
 start merging in file: merge/greek.xml
 Processed :greek.xml into greek.merged.xml
