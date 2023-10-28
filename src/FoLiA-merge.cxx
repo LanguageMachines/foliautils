@@ -133,8 +133,10 @@ bool merge_values( Document *doc,
 
 void usage( const string& name ){
   cerr << "Usage: [options] file/dir" << endl;
-  cerr << "\t " << name << " will correct FoLiA files " << endl;
-  cerr << "\t or a whole directory of FoLiA files " << endl;
+  cerr << "\t " << name << " will merge lemmas an POS tags into FoLiA files "
+       << endl;
+  cerr << "\t-l or --lemmas=<name>\t the lexicon for word/lemma/POS lookup "
+       << endl;
   cerr << "\t--lemset='name'\t (default '" << lem_setname << "')" << endl;
   cerr << "\t--posset='name'\t (default '" << pos_setname << "')" << endl;
   cerr << "\t-O\t output prefix" << endl;
@@ -148,8 +150,8 @@ void usage( const string& name ){
 }
 
 int main( int argc, const char *argv[] ){
-  TiCC::CL_Options opts( "vVl:O:t:",
-			 "lemset:,posset:,lemmas:,threads:" );
+  TiCC::CL_Options opts( "vVl:O:t:h",
+			 "help,lemset:,posset:,lemmas:,threads:" );
   try {
     opts.init( argc, argv );
   }
