@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns="http://ilk.uvt.nl/folia" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="greek" version="2.5" generator="libfolia-v0.4">
+  <metadata type="native">
+    <annotations>
+      <lemma-annotation set="old"/>
+      <text-annotation/>
+    </annotations>
+  </metadata>
+  <text xml:id="text">
+    <s xml:id="text.s.1">
+      <w xml:id="w.1">
+	<t>ὁπλιτῶν</t>
+      </w>
+    </s>
+  </text>
+</FoLiA>

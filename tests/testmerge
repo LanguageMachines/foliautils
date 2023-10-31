@@ -12,3 +12,7 @@ $my_bin/FoLiA-merge --help >> testmerge.out 2>&1
 $my_bin/FoLiA-merge --lexicon=merge/greek.lex merge/greek.xml >> testmerge.out  2>&1
 
 $foliadiff greek.merged.xml merged.ok  >> testmerge.out 2>&1
+
+$my_bin/FoLiA-merge --lexicon=merge/greek.lex merge/greek2.xml --lemset=old --posset="new" >> testmerge.out  2>&1
+
+$foliadiff greek2.merged.xml merged2.ok  >> testmerge.out 2>&1
