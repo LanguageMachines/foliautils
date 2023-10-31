@@ -210,11 +210,11 @@ int main( int argc, const char *argv[] ){
 #endif
 
   vector<string> filenames = opts.getMassOpts();
-  if ( filenames.size() == 0 ){
-    cerr << "missing input file or directory" << endl;
-    exit( EXIT_FAILURE );
+  size_t toDo = filenames.size();
+  if ( toDo == 0 ){
+    cerr << "no input-files found" << endl;
+    exit( EXIT_SUCCESS );
   }
-
   if ( !outPrefix.empty() ){
     if ( outPrefix[outPrefix.length()-1] != '/' )
       outPrefix += "/";
@@ -224,12 +224,6 @@ int main( int argc, const char *argv[] ){
 	exit( EXIT_FAILURE );
       }
     }
-  }
-
-  size_t toDo = filenames.size();
-  if ( toDo == 0 ){
-    cerr << "no input-files found" << endl;
-    exit(EXIT_SUCCESS);
   }
 
   map<UnicodeString,pair<UnicodeString,UnicodeString>> lexicon = fill_lexicon( lex_filename );

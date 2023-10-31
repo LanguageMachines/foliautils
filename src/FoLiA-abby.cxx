@@ -184,9 +184,9 @@ ostream& operator<<( ostream& os, const formatting_info& fi ){
   return os;
 }
 
-UnicodeString get_text( xmlNode *node ){
+UnicodeString get_text( const xmlNode *node ){
   string result;
-  xmlNode *pnt = node->children;
+  const xmlNode *pnt = node->children;
   while ( pnt ){
     if ( pnt->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( pnt );

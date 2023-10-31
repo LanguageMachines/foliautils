@@ -168,7 +168,9 @@ int main( int argc, char *argv[] ){
     cout << "start processing of " << to_do << " files" << endl;
   }
   size_t failed_docs = 0;
+#ifdef HAVE_OPENMP
   bool shown = false;
+#endif
 #pragma omp parallel for shared(file_names) schedule(dynamic)
   for ( size_t fn=0; fn < file_names.size(); ++fn ){
 #ifdef HAVE_OPENMP
