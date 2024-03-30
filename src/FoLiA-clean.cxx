@@ -311,7 +311,9 @@ void usage( const string& name ){
   cerr << "\t--textclass='name' retain only text nodes with this class. (default is to retain all)" << endl;
   cerr << "\t--current\t Make the textclass 'current'. (default is to keep 'name')" << endl;
   cerr << "\t--fixtext\t Fixup problems in structured text. " << endl;
-  cerr << "\t--cleanannoset='type\\\\setname'\t remove annotations with 'type' and 'setname'. NOTE: use a double '\\' !. The setname can be empty. This option can be repeated for different annotations." << endl;
+  cerr << "\t--cleanannoset='type\\\\setname'\t remove annotations with 'type' and 'setname'." << endl;
+  cerr << "\t\t\t NOTE: use a double '\\' !. " << endl;
+  cerr << "\t\t\t The setname can be empty. This option can be repeated for different annotations." << endl;
   cerr << "\t-e expr\t\t specify the expression all input files should match with. (default .folia.xml)" << endl;
   cerr << "\t--debug\t\t Set dubugging" << endl;
   cerr << "\t-t <threads>\n\t--threads <threads> Number of threads to run on." << endl;
