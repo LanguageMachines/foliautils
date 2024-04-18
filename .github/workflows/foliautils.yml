@@ -40,7 +40,7 @@ jobs:
     needs: notification
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-14]
         compiler: [g++, clang++]
 
     steps:
@@ -55,11 +55,12 @@ jobs:
              if [ "$RUNNER_OS" == "Linux" ]; then
                 sudo apt-get install pkg-config autoconf-archive
              else
-                brew upgrade;
-                brew install pkg-config;
-                brew install autoconf-archive;
-                brew install autoconf;
-                brew install automake;
+                brew upgrade
+                brew install pkg-config
+                brew install libtool
+                brew install autoconf-archive
+                brew install autoconf
+                brew install automake
              fi
       - name: Install Dependencies
         run: |
