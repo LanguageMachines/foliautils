@@ -1,3 +1,19 @@
+foliautils 0.21  26-04-2024
+[Ko van der Sloot]
+* a lot off code changes. Many regarding hypens
+* added an extract_final_hyphen function, used by serveral programs
+  FoLiA-abby, FoLiA-page and FoLiA-txt
+* FoLiA-txt: filter out ZWNJ characters. Avoid spurious LineBreaks
+* fix for https://github.com/LanguageMachines/foliautils/issues/68
+* FoLiA-idf was not quite working. Fixed
+* FoliA-page: removed --sent option. updated man page
+  lots of other fixes too
+* added experimental FoLiA-merge program:
+  merging lemma/pos information into FoLiA files
+* more and better tests added
+[Maarten van Gompel]
+* updates in README.MD
+
 foliautils 0.20  12-03-2023
 [Ko van der Sloot]
 * Fix in FoLiA-txt. A <t-hbr> signals a newline, so adding an extra <br/> is
