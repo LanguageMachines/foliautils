@@ -328,9 +328,9 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    string outname = outputDir + nameNoExt + ".folia.xml";
 #pragma omp critical
     {
+      string outname = outputDir + nameNoExt + ".folia.xml";
       d->save( outname );
       cout << "Processed: " << fileName << " into " << outname
 	   << " still " << --to_do << " files to go." << endl;

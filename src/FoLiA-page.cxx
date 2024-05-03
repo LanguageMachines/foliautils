@@ -234,7 +234,7 @@ void handle_uni_lines( folia::FoliaElement *root,
     }
     return;
   }
-  const auto& unicode = unicodes.front(); // only first hit
+  const auto* unicode = unicodes.front(); // only first hit
   UnicodeString value = UnicodeValue( unicode );
   if ( !value.isEmpty() ){
     UnicodeString hyph;
@@ -318,7 +318,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
     }
     // There may be several Unicode nodes.
     // We will take the first which has a NON empty value
-    for ( const auto& unicode : unicodes ){
+    for ( const auto *unicode : unicodes ){
       result = UnicodeValue( unicode );
       UnicodeString hyph;
       result = extract_final_hyphen( result, hyph );

@@ -229,7 +229,7 @@ UnicodeString get_line( xmlNode *line ){
 	    cout << "\t\t\t\tfound " << text.size() << " text nodes" << endl;
 	  }
 	}
-	xmlNode *front = text.front();
+	const xmlNode *front = text.front();
 	UnicodeString tmp = get_text( front );
 	if ( verbose ){
 #pragma omp critical
@@ -253,7 +253,7 @@ UnicodeString get_line( xmlNode *line ){
 	cout << "\t\t\t\tfound " << chars.size() << " chars" << endl;
       }
     }
-    for ( const auto& ch : chars ){
+    for ( const auto *ch : chars ){
       result += UnicodeValue(ch);
     }
   }
