@@ -16,7 +16,7 @@ Usage: FoLiA-clean [options] file/dir
 	-h or --help	 this message
 	-V or --version show version 
 	-O		 name of the output dir.
-foliautils 0.21
+foliautils 0.22
 Usage: FoLiA-clean [options] file/dir
 	 FoLiA-clean will produce a cleaned up version of a FoLiA file, 
 	 or a whole directory of FoLiA files 
