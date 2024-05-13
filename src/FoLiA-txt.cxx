@@ -24,6 +24,7 @@
       lamasoftware (at ) science.ru.nl
 */
 
+#include <cassert>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -65,6 +66,22 @@ void usage(){
        << classname << "')"<< endl;
 }
 
+void add_paragraph( folia::FoliaElement *par,
+		    const vector<FoliaElement*>& par_stack ){
+  folia::KWargs text_args;
+  text_args["class"] = classname;
+  FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
+  for ( const auto& it : par_stack ){
+    // we don't want a terminating <br/> at the end of a paragraph.
+    // 2 newlines ar already implicit for a paragraph
+    if ( &it == &par_stack.back()
+	 && it->isSubClass( Linebreak_t ) ){
+      break;
+    }
+    txt->append(it );
+  }
+}
+
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:",
 			 "class:,setname:,remove-end-hyphens:,"
@@ -78,10 +95,6 @@ int main( int argc, char *argv[] ){
   }
   string outputDir;
   string value;
-  if ( opts.empty() ){
-    usage();
-    exit(EXIT_FAILURE);
-  }
   if ( opts.extract( 'h' ) ||
        opts.extract( "help" ) ){
     usage();
@@ -120,24 +133,16 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( "class", classname );
   opts.extract( "setname", setname );
-  if ( !outputDir.empty() ){
-    if ( !TiCC::isDir(outputDir) ){
-      if ( !TiCC::createPath( outputDir ) ){
-	cerr << "outputdir '" << outputDir
-	     << "' doesn't exist and can't be created" << endl;
-	exit(EXIT_FAILURE);
-      }
-    }
-  }
-  bool remove_hyphens = true;
+  bool keep_hyphens = false;
   string h_val;
   if ( opts.extract( "remove-end-hyphens", h_val ) ){
-    remove_hyphens = TiCC::stringTo<bool>( h_val );
+    keep_hyphens = !TiCC::stringTo<bool>( h_val );
   }
   vector<string> file_names = opts.getMassOpts();
   size_t to_do = file_names.size();
   if ( to_do == 0 ){
     cerr << "no matching files found" << endl;
+    usage();
     exit(EXIT_SUCCESS);
   }
   if ( to_do == 1 ){
@@ -151,10 +156,21 @@ int main( int argc, char *argv[] ){
     }
   }
   if ( to_do > 1 ){
+    if ( !outputDir.empty() ){
+      if ( !TiCC::isDir(outputDir) ){
+	if ( !TiCC::createPath( outputDir ) ){
+	  cerr << "outputdir '" << outputDir
+	       << "' doesn't exist and can't be created" << endl;
+	  exit(EXIT_FAILURE);
+	}
+      }
+    }
     cout << "start processing of " << to_do << " files" << endl;
   }
   size_t failed_docs = 0;
+#ifdef HAVE_OPENMP
   bool shown = false;
+#endif
 #pragma omp parallel for shared(file_names) schedule(dynamic)
   for ( size_t fn=0; fn < file_names.size(); ++fn ){
 #ifdef HAVE_OPENMP
@@ -175,10 +191,10 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-// #pragma omp critical
-//     {
-//       cout << "Starting " << fileName << endl;
-//     }
+#pragma omp critical
+    {
+      cout << "Starting " << fileName << endl;
+    }
     string nameNoExt = fileName;
     string::size_type pos = fileName.rfind( "." );
     if ( pos != string::npos ){
@@ -232,19 +248,18 @@ int main( int argc, char *argv[] ){
     UnicodeString line;
     while ( TiCC::getline( is, line ) ){
       line.trim();
+      if ( line.length() == 1
+	   && line[line.length()-1] == ZWNJ ){
+	line = pop_back( line );
+      }
       if ( line.isEmpty() ){
 	// end a paragraph
 	if ( par && !par_stack.empty() ){
 	  // do we have some fragments?
-	  folia::KWargs text_args;
-	  text_args["class"] = classname;
-	  FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
-	  for ( const auto& it : par_stack ){
-	    txt->append(it );
-	  }
+	  add_paragraph( par, par_stack );
 	  par_stack.clear();
+	  par = 0;
 	}
-	par = 0;
 	continue;
       }
       vector<UnicodeString> words = TiCC::split( line );
@@ -263,39 +278,31 @@ int main( int argc, char *argv[] ){
 	if ( !is_norm_empty(str_content) ){
 	  UnicodeString par_content = str_content; // the value we will use for
 	  // the paragraph text
-	  UnicodeString hyp; // hyphen symbol at the end of par_content
-	  if ( par_content.endsWith( "¬" ) ){
-	    par_content = pop_back( par_content ); // remove it
-	    hyp = "¬";  // the Not-Sign u00ac. A Soft Hyphen
+	  UnicodeString hyph; // hyphen symbol
+	  if ( keep_hyphens ){
+	    // only soft hyphens are removed
+	    par_content = extract_soft_hyphen( par_content, hyph );
 	  }
-	  else if ( remove_hyphens
-		    && par_content.endsWith( "- " ) ){
-	    par_content = pop_back( par_content ); // remove the space
-	    par_content = pop_back( par_content ); // remove the '-'
-	    hyp = "-";
-	  }
-	  else if ( remove_hyphens
-		    && par_content.endsWith( "-" ) ){
-	    par_content = pop_back( par_content ); // remove the '-'
-	    hyp = "-";
+	  else {
+	    par_content = extract_final_hyphen( par_content, hyph );
 	  }
 	  // now we can add the <String>
 	  folia::KWargs str_args;
 	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
 	  folia::FoliaElement *str = par->add_child<folia::String>( str_args );
 	  str->setutext( str_content, classname );
-	  if ( hyp.isEmpty() && &w != &words.back() ){
+	  if ( hyph.isEmpty() && &w != &words.back() ){
 	    par_content += " "; // no hyphen, so add a space separator except
 	    // for last word
 	  }
 	  XmlText *e = new folia::XmlText(); // create partial text
 	  e->setuvalue( par_content );
 	  par_stack.push_back( e ); // add the XmlText to te stack
-	  if ( !hyp.isEmpty() ){
+	  if ( !hyph.isEmpty() ){
 	    // add an extra HyphBreak to the stack
 	    FoliaElement *hb = new folia::Hyphbreak();
 	    XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
-	    hb_txt->setuvalue( hyp );
+	    hb_txt->setuvalue( hyph );
 	    par_stack.push_back( hb );
 	  }
 	  else if ( &w == &words.back() ){
@@ -307,12 +314,8 @@ int main( int argc, char *argv[] ){
     }
     if ( par && !par_stack.empty() ){
       // leftovers
-      folia::KWargs text_args;
-      text_args["class"] = classname;
-      FoliaElement *txt = par->add_child<folia::TextContent>( text_args );
-      for ( const auto& it : par_stack ){
-	txt->append(it );
-      }
+      add_paragraph( par, par_stack );
+      par = 0;
       par_stack.clear();
     }
     if ( parCount == 0 ){
@@ -325,9 +328,9 @@ int main( int argc, char *argv[] ){
       }
       continue;
     }
-    string outname = outputDir + nameNoExt + ".folia.xml";
 #pragma omp critical
     {
+      string outname = outputDir + nameNoExt + ".folia.xml";
       d->save( outname );
       cout << "Processed: " << fileName << " into " << outname
 	   << " still " << --to_do << " files to go." << endl;

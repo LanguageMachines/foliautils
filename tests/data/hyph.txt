@@ -5,3 +5,6 @@ breking.
 En dit de tweede. Met een speciaaal ge¬
 val. En ook weer een soft¬
 hyphen.
+
+En dit is ook -*-
+een uitzondering :{-

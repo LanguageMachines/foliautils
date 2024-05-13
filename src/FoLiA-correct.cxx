@@ -956,7 +956,7 @@ void add_to_result( vector<gram_r>& result,
 }
 
 vector<gram_r> replace_hemps( const vector<gram_r>& unigrams,
-			      vector<pair<hemp_status,FoliaElement*>> inventory,
+			      const vector<pair<hemp_status,FoliaElement*>>& inventory,
 			      const unordered_map<string,string>& puncts ){
   vector<gram_r> result;
   result.reserve(unigrams.size() );

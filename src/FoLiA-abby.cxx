@@ -184,9 +184,9 @@ ostream& operator<<( ostream& os, const formatting_info& fi ){
   return os;
 }
 
-UnicodeString get_text( xmlNode *node ){
+UnicodeString get_text( const xmlNode *node ){
   string result;
-  xmlNode *pnt = node->children;
+  const xmlNode *pnt = node->children;
   while ( pnt ){
     if ( pnt->type == XML_TEXT_NODE ){
       xmlChar *tmp = xmlNodeGetContent( pnt );
@@ -229,7 +229,7 @@ UnicodeString get_line( xmlNode *line ){
 	    cout << "\t\t\t\tfound " << text.size() << " text nodes" << endl;
 	  }
 	}
-	xmlNode *front = text.front();
+	const xmlNode *front = text.front();
 	UnicodeString tmp = get_text( front );
 	if ( verbose ){
 #pragma omp critical
@@ -253,8 +253,8 @@ UnicodeString get_line( xmlNode *line ){
 	cout << "\t\t\t\tfound " << chars.size() << " chars" << endl;
       }
     }
-    for ( const auto& ch : chars ){
-      result += TiCC::UnicodeFromUTF8(TiCC::XmlContent(ch));
+    for ( const auto *ch : chars ){
+      result += UnicodeValue(ch);
     }
   }
   if ( verbose ){
@@ -379,29 +379,17 @@ void process_line( xmlNode *block,
     }
   }
   for ( const auto& form : formats ){
-    UnicodeString hyp;
     formatting_info line_format = default_format;
     update_formatting_info( line_format, form, font_styles );
     UnicodeString uresult = get_line( form );
-    if ( uresult.endsWith( "¬" ) ){
-      uresult = pop_back( uresult );
-      hyp = "¬";
-    }
-    else if ( uresult.endsWith( "- " ) ){
-      uresult = pop_back( uresult );
-      uresult = pop_back( uresult );
-      hyp = "-";
-    }
-    else if ( uresult.endsWith( "-" ) ){
-      uresult = pop_back( uresult );
-      hyp = "-";
-    }
-    if ( !uresult.isEmpty() || !hyp.isEmpty() ){
+    UnicodeString hyph;
+    uresult = extract_final_hyphen( uresult, hyph );
+    if ( !uresult.isEmpty() || !hyph.isEmpty() ){
       line_info li;
       li._value = uresult;
       li._line = block;
       li._fi = line_format;
-      li._hyph = hyp;
+      li._hyph = hyph;
       UnicodeString tmp = uresult;
       tmp.trim();
       if ( tmp.isEmpty() ){
@@ -660,7 +648,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	  //	cerr << "HYPH= '" << it._hyph << "'" << endl;
 	  add_value( content, value );
 	  folia::Hyphbreak *hb = content->add_child<folia::Hyphbreak>();
-	  if ( it._hyph == "¬"
+	  if ( it._hyph == SOFT_HYPHEN
 	       || ( it._hyph == "-"
 		    && &it == &line_parts.back() ) ){
 	    folia::XmlText *e = hb->add_child<folia::XmlText>();

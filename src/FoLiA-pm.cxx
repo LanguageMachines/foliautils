@@ -107,7 +107,7 @@ string extract_embedded( xmlNode *p ){
   return result;
 }
 
-void add_reference( TextContent *tc, xmlNode *p ){
+void add_reference( TextContent *tc, const xmlNode *p ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -431,7 +431,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
   return par;
 }
 
-void process_chair( Division *root, xmlNode *chair ){
+void process_chair( Division *root, const xmlNode *chair ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -637,7 +637,7 @@ void process_speech( Division *root, xmlNode *speech ){
 }
 
 
-void add_actor( FoliaElement *root, xmlNode *act ){
+void add_actor( FoliaElement *root, const xmlNode *act ){
   KWargs d_args;
   d_args["class"] = "actor";
   d_args["processor"] = processor_id;
@@ -696,7 +696,7 @@ void add_actor( FoliaElement *root, xmlNode *act ){
 }
 
 
-void add_submit( FoliaElement *root, xmlNode *sm ){
+void add_submit( FoliaElement *root, const xmlNode *sm ){
   KWargs args;
   args["class"] = "submitted-by";
   args["processor"] = processor_id;
@@ -717,7 +717,7 @@ void add_submit( FoliaElement *root, xmlNode *sm ){
   }
 }
 
-void add_information( FoliaElement *root, xmlNode *info ){
+void add_information( FoliaElement *root, const xmlNode *info ){
   KWargs d_args;
   d_args["class"] = "information";
   d_args["processor"] = processor_id;
@@ -1203,7 +1203,7 @@ void process_proceeding( const string& outDir,
   }
 }
 
-void process_sub_block( Division *, xmlNode * );
+void process_sub_block( Division *, const xmlNode * );
 
 void add_signed( FoliaElement *root, xmlNode* block ){
   string id = TiCC::getAttribute( block, "id" );
@@ -1287,7 +1287,7 @@ void add_heading( FoliaElement *root, xmlNode *block ){
   }
 }
 
-void process_sub_block( Division *root, xmlNode *_block ){
+void process_sub_block( Division *root, const xmlNode *_block ){
   KWargs args;
   xmlNode *block = _block->children;
   list<Note*> notes;

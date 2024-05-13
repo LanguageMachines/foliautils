@@ -26,6 +26,7 @@
 
 #include <string>
 #include "libfolia/folia.h"
+#include "libfolia/folia.h"
 #include "libxml/HTMLparser.h"
 #include "foliautils/common_code.h"
 #include "ticcutils/XMLtools.h"
@@ -251,4 +252,39 @@ folia::processor *add_provenance( folia::Document& doc,
 
 UnicodeString& pop_back( UnicodeString& us ){
   return us.remove( us.length() - 1 );
+}
+
+UnicodeString extract_final_hyphen( const UnicodeString& word,
+				    const set<UChar32>& hyphens,
+				    UnicodeString& hyph ){
+  hyph.remove(); // to be sure
+  UnicodeString result = TiCC::rtrim( word ); // remove trailing spaces
+  int pos = result.length();
+  if ( pos >= 2 ){
+    // otherwise no chance
+    if ( hyphens.find( result[pos-1] ) != hyphens.end()
+	 && u_isalpha(result[pos-2]) ) {
+      // so a hyphen after an alphabetic character
+      hyph = result[pos-1];
+      return pop_back( result ); // remove the hyphen
+    }
+  }
+  return word; // nothing done/changed
+}
+
+UnicodeString extract_final_hyphen( const UnicodeString& word,
+				    UnicodeString& hyph ){
+  set<UChar32> hyphens = { SOFT_HYPHEN, '-' };
+  return extract_final_hyphen( word, hyphens, hyph );
+}
+
+UnicodeString extract_soft_hyphen( const UnicodeString& word,
+				   UnicodeString& hyph ){
+  set<UChar32> hyphens = { SOFT_HYPHEN };
+  return extract_final_hyphen( word, hyphens, hyph );
+}
+
+UnicodeString UnicodeValue( const xmlNode *node ){
+  /// extract a UnicodeString value from xmlNode node
+  return TiCC::UnicodeFromUTF8(TiCC::XmlContent(node) );
 }

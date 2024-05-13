@@ -1,25 +1,25 @@
 missing input file(s)
-FoLiA-page [foliautils 0.21]
+FoLiA-page [foliautils 0.22]
 Usage: FoLiA-page [options] file/dir
 	-t <threads>
 	--threads <threads> Number of threads to run on.
 			 If 'threads' has the value "max", the number of threads is set to a
 			 reasonable value. (OMP_NUM_TREADS - 2)
-	-h or --help	 this messages
-	-O		 output directory
+	-h or --help	 this messages 
+	-O		 output directory 
 	--setname='set'	 the common FoLiA set name for all structural nodes. (default '')
 	--class='class'	 the FoLiA class name for <t> nodes. (default 'OCR')
-	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-')
+	--prefix='pre'	 add this prefix to ALL created files. (default 'FA-') 
 			 use 'none' for an empty prefix. (can be dangerous)
 	--norefs	 do not add references nodes to the original document. (default: Add References)
 	--nostrings	 do not add string annotations (no str), implies --norefs
 	--nomarkup	 do not add any markup to the text (no t-str)
 	--trusttokens	 when the Page-file contains Word items, translate them to FoLiA Word and Sentence elements
-	--compress='c'	 with 'c'=b create bzip2 files (.bz2)
+	--compress='c'	 with 'c'=b create bzip2 files (.bz2) 
 			 with 'c'=g create gzip files (.gz)
-	-v		 verbose output
-	-V or --version	 show version
-start processing of 12 files
+	-v		 verbose output 
+	-V or --version	 show version 
+start processing of 12 files 
 converted: data/page/00667460.xml into: out/page/FP-00667460.tif.folia.xml
 converted: data/page/martin.xml into: out/page/FP-NL-HaNA_1.05.01.02_333_0156.jpg.folia.xml
 converted: data/page/piros.xml into: out/page/FP-0001.png.folia.xml

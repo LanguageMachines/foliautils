@@ -1,5 +1,5 @@
 missing '--punct' option
-foliautils 0.21
+foliautils 0.22
 Usage: [options] file/dir
 	 FoLiA-correct will correct FoLiA files 
 	 or a whole directory of FoLiA files 

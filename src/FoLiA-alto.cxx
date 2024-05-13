@@ -74,8 +74,8 @@ void docCache::clear(){
 }
 
 void docCache::add( const string& dir, const string& f ){
-  string file = dir + f;
   if ( cache.find( f ) == cache.end() ){
+    string file = dir + f;
     ifstream is( file );
     if ( is ){
       if ( verbose ){
@@ -307,7 +307,7 @@ void createFile( folia::FoliaElement *text,
       xmlNode *node = v.front();
       list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
       int cnt = 0;
-      for ( const auto& line : lv ){
+      for ( const auto *line : lv ){
 	xmlNode *pnt = line->children;
 	while ( pnt != 0 ){
 	  if ( pnt->type == XML_ELEMENT_NODE ){
@@ -365,7 +365,7 @@ void createFile( folia::FoliaElement *text,
 	      }
 	      else if ( sub_t == "HypPart1" ){
 		// see if there is a Part2 in next line at this level.
-		xmlNode *part2 = findPart2Level( line );
+		const xmlNode *part2 = findPart2Level( line );
 		if ( part2 ){
 		  keepPart1 = pnt;
 		  break; //continue with next TextLine
@@ -1016,7 +1016,7 @@ void solveBook( const string& altoFile,
       if ( v.size() == 1 ){
 	xmlNode *node = v.front();
 	list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
-	for ( const auto& line : lv ){
+	for ( const auto *line : lv ){
 	  xmlNode *pnt = line->children;
 	  while ( pnt != 0 ){
 	    if ( pnt->type == XML_ELEMENT_NODE ){
@@ -1065,7 +1065,7 @@ void solveBook( const string& altoFile,
 		}
 		else if ( sub_t == "HypPart1" ){
 		  // see if there is a Part2 in next line at this level.
-		  xmlNode *part2 = findPart2Level( line );
+		  const xmlNode *part2 = findPart2Level( line );
 		  if ( part2 ){
 		    keepPart1 = pnt;
 		    break; //continue with next TextLine

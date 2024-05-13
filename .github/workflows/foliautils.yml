@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - 'src/**'
+      - 'tests/**'
       - 'include/**'
       - '.github/**'
       - configure.ac
@@ -39,32 +40,35 @@ jobs:
     needs: notification
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-13]  # macos-14 lacks libtextcat
         compiler: [g++, clang++]
 
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
+        uses: styfle/cancel-workflow-action@0.12.1
         with:
           access_token: ${{ github.token }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.1
       - name: Install Build Environment
         run: |
-             if [ "$RUNNER_OS" == "Linux" ]; then
+             if [ "$RUNNER_OS" == "Linux" ]
+             then
                 sudo apt-get install pkg-config autoconf-archive
              else
-                brew upgrade;
-                brew install pkg-config;
-                brew install autoconf-archive;
-                brew install autoconf;
-                brew install automake;
+                brew upgrade
+                brew install pkg-config
+                brew install libtool
+                brew install autoconf-archive
+                brew install autoconf
+                brew install automake
              fi
       - name: Install Dependencies
         run: |
-             if [ "$RUNNER_OS" == "Linux" ]; then
-                sudo apt-get install libicu-dev libxml2-dev libbz2-dev;
-                sudo apt-get install zlib1g-dev libexttextcat-dev;
+             if [ "$RUNNER_OS" == "Linux" ]
+             then
+                sudo apt-get install libicu-dev libxml2-dev libbz2-dev
+                sudo apt-get install zlib1g-dev libexttextcat-dev
                 sudo apt-get install cppcheck
              else
                 brew install libxml2
@@ -73,53 +77,63 @@ jobs:
                 brew install libtextcat
                 brew install cppcheck
              fi
+      - name: Configure CppCheck
+        run: |
+             if [ "$RUNNER_OS" == "Linux" ]
+             then
+                cpc_opts="--enable=warning,style --inline-suppr --force -I include --quiet --error-exitcode=0"
+             else
+                cpc_opts="--enable=warning,style --inline-suppr --force -I include --check-level=exhaustive --quiet --error-exitcode=0"
+             fi
+             echo "cpc_opts=$cpc_opts" >> $GITHUB_ENV
+
       - name: install TiccUtils
         env:
           CXX: ${{ matrix.compiler }}
         run: |
-          git clone https://github.com/LanguageMachines/ticcutils;
-          cd ticcutils;
-          bash bootstrap.sh;
-          ./configure;
-          make;
-          sudo make install;
-          cd ..;
+          git clone https://github.com/LanguageMachines/ticcutils
+          cd ticcutils
+          bash bootstrap.sh
+          ./configure
+          make
+          sudo make install
+          cd ..
 
       - name: install libfolia
         env:
           CXX: ${{ matrix.compiler }}
         run: |
-          git clone https://github.com/LanguageMachines/libfolia;
-          cd libfolia;
-          bash bootstrap.sh;
-          ./configure;
-          make;
-          sudo make install;
-          cd ..;
+          git clone https://github.com/LanguageMachines/libfolia
+          cd libfolia
+          bash bootstrap.sh
+          ./configure
+          make
+          sudo make install
+          cd ..
 
       - name: install uctodata
         env:
           CXX: ${{ matrix.compiler }}
         run: |
-          git clone https://github.com/LanguageMachines/uctodata;
-          cd uctodata;
-          bash bootstrap.sh;
-          ./configure;
-          make;
-          sudo make install;
-          cd ..;
+          git clone https://github.com/LanguageMachines/uctodata
+          cd uctodata
+          bash bootstrap.sh
+          ./configure
+          make
+          sudo make install
+          cd ..
 
       - name: install ucto
         env:
           CXX: ${{ matrix.compiler }}
         run: |
-          git clone https://github.com/LanguageMachines/ucto;
-          cd ucto;
-          bash bootstrap.sh;
-          ./configure;
-          make;
-          sudo make install;
-          cd ..;
+          git clone https://github.com/LanguageMachines/ucto
+          cd ucto
+          bash bootstrap.sh
+          ./configure
+          make
+          sudo make install
+          cd ..
 
       - name: bootstrap
         run: sh bootstrap.sh
@@ -128,7 +142,7 @@ jobs:
           CXX: ${{ matrix.compiler }}
         run: ./configure
       - name: Static Code-check
-        run: cppcheck --enable=all --quiet --error-exitcode=0 .
+        run: cppcheck ${{ env.cpc_opts }} .
       - name: make
         run: make
       - name: install
@@ -152,7 +166,9 @@ jobs:
           server: irc.uvt.nl
           channel: '#gitlama'
           nickname: GH-${{ runner.os }}-${{ env.cid }}
-          message: "foliautils [${{ needs.notification.outputs.branch }}] build with ${{ matrix.compiler }} by ${{ github.actor }} on ${{ matrix.os }}: \u00034FAIL\u0003"
+          message: "foliautils [${{ needs.notification.outputs.branch }}] \
+build with ${{ matrix.compiler }} by ${{ github.actor }} on ${{ matrix.os }}: \
+\u00034FAIL\u0003"
 
       - name: Notify IRC of succes
         if: ${{ steps.check.outcome == 'success' }}
@@ -161,4 +177,6 @@ jobs:
           server: irc.uvt.nl
           channel: '#gitlama'
           nickname: GH-${{ runner.os }}-${{ env.cid }}
-          message: "foliautils [${{ needs.notification.outputs.branch }}] build with ${{ matrix.compiler }} by ${{ github.actor }} on ${{ matrix.os }}: \u00033SUCCESS\u0003"
+          message: "foliautils [${{ needs.notification.outputs.branch }}] \
+build with ${{ matrix.compiler }} by ${{ github.actor }} on ${{ matrix.os }}: \
+\u00033SUCCESS\u0003"

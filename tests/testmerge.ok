@@ -1,0 +1,23 @@
+missing '-l or --lexicon' option
+foliautils 0.22
+Usage: [options] file/dir
+	 FoLiA-merge will merge lemmas and POS tags into FoLiA files 
+	-l or --lexicon=<name>	 the lexicon for word/lemma/POS lookup 
+	--lemset='name'	 (default 'merged-lemma-set')
+	--posset='name'	 (default 'merged-pos-set')
+	-O	 output prefix
+	-t <threads>
+	--threads <threads> Number of threads to run on. (Default 1)
+			 If 'threads' has the value "max", the number of threads is set
+			 to a reasonable value. (OMP_NUM_TREADS - 2)
+	-v increase verbosity level. Repeat for even more output.
+	-h or --help	 this message 
+	-V or --version	 show version 
+read 1 lexicon entries
+verbosity = 0
+start merging in file: merge/greek.xml
+Processed greek.xml into greek.merged.xml
+read 1 lexicon entries
+verbosity = 0
+start merging in file: merge/greek2.xml
+Processed greek2.xml into greek2.merged.xml

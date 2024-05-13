@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FoLiA xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://ilk.uvt.nl/folia" xml:id="greek" generator="libfolia-v2.17" version="2.5">
+  <metadata type="native">
+    <annotations>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <sentence-annotation/>
+      <token-annotation/>
+      <lemma-annotation set="merged-lemma-set">
+        <annotator processor="FoLiA-merge.1"/>
+      </lemma-annotation>
+      <pos-annotation set="merged-pos-set">
+        <annotator processor="FoLiA-merge.1"/>
+      </pos-annotation>
+    </annotations>
+    <provenance>
+      <processor xml:id="FoLiA-merge.1" begindatetime="2023-10-28T10:06:01" command="FoLiA-merge -l greek.lex -v " folia_version="2.5.3" host="kobus" name="FoLiA-merge" user="sloot" version="0.21">
+        <processor xml:id="FoLiA-merge.1.generator" folia_version="2.5.3" name="libfolia" type="generator" version="2.17"/>
+      </processor>
+    </provenance>
+  </metadata>
+  <text xml:id="text">
+    <s xml:id="text.s.1">
+      <w xml:id="w.1">
+        <t>ὁπλιτῶν</t>
+        <lemma class="οπλιτης"/>
+        <pos class="NOUN"/>
+      </w>
+    </s>
+  </text>
+</FoLiA>
