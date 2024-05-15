@@ -122,18 +122,6 @@ jobs:
           sudo make install
           cd ..
 
-      - name: install ucto
-        env:
-          CXX: ${{ matrix.compiler }}
-        run: |
-          git clone https://github.com/LanguageMachines/ucto
-          cd ucto
-          bash bootstrap.sh
-          ./configure
-          make
-          sudo make install
-          cd ..
-
       - name: install libexttextcat on MacOS
         env:
           CXX: ${{ matrix.compiler }}
@@ -147,6 +135,18 @@ jobs:
             sudo make install
             cd ..
           fi
+
+      - name: install ucto
+        env:
+          CXX: ${{ matrix.compiler }}
+        run: |
+          git clone https://github.com/LanguageMachines/ucto
+          cd ucto
+          bash bootstrap.sh
+          ./configure
+          make
+          sudo make install
+          cd ..
 
       - name: bootstrap
         run: sh bootstrap.sh
