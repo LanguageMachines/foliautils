@@ -40,7 +40,7 @@ jobs:
     needs: notification
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-13]  # macos-14 lacks libtextcat
+        os: [ubuntu-latest, macos-14]
         compiler: [g++, clang++]
 
     steps:
@@ -74,7 +74,6 @@ jobs:
                 brew install libxml2
                 brew install bzip2
                 brew install zlib
-                brew install libtextcat
                 brew install cppcheck
              fi
       - name: Configure CppCheck
@@ -134,6 +133,20 @@ jobs:
           make
           sudo make install
           cd ..
+
+      - name: install libexttextcat on MacOS
+        env:
+          CXX: ${{ matrix.compiler }}
+        run: |
+          if [ "$RUNNER_OS" != "Linux" ]; then
+            git clone https://github.com/LibreOffice/libexttextcat/
+            cd libexttextcat
+            sh autogen.sh
+            ./configure
+            make
+            sudo make install
+            cd ..
+          fi
 
       - name: bootstrap
         run: sh bootstrap.sh
