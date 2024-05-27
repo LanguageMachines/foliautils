@@ -1,3 +1,9 @@
+foliautils 0.22  27-05-2024
+[Ko van der Sloot]
+* requires libfolia 2.19 or higher
+* fixes github actions on MacOSX
+* small code updates and improvements
+
 foliautils 0.21  26-04-2024
 [Ko van der Sloot]
 * a lot off code changes. Many regarding hypens
