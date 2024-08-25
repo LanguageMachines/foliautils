@@ -1,5 +1,5 @@
 missing '-l or --lexicon' option
-foliautils 0.22
+foliautils 0.23
 Usage: [options] file/dir
 	 FoLiA-merge will merge lemmas and POS tags into FoLiA files 
 	-l or --lexicon=<name>	 the lexicon for word/lemma/POS lookup 
