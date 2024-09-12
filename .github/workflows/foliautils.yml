@@ -61,6 +61,10 @@ jobs:
         with:
           module: libfolia
 
+      - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
+        with:
+          module: libfolia
+
       - name: Static Code-check
         if: ${{ env.action_status == '' }}
         run: cppcheck ${{ env.cpc_opts }} .
