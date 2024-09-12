@@ -63,7 +63,7 @@ jobs:
 
       - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
         with:
-          module: libfolia
+          module: ucto
 
       - name: Static Code-check
         if: ${{ env.action_status == '' }}
