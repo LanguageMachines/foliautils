@@ -44,18 +44,17 @@ AC_C_INLINE
 # Checks for library functions.
 AC_CHECK_FUNCS([select])
 
+PKG_PROG_PKG_CONFIG
 if test $prefix = "NONE"; then
    prefix="$ac_default_prefix"
 fi
-
-PKG_PROG_PKG_CONFIG
 
 if test "x$PKG_CONFIG_PATH" = x; then
     export PKG_CONFIG_PATH="$prefix/lib/pkgconfig"
 else
     export PKG_CONFIG_PATH="$prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
 fi
-
+AC_MSG_NOTICE([PKG_CONFIG_PATH=$PKG_CONFIG_PATH])
 AC_OSX_PKG( [icu4c] )
 
 PKG_CHECK_MODULES( [TEXTCAT],
