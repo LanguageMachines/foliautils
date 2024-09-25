@@ -84,7 +84,7 @@ fi
 
 AC_OSX_PKG( [icu4c] )
 
-PKG_CHECK_MODULES([ICU], [icu-uc >= 50 icu-io] )
+PKG_CHECK_MODULES([ICU], [icu-uc >= 50 icu-io icu-i18n] )
 CXXFLAGS="$CXXFLAGS $ICU_CFLAGS"
 LIBS="$ICU_LIBS $LIBS"
 AC_MSG_NOTICE([ICU LIBS=$ICU_LIBS])
