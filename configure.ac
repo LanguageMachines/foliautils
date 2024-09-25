@@ -55,7 +55,6 @@ else
     export PKG_CONFIG_PATH="$prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
 fi
 AC_MSG_NOTICE([PKG_CONFIG_PATH=$PKG_CONFIG_PATH])
-AC_OSX_PKG( [icu4c] )
 
 PKG_CHECK_MODULES( [TEXTCAT],
   [libexttextcat],
@@ -83,9 +82,12 @@ if test $TEXTCAT_FOUND = 1; then
   AC_SEARCH_LM
 fi
 
+AC_OSX_PKG( [icu4c] )
+
 PKG_CHECK_MODULES([ICU], [icu-uc >= 50 icu-io] )
 CXXFLAGS="$CXXFLAGS $ICU_CFLAGS"
 LIBS="$ICU_LIBS $LIBS"
+AC_MSG_NOTICE([ICU LIBS=$ICU_LIBS])
 
 PKG_CHECK_MODULES([XML2], [libxml-2.0 >= 2.6.16] )
 CXXFLAGS="$CXXFLAGS $XML2_CFLAGS"
