@@ -132,7 +132,7 @@ xmlDoc *docCache::find( const string& f ) const {
 xmlNode *findPart2Level( const xmlNode *start ){
   if ( start && start->next ){
     xmlNode *pnt = start->next->children;
-    while ( pnt != 0 ){
+    while ( pnt ){
       if ( pnt->type == XML_ELEMENT_NODE &&
 	   TiCC::Name(pnt) == "String" ){
 	break;
@@ -162,7 +162,7 @@ xmlNode *findPart2Block( const xmlNode *start ){
     if ( pnt ){
       // found a node "TextLine"
       pnt = pnt->children;
-      while ( pnt != 0 ){
+      while ( pnt ){
 	if ( pnt->type == XML_ELEMENT_NODE &&
 	     TiCC::Name(pnt) == "String" ){
 	  break;
@@ -309,7 +309,7 @@ void createFile( folia::FoliaElement *text,
       int cnt = 0;
       for ( const auto *line : lv ){
 	xmlNode *pnt = line->children;
-	while ( pnt != 0 ){
+	while ( pnt ){
 	  if ( pnt->type == XML_ELEMENT_NODE ){
 	    if ( TiCC::Name(pnt) == "String" ){
 	      string sub_t = TiCC::getAttribute( pnt, "SUBS_TYPE" );
@@ -1018,7 +1018,7 @@ void solveBook( const string& altoFile,
 	list<xmlNode*> lv = TiCC::FindNodes( node, "*[local-name()='TextLine']" );
 	for ( const auto *line : lv ){
 	  xmlNode *pnt = line->children;
-	  while ( pnt != 0 ){
+	  while ( pnt ){
 	    if ( pnt->type == XML_ELEMENT_NODE ){
 	      if ( TiCC::Name(pnt) == "String" ){
 		string sub_t = TiCC::getAttribute( pnt, "SUBS_TYPE" );

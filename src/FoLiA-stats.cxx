@@ -117,15 +117,13 @@ void create_agg_list( const map<string,vector<map<UnicodeString, unsigned int>>>
     map<UnicodeString,map<string,unsigned int>> totals;
     for ( const auto& wc0 : wcv ){
       string lang = wc0.first;
-      auto cit = wc0.second[ng].begin();
-      while( cit != wc0.second[ng].end()  ){
-	if ( cit->second <= clip ){
+      for ( auto const &[str,val] : wc0.second[ng] ){
+	if ( val <= clip ){
 	  ++clipped;
 	}
 	else {
-	  totals[cit->first].insert( make_pair(lang, cit->second ) );
+	  totals[str].insert( make_pair(lang, val ) );
 	}
-	++cit;
       }
     }
     map<string,unsigned int> lang_tot;
@@ -207,15 +205,13 @@ void create_wf_list( const map<string,vector<map<UnicodeString, unsigned int>>>&
 	}
 	ofstream os( ofilename );
 	map<unsigned int, set<UnicodeString>> wf;
-	auto cit = wc0.second[ng].begin();
-	while( cit != wc0.second[ng].end()  ){
-	  if ( cit->second <= clip ){
-	    total_n -= cit->second;
+	for ( auto const& [str,val] : wc0.second[ng] ){
+	  if ( val <= clip ){
+	    total_n -= val;
 	  }
 	  else {
-	    wf[cit->second].insert( cit->first );
+	    wf[val].insert( str );
 	  }
-	  ++cit;
 	}
 	unsigned int sum=0;
 	unsigned int types=0;
@@ -282,15 +278,13 @@ void create_collected_wf_list( const map<string,vector<map<UnicodeString, unsign
       grand_total += totals_per_n[lang][ng];
       unsigned int total_n = totals_per_n[lang][ng];
       if ( total_n > 0 ){
-	auto cit = wc0.second[ng].begin();
-	while( cit != wc0.second[ng].end()  ){
-	  if ( cit->second <= clip ){
-	    total_n -= cit->second;
+	for ( const auto& [str,val] : wc0.second[ng] ){
+	  if ( val <= clip ){
+	    total_n -= val;
 	  }
 	  else {
-	    wf[cit->second].insert( cit->first );
+	    wf[val].insert( str );
 	  }
-	  ++cit;
 	}
 	grand_total_clipped += total_n;
       }
