@@ -60,7 +60,8 @@ KWargs getAllAttributes( const xmlNode *node ){
   if ( node ){
     xmlAttr *a = node->properties;
     while ( a ){
-      atts[folia::to_string(a->name)] = folia::to_string(a->children->content);
+      atts.add( folia::to_string(a->name),
+		folia::to_string(a->children->content) );
       a = a->next;
     }
   }
@@ -580,30 +581,26 @@ void process_speech( Division *root, xmlNode *speech ){
   d_args["class"] = type;
   d_args["processor"] = processor_id;
   Division *div = root->add_child<Division>( d_args );
-  for ( const auto& att : atts ){
-    if ( att.first == "id"
-	 || att.first == "type" ){
+  for ( const auto& [att,cls] : atts ){
+    if ( att == "id"
+	 || att == "type" ){
       continue;
     }
-    else if ( att.first == "speaker"
-	      || att.first == "function"
-	      || att.first == "party"
-	      || att.first == "role"
-	      || att.first == "party-ref"
-	      || att.first == "member-ref" ){
-      string cls =  att.second;
-      if ( cls.empty() ){
-	cls = "unknown";
-      }
+    else if ( att == "speaker"
+	      || att == "function"
+	      || att == "party"
+	      || att == "role"
+	      || att == "party-ref"
+	      || att == "member-ref" ){
       KWargs args;
-      args["subset"] = att.first;
+      args["subset"] = att;
       args["class"] = cls;
       div->add_child<Feature>( args );
     }
     else {
 #pragma omp critical
       {
-	cerr << "unsupported attribute: " << att.first << " on speech: "
+	cerr << "unsupported attribute: " << att << " on speech: "
 	     << id << endl;
       }
     }
@@ -874,30 +871,26 @@ void process_scene( Division *root, xmlNode *scene ){
   scene_args["class"] = type;
   scene_args["processor"] = processor_id;
   Division *div = root->add_child<Division>( scene_args );
-  for ( const auto& att : atts ){
-    if ( att.first == "id"
-	 || att.first == "type" ){
+  for ( const auto& [att,cls] : atts ){
+    if ( att == "id"
+	 || att == "type" ){
       continue;
     }
-    else if ( att.first == "speaker"
-	      || att.first == "function"
-	      || att.first == "party"
-	      || att.first == "role"
-	      || att.first == "party-ref"
-	      || att.first == "member-ref" ){
-      string cls = att.second;
-      if ( cls.empty() ){
-	cls = "unknown";
-      }
+    else if ( att == "speaker"
+	      || att == "function"
+	      || att == "party"
+	      || att == "role"
+	      || att == "party-ref"
+	      || att == "member-ref" ){
       KWargs args;
-      args["subset"] = att.first;
+      args["subset"] = att;
       args["class"] = cls;
       div->add_child<Feature>( args );
     }
     else {
 #pragma omp critical
       {
-	cerr << "unsupported attribute: " << att.first << " on scene:"
+	cerr << "unsupported attribute: " << att << " on scene:"
 	     << id << endl;
       }
     }
