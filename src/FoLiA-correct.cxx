@@ -1694,9 +1694,9 @@ int main( int argc, const char *argv[] ){
 	  {
 	    if (!counts.empty() ){
 	      //	    cout << "edits for: " << docName << endl;
-	      for ( const auto& it : counts ){
-		//	      cout << it.first << ":" << it.second << endl;
-		total_counts[it.first] += it.second;
+	      for ( const auto& [word,count] : counts ){
+		//	      cout << word << ":" << count << endl;
+		total_counts[word] += count;
 	      }
 	    }
 	    if ( toDo > 1 ){
@@ -1732,8 +1732,8 @@ int main( int argc, const char *argv[] ){
   if ( !total_counts.empty() ){
     cout << "edit statistics: " << endl;
     cout << "\tedit\t count" << endl;
-    for ( const auto& it : total_counts ){
-      cout << "\t" << it.first << "\t" << it.second << endl;
+    for ( const auto& [word,count] : total_counts ){
+      cout << "\t" << word << "\t" << count << endl;
     }
   }
   return EXIT_SUCCESS;
