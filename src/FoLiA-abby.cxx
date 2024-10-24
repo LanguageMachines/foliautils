@@ -730,31 +730,33 @@ map<string,formatting_info> extract_formatting_info( xmlNode *root ){
     list<xmlNode*> font_styles =
       TiCC::FindNodes( ps, ".//*:fontStyle" );
     for ( const auto& fst : font_styles ){
-      string lang = TiCC::getAttribute( fst, "lang" );
-      string id = TiCC::getAttribute( fst, "id" );
-      string ff = TiCC::getAttribute( fst, "ff" );
-      string fs = TiCC::getAttribute( fst, "fs" );
-      string it = TiCC::getAttribute( fst, "italic" );
-      string bl = TiCC::getAttribute( fst, "bold" );
+      string font_lang = TiCC::getAttribute( fst, "lang" );
+      string font_id = TiCC::getAttribute( fst, "id" );
+      string font_ff = TiCC::getAttribute( fst, "ff" );
+      string font_fs = TiCC::getAttribute( fst, "fs" );
+      string italic = TiCC::getAttribute( fst, "italic" );
+      string bold = TiCC::getAttribute( fst, "bold" );
       font_style f_s = REGULAR;
-      if ( it == "1" ){
+      if ( italic == "1" ){
 	f_s = ITALIC;
       }
-      else if ( bl == "1" ){
+      else if ( bold == "1" ){
 	f_s = BOLD;
       }
-      formatting_info fi( lang, ff, fs, f_s );
-      result.insert( make_pair(id,fi) );
+      formatting_info fi( font_lang, font_ff, font_fs, f_s );
+      result.insert( make_pair(font_id,fi) );
     }
   }
-  for ( const auto& mf : main_font_styles ){
-    auto it = result.find(mf.second);
+  // check if all main_font names are taken care off
+  for ( const auto& [font_id,font_name] : main_font_styles ){
+    auto it = result.find(font_name);
     if ( it != result.end() ){
+      // font_name is known, add the ID as a name too
       auto const val = it->second;
-      result.insert( make_pair(mf.first,val) );
+      result.insert( make_pair(font_id,val) );
     }
     else {
-      cerr << "surprise for " << mf.first << " ==> "<< mf.second << endl;
+      cerr << "surprise for " << font_id << " ==> "<< font_name << endl;
     }
   }
   return result;
