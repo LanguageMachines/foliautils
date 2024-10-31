@@ -60,8 +60,7 @@ KWargs getAllAttributes( const xmlNode *node ){
   if ( node ){
     xmlAttr *a = node->properties;
     while ( a ){
-      atts.add( folia::to_string(a->name),
-		folia::to_string(a->children->content) );
+      atts[folia::to_string(a->name)] = folia::to_string(a->children->content);
       a = a->next;
     }
   }
