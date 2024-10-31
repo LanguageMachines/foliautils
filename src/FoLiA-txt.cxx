@@ -95,8 +95,6 @@ bool handle_one_file( const string& fileName ){
     {
       cerr << "failed to read " << fileName << endl;
     }
-    ++failed_docs;
-    --to_do;
     return false;
   }
 #pragma omp critical
@@ -121,8 +119,6 @@ bool handle_one_file( const string& fileName ){
     if ( !isNCName( docid ) ){
       cerr << "unable to generate a Document ID from the filename: '"
 	   << fileName << "'" << endl;
-      ++failed_docs;
-      --to_do;
       return false;
     }
   }
@@ -135,8 +131,6 @@ bool handle_one_file( const string& fileName ){
     {
       cerr << "failed to create a document with id:'" << docid << "'" << endl;
       cerr << "reason: " << e.what() << endl;
-      ++failed_docs;
-      --to_do;
     }
     return false;
   }
@@ -234,8 +228,6 @@ bool handle_one_file( const string& fileName ){
     {
       cerr << "no useful data found in document:'" << docid << "'" << endl;
       cerr << "skipped!" << endl;
-      ++failed_docs;
-      --to_do;
     }
     return false;
   }
@@ -348,10 +340,16 @@ int main( int argc, char *argv[] ){
     }
 #endif
     string fileName = file_names[fn];
-    handle_one_file( fileName );
+    if ( !handle_one_file( fileName ) ){
+#pragma omp critical
+      {
+	++failed_docs;
+      }
+    }
   }
-  if ( failed_docs > 0 && failed_docs == to_do ){
-    cerr << "No documents could be handled successfully!" << endl;
+  if ( failed_docs > 0 ){
+    cerr << std::to_string( failed_docs ) << " documents out of "
+	 << std::to_string(file_names.size()) << " failed" << endl;
     return EXIT_SUCCESS;
   }
   else {
