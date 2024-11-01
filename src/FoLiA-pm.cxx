@@ -393,12 +393,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  note = new Note( args, doc );
 	}
 	else {
-	  if ( !isNCName( ref ) ){
-	    ref = "v." + ref;
-	    if ( !isNCName( ref ) ){
-	      throw ( "the ref attribute in note cannot be converted to an ID" );
-	    }
-	  }
+	  ref = create_NCName( ref );
 	  KWargs args;
 	  args["xml:id"] = ref;
 	  note = new Note( args, doc );

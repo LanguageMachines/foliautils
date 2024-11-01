@@ -114,16 +114,9 @@ bool handle_one_file( const string& fileName ){
   if ( !outputDir.empty() ){
     nameNoExt = docid;
   }
-  if ( !isNCName( docid ) ){
-    docid = "doc-" + docid;
-    if ( !isNCName( docid ) ){
-      cerr << "unable to generate a Document ID from the filename: '"
-	   << fileName << "'" << endl;
-      return false;
-    }
-  }
   Document *d = 0;
   try {
+    docid = create_NCName( docid );
     d = new Document( "xml:id='"+ docid + "'" );
   }
   catch ( exception& e ){
