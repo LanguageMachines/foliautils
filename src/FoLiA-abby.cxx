@@ -246,8 +246,9 @@ UnicodeString get_line( xmlNode *line ){
 void update_formatting_info( formatting_info& line_font,
 			     xmlNode *node,
 			     const map<string,formatting_info>& font_styles ){
+  auto att_vals =  TiCC::getAttributes( node );
+  string style = att_vals["style"];
   try {
-    string style = TiCC::getAttribute( node, "style" );
     if ( !style.empty() ){
       line_font = font_styles.at( style );
       line_font._id = style;
@@ -256,19 +257,19 @@ void update_formatting_info( formatting_info& line_font,
   catch ( const out_of_range& ){
     // continue
   }
-  string lang = TiCC::getAttribute( node, "lang" );
+  string lang = att_vals["lang"];
   if ( !lang.empty() ){
     line_font._lang = lang;
   }
-  string fs = TiCC::getAttribute( node, "fs" );
+  string fs = att_vals["fs"];
   if ( !fs.empty() ){
     line_font._fs = fs;
   }
-  string ff = TiCC::getAttribute( node, "ff" );
+  string ff = att_vals["ff"];
   if ( !ff.empty() ){
     line_font._ff = ff;
   }
-  string value = TiCC::getAttribute( node, "bold" );
+  string value = att_vals["bold"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::BOLD;
@@ -277,7 +278,7 @@ void update_formatting_info( formatting_info& line_font,
       line_font._fst &= ~font_style::BOLD;
     }
   }
-  value = TiCC::getAttribute( node, "italic" );
+  value = att_vals["italic"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::ITALIC;
@@ -286,7 +287,7 @@ void update_formatting_info( formatting_info& line_font,
       line_font._fst &= ~font_style::ITALIC;
     }
   }
-  value = TiCC::getAttribute( node, "smallcaps" );
+  value = att_vals["smallcaps"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::SMALLCAPS;
@@ -295,7 +296,7 @@ void update_formatting_info( formatting_info& line_font,
       line_font._fst &= ~font_style::SMALLCAPS;
     }
   }
-  value = TiCC::getAttribute( node, "superscript" );
+  value = att_vals["superscript"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::SUPERSCRIPT;
@@ -304,7 +305,7 @@ void update_formatting_info( formatting_info& line_font,
       line_font._fst &= ~font_style::SUPERSCRIPT;
     }
   }
-  value = TiCC::getAttribute( node, "subscript" );
+  value = att_vals["subscript"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::SUBSCRIPT;
@@ -313,7 +314,7 @@ void update_formatting_info( formatting_info& line_font,
       line_font._fst &= ~font_style::SUBSCRIPT;
     }
   }
-  value = TiCC::getAttribute( node, "strikeout" );
+  value = att_vals["strikeout"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::STRIKEOUT;
@@ -322,7 +323,7 @@ void update_formatting_info( formatting_info& line_font,
       line_font._fst &= ~font_style::STRIKEOUT;
     }
   }
-  value = TiCC::getAttribute( node, "underline" );
+  value = att_vals["underline"];
   if ( !value.empty() ){
     if ( value == "1" ){
       line_font._fst |= font_style::UNDERLINE;
@@ -707,13 +708,14 @@ map<string,formatting_info> extract_formatting_info( xmlNode *root ){
     list<xmlNode*> font_styles =
       TiCC::FindNodes( ps, ".//*:fontStyle" );
     for ( const auto& fst : font_styles ){
-      string font_lang = TiCC::getAttribute( fst, "lang" );
-      string font_id = TiCC::getAttribute( fst, "id" );
-      string font_ff = TiCC::getAttribute( fst, "ff" );
-      string font_fs = TiCC::getAttribute( fst, "fs" );
+      auto att_vals = TiCC::getAttributes( fst );
+      string font_lang = att_vals["lang"];
+      string font_id = att_vals["id"];
+      string font_ff = att_vals["ff"];
+      string font_fs = att_vals["fs"];
       font_style f_s = font_style::REGULAR;
-      string italic = TiCC::getAttribute( fst, "italic" );
-      string bold = TiCC::getAttribute( fst, "bold" );
+      string italic = att_vals["italic"];
+      string bold = att_vals["bold"];
       if ( italic == "1" ){
 	f_s = font_style::ITALIC;
       }
