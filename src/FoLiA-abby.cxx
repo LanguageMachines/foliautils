@@ -709,21 +709,21 @@ map<string,formatting_info> extract_formatting_info( xmlNode *root ){
       TiCC::FindNodes( ps, ".//*:fontStyle" );
     for ( const auto& fst : font_styles ){
       auto att_vals = TiCC::getAttributes( fst );
-      string font_lang = att_vals["lang"];
-      string font_id = att_vals["id"];
-      string font_ff = att_vals["ff"];
-      string font_fs = att_vals["fs"];
-      font_style f_s = font_style::REGULAR;
+      string lang_val = att_vals["lang"];
+      string id_val = att_vals["id"];
+      string ff_val = att_vals["ff"];
+      string fs_val = att_vals["fs"];
       string italic = att_vals["italic"];
       string bold = att_vals["bold"];
+      font_style f_s = font_style::REGULAR;
       if ( italic == "1" ){
 	f_s = font_style::ITALIC;
       }
       else if ( bold == "1" ){
 	f_s = font_style::BOLD;
       }
-      formatting_info fi( font_lang, font_ff, font_fs, f_s );
-      result.insert( make_pair(font_id,fi) );
+      formatting_info fi( lang_val, ff_val, fs_val, f_s );
+      result.insert( make_pair(id_val,fi) );
     }
   }
   // check if all main_font names are taken care off
