@@ -166,19 +166,15 @@ ostream& operator<<( ostream& os, const formatting_info& fi ){
 }
 
 UnicodeString get_text( const xmlNode *node ){
-  string result;
+  UnicodeString result;
   const xmlNode *pnt = node->children;
   while ( pnt ){
     if ( pnt->type == XML_TEXT_NODE ){
-      xmlChar *tmp = xmlNodeGetContent( pnt );
-      if ( tmp ){
-	result = folia::to_string( tmp );
-	xmlFree( tmp );
-      }
+      result = UnicodeValue(pnt);
       break;
     }
   }
-  return TiCC::UnicodeFromUTF8( result );
+  return result;
 }
 
 UnicodeString get_line( xmlNode *line ){
