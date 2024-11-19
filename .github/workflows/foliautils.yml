@@ -62,6 +62,7 @@ jobs:
 
       - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
         with:
+          branch: ${{ github.ref_name }}
           module: ucto
 
       - name: Static Code-check
