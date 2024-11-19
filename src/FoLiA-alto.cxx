@@ -851,7 +851,7 @@ void solveArtAlto( const string& alto_cache,
 		  if ( meta.size() == 1 ){
 		    list<xmlNode*> subs = TiCC::FindNodes( meta.front(), "didl:Resource//srw_dc:dcx/dc:subject" );
 		    if ( subs.size() == 1 ){
-		      subject = TiCC::XmlContent(subs.front());
+		      subject = TiCC::TextValue(subs.front());
 		    }
 		    else {
 #pragma omp critical

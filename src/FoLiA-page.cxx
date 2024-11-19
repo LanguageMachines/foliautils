@@ -349,9 +349,9 @@ void handle_one_region( folia::FoliaElement *root,
   if ( type.empty() || type == "paragraph" ){
   }
   else if ( type == "page-number" ){
-    xmlNode* unicode = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
-    if ( unicode ){
-      string value = TiCC::XmlContent( unicode );
+    xmlNode* uni_node = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
+    if ( uni_node ){
+      string value = TiCC::TextValue( uni_node );
       folia::KWargs args;
       args["pagenr"] = value;
       par->add_child<folia::Linebreak>( args );

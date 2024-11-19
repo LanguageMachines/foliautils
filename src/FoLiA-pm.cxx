@@ -56,11 +56,13 @@ string setname = "polmash";
 string processor_id;
 
 KWargs getAllAttributes( const xmlNode *node ){
+  /// unless folia::getAttribues, this gathers ALL attributes
+  /// regardless of namespace, xml:id or xlink: cases
   KWargs atts;
   if ( node ){
     xmlAttr *a = node->properties;
     while ( a ){
-      atts[folia::to_string(a->name)] = folia::to_string(a->children->content);
+      atts[folia::to_string(a->name)] = TiCC::TextValue(a->children);
       a = a->next;
     }
   }
@@ -88,7 +90,7 @@ string extract_embedded( xmlNode *p ){
 	cerr << "examine: " << TiCC::Name(p) << endl;
       }
     }
-    string content = TiCC::XmlContent(p);
+    string content = TiCC::TextValue(p);
     if ( !content.empty() ){
       if ( verbose ){
 #pragma omp critical
@@ -356,10 +358,10 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	xmlNode *pp = p->children;
 	while ( pp ){
 	  if ( number.empty() ){
-	    number = TiCC::XmlContent( pp );
+	    number = TiCC::TextValue( pp );
 	  }
 	  else {
-	    text = TiCC::XmlContent( pp );
+	    text = TiCC::TextValue( pp );
 	  }
 	  pp=pp->next;
 	}
@@ -620,7 +622,7 @@ void process_speech( Division *root, xmlNode *speech ){
 #pragma omp critical
       {
 	cerr << "speech: " << id << ", unhandled: " << label << endl;
-	cerr << "speech-content " << TiCC::XmlContent(p) << endl;
+	cerr << "speech-content " << TiCC::TextValue(p) << endl;
       }
     }
     p = p->next;
@@ -722,7 +724,7 @@ void add_information( FoliaElement *root, const xmlNode *info ){
 	 || label == "introduction"
 	 || label == "part"
 	 || label == "outcome" ){
-      string cls = TiCC::XmlContent( p );
+      string cls = TiCC::TextValue( p );
       if ( cls.empty() ){
 	cls = "unknown";
       }
@@ -825,7 +827,7 @@ void process_vote( Division *div, xmlNode *vote ){
       add_about( div, p );
     }
     else if ( label == "consequence" ){
-      string cls = TiCC::XmlContent( p );
+      string cls = TiCC::TextValue( p );
       if ( cls.empty() ){
 	cls = "unknown";
       }
@@ -1268,7 +1270,7 @@ void add_heading( FoliaElement *root, xmlNode *block ){
     args["processor"] = processor_id;
     root->add_child<Division>( args );
   }
-  string txt = TiCC::XmlContent(block);
+  string txt = TiCC::TextValue(block);
   if ( !txt.empty() ){
     el->settext( txt );
   }
