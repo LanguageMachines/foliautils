@@ -1426,8 +1426,8 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
-    opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "nosplit,help,version,prefix:,threads:" );
+    opts.add_short_options( "vVt:O:h" );
+    opts.add_long_options( "nosplit,help,version,prefix:,threads:" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){

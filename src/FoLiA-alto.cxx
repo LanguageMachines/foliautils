@@ -1325,8 +1325,8 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
-    opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,"
+    opts.add_short_options( "vVt:O:h" );
+    opts.add_long_options( "cache:,clear,class:,direct,setname:,compress:,"
 			   "type:,help,prefix:,version,threads:,oldstrings" );
     opts.init( argc, argv );
   }
