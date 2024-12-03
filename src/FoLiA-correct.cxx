@@ -1271,6 +1271,15 @@ void correctNgrams( FoliaElement *root,
   }
 }
 
+template<typename T>
+vector<FoliaElement*> upcast( const vector<T*>& v ){
+  vector<FoliaElement*> result;
+  for( const auto& it : v ){
+    result.push_back(static_cast<FoliaElement*>(it));
+  }
+  return result;
+}
+
 bool correctDoc( Document *doc,
 		 const unordered_map<string,vector<word_conf> >& variants,
 		 const unordered_set<string>& unknowns,
@@ -1285,9 +1294,9 @@ bool correctDoc( Document *doc,
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
   vector<FoliaElement*> ev;
   if ( tag_list.empty() ){
-    vector<FoliaElement*> v1 = doc->doc()->select( Sentence_t );
+    vector<FoliaElement*> v1 = upcast(doc->doc()->select<Sentence>());
     if ( v1.empty() ){
-      v1 = doc->doc()->select( Paragraph_t );
+      v1 = upcast(doc->doc()->select<Paragraph>() );
     }
     ev = v1;
   }

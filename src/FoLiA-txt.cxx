@@ -81,7 +81,7 @@ void add_paragraph( folia::FoliaElement *par,
     // we don't want a terminating <br/> at the end of a paragraph.
     // 2 newlines ar already implicit for a paragraph
     if ( &it == &par_stack.back()
-	 && it->isSubClass( Linebreak_t ) ){
+	 && it->isSubClass<Linebreak>() ){
       break;
     }
     txt->append(it );

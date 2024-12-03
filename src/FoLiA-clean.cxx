@@ -85,7 +85,7 @@ void clean_text( FoliaElement *node,
   }
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
-    if ( p->element_id() == TextContent_t ) {
+    if ( p->isinstance<TextContent>() ) {
       if ( !textclass.empty() ){
 	if ( debug ){
 #pragma omp critical( debugging )
