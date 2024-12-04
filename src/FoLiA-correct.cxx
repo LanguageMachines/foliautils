@@ -1144,7 +1144,8 @@ void correctNgrams( FoliaElement *root,
 #else
   string inval;
   if ( ev.size() == 0 ){
-    vector<TextContent *> origV = root->select<TextContent>(false);
+    vector<TextContent *> origV
+      = root->select<TextContent>(SELECT_FLAGS::LOCAL);
     if ( origV.empty() ){
       // OK, no text directly
       // look deeper then
@@ -1271,15 +1272,6 @@ void correctNgrams( FoliaElement *root,
   }
 }
 
-template<typename T>
-vector<FoliaElement*> upcast( const vector<T*>& v ){
-  vector<FoliaElement*> result;
-  for( const auto& it : v ){
-    result.push_back(static_cast<FoliaElement*>(it));
-  }
-  return result;
-}
-
 bool correctDoc( Document *doc,
 		 const unordered_map<string,vector<word_conf> >& variants,
 		 const unordered_set<string>& unknowns,
@@ -1294,11 +1286,14 @@ bool correctDoc( Document *doc,
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
   vector<FoliaElement*> ev;
   if ( tag_list.empty() ){
-    vector<FoliaElement*> v1 = upcast(doc->doc()->select<Sentence>());
-    if ( v1.empty() ){
-      v1 = upcast(doc->doc()->select<Paragraph>() );
+    vector<Sentence *> vs = doc->doc()->select<Sentence>();
+    if ( vs.empty() ){
+      vector<Paragraph*> vp = doc->doc()->select<Paragraph>();
+      merge<Paragraph>( ev, vp );
     }
-    ev = v1;
+    else {
+      merge<Sentence>( ev, vs );
+    }
   }
   else {
     for ( const auto& et : tag_list ){
