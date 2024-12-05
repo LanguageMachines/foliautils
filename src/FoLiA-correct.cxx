@@ -1144,7 +1144,8 @@ void correctNgrams( FoliaElement *root,
 #else
   string inval;
   if ( ev.size() == 0 ){
-    vector<TextContent *> origV = root->select<TextContent>(false);
+    vector<TextContent *> origV
+      = root->select<TextContent>(SELECT_FLAGS::LOCAL);
     if ( origV.empty() ){
       // OK, no text directly
       // look deeper then
@@ -1285,11 +1286,14 @@ bool correctDoc( Document *doc,
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
   vector<FoliaElement*> ev;
   if ( tag_list.empty() ){
-    vector<FoliaElement*> v1 = doc->doc()->select( Sentence_t );
-    if ( v1.empty() ){
-      v1 = doc->doc()->select( Paragraph_t );
+    vector<Sentence *> vs = doc->doc()->select<Sentence>();
+    if ( vs.empty() ){
+      vector<Paragraph*> vp = doc->doc()->select<Paragraph>();
+      merge<Paragraph>( ev, vp );
     }
-    ev = v1;
+    else {
+      merge<Sentence>( ev, vs );
+    }
   }
   else {
     for ( const auto& et : tag_list ){
@@ -1694,9 +1698,9 @@ int main( int argc, const char *argv[] ){
 	  {
 	    if (!counts.empty() ){
 	      //	    cout << "edits for: " << docName << endl;
-	      for ( const auto& it : counts ){
-		//	      cout << it.first << ":" << it.second << endl;
-		total_counts[it.first] += it.second;
+	      for ( const auto& [word,count] : counts ){
+		//	      cout << word << ":" << count << endl;
+		total_counts[word] += count;
 	      }
 	    }
 	    if ( toDo > 1 ){
@@ -1732,8 +1736,8 @@ int main( int argc, const char *argv[] ){
   if ( !total_counts.empty() ){
     cout << "edit statistics: " << endl;
     cout << "\tedit\t count" << endl;
-    for ( const auto& it : total_counts ){
-      cout << "\t" << it.first << "\t" << it.second << endl;
+    for ( const auto& [word,count] : total_counts ){
+      cout << "\t" << word << "\t" << count << endl;
     }
   }
   return EXIT_SUCCESS;

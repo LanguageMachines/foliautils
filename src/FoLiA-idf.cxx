@@ -57,9 +57,9 @@ void create_idf_list( const map<UnicodeString, unsigned int>& wc,
     cerr << "failed to create outputfile '" << filename << "'" << endl;
     exit(EXIT_FAILURE);
   }
-  for ( const auto& cit : wc  ){
-    if ( cit.second > clip ){
-      os << cit.first << "\t" << cit.second << endl;
+  for ( const auto& [word,count] : wc  ){
+    if ( count > clip ){
+      os << word << "\t" << count << endl;
     }
   }
 #pragma omp critical

@@ -85,7 +85,7 @@ void clean_text( FoliaElement *node,
   }
   for ( size_t i=0; i < node->size(); ++i ){
     FoliaElement *p = node->index(i);
-    if ( p->element_id() == TextContent_t ) {
+    if ( p->isinstance<TextContent>() ) {
       if ( !textclass.empty() ){
 	if ( debug ){
 #pragma omp critical( debugging )
@@ -279,8 +279,7 @@ void clean_doc( Document *d,
 		const string& outname,
 		const string& textclass,
 		bool current,
-		unordered_map< AnnotationType,
-		unordered_set<string>>& anno_setname ){
+		unordered_map<AnnotationType,unordered_set<string>>& anno_setname ){
   FoliaElement *root = d->doc();
   if ( anno_setname.find(AnnotationType::TOKEN) != anno_setname.end() ){
     // first clean token annotation
@@ -288,14 +287,14 @@ void clean_doc( Document *d,
     anno_setname.erase(AnnotationType::TOKEN);
     d->un_declare( AnnotationType::TOKEN, "" );
   }
-  for( const auto& it : anno_setname ){
-    for ( const auto& set : it.second ){
-      clean_anno( root, it.first, set );
+  for( const auto& [anno,names] : anno_setname ){
+    for ( const auto& set : names ){
+      clean_anno( root, anno, set );
     }
   }
-  for( const auto& it : anno_setname ){
-    for ( const auto& set : it.second ){
-      d->un_declare( it.first, set );
+  for( const auto& [anno,names] : anno_setname ){
+    for ( const auto& set : names ){
+      d->un_declare( anno, set );
     }
   }
   if ( textclass != "current" ){

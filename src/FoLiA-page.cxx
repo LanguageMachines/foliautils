@@ -349,9 +349,9 @@ void handle_one_region( folia::FoliaElement *root,
   if ( type.empty() || type == "paragraph" ){
   }
   else if ( type == "page-number" ){
-    xmlNode* unicode = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
-    if ( unicode ){
-      string value = TiCC::XmlContent( unicode );
+    xmlNode* uni_node = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
+    if ( uni_node ){
+      string value = TiCC::TextValue( uni_node );
       folia::KWargs args;
       args["pagenr"] = value;
       par->add_child<folia::Linebreak>( args );
@@ -487,21 +487,21 @@ list<xmlNode*> sort_regions( const list<xmlNode*>& all_regions,
     }
     list<xmlNode*> result;
     set<string> handled;
-    for( const auto& it : dl ){
-      if ( handled.find( it.first ) != handled.end() ){
+    for( const auto& [word,node] : dl ){
+      if ( handled.find( word ) != handled.end() ){
 	continue;
       }
-      if ( in_order.find(it.first) != in_order.end() ){
+      if ( in_order.find(word) != in_order.end() ){
 	// id in reading order, handle those first
 	for ( auto const& i : id_order ){
 	  result.push_back( region_refs[i] );
 	  handled.insert( i );
 	}
-	in_order.erase(it.first);
+	in_order.erase(word);
       }
       else {
-	handled.insert( it.first );
-	result.push_back( it.second );
+	handled.insert( word );
+	result.push_back( node );
       }
     }
     return result;

@@ -54,7 +54,7 @@ string processor_id;
 string extractContent( xmlNode* pnt ) {
   string result;
   if ( pnt ){
-    result = TiCC::XmlContent(pnt);
+    result = TiCC::TextValue(pnt);
     if ( result == "" )
       return extractContent( pnt->children );
   }

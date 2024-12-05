@@ -111,7 +111,7 @@ bool merge_values( Document *doc,
   args["processor"] = proc->id();
   doc->declare( folia::AnnotationType::LEMMA, lem_setname, args );
   doc->declare( folia::AnnotationType::POS, pos_setname, args );
-  vector<FoliaElement*> wv = doc->doc()->select( Word_t );
+  vector<Word*> wv = doc->doc()->select<Word>();
   for( const auto& word : wv ){
     try {
       add_lemma_pos( word, lexicon );

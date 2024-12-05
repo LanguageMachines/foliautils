@@ -55,18 +55,6 @@ bool verbose = false;
 string setname = "polmash";
 string processor_id;
 
-KWargs getAllAttributes( const xmlNode *node ){
-  KWargs atts;
-  if ( node ){
-    xmlAttr *a = node->properties;
-    while ( a ){
-      atts[folia::to_string(a->name)] = folia::to_string(a->children->content);
-      a = a->next;
-    }
-  }
-  return atts;
-}
-
 void process_stage( Division *, xmlNode * );
 
 string extract_embedded( xmlNode *p ){
@@ -88,7 +76,7 @@ string extract_embedded( xmlNode *p ){
 	cerr << "examine: " << TiCC::Name(p) << endl;
       }
     }
-    string content = TiCC::XmlContent(p);
+    string content = TiCC::TextValue(p);
     if ( !content.empty() ){
       if ( verbose ){
 #pragma omp critical
@@ -121,16 +109,13 @@ void add_reference( TextContent *tc, const xmlNode *p ){
   xmlNode *t = p->children;
   while ( t ){
     if ( t->type == XML_TEXT_NODE ){
-      xmlChar *tmp = xmlNodeGetContent( t );
-      if ( tmp ){
-	text_part = folia::to_string( tmp );
-	xmlFree( tmp );
-      }
+      text_part = TiCC::TextValue(t);
     }
     else if ( TiCC::Name(t) == "tagged-entity" ){
-      ref = TiCC::getAttribute( t, "reference" );
-      sub_type = TiCC::getAttribute( t, "sub-type" );
-      status = TiCC::getAttribute( t, "status" );
+      auto att_vals = TiCC::getAttributes(t);
+      ref = att_vals["reference"];
+      sub_type = att_vals["sub-type"];
+      status = att_vals["status"];
     }
     else {
 #pragma omp critical
@@ -179,12 +164,8 @@ void add_note( Note *root, xmlNode *p ){
   p = p->children;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
-      xmlChar *tmp = xmlNodeGetContent( p );
-      if ( tmp ){
-	string val = folia::to_string( tmp );
-	tc->add_child<XmlText>( val );
-	xmlFree( tmp );
-      }
+      string val = TiCC::TextValue(p);
+      tc->add_child<XmlText>( val );
     }
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
@@ -225,11 +206,7 @@ void add_entity( FoliaElement* root, xmlNode *p ){
   xmlNode *t = p->children;
   while ( t ){
     if ( t->type == XML_TEXT_NODE ){
-      xmlChar *tmp = xmlNodeGetContent( t );
-      if ( tmp ){
-	text_part = folia::to_string( tmp );
-	xmlFree( tmp );
-      }
+      text_part = TiCC::TextValue(t);
     }
     else if ( TiCC::Name(t) == "tagged-entity" ){
       mem_ref = TiCC::getAttribute( t, "member-ref" );
@@ -327,12 +304,8 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
   p = p->children;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
-      xmlChar *tmp = xmlNodeGetContent( p );
-      if ( tmp ){
-	string part = folia::to_string( tmp );
-	tc->add_child<XmlText>( part );
-	xmlFree( tmp );
-      }
+      string part = TiCC::TextValue(p);
+      tc->add_child<XmlText>( part );
     }
     else if ( p->type == XML_ELEMENT_NODE ){
       string tag = TiCC::Name( p );
@@ -356,10 +329,10 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	xmlNode *pp = p->children;
 	while ( pp ){
 	  if ( number.empty() ){
-	    number = TiCC::XmlContent( pp );
+	    number = TiCC::TextValue( pp );
 	  }
 	  else {
-	    text = TiCC::XmlContent( pp );
+	    text = TiCC::TextValue( pp );
 	  }
 	  pp=pp->next;
 	}
@@ -393,12 +366,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  note = new Note( args, doc );
 	}
 	else {
-	  if ( !isNCName( ref ) ){
-	    ref = "v." + ref;
-	    if ( !isNCName( ref ) ){
-	      throw ( "the ref attribute in note cannot be converted to an ID" );
-	    }
-	  }
+	  ref = create_NCName( ref );
 	  KWargs args;
 	  args["xml:id"] = ref;
 	  note = new Note( args, doc );
@@ -502,11 +470,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	xmlNode *t = p->children;
 	while ( t ){
 	  if ( t->type == XML_TEXT_NODE ){
-	    xmlChar *tmp = xmlNodeGetContent( t );
-	    if ( tmp ){
-	      text_part = folia::to_string( tmp );
-	      xmlFree( tmp );
-	    }
+	    text_part = TiCC::TextValue(t);
 	  }
 	  else if ( TiCC::Name(t) == "tagged-entity" ){
 	    mem_ref = TiCC::getAttribute( t, "member-ref" );
@@ -565,45 +529,41 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 }
 
 void process_speech( Division *root, xmlNode *speech ){
-  KWargs atts = getAllAttributes( speech );
-  string id = atts["id"];
+  auto att_vals = TiCC::getAttributes( speech );
   if ( verbose ){
 #pragma omp critical
     {
       using TiCC::operator<<;
-      cerr << "process_speech: atts" << atts << endl;
+      cerr << "process_speech: atts" << att_vals << endl;
     }
   }
-  string type = atts["type"];
+  string id = att_vals["id"];
+  string type = att_vals["type"];
   KWargs d_args;
   d_args["xml:id"] = id;
   d_args["class"] = type;
   d_args["processor"] = processor_id;
   Division *div = root->add_child<Division>( d_args );
-  for ( const auto& att : atts ){
-    if ( att.first == "id"
-	 || att.first == "type" ){
+  for ( const auto& [att,cls] : att_vals ){
+    if ( att == "id"
+	 || att == "type" ){
       continue;
     }
-    else if ( att.first == "speaker"
-	      || att.first == "function"
-	      || att.first == "party"
-	      || att.first == "role"
-	      || att.first == "party-ref"
-	      || att.first == "member-ref" ){
-      string cls =  att.second;
-      if ( cls.empty() ){
-	cls = "unknown";
-      }
+    else if ( att == "speaker"
+	      || att == "function"
+	      || att == "party"
+	      || att == "role"
+	      || att == "party-ref"
+	      || att == "member-ref" ){
       KWargs args;
-      args["subset"] = att.first;
+      args["subset"] = att;
       args["class"] = cls;
       div->add_child<Feature>( args );
     }
     else {
 #pragma omp critical
       {
-	cerr << "unsupported attribute: " << att.first << " on speech: "
+	cerr << "unsupported attribute: " << att << " on speech: "
 	     << id << endl;
       }
     }
@@ -629,7 +589,7 @@ void process_speech( Division *root, xmlNode *speech ){
 #pragma omp critical
       {
 	cerr << "speech: " << id << ", unhandled: " << label << endl;
-	cerr << "speech-content " << TiCC::XmlContent(p) << endl;
+	cerr << "speech-content " << TiCC::TextValue(p) << endl;
       }
     }
     p = p->next;
@@ -731,7 +691,7 @@ void add_information( FoliaElement *root, const xmlNode *info ){
 	 || label == "introduction"
 	 || label == "part"
 	 || label == "outcome" ){
-      string cls = TiCC::XmlContent( p );
+      string cls = TiCC::TextValue( p );
       if ( cls.empty() ){
 	cls = "unknown";
       }
@@ -754,17 +714,17 @@ void add_information( FoliaElement *root, const xmlNode *info ){
 }
 
 void add_about( Division *root, xmlNode *p ){
-  KWargs atts = getAllAttributes( p );
+  auto att_vals = TiCC::getAttributes( p );
   if ( verbose ){
 #pragma omp critical
     {
       using TiCC::operator<<;
-      cerr << "add_vote, atts=" << atts << endl;
+      cerr << "add_vote, atts=" << att_vals << endl;
     }
   }
-  string title = atts["title"];
-  string voted_on = atts["voted_on"];
-  string ref =  atts["ref"];
+  string title = att_vals["title"];
+  string voted_on = att_vals["voted_on"];
+  string ref =  att_vals["ref"];
   KWargs d_args;
   d_args["class"] = "about";
   d_args["processor"] = processor_id;
@@ -804,16 +764,16 @@ void add_about( Division *root, xmlNode *p ){
 }
 
 void process_vote( Division *div, xmlNode *vote ){
-  KWargs atts = getAllAttributes( vote );
-  string vote_type = atts["vote-type"];
+  auto att_vals = TiCC::getAttributes( vote );
+  string vote_type = att_vals["vote-type"];
   if ( vote_type.empty() ){
     vote_type = "unknown";
   }
-  string outcome = atts["outcome"];
+  string outcome = att_vals["outcome"];
   if ( outcome.empty() ){
     outcome = "unknown";
   }
-  string id = atts["id"];
+  string id = att_vals["id"];
   if ( verbose ){
 #pragma omp critical
     {
@@ -834,7 +794,7 @@ void process_vote( Division *div, xmlNode *vote ){
       add_about( div, p );
     }
     else if ( label == "consequence" ){
-      string cls = TiCC::XmlContent( p );
+      string cls = TiCC::TextValue( p );
       if ( cls.empty() ){
 	cls = "unknown";
       }
@@ -860,44 +820,40 @@ void process_vote( Division *div, xmlNode *vote ){
 }
 
 void process_scene( Division *root, xmlNode *scene ){
-  KWargs atts = getAllAttributes( scene );
-  string id = atts["id"];
+  auto att_vals = TiCC::getAttributes( scene );
+  string id = att_vals["id"];
   if ( verbose ){
 #pragma omp critical
     {
       cerr << "process_scene: id=" << id << endl;
     }
   }
-  string type = atts["type"];
+  string type = att_vals["type"];
   KWargs scene_args;
   scene_args["xml:id"] = id;
   scene_args["class"] = type;
   scene_args["processor"] = processor_id;
   Division *div = root->add_child<Division>( scene_args );
-  for ( const auto& att : atts ){
-    if ( att.first == "id"
-	 || att.first == "type" ){
+  for ( const auto& [att,cls] : att_vals ){
+    if ( att == "id"
+	 || att == "type" ){
       continue;
     }
-    else if ( att.first == "speaker"
-	      || att.first == "function"
-	      || att.first == "party"
-	      || att.first == "role"
-	      || att.first == "party-ref"
-	      || att.first == "member-ref" ){
-      string cls = att.second;
-      if ( cls.empty() ){
-	cls = "unknown";
-      }
+    else if ( att == "speaker"
+	      || att == "function"
+	      || att == "party"
+	      || att == "role"
+	      || att == "party-ref"
+	      || att == "member-ref" ){
       KWargs args;
-      args["subset"] = att.first;
+      args["subset"] = att;
       args["class"] = cls;
       div->add_child<Feature>( args );
     }
     else {
 #pragma omp critical
       {
-	cerr << "unsupported attribute: " << att.first << " on scene:"
+	cerr << "unsupported attribute: " << att << " on scene:"
 	     << id << endl;
       }
     }
@@ -1281,7 +1237,7 @@ void add_heading( FoliaElement *root, xmlNode *block ){
     args["processor"] = processor_id;
     root->add_child<Division>( args );
   }
-  string txt = TiCC::XmlContent(block);
+  string txt = TiCC::TextValue(block);
   if ( !txt.empty() ){
     el->settext( txt );
   }
@@ -1470,8 +1426,8 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
-    opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "nosplit,help,version,prefix:,threads:" );
+    opts.add_short_options( "vVt:O:h" );
+    opts.add_long_options( "nosplit,help,version,prefix:,threads:" );
     opts.init( argc, argv );
   }
   catch( TiCC::OptionError& e ){

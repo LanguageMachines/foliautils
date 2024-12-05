@@ -47,6 +47,12 @@ using namespace	folia;
 string setname = "FoLiA-txt-set";
 string classname = "FoLiA-txt";
 
+bool keep_hyphens = false;
+string command;
+string outputDir;
+size_t to_do;
+size_t failed_docs = 0;
+
 void usage(){
   cerr << "Usage: [options] file/dir" << endl;
   cerr << "\t FoLiA-txt will produce FoLiA files from text files " << endl;
@@ -75,11 +81,158 @@ void add_paragraph( folia::FoliaElement *par,
     // we don't want a terminating <br/> at the end of a paragraph.
     // 2 newlines ar already implicit for a paragraph
     if ( &it == &par_stack.back()
-	 && it->isSubClass( Linebreak_t ) ){
+	 && it->isSubClass<Linebreak>() ){
       break;
     }
     txt->append(it );
   }
+}
+
+bool handle_one_file( const string& fileName ){
+  ifstream is( fileName );
+  if ( !is ){
+#pragma omp critical
+    {
+      cerr << "failed to read " << fileName << endl;
+    }
+    return false;
+  }
+#pragma omp critical
+  {
+    cout << "Starting " << fileName << endl;
+  }
+  string nameNoExt = fileName;
+  string::size_type pos = fileName.rfind( "." );
+  if ( pos != string::npos ){
+    nameNoExt = fileName.substr(0, pos );
+  }
+  string docid = nameNoExt;
+  pos = docid.rfind( "/" );
+  if ( pos != string::npos ){
+    docid = docid.substr( pos+1 );
+  }
+  if ( !outputDir.empty() ){
+    nameNoExt = docid;
+  }
+  Document *d = 0;
+  try {
+    docid = create_NCName( docid );
+    d = new Document( "xml:id='"+ docid + "'" );
+  }
+  catch ( exception& e ){
+#pragma omp critical
+    {
+      cerr << "failed to create a document with id:'" << docid << "'" << endl;
+      cerr << "reason: " << e.what() << endl;
+    }
+    return false;
+  }
+  processor *proc = add_provenance( *d, "FoLiA-txt", command );
+  string processor_id = proc->id();
+  KWargs p_args;
+  p_args["processor"] = processor_id;
+  d->declare( folia::AnnotationType::STRING, setname, p_args );
+  d->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
+  d->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
+  p_args.clear();
+  p_args["xml:id"] = docid + ".text";
+  folia::Text *text = d->create_root<folia::Text>( p_args );
+  int parCount = 0;
+  int wrdCnt = 0;
+  folia::FoliaElement *par = 0;
+  string parId;
+  vector<FoliaElement*> par_stack; // temp store for textfragments which will
+  // make up the paragraph text. may include formatting like <t-hbr/>
+  UnicodeString line;
+  while ( TiCC::getline( is, line ) ){
+    line.trim();
+    if ( line.length() == 1
+	 && line[line.length()-1] == ZWNJ ){
+      line = pop_back( line );
+    }
+    if ( line.isEmpty() ){
+      // end a paragraph
+      if ( par && !par_stack.empty() ){
+	// do we have some fragments?
+	add_paragraph( par, par_stack );
+	par_stack.clear();
+	par = 0;
+      }
+      continue;
+    }
+    vector<UnicodeString> words = TiCC::split( line );
+    for ( const auto& w : words ){
+      if ( par == 0 ){
+	// start a new Paragraph, only when at least 1 entry.
+	folia::KWargs par_args;
+	par_args["processor"] = processor_id;
+	parId = docid + ".p." +  TiCC::toString(++parCount);
+	par_args["xml:id"] = parId;
+	par = text->add_child<folia::Paragraph>( par_args );
+	wrdCnt = 0;
+      }
+      UnicodeString str_content = w; // the value to create a String node
+      str_content.trim();
+      if ( !is_norm_empty(str_content) ){
+	UnicodeString par_content = str_content; // the value we will use for
+	// the paragraph text
+	UnicodeString hyph; // hyphen symbol
+	if ( keep_hyphens ){
+	  // only soft hyphens are removed
+	  par_content = extract_soft_hyphen( par_content, hyph );
+	}
+	else {
+	  par_content = extract_final_hyphen( par_content, hyph );
+	}
+	// now we can add the <String>
+	folia::KWargs str_args;
+	str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
+	folia::FoliaElement *str = par->add_child<folia::String>( str_args );
+	str->setutext( str_content, classname );
+	if ( hyph.isEmpty() && &w != &words.back() ){
+	  par_content += " "; // no hyphen, so add a space separator except
+	  // for last word
+	}
+	XmlText *e = new folia::XmlText(); // create partial text
+	e->setuvalue( par_content );
+	par_stack.push_back( e ); // add the XmlText to te stack
+	if ( !hyph.isEmpty() ){
+	  // add an extra HyphBreak to the stack
+	  FoliaElement *hb = new folia::Hyphbreak();
+	  XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
+	  hb_txt->setuvalue( hyph );
+	  par_stack.push_back( hb );
+	}
+	else if ( &w == &words.back() ){
+	  folia::KWargs line_args;
+	  par_stack.push_back( new folia::Linebreak(line_args) );
+	}
+      }
+    }
+  }
+  if ( par && !par_stack.empty() ){
+    // leftovers
+    add_paragraph( par, par_stack );
+    par = 0;
+    par_stack.clear();
+  }
+  if ( parCount == 0 ){
+#pragma omp critical
+    {
+      cerr << "no useful data found in document:'" << docid << "'" << endl;
+      cerr << "skipped!" << endl;
+    }
+    return false;
+  }
+#pragma omp critical
+  {
+    string outname = outputDir + nameNoExt + ".folia.xml";
+    d->save( outname );
+    cout << "Processed: " << fileName << " into " << outname
+	 << " still " << --to_do << " files to go." << endl;
+  }
+  delete d;
+  return true;
 }
 
 int main( int argc, char *argv[] ){
@@ -93,7 +246,6 @@ int main( int argc, char *argv[] ){
     cerr << e.what() << endl;
     exit(EXIT_FAILURE);
   }
-  string outputDir;
   string value;
   if ( opts.extract( 'h' ) ||
        opts.extract( "help" ) ){
@@ -108,7 +260,7 @@ int main( int argc, char *argv[] ){
 #ifdef HAVE_OPENMP
   int numThreads = 1;
 #endif
-  string command = "FoLiA-txt " + opts.toString();
+  command = "FoLiA-txt " + opts.toString();
   if ( opts.extract( 't', value )
        || opts.extract( "threads", value ) ){
 #ifdef HAVE_OPENMP
@@ -133,13 +285,12 @@ int main( int argc, char *argv[] ){
   }
   opts.extract( "class", classname );
   opts.extract( "setname", setname );
-  bool keep_hyphens = false;
   string h_val;
   if ( opts.extract( "remove-end-hyphens", h_val ) ){
     keep_hyphens = !TiCC::stringTo<bool>( h_val );
   }
   vector<string> file_names = opts.getMassOpts();
-  size_t to_do = file_names.size();
+  to_do = file_names.size();
   if ( to_do == 0 ){
     cerr << "no matching files found" << endl;
     usage();
@@ -167,7 +318,6 @@ int main( int argc, char *argv[] ){
     }
     cout << "start processing of " << to_do << " files" << endl;
   }
-  size_t failed_docs = 0;
 #ifdef HAVE_OPENMP
   bool shown = false;
 #endif
@@ -183,162 +333,16 @@ int main( int argc, char *argv[] ){
     }
 #endif
     string fileName = file_names[fn];
-    ifstream is( fileName );
-    if ( !is ){
+    if ( !handle_one_file( fileName ) ){
 #pragma omp critical
       {
-	cerr << "failed to read " << fileName << endl;
-      }
-      continue;
-    }
-#pragma omp critical
-    {
-      cout << "Starting " << fileName << endl;
-    }
-    string nameNoExt = fileName;
-    string::size_type pos = fileName.rfind( "." );
-    if ( pos != string::npos ){
-      nameNoExt = fileName.substr(0, pos );
-    }
-    string docid = nameNoExt;
-    pos = docid.rfind( "/" );
-    if ( pos != string::npos ){
-      docid = docid.substr( pos+1 );
-    }
-    if ( !outputDir.empty() ){
-      nameNoExt = docid;
-    }
-    if ( !isNCName( docid ) ){
-      docid = "doc-" + docid;
-      if ( !isNCName( docid ) ){
-	throw ( "unable to generate a Document ID from the filename: '"
-		+ fileName + "'" );
-      }
-    }
-    Document *d = 0;
-    try {
-      d = new Document( "xml:id='"+ docid + "'" );
-    }
-    catch ( exception& e ){
-#pragma omp critical
-      {
-	cerr << "failed to create a document with id:'" << docid << "'" << endl;
-	cerr << "reason: " << e.what() << endl;
 	++failed_docs;
-	--to_do;
-      }
-      continue;
-    }
-    processor *proc = add_provenance( *d, "FoLiA-txt", command );
-    string processor_id = proc->id();
-    KWargs p_args;
-    p_args["processor"] = processor_id;
-    d->declare( folia::AnnotationType::STRING, setname, p_args );
-    d->declare( folia::AnnotationType::PARAGRAPH, setname, p_args );
-    d->declare( folia::AnnotationType::LINEBREAK, setname, p_args );
-    p_args.clear();
-    p_args["xml:id"] = docid + ".text";
-    folia::Text *text = d->create_root<folia::Text>( p_args );
-    int parCount = 0;
-    int wrdCnt = 0;
-    folia::FoliaElement *par = 0;
-    string parId;
-    vector<FoliaElement*> par_stack; // temp store for textfragments which will
-    // make up the paragraph text. may include formatting like <t-hbr/>
-    UnicodeString line;
-    while ( TiCC::getline( is, line ) ){
-      line.trim();
-      if ( line.length() == 1
-	   && line[line.length()-1] == ZWNJ ){
-	line = pop_back( line );
-      }
-      if ( line.isEmpty() ){
-	// end a paragraph
-	if ( par && !par_stack.empty() ){
-	  // do we have some fragments?
-	  add_paragraph( par, par_stack );
-	  par_stack.clear();
-	  par = 0;
-	}
-	continue;
-      }
-      vector<UnicodeString> words = TiCC::split( line );
-      for ( const auto& w : words ){
-	if ( par == 0 ){
-	  // start a new Paragraph, only when at least 1 entry.
-	  folia::KWargs par_args;
-	  par_args["processor"] = processor_id;
-	  parId = docid + ".p." +  TiCC::toString(++parCount);
-	  par_args["xml:id"] = parId;
-	  par = text->add_child<folia::Paragraph>( par_args );
-	  wrdCnt = 0;
-	}
-	UnicodeString str_content = w; // the value to create a String node
-	str_content.trim();
-	if ( !is_norm_empty(str_content) ){
-	  UnicodeString par_content = str_content; // the value we will use for
-	  // the paragraph text
-	  UnicodeString hyph; // hyphen symbol
-	  if ( keep_hyphens ){
-	    // only soft hyphens are removed
-	    par_content = extract_soft_hyphen( par_content, hyph );
-	  }
-	  else {
-	    par_content = extract_final_hyphen( par_content, hyph );
-	  }
-	  // now we can add the <String>
-	  folia::KWargs str_args;
-	  str_args["xml:id"] = parId + ".str." +  TiCC::toString(++wrdCnt);
-	  folia::FoliaElement *str = par->add_child<folia::String>( str_args );
-	  str->setutext( str_content, classname );
-	  if ( hyph.isEmpty() && &w != &words.back() ){
-	    par_content += " "; // no hyphen, so add a space separator except
-	    // for last word
-	  }
-	  XmlText *e = new folia::XmlText(); // create partial text
-	  e->setuvalue( par_content );
-	  par_stack.push_back( e ); // add the XmlText to te stack
-	  if ( !hyph.isEmpty() ){
-	    // add an extra HyphBreak to the stack
-	    FoliaElement *hb = new folia::Hyphbreak();
-	    XmlText *hb_txt = hb->add_child<folia::XmlText>(); // create partial text
-	    hb_txt->setuvalue( hyph );
-	    par_stack.push_back( hb );
-	  }
-	  else if ( &w == &words.back() ){
-	    folia::KWargs line_args;
-	    par_stack.push_back( new folia::Linebreak(line_args) );
-	  }
-	}
       }
     }
-    if ( par && !par_stack.empty() ){
-      // leftovers
-      add_paragraph( par, par_stack );
-      par = 0;
-      par_stack.clear();
-    }
-    if ( parCount == 0 ){
-#pragma omp critical
-      {
-	cerr << "no useful data found in document:'" << docid << "'" << endl;
-	cerr << "skipped!" << endl;
-	++failed_docs;
-	--to_do;
-      }
-      continue;
-    }
-#pragma omp critical
-    {
-      string outname = outputDir + nameNoExt + ".folia.xml";
-      d->save( outname );
-      cout << "Processed: " << fileName << " into " << outname
-	   << " still " << --to_do << " files to go." << endl;
-    }
-    delete d;
   }
-  if ( failed_docs > 0 && failed_docs == to_do ){
-    cerr << "No documents could be handled successfully!" << endl;
+  if ( failed_docs > 0 ){
+    cerr << std::to_string( failed_docs ) << " documents out of "
+	 << std::to_string(file_names.size()) << " failed" << endl;
     return EXIT_SUCCESS;
   }
   else {

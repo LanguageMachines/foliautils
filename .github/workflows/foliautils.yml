@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - master
-      - actions
+      - develop
 
     paths:
       - configure.ac
@@ -48,10 +48,12 @@ jobs:
 
       - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
         with:
+          branch: ${{ github.ref_name }}
           module: ticcutils
 
       - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
         with:
+          branch: ${{ github.ref_name }}
           module: libfolia
 
       - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
@@ -60,6 +62,7 @@ jobs:
 
       - uses: LanguageMachines/ticcactions/cpp-submodule-build@v1
         with:
+          branch: ${{ github.ref_name }}
           module: ucto
 
       - name: Static Code-check
@@ -76,3 +79,4 @@ jobs:
           step: build
           status: ${{ env.action_status }}
           details: ${{ env.action_details }}
+        continue-on-error: true

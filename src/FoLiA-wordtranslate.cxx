@@ -94,11 +94,11 @@ namespace std
 }
 
 
-typedef unordered_map<UnicodeString,UnicodeString> t_dictionary;
-typedef unordered_set<UnicodeString> t_lexicon;
-typedef vector<pair<UnicodeString,UnicodeString>> t_rules;
-typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_histdictionary; //dictionary from historical lexicon,    form => lemma => freq
-typedef unordered_map<UnicodeString,unordered_map<UnicodeString,int>> t_lemmamap; //lemma => src:lemma_id => freq
+using t_dictionary = unordered_map<UnicodeString,UnicodeString>;
+using t_lexicon = unordered_set<UnicodeString>;
+using t_rules = vector<pair<UnicodeString,UnicodeString>>;
+using t_histdictionary = unordered_map<UnicodeString,unordered_map<UnicodeString,int>>; //dictionary from historical lexicon,    form => lemma => freq
+using t_lemmamap = unordered_map<UnicodeString,unordered_map<UnicodeString,int>>; //lemma => src:lemma_id => freq
 
 UnicodeString applyRules( const UnicodeString& orig_source, const t_rules& rules) {
   UnicodeString source = orig_source;

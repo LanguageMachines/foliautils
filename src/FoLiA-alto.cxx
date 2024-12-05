@@ -851,7 +851,7 @@ void solveArtAlto( const string& alto_cache,
 		  if ( meta.size() == 1 ){
 		    list<xmlNode*> subs = TiCC::FindNodes( meta.front(), "didl:Resource//srw_dc:dcx/dc:subject" );
 		    if ( subs.size() == 1 ){
-		      subject = TiCC::XmlContent(subs.front());
+		      subject = TiCC::TextValue(subs.front());
 		    }
 		    else {
 #pragma omp critical
@@ -1325,8 +1325,8 @@ void usage(){
 int main( int argc, char *argv[] ){
   TiCC::CL_Options opts;
   try {
-    opts.set_short_options( "vVt:O:h" );
-    opts.set_long_options( "cache:,clear,class:,direct,setname:,compress:,"
+    opts.add_short_options( "vVt:O:h" );
+    opts.add_long_options( "cache:,clear,class:,direct,setname:,compress:,"
 			   "type:,help,prefix:,version,threads:,oldstrings" );
     opts.init( argc, argv );
   }
