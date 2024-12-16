@@ -1,9 +1,9 @@
-foliautils 0.22  16-12-2024
+foliautils 0.23  16-12-2024
 [Ko van der Sloot]
 * adapted to most recent libfolia (2,21) and ticcutils
 * updated to C++17
 * numereous code refactorings
-* updated GitHib CI
+* updated GitHub CI
 
 foliautils 0.22  27-05-2024
 [Ko van der Sloot]
