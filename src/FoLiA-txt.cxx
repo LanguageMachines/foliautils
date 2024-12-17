@@ -213,7 +213,6 @@ bool handle_one_file( const string& fileName ){
   if ( par && !par_stack.empty() ){
     // leftovers
     add_paragraph( par, par_stack );
-    par = 0;
     par_stack.clear();
   }
   if ( parCount == 0 ){
