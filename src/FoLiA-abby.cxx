@@ -470,8 +470,7 @@ void add_hspace( folia::FoliaElement *content,
   args["class"] = "space";
   folia::FoliaElement *hs = content->add_child<folia::TextMarkupHSpace>( args );
   if ( !value.isEmpty() ){
-    folia::XmlText *te = hs->add_child<folia::XmlText>();
-    te->setuvalue(value );
+    hs->add_child<folia::XmlText>(value);
   }
 }
 
@@ -510,7 +509,7 @@ void add_value( folia::FoliaElement *content,
       // represent ALL leading spaces as 1 TextMarkupHSpace
       add_hspace( content, start_spaces );
     }
-    content->add_child<folia::XmlText>( TiCC::UnicodeToUTF8(out) );
+    content->add_child<folia::XmlText>( out );
     if ( end_space ){
       // represent ALL trailing spaces as 1 TextMarkupHSpace
       add_hspace( content, end_spaces );
@@ -591,7 +590,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
       folia::TextMarkupStyle *content = 0;
       if ( !container ){
 	// start with a fresh <t-style>.
-	string val;
+	UnicodeString val;
 	if ( !add_breaks && !previous_hyphen ) {
 	  // start on a new line too
 	  val = "\n";
@@ -629,8 +628,7 @@ bool process_paragraph( folia::Paragraph *paragraph,
 	  if ( it._hyph == SOFT_HYPHEN
 	       || ( it._hyph == "-"
 		    && &it == &line_parts.back() ) ){
-	    folia::XmlText *e = hb->add_child<folia::XmlText>();
-	    e->setuvalue( it._hyph );
+	    hb->add_child<folia::XmlText>( it._hyph );
 	    previous_hyphen = true;
 	  }
 	  //	cerr << "content now: " << content << endl;

@@ -195,7 +195,7 @@ bool handle_one_file( const string& fileName ){
 	}
 	XmlText *e = new folia::XmlText(); // create partial text
 	e->setuvalue( par_content );
-	par_stack.push_back( e ); // add the XmlText to te stack
+	par_stack.push_back( e ); // add the XmlText to the stack
 	if ( !hyph.isEmpty() ){
 	  // add an extra HyphBreak to the stack
 	  FoliaElement *hb = new folia::Hyphbreak();
