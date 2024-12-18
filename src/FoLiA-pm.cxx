@@ -57,8 +57,8 @@ string processor_id;
 
 void process_stage( Division *, xmlNode * );
 
-UnicodeString extract_embedded( xmlNode *p ){
-  UnicodeString result;
+string extract_embedded( xmlNode *p ){
+  string result;
   if ( p == 0 ){
     return result;
   }
@@ -76,8 +76,8 @@ UnicodeString extract_embedded( xmlNode *p ){
 	cerr << "examine: " << TiCC::Name(p) << endl;
       }
     }
-    UnicodeString content = TiCC::UnicodeFromUTF8(TiCC::TextValue(p));
-    if ( !content.isEmpty() ){
+    string content = TiCC::TextValue(p);
+    if ( !content.empty() ){
       if ( verbose ){
 #pragma omp critical
 	{
@@ -87,7 +87,7 @@ UnicodeString extract_embedded( xmlNode *p ){
       result += content;
     }
     else {
-      UnicodeString part = extract_embedded( p->children );
+      string part = extract_embedded( p->children );
       result += part;
     }
     p = p->next;
@@ -164,7 +164,7 @@ void add_note( Note *root, xmlNode *p ){
   p = p->children;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
-      UnicodeString val = TiCC::UnicodeFromUTF8( TiCC::TextValue(p) );
+      string val = TiCC::TextValue(p);
       tc->add_child<XmlText>( val );
     }
     else if ( p->type == XML_ELEMENT_NODE ){
@@ -257,9 +257,9 @@ void add_entity( FoliaElement* root, xmlNode *p ){
 }
 
 void add_stage_direction( TextContent *tc, xmlNode *p ){
-  UnicodeString embedded = extract_embedded( p );
+  string embedded = extract_embedded( p );
   string id = TiCC::getAttribute( p, "id" );
-  if ( embedded.isEmpty() ){
+  if ( embedded.empty() ){
 #pragma omp critical
     {
       cerr << "stage-direction: " << id << " without text?"
@@ -304,7 +304,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
   p = p->children;
   while ( p ){
     if ( p->type == XML_TEXT_NODE ){
-      UnicodeString part = TiCC::UnicodeFromUTF8(TiCC::TextValue(p));
+      string part = TiCC::TextValue(p);
       tc->add_child<XmlText>( part );
     }
     else if ( p->type == XML_ELEMENT_NODE ){
