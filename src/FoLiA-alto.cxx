@@ -111,7 +111,7 @@ void docCache::add( const string& dir, const string& f ){
 }
 
 void docCache::fill( const string& alto_cache, const list<xmlNode*>& blocks ){
-  for ( const auto& it : blocks ){
+  for ( const auto *it : blocks ){
     string alt = TiCC::getAttribute( it, "alto" );
     if ( !alt.empty() ){
       add( alto_cache, alt );
@@ -267,14 +267,14 @@ void addStr( folia::Paragraph *par, UnicodeString& txt,
 }
 
 void createFile( folia::FoliaElement *text,
-		 xmlDoc *alt_doc,
+		 const xmlDoc *alt_doc,
 		 const string& altoFile,
 		 const list<xmlNode*>& textblocks,
 		 bool do_strings ){
-  xmlNode *root = xmlDocGetRootElement( alt_doc );
-  xmlNode *keepPart1 = 0;
+  const xmlNode *root = xmlDocGetRootElement( alt_doc );
+  const xmlNode *keepPart1 = 0;
   set<string> ids;
-  for ( const auto& block : textblocks ){
+  for ( const auto *block : textblocks ){
     string id = TiCC::getAttribute( block, "ID" );
     if ( ids.find(id) != ids.end() ){
       if ( verbose ){
@@ -415,7 +415,7 @@ void processBlocks( folia::FoliaElement *text,
 		    bool do_strings ){
   for ( const auto& it : blocks ){
     string alt = TiCC::getAttribute( it, "alto" );
-    xmlDoc *alt_doc = cache.find( alt );
+    const xmlDoc *alt_doc = cache.find( alt );
     if ( alt_doc ){
       list<xmlNode*> texts = TiCC::FindNodes( it, "dcx:TextBlock" );
       createFile( text, alt_doc, alt, texts, do_strings );
@@ -464,7 +464,7 @@ void processArticle( const string& f,
   }
   outName += docid + ".folia.xml";
   folia::Document doc( "xml:id='" + docid + "'" );
-  folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+  const folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   processor_id = proc->id();
   folia::KWargs args;
   args["processor"] = processor_id;
@@ -572,7 +572,7 @@ bool download( const string& alto_cache,
     }
   }
   unordered_map<string,string> ref_file_map;
-  for ( const auto& res : resources ){
+  for ( const auto *res : resources ){
     string ref = TiCC::getAttribute( res, "ref" );
     if ( ref.find( ":alto" ) != string::npos ){
       string id;
@@ -832,7 +832,7 @@ void solveArtAlto( const string& alto_cache,
 	      }
 	      else {
 		unordered_set<string> article_names;
-		for ( const auto& it : items ){
+		for ( const auto *it : items ){
 		  string art_id = TiCC::getAttribute( it, "article_id" );
 		  if ( art_id.empty() ){
 #pragma omp critical
@@ -964,7 +964,7 @@ void solveBook( const string& altoFile,
     docid = prefix + docid;
     string outName = outDir + docid + ".folia.xml";
     folia::Document doc( "xml:id='" + docid + "'" );
-    folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+    const folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
     processor_id = proc->id();
     folia::KWargs proc_args;
     proc_args["processor"] = processor_id;
@@ -987,9 +987,9 @@ void solveBook( const string& altoFile,
       xmlFreeDoc( xmldoc );
       return;
     }
-    xmlNode *keepPart1 = 0;
+    const xmlNode *keepPart1 = 0;
     set<string> ids;
-    for ( auto const& block : textblocks ){
+    for ( auto const *block : textblocks ){
       string id = TiCC::getAttribute( block, "ID" );
       if ( ids.find(id) != ids.end() ){
 	if ( verbose ){
@@ -1184,7 +1184,7 @@ void solveBookAlto( const string& alto_cache,
 	    else {
 	      cout << "Downloaded files " << endl;
 	      list<xmlNode*> meta = TiCC::FindNodes( didl, "//didl:Item/didl:Component" );
-	      for ( const auto& m : meta ){
+	      for ( const auto *m : meta ){
 		string id = TiCC::getAttribute( m, "identifier");
 		if ( !id.empty() ){
 		  const auto it = downloaded_files.find( id );
@@ -1256,7 +1256,7 @@ void solveDirectAlto( const string& full_file,
   string outName = outDir + docid + ".folia.xml";
   list<xmlNode*> texts = TiCC::FindNodes( xmldoc, "//*:TextBlock" );
   folia::Document doc( "xml:id='" + docid + "'" );
-  folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
+  const folia::processor *proc = add_provenance( doc, "FoLiA-alto", command );
   processor_id = proc->id();
   folia::KWargs args;
   args["processor"] = processor_id;
@@ -1322,7 +1322,7 @@ void usage(){
   cerr << "\t-V or --version\t show version " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.add_short_options( "vVt:O:h" );

@@ -219,7 +219,7 @@ void convert_hocr( const string& fileName,
   docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "filename", title );
-  folia::processor *proc = add_provenance( doc, "FoLiA-hocr", command );
+  const folia::processor *proc = add_provenance( doc, "FoLiA-hocr", command );
   processor_id = proc->id();
   folia::KWargs args;
   args["processor"] = processor_id;
@@ -280,7 +280,7 @@ void usage(){
   cerr << "\t-V or --version\t show version " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,threads:" );
   try {

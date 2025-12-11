@@ -106,7 +106,7 @@ bool merge_values( Document *doc,
 		   const map<UnicodeString,pair<UnicodeString,UnicodeString>>& lexicon,
 		   const string& outName,
 		   const string& command ){
-  processor *proc = add_provenance( *doc, "FoLiA-merge", command );
+  const processor *proc = add_provenance( *doc, "FoLiA-merge", command );
   KWargs args;
   args["processor"] = proc->id();
   doc->declare( folia::AnnotationType::LEMMA, lem_setname, args );

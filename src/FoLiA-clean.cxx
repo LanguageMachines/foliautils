@@ -64,7 +64,7 @@ namespace std
 
 int debug = 0;
 
-void clean_text( FoliaElement *node,
+void clean_text( const FoliaElement *node,
 		 const string& textclass,
 		 bool current ){
   if ( node->xmltag() == "w" ){
@@ -131,7 +131,7 @@ void clean_text( FoliaElement *node,
   }
 }
 
-void clean_anno( FoliaElement *node,
+void clean_anno( const FoliaElement *node,
 		 const AnnotationType anno_type,
 		 const string& setname ){
   for ( size_t i=0; i < node->size(); ++i ){
@@ -323,7 +323,7 @@ void usage( const string& name ){
   cerr << "\t-O\t\t name of the output dir." << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:O:", "textclass:,current,cleanannoset:,help,version,fixtext,debug,threads:" );
   try {
     opts.init(argc,argv);

@@ -226,7 +226,7 @@ void usage( const string& name ){
   cerr << "\t-V or --version \t show version " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "hVt:i:", "help,version" );
   try {
     opts.init(argc,argv);

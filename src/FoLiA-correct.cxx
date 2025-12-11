@@ -177,7 +177,7 @@ bool gram_r::has_space( ){
     return true;
   }
   else {
-    FoliaElement *w = _words.back();
+    const FoliaElement *w = _words.back();
     if ( w->space() ){
       if ( verbose > 2 ){
       }
@@ -1077,7 +1077,7 @@ void correctNgrams( FoliaElement *root,
 		    const unordered_set<string>& unknowns,
 		    const unordered_map<string,string>& puncts,
 		    unordered_map<string,size_t>& counts,
-		    processor *proc ){
+		    const processor *proc ){
   KWargs correction_args;
   string original_set;
   correction_args["processor"] = proc->id();
@@ -1280,7 +1280,7 @@ bool correctDoc( Document *doc,
 		 unordered_map<string,size_t>& counts,
 		 const string& command,
 		 const string& outName ){
-  processor *proc = add_provenance( *doc, "FoLiA-correct", command );
+  const processor *proc = add_provenance( *doc, "FoLiA-correct", command );
   KWargs args;
   args["processor"] = proc->id();
   doc->declare( folia::AnnotationType::CORRECTION, setname, args );
@@ -1322,7 +1322,7 @@ bool correctDoc( Document *doc,
   return true;
 }
 
-void rebase_text( Document *doc,
+void rebase_text( const Document *doc,
 		  const string& inputclass,
 		  const string& rebase_input ){
 

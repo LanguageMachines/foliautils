@@ -127,7 +127,7 @@ void appendStr( folia::FoliaElement *root,
 
 string getOrg( xmlNode *root ){
   string result;
-  xmlNode* page = TiCC::xPath( root, "*:Page" );
+  const xmlNode* page = TiCC::xPath( root, "*:Page" );
   if ( page ){
     string ref = TiCC::getAttribute( page, "imageFilename" );
     if ( !ref.empty() ) {
@@ -137,7 +137,7 @@ string getOrg( xmlNode *root ){
   }
   xmlNode* comment = TiCC::xPath( root, "*:Metadata/*:Comment" );
   if ( comment ){
-    xmlNode *node = comment->children;
+    const xmlNode *node = comment->children;
     if ( node->type == XML_CDATA_SECTION_NODE ){
       string cdata = folia::TextValue(node);
       string::size_type p_pos = cdata.find("Original.Path");
@@ -297,7 +297,7 @@ UnicodeString handle_one_line( folia::FoliaElement *par,
 	}
 	return "";
       }
-      auto& it = unicodes.front();
+      const auto *it = unicodes.front();
       result = UnicodeValue( it );
       result = extract_final_hyphen( result, final_hyph );
       string word_id = TiCC::getAttribute( w, "id" );
@@ -349,7 +349,7 @@ void handle_one_region( folia::FoliaElement *root,
   if ( type.empty() || type == "paragraph" ){
   }
   else if ( type == "page-number" ){
-    xmlNode* uni_node = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
+    const xmlNode* uni_node = TiCC::xPath( region, "*:TextEquiv/*:Unicode" );
     if ( uni_node ){
       string value = TiCC::TextValue( uni_node );
       folia::KWargs args;
@@ -477,7 +477,7 @@ list<xmlNode*> sort_regions( const list<xmlNode*>& all_regions,
 					    ".//*:RegionRefIndexed" );
     vector<string> id_order( order.size() );
     set<string> in_order;
-    for ( const auto& ord : order ){
+    for ( const auto *ord : order ){
       string ref = TiCC::getAttribute( ord, "regionRef" );
       string index = TiCC::getAttribute( ord, "index" );
       int id = TiCC::stringTo<int>( index );
@@ -568,7 +568,8 @@ bool convert_pagexml( const string& fileName,
   docid = prefix + docid;
   folia::Document doc( "xml:id='" + docid + "'" );
   doc.set_metadata( "page_file", stripDir( fileName ) );
-  folia::processor *proc = add_provenance( doc, processor_label, command );
+  const folia::processor *proc
+    = add_provenance( doc, processor_label, command );
   processor_id = proc->id();
   folia::KWargs args;
   args["xml:id"] =  docid + ".text";
@@ -636,7 +637,7 @@ void usage(){
   cerr << "\t-V or --version\t show version " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "CSvVt:O:h",
 			 "compress:,class:,setname:,help,version,prefix:,"
 			 "norefs,threads:,trusttokens,sent,nostrings,nomarkup" );

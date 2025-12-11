@@ -253,7 +253,7 @@ void usage(){
   cerr << "\t-v\t verbosity " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "vVhO:t:R", "hapax,ngram:,help,version,threads:" );
   try {
     opts.init( argc, argv );

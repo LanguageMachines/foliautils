@@ -221,7 +221,7 @@ void usage(){
   exit(EXIT_SUCCESS);
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:Rhe:",
 			 "class:,clip:,lower,help,strings,version,threads:" );
   try {

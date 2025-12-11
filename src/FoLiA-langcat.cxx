@@ -93,7 +93,8 @@ void addLang( const TextContent *t,
   }
 }
 
-vector<FoliaElement*> gather_nodes( Document *doc, const string& docName,
+vector<FoliaElement*> gather_nodes( const Document *doc,
+				    const string& docName,
 				    const set<string>& tags ){
   vector<FoliaElement*> result;
   for ( const auto& tag : tags ){
@@ -144,7 +145,7 @@ void procesFile( const TextCat& tc,
     return;
   }
   doc->set_metadata( "language", default_lang );
-  processor *proc = add_provenance( *doc, "FoLiA-langcat", command );
+  const processor *proc = add_provenance( *doc, "FoLiA-langcat", command );
   if ( !doc->declared(  AnnotationType::LANG, ISO_SET ) ){
     KWargs args;
     args["processor"] = proc->id();
@@ -234,7 +235,7 @@ void usage(){
   cerr << "\t-h or --help\t this messages." << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "svVhO:t:", "all,lang:,class:,config:,help,version,tags:,threads:" );
   try {
     opts.init( argc, argv );

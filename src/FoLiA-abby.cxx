@@ -244,7 +244,7 @@ UnicodeString get_line( xmlNode *line ){
 }
 
 void update_formatting_info( formatting_info& line_font,
-			     xmlNode *node,
+			     const xmlNode *node,
 			     const map<string,formatting_info>& font_styles ){
   auto att_vals =  TiCC::getAttributes( node );
   string style = att_vals["style"];
@@ -707,7 +707,7 @@ map<string,formatting_info> extract_formatting_info( xmlNode *root ){
     main_font_styles[pid] = mf_id;
     list<xmlNode*> font_styles =
       TiCC::FindNodes( ps, ".//*:fontStyle" );
-    for ( const auto& fst : font_styles ){
+    for ( const auto *fst : font_styles ){
       auto att_vals = TiCC::getAttributes( fst );
       string lang_val = att_vals["lang"];
       string id_val = att_vals["id"];
@@ -786,7 +786,7 @@ bool convert_abbyxml( const string& fileName,
   args["xml:id"] = docid + ".text";
   folia::Text *text = doc.setTextRoot( args );
   args.extract("xml:id");
-  folia::processor *proc = add_provenance( doc, processor_name, command );
+  const folia::processor *proc = add_provenance( doc, processor_name, command );
   processor_id = proc->id();
   args["processor"] = processor_id;
   doc.declare( folia::AnnotationType::PARAGRAPH, setname, args );
@@ -860,7 +860,7 @@ void usage(){
   cerr << "\t-V or --version\t show version " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "vVt:O:hC:S:",
 			 "compress:,class:,setname:,help,version,prefix:,"
 			 "addbreaks,addmetrics,keephyphens,threads:" );

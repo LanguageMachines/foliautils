@@ -69,7 +69,7 @@ UnicodeString handle_token_tag( const folia::FoliaElement *d,
   return tmp_result;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:c:",
 			 "class:,help,version,retaintok,threads:,"
 			 "restore-formatting,"
