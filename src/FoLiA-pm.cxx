@@ -106,7 +106,7 @@ void add_reference( TextContent *tc, const xmlNode *p ){
   string ref;
   string sub_type;
   string status;
-  xmlNode *t = p->children;
+  const xmlNode *t = p->children;
   while ( t ){
     if ( t->type == XML_TEXT_NODE ){
       text_part = TiCC::TextValue(t);
@@ -146,7 +146,7 @@ void add_reference( TextContent *tc, const xmlNode *p ){
   }
 }
 
-void add_note( Note *root, xmlNode *p ){
+void add_note( Note *root, const xmlNode *p ){
   //  cerr << "add note: " << TiCC::getAttributes( p ) << endl;
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
@@ -192,7 +192,7 @@ void add_note( Note *root, xmlNode *p ){
   }
 }
 
-void add_entity( FoliaElement* root, xmlNode *p ){
+void add_entity( FoliaElement* root, const xmlNode *p ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -203,7 +203,7 @@ void add_entity( FoliaElement* root, xmlNode *p ){
   string mem_ref;
   string part_ref;
   string id = TiCC::getAttribute( p, "id" );
-  xmlNode *t = p->children;
+  const xmlNode *t = p->children;
   while ( t ){
     if ( t->type == XML_TEXT_NODE ){
       text_part = TiCC::TextValue(t);
@@ -275,7 +275,7 @@ void add_stage_direction( TextContent *tc, xmlNode *p ){
   }
 }
 
-void add_notes( FoliaElement *par, const list<Note*>& notes ){
+void add_notes( const FoliaElement *par, const list<Note*>& notes ){
   KWargs args;
   args["xml:id"] = par->id() + ".d.1";
   args["class"] = "notes";
@@ -326,7 +326,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	string ref = TiCC::getAttribute( p, "ref" );
 	string number;
 	string text;
-	xmlNode *pp = p->children;
+	const xmlNode *pp = p->children;
 	while ( pp ){
 	  if ( number.empty() ){
 	    number = TiCC::TextValue( pp );
@@ -372,7 +372,7 @@ Paragraph *add_par( Division *root, xmlNode *p, list<Note*>& notes ){
 	  note = new Note( args, doc );
 	}
 	notes.push_back( note );
-	xmlNode *pnt = p->children;
+	const xmlNode *pnt = p->children;
 	while ( pnt ){
 	  tag = TiCC::Name(pnt);
 	  if ( tag == "p" ){
@@ -411,7 +411,7 @@ void process_chair( Division *root, const xmlNode *chair ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
       list<Note*> notes;
-      Paragraph *par = add_par( root, p, notes );
+      const Paragraph *par = add_par( root, p, notes );
       if ( !notes.empty() ){
 	add_notes( par, notes );
       }
@@ -443,7 +443,7 @@ void process_chair( Division *root, const xmlNode *chair ){
   }
 }
 
-void add_entity( EntitiesLayer *root, xmlNode *p ){
+void add_entity( EntitiesLayer *root, const xmlNode *p ){
   string id = TiCC::getAttribute( p, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -467,7 +467,7 @@ void add_entity( EntitiesLayer *root, xmlNode *p ){
 	string text_part;
 	string mem_ref;
 	string part_ref;
-	xmlNode *t = p->children;
+	const xmlNode *t = p->children;
 	while ( t ){
 	  if ( t->type == XML_TEXT_NODE ){
 	    text_part = TiCC::TextValue(t);
@@ -574,7 +574,7 @@ void process_speech( Division *root, xmlNode *speech ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
       list<Note*> notes;
-      Paragraph *par = add_par( div, p, notes );
+      const Paragraph *par = add_par( div, p, notes );
       if ( !notes.empty() ){
 	add_notes( par, notes );
       }
@@ -602,7 +602,7 @@ void add_actor( FoliaElement *root, const xmlNode *act ){
   d_args["class"] = "actor";
   d_args["processor"] = processor_id;
   Division *div = root->add_child<Division>( d_args );
-  xmlNode *p = act->children;
+  const xmlNode *p = act->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "person" ){
@@ -661,7 +661,7 @@ void add_submit( FoliaElement *root, const xmlNode *sm ){
   args["class"] = "submitted-by";
   args["processor"] = processor_id;
   Division *div = root->add_child<Division>( args );
-  xmlNode *p = sm->children;
+  const xmlNode *p = sm->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "actor" ){
@@ -682,7 +682,7 @@ void add_information( FoliaElement *root, const xmlNode *info ){
   d_args["class"] = "information";
   d_args["processor"] = processor_id;
   Division *div = root->add_child<Division>( d_args );
-  xmlNode *p = info->children;
+  const xmlNode *p = info->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "dossiernummer"
@@ -713,7 +713,7 @@ void add_information( FoliaElement *root, const xmlNode *info ){
   }
 }
 
-void add_about( Division *root, xmlNode *p ){
+void add_about( Division *root, const xmlNode *p ){
   auto att_vals = TiCC::getAttributes( p );
   if ( verbose ){
 #pragma omp critical
@@ -787,7 +787,7 @@ void process_vote( Division *div, xmlNode *vote ){
   vt_args["class"] = outcome;
   vt_args["subset"] = "outcome";
   div->add_child<Feature>( vt_args );
-  xmlNode *p = vote->children;
+  const xmlNode *p = vote->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "about" ){
@@ -878,7 +878,7 @@ void process_scene( Division *root, xmlNode *scene ){
   }
 }
 
-void process_break( Division *root, xmlNode *brk ){
+void process_break( Division *root, const xmlNode *brk ){
   if ( verbose ){
 #pragma omp critical
     {
@@ -899,12 +899,12 @@ void process_break( Division *root, xmlNode *brk ){
   pb->add_child<Relation>( args );
 }
 
-void process_members( Division *root, xmlNode *members ){
+void process_members( Division *root, const xmlNode *members ){
   ForeignData *fd = root->add_child<ForeignData>();
   fd->set_data( members );
 }
 
-void add_h_c_t( FoliaElement *root, xmlNode *block ){
+void add_h_c_t( FoliaElement *root, const xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
@@ -917,7 +917,7 @@ void add_h_c_t( FoliaElement *root, xmlNode *block ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
       list<Note*> notes;
-      Paragraph *par = add_par( div, p, notes );
+      const Paragraph *par = add_par( div, p, notes );
       if ( !notes.empty() ){
 	add_notes( par, notes );
       }
@@ -999,7 +999,7 @@ void process_stage( Division *root, xmlNode *_stage ){
       }
       else if ( label == "p" ){
 	list<Note*> notes;
-	Paragraph *par = add_par( div, stage, notes );
+	const Paragraph *par = add_par( div, stage, notes );
 	if ( !notes.empty() ){
 	  add_notes( par, notes );
 	}
@@ -1037,7 +1037,7 @@ folia::Document *create_basedoc( const string& docid,
 				 xmlNode *metadata = 0,
 				 xmlNode *docinfo = 0 ){
   Document *doc = new Document( "xml:id='" + docid + "'" );
-  processor *proc = add_provenance( *doc, "FoLiA-pm", command );
+  const processor *proc = add_provenance( *doc, "FoLiA-pm", command );
   KWargs args;
   if ( processor_id.empty() ){
     processor_id = proc->id();
@@ -1161,7 +1161,7 @@ void process_proceeding( const string& outDir,
 
 void process_sub_block( Division *, const xmlNode * );
 
-void add_signed( FoliaElement *root, xmlNode* block ){
+void add_signed( FoliaElement *root, const xmlNode* block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   Document *doc = root->doc();
@@ -1175,7 +1175,7 @@ void add_signed( FoliaElement *root, xmlNode* block ){
   args["processor"] = processor_id;
   Division *div = root->add_child<Division>( args );
   EntitiesLayer *el = div->add_child<EntitiesLayer>();
-  xmlNode *p = block->children;
+  const xmlNode *p = block->children;
   while ( p ){
     string label = TiCC::Name(p);
     if ( label == "p" ){
@@ -1192,7 +1192,7 @@ void add_signed( FoliaElement *root, xmlNode* block ){
   }
 }
 
-void add_section( FoliaElement *root, xmlNode* block ){
+void add_section( FoliaElement *root, const xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   string section_id = TiCC::getAttribute( block, "section-identifier" );
@@ -1214,7 +1214,7 @@ void add_section( FoliaElement *root, xmlNode* block ){
   process_sub_block( div, block );
 }
 
-void add_block( FoliaElement *root, xmlNode *block ){
+void add_block( FoliaElement *root, const xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   KWargs args;
@@ -1225,7 +1225,7 @@ void add_block( FoliaElement *root, xmlNode *block ){
   process_sub_block( div, block );
 }
 
-void add_heading( FoliaElement *root, xmlNode *block ){
+void add_heading( FoliaElement *root, const xmlNode *block ){
   FoliaElement *el = new Head( );
   try {
     root->append( el );
@@ -1293,7 +1293,7 @@ void process_sub_block( Division *root, const xmlNode *_block ){
 }
 
 void process_block( Text* base_text,
-		    xmlNode *block ){
+		    const xmlNode *block ){
   string id = TiCC::getAttribute( block, "id" );
   string type = TiCC::getAttribute( block, "type" );
   if ( verbose ){
@@ -1311,7 +1311,7 @@ void process_block( Text* base_text,
 }
 
 void process_parldoc( Text *root,
-		      xmlNode *pdoc ){
+		      const xmlNode *pdoc ){
   string id = TiCC::getAttribute( pdoc, "id" );
   if ( verbose ){
 #pragma omp critical
@@ -1320,7 +1320,7 @@ void process_parldoc( Text *root,
     }
   }
   list<xmlNode*> blocks = TiCC::FindNodes( pdoc, "*:block" );
-  for ( const auto& block : blocks ){
+  for ( const auto *block : blocks ){
     process_block( root, block );
   }
 }
@@ -1423,7 +1423,7 @@ void usage(){
   cerr << "\t-h or --help \t this messages " << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts;
   try {
     opts.add_short_options( "vVt:O:h" );

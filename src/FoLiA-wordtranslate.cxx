@@ -179,7 +179,7 @@ UnicodeString lemmatiser( Word *word,
   return target_flat; //return variant more or less suitable for modernisation (whitespaces will be handled later still)
 }
 
-const string getlanguage(FoliaElement * e) {
+const string getlanguage( const FoliaElement *e ) {
   if ( e->has_annotation<folia::LangAnnotation>() ){
     return e->annotation<folia::LangAnnotation>()->cls();
   } else if (e->parent() != NULL) {
@@ -533,7 +533,7 @@ int main( int argc, const char *argv[] ) {
       }
       continue;
     }
-    processor *proc = add_provenance( *doc, "FoLiA-wordtranslate", command );
+    const processor *proc = add_provenance( *doc, "FoLiA-wordtranslate", command );
     KWargs args;
     args["processor"] = proc->id();
     doc->declare( folia::AnnotationType::METRIC,

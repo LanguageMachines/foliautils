@@ -1318,7 +1318,7 @@ void usage( const string& name ){
   cerr << "\t-R\t search the dirs recursively (when appropriate)." << endl;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "hVvpe:t:o:RsS",
 			 "class:,clip:,lang:,languages:,ngram:,max-ngram:,"
 			 "lower,hemp:,underscore,separator:,help,version,"

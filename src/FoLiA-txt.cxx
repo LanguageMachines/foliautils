@@ -127,7 +127,7 @@ bool handle_one_file( const string& fileName ){
     }
     return false;
   }
-  processor *proc = add_provenance( *d, "FoLiA-txt", command );
+  const processor *proc = add_provenance( *d, "FoLiA-txt", command );
   string processor_id = proc->id();
   KWargs p_args;
   p_args["processor"] = processor_id;
@@ -234,7 +234,7 @@ bool handle_one_file( const string& fileName ){
   return true;
 }
 
-int main( int argc, char *argv[] ){
+int main( int argc, const char *argv[] ){
   TiCC::CL_Options opts( "hVt:O:",
 			 "class:,setname:,remove-end-hyphens:,"
 			 "help,version,threads:" );
